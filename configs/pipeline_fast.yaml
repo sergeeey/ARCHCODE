@@ -23,6 +23,13 @@ rs11:
 validation:
   real_hic_cooler: "data/real_hic/WT/Rao2014_GM12878_1000kb.cool"
 
+rs13:
+  enabled: false  # Set to true to enable multi-condition benchmark
+  config: "configs/rs13_multi_condition.yaml"
+
+rs12:
+  enabled: false  # Set to true to enable scHi-C robustness test
+
 output:
   base_dir: "data/output/pipeline_runs"
   figures_dir: "figures/pipeline"

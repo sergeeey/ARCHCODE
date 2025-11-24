@@ -1,0 +1,53 @@
+# RS-13: Multi-Condition Benchmark Configuration
+# Compares ARCHCODE predictions with multiple real Hi-C conditions
+
+conditions:
+  - id: WT
+    name: "Wild-type (GM12878)"
+    cooler: "data/real_hic/WT/Rao2014_GM12878_1000kb.cool"
+    archcode_preset: "rs09_wt"
+    sim_params:
+      nipbl_velocity: 1.0
+      wapl_lifetime: 1.0
+      bookmarking_fraction: 0.8
+      processivity: 1.0
+
+  - id: CDLS
+    name: "NIPBL haploinsufficiency (CdLS-like)"
+    cooler: "data/real_hic/CdLS/CdLS_1000kb.cool"
+    archcode_preset: "rs09_cdls"
+    sim_params:
+      nipbl_velocity: 0.5
+      wapl_lifetime: 1.0
+      bookmarking_fraction: 0.8
+      processivity: 0.5
+    # Optional: skip if file doesn't exist
+    required: false
+
+  - id: WAPL_KO
+    name: "WAPL knockout"
+    cooler: "data/real_hic/WAPL_KO/WAPL_1000kb.cool"
+    archcode_preset: "rs09_wapl_ko"
+    sim_params:
+      nipbl_velocity: 1.0
+      wapl_lifetime: 2.0
+      bookmarking_fraction: 0.8
+      processivity: 2.0
+    # Optional: skip if file doesn't exist
+    required: false
+
+metrics:
+  compute_insulation: true
+  compute_ps: true
+  compute_apa: true
+  compute_boundary_stability: true
+  compute_compartments: false  # Optional, computationally expensive
+
+comparison:
+  region: "chr8:127000000-130000000"  # 3 Mb test region
+  resolution: 1000000  # 1 Mb resolution
+  ps_max_distance: 10000000  # 10 Mb for P(s)
+
+output_dir: "data/output/RS13_multi_condition"
+figures_dir: "figures/RS13"
+

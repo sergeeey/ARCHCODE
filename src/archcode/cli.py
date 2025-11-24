@@ -319,6 +319,74 @@ def run_archcode_vs_real_comparison(config: dict, output_dir: Path) -> dict:
         return {"status": "error", "error": str(e)}
 
 
+def run_rs13_benchmark(config: dict, output_dir: Path) -> dict:
+    """Run RS-13 multi-condition benchmark."""
+    if not config.get("rs13", {}).get("enabled", True):
+        print("\n⏭️  RS-13: Skipped (disabled in config)")
+        return {"status": "skipped"}
+
+    print("\n" + "=" * 80)
+    print("STEP 8: RS-13 MULTI-CONDITION BENCHMARK")
+    print("=" * 80)
+
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT))
+        from experiments.run_RS13_multi_condition_benchmark import (
+            RS13MultiConditionBenchmark,
+        )
+
+        rs13_config_path = config.get("rs13", {}).get(
+            "config", "configs/rs13_multi_condition.yaml"
+        )
+        benchmark = RS13MultiConditionBenchmark(config_path=rs13_config_path)
+        result = benchmark.run_benchmark()
+
+        print(f"✅ RS-13 completed")
+        print(f"💾 Results saved: {benchmark.output_dir}")
+
+        return {"status": "success", "data": result}
+    except Exception as e:
+        import traceback
+        print(f"❌ Error in RS-13: {e}")
+        traceback.print_exc()
+        return {"status": "error", "error": str(e)}
+
+
+def run_rs12_robustness(config: dict, output_dir: Path) -> dict:
+    """Run RS-12 scHi-C robustness test."""
+    if not config.get("rs12", {}).get("enabled", True):
+        print("\n⏭️  RS-12: Skipped (disabled in config)")
+        return {"status": "skipped"}
+
+    print("\n" + "=" * 80)
+    print("STEP 9: RS-12 scHi-C ROBUSTNESS")
+    print("=" * 80)
+
+    try:
+        sys.path.insert(0, str(PROJECT_ROOT))
+        from experiments.run_RS12_scihic_robustness import RS12SciHiCRobustness
+
+        validation_config = config.get("validation", {})
+        cooler_path = validation_config.get("real_hic_cooler")
+
+        if not cooler_path or not Path(cooler_path).exists():
+            print("\n⏭️  RS-12: Skipped (cooler file not found)")
+            return {"status": "skipped", "reason": "file_not_found"}
+
+        test = RS12SciHiCRobustness()
+        result = test.run_robustness_test(cooler_path)
+
+        print(f"✅ RS-12 completed")
+        print(f"💾 Results saved: {test.output_dir}")
+
+        return {"status": "success", "data": result}
+    except Exception as e:
+        import traceback
+        print(f"❌ Error in RS-12: {e}")
+        traceback.print_exc()
+        return {"status": "error", "error": str(e)}
+
+
 def generate_summary_report(
     config: dict,
     results: dict,
@@ -531,6 +599,14 @@ def run_pipeline(mode: str = "fast"):
     # Step 7: Comparison
     results["comparison"] = run_archcode_vs_real_comparison(config, output_dir)
 
+    # Step 8: RS-13 Multi-Condition Benchmark (optional)
+    if config.get("rs13", {}).get("enabled", False):
+        results["rs13"] = run_rs13_benchmark(config, output_dir)
+
+    # Step 9: RS-12 scHi-C Robustness (optional)
+    if config.get("rs12", {}).get("enabled", False):
+        results["rs12"] = run_rs12_robustness(config, output_dir)
+
     # Generate summary report
     print("\n" + "=" * 80)
     print("GENERATING SUMMARY REPORT")
@@ -538,6 +614,21 @@ def run_pipeline(mode: str = "fast"):
 
     report_path = generate_summary_report(config, results, start_time, output_dir, reports_dir)
     print(f"✅ Summary report: {report_path}")
+
+    # Generate validation report if RS-13 or RS-12 were run
+    if results.get("rs13", {}).get("status") == "success" or results.get("rs12", {}).get("status") == "success":
+        print("\n" + "=" * 80)
+        print("GENERATING VALIDATION REPORT")
+        print("=" * 80)
+        try:
+            sys.path.insert(0, str(PROJECT_ROOT))
+            from tools.build_validation_report import ValidationReportBuilder
+            builder = ValidationReportBuilder(output_dir=reports_dir)
+            validation_report = builder.build_report()
+            validation_path = builder.save_report(validation_report)
+            print(f"✅ Validation report: {validation_path}")
+        except Exception as e:
+            print(f"⚠️  Could not generate validation report: {e}")
 
     # Final status
     print("\n" + "=" * 80)
