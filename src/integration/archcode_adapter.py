@@ -89,7 +89,27 @@ class ArchcodeAdapter:
 
             elapsed = round(time.time() - t0, 2)
 
-            return {
+            # Export phase maps for 3D visualization if applicable
+            phase_map = None
+            if mission_type in ["rs09_processivity_phase", "rs10_bookmarking_threshold", "rs11_multichannel_memory"]:
+                try:
+                    from src.archcode_core.visual.export_phase_maps import (
+                        export_rs09_phase_map,
+                        export_rs10_threshold_curve,
+                        export_rs11_memory_surface,
+                    )
+
+                    if mission_type == "rs09_processivity_phase":
+                        phase_map = export_rs09_phase_map(data)
+                    elif mission_type == "rs10_bookmarking_threshold":
+                        phase_map = export_rs10_threshold_curve(data)
+                    elif mission_type == "rs11_multichannel_memory":
+                        phase_map = export_rs11_memory_surface(data)
+                except Exception:
+                    # If export fails, continue without phase_map
+                    pass
+
+            result = {
                 "status": "success",
                 "mission_id": mission_config.get("id"),
                 "mission_type": mission_type,
@@ -97,6 +117,11 @@ class ArchcodeAdapter:
                 "execution_time_sec": elapsed,
                 "data": data,
             }
+
+            if phase_map:
+                result["phase_map"] = phase_map
+
+            return result
 
         except Exception as e:
             elapsed = round(time.time() - t0, 2)
