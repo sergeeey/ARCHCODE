@@ -1,0 +1,70 @@
+# P2: Supercoiling Dynamics
+# Engineering Unknown: How does supercoiling affect loop extrusion?
+
+unknown_id: P2
+category: Physical
+layer: Physical
+uncertainty: 0.7
+impact_on_model: 0.8
+priority: 0.56
+
+description: >
+  Supercoiling affects:
+  - Loop extrusion speed
+  - Barrier formation (Z-DNA, G4)
+  - Transcription efficiency
+  
+  Unknown dynamics:
+  - How is supercoiling generated during extrusion?
+  - How does it propagate?
+  - Threshold for barrier formation?
+
+parameters:
+  supercoiling_generation:
+    extrusion_rate: 0.1  # Supercoiling per bp extruded
+    transcription_rate: 0.05
+    relaxation_rate: 0.02
+  
+  propagation:
+    diffusion_coefficient: 1.0
+    decay_length: 10000  # bp
+  
+  barrier_formation:
+    zdna_threshold: -0.05  # Negative supercoiling threshold
+    g4_threshold: 0.1     # Positive supercoiling threshold
+    formation_probability: 0.3
+
+hypotheses:
+  hypothesis_a:
+    name: "Localized supercoiling"
+    description: "Supercoiling is localized near extrusion site"
+    parameters:
+      propagation:
+        diffusion_coefficient: 0.5
+        decay_length: 5000
+  
+  hypothesis_b:
+    name: "Global supercoiling"
+    description: "Supercoiling propagates globally"
+    parameters:
+      propagation:
+        diffusion_coefficient: 2.0
+        decay_length: 50000
+
+integration:
+  archcode_core:
+    module: "src/archcode_core/extrusion_engine.py"
+    parameter_path: "supercoiling_params"
+  
+  nonb_logic:
+    module: "src/nonB_logic/barrier_model.py"
+    parameter_path: "supercoiling_threshold"
+  
+  rs_spec: "RS-01"
+
+
+
+
+
+
+

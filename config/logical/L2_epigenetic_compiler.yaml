@@ -1,0 +1,82 @@
+# L2: Epigenetic Compiler Logic
+# Engineering Unknown: CpG methylation threshold for CTCF inactivation
+
+unknown_id: L2
+category: Logical
+layer: Logical
+uncertainty: 0.8
+impact_on_model: 0.9
+priority: 0.72
+
+description: >
+  CpG methylation affects CTCF binding:
+  - High methylation → CTCF inactivation
+  - Boundary collapse
+  - TAD restructuring
+  
+  Unknown:
+  - Exact methylation threshold?
+  - Gradual or binary?
+  - Cell-type specific?
+
+parameters:
+  # v1.1: Quantitative Kd-based model
+  ctcf_binding:
+    base_kd_nm: 163  # Base dissociation constant (nM)
+    fully_methylated_kd_nm: 1075  # ~7x increase
+    affinity_reduction_factor: 7.0
+  
+  # v1.1: Hemimethylation logic (STRAND-SPECIFIC)
+  methylation_model:
+    type: "STRAND_SPECIFIC_KD"
+    base_kd_nm: 163
+    fully_methylated_kd_nm: 1075
+    
+    # Hemimethylation: asymmetric effects
+    hemimethylated_motif_strand:
+      factor: 7.0  # Inhibitory (7x reduction)
+      kd_nm: 1141  # ~7x increase
+    
+    hemimethylated_opposite_strand:
+      factor: 0.25  # Stimulatory (4x increase)
+      kd_nm: 40.75  # ~4x decrease
+    
+    # Strand-specific valving mechanism
+    strand_specific_valving: true
+    evidence: "Snippet S_S36, S_S40"
+  
+  # Legacy parameters (deprecated)
+  cpg_methylation:
+    threshold: 0.7  # Methylation level for CTCF inactivation
+    inactivation_mode: "gradual"  # Options: "binary", "gradual"
+    decay_rate: 0.1
+  
+  boundary_collapse:
+    collapse_probability: 0.8
+    time_dependent: true
+
+hypotheses:
+  hypothesis_a:
+    name: "Binary threshold"
+    description: "CTCF inactivated above fixed threshold"
+    parameters:
+      cpg_methylation:
+        threshold: 0.7
+        inactivation_mode: "binary"
+  
+  hypothesis_b:
+    name: "Gradual reduction"
+    description: "CTCF strength gradually decreases with methylation"
+    parameters:
+      cpg_methylation:
+        threshold: 0.5
+        inactivation_mode: "gradual"
+        decay_rate: 0.2
+
+integration:
+  epigenetic_compiler:
+    module: "src/epigenetic_compiler/methylation_model.py"
+    parameter_path: "methylation_parameters"
+  
+  rs_spec: "RS-04"
+

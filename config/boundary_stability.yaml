@@ -1,0 +1,47 @@
+# Boundary Stability Predictor Configuration
+
+project: "Boundary Stability Predictor"
+version: "1.0.0-alpha"
+
+# Stability thresholds
+stable_threshold: 0.7      # Stability >= 0.7 → stable (>90% cells)
+variable_threshold: 0.4    # Stability <= 0.4 → variable (<50% cells)
+# 0.4 < Stability < 0.7 → intermediate
+
+# Model parameters
+barrier_multiplier: 1.0     # Multiplier for energy barrier contribution
+te_multiplier: 1.0          # Multiplier for TE motif effect
+
+# Factor weights (for future extensions)
+factor_weights:
+  ctcf: 1.0
+  barrier: 1.0
+  epigenetic: 1.0
+  te_motif: 1.0
+  temporal: 1.0
+
+# Barrier combination mode
+barrier_combination: "additive"  # Options: "additive", "max"
+
+# Epigenetic weights
+epigenetic_weights:
+  methylation: 0.6          # Weight for methylation factor
+  histone: 0.4              # Weight for histone modifications
+
+# Temporal decay
+temporal_decay:
+  first_event_factor: 1.0   # Factor for first event
+  last_event_factor: 0.5     # Factor for last event
+  decay_mode: "linear"       # Options: "linear", "exponential"
+
+# Integration settings
+integration:
+  require_all_factors: false  # If true, all factors must be provided
+  default_missing_values: true  # Use defaults for missing factors
+
+
+
+
+
+
+

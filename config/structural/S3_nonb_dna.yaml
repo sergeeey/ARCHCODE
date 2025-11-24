@@ -1,0 +1,75 @@
+# S3: Non-B DNA Barrier Formation
+# Engineering Unknown: How do G4, Z-DNA, R-loops form barriers?
+
+unknown_id: S3
+category: Structural
+layer: Structural
+uncertainty: 0.7
+impact_on_model: 0.8
+priority: 0.56
+
+description: >
+  Non-B DNA structures form barriers:
+  - G4: G-quadruplexes
+  - Z-DNA: Left-handed DNA
+  - R-loops: RNA-DNA hybrids
+  
+  Unknown:
+  - Formation conditions
+  - Barrier strength
+  - Hierarchy (which dominates?)
+
+parameters:
+  g4_formation:
+    sequence_motifs: ["GGG", "GGGG"]
+    min_length: 4
+    formation_probability: 0.3
+    barrier_strength: 0.6
+  
+  zdna_formation:
+    sequence_motifs: ["GCGCGC"]
+    negative_supercoiling_threshold: -0.05
+    transcription_boost: 0.5
+    barrier_strength: 0.5
+  
+  rloop_formation:
+    transcription_dependent: true
+    g_rich_threshold: 0.6
+    barrier_strength: 0.4
+  
+  hierarchy:
+    g4_priority: 1
+    zdna_priority: 2
+    rloop_priority: 3
+
+hypotheses:
+  hypothesis_a:
+    name: "Sequence-driven formation"
+    description: "Formation primarily sequence-dependent"
+    parameters:
+      g4_formation:
+        formation_probability: 0.5
+      zdna_formation:
+        sequence_weight: 0.7
+  
+  hypothesis_b:
+    name: "Context-driven formation"
+    description: "Formation depends on supercoiling/transcription"
+    parameters:
+      zdna_formation:
+        torque_weight: 0.5
+        transcription_weight: 0.3
+
+integration:
+  nonb_logic:
+    module: "src/nonB_logic/barrier_model.py"
+    parameter_path: "config"
+  
+  rs_spec: "RS-03"
+
+
+
+
+
+
+

@@ -1,0 +1,44 @@
+# Risk B1: Boundary Stability Determinism
+
+risk_id: B1
+category: Biological Logic
+uncertainty: 0.7
+impact_on_model: 0.8
+priority: 0.56
+
+description: >
+  Unknown mechanism of boundary stability determinism vs stochasticity.
+  
+  Some TAD boundaries are stable (>90% cell-to-cell reproducibility),
+  others are variable (<50%). Difference not explained by CTCF strength alone.
+  
+  Factors affecting stability:
+  - CTCF strength (known, but insufficient)
+  - Energy landscape (non-B DNA barriers)
+  - Epigenetic context (methylation, histones)
+  - TE motifs (stabilization/destruction)
+  - Temporal dynamics (order of events)
+
+affected_modules:
+  - archcode_core
+  - nonB_logic
+  - epigenetic_compiler
+  - te_grammar
+  - boundary_stability (new module)
+
+mitigation_strategy:
+  - "Build multiplicative stability model"
+  - "Integrate factors from all ARCHCODE modules"
+  - "Calibrate thresholds from experimental data"
+  - "Create boundary_stability_predictor module"
+
+status: "open"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+# L1: Z-DNA Formation Logic
+# Engineering Unknown: Controlled formation or noise?
+
+unknown_id: L1
+category: Logical
+layer: Logical
+uncertainty: 0.6
+impact_on_model: 0.7
+priority: 0.42
+
+description: >
+  Z-DNA formation:
+  - Sequence-dependent (GC-rich, alternating)
+  - Negative supercoiling enhances
+  - Transcription promotes formation
+  - Ionic conditions affect stability
+  
+  Unknown:
+  - Is formation controlled or stochastic?
+  - Regulatory function?
+  - Relationship to transcription?
+
+parameters:
+  formation_logic:
+    sequence_score_weight: 0.6
+    torque_weight: 0.3
+    transcription_weight: 0.1
+  
+  sequence_motifs:
+    patterns: ["GCGCGC", "CGCGCG"]
+    min_length: 6
+  
+  supercoiling:
+    negative_threshold: -0.05
+    max_effect: 0.5
+  
+  transcription:
+    boost_factor: 0.5
+    proximity_window: 1000  # bp
+  
+  ionic_conditions:
+    base_stability: 0.1
+    salt_concentration: 0.15
+
+hypotheses:
+  hypothesis_a:
+    name: "Controlled formation"
+    description: "Z-DNA forms in response to specific signals"
+    parameters:
+      formation_logic:
+        sequence_score_weight: 0.5
+        torque_weight: 0.4
+        transcription_weight: 0.1
+  
+  hypothesis_b:
+    name: "Stochastic formation"
+    description: "Z-DNA forms randomly, stabilized by conditions"
+    parameters:
+      formation_logic:
+        sequence_score_weight: 0.3
+        torque_weight: 0.2
+        transcription_weight: 0.1
+        stochastic_component: 0.4
+
+integration:
+  nonb_logic:
+    module: "src/nonB_logic/barrier_model.py"
+    function: "detect_zdna"
+    parameter_path: "z_dna_parameters"
+  
+  rs_spec: "RS-03"
+
+
+
+
+
+
+

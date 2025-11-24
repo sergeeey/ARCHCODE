@@ -1,0 +1,30 @@
+# Risk L3: CpG Methylation Threshold for CTCF Inactivation
+
+risk_id: L3
+category: Logic
+uncertainty: 0.6
+impact_on_model: 0.7
+priority: 0.42
+
+description: >
+  Unknown CpG methylation threshold for CTCF inactivation.
+
+affected_modules:
+  - epigenetic_compiler
+  - archcode_core
+
+mitigation_strategy:
+  - "Use experimental literature values"
+  - "Parameterize threshold in config"
+  - "Allow per-site variation"
+
+status: "mitigated"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

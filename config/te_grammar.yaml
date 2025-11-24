@@ -1,0 +1,40 @@
+# TE Grammar Configuration
+# Transposon grammar for non-coding genome
+
+project: "TE Grammar Engine"
+version: "1.0.0-alpha"
+
+te_motifs:
+  # Engineering Unknown S1: Complete TE-motif dictionary
+  # Placeholder structure - requires TE annotation dataset
+  
+  ltr_elements:
+    - pattern: "placeholder_ltr"
+      strength: 0.5
+      boundary_effect: "weak"
+  
+  line_elements:
+    - pattern: "placeholder_line"
+      strength: 0.3
+      boundary_effect: "neutral"
+  
+  sines:
+    - pattern: "placeholder_sine"
+      strength: 0.2
+      boundary_effect: "neutral"
+
+wapl_recruiting:
+  # Engineering Unknown S2: WAPL-recruiting sequence codes
+  sequences: []
+  recruitment_strength: 0.0       # Placeholder
+
+grammar_rules:
+  motif_priority: "strength"     # How to prioritize overlapping motifs
+  boundary_interaction: "additive" # How motifs interact at boundaries
+
+
+
+
+
+
+

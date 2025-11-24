@@ -1,0 +1,344 @@
+# ARCHCODE Research Questions Registry
+# Top-20 Breakthrough Questions
+
+version: "1.0.0"
+created: "2025-11-23"
+last_updated: "2025-11-23"
+
+questions:
+  # I. TAD Boundaries
+  Q1:
+    id: "Q1"
+    title: "Почему одни границы TAD стабильны в 95% клеток, а другие — только в 30%?"
+    category: "TAD Boundaries"
+    status: "in_progress"
+    priority: 5
+    research_spec: "RS-08"
+    experiments:
+      - "E-S1-L2-01"
+    modules:
+      - "boundary_stability"
+      - "vizir_s1"
+      - "vizir_l2"
+    progress:
+      model_implemented: true
+      experiment_completed: true
+      correlation: 0.790
+      calibration: false
+      publication: false
+    breakthrough_potential: 5
+    archcode_readiness: 5
+
+  Q2:
+    id: "Q2"
+    title: "Можно ли вычислить 'универсальные' детерминированные границы TAD?"
+    category: "TAD Boundaries"
+    status: "not_started"
+    priority: 4
+    research_spec: "RS-09"
+    modules:
+      - "boundary_stability"
+      - "full_pipeline"
+    breakthrough_potential: 4
+    archcode_readiness: 4
+
+  Q3:
+    id: "Q3"
+    title: "Можно ли предсказать, какая граница разрушится первой при болезни / мутации?"
+    category: "TAD Boundaries"
+    status: "in_progress"
+    priority: 5
+    research_spec: "RS-07"
+    modules:
+      - "boundary_collapse"
+      - "risk_scorer"
+    progress:
+      simulator_implemented: true
+      risk_scoring_implemented: true
+      validation: false
+      disease_prediction: false
+    breakthrough_potential: 5
+    archcode_readiness: 5
+
+  Q4:
+    id: "Q4"
+    title: "Какие TE-мотивы работают как neo-TAD-границы?"
+    category: "TAD Boundaries"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-10"
+    modules:
+      - "te_grammar"
+      - "boundary_stability"
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+  Q5:
+    id: "Q5"
+    title: "Какой минимальный набор факторов нужен, чтобы граница существовала?"
+    category: "TAD Boundaries"
+    status: "not_started"
+    priority: 4
+    research_spec: "RS-11"
+    modules:
+      - "boundary_stability"
+      - "factor_aggregator"
+    breakthrough_potential: 4
+    archcode_readiness: 5
+
+  # II. Loop Extrusion Unknowns
+  Q6:
+    id: "Q6"
+    title: "Где именно загружается когезин? Можно ли вывести правила?"
+    category: "Loop Extrusion"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-01"
+    engineering_unknown: "P3"
+    modules:
+      - "extrusion_engine"
+      - "vizir_p3"
+    breakthrough_potential: 5
+    archcode_readiness: 3
+
+  Q7:
+    id: "Q7"
+    title: "Почему экструзия асимметрична? Это детерминизм или стохастика?"
+    category: "Loop Extrusion"
+    status: "not_started"
+    priority: 4
+    research_spec: "RS-01"
+    engineering_unknown: "P1"
+    modules:
+      - "extrusion_engine"
+      - "vizir_p1"
+    breakthrough_potential: 4
+    archcode_readiness: 4
+
+  Q8:
+    id: "Q8"
+    title: "Можно ли предсказать силу TAD только по последовательности?"
+    category: "Loop Extrusion"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-12"
+    modules:
+      - "extrusion_engine"
+      - "sequence_analysis"
+    breakthrough_potential: 5
+    archcode_readiness: 3
+
+  # III. TE Grammar
+  Q9:
+    id: "Q9"
+    title: "Есть ли TE-подписи, которые создают иерархию TAD?"
+    category: "TE Grammar"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-02"
+    engineering_unknown: "S2"
+    modules:
+      - "te_grammar"
+      - "vizir_s2"
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+  Q10:
+    id: "Q10"
+    title: "Могут ли TE-мотивы программировать точки коллапса?"
+    category: "TE Grammar"
+    status: "in_progress"
+    priority: 5
+    research_spec: "RS-07"
+    engineering_unknown: "S2"
+    modules:
+      - "boundary_collapse"
+      - "te_grammar"
+    progress:
+      simulator_supports_te: true
+      analysis: false
+      rules: false
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+  Q11:
+    id: "Q11"
+    title: "Какие TE-мотивы вызывают рекрутинг WAPL → разрушение домена?"
+    category: "TE Grammar"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-13"
+    modules:
+      - "te_grammar"
+      - "boundary_collapse"
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+  # IV. Non-B DNA Logic
+  Q12:
+    id: "Q12"
+    title: "Как распределены энергетические барьеры (G4, Z-DNA) по геному?"
+    category: "Non-B DNA"
+    status: "not_started"
+    priority: 4
+    research_spec: "RS-03"
+    engineering_unknown: "S3"
+    modules:
+      - "nonb_logic"
+      - "barrier_model"
+    breakthrough_potential: 4
+    archcode_readiness: 5
+
+  Q13:
+    id: "Q13"
+    title: "Влияет ли Z-DNA на стабильность границы TAD?"
+    category: "Non-B DNA"
+    status: "not_started"
+    priority: 4
+    research_spec: "RS-08"
+    engineering_unknown: "L1"
+    modules:
+      - "nonb_logic"
+      - "boundary_stability"
+    breakthrough_potential: 4
+    archcode_readiness: 5
+
+  Q14:
+    id: "Q14"
+    title: "Может ли R-loop создавать 'виртуальные границы'?"
+    category: "Non-B DNA"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-14"
+    modules:
+      - "nonb_logic"
+      - "extrusion_engine"
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+  # V. Epigenetics & Chromatin Logic
+  Q15:
+    id: "Q15"
+    title: "Какой уровень метилирования убивает CTCF-сайт с 90% вероятностью?"
+    category: "Epigenetics"
+    status: "not_started"
+    priority: 4
+    research_spec: "RS-15"
+    engineering_unknown: "L2"
+    modules:
+      - "epigenetic_compiler"
+      - "vizir_l2"
+    breakthrough_potential: 4
+    archcode_readiness: 5
+
+  Q16:
+    id: "Q16"
+    title: "Можно ли предсказать 'эпигенетический tipping point', когда домен рушится?"
+    category: "Epigenetics"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-16"
+    engineering_unknown: "L2"
+    modules:
+      - "epigenetic_compiler"
+      - "boundary_collapse"
+    breakthrough_potential: 5
+    archcode_readiness: 5
+
+  # VI. Mitosis & Nuclear Architecture
+  Q17:
+    id: "Q17"
+    title: "Влияет ли нестабильность TAD на частоту меротелии?"
+    category: "Mitosis"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-04"
+    engineering_unknown: "L3"
+    modules:
+      - "genome_to_tension"
+      - "cellular_kernel"
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+  Q18:
+    id: "Q18"
+    title: "Можно ли предсказать CIN (chromosomal instability) из архитектуры TAD?"
+    category: "Mitosis"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-17"
+    modules:
+      - "full_pipeline"
+      - "risk_scorer"
+      - "cellular_kernel"
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+  Q19:
+    id: "Q19"
+    title: "Удерживают ли 'супер-границы' натяжение стабильно?"
+    category: "Mitosis"
+    status: "not_started"
+    priority: 4
+    research_spec: "RS-18"
+    modules:
+      - "boundary_stability"
+      - "genome_to_tension"
+    breakthrough_potential: 4
+    archcode_readiness: 5
+
+  Q20:
+    id: "Q20"
+    title: "Какие границы TAD определяют успешность митоза?"
+    category: "Mitosis"
+    status: "not_started"
+    priority: 5
+    research_spec: "RS-19"
+    modules:
+      - "full_pipeline"
+      - "cellular_kernel"
+    breakthrough_potential: 5
+    archcode_readiness: 4
+
+# Top-3 Breakthrough Zones
+top_3:
+  zone_1:
+    title: "Детерминизм границ TAD"
+    questions: ["Q1"]
+    status: "in_progress"
+    potential: "Maximum"
+    
+  zone_2:
+    title: "TE Grammar → архитектурные эффекты"
+    questions: ["Q4", "Q9", "Q10", "Q11"]
+    status: "partially_in_progress"
+    potential: "Nature-level discovery"
+    
+  zone_3:
+    title: "Архитектура ядра → ошибки митоза (CIN)"
+    questions: ["Q17", "Q18", "Q20"]
+    status: "not_started"
+    potential: "First-of-its-kind modeling"
+
+# Statistics
+statistics:
+  total_questions: 20
+  not_started: 16
+  in_progress: 3
+  completed: 0
+  published: 0
+  
+  by_category:
+    tad_boundaries: 5
+    loop_extrusion: 3
+    te_grammar: 3
+    nonb_dna: 3
+    epigenetics: 2
+    mitosis: 4
+
+
+
+
+
+
+

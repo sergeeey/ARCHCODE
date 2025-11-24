@@ -1,0 +1,50 @@
+# MCP Genomic Data Server Configuration
+
+server_name: "genomic-data-mcp"
+version: "1.0.0-alpha"
+
+# Data sources
+data_sources:
+  ucsc:
+    enabled: false
+    api_url: "https://api.genome.ucsc.edu"
+    assembly: "hg38"
+  
+  ensembl:
+    enabled: false
+    api_url: "https://rest.ensembl.org"
+    assembly: "hg38"
+  
+  encode:
+    enabled: false
+    api_url: "https://www.encodeproject.org"
+  
+  geo:
+    enabled: false
+    api_url: "https://www.ncbi.nlm.nih.gov/geo"
+
+# Local data paths
+local_data:
+  fasta_directory: "data/genomes"
+  hic_directory: "data/hic"
+  chipseq_directory: "data/chipseq"
+  methylation_directory: "data/methylation"
+
+# Cache settings
+cache:
+  enabled: true
+  directory: "cache/genomic_data"
+  ttl_hours: 24
+
+# Default parameters
+defaults:
+  assembly: "hg38"
+  resolution: 10000
+  window_size: 500000
+
+
+
+
+
+
+

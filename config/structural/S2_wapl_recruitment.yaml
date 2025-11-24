@@ -1,0 +1,96 @@
+# S2: WAPL Recruitment Logic (v1.1 NEW)
+# Engineering Unknown: How does WAPL know where to unload cohesin?
+
+unknown_id: S2
+category: Structural
+layer: Structural
+uncertainty: 0.4  # Reduced from 0.8 (PARTIALLY RESOLVED)
+impact_on_model: 0.9
+priority: 0.36
+
+description: >
+  WAPL UPDATE v1.1:
+  - WAPL recruitment is NOT random
+  - Two key factors identified:
+    1. FGF Motifs: WAPL uses FGF motifs for binding PDS5/STAG interface
+    2. R-loop Dependency: R-loops and G4 structures recruit WAPL
+  
+  Implications:
+  - Explains site-specific cohesin unloading
+  - Links transcription conflicts to boundary collapse
+  - Can predict WAPL recruitment sites
+
+parameters:
+  # Protein interface recruitment
+  recruitment_factors:
+    protein_interface:
+      motif: "FGF_cluster"  # F73GF75 is critical
+      target: "PDS5_STAG_interface"
+      binding_affinity: 0.8
+      evidence: "Snippet S_S15, S_S111"
+    
+    # Chromatin features
+    chromatin_features:
+      features:
+        - "R_LOOPS"
+        - "G4_STRUCTURES"
+      action: "FORCE_UNLOAD"
+      evidence: "Snippet [3, 4]"
+  
+  # FGF motif properties
+  fgf_motif:
+    pattern: "F[^F]{0,2}GF"  # FGF cluster pattern
+    critical_positions: [73, 75]  # F73GF75
+    binding_strength: 0.9
+  
+  # R-loop recruitment
+  rloop_recruitment:
+    transcription_dependent: true
+    g_rich_threshold: 0.6
+    recruitment_probability: 0.7
+    unload_probability: 0.8
+  
+  # G4 recruitment
+  g4_recruitment:
+    g4_structure_required: true
+    recruitment_probability: 0.6
+    unload_probability: 0.7
+  
+  # Combined effect
+  wapl_unloading:
+    formula: "P_unload = P_FGF × P_Rloop × P_G4"
+    base_probability: 0.1
+    max_probability: 0.9
+
+hypotheses:
+  hypothesis_a:
+    name: "Multi-factor recruitment (v1.1)"
+    description: "FGF motifs + R-loops + G4 structures"
+    parameters:
+      recruitment_factors:
+        protein_interface:
+          motif: "FGF_cluster"
+        chromatin_features:
+          - "R_LOOPS"
+          - "G4_STRUCTURES"
+  
+  hypothesis_b:
+    name: "R-loop primary"
+    description: "R-loops are primary recruitment signal"
+    parameters:
+      rloop_recruitment:
+        recruitment_probability: 0.9
+
+integration:
+  boundary_collapse:
+    module: "src/boundary_collapse/simulator.py"
+    event_type: "wapl_recruitment"
+    parameter_path: "wapl_recruitment"
+  
+  te_grammar:
+    module: "src/te_grammar/motif_dictionary.py"
+    integration: "TE motifs may contain FGF-like sequences"
+  
+  rs_spec: "RS-07"
+  status: "PARTIALLY RESOLVED"
+

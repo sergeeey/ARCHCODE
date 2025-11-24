@@ -1,0 +1,27 @@
+# Genome-to-Tension Bridge Configuration
+
+project: "Genome-to-Tension Bridge"
+version: "1.0.0-alpha"
+
+mapping_parameters:
+  boundary_to_risk_factor: 1.0    # Factor for converting boundary strength to risk
+  merotelic_base_probability: 0.02 # Base merotelic probability
+  risk_scaling: "linear"            # Risk scaling mode: "linear", "exponential"
+
+chromosome_mapping:
+  # Map chromosome names to identifiers
+  chr1: "chr1"
+  chr2: "chr2"
+  # ... (extend as needed)
+
+output_formats:
+  - "tension_risks"
+  - "merotelic_probabilities"
+  - "boundary_strength_map"
+
+
+
+
+
+
+

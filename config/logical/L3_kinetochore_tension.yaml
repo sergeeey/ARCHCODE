@@ -1,0 +1,76 @@
+# L3: Kinetochore Tension Logic
+# Engineering Unknown: How is tension calibrated in mitosis?
+
+unknown_id: L3
+category: Logical
+layer: Logical
+uncertainty: 0.7
+impact_on_model: 0.9
+priority: 0.63
+
+description: >
+  Kinetochore tension calibration:
+  - Aurora B monitors tension
+  - Spatial separation required
+  - Catch-bond mechanism
+  - WAPL unloading
+  
+  Unknown:
+  - Exact threshold values?
+  - Temporal dynamics?
+  - Cell-type variation?
+
+parameters:
+  aurora_b:
+    tension_threshold: 0.8
+    spatial_separation: 0.5  # Minimum distance for tension
+    stability_window: 3  # Time steps
+  
+  catch_bond:
+    enabled: true
+    tension_dependence: 0.2
+    detachment_rate: 0.01
+  
+  wapl_unloading:
+    relaxed_threshold: 0.5
+    unload_probability: 0.005
+  
+  merotelic:
+    misattach_probability: 0.02
+    detach_multiplier: 2.0
+
+hypotheses:
+  hypothesis_a:
+    name: "Fixed threshold model"
+    description: "Aurora B uses fixed tension threshold"
+    parameters:
+      aurora_b:
+        tension_threshold: 0.8
+        stability_window: 3
+  
+  hypothesis_b:
+    name: "Adaptive threshold model"
+    description: "Threshold adapts to cell conditions"
+    parameters:
+      aurora_b:
+        tension_threshold: 0.7
+        adaptive_factor: 0.1
+        stability_window: 5
+
+integration:
+  cellular_kernel:
+    module: "cellular_kernel/src/agents.py"
+    parameter_path: "physics.tension_threshold"
+  
+  genome_to_tension:
+    module: "src/genome_to_tension/tension_mapper.py"
+    parameter_path: "tension_parameters"
+  
+  rs_spec: "RS-04"
+
+
+
+
+
+
+

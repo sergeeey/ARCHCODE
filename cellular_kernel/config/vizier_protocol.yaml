@@ -1,0 +1,53 @@
+# VIZIR PROTOCOL v0.2: CELLULAR KERNEL SPECIFICATION
+
+project: "Mitosis Distributed Consensus Simulation"
+
+version: "0.2.0-alpha"
+
+system_parameters:
+  total_chromosomes: 46       # Человек (2n)
+  kinetochores_per_chr: 2     # Сестринские хроматиды
+  
+  physics:
+    dt: 1.0                   # Шаг времени (сек)
+    tension_threshold: 0.8    # Уровень натяжения для статуса READY
+    noise_level: 0.05         # Шум сенсоров
+    attach_probability: 0.15  # Вероятность захвата микротрубочки за тик
+    detach_probability: 0.01  # Вероятность случайного отрыва
+    misattach_probability: 0.02  # Вероятность меротелии при прикреплении
+    misattach_detach_multiplier: 2.0  # Множитель вероятности отрыва при меротелии
+    tension_stability_window: 3  # Количество тиков с достаточным натяжением для READY (Aurora B filter)
+    wapl_relaxed_threshold: 0.5  # Порог натяжения для WAPL unloading (ниже этого - риск отрыва)
+    wapl_unload_probability: 0.005  # Базовая вероятность WAPL-опосредованного отрыва
+
+bus_parameters:
+  mcc_production_rate: 1.0    # Сколько ингибитора производит один "неготовый" узел
+  mcc_degradation_rate: 0.2   # Скорость распада сигнала в шине (цитоплазме)
+  apc_activation_threshold: 5.0 # Порог MCC, ниже которого срабатывает Анафаза
+
+system_limits:
+  max_mitosis_time: 200  # Максимальное время митоза до ареста/апоптоза (тики)
+  apoptosis_threshold: 250  # Порог для апоптоза (если митоз длится дольше)
+
+mutant_config:
+  enabled: false  # Включить мутантных агентов для хаос-инжиниринга
+  types:
+    mad2: []  # Список ID хромосом с мутантом MAD2 (например: [0, 5, 10])
+    weak_ctcf: []  # Список ID хромосом со слабым CTCF
+    hyperstabilized: []  # Список ID хромосом с гиперстабилизированными кинетохорами
+    merotelic_drift: []  # Список ID хромосом со склонностью к меротелии
+
+ltl_properties:
+  # G (Globally), F (Finally), -> (Implies), ! (Not)
+  
+  safety_critical:
+    name: "No Anaphase While Unattached"
+    formula: "G ( !ALL_NODES_READY -> !ANAPHASE_TRIGGER )"
+    description: "Система не должна переходить в анафазу, если есть ошибки."
+  
+  liveness:
+    name: "Eventual Completion"
+    formula: "F ( ANAPHASE_TRIGGER )"
+    description: "Система должна в конечном итоге завершить деление (при отсутствии фатальных сбоев)."
+
+

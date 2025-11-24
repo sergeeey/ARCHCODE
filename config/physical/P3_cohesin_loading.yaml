@@ -1,0 +1,71 @@
+# P3: Cohesin Loading Site Selection
+# Engineering Unknown: Where does NIPBL load cohesin?
+
+unknown_id: P3
+category: Physical
+layer: Physical
+uncertainty: 0.9
+impact_on_model: 0.9
+priority: 0.81
+
+description: >
+  NIPBL loads cohesin at specific sites:
+  - Not random
+  - Correlated with transcription
+  - May depend on chromatin state
+  
+  Unknown:
+  - What determines loading sites?
+  - Sequence motifs?
+  - Epigenetic marks?
+  - Transcription start sites?
+
+parameters:
+  loading_site_selection:
+    mode: "unknown"  # Options: "random", "transcription_start", "ctcf_sites", "open_chromatin"
+    probability: 0.01  # Per bp
+  
+  sequence_motifs:
+    enabled: false
+    motifs: []  # List of sequence patterns
+  
+  epigenetic_dependence:
+    h3k27ac: 0.3
+    h3k4me3: 0.2
+    atac_signal: 0.4
+  
+  transcription_correlation:
+    tss_proximity: 1000  # bp
+    correlation_strength: 0.6
+
+hypotheses:
+  hypothesis_a:
+    name: "Transcription-dependent loading"
+    description: "NIPBL loads at transcription start sites"
+    parameters:
+      loading_site_selection:
+        mode: "transcription_start"
+        probability: 0.05
+  
+  hypothesis_b:
+    name: "Open chromatin loading"
+    description: "Loading occurs at open chromatin regions"
+    parameters:
+      loading_site_selection:
+        mode: "open_chromatin"
+        epigenetic_dependence:
+          atac_signal: 0.8
+
+integration:
+  archcode_core:
+    module: "src/archcode_core/extrusion_engine.py"
+    parameter_path: "load_cohesin"
+  
+  rs_spec: "RS-01"
+
+
+
+
+
+
+

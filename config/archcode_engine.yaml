@@ -1,0 +1,49 @@
+# ARCHCODE Engine Configuration
+# Loop Extrusion Engine (1D) - TAD/TAD-boundary simulation
+
+project: "ARCHCODE Core Engine"
+version: "1.0.0-alpha"
+
+extrusion_parameters:
+  cohesin_loading_rate: 1.0      # Cohesin loading events per time unit
+  extrusion_speed: 0.5            # Base extrusion speed (bp/time)
+  stall_probability: 0.1          # Probability of extrusion stall
+  
+  # Engineering Unknown P1: NIPBL site selection rules
+  nipbl_site_selection:
+    method: "placeholder"         # TODO: Replace with ChIP-seq data
+    min_site_strength: 0.5
+    max_sites_per_window: 10
+  
+  # Engineering Unknown P2: Extrusion asymmetry
+  extrusion_mode: "symmetric"      # Options: "symmetric", "one_sided", "asymmetric"
+  asymmetry_factor: 1.0          # Multiplier for one-sided extrusion
+
+boundary_parameters:
+  ctcf_strength_base: 1.0        # Base CTCF boundary strength
+  pol2_barrier_strength: 0.3     # Pol II barrier strength
+  rloop_barrier_strength: 0.5    # R-loop barrier strength
+  
+  # Engineering Unknown S3: Barrier hierarchy
+  barrier_hierarchy:
+    - ctcf
+    - rloop
+    - pol2
+
+tad_parameters:
+  min_tad_size: 10000            # Minimum TAD size (bp)
+  max_tad_size: 2000000          # Maximum TAD size (bp)
+  insulation_score_threshold: 0.7 # Threshold for TAD boundary detection
+
+simulation_parameters:
+  genome_length: 3000000000       # Human genome length (bp)
+  resolution: 1000                # Simulation resolution (bp)
+  time_step: 1.0                  # Time step (arbitrary units)
+  max_iterations: 10000
+
+
+
+
+
+
+

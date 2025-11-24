@@ -1,0 +1,87 @@
+# S1: Z-DNA Activation Threshold (v1.1 UPDATE)
+# Engineering Unknown: Precise supercoiling threshold for B→Z transition
+
+unknown_id: S1
+category: Structural
+layer: Structural
+uncertainty: 0.3  # Reduced from 0.7 (RESOLVED)
+impact_on_model: 0.8
+priority: 0.24  # Reduced from 0.56
+
+description: >
+  Z-DNA UPDATE v1.1:
+  - Precise thermodynamic threshold: σ ≤ -0.06
+  - Sequence sensors: (dC-dG)n repeats
+  - Effect: "Torsion Absorber" - relieves strain, potentially stalling extrusion
+  
+  Implications:
+  - Can be integrated into Boundary Stability Predictor
+  - Models loop stall at Z-DNA sites
+  - Explains boundary formation at supercoiled regions
+
+parameters:
+  # v1.1: Precise threshold
+  z_dna_trigger:
+    critical_sigma: -0.06  # Supercoiling density threshold
+    sequence_motif: "CG_REPEAT_or_TG_REPEAT"
+    barrier_effect: "TORSION_ABSORBER"  # Relieves strain, potentially stalling extrusion
+    evidence: "Snippet S_R6, S_S8, S_S10"
+  
+  # Sequence motifs
+  sequence_motifs:
+    cg_repeat:
+      pattern: "(CG){3,}"
+      min_length: 6
+      weight: 0.6
+    tg_repeat:
+      pattern: "(TG){3,}"
+      min_length: 6
+      weight: 0.6
+  
+  # Barrier properties
+  barrier_strength:
+    base: 0.5
+    supercoiling_boost: 0.3  # Additional strength from supercoiling
+    max_strength: 0.8
+  
+  # Integration with extrusion
+  extrusion_interaction:
+    stall_probability: 0.4  # Probability of stalling cohesin
+    torsion_relief: 0.6  # How much torsion is absorbed
+
+hypotheses:
+  hypothesis_a:
+    name: "Threshold-based model (v1.1 RESOLVED)"
+    description: "B→Z transition at σ ≤ -0.06"
+    parameters:
+      z_dna_trigger:
+        critical_sigma: -0.06
+        barrier_effect: "TORSION_ABSORBER"
+  
+  hypothesis_b:
+    name: "Sequence-only model"
+    description: "Z-DNA formation primarily sequence-dependent"
+    parameters:
+      sequence_motifs:
+        cg_repeat:
+          weight: 0.8
+
+integration:
+  nonb_logic:
+    module: "src/nonB_logic/barrier_model.py"
+    parameter_path: "z_dna_parameters.critical_sigma"
+    method: "detect_zdna"
+  
+  boundary_stability:
+    module: "src/boundary_stability/stability_calculator.py"
+    integration: "Z-DNA barriers contribute to stability score"
+  
+  rs_spec: "RS-03"
+  status: "RESOLVED"
+
+
+
+
+
+
+

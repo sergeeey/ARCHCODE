@@ -1,0 +1,76 @@
+# P1: Loop Extrusion Asymmetry
+# Engineering Unknown: Why is loop extrusion asymmetric?
+
+unknown_id: P1
+category: Physical
+layer: Physical
+uncertainty: 0.8
+impact_on_model: 0.9
+priority: 0.72
+
+description: >
+  Loop extrusion exhibits asymmetric behavior:
+  - One-sided extrusion (cohesin moves in one direction)
+  - Asymmetric barriers (CTCF blocks one direction)
+  - Directional bias in TAD formation
+  
+  Unknown mechanism:
+  - What determines extrusion direction?
+  - How does NIPBL loading site affect asymmetry?
+  - Role of transcription direction?
+
+parameters:
+  # Phase-dependent symmetry (v1.1 UPDATE)
+  interphase_cohesin:
+    mode: "SYMMETRIC"  # Double-sided "reel-in" from both sides
+    symmetry_bias: 0.05  # 5% stochastic asymmetry
+    evidence: "Davidson et al., 2023; Rusz et al., 2024"
+  
+  mitotic_condensin:
+    mode: "ASYMMETRIC"  # One-sided for linear compaction
+    anchor_stability: "HIGH"
+    evidence: "Golfier et al., 2023"
+  
+  # Legacy parameters (deprecated, use phase-specific above)
+  extrusion_mode:
+    symmetric: false
+    one_sided: true
+    asymmetric: true
+  
+  direction_bias:
+    left_probability: 0.6
+    right_probability: 0.4
+    transcription_dependent: true
+  
+  nipbl_loading:
+    site_selection: "unknown"  # Options: "random", "transcription_start", "ctcf_sites"
+    asymmetry_factor: 0.3
+  
+  barrier_asymmetry:
+    ctcf_block_direction: "both"  # Options: "left", "right", "both"
+    strength_difference: 0.2
+
+hypotheses:
+  hypothesis_a:
+    name: "Transcription-driven asymmetry"
+    description: "Transcription direction determines extrusion bias"
+    parameters:
+      direction_bias:
+        transcription_dependent: true
+        transcription_weight: 0.7
+  
+  hypothesis_b:
+    name: "NIPBL site selection"
+    description: "NIPBL loading site position creates asymmetry"
+    parameters:
+      nipbl_loading:
+        site_selection: "transcription_start"
+        asymmetry_factor: 0.5
+
+integration:
+  archcode_core:
+    module: "src/archcode_core/extrusion_engine.py"
+    parameter_path: "extrusion_params.extrusion_mode"
+  
+  rs_spec: "RS-01"
+

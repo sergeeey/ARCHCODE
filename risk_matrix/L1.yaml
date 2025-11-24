@@ -1,0 +1,31 @@
+# Risk L1: B → Z-DNA Transition Threshold
+
+risk_id: L1
+category: Logic
+uncertainty: 0.7
+impact_on_model: 0.5
+priority: 0.35
+
+description: >
+  Unknown threshold for B → Z-DNA transition (torque/energy).
+  
+  Z-DNA formation is CONTROLLED by:
+  - Sequence preference (GC repeats, alternating purine-pyrimidine)
+  - Negative supercoiling (torque < threshold)
+  - Transcription (creates negative supercoiling)
+  - Ionic conditions (high salt stabilizes)
+  
+  Current model implements controlled logic, but exact threshold needs calibration.
+
+affected_modules:
+  - nonB_logic
+
+mitigation_strategy:
+  - "Parameterize threshold in config"
+  - "Use literature values as defaults"
+  - "Allow experimental calibration"
+
+status: "open"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+

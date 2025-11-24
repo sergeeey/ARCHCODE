@@ -1,0 +1,1142 @@
+sci-Hi-C
+├── LMD_XCI_cells_countthresh100
+│   ├── Patski.altXCIcells.tsv
+│   ├── Patski.nonXCIcells.tsv
+│   └── Patski.refXCIcells.tsv
+├── LMD_XCI_cells_countthresh50
+│   ├── EBdiff_F121_d0.altXCIcells.tsv
+│   ├── EBdiff_F121_d0.nonXCIcells.tsv
+│   ├── EBdiff_F121_d0.refXCIcells.tsv
+│   ├── EBdiff_F121_d20.altXCIcells.tsv
+│   ├── EBdiff_F121_d20.nonXCIcells.tsv
+│   ├── EBdiff_F121_d20.refXCIcells.tsv
+│   ├── EBdiff_F121_d7.altXCIcells.tsv
+│   ├── EBdiff_F121_d7.nonXCIcells.tsv
+│   ├── EBdiff_F121_d7.refXCIcells.tsv
+│   ├── EBdiff_TsixStop_d0.altXCIcells.tsv
+│   ├── EBdiff_TsixStop_d0.nonXCIcells.tsv
+│   ├── EBdiff_TsixStop_d0.refXCIcells.tsv
+│   ├── EBdiff_TsixStop_d20.altXCIcells.tsv
+│   ├── EBdiff_TsixStop_d20.nonXCIcells.tsv
+│   ├── EBdiff_TsixStop_d20.refXCIcells.tsv
+│   ├── EBdiff_TsixStop_d7.altXCIcells.tsv
+│   ├── EBdiff_TsixStop_d7.nonXCIcells.tsv
+│   ├── EBdiff_TsixStop_d7.refXCIcells.tsv
+│   ├── F121_NPC.altXCIcells.tsv
+│   ├── F121_NPC.nonXCIcells.tsv
+│   ├── F121_NPC.refXCIcells.tsv
+│   ├── F121_d0.altXCIcells.tsv
+│   ├── F121_d0.nonXCIcells.tsv
+│   ├── F121_d0.refXCIcells.tsv
+│   ├── F121_d0_rep1.altXCIcells.tsv
+│   ├── F121_d0_rep1.nonXCIcells.tsv
+│   ├── F121_d0_rep1.refXCIcells.tsv
+│   ├── F121_d0_rep2.altXCIcells.tsv
+│   ├── F121_d0_rep2.nonXCIcells.tsv
+│   ├── F121_d0_rep2.refXCIcells.tsv
+│   ├── F121_d11.altXCIcells.tsv
+│   ├── F121_d11.nonXCIcells.tsv
+│   ├── F121_d11.refXCIcells.tsv
+│   ├── F121_d3.altXCIcells.tsv
+│   ├── F121_d3.nonXCIcells.tsv
+│   ├── F121_d3.refXCIcells.tsv
+│   ├── F121_d7.altXCIcells.tsv
+│   ├── F121_d7.nonXCIcells.tsv
+│   ├── F121_d7.refXCIcells.tsv
+│   ├── Patski.altXCIcells.tsv
+│   ├── Patski.nonXCIcells.tsv
+│   ├── Patski.refXCIcells.tsv
+│   ├── TsixStop_NPC.altXCIcells.tsv
+│   ├── TsixStop_NPC.nonXCIcells.tsv
+│   ├── TsixStop_NPC.refXCIcells.tsv
+│   ├── TsixStop_d0.altXCIcells.tsv
+│   ├── TsixStop_d0.nonXCIcells.tsv
+│   ├── TsixStop_d0.refXCIcells.tsv
+│   ├── TsixStop_d11.altXCIcells.tsv
+│   ├── TsixStop_d11.nonXCIcells.tsv
+│   ├── TsixStop_d11.refXCIcells.tsv
+│   ├── TsixStop_d3.altXCIcells.tsv
+│   ├── TsixStop_d3.nonXCIcells.tsv
+│   ├── TsixStop_d3.refXCIcells.tsv
+│   ├── TsixStop_d7.altXCIcells.tsv
+│   ├── TsixStop_d7.nonXCIcells.tsv
+│   └── TsixStop_d7.refXCIcells.tsv
+├── allelic_catenated_contact_decay_profiles
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr1.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr10.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr11.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr12.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr13.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr14.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr15.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr16.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr17.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr18.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr19.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr2.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr3.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr4.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr5.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr6.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr7.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr8.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chr9.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F121.chrX.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr1.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr10.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr11.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr12.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr13.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr14.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr15.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr16.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr17.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr18.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr19.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr2.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr3.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr4.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr5.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr6.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr7.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr8.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chr9.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.F123.chrX.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr1.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr10.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr11.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr12.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr13.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr14.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr15.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr16.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr17.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr18.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr19.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr2.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr3.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr4.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr5.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr6.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr7.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr8.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chr9.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.TsixStop.chrX.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr1.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr10.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr11.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr12.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr13.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr14.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr15.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr16.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr17.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr18.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr19.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr2.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr3.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr4.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr5.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr6.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr7.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr8.tsv.gz
+│   ├── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chr9.tsv.gz
+│   └── allelicContactDecayRates.catenatedAllelicCDPs.oldF121andTsixStop.chrX.tsv.gz
+├── allelic_contact_decay_profiles
+│   ├── allelicContactDecayData.chr1
+│   │   ├── EBdiff_F121_d0.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr1.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr1.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr10
+│   │   ├── EBdiff_F121_d0.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr10.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr10.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr11
+│   │   ├── EBdiff_F121_d0.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr11.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr11.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr12
+│   │   ├── EBdiff_F121_d0.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr12.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr12.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr13
+│   │   ├── EBdiff_F121_d0.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr13.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr13.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr14
+│   │   ├── EBdiff_F121_d0.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr14.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr14.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr15
+│   │   ├── EBdiff_F121_d0.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr15.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr15.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr16
+│   │   ├── EBdiff_F121_d0.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr16.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr16.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr17
+│   │   ├── EBdiff_F121_d0.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr17.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr17.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr18
+│   │   ├── EBdiff_F121_d0.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr18.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr18.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr19
+│   │   ├── EBdiff_F121_d0.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr19.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr19.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr2
+│   │   ├── EBdiff_F121_d0.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr2.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr2.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr3
+│   │   ├── EBdiff_F121_d0.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr3.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr3.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr4
+│   │   ├── EBdiff_F121_d0.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr4.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr4.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr5
+│   │   ├── EBdiff_F121_d0.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr5.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr5.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr6
+│   │   ├── EBdiff_F121_d0.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr6.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr6.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr7
+│   │   ├── EBdiff_F121_d0.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr7.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr7.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr8
+│   │   ├── EBdiff_F121_d0.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr8.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr8.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chr9
+│   │   ├── EBdiff_F121_d0.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chr9.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chr9.logbinContactDecay.mm10.txt.gz
+│   ├── allelicContactDecayData.chrX
+│   │   ├── EBdiff_F121_d0.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d0.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d20.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F121_d7.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d0.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d20.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_F123_d7.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d0.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d20.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── EBdiff_TsixStop_d7.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_NPC.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep1.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d0_rep2.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d11.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d3.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F121_d7.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_NPC.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── F123_d0.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── Patski.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_NPC.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d0.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d11.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d3.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   │   ├── TsixStop_d7.alt.chrX.logbinContactDecay.mm10.txt.gz
+│   │   └── TsixStop_d7.ref.chrX.logbinContactDecay.mm10.txt.gz
+│   └── allelicContactDecayData.genome
+│       ├── EBdiff_F121_d0.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F121_d0.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F121_d20.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F121_d20.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F121_d7.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F121_d7.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F123_d0.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F123_d0.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F123_d20.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F123_d20.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F123_d7.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_F123_d7.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_TsixStop_d0.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_TsixStop_d0.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_TsixStop_d20.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_TsixStop_d20.ref.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_TsixStop_d7.alt.logbinContactDecay.mm10.txt.gz
+│       ├── EBdiff_TsixStop_d7.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F121_NPC.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F121_NPC.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d0.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d0.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d0_rep1.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d0_rep1.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d0_rep2.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d0_rep2.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d11.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d11.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d3.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d3.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d7.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F121_d7.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F123_NPC.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F123_NPC.ref.logbinContactDecay.mm10.txt.gz
+│       ├── F123_d0.alt.logbinContactDecay.mm10.txt.gz
+│       ├── F123_d0.ref.logbinContactDecay.mm10.txt.gz
+│       ├── Patski.alt.logbinContactDecay.mm10.txt.gz
+│       ├── Patski.ref.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_NPC.alt.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_NPC.ref.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_d0.alt.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_d0.ref.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_d11.alt.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_d11.ref.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_d3.alt.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_d3.ref.logbinContactDecay.mm10.txt.gz
+│       ├── TsixStop_d7.alt.logbinContactDecay.mm10.txt.gz
+│       └── TsixStop_d7.ref.logbinContactDecay.mm10.txt.gz
+├── autosomal_non-allelic_cell_cycle_cluster_ids
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d20.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d20.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d20.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d20.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d20.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_F121_d20.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d20.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d20.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d20.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d20.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d20.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.EBdiff_TsixStop_d20.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_combined.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_combined.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_combined.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_combined.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_combined.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_combined.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d11.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d11.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d11.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d11.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d11.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d11.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d3.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d3.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d3.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d3.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d3.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d3.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d7.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d7.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d7.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d7.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d7.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.F121_d7.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.Patski.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.Patski.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.Patski.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.Patski.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.Patski.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.Patski.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_NPC.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_combined.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_combined.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_combined.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_combined.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_combined.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_combined.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d0.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d11.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d11.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d11.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d11.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d11.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d11.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d3.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d3.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d3.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d3.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d3.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d3.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d7.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d7.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distpearson.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d7.countThresh1000.autosomalCDPs.50kb-8Mb.prop.kclust.distspearman.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d7.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.disteuclidean.kCenters4.tsv
+│   ├── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d7.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distpearson.kCenters4.tsv
+│   └── 20191105_sciHiC_allSamples_Nmasked.TsixStop_d7.countThresh1000.autosomalCDPs.50kb-8Mb.scaled.kclust.distspearman.kCenters4.tsv
+└── non-allelic_contact_decay_profiles
+    ├── EBdiff_F121_d0.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F121_d0.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F121_d20.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F121_d20.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F121_d7.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F121_d7.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F123_d0.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F123_d0.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F123_d20.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F123_d20.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F123_d7.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_F123_d7.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_TsixStop_d0.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_TsixStop_d0.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_TsixStop_d20.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_TsixStop_d20.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_TsixStop_d7.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── EBdiff_TsixStop_d7.logbinContactDecay.mm10.txt.gz
+    ├── F121_NPC.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F121_NPC.logbinContactDecay.mm10.txt.gz
+    ├── F121_d0.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F121_d0.logbinContactDecay.mm10.txt.gz
+    ├── F121_d0_rep1.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F121_d0_rep1.logbinContactDecay.mm10.txt.gz
+    ├── F121_d0_rep2.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F121_d0_rep2.logbinContactDecay.mm10.txt.gz
+    ├── F121_d11.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F121_d11.logbinContactDecay.mm10.txt.gz
+    ├── F121_d3.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F121_d3.logbinContactDecay.mm10.txt.gz
+    ├── F121_d7.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F121_d7.logbinContactDecay.mm10.txt.gz
+    ├── F123_NPC.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F123_NPC.logbinContactDecay.mm10.txt.gz
+    ├── F123_d0.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── F123_d0.logbinContactDecay.mm10.txt.gz
+    ├── Patski.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── Patski.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_NPC.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_NPC.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d0.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d0.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d11.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d11.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d3.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d3.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d7.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── TsixStop_d7.logbinContactDecay.mm10.txt.gz
+    ├── mES_EBdiff_D0.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── mES_EBdiff_D0.logbinContactDecay.mm10.txt.gz
+    ├── mES_EBdiff_D20.autosomes.logbinContactDecay.mm10.txt.gz
+    ├── mES_EBdiff_D20.logbinContactDecay.mm10.txt.gz
+    ├── mES_EBdiff_D7.autosomes.logbinContactDecay.mm10.txt.gz
+    └── mES_EBdiff_D7.logbinContactDecay.mm10.txt.gz
+
+27 directories, 1112 files

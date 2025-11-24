@@ -1,0 +1,38 @@
+# VIZIR Risk Matrix Configuration
+
+project: "VIZIR Risk Analyzer"
+version: "1.0.0-alpha"
+
+risk_categories:
+  Physical:
+    - P1
+    - P2
+    - P3
+  
+  Syntax:
+    - S1
+    - S2
+    - S3
+  
+  Logic:
+    - L1
+    - L2
+    - L3
+
+risk_priorities:
+  critical: 0.8
+  high: 0.6
+  medium: 0.4
+  low: 0.2
+
+output_formats:
+  - "yaml"
+  - "json"
+  - "markdown"
+
+
+
+
+
+
+

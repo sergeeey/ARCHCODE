@@ -1,0 +1,67 @@
+# S1: TAD Boundary Determinism
+# Engineering Unknown: Why are some boundaries stable, others variable?
+
+unknown_id: S1
+category: Structural
+layer: Structural
+uncertainty: 0.7
+impact_on_model: 0.8
+priority: 0.56
+
+description: >
+  TAD boundaries show variable stability:
+  - Some boundaries: >90% cell-to-cell reproducibility
+  - Others: <50% reproducibility
+  - Difference not explained by CTCF strength alone
+  
+  Unknown factors:
+  - Energy landscape (non-B DNA)
+  - Epigenetic context
+  - TE motifs
+  - Temporal dynamics
+
+parameters:
+  stability_factors:
+    ctcf_strength_weight: 0.4
+    energy_barrier_weight: 0.3
+    epigenetic_weight: 0.2
+    te_motif_weight: 0.1
+  
+  thresholds:
+    stable_threshold: 0.7
+    variable_threshold: 0.4
+  
+  temporal_dynamics:
+    early_event_bonus: 0.2
+    order_dependence: true
+
+hypotheses:
+  hypothesis_a:
+    name: "Multiplicative stability model"
+    description: "Stability = S_ctcf × (1 + E_barrier) × E_epi × (1 + M_te) × T_time"
+    parameters:
+      stability_factors:
+        ctcf_strength_weight: 0.4
+        energy_barrier_weight: 0.3
+  
+  hypothesis_b:
+    name: "Additive stability model"
+    description: "Stability = weighted sum of factors"
+    parameters:
+      stability_factors:
+        ctcf_strength_weight: 0.5
+        energy_barrier_weight: 0.3
+
+integration:
+  boundary_stability:
+    module: "src/boundary_stability/stability_model.py"
+    parameter_path: "config"
+  
+  rs_spec: "RS-06"
+
+
+
+
+
+
+

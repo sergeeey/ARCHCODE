@@ -1,0 +1,29 @@
+# Epigenetic Compiler Configuration
+# Methylation topology compiler
+
+project: "Epigenetic Compiler"
+version: "1.0.0-alpha"
+
+methylation_parameters:
+  # Engineering Unknown L3: CpG methylation threshold for CTCF inactivation
+  cpg_methylation_threshold: 0.0  # Placeholder (0.0-1.0)
+  ctcf_inactivation_threshold: 0.7 # Methylation level for CTCF inactivation
+  
+  methylation_rate: 0.01         # Base methylation rate per time step
+  demethylation_rate: 0.001      # Base demethylation rate per time step
+
+compiler_parameters:
+  topology_update_frequency: 10   # Update topology every N time steps
+  boundary_recalculation: true   # Recalculate boundaries after methylation changes
+  
+  output_formats:
+    - "topology_map"
+    - "boundary_strength"
+    - "methylation_profile"
+
+
+
+
+
+
+

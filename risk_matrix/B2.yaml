@@ -1,0 +1,53 @@
+# Risk B2: Boundary Collapse Dynamics
+
+risk_id: B2
+category: Biological Logic
+uncertainty: 0.8
+impact_on_model: 0.9
+priority: 0.72
+
+description: >
+  Unknown dynamics of TAD boundary collapse and consequences.
+  
+  Boundaries can collapse due to:
+  - CpG methylation → CTCF inactivation
+  - CTCF mutations
+  - TE insertions (WAPL-recruiting)
+  - Non-B DNA formation (G4, Z-DNA)
+  - Transcription competition
+  
+  Consequences:
+  - Enhancer hijacking (wrong enhancer-promoter contacts)
+  - Oncogenic contacts (e.g., MYC enhancer → TERT)
+  - Gene expression changes
+  
+  Need to model:
+  - When boundaries collapse
+  - Collapse probability
+  - Consequences (enhancer hijacking, oncogenic risk)
+
+affected_modules:
+  - boundary_stability
+  - epigenetic_compiler
+  - te_grammar
+  - nonB_logic
+  - archcode_core
+  - boundary_collapse (new module)
+
+mitigation_strategy:
+  - "Build collapse simulator with multiple triggers"
+  - "Model collapse dynamics (gradual vs sudden)"
+  - "Predict consequences (enhancer hijacking, oncogenic contacts)"
+  - "Create risk scoring system"
+  - "Integrate with boundary_stability predictor"
+
+status: "open"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

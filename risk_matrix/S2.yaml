@@ -1,0 +1,30 @@
+# Risk S2: WAPL-Recruiting Sequence Codes
+
+risk_id: S2
+category: Syntax
+uncertainty: 0.9
+impact_on_model: 0.6
+priority: 0.54
+
+description: >
+  Unknown codes for WAPL-recruiting sequences that destroy boundaries.
+
+affected_modules:
+  - te_grammar
+  - archcode_core
+
+mitigation_strategy:
+  - "Research WAPL binding motifs"
+  - "Integrate experimental data"
+  - "Add WAPL recruitment module"
+
+status: "open"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

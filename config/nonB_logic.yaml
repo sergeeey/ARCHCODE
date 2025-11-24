@@ -1,0 +1,60 @@
+# Non-B DNA Logic Configuration
+# G4, Z-DNA, R-loops energy barriers
+
+project: "Non-B Logic Engine"
+version: "1.0.0-alpha"
+
+g4_parameters:
+  # Engineering Unknown L2: G4 formation conditions in vivo
+  formation_energy: 0.0          # Placeholder (kcal/mol)
+  stability_threshold: 0.5       # Minimum stability for formation
+  barrier_strength: 0.8         # Energy barrier strength
+  
+  sequence_motifs:
+    - pattern: "G{3,}N{1,7}G{3,}N{1,7}G{3,}N{1,7}G{3,}"
+      min_length: 12
+
+z_dna_parameters:
+  # Engineering Unknown L1: B → Z-DNA transition threshold (v1.1 UPDATE)
+  # Z-DNA formation is CONTROLLED by sequence + torque + transcription
+  
+  # v1.1: Precise thermodynamic threshold
+  critical_sigma: -0.06            # Supercoiling density threshold (σ ≤ -0.06)
+  transition_threshold: -0.06      # Alias for critical_sigma (backward compatibility)
+  
+  # Torque threshold: negative supercoiling promotes Z-DNA
+  # Legacy: transition_threshold: -0.05 (deprecated, use critical_sigma)
+  
+  # Weight factors for formation probability
+  sequence_preference_weight: 0.6   # How much sequence matters
+  torque_weight: 0.3                # How much torque matters
+  ionic_stabilization: 0.1          # Base stabilization from ionic conditions
+  
+  # Sequence requirements
+  min_gc_repeat_length: 6          # Minimum GC repeat length
+  
+  # Barrier properties
+  barrier_strength: 0.6            # Energy barrier strength when formed
+  
+  sequence_motifs:
+    - pattern: "GCGCGC"            # GC repeats (most favorable)
+      min_length: 6
+    - pattern: "GTGTGT"            # GT repeats (alternating purine-pyrimidine)
+      min_length: 6
+
+rloop_parameters:
+  formation_probability: 0.1    # Base probability
+  barrier_strength: 0.5         # Energy barrier strength
+  
+  sequence_motifs:
+    - pattern: "G-rich"
+      min_length: 20
+
+energy_barriers:
+  hierarchy:
+    - g4
+    - z_dna
+    - rloop
+  
+  interaction_mode: "additive"   # How barriers interact
+

@@ -1,0 +1,72 @@
+# Boundary Collapse Simulator Configuration
+
+project: "Boundary Collapse Simulator"
+version: "1.0.0-alpha"
+
+# Collapse triggers
+collapse_triggers:
+  methylation:
+    enabled: true
+    threshold: 0.7          # CpG methylation level for CTCF inactivation
+    collapse_probability: 0.8  # Probability of collapse when threshold reached
+  
+  ctcf_mutation:
+    enabled: true
+    strength_reduction: 0.5   # Required strength reduction for collapse
+    collapse_probability: 0.9
+  
+  te_insertion:
+    enabled: true
+    wapl_recruiting_threshold: 0.5  # WAPL-recruiting motif strength
+    collapse_probability: 0.7
+  
+  nonb_dna:
+    enabled: true
+    barrier_conflict_threshold: 0.6  # When non-B DNA conflicts with boundary
+    collapse_probability: 0.6
+  
+  transcription:
+    enabled: true
+    competition_threshold: 0.8  # Transcription activity level
+    collapse_probability: 0.5
+
+# Collapse dynamics
+collapse_dynamics:
+  gradual_collapse:
+    enabled: true
+    decay_rate: 0.01         # Per time step decay
+    min_strength: 0.2        # Minimum strength before collapse
+  
+  sudden_collapse:
+    enabled: true
+    probability: 0.1         # Probability of sudden collapse per trigger
+
+# Consequences
+consequences:
+  enhancer_hijacking:
+    enabled: true
+    max_distance: 1000000    # Maximum distance for hijacking (bp)
+    hijacking_probability: 0.3
+  
+  oncogenic_contacts:
+    enabled: true
+    known_oncogenic_pairs: []  # List of known oncogenic enhancer-promoter pairs
+    risk_multiplier: 2.0     # Multiplier for oncogenic risk
+
+# Risk scoring
+risk_scoring:
+  collapse_risk_weight: 0.4
+  hijacking_risk_weight: 0.3
+  oncogenic_risk_weight: 0.3
+  
+  risk_thresholds:
+    low: 0.3
+    medium: 0.6
+    high: 0.8
+
+
+
+
+
+
+

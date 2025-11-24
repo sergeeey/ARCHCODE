@@ -1,0 +1,29 @@
+# Risk P2: Extrusion Asymmetry
+
+risk_id: P2
+category: Physical
+uncertainty: 0.7
+impact_on_model: 0.6
+priority: 0.42
+
+description: >
+  Unknown asymmetry of loop extrusion (one-sided vs symmetric).
+
+affected_modules:
+  - archcode_core
+
+mitigation_strategy:
+  - "Parameterize extrusion_mode in config"
+  - "Allow both symmetric and asymmetric modes"
+  - "Compare simulation outputs"
+
+status: "mitigated"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

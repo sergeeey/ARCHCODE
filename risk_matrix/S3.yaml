@@ -1,0 +1,30 @@
+# Risk S3: Barrier Hierarchy
+
+risk_id: S3
+category: Syntax
+uncertainty: 0.6
+impact_on_model: 0.8
+priority: 0.48
+
+description: >
+  Unknown hierarchy of barriers (CTCF vs Pol II vs R-loops).
+
+affected_modules:
+  - archcode_core
+  - nonB_logic
+
+mitigation_strategy:
+  - "Parameterize hierarchy in config"
+  - "Allow experimental override"
+  - "Default to CTCF > R-loop > Pol II"
+
+status: "mitigated"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

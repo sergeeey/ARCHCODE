@@ -1,0 +1,29 @@
+# Risk P3: Nuclear Organelle Influence
+
+risk_id: P3
+category: Physical
+uncertainty: 0.9
+impact_on_model: 0.4
+priority: 0.36
+
+description: >
+  Unknown influence of nuclear organelles on boundary barriers.
+
+affected_modules:
+  - archcode_core
+  - nonB_logic
+
+mitigation_strategy:
+  - "Defer to v2.0"
+  - "Add placeholder interface"
+
+status: "deferred"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

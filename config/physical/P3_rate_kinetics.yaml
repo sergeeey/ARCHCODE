@@ -1,0 +1,98 @@
+# P3: NIPBL Dosage & Kinetics (v1.1 UPDATE)
+# Engineering Unknown: NIPBL as velocity regulator, not binary loader
+
+unknown_id: P3
+category: Physical
+layer: Physical
+uncertainty: 0.6  # Reduced from 0.9 (RESOLVED)
+impact_on_model: 0.9
+priority: 0.54  # Reduced from 0.81
+
+description: >
+  NIPBL UPDATE v1.1:
+  - NIPBL is NOT a binary loader (P_load)
+  - NIPBL is a VELOCITY MULTIPLIER (V_ext)
+  - Loop processivity = Rate(NIPBL) × Lifetime(WAPL)
+  
+  Implications:
+  - CdLS (Cornelia de Lange Syndrome): Reduced NIPBL slows loops but doesn't stop them
+  - WAPL reduction can compensate for NIPBL deficiency
+  - This explains why TAD boundaries "blur" but don't disappear in CdLS
+
+parameters:
+  # v1.1: Velocity-based model
+  nipbl_function:
+    type: "VELOCITY_MULTIPLIER"
+    formula: "V_current = V_max * nipbl_velocity_multiplier"
+    base_velocity: 1.0  # bp/time unit
+    implication: "Controls loop size rate, not just density"
+    evidence: "NIPBL dosage shapes genome folding, biorxiv 2025"
+  
+  # Velocity multipliers
+  nipbl_velocity_multiplier:
+    wild_type: 1.0
+    cdls_haploinsufficient: 0.5  # 50% reduction
+    cdls_severe: 0.3  # 70% reduction
+  
+  # WAPL lifetime control
+  wapl_lifetime_factor:
+    wild_type: 1.0
+    wapl_reduction: 2.0  # Doubles lifetime (compensates NIPBL)
+    wapl_overexpression: 0.5  # Halves lifetime
+  
+  # Combined processivity
+  loop_processivity:
+    formula: "Processivity = Rate(NIPBL) × Lifetime(WAPL)"
+    units: "bp"
+  
+  # Legacy loading parameters (deprecated)
+  loading_site_selection:
+    mode: "unknown"  # Options: "random", "transcription_start", "ctcf_sites", "open_chromatin"
+    probability: 0.01  # Per bp
+  
+  sequence_motifs:
+    enabled: false
+    motifs: []  # List of sequence patterns
+  
+  epigenetic_dependence:
+    h3k27ac: 0.3
+    h3k4me3: 0.2
+    atac_signal: 0.4
+  
+  transcription_correlation:
+    tss_proximity: 1000  # bp
+    correlation_strength: 0.6
+
+hypotheses:
+  hypothesis_a:
+    name: "Velocity-based model (v1.1 RESOLVED)"
+    description: "NIPBL controls extrusion velocity, WAPL controls lifetime"
+    parameters:
+      nipbl_function:
+        type: "VELOCITY_MULTIPLIER"
+      wapl_lifetime_factor:
+        wild_type: 1.0
+  
+  hypothesis_b:
+    name: "Legacy: Probability-based loading"
+    description: "Old model: NIPBL as binary loader (deprecated)"
+    parameters:
+      loading_site_selection:
+        mode: "transcription_start"
+        probability: 0.05
+
+integration:
+  archcode_core:
+    module: "src/archcode_core/extrusion_engine.py"
+    parameter_path: "extrusion_params.nipbl_velocity_multiplier"
+    class: "CohesinMotor"  # To be updated
+  
+  rs_spec: "RS-01"
+  status: "RESOLVED"
+
+
+
+
+
+
+

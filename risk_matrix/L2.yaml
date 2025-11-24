@@ -1,0 +1,29 @@
+# Risk L2: G4 Formation Conditions In Vivo
+
+risk_id: L2
+category: Logic
+uncertainty: 0.8
+impact_on_model: 0.6
+priority: 0.48
+
+description: >
+  Unknown conditions for G4 formation in vivo.
+
+affected_modules:
+  - nonB_logic
+
+mitigation_strategy:
+  - "Use in vitro stability data as baseline"
+  - "Add environmental factors (ionic strength, crowding)"
+  - "Parameterize formation energy"
+
+status: "open"
+created: "2024-01-XX"
+updated: "2024-01-XX"
+
+
+
+
+
+
+

@@ -1,0 +1,78 @@
+# S2: TE Motif Effects on Boundaries
+# Engineering Unknown: How do TE motifs affect TAD boundaries?
+
+unknown_id: S2
+category: Structural
+layer: Structural
+uncertainty: 0.8
+impact_on_model: 0.7
+priority: 0.56
+
+description: >
+  Transposon elements affect boundaries:
+  - Some TEs create stable boundaries
+  - Others recruit WAPL → boundary destruction
+  - Alu elements show variable effects
+  
+  Unknown:
+  - What determines TE effect?
+  - Sequence motifs?
+  - Epigenetic state?
+  - Position relative to CTCF?
+
+parameters:
+  te_families:
+    LTR:
+      boundary_effect: 0.2
+      wapl_recruiting: false
+    
+    LINE:
+      boundary_effect: 0.1
+      wapl_recruiting: false
+    
+    Alu:
+      boundary_effect: 0.0  # Variable
+      wapl_recruiting: false
+    
+    SINE:
+      boundary_effect: -0.2
+      wapl_recruiting: true
+  
+  motif_detection:
+    pattern_matching: true
+    machine_learning: false
+  
+  epigenetic_modulation:
+    methylation_reduction: 0.3
+    h3k9me3_enhancement: 0.2
+
+hypotheses:
+  hypothesis_a:
+    name: "Sequence-motif dependent"
+    description: "TE effect determined by sequence motifs"
+    parameters:
+      motif_detection:
+        pattern_matching: true
+        machine_learning: false
+  
+  hypothesis_b:
+    name: "Epigenetic-state dependent"
+    description: "TE effect depends on epigenetic marks"
+    parameters:
+      epigenetic_modulation:
+        methylation_reduction: 0.5
+        h3k9me3_enhancement: 0.4
+
+integration:
+  te_grammar:
+    module: "src/te_grammar/motif_dictionary.py"
+    parameter_path: "te_effects"
+  
+  rs_spec: "RS-02"
+
+
+
+
+
+
+
