@@ -1,0 +1,33 @@
+mission:
+  id: "RS10-BOOK-001"
+  name: "Bookmarking Memory Threshold"
+  description: "Scan bookmarking fraction and detect critical threshold for memory retention."
+  version: "1.0"
+
+adapter:
+  type: "archcode"
+  mode: "fast"     # 'fast' для разработки, 'production' — для полноценных прогонов
+
+parameters:
+  mission_type: "rs10_bookmarking_threshold"
+  # Далее — параметры для ARCHCODE:
+  bookmarking_range: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]  # fast mode
+  # Или: bookmarking_range: [0.0, 1.0, 20]  # production: tuple(min, max, steps)
+  num_cycles: 10  # fast mode: 10, production: 50
+  processivity: 0.9  # Fixed processivity
+
+t_r_a_c:
+  hypothesis: "There exists a critical bookmarking fraction around 0.3–0.4 below which memory is lost."
+  success_criteria:
+    - metric: "estimated_threshold"
+      condition: "between 0.2 and 0.5"
+    - metric: "final_jaccard_at_0.3"
+      condition: "< 0.5"
+    - metric: "final_jaccard_at_0.5"
+      condition: "> 0.5"
+  reasoning_templates:
+    threshold_detection: |
+      The ARCHCODE RS-10 scan identified a bookmarking threshold at ~{estimated_threshold}.
+      Below this threshold, memory retention (Jaccard) drops below 0.5, indicating memory loss.
+      This is consistent/inconsistent with prior RS-10 predictions (expected ~0.3-0.4).
+

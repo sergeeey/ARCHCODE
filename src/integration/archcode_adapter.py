@@ -1,0 +1,100 @@
+"""
+Adapter between external orchestration system (TERAG) and ARCHCODE core.
+
+Provides standardized interface for running ARCHCODE experiments
+and returning JSON-serializable results.
+"""
+
+import time
+from typing import Any
+
+from src.archcode_core.api import (
+    run_rs09_summary,
+    run_rs10_summary,
+    run_rs11_summary,
+    run_real_benchmark_summary,
+)
+
+
+class ArchcodeAdapter:
+    """
+    Adapter between external orchestration system (TERAG) and ARCHCODE core.
+    """
+
+    def __init__(self, mode: str = "fast"):
+        """
+        Initialize adapter.
+
+        Args:
+            mode: 'fast' | 'production'
+                fast       — минимальная сетка, быстрые прогоны (для разработки)
+                production — полная сетка, тяжелые прогоны (ночные / пакетные)
+        """
+        self.mode = mode
+
+    def run_mission(self, mission_config: dict[str, Any]) -> dict[str, Any]:
+        """
+        Entry point called by TERAG.
+
+        Args:
+            mission_config: Dictionary with:
+                - id: mission identifier
+                - mission_type: one of:
+                    - "rs09_processivity_phase"
+                    - "rs10_bookmarking_threshold"
+                    - "rs11_multichannel_memory"
+                    - "real_hic_benchmark"
+                - parameters: dictionary with experiment-specific parameters
+
+        Returns:
+            Dictionary with:
+                - status: "success" | "error"
+                - mission_id: mission identifier
+                - mission_type: mission type
+                - mode: execution mode
+                - execution_time_sec: execution time
+                - data: experiment results (if success)
+                - error: error message (if error)
+        """
+        mission_type = mission_config.get("mission_type")
+        params = mission_config.get("parameters", {}) or {}
+
+        # Inject mode into parameters (TERAG may not know details)
+        params.setdefault("mode", self.mode)
+
+        t0 = time.time()
+
+        try:
+            if mission_type == "rs09_processivity_phase":
+                data = run_rs09_summary(params)
+            elif mission_type == "rs10_bookmarking_threshold":
+                data = run_rs10_summary(params)
+            elif mission_type == "rs11_multichannel_memory":
+                data = run_rs11_summary(params)
+            elif mission_type == "real_hic_benchmark":
+                data = run_real_benchmark_summary(params)
+            else:
+                raise ValueError(f"Unknown mission_type: {mission_type}")
+
+            elapsed = round(time.time() - t0, 2)
+
+            return {
+                "status": "success",
+                "mission_id": mission_config.get("id"),
+                "mission_type": mission_type,
+                "mode": self.mode,
+                "execution_time_sec": elapsed,
+                "data": data,
+            }
+
+        except Exception as e:
+            elapsed = round(time.time() - t0, 2)
+            return {
+                "status": "error",
+                "mission_id": mission_config.get("id"),
+                "mission_type": mission_type,
+                "mode": self.mode,
+                "execution_time_sec": elapsed,
+                "error": str(e),
+            }
+

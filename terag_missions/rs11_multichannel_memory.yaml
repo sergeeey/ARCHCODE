@@ -1,0 +1,35 @@
+mission:
+  id: "RS11-MEM-001"
+  name: "Multichannel Memory Phase Diagram"
+  description: "Scan bookmarking × epigenetic_strength and detect memory regimes."
+  version: "1.0"
+
+adapter:
+  type: "archcode"
+  mode: "fast"     # 'fast' для разработки, 'production' — для полноценных прогонов
+
+parameters:
+  mission_type: "rs11_multichannel_memory"
+  # Далее — параметры для ARCHCODE:
+  bookmarking_range: [0.0, 1.0, 7]  # fast mode: 7 steps, production: 50
+  epigenetic_range: [0.0, 1.0, 5]    # fast mode: 5 steps, production: 50
+  num_cycles: 20                     # fast mode: 20, production: 100
+  processivity: 0.9                   # Fixed processivity
+
+t_r_a_c:
+  hypothesis: "There exists a critical surface in (bookmarking, epigenetic_strength) space separating stable memory from drift."
+  success_criteria:
+    - metric: "critical_surface_points"
+      condition: "> 0"
+    - metric: "stable_memory_fraction"
+      condition: "> 0.2"
+    - metric: "phase_transition_detected"
+      condition: "True"
+  reasoning_templates:
+    phase_transition: |
+      The ARCHCODE RS-11 scan identified a transition between drift and stable memory regimes
+      at bookmarking ~{bookmark_threshold} with epigenetic_strength ~{epi_strength}.
+      This is consistent/inconsistent with prior RS-10 predictions.
+      The multichannel memory model shows that epigenetic memory can partially compensate
+      for low bookmarking, shifting the critical threshold.
+

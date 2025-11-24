@@ -1,0 +1,37 @@
+mission:
+  id: "RS09-PROC-001"
+  name: "Processivity Phase Diagram"
+  description: "Scan processivity (NIPBL × WAPL) and detect phase transitions (collapse/transition/stable)."
+  version: "1.0"
+
+adapter:
+  type: "archcode"
+  mode: "fast"     # 'fast' для разработки, 'production' — для полноценных прогонов
+
+parameters:
+  mission_type: "rs09_processivity_phase"
+  # Далее — параметры для ARCHCODE:
+  processivity_min: 0.0
+  processivity_max: 2.0
+  processivity_steps: 10  # fast mode: 10, production: 50
+  # Опционально:
+  # nipbl_velocity: 1.0
+  # wapl_lifetime: 1.0
+
+t_r_a_c:
+  hypothesis: "Processivity Law predicts three phases: collapse (< 0.5), transition (0.5-1.0), stable (> 1.0)."
+  success_criteria:
+    - metric: "stable_fraction"
+      condition: "> 0.3"
+    - metric: "collapse_threshold"
+      condition: "exists"
+    - metric: "stable_threshold"
+      condition: "exists"
+  reasoning_templates:
+    phase_transition: |
+      The ARCHCODE RS-09 scan identified phase transitions:
+      - Collapse → Transition at processivity ~{collapse_threshold}
+      - Transition → Stable at processivity ~{stable_threshold}
+      - Stable phase fraction: {stable_fraction}
+      This confirms/informs the Processivity Law: λ = NIPBL × WAPL.
+
