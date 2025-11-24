@@ -13,7 +13,9 @@ from pathlib import Path
 
 import yaml
 
-sys.path.insert(0, str(Path(__file__).parent.parent.parent))
+# Add project root to path
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.integration.archcode_adapter import ArchcodeAdapter
 
@@ -236,16 +238,20 @@ def run_real_hic_analysis(config: dict, output_dir: Path) -> dict:
 
     if not cooler_path or not Path(cooler_path).exists():
         print("\n⏭️  Real Hi-C Analysis: Skipped (file not found)")
-        return {"status": "skipped"}
+        print(f"   Expected path: {cooler_path}")
+        return {"status": "skipped", "reason": "file_not_found"}
 
     print("\n" + "=" * 80)
     print("STEP 6: REAL Hi-C DATA ANALYSIS")
     print("=" * 80)
 
     try:
+        sys.path.insert(0, str(Path(__file__).parent.parent.parent))
         from experiments.compute_real_insulation import analyze_real_hic
 
         real_dir = output_dir / "real_hic_analysis"
+        real_dir.mkdir(parents=True, exist_ok=True)
+        
         result = analyze_real_hic(cooler_path=cooler_path, output_dir=real_dir)
 
         print(f"✅ Real Hi-C analysis completed")
@@ -253,7 +259,9 @@ def run_real_hic_analysis(config: dict, output_dir: Path) -> dict:
 
         return {"status": "success", "data": result}
     except Exception as e:
+        import traceback
         print(f"❌ Error in real Hi-C analysis: {e}")
+        traceback.print_exc()
         return {"status": "error", "error": str(e)}
 
 
@@ -264,13 +272,15 @@ def run_archcode_vs_real_comparison(config: dict, output_dir: Path) -> dict:
 
     if not cooler_path or not Path(cooler_path).exists():
         print("\n⏭️  ARCHCODE vs Real: Skipped (file not found)")
-        return {"status": "skipped"}
+        print(f"   Expected path: {cooler_path}")
+        return {"status": "skipped", "reason": "file_not_found"}
 
     print("\n" + "=" * 80)
     print("STEP 7: ARCHCODE ↔ REAL Hi-C COMPARISON")
     print("=" * 80)
 
     try:
+        sys.path.insert(0, str(Path(__file__).parent.parent.parent))
         from experiments.compare_archcode_vs_real import ARCHCODEvsRealComparison
 
         comparison = ARCHCODEvsRealComparison(output_dir=output_dir / "comparison")
@@ -303,7 +313,9 @@ def run_archcode_vs_real_comparison(config: dict, output_dir: Path) -> dict:
 
         return {"status": "success", "data": result}
     except Exception as e:
+        import traceback
         print(f"❌ Error in comparison: {e}")
+        traceback.print_exc()
         return {"status": "error", "error": str(e)}
 
 
