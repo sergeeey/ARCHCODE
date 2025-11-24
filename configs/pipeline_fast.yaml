@@ -1,0 +1,29 @@
+# ARCHCODE Pipeline Configuration - Fast Mode
+# Optimized for quick validation (15-30 minutes)
+
+rs09:
+  enabled: true
+  processivity_min: 0.0
+  processivity_max: 2.0
+  grid_size: 11
+
+rs10:
+  enabled: true
+  bookmarking_values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
+  cycles: 10
+  processivity: 0.9
+
+rs11:
+  enabled: true
+  bookmarking_range: [0.0, 1.0, 7]
+  epigenetic_range: [0.0, 1.0, 5]
+  cycles: 20
+  processivity: 0.9
+
+validation:
+  real_hic_cooler: "data/real_hic/WT/Rao2014_GM12878_1000kb.cool"
+
+output:
+  base_dir: "data/output/pipeline_runs"
+  figures_dir: "figures/pipeline"
+
