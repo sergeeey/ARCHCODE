@@ -1,0 +1,63 @@
+mission:
+  id: "RS13-MULTI-001"
+  name: "Multi-condition Genome Benchmark"
+  description: "Validate ARCHCODE predictions across multiple experimental conditions (WT, WAPL-KO, CTCF-AID, CdLS) to test differential architecture predictions."
+  version: "1.0"
+
+adapter:
+  type: "archcode"
+  mode: "production"  # Requires full validation
+
+parameters:
+  mission_type: "rs13_multi_condition"
+  datasets:
+    - name: "WT"
+      cooler_path: "data/real_hic/WT/Rao2014_GM12878_1000kb.cool"
+      processivity: 1.0
+      bookmarking: 0.8
+    - name: "WAPL-KO"
+      cooler_path: "data/real_hic/WAPL_KO/WAPL_KO_HAP1_10kb.cool"
+      processivity: 2.0
+      bookmarking: 0.8
+    - name: "CTCF-AID"
+      cooler_path: "data/real_hic/CTCF_AID/CTCF_AID.cool"
+      processivity: 1.0
+      bookmarking: 0.3
+    - name: "CdLS"
+      cooler_path: "data/real_hic/CdLS/CdLS_Like_HCT116.mcool::/resolutions/10000"
+      processivity: 0.5
+      bookmarking: 0.8
+  metrics:
+    - "insulation"
+    - "tads"
+    - "ps"
+    - "compartments"
+  comparison_regions:
+    - "chr8:127000000-130000000"
+    - "chr2:100000000-103000000"
+
+t_r_a_c:
+  hypothesis: "ARCHCODE correctly predicts differential architecture across pathological conditions, with boundary shifts, P(s) scaling changes, and compartment switches matching experimental observations."
+  success_criteria:
+    - metric: "boundary_shift_rmse"
+      condition: "<= 0.2"
+    - metric: "ps_scaling_delta"
+      condition: "<= 0.1"
+    - metric: "compartment_switch_accuracy"
+      condition: ">= 0.7"
+    - metric: "processivity_correlation"
+      condition: ">= 0.8"
+  reasoning_templates:
+    multi_condition: |
+      ARCHCODE RS-13 multi-condition benchmark:
+      - Boundary shift RMSE: {boundary_shift_rmse:.3f}
+      - P(s) scaling delta: {ps_scaling_delta:.3f}
+      - Compartment switch accuracy: {compartment_switch_accuracy:.3f}
+      - Processivity correlation: {processivity_correlation:.3f}
+      
+      The model {successfully/fails to} predict differential architecture:
+      - WT: Stable phase (processivity=1.0) ✓
+      - WAPL-KO: Hyper-stable (processivity=2.0) {✓/✗}
+      - CTCF-AID: Memory loss (bookmarking=0.3) {✓/✗}
+      - CdLS: Unstable phase (processivity=0.5) {✓/✗}
+

@@ -165,6 +165,56 @@ def validate_archcode_result(payload: dict[str, Any]) -> dict[str, Any]:
         if not pass_fail.get("ps_pass", False):
             issues.append("P(s) validation failed (correlation < 0.9).")
 
+    elif mission_type == "rs12_scihic_validation":
+        # RS-12: Sci-Hi-C validation
+        insulation_corr = data.get("insulation_correlation", 0.0)
+        ps_corr = data.get("ps_correlation", 0.0)
+        compartment_agreement = data.get("compartment_agreement", 0.0)
+        xci_accuracy = data.get("xci_prediction_accuracy", 0.0)
+
+        derived["insulation_corr"] = float(insulation_corr)
+        derived["ps_corr"] = float(ps_corr)
+        derived["compartment_agreement"] = float(compartment_agreement)
+        derived["xci_prediction_accuracy"] = float(xci_accuracy)
+
+        # Валидация
+        if insulation_corr < 0.7:
+            issues.append(f"Insulation correlation ({insulation_corr:.3f}) below threshold (0.7).")
+        if ps_corr < 0.9:
+            issues.append(f"P(s) correlation ({ps_corr:.3f}) below threshold (0.9).")
+        if compartment_agreement < 0.8:
+            issues.append(f"Compartment agreement ({compartment_agreement:.3f}) below threshold (0.8).")
+        if xci_accuracy < 0.75:
+            issues.append(f"XCI prediction accuracy ({xci_accuracy:.3f}) below threshold (0.75).")
+
+    elif mission_type == "rs13_multi_condition":
+        # RS-13: Multi-condition benchmark
+        boundary_shift_rmse = data.get("boundary_shift_rmse", float("inf"))
+        ps_scaling_delta = data.get("ps_scaling_delta", float("inf"))
+        compartment_switch_accuracy = data.get("compartment_switch_accuracy", 0.0)
+        processivity_correlation = data.get("processivity_correlation", 0.0)
+
+        derived["boundary_shift_rmse"] = float(boundary_shift_rmse)
+        derived["ps_scaling_delta"] = float(ps_scaling_delta)
+        derived["compartment_switch_accuracy"] = float(compartment_switch_accuracy)
+        derived["processivity_correlation"] = float(processivity_correlation)
+
+        # Валидация
+        if boundary_shift_rmse > 0.2:
+            issues.append(f"Boundary shift RMSE ({boundary_shift_rmse:.3f}) above threshold (0.2).")
+        if ps_scaling_delta > 0.1:
+            issues.append(f"P(s) scaling delta ({ps_scaling_delta:.3f}) above threshold (0.1).")
+        if compartment_switch_accuracy < 0.7:
+            issues.append(
+                f"Compartment switch accuracy ({compartment_switch_accuracy:.3f}) "
+                f"below threshold (0.7)."
+            )
+        if processivity_correlation < 0.8:
+            issues.append(
+                f"Processivity correlation ({processivity_correlation:.3f}) "
+                f"below threshold (0.8)."
+            )
+
     else:
         issues.append(f"Unknown mission_type: {mission_type}")
 

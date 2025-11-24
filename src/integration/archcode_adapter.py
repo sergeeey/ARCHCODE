@@ -73,6 +73,17 @@ class ArchcodeAdapter:
                 data = run_rs11_summary(params)
             elif mission_type == "real_hic_benchmark":
                 data = run_real_benchmark_summary(params)
+            elif mission_type == "rs12_scihic_validation":
+                # RS-12: Sci-Hi-C validation
+                from experiments.run_RS12_sci_hic_benchmark import RS12SciHiCBenchmark
+                benchmark = RS12SciHiCBenchmark()
+                data = benchmark.run_benchmark()
+            elif mission_type == "rs13_multi_condition":
+                # RS-13: Multi-condition benchmark
+                from experiments.run_RS11_multi_condition import RS11MultiConditionBenchmark
+                benchmark = RS11MultiConditionBenchmark()
+                datasets = params.get("datasets", [])
+                data = benchmark.run_multi_condition_benchmark(conditions_config=datasets)
             else:
                 raise ValueError(f"Unknown mission_type: {mission_type}")
 

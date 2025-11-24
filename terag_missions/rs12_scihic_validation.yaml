@@ -1,0 +1,52 @@
+mission:
+  id: "RS12-SCIHIC-001"
+  name: "Sci-Hi-C Precision Validation"
+  description: "Validate ARCHCODE predictions against single-cell Hi-C data (GSE185608) for mitosis, bookmarking, and X-inactivation."
+  version: "1.0"
+
+adapter:
+  type: "archcode"
+  mode: "production"  # Requires full validation
+
+parameters:
+  mission_type: "rs12_scihic_validation"
+  dataset: "GSE185608"
+  sci_hic_dir: "data/sci_hic/GSE185608_4DNFIZ8TEE2M"
+  metrics:
+    - "insulation"
+    - "tads"
+    - "apa"
+    - "ps"
+    - "compartments"
+    - "pearson"
+  conditions:
+    - "d0"
+    - "d7"
+    - "d20"
+    - "NPC"
+  cell_types:
+    - "autosomes"
+    - "X_chromosome"
+
+t_r_a_c:
+  hypothesis: "ARCHCODE replicates multi-resolution Hi-C features and correctly predicts single-cell dynamics including mitosis bookmarking and X-inactivation."
+  success_criteria:
+    - metric: "insulation_corr"
+      condition: ">= 0.7"
+    - metric: "ps_corr"
+      condition: ">= 0.9"
+    - metric: "compartment_agreement"
+      condition: ">= 0.8"
+    - metric: "xci_prediction_accuracy"
+      condition: ">= 0.75"
+  reasoning_templates:
+    scihic_validation: |
+      ARCHCODE RS-12 validation against sci-Hi-C data (GSE185608):
+      - Insulation correlation: {insulation_corr:.3f}
+      - P(s) correlation: {ps_corr:.3f}
+      - Compartment agreement: {compartment_agreement:.3f}
+      - XCI prediction accuracy: {xci_prediction_accuracy:.3f}
+      
+      The model {passes/fails} to capture single-cell dynamics, with particular
+      {success/failure} in predicting X-inactivation patterns and mitotic bookmarking.
+
