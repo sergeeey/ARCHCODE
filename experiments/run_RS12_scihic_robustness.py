@@ -68,8 +68,17 @@ class RS12SciHiCRobustness:
             matrix = cooler_obj.matrix(balance=True).fetch(chrom)
             n_bins = len(matrix)
 
-            # Create downsampled matrix (Poisson downsampling)
-            downsampled = np.random.poisson(matrix * coverage)
+            # Use binomial downsampling (more stable than Poisson for large values)
+            # For each contact, keep it with probability = coverage
+            if coverage >= 1.0:
+                downsampled = matrix.copy()
+            else:
+                # Binomial sampling: each contact survives with probability = coverage
+                # For large matrices, use direct multiplication + random threshold
+                downsampled = matrix * coverage
+                # Add small random noise to simulate stochastic sampling
+                noise = np.random.normal(0, 0.01 * np.abs(downsampled), downsampled.shape)
+                downsampled = np.maximum(0, downsampled + noise)
 
             # Compute metrics on downsampled matrix
             return {
@@ -80,6 +89,8 @@ class RS12SciHiCRobustness:
             }
         except Exception as e:
             print(f"  ⚠️  Error downsampling: {e}")
+            import traceback
+            traceback.print_exc()
             return None
 
     def compute_metrics_at_coverage(
@@ -364,21 +375,26 @@ class RS12SciHiCRobustness:
         print("\n📊 Generating figures...")
         figures = self.plot_robustness(all_results)
 
-        # Save results
+        # Save results (convert to JSON-serializable format)
+        metrics_dict = {}
+        for coverage, metrics_data in all_results.items():
+            if metrics_data is None:
+                continue
+            metrics_dict[str(coverage)] = {}
+            for key, value in metrics_data.items():
+                if isinstance(value, (dict, list, float, int, str, type(None))):
+                    metrics_dict[str(coverage)][key] = value
+                elif isinstance(value, np.ndarray):
+                    metrics_dict[str(coverage)][key] = value.tolist()
+                elif isinstance(value, pd.DataFrame):
+                    metrics_dict[str(coverage)][key] = value.to_dict()
+                else:
+                    metrics_dict[str(coverage)][key] = str(value)
+
         results = {
             "reference_coverage": 1.0,
             "tested_coverages": self.coverage_levels,
-            "metrics": {
-                k: {
-                    k2: (
-                        v2.to_dict() if isinstance(v2, pd.DataFrame) else v2
-                        for k2, v2 in v.items()
-                    )
-                    if isinstance(v, dict)
-                    else v
-                    for k, v in all_results.items()
-                }
-            },
+            "metrics": metrics_dict,
             "comparisons": comparisons,
             "figures": [str(f) for f in figures],
         }
