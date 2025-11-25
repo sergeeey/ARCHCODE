@@ -259,8 +259,13 @@ class ValidationReportBuilder:
         section += "| Coverage | P(s) Corr | Insulation Ratio | Boundary Recall |\n"
         section += "|----------|-----------|------------------|-----------------|\n"
 
-        for coverage, comp in sorted(comparisons.items(), reverse=True):
-            coverage_pct = coverage * 100
+        for coverage_key, comp in sorted(comparisons.items(), reverse=True):
+            # coverage_key is a string like "0.3", convert to float
+            try:
+                coverage = float(coverage_key)
+                coverage_pct = coverage * 100
+            except (ValueError, TypeError):
+                coverage_pct = coverage_key
             degradation = comp.get("degradation", {})
 
             ps_corr = "N/A"
