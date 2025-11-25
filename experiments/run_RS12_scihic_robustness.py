@@ -23,8 +23,10 @@ PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import cooler
-from archcode_bio.analysis.insulation import compute_insulation_score
-from archcode_bio.analysis.ps_curve import compute_ps_curve
+from experiments.compute_real_insulation import (
+    compute_insulation_score,
+    compute_ps_scaling,
+)
 
 warnings.filterwarnings("ignore")
 

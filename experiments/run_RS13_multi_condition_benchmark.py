@@ -29,8 +29,10 @@ PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
 import cooler
-from archcode_bio.analysis.insulation import compute_insulation_score
-from archcode_bio.analysis.ps_curve import compute_ps_curve
+from experiments.compute_real_insulation import (
+    compute_insulation_score,
+    compute_ps_scaling,
+)
 from src.archcode_core.full_pipeline import ARCHCODEFullPipeline
 from src.archcode_core.cell_cycle import CellCyclePhase
 from src.vizir.config_loader import VIZIRConfigLoader
@@ -110,7 +112,7 @@ class RS13MultiConditionBenchmark:
         # P(s) curve
         if metrics_config.get("compute_ps", True):
             try:
-                ps_df = compute_ps_curve(cooler_obj, max_distance=10000000)
+                ps_df = compute_ps_scaling(cooler_obj, max_distance=10000000)
                 metrics["ps"] = ps_df
                 print(f"  ✅ P(s): {len(ps_df)} distance bins")
             except Exception as e:
