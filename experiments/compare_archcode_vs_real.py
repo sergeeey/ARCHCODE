@@ -249,20 +249,58 @@ class ARCHCODEvsRealComparison:
 
             # Calculate correlation
             if len(archcode_insulation) > 0 and len(real_ins_sample) > 0:
-                # Interpolate to same positions
+                # Align vectors: find common position range and interpolate
                 from scipy.interpolate import interp1d
                 try:
-                    f_real = interp1d(
-                        real_ins_sample["start"],
-                        real_ins_sample["insulation_score"],
-                        fill_value="extrapolate",
-                    )
-                    common_positions = archcode_insulation["start"].values
-                    real_interp = f_real(common_positions)
-                    archcode_vals = archcode_insulation["insulation_score"].values * 10
-
-                    correlation = np.corrcoef(real_interp, archcode_vals)[0, 1]
-                    comparison_results["insulation_correlation"] = float(correlation)
+                    # Find overlapping position range
+                    archcode_start = archcode_insulation["start"].min()
+                    archcode_end = archcode_insulation["start"].max()
+                    real_start = real_ins_sample["start"].min()
+                    real_end = real_ins_sample["start"].max()
+                    
+                    common_start = max(archcode_start, real_start)
+                    common_end = min(archcode_end, real_end)
+                    
+                    if common_end > common_start:
+                        # Create common position grid (use finer of the two)
+                        archcode_step = np.diff(archcode_insulation["start"].values).mean() if len(archcode_insulation) > 1 else 100000
+                        real_step = np.diff(real_ins_sample["start"].values).mean() if len(real_ins_sample) > 1 else 100000
+                        step = min(archcode_step, real_step)
+                        
+                        common_positions = np.arange(common_start, common_end, step)
+                        
+                        # Interpolate both to common positions
+                        f_real = interp1d(
+                            real_ins_sample["start"].values,
+                            real_ins_sample["insulation_score"].values,
+                            kind="linear",
+                            fill_value="extrapolate",
+                            bounds_error=False,
+                        )
+                        f_archcode = interp1d(
+                            archcode_insulation["start"].values,
+                            archcode_insulation["insulation_score"].values,
+                            kind="linear",
+                            fill_value="extrapolate",
+                            bounds_error=False,
+                        )
+                        
+                        real_interp = f_real(common_positions)
+                        archcode_interp = f_archcode(common_positions)
+                        
+                        # Normalize for comparison (z-score)
+                        real_norm = (real_interp - np.nanmean(real_interp)) / (np.nanstd(real_interp) + 1e-10)
+                        archcode_norm = (archcode_interp - np.nanmean(archcode_interp)) / (np.nanstd(archcode_interp) + 1e-10)
+                        
+                        # Remove NaN/inf
+                        valid_mask = np.isfinite(real_norm) & np.isfinite(archcode_norm)
+                        if valid_mask.sum() > 10:  # Need at least 10 points
+                            correlation = np.corrcoef(real_norm[valid_mask], archcode_norm[valid_mask])[0, 1]
+                            comparison_results["insulation_correlation"] = float(correlation) if not np.isnan(correlation) else 0.0
+                        else:
+                            comparison_results["insulation_correlation"] = 0.0
+                    else:
+                        comparison_results["insulation_correlation"] = 0.0
                     ax1.text(
                         0.05,
                         0.95,
@@ -309,20 +347,55 @@ class ARCHCODEvsRealComparison:
 
             # Calculate correlation
             if len(real_ps) > 0 and len(archcode_ps) > 0:
-                # Interpolate to common distances
+                # Align vectors: find common distance range and interpolate
                 from scipy.interpolate import interp1d
                 try:
-                    f_real = interp1d(
-                        np.log10(real_ps["distance"]),
-                        np.log10(real_ps["ps"]),
-                        fill_value="extrapolate",
-                    )
-                    common_distances_log = np.log10(archcode_ps["distance"].values)
-                    real_interp_log = f_real(common_distances_log)
-                    archcode_log = np.log10(archcode_ps["ps"].values)
-
-                    correlation = np.corrcoef(real_interp_log, archcode_log)[0, 1]
-                    comparison_results["ps_correlation"] = float(correlation)
+                    # Find overlapping distance range (log space)
+                    real_distances = real_ps["distance"].values
+                    archcode_distances = archcode_ps["distance"].values
+                    
+                    real_log = np.log10(np.clip(real_distances, 1, None))
+                    archcode_log = np.log10(np.clip(archcode_distances, 1, None))
+                    
+                    common_start = max(real_log.min(), archcode_log.min())
+                    common_end = min(real_log.max(), archcode_log.max())
+                    
+                    if common_end > common_start:
+                        # Create common log-distance grid
+                        step = min(
+                            np.diff(real_log).mean() if len(real_log) > 1 else 0.1,
+                            np.diff(archcode_log).mean() if len(archcode_log) > 1 else 0.1,
+                        )
+                        common_distances_log = np.arange(common_start, common_end, step)
+                        
+                        # Interpolate both to common log-distances
+                        f_real = interp1d(
+                            real_log,
+                            np.log10(np.clip(real_ps["ps"].values, 1e-10, None)),
+                            kind="linear",
+                            fill_value="extrapolate",
+                            bounds_error=False,
+                        )
+                        f_archcode = interp1d(
+                            archcode_log,
+                            np.log10(np.clip(archcode_ps["ps"].values, 1e-10, None)),
+                            kind="linear",
+                            fill_value="extrapolate",
+                            bounds_error=False,
+                        )
+                        
+                        real_interp_log = f_real(common_distances_log)
+                        archcode_interp_log = f_archcode(common_distances_log)
+                        
+                        # Remove NaN/inf
+                        valid_mask = np.isfinite(real_interp_log) & np.isfinite(archcode_interp_log)
+                        if valid_mask.sum() > 10:  # Need at least 10 points
+                            correlation = np.corrcoef(real_interp_log[valid_mask], archcode_interp_log[valid_mask])[0, 1]
+                            comparison_results["ps_correlation"] = float(correlation) if not np.isnan(correlation) else 0.0
+                        else:
+                            comparison_results["ps_correlation"] = 0.0
+                    else:
+                        comparison_results["ps_correlation"] = 0.0
                     ax2.text(
                         0.05,
                         0.95,

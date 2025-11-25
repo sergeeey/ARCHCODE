@@ -9,8 +9,8 @@ rs09:
 
 rs10:
   enabled: true
-  bookmarking_values: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5]
-  cycles: 10
+  bookmarking_fractions: [0.0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6]  # Explicit list format
+  num_cycles: 10
   processivity: 0.9
 
 rs11:

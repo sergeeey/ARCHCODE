@@ -178,14 +178,33 @@ class LoopExtrusionEngine:
         
         events_to_remove = []
         for i, event in enumerate(self.extrusion_events):
-            # Check for boundary collisions
+            # Check for boundary collisions BEFORE moving
+            # This prevents moving past strong boundaries
             if self._check_boundary_collision(event):
-                continue
+                continue  # Stop extrusion at strong boundary
 
             # Extrude loop
             # v1.1: Processivity = Rate(NIPBL) × Lifetime(WAPL)
             distance = event.speed * effective_time_step
-            event.end_position += event.direction * int(distance)
+            new_position = event.end_position + event.direction * int(distance)
+            
+            # Check if new position would cross a strong boundary
+            # Weak boundaries (< 0.5) allow passage
+            blocked = False
+            for boundary in self.boundaries:
+                effective_strength = boundary.effective_strength if boundary.effective_strength is not None else boundary.strength
+                # Check if we're crossing a strong boundary
+                if (event.end_position < boundary.position <= new_position or 
+                    event.end_position > boundary.position >= new_position):
+                    if effective_strength > 0.5:  # Strong boundary blocks
+                        blocked = True
+                        break
+            
+            if not blocked:
+                event.end_position = new_position
+            else:
+                # Stop at strong boundary
+                continue
             
             # v1.1: WAPL-mediated unloading (simplified)
             # In full model, this would check for WAPL recruitment sites
@@ -213,13 +232,19 @@ class LoopExtrusionEngine:
             event: Extrusion event to check
 
         Returns:
-            True if collision detected
+            True if collision detected (strong boundary blocks)
         """
         for boundary in self.boundaries:
-            if event.end_position == boundary.position:
-                # Check if boundary strength blocks extrusion
-                if boundary.strength > 0.5:  # Threshold
+            # Check if event has reached or passed boundary position
+            # Use effective_strength if available, otherwise use strength
+            effective_strength = boundary.effective_strength if boundary.effective_strength is not None else boundary.strength
+            
+            # Check collision: event reaches boundary position
+            if event.end_position >= boundary.position:
+                # Strong boundaries (> 0.5) block extrusion
+                if effective_strength > 0.5:  # Threshold
                     return True
+                # Weak boundaries (< 0.5) don't block - extrusion continues
         return False
 
     def detect_tads(self) -> list[tuple[int, int]]:
