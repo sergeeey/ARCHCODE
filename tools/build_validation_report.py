@@ -100,10 +100,17 @@ class ValidationReportBuilder:
         if rs11_file:
             data = self._load_json_safe(rs11_file)
             if data:
+                # Extract data from adapter result format
+                if "data" in data:
+                    # This is adapter result format
+                    actual_data = data["data"]
+                else:
+                    actual_data = data
+                
                 return {
                     "available": True,
                     "file": str(rs11_file),
-                    "data": data,
+                    "data": actual_data,
                 }
 
         return {"available": False}
