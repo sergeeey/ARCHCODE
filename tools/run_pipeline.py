@@ -1,20 +1,13 @@
-"""
-ARCHCODE reproducible science pipeline (skeleton).
-
-This script documents the planned public interface for running
-ARCHCODE pipelines. The full implementation is kept private.
-"""
-
 import sys
 
 
-def main(argv=None) -> int:
+def main(argv=None):
     print("ARCHCODE pipeline skeleton.")
     print("Planned interface:")
     print("  python tools/run_pipeline.py run-pipeline --mode fast")
     print("  python tools/run_pipeline.py run-pipeline --mode full")
     print()
-    print("The full reproducible pipeline will be released in future versions.")
+    print("Full implementation is private.")
     return 0
 
 

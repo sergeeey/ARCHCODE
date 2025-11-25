@@ -1,304 +1,204 @@
-# ARCHCODE v1.0
+# 🔬 ARCHCODE
 
-**Full-Stack Genome Architecture Simulation**
+Reproducible physics-based framework for 3D genome architecture and chromatin loop dynamics
 
-ARCHCODE is an engineering model of non-coding 3D genome architecture, integrated with mitotic nucleus simulator (Cellular Kernel).
+**Author / Maintainer:** Boiko S.V. (Sergey Boiko)  
+**Project type:** Scientific Software / Computational Genomics / Chromatin Modeling  
+**License:** MIT  
 
-## Purpose
+---
 
-ARCHCODE simulates:
-- **Loop extrusion** → TAD formation
-- **Boundary stability** → Cell-to-cell variation
-- **Mitotic tension** → Segregation errors
-- **Epigenetic dynamics** → Topology changes
+## 📐 Overview
 
-## Architecture
+ARCHCODE is a reproducible, physics-based framework for 3D genome architecture, loop extrusion dynamics, and epigenetic memory.
 
-```
-DNA sequence → chromatin topology → mitotic tension → SAC consensus → anaphase decision
-```
+It provides:
 
-Model = ARCHCODE Core + Cellular Kernel + TE Grammar + Non-B Logic + LTL Verification
+- A modular simulation core (loop extrusion, bookmarking, memory channels)
+- RS-09 / RS-10 / RS-11 evaluation suites
+- A unified reproducibility-oriented pipeline design (tests → analysis → figures → report)
+- Real Hi-C data ingestion & comparison interfaces
+- Publication-oriented outputs for scientific use
 
-## VIZIR Framework
+---
 
-ARCHCODE follows **VIZIR 2.0** principles:
-- **Validation**: Test all modules
-- **Integration**: Modular architecture
-- **Zero-trust**: No magic constants, all in config
-- **Iterative Refinement**: Version control, changelogs
-- **Reproducibility**: Integrity ledger, provenance tracking
+## 🔬 Scientific Motivation
 
-See `.vizir/` for:
-- `integrity_ledger.json` - Configuration checksums
-- `provenance.log` - Parameter origin tracking
+Chromatin architecture is highly dynamic yet capable of transmitting structural memory across cell cycles.  
+ARCHCODE is designed to model these processes using:
 
-## Directory Layout
+- Loop extrusion physics
+- Boundary elements & anchors
+- Bookmarking-based memory channels
+- Processivity phase diagrams
+- Threshold detection for epigenetic inheritance
 
-```
-ARCHCODE_v1.0/
-├── .vizir/                    # VIZIR integrity & provenance
-│   ├── integrity_ledger.json
-│   └── provenance.log
-│
-├── bin/                       # Target: C++/CUDA executables
-│   ├── archcode_engine        # Loop extrusion kernel
-│   ├── twist_calculator       # Supercoiling calculator
-│   └── topology_analyzer      # TAD analyzer
-│
-├── lib/                       # Target: Shared libraries
-│
-├── config/                    # YAML configurations
-│   ├── physical/              # Physical layer Unknowns (P1-P3)
-│   │   ├── P1_extrusion_symmetry.yaml
-│   │   ├── P2_supercoiling.yaml
-│   │   └── P3_cohesin_loading.yaml
-│   ├── structural/            # Structural layer Unknowns (S1-S3)
-│   │   ├── S1_tad_boundaries.yaml
-│   │   ├── S2_te_motifs.yaml
-│   │   └── S3_nonb_dna.yaml
-│   ├── logical/               # Logical layer Unknowns (L1-L3)
-│   │   ├── L1_zdna_formation.yaml
-│   │   ├── L2_epigenetic_compiler.yaml
-│   │   └── L3_kinetochore_tension.yaml
-│   └── [module configs]       # Module-specific configs
-│
-├── specs/                     # Research Specifications
-│   ├── RS-01.md              # Loop Extrusion Engine
-│   ├── RS-02.md              # TE Motif Dictionary
-│   ├── RS-03.md              # Non-B DNA Barriers
-│   ├── RS-04.md              # Mitotic Tension Bridge
-│   ├── RS-05.md              # Topology Analyzer
-│   ├── RS-06.md              # Boundary Stability Predictor
-│   └── RS-07.md              # Boundary Collapse Simulation
-│
-├── src/                       # Python implementation (v1.0-alpha)
-│   ├── archcode_core/        # Loop Extrusion Engine
-│   ├── te_grammar/           # TE Motif Dictionary
-│   ├── nonB_logic/           # Non-B DNA Barriers
-│   ├── epigenetic_compiler/  # Methylation Compiler
-│   ├── genome_to_tension/     # Tension Mapper
-│   ├── boundary_stability/    # Stability Predictor
-│   └── risk_matrix/          # Risk Analyzer
-│
-├── cellular_kernel/           # SAC Consensus Engine (integrated)
-│   ├── src/agents.py         # Kinetochore agents
-│   ├── src/bus.py            # MCC signal bus
-│   ├── src/kernel.py         # APC/C controller
-│   └── src/verifier.py       # LTL verifier
-│
-├── mcp_genomic_data/          # MCP Server for genomic data
-│   ├── server.py              # MCP server
-│   ├── tools.py              # Genomic data tools
-│   └── setup_mcp.py          # Cursor setup
-│
-├── risk_matrix/              # VIZIR Risk Matrix
-│   ├── P1.yaml, P2.yaml, P3.yaml
-│   ├── S1.yaml, S2.yaml, S3.yaml
-│   └── L1.yaml, L2.yaml, L3.yaml
-│
-├── data/                      # Data directory
-│   ├── input/                # Input genomic data
-│   └── output/               # Simulation results
-│
-├── examples/                  # Usage examples
-├── tests/                     # Unit tests
-└── docs/                      # Documentation (RFC-style)
-```
+The system is intended to support both mechanistic studies and data-driven validation.
 
-## Modules
+---
 
-### ARCHCODE Core
-**Loop Extrusion Engine** - 1D simulation of TAD formation
-- Asymmetric extrusion
-- Supercoiling dynamics
-- Cohesin loading (NIPBL sites)
+## 🚀 Key Features
 
-### TE Grammar
-**Transposon Motif Dictionary** - TE effects on boundaries
-- WAPL-recruiting sequences
-- Boundary-stabilizing motifs
-- Effect quantification
+### Loop Extrusion Engine
 
-### Non-B Logic
-**Energy Barrier Models** - G4, Z-DNA, R-loops
-- Formation conditions
-- Barrier strength
-- Hierarchy resolution
+- Polymer representation  
+- Bidirectional SMC movement  
+- Anchor recognition & pause probabilities  
+- Collision resolution  
 
-### Epigenetic Compiler
-**Methylation Topology Compiler** - CpG methylation effects
-- CTCF inactivation threshold
-- Boundary collapse
-- Topology updates
+(Full implementation details are kept internal; the public interface focuses on reproducibility and interoperability.)
 
-### Genome-to-Tension Bridge
-**3D Topology → Mitotic Tension** - Risk mapping
-- Boundary stability → merotelic risk
-- Tension calibration (Aurora B)
-- Cellular kernel integration
+### Benchmark Suite (RS-Series)
 
-### Boundary Stability Predictor
-**TAD Boundary Stability** - Cell-to-cell variation
-- Multiplicative stability model
-- Factor aggregation
-- Category prediction (stable/variable/intermediate)
+| Module | Purpose                                                   |
+|--------|-----------------------------------------------------------|
+| RS-09  | Processivity phase diagram & stability analysis           |
+| RS-10  | Bookmarking threshold & inheritance limit                 |
+| RS-11  | Multichannel memory & critical surface detection          |
+| RS-12  | Sci-Hi-C validation *(planned)*                           |
+| RS-13  | Multi-condition architectural benchmarking *(planned)*    |
 
-### Boundary Collapse Simulator
-**TAD Boundary Collapse** - Collapse dynamics
-- Collapse triggers (methylation, mutations, TE)
-- Consequences (enhancer hijacking, oncogenic contacts)
-- Risk scoring
+### Bio-Metrics Engine
 
-### Cellular Kernel
-**SAC Consensus Engine** - Mitotic checkpoint
-- Kinetochore agents
-- MCC signal bus
-- LTL verification
+- Insulation score  
+- TAD boundary detection  
+- Compartment-like eigenvector analysis  
+- P(s) scaling  
+- Pearson correlation to real Hi-C maps  
 
-## Engineering Unknowns
+### Real Hi-C Integration
 
-### Physical Layer (P1-P3)
-- **P1**: Loop extrusion asymmetry mechanism
-- **P2**: Supercoiling dynamics
-- **P3**: Cohesin loading site selection
+ARCHCODE is designed to interface with real Hi-C datasets and contact maps.
 
-### Structural Layer (S1-S3)
-- **S1**: TAD boundary determinism
-- **S2**: TE motif effects
-- **S3**: Non-B DNA barrier formation
+Planned support includes:
 
-### Logical Layer (L1-L3)
-- **L1**: Z-DNA formation logic
-- **L2**: Epigenetic compiler threshold
-- **L3**: Kinetochore tension calibration
+- `.cool` / `.mcool` files  
+- GM12878 (Rao et al., 2014)  
+- WAPL-KO  
+- CdLS (SMC1A mutations)  
 
-See `config/physical/`, `config/structural/`, `config/logical/` for detailed configurations.
+A fallback mode is intended to work without heavy external dependencies, enabling lightweight exploratory runs.
 
-## Research Specifications
+---
 
-- **RS-01**: Loop Extrusion Engine (P1, P2, P3)
-- **RS-02**: TE Motif Dictionary (S2)
-- **RS-03**: Non-B DNA Barriers (S3, L1)
-- **RS-04**: Mitotic Tension Bridge (L2, L3)
-- **RS-05**: Topology Analyzer (S1)
-- **RS-06**: Boundary Stability Predictor (B1)
-- **RS-07**: Boundary Collapse Simulation (B2)
+## 📦 Reproducible Science Pipeline
 
-See `specs/` for detailed specifications.
+A unified science pipeline is under active development.
 
-## Installation
+The planned interface:
+
+**Fast mode (quick exploratory runs):**
 
 ```bash
-# Install dependencies
-pip install -r requirements.txt
-
-# Setup MCP Genomic Data Server (optional)
-python mcp_genomic_data/setup_mcp.py
+python tools/run_pipeline.py run-pipeline --mode fast
 ```
 
-## Configuration
-
-All parameters configured via YAML:
-
-### Engineering Unknowns
-- `config/physical/P1_extrusion_symmetry.yaml`
-- `config/physical/P2_supercoiling.yaml`
-- `config/physical/P3_cohesin_loading.yaml`
-- `config/structural/S1_tad_boundaries.yaml`
-- `config/structural/S2_te_motifs.yaml`
-- `config/structural/S3_nonb_dna.yaml`
-- `config/logical/L1_zdna_formation.yaml`
-- `config/logical/L2_epigenetic_compiler.yaml`
-- `config/logical/L3_kinetochore_tension.yaml`
-
-### Module Configs
-- `config/archcode_engine.yaml` - Loop extrusion
-- `config/te_grammar.yaml` - TE motifs
-- `config/nonB_logic.yaml` - Energy barriers
-- `config/epigenetic_compiler.yaml` - Methylation
-- `config/genome_to_tension.yaml` - Tension mapping
-- `config/boundary_stability.yaml` - Stability model
-- `config/boundary_collapse.yaml` - Collapse simulator
-
-## Usage
-
-### Basic Pipeline
-
-```python
-from src.archcode_core.pipeline import ARCHCODEPipeline, load_pipeline_configs
-
-# Load configurations
-archcode_config, stability_config = load_pipeline_configs()
-
-# Initialize pipeline
-pipeline = ARCHCODEPipeline(
-    archcode_config=archcode_config,
-    stability_config=stability_config,
-)
-
-# Add boundaries
-pipeline.add_boundary(position=100000, strength=0.9, barrier_type="ctcf")
-
-# Analyze stability
-prediction = pipeline.analyze_boundary_stability(
-    boundary=pipeline.boundaries[0],
-    methylation_level=0.2,
-)
-
-print(f"Stability: {prediction.stability_category}")
-```
-
-### MCP Genomic Data
-
-```python
-from mcp_genomic_data.tools import fetch_ctcf_chipseq
-
-# Fetch CTCF ChIP-seq data
-ctcf_data = await fetch_ctcf_chipseq("chr1", 1000000, 2000000)
-```
-
-## Development
-
-### VIZIR Principles
-- **Validation**: Test all modules (`pytest`)
-- **Integration**: Modular architecture
-- **Zero-trust**: No magic constants, all in config
-- **Iterative Refinement**: Version control, changelogs
-- **Reproducibility**: Integrity ledger, provenance tracking
-
-### Code Style
-- Production-quality Python
-- Type hints
-- RFC-style Markdown documentation
-- YAML-driven configuration
-
-### Testing
+**Full mode (publication-scale runs):**
 
 ```bash
-# Run tests
-pytest
-
-# Check coverage
-pytest --cov=src
-
-# Lint
-ruff check src/
+python tools/run_pipeline.py run-pipeline --mode full
 ```
 
-## Version
+The pipeline is designed to include:
 
-**1.0.0-alpha**
+* Unit tests
+* Regression tests
+* RS-09, RS-10, RS-11 evaluation
+* Real Hi-C analysis
+* Model ↔ Data comparison
+* Summary report generation
 
-Current implementation: Python reference simulator  
-Target architecture: C++/CUDA kernel (see `bin/`)
+Planned output locations:
 
-## License
+* `data/output/pipeline_runs/`
+* `docs/reports/`
+* `figures/pipeline/`
 
-MIT
+---
 
-## References
+## 📊 Outputs
 
-- ARCHCODE Mission: `ARCHCODE_MISSION.md`
-- Architecture: `docs/ARCHITECTURE.md`
-- MCP Integration: `docs/MCP_GENOMIC_DATA_INTEGRATION.md`
+ARCHCODE is designed to generate:
+
+* Phase diagrams
+* Threshold curves
+* Memory surfaces
+* TAD boundaries
+* Insulation profiles
+* P(s) curves
+* Comparative figures against real Hi-C
+
+These outputs are intended for both exploratory analysis and publication-oriented figures.
+
+---
+
+## 🧩 Project Structure
+
+```
+ARCHCODE/
+├─ src/archcode/
+│  ├─ simulation/
+│  ├─ analysis/
+│  ├─ rs09/
+│  ├─ rs10/
+│  ├─ rs11/
+│  ├─ real_hic/
+│  ├─ comparison/
+│  └─ cli.py
+├─ configs/
+├─ tools/
+│  └─ run_pipeline.py
+├─ tests/
+├─ docs/
+├─ data/
+├─ LICENSE
+└─ README.md
+```
+
+The repository currently exposes the structural skeleton and public interfaces.
+
+Core engine implementations and advanced modules remain private.
+
+---
+
+## 🔬 Ongoing Research
+
+ARCHCODE is under active development and internal evaluation across several research directions.
+
+Preliminary internal tests suggest reproducible structural patterns and stable architectural regimes.
+
+Additional modules are under validation and will be announced in future scientific releases.
+
+---
+
+## 🛠️ Future Modules (Private / In Development)
+
+These components are currently in private research stage and are not included in the public release:
+
+* Multi-species universal physics
+* Advanced variant impact analysis (structural variation, regulatory rewiring)
+* Synthetic chromatin architecture design tools
+
+---
+
+## ✍️ Citation
+
+If you use ARCHCODE in scientific work, please cite:
+
+> Boiko S.V. (2025).  
+> ARCHCODE – physics-based reproducible model of 3D genome architecture and chromatin loop dynamics.  
+> GitHub: [https://github.com/sergeeey/ARCHCODE](https://github.com/sergeeey/ARCHCODE)
+
+---
+
+## 📬 Contact
+
+For collaboration inquiries or research discussions:
+
+✉️ **[sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)**
+
+---
+
+**About**
+
+ARCHCODE – reproducible physics-based model of 3D genome architecture and chromatin loop dynamics.

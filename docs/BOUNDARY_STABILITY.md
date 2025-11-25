@@ -136,3 +136,5 @@ Stability = S_ctcf × (1 + E_barrier) × E_epi × (1 + M_te) × T_time
 
 
 
+
+

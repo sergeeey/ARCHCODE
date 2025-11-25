@@ -1,48 +1,41 @@
-"""
-ARCHCODE command-line interface (skeleton).
-
-This file intentionally contains no core simulation or RS-engine logic.
-It only defines public entry points and help messages.
-"""
-
 import argparse
 
 
-def cmd_sim(args: argparse.Namespace) -> None:
+def cmd_sim(args):
     print("ARCHCODE simulation skeleton.")
-    print("Core loop-extrusion engine is not included in the public release.")
+    print("Core loop-extrusion engine is private.")
 
 
-def cmd_rs(args: argparse.Namespace) -> None:
+def cmd_rs(args):
     print("ARCHCODE RS-suite skeleton (RS-09/10/11).")
-    print("Metric definitions and formulas are kept private.")
+    print("Metric definitions are kept private.")
 
 
-def cmd_hic(args: argparse.Namespace) -> None:
+def cmd_hic(args):
     print("ARCHCODE Hi-C validation skeleton.")
-    print("Full validation workflow will be available in future versions.")
+    print("Full workflow will appear in future versions.")
 
 
-def build_parser() -> argparse.ArgumentParser:
+def build_parser():
     parser = argparse.ArgumentParser(
         prog="archcode",
-        description="ARCHCODE – framework for 3D genome architecture and loop extrusion modeling (public skeleton).",
+        description="ARCHCODE – 3D genome architecture modeling (public skeleton).",
     )
-    subparsers = parser.add_subparsers(dest="command", required=True)
+    sub = parser.add_subparsers(dest="cmd", required=True)
 
-    sim_p = subparsers.add_parser("sim", help="Run simulation (skeleton).")
-    sim_p.set_defaults(func=cmd_sim)
+    sp = sub.add_parser("sim")
+    sp.set_defaults(func=cmd_sim)
 
-    rs_p = subparsers.add_parser("rs", help="Evaluate RS-metrics (skeleton).")
-    rs_p.set_defaults(func=cmd_rs)
+    rp = sub.add_parser("rs")
+    rp.set_defaults(func=cmd_rs)
 
-    hic_p = subparsers.add_parser("hic", help="Validate against Hi-C (skeleton).")
-    hic_p.set_defaults(func=cmd_hic)
+    hp = sub.add_parser("hic")
+    hp.set_defaults(func=cmd_hic)
 
     return parser
 
 
-def main(argv=None) -> None:
+def main(argv=None):
     parser = build_parser()
     args = parser.parse_args(argv)
     args.func(args)
