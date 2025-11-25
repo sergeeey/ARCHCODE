@@ -1,0 +1,55 @@
+{
+  "experiment_id": "RS-10-ExpA",
+  "baseline": {
+    "phase": "interphase",
+    "processivity": 1.0,
+    "avg_stability": 0.634962,
+    "stable_boundaries": 2,
+    "stable_positions": [
+      100000,
+      200000
+    ]
+  },
+  "mitosis": {
+    "phase": "mitosis",
+    "processivity": 0.09,
+    "avg_stability": 0.05714658
+  },
+  "with_bookmarking": {
+    "g1_early": {
+      "avg_stability": 0.634962
+    },
+    "g1_late": {
+      "avg_stability": 0.634962,
+      "stable_boundaries": 2,
+      "stable_positions": [
+        100000,
+        200000
+      ],
+      "matched_stable": 2,
+      "jaccard_stable": 1.0,
+      "stability_recovery_percent": 100.0
+    }
+  },
+  "without_bookmarking": {
+    "g1_early": {
+      "avg_stability": 0.634962
+    },
+    "g1_late": {
+      "avg_stability": 0.634962,
+      "stable_boundaries": 2,
+      "stable_positions": [
+        100000,
+        200000
+      ],
+      "matched_stable": 2,
+      "jaccard_stable": 1.0,
+      "stability_recovery_percent": 100.0
+    }
+  },
+  "comparison": {
+    "stability_recovery_delta": 0.0,
+    "matched_stable_delta": 0,
+    "jaccard_delta": 0.0
+  }
+}

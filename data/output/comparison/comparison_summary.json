@@ -1,0 +1,9 @@
+{
+  "insulation_correlation": 0.8460990892938126,
+  "ps_correlation": 0.9952815284334698,
+  "figure_path": "data\\output\\comparison\\archcode_vs_real_comparison.png",
+  "archcode_files": {
+    "insulation": "data\\output\\comparison\\archcode_insulation.csv",
+    "ps": "data\\output\\comparison\\archcode_ps.csv"
+  }
+}

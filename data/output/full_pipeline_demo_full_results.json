@@ -1,0 +1,96 @@
+{
+  "boundaries": [
+    {
+      "position": 100000,
+      "strength": 0.9,
+      "barrier_type": "ctcf"
+    },
+    {
+      "position": 200000,
+      "strength": 0.7,
+      "barrier_type": "ctcf"
+    },
+    {
+      "position": 300000,
+      "strength": 0.5,
+      "barrier_type": "ctcf"
+    },
+    {
+      "position": 400000,
+      "strength": 0.3,
+      "barrier_type": "ctcf"
+    },
+    {
+      "position": 500000,
+      "strength": 0.8,
+      "barrier_type": "ctcf"
+    }
+  ],
+  "stability_predictions": [
+    {
+      "position": 100000,
+      "stability_score": 1.0,
+      "stability_category": "stable",
+      "confidence": 1.0
+    },
+    {
+      "position": 200000,
+      "stability_score": 0.7182175,
+      "stability_category": "stable",
+      "confidence": 0.06072499999999998
+    },
+    {
+      "position": 300000,
+      "stability_score": 0.28800000000000003,
+      "stability_category": "variable",
+      "confidence": 0.27999999999999997
+    },
+    {
+      "position": 400000,
+      "stability_score": 0.07507499999999999,
+      "stability_category": "variable",
+      "confidence": 0.8123125
+    },
+    {
+      "position": 500000,
+      "stability_score": 0.6476800000000001,
+      "stability_category": "intermediate",
+      "confidence": 0.3487999999999988
+    }
+  ],
+  "collapse_results": {
+    "300000": {
+      "collapse_probability": 0.856,
+      "collapse_occurred": true,
+      "enhancer_hijacking_risk": 0.24395999999999995,
+      "oncogenic_risk": 1.0,
+      "total_risk_score": 0.715588,
+      "stability_before": 0.28800000000000003,
+      "stability_after": 0.0
+    },
+    "400000": {
+      "collapse_probability": 0.97372375,
+      "collapse_occurred": true,
+      "enhancer_hijacking_risk": 0.27751126875,
+      "oncogenic_risk": 1.0,
+      "total_risk_score": 0.7727428806250001,
+      "stability_before": 0.07507499999999999,
+      "stability_after": 0.0
+    }
+  },
+  "summary": {
+    "total_boundaries": 5,
+    "stable_boundaries": 2,
+    "variable_boundaries": 2,
+    "intermediate_boundaries": 1,
+    "avg_stability_score": 0.5457945000000001,
+    "collapsed_boundaries": 2,
+    "avg_collapse_probability": 0.9148618749999999,
+    "high_risk_boundaries": 2
+  },
+  "metadata": {
+    "format_version": "1.0",
+    "exporter": "ARCHCODE JSONExporter",
+    "schema": "archcode_results_v1"
+  }
+}

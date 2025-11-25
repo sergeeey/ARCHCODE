@@ -1,0 +1,36 @@
+{
+  "status": "success",
+  "mission_id": "RS-11-MEM-INTEGRATION",
+  "execution_time": 0.51,
+  "mode": "fast",
+  "data": {
+    "scan_results": [
+      {
+        "bookmarking": 0.0,
+        "stability_score": 0.18298013184420672,
+        "regime": "Drift"
+      },
+      {
+        "bookmarking": 0.25,
+        "stability_score": 0.16801984775865572,
+        "regime": "Drift"
+      },
+      {
+        "bookmarking": 0.5,
+        "stability_score": 0.8769520664914255,
+        "regime": "Memory"
+      },
+      {
+        "bookmarking": 0.75,
+        "stability_score": 0.839170414717481,
+        "regime": "Memory"
+      },
+      {
+        "bookmarking": 1.0,
+        "stability_score": 0.8442428645755101,
+        "regime": "Memory"
+      }
+    ],
+    "threshold_detected": true
+  }
+}

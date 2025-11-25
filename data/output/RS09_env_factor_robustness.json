@@ -1,0 +1,96 @@
+{
+  "baseline": [
+    {
+      "global_processivity": 0.3,
+      "nipbl_velocity": 0.5477225575051661,
+      "wapl_lifetime": 0.5477225575051661,
+      "avg_stability": 0.19048859999999998,
+      "collapse_probability": 0.0,
+      "phase": "unstable"
+    },
+    {
+      "global_processivity": 0.5,
+      "nipbl_velocity": 0.7071067811865476,
+      "wapl_lifetime": 0.7071067811865476,
+      "avg_stability": 0.3174810000000001,
+      "collapse_probability": 0.0,
+      "phase": "transitional"
+    },
+    {
+      "global_processivity": 0.7,
+      "nipbl_velocity": 0.8366600265340756,
+      "wapl_lifetime": 0.8366600265340756,
+      "avg_stability": 0.44447340000000013,
+      "collapse_probability": 0.0,
+      "phase": "transitional"
+    },
+    {
+      "global_processivity": 1.0,
+      "nipbl_velocity": 1.0,
+      "wapl_lifetime": 1.0,
+      "avg_stability": 0.634962,
+      "collapse_probability": 0.0,
+      "phase": "stable"
+    },
+    {
+      "global_processivity": 1.3,
+      "nipbl_velocity": 1.140175425099138,
+      "wapl_lifetime": 1.140175425099138,
+      "avg_stability": 0.7834946000000003,
+      "collapse_probability": 0.0,
+      "phase": "stable"
+    }
+  ],
+  "with_env_factors": [
+    {
+      "global_processivity": 0.3,
+      "effective_processivity": 0.19260000000000002,
+      "effective_factor": 0.6420000000000001,
+      "nipbl_velocity": 0.3516378819183167,
+      "wapl_lifetime": 0.5477225575051661,
+      "avg_stability": 0.12229368120000003,
+      "collapse_probability": 0.0,
+      "phase": "unstable"
+    },
+    {
+      "global_processivity": 0.5,
+      "effective_processivity": 0.321,
+      "effective_factor": 0.642,
+      "nipbl_velocity": 0.45396255352176357,
+      "wapl_lifetime": 0.7071067811865476,
+      "avg_stability": 0.20382280200000005,
+      "collapse_probability": 0.0,
+      "phase": "unstable"
+    },
+    {
+      "global_processivity": 0.7,
+      "effective_processivity": 0.44939999999999997,
+      "effective_factor": 0.642,
+      "nipbl_velocity": 0.5371357370348765,
+      "wapl_lifetime": 0.8366600265340756,
+      "avg_stability": 0.28535192280000005,
+      "collapse_probability": 0.0,
+      "phase": "unstable"
+    },
+    {
+      "global_processivity": 1.0,
+      "effective_processivity": 0.642,
+      "effective_factor": 0.642,
+      "nipbl_velocity": 0.642,
+      "wapl_lifetime": 1.0,
+      "avg_stability": 0.4076456040000001,
+      "collapse_probability": 0.0,
+      "phase": "transitional"
+    },
+    {
+      "global_processivity": 1.3,
+      "effective_processivity": 0.8346,
+      "effective_factor": 0.642,
+      "nipbl_velocity": 0.7319926229136466,
+      "wapl_lifetime": 1.140175425099138,
+      "avg_stability": 0.5299392852000001,
+      "collapse_probability": 0.0,
+      "phase": "transitional"
+    }
+  ]
+}

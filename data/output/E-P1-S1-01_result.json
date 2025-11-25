@@ -1,0 +1,37 @@
+{
+  "experiment_id": "E-P1-S1-01",
+  "timestamp": "2025-11-23T09:04:23.372022",
+  "profiles": {
+    "P1": "hypothesis_b"
+  },
+  "hypotheses": {
+    "P1": "hypothesis_b"
+  },
+  "metrics": {
+    "hypothesis_a": {
+      "stable_count": 1,
+      "variable_count": 3,
+      "avg_stability": 0.40590000000000004,
+      "stability_scores": [
+        0.7380000000000001,
+        0.50225,
+        0.3075,
+        0.15375,
+        0.32800000000000007
+      ]
+    },
+    "hypothesis_b": {
+      "stable_count": 1,
+      "variable_count": 3,
+      "avg_stability": 0.40590000000000004,
+      "stability_scores": [
+        0.7380000000000001,
+        0.50225,
+        0.3075,
+        0.15375,
+        0.32800000000000007
+      ]
+    }
+  },
+  "config_hash": "9be6384352943349c21d99c7c7770611feced2be73ba5cb80322d7414cc2369d"
+}

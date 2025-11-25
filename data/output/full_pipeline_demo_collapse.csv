@@ -1,0 +1,3 @@
+position,collapse_probability,collapse_occurred,enhancer_hijacking_risk,oncogenic_risk,total_risk_score,stability_before,stability_after
+300000,0.856,True,0.24395999999999995,1.0,0.715588,0.28800000000000003,0.0
+400000,0.97372375,True,0.27751126875,1.0,0.7727428806250001,0.07507499999999999,0.0

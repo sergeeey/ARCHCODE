@@ -1,0 +1,939 @@
+{
+  "parameters": {
+    "num_cycles": 10,
+    "processivity": 0.9,
+    "nipbl_velocity": 0.9486832980505138,
+    "wapl_lifetime": 0.9486832980505138,
+    "bookmarking_fractions": [
+      0.0,
+      0.3,
+      0.6
+    ],
+    "epigenetic_strengths": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "seed": 42
+  },
+  "results": {
+    "0.00_0.00": {
+      "bookmarking_fraction": 0.0,
+      "epigenetic_strength": 0.0,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 1,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 2,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.00_0.50": {
+      "bookmarking_fraction": 0.0,
+      "epigenetic_strength": 0.5,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.4,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.3010299956639812,
+          "memory_retention_score": 0.2795880017344075,
+          "stable_count": 2
+        },
+        {
+          "cycle": 1,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 2,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.00_1.00": {
+      "bookmarking_fraction": 0.0,
+      "epigenetic_strength": 1.0,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.4,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.3010299956639812,
+          "memory_retention_score": 0.2795880017344075,
+          "stable_count": 2
+        },
+        {
+          "cycle": 1,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 2,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.30_0.00": {
+      "bookmarking_fraction": 0.3,
+      "epigenetic_strength": 0.0,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.2,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.2,
+          "stable_count": 1
+        },
+        {
+          "cycle": 1,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 2,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.30_0.50": {
+      "bookmarking_fraction": 0.3,
+      "epigenetic_strength": 0.5,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.2,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.2,
+          "stable_count": 1
+        },
+        {
+          "cycle": 1,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 2,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.30_1.00": {
+      "bookmarking_fraction": 0.3,
+      "epigenetic_strength": 1.0,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.6989700043360187,
+          "memory_retention_score": 0.30102999566398125,
+          "stable_count": 5
+        },
+        {
+          "cycle": 1,
+          "jaccard": 0.2,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.2,
+          "stable_count": 1
+        },
+        {
+          "cycle": 2,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.60_0.00": {
+      "bookmarking_fraction": 0.6,
+      "epigenetic_strength": 0.0,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.6,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.47712125471966244,
+          "memory_retention_score": 0.31372724716820255,
+          "stable_count": 3
+        },
+        {
+          "cycle": 1,
+          "jaccard": 0.3333333333333333,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.3333333333333333,
+          "stable_count": 1
+        },
+        {
+          "cycle": 2,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.60_0.50": {
+      "bookmarking_fraction": 0.6,
+      "epigenetic_strength": 0.5,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.6,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.47712125471966244,
+          "memory_retention_score": 0.31372724716820255,
+          "stable_count": 3
+        },
+        {
+          "cycle": 1,
+          "jaccard": 0.3333333333333333,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.3333333333333333,
+          "stable_count": 1
+        },
+        {
+          "cycle": 2,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 3,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    },
+    "0.60_1.00": {
+      "bookmarking_fraction": 0.6,
+      "epigenetic_strength": 1.0,
+      "final_jaccard": 1.0,
+      "final_jaccard_vs_baseline": 0.0,
+      "final_drift_distance": 0.0,
+      "final_entropy": 0.0,
+      "final_memory_retention_score": 1.0,
+      "final_stable_count": 0,
+      "trajectory": [
+        {
+          "cycle": 0,
+          "jaccard": 0.6,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.47712125471966244,
+          "memory_retention_score": 0.31372724716820255,
+          "stable_count": 3
+        },
+        {
+          "cycle": 1,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.47712125471966244,
+          "memory_retention_score": 0.5228787452803376,
+          "stable_count": 3
+        },
+        {
+          "cycle": 2,
+          "jaccard": 0.3333333333333333,
+          "jaccard_vs_baseline": 1.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.3333333333333333,
+          "stable_count": 1
+        },
+        {
+          "cycle": 3,
+          "jaccard": 0.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 0.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 4,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 5,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 6,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 7,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 8,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        },
+        {
+          "cycle": 9,
+          "jaccard": 1.0,
+          "jaccard_vs_baseline": 0.0,
+          "drift_distance": 0.0,
+          "entropy": 0.0,
+          "memory_retention_score": 1.0,
+          "stable_count": 0
+        }
+      ]
+    }
+  }
+}

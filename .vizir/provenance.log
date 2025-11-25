@@ -1,0 +1,24 @@
+# VIZIR Provenance Log
+# Tracks origin and modifications of configuration parameters
+
+# Format:
+# TIMESTAMP | SOURCE | PARAMETER_PATH | VALUE | REASON | REFERENCE
+
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/physical/P1_extrusion_symmetry.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/physical/P2_supercoiling.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/physical/P3_cohesin_loading.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/structural/S1_tad_boundaries.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/structural/S2_te_motifs.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/structural/S3_nonb_dna.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/logical/L1_zdna_formation.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/logical/L2_epigenetic_compiler.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | ARCHCODE_SPEC_v1.0 | config/logical/L3_kinetochore_tension.yaml | initial | System Design Doc | ARCHCODE_SPEC_v1.0.md
+2024-01-XX | RS-06 | config/boundary_stability.yaml | initial | Research Spec RS-06 | specs/RS-06.md
+2024-01-XX | RS-07 | config/boundary_collapse.yaml | initial | Research Spec RS-07 | specs/RS-07.md
+2024-01-XX | cellular_kernel | config/logical/L3_kinetochore_tension.yaml | Aurora_B_threshold | Implementation | cellular_kernel/config/vizier_protocol.yaml
+2025-11-23 | Full Pipeline | ARCHCODEFullPipeline | integration | Full pipeline implementation | src/archcode_core/full_pipeline.py
+2025-11-23 | Output Exporters | ARCHCODEExporter | initial | Output layer implementation | src/output/exporters.py
+2025-11-23 | Experiments Framework | BaseExperiment | initial | Experiments framework | experiments/base_experiment.py
+
+{"timestamp": "2025-11-23T09:02:47.617790", "profiles": {"P1": "hypothesis_b"}, "hypotheses": {"P1": "hypothesis_b"}, "config_hash": "9be6384352943349c21d99c7c7770611feced2be73ba5cb80322d7414cc2369d"}
+{"timestamp": "2025-11-23T09:04:23.371386", "profiles": {"P1": "hypothesis_b"}, "hypotheses": {"P1": "hypothesis_b"}, "config_hash": "9be6384352943349c21d99c7c7770611feced2be73ba5cb80322d7414cc2369d"}

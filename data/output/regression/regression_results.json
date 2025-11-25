@@ -1,0 +1,193 @@
+{
+  "rs09": {
+    "experiment": "RS-09",
+    "num_iterations": 10,
+    "parameters": {
+      "processivity": 1.0,
+      "nipbl_velocity": 1.0,
+      "wapl_lifetime": 1.0
+    },
+    "iterations": [
+      {
+        "iteration": 0,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 1,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 2,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 3,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 4,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 5,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 6,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 7,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 8,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      },
+      {
+        "iteration": 9,
+        "avg_stability": 0.5512499999999999,
+        "insulation_score": 0.0,
+        "jaccard": 1.0,
+        "stable_count": 3
+      }
+    ],
+    "statistics": {
+      "stability": {
+        "mean": 0.5512499999999999,
+        "std": 0.0,
+        "cv": 0.0
+      },
+      "insulation": {
+        "mean": 0.0,
+        "std": 0.0,
+        "cv": 0.0
+      },
+      "jaccard": {
+        "mean": 1.0,
+        "std": 0.0
+      }
+    },
+    "passed": true
+  },
+  "rs10": {
+    "experiment": "RS-10",
+    "num_iterations": 10,
+    "bookmarking_fractions": [
+      0.3,
+      0.4,
+      0.5
+    ],
+    "results": {
+      "bookmarking_0.3": {
+        "jaccard": {
+          "mean": 0.09833333333333333,
+          "std": 0.1320423613284206,
+          "cv": 1.3428036745263112
+        },
+        "memory_score": {
+          "mean": 0.030555555555555558,
+          "std": 0.07225782598195064
+        }
+      },
+      "bookmarking_0.4": {
+        "jaccard": {
+          "mean": 0.29333333333333333,
+          "std": 0.24116486855916738,
+          "cv": 0.8221529609971615
+        },
+        "memory_score": {
+          "mean": 0.061111111111111116,
+          "std": 0.09147473359428496
+        }
+      },
+      "bookmarking_0.5": {
+        "jaccard": {
+          "mean": 0.29333333333333333,
+          "std": 0.24116486855916738,
+          "cv": 0.8221529609971615
+        },
+        "memory_score": {
+          "mean": 0.061111111111111116,
+          "std": 0.09147473359428496
+        }
+      }
+    },
+    "threshold_detected": false,
+    "passed": false
+  },
+  "rs11a": {
+    "experiment": "RS-11A",
+    "num_iterations": 10,
+    "epigenetic_strengths": [
+      0.0,
+      0.5,
+      1.0
+    ],
+    "bookmarking_fraction": 0.4,
+    "results": {
+      "epigenetic_0.0": {
+        "jaccard": {
+          "mean": 0.36666666666666664,
+          "std": 0.24595492912420727,
+          "cv": 0.6707861703387471
+        },
+        "memory_score": {
+          "mean": 0.17777777777777778,
+          "std": 0.09369711585684087
+        }
+      },
+      "epigenetic_0.5": {
+        "jaccard": {
+          "mean": 0.3283333333333333,
+          "std": 0.25688663013232266,
+          "cv": 0.7823958278141807
+        },
+        "memory_score": {
+          "mean": 0.1138888888888889,
+          "std": 0.0992513125619379
+        }
+      },
+      "epigenetic_1.0": {
+        "jaccard": {
+          "mean": 0.30333333333333334,
+          "std": 0.23776220094357062,
+          "cv": 0.7838314316821009
+        },
+        "memory_score": {
+          "mean": 0.07777777777777778,
+          "std": 0.08566691486089169
+        }
+      }
+    },
+    "passed": false
+  },
+  "overall_passed": false
+}

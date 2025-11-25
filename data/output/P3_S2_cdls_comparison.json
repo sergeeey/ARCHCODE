@@ -1,0 +1,208 @@
+{
+  "comparison": {
+    "experiment_id": "E-P3-S2-01",
+    "wild_type": {
+      "avg_stability": 0.634962,
+      "stable_boundaries": 2,
+      "variable_boundaries": 0,
+      "collapsed_boundaries": 2,
+      "high_risk_boundaries": 0
+    },
+    "cdls": {
+      "avg_stability": 0.317481,
+      "stable_boundaries": 0,
+      "variable_boundaries": 4,
+      "collapsed_boundaries": 2,
+      "high_risk_boundaries": 2
+    },
+    "differences": {
+      "stability_delta": -0.317481,
+      "stability_percent_change": -50.0,
+      "stable_boundaries_delta": -2,
+      "collapsed_boundaries_delta": 0,
+      "high_risk_delta": 2
+    }
+  },
+  "wild_type_results": {
+    "boundaries": [
+      {
+        "position": 100000,
+        "strength": 0.9,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 200000,
+        "strength": 0.8,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 300000,
+        "strength": 0.7,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 400000,
+        "strength": 0.6,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 500000,
+        "strength": 0.9,
+        "barrier_type": "ctcf"
+      }
+    ],
+    "stability_predictions": [
+      {
+        "position": 100000,
+        "stability_score": 0.9306000000000002,
+        "stability_category": "stable",
+        "confidence": 0.7686666666666674
+      },
+      {
+        "position": 200000,
+        "stability_score": 0.7392,
+        "stability_category": "stable",
+        "confidence": 0.13066666666666668
+      },
+      {
+        "position": 300000,
+        "stability_score": 0.6333600000000001,
+        "stability_category": "intermediate",
+        "confidence": 0.4442666666666654
+      },
+      {
+        "position": 400000,
+        "stability_score": 0.46575000000000005,
+        "stability_category": "intermediate",
+        "confidence": 0.4383333333333336
+      },
+      {
+        "position": 500000,
+        "stability_score": 0.4059000000000001,
+        "stability_category": "intermediate",
+        "confidence": 0.03933333333333382
+      }
+    ],
+    "collapse_results": {
+      "300000": {
+        "collapse_probability": 0.6833199999999999,
+        "collapse_occurred": true,
+        "enhancer_hijacking_risk": 0.19474619999999995,
+        "oncogenic_risk": 1.0,
+        "total_risk_score": 0.6317518599999999,
+        "stability_before": 0.6333600000000001,
+        "stability_after": 0.0
+      },
+      "400000": {
+        "collapse_probability": 0.767125,
+        "collapse_occurred": true,
+        "enhancer_hijacking_risk": 0.218630625,
+        "oncogenic_risk": 1.0,
+        "total_risk_score": 0.6724391875,
+        "stability_before": 0.46575000000000005,
+        "stability_after": 0.0
+      }
+    },
+    "summary": {
+      "total_boundaries": 5,
+      "stable_boundaries": 2,
+      "variable_boundaries": 0,
+      "intermediate_boundaries": 3,
+      "avg_stability_score": 0.634962,
+      "collapsed_boundaries": 2,
+      "avg_collapse_probability": 0.7252224999999999,
+      "high_risk_boundaries": 0
+    }
+  },
+  "cdls_results": {
+    "boundaries": [
+      {
+        "position": 100000,
+        "strength": 0.9,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 200000,
+        "strength": 0.8,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 300000,
+        "strength": 0.7,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 400000,
+        "strength": 0.6,
+        "barrier_type": "ctcf"
+      },
+      {
+        "position": 500000,
+        "strength": 0.9,
+        "barrier_type": "ctcf"
+      }
+    ],
+    "stability_predictions": [
+      {
+        "position": 100000,
+        "stability_score": 0.4653000000000001,
+        "stability_category": "intermediate",
+        "confidence": 0.4353333333333339
+      },
+      {
+        "position": 200000,
+        "stability_score": 0.3696,
+        "stability_category": "variable",
+        "confidence": 0.0760000000000001
+      },
+      {
+        "position": 300000,
+        "stability_score": 0.3166800000000001,
+        "stability_category": "variable",
+        "confidence": 0.20829999999999987
+      },
+      {
+        "position": 400000,
+        "stability_score": 0.23287500000000003,
+        "stability_category": "variable",
+        "confidence": 0.4178125
+      },
+      {
+        "position": 500000,
+        "stability_score": 0.20295000000000005,
+        "stability_category": "variable",
+        "confidence": 0.4926249999999999
+      }
+    ],
+    "collapse_results": {
+      "300000": {
+        "collapse_probability": 0.84166,
+        "collapse_occurred": true,
+        "enhancer_hijacking_risk": 0.23987309999999998,
+        "oncogenic_risk": 1.0,
+        "total_risk_score": 0.70862593,
+        "stability_before": 0.3166800000000001,
+        "stability_after": 0.0
+      },
+      "400000": {
+        "collapse_probability": 0.8835625,
+        "collapse_occurred": true,
+        "enhancer_hijacking_risk": 0.2518153125,
+        "oncogenic_risk": 1.0,
+        "total_risk_score": 0.72896959375,
+        "stability_before": 0.23287500000000003,
+        "stability_after": 0.0
+      }
+    },
+    "summary": {
+      "total_boundaries": 5,
+      "stable_boundaries": 0,
+      "variable_boundaries": 4,
+      "intermediate_boundaries": 1,
+      "avg_stability_score": 0.317481,
+      "collapsed_boundaries": 2,
+      "avg_collapse_probability": 0.86261125,
+      "high_risk_boundaries": 2
+    }
+  }
+}

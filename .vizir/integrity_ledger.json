@@ -1,0 +1,53 @@
+{
+  "version": "1.0.0-alpha",
+  "created": "2024-01-XX",
+  "last_updated": "2025-11-23T09:00:54.080988",
+  "entries": [
+    {
+      "path": "config/",
+      "hash": "9be6384352943349c21d99c7c7770611feced2be73ba5cb80322d7414cc2369d",
+      "description": "All configuration files",
+      "checksum_algorithm": "sha256",
+      "file_hashes": {
+        "archcode_engine.yaml": "39a8d7301eb436cdd7ab7b4017550f03c68669d054691cbe3b47bf727d4d4b37",
+        "boundary_collapse.yaml": "4874470488bc2b6628ec38670c204796d485c9ad78c8f8dae579d99eb4664d99",
+        "boundary_stability.yaml": "72a1d352df76014f747c7f4c77be310bc340159dfb65727408caebcf91465089",
+        "epigenetic_compiler.yaml": "2246ad7a71926d8108d3ac14b70b2fd211ed16546c847fc63c04c3bf94675e23",
+        "genome_to_tension.yaml": "460f5481b578a4c0a79d02276a36618660c7b58a628ac562b15257502eb3d1fc",
+        "nonB_logic.yaml": "1f8a162be0f83e0d105ca988970f103d0ed3c8f5532f3a2cb2484f33be10db54",
+        "risk_matrix.yaml": "3d9839356c16057fb655b2fd9942984703d9c425c79e763ac1e99888abe91c2d",
+        "te_grammar.yaml": "584a2d0fef3d301b54d4fa4c912c6ea6e4935d833f2e633c34fff029920bb181",
+        "logical\\L1_zdna_formation.yaml": "588709b44df7d356a4ac0070d5f4082fb3d6a2bdac5e959084dbeda184a4a074",
+        "logical\\L2_epigenetic_compiler.yaml": "60c276ae33ded8d7d5fa760fbc0a8904faa67f2da3e891430a633077fec3e3da",
+        "logical\\L3_kinetochore_tension.yaml": "da38f4b44874013d072e97f5fc1a486824f4f6f5a905dfc8672a66a671bea9d7",
+        "physical\\P1_extrusion_symmetry.yaml": "bd0b0886a930b91e3382353d46ee3743d0073e16a255d6a6085fee185067cfbf",
+        "physical\\P2_supercoiling.yaml": "e0e3482b53e005010370e026093be2231b8d77417b5ecaa0e8d1c80a92d65341",
+        "physical\\P3_cohesin_loading.yaml": "f1d3a2ff3f92575bf37ec3742a12cef4be378c25c02e8ec68d65d0839fb31884",
+        "structural\\S1_tad_boundaries.yaml": "28cb8b3e2e730b091d9be7e3e380203872e654242c0f491f66948ba58bfb84cc",
+        "structural\\S2_te_motifs.yaml": "40e1e426af2b165a00c93548a50b9fc7433ed4f63dde3cf4bbb954cc057d753a",
+        "structural\\S3_nonb_dna.yaml": "2ef0bcea9ddc015d0e68f6991de47f57d12d5b414ee5383dacc6e234479834fb"
+      }
+    },
+    {
+      "path": "data/input/",
+      "hash": "",
+      "description": "Input genomic data",
+      "checksum_algorithm": "sha256"
+    }
+  ],
+  "integrity_policy": {
+    "verify_on_load": true,
+    "require_signatures": false,
+    "allowed_modifications": [
+      "config/physical/",
+      "config/structural/",
+      "config/logical/"
+    ]
+  }
+}
+
+
+
+
+
+

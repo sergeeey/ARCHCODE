@@ -1,52 +1,15 @@
 [build-system]
-requires = ["setuptools>=45", "wheel"]
+requires = ["setuptools>=61"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "archcode"
-version = "1.0.0"
-description = "Reproducible Science Package for 3D Genome Architecture Simulation"
+version = "0.1.0"
+description = "Reproducible physics-based framework for 3D genome architecture and chromatin loop dynamics."
+authors = [{ name = "Sergey Boiko", email = "sergeikuch80@gmail.com" }]
 readme = "README.md"
+license = { text = "MIT" }
 requires-python = ">=3.9"
-license = {text = "MIT"}
 
-dependencies = [
-    "numpy>=1.21.0",
-    "pandas>=1.3.0",
-    "matplotlib>=3.4.0",
-    "scipy>=1.7.0",
-    "scikit-learn>=1.0.0",
-    "cooler>=0.9.0",
-    "bioframe>=0.4.0",
-    "hic2cool>=0.8.0",
-    "pytest>=7.0.0",
-    "pytest-cov>=3.0.0",
-    "tqdm>=4.62.0",
-    "pyyaml>=6.0",
-    "requests>=2.26.0",
-]
-
-[project.optional-dependencies]
-dev = [
-    "pytest>=7.0.0",
-    "pytest-cov>=3.0.0",
-    "black>=22.0.0",
-    "flake8>=4.0.0",
-]
-
-[project.scripts]
-archcode = "archcode.cli:main"
-
-[tool.pytest.ini_options]
-testpaths = ["tests"]
-python_files = ["test_*.py"]
-python_classes = ["Test*"]
-python_functions = ["test_*"]
-addopts = "-v --tb=short"
-
-[tool.coverage.run]
-source = ["src"]
-omit = ["tests/*", "*/__pycache__/*"]
-
-[tool.coverage.report]
-fail_under = 50
+[project.urls]
+Repository = "https://github.com/sergeeey/ARCHCODE"

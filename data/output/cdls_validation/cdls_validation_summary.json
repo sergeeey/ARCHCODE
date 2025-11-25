@@ -1,0 +1,39 @@
+{
+  "prediction": {
+    "processivity": 0.5,
+    "expected_phase": "Unstable",
+    "nipbl_velocity": 0.7,
+    "wapl_lifetime": 0.7
+  },
+  "correlations": {
+    "insulation_correlation": 0.8460990892938011,
+    "ps_correlation": 0.9952815284334703,
+    "figure_path": "data\\output\\cdls_validation\\archcode_vs_real_comparison.png"
+  },
+  "real_data_stats": {
+    "cooler_info": {
+      "genome": "hg19",
+      "nbins": 3114,
+      "nnz": 4150156
+    },
+    "insulation": {
+      "mean": 12286.926320595952,
+      "std": 1003.6505559096433,
+      "min": 9632.74261117032,
+      "max": 14789.13059159853
+    },
+    "boundaries": {
+      "count": 0,
+      "mean_insulation": 0.0
+    },
+    "ps_scaling": {
+      "num_points": 9,
+      "mean_ps": 26976.772354835488
+    },
+    "output_files": {
+      "insulation": "data\\output\\cdls_validation\\real_cdls_analysis\\insulation_scores.csv",
+      "boundaries": "data\\output\\cdls_validation\\real_cdls_analysis\\tad_boundaries.csv",
+      "ps_scaling": "data\\output\\cdls_validation\\real_cdls_analysis\\ps_scaling.csv"
+    }
+  }
+}

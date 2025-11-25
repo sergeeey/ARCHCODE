@@ -1,3 +1,9 @@
+import os
+
+# --- КОНФИГУРАЦИЯ ФАЙЛОВ ---
+
+# 1. Адаптер (src/integration/archcode_adapter.py)
+CODE_ADAPTER = """
 import time
 import numpy as np
 
@@ -17,9 +23,9 @@ except ImportError:
             return np.clip(base + noise, 0, 1)
 
 class ArchcodeAdapter:
-    """
+    \"\"\"
     Мост между TERAG (Logic) и ARCHCODE (Physics).
-    """
+    \"\"\"
     
     def __init__(self, mode='fast'):
         self.mode = mode
@@ -84,3 +90,91 @@ class ArchcodeAdapter:
             "scan_results": scan_data,
             "threshold_detected": True
         }
+"""
+
+# 2. Миссия (missions/rs11_memory_scan.yaml)
+CODE_MISSION = """
+mission:
+  id: "RS-11-MEM-INTEGRATION"
+  name: "Multi-Channel Memory Phase Scan"
+  description: "Detecting the bookmarking threshold via Adapter."
+
+parameters:
+  mission_type: "memory_scan"
+  genome_len: 2000
+  processivity: 250
+  bookmarking_min: 0.0
+  bookmarking_max: 1.0
+"""
+
+# 3. Раннер (run_integration.py)
+CODE_RUNNER = """
+import yaml
+import json
+import os
+import sys
+
+# Добавляем текущую директорию в путь, чтобы видеть пакеты
+sys.path.append(os.getcwd())
+
+from src.integration.archcode_adapter import ArchcodeAdapter
+
+def main():
+    mission_path = "missions/rs11_memory_scan.yaml"
+    
+    if not os.path.exists(mission_path):
+        print(f"❌ Mission file not found: {mission_path}")
+        return
+
+    with open(mission_path, "r") as f:
+        mission_config = yaml.safe_load(f)
+    
+    # Инициализация
+    adapter = ArchcodeAdapter(mode='fast')
+    
+    # Запуск
+    print(f"🚀 Launching Mission: {mission_config['mission']['name']}")
+    result = adapter.run_mission(mission_config)
+    
+    # Вывод
+    print("\\n✅ Mission Complete!")
+    print(json.dumps(result, indent=2))
+    
+    # Сохранение
+    os.makedirs("data/output", exist_ok=True)
+    with open("data/output/RS11_integration_result.json", "w") as f:
+        json.dump(result, f, indent=2)
+
+if __name__ == "__main__":
+    main()
+"""
+
+# --- ЛОГИКА СОЗДАНИЯ ---
+
+STRUCTURE = {
+    "src/integration/archcode_adapter.py": CODE_ADAPTER,
+    "src/integration/__init__.py": "",  # Пустой файл
+    "missions/rs11_memory_scan.yaml": CODE_MISSION,
+    "run_integration.py": CODE_RUNNER
+}
+
+def deploy():
+    print("🏗️ Развертывание ARCHCODE Integration Skeleton v0.1...")
+    
+    for path, content in STRUCTURE.items():
+        # Создаем папки
+        folder = os.path.dirname(path)
+        if folder:
+            os.makedirs(folder, exist_ok=True)
+            
+        # Записываем файл
+        with open(path, "w", encoding='utf-8') as f:
+            f.write(content.strip())
+            
+        print(f"✅ Создан: {path}")
+
+    print("\n🎉 Развертывание завершено. Запустите: python run_integration.py")
+
+if __name__ == "__main__":
+    deploy()
+

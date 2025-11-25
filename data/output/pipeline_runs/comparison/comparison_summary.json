@@ -1,0 +1,7 @@
+{
+  "figure_path": "data\\output\\pipeline_runs\\comparison\\archcode_vs_real_comparison.png",
+  "archcode_files": {
+    "insulation": "data\\output\\pipeline_runs\\comparison\\archcode_insulation.csv",
+    "ps": "data\\output\\pipeline_runs\\comparison\\archcode_ps.csv"
+  }
+}

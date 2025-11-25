@@ -1,5 +1,10 @@
-"""ARCHCODE: Reproducible Science Package for 3D Genome Architecture Simulation."""
+"""
+ARCHCODE – reproducible physics-based framework for 3D genome architecture.
 
-__version__ = "1.0.0"
+This public skeleton exposes package metadata only.
+Core simulation and RS-engine implementations are kept private.
+"""
 
+__all__ = ["__version__"]
 
+__version__ = "0.1.0-skeleton"

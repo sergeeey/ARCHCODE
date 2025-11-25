@@ -1,0 +1,88 @@
+{
+  "experiment_id": "E-S1-L2-01",
+  "factor_analysis": [
+    {
+      "position": 100000,
+      "predicted_stability": 0.9306000000000002,
+      "experimental_stability": 0.95,
+      "ctcf_strength": 0.9,
+      "avg_barrier_strength": 0.1,
+      "methylation_level": 0.1,
+      "avg_te_effect": 0.0,
+      "stability_category": "stable"
+    },
+    {
+      "position": 200000,
+      "predicted_stability": 0.6467999999999999,
+      "experimental_stability": 0.75,
+      "ctcf_strength": 0.7,
+      "avg_barrier_strength": 0.2,
+      "methylation_level": 0.2,
+      "avg_te_effect": 0.0,
+      "stability_category": "intermediate"
+    },
+    {
+      "position": 300000,
+      "predicted_stability": 0.4524,
+      "experimental_stability": 0.5,
+      "ctcf_strength": 0.5,
+      "avg_barrier_strength": 0.6,
+      "methylation_level": 0.7,
+      "avg_te_effect": 0.3,
+      "stability_category": "intermediate"
+    },
+    {
+      "position": 400000,
+      "predicted_stability": 0.23287500000000003,
+      "experimental_stability": 0.3,
+      "ctcf_strength": 0.3,
+      "avg_barrier_strength": 0.8,
+      "methylation_level": 0.9,
+      "avg_te_effect": 0.5,
+      "stability_category": "variable"
+    },
+    {
+      "position": 500000,
+      "predicted_stability": 0.36080000000000007,
+      "experimental_stability": 0.8,
+      "ctcf_strength": 0.8,
+      "avg_barrier_strength": 0.1,
+      "methylation_level": 0.3,
+      "avg_te_effect": 0.0,
+      "stability_category": "variable"
+    }
+  ],
+  "correlations": {
+    "ctcf_vs_stability": 0.7467031183257242,
+    "barrier_vs_stability": -0.6524864453652436,
+    "methylation_vs_stability": -0.7944300867811284,
+    "te_vs_stability": -0.6680142472073075,
+    "predicted_vs_experimental": 0.7898082582533021
+  },
+  "feature_importance": {
+    "ctcf": 0.9964420755979524,
+    "barrier": 0.9738639365301152,
+    "methylation": 0.9774686668145438,
+    "te": 0.9583216195404829
+  },
+  "thresholds": {
+    "stable": {
+      "count": 1,
+      "avg_ctcf": 0.9,
+      "avg_barrier": 0.1,
+      "avg_methylation": 0.1
+    },
+    "variable": {
+      "count": 2,
+      "avg_ctcf": 0.55,
+      "avg_barrier": 0.45,
+      "avg_methylation": 0.6
+    }
+  },
+  "summary": {
+    "total_boundaries": 5,
+    "stable_count": 1,
+    "variable_count": 2,
+    "intermediate_count": 2
+  }
+}

@@ -1,93 +1,10 @@
-# Python
 __pycache__/
 *.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-pip-wheel-metadata/
-share/python-wheels/
 *.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual environments
+.build/
+dist/
+.venv/
 venv/
-env/
-ENV/
-env.bak/
-venv.bak/
-.venv
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-.DS_Store
-
-# Testing
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-.nox/
-coverage.xml
-*.cover
-.hypothesis/
-
-# Type checking
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Linting
-.ruff_cache/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# Environment variables
 .env
-.env.local
-
-# Logs
-*.log
-logs/
-
-# Data files (если не нужно коммитить)
-*.csv
-*.json
-!package.json
-!package-lock.json
-*.h5
-*.hdf5
-*.pkl
-*.pickle
-
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-
-
-
-
-
-
-
-
+.ipynb_checkpoints/
+.DS_Store

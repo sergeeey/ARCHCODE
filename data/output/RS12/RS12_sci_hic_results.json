@@ -1,0 +1,22 @@
+{
+  "d0": {
+    "processivity": 1.0,
+    "bookmarking": 0.9,
+    "status": "pending_data_loading"
+  },
+  "d7": {
+    "processivity": 1.0,
+    "bookmarking": 0.8,
+    "status": "pending_data_loading"
+  },
+  "d20": {
+    "processivity": 1.0,
+    "bookmarking": 0.7,
+    "status": "pending_data_loading"
+  },
+  "NPC": {
+    "processivity": 0.9,
+    "bookmarking": 0.75,
+    "status": "pending_data_loading"
+  }
+}

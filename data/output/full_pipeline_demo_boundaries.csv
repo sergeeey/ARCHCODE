@@ -1,0 +1,6 @@
+position,strength,barrier_type
+100000,0.9,ctcf
+200000,0.7,ctcf
+300000,0.5,ctcf
+400000,0.3,ctcf
+500000,0.8,ctcf

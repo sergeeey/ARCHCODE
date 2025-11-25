@@ -1,0 +1,11 @@
+mission:
+  id: "RS-11-MEM-INTEGRATION"
+  name: "Multi-Channel Memory Phase Scan"
+  description: "Detecting the bookmarking threshold via Adapter."
+
+parameters:
+  mission_type: "memory_scan"
+  genome_len: 2000
+  processivity: 250
+  bookmarking_min: 0.0
+  bookmarking_max: 1.0
