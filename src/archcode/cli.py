@@ -153,14 +153,27 @@ def run_rs10_simulation(config: dict, output_dir: Path) -> dict:
         adapter = ArchcodeAdapter(mode="fast")
         rs10_config = config.get("rs10", {})
 
-        bookmarking_values = rs10_config.get("bookmarking_values", [0.0, 0.1, 0.2, 0.3, 0.4, 0.5])
+        # Get bookmarking values - support both list and tuple format
+        bookmarking_fractions = rs10_config.get("bookmarking_fractions", None)
+        bookmarking_range = rs10_config.get("bookmarking_range", None)
+        
+        if bookmarking_fractions:
+            # Use explicit list of fractions
+            bookmarking_params = bookmarking_fractions
+        elif bookmarking_range and isinstance(bookmarking_range, list) and len(bookmarking_range) == 3:
+            # Tuple format: [min, max, steps]
+            bookmarking_params = bookmarking_range
+        else:
+            # Default: use bookmarking_fractions from config or default list
+            bookmarking_params = rs10_config.get("bookmarking_fractions", [0.0, 0.1, 0.2, 0.3, 0.4, 0.5])
 
         mission_config = {
             "id": "RS10-PIPELINE",
             "mission_type": "rs10_bookmarking_threshold",
             "parameters": {
-                "bookmarking_range": bookmarking_values,
-                "num_cycles": rs10_config.get("cycles", 10),
+                "bookmarking_fractions": bookmarking_params if isinstance(bookmarking_params, list) and len(bookmarking_params) > 3 else None,
+                "bookmarking_range": bookmarking_params if isinstance(bookmarking_params, list) and len(bookmarking_params) == 3 else None,
+                "num_cycles": rs10_config.get("num_cycles", rs10_config.get("cycles", 10)),
                 "processivity": rs10_config.get("processivity", 0.9),
                 "mode": "fast",
             },

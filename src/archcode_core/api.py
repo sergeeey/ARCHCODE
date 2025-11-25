@@ -210,8 +210,18 @@ def run_rs10_summary(config: dict[str, Any]) -> dict[str, Any]:
     if "bookmarking_fractions" in config:
         bookmarking_fractions = config["bookmarking_fractions"]
     elif "bookmarking_range" in config:
-        b_min, b_max, steps = config["bookmarking_range"]
-        bookmarking_fractions = [b_min + i * (b_max - b_min) / (steps - 1) for i in range(steps)]
+        bookmarking_range = config["bookmarking_range"]
+        # Handle both tuple/list format [min, max, steps] and explicit list
+        if isinstance(bookmarking_range, (list, tuple)) and len(bookmarking_range) == 3:
+            # Tuple format: [min, max, steps]
+            b_min, b_max, steps = bookmarking_range
+            bookmarking_fractions = [b_min + i * (b_max - b_min) / (steps - 1) for i in range(steps)]
+        elif isinstance(bookmarking_range, list) and len(bookmarking_range) > 3:
+            # Explicit list of fractions
+            bookmarking_fractions = bookmarking_range
+        else:
+            # Fallback: use default steps
+            bookmarking_fractions = [i / (bookmarking_steps - 1) for i in range(bookmarking_steps)]
     else:
         bookmarking_fractions = [i / (bookmarking_steps - 1) for i in range(bookmarking_steps)]
     
@@ -516,4 +526,5 @@ def run_real_benchmark_summary(config: dict[str, Any]) -> dict[str, Any]:
         },
         "pass_fail": pass_fail,
     }
+
 

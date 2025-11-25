@@ -288,3 +288,4 @@ def calculate_architecture_entropy(stable_before, stable_after):
 
 
 
+

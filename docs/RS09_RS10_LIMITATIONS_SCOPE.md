@@ -158,3 +158,4 @@ Processivity = EffectiveExtrusionRate × CohesinLifetime
 
 
 
+

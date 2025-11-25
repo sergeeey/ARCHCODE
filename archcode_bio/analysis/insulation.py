@@ -103,3 +103,4 @@ def compute_insulation(cool_file: str | Path, window: int = 5) -> dict[str, Any]
         "num_bins": len(insulation_scores),
     }
 
+

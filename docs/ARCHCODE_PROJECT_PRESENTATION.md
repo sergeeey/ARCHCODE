@@ -201,3 +201,4 @@ Memory_retention ∝ (bookmarking_fraction)^n
 
 *Последнее обновление: 23 ноября 2025*
 
+

@@ -269,3 +269,4 @@ prediction = self.stability_calculator.calculate_stability(
 
 
 
+

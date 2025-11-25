@@ -41,3 +41,4 @@ except Exception as e:
 
 print("\n✅ Быстрая проверка завершена!")
 
+

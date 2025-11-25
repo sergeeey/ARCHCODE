@@ -97,3 +97,4 @@ def compute_compartments(cool_file: str | Path) -> dict[str, Any]:
         "num_bins": len(all_labels),
     }
 
+

@@ -245,3 +245,4 @@ python experiments/validate_cdls.py --cdls-cooler "путь/к/cdls.cool"
 
 *Готов создать автоматизированный скрипт для полной валидации по запросу.*
 
+
