@@ -9,3 +9,6 @@ venv/
 .ipynb_checkpoints/
 .DS_Store
 
+# Private/internal documentation
+docs/TECH_SPEC_ARCHCODE.md
+
