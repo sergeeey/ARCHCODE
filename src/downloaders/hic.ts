@@ -1,217 +1,120 @@
 /**
  * Hi-C Data Downloader
- * Downloads real Hi-C contact matrices for validation against simulation
+ * Downloads real Hi-C loop calls for validation against simulation
  *
  * Sources:
- * - 4D Nucleome (4DN) Data Portal - https://data.4dnucleome.org
- * - ENCODE Project - https://www.encodeproject.org
- * - Rao et al. 2014 (GEO: GSE63525) - canonical Hi-C datasets
+ * - Rao et al. 2014 (GEO: GSE63525) - HiCCUPS loop calls
+ * - 4D Nucleome (4DN) Data Portal
  *
  * Literature: Rao et al. (2014) Cell - "A 3D Map of the Human Genome"
+ *
+ * Strategy: Download HiCCUPS loop lists (text format) rather than raw matrices.
+ * This is more appropriate for validating loop extrusion simulations.
  */
 
-import { ContactMatrix } from '../domain/models/genome';
+import { ContactMatrix, Loop } from '../domain/models/genome';
 
-export interface HiCDataset {
+// ============================================================================
+// Loop List Datasets (text format, easy to download)
+// ============================================================================
+
+export interface LoopListDataset {
     id: string;
     source: 'rao2014' | '4dn' | 'encode';
     cellLine: string;
     description: string;
-    resolution: number; // bp per bin
+    url: string;
     chromosome?: string;
     region?: { start: number; end: number };
-    url: string;
-    format: 'dense' | 'sparse' | 'hic';
 }
 
-// Rao et al. 2014 preprocessed matrices (hosted on public servers)
-// These are submatrices extracted for common validation regions
-export const RAO_2014_DATASETS: HiCDataset[] = [
+export const RAO_2014_LOOP_DATASETS: LoopListDataset[] = [
     {
-        id: 'rao2014_gm12878_chr11_hbb',
+        id: 'rao2014_gm12878_loops',
         source: 'rao2014',
         cellLine: 'GM12878',
-        description: 'β-globin locus (HBB) - classic loop extrusion region',
-        resolution: 10000,
-        chromosome: 'chr11',
-        region: { start: 5200000, end: 5400000 }, // 200kb around HBB
-        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_GM12878_insitu_primary_10kb_KRnorm.txt.gz',
-        format: 'sparse',
+        description: 'HiCCUPS loop calls from GM12878 (primary)',
+        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_GM12878_primary_HiCCUPS_looplist.txt.gz',
     },
     {
-        id: 'rao2014_gm12878_chr21',
+        id: 'rao2014_gm12878_loops_replicate',
         source: 'rao2014',
         cellLine: 'GM12878',
-        description: 'Chromosome 21 - small chromosome for testing',
-        resolution: 10000,
-        chromosome: 'chr21',
-        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_GM12878_insitu_primary_10kb_KRnorm.txt.gz',
-        format: 'sparse',
+        description: 'HiCCUPS loop calls from GM12878 (replicate)',
+        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_GM12878_replicate_HiCCUPS_looplist.txt.gz',
     },
     {
-        id: 'rao2014_k562_chr11_hbb',
+        id: 'rao2014_gm12878_loops_combined',
+        source: 'rao2014',
+        cellLine: 'GM12878',
+        description: 'HiCCUPS loop calls from GM12878 (primary+replicate)',
+        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_GM12878_primary%2Breplicate_HiCCUPS_looplist.txt.gz',
+    },
+    {
+        id: 'rao2014_k562_loops',
         source: 'rao2014',
         cellLine: 'K562',
-        description: 'β-globin locus (HBB) in K562 leukemia cells',
-        resolution: 10000,
-        chromosome: 'chr11',
-        region: { start: 5200000, end: 5400000 },
-        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_K562_10kb_KRnorm.txt.gz',
-        format: 'sparse',
+        description: 'HiCCUPS loop calls from K562',
+        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_K562_HiCCUPS_looplist.txt.gz',
+    },
+    {
+        id: 'rao2014_imr90_loops',
+        source: 'rao2014',
+        cellLine: 'IMR90',
+        description: 'HiCCUPS loop calls from IMR90 fibroblasts',
+        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_IMR90_HiCCUPS_looplist.txt.gz',
+    },
+    {
+        id: 'rao2014_hmec_loops',
+        source: 'rao2014',
+        cellLine: 'HMEC',
+        description: 'HiCCUPS loop calls from HMEC mammary epithelial',
+        url: 'https://ftp.ncbi.nlm.nih.gov/geo/series/GSE63nnn/GSE63525/suppl/GSE63525_HMEC_HiCCUPS_looplist.txt.gz',
     },
 ];
 
-// 4D Nucleome datasets with REST API access
-export const FOURD_NUCLEOME_DATASETS: HiCDataset[] = [
-    {
-        id: '4dn_gm12878_micro_c',
-        source: '4dn',
-        cellLine: 'GM12878',
-        description: 'Micro-C (higher resolution Hi-C variant)',
-        resolution: 5000,
-        url: 'https://data.4dnucleome.org/files-processed/4DNFI2TK7L2F/@@download/4DNFI2TK7L2F.mcool',
-        format: 'hic',
-    },
-    {
-        id: '4dn_hff_hic',
-        source: '4dn',
-        cellLine: 'HFF',
-        description: 'Human Foreskin Fibroblast Hi-C',
-        resolution: 10000,
-        url: 'https://data.4dnucleome.org/files-processed/4DNFIMH34R53/@@download/4DNFIMH34R53.mcool',
-        format: 'hic',
-    },
-];
+// ============================================================================
+// Types
+// ============================================================================
 
-export interface HiCDownloadProgress {
+export interface HiCLoop {
+    chr1: string;
+    x1: number;
+    x2: number;
+    chr2: string;
+    y1: number;
+    y2: number;
+    color: string;
+    observedValue: number;
+    expectedValue: number;
+    fdrDonut: number;
+    fdrHorizontal: number;
+    fdrVertical: number;
+    numCollapsed: number;
+    centroid1: number;
+    centroid2: number;
+    radius: number;
+}
+
+export interface LoopDownloadProgress {
     loaded: number;
     total: number;
     percent: number;
     stage: 'downloading' | 'decompressing' | 'parsing';
 }
 
-export interface HiCDownloadResult {
+export interface LoopDownloadResult {
     success: boolean;
     datasetId: string;
     cellLine: string;
-    chromosome?: string;
-    resolution: number;
-    matrix?: ContactMatrix;
-    matrixSize?: number;
+    loops?: HiCLoop[];
+    loopCount?: number;
     error?: string;
 }
 
-/**
- * Parse sparse matrix format (row, col, value)
- * Common format for Rao 2014 data
- */
-function parseSparseMatrix(
-    content: string,
-    chromosome: string,
-    region?: { start: number; end: number },
-    resolution: number = 10000
-): ContactMatrix {
-    const lines = content.trim().split('\n');
-
-    // Determine matrix size from region or data
-    let minBin = Infinity;
-    let maxBin = -Infinity;
-    const entries: { row: number; col: number; value: number }[] = [];
-
-    for (const line of lines) {
-        if (line.startsWith('#') || line.trim() === '') continue;
-
-        const parts = line.split(/\s+/);
-        if (parts.length < 3) continue;
-
-        // Format: chr1 bin1 chr2 bin2 value OR bin1 bin2 value
-        let bin1: number, bin2: number, value: number;
-
-        if (parts.length >= 5) {
-            // chr1 bin1 chr2 bin2 value format
-            const chr1 = parts[0];
-            const chr2 = parts[2];
-
-            // Filter for our chromosome
-            if (chr1 !== chromosome && chr2 !== chromosome) continue;
-            if (chr1 !== chr2) continue; // Only intra-chromosomal
-
-            bin1 = parseInt(parts[1]);
-            bin2 = parseInt(parts[3]);
-            value = parseFloat(parts[4]);
-        } else {
-            // bin1 bin2 value format
-            bin1 = parseInt(parts[0]);
-            bin2 = parseInt(parts[1]);
-            value = parseFloat(parts[2]);
-        }
-
-        if (isNaN(bin1) || isNaN(bin2) || isNaN(value)) continue;
-
-        // Convert to bin indices
-        const idx1 = Math.floor(bin1 / resolution);
-        const idx2 = Math.floor(bin2 / resolution);
-
-        // Filter by region if specified
-        if (region) {
-            const pos1 = bin1;
-            const pos2 = bin2;
-            if (pos1 < region.start || pos1 > region.end) continue;
-            if (pos2 < region.start || pos2 > region.end) continue;
-        }
-
-        minBin = Math.min(minBin, idx1, idx2);
-        maxBin = Math.max(maxBin, idx1, idx2);
-
-        entries.push({ row: idx1, col: idx2, value });
-    }
-
-    if (entries.length === 0) {
-        console.warn('[HiC Parser] No entries found for chromosome:', chromosome);
-        return [];
-    }
-
-    // Create dense matrix
-    const size = maxBin - minBin + 1;
-    const matrix: ContactMatrix = Array(size).fill(null).map(() => Array(size).fill(0));
-
-    for (const { row, col, value } of entries) {
-        const i = row - minBin;
-        const j = col - minBin;
-        if (i >= 0 && i < size && j >= 0 && j < size) {
-            matrix[i][j] = value;
-            matrix[j][i] = value; // Symmetric
-        }
-    }
-
-    // Normalize diagonal to 1
-    for (let i = 0; i < size; i++) {
-        if (matrix[i][i] === 0) matrix[i][i] = 1;
-    }
-
-    console.log(`[HiC Parser] Parsed ${entries.length} entries into ${size}x${size} matrix`);
-
-    return matrix;
-}
-
-/**
- * Parse dense matrix format (full matrix as TSV/CSV)
- */
-function parseDenseMatrix(content: string): ContactMatrix {
-    const lines = content.trim().split('\n');
-    const matrix: ContactMatrix = [];
-
-    for (const line of lines) {
-        if (line.startsWith('#') || line.trim() === '') continue;
-
-        const values = line.split(/[\t,]/).map(v => parseFloat(v.trim()));
-        if (values.some(isNaN)) continue;
-
-        matrix.push(values);
-    }
-
-    return matrix;
-}
+// ============================================================================
+// Download Functions
+// ============================================================================
 
 /**
  * Decompress gzip data using Web Streams API
@@ -242,34 +145,62 @@ async function decompressGzip(data: Uint8Array): Promise<Uint8Array> {
 }
 
 /**
- * Download Hi-C data from a specific dataset
+ * Parse HiCCUPS loop list format
+ * Format: chr1 x1 x2 chr2 y1 y2 color o e_bl e_donut e_h e_v fdr_bl fdr_donut fdr_h fdr_v num_collapsed centroid1 centroid2 radius
  */
-export async function downloadHiCData(
+function parseLoopList(content: string): HiCLoop[] {
+    const lines = content.trim().split('\n');
+    const loops: HiCLoop[] = [];
+
+    for (const line of lines) {
+        // Skip header
+        if (line.startsWith('chr1') || line.startsWith('#')) continue;
+
+        const parts = line.split('\t');
+        if (parts.length < 14) continue;
+
+        try {
+            loops.push({
+                chr1: parts[0],
+                x1: parseInt(parts[1]),
+                x2: parseInt(parts[2]),
+                chr2: parts[3],
+                y1: parseInt(parts[4]),
+                y2: parseInt(parts[5]),
+                color: parts[6] || '0,0,255',
+                observedValue: parseFloat(parts[7]) || 0,
+                expectedValue: parseFloat(parts[8]) || 0,
+                fdrDonut: parseFloat(parts[9]) || 0,
+                fdrHorizontal: parseFloat(parts[10]) || 0,
+                fdrVertical: parseFloat(parts[11]) || 0,
+                numCollapsed: parseInt(parts[12]) || 1,
+                centroid1: parseInt(parts[13]) || 0,
+                centroid2: parseInt(parts[14]) || 0,
+                radius: parseInt(parts[15]) || 0,
+            });
+        } catch {
+            // Skip malformed lines
+        }
+    }
+
+    return loops;
+}
+
+/**
+ * Download loop list from Rao 2014
+ */
+export async function downloadLoopList(
     datasetId: string,
-    onProgress?: (progress: HiCDownloadProgress) => void
-): Promise<HiCDownloadResult> {
-    // Find dataset
-    const allDatasets = [...RAO_2014_DATASETS, ...FOURD_NUCLEOME_DATASETS];
-    const dataset = allDatasets.find(d => d.id === datasetId);
+    onProgress?: (progress: LoopDownloadProgress) => void
+): Promise<LoopDownloadResult> {
+    const dataset = RAO_2014_LOOP_DATASETS.find(d => d.id === datasetId);
 
     if (!dataset) {
         return {
             success: false,
             datasetId,
             cellLine: 'unknown',
-            resolution: 0,
-            error: `Unknown dataset: ${datasetId}. Available: ${allDatasets.map(d => d.id).join(', ')}`,
-        };
-    }
-
-    // .hic format requires specialized library (hic-straw)
-    if (dataset.format === 'hic') {
-        return {
-            success: false,
-            datasetId: dataset.id,
-            cellLine: dataset.cellLine,
-            resolution: dataset.resolution,
-            error: 'HIC format requires hic-straw library. Use sparse/dense format or install: npm install hic-straw',
+            error: `Unknown dataset: ${datasetId}. Available: ${RAO_2014_LOOP_DATASETS.map(d => d.id).join(', ')}`,
         };
     }
 
@@ -319,38 +250,23 @@ export async function downloadHiCData(
 
         onProgress?.({ loaded, total: loaded, percent: 100, stage: 'decompressing' });
 
-        // Decompress if gzipped
-        let content: string;
-        if (dataset.url.endsWith('.gz')) {
-            const decompressed = await decompressGzip(allChunks);
-            content = new TextDecoder().decode(decompressed);
-        } else {
-            content = new TextDecoder().decode(allChunks);
-        }
+        // Decompress
+        const decompressed = await decompressGzip(allChunks);
+        const content = new TextDecoder().decode(decompressed);
 
         onProgress?.({ loaded, total: loaded, percent: 100, stage: 'parsing' });
 
-        // Parse matrix
-        let matrix: ContactMatrix;
-        if (dataset.format === 'sparse') {
-            matrix = parseSparseMatrix(
-                content,
-                dataset.chromosome || 'chr11',
-                dataset.region,
-                dataset.resolution
-            );
-        } else {
-            matrix = parseDenseMatrix(content);
-        }
+        // Parse
+        const loops = parseLoopList(content);
+
+        console.log(`[HiC] Downloaded ${loops.length} loops from ${dataset.cellLine}`);
 
         return {
             success: true,
             datasetId: dataset.id,
             cellLine: dataset.cellLine,
-            chromosome: dataset.chromosome,
-            resolution: dataset.resolution,
-            matrix,
-            matrixSize: matrix.length,
+            loops,
+            loopCount: loops.length,
         };
 
     } catch (error) {
@@ -358,204 +274,190 @@ export async function downloadHiCData(
             success: false,
             datasetId: dataset.id,
             cellLine: dataset.cellLine,
-            resolution: dataset.resolution,
             error: error instanceof Error ? error.message : 'Unknown error',
         };
     }
 }
 
 /**
- * List all available Hi-C datasets
+ * List all available loop datasets
  */
-export function listHiCDatasets(): HiCDataset[] {
-    return [...RAO_2014_DATASETS, ...FOURD_NUCLEOME_DATASETS];
+export function listHiCDatasets(): LoopListDataset[] {
+    return [...RAO_2014_LOOP_DATASETS];
 }
 
 /**
- * Get datasets for a specific cell line
+ * Get loop anchor positions
+ * HiCCUPS format: x1-x2 is first anchor, y1-y2 is second anchor
+ * For intrachromosomal loops, the loop spans from x1 to y2
  */
-export function getHiCDatasetsForCellLine(cellLine: string): HiCDataset[] {
-    return listHiCDatasets().filter(d =>
-        d.cellLine.toLowerCase() === cellLine.toLowerCase()
-    );
+export function getLoopAnchors(loop: HiCLoop): { left: number; right: number; size: number } {
+    // First anchor center
+    const anchor1 = (loop.x1 + loop.x2) / 2;
+    // Second anchor center
+    const anchor2 = (loop.y1 + loop.y2) / 2;
+
+    const left = Math.min(anchor1, anchor2);
+    const right = Math.max(anchor1, anchor2);
+    const size = right - left;
+
+    return { left, right, size };
 }
 
 /**
- * Validate simulation matrix against real Hi-C data
+ * Filter loops by chromosome and region
  */
-export interface HiCValidationResult {
+export function filterLoops(
+    loops: HiCLoop[],
+    chromosome: string,
+    region?: { start: number; end: number }
+): HiCLoop[] {
+    return loops.filter(loop => {
+        // Check chromosome (handle both chr11 and 11 formats)
+        const chr = chromosome.replace('chr', '');
+        const loopChr1 = loop.chr1.replace('chr', '');
+        const loopChr2 = loop.chr2.replace('chr', '');
+
+        // Only intrachromosomal loops
+        if (loopChr1 !== chr || loopChr2 !== chr) return false;
+
+        // Filter by region if specified
+        if (region) {
+            const { left, right } = getLoopAnchors(loop);
+            if (right < region.start || left > region.end) return false;
+        }
+
+        return true;
+    });
+}
+
+// ============================================================================
+// Validation Functions
+// ============================================================================
+
+export interface LoopValidationResult {
     datasetId: string;
     cellLine: string;
-    resolution: number;
-    pearsonR: number;
-    spearmanRho: number;
-    rmse: number;
-    matrixSizeSimulation: number;
-    matrixSizeReference: number;
-    passesThreshold: boolean; // r >= 0.7
-}
-
-function calculatePearson(a: number[][], b: number[][]): number {
-    const n = a.length * a[0].length;
-    let sumA = 0, sumB = 0, sumAB = 0, sumA2 = 0, sumB2 = 0;
-
-    for (let i = 0; i < a.length; i++) {
-        for (let j = 0; j < a[0].length; j++) {
-            sumA += a[i][j];
-            sumB += b[i][j];
-            sumAB += a[i][j] * b[i][j];
-            sumA2 += a[i][j] * a[i][j];
-            sumB2 += b[i][j] * b[i][j];
-        }
-    }
-
-    const numerator = n * sumAB - sumA * sumB;
-    const denominator = Math.sqrt((n * sumA2 - sumA * sumA) * (n * sumB2 - sumB * sumB));
-
-    return denominator === 0 ? 0 : numerator / denominator;
-}
-
-function getRanks(arr: number[]): number[] {
-    const sorted = [...arr].map((v, i) => ({ v, i })).sort((a, b) => a.v - b.v);
-    const ranks = new Array(arr.length);
-    sorted.forEach((item, rank) => {
-        ranks[item.i] = rank + 1;
-    });
-    return ranks;
-}
-
-function calculateSpearman(a: number[][], b: number[][]): number {
-    const flatA = a.flat();
-    const flatB = b.flat();
-
-    const ranksA = getRanks(flatA);
-    const ranksB = getRanks(flatB);
-
-    const n = ranksA.length;
-    let sumD2 = 0;
-    for (let i = 0; i < n; i++) {
-        const d = ranksA[i] - ranksB[i];
-        sumD2 += d * d;
-    }
-
-    return 1 - (6 * sumD2) / (n * (n * n - 1));
-}
-
-function calculateRMSE(a: number[][], b: number[][]): number {
-    let sum = 0;
-    let count = 0;
-    for (let i = 0; i < a.length; i++) {
-        for (let j = 0; j < a[0].length; j++) {
-            const diff = a[i][j] - b[i][j];
-            sum += diff * diff;
-            count++;
-        }
-    }
-    return count === 0 ? 0 : Math.sqrt(sum / count);
+    chromosome: string;
+    region?: { start: number; end: number };
+    simulatedLoops: number;
+    experimentalLoops: number;
+    matchedLoops: number;
+    precision: number;  // matched / simulated
+    recall: number;     // matched / experimental
+    f1Score: number;
+    avgSizeSimulated: number;
+    avgSizeExperimental: number;
+    sizeCorrelation: number;
 }
 
 /**
- * Normalize matrix to [0, 1] range for comparison
+ * Calculate overlap between two loops
  */
-function normalizeMatrix(matrix: ContactMatrix): ContactMatrix {
-    let max = 0;
-    for (const row of matrix) {
-        for (const val of row) {
-            if (val > max) max = val;
-        }
-    }
+function loopOverlap(
+    sim: Loop,
+    exp: HiCLoop,
+    tolerance: number = 20000 // 20kb tolerance (Hi-C resolution)
+): boolean {
+    const simLeft = sim.leftAnchor;
+    const simRight = sim.rightAnchor;
+    const { left: expLeft, right: expRight } = getLoopAnchors(exp);
 
-    if (max === 0) return matrix;
+    // Check if anchors match within tolerance
+    const leftMatch = Math.abs(simLeft - expLeft) <= tolerance;
+    const rightMatch = Math.abs(simRight - expRight) <= tolerance;
 
-    return matrix.map(row => row.map(val => val / max));
+    return leftMatch && rightMatch;
 }
 
 /**
- * Resize matrix to match target size (bilinear interpolation)
+ * Validate simulated loops against experimental Hi-C loops
  */
-function resizeMatrix(matrix: ContactMatrix, targetSize: number): ContactMatrix {
-    const sourceSize = matrix.length;
-    const result: ContactMatrix = Array(targetSize).fill(null).map(() => Array(targetSize).fill(0));
-
-    const scale = sourceSize / targetSize;
-
-    for (let i = 0; i < targetSize; i++) {
-        for (let j = 0; j < targetSize; j++) {
-            const srcI = i * scale;
-            const srcJ = j * scale;
-
-            const i0 = Math.floor(srcI);
-            const j0 = Math.floor(srcJ);
-            const i1 = Math.min(i0 + 1, sourceSize - 1);
-            const j1 = Math.min(j0 + 1, sourceSize - 1);
-
-            const di = srcI - i0;
-            const dj = srcJ - j0;
-
-            result[i][j] =
-                matrix[i0][j0] * (1 - di) * (1 - dj) +
-                matrix[i1][j0] * di * (1 - dj) +
-                matrix[i0][j1] * (1 - di) * dj +
-                matrix[i1][j1] * di * dj;
-        }
-    }
-
-    return result;
-}
-
-export async function validateAgainstHiC(
-    simulationMatrix: ContactMatrix,
+export async function validateLoops(
+    simulatedLoops: Loop[],
     datasetId: string,
-    onProgress?: (progress: HiCDownloadProgress) => void
-): Promise<HiCValidationResult> {
-    // Download reference Hi-C data
-    const downloadResult = await downloadHiCData(datasetId, onProgress);
+    chromosome: string,
+    region?: { start: number; end: number },
+    onProgress?: (progress: LoopDownloadProgress) => void
+): Promise<LoopValidationResult> {
+    // Download experimental loops
+    const downloadResult = await downloadLoopList(datasetId, onProgress);
 
-    if (!downloadResult.success || !downloadResult.matrix) {
-        throw new Error(downloadResult.error || 'Failed to download Hi-C data');
+    if (!downloadResult.success || !downloadResult.loops) {
+        throw new Error(downloadResult.error || 'Failed to download loop data');
     }
 
-    const referenceMatrix = downloadResult.matrix;
+    // Filter to region of interest
+    const experimentalLoops = filterLoops(downloadResult.loops, chromosome, region);
 
-    // Resize matrices to same dimensions
-    const targetSize = Math.min(simulationMatrix.length, referenceMatrix.length);
-    const simResized = simulationMatrix.length !== targetSize
-        ? resizeMatrix(simulationMatrix, targetSize)
-        : simulationMatrix;
-    const refResized = referenceMatrix.length !== targetSize
-        ? resizeMatrix(referenceMatrix, targetSize)
-        : referenceMatrix;
+    // Count matches
+    let matchedCount = 0;
+    const matchedSim = new Set<number>();
+    const matchedExp = new Set<number>();
 
-    // Normalize both matrices
-    const simNorm = normalizeMatrix(simResized);
-    const refNorm = normalizeMatrix(refResized);
+    for (let i = 0; i < simulatedLoops.length; i++) {
+        for (let j = 0; j < experimentalLoops.length; j++) {
+            if (loopOverlap(simulatedLoops[i], experimentalLoops[j])) {
+                if (!matchedSim.has(i) && !matchedExp.has(j)) {
+                    matchedCount++;
+                    matchedSim.add(i);
+                    matchedExp.add(j);
+                }
+            }
+        }
+    }
 
     // Calculate metrics
-    const pearsonR = calculatePearson(simNorm, refNorm);
-    const spearmanRho = calculateSpearman(simNorm, refNorm);
-    const rmse = calculateRMSE(simNorm, refNorm);
+    const precision = simulatedLoops.length > 0 ? matchedCount / simulatedLoops.length : 0;
+    const recall = experimentalLoops.length > 0 ? matchedCount / experimentalLoops.length : 0;
+    const f1Score = precision + recall > 0 ? 2 * precision * recall / (precision + recall) : 0;
+
+    // Calculate average sizes
+    const avgSizeSim = simulatedLoops.length > 0
+        ? simulatedLoops.reduce((sum, l) => sum + (l.rightAnchor - l.leftAnchor), 0) / simulatedLoops.length
+        : 0;
+    const avgSizeExp = experimentalLoops.length > 0
+        ? experimentalLoops.reduce((sum, l) => sum + getLoopAnchors(l).size, 0) / experimentalLoops.length
+        : 0;
+
+    // Simple size correlation (ratio comparison)
+    const sizeCorrelation = avgSizeExp > 0 ? Math.min(avgSizeSim, avgSizeExp) / Math.max(avgSizeSim, avgSizeExp) : 0;
 
     return {
         datasetId,
         cellLine: downloadResult.cellLine,
-        resolution: downloadResult.resolution,
-        pearsonR,
-        spearmanRho,
-        rmse,
-        matrixSizeSimulation: simulationMatrix.length,
-        matrixSizeReference: referenceMatrix.length,
-        passesThreshold: pearsonR >= 0.7,
+        chromosome,
+        region,
+        simulatedLoops: simulatedLoops.length,
+        experimentalLoops: experimentalLoops.length,
+        matchedLoops: matchedCount,
+        precision,
+        recall,
+        f1Score,
+        avgSizeSimulated: avgSizeSim,
+        avgSizeExperimental: avgSizeExp,
+        sizeCorrelation,
     };
 }
 
+// ============================================================================
+// Power-law validation (offline, no download required)
+// ============================================================================
+
+export interface PowerLawResult {
+    pearsonR: number;
+    alpha: number;
+    alphaError: number;
+}
+
 /**
- * Quick validation using local demo data (no download required)
- * Uses power-law decay model as synthetic reference
+ * Validate simulation matrix against power-law decay model
+ * Expected P(s) ~ s^(-1) for chromatin
  */
 export function validateAgainstPowerLaw(
     simulationMatrix: ContactMatrix,
-    expectedAlpha: number = -1.0 // Expected P(s) exponent
-): { pearsonR: number; alpha: number; alphaError: number } {
+    expectedAlpha: number = -1.0
+): PowerLawResult {
     const n = simulationMatrix.length;
 
     // Generate expected power-law matrix
@@ -607,3 +509,39 @@ export function validateAgainstPowerLaw(
         alphaError: Math.abs(alpha - expectedAlpha),
     };
 }
+
+function normalizeMatrix(matrix: ContactMatrix): ContactMatrix {
+    let max = 0;
+    for (const row of matrix) {
+        for (const val of row) {
+            if (val > max) max = val;
+        }
+    }
+    if (max === 0) return matrix;
+    return matrix.map(row => row.map(val => val / max));
+}
+
+function calculatePearson(a: number[][], b: number[][]): number {
+    const n = a.length * a[0].length;
+    let sumA = 0, sumB = 0, sumAB = 0, sumA2 = 0, sumB2 = 0;
+
+    for (let i = 0; i < a.length; i++) {
+        for (let j = 0; j < a[0].length; j++) {
+            sumA += a[i][j];
+            sumB += b[i][j];
+            sumAB += a[i][j] * b[i][j];
+            sumA2 += a[i][j] * a[i][j];
+            sumB2 += b[i][j] * b[i][j];
+        }
+    }
+
+    const numerator = n * sumAB - sumA * sumB;
+    const denominator = Math.sqrt((n * sumA2 - sumA * sumA) * (n * sumB2 - sumB * sumB));
+
+    return denominator === 0 ? 0 : numerator / denominator;
+}
+
+// Legacy exports for backward compatibility
+export type HiCDataset = LoopListDataset;
+export type HiCDownloadProgress = LoopDownloadProgress;
+export { validateLoops as validateAgainstHiC };
