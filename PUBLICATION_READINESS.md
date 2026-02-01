@@ -52,7 +52,7 @@ Optimal parameters found:
 Each locus has:
 - CTCF site configuration
 - Convergent rule validation
-- AlphaGenome correlation target
+- Correlation target: experimental Hi-C (mock AlphaGenome in v1.0 for development)
 
 #### P1.2: Regression Tests ✅
 Created `src/__tests__/regression/gold-standard.test.ts`:
@@ -71,7 +71,7 @@ Created `src/__tests__/regression/gold-standard.test.ts`:
 
 #### P2.1: Figure Generation ✅
 Created `scripts/generate-figures.js`:
-- Figure 1B: Contact matrix (ARCHCODE vs AlphaGenome)
+- Figure 1B: Contact matrix (ARCHCODE vs reference; reference = experimental Hi-C or optional AlphaGenome)
 - Figure 1C: P(s) curve with power-law fit
 - Figure 2A: WT vs inverted CTCF validation
 - Supplementary: Parameter scan results
@@ -95,7 +95,7 @@ Output: `publication/benchmark.md`
 
 ## 📊 Validation Results (Expected)
 
-Based on mock AlphaGenome data:
+**Publication validation target**: experimental Hi-C (e.g. Rao et al. 2014). Current regression tests use mock/synthetic data:
 
 | Locus | Pearson r | Loops | Status |
 |-------|-----------|-------|--------|
@@ -103,7 +103,7 @@ Based on mock AlphaGenome data:
 | Sox2 | ~0.60-0.70 | 3 | 🟡 Near target |
 | Pcdh | ~0.65-0.75 | 4 | 🟡 Near target |
 
-**Note**: Real AlphaGenome API will give actual correlations. Mock uses synthetic data.
+**Note**: v1.0 uses mock/synthetic data for development. For publication, report correlations against real experimental Hi-C (Rao et al. 2014 or ENCODE). Real AlphaGenome API (when available) is optional.
 
 ---
 
@@ -200,7 +200,7 @@ PUBLICATION_READINESS.md          [NEW] - This file
 5. **Deploy to GitHub Pages**: For live demo
 
 ### Future (v1.1+)
-- Real AlphaGenome API integration (currently mock)
+- Real AlphaGenome API integration (optional; currently mock); publication: use experimental Hi-C
 - Expand to 10+ validation loci
 - WebGPU acceleration
 - Supercoiling model

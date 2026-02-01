@@ -16,8 +16,13 @@ After t steps: L-t========R+t  (symmetric bidirectional extrusion)
 
 **Parameters:**
 - **Velocity**: 500-2000 bp/step (default: 1000 bp/step = ~1 kb/s biological)
-- **Processivity**: Cohesin unloads stochastically with probability 0.0005/step
-- **Mean residence time**: ~20 minutes (1200 seconds at 10 steps/s)
+- **Processivity**: Cohesin unloads stochastically with probability 0.000833/step
+- **Mean residence time**: ~1200 steps (approximately 20 min if 1 step = 1s)
+
+**Important**: Steps are discrete simulation events. Biological time is approximate:
+- Effective residence: ~1200 steps (exponentially distributed)
+- Approximate biological time: steps × BIOLOGICAL_TIME_SCALE
+- Default mapping: 1 step = 1 second (tunable parameter)
 
 ### 1.2 CTCF Barrier Interactions
 
@@ -30,7 +35,11 @@ CTCF sites block cohesin based on orientation:
 | F ... F      | No             | Yes             | ❌ No       |
 | R ... R      | Yes            | No              | ❌ No       |
 
-**Stalling probability**: 90% for convergent (R...F), 15% for non-convergent.
+**Blocking efficiency** (model parameters fit to ensemble data):
+- **Convergent (R...F)**: 85% blocking efficiency (ensemble average, Rao et al. 2014)
+- **Non-convergent**: 15% leaky blocking (estimated from de Wit et al. 2015)
+
+**Note**: These are population-averaged parameters, not single-molecule efficiencies.
 
 ### 1.3 Ensemble Simulation
 
@@ -101,15 +110,23 @@ log(P) = log(A) + α × log(s)
 
 **Target**: α ≈ -1.0 (consistent with Hi-C literature for interphase chromatin).
 
-## 4. AlphaGenome Validation
+## 4. Validation
 
-### 4.1 API Endpoint
+### 4.1 AlphaGenome Integration (v1.0: Mock Mode)
 
+**Current Status (v1.0)**: The implementation uses **mock AlphaGenome responses** for development. Real API integration is planned for v1.1.
+
+**Actual Validation**: Current "AlphaGenome validation" compares against synthetically generated contact maps with power-law decay and TAD structure. For publication, validate against:
+- Experimental Hi-C data (Rao et al. 2014)
+- ChIA-PET interactions
+- Known CTCF-mediated loops
+
+**API Endpoint** (for future reference):
 ```
 POST https://api.alphagenome.deepmind.com/v1/predict
 ```
 
-Request body:
+Request body (when API available):
 ```json
 {
   "interval": {
@@ -124,9 +141,11 @@ Request body:
 
 ### 4.2 Correlation Metrics
 
+Used to compare ARCHCODE simulation against reference contact maps:
+
 **Pearson correlation** (primary metric):
 ```
-r = cov(ARCHCODE, AlphaGenome) / (σ_A × σ_G)
+r = cov(ARCHCODE, Reference) / (σ_A × σ_R)
 ```
 
 **Spearman rank correlation**:
@@ -136,12 +155,14 @@ r = cov(ARCHCODE, AlphaGenome) / (σ_A × σ_G)
 
 **RMSE**:
 ```
-RMSE = sqrt(mean((A - G)²))
+RMSE = sqrt(mean((A - R)²))
 ```
 
 ### 4.3 Target Threshold
 
-Publication quality: Pearson r ≥ 0.7
+Publication quality against experimental Hi-C: Pearson r ≥ 0.7
+
+**Note (v1.0)**: Current "AlphaGenome" validation uses mock data. Report correlations against real Hi-C data (e.g., Rao et al. 2014) for publication.
 
 ## 5. Parameter Optimization
 

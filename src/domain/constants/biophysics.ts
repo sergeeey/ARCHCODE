@@ -11,11 +11,13 @@
 
 // Time scaling (separate simulation time from render time)
 export const SIMULATION_CONFIG = {
-    // Target simulation step in milliseconds (real-time)
-    TIME_STEP_MS: 100, // 10 simulation steps per second
+    // Target simulation step in milliseconds (real-time rendering)
+    TIME_STEP_MS: 100, // 10 simulation steps per second for UI smoothness
     
     // Biological time scaling
     // 1 simulation step = 1 second biological time
+    // NOTE: This is a tunable mapping parameter, not a physical constant.
+    // Steps are discrete simulation events; biological time is approximate.
     BIOLOGICAL_TIME_SCALE: 1, // seconds per simulation step
     
     // Visual smoothing (interpolation factor)
@@ -23,30 +25,50 @@ export const SIMULATION_CONFIG = {
 } as const;
 
 // Cohesin parameters
+// NOTE: These are MODEL PARAMETERS (assumed defaults), not measured constants.
+// Calibrate against experimental data (Hi-C, ChIA-PET) for specific cell types.
 export const COHESIN_PARAMS = {
-    // Extrusion speed: 0.5-2 kb/s (average ~1 kb/s)
+    // Extrusion speed: 0.5-2 kb/s literature range
+    // Source: Ganji et al. (2018) Science, real-time imaging of cohesin
+    // Default: 1 kb/s (middle of observed range)
     EXTRUSION_SPEED_BP_PER_S: 1000, // base pairs per second
     
-    // Processivity: average residence time ~20 minutes
-    // Convert to simulation ticks (at 10 steps/s = 20 min * 60 s / 0.1 s = 12000 ticks)
+    // Processivity: mean residence time ~20 min (literature range 10-30 min)
+    // Source: Gerlich et al. (2006) Cell, FRAP measurements
+    // NOTE: This is the TARGET mean residence time for calibration
     MEAN_PROCESSIVITY_S: 20 * 60, // 20 minutes in seconds
     
     // Unloading probability (per simulation step)
-    // Calculated to achieve mean residence time
-    UNLOADING_PROBABILITY: 0.0005, // ~1/2000 chance per step
+    // Calculated from: p = 1 / (MEAN_PROCESSIVITY_S / BIOLOGICAL_TIME_SCALE)
+    // p = 1 / 1200 ≈ 0.000833 for 20 min at 1s/step
+    // 
+    // EFFECTIVE RESIDENCE TIME IN STEPS: ~1200 steps (not minutes)
+    // The mapping to real time depends on BIOLOGICAL_TIME_SCALE
+    UNLOADING_PROBABILITY: 0.000833, // calibrated for ~20 min at dt=1s
     
     // Bookmarking efficiency: probability to respawn at unloading site
-    BOOKMARKING_EFFICIENCY: 0.5, // 50% chance to respawn
+    // Source: Assumed default (no direct measurement available)
+    // Literature suggests "memory" of loading sites but quantitative data limited
+    BOOKMARKING_EFFICIENCY: 0.5, // MODEL PARAMETER (assumed)
 } as const;
 
 // CTCF parameters
+// NOTE: These are MODEL PARAMETERS fit to ensemble data, not single-molecule constants.
+// Convergent efficiency represents population-average blocking across many cohesin-CTCF encounters.
 export const CTCF_PARAMS = {
-    // Convergent rule efficiency (how often CTCF stops cohesin)
-    // Forward (> ) on left, Reverse (< ) on right = Convergent = 80-95% blocking
-    CONVERGENT_BLOCKING_EFFICIENCY: 0.85,
+    // Convergent rule efficiency (probability that convergent CTCF stops cohesin)
+    // Convergent = Reverse (< ) on left, Forward (> ) on right
+    // 
+    // Source: Rao et al. (2014) Cell - convergent CTCF pairs enriched at loop anchors
+    // Interpretation: ~85% of convergent pairs form loops in wild-type (estimated from Hi-C)
+    // NOTE: Single-molecule efficiency may differ; this is ensemble parameter
+    CONVERGENT_BLOCKING_EFFICIENCY: 0.85, // MODEL PARAMETER (ensemble average)
     
-    // Non-convergent (divergent or tandem) = leaky, ~10-20% blocking
-    NON_CONVERGENT_BLOCKING_EFFICIENCY: 0.15,
+    // Non-convergent blocking efficiency (leaky barriers)
+    // Non-convergent = divergent (F...R) or tandem (F...F, R...R)
+    // Source: de Wit et al. (2015) Cell - some loops form without convergent CTCF
+    // Interpretation: ~15% of non-convergent pairs may still block (leaky)
+    NON_CONVERGENT_BLOCKING_EFFICIENCY: 0.15, // MODEL PARAMETER (leakiness)
     
     // Distance threshold for CTCF recognition (base pairs)
     RECOGNITION_DISTANCE_BP: 100,
@@ -61,6 +83,9 @@ export const VISUALIZATION_CONFIG = {
     // Default genome parameters
     DEFAULT_GENOME_LENGTH_BP: 500000, // 500 kb typical TAD
     DEFAULT_VIEW_CENTER_BP: 250000, // Center view at middle
+
+    /** Длительность импульса «loop_formed» (мс): и таймаут сброса pulseLoops, и анимация эмиссии в 3D */
+    LOOP_PULSE_MS: 850,
 } as const;
 
 // Heterochromatin (friction) parameters

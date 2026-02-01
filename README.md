@@ -5,9 +5,9 @@
 [![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://react.dev/)
 [![Three.js](https://img.shields.io/badge/Three.js-black.svg)](https://threejs.org/)
 
-**ARCHCODE (Architectural Code)** — 3D DNA Loop Extrusion Simulator with AlphaGenome Validation
+**ARCHCODE (Architectural Code)** — 3D DNA Loop Extrusion Simulator
 
-A TypeScript/React implementation of chromatin loop extrusion physics, validated against [AlphaGenome](https://deepmind.google.com/science/alphagenome) predictions for publication-quality research.
+A TypeScript/React implementation of chromatin loop extrusion physics. Validation: mock AlphaGenome for development; **publication target**: experimental Hi-C (e.g. Rao et al.) with Pearson r ≥ 0.7. Optional [AlphaGenome](https://deepmind.google.com/science/alphagenome) integration when API is available.
 
 ![ARCHCODE Screenshot](docs/screenshot.png)
 
@@ -61,11 +61,11 @@ Expected output: Pearson r ≥ 0.7 on HBB, Sox2, and Pcdh loci.
 ### Visualization
 - **3D Browser Rendering**: React Three Fiber + WebGL
 - **Real-time Dashboard**: NASA-style telemetry display
-- **Contact Matrix Heatmaps**: Side-by-side with AlphaGenome
+- **Contact Matrix Heatmaps**: Side-by-side comparison (optional AlphaGenome mock)
 - **P(s) Curves**: Power-law fitting (-1.0 exponent validation)
 
 ### Validation
-- **AlphaGenome Integration**: Automated correlation analysis
+- **Validation target**: Experimental Hi-C (Rao et al.); mock AlphaGenome for development
 - **Grid Search**: Parameter optimization for r > 0.7
 - **Gold Standard Tests**: HBB, Sox2, Pcdh loci from literature
 
@@ -141,6 +141,10 @@ where R = reverse CTCF (<), F = forward CTCF (>)
 P(s) ~ s^(-α) where α ≈ 1.0 (theoretical)
 ```
 
+## Development
+
+Git tags (`pre-audit`, `post-p0-fixes`) and commit discipline for AI-assisted work are described in [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md). Project rules for Cursor/AI are in [.cursorrules](./.cursorrules).
+
 ## 🐛 Known Issues
 
 See [KNOWN_ISSUES.md](./KNOWN_ISSUES.md) for limitations and future work.
@@ -153,7 +157,7 @@ MIT License — See [LICENSE](./LICENSE)
 
 - **Sanborn et al. (2015)** — Loop extrusion model foundation
 - **Rao et al. (2014)** — Hi-C contact maps
-- **AlphaGenome Team** — Validation target
+- **Rao et al. (2014)** — Experimental Hi-C validation target; **AlphaGenome** — optional integration (mock in v1.0)
 - **React Three Fiber** — 3D visualization
 
 ## 📚 Citation

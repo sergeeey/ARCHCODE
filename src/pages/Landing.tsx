@@ -19,7 +19,7 @@ export function Landing() {
                         3D DNA Loop Extrusion Simulator
                     </h1>
                     <p className="text-lg mb-8" style={{ color: 'var(--text-muted)' }}>
-                        Chromatin loop extrusion with CTCF boundaries. AlphaGenome-validated, publication-ready.
+                        Chromatin loop extrusion with CTCF boundaries. Publication-ready; validation target: experimental Hi-C (Rao et al.).
                     </p>
                     <Link to="/simulator">
                         <Button variant="success" size="lg">Launch Simulator</Button>
@@ -43,10 +43,10 @@ export function Landing() {
                         style={{ background: 'var(--bg-panel-elevated)', border: 'var(--border-panel)' }}
                     >
                         <h3 className="text-base font-semibold mb-2" style={{ color: 'var(--accent-success)' }}>
-                            AlphaGenome Validation
+                            Validation (optional AlphaGenome)
                         </h3>
                         <p style={{ color: 'var(--text-muted)' }}>
-                            Compare contact matrices and P(s) curves against DeepMind AlphaGenome predictions.
+                            Compare contact matrices and P(s) curves. Target: experimental Hi-C; optional AlphaGenome API (mock in v1.0).
                         </p>
                     </div>
                     <div

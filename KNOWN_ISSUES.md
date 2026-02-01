@@ -68,6 +68,18 @@ This document describes current limitations of ARCHCODE v1.0 and planned improve
 
 **Timeline**: Expand to 10+ loci for v1.1.
 
+### Remaining Risks (5C)
+
+Structured view of remaining scientific/calibration risks for publication and grants:
+
+| Criterion | Condition | Cause | Consequence | Corrective |
+|-----------|-----------|-------|-------------|------------|
+| Model should exhibit steady-state dynamics | Unloading is implemented but not calibrated to in vivo data for specific cell types | No published residence-time data for GM12878 (or similar) in the same assay | Cannot claim "20 min residence time" without explicit disclaimer | Document "CALIBRATION NEEDED" in METHODS and `docs/COGNITIVE_CORE.md`; state "~20 min (literature average)" when citing |
+| Validation should support publication | Current validation uses mock/synthetic contact maps | Real AlphaGenome API or experimental Hi-C not yet integrated as default | Publication must report correlation vs experimental Hi-C, not mock | Use ENCODE/Rao et al. Hi-C as ground truth for publication; see KNOWN_ISSUES §6 and docs/ALPHAGENOME.md |
+| Reproducibility | Seed and RNG reset are implemented | — | Same seed → same trajectory (by step) | Evidence: `src/utils/random.ts`, regression tests; document in AUDIT_RESPONSE |
+
+See also `AUDIT_RESPONSE.md` (Viewpoints + Evidence) and `docs/COGNITIVE_CORE.md`.
+
 ## ✅ Validated Behaviors
 
 These features are validated and stable:

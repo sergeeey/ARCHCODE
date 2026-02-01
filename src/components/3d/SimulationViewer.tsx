@@ -1,6 +1,6 @@
-import { Canvas } from '@react-three/fiber';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import * as THREE from 'three';
 import { LoopExtrusionEngine } from '../../engines/LoopExtrusionEngine';
 import { CTCFSite, Loop } from '../../domain/models/genome';
@@ -8,9 +8,13 @@ import { VISUALIZATION_CONFIG } from '../../domain/constants/biophysics';
 
 const DNA_LENGTH = VISUALIZATION_CONFIG.DNA_LENGTH_VISUAL;
 const SCALE = VISUALIZATION_CONFIG.SCALE_BP_TO_VISUAL;
+const LOOP_PULSE_MS = VISUALIZATION_CONFIG.LOOP_PULSE_MS;
+const EMISSIVE_PEAK = 2;
+const EMISSIVE_NORMAL = 0.2;
 
 interface SimulationViewerProps {
     engine: LoopExtrusionEngine;
+    pulseLoops?: Loop[];
 }
 
 // Convert genome position to 3D coordinate
@@ -57,7 +61,10 @@ const CTCFMarker = ({ site, genomeLength }: { site: CTCFSite; genomeLength: numb
     );
 };
 
-const LoopArc = ({ loop, genomeLength }: { loop: Loop; genomeLength: number }) => {
+const LoopArc = ({ loop, genomeLength, pulsing }: { loop: Loop; genomeLength: number; pulsing: boolean }) => {
+    const materialRef = useRef<THREE.MeshStandardMaterial>(null);
+    const startTimeRef = useRef<number | null>(pulsing ? performance.now() : null);
+
     const curve = useMemo(() => {
         const startX = genomeTo3D(loop.leftAnchor, genomeLength);
         const endX = genomeTo3D(loop.rightAnchor, genomeLength);
@@ -71,15 +78,25 @@ const LoopArc = ({ loop, genomeLength }: { loop: Loop; genomeLength: number }) =
         );
     }, [loop.leftAnchor, loop.rightAnchor, genomeLength]);
 
+    useFrame(() => {
+        const mat = materialRef.current;
+        if (!mat || !pulsing) return;
+        if (startTimeRef.current === null) startTimeRef.current = performance.now();
+        const elapsed = (performance.now() - startTimeRef.current) / 1000;
+        const t = Math.min(1, elapsed / (LOOP_PULSE_MS / 1000));
+        mat.emissiveIntensity = EMISSIVE_NORMAL + (EMISSIVE_PEAK - EMISSIVE_NORMAL) * (1 - t);
+    });
+
     return (
         <mesh>
             <tubeGeometry args={[curve, 20, 0.08, 8, false]} />
-            <meshStandardMaterial 
-                color="#00ff88" 
-                transparent 
+            <meshStandardMaterial
+                ref={materialRef}
+                color="#00f0ff"
+                transparent
                 opacity={0.6 + loop.strength * 0.4}
-                emissive="#00ff88"
-                emissiveIntensity={0.2}
+                emissive="#00f0ff"
+                emissiveIntensity={pulsing ? EMISSIVE_PEAK : EMISSIVE_NORMAL}
             />
         </mesh>
     );
@@ -139,7 +156,11 @@ const CohesinComplex = ({
     );
 };
 
-export const SimulationViewer = ({ engine }: SimulationViewerProps) => {
+function isPulsing(loop: Loop, pulseLoops: Loop[]): boolean {
+    return pulseLoops.some(p => p.leftAnchor === loop.leftAnchor && p.rightAnchor === loop.rightAnchor);
+}
+
+export const SimulationViewer = ({ engine, pulseLoops = [] }: SimulationViewerProps) => {
     const genomeLength = engine.genomeLength;
     const loops = engine.getLoops();
     const ctcfSites = engine.ctcfSites;
@@ -167,7 +188,8 @@ export const SimulationViewer = ({ engine }: SimulationViewerProps) => {
                     <LoopArc 
                         key={`loop-${index}`} 
                         loop={loop} 
-                        genomeLength={genomeLength} 
+                        genomeLength={genomeLength}
+                        pulsing={isPulsing(loop, pulseLoops)}
                     />
                 ))}
                 

@@ -8,7 +8,8 @@ import {
     GenomeElement, 
     CTCFSite, 
     LoopStatus, 
-    CTCFInteraction 
+    CTCFInteraction,
+    CTCFOrientation 
 } from './genome';
 import { 
     COHESIN_PARAMS, 
@@ -19,11 +20,11 @@ import {
 
 /**
  * Check if CTCF sites are in convergent orientation
- * Convergent: Forward (>) on left, Reverse (<) on right
+ * Convergent: Forward (F, >) on left, Reverse (R, <) on right
  * This creates a "trap" for cohesin
  */
 function isConvergent(leftSite: CTCFSite, rightSite: CTCFSite): boolean {
-    return leftSite.orientation === 'forward' && rightSite.orientation === 'reverse';
+    return leftSite.orientation === 'F' && rightSite.orientation === 'R';
 }
 
 /**
@@ -36,11 +37,11 @@ export function checkCTCFBlocking(
     approachDirection: 'left' | 'right'
 ): CTCFInteraction {
     // Determine if this is a convergent interaction
-    // For left leg approaching: need forward (>) CTCF
-    // For right leg approaching: need reverse (<) CTCF
+    // For left leg approaching: need forward (F, >) CTCF
+    // For right leg approaching: need reverse (R, <) CTCF
     const isConvergentOrientation = 
-        (approachDirection === 'left' && ctcfSite.orientation === 'forward') ||
-        (approachDirection === 'right' && ctcfSite.orientation === 'reverse');
+        (approachDirection === 'left' && ctcfSite.orientation === 'F') ||
+        (approachDirection === 'right' && ctcfSite.orientation === 'R');
     
     if (isConvergentOrientation) {
         // Convergent: high probability of blocking

@@ -1,6 +1,8 @@
 import { useState, useCallback } from 'react';
+import { FileUp } from 'lucide-react';
 import { CTCFSite } from '../../domain/models/genome';
 import { loadCTCFFromBED, BEDParseResult } from '../../parsers/bed';
+import { Panel } from './Panel';
 
 interface BEDUploaderProps {
     onSitesLoaded: (sites: CTCFSite[]) => void;
@@ -69,90 +71,43 @@ export const BEDUploader = ({ onSitesLoaded }: BEDUploaderProps) => {
     }, [onSitesLoaded]);
 
     return (
-        <div style={{
-            padding: '20px',
-            background: 'rgba(0,0,0,0.8)',
-            borderRadius: '8px',
-            color: 'white',
-            fontFamily: 'monospace',
-        }}>
-            <h3 style={{ margin: '0 0 15px 0' }}>📁 Load CTCF Sites (BED)</h3>
-            
+        <Panel title="Load CTCF Sites (BED)" className="font-mono">
             <div
                 onDragOver={handleDragOver}
                 onDragLeave={handleDragLeave}
                 onDrop={handleDrop}
-                style={{
-                    border: `2px dashed ${isDragging ? '#2ecc71' : '#555'}`,
-                    borderRadius: '8px',
-                    padding: '30px',
-                    textAlign: 'center',
-                    background: isDragging ? 'rgba(46, 204, 113, 0.1)' : 'transparent',
-                    transition: 'all 0.2s',
-                    cursor: 'pointer',
-                }}
+                className={`rounded-[var(--radius-md)] p-6 text-center cursor-pointer transition-all border-2 border-dashed ${isDragging ? 'border-[var(--accent-live)] bg-[rgba(0,240,255,0.06)]' : 'border-[rgba(255,255,255,0.2)]'}`}
             >
-                <input
-                    type="file"
-                    accept=".bed,.txt"
-                    onChange={handleFileInput}
-                    style={{ display: 'none' }}
-                    id="bed-file-input"
-                />
-                <label htmlFor="bed-file-input" style={{ cursor: 'pointer' }}>
-                    <div style={{ fontSize: '24px', marginBottom: '10px' }}>📤</div>
-                    <div>Drop BED file here or click to select</div>
-                    <div style={{ fontSize: '12px', color: '#888', marginTop: '5px' }}>
-                        Format: chrom start end name score strand
-                    </div>
+                <input type="file" accept=".bed,.txt" onChange={handleFileInput} className="hidden" id="bed-file-input" />
+                <label htmlFor="bed-file-input" className="cursor-pointer block">
+                    <FileUp className="mx-auto mb-2 text-[var(--text-label)]" size={24} />
+                    <div className="text-[var(--text-heading)] text-sm">Drop BED file or click</div>
+                    <div className="text-[11px] text-[var(--text-label)] mt-1">chrom start end name score strand</div>
                 </label>
             </div>
 
             {error && (
-                <div style={{
-                    marginTop: '10px',
-                    padding: '10px',
-                    background: 'rgba(231, 76, 60, 0.2)',
-                    border: '1px solid #e74c3c',
-                    borderRadius: '4px',
-                    color: '#e74c3c',
-                    fontSize: '12px',
-                }}>
-                    ❌ {error}
+                <div className="mt-2 p-2 rounded-[var(--radius-sm)] bg-[rgba(231,76,60,0.15)] border border-[var(--accent-danger)] text-[var(--accent-danger)] text-xs">
+                    {error}
                 </div>
             )}
 
             {result && (
-                <div style={{
-                    marginTop: '15px',
-                    padding: '15px',
-                    background: 'rgba(46, 204, 113, 0.1)',
-                    border: '1px solid #2ecc71',
-                    borderRadius: '4px',
-                }}>
-                    <div style={{ color: '#2ecc71', fontWeight: 'bold', marginBottom: '10px' }}>
-                        ✅ Loaded successfully
-                    </div>
-                    <div style={{ fontSize: '13px', display: 'grid', gap: '5px' }}>
-                        <div>📊 Parsed: <strong>{result.parsed}</strong> sites</div>
-                        <div>⏭️ Skipped: <strong>{result.skipped}</strong> lines</div>
-                        <div style={{ marginTop: '5px' }}>
-                            <strong>Forward (&gt;):</strong>{' '}
-                            {result.sites.filter(s => s.orientation === 'F').length}
-                        </div>
-                        <div>
-                            <strong>Reverse (&lt;):</strong>{' '}
-                            {result.sites.filter(s => s.orientation === 'R').length}
-                        </div>
+                <div className="mt-4 p-4 rounded-[var(--radius-sm)] bg-[rgba(0,240,255,0.06)] border border-[rgba(0,240,255,0.2)]">
+                    <div className="text-[var(--accent-live)] font-semibold text-xs mb-2">Loaded</div>
+                    <div className="text-xs text-[var(--text-label)] grid gap-1 tabular-nums">
+                        <div>Parsed: <span className="text-[var(--text-heading)]">{result.parsed}</span> sites</div>
+                        <div>Skipped: <span className="text-[var(--text-heading)]">{result.skipped}</span></div>
+                        <div>Forward: {result.sites.filter(s => s.orientation === 'F').length}</div>
+                        <div>Reverse: {result.sites.filter(s => s.orientation === 'R').length}</div>
                         {result.sites.length > 0 && (
-                            <div style={{ marginTop: '5px', fontSize: '11px', color: '#888' }}>
-                                Range: {Math.min(...result.sites.map(s => s.position)).toLocaleString()} - {' '}
-                                {Math.max(...result.sites.map(s => s.position)).toLocaleString()} bp
+                            <div className="text-[10px] mt-1">
+                                Range: {Math.min(...result.sites.map(s => s.position)).toLocaleString()} - {Math.max(...result.sites.map(s => s.position)).toLocaleString()} bp
                             </div>
                         )}
                     </div>
                 </div>
             )}
-        </div>
+        </Panel>
     );
 };

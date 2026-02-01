@@ -1,0 +1,29 @@
+# ARCHCODE Project Rules
+
+Use these rules when editing ARCHCODE codebase. They ensure scientific correctness, reproducibility, and consistency.
+
+## Constants and domain
+
+1. **All physical/biophysical constants** belong only in `src/domain/constants/biophysics.ts`. Do not introduce new magic numbers in engines or UI; add named constants with LITERATURE-BASED or MODEL PARAMETER comments where appropriate.
+
+2. **CTCF orientation** is strictly `'F' | 'R'` (never `'forward'` or `'reverse'`). Use the `CTCFOrientation` type from `src/domain/models/genome.ts` everywhere (parsers, physics, engines).
+
+3. **Simulation steps** are dimensionless discrete events. Do not conflate them with real time (seconds) without explicit scaling; document any step-to-time mapping (e.g. in biophysics.ts or COGNITIVE_CORE.md).
+
+4. **Parameter comments**: Distinguish "MODEL PARAMETER" (tunable, to be calibrated) from "LITERATURE-BASED" (from papers) in biophysics and engine code.
+
+## Randomness and reproducibility
+
+5. **Do not use `Math.random()`**. Use only `SeededRandom` from `src/utils/random.ts` so that runs are reproducible with the same seed. All engines must accept and use a `seed` in config.
+
+## Feature iteration order
+
+6. **Preferred order** when adding features: CTCF/parsers → engine/physics → visualization → validation. Keep domain and engines independent of UI.
+
+## File size and structure
+
+7. **If a file exceeds ~300 lines**, consider splitting: extract pure functions or helpers into separate modules under `src/engines/` or `src/utils/`, and re-export from index if needed. Preserve the public API (e.g. `LoopExtrusionEngine`, exports from `src/engines/index.ts`).
+
+## Validation and wording
+
+8. **Validation claims**: Current validation uses mock/synthetic data unless explicitly stated. For user-facing or publication text, say "validation target: experimental Hi-C (e.g. Rao et al.)" or "mock AlphaGenome" where applicable; do not imply real AlphaGenome API validation without an explicit disclaimer.

@@ -35,6 +35,7 @@ describe('LoopExtrusionEngine', () => {
         it('should form loop with convergent CTCF (R...F)', () => {
             // Convergent: R left of cohesin, F right of cohesin -> loop forms
             // Left leg (decreasing) hits R, right leg (increasing) hits F
+            // NOTE: With steady-state dynamics (respawn), multiple loops can form
             const sites: CTCFSite[] = [
                 { chrom: 'chr11', position: 1000, orientation: 'R', strength: 1.0 },
                 { chrom: 'chr11', position: 5000, orientation: 'F', strength: 1.0 },
@@ -49,7 +50,9 @@ describe('LoopExtrusionEngine', () => {
 
             const loops = engine.run(100);
 
-            expect(loops.length).toBe(1);
+            // With respawn active, multiple loops can form (steady-state dynamics)
+            // First loop should always be at the convergent pair
+            expect(loops.length).toBeGreaterThanOrEqual(1);
             expect(loops[0].leftAnchor).toBe(1000);
             expect(loops[0].rightAnchor).toBe(5000);
         });
@@ -109,8 +112,9 @@ describe('LoopExtrusionEngine', () => {
 
             const loops = engine.run(100);
 
-            // Should form loop between R@2000 and F@8000 (nearest convergent pair)
-            expect(loops.length).toBe(1);
+            // With steady-state dynamics (respawn), multiple loops can form
+            // First loop should be at nearest convergent pair: R@2000 and F@8000
+            expect(loops.length).toBeGreaterThanOrEqual(1);
             expect(loops[0].leftAnchor).toBe(2000);
             expect(loops[0].rightAnchor).toBe(8000);
         });

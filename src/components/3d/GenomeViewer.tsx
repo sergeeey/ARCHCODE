@@ -1,18 +1,56 @@
-import React, { useMemo } from 'react';
-import { Canvas } from '@react-three/fiber';
+import React, { useMemo, useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls, Stars } from '@react-three/drei';
 import * as THREE from 'three';
 import { LoopExtrusionEngine } from '../../engines/LoopExtrusionEngine';
 import { CTCFSite, Loop } from '../../domain/models/genome';
+import { VISUALIZATION_CONFIG } from '../../domain/constants/biophysics';
 
-interface GenomeViewerProps {
-    engine?: LoopExtrusionEngine;
-    genomeLength?: number;
-    loops?: Loop[];
-    ctcfSites?: CTCFSite[];
+const LOOP_PULSE_MS = VISUALIZATION_CONFIG.LOOP_PULSE_MS;
+const EMISSIVE_PEAK = 8;
+const EMISSIVE_NORMAL = 3;
+
+function isPulsing(loop: Loop, pulseLoops: Loop[]): boolean {
+    return pulseLoops.some(p => p.leftAnchor === loop.leftAnchor && p.rightAnchor === loop.rightAnchor);
 }
 
-const ChromatinTube = ({ genomeLength, loops, ctcfSites }: { genomeLength: number; loops: Loop[]; ctcfSites: CTCFSite[] }) => {
+/** Дуга петли с кратким cyan-glow при событии loop_formed (0.5–1 с) */
+function LoopArcMesh({ curve, pulsing }: { curve: THREE.CatmullRomCurve3; pulsing: boolean }) {
+    const materialRef = useRef<THREE.MeshStandardMaterial>(null);
+    const startTimeRef = useRef<number | null>(pulsing ? performance.now() : null);
+
+    useFrame(() => {
+        const mat = materialRef.current;
+        if (!mat || !pulsing) return;
+        if (startTimeRef.current === null) startTimeRef.current = performance.now();
+        const elapsed = (performance.now() - startTimeRef.current) / 1000;
+        const t = Math.min(1, elapsed / (LOOP_PULSE_MS / 1000));
+        mat.emissiveIntensity = EMISSIVE_NORMAL + (EMISSIVE_PEAK - EMISSIVE_NORMAL) * (1 - t);
+    });
+
+    return (
+        <mesh>
+            <tubeGeometry args={[curve, 32, 0.5, 12, false]} />
+            <meshStandardMaterial
+                ref={materialRef}
+                color="#00ffff"
+                emissive="#00f0ff"
+                emissiveIntensity={pulsing ? EMISSIVE_PEAK : EMISSIVE_NORMAL}
+                roughness={0.1}
+                metalness={0.9}
+            />
+        </mesh>
+    );
+}
+
+interface ChromatinTubeProps {
+    genomeLength: number;
+    loops: Loop[];
+    ctcfSites: CTCFSite[];
+    pulseLoops: Loop[];
+}
+
+const ChromatinTube = ({ genomeLength, loops, ctcfSites, pulseLoops }: ChromatinTubeProps) => {
     const mainPath = useMemo(() => {
         const points: THREE.Vector3[] = [];
         const radius = 25;
@@ -45,22 +83,28 @@ const ChromatinTube = ({ genomeLength, loops, ctcfSites }: { genomeLength: numbe
                 <meshStandardMaterial color="#6600cc" emissive="#220044" emissiveIntensity={0.8} roughness={0.3} metalness={0.8} />
             </mesh>
             {loopCurves.map((curve, i) => (
-                <mesh key={i}>
-                    <tubeGeometry args={[curve, 32, 0.5, 12, false]} />
-                    <meshStandardMaterial color="#00ffff" emissive="#00ffff" emissiveIntensity={3} roughness={0.1} metalness={0.9} />
-                </mesh>
+                <LoopArcMesh key={i} curve={curve} pulsing={isPulsing(loops[i], pulseLoops)} />
             ))}
         </group>
     );
 };
 
-export const GenomeViewer: React.FC<GenomeViewerProps> = ({ engine }) => {
+interface GenomeViewerProps {
+    engine?: LoopExtrusionEngine;
+    genomeLength?: number;
+    loops?: Loop[];
+    ctcfSites?: CTCFSite[];
+    stepCount?: number;
+    pulseLoops?: Loop[];
+}
+
+export const GenomeViewer: React.FC<GenomeViewerProps> = ({ engine, stepCount = 0, pulseLoops = [] }) => {
     const data = useMemo(() => {
         if (engine) {
             return { genomeLength: engine.genomeLength, loops: engine.getLoops(), ctcfSites: engine.ctcfSites };
         }
         return { genomeLength: 100000, loops: [] as Loop[], ctcfSites: [] as CTCFSite[] };
-    }, [engine]);
+    }, [engine, stepCount]);
 
     return (
         <div className="w-full h-full min-h-[500px] bg-black relative rounded-xl overflow-hidden shadow-2xl border border-gray-800">
@@ -69,7 +113,7 @@ export const GenomeViewer: React.FC<GenomeViewerProps> = ({ engine }) => {
                 <ambientLight intensity={0.6} />
                 <pointLight position={[20, 20, 20]} intensity={1.5} />
                 <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={0.5} />
-                <ChromatinTube genomeLength={data.genomeLength} loops={data.loops} ctcfSites={data.ctcfSites} />
+                <ChromatinTube genomeLength={data.genomeLength} loops={data.loops} ctcfSites={data.ctcfSites} pulseLoops={pulseLoops} />
                 <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
             </Canvas>
             <div className="absolute bottom-4 left-4 text-white text-xs font-mono">MODE: NEON TUBE v2.0</div>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { LoopExtrusionEngine } from '../../engines/LoopExtrusionEngine';
 import { CTCFSite } from '../../domain/models/genome';
+import { Tooltip } from './Tooltip';
 
 interface DebugOverlayProps {
     engine: LoopExtrusionEngine;
@@ -145,33 +146,51 @@ export const DebugOverlay = ({ engine, ctcfSites, isRunning }: DebugOverlayProps
 
             {/* Основные метрики */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px', marginBottom: '15px' }}>
-                <div style={{ background: '#111', padding: '8px', borderRadius: '4px' }}>
-                    <div style={{ color: '#888', fontSize: '10px' }}>Step</div>
-                    <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{debugInfo.step}</div>
-                </div>
+                <Tooltip title="Шаг симуляции" content="Внутренний дискретный шаг модели экструзии. Используется для пошагового анализа (STEP).">
+                    <div style={{ background: '#111', padding: '8px', borderRadius: '4px', cursor: 'help' }}>
+                        <div style={{ color: '#888', fontSize: '10px' }}>Step</div>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold' }}>{debugInfo.step}</div>
+                    </div>
+                </Tooltip>
                 <div style={{ background: '#111', padding: '8px', borderRadius: '4px' }}>
                     <div style={{ color: '#888', fontSize: '10px' }}>Active Cohesin</div>
                     <div style={{ fontSize: '18px', fontWeight: 'bold', color: debugInfo.activeCohesin > 0 ? '#0f0' : '#f00' }}>
                         {debugInfo.activeCohesin}
                     </div>
                 </div>
-                <div style={{ background: '#111', padding: '8px', borderRadius: '4px' }}>
-                    <div style={{ color: '#888', fontSize: '10px' }}>Loops Formed</div>
-                    <div style={{ 
-                        fontSize: '18px', 
-                        fontWeight: 'bold', 
-                        color: debugInfo.loops > 0 ? '#0f0' : '#f00',
-                        animation: debugInfo.loops > 0 ? 'none' : 'blink 1s infinite',
-                    }}>
-                        {debugInfo.loops}
+                <Tooltip
+                    title="Образовались петли"
+                    content={
+                        <>
+                            Количество событий временной стабилизации хроматиновых петель за время симуляции.
+                            <br /><br />
+                            ⚠️ Не означает количество одновременно существующих петель.
+                        </>
+                    }
+                >
+                    <div style={{ background: '#111', padding: '8px', borderRadius: '4px', cursor: 'help' }}>
+                        <div style={{ color: '#888', fontSize: '10px' }}>Loops Formed</div>
+                        <div style={{ 
+                            fontSize: '18px', 
+                            fontWeight: 'bold', 
+                            color: debugInfo.loops > 0 ? '#0f0' : '#f00',
+                            animation: debugInfo.loops > 0 ? 'none' : 'blink 1s infinite',
+                        }}>
+                            {debugInfo.loops}
+                        </div>
                     </div>
-                </div>
-                <div style={{ background: '#111', padding: '8px', borderRadius: '4px' }}>
-                    <div style={{ color: '#888', fontSize: '10px' }}>Convergent Pairs</div>
-                    <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#ff0' }}>
-                        {debugInfo.convergentPairs.length}
+                </Tooltip>
+                <Tooltip
+                    title="Конвергентные пары"
+                    content="Число устойчивых CTCF-ограниченных петель в текущем состоянии. Значение 0 означает, что устойчивые петли не сформировались или распались."
+                >
+                    <div style={{ background: '#111', padding: '8px', borderRadius: '4px', cursor: 'help' }}>
+                        <div style={{ color: '#888', fontSize: '10px' }}>Convergent Pairs</div>
+                        <div style={{ fontSize: '18px', fontWeight: 'bold', color: '#ff0' }}>
+                            {debugInfo.convergentPairs.length}
+                        </div>
                     </div>
-                </div>
+                </Tooltip>
             </div>
 
             {/* Список конвергентных пар */}
