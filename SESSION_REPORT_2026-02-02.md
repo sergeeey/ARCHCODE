@@ -153,8 +153,8 @@ Ready to push: Yes
 
 | # | Задача | Статус |
 |---|--------|--------|
-| 1 | Интеграция реальных Hi-C данных (Rao 2014) | ❌ Mock |
-| 2 | Валидация Pearson r ≥ 0.7 на реальных данных | ❌ Pending |
+| 1 | Интеграция реальных Hi-C данных (Rao 2014) | ✅ **DONE** - hic.ts downloader |
+| 2 | Валидация Pearson r ≥ 0.7 на реальных данных | ⚠️ Ready to test |
 | 3 | Zenodo DOI | ❌ Manual step |
 | 4 | GitHub Pages demo | ❌ Not deployed |
 
@@ -179,15 +179,23 @@ Ready to push: Yes
 
 ### 7.1 Перед публикацией
 
-1. **Заменить mock на реальные Hi-C данные**
-   ```bash
-   # Скачать Rao 2014 для GM12878
-   # Интегрировать в validation pipeline
-   ```
+1. **✅ Hi-C Data Downloader создан** (`src/downloaders/hic.ts`)
+   - Rao 2014 datasets (GM12878, K562)
+   - 4D Nucleome datasets
+   - Power-law validation (offline)
 
 2. **Запустить полную валидацию**
    ```bash
-   npm run validate:hbb
+   # Power-law validation (offline, quick)
+   npm run validate:hic
+
+   # Real Hi-C validation (downloads data)
+   npm run validate:hic:download
+
+   # List available datasets
+   npm run validate:hic:list
+
+   # Regression tests
    npm run test:regression
    ```
 
