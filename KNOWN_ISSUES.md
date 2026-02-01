@@ -2,6 +2,8 @@
 
 This document describes current limitations of ARCHCODE v1.0 and planned improvements for v2.0.
 
+> **HaluGate Verified**: 2026-02-02. See `HALUGATE_REPORT.md` for scientific claim verification.
+
 ## 🚧 Current Limitations
 
 ### Physics Model
@@ -34,11 +36,23 @@ This document describes current limitations of ARCHCODE v1.0 and planned improve
 **Future**: v2.0 may add stochastic CTCF binding/unbinding.
 
 #### 4. Simplified Processivity
-**Status**: By design  
-**Impact**: Low  
+**Status**: By design
+**Impact**: Medium (see HaluGate report)
 **Description**: Cohesin unloads with fixed probability. Real cohesin has more complex unloading regulated by WAPL and PDS5.
 
+**Model vs Literature Discrepancy**:
+- Literature (Davidson et al. 2019): ~33 kb average loop size in single-molecule assay
+- Model value: 600 kb processivity
+- Scaling factor: ~18×
+
+**Justification**: Higher processivity compensates for:
+1. Lack of nucleosome-mediated friction
+2. Simplified dynamics (no WAPL/PDS5 regulation)
+3. Need to form large TADs (100s of kb)
+
 **Workaround**: Calibrated unloading rate to match ~20 min mean residence time.
+
+⚠️ **Citation Warning**: Ganji et al. (2018) studied **condensin**, not cohesin. For cohesin kinetics, cite Davidson et al. (2019).
 
 ### Visualization
 

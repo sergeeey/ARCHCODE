@@ -2,6 +2,8 @@
 
 Detailed methodology for publication Methods sections.
 
+> **HaluGate Verified**: 2026-02-02. See `HALUGATE_REPORT.md` for verification details.
+
 ## 1. Loop Extrusion Algorithm
 
 ### 1.1 Cohesin Dynamics
@@ -15,8 +17,15 @@ After t steps: L-t========R+t  (symmetric bidirectional extrusion)
 ```
 
 **Parameters:**
-- **Velocity**: 500-2000 bp/step (default: 1000 bp/step = ~1 kb/s biological)
-- **Processivity**: Cohesin unloads stochastically with probability 0.000833/step
+- **Velocity**: 500-2000 bp/step (default: 1000 bp/step)
+  - *Source*: Davidson et al. (2019) Science — human cohesin single-molecule
+  - *Literature value*: 0.5 kb/s mean, up to 2.1 kb/s max
+  - *Model value*: 1000 bp/step (upper range for faster dynamics)
+  - ⚠️ *Warning*: Ganji et al. (2018) studied **condensin**, not cohesin!
+- **Processivity**: MODEL PARAMETER
+  - *Literature*: ~33 kb average loop size (Davidson et al. 2019)
+  - *Model value*: 600 kb (scaled for domain-level TAD formation)
+- **Unloading probability**: 0.000833/step (calculated from residence time)
 - **Mean residence time**: ~1200 steps (approximately 20 min if 1 step = 1s)
 
 **Important**: Steps are discrete simulation events. Biological time is approximate:
@@ -35,11 +44,15 @@ CTCF sites block cohesin based on orientation:
 | F ... F      | No             | Yes             | ❌ No       |
 | R ... R      | Yes            | No              | ❌ No       |
 
-**Blocking efficiency** (model parameters fit to ensemble data):
-- **Convergent (R...F)**: 85% blocking efficiency (ensemble average, Rao et al. 2014)
-- **Non-convergent**: 15% leaky blocking (estimated from de Wit et al. 2015)
+**Blocking efficiency** (MODEL PARAMETERS fit to ensemble Hi-C data):
+- **Convergent (R...F)**: 85% blocking efficiency
+  - *Type*: MODEL PARAMETER calibrated to reproduce Rao et al. (2014) loop frequencies
+  - *Note*: Rao et al. reports loop statistics, not blocking probability per se
+- **Non-convergent**: 15% leaky blocking
+  - *Type*: MODEL PARAMETER estimated from de Wit et al. (2015)
+  - *Note*: No direct single-molecule measurement available
 
-**Note**: These are population-averaged parameters, not single-molecule efficiencies.
+**Important**: These are population-averaged model parameters, not single-molecule efficiencies. The values are chosen to reproduce observed Hi-C contact enrichment patterns.
 
 ### 1.3 Ensemble Simulation
 
@@ -224,9 +237,33 @@ npm run validate:hbb
 
 Expected result: `pearson >= 0.7`
 
+## 8. Parameter Classification
+
+This table distinguishes measured values from model assumptions:
+
+| Parameter | Type | Literature Value | Model Value | Source |
+|-----------|------|------------------|-------------|--------|
+| Extrusion velocity | LITERATURE + MODEL | 0.5 kb/s mean | 1000 bp/step | Davidson et al. (2019) |
+| Processivity | MODEL PARAMETER | ~33 kb | 600 kb | Scaled for TAD formation |
+| Residence time | LITERATURE | 20-25 min | 1200 steps | Gerlich et al. (2006) |
+| CTCF convergent efficiency | MODEL PARAMETER | N/A (not measured) | 85% | Fit to Rao 2014 Hi-C |
+| CTCF non-convergent efficiency | MODEL PARAMETER | N/A | 15% | Estimated |
+| Bookmarking efficiency | ASSUMED DEFAULT | N/A | 50% | No literature data |
+| Step-to-time mapping | MODEL ASSUMPTION | N/A | 1 step = 1s | Tunable parameter |
+
+**Legend:**
+- **LITERATURE**: Direct experimental measurement available
+- **MODEL PARAMETER**: Value chosen to reproduce experimental observations
+- **ASSUMED DEFAULT**: No experimental data; reasonable guess
+
+---
+
 ## References
 
 1. Sanborn et al. (2015). Chromatin extrusion explains key features of loop and domain formation. *PNAS*.
 2. Rao et al. (2014). A 3D map of the human genome at kilobase resolution. *Cell*.
 3. Fudenberg et al. (2016). Formation of chromosomal domains by loop extrusion. *Cell Reports*.
-4. AlphaGenome Team (2024). Predicting genome structure from sequence. *DeepMind*.
+4. Davidson et al. (2019). DNA loop extrusion by human cohesin. *Science* 366:1338–1345.
+5. Ganji et al. (2018). Real-time imaging of DNA loop extrusion by condensin. *Science*. ⚠️ **CONDENSIN, not cohesin!**
+6. Gerlich et al. (2006). Live-cell imaging reveals a stable cohesin-chromatin interaction. *Curr Biol*.
+7. Lieberman-Aiden et al. (2009). Comprehensive mapping of long-range interactions. *Science*.

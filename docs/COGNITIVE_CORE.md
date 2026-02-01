@@ -8,9 +8,18 @@ This document captures **implicit design decisions** and their rationale so they
 
 ### Why `velocity = 1000` (bp/step)
 
-- **Literature**: Ganji et al. (2018) Science — extrusion speed range 0.5–2 kb/s; typical ~1 kb/s.
+- **Literature**: Davidson et al. (2019) Science — human **cohesin** single-molecule: 0.5 kb/s mean, up to 2.1 kb/s max.
+- ⚠️ **WARNING**: Ganji et al. (2018) studied **CONDENSIN**, not cohesin! Condensin is faster (~1.5 kb/s).
 - **In code**: Default 1000 bp/step in engine config; constant `EXTRUSION_SPEED_BP_PER_S: 1000` in `src/domain/constants/biophysics.ts`.
+- **Justification**: 1000 bp/step is upper range of cohesin literature values, chosen for faster simulation dynamics.
 - **Note**: Steps are dimensionless; the label "bp/step" means "base pairs moved per simulation step." Mapping to real time is via `BIOLOGICAL_TIME_SCALE` (tunable).
+
+### Why `processivity = 600` kb (MODEL PARAMETER)
+
+- **Literature**: Davidson et al. (2019) — average extruded loop size **33 kb** in single-molecule assay.
+- **Model value**: 600 kb (~18× higher than literature).
+- **Justification**: Higher processivity allows formation of domain-scale TADs (100s of kb) observed in Hi-C. Single-molecule conditions differ from in vivo (no nucleosomes, no other proteins).
+- **Uncertainty**: HIGH — this is a calibration parameter, not a measured constant.
 
 ### Why unloading probability ~0.0005–0.0008
 

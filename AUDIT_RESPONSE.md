@@ -134,9 +134,11 @@ This view covers regression tests, gold-standard loci, and the source of ground 
 
 | Parameter | Type | Source | Uncertainty |
 |-----------|------|--------|-------------|
-| EXTRUSION_SPEED_BP_PER_S | Literature-based | Ganji et al. (2018) | ±50% (0.5–2 kb/s) |
+| EXTRUSION_SPEED_BP_PER_S | Literature-based | Davidson et al. (2019) cohesin | ±50% (0.5–2 kb/s) |
+| EXTRUSION_SPEED_BP_PER_S | ⚠️ **CORRECTION** | Ganji 2018 studied **condensin**, not cohesin! | N/A |
+| PROCESSIVITY_KB | MODEL PARAMETER | Davidson 2019: 33 kb; Model: 600 kb | HIGH - 18× scaled |
 | UNLOADING_PROBABILITY | Calculated | 1/meanResidenceSteps | Assumes exponential kinetics |
-| CONVERGENT_BLOCKING_EFFICIENCY | Ensemble fit | Rao et al. (2014) | Single-molecule may differ |
+| CONVERGENT_BLOCKING_EFFICIENCY | MODEL PARAMETER | Fit to Rao et al. (2014) Hi-C | Single-molecule may differ |
 | BOOKMARKING_EFFICIENCY | Assumed default | No direct measurement | HIGH uncertainty |
 
 Steps are **dimensionless** discrete events; biological time mapping is a tunable parameter (see `docs/COGNITIVE_CORE.md`).

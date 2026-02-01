@@ -156,9 +156,11 @@ MIT License — See [LICENSE](./LICENSE)
 ## 🙏 Acknowledgments
 
 - **Sanborn et al. (2015)** — Loop extrusion model foundation
-- **Rao et al. (2014)** — Hi-C contact maps
-- **Rao et al. (2014)** — Experimental Hi-C validation target; **AlphaGenome** — optional integration (mock in v1.0)
+- **Rao et al. (2014)** — Hi-C contact maps and validation target
+- **Davidson et al. (2019)** — Human cohesin single-molecule kinetics
+- **Gerlich et al. (2006)** — Cohesin residence time FRAP data
 - **React Three Fiber** — 3D visualization
+- **AlphaGenome** — Optional integration (mock in v1.0)
 
 ## 📚 Citation
 

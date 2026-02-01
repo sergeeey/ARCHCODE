@@ -13,9 +13,12 @@
   
   "source": "Grid search optimization for HBB locus + literature defaults",
   "literature": {
-    "cohesinSpeed": "Ganji et al. (2018) Science - 0.5-2 kb/s",
-    "residenceTime": "Gerlich et al. (2006) Cell - ~20 min FRAP",
-    "ctcfEfficiency": "Rao et al. (2014) Cell - convergent enrichment",
+    "cohesinSpeed": "Davidson et al. (2019) Science - 0.5 kb/s mean for COHESIN",
+    "cohesinSpeedWarning": "Ganji 2018 studied CONDENSIN (1.5 kb/s), NOT cohesin!",
+    "processivity": "Davidson et al. (2019) - 33 kb average loop (single-molecule)",
+    "processivityModel": "600 kb MODEL PARAMETER for domain-scale simulation",
+    "residenceTime": "Gerlich et al. (2006) Curr Biol - ~20 min FRAP",
+    "ctcfEfficiency": "Rao et al. (2014) Cell - convergent enrichment (MODEL PARAM)",
     "ctcfResidence": "Hansen et al. (2017) - 1-5 min (not yet implemented)"
   },
   
@@ -23,7 +26,8 @@
     "cohesin": {
       "velocity": 1000,
       "velocityUnit": "bp/step",
-      "velocityNote": "Effective speed. Literature: ~1 kb/s (Ganji 2018)",
+      "velocityNote": "MODEL PARAMETER. Literature: 0.5 kb/s mean (Davidson 2019 cohesin)",
+      "velocityWarning": "Ganji 2018 studied condensin, not cohesin!",
       
       "meanResidenceSteps": 1200,
       "meanResidenceStepsNote": "NOT minutes! Steps are discrete simulation events",

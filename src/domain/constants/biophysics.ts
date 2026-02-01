@@ -1,12 +1,17 @@
 /**
  * ARCHCODE Biophysical Constants
  * Source: Literature-based values for loop extrusion simulation
- * 
+ *
  * References:
- * - Extrusion speed: 0.5-2 kb/s (Sanborn et al., PNAS 2015; Ganji et al., Science 2018)
- * - Cohesin processivity: ~20 min average residence time (Gerlich et al., 2006)
+ * - Extrusion speed: 0.5 kb/s mean for COHESIN (Davidson et al., Science 2019)
+ *   NOTE: Ganji et al. 2018 studied CONDENSIN (up to 1.5 kb/s), not cohesin!
+ * - Cohesin processivity: ~33 kb average loop size (Davidson et al., 2019)
+ *   MODEL PARAMETER: 600 kb used for domain-scale simulation
+ * - Cohesin residence time: ~20 min (Gerlich et al., 2006 FRAP)
  * - CTCF residence time: ~1-5 min (Hansen et al., 2017)
- * - Convergent CTCF efficiency: ~80-95% (Rao et al., Cell 2014)
+ * - Convergent CTCF efficiency: MODEL PARAMETER fit to Rao et al. 2014 Hi-C
+ *
+ * IMPORTANT: Distinguish LITERATURE-BASED (measured) vs MODEL PARAMETER (fit/assumed)
  */
 
 // Time scaling (separate simulation time from render time)
@@ -28,10 +33,20 @@ export const SIMULATION_CONFIG = {
 // NOTE: These are MODEL PARAMETERS (assumed defaults), not measured constants.
 // Calibrate against experimental data (Hi-C, ChIA-PET) for specific cell types.
 export const COHESIN_PARAMS = {
-    // Extrusion speed: 0.5-2 kb/s literature range
-    // Source: Ganji et al. (2018) Science, real-time imaging of cohesin
-    // Default: 1 kb/s (middle of observed range)
-    EXTRUSION_SPEED_BP_PER_S: 1000, // base pairs per second
+    // Extrusion speed
+    // LITERATURE: Davidson et al. (2019) Science - human cohesin single-molecule
+    //   - Mean rate: 0.5 kb/s (500 bp/s)
+    //   - Maximum: ~2.1 kb/s
+    // WARNING: Ganji et al. (2018) studied CONDENSIN, not cohesin!
+    // MODEL VALUE: 1000 bp/s (upper range for faster dynamics)
+    EXTRUSION_SPEED_BP_PER_S: 1000, // base pairs per second (MODEL PARAMETER)
+
+    // Processivity (loop size before unloading)
+    // LITERATURE: Davidson et al. (2019) - 33 kb average extruded loop
+    // MODEL VALUE: 600 kb (scaled for domain-level simulation)
+    // JUSTIFICATION: Higher value compensates for simplified dynamics,
+    //   allows formation of large TADs observed in Hi-C
+    PROCESSIVITY_KB: 600, // MODEL PARAMETER (literature: ~33 kb single-molecule)
     
     // Processivity: mean residence time ~20 min (literature range 10-30 min)
     // Source: Gerlich et al. (2006) Cell, FRAP measurements
