@@ -1,11 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
-import { useGenomeStore } from '../../store/genome.store';
 
-export const LoopDashboard = () => {
-    const store = useGenomeStore();
-    const loops = store.loops ?? [];
-    const isRunning = store.isRunning ?? false;
-    const stepCount = store.stepCount ?? 0;
+export interface LoopDashboardProps {
+    loops: { length: number };
+    isRunning: boolean;
+    stepCount: number;
+}
+
+export const LoopDashboard = ({ loops, isRunning, stepCount }: LoopDashboardProps) => {
     const [displayLoops, setDisplayLoops] = useState(0);
     const [lastAdded, setLastAdded] = useState<number | null>(null);
     const [loopRate, setLoopRate] = useState(0);

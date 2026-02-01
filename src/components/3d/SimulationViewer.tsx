@@ -1,6 +1,6 @@
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars, Text } from '@react-three/drei';
-import { useMemo, useRef } from 'react';
+import { Canvas } from '@react-three/fiber';
+import { OrbitControls, Stars } from '@react-three/drei';
+import { useMemo } from 'react';
 import * as THREE from 'three';
 import { LoopExtrusionEngine } from '../../engines/LoopExtrusionEngine';
 import { CTCFSite, Loop } from '../../domain/models/genome';
@@ -85,24 +85,17 @@ const LoopArc = ({ loop, genomeLength }: { loop: Loop; genomeLength: number }) =
     );
 };
 
-const CohesinComplex = ({ 
-    engine, 
-    genomeLength 
-}: { 
-    engine: LoopExtrusionEngine; 
+const CohesinComplex = ({
+    engine,
+    genomeLength
+}: {
+    engine: LoopExtrusionEngine;
     genomeLength: number;
 }) => {
-    const groupRef = useRef<THREE.Group>(null);
-    
-    useFrame(() => {
-        // Run simulation step
-        engine.step();
-    });
-
     const cohesins = engine.getCohesins();
 
     return (
-        <group ref={groupRef}>
+        <group>
             {cohesins.map((cohesin, index) => {
                 const leftX = genomeTo3D(cohesin.leftLeg, genomeLength);
                 const rightX = genomeTo3D(cohesin.rightLeg, genomeLength);
