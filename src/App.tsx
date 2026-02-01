@@ -145,7 +145,7 @@ function App() {
             display: 'flex',
         }}>
             {/* Main 3D View */}
-            <div style={{ flex: 2, position: 'relative' }}>
+            <div style={{ flex: 2, position: 'relative', minHeight: '500px', height: '100%' }}>
                 <GenomeViewer engine={engine} />
                 
                 {/* Debug Overlay */}

@@ -63,8 +63,8 @@ export const GenomeViewer: React.FC<GenomeViewerProps> = ({ engine }) => {
     }, [engine]);
 
     return (
-        <div className="w-full h-full bg-black relative">
-            <Canvas camera={{ position: [0, 0, 80], fov: 45 }} gl={{ antialias: true }}>
+        <div className="w-full h-full min-h-[500px] bg-black relative rounded-xl overflow-hidden shadow-2xl border border-gray-800">
+            <Canvas camera={{ position: [0, 0, 80], fov: 45 }} gl={{ antialias: true }} style={{ height: '100%' }}>
                 <color attach="background" args={['#050510']} />
                 <ambientLight intensity={0.6} />
                 <pointLight position={[20, 20, 20]} intensity={1.5} />
