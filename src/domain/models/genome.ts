@@ -46,11 +46,13 @@ export interface CohesinComplex {
 
 export function createCohesinComplex(
     loadPosition: number,
-    velocity: number = 1.0
+    velocity: number = 1000  // Default matches biophysics constant
 ): CohesinComplex {
+    // INV-1: leftLeg < rightLeg must hold
+    // Initialize with minimal offset to avoid 0-size loop at t=0
     return {
         leftLeg: loadPosition,
-        rightLeg: loadPosition,
+        rightLeg: loadPosition + 1,  // Minimal offset for INV-1
         velocity,
         active: true,
         loopFormed: false,
@@ -122,7 +124,7 @@ export const DEFAULT_CONFIG: SimulationConfig = {
     genomeLength: 100000,
     resolution: 1000,
     backgroundLevel: 0.1,
-    velocity: 1.0,
+    velocity: 1000,  // bp/step (Davidson et al. 2019: 0.5-2 kb/s for cohesin)
     maxSteps: 10000,
 };
 

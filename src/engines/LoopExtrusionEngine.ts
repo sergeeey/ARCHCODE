@@ -17,6 +17,7 @@ import {
 } from '../domain/models/genome';
 import { SeededRandom } from '../utils/random';
 import { loopsToContactMatrix } from './contactMatrix';
+import { CTCF_PARAMS } from '../domain/constants/biophysics';
 
 export interface EngineConfig {
     genomeLength: number;
@@ -117,21 +118,27 @@ export class LoopExtrusionEngine {
 
         // Loop forms when both legs are blocked (convergent: R...F where R=left, F=right)
         if (leftBlocked && rightBlocked && leftBarrier && rightBarrier) {
-            cohesin.active = false;
-            cohesin.loopFormed = true;
+            // Stochastic blocking: use convergent efficiency (85% default)
+            const blockingEfficiency = CTCF_PARAMS.CONVERGENT_BLOCKING_EFFICIENCY;
+            if (this.rng.random() < blockingEfficiency) {
+                cohesin.active = false;
+                cohesin.loopFormed = true;
 
-            const loop = createLoop(
-                leftBarrier.position,
-                rightBarrier.position,
-                Math.min(leftBarrier.strength, rightBarrier.strength)
-            );
-            this.loops.push(loop);
-            
-            console.log(`[Step ${this.stepCount}] ✅ LOOP FORMED:`,
-                `${leftBarrier.position} - ${rightBarrier.position}`,
-                `(${rightBarrier.position - leftBarrier.position} bp)`);
-            
-            return true;
+                const loop = createLoop(
+                    leftBarrier.position,
+                    rightBarrier.position,
+                    Math.min(leftBarrier.strength, rightBarrier.strength) * blockingEfficiency
+                );
+                this.loops.push(loop);
+
+                console.log(`[Step ${this.stepCount}] ✅ LOOP FORMED (eff=${blockingEfficiency}):`,
+                    `${leftBarrier.position} - ${rightBarrier.position}`,
+                    `(${rightBarrier.position - leftBarrier.position} bp)`);
+
+                return true;
+            }
+            // If blocking fails, cohesin continues (leaky barrier)
+            console.log(`[Step ${this.stepCount}] ⚡ Leaky pass-through at convergent pair`);
         }
 
         return false;

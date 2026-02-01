@@ -217,7 +217,7 @@ export class MultiCohesinEngine {
                         Math.min(leftBarrier.strength, rightBarrier.strength) * blockingEfficiency
                     );
                     this.loops.push(loop);
-                    
+
                     if (this.loops.length <= 5 || this.stepCount % 100 === 0) {
                         console.log(`[Step ${this.stepCount}] Loop #${this.loops.length} (eff=${blockingEfficiency.toFixed(2)}):`,
                             `${leftBarrier.position}-${rightBarrier.position}`,
@@ -226,6 +226,17 @@ export class MultiCohesinEngine {
                 }
             }
             // If blocking fails, cohesin continues (leaky barrier behavior)
+        } else if (leftBarrier || rightBarrier) {
+            // Non-convergent: leaky blocking (15% chance to stall on single barrier)
+            const leakyEfficiency = CTCF_PARAMS.NON_CONVERGENT_BLOCKING_EFFICIENCY;
+            if (this.rng.random() < leakyEfficiency) {
+                // Single-sided stall (partial blocking, not full loop)
+                cohesin.active = false;
+                // Don't create a loop - just stall
+                if (this.stepCount % 500 === 0) {
+                    console.log(`[Step ${this.stepCount}] Leaky stall at non-convergent barrier`);
+                }
+            }
         }
     }
 
