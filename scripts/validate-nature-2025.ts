@@ -43,6 +43,7 @@ const args = parseArgs({
         locus: { type: 'string', default: 'HBB' },
         runs: { type: 'string', default: '1000' },
         steps: { type: 'string', default: '36000' },
+        seedOffset: { type: 'string', default: '0' },
     },
 });
 
@@ -56,6 +57,7 @@ const locusKey = (args.values.locus ?? 'HBB').toUpperCase() as keyof typeof LOCI
 const SELECTED_SITES = LOCI[locusKey] ?? LOCI.HBB;
 const NUM_RUNS = Number(args.values.runs ?? process.env.NUM_RUNS) || 1000;
 const STEPS_PER_RUN = Number(args.values.steps ?? process.env.STEPS_PER_RUN) || 36_000;
+const SEED_OFFSET = Number(args.values.seedOffset) || 0;
 
 const GENOME_LENGTH = 100_000; // HBB / HBB_CTCFKD
 const STEPS_PER_MINUTE = 60;
@@ -138,7 +140,7 @@ function main() {
     console.log = () => {};  // suppress engine logs during batch
 
     for (let i = 0; i < NUM_RUNS; i++) {
-        const loops = runSingleSimulation(i);
+        const loops = runSingleSimulation(i + SEED_OFFSET);
         for (const loop of loops) {
             const dur = getLoopDurationSteps(loop);
             if (dur != null) {

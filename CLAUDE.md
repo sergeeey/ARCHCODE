@@ -11,7 +11,18 @@
 | **Тесты** | 37/37 pass |
 | **Power-law** | α = -0.964 (error 3.6%) |
 | **Blind-test** | HBB, Sox2, CTCFΔ — ALL PASS |
-| **Loop duration** | 16.76-16.80 min (target 6-19) |
+
+## Model Validation: Blind-Test Performance
+
+**Calibrated on:** HBB locus (Sabaté et al. 2025)
+
+| Locus/Condition | Mean Duration | 95% CI | Contact Prob | Verdict |
+|-----------------|---------------|--------|--------------|---------|
+| HBB (wild-type) | 16.80 min | [15.78, 17.81] | 3.29% | PASS |
+| Sox2 (blind) | 16.76 min | [15.76, 17.76] | 3.45% | PASS |
+| HBB-CTCFΔ (blind) | 16.17 min | [15.23, 17.11] | 3.15% | PASS |
+
+**Key observation:** Deletion of weak CTCF site (strength 0.8) caused **-3.75% change** in loop duration, predicting **minimal contribution** of weak barriers to stability.
 
 ## Commands
 
@@ -68,11 +79,10 @@ src/
 
 **Дата**: 2026-02-02 (ночь)
 **Сделано**:
-- Blind-test валидация: HBB, Sox2, CTCFΔ — ALL PASS
-- Loop duration: 16.76-16.80 min (target 6-19 min)
-- Добавлен скрипт validate-nature-2025.ts
-- MultiCohesinEngine: loop duration tracking
-- Sabaté 2025 preset в biophysics.ts
+- Blind-test: HBB 16.80, Sox2 16.76, CTCFΔ 16.17 min — ALL PASS
+- CTCFΔ с независимым seed (2000-2999) показал -3.75% vs WT
+- Добавлен --seedOffset параметр в validate-nature-2025.ts
+- Объединённый отчёт с тремя локусами
 
 ## Ключевые файлы для контекста
 
