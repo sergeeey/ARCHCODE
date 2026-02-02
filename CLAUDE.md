@@ -14,15 +14,17 @@
 
 ## Model Validation: Blind-Test Performance
 
-**Calibrated on:** HBB locus (Sabaté et al. 2025)
+**Calibrated on:** HBB locus (Sabaté et al. 2025) | **Seed:** 2000 (all tests)
 
 | Locus/Condition | Mean Duration | 95% CI | Contact Prob | Verdict |
 |-----------------|---------------|--------|--------------|---------|
-| HBB (wild-type) | 16.80 min | [15.78, 17.81] | 3.29% | PASS |
-| Sox2 (blind) | 16.76 min | [15.76, 17.76] | 3.45% | PASS |
+| HBB (wild-type) | 16.17 min | [15.23, 17.11] | 3.15% | PASS |
+| Sox2 (blind) | 16.18 min | [15.28, 17.08] | 3.26% | PASS |
 | HBB-CTCFΔ (blind) | 16.17 min | [15.23, 17.11] | 3.15% | PASS |
 
-**Key observation:** Deletion of weak CTCF site (strength 0.8) caused **-3.75% change** in loop duration, predicting **minimal contribution** of weak barriers to stability.
+**Key observation:** CTCF knockout of weak site (strength 0.8) showed **NO effect** — identical to WT.
+
+**Hypothesis:** Weak CTCF barriers (strength < 0.85) are dispensable. Only strong barriers stabilize loops.
 
 ## Commands
 
@@ -79,10 +81,10 @@ src/
 
 **Дата**: 2026-02-02 (ночь)
 **Сделано**:
-- Blind-test: HBB 16.80, Sox2 16.76, CTCFΔ 16.17 min — ALL PASS
-- CTCFΔ с независимым seed (2000-2999) показал -3.75% vs WT
-- Добавлен --seedOffset параметр в validate-nature-2025.ts
-- Объединённый отчёт с тремя локусами
+- Blind-test (seed=2000): HBB 16.17, Sox2 16.18, CTCFΔ 16.17 min — ALL PASS
+- CTCFΔ идентичен WT → слабый CTCF не влияет на стабильность
+- Добавлен --seed параметр для воспроизводимости
+- Финальный отчёт: VALIDATION_summary_Sabate2025.md
 
 ## Ключевые файлы для контекста
 
