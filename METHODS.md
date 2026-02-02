@@ -221,7 +221,7 @@ Grid: 3 × 3 × 3 = 27 combinations per locus.
 
 ### 7.1 Deterministic Mode
 
-All random numbers use Mulberry32 PRNG with fixed seed:
+All random numbers use Mulberry32 PRNG with fixed seed. Simulation engines (LoopExtrusionEngine, MultiCohesinEngine) use a SeededRandom instance. The physics module used by the genome store (visualization path) uses the global RNG; the store initializes it with `setGlobalSeed(42)` so that path is also reproducible.
 
 ```typescript
 const rng = new SeededRandom(42);

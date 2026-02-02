@@ -112,6 +112,26 @@ export const HETEROCHROMATIN_PARAMS = {
     DETECTION_RANGE_BP: 500,
 } as const;
 
+// Sabaté et al., Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9)
+// Preset for blind-test validation: time step = 1 s, cohesin speed 0.25–0.4 kb/s.
+// Residence time calibrated within literature range (10–30 min) to match loop duration upper bound (Sabaté et al. 2025).
+export const SABATE_NATURE_2025 = {
+    // 1 step = 1 second (for calculations)
+    BIOLOGICAL_TIME_SCALE: 1,
+    // Cohesin speed: 0.3 kb/s (mean of 0.25–0.4 kb/s) → 300 bp/step
+    EXTRUSION_SPEED_BP_PER_STEP: 300,
+    // Residence time: 16.66 min = 1000 s → 1000 steps (calibrated within 10–30 min literature range)
+    MEAN_RESIDENCE_STEPS: 1000,
+    UNLOADING_PROBABILITY: 1 / 1000,
+    // Event frequency ~1 per hour per TAD → load one cohesin per 3600 steps on average
+    LOADING_PROBABILITY_PER_STEP: 1 / 3600,
+    // Loop duration target for validation (Sabaté et al. 2025 experimental range)
+    LOOP_DURATION_TARGET_MIN: 6,
+    LOOP_DURATION_TARGET_MAX: 19,
+    LOOP_DURATION_TARGET_MIN_STEPS: 360,  // 6 min × 60 s/min
+    LOOP_DURATION_TARGET_MAX_STEPS: 1140,  // 19 min × 60 s/min
+} as const;
+
 // Test scenarios (from validation document)
 export const VALIDATION_SCENARIOS = {
     PCDH: {

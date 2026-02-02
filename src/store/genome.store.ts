@@ -25,6 +25,11 @@ import {
     VISUALIZATION_CONFIG,
     VALIDATION_SCENARIOS,
 } from '../domain/constants/biophysics';
+import { setGlobalSeed, random } from '../utils/random';
+
+const DEFAULT_PHYSICS_SEED = 42;
+// Initialize global RNG so physics.ts uses SeededRandom (reproducible)
+setGlobalSeed(DEFAULT_PHYSICS_SEED);
 
 // Default configuration based on biophysical constants
 const createDefaultConfig = (): SimulationConfig => ({
@@ -133,7 +138,7 @@ export const useGenomeStore = create<GenomeStore>()(
             
             // Loop management
             addLoop: (atPosition) => set((state) => {
-                const position = atPosition ?? Math.floor(Math.random() * state.config.genomeLength);
+                const position = atPosition ?? Math.floor(random() * state.config.genomeLength);
                 const newLoop = createLoop(state.config.genomeLength, state.loops);
                 newLoop.startPosition = position;
                 newLoop.leftAnchor = position;
@@ -165,13 +170,16 @@ export const useGenomeStore = create<GenomeStore>()(
             startSimulation: () => set({ isRunning: true }),
             pauseSimulation: () => set({ isRunning: false }),
             
-            resetSimulation: () => set((state) => ({
-                loops: [],
-                tads: [],
-                timeStep: 0,
-                biologicalTime: 0,
-                isRunning: false,
-            })),
+            resetSimulation: () => {
+                setGlobalSeed(DEFAULT_PHYSICS_SEED);
+                set((state) => ({
+                    loops: [],
+                    tads: [],
+                    timeStep: 0,
+                    biologicalTime: 0,
+                    isRunning: false,
+                }));
+            },
             
             stepSimulation: () => set((state) => {
                 if (!state.isRunning) return {};
@@ -198,10 +206,13 @@ export const useGenomeStore = create<GenomeStore>()(
             }),
             
             // Full reset
-            resetAll: () => set({
-                ...createInitialState(),
-                config: createDefaultConfig(),
-            }),
+            resetAll: () => {
+                setGlobalSeed(DEFAULT_PHYSICS_SEED);
+                set({
+                    ...createInitialState(),
+                    config: createDefaultConfig(),
+                });
+            },
         }),
         { name: 'GenomeStore' }
     )

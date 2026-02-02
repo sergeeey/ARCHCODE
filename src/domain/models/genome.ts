@@ -42,6 +42,11 @@ export interface CohesinComplex {
     velocity: number;
     active: boolean;
     loopFormed: boolean;
+    /** True when cohesin is holding a loop (not moving, can unload stochastically). */
+    loopHolding?: boolean;
+    /** Anchors of the loop being held (for recording dissolvedAtStep). */
+    loopLeft?: number;
+    loopRight?: number;
 }
 
 export function createCohesinComplex(
@@ -78,14 +83,25 @@ export interface Loop {
     readonly leftAnchor: number;
     readonly rightAnchor: number;
     readonly strength: number;
+    /** Step when loop formed (for duration tracking). */
+    formedAtStep?: number;
+    /** Step when cohesin unloaded (loop dissolved). */
+    dissolvedAtStep?: number;
 }
 
 export function createLoop(
     leftAnchor: number,
     rightAnchor: number,
-    strength: number = 1.0
+    strength: number = 1.0,
+    formedAtStep?: number
 ): Loop {
-    return { leftAnchor, rightAnchor, strength };
+    return { leftAnchor, rightAnchor, strength, formedAtStep };
+}
+
+/** Duration in steps (undefined if loop not yet dissolved). */
+export function getLoopDurationSteps(loop: Loop): number | undefined {
+    if (loop.dissolvedAtStep == null || loop.formedAtStep == null) return undefined;
+    return loop.dissolvedAtStep - loop.formedAtStep;
 }
 
 export function getChromatinLoopSize(loop: Loop): number {

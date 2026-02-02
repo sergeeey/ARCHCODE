@@ -3,13 +3,7 @@
  * Loop extrusion simulation with biologically accurate CTCF logic
  *
  * NOTE: This module is used by genome.store.ts for visualization.
- * The main simulation engines (LoopExtrusionEngine, MultiCohesinEngine)
- * have their own implementations with SeededRandom for reproducibility.
- *
- * WARNING: This module uses Math.random() which breaks reproducibility.
- * For deterministic simulations, use the engine classes directly.
- *
- * TODO: Refactor to accept SeededRandom instance for full reproducibility.
+ * Uses SeededRandom via utils/random: call setGlobalSeed(seed) for reproducibility.
  */
 
 import {
@@ -26,18 +20,7 @@ import {
     HETEROCHROMATIN_PARAMS,
     SIMULATION_CONFIG
 } from '../constants/biophysics';
-
-// WARNING: Using Math.random() - not reproducible!
-// For reproducible simulations, use LoopExtrusionEngine or MultiCohesinEngine
-const warnOnce = (() => {
-    let warned = false;
-    return () => {
-        if (!warned) {
-            console.warn('[physics.ts] Using Math.random() - results not reproducible. Use engine classes for deterministic simulation.');
-            warned = true;
-        }
-    };
-})();
+import { random } from '../../utils/random';
 
 /**
  * Check if CTCF sites are in convergent orientation
@@ -63,20 +46,18 @@ export function checkCTCFBlocking(
     const isConvergentOrientation = 
         (approachDirection === 'left' && ctcfSite.orientation === 'F') ||
         (approachDirection === 'right' && ctcfSite.orientation === 'R');
-    
-    warnOnce();  // Warn about non-reproducibility
 
     if (isConvergentOrientation) {
         // Convergent: high probability of blocking
         return {
-            shouldStop: Math.random() < CTCF_PARAMS.CONVERGENT_BLOCKING_EFFICIENCY,
+            shouldStop: random() < CTCF_PARAMS.CONVERGENT_BLOCKING_EFFICIENCY,
             efficiency: CTCF_PARAMS.CONVERGENT_BLOCKING_EFFICIENCY,
             isConvergent: true,
         };
     } else {
         // Non-convergent: leaky, low probability of blocking
         return {
-            shouldStop: Math.random() < CTCF_PARAMS.NON_CONVERGENT_BLOCKING_EFFICIENCY,
+            shouldStop: random() < CTCF_PARAMS.NON_CONVERGENT_BLOCKING_EFFICIENCY,
             efficiency: CTCF_PARAMS.NON_CONVERGENT_BLOCKING_EFFICIENCY,
             isConvergent: false,
         };
@@ -106,17 +87,15 @@ export function calculateExtrusionSpeed(
  * Check if loop should spontaneously unload based on processivity
  */
 export function shouldUnload(loop: CohesinLoop): boolean {
-    warnOnce();
     // Probability-based unloading to achieve exponential distribution
-    return Math.random() < COHESIN_PARAMS.UNLOADING_PROBABILITY;
+    return random() < COHESIN_PARAMS.UNLOADING_PROBABILITY;
 }
 
 /**
  * Check if loop should respawn at bookmarking site
  */
 export function shouldBookmark(): boolean {
-    warnOnce();
-    return Math.random() < COHESIN_PARAMS.BOOKMARKING_EFFICIENCY;
+    return random() < COHESIN_PARAMS.BOOKMARKING_EFFICIENCY;
 }
 
 /**
@@ -126,15 +105,14 @@ export function createLoop(
     genomeLength: number,
     existingLoops: CohesinLoop[]
 ): CohesinLoop {
-    warnOnce();
-    const id = `loop-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+    const id = `loop-${Date.now()}-${random().toString(36).substr(2, 9)}`;
 
     // Random loading position
-    const startPos = Math.floor(Math.random() * genomeLength);
+    const startPos = Math.floor(random() * genomeLength);
     
     // Calculate processivity from exponential distribution
     const meanTicks = COHESIN_PARAMS.MEAN_PROCESSIVITY_S / SIMULATION_CONFIG.BIOLOGICAL_TIME_SCALE;
-    const processivity = Math.floor(-Math.log(Math.random()) * meanTicks);  // Uses Math.random()
+    const processivity = Math.floor(-Math.log(random()) * meanTicks);
     
     return {
         id,
