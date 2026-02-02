@@ -9,18 +9,21 @@
 | **Версия** | 1.0.2 |
 | **Branch** | master |
 | **Тесты** | 37/37 pass |
-| **Валидация** | Power-law α = -0.964 (error 3.6%) |
-| **Hi-C данные** | Rao 2014, 8054 loops |
+| **Power-law** | α = -0.964 (error 3.6%) |
+| **Blind-test** | HBB, Sox2, CTCFΔ — ALL PASS |
+| **Loop duration** | 16.76-16.80 min (target 6-19) |
 
 ## Commands
 
 ```bash
-npm run dev          # Dev server
-npm run build        # Production build
-npm run test         # Unit tests
+npm run dev              # Dev server
+npm run build            # Production build
+npm run test             # Unit tests
 npm run test:regression  # Regression suite (37 tests)
 npm run validate:hic     # Power-law validation (offline)
-npm run validate:hic:download  # Real Hi-C validation
+npm run validate:nature2025  # Sabaté 2025 blind-test (HBB, 1000 runs)
+npm run validate:sox2    # Sox2 validation (100 runs)
+npm run validate:ctcf-kd # CTCF knockout validation
 ```
 
 ## Architecture
@@ -58,15 +61,18 @@ src/
 - [ ] Zenodo DOI
 - [ ] GitHub Pages demo
 - [ ] Edge case тесты (extreme velocity)
-- [ ] Расширить валидацию до 10+ локусов
+- [x] Blind-test валидация (HBB, Sox2, CTCFΔ) — DONE
+- [ ] Расширить до 10+ локусов (сейчас 2)
 
 ## Последняя сессия
 
-**Дата**: 2026-02-02 (вечер)
+**Дата**: 2026-02-02 (ночь)
 **Сделано**:
-- Создан CLAUDE.md для быстрого старта сессий
-- Добавлено правило auto-update (глобально и локально)
-- Настроен Memory Bank workflow
+- Blind-test валидация: HBB, Sox2, CTCFΔ — ALL PASS
+- Loop duration: 16.76-16.80 min (target 6-19 min)
+- Добавлен скрипт validate-nature-2025.ts
+- MultiCohesinEngine: loop duration tracking
+- Sabaté 2025 preset в biophysics.ts
 
 ## Ключевые файлы для контекста
 
@@ -96,4 +102,4 @@ src/
 4. Закоммитить: `docs: update CLAUDE.md session context`
 
 ---
-*Обновлено: 2026-02-02*
+*Обновлено: 2026-02-02 (blind-test validation)*
