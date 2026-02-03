@@ -16,6 +16,24 @@ import path from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 
+// Load .env file manually
+const __filename_env = fileURLToPath(import.meta.url);
+const __dirname_env = path.dirname(__filename_env);
+const envPath = path.join(__dirname_env, '..', '.env');
+if (fs.existsSync(envPath)) {
+    const envContent = fs.readFileSync(envPath, 'utf-8');
+    for (const line of envContent.split('\n')) {
+        const trimmed = line.trim();
+        if (trimmed && !trimmed.startsWith('#')) {
+            const [key, ...valueParts] = trimmed.split('=');
+            const value = valueParts.join('=');
+            if (key && value) {
+                process.env[key.trim()] = value.trim();
+            }
+        }
+    }
+}
+
 import { AlphaGenomeService, GenomeInterval } from '../src/services/AlphaGenomeService';
 import { MultiCohesinEngine } from '../src/engines/MultiCohesinEngine';
 import { createCTCFSite } from '../src/domain/models/genome';
@@ -55,9 +73,13 @@ async function main() {
     console.log('█'.repeat(70));
     console.log('');
 
-    // Check for API key
-    const apiKey = process.env.ALPHAGENOME_API_KEY;
+    // Check for API key (try multiple env variable names)
+    const apiKey = process.env.ALPHAGENOME_API_KEY || process.env.VITE_ALPHAGENOME_API_KEY || '';
     const mode = apiKey ? 'live' : 'mock';
+
+    if (apiKey) {
+        console.log(`API Key found: ${apiKey.substring(0, 10)}...`);
+    }
 
     console.log(`Mode: ${mode.toUpperCase()}`);
     if (!apiKey) {

@@ -80,7 +80,7 @@ export class AlphaGenomeService {
 
     constructor(config: Partial<AlphaGenomeConfig> = {}) {
         this.config = {
-            apiKey: config.apiKey || process.env.ALPHAGENOME_API_KEY || '',
+            apiKey: config.apiKey || process.env.ALPHAGENOME_API_KEY || process.env.VITE_ALPHAGENOME_API_KEY || '',
             baseUrl: config.baseUrl || 'https://api.alphagenome.deepmind.com/v1',
             mode: config.mode || (config.apiKey ? 'live' : 'mock'),
             timeout: config.timeout || 30000,
