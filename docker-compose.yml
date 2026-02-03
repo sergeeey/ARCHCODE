@@ -1,0 +1,77 @@
+# ARCHCODE Docker Compose Configuration
+# Run all validations with: docker-compose up
+
+version: '3.8'
+
+services:
+  archcode:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: archcode-simulator
+
+    # Mount volumes for data and results
+    volumes:
+      # Results folder - persists to host
+      - ./results:/app/results
+
+      # Optional: mount BigWig data from host
+      # Uncomment and adjust path if you have MED1 data locally
+      # - /path/to/your/med1/data:/app/data/inputs/med1:ro
+
+    # Environment variables
+    environment:
+      - NODE_ENV=production
+      - MED1_BW=/app/data/inputs/med1/MED1_GM12878_Rep1.bw
+
+    # Resource limits (adjust based on your system)
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+
+    # Default command runs all validations
+    command: ["npx", "tsx", "scripts/run-all-validations.ts"]
+
+  # Optional: run specific locus validation
+  archcode-myc:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+    command: ["npx", "tsx", "scripts/run-fountain-ensemble.ts", "--beta=5", "--runs=20", "--out=ensemble_myc_beta5.json"]
+    profiles:
+      - myc
+
+  archcode-igh:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+    command: ["npx", "tsx", "scripts/run-fountain-igh.ts", "--beta=5", "--runs=20", "--out=ensemble_igh_beta5.json"]
+    profiles:
+      - igh
+
+  archcode-tcra:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+    command: ["npx", "tsx", "scripts/run-fountain-tcra.ts", "--beta=5", "--runs=20", "--out=ensemble_tcra_beta5.json"]
+    profiles:
+      - tcra
+
+  archcode-sox2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+    command: ["npx", "tsx", "scripts/run-fountain-sox2.ts", "--beta=5", "--runs=20", "--out=ensemble_sox2_beta5.json"]
+    profiles:
+      - sox2

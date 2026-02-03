@@ -39,6 +39,23 @@ npm run validate:sox2    # Sox2 validation (100 runs)
 npm run validate:ctcf-kd # CTCF knockout validation
 ```
 
+## Docker (Reproducibility)
+
+```bash
+# Run all 4 loci validations
+docker-compose up
+
+# Run specific locus
+docker-compose --profile igh up     # IGH only
+docker-compose --profile tcra up    # TCRα only
+docker-compose --profile sox2 up    # SOX2 only
+docker-compose --profile myc up     # MYC only
+
+# Build image manually
+docker build -t archcode .
+docker run -v $(pwd)/results:/app/results archcode
+```
+
 ## Architecture
 
 ```
