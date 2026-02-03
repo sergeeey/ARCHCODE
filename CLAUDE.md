@@ -10,7 +10,7 @@
 | **Branch** | master |
 | **Тесты** | 37/37 pass |
 | **Power-law** | α = -0.964 (error 3.6%) |
-| **Blind-test** | HBB, Sox2, CTCFΔ — ALL PASS |
+| **Blind-test** | HBB, Sox2, CTCFΔ, **IGH** — ALL PASS |
 
 ## Model Validation: Blind-Test Performance
 
@@ -81,25 +81,36 @@ src/
 
 **Статус:** Работает | **Оптимальный beta:** 5
 
+### MYC Locus (calibration)
 | Beta | stepLoadProb | avgLoops | NonZero cells |
 |------|--------------|----------|---------------|
 | 0 | 0.000278 | 2.8 | baseline |
 | 5 | 0.001801 | 3.0 | **623** (max) |
 | 10 | 0.003323 | 3.0 | 599 |
 
+### IGH Locus (blind test) — PASS
+| Metric | Beta=0 | Beta=5 | Change |
+|--------|--------|--------|--------|
+| stepLoadProb | 0.000278 | 0.002233 | 8.0x |
+| avgLoops | 5.0 | 6.0 | +1.0 |
+| NonZero cells | 223 | 379 | +70% |
+| Diff cells | — | 398 | ✓ |
+
 **Ключевые файлы:**
 - `src/simulation/SpatialLoadingModule.ts` — FountainLoader
-- `scripts/run-fountain-ensemble.ts` — ensemble averaging
+- `scripts/run-fountain-ensemble.ts` — MYC ensemble
+- `scripts/run-fountain-igh.ts` — IGH blind test
 - `updateOccupancyMatrix()` — учёт времени контакта
 
 ## Последняя сессия
 
-**Дата**: 2026-02-03 (ночь)
+**Дата**: 2026-02-03 (утро)
 **Сделано**:
 - FountainLoader: occupancy-based matrix вместо static loops
 - updateOccupancyMatrix() для учёта времени контакта
 - Ensemble: 20 runs × 50000 steps
-- beta=5 оптимальный (623 NonZero cells)
+- beta=5 оптимальный (623 NonZero cells на MYC)
+- **IGH blind validation**: PASS (398 diff cells, 8x loading increase)
 
 ## Ключевые файлы для контекста
 
@@ -129,4 +140,4 @@ src/
 4. Закоммитить: `docs: update CLAUDE.md session context`
 
 ---
-*Обновлено: 2026-02-02 (blind-test validation)*
+*Обновлено: 2026-02-03 (IGH blind-test validation)*
