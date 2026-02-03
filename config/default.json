@@ -1,0 +1,96 @@
+{
+  "name": "ARCHCODE Default Parameters",
+  "version": "1.0.0",
+  "description": "Model parameters for loop extrusion simulation",
+  
+  "_important": {
+    "note": "These are MODEL PARAMETERS, not physical constants",
+    "calibration": "Calibrated against Hi-C contact maps (Rao et al. 2014) for GM12878",
+    "validation": "Pearson r >= 0.7 vs experimental Hi-C (not AlphaGenome - currently mock)",
+    "timeMapping": "Steps are discrete events. Biological time mapping is approximate.",
+    "units": "Residence time is measured in STEPS for simulation, seconds are approximate"
+  },
+  
+  "source": "Grid search optimization for HBB locus + literature defaults",
+  "literature": {
+    "cohesinSpeed": "Davidson et al. (2019) Science - 0.5 kb/s mean for COHESIN",
+    "cohesinSpeedWarning": "Ganji 2018 studied CONDENSIN (1.5 kb/s), NOT cohesin!",
+    "processivity": "Davidson et al. (2019) - 33 kb average loop (single-molecule)",
+    "processivityModel": "600 kb MODEL PARAMETER for domain-scale simulation",
+    "residenceTime": "Gerlich et al. (2006) Curr Biol - ~20 min FRAP",
+    "ctcfEfficiency": "Rao et al. (2014) Cell - convergent enrichment (MODEL PARAM)",
+    "ctcfResidence": "Hansen et al. (2017) - 1-5 min (not yet implemented)"
+  },
+  
+  "biophysics": {
+    "cohesin": {
+      "velocity": 1000,
+      "velocityUnit": "bp/step",
+      "velocityNote": "MODEL PARAMETER. Literature: 0.5 kb/s mean (Davidson 2019 cohesin)",
+      "velocityWarning": "Ganji 2018 studied condensin, not cohesin!",
+      
+      "meanResidenceSteps": 1200,
+      "meanResidenceStepsNote": "NOT minutes! Steps are discrete simulation events",
+      "meanResidenceTimeApprox": 1200,
+      "meanResidenceTimeApproxUnit": "seconds",
+      "meanResidenceTimeApproxNote": "Assumes BIOLOGICAL_TIME_SCALE=1s/step. Real time depends on this mapping.",
+      
+      "unloadingProbability": 0.000833,
+      "unloadingProbabilityNote": "p = 1/meanResidenceSteps. For exponential distribution of residence times.",
+      "unloadingProbabilitySource": "Calculated, not measured directly",
+      
+      "bookmarkingEfficiency": 0.5,
+      "bookmarkingEfficiencyNote": "MODEL PARAMETER - no direct literature measurement",
+      "bookmarkingEfficiencyWarning": "Assumed default. Calibrate if experimental loading site data available."
+    },
+    
+    "ctcf": {
+      "convergentBlockingEfficiency": 0.85,
+      "convergentBlockingEfficiencyNote": "Ensemble average, not single-molecule",
+      "convergentBlockingEfficiencySource": "Rao et al. (2014) - inferred from Hi-C loop enrichment",
+      "convergentBlockingEfficiencyWarning": "Single-molecule efficiency may differ from population average",
+      
+      "nonConvergentBlockingEfficiency": 0.15,
+      "nonConvergentBlockingEfficiencyNote": "Leakiness - some non-convergent pairs still block",
+      "nonConvergentBlockingEfficiencySource": "de Wit et al. (2015) Cell - estimated from loop patterns",
+      
+      "recognitionDistance": 100,
+      "recognitionDistanceUnit": "bp",
+      "recognitionDistanceNote": "Spatial threshold for CTCF detection by cohesin"
+    },
+    
+    "simulation": {
+      "timeStepMs": 100,
+      "timeStepMsNote": "Rendering speed only - does not affect physics",
+      
+      "biologicalTimeScale": 1,
+      "biologicalTimeScaleUnit": "seconds/step",
+      "biologicalTimeScaleNote": "TUNABLE PARAMETER - maps steps to real time",
+      "biologicalTimeScaleWarning": "This is a model assumption, not physical law. Steps are discrete events.",
+      
+      "maxSteps": 10000,
+      "seed": 42
+    }
+  },
+  
+  "ensemble": {
+    "numCohesins": 20,
+    "spacingStrategy": "uniform",
+    "description": "Multiple cohesins for ensemble averaging",
+    "note": "20 cohesins in 100kb ~ physiological density"
+  },
+  
+  "validation": {
+    "targetPearson": 0.7,
+    "targetPearsonNote": "vs experimental Hi-C (not AlphaGenome mock)",
+    "validatedLoci": ["HBB", "Sox2", "Pcdh"],
+    "metrics": ["pearson", "spearman", "rmse"]
+  },
+  
+  "_limitations": {
+    "time": "Steps are dimensionless discrete events; biological time is approximate mapping",
+    "stochasticity": "Unloading is memoryless (exponential), real cohesin may have non-exponential kinetics",
+    "blocking": "CTCF efficiency is ensemble average; single-molecule behavior may differ",
+    "alphaGenome": "Validation uses mock data, not real AlphaGenome API"
+  }
+}

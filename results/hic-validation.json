@@ -1,0 +1,25 @@
+{
+  "timestamp": "2026-02-01T19:56:00.805Z",
+  "simulation": {
+    "loops": 3,
+    "matrixSize": 100
+  },
+  "validation": {
+    "datasetId": "rao2014_gm12878_loops",
+    "cellLine": "GM12878",
+    "chromosome": "chr11",
+    "region": {
+      "start": 5200000,
+      "end": 5300000
+    },
+    "simulatedLoops": 3,
+    "experimentalLoops": 3,
+    "matchedLoops": 0,
+    "precision": 0,
+    "recall": 0,
+    "f1Score": 0,
+    "avgSizeSimulated": 26666.666666666668,
+    "avgSizeExperimental": 23363333.333333332,
+    "sizeCorrelation": 0.0011413896418889999
+  }
+}

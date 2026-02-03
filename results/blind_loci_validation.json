@@ -1,0 +1,60 @@
+{
+  "title": "ARCHCODE Blind Loci Validation",
+  "date": "2026-02-03T12:50:04.851Z",
+  "kramerParams": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "kBase": 0.002
+  },
+  "simulationConfig": {
+    "beta": 5,
+    "numRuns": 30,
+    "maxSteps": 50000,
+    "numCohesins": 20,
+    "resolution": 5000
+  },
+  "results": [
+    {
+      "name": "ENCODE_pilot",
+      "chromosome": "chr1",
+      "pearsonR": 0.9755947902183358,
+      "spearmanRho": 0.9834034517614922,
+      "status": "PASS"
+    },
+    {
+      "name": "HOXD",
+      "chromosome": "chr2",
+      "pearsonR": 0.9735832666642159,
+      "spearmanRho": 0.9790612999489741,
+      "status": "PASS"
+    },
+    {
+      "name": "MHC",
+      "chromosome": "chr6",
+      "pearsonR": 0.9708816599764186,
+      "spearmanRho": 0.974004241601758,
+      "status": "PASS"
+    },
+    {
+      "name": "HBB",
+      "chromosome": "chr11",
+      "pearsonR": 0.9676878718508841,
+      "spearmanRho": 0.9695120699784852,
+      "status": "PASS"
+    },
+    {
+      "name": "TP53_BRCA1",
+      "chromosome": "chr17",
+      "pearsonR": 0.9740879015856881,
+      "spearmanRho": 0.9804962711055816,
+      "status": "PASS"
+    }
+  ],
+  "summary": {
+    "totalLoci": 5,
+    "passed": 5,
+    "meanPearsonR": 0.9723670980591086,
+    "meanSpearmanRho": 0.9772954668792583,
+    "genomeWideDiscovery": true
+  }
+}
