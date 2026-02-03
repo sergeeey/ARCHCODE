@@ -1,7 +1,7 @@
 {
   "title": "ARCHCODE FountainLoader Multi-Locus Validation",
   "hypothesis": "H2: Mediator-driven cohesin loading",
-  "date": "2026-02-03T06:51:07.202Z",
+  "date": "2026-02-03T08:30:00.269Z",
   "parameters": {
     "beta_baseline": 0,
     "beta_optimal": 5,
@@ -29,7 +29,7 @@
       "diffCells": 623,
       "maxEnrichment": 0.00015999999999999999,
       "status": "PASS",
-      "duration_sec": 0.04
+      "duration_sec": 0.009
     },
     {
       "locus": "IGH",
@@ -49,7 +49,7 @@
       "diffCells": 398,
       "maxEnrichment": 0.00010999999999999999,
       "status": "PASS",
-      "duration_sec": 0.028
+      "duration_sec": 0.01
     },
     {
       "locus": "TCRα",
@@ -69,7 +69,7 @@
       "diffCells": 448,
       "maxEnrichment": 0.000092,
       "status": "PASS",
-      "duration_sec": 0.059
+      "duration_sec": 0.018
     },
     {
       "locus": "SOX2",
@@ -89,7 +89,7 @@
       "diffCells": 344,
       "maxEnrichment": 0.00010999999999999999,
       "status": "PASS",
-      "duration_sec": 0.018
+      "duration_sec": 0.003
     }
   ],
   "summary": {
@@ -97,8 +97,8 @@
     "passed": 4,
     "failed": 0,
     "overall_status": "ALL PASS",
-    "total_duration_sec": 0.145,
-    "total_duration_min": 0.0024166666666666664
+    "total_duration_sec": 0.041,
+    "total_duration_min": 0.0006833333333333333
   },
   "conclusion": "FountainLoader hypothesis validated across all tested loci. Mediator-driven spatial cohesin loading produces distinct contact patterns."
 }

@@ -3,7 +3,7 @@
     "name": "Virtual Knockout (In Silico Degron)",
     "description": "MED1 depletion simulation",
     "reference": "Rinzema et al. - Mediator depletion experiments",
-    "date": "2026-02-03T07:40:46.047Z"
+    "date": "2026-02-03T08:32:16.975Z"
   },
   "parameters": {
     "beta_wt": 5,
