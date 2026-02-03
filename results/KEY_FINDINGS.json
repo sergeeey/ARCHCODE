@@ -1,0 +1,146 @@
+{
+  "title": "Key Findings for Visualization",
+  "date": "2026-02-03T15:12:45.476Z",
+  "summary": {
+    "totalVariants": 367,
+    "pathogenicArchcode": 203,
+    "pathogenicAlpha": 258,
+    "discordant": 61,
+    "archcodeOnly": 3,
+    "alphaOnly": 58
+  },
+  "loopThatStayed": [
+    {
+      "clinvar_id": "VCV000000302",
+      "position": 5225620,
+      "category": "splice_region",
+      "ssim": 0.545316529295089,
+      "alphaScore": 0.4536124661581649,
+      "archcodeVerdict": "LIKELY_PATHOGENIC",
+      "alphaVerdict": "VUS",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000327",
+      "position": 5225695,
+      "category": "splice_region",
+      "ssim": 0.5473616957885035,
+      "alphaScore": 0.456108440461619,
+      "archcodeVerdict": "LIKELY_PATHOGENIC",
+      "alphaVerdict": "VUS",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000026",
+      "position": 5226830,
+      "category": "splice_region",
+      "ssim": 0.5506343126532781,
+      "alphaScore": 0.4558094933656089,
+      "archcodeVerdict": "LIKELY_PATHOGENIC",
+      "alphaVerdict": "VUS",
+      "discordant": true
+    }
+  ],
+  "postTranscriptional": [
+    {
+      "clinvar_id": "VCV000000321",
+      "position": 5225630,
+      "category": "missense",
+      "ssim": 0.8118977978880972,
+      "alphaScore": 0.8713757850468977,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000341",
+      "position": 5226402,
+      "category": "missense",
+      "ssim": 0.8085253911132577,
+      "alphaScore": 0.840432129064776,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000252",
+      "position": 5226783,
+      "category": "missense",
+      "ssim": 0.7261041104449444,
+      "alphaScore": 0.7664975429822214,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000048",
+      "position": 5226848,
+      "category": "missense",
+      "ssim": 0.7598756985552031,
+      "alphaScore": 0.7328693009507234,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000066",
+      "position": 5227066,
+      "category": "promoter",
+      "ssim": 0.7387562276044657,
+      "alphaScore": 0.7312759162072446,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000076",
+      "position": 5226161,
+      "category": "missense",
+      "ssim": 0.7697883903839571,
+      "alphaScore": 0.7302712370037433,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000033",
+      "position": 5226277,
+      "category": "promoter",
+      "ssim": 0.7045833111761992,
+      "alphaScore": 0.7086569071787674,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000052",
+      "position": 5225574,
+      "category": "promoter",
+      "ssim": 0.7107790351895518,
+      "alphaScore": 0.7081264556423419,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000168",
+      "position": 5225662,
+      "category": "missense",
+      "ssim": 0.8429846540293584,
+      "alphaScore": 0.7067338276872104,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Pathogenic",
+      "discordant": true
+    },
+    {
+      "clinvar_id": "VCV000000173",
+      "position": 5226620,
+      "category": "splice_region",
+      "ssim": 0.7121223212276224,
+      "alphaScore": 0.6753900171375786,
+      "archcodeVerdict": "VUS",
+      "alphaVerdict": "Likely Pathogenic",
+      "discordant": true
+    }
+  ]
+}
