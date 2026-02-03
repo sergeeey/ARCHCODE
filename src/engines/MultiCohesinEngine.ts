@@ -14,6 +14,7 @@ import {
 import { loopsToContactMatrix } from './LoopExtrusionEngine';
 import { SeededRandom } from '../utils/random';
 import { COHESIN_PARAMS, CTCF_PARAMS } from '../domain/constants/biophysics';
+import type { ISpatialLoader } from '../simulation/SpatialLoadingModule';
 
 export interface MultiCohesinConfig {
     genomeLength: number;
@@ -27,6 +28,8 @@ export interface MultiCohesinConfig {
     unloadingProbability?: number;
     /** If set: load one cohesin per step with this probability (~1/hour => 1/3600). */
     loadingProbabilityPerStep?: number;
+    /** H2: пространственная загрузка (FountainLoader) — приоритет над loadingProbabilityPerStep. */
+    spatialLoader?: ISpatialLoader;
     /** When tracking loop duration: cohesin holds loop and unloads stochastically. */
     trackLoopDuration?: boolean;
 }
@@ -41,8 +44,9 @@ export class MultiCohesinEngine {
     readonly maxCohesins: number;  // Limit to prevent memory leaks
     readonly unloadingProbability: number;
     readonly loadingProbabilityPerStep: number | undefined;
+    readonly spatialLoader: ISpatialLoader | undefined;
     readonly trackLoopDuration: boolean;
-    
+
     private cohesins: CohesinComplex[];
     private loops: Loop[];
     private stepCount: number;
@@ -61,11 +65,12 @@ export class MultiCohesinEngine {
         this.maxCohesins = config.numCohesins ? config.numCohesins * 5 : 50; // 5x initial pool max
         this.unloadingProbability = config.unloadingProbability ?? COHESIN_PARAMS.UNLOADING_PROBABILITY;
         this.loadingProbabilityPerStep = config.loadingProbabilityPerStep;
+        this.spatialLoader = config.spatialLoader;
         this.trackLoopDuration = config.trackLoopDuration ?? false;
-        
+
         this.rng = new SeededRandom(this.seed);
-        
-        const useProbabilisticLoading = this.loadingProbabilityPerStep != null;
+
+        const useProbabilisticLoading = this.spatialLoader != null || this.loadingProbabilityPerStep != null;
         const spacing = config.spacing ?? Math.floor(config.genomeLength / (this.numCohesins + 2));
         
         this.cohesins = [];
@@ -180,7 +185,15 @@ export class MultiCohesinEngine {
     private handleRespawn(unloadedPositions: number[]): void {
         const activeCount = this.cohesins.filter(c => c.active).length;
         
-        // Probabilistic loading mode (~1 event per hour per TAD)
+        // H2: spatial loading (FountainLoader) or uniform probabilistic loading
+        if (this.spatialLoader != null) {
+            if (this.cohesins.length < this.maxCohesins && this.rng.random() < this.spatialLoader.getStepLoadingProbability()) {
+                const newPos = Math.floor(this.spatialLoader.sampleLoadingPosition(this.rng));
+                const clamped = Math.max(0, Math.min(this.genomeLength - 1, newPos));
+                this.cohesins.push(createCohesinComplex(clamped, this.velocity));
+            }
+            return;
+        }
         if (this.loadingProbabilityPerStep != null) {
             if (this.cohesins.length < this.maxCohesins && this.rng.random() < this.loadingProbabilityPerStep) {
                 const newPos = this.rng.randomInt(
@@ -329,9 +342,12 @@ export class MultiCohesinEngine {
         
         this.rng.reset(this.seed);
         this.cohesins = [];
-        if (this.loadingProbabilityPerStep != null) {
-            const pos = Math.floor(this.genomeLength / 2);
-            this.cohesins.push(createCohesinComplex(pos, this.velocity));
+        if (this.spatialLoader != null || this.loadingProbabilityPerStep != null) {
+            const pos = this.spatialLoader != null
+                ? Math.floor(this.spatialLoader.sampleLoadingPosition(this.rng))
+                : Math.floor(this.genomeLength / 2);
+            const clamped = Math.max(0, Math.min(this.genomeLength - 1, pos));
+            this.cohesins.push(createCohesinComplex(clamped, this.velocity));
         } else {
             const spacing = Math.floor(this.genomeLength / (this.numCohesins + 2));
             for (let i = 0; i < this.numCohesins; i++) {
