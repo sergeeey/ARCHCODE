@@ -1,41 +1,36 @@
-# ARCHCODE Docker Compose Configuration
-# Run all validations with: docker-compose up
+# ARCHCODE v1.1 Docker Compose Configuration
+#
+# Run all validations:     docker-compose up
+# Run specific locus:      docker-compose --profile tcra up
+# Run SE identification:   docker-compose --profile se up
+# Run SE mass validation:  docker-compose --profile se-validation up
 
 name: archcode
 
 services:
+  # Default: Run all locus validations (MYC, IGH, TCRa, SOX2)
   archcode:
     build:
       context: .
       dockerfile: Dockerfile
     container_name: archcode-simulator
-
-    # Mount volumes for data and results
     volumes:
-      # Results folder - persists to host
       - ./results:/app/results
-
-      # Optional: mount BigWig data from host
-      # Uncomment and adjust path if you have MED1 data locally
-      # - /path/to/your/med1/data:/app/data/inputs/med1:ro
-
-    # Environment variables
+      # Mount BigWig data from host (uncomment and adjust paths)
+      # - /path/to/med1:/app/data/inputs/med1:ro
+      # - /path/to/histone:/app/data/inputs/histone:ro
     environment:
       - NODE_ENV=production
       - MED1_BW=/app/data/inputs/med1/MED1_GM12878_Rep1.bw
-
-    # Resource limits (adjust based on your system)
     deploy:
       resources:
         limits:
           memory: 4G
         reservations:
           memory: 2G
-
-    # Default command runs all validations
     command: ["npx", "tsx", "scripts/run-all-validations.ts"]
 
-  # Optional: run specific locus validation
+  # MYC locus (calibration)
   archcode-myc:
     build:
       context: .
@@ -46,6 +41,7 @@ services:
     profiles:
       - myc
 
+  # IGH locus (Blind Test #1)
   archcode-igh:
     build:
       context: .
@@ -56,16 +52,18 @@ services:
     profiles:
       - igh
 
+  # TCRa locus (Blind Test #2) - FINAL
   archcode-tcra:
     build:
       context: .
       dockerfile: Dockerfile
     volumes:
       - ./results:/app/results
-    command: ["npx", "tsx", "scripts/run-fountain-tcra.ts", "--beta=5", "--runs=20", "--out=ensemble_tcra_beta5.json"]
+    command: ["npx", "tsx", "scripts/run-fountain-tcra-final.ts", "--beta=5", "--runs=20", "--out=tcra_final_validation.json"]
     profiles:
       - tcra
 
+  # SOX2 locus (Blind Test #3)
   archcode-sox2:
     build:
       context: .
@@ -75,3 +73,93 @@ services:
     command: ["npx", "tsx", "scripts/run-fountain-sox2.ts", "--beta=5", "--runs=20", "--out=ensemble_sox2_beta5.json"]
     profiles:
       - sox2
+
+  # Super-Enhancer identification (requires H3K27ac BigWig)
+  archcode-se:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+      # Mount H3K27ac and MED1 BigWig files
+      # - /path/to/histone:/app/data/inputs/histone:ro
+      # - /path/to/med1:/app/data/inputs/med1:ro
+    command: ["npx", "tsx", "scripts/identify-super-enhancers.ts"]
+    profiles:
+      - se
+
+  # Super-Enhancer mass validation (Top 20 SE)
+  archcode-se-validation:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    command: ["npx", "tsx", "scripts/validate-top-se.ts"]
+    profiles:
+      - se-validation
+
+  # Full pipeline: all validations + SE analysis
+  archcode-full:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    command: >
+      sh -c "
+        npx tsx scripts/run-all-validations.ts &&
+        npx tsx scripts/identify-super-enhancers.ts &&
+        npx tsx scripts/validate-top-se.ts &&
+        echo 'All validations complete!'
+      "
+    profiles:
+      - full
+
+  # K562 Cross-Cell Validation (Nature-level)
+  archcode-k562:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+      # Mount K562 BigWig files
+      # - /path/to/k562/data:/app/data/inputs:ro
+    deploy:
+      resources:
+        limits:
+          memory: 8G
+        reservations:
+          memory: 4G
+    command: ["npx", "tsx", "scripts/run-cross-cell-k562.ts"]
+    profiles:
+      - k562
+
+  # Virtual Knockout (In Silico Degron) - Rinzema et al. validation
+  archcode-knockout:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./results:/app/results
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+        reservations:
+          memory: 2G
+    command: ["npx", "tsx", "scripts/run-virtual-knockout.ts"]
+    profiles:
+      - knockout
