@@ -23,9 +23,20 @@ const MYC_START = 127_700_000;
 const MYC_END = 128_800_000;
 const MYC_LENGTH = MYC_END - MYC_START; // 1_100_000
 const BIN_COUNT = 500;
-const BETA = 2.0;
+const DEFAULT_BETA = 20.0;  // Экстремальное значение для теста
 const RESOLUTION = 5000;
-const MAX_STEPS = 20_000;
+
+function parseArgs(): { beta: number; outFile: string } {
+    let beta = DEFAULT_BETA;
+    let outFile = 'fountain_test_v1.json';
+    for (const arg of process.argv.slice(2)) {
+        if (arg.startsWith('--beta=')) beta = Number(arg.slice(7));
+        else if (arg.startsWith('--out=')) outFile = arg.slice(6);
+    }
+    return { beta, outFile };
+}
+const MAX_STEPS = 50_000;  // Увеличено для статистики
+const NUM_COHESINS = 20;   // Больше машин на шоссе
 const SEED = 2000;
 
 /** Минимальный набор CTCF-подобных сайтов для MYC (конвергентные пары для петель) */
@@ -71,7 +82,8 @@ function constantSignal(n: number): number[] {
 }
 
 async function main(): Promise<void> {
-    const outPath = path.join(__dirname, '..', 'results', 'fountain_test_v1.json');
+    const { beta: BETA, outFile } = parseArgs();
+    const outPath = path.join(__dirname, '..', 'results', outFile);
     const resultsDir = path.dirname(outPath);
     if (!fs.existsSync(resultsDir)) {
         fs.mkdirSync(resultsDir, { recursive: true });
@@ -113,12 +125,26 @@ async function main(): Promise<void> {
         velocity: SABATE_NATURE_2025.EXTRUSION_SPEED_BP_PER_STEP,
         unloadingProbability: SABATE_NATURE_2025.UNLOADING_PROBABILITY,
         spatialLoader: fountain,
+        numCohesins: NUM_COHESINS,
         trackLoopDuration: false,
         seed: SEED,
         maxSteps: MAX_STEPS,
     });
 
-    engine.run(MAX_STEPS);
+    // Debug: логирование каждые 1000 шагов
+    console.log('[run-fountain-myc] Starting simulation...');
+    console.log(`  stepLoadingProbability = ${fountain.getStepLoadingProbability()}`);
+    console.log(`  medianSignal = ${fountain.getMedianSignal()}`);
+    console.log(`  beta = ${BETA}, numCohesins = ${NUM_COHESINS}, maxSteps = ${MAX_STEPS}`);
+
+    for (let step = 0; step < MAX_STEPS; step++) {
+        engine.step();
+        if (step % 10000 === 0) {
+            const cohesins = engine.getCohesins();
+            const activeCount = cohesins.filter(c => c.active).length;
+            console.log(`  step ${step}: active cohesins = ${activeCount}, total loops = ${engine.getLoops().length}`);
+        }
+    }
     const loops = engine.getLoops();
     const matrix = engine.getContactMatrix(RESOLUTION, 0.1);
 
