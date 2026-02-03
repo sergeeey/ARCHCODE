@@ -1,0 +1,23 @@
+{
+  "name": "Sabaté et al. Nature Genetics 2025",
+  "version": "1.0",
+  "description": "Blind-test preset: 1 step = 1 s, v = 0.3 kb/s, T_res calibrated within 10–30 min (literature), loop duration target 6–19 min",
+  "doi": "10.1038/s41588-025-02406-9",
+  "biophysics": {
+    "biologicalTimeScale": 1,
+    "biologicalTimeScaleUnit": "seconds/step",
+    "velocity": 300,
+    "velocityUnit": "bp/step",
+    "velocityNote": "0.3 kb/s (mean of 0.25–0.4 kb/s)",
+    "meanResidenceSteps": 1000,
+    "unloadingProbability": 0.001,
+    "unloadingProbabilityNote": "1/1000, T_res = 16.66 min (calibrated within literature 10–30 min)",
+    "loadingProbabilityPerStep": 0.0002778,
+    "loadingProbabilityPerStepNote": "1/3600, ~1 event per hour per TAD",
+    "loopDurationTargetMin": 6,
+    "loopDurationTargetMax": 19,
+    "loopDurationTargetMinSteps": 360,
+    "loopDurationTargetMaxSteps": 1140,
+    "loopDurationTargetNote": "6–19 min experimental range (Sabaté et al. 2025)"
+  }
+}

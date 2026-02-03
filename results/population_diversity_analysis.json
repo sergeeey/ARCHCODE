@@ -1,0 +1,219 @@
+{
+  "title": "ARCHCODE Population Diversity Analysis",
+  "date": "2026-02-03T12:56:19.359Z",
+  "locus": {
+    "chromosome": "chr11",
+    "start": 5200000,
+    "end": 5400000,
+    "length": 200000
+  },
+  "config": {
+    "resolution": 5000,
+    "numRuns": 10,
+    "maxSteps": 30000,
+    "numCohesins": 15
+  },
+  "kramerParams": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "kBase": 0.002
+  },
+  "results": [
+    {
+      "id": "REF",
+      "name": "Reference (Healthy)",
+      "phenotype": "normal",
+      "ssim": 1,
+      "riskScore": 0,
+      "meanInsulation": 0.11461226851851854
+    },
+    {
+      "id": "S01",
+      "name": "Sample 1 (Normal)",
+      "phenotype": "normal",
+      "ssim": 0.8520701643136911,
+      "riskScore": 15,
+      "meanInsulation": 0.12619623655913975
+    },
+    {
+      "id": "S02",
+      "name": "Sample 2 (Normal)",
+      "phenotype": "normal",
+      "ssim": 0.886913909028279,
+      "riskScore": 11,
+      "meanInsulation": 0.11863541666666663
+    },
+    {
+      "id": "S03",
+      "name": "Sample 3 (Normal)",
+      "phenotype": "normal",
+      "ssim": 0.7277682369539594,
+      "riskScore": 27,
+      "meanInsulation": 0.07382486979166668
+    },
+    {
+      "id": "S04",
+      "name": "Sample 4 (Normal)",
+      "phenotype": "normal",
+      "ssim": 0.813853419535641,
+      "riskScore": 19,
+      "meanInsulation": 0.15897435897435894
+    },
+    {
+      "id": "S05",
+      "name": "Sample 5 (Normal)",
+      "phenotype": "normal",
+      "ssim": 0.8604326510694364,
+      "riskScore": 14,
+      "meanInsulation": 0.135880376344086
+    },
+    {
+      "id": "S06",
+      "name": "Sample 6 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.8791501016009632,
+      "riskScore": 12,
+      "meanInsulation": 0.12200181159420291
+    },
+    {
+      "id": "S07",
+      "name": "Sample 7 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.8573372336489693,
+      "riskScore": 14,
+      "meanInsulation": 0.09908700980392156
+    },
+    {
+      "id": "S08",
+      "name": "Sample 8 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.8341849152910065,
+      "riskScore": 17,
+      "meanInsulation": 0.11311063218390807
+    },
+    {
+      "id": "S09",
+      "name": "Sample 9 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.8269556564275229,
+      "riskScore": 17,
+      "meanInsulation": 0.10942708333333333
+    },
+    {
+      "id": "S10",
+      "name": "Sample 10 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.816451626143087,
+      "riskScore": 18,
+      "meanInsulation": 0.09590277777777774
+    },
+    {
+      "id": "S11",
+      "name": "Sample 11 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.9037188397199216,
+      "riskScore": 10,
+      "meanInsulation": 0.10987179487179492
+    },
+    {
+      "id": "S12",
+      "name": "Sample 12 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.8581955730853884,
+      "riskScore": 14,
+      "meanInsulation": 0.10876225490196076
+    },
+    {
+      "id": "S13",
+      "name": "Sample 13 (Mild variant)",
+      "phenotype": "mild",
+      "ssim": 0.8531217064573537,
+      "riskScore": 15,
+      "meanInsulation": 0.09870967741935485
+    },
+    {
+      "id": "S14",
+      "name": "Sample 14 (Severe variant)",
+      "phenotype": "severe",
+      "ssim": 0.691865097304225,
+      "riskScore": 31,
+      "meanInsulation": 0.07885416666666664
+    },
+    {
+      "id": "S15",
+      "name": "Sample 15 (Severe variant)",
+      "phenotype": "severe",
+      "ssim": 0.6277058778145279,
+      "riskScore": 37,
+      "meanInsulation": 0.06804861111111112
+    },
+    {
+      "id": "S16",
+      "name": "Sample 16 (Severe variant)",
+      "phenotype": "severe",
+      "ssim": 0.6658715435472579,
+      "riskScore": 33,
+      "meanInsulation": 0.06712339743589742
+    },
+    {
+      "id": "S17",
+      "name": "Sample 17 (Severe variant)",
+      "phenotype": "severe",
+      "ssim": 0.8605650038222185,
+      "riskScore": 14,
+      "meanInsulation": 0.10925245098039213
+    },
+    {
+      "id": "S18",
+      "name": "Sample 18 (Severe variant)",
+      "phenotype": "severe",
+      "ssim": 0.6876154405875482,
+      "riskScore": 31,
+      "meanInsulation": 0.06572916666666666
+    },
+    {
+      "id": "S19",
+      "name": "Sample 19 (Severe variant)",
+      "phenotype": "severe",
+      "ssim": 0.8129415923887601,
+      "riskScore": 19,
+      "meanInsulation": 0.106703431372549
+    }
+  ],
+  "top3Anomalous": [
+    {
+      "id": "S15",
+      "name": "Sample 15 (Severe variant)",
+      "phenotype": "severe",
+      "riskScore": 37,
+      "ssim": 0.6277058778145279
+    },
+    {
+      "id": "S16",
+      "name": "Sample 16 (Severe variant)",
+      "phenotype": "severe",
+      "riskScore": 33,
+      "ssim": 0.6658715435472579
+    },
+    {
+      "id": "S14",
+      "name": "Sample 14 (Severe variant)",
+      "phenotype": "severe",
+      "riskScore": 31,
+      "ssim": 0.691865097304225
+    }
+  ],
+  "summary": {
+    "totalSamples": 20,
+    "meanRiskScore": 18.4,
+    "stdRiskScore": 8.83402513014311,
+    "highRiskCount": 4,
+    "riskDistribution": {
+      "0-20": 15,
+      "20-40": 5,
+      "40-60": 0,
+      "60-80": 0,
+      "80-100": 0
+    }
+  }
+}

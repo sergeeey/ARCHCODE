@@ -1,0 +1,30 @@
+{
+  "locus": "HBB",
+  "interval": {
+    "chromosome": "chr11",
+    "start": 5200000,
+    "end": 5400000
+  },
+  "mode": "live",
+  "config": {
+    "beta": 5,
+    "numRuns": 50,
+    "maxSteps": 50000,
+    "numCohesins": 20,
+    "resolution": 5000
+  },
+  "alphagenome": {
+    "modelVersion": "alphagenome-sdk-v0.5.1",
+    "confidence": 0.95,
+    "matrixSize": 40
+  },
+  "metrics": {
+    "pearsonR": 0.5175632928441487,
+    "spearmanRho": 0.5103502677149483,
+    "mse": 0.02334215638180819,
+    "rmse": 0.1527814006409425,
+    "ssim": 0.4136975928058319
+  },
+  "verdict": "MARGINAL",
+  "timestamp": "2026-02-03T12:39:00.140Z"
+}

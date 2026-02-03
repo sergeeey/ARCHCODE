@@ -1,0 +1,92 @@
+{
+  "title": "ARCHCODE Parser Integration Analysis",
+  "date": "2026-02-03T13:17:19.570Z",
+  "parserPath": "D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs",
+  "kramerParams": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "kBase": 0.002
+  },
+  "analyses": [
+    {
+      "name": "HBB (Beta-Globin)",
+      "interval": {
+        "chromosome": "chr11",
+        "start": 5200000,
+        "end": 5400000
+      },
+      "matrixSize": 40,
+      "loopsDetected": 9,
+      "riskScore": 17,
+      "topLoops": [
+        {
+          "start": 5250000,
+          "end": 5360000,
+          "strength": 0.9706585394684225
+        },
+        {
+          "start": 5250000,
+          "end": 5385000,
+          "strength": 0.5991277270019055
+        },
+        {
+          "start": 5330000,
+          "end": 5380000,
+          "strength": 0.9719598015071824
+        },
+        {
+          "start": 5295000,
+          "end": 5325000,
+          "strength": 0.5799115946516396
+        },
+        {
+          "start": 5330000,
+          "end": 5365000,
+          "strength": 0.5040632707998157
+        }
+      ]
+    },
+    {
+      "name": "MYC",
+      "interval": {
+        "chromosome": "chr8",
+        "start": 127735000,
+        "end": 128835000
+      },
+      "matrixSize": 220,
+      "loopsDetected": 0,
+      "riskScore": 44,
+      "topLoops": []
+    },
+    {
+      "name": "SOX2",
+      "interval": {
+        "chromosome": "chr3",
+        "start": 181500000,
+        "end": 182300000
+      },
+      "matrixSize": 160,
+      "loopsDetected": 0,
+      "riskScore": 54,
+      "topLoops": []
+    },
+    {
+      "name": "IGH",
+      "interval": {
+        "chromosome": "chr14",
+        "start": 105586000,
+        "end": 106886000
+      },
+      "matrixSize": 260,
+      "loopsDetected": 0,
+      "riskScore": 40,
+      "topLoops": []
+    }
+  ],
+  "summary": {
+    "totalAnalyses": 4,
+    "meanRiskScore": 39,
+    "totalLoops": 9,
+    "bigWigStatus": "mock"
+  }
+}

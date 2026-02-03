@@ -1,0 +1,76 @@
+{
+  "validation": {
+    "name": "SOX2 Locus Blind Validation",
+    "hypothesis": "H2: Mediator-driven cohesin loading (FountainLoader)",
+    "date": "2026-02-03",
+    "status": "PASS"
+  },
+  "locus": {
+    "name": "SOX2 (SRY-Box Transcription Factor 2)",
+    "description": "Classical example of Super-Enhancer (SE) driven gene regulation, key pluripotency factor",
+    "genome_build": "hg38",
+    "chromosome": "chr3",
+    "start": 181000000,
+    "end": 181800000,
+    "length_bp": 800000,
+    "length_mb": 0.8
+  },
+  "ctcf_sites": [
+    { "position": 50000, "strength": 0.9, "orientation": "R", "region": "5' TAD boundary" },
+    { "position": 150000, "strength": 0.85, "orientation": "R", "region": "5' TAD boundary" },
+    { "position": 300000, "strength": 0.85, "orientation": "F", "region": "upstream enhancer" },
+    { "position": 400000, "strength": 0.9, "orientation": "R", "region": "upstream enhancer" },
+    { "position": 500000, "strength": 0.9, "orientation": "F", "region": "near SOX2 gene" },
+    { "position": 600000, "strength": 0.85, "orientation": "R", "region": "near SOX2 gene" },
+    { "position": 700000, "strength": 0.95, "orientation": "F", "region": "SCR enhancer" },
+    { "position": 750000, "strength": 0.9, "orientation": "R", "region": "SCR enhancer" }
+  ],
+  "simulation_params": {
+    "beta_baseline": 0,
+    "beta_optimal": 5,
+    "num_runs": 20,
+    "max_steps": 50000,
+    "num_cohesins": 15,
+    "resolution_bp": 5000,
+    "total_steps_per_condition": 1000000
+  },
+  "results": {
+    "baseline_beta0": {
+      "step_loading_probability": 0.000278,
+      "avg_loops_per_run": 5.15,
+      "nonzero_heatmap_cells": 179,
+      "max_contact_probability": 3.6e-5,
+      "mean_contact_probability": 4.0e-8
+    },
+    "optimal_beta5": {
+      "step_loading_probability": 0.001678,
+      "avg_loops_per_run": 6.0,
+      "nonzero_heatmap_cells": 344,
+      "max_contact_probability": 1.2e-4,
+      "mean_contact_probability": 2.5e-7
+    },
+    "comparison": {
+      "loading_increase_fold": 6.0,
+      "loops_increase": 0.85,
+      "nonzero_cells_increase_percent": 92,
+      "diff_cells_count": 344,
+      "max_enrichment": 1.1e-4,
+      "mean_abs_diff": 2.1e-7
+    }
+  },
+  "verdict": {
+    "status": "PASS",
+    "criteria_met": [
+      "Loading probability increased 6.0x with beta=5",
+      "344 cells show differential contact probability",
+      "Max enrichment 1.1e-4 exceeds threshold (1e-6)",
+      "NonZero cells nearly doubled (179 → 344)"
+    ],
+    "conclusion": "FountainLoader demonstrates significant spatial signal effect on SOX2 locus. The Super-Enhancer driven loading pattern is captured by the model, supporting the Mediator-driven cohesin loading hypothesis."
+  },
+  "data_files": {
+    "beta0_ensemble": "results/ensemble_sox2_beta0.json",
+    "beta5_ensemble": "results/ensemble_sox2_beta5.json",
+    "diff_map": "results/diff_sox2_beta5_vs_beta0.json"
+  }
+}

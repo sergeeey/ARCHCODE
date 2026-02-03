@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+/* ARCHCODE Macro-Science design tokens */
+:root {
+  /* Void-black */
+  --bg-app: #050505;
+
+  /* Glass (physical glass) */
+  --glass-bg: rgba(20, 20, 30, 0.6);
+  --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+  --glass-inner: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+
+  /* Semantic accents */
+  --accent-live: #00f0ff;
+  --accent-dna: #6600cc;
+  --accent-danger: #e74c3c;
+  --accent-muted: #7f8c8d;
+
+  /* Legacy (keep for gradual migration) */
+  --bg-panel: #1a1a1a;
+  --bg-panel-elevated: rgba(0, 0, 0, 0.85);
+  --bg-input: #222;
+  --accent-primary: #00f0ff;
+  --accent-success: #00f0ff;
+  --accent-warning: #f39c12;
+  --accent-purple: #6600cc;
+
+  /* Text */
+  --text-heading: #ffffff;
+  --text-label: rgba(255, 255, 255, 0.6);
+  --text-primary: rgba(255, 255, 255, 0.95);
+  --text-muted: rgba(255, 255, 255, 0.6);
+
+  /* Borders & radius */
+  --radius-md: 8px;
+  --radius-sm: 4px;
+  --border-panel: 1px solid rgba(255, 255, 255, 0.1);
+  --border-input: 1px solid rgba(255, 255, 255, 0.15);
+
+  font-family: ui-monospace, "Cascadia Code", "Source Code Pro", Menlo, monospace;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+  color: var(--text-primary);
+  background-color: var(--bg-app);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-heading);
+  font-family: inherit;
+}
+
+/* Panel glass: physical glass, blur, inner shadow */
+.panel-glass {
+  background: var(--glass-bg);
+  border: var(--glass-border);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  box-shadow: var(--glass-inner);
+}
+
+button {
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.2s ease, opacity 0.2s ease;
+}
+button:focus-visible {
+  outline: 2px solid var(--accent-live);
+  outline-offset: 2px;
+}

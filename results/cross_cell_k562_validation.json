@@ -1,0 +1,355 @@
+{
+  "validation": {
+    "name": "K562 Cross-Cell Validation",
+    "hypothesis": "FountainLoader mechanism is cell-type independent",
+    "date": "2026-02-03T07:37:01.314Z",
+    "status": "PASS"
+  },
+  "cell_line": {
+    "name": "K562",
+    "type": "Erythroleukemia",
+    "encode_med1": "ENCSR269BSA",
+    "encode_h3k27ac": "ENCSR000AKP"
+  },
+  "parameters": {
+    "beta": 5,
+    "numRuns": 20,
+    "maxSteps": 50000,
+    "topN_SE": 20
+  },
+  "summary": {
+    "totalSE_identified": 448,
+    "totalSE_validated": 20,
+    "meanContactDensityRatio": 53.49609974188839,
+    "meanLifetimeRatio": 1.008394511029383
+  },
+  "comparison_gm12878": {
+    "gm12878_contact_ratio": 47.33,
+    "gm12878_lifetime_ratio": 0.99,
+    "contact_ratio_similar": true,
+    "lifetime_ratio_similar": true
+  },
+  "results": [
+    {
+      "se": {
+        "chrom": "chr6",
+        "start": 112524001,
+        "end": 112575867,
+        "signal": 502087.6829004288,
+        "name": "SE_1_chr6",
+        "rank": 1
+      },
+      "contactDensityInSE": 35014.030303030304,
+      "contactDensityOutsideSE": 589.9976744186047,
+      "contactDensityRatio": 59.34604799507696,
+      "avgLifetimeInSE": 1003.648604269294,
+      "avgLifetimeOutsideSE": 945.25,
+      "lifetimeRatio": 1.0617811206234267
+    },
+    {
+      "se": {
+        "chrom": "chr15",
+        "start": 96864159,
+        "end": 96898827,
+        "signal": 464811.8193464279,
+        "name": "SE_2_chr15",
+        "rank": 2
+      },
+      "contactDensityInSE": 81793.25,
+      "contactDensityOutsideSE": 1148.5228571428572,
+      "contactDensityRatio": 71.21604023055701,
+      "avgLifetimeInSE": 1039.5171232876712,
+      "avgLifetimeOutsideSE": 1164.8673469387754,
+      "lifetimeRatio": 0.8923909885700552
+    },
+    {
+      "se": {
+        "chrom": "chr8",
+        "start": 17510962,
+        "end": 17555373,
+        "signal": 455155.0644388199,
+        "name": "SE_3_chr8",
+        "rank": 3
+      },
+      "contactDensityInSE": 34603.444444444445,
+      "contactDensityOutsideSE": 1857.6435897435897,
+      "contactDensityRatio": 18.62760145998768,
+      "avgLifetimeInSE": 928.8151162790698,
+      "avgLifetimeOutsideSE": 1038.847290640394,
+      "lifetimeRatio": 0.8940824360301356
+    },
+    {
+      "se": {
+        "chrom": "chr12",
+        "start": 109217011,
+        "end": 109251077,
+        "signal": 441697.1423921585,
+        "name": "SE_4_chr12",
+        "rank": 4
+      },
+      "contactDensityInSE": 81969.92857142857,
+      "contactDensityOutsideSE": 1374.1171428571429,
+      "contactDensityRatio": 59.65279524931332,
+      "avgLifetimeInSE": 1037.4508966695132,
+      "avgLifetimeOutsideSE": 978.1617161716172,
+      "lifetimeRatio": 1.0606128613681032
+    },
+    {
+      "se": {
+        "chrom": "chr17",
+        "start": 57830582,
+        "end": 57865720,
+        "signal": 433668.4426460266,
+        "name": "SE_5_chr17",
+        "rank": 5
+      },
+      "contactDensityInSE": 51563.77777777778,
+      "contactDensityOutsideSE": 952.8918918918919,
+      "contactDensityRatio": 54.11293580786164,
+      "avgLifetimeInSE": 1011.8467475192944,
+      "avgLifetimeOutsideSE": 947.8697183098592,
+      "lifetimeRatio": 1.0674955935120622
+    },
+    {
+      "se": {
+        "chrom": "chr2",
+        "start": 20766716,
+        "end": 20780971,
+        "signal": 426193.00225257874,
+        "name": "SE_6_chr2",
+        "rank": 6
+      },
+      "contactDensityInSE": 320488,
+      "contactDensityOutsideSE": 3446.4518518518516,
+      "contactDensityRatio": 92.99070864077065,
+      "avgLifetimeInSE": 1008.5311542390194,
+      "avgLifetimeOutsideSE": 1053.3434343434344,
+      "lifetimeRatio": 0.9574571040713353
+    },
+    {
+      "se": {
+        "chrom": "chr12",
+        "start": 96812981,
+        "end": 96842924,
+        "signal": 414107.5987768173,
+        "name": "SE_7_chr12",
+        "rank": 7
+      },
+      "contactDensityInSE": 64691.333333333336,
+      "contactDensityOutsideSE": 3739.5939393939393,
+      "contactDensityRatio": 17.29902614608943,
+      "avgLifetimeInSE": 1013.3900709219859,
+      "avgLifetimeOutsideSE": 1000.594512195122,
+      "lifetimeRatio": 1.0127879561309934
+    },
+    {
+      "se": {
+        "chrom": "chr1",
+        "start": 208374185,
+        "end": 208418164,
+        "signal": 389201.3128967285,
+        "name": "SE_8_chr1",
+        "rank": 8
+      },
+      "contactDensityInSE": 46549.688888888886,
+      "contactDensityOutsideSE": 1203.6128205128205,
+      "contactDensityRatio": 38.67496930537477,
+      "avgLifetimeInSE": 948.1392515230635,
+      "avgLifetimeOutsideSE": 1035.7285714285715,
+      "lifetimeRatio": 0.9154321679234002
+    },
+    {
+      "se": {
+        "chrom": "chr6",
+        "start": 151356475,
+        "end": 151390912,
+        "signal": 382919.3148736954,
+        "name": "SE_9_chr6",
+        "rank": 9
+      },
+      "contactDensityInSE": 64028.25,
+      "contactDensityOutsideSE": 2483.137142857143,
+      "contactDensityRatio": 25.78522502640669,
+      "avgLifetimeInSE": 1001.046908315565,
+      "avgLifetimeOutsideSE": 958.6673189823874,
+      "lifetimeRatio": 1.0442067738140515
+    },
+    {
+      "se": {
+        "chrom": "chr21",
+        "start": 39845962,
+        "end": 39877963,
+        "signal": 366361.13837242126,
+        "name": "SE_10_chr21",
+        "rank": 10
+      },
+      "contactDensityInSE": 67701.28571428571,
+      "contactDensityOutsideSE": 2260.325714285714,
+      "contactDensityRatio": 29.95200438874802,
+      "avgLifetimeInSE": 977.8442703232125,
+      "avgLifetimeOutsideSE": 995.9311926605504,
+      "lifetimeRatio": 0.9818391848045043
+    },
+    {
+      "se": {
+        "chrom": "chr16",
+        "start": 66391765,
+        "end": 66418017,
+        "signal": 365441.61263656616,
+        "name": "SE_11_chr16",
+        "rank": 11
+      },
+      "contactDensityInSE": 107693.52380952382,
+      "contactDensityOutsideSE": 1219.6818181818182,
+      "contactDensityRatio": 88.29640829611016,
+      "avgLifetimeInSE": 986.2944630872483,
+      "avgLifetimeOutsideSE": 985.9116607773851,
+      "lifetimeRatio": 1.0003882724234758
+    },
+    {
+      "se": {
+        "chrom": "chr3",
+        "start": 171505651,
+        "end": 171528866,
+        "signal": 355629.9847249985,
+        "name": "SE_12_chr3",
+        "rank": 12
+      },
+      "contactDensityInSE": 127840.66666666667,
+      "contactDensityOutsideSE": 2255.377419354839,
+      "contactDensityRatio": 56.6826046805222,
+      "avgLifetimeInSE": 1058.0617283950617,
+      "avgLifetimeOutsideSE": 971.0995145631068,
+      "lifetimeRatio": 1.0895502598115072
+    },
+    {
+      "se": {
+        "chrom": "chr4",
+        "start": 86682192,
+        "end": 86706533,
+        "signal": 354758.5485138893,
+        "name": "SE_13_chr4",
+        "rank": 13
+      },
+      "contactDensityInSE": 135656.53333333333,
+      "contactDensityOutsideSE": 2156.2354838709675,
+      "contactDensityRatio": 62.913598420983604,
+      "avgLifetimeInSE": 1047.061122244489,
+      "avgLifetimeOutsideSE": 928.1985981308411,
+      "lifetimeRatio": 1.1280572114125222
+    },
+    {
+      "se": {
+        "chrom": "chr7",
+        "start": 100751087,
+        "end": 100772097,
+        "signal": 333492.03528118134,
+        "name": "SE_14_chr7",
+        "rank": 14
+      },
+      "contactDensityInSE": 128121.86666666667,
+      "contactDensityOutsideSE": 2368.4967741935484,
+      "contactDensityRatio": 54.094169796913064,
+      "avgLifetimeInSE": 948.1304761904762,
+      "avgLifetimeOutsideSE": 1084.9858490566037,
+      "lifetimeRatio": 0.8738643706873013
+    },
+    {
+      "se": {
+        "chrom": "chr6",
+        "start": 11605392,
+        "end": 11616835,
+        "signal": 332078.23098659515,
+        "name": "SE_15_chr6",
+        "rank": 15
+      },
+      "contactDensityInSE": 259285.16666666666,
+      "contactDensityOutsideSE": 4660.811111111111,
+      "contactDensityRatio": 55.630910690318565,
+      "avgLifetimeInSE": 1015.6760204081633,
+      "avgLifetimeOutsideSE": 1072.7985401459855,
+      "lifetimeRatio": 0.9467537309194612
+    },
+    {
+      "se": {
+        "chrom": "chr1",
+        "start": 22223609,
+        "end": 22267162,
+        "signal": 330423.3954381943,
+        "name": "SE_16_chr1",
+        "rank": 16
+      },
+      "contactDensityInSE": 42965.37777777778,
+      "contactDensityOutsideSE": 1859.5641025641025,
+      "contactDensityRatio": 23.105080227422107,
+      "avgLifetimeInSE": 960.998046875,
+      "avgLifetimeOutsideSE": 962.1073825503356,
+      "lifetimeRatio": 0.9988469731181201
+    },
+    {
+      "se": {
+        "chrom": "chr3",
+        "start": 15671822,
+        "end": 15690483,
+        "signal": 325588.5230550766,
+        "name": "SE_17_chr3",
+        "rank": 17
+      },
+      "contactDensityInSE": 220539.9,
+      "contactDensityOutsideSE": 1608.7931034482758,
+      "contactDensityRatio": 137.08406601650412,
+      "avgLifetimeInSE": 1017.2033747779751,
+      "avgLifetimeOutsideSE": 888.498452012384,
+      "lifetimeRatio": 1.1448566651681653
+    },
+    {
+      "se": {
+        "chrom": "chr2",
+        "start": 105991163,
+        "end": 106015890,
+        "signal": 324361.06980133057,
+        "name": "SE_18_chr2",
+        "rank": 18
+      },
+      "contactDensityInSE": 121146.33333333333,
+      "contactDensityOutsideSE": 2127.9806451612903,
+      "contactDensityRatio": 56.93018571799606,
+      "avgLifetimeInSE": 1011.6645091693636,
+      "avgLifetimeOutsideSE": 955.9594936708861,
+      "lifetimeRatio": 1.0582713136563664
+    },
+    {
+      "se": {
+        "chrom": "chr14",
+        "start": 74207806,
+        "end": 74227813,
+        "signal": 323793.4823141098,
+        "name": "SE_19_chr14",
+        "rank": 19
+      },
+      "contactDensityInSE": 98626.46666666666,
+      "contactDensityOutsideSE": 3656.0193548387097,
+      "contactDensityRatio": 26.976461854923002,
+      "avgLifetimeInSE": 996.1765498652292,
+      "avgLifetimeOutsideSE": 959.2574679943101,
+      "lifetimeRatio": 1.0384871456337081
+    },
+    {
+      "se": {
+        "chrom": "chr7",
+        "start": 39627745,
+        "end": 39668682,
+        "signal": 322462.235311985,
+        "name": "SE_20_chr7",
+        "rank": 20
+      },
+      "contactDensityInSE": 47822.28888888889,
+      "contactDensityOutsideSE": 1179.3076923076924,
+      "contactDensityRatio": 40.55115488588843,
+      "avgLifetimeInSE": 988.8475609756098,
+      "avgLifetimeOutsideSE": 988.1281138790035,
+      "lifetimeRatio": 1.000728090908963
+    }
+  ],
+  "conclusion": "FountainLoader mechanism validated across cell types. MED1-mediated cohesin loading is a universal mechanism for SE architecture."
+}

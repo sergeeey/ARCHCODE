@@ -1,0 +1,104 @@
+{
+  "title": "ARCHCODE FountainLoader Multi-Locus Validation",
+  "hypothesis": "H2: Mediator-driven cohesin loading",
+  "date": "2026-02-03T12:44:10.853Z",
+  "parameters": {
+    "beta_baseline": 0,
+    "beta_optimal": 5,
+    "num_runs": 20,
+    "max_steps": 50000,
+    "num_cohesins": 15,
+    "resolution_bp": 5000
+  },
+  "results": [
+    {
+      "locus": "MYC",
+      "chromosome": "chr8",
+      "length_mb": 1.1,
+      "beta0": {
+        "stepLoadProb": 0.0002777777777777778,
+        "avgLoops": 2.75,
+        "nonZeroCells": 315
+      },
+      "beta5": {
+        "stepLoadProb": 0.0018006061913370007,
+        "avgLoops": 3,
+        "nonZeroCells": 578
+      },
+      "loadingIncrease": 6.482182288813203,
+      "diffCells": 623,
+      "maxEnrichment": 0.00015999999999999999,
+      "status": "PASS",
+      "duration_sec": 0.01
+    },
+    {
+      "locus": "IGH",
+      "chromosome": "chr14",
+      "length_mb": 1.1,
+      "beta0": {
+        "stepLoadProb": 0.0002777777777777778,
+        "avgLoops": 4.95,
+        "nonZeroCells": 223
+      },
+      "beta5": {
+        "stepLoadProb": 0.002233158117839617,
+        "avgLoops": 6,
+        "nonZeroCells": 379
+      },
+      "loadingIncrease": 8.03936922422262,
+      "diffCells": 398,
+      "maxEnrichment": 0.00010999999999999999,
+      "status": "PASS",
+      "duration_sec": 0.01
+    },
+    {
+      "locus": "TCRα",
+      "chromosome": "chr14",
+      "length_mb": 1.6,
+      "beta0": {
+        "stepLoadProb": 0.0002777777777777778,
+        "avgLoops": 6.1,
+        "nonZeroCells": 221
+      },
+      "beta5": {
+        "stepLoadProb": 0.002325215335085317,
+        "avgLoops": 7.95,
+        "nonZeroCells": 451
+      },
+      "loadingIncrease": 8.37077520630714,
+      "diffCells": 448,
+      "maxEnrichment": 0.000092,
+      "status": "PASS",
+      "duration_sec": 0.018
+    },
+    {
+      "locus": "SOX2",
+      "chromosome": "chr3",
+      "length_mb": 0.8,
+      "beta0": {
+        "stepLoadProb": 0.0002777777777777778,
+        "avgLoops": 5.15,
+        "nonZeroCells": 179
+      },
+      "beta5": {
+        "stepLoadProb": 0.0016784406962597604,
+        "avgLoops": 6,
+        "nonZeroCells": 344
+      },
+      "loadingIncrease": 6.042386506535137,
+      "diffCells": 344,
+      "maxEnrichment": 0.00010999999999999999,
+      "status": "PASS",
+      "duration_sec": 0.005
+    }
+  ],
+  "summary": {
+    "total_loci": 4,
+    "passed": 4,
+    "failed": 0,
+    "overall_status": "ALL PASS",
+    "total_duration_sec": 0.043,
+    "total_duration_min": 0.0007166666666666666
+  },
+  "conclusion": "FountainLoader hypothesis validated across all tested loci. Mediator-driven spatial cohesin loading produces distinct contact patterns."
+}

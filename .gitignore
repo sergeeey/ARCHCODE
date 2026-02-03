@@ -1,13 +1,69 @@
-__pycache__/
-*.py[cod]
-*.egg-info/
-.build/
-dist/
-.venv/
-venv/
-.env
-.ipynb_checkpoints/
-.DS_Store
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
 
-# Private/internal documentation
-docs/TECH_SPEC_ARCHCODE.md
+# Build outputs
+dist/
+dist-ssr/
+build/
+*.local
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# API Keys and secrets
+*.key
+*.pem
+secrets.json
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS files
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Results and data (may be large)
+results/*.tar
+results/*.gz
+results/*.zip
+data/*.tar
+data/*.gz
+data/raw/
+
+# TypeScript
+*.tsbuildinfo
+
+# Optional: exclude large data files
+# Uncomment if you have large genomic data files
+# data/
+# results/
+*.bw
