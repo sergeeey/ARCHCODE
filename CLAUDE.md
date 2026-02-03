@@ -10,7 +10,7 @@
 | **Branch** | master |
 | **Тесты** | 37/37 pass |
 | **Power-law** | α = -0.964 (error 3.6%) |
-| **Blind-test** | HBB, Sox2, CTCFΔ, **IGH** — ALL PASS |
+| **Blind-test** | HBB, Sox2, CTCFΔ, **IGH, TCRα, SOX2** — ALL PASS |
 
 ## Model Validation: Blind-Test Performance
 
@@ -75,7 +75,7 @@ src/
 - [ ] GitHub Pages demo
 - [ ] Edge case тесты (extreme velocity)
 - [x] Blind-test валидация (HBB, Sox2, CTCFΔ) — DONE
-- [ ] Расширить до 10+ локусов (сейчас 2)
+- [ ] Расширить до 10+ локусов (сейчас 5: MYC, IGH, TCRα, SOX2, HBB)
 
 ## H2: FountainLoader (Mediator-driven loading)
 
@@ -88,29 +88,33 @@ src/
 | 5 | 0.001801 | 3.0 | **623** (max) |
 | 10 | 0.003323 | 3.0 | 599 |
 
-### IGH Locus (blind test) — PASS
-| Metric | Beta=0 | Beta=5 | Change |
-|--------|--------|--------|--------|
-| stepLoadProb | 0.000278 | 0.002233 | 8.0x |
-| avgLoops | 5.0 | 6.0 | +1.0 |
-| NonZero cells | 223 | 379 | +70% |
-| Diff cells | — | 398 | ✓ |
+### Blind Test Summary (all PASS)
+
+| Locus | Chr | Length | stepLoad 5x | Diff cells | Verdict |
+|-------|-----|--------|-------------|------------|---------|
+| IGH | chr14 | 1.10 Mb | 8.0x | 398 | ✓ PASS |
+| TCRα | chr14 | 1.60 Mb | 8.4x | 448 | ✓ PASS |
+| SOX2 | chr3 | 0.80 Mb | 6.0x | 344 | ✓ PASS |
 
 **Ключевые файлы:**
 - `src/simulation/SpatialLoadingModule.ts` — FountainLoader
 - `scripts/run-fountain-ensemble.ts` — MYC ensemble
 - `scripts/run-fountain-igh.ts` — IGH blind test
+- `scripts/run-fountain-tcra.ts` — TCRα blind test
+- `scripts/run-fountain-sox2.ts` — SOX2 blind test
 - `updateOccupancyMatrix()` — учёт времени контакта
 
 ## Последняя сессия
 
-**Дата**: 2026-02-03 (утро)
+**Дата**: 2026-02-03
 **Сделано**:
 - FountainLoader: occupancy-based matrix вместо static loops
 - updateOccupancyMatrix() для учёта времени контакта
 - Ensemble: 20 runs × 50000 steps
 - beta=5 оптимальный (623 NonZero cells на MYC)
-- **IGH blind validation**: PASS (398 diff cells, 8x loading increase)
+- **IGH blind validation**: PASS (398 diff cells, 8x loading)
+- **TCRα blind validation**: PASS (448 diff cells, 8.4x loading)
+- **SOX2 blind validation**: PASS (344 diff cells, 6x loading)
 
 ## Ключевые файлы для контекста
 
@@ -140,4 +144,4 @@ src/
 4. Закоммитить: `docs: update CLAUDE.md session context`
 
 ---
-*Обновлено: 2026-02-03 (IGH blind-test validation)*
+*Обновлено: 2026-02-03 (IGH, TCRα, SOX2 blind-test validation)*
