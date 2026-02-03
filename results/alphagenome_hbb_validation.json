@@ -5,26 +5,26 @@
     "start": 5200000,
     "end": 5400000
   },
-  "mode": "mock",
+  "mode": "live",
   "config": {
     "beta": 5,
-    "numRuns": 20,
+    "numRuns": 50,
     "maxSteps": 50000,
-    "numCohesins": 15,
+    "numCohesins": 20,
     "resolution": 5000
   },
   "alphagenome": {
-    "modelVersion": "mock-v1.2",
-    "confidence": 0.92,
+    "modelVersion": "alphagenome-sdk-v0.5.1",
+    "confidence": 0.95,
     "matrixSize": 40
   },
   "metrics": {
-    "pearsonR": 0.4844237223871688,
-    "spearmanRho": 0.2010633422122431,
-    "mse": 0.08367179322584853,
-    "rmse": 0.2892607702849602,
-    "ssim": 0.013408918115683345
+    "pearsonR": 0.5175632928441487,
+    "spearmanRho": 0.5103502677149483,
+    "mse": 0.02334215638180819,
+    "rmse": 0.1527814006409425,
+    "ssim": 0.4136975928058319
   },
-  "verdict": "FAIL",
-  "timestamp": "2026-02-03T10:22:37.622Z"
+  "verdict": "MARGINAL",
+  "timestamp": "2026-02-03T12:39:00.140Z"
 }

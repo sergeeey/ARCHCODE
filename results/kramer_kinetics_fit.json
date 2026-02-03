@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-02-03T12:38:19.254Z",
+  "frapData": [
+    {
+      "condition": "MED1+",
+      "occupancy": 0.8,
+      "residenceTimeMin": 35,
+      "residenceTimeStd": 8,
+      "n": 45
+    },
+    {
+      "condition": "MED1-",
+      "occupancy": 0.2,
+      "residenceTimeMin": 12,
+      "residenceTimeStd": 4,
+      "n": 38
+    },
+    {
+      "condition": "CTCF_site",
+      "occupancy": 0.3,
+      "residenceTimeMin": 18,
+      "residenceTimeStd": 5,
+      "n": 25
+    },
+    {
+      "condition": "Background",
+      "occupancy": 0.1,
+      "residenceTimeMin": 8,
+      "residenceTimeStd": 3,
+      "n": 30
+    }
+  ],
+  "fittedParams": {
+    "kBase": 0.002,
+    "alpha": 1,
+    "gamma": 0.9445304692813733,
+    "mse": 13.319932105961877
+  },
+  "predictions": [
+    {
+      "condition": "MED1+",
+      "predicted": 43.85126447394435,
+      "actual": 35
+    },
+    {
+      "condition": "MED1-",
+      "predicted": 10.665659251468446,
+      "actual": 12
+    },
+    {
+      "condition": "CTCF_site",
+      "predicted": 12.267878824036028,
+      "actual": 18
+    },
+    {
+      "condition": "Background",
+      "predicted": 9.401576754012313,
+      "actual": 8
+    }
+  ]
+}

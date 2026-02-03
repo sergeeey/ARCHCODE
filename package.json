@@ -1,7 +1,7 @@
 {
   "name": "vite-react-ts-app",
   "private": true,
-  "version": "1.2.0",
+  "version": "1.5.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,7 +20,9 @@
     "validate:ctcf-kd": "npx tsx scripts/validate-nature-2025.ts --locus=HBB_CTCFKD --runs=100",
     "fountain:myc": "npx tsx scripts/run-fountain-myc.ts",
     "alphagenome:hbb": "npx tsx scripts/validate-alphagenome-hbb.ts",
-    "alphagenome:validate": "npx tsx scripts/validate-alphagenome-hbb.ts"
+    "alphagenome:validate": "npx tsx scripts/validate-alphagenome-hbb.ts",
+    "alphagenome:setup": "pip install alphagenome && python src/services/alphagenome_wrapper.py check",
+    "alphagenome:check": "python src/services/alphagenome_wrapper.py check"
   },
   "dependencies": {
     "@react-three/drei": "^9.88.0",
@@ -40,6 +42,8 @@
   },
   "devDependencies": {
     "@gmod/bbi": "^8.1.1",
+    "@grpc/grpc-js": "^1.14.3",
+    "@grpc/proto-loader": "^0.8.0",
     "@tailwindcss/postcss": "^4.1.18",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",

@@ -45,6 +45,19 @@ export class SeededRandom {
     reset(seed: number): void {
         this.state = seed;
     }
+
+    /**
+     * Random number from standard normal distribution (Box-Muller transform)
+     * @param mean Mean of the distribution (default: 0)
+     * @param std Standard deviation (default: 1)
+     */
+    gaussian(mean: number = 0, std: number = 1): number {
+        // Box-Muller transform
+        const u1 = this.random();
+        const u2 = this.random();
+        const z0 = Math.sqrt(-2.0 * Math.log(u1)) * Math.cos(2.0 * Math.PI * u2);
+        return mean + z0 * std;
+    }
 }
 
 // Global instance for non-deterministic randomness

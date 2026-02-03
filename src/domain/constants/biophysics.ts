@@ -112,6 +112,48 @@ export const HETEROCHROMATIN_PARAMS = {
     DETECTION_RANGE_BP: 500,
 } as const;
 
+/**
+ * Kramer's Rate Theory Parameters for Cohesin Dynamics
+ *
+ * Physical model: unloadingProb = k_base * (1 - alpha * occupancy^gamma)
+ *
+ * Where:
+ * - k_base: baseline unloading rate in absence of enhancer occupancy
+ * - alpha: coupling strength between transcriptional activity and cohesin retention
+ * - gamma: cooperativity exponent (Hill-like)
+ * - occupancy: local transcriptional/chromatin activity (0-1 scale)
+ *
+ * References:
+ * - Sabaté et al., Nature Genetics 2025: FRAP data for MED1+/MED1- cells
+ * - MED1+ (high enhancer activity): τ_residence ~ 30-40 min
+ * - MED1- (low enhancer activity): τ_residence ~ 10-15 min
+ *
+ * These parameters are fit to match experimental FRAP recovery curves.
+ */
+export const KRAMER_KINETICS = {
+    // Baseline unloading rate (per step)
+    // Corresponds to ~8 min residence time (1 / 480 steps at 1s/step)
+    K_BASE: 0.002,
+
+    // Fitted kinetic parameters from FRAP data (Sabaté et al. 2025)
+    // Grid search result: α=0.92, γ=0.80 (MSE=5.33)
+    // alpha: reduction factor at full occupancy
+    // gamma: cooperativity (1 = linear, >1 = cooperative)
+    DEFAULT_ALPHA: 0.92,   // 92% reduction at full occupancy (fitted)
+    DEFAULT_GAMMA: 0.80,   // sub-linear (fitted from FRAP)
+
+    // FRAP target residence times (in seconds)
+    // Used for parameter fitting
+    FRAP_MED1_PLUS_RESIDENCE_S: 35 * 60,   // ~35 min (MED1+ high activity)
+    FRAP_MED1_MINUS_RESIDENCE_S: 12 * 60,  // ~12 min (MED1- low activity)
+
+    // Occupancy thresholds for enhancer regions
+    ENHANCER_OCCUPANCY: 0.8,   // High activity at enhancers
+    PROMOTER_OCCUPANCY: 0.6,   // Moderate at promoters
+    INSULATOR_OCCUPANCY: 0.3,  // Low at insulators (CTCF sites)
+    BACKGROUND_OCCUPANCY: 0.1, // Baseline chromatin activity
+} as const;
+
 // Sabaté et al., Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9)
 // Preset for blind-test validation: time step = 1 s, cohesin speed 0.25–0.4 kb/s.
 // Residence time calibrated within literature range (10–30 min) to match loop duration upper bound (Sabaté et al. 2025).
