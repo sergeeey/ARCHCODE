@@ -337,6 +337,26 @@ export class MultiCohesinEngine {
         );
     }
 
+    /**
+     * Update occupancy matrix: increment cells for all active cohesins.
+     * Each active cohesin with leftLeg < rightLeg contributes +1 to matrix[leftBin][rightBin].
+     * Call this every step to accumulate contact time.
+     */
+    updateOccupancyMatrix(matrix: number[][], resolution: number): void {
+        const nBins = matrix.length;
+        for (const cohesin of this.cohesins) {
+            if (!cohesin.active) continue;
+            const left = Math.min(cohesin.leftLeg, cohesin.rightLeg);
+            const right = Math.max(cohesin.leftLeg, cohesin.rightLeg);
+            const leftBin = Math.floor(left / resolution);
+            const rightBin = Math.floor(right / resolution);
+            if (leftBin >= 0 && leftBin < nBins && rightBin >= 0 && rightBin < nBins) {
+                matrix[leftBin][rightBin] += 1;
+                matrix[rightBin][leftBin] += 1; // symmetric
+            }
+        }
+    }
+
     reset(): void {
         if (this.isDestroyed) return;
         

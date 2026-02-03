@@ -26,14 +26,18 @@ const BIN_COUNT = 500;
 const DEFAULT_BETA = 20.0;  // Экстремальное значение для теста
 const RESOLUTION = 5000;
 
-function parseArgs(): { beta: number; outFile: string } {
+function parseArgs(): { beta: number; outFile: string; seed: number; runs: number } {
     let beta = DEFAULT_BETA;
     let outFile = 'fountain_test_v1.json';
+    let seed = SEED;
+    let runs = 1;
     for (const arg of process.argv.slice(2)) {
         if (arg.startsWith('--beta=')) beta = Number(arg.slice(7));
         else if (arg.startsWith('--out=')) outFile = arg.slice(6);
+        else if (arg.startsWith('--seed=')) seed = Number(arg.slice(7));
+        else if (arg.startsWith('--runs=')) runs = Number(arg.slice(7));
     }
-    return { beta, outFile };
+    return { beta, outFile, seed, runs };
 }
 const MAX_STEPS = 50_000;  // Увеличено для статистики
 const NUM_COHESINS = 20;   // Больше машин на шоссе
@@ -82,7 +86,7 @@ function constantSignal(n: number): number[] {
 }
 
 async function main(): Promise<void> {
-    const { beta: BETA, outFile } = parseArgs();
+    const { beta: BETA, outFile, seed: SEED_ARG, runs: NUM_RUNS } = parseArgs();
     const outPath = path.join(__dirname, '..', 'results', outFile);
     const resultsDir = path.dirname(outPath);
     if (!fs.existsSync(resultsDir)) {
@@ -127,7 +131,7 @@ async function main(): Promise<void> {
         spatialLoader: fountain,
         numCohesins: NUM_COHESINS,
         trackLoopDuration: false,
-        seed: SEED,
+        seed: SEED_ARG,
         maxSteps: MAX_STEPS,
     });
 
@@ -158,7 +162,7 @@ async function main(): Promise<void> {
             baselineLoadingRate: SABATE_NATURE_2025.LOADING_PROBABILITY_PER_STEP,
             maxSteps: MAX_STEPS,
             resolution: RESOLUTION,
-            seed: SEED,
+            seed: SEED_ARG,
         },
         med1Source,
         fountainLoader: {
