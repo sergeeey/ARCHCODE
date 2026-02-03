@@ -1,7 +1,7 @@
 {
   "name": "vite-react-ts-app",
   "private": true,
-  "version": "1.0.2",
+  "version": "1.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -18,7 +18,9 @@
     "validate:nature2025": "npx tsx scripts/validate-nature-2025.ts --locus=HBB --runs=1000",
     "validate:sox2": "npx tsx scripts/validate-nature-2025.ts --locus=SOX2 --runs=100",
     "validate:ctcf-kd": "npx tsx scripts/validate-nature-2025.ts --locus=HBB_CTCFKD --runs=100",
-    "fountain:myc": "npx tsx scripts/run-fountain-myc.ts"
+    "fountain:myc": "npx tsx scripts/run-fountain-myc.ts",
+    "alphagenome:hbb": "npx tsx scripts/validate-alphagenome-hbb.ts",
+    "alphagenome:validate": "npx tsx scripts/validate-alphagenome-hbb.ts"
   },
   "dependencies": {
     "@react-three/drei": "^9.88.0",

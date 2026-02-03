@@ -1,0 +1,30 @@
+{
+  "locus": "HBB",
+  "interval": {
+    "chromosome": "chr11",
+    "start": 5200000,
+    "end": 5400000
+  },
+  "mode": "mock",
+  "config": {
+    "beta": 5,
+    "numRuns": 20,
+    "maxSteps": 50000,
+    "numCohesins": 15,
+    "resolution": 5000
+  },
+  "alphagenome": {
+    "modelVersion": "mock-v1.2",
+    "confidence": 0.92,
+    "matrixSize": 40
+  },
+  "metrics": {
+    "pearsonR": 0.4844237223871688,
+    "spearmanRho": 0.2010633422122431,
+    "mse": 0.08367179322584853,
+    "rmse": 0.2892607702849602,
+    "ssim": 0.013408918115683345
+  },
+  "verdict": "FAIL",
+  "timestamp": "2026-02-03T10:16:48.270Z"
+}
