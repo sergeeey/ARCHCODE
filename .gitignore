@@ -50,6 +50,12 @@ coverage/
 *.tmp
 *.temp
 .cache/
+tmp_*.ts
+tmp_*.py
+
+# Claude Code local settings
+CLAUDE.local.md
+.claude/settings.local.json
 
 # Results and data (may be large)
 results/*.tar
