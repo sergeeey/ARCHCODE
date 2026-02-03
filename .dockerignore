@@ -5,7 +5,10 @@ node_modules/
 dist/
 
 # Results (will be mounted as volume)
-results/*.json
+results/
+
+# Data inputs (should be mounted as volume)
+data/
 
 # Git
 .git/

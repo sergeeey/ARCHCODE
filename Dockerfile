@@ -23,17 +23,16 @@ WORKDIR /app
 # Copy package files first for better caching
 COPY package*.json ./
 
-# Install dependencies
-RUN npm ci --only=production=false
+# Install dependencies (including devDependencies for tsx)
+RUN npm ci
 
 # Copy source code and scripts
 COPY src/ ./src/
 COPY scripts/ ./scripts/
 COPY tsconfig.json ./
 
-# Copy data inputs if available (BigWig files)
-# These can also be mounted as volumes
-COPY data/ ./data/ 2>/dev/null || true
+# Create data directory (BigWig files should be mounted as volumes)
+RUN mkdir -p /app/data/inputs/med1
 
 # Create results directory
 RUN mkdir -p /app/results
