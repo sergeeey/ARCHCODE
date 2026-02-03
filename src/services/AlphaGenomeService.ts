@@ -13,7 +13,7 @@
  * DeepMind AlphaGenome: https://deepmind.google.com/science/alphagenome
  *
  * @author Sergey V. Boyko (sergeikuch80@gmail.com)
- * @version 1.5.0 (Python SDK Bridge)
+ * @version 1.6.0 (Parser Integration + Kramer Kinetics)
  */
 
 import { SeededRandom } from '../utils/random';
@@ -155,6 +155,42 @@ export interface EpigeneticFeatures {
     h3k4me3?: number[];
     ctcfBinding?: number[];
     dnaseI?: number[];
+    med1?: number[];  // MED1 binding for Kramer kinetics
+}
+
+/**
+ * Parser Data Configuration
+ * For integration with Scientific News Parser at D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs/
+ */
+export interface ParserConfig {
+    basePath: string;  // Root path to parser data
+    subdirs: {
+        cohesin?: string;
+        ctcf?: string;
+        histone?: string;
+        k562?: string;
+        med1?: string;
+    };
+}
+
+export interface ParserDataSet {
+    med1Tracks: string[];      // BigWig files for MED1
+    ctcfTracks: string[];      // BigWig files for CTCF
+    histoneTracks: string[];   // BigWig files for histones
+    mutationFiles?: string[];  // JSON/CSV mutation data
+}
+
+export interface IntegratedAnalysisResult {
+    interval: GenomeInterval;
+    parserSource: string;
+    simulation: {
+        contactMatrix: number[][];
+        loops: Array<{ start: number; end: number; strength: number }>;
+        kramerParams: { alpha: number; gamma: number; kBase: number };
+    };
+    epigenetics: EpigeneticFeatures;
+    riskScore: number;
+    timestamp: string;
 }
 
 export interface ContactMapPrediction {
@@ -1192,6 +1228,452 @@ export class AlphaGenomeService {
 
         return ((2 * muA * muB + c1) * (2 * sigmaAB + c2)) /
                ((Math.pow(muA, 2) + Math.pow(muB, 2) + c1) * (sigmaA2 + sigmaB2 + c2));
+    }
+
+    // ========================================================================
+    // Parser Integration (Scientific News Parser Bridge)
+    // ========================================================================
+
+    /**
+     * Default parser configuration
+     * Path: D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs/
+     */
+    private static readonly DEFAULT_PARSER_PATH = 'D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs';
+
+    /**
+     * Import epigenetic data from Scientific News Parser
+     * Reads BigWig files and triggers ARCHCODE simulation with Kramer kinetics
+     *
+     * @param parserPath - Path to parser data directory (default: D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs/)
+     * @param interval - Optional genomic interval to analyze
+     * @returns Integrated analysis result with simulation and epigenetics
+     */
+    async importFromParser(
+        parserPath: string = AlphaGenomeService.DEFAULT_PARSER_PATH,
+        interval?: GenomeInterval
+    ): Promise<IntegratedAnalysisResult> {
+        console.log(`[AlphaGenome] Importing from parser: ${parserPath}`);
+
+        // Discover available data files
+        const dataSet = await this.discoverParserData(parserPath);
+        console.log(`[AlphaGenome] Discovered: ${dataSet.med1Tracks.length} MED1, ${dataSet.ctcfTracks.length} CTCF tracks`);
+
+        // Default interval: HBB locus (well-characterized)
+        const targetInterval = interval || {
+            chromosome: 'chr11',
+            start: 5200000,
+            end: 5400000,
+        };
+
+        // Load epigenetic tracks from BigWig files
+        const epigenetics = await this.loadEpigeneticsFromParser(dataSet, targetInterval);
+
+        // Run ARCHCODE simulation with Kramer kinetics
+        const simulation = await this.runKramerSimulation(targetInterval, epigenetics);
+
+        // Calculate risk score based on structural deviation
+        const prediction = await this.predict(targetInterval);
+        const metrics = this.calculateMetrics(simulation.contactMatrix, prediction.contactMap.matrix);
+        const riskScore = Math.round((1 - metrics.ssim) * 100);
+
+        return {
+            interval: targetInterval,
+            parserSource: parserPath,
+            simulation,
+            epigenetics,
+            riskScore,
+            timestamp: new Date().toISOString(),
+        };
+    }
+
+    /**
+     * Discover available data files in parser directory
+     */
+    private async discoverParserData(basePath: string): Promise<ParserDataSet> {
+        const result: ParserDataSet = {
+            med1Tracks: [],
+            ctcfTracks: [],
+            histoneTracks: [],
+            mutationFiles: [],
+        };
+
+        try {
+            const fs = await import('fs/promises');
+            const path = await import('path');
+
+            // Check subdirectories
+            const subdirs = ['med1', 'ctcf', 'cohesin', 'histone', 'k562'];
+
+            for (const subdir of subdirs) {
+                const dirPath = path.join(basePath, subdir);
+                try {
+                    const files = await fs.readdir(dirPath);
+
+                    for (const file of files) {
+                        const filePath = path.join(dirPath, file);
+                        const lowerFile = file.toLowerCase();
+
+                        if (lowerFile.endsWith('.bw') || lowerFile.endsWith('.bigwig')) {
+                            if (lowerFile.includes('med1')) {
+                                result.med1Tracks.push(filePath);
+                            } else if (lowerFile.includes('ctcf')) {
+                                result.ctcfTracks.push(filePath);
+                            } else if (lowerFile.includes('h3k')) {
+                                result.histoneTracks.push(filePath);
+                            }
+                        } else if (lowerFile.endsWith('.json') || lowerFile.endsWith('.csv')) {
+                            result.mutationFiles?.push(filePath);
+                        }
+                    }
+                } catch {
+                    // Directory doesn't exist, skip
+                }
+            }
+        } catch (error) {
+            console.warn('[AlphaGenome] Failed to discover parser data:', error);
+        }
+
+        return result;
+    }
+
+    /**
+     * Load epigenetic tracks from BigWig files via Python bridge
+     */
+    private async loadEpigeneticsFromParser(
+        dataSet: ParserDataSet,
+        interval: GenomeInterval
+    ): Promise<EpigeneticFeatures> {
+        const epigenetics: EpigeneticFeatures = {};
+        const nBins = Math.ceil((interval.end - interval.start) / 5000);
+
+        // Try to load MED1 tracks
+        if (dataSet.med1Tracks.length > 0) {
+            console.log(`[AlphaGenome] Reading MED1 from: ${dataSet.med1Tracks[0]}`);
+            epigenetics.med1 = await this.readBigWigTrack(
+                dataSet.med1Tracks[0],
+                interval
+            );
+            if (epigenetics.med1) {
+                console.log(`[AlphaGenome] ✓ MED1 loaded: ${epigenetics.med1.length} bins`);
+            }
+        }
+
+        // Try to load CTCF tracks
+        if (dataSet.ctcfTracks.length > 0) {
+            console.log(`[AlphaGenome] Reading CTCF from: ${dataSet.ctcfTracks[0]}`);
+            epigenetics.ctcfBinding = await this.readBigWigTrack(
+                dataSet.ctcfTracks[0],
+                interval
+            );
+            if (epigenetics.ctcfBinding) {
+                console.log(`[AlphaGenome] ✓ CTCF loaded: ${epigenetics.ctcfBinding.length} bins`);
+            }
+        }
+
+        // Generate fallback if reading failed
+        if (!epigenetics.med1) {
+            const reason = dataSet.med1Tracks.length > 0
+                ? 'BigWig read failed (pyBigWig not installed?)'
+                : 'No MED1 BigWig found';
+            console.log(`[AlphaGenome] ${reason}, using mock data`);
+            epigenetics.med1 = this.generateMockMED1Track(nBins);
+        }
+
+        if (!epigenetics.ctcfBinding) {
+            const reason = dataSet.ctcfTracks.length > 0
+                ? 'BigWig read failed (pyBigWig not installed?)'
+                : 'No CTCF BigWig found';
+            console.log(`[AlphaGenome] ${reason}, using mock data`);
+            const locusConfig = this.detectLocusConfig(interval);
+            if (locusConfig) {
+                const aligned = this.generateAlignedEpigeneticTracks(nBins, 5000, locusConfig);
+                epigenetics.ctcfBinding = aligned.ctcfBinding;
+            } else {
+                epigenetics.ctcfBinding = Array(nBins).fill(0).map(() => this.rng.random() * 0.3);
+            }
+        }
+
+        return epigenetics;
+    }
+
+    /**
+     * Read BigWig track via Python pyBigWig bridge
+     */
+    private async readBigWigTrack(
+        bigWigPath: string,
+        interval: GenomeInterval
+    ): Promise<number[] | undefined> {
+        try {
+            const { spawn } = await import('child_process');
+
+            // Python script to read BigWig
+            const pythonScript = `
+import sys
+import json
+
+try:
+    import pyBigWig
+    bw = pyBigWig.open(sys.argv[1])
+    chrom = sys.argv[2]
+    start = int(sys.argv[3])
+    end = int(sys.argv[4])
+    resolution = int(sys.argv[5])
+
+    # Get values at resolution
+    n_bins = (end - start) // resolution
+    values = []
+    for i in range(n_bins):
+        bin_start = start + i * resolution
+        bin_end = bin_start + resolution
+        vals = bw.values(chrom, bin_start, bin_end)
+        if vals:
+            # Mean of non-NaN values
+            valid = [v for v in vals if v is not None and v == v]
+            values.append(sum(valid) / len(valid) if valid else 0)
+        else:
+            values.append(0)
+
+    bw.close()
+    print(json.dumps({"status": "ok", "values": values}))
+except ImportError:
+    print(json.dumps({"status": "error", "error": "pyBigWig not installed"}))
+except Exception as e:
+    print(json.dumps({"status": "error", "error": str(e)}))
+`;
+
+            return new Promise((resolve) => {
+                const proc = spawn('python', ['-c', pythonScript,
+                    bigWigPath,
+                    interval.chromosome,
+                    String(interval.start),
+                    String(interval.end),
+                    '5000'  // Resolution
+                ], { timeout: 30000 });
+
+                let stdout = '';
+                proc.stdout.on('data', (data) => { stdout += data.toString(); });
+
+                proc.on('close', (code) => {
+                    if (code === 0) {
+                        try {
+                            const result = JSON.parse(stdout);
+                            if (result.status === 'ok' && result.values) {
+                                // Normalize to 0-1 range
+                                const maxVal = Math.max(...result.values, 1);
+                                resolve(result.values.map((v: number) => v / maxVal));
+                                return;
+                            }
+                        } catch { /* parsing failed */ }
+                    }
+                    resolve(undefined);
+                });
+
+                proc.on('error', () => resolve(undefined));
+            });
+        } catch {
+            return undefined;
+        }
+    }
+
+    /**
+     * Generate mock MED1 binding track
+     */
+    private generateMockMED1Track(nBins: number): number[] {
+        // MED1 enriched at enhancers (roughly periodic with some randomness)
+        const track: number[] = [];
+        const enhancerPeriod = Math.floor(nBins / 4);
+
+        for (let i = 0; i < nBins; i++) {
+            let value = 0.1 + this.rng.random() * 0.1; // Background
+
+            // Enhancer peaks
+            const distToEnhancer = Math.min(
+                Math.abs(i - enhancerPeriod),
+                Math.abs(i - 2 * enhancerPeriod),
+                Math.abs(i - 3 * enhancerPeriod)
+            );
+
+            if (distToEnhancer < 3) {
+                value += (0.7 - distToEnhancer * 0.2) + this.rng.random() * 0.2;
+            }
+
+            track.push(Math.min(1, value));
+        }
+
+        return track;
+    }
+
+    /**
+     * Run ARCHCODE simulation with Kramer kinetics
+     * Uses fitted parameters: α=0.92, γ=0.80, k_base=0.002
+     */
+    private async runKramerSimulation(
+        interval: GenomeInterval,
+        epigenetics: EpigeneticFeatures
+    ): Promise<IntegratedAnalysisResult['simulation']> {
+        // Kramer kinetics parameters (fitted from FRAP data)
+        const kramerParams = {
+            alpha: 0.92,
+            gamma: 0.80,
+            kBase: 0.002,
+        };
+
+        const length = interval.end - interval.start;
+        const resolution = 5000;
+        const nBins = Math.ceil(length / resolution);
+
+        // Generate contact matrix using Kramer-modulated extrusion
+        const matrix: number[][] = Array(nBins).fill(null).map(() => Array(nBins).fill(0));
+        const loops: Array<{ start: number; end: number; strength: number }> = [];
+
+        // Get MED1 occupancy for Kramer kinetics
+        const med1Occupancy = epigenetics.med1 || Array(nBins).fill(0.1);
+        const ctcfBinding = epigenetics.ctcfBinding || Array(nBins).fill(0);
+
+        // Detect CTCF sites from binding track
+        const ctcfThreshold = 0.5;
+        const ctcfSites: Array<{ bin: number; strength: number }> = [];
+        for (let i = 0; i < nBins; i++) {
+            if (ctcfBinding[i] > ctcfThreshold) {
+                ctcfSites.push({ bin: i, strength: ctcfBinding[i] });
+            }
+        }
+
+        // Simulate multiple cohesin molecules
+        const numCohesins = 15;
+        const maxSteps = 30000;
+
+        for (let c = 0; c < numCohesins; c++) {
+            // Random loading position weighted by MED1 (FountainLoader model)
+            let loadBin = this.sampleLoadingPosition(med1Occupancy);
+
+            let leftLeg = loadBin;
+            let rightLeg = loadBin;
+            let active = true;
+
+            for (let step = 0; step < maxSteps && active; step++) {
+                // Calculate Kramer unloading probability
+                // p_unload = k_base * (1 - alpha * occupancy^gamma)
+                const avgOccupancy = (med1Occupancy[leftLeg] + med1Occupancy[rightLeg]) / 2;
+                const unloadProb = kramerParams.kBase *
+                    (1 - kramerParams.alpha * Math.pow(avgOccupancy, kramerParams.gamma));
+
+                // Check for unloading
+                if (this.rng.random() < unloadProb) {
+                    active = false;
+                    break;
+                }
+
+                // Extrude (move legs outward)
+                if (leftLeg > 0 && this.rng.random() > 0.5) {
+                    leftLeg--;
+                }
+                if (rightLeg < nBins - 1 && this.rng.random() > 0.5) {
+                    rightLeg++;
+                }
+
+                // Record contact
+                matrix[leftLeg][rightLeg] += 0.01;
+                matrix[rightLeg][leftLeg] += 0.01;
+
+                // Check for CTCF barriers (simplified)
+                const leftCTCF = ctcfSites.find(s => s.bin === leftLeg);
+                const rightCTCF = ctcfSites.find(s => s.bin === rightLeg);
+
+                if (leftCTCF && rightCTCF && rightLeg - leftLeg > 3) {
+                    // Loop formed at convergent CTCF
+                    loops.push({
+                        start: leftLeg * resolution + interval.start,
+                        end: rightLeg * resolution + interval.start,
+                        strength: Math.min(leftCTCF.strength, rightCTCF.strength),
+                    });
+                    active = false;
+                }
+            }
+        }
+
+        // Normalize matrix
+        let maxVal = 0;
+        for (let i = 0; i < nBins; i++) {
+            for (let j = 0; j < nBins; j++) {
+                if (matrix[i][j] > maxVal) maxVal = matrix[i][j];
+            }
+        }
+        if (maxVal > 0) {
+            for (let i = 0; i < nBins; i++) {
+                for (let j = 0; j < nBins; j++) {
+                    matrix[i][j] /= maxVal;
+                }
+                matrix[i][i] = 1.0; // Diagonal
+            }
+        }
+
+        return {
+            contactMatrix: matrix,
+            loops,
+            kramerParams,
+        };
+    }
+
+    /**
+     * Sample cohesin loading position weighted by MED1 occupancy (FountainLoader)
+     */
+    private sampleLoadingPosition(med1Occupancy: number[]): number {
+        // Weighted random sampling based on MED1 binding
+        const totalWeight = med1Occupancy.reduce((sum, v) => sum + v + 0.1, 0);
+        let r = this.rng.random() * totalWeight;
+
+        for (let i = 0; i < med1Occupancy.length; i++) {
+            r -= (med1Occupancy[i] + 0.1);
+            if (r <= 0) return i;
+        }
+
+        return Math.floor(med1Occupancy.length / 2);
+    }
+
+    /**
+     * Watch parser directory for new mutation data and auto-run simulation
+     * Returns a cleanup function to stop watching
+     */
+    async watchParserDirectory(
+        parserPath: string = AlphaGenomeService.DEFAULT_PARSER_PATH,
+        onUpdate?: (result: IntegratedAnalysisResult) => void
+    ): Promise<() => void> {
+        console.log(`[AlphaGenome] Watching parser directory: ${parserPath}`);
+
+        const fs = await import('fs');
+        const path = await import('path');
+
+        const watchPaths = ['med1', 'ctcf', 'mutations'].map(
+            subdir => path.join(parserPath, subdir)
+        );
+
+        const watchers: fs.FSWatcher[] = [];
+
+        for (const watchPath of watchPaths) {
+            try {
+                const watcher = fs.watch(watchPath, async (eventType, filename) => {
+                    if (filename && (filename.endsWith('.bw') || filename.endsWith('.json'))) {
+                        console.log(`[AlphaGenome] Detected change: ${eventType} ${filename}`);
+
+                        // Re-run analysis
+                        const result = await this.importFromParser(parserPath);
+                        if (onUpdate) {
+                            onUpdate(result);
+                        }
+                    }
+                });
+                watchers.push(watcher);
+            } catch {
+                // Directory doesn't exist, skip
+            }
+        }
+
+        // Return cleanup function
+        return () => {
+            console.log('[AlphaGenome] Stopping parser directory watch');
+            watchers.forEach(w => w.close());
+        };
     }
 }
 

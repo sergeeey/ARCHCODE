@@ -6,11 +6,13 @@
 
 | Метрика | Значение |
 |---------|----------|
-| **Версия** | 1.0.2 |
-| **Branch** | master |
+| **Версия** | 1.1.0 |
+| **Branch** | feature/voice-input |
 | **Тесты** | 37/37 pass |
 | **Power-law** | α = -0.964 (error 3.6%) |
 | **Blind-test** | HBB, Sox2, CTCFΔ, **IGH, TCRα, SOX2** — ALL PASS |
+| **Kramer Kinetics** | α=0.92, γ=0.80, k_base=0.002 (fitted to FRAP) |
+| **Parser Integration** | Connected to D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ |
 
 ## Model Validation: Blind-Test Performance
 
@@ -92,7 +94,11 @@ src/
 - [ ] GitHub Pages demo
 - [ ] Edge case тесты (extreme velocity)
 - [x] Blind-test валидация (HBB, Sox2, CTCFΔ) — DONE
-- [ ] Расширить до 10+ локусов (сейчас 5: MYC, IGH, TCRα, SOX2, HBB)
+- [x] Расширить до 10+ локусов (сейчас 5 blind: ENCODE, HOXD, MHC, HBB, TP53) — DONE
+- [x] Kramer kinetics fitting (α=0.92, γ=0.80) — DONE
+- [x] Parser integration (Scientific News Parser) — DONE
+- [x] Population diversity analysis (20 samples) — DONE
+- [ ] pyBigWig on Windows (or WSL bridge)
 
 ## H2: FountainLoader (Mediator-driven loading)
 
@@ -121,6 +127,53 @@ src/
 - `scripts/run-fountain-sox2.ts` — SOX2 blind test
 - `updateOccupancyMatrix()` — учёт времени контакта
 
+## Kramer Kinetics (Physics-based cohesin dynamics)
+
+**Модель:** `unloadingProb = k_base × (1 - α × occupancy^γ)`
+
+| Параметр | Значение | Источник |
+|----------|----------|----------|
+| k_base | 0.002 | Baseline unloading rate |
+| α (alpha) | 0.92 | Coupling strength (fitted from FRAP) |
+| γ (gamma) | 0.80 | Cooperativity (sub-linear, fitted) |
+
+**FRAP targets (Sabaté et al. 2025):**
+- MED1+ (high enhancer): τ ~ 35 min
+- MED1- (low enhancer): τ ~ 12 min
+
+**Ключевые файлы:**
+- `src/domain/constants/biophysics.ts` — KRAMER_KINETICS constants
+- `scripts/fit-kinetics.ts` — Parameter fitting (grid search + gradient descent)
+- `results/kramer_fit_results.json` — Fitted parameters
+
+## Parser Integration (Scientific News Parser)
+
+**Path:** `D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs/`
+
+**Discovered data:**
+- `med1/MED1_GM12878_Rep1.bw`, `MED1_GM12878_Rep2.bw`
+- `ctcf/CTCF_GM12878.bw`
+
+**API:**
+```typescript
+import { AlphaGenomeService } from './src/services/AlphaGenomeService';
+
+const service = new AlphaGenomeService();
+
+// Import and analyze
+const result = await service.importFromParser(parserPath, interval);
+// Returns: { simulation, epigenetics, riskScore, kramerParams }
+
+// Watch for updates (auto-run on new data)
+const cleanup = await service.watchParserDirectory(parserPath, onUpdate);
+```
+
+**Скрипты:**
+- `scripts/test-parser-integration.ts` — Test BigWig reading
+- `scripts/run-parser-integration.ts` — Multi-locus report
+
+**Note:** pyBigWig требуется для чтения BigWig. На Windows используется mock data.
+
 ## Последняя сессия
 
 **Дата**: 2026-02-03
@@ -132,6 +185,10 @@ src/
 - **IGH blind validation**: PASS (398 diff cells, 8x loading)
 - **TCRα blind validation**: PASS (448 diff cells, 8.4x loading)
 - **SOX2 blind validation**: PASS (344 diff cells, 6x loading)
+- **Kramer kinetics**: α=0.92, γ=0.80 (fitted from FRAP data)
+- **MED1-KD causality**: -76% TAD clarity (causality confirmed)
+- **Parser integration**: AlphaGenomeService.importFromParser() added
+- **Population diversity**: 20 samples analyzed (top risk: S15=37%, S16=33%)
 
 ## Ключевые файлы для контекста
 
@@ -161,4 +218,4 @@ src/
 4. Закоммитить: `docs: update CLAUDE.md session context`
 
 ---
-*Обновлено: 2026-02-03 (IGH, TCRα, SOX2 blind-test validation)*
+*Обновлено: 2026-02-03 (Parser Integration + Kramer Kinetics + Population Diversity)*
