@@ -77,14 +77,29 @@ src/
 - [x] Blind-test валидация (HBB, Sox2, CTCFΔ) — DONE
 - [ ] Расширить до 10+ локусов (сейчас 2)
 
+## H2: FountainLoader (Mediator-driven loading)
+
+**Статус:** Работает | **Оптимальный beta:** 5
+
+| Beta | stepLoadProb | avgLoops | NonZero cells |
+|------|--------------|----------|---------------|
+| 0 | 0.000278 | 2.8 | baseline |
+| 5 | 0.001801 | 3.0 | **623** (max) |
+| 10 | 0.003323 | 3.0 | 599 |
+
+**Ключевые файлы:**
+- `src/simulation/SpatialLoadingModule.ts` — FountainLoader
+- `scripts/run-fountain-ensemble.ts` — ensemble averaging
+- `updateOccupancyMatrix()` — учёт времени контакта
+
 ## Последняя сессия
 
-**Дата**: 2026-02-02 (ночь)
+**Дата**: 2026-02-03 (ночь)
 **Сделано**:
-- Blind-test (seed=2000): HBB 16.17, Sox2 16.18, CTCFΔ 16.17 min — ALL PASS
-- CTCFΔ идентичен WT → слабый CTCF не влияет на стабильность
-- Добавлен --seed параметр для воспроизводимости
-- Финальный отчёт: VALIDATION_summary_Sabate2025.md
+- FountainLoader: occupancy-based matrix вместо static loops
+- updateOccupancyMatrix() для учёта времени контакта
+- Ensemble: 20 runs × 50000 steps
+- beta=5 оптимальный (623 NonZero cells)
 
 ## Ключевые файлы для контекста
 
