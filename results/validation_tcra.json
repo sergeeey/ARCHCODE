@@ -1,0 +1,77 @@
+{
+  "validation": {
+    "name": "TCRα Locus Blind Validation",
+    "hypothesis": "H2: Mediator-driven cohesin loading (FountainLoader)",
+    "date": "2026-02-03",
+    "status": "PASS"
+  },
+  "locus": {
+    "name": "TCRα (T-Cell Receptor Alpha)",
+    "description": "Complex locus with multiple V-segments, undergoes V(D)J recombination",
+    "genome_build": "hg38",
+    "chromosome": "chr14",
+    "start": 22000000,
+    "end": 23600000,
+    "length_bp": 1600000,
+    "length_mb": 1.6
+  },
+  "ctcf_sites": [
+    { "position": 100000, "strength": 0.85, "orientation": "R", "region": "upstream V segments" },
+    { "position": 250000, "strength": 0.9, "orientation": "R", "region": "upstream V segments" },
+    { "position": 500000, "strength": 0.85, "orientation": "F", "region": "central V region" },
+    { "position": 700000, "strength": 0.9, "orientation": "R", "region": "central V region" },
+    { "position": 1000000, "strength": 0.9, "orientation": "F", "region": "J segment region" },
+    { "position": 1150000, "strength": 0.85, "orientation": "R", "region": "J segment region" },
+    { "position": 1300000, "strength": 0.95, "orientation": "F", "region": "Enhancer (Eα)" },
+    { "position": 1400000, "strength": 0.9, "orientation": "R", "region": "Enhancer (Eα)" },
+    { "position": 1500000, "strength": 0.85, "orientation": "F", "region": "C segment" }
+  ],
+  "simulation_params": {
+    "beta_baseline": 0,
+    "beta_optimal": 5,
+    "num_runs": 20,
+    "max_steps": 50000,
+    "num_cohesins": 15,
+    "resolution_bp": 5000,
+    "total_steps_per_condition": 1000000
+  },
+  "results": {
+    "baseline_beta0": {
+      "step_loading_probability": 0.000278,
+      "avg_loops_per_run": 6.1,
+      "nonzero_heatmap_cells": 221,
+      "max_contact_probability": 1.8e-5,
+      "mean_contact_probability": 8.0e-9
+    },
+    "optimal_beta5": {
+      "step_loading_probability": 0.002325,
+      "avg_loops_per_run": 7.95,
+      "nonzero_heatmap_cells": 451,
+      "max_contact_probability": 9.4e-5,
+      "mean_contact_probability": 4.9e-8
+    },
+    "comparison": {
+      "loading_increase_fold": 8.4,
+      "loops_increase": 1.85,
+      "nonzero_cells_increase_percent": 104,
+      "diff_cells_count": 448,
+      "max_enrichment": 9.2e-5,
+      "mean_abs_diff": 4.3e-8
+    }
+  },
+  "verdict": {
+    "status": "PASS",
+    "criteria_met": [
+      "Loading probability increased 8.4x with beta=5",
+      "448 cells show differential contact probability",
+      "Max enrichment 9.2e-5 exceeds threshold (1e-6)",
+      "NonZero cells doubled (221 → 451)"
+    ],
+    "conclusion": "FountainLoader demonstrates significant spatial signal effect on TCRα locus. The Mediator-driven loading hypothesis is supported by blind validation."
+  },
+  "data_files": {
+    "beta0_ensemble": "results/ensemble_tcra_beta0.json",
+    "beta5_ensemble": "results/ensemble_tcra_beta5.json",
+    "diff_map": "results/diff_tcra_beta5_vs_beta0.json"
+  }
+}
