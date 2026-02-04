@@ -649,6 +649,27 @@ efetch<span class="w"> </span>-format<span class="w"> </span>vcf<span class="w">
 <em>Word count: ~1,750 words (updated with falsification framework)</em>
 <em>Last updated: 2026-02-04</em>
 <em>Status: Ready for computational discovery paper (experimental validation required for clinical claims)</em></p>
+<h1 id="acknowledgments">Acknowledgments</h1>
+<p>Large language models (Claude 3.5 Sonnet and OpenAI ChatGPT-4) were used for linguistic polishing, translation assistance, and limited restructuring of manuscript drafts. All scientific conceptualization, hypothesis formulation, computational implementation, data analysis, and interpretation of results are the sole work of the author. The ARCHCODE simulator code and all analysis scripts were written by the author without AI code generation tools.</p>
+<hr />
+<h1 id="data-availability_1">Data Availability</h1>
+<p>All data supporting the findings of this study are openly available:</p>
+<ul>
+<li><strong>ARCHCODE simulator source code (v1.1.0):</strong> https://github.com/sergeeey/ARCHCODE</li>
+<li><strong>Full variant analysis dataset (367 HBB variants):</strong> <code>HBB_Clinical_Atlas.csv</code>, available at https://github.com/sergeeey/ARCHCODE/tree/main/results</li>
+<li><strong>"Loop That Stayed" detailed analysis:</strong> <code>vus_batch_analysis_loop_that_stayed.json</code> (same repository)</li>
+<li><strong>Contact matrices</strong> for wild-type and mutant simulations (NumPy <code>.npy</code> format): available from the corresponding author upon reasonable request</li>
+<li><strong>ClinVar variant annotations</strong> were obtained from the NCBI ClinVar database (2026-02-01 release): https://www.ncbi.nlm.nih.gov/clinvar/</li>
+</ul>
+<hr />
+<h1 id="competing-interests">Competing Interests</h1>
+<p>The author declares no competing financial or non-financial interests.</p>
+<hr />
+<h1 id="funding">Funding</h1>
+<p>This research received no specific grant from any funding agency in the public, commercial, or not-for-profit sectors. All computational resources and associated costs were provided by the author.</p>
+<hr />
+<p><em>Sections prepared for bioRxiv submission</em>
+<em>Last updated: 2026-02-04</em></p>
 <h1 id="references">References</h1>
 <ol>
 <li>Sabaté et al. (2024). Universal dynamics of cohesin-mediated loop extrusion. bioRxiv. doi:10.1101/2024.08.09.605990</li>
@@ -938,7 +959,7 @@ efetch<span class="w"> </span>-format<span class="w"> </span>vcf<span class="w">
 </table>
 <p><strong>Interpretation:</strong> High SSIM (minimal structural disruption) but high AlphaGenome scores suggest post-transcriptional mechanisms: mRNA stability, protein misfolding, or degradation pathway defects. These variants act downstream of chromatin topology, explaining why ARCHCODE (which models 3D structure only) does not detect pathogenicity.</p>
 <hr />
-<h2 id="data-availability_1">Data Availability</h2>
+<h2 id="data-availability_2">Data Availability</h2>
 <p><strong>Full dataset:</strong> <code>HBB_Clinical_Atlas.csv</code> (367 rows × 8 columns, 42 KB)</p>
 <p><strong>Format:</strong> Comma-separated values (CSV), UTF-8 encoding</p>
 <p><strong>Download:</strong> Available from corresponding author upon reasonable request or from GitHub repository (https://github.com/sergeeey/ARCHCODE/tree/main/results)</p>
