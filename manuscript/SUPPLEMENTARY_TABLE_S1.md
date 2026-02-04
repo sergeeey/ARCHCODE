@@ -1,8 +1,8 @@
-# Supplementary Table S1: Comprehensive Analysis of 367 HBB Pathogenic Variants
+# Supplementary Table S1: Comprehensive Analysis of 366 HBB Pathogenic Variants
 
 ## Table Legend
 
-Complete dataset of 367 β-globin (*HBB*) pathogenic and VUS variants analyzed using ARCHCODE (physics-based 3D chromatin simulation) and AlphaGenome (transformer-based sequence predictor). Variants are sorted by genomic position (chr11, GRCh38).
+Complete dataset of 366 β-globin (*HBB*) pathogenic and VUS variants analyzed using ARCHCODE (physics-based 3D chromatin simulation) and AlphaGenome (transformer-based sequence predictor). Variants are sorted by genomic position (chr11, GRCh38).
 
 **Columns:**
 1. **ClinVar_ID**: ClinVar accession (VCV format)
@@ -24,7 +24,7 @@ Complete dataset of 367 β-globin (*HBB*) pathogenic and VUS variants analyzed u
 8. **Discordant**: YES if verdicts differ between methods (pathogenic vs benign/VUS), NO otherwise
 
 **Key Findings:**
-- **Total variants:** 367
+- **Total variants:** 366
 - **Discordant:** 61 (16.6%)
 - **"Loop That Stayed" pattern:** 3 variants (VCV000000302, VCV000000327, VCV000000026)
   - SSIM: 0.545-0.551 (SD=0.0022, extreme clustering)
@@ -107,7 +107,7 @@ Examples where AlphaGenome detects pathogenicity missed by ARCHCODE:
 
 ## Data Availability
 
-**Full dataset:** `HBB_Clinical_Atlas.csv` (367 rows × 8 columns, 42 KB)
+**Full dataset:** `HBB_Clinical_Atlas.csv` (366 rows × 8 columns, 42 KB)
 
 **Format:** Comma-separated values (CSV), UTF-8 encoding
 

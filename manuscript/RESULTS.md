@@ -2,17 +2,17 @@
 
 ## High-throughput ARCHCODE simulation reveals systematic discordance between structural and sequence-based variant predictors
 
-To investigate whether 3D chromatin architecture disruption represents a clinically relevant pathogenic mechanism orthogonal to sequence-based predictions, we performed high-throughput ARCHCODE simulation of 367 pathogenic and VUS variants in the β-globin (*HBB*) gene (chr11:5,225,464-5,227,079, GRCh38). All variants were sourced from ClinVar (2026-02-01 release) with clinical significance classifications of Pathogenic, Likely Pathogenic, or VUS, and at least one-star review status (Supplementary Table S1).
+To investigate whether 3D chromatin architecture disruption represents a clinically relevant pathogenic mechanism orthogonal to sequence-based predictions, we performed high-throughput ARCHCODE simulation of 366 pathogenic and VUS variants in the β-globin (*HBB*) gene (chr11:5,225,464-5,227,079, GRCh38). All variants were sourced from ClinVar (2026-02-01 release) with clinical significance classifications of Pathogenic, Likely Pathogenic, or VUS, and at least one-star review status (Supplementary Table S1).
 
 For each variant, we simulated wild-type (WT) and mutant 3D chromatin contact matrices using a physics-based loop extrusion model with Kramer kinetics (α=0.92, γ=0.80, k_base=0.002), previously validated against experimental Hi-C data (R²=0.89 on blind loci; see Methods). We quantified structural disruption using the Structural Similarity Index (SSIM), where values range from 0 (complete structural disruption) to 1 (identical to WT). We then compared ARCHCODE structural predictions with AlphaGenome sequence-based pathogenicity scores to identify systematic discordance patterns.
 
-Of 367 variants analyzed, **61 (16.6%) showed discordant verdicts** between ARCHCODE and AlphaGenome (pathogenic by one method, benign/VUS by the other). Discordance rates varied significantly by variant category (χ²=47.3, df=8, p<0.0001), with highest rates in non-coding regulatory regions: 5' UTR (35.7%), 3' UTR (38.7%), and splice_region (25.5%) (Supplementary Table S1). This enrichment suggested that regulatory variants operating through chromatin topology (detectable by ARCHCODE) versus post-transcriptional mechanisms (detectable by AlphaGenome) exhibit systematic prediction divergence.
+Of 366 variants analyzed, **61 (16.6%) showed discordant verdicts** between ARCHCODE and AlphaGenome (pathogenic by one method, benign/VUS by the other). Discordance rates varied significantly by variant category (χ²=47.3, df=8, p<0.0001), with highest rates in non-coding regulatory regions: 5' UTR (35.7%), 3' UTR (38.7%), and splice_region (25.5%) (Supplementary Table S1). This enrichment suggested that regulatory variants operating through chromatin topology (detectable by ARCHCODE) versus post-transcriptional mechanisms (detectable by AlphaGenome) exhibit systematic prediction divergence.
 
 ## Discovery of extreme SSIM clustering in splice_region variants reveals "The Loop That Stayed" pattern
 
-To identify potential novel pathogenic mechanisms, we performed unsupervised clustering analysis of SSIM scores across all 367 variants. Visual inspection of SSIM distributions revealed an unexpected tight cluster of three splice_region variants with near-identical SSIM values (Figure 1A): **VCV000000302** (SSIM=0.5453), **VCV000000327** (SSIM=0.5474), and **VCV000000026** (SSIM=0.5506).
+To identify potential novel pathogenic mechanisms, we performed unsupervised clustering analysis of SSIM scores across all 366 variants. Visual inspection of SSIM distributions revealed an unexpected tight cluster of three splice_region variants with near-identical SSIM values (Figure 1A): **VCV000000302** (SSIM=0.5453), **VCV000000327** (SSIM=0.5474), and **VCV000000026** (SSIM=0.5506).
 
-Statistical analysis confirmed this clustering was highly significant. The SSIM range spanned only 5.3 milli-SSIM units (0.5453-0.5506), yielding a standard deviation of σ=0.0022 and coefficient of variation CV=0.4%—the tightest clustering observed in the entire 367-variant dataset. Permutation testing (10,000 iterations of randomly sampling 3 variants) demonstrated this clustering was unlikely to occur by chance (empirical p<0.0001; none of 10,000 permutations achieved SD≤0.0022).
+Statistical analysis confirmed this clustering was highly significant. The SSIM range spanned only 5.3 milli-SSIM units (0.5453-0.5506), yielding a standard deviation of σ=0.0022 and coefficient of variation CV=0.4%—the tightest clustering observed in the entire 366-variant dataset. Permutation testing (10,000 iterations of randomly sampling 3 variants) demonstrated this clustering was unlikely to occur by chance (empirical p<0.0001; none of 10,000 permutations achieved SD≤0.0022).
 
 Remarkably, all three variants were classified as **LIKELY_PATHOGENIC by ARCHCODE** (SSIM <0.70 threshold) but **VUS by AlphaGenome** (scores 0.4536-0.4561, all below the 0.50 pathogenic threshold). This systematic discordance suggested a shared mechanistic signature invisible to sequence-based predictors.
 
@@ -65,7 +65,7 @@ The "Loop That Stayed" variants occupy a narrow SSIM band (0.545-0.551) within t
 
 ## AlphaGenome exhibits systematic blind spot for loop-constrained pathogenic variants
 
-To understand why AlphaGenome failed to detect pathogenicity in all three "Loop That Stayed" variants, we analyzed prediction patterns across the full 367-variant dataset. AlphaGenome scores for VCV000000302 (0.454), VCV000000327 (0.456), and VCV000000026 (0.456) clustered tightly around the VUS threshold (0.30-0.50), indicating **systematic underestimation** rather than random prediction noise.
+To understand why AlphaGenome failed to detect pathogenicity in all three "Loop That Stayed" variants, we analyzed prediction patterns across the full 366-variant dataset. AlphaGenome scores for VCV000000302 (0.454), VCV000000327 (0.456), and VCV000000026 (0.456) clustered tightly around the VUS threshold (0.30-0.50), indicating **systematic underestimation** rather than random prediction noise.
 
 We hypothesize five contributing factors to this blind spot:
 
@@ -140,7 +140,7 @@ To estimate genome-wide impact, we analyzed splice_region variant prevalence in 
 - **~6,000 classified as VUS** (uncertain significance)
 - **~12% discordance rate** observed in our HBB dataset (25.5% for splice_region specifically)
 
-If "Loop That Stayed" prevalence in HBB (3/47 = 6.4% of splice_region variants, 3/367 = 0.82% of all variants) generalizes genome-wide, we estimate:
+If "Loop That Stayed" prevalence in HBB (3/47 = 6.4% of splice_region variants, 3/366 = 0.82% of all variants) generalizes genome-wide, we estimate:
 - **~380-640 splice_region VUS** (6-10% of 6,000) may exhibit loop-constrained pathogenicity
 - **~120-200 additional variants** in other categories with strong enhancer-promoter loops
 
@@ -163,10 +163,10 @@ We recommend systematic ARCHCODE screening of splice_region VUS in these genes, 
 **Figure Legends**
 
 **Figure 1. Discovery and characterization of "The Loop That Stayed" loop-constrained pathogenic variants.**
-**(A)** SSIM distribution across 367 HBB variants reveals extreme clustering of three splice_region variants (red box): VCV000000302, VCV000000327, VCV000000026 (SD=0.0022, p<0.0001). **(B-D)** Contact matrices for VCV000000327 (highest priority): WT (B), Mutant (C), and Differential (D). SSIM=0.547 indicates preserved loop architecture (55% contact retention) yet ARCHCODE classifies as LIKELY_PATHOGENIC due to trapped splice enhancer disruption. Red crosshairs mark variant position. Scale bar: ΔContact intensity.
+**(A)** SSIM distribution across 366 HBB variants reveals extreme clustering of three splice_region variants (red box): VCV000000302, VCV000000327, VCV000000026 (SD=0.0022, p<0.0001). **(B-D)** Contact matrices for VCV000000327 (highest priority): WT (B), Mutant (C), and Differential (D). SSIM=0.547 indicates preserved loop architecture (55% contact retention) yet ARCHCODE classifies as LIKELY_PATHOGENIC due to trapped splice enhancer disruption. Red crosshairs mark variant position. Scale bar: ΔContact intensity.
 
 **Figure 2. SSIM diagnostic thresholds and AlphaGenome blind spot.**
-**(A)** SSIM vs AlphaGenome score scatterplot for all 367 variants, colored by category. Three regimes visible: consensus pathogenic (SSIM <0.45, both methods agree), "Goldilocks zone" (SSIM 0.50-0.60, ARCHCODE detects, AlphaGenome misses), and minimal disruption (SSIM >0.85, both methods agree benign). **(B)** Discordance rates by variant category. Highest in splice_region (25.5%), 5' UTR (35.7%), 3' UTR (38.7%). **(C)** "Loop That Stayed" variants (red stars) occupy narrow SSIM band within Goldilocks zone, all systematically underestimated by AlphaGenome (scores ~0.45, VUS range).
+**(A)** SSIM vs AlphaGenome score scatterplot for all 366 variants, colored by category. Three regimes visible: consensus pathogenic (SSIM <0.45, both methods agree), "Goldilocks zone" (SSIM 0.50-0.60, ARCHCODE detects, AlphaGenome misses), and minimal disruption (SSIM >0.85, both methods agree benign). **(B)** Discordance rates by variant category. Highest in splice_region (25.5%), 5' UTR (35.7%), 3' UTR (38.7%). **(C)** "Loop That Stayed" variants (red stars) occupy narrow SSIM band within Goldilocks zone, all systematically underestimated by AlphaGenome (scores ~0.45, VUS range).
 
 ---
 

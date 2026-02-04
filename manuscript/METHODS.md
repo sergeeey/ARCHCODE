@@ -139,7 +139,7 @@ efetch -format vcf > HBB_pathogenic.vcf
 - Large structural variants (>100 bp)
 - Variants in non-coding regions >10 kb from gene body
 
-Final dataset: **n=367 variants**
+Final dataset: **n=366 variants**
 
 ### Variant Categorization
 
@@ -160,7 +160,7 @@ SSIM clustering was assessed using:
 - **Z-score normalization:** z_i = (x_i - μ) / σ
 
 Statistical significance of SSIM clustering for "Loop That Stayed" variants was evaluated via permutation test:
-1. Randomly sample 3 variants from the full 367-variant dataset
+1. Randomly sample 3 variants from the full 366-variant dataset
 2. Calculate SD of SSIM scores
 3. Repeat 10,000 times
 4. Empirical p-value: fraction of permutations with SD ≤ observed SD (0.0022)
@@ -203,13 +203,13 @@ All simulations were run on:
 - **CPU:** AMD Ryzen 9 5900X (12 cores)
 - **RAM:** 64 GB DDR4-3200
 - **OS:** Windows 11 Pro (WSL2 for Python scripts)
-- **Compute time:** ~8 seconds per variant (single-threaded), ~3 hours total for 367 variants
+- **Compute time:** ~8 seconds per variant (single-threaded), ~3 hours total for 366 variants
 
 ## Data Availability
 
 All data supporting the findings of this study are available from the corresponding author upon reasonable request. Key datasets include:
 
-- Full variant analysis (367 variants): `HBB_Clinical_Atlas.csv`
+- Full variant analysis (366 variants): `HBB_Clinical_Atlas.csv`
 - "Loop That Stayed" detailed analysis: `vus_batch_analysis_loop_that_stayed.json`
 - Contact matrices (WT and mutant): Available as NumPy arrays (.npy format)
 - Source code: GitHub repository (see Software and Code Availability)
