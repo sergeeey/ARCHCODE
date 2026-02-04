@@ -6,14 +6,15 @@ ARCHCODE High-Resolution Matrix Visualization
 Generates publication-quality contact matrix comparison:
 [WT Matrix] | [Mutant Matrix] | [Differential (WT - Mutant)]
 
-Variant: VCV000000302 @ chr11:5,225,620 (splice_region)
-- ARCHCODE SSIM: 0.545 → LIKELY_PATHOGENIC
-- AlphaGenome: 0.454 → VUS (missed by ML)
+Variant: VCV000000327 @ chr11:5,225,695 (splice_region)
+- ARCHCODE SSIM: 0.547 → LIKELY_PATHOGENIC (HIGHEST PRIORITY)
+- AlphaGenome: 0.456 → VUS (missed by ML)
+- Mechanism: Splice enhancer cluster disruption
 
 Physics: Kramer kinetics α=0.92, γ=0.80, k_base=0.002
 
 Usage: python scripts/render_matrix.py
-Output: results/figures/FIG_1_DISCORDANCE_VCV302.png
+Output: results/figures/FIG_1_DISCORDANCE_VCV327.png
 """
 
 import numpy as np
@@ -51,12 +52,12 @@ HBB_LOCUS = {
     'end': 5400000,
 }
 
-VARIANT_VCV302 = {
-    'clinvar_id': 'VCV000000302',
-    'position': 5225620,
+VARIANT_VCV327 = {
+    'clinvar_id': 'VCV000000327',
+    'position': 5225695,
     'category': 'splice_region',
-    'archcode_ssim': 0.545,
-    'alphagenome_score': 0.454,
+    'archcode_ssim': 0.547,
+    'alphagenome_score': 0.456,
 }
 
 RESOLUTION = 5000  # 5kb bins
@@ -213,13 +214,13 @@ def render_figure():
     print("=" * 70)
     print("ARCHCODE Matrix Visualization: 'The Loop That Stayed'")
     print("=" * 70)
-    print(f"Variant: {VARIANT_VCV302['clinvar_id']} @ {HBB_LOCUS['chrom']}:{VARIANT_VCV302['position']:,}")
-    print(f"Category: {VARIANT_VCV302['category']}")
+    print(f"Variant: {VARIANT_VCV327['clinvar_id']} @ {HBB_LOCUS['chrom']}:{VARIANT_VCV327['position']:,}")
+    print(f"Category: {VARIANT_VCV327['category']}")
     print(f"Kramer kinetics: α={KRAMER['alpha']}, γ={KRAMER['gamma']}, k_base={KRAMER['k_base']}")
     print()
 
     # Calculate variant bin
-    variant_bin = (VARIANT_VCV302['position'] - HBB_LOCUS['start']) // RESOLUTION
+    variant_bin = (VARIANT_VCV327['position'] - HBB_LOCUS['start']) // RESOLUTION
     print(f"Variant bin: {variant_bin} (of {N_BINS} total)")
 
     # Simulate matrices
@@ -284,7 +285,7 @@ def render_figure():
     # Plot Mutant matrix
     ax2 = fig.add_subplot(gs[1])
     im2 = ax2.imshow(mut_matrix, cmap=cmap_contact, vmin=0, vmax=1, origin='upper', aspect='equal')
-    style_axis(ax2, f'Mutant ({VARIANT_VCV302["clinvar_id"]})')
+    style_axis(ax2, f'Mutant ({VARIANT_VCV327["clinvar_id"]})')
 
     # Mark variant position
     ax2.axhline(y=variant_bin, color='#EF4444', alpha=0.8, linewidth=2, linestyle='-')
@@ -311,8 +312,8 @@ def render_figure():
 
     # Add annotation
     fig.text(0.5, 0.02,
-             f'"The Loop That Stayed" — ARCHCODE detects structural pathogenicity (SSIM={VARIANT_VCV302["archcode_ssim"]:.3f}) '
-             f'that AlphaGenome missed (score={VARIANT_VCV302["alphagenome_score"]:.3f})',
+             f'"The Loop That Stayed" — ARCHCODE detects structural pathogenicity (SSIM={VARIANT_VCV327["archcode_ssim"]:.3f}) '
+             f'that AlphaGenome missed (score={VARIANT_VCV327["alphagenome_score"]:.3f})',
              ha='center', va='bottom', color=TEXT_COLOR, fontsize=11, style='italic')
 
     # Add Kramer kinetics annotation
@@ -327,7 +328,7 @@ def render_figure():
     # Save
     output_dir = 'results/figures'
     os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, 'FIG_1_DISCORDANCE_VCV302.png')
+    output_path = os.path.join(output_dir, 'FIG_1_DISCORDANCE_VCV327.png')
 
     plt.savefig(output_path, dpi=300, facecolor=DARK_BG, edgecolor='none',
                 bbox_inches='tight', pad_inches=0.3)
