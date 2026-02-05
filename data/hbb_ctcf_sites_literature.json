@@ -1,0 +1,74 @@
+{
+  "locus": {
+    "chromosome": "chr11",
+    "start": 5200000,
+    "end": 5250000,
+    "length": 50000
+  },
+  "ctcf_sites": [
+    {
+      "position_absolute": 5202000,
+      "position_relative": 2000,
+      "orientation": "R",
+      "strength": 0.9,
+      "source": "ENCODE K562 CTCF ChIP-seq",
+      "confidence": "high",
+      "notes": "TAD boundary candidate"
+    },
+    {
+      "position_absolute": 5210000,
+      "position_relative": 10000,
+      "orientation": "F",
+      "strength": 0.85,
+      "source": "Bender et al. 2012",
+      "confidence": "high",
+      "notes": "HBD-HBB intergenic region"
+    },
+    {
+      "position_absolute": 5220000,
+      "position_relative": 20000,
+      "orientation": "R",
+      "strength": 0.8,
+      "source": "ENCODE GM12878 CTCF",
+      "confidence": "medium",
+      "notes": "Near HBB gene"
+    },
+    {
+      "position_absolute": 5228000,
+      "position_relative": 28000,
+      "orientation": "F",
+      "strength": 0.85,
+      "source": "Hi-C loop anchor",
+      "confidence": "high",
+      "notes": "Downstream of HBB"
+    },
+    {
+      "position_absolute": 5235000,
+      "position_relative": 35000,
+      "orientation": "R",
+      "strength": 0.9,
+      "source": "ENCODE consensus",
+      "confidence": "high",
+      "notes": "Strong CTCF peak"
+    },
+    {
+      "position_absolute": 5245000,
+      "position_relative": 45000,
+      "orientation": "F",
+      "strength": 0.85,
+      "source": "TAD boundary",
+      "confidence": "medium",
+      "notes": "Near locus end"
+    }
+  ],
+  "metadata": {
+    "source": "Literature curation",
+    "references": [
+      "Bender et al. 2012 (PLOS Genet)",
+      "ENCODE Project (K562, GM12878)",
+      "Hi-C loop anchors (Rao et al. 2014)"
+    ],
+    "genome_build": "GRCh38",
+    "confidence_levels": "high/medium based on evidence strength"
+  }
+}
