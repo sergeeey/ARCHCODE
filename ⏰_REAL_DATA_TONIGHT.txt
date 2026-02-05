@@ -1,0 +1,39 @@
+╔═══════════════════════════════════════════════════════════════════════╗
+║  TONIGHT AT HOME: Replace Mock AlphaGenome with Real SpliceAI Data   ║
+╚═══════════════════════════════════════════════════════════════════════╝
+
+📋 QUICK START (Copy-Paste Ready)
+═══════════════════════════════════════════════════════════════════════
+
+# 1. Install SpliceAI (5 min)
+pip install spliceai
+python -c "from spliceai.utils import get_delta_scores; print('✅ OK')"
+
+# 2. Download ClinVar VCF (30-60 min, leave running)
+cd D:\ДНК
+curl -O https://ftp.ncbi.nlm.nih.gov/pub/clinvar/vcf_GRCh38/clinvar.vcf.gz
+gunzip clinvar.vcf.gz
+grep -E '^11\s+(522[5-7][0-9]{3})' clinvar.vcf > hbb_clinvar.vcf
+
+# 3. Download hg38 reference (30-60 min, parallel)
+wget http://hgdownload.cse.ucsc.edu/goldenPath/hg38/bigZips/hg38.fa.gz
+gunzip hg38.fa.gz
+
+═══════════════════════════════════════════════════════════════════════
+⏰ TOTAL TIME: 1-2 hours (mostly downloads)
+═══════════════════════════════════════════════════════════════════════
+
+📅 TOMORROW MORNING:
+  python scripts/fetch_real_clinvar_hbb.py --vcf hbb_clinvar.vcf
+
+📅 TOMORROW AFTERNOON:
+  python scripts/run_spliceai_hbb.py --variants data/hbb_real_clinvar_variants.csv --reference hg38.fa
+
+📅 TOMORROW EVENING:
+  Update manuscript using MANUSCRIPT_UPDATES_CHECKLIST.md
+
+═══════════════════════════════════════════════════════════════════════
+📖 FULL PLAN: REAL_DATA_REPLACEMENT_PLAN.md
+═══════════════════════════════════════════════════════════════════════
+
+✅ OUTCOME: Real clinical validation, no more mock data!

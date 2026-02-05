@@ -1,14 +1,18 @@
 # CTCF Binding Site Validation: ARCHCODE vs Literature
 
 **Date:** 2026-02-05
-**Status:** ✅ COMPLETE — 100% validation rate achieved
+**Status:** ✅ LITERATURE VALIDATION COMPLETE — 6/6 sites concordant
 **Method:** Qualitative comparison against published CTCF sites and regulatory elements
+**Note:** Quantitative ChIP-seq validation pending (requires pyBigWig installation for BigWig analysis)
 
 ---
 
 ## Executive Summary
 
-**KEY FINDING: All 6 ARCHCODE predicted CTCF sites validated against literature (100% accuracy)**
+**KEY FINDING: All 6 ARCHCODE predicted CTCF sites concordant with published regulatory coordinates (6/6 sites)**
+
+**Validation Type:** Literature-based (Bender 2012, Himadewi 2021, ENCODE)
+**Quantitative Validation:** HUDEP2 CTCF ChIP-seq data available (BigWig format), analysis pending due to environment constraints
 
 - ✅ 5/5 known CTCF binding sites correctly predicted
 - ✅ Predicted loop topology aligns with experimental Hi-C (Himadewi et al. 2021)
@@ -23,17 +27,18 @@
 
 ### Predicted vs Known CTCF Sites
 
-| ARCHCODE Prediction | Position (chr11) | Literature Match | Distance | Source | Validation |
-|---------------------|------------------|------------------|----------|---------|------------|
-| **CTCF1 (5'HS5)** | 5,203,300 | 5'HS5 (CTCF boundary) | 0 bp | Bender 2012 + ENCODE | ✅ Exact |
-| **CTCF2 (5'HS4)** | 5,205,700 | 5'HS4 (CTCF boundary) | 0 bp | Bender 2012 | ✅ Exact |
-| **CTCF3 (5'HS3)** | 5,207,100 | 5'HS3 (LCR enhancer) | 0 bp | Grosveld 1987 | ✅ Exact |
-| **CTCF4 (5'HS2)** | 5,209,000 | 5'HS2 (LCR + CTCF) | 0 bp | Bender 2012, Deng 2012 | ✅ Exact |
-| **CTCF5 (HBB)** | 5,225,700 | HBB promoter (CTCF) | 0 bp | Bender 2012 + ENCODE | ✅ Exact |
-| **CTCF6 (3'HS1)** | 5,247,900 | 3'HS1 (major insulator) | 0 bp | Himadewi 2021 | ✅ Exact |
+| ARCHCODE Prediction | Position (chr11) | Literature Match | Distance | Source | Concordance |
+|---------------------|------------------|------------------|----------|---------|-------------|
+| **CTCF1 (5'HS5)** | 5,203,300 | 5'HS5 (CTCF boundary) | 0 bp | Bender 2012 + ENCODE | ✅ Concordant |
+| **CTCF2 (5'HS4)** | 5,205,700 | 5'HS4 (CTCF boundary) | 0 bp | Bender 2012 | ✅ Concordant |
+| **CTCF3 (5'HS3)** | 5,207,100 | 5'HS3 (LCR enhancer) | 0 bp | Grosveld 1987 | ✅ Concordant |
+| **CTCF4 (5'HS2)** | 5,209,000 | 5'HS2 (LCR + CTCF) | 0 bp | Bender 2012, Deng 2012 | ✅ Concordant |
+| **CTCF5 (HBB)** | 5,225,700 | HBB promoter (CTCF) | 0 bp | Bender 2012 + ENCODE | ✅ Concordant |
+| **CTCF6 (3'HS1)** | 5,247,900 | 3'HS1 (major insulator) | 0 bp | Himadewi 2021 | ✅ Concordant |
 
-**Validation Rate:** 6/6 (100%)
-**Mean Distance:** 0 bp (all exact matches within 1 kb tolerance)
+**Concordance Rate:** 6/6 (100%) — literature-based
+**Mean Distance:** 0 bp (all matches within published regulatory coordinates)
+**ChIP-seq Quantitative Validation:** Pending (HUDEP2 CTCF BigWig available in GSE131055)
 
 ---
 
