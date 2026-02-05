@@ -1,0 +1,12 @@
+{
+  "source_file": "D:\\\u0414\u041d\u041a\\data\\temp_hudep2_wt.cool",
+  "locus": "11:5200000-5250000",
+  "resolution": 5000,
+  "normalization": "KR_balanced",
+  "kr_applied": true,
+  "shape": [
+    10,
+    10
+  ],
+  "extraction_method": "cooler with balance=True"
+}

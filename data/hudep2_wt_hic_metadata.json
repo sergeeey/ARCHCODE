@@ -1,0 +1,19 @@
+{
+  "source_file": "GSM4873116_WT-HUDEP2-captureHiC_allValidPairs.hic",
+  "source_size_gb": 2.47,
+  "intermediate_format": "temp_hudep2_wt.cool",
+  "locus": "11:5200000-5250000",
+  "resolution": 5000,
+  "matrix_shape": [
+    10,
+    10
+  ],
+  "normalization": "NONE (raw counts)",
+  "non_zero_elements": 100,
+  "min_contact_nonzero": 9.0,
+  "max_contact": 247.0,
+  "mean_contact_nonzero": 70.48,
+  "total_sum": 7048.0,
+  "extraction_method": "hic2cool + cooler (raw)",
+  "data_type": "EXPERIMENTAL (ground truth)"
+}

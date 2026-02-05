@@ -1,0 +1,42 @@
+═══════════════════════════════════════════════════════════════
+  ⏰ RNA-SEQ FASTQ DOWNLOAD — START TONIGHT AFTER 19:00
+═══════════════════════════════════════════════════════════════
+
+📋 READ THIS FILE FIRST: FASTQ_DOWNLOAD_PLAN_EVENING.md
+
+🚀 FIRST COMMAND (Copy-Paste):
+
+cd D:\ДНК\fastq_data\raw
+fastq-dump --split-files --gzip SRR12837671 SRR12837674 SRR12837675
+
+⏱️  DURATION: 4-6 hours (можно оставить на ночь)
+💾 SIZE: ~30 GB total
+🎯 PURPOSE: Splice junction analysis для "Loop That Stayed" hypothesis
+
+═══════════════════════════════════════════════════════════════
+
+📊 WHAT WE'RE TESTING:
+
+Clone D3 (3'HS1 deleted):
+  - HBB expression: -36% vs WT
+  - Hypothesis: 15-30% aberrant splicing (loop trap)
+
+Clone A2 (3'HS1 inverted):
+  - HBB expression: +28% vs WT
+  - Hypothesis: <10% aberrant splicing (normal)
+
+═══════════════════════════════════════════════════════════════
+
+✅ EXPECTED RESULT:
+
+If D3 shows high aberrant splicing → Validates "Loop That Stayed"
+→ Functional validation STRONG (compensates weak Hi-C r=0.16)
+→ Manuscript upgrade: Pilot study → Validated mechanism
+
+═══════════════════════════════════════════════════════════════
+
+📖 See full plan: FASTQ_DOWNLOAD_PLAN_EVENING.md
+📊 Paper search: PAPER_SEARCH_RESULTS.md
+📈 Preliminary: RNA_SEQ_PRELIMINARY_ANALYSIS.md
+
+═══════════════════════════════════════════════════════════════

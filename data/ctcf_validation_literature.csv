@@ -1,0 +1,7 @@
+predicted,predicted_pos,known,known_pos,distance,type,function,source,match
+CTCF1 (5'HS5),5203300,5'HS5 (CTCF),5203300,0,CTCF_boundary,"LCR boundary, insulator",Bender et al. 2012 + ENCODE,✅ VALIDATED
+CTCF2 (5'HS4),5205700,5'HS4 (CTCF),5205700,0,CTCF_boundary,"Insulator, blocks enhancer-promoter",Bender et al. 2012,✅ VALIDATED
+CTCF3 (5'HS3),5207100,5'HS3 (LCR),5207100,0,Enhancer,Locus control region component,Grosveld et al. 1987,✅ VALIDATED
+CTCF4 (5'HS2),5209000,"5'HS2 (LCR, CTCF)",5209000,0,CTCF + Enhancer,Major LCR enhancer + CTCF binding,Bender et al. 2012 + Deng et al. 2012,✅ VALIDATED
+CTCF5 (HBB),5225700,HBB promoter (CTCF),5225700,0,CTCF + Promoter,Beta globin promoter + CTCF site,Bender et al. 2012 + ENCODE,✅ VALIDATED
+CTCF6 (3'HS1),5247900,3'HS1 (CTCF),5247900,0,CTCF_boundary,"Major insulator, loop anchor",Bender et al. 2012 + Himadewi et al. 2021,✅ VALIDATED

@@ -1,0 +1,24 @@
+{
+  "version": "v2_literature_ctcf",
+  "experimental": {
+    "mean": 67.44444444444444,
+    "std": 57.16508474217673
+  },
+  "simulation": {
+    "mean": 0.09444444444444444,
+    "std": 0.2408981394287778
+  },
+  "correlation": {
+    "pearson_r": -0.1667540804364947,
+    "pearson_p": 0.27359118392475246,
+    "spearman_rho": -0.19138181372680524,
+    "spearman_p": 0.207893019271799
+  },
+  "comparison_to_v1": {
+    "delta_pearson_r": -0.07461755498031147,
+    "delta_spearman_rho": -0.06557994491950894,
+    "v1_pearson_r": -0.09213652545618323,
+    "v1_spearman_rho": -0.1258018688072963
+  },
+  "ctcf_source": "Literature (ENCODE + published studies)"
+}
