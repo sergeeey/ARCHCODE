@@ -400,7 +400,7 @@ function generateMarkdownReport(report: FinalReport): string {
     lines.push('| Parameter | Value | Source |');
     lines.push('|-----------|-------|--------|');
     lines.push('| Extrusion velocity | 1 kb/s | Davidson et al. 2019 |');
-    lines.push('| Unloading probability | 1/1200 per step | Sabaté et al. 2025 |');
+    lines.push('| Unloading probability | 1/1200 per step | Sabaté et al. 2024 (bioRxiv) |');
     lines.push('| CTCF blocking efficiency | 85% | Model parameter |');
     lines.push('| Number of cohesins | 15 | Model parameter |');
     lines.push('| Simulation steps | 50,000 | — |');
@@ -462,7 +462,7 @@ function generateMarkdownReport(report: FinalReport): string {
     lines.push(`3. **Quantitative Effect:** Average ${report.globalStats.meanSEEnrichment.toFixed(1)}x enrichment in super-enhancer zones.`);
     lines.push('');
     lines.push('4. **Model Validity:** Results support the cohesin fountain hypothesis proposed by');
-    lines.push('   Sabaté et al. (Nature Genetics, 2025).');
+    lines.push('   Sabaté et al. (2024, bioRxiv, DOI: 10.1101/2024.08.09.605990).');
     lines.push('');
 
     // Footer

@@ -3,7 +3,7 @@
  * Kramer Kinetics Parameter Fitting Script
  *
  * Fits alpha and gamma parameters to match FRAP experimental data
- * from Sabaté et al., Nature Genetics 2025.
+ * from Sabaté et al., 2024 (bioRxiv, DOI: 10.1101/2024.08.09.605990).
  *
  * FRAP (Fluorescence Recovery After Photobleaching) measures:
  * - MED1+ cells: High enhancer activity → longer cohesin residence (~35 min)
@@ -31,7 +31,7 @@ import { KRAMER_KINETICS } from '../src/domain/constants/biophysics';
 import { SeededRandom } from '../src/utils/random';
 
 // ============================================================================
-// FRAP Experimental Data (Sabaté et al., Nature Genetics 2025)
+// FRAP Experimental Data (Sabaté et al., 2024, bioRxiv, DOI: 10.1101/2024.08.09.605990)
 // ============================================================================
 
 interface FRAPData {
@@ -415,7 +415,7 @@ async function main() {
 
     console.log('═'.repeat(70));
     console.log('  ARCHCODE Kramer Kinetics Parameter Fitting');
-    console.log('  FRAP Data: Sabaté et al., Nature Genetics 2025');
+    console.log('  FRAP Data: Sabaté et al., 2024 (bioRxiv, DOI: 10.1101/2024.08.09.605990)');
     console.log('═'.repeat(70));
 
     // Step 1: Grid Search

@@ -210,7 +210,7 @@ unloadingProb = k_base × (1 - α × occupancy^γ)
 
 Validated on:
 
-- HBB locus (Sabaté et al. 2025)
+- HBB locus (Sabaté et al. 2024 (bioRxiv))
 - Blind tests: IGH, TCRα, SOX2, MYC (all PASS)
 - Power-law exponent: α = -0.964 (error 3.6%)
 

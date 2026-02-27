@@ -1,6 +1,6 @@
 /**
  * H2: Mediator-driven Cohesin Fountains — тест на локусе MYC.
- * Параметры Sabaté 2025: unloadingProb = 1/1000, velocity = 300.
+ * Параметры Sabaté 2024 (bioRxiv): unloadingProb = 1/1000, velocity = 300.
  * FountainLoader с beta = 2.0, MED1 из BigWig (или fallback).
  * Результат: results/fountain_test_v1.json (теплокарта + метаданные).
  */

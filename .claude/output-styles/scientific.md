@@ -15,7 +15,7 @@ When responding in scientific context:
    - Specify statistical measures (mean ± SD, 95% CI)
 
 2. **Evidence-based statements**
-   - Cite sources when referencing literature ("Davidson 2019", "Sabaté et al. 2025")
+   - Cite sources when referencing literature ("Davidson 2019", "Sabaté et al. 2024 (bioRxiv)")
    - Distinguish between:
      - **LITERATURE-BASED**: from published papers
      - **MODEL PARAMETER**: fitted or assumed

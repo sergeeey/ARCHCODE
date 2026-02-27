@@ -37,7 +37,7 @@ We developed **ARCHCODE** (Architecture-Constrained Decoder), a physics-based lo
 P_unload = k_base × (1 - α × MED1^γ)
 ```
 
-where α=0.92 and γ=0.80 are estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017), achieving R²=0.89 validation on blind loci. Unlike neural networks that learn emergent patterns from static snapshots (Hi-C contact matrices), ARCHCODE simulates the _generative process_: cohesin loading at MED1+ enhancers, bidirectional extrusion at 1 kb/s, stochastic blocking at convergent CTCF sites, and residence time modulated by local Mediator occupancy. This forward simulation produces contact matrices as emergent outputs, enabling mechanistic counterfactuals: what happens if we introduce a variant that disrupts a splice enhancer but leaves CTCF anchors intact?
+where α=0.92 and γ=0.80 are estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017), achieving R²=0.89 self-consistency on held-out simulation loci. Unlike neural networks that learn emergent patterns from static snapshots (Hi-C contact matrices), ARCHCODE simulates the _generative process_: cohesin loading at MED1+ enhancers, bidirectional extrusion at 1 kb/s, stochastic blocking at convergent CTCF sites, and residence time modulated by local Mediator occupancy. This forward simulation produces contact matrices as emergent outputs, enabling mechanistic counterfactuals: what happens if we introduce a variant that disrupts a splice enhancer but leaves CTCF anchors intact?
 
 We quantify structural disruption using the Structural Similarity Index (SSIM), which measures not just contact frequency (preserved in "Loop That Stayed" cases) but **contact topology**—the spatial arrangement and correlation structure of chromatin interactions. SSIM ranges from 0 (complete structural disruption) to 1 (identical to wild-type), with a critical difference: SSIM 0.50-0.60 can indicate **moderate loop disruption sufficient to impair regulatory flexibility** even when overall contact counts remain high.
 
@@ -68,4 +68,3 @@ We report the discovery of a novel variant class—**"The Loop That Stayed"**—
 _Introduction section prepared for bioRxiv submission_
 _Word count: 1,247 words_
 _Last updated: 2026-02-04_
-

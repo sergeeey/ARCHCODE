@@ -407,7 +407,8 @@
         <p>
           <strong>Methods:</strong> We developed ARCHCODE, a physics-based 3D
           loop extrusion simulator implementing Kramer kinetics for cohesin
-          dynamics (α=0.92, γ=0.80, fitted to FRAP data, R²=0.89). We performed
+          dynamics (α=0.92, γ=0.80, estimated from literature ranges; R²=0.89
+          (self-consistency; experimental validation pending)). We performed
           high-throughput Monte Carlo simulation of 367 pathogenic β-globin
           (<em>HBB</em>) variants from ClinVar and calculated Structural
           Similarity Index (SSIM) scores comparing wild-type and mutant 3D
@@ -710,9 +711,9 @@
 
         <p>
           where α=0.92 and γ=0.80 are fitted to experimental FRAP data (Sabaté
-          et al., 2025), achieving R²=0.89 validation on blind loci. Unlike
-          neural networks that learn emergent patterns from static snapshots
-          (Hi-C contact matrices), ARCHCODE simulates the
+          et al., 2025), achieving R²=0.89 self-consistency on held-out
+          simulation loci. Unlike neural networks that learn emergent patterns
+          from static snapshots (Hi-C contact matrices), ARCHCODE simulates the
           <em>generative process</em>: cohesin loading at MED1+ enhancers,
           bidirectional extrusion at 1 kb/s, stochastic blocking at convergent
           CTCF sites, and residence time modulated by local Mediator occupancy.
@@ -851,21 +852,23 @@
         <p>
           where: - <code>k_base</code> = 0.002: baseline unloading rate (fitted
           parameter) - <code>α</code> = 0.92: coupling strength between MED1
-          occupancy and cohesin residence time (fitted to FRAP data, Sabaté et
-          al. 2025) - <code>γ</code> = 0.80: cooperativity exponent reflecting
-          sub-linear dependence (fitted parameter) - <code>MED1</code>: local
-          Mediator occupancy normalized to [0,1]
+          occupancy and cohesin residence time (estimated from literature ranges
+          (Gerlich et al., 2006; Hansen et al., 2017)) - <code>γ</code> = 0.80:
+          cooperativity exponent reflecting sub-linear dependence (fitted
+          parameter) - <code>MED1</code>: local Mediator occupancy normalized to
+          [0,1]
         </p>
         <p>
           <strong>Parameter Fitting:</strong> α and γ were determined via grid
           search (α ∈ [0.8, 1.0], γ ∈ [0.6, 1.0], step=0.02) minimizing
           least-squares deviation from experimental FRAP-derived residence
-          times: - MED1+ enhancer regions: τ ~ 35 min (Sabaté et al. 2025) -
-          MED1- regions: τ ~ 12 min
+          times: - MED1+ enhancer regions: τ ~ 35 min (Sabaté et al. 2024
+          (bioRxiv)) - MED1- regions: τ ~ 12 min
         </p>
         <p>
-          Best fit: α=0.92, γ=0.80 achieved R²=0.89 on held-out validation set
-          (HBB, IGH, TCRα loci, n=3, 1000 runs each).
+          Best fit: α=0.92, γ=0.80, estimated from literature ranges; R²=0.89
+          (self-consistency; experimental validation pending) on held-out
+          validation set (HBB, IGH, TCRα loci, n=3, 1000 runs each).
         </p>
         <h3 id="simulation-parameters">Simulation Parameters</h3>
         <table>

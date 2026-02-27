@@ -229,15 +229,15 @@ This mirrors the experimental approach of Rinzema et al., who used auxin-inducib
 
 ### Simulation Parameters
 
-| Parameter                | Value           | Source               |
-| ------------------------ | --------------- | -------------------- |
-| Extrusion velocity       | 1 kb/s          | Davidson et al. 2019 |
-| Unloading probability    | 1/1200 per step | Sabaté et al. 2025   |
-| CTCF blocking efficiency | 85%             | Model parameter      |
-| Number of cohesins       | 15              | Model parameter      |
-| Simulation steps         | 50,000          | —                    |
-| Ensemble runs            | 20              | —                    |
-| Resolution               | 5 kb            | —                    |
+| Parameter                | Value           | Source                       |
+| ------------------------ | --------------- | ---------------------------- |
+| Extrusion velocity       | 1 kb/s          | Davidson et al. 2019         |
+| Unloading probability    | 1/1200 per step | Sabaté et al. 2024 (bioRxiv) |
+| CTCF blocking efficiency | 85%             | Model parameter              |
+| Number of cohesins       | 15              | Model parameter              |
+| Simulation steps         | 50,000          | —                            |
+| Ensemble runs            | 20              | —                            |
+| Resolution               | 5 kb            | —                            |
 
 ### FountainLoader Formula
 
@@ -330,7 +330,7 @@ where:
 
 ### Model Validity
 
-Results support the cohesin fountain hypothesis proposed by Sabaté et al. (Nature Genetics, 2025):
+Results support the cohesin fountain hypothesis proposed by Sabaté et al. (bioRxiv, 2024):
 
 > "Mediator condensates establish cohesin loading zones that create fountains of chromatin loops, shaping the spatial architecture of super-enhancers."
 

@@ -272,7 +272,7 @@ DOI: [To be assigned upon publication]
 - Analysis files: D:\ДНК\results\
 - Source data: KEY_FINDINGS.json, HBB_Clinical_Atlas.csv
 - ARCHCODE model: v1.1.0 (Kramer kinetics α=0.92, γ=0.8)
-- Reference: Gerlich et al. 2006 (model validation R²=0.89)
+- Reference: Gerlich et al. 2006 (model self-consistency R²=0.89)
 
 ---
 
@@ -313,7 +313,7 @@ DOI: [To be assigned upon publication]
 4. **ACMG evidence level:** PS3_moderate requires experimental support for upgrade to PS3_strong
 
 ### Assumptions
-1. ARCHCODE model accuracy (R²=0.89) generalizes to these variants
+1. ARCHCODE model (R²=0.89 self-consistency) generalizes to these variants
 2. Kramer kinetics parameters (α=0.92, γ=0.8) are appropriate for HBB locus
 3. SSIM threshold (0.50-0.60) applies to other splice_region variants
 4. AlphaGenome training data bias is systematic not random

@@ -81,5 +81,3 @@ Loop duration in vivo (literature sources): **6–19 minutes** (360–1140 steps
 **PASS** — Mean loop duration in simulation: **16.18 min** (95% CI: [15.28, 17.08] min).
 
 ✅ Mean falls within the experimental range 6–19 min. The model reproduces loop kinetics without fitting.
-
-

@@ -64,7 +64,7 @@ Our findings constitute a **computational discovery requiring experimental falsi
 
 We acknowledge critical limitations that temper interpretation and underscore the need for experimental follow-up:
 
-**1. Computational predictions, not experimental proof:** ARCHCODE simulations, despite R²=0.89 validation on blind loci, remain _in silico_ models. The predicted 15-30% exon skipping for VCV000000327 requires RT-PCR confirmation in K562 or HUDEP-2 erythroid cells. The proposed CRISPRi loop rescue experiment—disrupting CTCF anchors to test whether loop disruption rescues splicing—would provide definitive mechanistic proof but has not yet been performed.
+**1. Computational predictions, not experimental proof:** ARCHCODE simulations, despite R²=0.89 self-consistency on held-out loci (experimental Hi-C validation: r=0.16, not significant), remain _in silico_ models. The predicted 15-30% exon skipping for VCV000000327 requires RT-PCR confirmation in K562 or HUDEP-2 erythroid cells. The proposed CRISPRi loop rescue experiment—disrupting CTCF anchors to test whether loop disruption rescues splicing—would provide definitive mechanistic proof but has not yet been performed.
 
 **2. Simplified physics:** Our Kramer kinetics model assumes cohesin unloading probability depends solely on local MED1 occupancy, neglecting DNA sequence-dependent processivity, ATP-dependent motor activity, and potential cohesin-cohesin interactions. More sophisticated models incorporating these factors may refine SSIM threshold boundaries.
 

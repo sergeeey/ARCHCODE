@@ -29,7 +29,7 @@ We present ARCHCODE (Architectural Code), a computational framework for simulati
 
 The three-dimensional organization of the genome plays a critical role in gene regulation. Super-enhancers (SEs) — clusters of enhancers with exceptionally high transcription factor binding — are associated with cell identity genes and disease states. However, the mechanism by which SEs acquire their characteristic 3D architecture remained unclear.
 
-The "cohesin fountain" hypothesis, proposed by Sabaté et al. (Nature Genetics, 2025), suggests that Mediator condensates establish cohesin loading zones, creating "fountains" of chromatin loops at super-enhancers. Our work provides computational validation of this hypothesis.
+The "cohesin fountain" hypothesis, proposed by Sabaté et al. (bioRxiv, 2024), suggests that Mediator condensates establish cohesin loading zones, creating "fountains" of chromatin loops at super-enhancers. Our work provides computational validation of this hypothesis.
 
 ### 1.2 Hypotheses Tested
 
@@ -55,7 +55,7 @@ Our results strongly support **H2 (Loading Bias)**.
 | **2026-02-01** | Scientific correctness fixes (P0) | fix(P0): Complete scientific correctness fixes |
 | **2026-02-02** | Citation corrections (HaluGate) | fix(docs): correct citations per HaluGate verification |
 | **2026-02-02** | Hi-C validation (Rao 2014) | feat(validation): Hi-C validation against Rao 2014 |
-| **2026-02-02** | Blind-test validation (Sabaté 2025) | feat(validation): blind-test validation |
+| **2026-02-02** | Blind-test validation (Sabaté 2024, bioRxiv) | feat(validation): blind-test validation |
 | **2026-02-03** | FountainLoader (H2) implementation | feat(H2): Mediator-driven Cohesin Fountains |
 | **2026-02-03** | Multi-locus validation (MYC, IGH, TCRα, SOX2) | feat(H2): add blind validations |
 | **2026-02-03** | K562 cross-cell validation | feat(H2): add automated cross-cell validation |
@@ -102,7 +102,7 @@ All scientific claims were verified through our HaluGate pipeline to prevent AI 
 | Ganji et al. 2018 = cohesin | **FALSE** | Corrected to "condensin" |
 | Davidson et al. 2019 = cohesin | **TRUE** | Primary citation for cohesin kinetics |
 | Rao et al. 2014 = convergent rule | **TRUE** | Used for CTCF efficiency calibration |
-| Sabaté et al. 2025 = fountain hypothesis | **TRUE** | Reference for validation parameters |
+| Sabaté et al. 2024 (bioRxiv) = fountain hypothesis | **TRUE** | Reference for validation parameters |
 
 ---
 
@@ -144,8 +144,8 @@ Where:
 
 | Parameter | Value | Source |
 |-----------|-------|--------|
-| Extrusion velocity | 300 bp/step | Sabaté et al. 2025 |
-| Unloading probability | 1/1000 per step | Sabaté et al. 2025 |
+| Extrusion velocity | 300 bp/step | Sabaté et al. 2024 (bioRxiv) |
+| Unloading probability | 1/1000 per step | Sabaté et al. 2024 (bioRxiv) |
 | CTCF blocking efficiency | 85% | Calibrated to Rao 2014 |
 | Number of cohesins | 15 | Model parameter |
 | Simulation steps | 50,000 | Ensemble convergence |
@@ -295,7 +295,7 @@ This finding has several important implications:
 
 ### 6.2 Model Validity
 
-Our results support the cohesin fountain hypothesis proposed by Sabaté et al. (Nature Genetics, 2025):
+Our results support the cohesin fountain hypothesis proposed by Sabaté et al. (bioRxiv, 2024):
 
 > "Mediator condensates establish cohesin loading zones that create fountains of chromatin loops, shaping the spatial architecture of super-enhancers."
 
@@ -407,7 +407,7 @@ docker-compose --profile full up
 
 ## 10. References
 
-1. Sabaté, T. et al. Cohesin-mediated loop extrusion co-opts repressive chromatin at TAD boundaries to promote enhancer blocking. *Nature Genetics* (2025).
+1. Sabaté, T. et al. Cohesin-mediated loop extrusion co-opts repressive chromatin at TAD boundaries to promote enhancer blocking. *bioRxiv* 2024, DOI: 10.1101/2024.08.09.605990.
 
 2. Davidson, I. F. et al. DNA loop extrusion by human cohesin. *Science* 366, 1338–1345 (2019).
 

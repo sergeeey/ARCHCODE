@@ -43,7 +43,7 @@ export interface MultiCohesinConfig {
     velocity?: number;
     seed?: number;
     maxSteps?: number;         // Max steps before auto-stop (default: 10000)
-    /** Override unloading probability (e.g. Sabaté 2025: 1/1200). */
+    /** Override unloading probability (e.g. Sabaté 2024 (bioRxiv): 1/1200). */
     unloadingProbability?: number;
     /** If set: load one cohesin per step with this probability (~1/hour => 1/3600). */
     loadingProbabilityPerStep?: number;
