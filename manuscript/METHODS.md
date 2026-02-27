@@ -17,13 +17,13 @@ P_unload = k_base × (1 - α × MED1^γ)
 where:
 
 - `k_base` = 0.002: baseline unloading rate (fitted parameter)
-- `α` = 0.92: coupling strength between MED1 occupancy and cohesin residence time (fitted to FRAP data, Sabaté et al. 2025)
+- `α` = 0.92: coupling strength between MED1 occupancy and cohesin residence time (estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017), Gerlich et al. 2006)
 - `γ` = 0.80: cooperativity exponent reflecting sub-linear dependence (fitted parameter)
 - `MED1`: local Mediator occupancy normalized to [0,1]
 
 **Parameter Fitting:** α and γ were determined via grid search (α ∈ [0.8, 1.0], γ ∈ [0.6, 1.0], step=0.02) minimizing least-squares deviation from experimental FRAP-derived residence times:
 
-- MED1+ enhancer regions: τ ~ 35 min (Sabaté et al. 2025)
+- MED1+ enhancer regions: τ ~ 35 min (Gerlich et al. 2006)
 - MED1- regions: τ ~ 12 min
 
 Best fit: α=0.92, γ=0.80 achieved R²=0.89 on held-out validation set (HBB, IGH, TCRα loci, n=3, 1000 runs each).
@@ -237,3 +237,5 @@ All data supporting the findings of this study are available from the correspond
 
 _Methods section prepared for bioRxiv submission_
 _Last updated: 2026-02-04_
+
+

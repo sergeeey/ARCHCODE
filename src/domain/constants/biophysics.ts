@@ -7,12 +7,23 @@
  *   NOTE: Ganji et al. 2018 studied CONDENSIN (up to 1.5 kb/s), not cohesin!
  * - Cohesin processivity: ~33 kb average loop size (Davidson et al., 2019)
  *   MODEL PARAMETER: 600 kb used for domain-scale simulation
- * - Cohesin residence time: ~20 min (Gerlich et al., 2006 FRAP)
+ * - Cohesin residence time: ~20 min (Gerlich et al., 2006; Hansen et al., 2017)
  * - CTCF residence time: ~1-5 min (Hansen et al., 2017)
- * - Convergent CTCF efficiency: MODEL PARAMETER fit to Rao et al. 2014 Hi-C
+ * - Convergent CTCF efficiency: MODEL PARAMETER estimated from Rao et al. 2014 Hi-C loop enrichment
  *
  * IMPORTANT: Distinguish LITERATURE-BASED (measured) vs MODEL PARAMETER (fit/assumed)
  */
+
+export const COHESIN_KINETICS = {
+    // LITERATURE-BASED, NOT FITTED TO A REPOSITORY FRAP DATASET
+    // Gerlich et al. (2006) Curr Biol; Hansen et al. (2017) eLife
+    residenceTimeSeconds: 1200, // ~20 min conservative baseline
+    unloadingProbPerStep: 0.000833, // 1/1200 steps
+
+    // EXPLORATORY PARAMETERS: grid-search estimates, no direct FRAP fit
+    alpha: 0.92,
+    gamma: 0.8,
+} as const;
 
 // Time scaling (separate simulation time from render time)
 export const SIMULATION_CONFIG = {
@@ -49,8 +60,8 @@ export const COHESIN_PARAMS = {
     PROCESSIVITY_KB: 600, // MODEL PARAMETER (literature: ~33 kb single-molecule)
     
     // Processivity: mean residence time ~20 min (literature range 10-30 min)
-    // Source: Gerlich et al. (2006) Cell, FRAP measurements
-    // NOTE: This is the TARGET mean residence time for calibration
+    // Source: literature ranges (Gerlich et al., 2006; Hansen et al., 2017)
+    // NOTE: Baseline target, not fitted to a local FRAP dataset
     MEAN_PROCESSIVITY_S: 20 * 60, // 20 minutes in seconds
     
     // Unloading probability (per simulation step)
@@ -59,7 +70,7 @@ export const COHESIN_PARAMS = {
     // 
     // EFFECTIVE RESIDENCE TIME IN STEPS: ~1200 steps (not minutes)
     // The mapping to real time depends on BIOLOGICAL_TIME_SCALE
-    UNLOADING_PROBABILITY: 0.000833, // calibrated for ~20 min at dt=1s
+    UNLOADING_PROBABILITY: 0.000833, // baseline for ~20 min at dt=1s
     
     // Bookmarking efficiency: probability to respawn at unloading site
     // Source: Assumed default (no direct measurement available)
@@ -68,7 +79,7 @@ export const COHESIN_PARAMS = {
 } as const;
 
 // CTCF parameters
-// NOTE: These are MODEL PARAMETERS fit to ensemble data, not single-molecule constants.
+// NOTE: These are MODEL PARAMETERS estimated from ensemble data, not single-molecule constants.
 // Convergent efficiency represents population-average blocking across many cohesin-CTCF encounters.
 export const CTCF_PARAMS = {
     // Convergent rule efficiency (probability that convergent CTCF stops cohesin)
@@ -110,68 +121,6 @@ export const HETEROCHROMATIN_PARAMS = {
     
     // Detection range (base pairs)
     DETECTION_RANGE_BP: 500,
-} as const;
-
-/**
- * Kramer's Rate Theory Parameters for Cohesin Dynamics
- *
- * Physical model: unloadingProb = k_base * (1 - alpha * occupancy^gamma)
- *
- * Where:
- * - k_base: baseline unloading rate in absence of enhancer occupancy
- * - alpha: coupling strength between transcriptional activity and cohesin retention
- * - gamma: cooperativity exponent (Hill-like)
- * - occupancy: local transcriptional/chromatin activity (0-1 scale)
- *
- * References:
- * - Sabaté et al., Nature Genetics 2025: FRAP data for MED1+/MED1- cells
- * - MED1+ (high enhancer activity): τ_residence ~ 30-40 min
- * - MED1- (low enhancer activity): τ_residence ~ 10-15 min
- *
- * These parameters are fit to match experimental FRAP recovery curves.
- */
-export const KRAMER_KINETICS = {
-    // Baseline unloading rate (per step)
-    // Corresponds to ~8 min residence time (1 / 480 steps at 1s/step)
-    K_BASE: 0.002,
-
-    // Fitted kinetic parameters from FRAP data (Sabaté et al. 2025)
-    // Grid search result: α=0.92, γ=0.80 (MSE=5.33)
-    // alpha: reduction factor at full occupancy
-    // gamma: cooperativity (1 = linear, >1 = cooperative)
-    DEFAULT_ALPHA: 0.92,   // 92% reduction at full occupancy (fitted)
-    DEFAULT_GAMMA: 0.80,   // sub-linear (fitted from FRAP)
-
-    // FRAP target residence times (in seconds)
-    // Used for parameter fitting
-    FRAP_MED1_PLUS_RESIDENCE_S: 35 * 60,   // ~35 min (MED1+ high activity)
-    FRAP_MED1_MINUS_RESIDENCE_S: 12 * 60,  // ~12 min (MED1- low activity)
-
-    // Occupancy thresholds for enhancer regions
-    ENHANCER_OCCUPANCY: 0.8,   // High activity at enhancers
-    PROMOTER_OCCUPANCY: 0.6,   // Moderate at promoters
-    INSULATOR_OCCUPANCY: 0.3,  // Low at insulators (CTCF sites)
-    BACKGROUND_OCCUPANCY: 0.1, // Baseline chromatin activity
-} as const;
-
-// Sabaté et al., Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9)
-// Preset for blind-test validation: time step = 1 s, cohesin speed 0.25–0.4 kb/s.
-// Residence time calibrated within literature range (10–30 min) to match loop duration upper bound (Sabaté et al. 2025).
-export const SABATE_NATURE_2025 = {
-    // 1 step = 1 second (for calculations)
-    BIOLOGICAL_TIME_SCALE: 1,
-    // Cohesin speed: 0.3 kb/s (mean of 0.25–0.4 kb/s) → 300 bp/step
-    EXTRUSION_SPEED_BP_PER_STEP: 300,
-    // Residence time: 16.66 min = 1000 s → 1000 steps (calibrated within 10–30 min literature range)
-    MEAN_RESIDENCE_STEPS: 1000,
-    UNLOADING_PROBABILITY: 1 / 1000,
-    // Event frequency ~1 per hour per TAD → load one cohesin per 3600 steps on average
-    LOADING_PROBABILITY_PER_STEP: 1 / 3600,
-    // Loop duration target for validation (Sabaté et al. 2025 experimental range)
-    LOOP_DURATION_TARGET_MIN: 6,
-    LOOP_DURATION_TARGET_MAX: 19,
-    LOOP_DURATION_TARGET_MIN_STEPS: 360,  // 6 min × 60 s/min
-    LOOP_DURATION_TARGET_MAX_STEPS: 1140,  // 19 min × 60 s/min
 } as const;
 
 // Test scenarios (from validation document)

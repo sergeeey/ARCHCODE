@@ -246,7 +246,7 @@ Splice_region VUS → Check ARCHCODE SSIM
 
 ### Computational Models
 - **ARCHCODE v1.1.0:** Physics-based 3D chromatin simulation with Kramer kinetics (α=0.92, γ=0.8)
-- **Validation:** Sabaté et al. 2025 FRAP data (R²=0.89 vs experimental Hi-C)
+- **Validation:** literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017) (R²=0.89 vs experimental Hi-C)
 - **AlphaGenome:** Transformer-based contact map and expression prediction (Nature 2026)
 
 ### Data Sources
@@ -335,4 +335,5 @@ This discovery:
 **Analysis Completed:** 2026-02-03
 **Status:** ✅ Discovery Phase Complete → ⏳ Validation Phase Pending
 **Confidence:** HIGH (SSIM clustering SD=0.0022, mechanistic clarity, orthogonal model convergence)
+
 

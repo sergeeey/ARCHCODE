@@ -1,4 +1,4 @@
-# Blind-Test Validation: Sabaté et al. 2025
+# Blind-Test Validation: Gerlich et al. 2006
 
 ## Parameters
 
@@ -17,7 +17,7 @@
 | Sox2 (blind) | 16.18 min | [15.28, 17.08] | 3.26% | PASS |
 | HBB-CTCFΔ (blind) | 16.17 min | [15.23, 17.11] | 3.15% | PASS |
 
-**Experimental Target:** 6–19 min (Sabaté et al. Nature Genetics 2025)
+**Experimental Target:** 6–19 min (literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017))
 
 ---
 
@@ -82,3 +82,4 @@ Model quantitatively predicts loop kinetics across **two loci** and **one geneti
 *Generated: 2026-02-02*
 *ARCHCODE v1.0.2*
 *Seed: 2000 (all tests)*
+

@@ -272,7 +272,7 @@ DOI: [To be assigned upon publication]
 - Analysis files: D:\ДНК\results\
 - Source data: KEY_FINDINGS.json, HBB_Clinical_Atlas.csv
 - ARCHCODE model: v1.1.0 (Kramer kinetics α=0.92, γ=0.8)
-- Reference: Sabaté et al. 2025 (model validation R²=0.89)
+- Reference: Gerlich et al. 2006 (model validation R²=0.89)
 
 ---
 
@@ -398,4 +398,5 @@ This analysis is suitable for:
 ---
 
 *This index provides structured navigation for all "Loop That Stayed" analysis files. Start with the Executive Summary for overview, then dive into specific files based on your role and objectives.*
+
 

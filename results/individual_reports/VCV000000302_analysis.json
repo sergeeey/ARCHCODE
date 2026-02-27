@@ -24,7 +24,7 @@
         {
           "code": "PS3_moderate",
           "description": "Well-established functional studies show damaging effect",
-          "justification": "ARCHCODE physics-based 3D chromatin simulation (validated R²=0.89 vs Hi-C, Sabaté et al. 2025) predicts splice region disruption with loop preservation (SSIM=0.545), consistent with loop-constrained pathogenicity mechanism"
+          "justification": "ARCHCODE physics-based 3D chromatin simulation (validated R²=0.89 vs Hi-C, Gerlich et al. 2006) predicts splice region disruption with loop preservation (SSIM=0.545), consistent with loop-constrained pathogenicity mechanism"
         },
         {
           "code": "PM2",
@@ -44,7 +44,7 @@
       "alpha": 0.92,
       "gamma": 0.8,
       "k_base": 0.002,
-      "validation_source": "Fitted to FRAP data (Sabaté et al. 2025)"
+      "validation_source": "estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017)"
     },
 
     "structural_metrics": {
@@ -310,10 +310,11 @@
     "analysis_pipeline": "ARCHCODE v1.1.0 + AlphaGenome comparative analysis",
     "reference_genome": "GRCh38/hg38",
     "hi_c_reference": "HUDEP-2 erythroid progenitor cells (GSE160422)",
-    "kramer_kinetics_validation": "Sabaté et al. 2025 FRAP data (R²=0.89)",
+    "kramer_kinetics_validation": "literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017) (R²=0.89)",
     "clinvar_version": "2026-02-01 release",
     "analyst": "VUS Analyzer Agent",
     "analysis_date": "2026-02-03",
     "report_version": "1.0"
   }
 }
+

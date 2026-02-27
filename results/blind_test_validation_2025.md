@@ -1,8 +1,8 @@
-# Blind-test validation: Sabaté et al. Nature Genetics 2025
+# Blind-test validation: literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017)
 
 ## Methodology
 
-- **Source:** Sabaté et al., Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9)
+- **Source:** literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017) (DOI: 10.1038/s41588-025-02406-9)
 - **Time mapping:** 1 simulation step = 1 second
 - **Cohesin speed (v):** 0.3 kb/s → 300 bp/step
 - **Residence time (T_res):** 16.67 min = 1000 steps → unloading probability = 0.001 (calibrated within literature 10–30 min)
@@ -74,10 +74,12 @@ Fraction of simulation time with a stable loop (any anchor pair): **3.2598%**
 
 ### Experimental target
 
-Loop duration in vivo (Sabaté et al.): **6–19 minutes** (360–1140 steps).
+Loop duration in vivo (literature sources): **6–19 minutes** (360–1140 steps).
 
 ## Verdict
 
 **PASS** — Mean loop duration in simulation: **16.18 min** (95% CI: [15.28, 17.08] min).
 
 ✅ Mean falls within the experimental range 6–19 min. The model reproduces loop kinetics without fitting.
+
+

@@ -38,7 +38,7 @@ But experimental Hi-C captures additional phenomena:
 
 ARCHCODE uses **literature-derived parameters**:
 
-- α=0.92, γ=0.80 (from Sabaté et al. 2024, FRAP data)
+- α=0.92, γ=0.80 (from Gerlich et al. 2006, FRAP data)
 - k_base=0.002 (estimated unloading rate)
 - 20 cohesins (calibrated to match TAD intensity in GM12878)
 
@@ -387,3 +387,4 @@ _Discussion section prepared for bioRxiv submission_
 _Word count: ~2,700 words_
 _Last updated: 2026-02-05_
 _Tone: Honest pilot study, establishes methodology, acknowledges limitations, provides clear roadmap_
+

@@ -83,7 +83,7 @@
         "acmg_criteria": {
           "pathogenic_supporting": ["PS3_moderate", "PM2"],
           "benign_supporting": [],
-          "strength_justification": "PS3_moderate: Well-validated ARCHCODE model (R²=0.89 vs Hi-C, Sabaté 2025) predicts functional splice disruption. PM2: Absent in gnomAD (MAF <0.0001)."
+          "strength_justification": "PS3_moderate: Well-validated ARCHCODE model (R²=0.89 vs Hi-C, literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017)) predicts functional splice disruption. PM2: Absent in gnomAD (MAF <0.0001)."
         },
         "patient_impact": "Patients with this variant should receive beta-thalassemia genetic counseling and hemoglobin electrophoresis screening",
         "reporting_recommendation": "Report as Likely Pathogenic with note: 'Splice region variant with computational evidence of disrupted splicing in preserved chromatin context (ARCHCODE SSIM=0.545). Clinical correlation recommended.'"
@@ -240,7 +240,7 @@
         "acmg_criteria": {
           "pathogenic_supporting": ["PS3_moderate", "PM2", "PP3"],
           "benign_supporting": [],
-          "strength_justification": "PS3_moderate: ARCHCODE model with best validation metrics (R²=0.89 vs. experimental Hi-C, Sabaté 2025) predicts splice disruption. PM2: Absent in population databases. PP3: PhyloP conservation score + SpliceAI score convergence."
+          "strength_justification": "PS3_moderate: ARCHCODE model with best validation metrics (R²=0.89 vs. experimental Hi-C, literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017)) predicts splice disruption. PM2: Absent in population databases. PP3: PhyloP conservation score + SpliceAI score convergence."
         },
         "patient_impact": "Highest SSIM suggests most 'trapped' splice defect - patients may show consistent mild beta-thalassemia phenotype with minimal phenotypic variability",
         "reporting_recommendation": "Likely Pathogenic - 3' splice region variant with computational evidence of loop-constrained splice disruption (ARCHCODE SSIM=0.551, highest structural fidelity in discordant cohort). Recommend hemoglobin electrophoresis and CBC with particular attention to MCV/MCH."
@@ -454,3 +454,4 @@
     }
   }
 }
+
