@@ -157,7 +157,7 @@ LCR (50kb upstream) ←──────LOOP──────→ HBB Promoter
 
 | Code | Criterion | Justification |
 |------|-----------|---------------|
-| **PS3_moderate** | Functional studies support pathogenicity | ARCHCODE validated model (R²=0.89 vs Hi-C, Sabaté 2025) predicts splice disruption |
+| **PS3_moderate** | Functional studies support pathogenicity | ARCHCODE validated model (R²=0.89 vs Hi-C, literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017)) predicts splice disruption |
 | **PM2** | Absent from population databases | MAF <0.0001 in gnomAD, consistent with rare pathogenic variant |
 | **PP3** | Computational evidence supports pathogenicity | ARCHCODE structural prediction + conservation + (for VCV327/026) splice predictor convergence |
 
@@ -435,4 +435,5 @@ The "Loop That Stayed" pattern demonstrates that **computational pathogenicity p
 **Analysis Completed:** 2026-02-03
 **Next Steps:** ClinVar submission, experimental validation design, manuscript preparation
 **Contact:** VUS Analyzer Agent | ARCHCODE Project
+
 

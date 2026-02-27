@@ -1,6 +1,6 @@
 # References
 
-1. Sabaté et al. (2024). Universal dynamics of cohesin-mediated loop extrusion. bioRxiv. doi:10.1101/2024.08.09.605990
+1. Gerlich et al. (2006). Live-cell imaging reveals a stable cohesin-chromatin interaction. Curr Biol.
 2. Gabriele et al. (2022). Dynamics of CTCF- and cohesin-mediated chromatin looping. Science. doi:10.1126/science.abn6583
 3. Avsec et al. (2021). Enformer. Nature Methods. doi:10.1038/s41592-021-01252-x
 4. DeepMind (2026). AlphaGenome Technical Report.
@@ -22,3 +22,5 @@
 20. Whalen et al. (2022). 3D genome ML. Nature Genetics.
 
 [Full bibliography in BibTeX available in repo.]
+
+
