@@ -214,12 +214,22 @@ async function main() {
     const listOnly = args.includes('--list');
     const exploreOnly = args.includes('--explore');
     const datasetArg = args.find(a => a.startsWith('--dataset='));
+    const modeArg = args.find(a => a.startsWith('--mode='));
+    const validationMode = (modeArg ? modeArg.split('=')[1] : 'real') as 'mock' | 'real' | 'strict-real';
     const datasetId = datasetArg ? datasetArg.split('=')[1] : 'rao2014_gm12878_loops';
 
     console.log('╔════════════════════════════════════════════════╗');
     console.log('║       ARCHCODE Hi-C Validation Pipeline        ║');
     console.log('║   Validate against Rao 2014 HiCCUPS loops      ║');
     console.log('╚════════════════════════════════════════════════╝\n');
+
+    if (!['mock','real','strict-real'].includes(validationMode)) {
+        throw new Error(`Invalid --mode value: ${validationMode}. Use mock|real|strict-real`);
+    }
+
+    if (validationMode === 'strict-real' && !useDownload && !listOnly && !exploreOnly) {
+        throw new Error('strict-real mode requires --download to avoid synthetic/offline fallback paths');
+    }
 
     if (listOnly) {
         showDatasets();
@@ -266,6 +276,13 @@ async function main() {
             fs.mkdirSync(path.dirname(outputPath), { recursive: true });
             fs.writeFileSync(outputPath, JSON.stringify({
                 timestamp: new Date().toISOString(),
+                provenance: {
+                    mode: validationMode,
+                    data_source: 'Rao et al. 2014 HiCCUPS loop calls',
+                    dataset_id: datasetId,
+                    fallback_used: false,
+                    api_used: 'downloadLoopList/validateLoops',
+                },
                 simulation: {
                     loops: simulation.loops.length,
                     matrixSize: simulation.matrix.length,
@@ -290,6 +307,7 @@ async function main() {
         console.log('  --explore     Explore loops in a dataset');
         console.log('  --list        List available datasets');
         console.log('  --dataset=ID  Use specific dataset (default: rao2014_gm12878_loops)');
+        console.log('  --mode=MODE   Validation mode: mock|real|strict-real (default: real)');
     }
 }
 
@@ -297,3 +315,8 @@ main().catch(error => {
     console.error('Fatal error:', error);
     process.exit(1);
 });
+
+
+
+
+

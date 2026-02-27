@@ -32,19 +32,22 @@ This view covers the loop extrusion engine, CTCF barriers, and cohesin dynamics.
 **Problem**: `physics.ts` used `'forward'|'reverse'` while `genome.ts` used `'F'|'R'`, causing the convergent rule to fail in the physics module.
 
 **Solution**:
+
 - Updated `src/domain/models/physics.ts` to use `'F'` and `'R'` literals
 - Imported `CTCFOrientation` type from `./genome` for type safety
 - Functions affected: `isConvergent()`, `checkCTCFBlocking()`
 
 **Verification**:
+
 ```typescript
 // After (FIXED):
 const isConvergentOrientation =
-    (approachDirection === 'left' && ctcfSite.orientation === 'F') ||
-    (approachDirection === 'right' && ctcfSite.orientation === 'R');
+  (approachDirection === "left" && ctcfSite.orientation === "F") ||
+  (approachDirection === "right" && ctcfSite.orientation === "R");
 ```
 
 **Evidence**:
+
 - Implementation: `src/domain/models/physics.ts` (orientation checks, imports from genome)
 - Regression: `src/__tests__/regression/gold-standard.test.ts` (convergent/divergent scenarios)
 - Commit: `fix(domain): unify CTCF orientation type to 'F'|'R'`
@@ -58,12 +61,14 @@ const isConvergentOrientation =
 **Problem**: MultiCohesinEngine did not implement cohesin unloading, violating the steady-state assumption of loop extrusion.
 
 **Solution**:
+
 1. Added `shouldUnload()` using `COHESIN_PARAMS.UNLOADING_PROBABILITY` (0.0005/step)
 2. Implemented `handleRespawn()` with bookmarking efficiency (50%)
 3. Added stochastic blocking using `CTCF_PARAMS.CONVERGENT_BLOCKING_EFFICIENCY` (85%)
 4. Added `seed` and RNG reset in `reset()` for reproducibility
 
 **Evidence**:
+
 - Implementation: `src/engines/MultiCohesinEngine.ts` (unloading, respawn, blocking)
 - Constants: `src/domain/constants/biophysics.ts` (COHESIN_PARAMS, CTCF_PARAMS)
 - Reproducibility: `src/utils/random.ts` (SeededRandom); tests with fixed seed in `src/__tests__/regression/`
@@ -82,11 +87,13 @@ This view covers data produced by the model and how it is preserved (BED, Archco
 **Problem**: `handleApplyParamsFromLoaded()` used hardcoded `'chr1'`, discarding chromosome from imported runs.
 
 **Solution**:
+
 - Extended `ArchcodeRun` to include `chromosome` in `model`
 - `buildRunInitial()` captures chromosome from first CTCF site
 - `handleApplyParamsFromLoaded()` uses saved chromosome with fallback
 
 **Evidence**:
+
 - Schema: `src/domain/models/experiment.ts` (model.chromosome, ctcfSites[].chrom)
 - Build: `src/utils/export-run.ts` (buildRunInitial)
 - Apply: `src/pages/Simulator.tsx` (handleApplyParamsFromLoaded, chromosome from run.model)
@@ -99,11 +106,13 @@ This view covers data produced by the model and how it is preserved (BED, Archco
 This view covers regression tests, gold-standard loci, and the source of ground truth (mock vs experimental Hi-C).
 
 **Current state**:
+
 - Regression tests: HBB, Sox2, Pcdh loci; target Pearson r ≥ 0.7
 - Ground truth: **mock/synthetic** contact maps (not real AlphaGenome API)
 - Publication target: validation against **experimental Hi-C** (e.g. Rao et al. 2014)
 
 **Evidence**:
+
 - Gold-standard tests: `src/__tests__/regression/gold-standard.test.ts`
 - Validation client (mock): `src/validation/alphagenome.ts`
 - Config: `config/default.json` (targetPearsonNote: vs experimental Hi-C)
@@ -120,26 +129,26 @@ This view covers regression tests, gold-standard loci, and the source of ground 
 
 ## Scientific Impact Assessment
 
-| Aspect | Before Audit | After Fixes | Status |
-|--------|--------------|-------------|--------|
-| Convergent CTCF rule | Partially broken | Fully functional | ✅ Fixed |
-| Cohesin turnover | None (accumulation) | Stochastic unloading + respawn | ✅ Fixed |
-| Steady-state dynamics | Violated | Maintained | ✅ Fixed |
-| Data reproducibility | Chromosome loss | Full preservation | ✅ Fixed |
-| Determinism | Seed ignored in reset | RNG reset on restart | ✅ Fixed |
+| Aspect                | Before Audit          | After Fixes                    | Status   |
+| --------------------- | --------------------- | ------------------------------ | -------- |
+| Convergent CTCF rule  | Partially broken      | Fully functional               | ✅ Fixed |
+| Cohesin turnover      | None (accumulation)   | Stochastic unloading + respawn | ✅ Fixed |
+| Steady-state dynamics | Violated              | Maintained                     | ✅ Fixed |
+| Data reproducibility  | Chromosome loss       | Full preservation              | ✅ Fixed |
+| Determinism           | Seed ignored in reset | RNG reset on restart           | ✅ Fixed |
 
 ---
 
 ## Parameter Classification
 
-| Parameter | Type | Source | Uncertainty |
-|-----------|------|--------|-------------|
-| EXTRUSION_SPEED_BP_PER_S | Literature-based | Davidson et al. (2019) cohesin | ±50% (0.5–2 kb/s) |
-| EXTRUSION_SPEED_BP_PER_S | ⚠️ **CORRECTION** | Ganji 2018 studied **condensin**, not cohesin! | N/A |
-| PROCESSIVITY_KB | MODEL PARAMETER | Davidson 2019: 33 kb; Model: 600 kb | HIGH - 18× scaled |
-| UNLOADING_PROBABILITY | Calculated | 1/meanResidenceSteps | Assumes exponential kinetics |
-| CONVERGENT_BLOCKING_EFFICIENCY | MODEL PARAMETER | Fit to Rao et al. (2014) Hi-C | Single-molecule may differ |
-| BOOKMARKING_EFFICIENCY | Assumed default | No direct measurement | HIGH uncertainty |
+| Parameter                      | Type              | Source                                         | Uncertainty                  |
+| ------------------------------ | ----------------- | ---------------------------------------------- | ---------------------------- |
+| EXTRUSION_SPEED_BP_PER_S       | Literature-based  | Davidson et al. (2019) cohesin                 | ±50% (0.5–2 kb/s)            |
+| EXTRUSION_SPEED_BP_PER_S       | ⚠️ **CORRECTION** | Ganji 2018 studied **condensin**, not cohesin! | N/A                          |
+| PROCESSIVITY_KB                | MODEL PARAMETER   | Davidson 2019: 33 kb; Model: 600 kb            | HIGH - 18× scaled            |
+| UNLOADING_PROBABILITY          | Calculated        | 1/meanResidenceSteps                           | Assumes exponential kinetics |
+| CONVERGENT_BLOCKING_EFFICIENCY | MODEL PARAMETER   | Fit to Rao et al. (2014) Hi-C                  | Single-molecule may differ   |
+| BOOKMARKING_EFFICIENCY         | Assumed default   | No direct measurement                          | HIGH uncertainty             |
 
 Steps are **dimensionless** discrete events; biological time mapping is a tunable parameter (see `docs/COGNITIVE_CORE.md`).
 
@@ -182,6 +191,6 @@ See subsection **5C** in KNOWN_ISSUES.md for Criteria / Condition / Cause / Cons
 2. Known Issues: `KNOWN_ISSUES.md`
 3. Cognitive Core: `docs/COGNITIVE_CORE.md`
 4. Methods: `METHODS.md`
-5. Sanborn et al. (2015). Chromatin extrusion. *PNAS*.
-6. Rao et al. (2014). 3D map of the human genome. *Cell*.
-7. Gerlich et al. (2006). Cohesin dynamics. *Cell*.
+5. Sanborn et al. (2015). Chromatin extrusion. _PNAS_.
+6. Rao et al. (2014). 3D map of the human genome. _Cell_.
+7. Gerlich et al. (2006). Cohesin dynamics. _Cell_.

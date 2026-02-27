@@ -42,29 +42,32 @@ Expected output: Pearson r ≥ 0.7 on HBB, Sox2, and Pcdh loci.
 
 ## 📊 Validation Results
 
-| Locus | Pearson r | Spearman ρ | Loops | Status |
-|-------|-----------|------------|-------|--------|
-| HBB (β-globin) | 0.72 | 0.68 | 5 | ✅ |
-| Sox2 | 0.71 | 0.69 | 3 | ✅ |
-| Pcdh | 0.74 | 0.71 | 4 | ✅ |
+| Locus          | Pearson r | Spearman ρ | Loops | Status |
+| -------------- | --------- | ---------- | ----- | ------ |
+| HBB (β-globin) | 0.72      | 0.68       | 5     | ✅     |
+| Sox2           | 0.71      | 0.69       | 3     | ✅     |
+| Pcdh           | 0.74      | 0.71       | 4     | ✅     |
 
-*Results from default parameters (velocity=1000 bp/s, 20 cohesins, seed=42)*
+_Results from default parameters (velocity=1000 bp/s, 20 cohesins, seed=42)_
 
 ## 🧬 Features
 
 ### Core Physics Engine
+
 - **Loop Extrusion Simulation**: Cohesin motors extrude DNA until blocked by CTCF
 - **Convergent Rule**: R...F orientation forms loops; F...R blocks extrusion
 - **Ensemble Simulation**: Multiple cohesins for realistic contact matrices
 - **Deterministic**: Fixed seed for reproducible research
 
 ### Visualization
+
 - **3D Browser Rendering**: React Three Fiber + WebGL
 - **Real-time Dashboard**: NASA-style telemetry display
 - **Contact Matrix Heatmaps**: Side-by-side comparison (optional AlphaGenome mock)
 - **P(s) Curves**: Power-law fitting (-1.0 exponent validation)
 
 ### Validation
+
 - **Validation target**: Experimental Hi-C (Rao et al.); mock AlphaGenome for development
 - **Grid Search**: Parameter optimization for r > 0.7
 - **Gold Standard Tests**: HBB, Sox2, Pcdh loci from literature
@@ -104,8 +107,8 @@ Edit `config/default.json`:
 {
   "biophysics": {
     "cohesin": {
-      "velocity": 1000,          // bp per step
-      "processivity": 600,       // kb
+      "velocity": 1000, // bp per step
+      "processivity": 600, // kb
       "unloadingProbability": 0.0005
     },
     "ctcf": {
@@ -125,18 +128,21 @@ See [METHODS.md](./METHODS.md) for detailed algorithm description suitable for p
 ### Key Equations
 
 **Cohesin Motion:**
+
 ```
 leftLeg(t+1) = leftLeg(t) - velocity
 rightLeg(t+1) = rightLeg(t) + velocity
 ```
 
 **Convergent Rule:**
+
 ```
 Loop forms if: R@leftLeg AND F@rightLeg
 where R = reverse CTCF (<), F = forward CTCF (>)
 ```
 
 **Contact Probability:**
+
 ```
 P(s) ~ s^(-α) where α ≈ 1.0 (theoretical)
 ```

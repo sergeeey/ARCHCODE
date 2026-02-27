@@ -112,9 +112,17 @@ export interface GenomeInterval {
 export interface AlphaGenomeConfig {
     apiKey?: string;
     grpcEndpoint?: string;  // gRPC endpoint (default: gdmscience.googleapis.com:443)
-    mode: 'mock' | 'live';
+    mode: 'mock' | 'real' | 'strict-real' | 'live';
     timeout?: number;
     retries?: number;
+}
+
+type AlphaGenomeRuntimeMode = 'mock' | 'real' | 'strict-real';
+
+function normalizeMode(mode: AlphaGenomeConfig['mode'] | undefined, hasApiKey: boolean): AlphaGenomeRuntimeMode {
+    if (!mode) return hasApiKey ? 'real' : 'mock';
+    if (mode === 'live') return 'real';
+    return mode;
 }
 
 // gRPC endpoint configuration
@@ -199,6 +207,13 @@ export interface ContactMapPrediction {
     normalization: 'observed' | 'expected' | 'oe_ratio';
 }
 
+export interface PredictionProvenance {
+    mode: AlphaGenomeRuntimeMode;
+    source: string;
+    apiVersion?: string;
+    isFallback: boolean;
+}
+
 export interface AlphaGenomePrediction {
     interval: GenomeInterval;
     contactMap: ContactMapPrediction;
@@ -206,6 +221,7 @@ export interface AlphaGenomePrediction {
     confidence: number;
     modelVersion: string;
     timestamp: string;
+    provenance?: PredictionProvenance;
 }
 
 export interface ValidationMetrics {
@@ -229,22 +245,23 @@ export interface TriangulationResult {
 // ============================================================================
 
 export class AlphaGenomeService {
-    private config: Required<AlphaGenomeConfig>;
+    private config: Omit<Required<AlphaGenomeConfig>, 'mode'> & { mode: AlphaGenomeRuntimeMode };
     private rng: SeededRandom;
     private predictionCache: Map<string, AlphaGenomePrediction> = new Map();
 
     constructor(config: Partial<AlphaGenomeConfig> = {}) {
+        const resolvedApiKey = config.apiKey || process.env.ALPHAGENOME_API_KEY || process.env.VITE_ALPHAGENOME_API_KEY || '';
         this.config = {
-            apiKey: config.apiKey || process.env.ALPHAGENOME_API_KEY || process.env.VITE_ALPHAGENOME_API_KEY || '',
+            apiKey: resolvedApiKey,
             grpcEndpoint: config.grpcEndpoint || GRPC_ENDPOINT,
-            mode: config.mode || (config.apiKey ? 'live' : 'mock'),
+            mode: normalizeMode(config.mode, !!resolvedApiKey),
             timeout: config.timeout || 120000, // 2 minutes for API calls
             retries: config.retries || 3,
         };
         this.rng = new SeededRandom(42);
 
         // Initialize gRPC client asynchronously
-        if (this.config.mode === 'live' && this.config.apiKey) {
+        if (this.config.mode !== 'mock' && this.config.apiKey) {
             this.initGrpcClient().catch(err => {
                 console.warn('[AlphaGenome] Failed to initialize gRPC client:', err.message);
             });
@@ -356,9 +373,11 @@ export class AlphaGenomeService {
     // ========================================================================
 
     /**
-     * Get prediction for a genomic interval
-     * Automatically falls back to mock if API fails
-     * Uses caching to ensure consistent results for same interval
+     * Get prediction for a genomic interval.
+     * Mode semantics:
+     * - mock: always synthetic
+     * - real: use API when available, fallback to synthetic on errors
+     * - strict-real: fail-closed, any API issue is fatal
      */
     async predict(interval: GenomeInterval): Promise<AlphaGenomePrediction> {
         const cacheKey = this.getIntervalKey(interval);
@@ -370,15 +389,50 @@ export class AlphaGenomeService {
 
         let prediction: AlphaGenomePrediction;
 
-        if (this.config.mode === 'live' && this.config.apiKey) {
+        if (this.config.mode === 'mock') {
+            prediction = this.generateMockPrediction(interval);
+            prediction.provenance = {
+                mode: 'mock',
+                source: 'Local Synthetic Generator',
+                isFallback: false,
+            };
+        } else if (!this.config.apiKey) {
+            if (this.config.mode === 'strict-real') {
+                throw new Error('PR GATE FAILURE [strict-real]: AlphaGenome API key is missing. Execution aborted to prevent mock data leakage.');
+            }
+            prediction = this.generateMockPrediction(interval);
+            prediction.provenance = {
+                mode: this.config.mode,
+                source: 'Local Synthetic Generator',
+                isFallback: true,
+            };
+        } else {
             try {
                 prediction = await this.fetchLivePrediction(interval);
+                const looksMock = prediction.modelVersion.toLowerCase().includes('mock');
+
+                if (this.config.mode === 'strict-real' && looksMock) {
+                    throw new Error('PR GATE FAILURE [strict-real]: External service returned a mock response. Execution aborted.');
+                }
+
+                prediction.provenance = {
+                    mode: this.config.mode,
+                    source: looksMock ? 'AlphaGenome API (Test Endpoint)' : 'AlphaGenome API (Production)',
+                    apiVersion: prediction.modelVersion,
+                    isFallback: false,
+                };
             } catch (error) {
+                if (this.config.mode === 'strict-real') {
+                    throw new Error(`PR GATE FAILURE [strict-real]: API call failed. Fallbacks are disabled. Details: ${(error as Error).message}`);
+                }
                 console.warn('[AlphaGenome] Live API failed, falling back to mock:', error);
                 prediction = this.generateMockPrediction(interval);
+                prediction.provenance = {
+                    mode: this.config.mode,
+                    source: 'Local Synthetic Generator',
+                    isFallback: true,
+                };
             }
-        } else {
-            prediction = this.generateMockPrediction(interval);
         }
 
         // Cache the result
@@ -465,7 +519,7 @@ export class AlphaGenomeService {
      * Check if live API is available
      */
     isLiveAvailable(): boolean {
-        return this.config.mode === 'live' && !!this.config.apiKey;
+        return this.config.mode !== 'mock' && !!this.config.apiKey;
     }
 
     /**
@@ -473,20 +527,22 @@ export class AlphaGenomeService {
      */
     setApiKey(apiKey: string): void {
         this.config.apiKey = apiKey;
-        if (apiKey) {
-            this.config.mode = 'live';
+        if (apiKey && this.config.mode === 'mock') {
+            this.config.mode = 'real';
         }
     }
 
     /**
-     * Switch between mock and live modes
+     * Switch between mock/real/strict-real modes.
+     * Backward compatible with "live" alias.
      */
-    setMode(mode: 'mock' | 'live'): void {
-        if (mode === 'live' && !this.config.apiKey) {
-            console.warn('[AlphaGenome] Cannot switch to live mode without API key');
+    setMode(mode: AlphaGenomeConfig['mode']): void {
+        const normalized = normalizeMode(mode, !!this.config.apiKey);
+        if ((normalized === 'real' || normalized === 'strict-real') && !this.config.apiKey) {
+            console.warn('[AlphaGenome] Cannot switch to real/strict-real mode without API key');
             return;
         }
-        this.config.mode = mode;
+        this.config.mode = normalized;
     }
 
     // ========================================================================
@@ -1688,3 +1744,4 @@ export function configureAlphaGenome(config: Partial<AlphaGenomeConfig>): void {
     if (config.apiKey) alphaGenomeService.setApiKey(config.apiKey);
     if (config.mode) alphaGenomeService.setMode(config.mode);
 }
+

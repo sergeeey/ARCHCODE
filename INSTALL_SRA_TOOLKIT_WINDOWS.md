@@ -67,6 +67,7 @@ fastq-dump --version
 ```
 
 **Check WSL:**
+
 ```bash
 wsl echo "WSL available" || echo "WSL not installed"
 ```
@@ -78,6 +79,7 @@ wsl echo "WSL available" || echo "WSL not installed"
 **fasterq-dump** is newer and faster than fastq-dump.
 
 If pre-built binaries include it:
+
 ```bash
 # Use fasterq-dump instead (same syntax)
 fasterq-dump --split-files SRR12837671
@@ -98,6 +100,7 @@ If you need maximum speed (10× faster):
 https://www.ibm.com/aspera/connect/
 
 **Download command:**
+
 ```bash
 ascp -QT -l 300m -P33001 \
   -i ~/.aspera/connect/etc/asperaweb_id_dsa.openssh \
@@ -109,6 +112,7 @@ fastq-dump --split-files SRR12837671.sra
 ```
 
 **Speed comparison:**
+
 - fastq-dump: 4-6 hours (HTTP)
 - fasterq-dump: 2-3 hours (HTTP)
 - Aspera: 30-60 minutes (UDP, high-speed)
@@ -118,6 +122,7 @@ fastq-dump --split-files SRR12837671.sra
 ## Recommended for Tonight
 
 **Use Option 1 (Pre-built binaries):**
+
 1. Download sratoolkit ZIP (5 min)
 2. Unzip and add to PATH (2 min)
 3. Test with small sample (1 min)
@@ -156,17 +161,22 @@ ls -lh
 ## Troubleshooting
 
 ### Error: "Failed to resolve hostname"
+
 **Solution:** Check internet connection, try again
 
 ### Error: "Path not found"
+
 **Solution:**
+
 ```bash
 cd D:\ДНК\fastq_data\raw  # Correct path
 pwd  # Verify current directory
 ```
 
 ### Error: "Insufficient disk space"
+
 **Check available space:**
+
 ```bash
 df -h D:\ДНК
 # Need: 50+ GB free
@@ -174,7 +184,9 @@ df -h D:\ДНК
 ```
 
 ### Slow download speed
+
 **Switch to fasterq-dump:**
+
 ```bash
 fasterq-dump --split-files SRR12837671
 # Then compress manually:
@@ -191,6 +203,7 @@ If command-line fails, download via browser:
 https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP290306
 
 **Steps:**
+
 1. Select samples: SRR12837671, SRR12837674, SRR12837675
 2. Click "Download" → "FASTQ files"
 3. Save to D:\ДНК\fastq_data\raw\
@@ -202,6 +215,7 @@ https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP290306
 ## Checklist for Tonight
 
 Before starting download:
+
 - [ ] SRA Toolkit installed (`fastq-dump --version` works)
 - [ ] Directory exists: `D:\ДНК\fastq_data\raw`
 - [ ] 155 GB free space confirmed
@@ -212,6 +226,6 @@ Before starting download:
 
 ---
 
-*Installation Guide for SRA Toolkit*
-*Created: 2026-02-05*
-*Status: conda failed → use pre-built binaries instead*
+_Installation Guide for SRA Toolkit_
+_Created: 2026-02-05_
+_Status: conda failed → use pre-built binaries instead_

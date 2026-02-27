@@ -12,6 +12,7 @@
 **Overall Verdict:** 🔴 **NO-GO** - Multiple critical issues require correction before bioRxiv submission.
 
 **Critical Findings:**
+
 - 🔴 **Variant count mismatch:** 367 claimed vs 366 actual (40+ locations)
 - 🔴 **FRAP data fabricated:** No real measurements, Sabaté et al. 2025 doesn't exist
 - 🔴 **AlphaGenome entirely synthetic:** Mock data, not real API
@@ -25,9 +26,11 @@
 ## Audit Point 1: Variant Count Verification
 
 ### Claim
+
 "367 pathogenic HBB variants from ClinVar"
 
 ### Evidence
+
 ```bash
 wc -l results/HBB_Clinical_Atlas.csv
 # 367 results/HBB_Clinical_Atlas.csv (including header)
@@ -39,6 +42,7 @@ wc -l results/HBB_Clinical_Atlas.csv
 ### Status: 🔴 **FALSIFIED**
 
 **Problem:**
+
 - Manuscript claims "367 variants" in 40+ locations
 - Actual count: **366 variants** (367 lines including header)
 - Off-by-one error throughout manuscript
@@ -50,32 +54,37 @@ wc -l results/HBB_Clinical_Atlas.csv
 ## Audit Point 2: FRAP Data Provenance
 
 ### Claim
+
 "α=0.92 and γ=0.80 are fitted to experimental FRAP data (Sabaté et al., 2025)"
 
 ### Evidence Searched
+
 - ❌ `frap_lifetime_med1plus.csv` - NOT FOUND
 - ❌ `frap_recovery_curves.csv` - NOT FOUND
 - ❌ Raw FRAP measurements - NONE
 - ❌ Sabaté et al. Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9) - 404 ERROR
 
 ### Code Evidence
+
 **File:** `scripts/fit-kinetics.ts:45-52`
+
 ```typescript
 const FRAP_DATA: FRAPData[] = [
-    {
-        condition: 'MED1+',
-        occupancy: 0.8,
-        residenceTimeMin: 35,    // HARDCODED - no source
-        residenceTimeStd: 8,
-        n: 45,
-    },
-    // ... more hardcoded values
+  {
+    condition: "MED1+",
+    occupancy: 0.8,
+    residenceTimeMin: 35, // HARDCODED - no source
+    residenceTimeStd: 8,
+    n: 45,
+  },
+  // ... more hardcoded values
 ];
 ```
 
 ### Status: 🔴 **FALSIFIED**
 
 **Problems:**
+
 1. No raw FRAP data exists
 2. Reference "Sabaté et al. 2025" returns 404
 3. Values hardcoded with no experimental source
@@ -88,17 +97,20 @@ const FRAP_DATA: FRAPData[] = [
 ## Audit Point 3: Parameter Fitting Methodology
 
 ### Claim
+
 "Grid search result: α=0.92, γ=0.80 (MSE=5.33)"
 
 ### Evidence
+
 **File:** `results/kramer_kinetics_fit.json`
+
 ```json
 {
   "fittedParams": {
     "kBase": 0.002,
-    "alpha": 1,              // ← NOT 0.92!
-    "gamma": 0.9445304692813733,  // ← NOT 0.80!
-    "mse": 13.319932105961877     // ← NOT 5.33!
+    "alpha": 1, // ← NOT 0.92!
+    "gamma": 0.9445304692813733, // ← NOT 0.80!
+    "mse": 13.319932105961877 // ← NOT 5.33!
   }
 }
 ```
@@ -108,10 +120,10 @@ const FRAP_DATA: FRAPData[] = [
 **Discrepancy Table:**
 
 | Parameter | Manuscript Claim | Fitted Value | Match? |
-|-----------|-----------------|--------------|--------|
-| α (alpha) | 0.92 | 1.0 | ❌ NO |
-| γ (gamma) | 0.80 | 0.9445 | ❌ NO |
-| MSE | 5.33 | 13.32 | ❌ NO |
+| --------- | ---------------- | ------------ | ------ |
+| α (alpha) | 0.92             | 1.0          | ❌ NO  |
+| γ (gamma) | 0.80             | 0.9445       | ❌ NO  |
+| MSE       | 5.33             | 13.32        | ❌ NO  |
 
 **Fix Required:** Use actual fitted values or acknowledge manual tuning
 
@@ -120,15 +132,18 @@ const FRAP_DATA: FRAPData[] = [
 ## Audit Point 4: Micro-C Usage in Calibration
 
 ### Claim
+
 "α, γ fitted from FRAP data, NOT from Hi-C/Micro-C"
 
 ### Evidence
+
 ```bash
 grep -RIn "loss|optimize|grid.*search" src/ | grep -iE "hic|microc|contact"
 # Result: 0 matches
 ```
 
 **Code Review:**
+
 - `fit-kinetics.ts` uses FRAP (mock) data only
 - `grid-search.ts` optimizes velocity/cohesinCount using AlphaGenome, not Hi-C
 - NO Hi-C contact matrices in loss functions
@@ -142,10 +157,13 @@ grep -RIn "loss|optimize|grid.*search" src/ | grep -iE "hic|microc|contact"
 ## Audit Point 5: Blind Validation Lock-in
 
 ### Claim
+
 "Pre-registered blind validation on 5 genomic loci"
 
 ### Evidence
+
 **Git Timeline:**
+
 ```
 2026-02-03 17:43   Kramer params α=0.92, γ=0.80 FITTED
 2026-02-03 17:53   Blind validation script + results COMMITTED (same commit!)
@@ -156,6 +174,7 @@ grep -RIn "loss|optimize|grid.*search" src/ | grep -iE "hic|microc|contact"
 ### Status: 🔴 **FALSIFIED**
 
 **Problems:**
+
 1. ❌ NO pre-registration file
 2. ❌ Loci and results committed together
 3. ❌ Parameters fitted BEFORE "blind" validation
@@ -168,18 +187,22 @@ grep -RIn "loss|optimize|grid.*search" src/ | grep -iE "hic|microc|contact"
 ## Audit Point 6: Golden Set Reproducibility
 
 ### Claim
+
 "20 random loci with fixed seed"
 
 ### Evidence
+
 **File:** `results/super_enhancers_GM12878.bed`
 **SHA256:** `ef517f5acd1ddda1afacf0f0567333d4fbb9a138e38960a49dc275780d9ff56f`
 
 **Seed Mechanism:**
+
 ```typescript
 seed: run * 1000 + se.rank,  // Deterministic, but no global seed parameter
 ```
 
 **Git Timeline:**
+
 ```
 2026-02-03 12:46:16   BED file + Results COMMITTED TOGETHER
 ```
@@ -187,6 +210,7 @@ seed: run * 1000 + se.rank,  // Deterministic, but no global seed parameter
 ### Status: ⚠️ **WEAK EVIDENCE**
 
 **Issues:**
+
 1. ✅ Reproducible (deterministic seed formula)
 2. ❌ NOT pre-registered (BED + results same commit)
 3. ❌ NOT random (top-20 by rank, deterministic selection)
@@ -199,9 +223,11 @@ seed: run * 1000 + se.rank,  // Deterministic, but no global seed parameter
 ## Audit Point 7: AIC Model Comparison
 
 ### Claim
+
 "Kramer kinetics provides superior fit"
 
 ### Evidence Searched
+
 ```bash
 grep -RIn "AIC|Akaike|Rouse|model.*comparison" manuscript/ results/
 # Result: ZERO mentions of AIC, BIC, or Rouse model
@@ -210,6 +236,7 @@ grep -RIn "AIC|Akaike|Rouse|model.*comparison" manuscript/ results/
 ### Status: ❌ **SPECULATION - NO EVIDENCE**
 
 **Missing:**
+
 - ❌ NO null model (constant unloading)
 - ❌ NO Rouse polymer model baseline
 - ❌ NO AIC/BIC calculation
@@ -223,24 +250,29 @@ grep -RIn "AIC|Akaike|Rouse|model.*comparison" manuscript/ results/
 ## Audit Point 8: Kinase-Dead Control
 
 ### Claim
+
 "MED1 knockdown experiment validates fountain loading"
 
 ### Evidence
+
 **File:** `results/med1_kd_hbb.json` (computational simulation only)
 
 **Code:**
+
 ```typescript
 // run-knockdown-experiment.ts:46
-const BETA_KD = 0;  // Computational knockdown, not real experiment
+const BETA_KD = 0; // Computational knockdown, not real experiment
 ```
 
 ### Status: ❌ **SPECULATION - NO REAL EXPERIMENT**
 
 **What Exists:**
+
 - ✅ Computational knockdown simulation
 - ✅ 76% TAD clarity reduction (calculated)
 
 **What's Missing:**
+
 - ❌ Real kinase-dead mutant (MED1-K485R)
 - ❌ Actual FRAP measurements
 - ❌ Real Hi-C from MED1-depleted cells
@@ -255,17 +287,20 @@ const BETA_KD = 0;  // Computational knockdown, not real experiment
 ## Audit Point 9: Virtual Knockout 80.3%
 
 ### Claim
+
 "Virtual knockout shows 80.3% contact depletion (matches Rinzema et al. 50-70%)"
 
 ### Evidence
+
 **File:** `results/virtual_knockout_report.json`
 
 **Calculation:**
+
 ```json
 {
   "results": [
-    {"locus": "MYC", "contactLoss": 78.61},
-    {"locus": "IGH", "contactLoss": 82.03}
+    { "locus": "MYC", "contactLoss": 78.61 },
+    { "locus": "IGH", "contactLoss": 82.03 }
   ],
   "summary": {
     "mean_contact_loss": 80.31892803354401,
@@ -279,6 +314,7 @@ const BETA_KD = 0;  // Computational knockdown, not real experiment
 ### Status: ✅ **CALCULATION CORRECT** | ⚠️ **EXCEEDS EXPERIMENTAL RANGE**
 
 **Problems:**
+
 1. ✅ Calculation is correct
 2. ❌ 80.3% EXCEEDS claimed 50-70% range by 10-30%
 3. ❌ "Rinzema et al." NOT in manuscript references
@@ -292,31 +328,35 @@ const BETA_KD = 0;  // Computational knockdown, not real experiment
 ## Audit Point 10: AlphaGenome Data Source
 
 ### Claim
+
 "AlphaGenome predictions from DeepMind's transformer-based model"
 
 ### Evidence
 
 **Code:** `scripts/generate-clinical-atlas.ts:729`
+
 ```typescript
-const service = new AlphaGenomeService({ mode: 'mock' });
+const service = new AlphaGenomeService({ mode: "mock" });
 ```
 
 **Score Generation:** `scripts/generate-clinical-atlas.ts:475-500`
+
 ```typescript
 async function getAlphaGenomeScore(variant, service, rng): Promise<number> {
-    const categoryScores: Record<string, [number, number]> = {
-        'nonsense': [0.85, 0.95],
-        'missense': [0.50, 0.85],
-        'intronic': [0.20, 0.45],
-    };
-    const [min, max] = categoryScores[variant.category] || [0.40, 0.70];
-    return min + rng.random() * (max - min);  // ← RANDOM NUMBER!
+  const categoryScores: Record<string, [number, number]> = {
+    nonsense: [0.85, 0.95],
+    missense: [0.5, 0.85],
+    intronic: [0.2, 0.45],
+  };
+  const [min, max] = categoryScores[variant.category] || [0.4, 0.7];
+  return min + rng.random() * (max - min); // ← RANDOM NUMBER!
 }
 ```
 
 ### Status: 🔴 **FALSIFIED - ENTIRELY SYNTHETIC**
 
 **What AlphaGenome Actually Is:**
+
 - ❌ NOT a real API
 - ❌ NOT a trained neural network
 - ❌ NOT a transformer model
@@ -325,11 +365,13 @@ async function getAlphaGenomeScore(variant, service, rng): Promise<number> {
 - ✅ "High-Fidelity Mock v1.3"
 
 **Disclosure Status:**
+
 - ⚠️ Mentioned in INTRO: "(fictional reference for illustration)" - easy to miss
 - ❌ NOT disclosed in METHODS (describes as real tool)
 - ❌ NOT disclosed in RESULTS
 
 **Fix Required:**
+
 - Option 1: Remove AlphaGenome entirely
 - Option 2: Full disclosure as "Hypothetical Sequence Predictor"
 - Option 3: Replace with real tool (SpliceAI, CADD, etc.)
@@ -339,10 +381,13 @@ async function getAlphaGenomeScore(variant, service, rng): Promise<number> {
 ## Audit Point 11: Claude Version
 
 ### Claim
+
 "Claude 3.5 Sonnet" used for manuscript polishing
 
 ### Evidence
+
 **System Prompt:**
+
 ```
 Model: Claude Sonnet 4.5
 Model ID: claude-sonnet-4-5-20250929
@@ -354,6 +399,7 @@ Model ID: claude-sonnet-4-5-20250929
 **After:** "Claude Sonnet 4.5"
 
 **Files Updated:**
+
 - ✅ `manuscript/ACKNOWLEDGMENTS.md`
 - ✅ `manuscript/FULL_MANUSCRIPT.md`
 - ✅ `ARCHCODE_Preprint.html` (regenerated)
@@ -364,30 +410,30 @@ Model ID: claude-sonnet-4-5-20250929
 
 ### 🔴 BLOCKING ISSUES (Must Fix for GO)
 
-| Issue | Type | Impact | Fix Required |
-|-------|------|--------|--------------|
-| **Variant count 367→366** | 🔴 Factual Error | 40+ locations wrong | Global find-replace |
-| **FRAP data fabricated** | 🔴 Data Integrity | False claims about fitting | Remove fitting claims |
-| **AlphaGenome synthetic** | 🔴 Transparency | Readers misled | Full disclosure or removal |
-| **Blind validation violated** | 🔴 Scientific Rigor | Cannot claim pre-registration | Remove blind/pre-reg claims |
-| **Parameter discrepancy** | 🔴 Inconsistency | α, γ values don't match fits | Use actual values or disclose tuning |
+| Issue                         | Type                | Impact                        | Fix Required                         |
+| ----------------------------- | ------------------- | ----------------------------- | ------------------------------------ |
+| **Variant count 367→366**     | 🔴 Factual Error    | 40+ locations wrong           | Global find-replace                  |
+| **FRAP data fabricated**      | 🔴 Data Integrity   | False claims about fitting    | Remove fitting claims                |
+| **AlphaGenome synthetic**     | 🔴 Transparency     | Readers misled                | Full disclosure or removal           |
+| **Blind validation violated** | 🔴 Scientific Rigor | Cannot claim pre-registration | Remove blind/pre-reg claims          |
+| **Parameter discrepancy**     | 🔴 Inconsistency    | α, γ values don't match fits  | Use actual values or disclose tuning |
 
 ### ❌ MISSING EVIDENCE (Cannot Claim Without)
 
-| Claim | Status | Required Evidence |
-|-------|--------|-------------------|
-| "Superior to alternative models" | ❌ NO AIC | AIC comparison table vs Rouse/null |
-| "Kinase-dead validates causality" | ❌ NO EXPERIMENT | Real MED1-KD FRAP + Hi-C |
-| "Matches experimental degron data" | ⚠️ EXCEEDS RANGE | 80.3% > 50-70% |
-| "Fitted to FRAP data" | 🔴 FABRICATED | Real FRAP measurements |
+| Claim                              | Status           | Required Evidence                  |
+| ---------------------------------- | ---------------- | ---------------------------------- |
+| "Superior to alternative models"   | ❌ NO AIC        | AIC comparison table vs Rouse/null |
+| "Kinase-dead validates causality"  | ❌ NO EXPERIMENT | Real MED1-KD FRAP + Hi-C           |
+| "Matches experimental degron data" | ⚠️ EXCEEDS RANGE | 80.3% > 50-70%                     |
+| "Fitted to FRAP data"              | 🔴 FABRICATED    | Real FRAP measurements             |
 
 ### ⚠️ WEAK EVIDENCE (Strengthen or Downgrade Claims)
 
-| Claim | Issue | Recommendation |
-|-------|-------|----------------|
-| "Random loci golden set" | Post-hoc selection | Disclose deterministic ranking |
-| "Blind validation" | Not pre-registered | Call it "post-hoc validation" |
-| "Genome-wide discovery" | Only 5 loci tested | Qualify as "preliminary evidence" |
+| Claim                    | Issue              | Recommendation                    |
+| ------------------------ | ------------------ | --------------------------------- |
+| "Random loci golden set" | Post-hoc selection | Disclose deterministic ranking    |
+| "Blind validation"       | Not pre-registered | Call it "post-hoc validation"     |
+| "Genome-wide discovery"  | Only 5 loci tested | Qualify as "preliminary evidence" |
 
 ---
 
@@ -474,6 +520,7 @@ Model ID: claude-sonnet-4-5-20250929
 **Time:** 2-3 hours
 
 **Changes:**
+
 1. Fix 367→366 everywhere
 2. Add Limitations section (above template)
 3. Downgrade claims: "fitted" → "calibrated", "validates" → "supports"
@@ -490,6 +537,7 @@ Model ID: claude-sonnet-4-5-20250929
 **Time:** 1-2 weeks
 
 **Additional work:**
+
 1. Replace AlphaGenome with real tool (SpliceAI/CADD)
 2. Add AIC comparison vs null/Rouse models
 3. Properly pre-register new blind loci set
@@ -505,6 +553,7 @@ Model ID: claude-sonnet-4-5-20250929
 **Time:** 3-6 months
 
 **Experimental validation:**
+
 1. RT-PCR for 3 "Loop That Stayed" variants
 2. Capture Hi-C validation
 3. Real MED1 knockdown + Hi-C
@@ -540,16 +589,19 @@ scripts/quick-atlas.ts
 ### Content Revisions Needed
 
 **METHODS.md:**
+
 - Remove: "fitted to FRAP data (Sabaté et al., 2025)"
 - Add: "Parameters were calibrated to match literature-reported residence time ranges"
 - Add: AlphaGenome disclosure as synthetic
 
 **DISCUSSION.md:**
+
 - Add: Limitations section (parameters, no experimental validation)
 - Remove: "validates" → change to "supports"
 - Remove: Rinzema citation or add full reference
 
 **REFERENCES.md:**
+
 - Remove: Sabaté et al. 2025 (or find real reference)
 - Add: Limitations disclosure if not already present
 
@@ -575,10 +627,10 @@ Falsification-First Audit Protocol v1.0
 ---
 
 **Next Steps:**
+
 1. Review this report with co-authors
 2. Prioritize fixes (Priority 1 is mandatory)
 3. Execute corrections
 4. Re-audit modified sections
 5. Generate clean PDF
 6. Submit to bioRxiv
-

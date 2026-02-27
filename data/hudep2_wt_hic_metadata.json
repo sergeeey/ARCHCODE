@@ -4,10 +4,7 @@
   "intermediate_format": "temp_hudep2_wt.cool",
   "locus": "11:5200000-5250000",
   "resolution": 5000,
-  "matrix_shape": [
-    10,
-    10
-  ],
+  "matrix_shape": [10, 10],
   "normalization": "NONE (raw counts)",
   "non_zero_elements": 100,
   "min_contact_nonzero": 9.0,

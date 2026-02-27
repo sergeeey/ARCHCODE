@@ -10,6 +10,7 @@
 ## 🎯 Цель
 
 Скачать RNA-seq FASTQ файлы для splice junction анализа HBB locus:
+
 - WT rep1 (baseline)
 - D3 (-36% HBB) — ожидаем высокий aberrant splicing
 - A2 (+28% HBB) — ожидаем нормальный сплайсинг
@@ -50,11 +51,11 @@ mkdir -p fastq_data/junctions
 
 ### SRA Accessions
 
-| Sample | SRA ID | Clone | HBB CPM | Expected Aberrant % |
-|--------|--------|-------|---------|---------------------|
-| WT rep1 | **SRR12837671** | WT | 10,886 | <5% (baseline) |
-| D3 | **SRR12837674** | 3'HS1 deleted | 6,947 (-36%) | 15-30% (high) ⚠️ |
-| A2 | **SRR12837675** | 3'HS1 inverted | 13,978 (+28%) | <10% (low) |
+| Sample  | SRA ID          | Clone          | HBB CPM       | Expected Aberrant % |
+| ------- | --------------- | -------------- | ------------- | ------------------- |
+| WT rep1 | **SRR12837671** | WT             | 10,886        | <5% (baseline)      |
+| D3      | **SRR12837674** | 3'HS1 deleted  | 6,947 (-36%)  | 15-30% (high) ⚠️    |
+| A2      | **SRR12837675** | 3'HS1 inverted | 13,978 (+28%) | <10% (low)          |
 
 ### Commands (Copy-Paste Ready)
 
@@ -79,6 +80,7 @@ ls -lh
 ```
 
 **Expected output:**
+
 ```
 SRR12837671_1.fastq.gz  (~5 GB)
 SRR12837671_2.fastq.gz  (~5 GB)
@@ -193,6 +195,7 @@ ls -lh aligned/
 ```
 
 **Expected output files:**
+
 ```
 aligned/WT_rep1_Aligned.sortedByCoord.out.bam  (~3 GB)
 aligned/WT_rep1_SJ.out.tab                      (~5 MB) ← SPLICE JUNCTIONS
@@ -216,6 +219,7 @@ aligned/A2_Log.final.out
 **HBB gene:** chr11:5,225,464-5,227,079 (GRCh38)
 
 **Canonical junctions:**
+
 - Exon 1→2: chr11:5,225,726 → 5,226,405
 - Exon 2→3: chr11:5,226,626 → 5,227,079
 
@@ -300,6 +304,7 @@ print("\nResults saved to HBB_aberrant_splicing_results.csv")
 ```
 
 **Run:**
+
 ```bash
 cd D:\ДНК\fastq_data\junctions
 python analyze_hbb_junctions.py
@@ -311,20 +316,22 @@ python analyze_hbb_junctions.py
 
 ### Hypothesis Predictions
 
-| Sample | HBB Expression | Aberrant Splicing % | Interpretation |
-|--------|----------------|---------------------|----------------|
-| **WT rep1** | 10,886 CPM | <5% | Normal baseline |
-| **D3** | 6,947 CPM (-36%) | **15-30%** if hypothesis correct ✅ | Loop trap → aberrant splicing |
-| **A2** | 13,978 CPM (+28%) | <10% | Transcriptional upregulation |
+| Sample      | HBB Expression    | Aberrant Splicing %                 | Interpretation                |
+| ----------- | ----------------- | ----------------------------------- | ----------------------------- |
+| **WT rep1** | 10,886 CPM        | <5%                                 | Normal baseline               |
+| **D3**      | 6,947 CPM (-36%)  | **15-30%** if hypothesis correct ✅ | Loop trap → aberrant splicing |
+| **A2**      | 13,978 CPM (+28%) | <10%                                | Transcriptional upregulation  |
 
 ### Success Criteria
 
 ✅ **If D3 shows >15% aberrant splicing:**
+
 - Validates "Loop That Stayed" hypothesis
 - Functional validation STRONG (compensates for weak Hi-C r=0.16)
 - Manuscript upgrade: Pilot study → Validated mechanism
 
 ❌ **If D3 shows <5% aberrant splicing:**
+
 - Rejects "Loop That Stayed" (alternative mechanism)
 - Expression change is transcriptional, not splicing-related
 - Still valuable negative result (honest reporting)
@@ -341,6 +348,7 @@ cd D:\ДНК
 ```
 
 **Include:**
+
 1. Aberrant splicing % for WT, D3, A2
 2. Top 5 aberrant junctions in D3 (coordinates, read counts)
 3. Correlation: HBB expression change vs aberrant splicing %
@@ -352,10 +360,12 @@ cd D:\ДНК
 ## ⏰ Timeline
 
 **Tonight (19:00-23:00):**
+
 - ✅ Download FASTQ (4-6 hours) — **можно оставить на ночь**
 - ✅ Start STAR alignment (runs overnight)
 
 **Tomorrow morning:**
+
 - ✅ Check alignment logs
 - ✅ Extract HBB junctions (30 min)
 - ✅ Run Python analysis (10 min)
@@ -368,6 +378,7 @@ cd D:\ДНК
 ## 🚨 Troubleshooting
 
 ### If fastq-dump is slow:
+
 ```bash
 # Use parallel-fastq-dump (faster)
 conda install -c bioconda parallel-fastq-dump
@@ -375,6 +386,7 @@ parallel-fastq-dump --split-files --gzip --threads 4 --sra-id SRR12837671
 ```
 
 ### If STAR fails (not enough RAM):
+
 ```bash
 # Use --limitBAMsortRAM parameter
 STAR --genomeDir hg38_star_index \
@@ -383,6 +395,7 @@ STAR --genomeDir hg38_star_index \
 ```
 
 ### If no STAR index:
+
 ```bash
 # Use chr11 only (faster, smaller)
 STAR --runMode genomeGenerate \
@@ -397,12 +410,14 @@ STAR --runMode genomeGenerate \
 ## 📌 Files to Check Tomorrow
 
 **Key output files:**
+
 1. `fastq_data/aligned/D3_SJ.out.tab` — D3 splice junctions (most important)
 2. `fastq_data/aligned/WT_rep1_SJ.out.tab` — Baseline
 3. `fastq_data/aligned/A2_SJ.out.tab` — Comparison
 4. `fastq_data/junctions/HBB_aberrant_splicing_results.csv` — Final results
 
 **Success check:**
+
 ```bash
 # Check if alignment finished
 tail fastq_data/aligned/D3_Log.final.out
@@ -417,12 +432,14 @@ tail fastq_data/aligned/D3_Log.final.out
 ## 🎯 Next Session (Tomorrow)
 
 **If aberrant splicing analysis complete:**
+
 1. Correlate Hi-C loop disruption vs aberrant splicing %
 2. Create Figure 5 (4-panel: Hi-C + Expression + Splicing + Correlation)
 3. Update manuscript Discussion section
 4. Commit results with timestamp
 
 **Commands for tomorrow:**
+
 ```bash
 cd D:\ДНК
 claude "Review FASTQ alignment results and create splice junction analysis summary"
@@ -433,6 +450,7 @@ claude "Review FASTQ alignment results and create splice junction analysis summa
 **Status:** ⏰ READY TO START после 19:00 (дома, быстрый интернет)
 
 **First command to run tonight:**
+
 ```bash
 cd D:\ДНК\fastq_data\raw
 fastq-dump --split-files --gzip SRR12837671 SRR12837674 SRR12837675
@@ -442,7 +460,7 @@ fastq-dump --split-files --gzip SRR12837671 SRR12837674 SRR12837675
 
 ---
 
-*FASTQ Download Plan*
-*Created: 2026-02-05*
-*Scheduled: Evening after 19:00*
-*Expected completion: Tomorrow morning*
+_FASTQ Download Plan_
+_Created: 2026-02-05_
+_Scheduled: Evening after 19:00_
+_Expected completion: Tomorrow morning_

@@ -27,14 +27,14 @@
 
 ### Predicted vs Known CTCF Sites
 
-| ARCHCODE Prediction | Position (chr11) | Literature Match | Distance | Source | Concordance |
-|---------------------|------------------|------------------|----------|---------|-------------|
-| **CTCF1 (5'HS5)** | 5,203,300 | 5'HS5 (CTCF boundary) | 0 bp | Bender 2012 + ENCODE | ✅ Concordant |
-| **CTCF2 (5'HS4)** | 5,205,700 | 5'HS4 (CTCF boundary) | 0 bp | Bender 2012 | ✅ Concordant |
-| **CTCF3 (5'HS3)** | 5,207,100 | 5'HS3 (LCR enhancer) | 0 bp | Grosveld 1987 | ✅ Concordant |
-| **CTCF4 (5'HS2)** | 5,209,000 | 5'HS2 (LCR + CTCF) | 0 bp | Bender 2012, Deng 2012 | ✅ Concordant |
-| **CTCF5 (HBB)** | 5,225,700 | HBB promoter (CTCF) | 0 bp | Bender 2012 + ENCODE | ✅ Concordant |
-| **CTCF6 (3'HS1)** | 5,247,900 | 3'HS1 (major insulator) | 0 bp | Himadewi 2021 | ✅ Concordant |
+| ARCHCODE Prediction | Position (chr11) | Literature Match        | Distance | Source                 | Concordance   |
+| ------------------- | ---------------- | ----------------------- | -------- | ---------------------- | ------------- |
+| **CTCF1 (5'HS5)**   | 5,203,300        | 5'HS5 (CTCF boundary)   | 0 bp     | Bender 2012 + ENCODE   | ✅ Concordant |
+| **CTCF2 (5'HS4)**   | 5,205,700        | 5'HS4 (CTCF boundary)   | 0 bp     | Bender 2012            | ✅ Concordant |
+| **CTCF3 (5'HS3)**   | 5,207,100        | 5'HS3 (LCR enhancer)    | 0 bp     | Grosveld 1987          | ✅ Concordant |
+| **CTCF4 (5'HS2)**   | 5,209,000        | 5'HS2 (LCR + CTCF)      | 0 bp     | Bender 2012, Deng 2012 | ✅ Concordant |
+| **CTCF5 (HBB)**     | 5,225,700        | HBB promoter (CTCF)     | 0 bp     | Bender 2012 + ENCODE   | ✅ Concordant |
+| **CTCF6 (3'HS1)**   | 5,247,900        | 3'HS1 (major insulator) | 0 bp     | Himadewi 2021          | ✅ Concordant |
 
 **Concordance Rate:** 6/6 (100%) — literature-based
 **Mean Distance:** 0 bp (all matches within published regulatory coordinates)
@@ -67,6 +67,7 @@
 ### Key Loop: HBB Promoter ↔ 3'HS1 (22 kb)
 
 **"The Loop That Stayed" Hypothesis:**
+
 - **Prediction:** 3'HS1 deletion/inversion disrupts this loop → aberrant HBB splicing
 - **Experimental support:**
   - Himadewi et al. 2021: 3'HS1 deletion (B6, D3) → lost 3'HS1 loops (Hi-C)
@@ -104,18 +105,20 @@
 
 ## Comparison: Three Validation Levels
 
-| Validation Type | Method | Result | Status |
-|-----------------|--------|---------|--------|
-| **Mechanistic** | CTCF site literature comparison | 100% match (6/6) | ✅ COMPLETE |
-| **Structural** | Hi-C correlation (ARCHCODE vs experimental) | r=0.16 (modest) | ⚠️ WEAK |
-| **Functional** | Aberrant splicing (RNA-seq) | Pending FASTQ download | 🟡 IN PROGRESS |
+| Validation Type | Method                                      | Result                 | Status         |
+| --------------- | ------------------------------------------- | ---------------------- | -------------- |
+| **Mechanistic** | CTCF site literature comparison             | 100% match (6/6)       | ✅ COMPLETE    |
+| **Structural**  | Hi-C correlation (ARCHCODE vs experimental) | r=0.16 (modest)        | ⚠️ WEAK        |
+| **Functional**  | Aberrant splicing (RNA-seq)                 | Pending FASTQ download | 🟡 IN PROGRESS |
 
 **Interpretation:**
+
 - **Mechanistic validation STRONG:** Input parameters correct (CTCF sites accurate)
 - **Structural validation WEAK:** Model simplicity (loop extrusion only) limits Hi-C fit
 - **Functional validation PENDING:** If aberrant splicing correlates with loop disruption → compensates for weak Hi-C correlation
 
 **Manuscript framing:**
+
 > "ARCHCODE correctly identifies all known CTCF binding sites (100% concordance), validating the mechanistic basis of loop formation. Despite modest Hi-C correlation (r=0.16), predicted CTCF sites align perfectly with experimental ChIP-seq and functional studies, demonstrating model's biological relevance."
 
 ---
@@ -124,24 +127,24 @@
 
 ### CTCF Binding Sites (5 total)
 
-| Element | Position | Function | Evidence |
-|---------|----------|----------|----------|
-| **5'HS5** | 5,203,300 | LCR boundary, insulator | ENCODE CTCF ChIP-seq, Bender 2012 |
-| **5'HS4** | 5,205,700 | Insulator, blocks silencers | Bender 2012, Chung 1993 |
-| **5'HS2** | 5,209,000 | Enhancer + CTCF dual function | Deng 2012, Bender 2012 |
-| **HBB promoter** | 5,225,700 | Promoter-proximal CTCF | ENCODE, Bender 2012 |
-| **3'HS1** | 5,247,900 | Major insulator, loop anchor | Himadewi 2021, Bender 2012 |
+| Element          | Position  | Function                      | Evidence                          |
+| ---------------- | --------- | ----------------------------- | --------------------------------- |
+| **5'HS5**        | 5,203,300 | LCR boundary, insulator       | ENCODE CTCF ChIP-seq, Bender 2012 |
+| **5'HS4**        | 5,205,700 | Insulator, blocks silencers   | Bender 2012, Chung 1993           |
+| **5'HS2**        | 5,209,000 | Enhancer + CTCF dual function | Deng 2012, Bender 2012            |
+| **HBB promoter** | 5,225,700 | Promoter-proximal CTCF        | ENCODE, Bender 2012               |
+| **3'HS1**        | 5,247,900 | Major insulator, loop anchor  | Himadewi 2021, Bender 2012        |
 
 ### Non-CTCF Elements (6 total)
 
-| Element | Position | Function | Type |
-|---------|----------|----------|------|
-| **5'HS3** | 5,207,100 | LCR enhancer | Enhancer (no CTCF) |
-| **5'HS1** | 5,210,500 | LCR component | Enhancer |
-| **HBE1** | 5,218,400 | Epsilon globin gene | Promoter |
-| **HBG2** | 5,221,600 | Gamma-2 globin gene | Promoter |
-| **HBG1** | 5,222,400 | Gamma-1 globin gene | Promoter |
-| **HBD** | 5,227,000 | Delta globin gene | Promoter |
+| Element   | Position  | Function            | Type               |
+| --------- | --------- | ------------------- | ------------------ |
+| **5'HS3** | 5,207,100 | LCR enhancer        | Enhancer (no CTCF) |
+| **5'HS1** | 5,210,500 | LCR component       | Enhancer           |
+| **HBE1**  | 5,218,400 | Epsilon globin gene | Promoter           |
+| **HBG2**  | 5,221,600 | Gamma-2 globin gene | Promoter           |
+| **HBG1**  | 5,222,400 | Gamma-1 globin gene | Promoter           |
+| **HBD**   | 5,227,000 | Delta globin gene   | Promoter           |
 
 ---
 
@@ -150,21 +153,25 @@
 ### What This Validation Does NOT Prove
 
 ❌ **CTCF occupancy strength:**
+
 - Literature validation = positional accuracy, not binding intensity
 - Cannot quantify ChIP-seq signal without pyBigWig analysis
 - Strong vs weak binding sites not distinguished
 
 ❌ **CTCF motif orientation:**
+
 - Loop directionality depends on convergent (+/−) motif pairs
 - Literature sources don't always specify orientation
 - Requires motif scanning (FIMO, CTCFBSDB)
 
 ❌ **Cell-type specificity:**
+
 - Validation based on erythroid cells (HUDEP2, CD34)
 - CTCF sites may differ in non-erythroid contexts
 - Limited to beta-globin locus (single locus validation)
 
 ❌ **Dynamic changes:**
+
 - Static literature coordinates, not time-resolved
 - 3'HS1 deletion/inversion effects on OTHER CTCF sites not captured
 - Loop dynamics (formation/dissolution kinetics) not modeled
@@ -176,6 +183,7 @@
 ### Immediate (Tonight at Home)
 
 **Download FASTQ files (RNA-seq, SRP290306):**
+
 - Samples: WT rep1, D3 (-36% HBB), A2 (+28% HBB)
 - Analysis: Splice junction calling (STAR aligner)
 - Goal: Test if loop disruption → aberrant splicing (15-30% expected in D3)
@@ -187,12 +195,14 @@
 ### Short-term (After FASTQ Analysis)
 
 **If aberrant splicing validated:**
+
 1. Correlate Hi-C loop disruption vs aberrant splicing % (r≥0.5 target)
 2. Create Figure 5: 4-panel (Hi-C + Expression + Splicing + Correlation)
 3. Update manuscript Discussion: "Functional validation compensates for structural limitations"
 4. Upgrade framing: Pilot study → Validated mechanism
 
 **If aberrant splicing NOT validated:**
+
 1. Reject "Loop That Stayed" hypothesis (honest negative result)
 2. Alternative mechanism: Transcriptional downregulation or mRNA stability
 3. Document as exploratory finding, propose alternative explanations
@@ -202,18 +212,21 @@
 ### Medium-term (Phase C, 1-2 months)
 
 **ChIP-seq quantitative validation** (when pyBigWig working):
+
 - Extract CTCF signal at predicted sites (BigWig files already downloaded)
 - Calculate correlation: Predicted loop strength vs CTCF ChIP-seq signal
 - Compare HUDEP2 D3 (GSM3762814) vs CD34 controls
 - Quantify H3K27ac at enhancers (LCR activity)
 
 **TAD and compartment analysis:**
+
 - Call TADs in experimental Hi-C (directionality index)
 - A/B compartment eigenvector (first PC of correlation matrix)
 - Test if ARCHCODE captures compartment structure
 - May explain low Hi-C correlation (r=0.16) — missing compartmentalization
 
 **Multi-locus validation:**
+
 - Extend to Sox2 locus (chr3:181.4-181.6 Mb)
 - Extend to Pcdh locus (chr5:140.6-141.1 Mb)
 - Calculate average correlation across 3 loci (target r≥0.4)
@@ -225,11 +238,12 @@
 ### Where to Include This Validation
 
 **Results Section:**
-Add subsection: *"CTCF Binding Site Validation"*
+Add subsection: _"CTCF Binding Site Validation"_
 
 > "To validate the mechanistic basis of ARCHCODE simulations, we compared predicted CTCF binding sites with published experimental data. All six predicted CTCF sites aligned exactly (0 bp distance) with known regulatory elements: 5'HS5, 5'HS4, 5'HS2 (LCR components), HBB promoter, and 3'HS1 (major insulator). This 100% concordance (6/6 sites) confirms ARCHCODE's accurate identification of loop anchors, independent of Hi-C structural correlation (r=0.16)."
 
 **Figure:**
+
 - **Figure 3:** CTCF validation locus map (already generated)
   - `figures/ctcf_validation_locus_map.png` (300 DPI, publication-ready)
   - Caption: "ARCHCODE predicted CTCF sites (green) align with known regulatory elements (red=CTCF, orange=enhancers, blue=promoters). All 6 predictions validated against literature (Bender et al. 2012, Himadewi et al. 2021)."
@@ -273,15 +287,18 @@ Add paragraph:
 ## Data Availability
 
 **Generated Files:**
+
 - `data/ctcf_validation_literature.csv` — Detailed validation results (6 sites)
 - `figures/ctcf_validation_locus_map.png` — Publication figure (300 DPI)
 - `figures/ctcf_validation_locus_map.pdf` — Vector format for journal submission
 
 **Source Data:**
+
 - Literature CTCF positions: Bender 2012, ENCODE, Himadewi 2021
 - ARCHCODE predictions: `data/hbb_ctcf_sites_literature.json` (Phase A)
 
 **Code:**
+
 - `scripts/validate_ctcf_sites_literature.py` — Analysis pipeline (Python 3.8+)
 - Dependencies: pandas, matplotlib, numpy (no pyBigWig required)
 
@@ -297,7 +314,7 @@ Add paragraph:
 
 ---
 
-*CTCF Validation Summary*
-*Created: 2026-02-05*
-*Status: ✅ COMPLETE — 100% validation rate achieved*
-*Method: Literature-based qualitative comparison*
+_CTCF Validation Summary_
+_Created: 2026-02-05_
+_Status: ✅ COMPLETE — 100% validation rate achieved_
+_Method: Literature-based qualitative comparison_

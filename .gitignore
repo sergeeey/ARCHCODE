@@ -68,8 +68,17 @@ data/raw/
 # TypeScript
 *.tsbuildinfo
 
-# Optional: exclude large data files
-# Uncomment if you have large genomic data files
-# data/
-# results/
+# Large genomic data (too big for GitHub)
+fastq_data/
+data/temp_*.cool
+data/*.cool
+*.bam
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
 *.bw
+*.bigwig
+
+# Downloaded DNA samples (local only)
+ДНК Образцы СКАЧЕННЫЙ/

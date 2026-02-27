@@ -31,12 +31,12 @@
 
 ## 2. Validation Scripts
 
-| Script | Status | Result |
-|--------|--------|--------|
-| `run-all-validations.ts` | ✅ PASS | 4/4 loci validated |
-| `validate-top-se.ts` | ✅ PASS | 20/20 SE validated |
-| `run-cross-cell-k562.ts` | ✅ PASS | K562 cross-cell validated |
-| `run-virtual-knockout.ts` | ✅ PASS | 80.3% contact loss |
+| Script                    | Status  | Result                    |
+| ------------------------- | ------- | ------------------------- |
+| `run-all-validations.ts`  | ✅ PASS | 4/4 loci validated        |
+| `validate-top-se.ts`      | ✅ PASS | 20/20 SE validated        |
+| `run-cross-cell-k562.ts`  | ✅ PASS | K562 cross-cell validated |
+| `run-virtual-knockout.ts` | ✅ PASS | 80.3% contact loss        |
 
 ---
 
@@ -58,28 +58,28 @@
 
 ### 4.1 Locus Validation (4/4 PASS)
 
-| Locus | Loading↑ | Contact↑ | Status |
-|-------|----------|----------|--------|
-| MYC | 6.5x | 5.2x | ✅ PASS |
-| IGH | 8.0x | 6.6x | ✅ PASS |
-| TCRα | 8.4x | 5.2x | ✅ PASS |
-| SOX2 | 6.0x | 3.3x | ✅ PASS |
+| Locus | Loading↑ | Contact↑ | Status  |
+| ----- | -------- | -------- | ------- |
+| MYC   | 6.5x     | 5.2x     | ✅ PASS |
+| IGH   | 8.0x     | 6.6x     | ✅ PASS |
+| TCRα  | 8.4x     | 5.2x     | ✅ PASS |
+| SOX2  | 6.0x     | 3.3x     | ✅ PASS |
 
 ### 4.2 Cross-Cell Validation (2/2 PASS)
 
-| Metric | GM12878 | K562 |
-|--------|---------|------|
-| Contact Enrichment | 47.33x | 53.50x |
-| Lifetime Ratio | 0.99x | 1.01x |
-| SE Validated | 20/20 | 20/20 |
+| Metric             | GM12878 | K562   |
+| ------------------ | ------- | ------ |
+| Contact Enrichment | 47.33x  | 53.50x |
+| Lifetime Ratio     | 0.99x   | 1.01x  |
+| SE Validated       | 20/20   | 20/20  |
 
 ### 4.3 Virtual Knockout
 
-| Locus | Contact Loss |
-|-------|--------------|
-| MYC | 78.6% |
-| IGH | 82.0% |
-| **Mean** | **80.3%** |
+| Locus    | Contact Loss |
+| -------- | ------------ |
+| MYC      | 78.6%        |
+| IGH      | 82.0%        |
+| **Mean** | **80.3%**    |
 
 Reference (Rinzema et al.): 50-70%
 
@@ -99,24 +99,24 @@ Status: Up to date with origin/master
 
 ## 6. Files Generated
 
-| File | Size | Description |
-|------|------|-------------|
-| `SCIENTIFIC_PAPER_DRAFT.md` | ~20 KB | Full paper draft |
-| `PUBLICATION_READY.md` | ~12 KB | Publication summary |
-| `results/validation_summary.json` | 1 KB | Locus validation |
-| `results/se_validation_report.json` | 15 KB | GM12878 SE validation |
-| `results/cross_cell_k562_validation.json` | 12 KB | K562 validation |
-| `results/virtual_knockout_report.json` | 3 KB | In Silico Degron |
+| File                                      | Size   | Description           |
+| ----------------------------------------- | ------ | --------------------- |
+| `SCIENTIFIC_PAPER_DRAFT.md`               | ~20 KB | Full paper draft      |
+| `PUBLICATION_READY.md`                    | ~12 KB | Publication summary   |
+| `results/validation_summary.json`         | 1 KB   | Locus validation      |
+| `results/se_validation_report.json`       | 15 KB  | GM12878 SE validation |
+| `results/cross_cell_k562_validation.json` | 12 KB  | K562 validation       |
+| `results/virtual_knockout_report.json`    | 3 KB   | In Silico Degron      |
 
 ---
 
 ## 7. Development Timeline
 
-| Date | Phase | Key Accomplishments |
-|------|-------|---------------------|
-| 2026-02-01 | **Day 1** | Project init, v1.0 release, UI, scientific fixes |
+| Date       | Phase     | Key Accomplishments                                 |
+| ---------- | --------- | --------------------------------------------------- |
+| 2026-02-01 | **Day 1** | Project init, v1.0 release, UI, scientific fixes    |
 | 2026-02-02 | **Day 2** | Hi-C validation, blind-tests, HaluGate verification |
-| 2026-02-03 | **Day 3** | FountainLoader, K562, Virtual Knockout, Docker |
+| 2026-02-03 | **Day 3** | FountainLoader, K562, Virtual Knockout, Docker      |
 
 **Total development: ~48 hours**
 
@@ -145,13 +145,13 @@ docker-compose --profile full up
 
 ## 9. Known Issues Resolved
 
-| Issue | Solution | Commit |
-|-------|----------|--------|
+| Issue                  | Solution                           | Commit  |
+| ---------------------- | ---------------------------------- | ------- |
 | Loop lifetime tracking | Added formedAtStep/dissolvedAtStep | 1cafe55 |
-| Contact density = 0 | Occupancy matrix approach | 3a74904 |
-| K562 MED1 404 | H3K27ac proxy | 3960e4f |
-| CTCF-delta seed | Independent seed | 5cf90cc |
-| Cyrillic Docker path | Explicit project name | 3489f6c |
+| Contact density = 0    | Occupancy matrix approach          | 3a74904 |
+| K562 MED1 404          | H3K27ac proxy                      | 3960e4f |
+| CTCF-delta seed        | Independent seed                   | 5cf90cc |
+| Cyrillic Docker path   | Explicit project name              | 3489f6c |
 
 ---
 
@@ -187,5 +187,5 @@ Role: Principal Investigator, Lead Developer
 
 ---
 
-*Report generated: 2026-02-03*
-*ARCHCODE v1.1*
+_Report generated: 2026-02-03_
+_ARCHCODE v1.1_

@@ -28,5 +28,5 @@ This research received no specific grant from any funding agency in the public, 
 
 ---
 
-*Sections prepared for bioRxiv submission*
-*Last updated: 2026-02-04*
+_Sections prepared for bioRxiv submission_
+_Last updated: 2026-02-04_

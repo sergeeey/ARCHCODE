@@ -14,11 +14,7 @@
       "Bash(python:*)",
       "Bash(gh:*)"
     ],
-    "deny": [
-      "Bash(rm -rf:*)",
-      "Bash(sudo:*)",
-      "Bash(chmod 777:*)"
-    ]
+    "deny": ["Bash(rm -rf:*)", "Bash(sudo:*)", "Bash(chmod 777:*)"]
   },
   "hooks": {
     "PostToolUse": [
@@ -48,7 +44,7 @@
         "hooks": [
           {
             "type": "prompt",
-            "command": "Update CLAUDE.md with session summary if significant changes were made"
+            "prompt": "Update CLAUDE.md with session summary if significant changes were made"
           }
         ]
       }

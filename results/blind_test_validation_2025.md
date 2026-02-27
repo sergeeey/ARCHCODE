@@ -14,12 +14,12 @@
 
 ### Loop duration (steps → minutes)
 
-| Metric | Steps | Minutes |
-|--------|-------|---------|
-| Mean   | 970.7 | 16.18 |
-| Std    | 960.2 | 16.00 |
-| 95% CI | [917, 1025] | [15.28, 17.08] |
-| N (loops with duration) | 1209 | — |
+| Metric                  | Steps       | Minutes        |
+| ----------------------- | ----------- | -------------- |
+| Mean                    | 970.7       | 16.18          |
+| Std                     | 960.2       | 16.00          |
+| 95% CI                  | [917, 1025] | [15.28, 17.08] |
+| N (loops with duration) | 1209        | —              |
 
 ### Contact probability (anchor pairs)
 

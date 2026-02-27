@@ -18,6 +18,7 @@ data/
 ## Источники данных
 
 ### 1. Hi-C Data
+
 - **Source:** NCBI GEO GSE160422
 - **Cell type:** GM12878 (human lymphoblastoid)
 - **Protocol:** Capture Hi-C (HUDEP2 cells)
@@ -26,6 +27,7 @@ data/
 - **Note:** Original file from Downloads folder, restored after deletion
 
 ### 2. CTCF Peaks
+
 - **Source:** Synthetic (based on ENCODE GM12878 patterns)
 - **Region:** chr11:5,200,000-5,350,000 (HBB locus)
 - **Sites:** 10 peaks with convergent orientations
@@ -33,6 +35,7 @@ data/
 - **Usage:** Load via BEDUploader component
 
 ### 3. Contact Matrix (JSON)
+
 - **Format:** Custom ARCHCODE schema v0.1
 - **Bins:** 15 x 15 (10kb resolution)
 - **Pattern:** TAD-like structure with distance decay
@@ -41,6 +44,7 @@ data/
 ## Восстановление данных
 
 Данные были потеряны при удалении `D:\ДНК КУРСОР`, но восстановлены:
+
 1. Hi-C файл найден в `C:\Users\serge\Downloads\` (частично скачанный)
 2. CTCF данные пересозданы на основе научных публикаций
 3. JSON матрицы сгенерированы для тестирования
@@ -49,17 +53,19 @@ data/
 
 ```typescript
 // Загрузка CTCF
-import { loadCTCFFromBED } from './parsers/bed';
+import { loadCTCFFromBED } from "./parsers/bed";
 const result = loadCTCFFromBED(bedContent);
 
 // Загрузка Hi-C матрицы
-const matrix = await fetch('/data/input/hic_data/GM12878_WT_10kb.json')
-  .then(r => r.json());
+const matrix = await fetch("/data/input/hic_data/GM12878_WT_10kb.json").then(
+  (r) => r.json(),
+);
 ```
 
 ## Валидация
 
 Данные проверены:
+
 - ✅ CTCF orientations (F/R) соответствуют convergent rule
 - ✅ Hi-C matrix имеет правильную структуру TAD
 - ✅ P(s) curve показывает power-law с α ≈ -1.0

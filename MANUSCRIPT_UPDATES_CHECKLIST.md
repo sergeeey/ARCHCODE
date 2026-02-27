@@ -10,15 +10,16 @@
 
 ### Global Replacements (All Files)
 
-| Find | Replace | Files |
-|------|---------|-------|
-| `AlphaGenome` | `SpliceAI` | All .md |
-| `transformer-based model` | `deep learning splice predictor` | All .md |
-| `expression-based predictions` | `splice impact predictions` | All .md |
-| `AlphaGenome_Score` | `SpliceAI_Score` | All .csv, .md |
-| `AlphaGenome_Verdict` | `SpliceAI_Verdict` | All .csv, .md |
+| Find                           | Replace                          | Files         |
+| ------------------------------ | -------------------------------- | ------------- |
+| `AlphaGenome`                  | `SpliceAI`                       | All .md       |
+| `transformer-based model`      | `deep learning splice predictor` | All .md       |
+| `expression-based predictions` | `splice impact predictions`      | All .md       |
+| `AlphaGenome_Score`            | `SpliceAI_Score`                 | All .csv, .md |
+| `AlphaGenome_Verdict`          | `SpliceAI_Verdict`               | All .csv, .md |
 
 **Command:**
+
 ```bash
 cd D:\ДНК\manuscript
 sed -i 's/AlphaGenome/SpliceAI/g' *.md
@@ -33,9 +34,10 @@ sed -i 's/expression-based/splice impact/g' *.md
 ### 1. manuscript/ABSTRACT.md
 
 **Line ~8-10 (OLD):**
+
 ```markdown
 We performed high-throughput Monte Carlo simulation of 366 pathogenic
-β-globin (*HBB*) variants from ClinVar and calculated Structural
+β-globin (_HBB_) variants from ClinVar and calculated Structural
 Similarity Index (SSIM) scores comparing wild-type and mutant 3D
 chromatin architectures. We compared ARCHCODE structural predictions
 with AlphaGenome expression-based predictions to identify systematic
@@ -43,9 +45,10 @@ discordance patterns.
 ```
 
 **REPLACE WITH:**
+
 ```markdown
 We performed high-throughput Monte Carlo simulation of 366 pathogenic
-β-globin (*HBB*) variants from ClinVar and calculated Structural
+β-globin (_HBB_) variants from ClinVar and calculated Structural
 Similarity Index (SSIM) scores comparing wild-type and mutant 3D
 chromatin architectures. We compared ARCHCODE structural predictions
 with SpliceAI sequence-based splice impact scores to assess
@@ -53,6 +56,7 @@ complementarity of structural and sequence-level variant interpretation.
 ```
 
 **Line ~14-16 (Results):**
+
 ```markdown
 **Results:** ARCHCODE identified [XX]% of ClinVar pathogenic variants
 as structurally aberrant (SSIM <0.6), with [YY]% concordance with
@@ -67,6 +71,7 @@ preserved loop structure, indicating compensatory architectural changes.
 ### 2. manuscript/METHODS.md
 
 **Section to REMOVE (lines ~200-250):**
+
 ```markdown
 ### 2.6 AlphaGenome Expression Prediction
 
@@ -75,7 +80,8 @@ We obtained AlphaGenome predictions for variant pathogenicity...
 ```
 
 **Section to ADD:**
-```markdown
+
+````markdown
 ### 2.6 SpliceAI Splice Impact Prediction
 
 #### 2.6.1 ClinVar Variant Collection
@@ -92,8 +98,10 @@ gunzip clinvar.vcf.gz
 # Extract HBB locus (chr11:5,225,464-5,227,071)
 grep -E '^11\s+(522[5-7][0-9]{3})' clinvar.vcf > hbb_clinvar.vcf
 ```
+````
 
 Variants were filtered for:
+
 - Clinical significance: Pathogenic OR Likely pathogenic
 - Genomic location: HBB gene body ± 1 kb flanking regions
 - Assembly: GRCh38
@@ -115,6 +123,7 @@ four splice site alterations:
 Δ scores range 0-1, representing probability of splice site disruption.
 
 **Command:**
+
 ```python
 from spliceai.utils import get_delta_scores
 
@@ -127,12 +136,14 @@ scores = get_delta_scores(
 ```
 
 **Interpretation thresholds** (per Jaganathan et al. 2019):
+
 - Δ > 0.8: Very high impact (equivalent to known splice site variants)
 - Δ 0.5-0.8: High impact
 - Δ 0.2-0.5: Moderate impact
 - Δ < 0.2: Low/no impact
 
 For each variant, we computed:
+
 ```
 max_Δ = max(ΔAG, ΔAL, ΔDG, ΔDL)
 ```
@@ -149,10 +160,12 @@ splice predictions (Δ) to assess:
 3. **Splice-only:** SpliceAI pathogenic, ARCHCODE benign
 
 **Statistical analysis:**
+
 - Pearson correlation (SSIM vs Δ)
 - Cohen's κ (inter-rater agreement)
 - McNemar's test (discordance significance)
-```
+
+````
 
 ---
 
@@ -228,13 +241,14 @@ splice defects:
 
 **Mechanism:** Disruption of exonic splicing enhancers (ESE) near
 CTCF binding sites → dual impact on structure and splicing.
-```
+````
 
 ---
 
 ### 4. manuscript/DISCUSSION.md
 
 **Add section 4.3:**
+
 ```markdown
 ### 4.3 Complementarity of Structural and Sequence-Based Prediction
 
@@ -243,6 +257,7 @@ architecture and sequence-level splice impact are **complementary**
 rather than redundant predictors of variant pathogenicity.
 
 **Key insights:**
+
 1. **High concordance (XX%)** validates the structural-functional link:
    variants disrupting 3D chromatin loops often coincide with splice
    defects, supporting co-transcriptional splicing models.
@@ -272,6 +287,7 @@ experimental validation (e.g., luciferase reporter assays).
 ### 5. manuscript/ACKNOWLEDGMENTS.md
 
 **Update references section:**
+
 ```markdown
 ### Software and Databases
 
@@ -285,31 +301,37 @@ experimental validation (e.g., luciferase reporter assays).
 ### 6. FALSIFICATION_REPORT.md
 
 **Update Audit Point 10:**
-```markdown
+
+````markdown
 ## Audit Point 10: AlphaGenome Data Source
 
 ### Claim (ORIGINAL)
+
 "AlphaGenome predictions from DeepMind's transformer-based model"
 
 ### Status: 🔴 **FALSIFIED** → ✅ **RESOLVED**
 
 **Original issue:**
+
 - AlphaGenome was entirely synthetic (mock random number generator)
 - No disclosure in METHODS/RESULTS
 - Misleading claims about real API/model
 
 **Resolution (2026-02-05):**
+
 - ✅ Replaced with **SpliceAI** (real tool, peer-reviewed)
 - ✅ ClinVar variants re-analyzed (366 pathogenic HBB)
 - ✅ Full methodological disclosure added
 - ✅ Results updated with real concordance rates
 
 **New data source:**
+
 - SpliceAI v1.3.1 (Jaganathan et al. 2019, Cell)
 - ClinVar pathogenic/likely pathogenic variants (accessed 2026-02-05)
 - GRCh38 reference genome
 
 **Verification:**
+
 ```bash
 # Check updated data file
 sha256sum results/HBB_Clinical_Atlas_REAL.csv
@@ -319,9 +341,11 @@ sha256sum results/HBB_Clinical_Atlas_REAL.csv
 grep -c "Jaganathan et al. 2019" manuscript/METHODS.md
 # Expected: ≥2 mentions
 ```
+````
 
 **Status:** ✅ **AUDIT PASSED** — Real data, real tool, proper citation
-```
+
+````
 
 ---
 
@@ -351,7 +375,7 @@ ls -lh results/HBB_Clinical_Atlas_REAL.csv
 # 5. Check concordance stats filled in
 grep "Concordance rate:" manuscript/RESULTS.md | grep -v "XX%"
 # Expected: Real percentage (e.g., "67.5%")
-```
+````
 
 ---
 
@@ -388,5 +412,5 @@ Type: scientific integrity fix"
 ---
 
 **Checklist Complete!**
-*All manuscript updates documented*
-*Ready to execute after SpliceAI analysis*
+_All manuscript updates documented_
+_Ready to execute after SpliceAI analysis_

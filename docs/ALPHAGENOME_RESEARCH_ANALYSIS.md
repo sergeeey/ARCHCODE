@@ -9,6 +9,7 @@
 ## Overview
 
 AlphaGenome is a unified DNA sequence model (Nature 2026) that analyzes DNA sequences up to 1M bp with single base-pair resolution. Outputs include:
+
 - Gene expression (RNA-seq, CAGE, PRO-cap)
 - Splicing patterns
 - Chromatin features (ATAC, DNase, ChIP)
@@ -102,22 +103,22 @@ def _pearsonr_result(state):
 
 From `variant_eval_examples.ipynb`:
 
-| Dataset | Output Type | Metric | Score |
-|---------|-------------|--------|-------|
-| ClinVar Splice Site | SPLICE_SITE_USAGE | AUPRC | 0.570 |
-| ClinVar Noncoding | RNA_SEQ | AUPRC | 0.659 |
-| sQTL Causality | SPLICE_JUNCTIONS | Weighted AUPRC | 0.764 |
-| eQTL Sign | RNA_SEQ | Weighted AUROC | 0.810 |
-| Enhancer-Gene Linking | RNA_SEQ | AUPRC | 0.749 |
+| Dataset               | Output Type       | Metric         | Score |
+| --------------------- | ----------------- | -------------- | ----- |
+| ClinVar Splice Site   | SPLICE_SITE_USAGE | AUPRC          | 0.570 |
+| ClinVar Noncoding     | RNA_SEQ           | AUPRC          | 0.659 |
+| sQTL Causality        | SPLICE_JUNCTIONS  | Weighted AUPRC | 0.764 |
+| eQTL Sign             | RNA_SEQ           | Weighted AUROC | 0.810 |
+| Enhancer-Gene Linking | RNA_SEQ           | AUPRC          | 0.749 |
 
 ---
 
 ## Hardware Requirements
 
-| Task | Minimum Hardware |
-|------|------------------|
-| Inference | NVIDIA H100 GPU |
-| Training | TPU v3 or higher |
+| Task      | Minimum Hardware |
+| --------- | ---------------- |
+| Inference | NVIDIA H100 GPU  |
+| Training  | TPU v3 or higher |
 
 ---
 
@@ -140,12 +141,14 @@ dependencies = [
 ## Model Weights Access
 
 ### Kaggle
+
 ```python
 from alphagenome_research.model import dna_model
 model = dna_model.create_from_kaggle('all_folds')
 ```
 
 ### HuggingFace
+
 ```python
 model = dna_model.create_from_huggingface('all_folds')
 ```
@@ -201,16 +204,16 @@ model = dna_model.create_from_huggingface('all_folds')
 
 ## Files of Interest
 
-| File | Purpose |
-|------|---------|
-| `model/dna_model.py` | Main model interface |
-| `model/model.py` | Core architecture |
-| `model/heads.py` | Output heads including contact maps |
-| `model/variant_scoring/contact_map.py` | Contact map scoring (Orca) |
-| `evals/regression_metrics.py` | Metrics implementation |
-| `colabs/variant_eval_examples.ipynb` | Evaluation examples |
+| File                                   | Purpose                             |
+| -------------------------------------- | ----------------------------------- |
+| `model/dna_model.py`                   | Main model interface                |
+| `model/model.py`                       | Core architecture                   |
+| `model/heads.py`                       | Output heads including contact maps |
+| `model/variant_scoring/contact_map.py` | Contact map scoring (Orca)          |
+| `evals/regression_metrics.py`          | Metrics implementation              |
+| `colabs/variant_eval_examples.ipynb`   | Evaluation examples                 |
 
 ---
 
-*Analysis by ARCHCODE Team*
-*Author: Бойко Сергей Валерьевич*
+_Analysis by ARCHCODE Team_
+_Author: Бойко Сергей Валерьевич_

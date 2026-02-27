@@ -1,4 +1,5 @@
 # Project Plan: Option B (REAL) — Experimental Data Validation
+
 ## ARCHCODE vs Ground Truth: Hi-C + RNA-seq Integration
 
 **Decision Date:** 2026-02-04 19:45 (CORRECTED)
@@ -11,6 +12,7 @@
 ## 🎯 Critical Difference from Wrong Approach
 
 ### ❌ WRONG (ClinVar-only):
+
 ```
 ClinVar variants → ARCHCODE simulation → SpliceAI prediction
                          ↓                        ↓
@@ -18,9 +20,11 @@ ClinVar variants → ARCHCODE simulation → SpliceAI prediction
                          └─────── compare ─────────┘
                               (no ground truth)
 ```
+
 **Problem:** Model comparison, not validation
 
 ### ✅ CORRECT (Hi-C + RNA-seq):
+
 ```
 Real Hi-C contacts (HUDEP2) → Ground truth structure
          ↓
@@ -30,6 +34,7 @@ Real RNA-seq (GSE131055) → Ground truth splicing defects
          ↓
 Hypothesis test: Stable loops correlate with trapped transcripts?
 ```
+
 **Advantage:** Experimental validation, real discovery
 
 ---
@@ -37,7 +42,9 @@ Hypothesis test: Stable loops correlate with trapped transcripts?
 ## 📁 Available Experimental Data
 
 ### Priority 1: Hi-C (Structure Ground Truth)
+
 **Files Found:**
+
 - `GSM4873113_WT-HUDEP2-HiC_allValidPairs.hic` (6.7 GB) — Genome-wide
 - `GSM4873116_WT-HUDEP2-captureHiC_allValidPairs.hic` (2.3 GB) — **Targeted, use this**
 - `GSM4873114_B6-HUDEP2-HiC` (6.7 GB) — B6 mutant
@@ -46,13 +53,17 @@ Hypothesis test: Stable loops correlate with trapped transcripts?
 **Source:** GEO GSE160422 (Published Hi-C on HUDEP2 cells)
 
 ### Priority 2: RNA-seq (Function Ground Truth)
+
 **File:**
+
 - `GSE131055_RAW.tar` (4.4 GB) — RNA-seq data
 
 **Task:** Detect aberrant splicing in HBB locus
 
 ### Priority 3: ChIP-seq (Validation)
+
 **Files:** In GSE160422 archives
+
 - GATA1 ChIP-seq — Transcription factor binding
 - CTCF ChIP-seq — TAD boundary validation
 
@@ -61,49 +72,61 @@ Hypothesis test: Stable loops correlate with trapped transcripts?
 ## 📅 FAST TRACK TIMELINE (3-5 Days)
 
 ### Day 1: Hi-C Extraction & Validation (TODAY)
+
 **Morning:**
+
 - [ ] Install juicer_tools (for .hic processing)
 - [ ] Extract HBB locus: chr11:5,200,000-5,250,000
 - [ ] Convert to contact matrix (50 KB bins)
 
 **Afternoon:**
+
 - [ ] Run ARCHCODE WT simulation for same locus
 - [ ] Compare matrices: Pearson R², Spearman ρ
 - [ ] **Decision point:** R² > 0.7 → model validated, proceed
 
 **Evening:**
+
 - [ ] Visualize: Side-by-side heatmaps (Real vs Simulated)
 - [ ] Document correlation metrics
 
 ---
 
 ### Day 2: RNA-seq Aberrant Splicing Detection
+
 **Morning:**
+
 - [ ] Extract `GSE131055_RAW.tar`
 - [ ] Identify FASTQ files for HBB region
 - [ ] Run STAR alignment (or use pre-aligned BAM)
 
 **Afternoon:**
+
 - [ ] Splice junction analysis with rMATS or LeafCutter
 - [ ] Detect: Intron retention, cryptic splice sites
 - [ ] Quantify: PSI (Percent Spliced In) for HBB exons
 
 **Evening:**
+
 - [ ] Cross-reference with Hi-C: Do stable loops correlate with splicing defects?
 - [ ] Statistical test: χ² or Fisher's exact
 
 ---
 
 ### Day 3: Integration & Discovery
+
 **Morning:**
+
 - [ ] Overlay Hi-C contact strength with RNA-seq splicing efficiency
 - [ ] Identify regions: High contact + Low splicing → "Loop trap" candidates
 
 **Afternoon:**
+
 - [ ] Check ClinVar: Are these positions known pathogenic variants?
 - [ ] Literature search: Any case reports for discovered variants?
 
 **Evening:**
+
 - [ ] Manuscript draft: Results section with real data
 - [ ] Create Figure 3: Hi-C validation (Real vs ARCHCODE)
 - [ ] Create Figure 4: Splicing defects map
@@ -111,6 +134,7 @@ Hypothesis test: Stable loops correlate with trapped transcripts?
 ---
 
 ### Day 4-5: Manuscript Finalization
+
 - [ ] Update Methods with real data processing
 - [ ] Results: Validation (R²) + Discovery (splicing-structure correlation)
 - [ ] Discussion: Experimental evidence for "Loop That Stayed"
@@ -123,6 +147,7 @@ Hypothesis test: Stable loops correlate with trapped transcripts?
 ### Task 1.1: Extract HBB Locus from Hi-C
 
 **Install juicer_tools:**
+
 ```bash
 # Download juicer_tools.jar
 wget https://s3.amazonaws.com/hicfiles.tc4ga.com/public/juicer/juicer_tools.jar
@@ -132,6 +157,7 @@ pip install hic-straw
 ```
 
 **Extract contact matrix:**
+
 ```python
 # Using hic-straw (Python)
 import hicstraw
@@ -150,6 +176,7 @@ np.save('data/hudep2_wt_hic_hbb_locus.npy', contacts)
 ```
 
 **Alternative: juicer_tools CLI:**
+
 ```bash
 java -jar juicer_tools.jar dump observed KR \
   GSM4873116_WT-HUDEP2-captureHiC_allValidPairs.hic \
@@ -162,19 +189,20 @@ java -jar juicer_tools.jar dump observed KR \
 ### Task 1.2: ARCHCODE WT Simulation
 
 **Run simulation:**
+
 ```typescript
 // scripts/simulate_wt_hbb_for_validation.ts
-import { LoopExtrusionEngine } from '../src/engines/LoopExtrusionEngine';
+import { LoopExtrusionEngine } from "../src/engines/LoopExtrusionEngine";
 
 const config = {
-    locus: {
-        chromosome: 'chr11',
-        start: 5200000,
-        end: 5250000,
-    },
-    resolution: 5000,  // Match Hi-C resolution
-    simulation_time: 10000,  // 10k steps
-    output: 'data/archcode_wt_hbb_contacts.npy',
+  locus: {
+    chromosome: "chr11",
+    start: 5200000,
+    end: 5250000,
+  },
+  resolution: 5000, // Match Hi-C resolution
+  simulation_time: 10000, // 10k steps
+  output: "data/archcode_wt_hbb_contacts.npy",
 };
 
 const engine = new LoopExtrusionEngine(config);
@@ -187,6 +215,7 @@ engine.saveContactMatrix(contacts, config.output);
 ### Task 1.3: Correlation Analysis
 
 **Compare matrices:**
+
 ```python
 import numpy as np
 from scipy.stats import pearsonr, spearmanr
@@ -219,6 +248,7 @@ plt.savefig('results/hic_validation.png', dpi=300)
 ```
 
 **Success Criteria:**
+
 - R² > 0.7 → Excellent validation
 - R² 0.5-0.7 → Good validation
 - R² < 0.5 → Model needs calibration
@@ -228,6 +258,7 @@ plt.savefig('results/hic_validation.png', dpi=300)
 ### Task 2.1: RNA-seq Splicing Analysis
 
 **Extract tar:**
+
 ```bash
 cd "C:\Users\serge\Desktop\ДНК\ДНК Образцы СКАЧЕННЫЙ"
 tar -xf GSE131055_RAW.tar
@@ -235,6 +266,7 @@ ls GSE131055_RAW/*.fastq.gz
 ```
 
 **Run splice junction detection:**
+
 ```bash
 # Using rMATS (best for differential splicing)
 rmats.py \
@@ -250,6 +282,7 @@ grep "HBB\|chr11:522" output/rmats/SE.MATS.JC.txt
 ```
 
 **Alternative: STAR alignment + junction counts:**
+
 ```bash
 STAR --genomeDir hg38_star_index \
   --readFilesIn sample_R1.fastq.gz sample_R2.fastq.gz \
@@ -268,6 +301,7 @@ samtools view -b Aligned.sortedByCoord.out.bam chr11:5225464-5227079 > hbb_reads
 ### Task 2.2: Intron Retention Analysis
 
 **Detect retained introns:**
+
 ```python
 import pysam
 
@@ -295,6 +329,7 @@ for intron_start, intron_end in introns:
 ```
 
 **Expected for "Loop That Stayed":**
+
 - WT: PSI < 5% (normal splicing)
 - Mutant with stable loop + disrupted enhancer: PSI > 20% (aberrant)
 
@@ -304,25 +339,26 @@ for intron_start, intron_end in introns:
 
 ### Hi-C Validation Success Criteria
 
-| Metric | Threshold | Interpretation |
-|--------|-----------|----------------|
-| **Pearson R²** | > 0.7 | ARCHCODE accurately predicts contact frequencies |
-| **Spearman ρ** | > 0.65 | Rank-order correlation (topology correct) |
-| **SSIM** | > 0.85 | Structural similarity (loop positions match) |
+| Metric         | Threshold | Interpretation                                   |
+| -------------- | --------- | ------------------------------------------------ |
+| **Pearson R²** | > 0.7     | ARCHCODE accurately predicts contact frequencies |
+| **Spearman ρ** | > 0.65    | Rank-order correlation (topology correct)        |
+| **SSIM**       | > 0.85    | Structural similarity (loop positions match)     |
 
 ### RNA-seq Discovery Criteria
 
-| Feature | Evidence | Hypothesis Support |
-|---------|----------|-------------------|
+| Feature              | Evidence                         | Hypothesis Support               |
+| -------------------- | -------------------------------- | -------------------------------- |
 | **Intron retention** | PSI > 15% in stable loop regions | ✅ Supports "trapped transcript" |
-| **Cryptic splice** | Novel junctions within loop | ✅ Supports enhancer disruption |
-| **Exon skipping** | Low inclusion (PSI < 50%) | ⚠️ Alternative mechanism |
+| **Cryptic splice**   | Novel junctions within loop      | ✅ Supports enhancer disruption  |
+| **Exon skipping**    | Low inclusion (PSI < 50%)        | ⚠️ Alternative mechanism         |
 
 ---
 
 ## 🎯 Possible Outcomes
 
 ### 🟢 Best Case: Validation + Discovery
+
 - **Hi-C:** R² > 0.7 (model validated)
 - **RNA-seq:** Aberrant splicing detected in predicted regions
 - **Integration:** Correlation between loop stability and splicing defects
@@ -330,12 +366,14 @@ for intron_start, intron_end in introns:
 - **Target:** Nature Genetics / Cell
 
 ### 🟡 Validation Only
+
 - **Hi-C:** R² > 0.7 (model works)
 - **RNA-seq:** No clear splicing pattern
 - **Manuscript:** "ARCHCODE: Validated Framework for 3D Chromatin Simulation"
 - **Target:** Nature Methods / Genome Biology
 
 ### 🔴 Validation Fails
+
 - **Hi-C:** R² < 0.5 (model needs work)
 - **Action:** Calibrate parameters, improve physics
 - **Manuscript:** Delayed (fix model first)
@@ -345,18 +383,23 @@ for intron_start, intron_end in introns:
 ## 📝 Scripts to Create (Priority Order)
 
 ### 1. `extract_hic_hbb_locus.py` (TODAY)
+
 Extract HBB region from .hic file using hicstraw
 
 ### 2. `simulate_wt_hbb_validation.ts` (TODAY)
+
 Run ARCHCODE WT simulation matching Hi-C resolution
 
 ### 3. `compare_hic_archcode.py` (TODAY)
+
 Calculate correlation, generate validation plots
 
 ### 4. `process_rnaseq_splicing.sh` (TOMORROW)
+
 STAR alignment + rMATS splice detection
 
 ### 5. `integrate_structure_function.py` (DAY 3)
+
 Overlay Hi-C contacts with RNA-seq splicing efficiency
 
 ---
@@ -375,17 +418,20 @@ All work follows scientific integrity protocol:
 ## 🚀 EXECUTE NOW (Day 1 Checklist)
 
 ### Morning Tasks:
+
 - [ ] Install hicstraw: `pip install hic-straw`
 - [ ] Create `scripts/extract_hic_hbb_locus.py`
 - [ ] Extract WT-HUDEP2 contacts for chr11:5.2-5.25 Mb
 - [ ] Verify matrix shape and resolution
 
 ### Afternoon Tasks:
+
 - [ ] Create `scripts/simulate_wt_hbb_validation.ts`
 - [ ] Run ARCHCODE WT simulation (matching resolution)
 - [ ] Save contact matrix as .npy
 
 ### Evening Tasks:
+
 - [ ] Create `scripts/compare_hic_archcode.py`
 - [ ] Calculate R², Spearman ρ, SSIM
 - [ ] Generate side-by-side heatmaps
@@ -396,14 +442,17 @@ All work follows scientific integrity protocol:
 ## 💬 Communication
 
 **Daily stand-up in this file:**
+
 ```markdown
 ### Day 1 Progress (2026-02-05)
+
 - Completed: Hi-C extraction (R²=0.72)
 - Next: RNA-seq splicing analysis
 - Blockers: None
 ```
 
 **Git commits:**
+
 ```bash
 git commit -m "data: extract HUDEP2 Hi-C HBB locus (real ground truth)"
 git commit -m "validate: ARCHCODE vs Hi-C correlation R²=0.72"
@@ -414,15 +463,18 @@ git commit -m "validate: ARCHCODE vs Hi-C correlation R²=0.72"
 ## 📚 References (Real Data Sources)
 
 **Hi-C Data:**
+
 - GEO Accession: GSE160422
 - Paper: "3D genome organization of erythroid cells" (cite if published)
 - Cells: HUDEP2 (human erythroid progenitors)
 
 **RNA-seq Data:**
+
 - GEO Accession: GSE131055
 - Paper: "Transcriptome profiling in HBB variants"
 
 **Validation Approach:**
+
 - Hi-C validation: Compare simulated vs experimental contact matrices
 - RNA-seq validation: Detect aberrant splicing in stable loop regions
 
@@ -435,5 +487,5 @@ git commit -m "validate: ARCHCODE vs Hi-C correlation R²=0.72"
 
 ---
 
-*"A model validated against reality beats a thousand model comparisons."*
+_"A model validated against reality beats a thousand model comparisons."_
 — Adaptation of George Box: "All models are wrong, some are useful"
