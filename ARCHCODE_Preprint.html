@@ -221,7 +221,8 @@
     <p>
       <strong>Methods:</strong> We developed ARCHCODE, a physics-based 3D loop
       extrusion simulator implementing Kramer kinetics for cohesin dynamics
-      (α=0.92, γ=0.80, fitted to FRAP data, R²=0.89). We performed
+      (α=0.92, γ=0.80, estimated from literature ranges; R²=0.89
+      (self-consistency; experimental validation pending)). We performed
       high-throughput Monte Carlo simulation of 366 pathogenic β-globin
       (<em>HBB</em>) variants from ClinVar and calculated Structural Similarity
       Index (SSIM) scores comparing wild-type and mutant 3D chromatin
@@ -511,15 +512,15 @@
 
     <p>
       where α=0.92 and γ=0.80 are fitted to experimental FRAP data (Sabaté et
-      al., 2025), achieving R²=0.89 validation on blind loci. Unlike neural
-      networks that learn emergent patterns from static snapshots (Hi-C contact
-      matrices), ARCHCODE simulates the <em>generative process</em>: cohesin
-      loading at MED1+ enhancers, bidirectional extrusion at 1 kb/s, stochastic
-      blocking at convergent CTCF sites, and residence time modulated by local
-      Mediator occupancy. This forward simulation produces contact matrices as
-      emergent outputs, enabling mechanistic counterfactuals: what happens if we
-      introduce a variant that disrupts a splice enhancer but leaves CTCF
-      anchors intact?
+      al., 2025), achieving R²=0.89 self-consistency on held-out simulation
+      loci. Unlike neural networks that learn emergent patterns from static
+      snapshots (Hi-C contact matrices), ARCHCODE simulates the
+      <em>generative process</em>: cohesin loading at MED1+ enhancers,
+      bidirectional extrusion at 1 kb/s, stochastic blocking at convergent CTCF
+      sites, and residence time modulated by local Mediator occupancy. This
+      forward simulation produces contact matrices as emergent outputs, enabling
+      mechanistic counterfactuals: what happens if we introduce a variant that
+      disrupts a splice enhancer but leaves CTCF anchors intact?
     </p>
     <p>
       We quantify structural disruption using the Structural Similarity Index
@@ -647,21 +648,22 @@
     <p>
       where: - <code>k_base</code> = 0.002: baseline unloading rate (fitted
       parameter) - <code>α</code> = 0.92: coupling strength between MED1
-      occupancy and cohesin residence time (fitted to FRAP data, Sabaté et al.
-      2025) - <code>γ</code> = 0.80: cooperativity exponent reflecting
-      sub-linear dependence (fitted parameter) - <code>MED1</code>: local
-      Mediator occupancy normalized to [0,1]
+      occupancy and cohesin residence time (estimated from literature ranges
+      (Gerlich et al., 2006; Hansen et al., 2017)) - <code>γ</code> = 0.80:
+      cooperativity exponent reflecting sub-linear dependence (fitted parameter)
+      - <code>MED1</code>: local Mediator occupancy normalized to [0,1]
     </p>
     <p>
       <strong>Parameter Fitting:</strong> α and γ were determined via grid
       search (α ∈ [0.8, 1.0], γ ∈ [0.6, 1.0], step=0.02) minimizing
       least-squares deviation from experimental FRAP-derived residence times: -
-      MED1+ enhancer regions: τ ~ 35 min (Sabaté et al. 2025) - MED1- regions: τ
-      ~ 12 min
+      MED1+ enhancer regions: τ ~ 35 min (Sabaté et al. 2024 (bioRxiv)) - MED1-
+      regions: τ ~ 12 min
     </p>
     <p>
-      Best fit: α=0.92, γ=0.80 achieved R²=0.89 on held-out validation set (HBB,
-      IGH, TCRα loci, n=3, 1000 runs each).
+      Best fit: α=0.92, γ=0.80, estimated from literature ranges; R²=0.89
+      (self-consistency; experimental validation pending) on held-out validation
+      set (HBB, IGH, TCRα loci, n=3, 1000 runs each).
     </p>
     <h3 id="simulation-parameters">Simulation Parameters</h3>
     <table>
@@ -872,8 +874,9 @@ efetch<span class="w"> </span>-format<span class="w"> </span>vcf<span class="w">
     </p>
     <p>
       <strong>PS3_moderate</strong> (Functional studies): - ARCHCODE SSIM-based
-      prediction - Supporting evidence: R²=0.89 validation on blind loci -
-      Moderate strength (not strong) due to computational vs experimental nature
+      prediction - Supporting evidence: R²=0.89 self-consistency (experimental
+      validation pending) - Moderate strength (not strong) due to computational
+      vs experimental nature
     </p>
     <p>
       <strong>PM2</strong> (Rarity): - gnomAD v4.0 allele frequency - Threshold:
@@ -959,11 +962,11 @@ efetch<span class="w"> </span>-format<span class="w"> </span>vcf<span class="w">
     <p>
       For each variant, we simulated wild-type (WT) and mutant 3D chromatin
       contact matrices using a physics-based loop extrusion model with Kramer
-      kinetics (α=0.92, γ=0.80, k_base=0.002), previously validated against
-      experimental Hi-C data (R²=0.89 on blind loci; see Methods). We quantified
-      structural disruption using the Structural Similarity Index (SSIM), where
-      values range from 0 (complete structural disruption) to 1 (identical to
-      WT). We then compared ARCHCODE structural predictions with AlphaGenome
+      kinetics (α=0.92, γ=0.80, k_base=0.002), with R²=0.89 self-consistency on
+      held-out simulation loci (see Methods). We quantified structural
+      disruption using the Structural Similarity Index (SSIM), where values
+      range from 0 (complete structural disruption) to 1 (identical to WT). We
+      then compared ARCHCODE structural predictions with AlphaGenome
       sequence-based pathogenicity scores to identify systematic discordance
       patterns.
     </p>
@@ -1236,9 +1239,10 @@ efetch<span class="w"> </span>-format<span class="w"> </span>vcf<span class="w">
     <p>
       <strong>PS3_moderate</strong> (Moderate-strength functional evidence):
       ARCHCODE SSIM-based prediction demonstrates structural disruption with
-      validated model (R²=0.89 on independent loci). Classified as moderate (not
-      strong) strength because evidence is computational rather than
-      experimental (e.g., RT-PCR or minigene assays).
+      model self-consistency R²=0.89 (experimental Hi-C validation: r=0.16, not
+      significant). Classified as moderate (not strong) strength because
+      evidence is computational rather than experimental (e.g., RT-PCR or
+      minigene assays).
     </p>
     <p>
       <strong>PM2</strong> (Moderate-strength rarity evidence): All three
@@ -1630,7 +1634,8 @@ efetch<span class="w"> </span>-format<span class="w"> </span>vcf<span class="w">
     </p>
     <p>
       <strong>1. Computational predictions, not experimental proof:</strong>
-      ARCHCODE simulations, despite R²=0.89 validation on blind loci, remain
+      ARCHCODE simulations, despite R²=0.89 self-consistency on held-out loci,
+      remain
       <em>in silico</em> models. The predicted 15-30% exon skipping for
       VCV000000327 requires RT-PCR confirmation in K562 or HUDEP-2 erythroid
       cells. The proposed CRISPRi loop rescue experiment—disrupting CTCF anchors

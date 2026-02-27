@@ -104,7 +104,7 @@ Splice_region VUS → Check ARCHCODE SSIM
 **All three variants:** VUS → **Likely Pathogenic**
 
 **ACMG Evidence:**
-- **PS3_moderate:** ARCHCODE functional prediction (validated model R²=0.89)
+- **PS3_moderate:** ARCHCODE functional prediction (model self-consistency R²=0.89)
 - **PM2:** Rarity (MAF <0.0001)
 - **PP3:** Conservation + computational convergence + SSIM clustering
 
@@ -246,7 +246,7 @@ Splice_region VUS → Check ARCHCODE SSIM
 
 ### Computational Models
 - **ARCHCODE v1.1.0:** Physics-based 3D chromatin simulation with Kramer kinetics (α=0.92, γ=0.8)
-- **Validation:** literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017) (R²=0.89 vs experimental Hi-C)
+- **Validation:** literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017) (R²=0.89 self-consistency; experimental Hi-C: r=0.16)
 - **AlphaGenome:** Transformer-based contact map and expression prediction (Nature 2026)
 
 ### Data Sources

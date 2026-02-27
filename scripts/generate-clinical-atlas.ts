@@ -600,7 +600,7 @@ function generateAbstract(results: SimulationResult[]): string {
 
 **Background:** Variants of uncertain significance (VUS) in the β-globin gene (*HBB*) pose significant challenges for clinical interpretation. While machine learning approaches like AlphaGenome provide sequence-based predictions, they may miss pathogenic mechanisms operating through 3D chromatin architecture disruption.
 
-**Methods:** We developed ARCHCODE, a physics-based 3D loop extrusion simulator implementing Kramer kinetics for cohesin dynamics (α=0.92, γ=0.80, fitted to FRAP data). We performed high-throughput simulation of ${totalVariants} pathogenic *HBB* variants from ClinVar and compared structural similarity index (SSIM) scores with AlphaGenome expression predictions.
+**Methods:** We developed ARCHCODE, a physics-based 3D loop extrusion simulator implementing Kramer kinetics for cohesin dynamics (α=0.92, γ=0.80, estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017)). We performed high-throughput simulation of ${totalVariants} pathogenic *HBB* variants from ClinVar and compared structural similarity index (SSIM) scores with AlphaGenome expression predictions.
 
 **Results:** Of ${totalVariants} clinically classified pathogenic variants:
 - **${pathogenicByArchcode}** (${((pathogenicByArchcode/totalVariants)*100).toFixed(1)}%) showed significant 3D structural disruption (ARCHCODE: Pathogenic/Likely Pathogenic)
@@ -651,7 +651,7 @@ ${concordantPathogenic} variants showed agreement between structural and express
 - **Runs per variant:** Single simulation with 25 cohesins, 40,000 steps
 
 ### Validation
-- Kramer kinetics parameters fitted to FRAP data (Sabaté et al., Nature Genetics 2025)
+- Kramer kinetics parameters estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017)
 - Blind-test validation on 5 genomic loci: Pearson r > 0.97
 - MED1 knockdown causality test: 76% TAD clarity reduction
 

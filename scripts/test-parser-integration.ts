@@ -127,7 +127,7 @@ async function main() {
     console.log('\n' + '═'.repeat(70));
     console.log('Integration Test Complete');
     console.log('═'.repeat(70));
-    console.log(`\nKramer kinetics validated: α=0.92, γ=0.80 (fitted to FRAP data)`);
+    console.log(`\nKramer kinetics validated: α=0.92, γ=0.80 (estimated from literature ranges)`);
     console.log(`Parser integration: ${PARSER_PATH}`);
     console.log(`\nTo auto-run on data updates, use:`);
     console.log(`  const cleanup = await service.watchParserDirectory(parserPath, onUpdate);`);

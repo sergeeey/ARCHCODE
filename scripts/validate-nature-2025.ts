@@ -1,5 +1,5 @@
 /**
- * Blind-test validation: Sabaté et al., Nature Genetics 2025
+ * Blind-test validation: Sabaté et al., 2024 (bioRxiv, DOI: 10.1101/2024.08.09.605990)
  * In silico HBB / Sox2 loci, loop duration vs experimental 6–19 min.
  *
  * Run: npx tsx scripts/validate-nature-2025.ts [--locus=HBB|SOX2|HBB_CTCFKD] [--runs=1000] [--steps=36000]
@@ -128,7 +128,7 @@ function contactProbabilityFromDurations(
 }
 
 function main() {
-    console.log('Blind-test validation: Sabaté et al. Nature Genetics 2025');
+    console.log('Blind-test validation: Sabaté et al. 2024 (bioRxiv)');
     console.log(`Locus: ${locusKey} (${SELECTED_SITES.length} CTCF sites)`);
     console.log(`Parameters: v=${SABATE_NATURE_2025.EXTRUSION_SPEED_BP_PER_STEP} bp/step, T_res=${SABATE_NATURE_2025.MEAN_RESIDENCE_STEPS} steps, loading=1/3600, 1 step=1 s`);
     console.log(`Running ${NUM_RUNS} independent simulations (${STEPS_PER_RUN} steps each)...\n`);
@@ -179,11 +179,11 @@ function main() {
     const histMinutes = [...hist.keys()].sort((a, b) => a - b);
     const maxCount = Math.max(...hist.values(), 1);
 
-    let report = `# Blind-test validation: Sabaté et al. Nature Genetics 2025
+    let report = `# Blind-test validation: Sabaté et al. 2024 (bioRxiv)
 
 ## Methodology
 
-- **Source:** Sabaté et al., Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9)
+- **Source:** Sabaté et al., 2024 (bioRxiv, DOI: 10.1101/2024.08.09.605990)
 - **Time mapping:** 1 simulation step = 1 second
 - **Cohesin speed (v):** 0.3 kb/s → 300 bp/step
 - **Residence time (T_res):** ${(SABATE_NATURE_2025.MEAN_RESIDENCE_STEPS / 60).toFixed(2)} min = ${SABATE_NATURE_2025.MEAN_RESIDENCE_STEPS} steps → unloading probability = ${SABATE_NATURE_2025.UNLOADING_PROBABILITY} (calibrated within literature 10–30 min)
@@ -222,7 +222,7 @@ Fraction of simulation time with a stable loop (any anchor pair): **${(contactPr
 
 ### Experimental target
 
-Loop duration in vivo (Sabaté et al.): **6–19 minutes** (360–1140 steps).
+Loop duration in vivo (Sabaté et al., 2024, bioRxiv): **6–19 minutes** (360–1140 steps).
 
 ## Verdict
 

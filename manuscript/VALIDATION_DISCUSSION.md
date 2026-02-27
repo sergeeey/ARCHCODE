@@ -387,4 +387,3 @@ _Discussion section prepared for bioRxiv submission_
 _Word count: ~2,700 words_
 _Last updated: 2026-02-05_
 _Tone: Honest pilot study, establishes methodology, acknowledges limitations, provides clear roadmap_
-

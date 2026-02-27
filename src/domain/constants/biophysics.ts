@@ -100,6 +100,24 @@ export const CTCF_PARAMS = {
     RECOGNITION_DISTANCE_BP: 100,
 } as const;
 
+/**
+ * Kramer kinetics parameters for Mediator-dependent cohesin unloading.
+ * Formula: P_unload = K_BASE × (1 - α × MED1_occupancy^γ)
+ *
+ * CALIBRATION STATUS:
+ * - K_BASE: derived from literature residence time (~20 min, Gerlich 2006)
+ * - DEFAULT_ALPHA, DEFAULT_GAMMA: grid-search estimates, NOT fitted to FRAP data
+ * - Occupancy levels: MODEL PARAMETERS (assumed from ChIP-seq enrichment patterns)
+ */
+export const KRAMER_KINETICS = {
+    K_BASE: 0.002, // base unloading probability per step
+    DEFAULT_ALPHA: 0.92, // MED1 sensitivity (grid-search estimate)
+    DEFAULT_GAMMA: 0.80, // nonlinearity exponent (grid-search estimate)
+    BACKGROUND_OCCUPANCY: 0.1, // MED1 at non-enhancer regions (assumed)
+    ENHANCER_OCCUPANCY: 0.8, // MED1 at active enhancers (assumed from ChIP-seq)
+    INSULATOR_OCCUPANCY: 0.05, // MED1 at insulator/CTCF regions (assumed)
+} as const;
+
 // Genome visualization scaling
 export const VISUALIZATION_CONFIG = {
     // 3D scene scaling
@@ -113,6 +131,25 @@ export const VISUALIZATION_CONFIG = {
     /** Длительность импульса «loop_formed» (мс): и таймаут сброса pulseLoops, и анимация эмиссии в 3D */
     LOOP_PULSE_MS: 850,
 } as const;
+
+/**
+ * Blind-test validation parameters
+ * Source: Sabaté et al., 2024 (bioRxiv, DOI: 10.1101/2024.08.09.605990)
+ * NOTE: bioRxiv preprint, NOT a Nature Genetics 2025 publication (which does not exist).
+ * Loop duration target: 6–19 min (experimental range from literature)
+ * Time mapping: 1 simulation step = 1 second
+ */
+export const SABATE_BIORXIV_2024 = {
+    EXTRUSION_SPEED_BP_PER_STEP: 300, // 0.3 kb/s
+    UNLOADING_PROBABILITY: 0.001, // 1/1000, T_res ≈ 16.67 min
+    LOADING_PROBABILITY_PER_STEP: 1 / 3600, // ~1 event per hour per TAD
+    MEAN_RESIDENCE_STEPS: 1000, // 16.67 min at 1s/step
+    LOOP_DURATION_TARGET_MIN_STEPS: 360, // 6 min
+    LOOP_DURATION_TARGET_MAX_STEPS: 1140, // 19 min
+} as const;
+
+/** @deprecated Use SABATE_BIORXIV_2024 instead. Kept for import compatibility during cleanup. */
+export const SABATE_NATURE_2025 = SABATE_BIORXIV_2024;
 
 // Heterochromatin (friction) parameters
 export const HETEROCHROMATIN_PARAMS = {

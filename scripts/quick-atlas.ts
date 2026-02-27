@@ -136,7 +136,7 @@ function main() {
 
 **Background:** Variants of uncertain significance (VUS) in the β-globin gene (*HBB*) pose significant challenges for clinical interpretation. While machine learning approaches like AlphaGenome provide sequence-based predictions, they may miss pathogenic mechanisms operating through 3D chromatin architecture disruption.
 
-**Methods:** We developed ARCHCODE, a physics-based 3D loop extrusion simulator implementing Kramer kinetics for cohesin dynamics (α=0.92, γ=0.80, fitted to FRAP data). We performed high-throughput simulation of 367 pathogenic *HBB* variants from ClinVar and compared structural similarity index (SSIM) scores with AlphaGenome expression predictions.
+**Methods:** We developed ARCHCODE, a physics-based 3D loop extrusion simulator implementing Kramer kinetics for cohesin dynamics (α=0.92, γ=0.80, estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017)). We performed high-throughput simulation of 367 pathogenic *HBB* variants from ClinVar and compared structural similarity index (SSIM) scores with AlphaGenome expression predictions.
 
 **Results:** Of 367 clinically classified pathogenic variants:
 - **${pathogenicArchcode}** (${((pathogenicArchcode/367)*100).toFixed(1)}%) showed significant 3D structural disruption (ARCHCODE: Pathogenic/Likely Pathogenic)

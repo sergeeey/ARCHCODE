@@ -49,7 +49,7 @@ Check output for:
 
 Known benchmarks:
 
-- **HBB**: 16.17 min [15.23, 17.11] (Sabaté et al. 2025)
+- **HBB**: 16.17 min [15.23, 17.11] (Sabaté et al. 2024 (bioRxiv))
 - **IGH**: 16.18 min [15.28, 17.08] (blind, PASS)
 - **TCRα**: Similar range expected
 - **SOX2**: Similar range expected

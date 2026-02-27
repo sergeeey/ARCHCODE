@@ -183,4 +183,4 @@ MIT License — See [LICENSE](./LICENSE)
 
 **Version**: 1.0.0  
 **Last Updated**: 2024-02-01  
-**Status**: Publication Ready ✅
+**Status**: In Development (scientific integrity review in progress)

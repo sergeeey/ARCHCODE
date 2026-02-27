@@ -26,7 +26,7 @@ where:
 - MED1+ enhancer regions: τ ~ 35 min (Gerlich et al. 2006)
 - MED1- regions: τ ~ 12 min
 
-Best fit: α=0.92, γ=0.80 achieved R²=0.89 on held-out validation set (HBB, IGH, TCRα loci, n=3, 1000 runs each).
+Best fit: α=0.92, γ=0.80 achieved R²=0.89 on held-out simulation set (self-consistency check) (HBB, IGH, TCRα loci, n=3, 1000 runs each).
 
 ### Simulation Parameters
 
@@ -188,7 +188,7 @@ Variants were evaluated using ACMG/AMP 2015 guidelines (Richards et al.) with th
 **PS3_moderate** (Functional studies):
 
 - ARCHCODE SSIM-based prediction
-- Supporting evidence: R²=0.89 validation on blind loci
+- Supporting evidence: R²=0.89 self-consistency (experimental validation pending)
 - Moderate strength (not strong) due to computational vs experimental nature
 
 **PM2** (Rarity):
@@ -237,5 +237,3 @@ All data supporting the findings of this study are available from the correspond
 
 _Methods section prepared for bioRxiv submission_
 _Last updated: 2026-02-04_
-
-
