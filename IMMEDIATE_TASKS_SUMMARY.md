@@ -12,6 +12,7 @@
 **Result:** ❌ **Not present in dataset**
 
 **What we found in GSE131055:**
+
 - ✅ H3K27ac (active enhancers) — 4 samples
 - ✅ H3K27me3 (repressive mark) — 4 samples
 - ✅ GATA1 (transcription factor) — 4 samples
@@ -28,6 +29,7 @@
 **Deliverable:** `scripts/analyze_nmd_susceptibility.py` (361 lines)
 
 **Key Features:**
+
 1. **HBB Gene Structure Definition**
    - Exon/intron coordinates (GRCh38)
    - CDS start/stop positions
@@ -50,6 +52,7 @@
    - Generates publication-ready summary tables
 
 **Usage (tomorrow):**
+
 ```bash
 cd D:\ДНК\fastq_data\aligned
 
@@ -61,6 +64,7 @@ python ../../scripts/analyze_nmd_susceptibility.py \
 ```
 
 **Expected Outputs:**
+
 - `WT_rep1_nmd_details.csv` — Per-junction classification
 - `D3_nmd_details.csv` — Per-junction classification
 - `A2_nmd_details.csv` — Per-junction classification
@@ -68,6 +72,7 @@ python ../../scripts/analyze_nmd_susceptibility.py \
 - Console output with hypothesis test result (✅/⚠️)
 
 **Success Criteria:**
+
 - If D3 shows ≥15% NMD-susceptible transcripts → Hypothesis SUPPORTED
 - If D3 shows <15% → Alternative mechanism (documented in LOOP_THAT_STAYED_HYPOTHESIS.md)
 
@@ -79,12 +84,14 @@ python ../../scripts/analyze_nmd_susceptibility.py \
 
 **Data Format Issue:**
 Current CPM files (`GSM4873102_HUDEP2_RNA_WTrep1_rawcpm.csv`) contain:
+
 ```csv
 Gene_Symbol, Total_CPM
 HBB, 10886.3
 ```
 
 **What's needed for PPI analysis:**
+
 ```csv
 Gene, Exon, CPM
 HBB, exon1, 3500
@@ -97,6 +104,7 @@ Or position-specific coverage: `chr11:5225464-5225726` → CPM value
 **Conclusion:** ❌ **Current data lacks exon-level resolution**
 
 **Solution:** Analysis becomes feasible **tomorrow** once BAM files available:
+
 ```bash
 # Extract coverage from BAM (tomorrow)
 samtools depth -r chr11:5225618-5225726 WT_rep1.bam > exon1_coverage.txt
@@ -109,16 +117,19 @@ PPI = mean(exon1_coverage) / mean(exon3_coverage)
 
 **Alternative Approach (Available Now):**
 We already have **gene-level CPM** which shows:
+
 - WT: 10,886 CPM (baseline)
 - D3: 6,947 CPM (-36%) ← Overall reduction
 - A2: 13,978 CPM (+28%) ← Overall increase
 
 If pausing were the primary issue, we'd expect:
+
 - High total CPM (Pol II initiated) + low protein (paused before exon 2)
 - But D3 shows **low CPM** → suggests degradation (NMD) not pausing
 
 **Tentative Conclusion (from gene-level data):**
 Transcriptional pausing is **unlikely** to be the primary mechanism for D3 because:
+
 1. Total mRNA reduced (not just protein)
 2. Reduction matches NMD prediction (-36% → 15-30% aberrant transcripts)
 
@@ -128,16 +139,16 @@ Transcriptional pausing is **unlikely** to be the primary mechanism for D3 becau
 
 ## 📊 Summary of Day's Progress
 
-| Task Category | Status | Key Findings |
-|---------------|--------|--------------|
+| Task Category                | Status      | Key Findings                                     |
+| ---------------------------- | ----------- | ------------------------------------------------ |
 | **Hi-C Structural Analysis** | ✅ Complete | 0 TAD boundaries, weak structure explains r=0.16 |
-| **CTCF Validation** | ✅ Complete | 100% concordance with literature (6/6 sites) |
-| **RNA-seq Preliminary** | ✅ Complete | D3: -36%, A2: +28% (novel finding) |
-| **Hypothesis Formulation** | ✅ Complete | "Loop That Stayed" (8,000 words) |
-| **Infrastructure Prep** | ✅ Complete | 155 GB free, directories ready |
-| **H3K36me3 Search** | ✅ Complete | Not in dataset |
-| **NMD Pipeline** | ✅ Complete | Ready for tomorrow's data |
-| **Pausing Analysis** | ⚠️ Deferred | Needs BAM files (tomorrow) |
+| **CTCF Validation**          | ✅ Complete | 100% concordance with literature (6/6 sites)     |
+| **RNA-seq Preliminary**      | ✅ Complete | D3: -36%, A2: +28% (novel finding)               |
+| **Hypothesis Formulation**   | ✅ Complete | "Loop That Stayed" (8,000 words)                 |
+| **Infrastructure Prep**      | ✅ Complete | 155 GB free, directories ready                   |
+| **H3K36me3 Search**          | ✅ Complete | Not in dataset                                   |
+| **NMD Pipeline**             | ✅ Complete | Ready for tomorrow's data                        |
+| **Pausing Analysis**         | ⚠️ Deferred | Needs BAM files (tomorrow)                       |
 
 **Total Files Created Today:** 19 files, >20,000 words documentation, 3 analysis scripts
 
@@ -152,6 +163,7 @@ Transcriptional pausing is **unlikely** to be the primary mechanism for D3 becau
    - Test: `fastq-dump --version`
 
 2. **Start FASTQ Download** (leave overnight, 4-6 hours)
+
    ```bash
    cd D:\ДНК\fastq_data\raw
 
@@ -172,6 +184,7 @@ Transcriptional pausing is **unlikely** to be the primary mechanism for D3 becau
 ## 🚀 Tomorrow's Workflow (User)
 
 **Morning (09:00):**
+
 - Check FASTQ downloads complete
 - Install STAR aligner (if needed): `conda install -c bioconda star`
 - Start alignment (12 hours):
@@ -184,6 +197,7 @@ Transcriptional pausing is **unlikely** to be the primary mechanism for D3 becau
   ```
 
 **Evening (21:00):**
+
 - Run NMD analysis: `python scripts/analyze_nmd_susceptibility.py ...`
 - Run PPI analysis: Extract exon-level coverage from BAM files
 - **Result:** Hypothesis validated or refuted within 24 hours!
@@ -193,6 +207,7 @@ Transcriptional pausing is **unlikely** to be the primary mechanism for D3 becau
 ## ✅ All Pre-FASTQ Work Complete
 
 **What's Ready:**
+
 - ✅ Download commands prepared
 - ✅ Installation guides written
 - ✅ Analysis pipeline coded
@@ -201,6 +216,7 @@ Transcriptional pausing is **unlikely** to be the primary mechanism for D3 becau
 - ✅ Disk space confirmed (155 GB)
 
 **What's Pending:**
+
 - ⏰ FASTQ download (tonight)
 - ⏰ STAR alignment (tomorrow day)
 - ⏰ Splice junction analysis (tomorrow evening)
@@ -209,6 +225,6 @@ Transcriptional pausing is **unlikely** to be the primary mechanism for D3 becau
 
 ---
 
-*Immediate Tasks Summary*
-*Created: 2026-02-05 17:30*
-*All feasible pre-FASTQ tasks completed*
+_Immediate Tasks Summary_
+_Created: 2026-02-05 17:30_
+_All feasible pre-FASTQ tasks completed_

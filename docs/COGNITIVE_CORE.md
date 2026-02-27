@@ -65,10 +65,10 @@ This document captures **implicit design decisions** and their rationale so they
 
 ## CALIBRATION NEEDED (documented limitations)
 
-| Item | Condition | Consequence |
-|------|-----------|-------------|
-| Residence time | Unloading calibrated to ~20 min; not cell-specific | Cannot claim "20 min in GM12878" without calibration |
-| Convergent efficiency | 85% from ensemble data | Single-molecule behavior may differ |
-| Bookmarking | 50% assumed | No direct measurement; high uncertainty |
+| Item                  | Condition                                          | Consequence                                          |
+| --------------------- | -------------------------------------------------- | ---------------------------------------------------- |
+| Residence time        | Unloading calibrated to ~20 min; not cell-specific | Cannot claim "20 min in GM12878" without calibration |
+| Convergent efficiency | 85% from ensemble data                             | Single-molecule behavior may differ                  |
+| Bookmarking           | 50% assumed                                        | No direct measurement; high uncertainty              |
 
 When publishing or applying to a specific cell type, document these and, if possible, cite or add calibration data.

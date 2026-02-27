@@ -15,20 +15,26 @@ Analyze **$ARGUMENTS** locus using both methods and generate a discordance repor
 ## Steps
 
 1. **Run ARCHCODE validation**
+
    ```bash
    npm run validate:$ARGUMENTS
    ```
+
    Or if custom locus:
+
    ```bash
    npx tsx scripts/run-fountain-$ARGUMENTS.ts
    ```
 
 2. **Read AlphaGenome predictions**
    Check parser integration data:
+
    ```bash
    cat results/alphagenome_predictions_$ARGUMENTS.json
    ```
+
    Or query parser directory:
+
    ```
    D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs/$ARGUMENTS/
    ```
@@ -40,20 +46,24 @@ Analyze **$ARGUMENTS** locus using both methods and generate a discordance repor
 
 4. **Generate report**
    Create `results/discordance_$ARGUMENTS.md` with:
+
    ```markdown
    # ARCHCODE vs AlphaGenome Comparison: $ARGUMENTS
 
    ## ARCHCODE (Structural)
+
    - SSIM: X.XXX
    - Verdict: [PATHOGENIC | VUS | BENIGN]
    - Mechanism: [description]
 
    ## AlphaGenome (Expression)
+
    - Score: X.XXX
    - Verdict: [Pathogenic | VUS | Benign]
    - Prediction: [description]
 
    ## Discordance Analysis
+
    - Status: [CONCORDANT | DISCORDANT]
    - Type: [The Loop That Stayed | Post-transcriptional | Agreement]
    - Interpretation: [detailed explanation]
@@ -64,6 +74,7 @@ Analyze **$ARGUMENTS** locus using both methods and generate a discordance repor
 Print summary to console and save detailed report to file.
 
 **Example output:**
+
 ```
 ✓ ARCHCODE: SSIM=0.545 → LIKELY_PATHOGENIC (structural disruption)
 ✓ AlphaGenome: Score=0.454 → VUS (no expression impact)

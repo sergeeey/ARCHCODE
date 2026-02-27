@@ -1,5 +1,7 @@
 # Отчёт о проделанной работе
+
 ## ARCHCODE — 3D DNA Loop Extrusion Simulator
+
 ### Дата: 2026-02-02 | Reviewer: Claude Code (Opus 4.5)
 
 ---
@@ -17,22 +19,22 @@
 
 Применена методология HaluGate для проверки научных утверждений в документации:
 
-| Результат | Количество | Действие |
-|-----------|------------|----------|
-| ENTAILMENT (верно) | 7 | Подтверждено |
-| NEUTRAL (неполно) | 5 | Добавлены disclaimers |
-| **CONTRADICTION (ошибка)** | **2** | **Исправлено** |
+| Результат                  | Количество | Действие              |
+| -------------------------- | ---------- | --------------------- |
+| ENTAILMENT (верно)         | 7          | Подтверждено          |
+| NEUTRAL (неполно)          | 5          | Добавлены disclaimers |
+| **CONTRADICTION (ошибка)** | **2**      | **Исправлено**        |
 
 **Критическая находка**: Ganji et al. (2018) цитировался для cohesin, но изучал **condensin** — другой белок! Исправлено на Davidson et al. (2019).
 
 ### 2.2 Code Review физических движков
 
-| Файл | Проблемы | Исправления |
-|------|----------|-------------|
-| `genome.ts` | velocity=1.0, INV-1 violation | velocity=1000, rightLeg=pos+1 |
-| `LoopExtrusionEngine.ts` | Детерминистичный blocking | Stochastic 85% efficiency |
-| `MultiCohesinEngine.ts` | Нет leaky blocking | Добавлен 15% non-convergent |
-| `physics.ts` | Math.random() | Warning + документация |
+| Файл                     | Проблемы                      | Исправления                   |
+| ------------------------ | ----------------------------- | ----------------------------- |
+| `genome.ts`              | velocity=1.0, INV-1 violation | velocity=1000, rightLeg=pos+1 |
+| `LoopExtrusionEngine.ts` | Детерминистичный blocking     | Stochastic 85% efficiency     |
+| `MultiCohesinEngine.ts`  | Нет leaky blocking            | Добавлен 15% non-convergent   |
+| `physics.ts`             | Math.random()                 | Warning + документация        |
 
 ### 2.3 Hi-C Data Integration
 
@@ -51,17 +53,18 @@ npm run validate:hic -- --explore  // Explore data
 ```
 
 **Результаты загрузки**:
+
 - 8,054 петли из GM12878 (Rao et al. 2014 Cell)
 - 437 петель на chr11
 - 3 петли в HBB регионе
 
 ### 2.4 Валидация
 
-| Метрика | Результат | Оценка |
-|---------|-----------|--------|
-| **Power-law α** | -0.964 | Отлично (ожидалось -1.0) |
-| **Error** | 3.6% | В пределах нормы |
-| **Тесты** | 37/37 pass | Все проходят |
+| Метрика         | Результат  | Оценка                   |
+| --------------- | ---------- | ------------------------ |
+| **Power-law α** | -0.964     | Отлично (ожидалось -1.0) |
+| **Error**       | 3.6%       | В пределах нормы         |
+| **Тесты**       | 37/37 pass | Все проходят             |
 
 ---
 
@@ -75,6 +78,7 @@ Deletions: -60
 ```
 
 **История коммитов**:
+
 ```
 37d7c5a docs: update session report with Hi-C validation results
 48f65b5 feat(validation): Hi-C validation against Rao 2014 HiCCUPS loops
@@ -87,15 +91,15 @@ d1f395b fix(docs): correct citations per HaluGate verification
 
 ## 4. Текущее состояние проекта
 
-| Компонент | Статус | Комментарий |
-|-----------|--------|-------------|
-| Научная корректность | PASS | HaluGate verified, citations fixed |
-| Код симуляции | PASS | Stochastic blocking, INV-1 fixed |
-| Воспроизводимость | PASS | SeededRandom в движках |
-| Тесты | PASS | 37/37 passing |
-| Документация | PASS | METHODS.md, HALUGATE_REPORT.md |
-| Hi-C интеграция | PASS | Rao 2014, 8054 loops |
-| Power-law валидация | PASS | α = -0.964 (3.6% error) |
+| Компонент            | Статус | Комментарий                        |
+| -------------------- | ------ | ---------------------------------- |
+| Научная корректность | PASS   | HaluGate verified, citations fixed |
+| Код симуляции        | PASS   | Stochastic blocking, INV-1 fixed   |
+| Воспроизводимость    | PASS   | SeededRandom в движках             |
+| Тесты                | PASS   | 37/37 passing                      |
+| Документация         | PASS   | METHODS.md, HALUGATE_REPORT.md     |
+| Hi-C интеграция      | PASS   | Rao 2014, 8054 loops               |
+| Power-law валидация  | PASS   | α = -0.964 (3.6% error)            |
 
 ---
 
@@ -134,11 +138,11 @@ d1f395b fix(docs): correct citations per HaluGate verification
 
 ## 6. Рекомендации перед публикацией
 
-| Приоритет | Задача | Статус |
-|-----------|--------|--------|
-| Высокий | Zenodo DOI | Ручной шаг |
-| Средний | GitHub Pages demo | Опционально |
-| Низкий | Sensitivity analysis | Для v2.0 |
+| Приоритет | Задача               | Статус      |
+| --------- | -------------------- | ----------- |
+| Высокий   | Zenodo DOI           | Ручной шаг  |
+| Средний   | GitHub Pages demo    | Опционально |
+| Низкий    | Sensitivity analysis | Для v2.0    |
 
 ---
 
@@ -162,12 +166,12 @@ d1f395b fix(docs): correct citations per HaluGate verification
 
 ## 8. Ссылки на артефакты
 
-| Документ | Описание |
-|----------|----------|
-| [HALUGATE_REPORT.md](./HALUGATE_REPORT.md) | Полный отчёт научной верификации |
-| [CODE_REVIEW_PHYSICS.md](./CODE_REVIEW_PHYSICS.md) | Code review физических движков |
-| [SESSION_REPORT_2026-02-02.md](./SESSION_REPORT_2026-02-02.md) | Детальный отчёт сессии |
-| [results/hic-validation.json](./results/hic-validation.json) | Результаты Hi-C валидации |
+| Документ                                                       | Описание                         |
+| -------------------------------------------------------------- | -------------------------------- |
+| [HALUGATE_REPORT.md](./HALUGATE_REPORT.md)                     | Полный отчёт научной верификации |
+| [CODE_REVIEW_PHYSICS.md](./CODE_REVIEW_PHYSICS.md)             | Code review физических движков   |
+| [SESSION_REPORT_2026-02-02.md](./SESSION_REPORT_2026-02-02.md) | Детальный отчёт сессии           |
+| [results/hic-validation.json](./results/hic-validation.json)   | Результаты Hi-C валидации        |
 
 ---
 

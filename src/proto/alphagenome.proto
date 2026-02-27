@@ -1,0 +1,143 @@
+// AlphaGenome gRPC API Definition
+// Based on DeepMind Science API documentation
+// Endpoint: gdmscience.googleapis.com:443
+
+syntax = "proto3";
+
+package google.deepmind.alphagenome.v1;
+
+option java_multiple_files = true;
+option java_package = "com.google.deepmind.alphagenome.v1";
+
+// Main AlphaGenome prediction service
+service AlphaGenomeService {
+  // Predict chromatin structure for a genomic interval
+  rpc PredictStructure(PredictStructureRequest) returns (PredictStructureResponse);
+
+  // Get available output types
+  rpc GetOutputTypes(GetOutputTypesRequest) returns (GetOutputTypesResponse);
+}
+
+// Request message for structure prediction
+message PredictStructureRequest {
+  // Genomic interval to predict
+  GenomeInterval interval = 1;
+
+  // Genome assembly (e.g., "hg38", "GRCh38")
+  string genome_assembly = 2;
+
+  // Requested output types
+  repeated OutputType output_types = 3;
+
+  // Resolution in base pairs (default: 5000)
+  int32 resolution = 4;
+
+  // Cell type for tissue-specific predictions (optional)
+  string cell_type = 5;
+
+  // Ontology terms for filtering outputs (optional)
+  repeated string ontology_terms = 6;
+}
+
+// Genomic interval definition
+message GenomeInterval {
+  string chromosome = 1;
+  int64 start = 2;
+  int64 end = 3;
+}
+
+// Output types available from AlphaGenome
+enum OutputType {
+  OUTPUT_TYPE_UNSPECIFIED = 0;
+  OUTPUT_TYPE_CONTACT_MAPS = 1;
+  OUTPUT_TYPE_RNA_SEQ = 2;
+  OUTPUT_TYPE_ATAC = 3;
+  OUTPUT_TYPE_DNASE = 4;
+  OUTPUT_TYPE_CHIP_HISTONE = 5;
+  OUTPUT_TYPE_CHIP_TF = 6;
+  OUTPUT_TYPE_CAGE = 7;
+  OUTPUT_TYPE_PROCAP = 8;
+  OUTPUT_TYPE_SPLICE_SITES = 9;
+}
+
+// Response message for structure prediction
+message PredictStructureResponse {
+  // Predicted contact map
+  ContactMap contact_map = 1;
+
+  // Epigenetic track predictions
+  EpigeneticTracks epigenetic_tracks = 2;
+
+  // Model confidence score (0-1)
+  float confidence = 3;
+
+  // Model version used for prediction
+  string model_version = 4;
+
+  // Request metadata
+  RequestMetadata metadata = 5;
+}
+
+// Contact map prediction
+message ContactMap {
+  // Flattened matrix data (row-major order)
+  repeated float matrix_data = 1;
+
+  // Matrix dimensions
+  int32 rows = 2;
+  int32 cols = 3;
+
+  // Resolution in base pairs
+  int32 resolution = 4;
+
+  // Normalization method used
+  string normalization = 5;
+}
+
+// Epigenetic track predictions
+message EpigeneticTracks {
+  // H3K27ac signal (active enhancers)
+  repeated float h3k27ac = 1;
+
+  // H3K4me1 signal (enhancer mark)
+  repeated float h3k4me1 = 2;
+
+  // H3K4me3 signal (promoter mark)
+  repeated float h3k4me3 = 3;
+
+  // CTCF binding signal
+  repeated float ctcf_binding = 4;
+
+  // DNase I hypersensitivity
+  repeated float dnase_i = 5;
+}
+
+// Request metadata
+message RequestMetadata {
+  // Unique request ID
+  string request_id = 1;
+
+  // Processing time in milliseconds
+  int64 processing_time_ms = 2;
+
+  // Timestamp
+  string timestamp = 3;
+}
+
+// Request for available output types
+message GetOutputTypesRequest {
+  string genome_assembly = 1;
+}
+
+// Response with available output types
+message GetOutputTypesResponse {
+  repeated OutputTypeInfo output_types = 1;
+}
+
+// Information about an output type
+message OutputTypeInfo {
+  OutputType type = 1;
+  string name = 2;
+  string description = 3;
+  repeated string available_cell_types = 4;
+}

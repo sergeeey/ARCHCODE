@@ -36,15 +36,17 @@ When responding in scientific context:
 ### Results Presentation
 
 Use tables for multi-parameter data:
+
 ```markdown
-| Locus | Mean Duration | 95% CI | Verdict |
-|-------|---------------|--------|---------|
-| HBB | 16.17 min | [15.23, 17.11] | PASS |
+| Locus | Mean Duration | 95% CI         | Verdict |
+| ----- | ------------- | -------------- | ------- |
+| HBB   | 16.17 min     | [15.23, 17.11] | PASS    |
 ```
 
 ### Code References
 
 Always include file:line when discussing implementations:
+
 ```
 The Kramer kinetics formula is implemented in
 src/domain/constants/biophysics.ts:42
@@ -53,6 +55,7 @@ src/domain/constants/biophysics.ts:42
 ### Equations
 
 Format mathematical expressions clearly:
+
 ```
 unloadingProb = k_base × (1 - α × occupancy^γ)
 where:
@@ -63,26 +66,27 @@ where:
 
 ### Uncertainty Language
 
-| Confidence | Phrasing |
-|------------|----------|
-| High (p < 0.01) | "demonstrates", "confirms" |
-| Moderate (p < 0.05) | "suggests", "indicates" |
-| Low | "may", "could", "preliminary evidence" |
-| Speculation | "we hypothesize", "potentially" |
+| Confidence          | Phrasing                               |
+| ------------------- | -------------------------------------- |
+| High (p < 0.01)     | "demonstrates", "confirms"             |
+| Moderate (p < 0.05) | "suggests", "indicates"                |
+| Low                 | "may", "could", "preliminary evidence" |
+| Speculation         | "we hypothesize", "potentially"        |
 
 ## Terminology Preferences
 
-| Avoid | Prefer |
-|-------|--------|
-| "loop" | "chromatin loop" or "cohesin-mediated loop" |
-| "simulation" | "Monte Carlo simulation" or "stochastic simulation" |
-| "contact map" | "contact frequency matrix" or "Hi-C map" |
-| "validation" | "blind-test validation" (specify methodology) |
-| "parameter" | "fitted parameter" vs "literature-based constant" |
+| Avoid         | Prefer                                              |
+| ------------- | --------------------------------------------------- |
+| "loop"        | "chromatin loop" or "cohesin-mediated loop"         |
+| "simulation"  | "Monte Carlo simulation" or "stochastic simulation" |
+| "contact map" | "contact frequency matrix" or "Hi-C map"            |
+| "validation"  | "blind-test validation" (specify methodology)       |
+| "parameter"   | "fitted parameter" vs "literature-based constant"   |
 
 ## Abbreviations
 
 Always define on first use:
+
 - ✅ "Structural Similarity Index (SSIM)"
 - ✅ "Variants of Uncertain Significance (VUS)"
 - ✅ "Loop Extrusion Factor (LEF)"
@@ -92,12 +96,14 @@ Then use abbreviation thereafter.
 ## Error and Uncertainty Reporting
 
 Always include:
+
 - Sample size (n)
 - Confidence intervals or standard deviations
 - P-values when testing hypotheses
 - Seed for reproducibility
 
 **Example:**
+
 ```
 Mean loop duration: 16.17 ± 0.96 min (95% CI: [15.23, 17.11], n=1000, seed=2026)
 ```
@@ -105,12 +111,14 @@ Mean loop duration: 16.17 ± 0.96 min (95% CI: [15.23, 17.11], n=1000, seed=2026
 ## Comparison to Other Methods
 
 When comparing ARCHCODE to AlphaGenome or other tools:
+
 - Specify what each method measures (structural vs expression)
 - Avoid claiming superiority without evidence
 - Use "complementary" rather than "better"
 - Highlight different mechanisms, not just accuracy
 
 **Example:**
+
 ```
 ARCHCODE detects structural pathogenicity (SSIM = 0.545, LIKELY_PATHOGENIC)
 that AlphaGenome missed (score = 0.454, VUS). This discordance suggests
@@ -121,6 +129,7 @@ levels—a mechanism AlphaGenome, being expression-focused, cannot capture.
 ## Figures and Visualization
 
 When describing figures:
+
 - State dimensions (18×6 inches, 300 DPI)
 - Describe colormaps ("custom diverging: blue → white → red")
 - Label panels (WT | Mutant | Differential)
@@ -142,4 +151,4 @@ When describing figures:
 
 ---
 
-*Style guide for ARCHCODE project | Last updated: 2026-02-03*
+_Style guide for ARCHCODE project | Last updated: 2026-02-03_

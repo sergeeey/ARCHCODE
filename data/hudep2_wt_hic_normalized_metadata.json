@@ -4,9 +4,6 @@
   "resolution": 5000,
   "normalization": "KR_balanced",
   "kr_applied": true,
-  "shape": [
-    10,
-    10
-  ],
+  "shape": [10, 10],
   "extraction_method": "cooler with balance=True"
 }

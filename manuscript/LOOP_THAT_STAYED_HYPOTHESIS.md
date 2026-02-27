@@ -17,14 +17,17 @@ We propose a mechanistic model whereby chromatin loop disruption at the human β
 ### The Chromatin Architecture Problem
 
 **Classic view (1D genome):**
+
 ```
 DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]─────
 ```
+
 - Distance = regulatory strength
 - Enhancers act via diffusion
 - Splicing = intrinsic to transcript
 
 **Modern view (3D genome):**
+
 ```
       ╔═══════════╗
       ║   Loop    ║
@@ -33,6 +36,7 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
   [Enhancer]   [Promoter]───[Gene]
   (50kb apart in 1D, but adjacent in 3D)
 ```
+
 - Loops bring distant elements together
 - CTCF + cohesin form loops
 - Splicing machinery spatially organized
@@ -54,6 +58,7 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 ```
 
 **Regulatory elements:**
+
 - **LCR (Locus Control Region):** 5'HS5, 5'HS4, 5'HS3, 5'HS2
   - Major enhancers driving globin expression
   - Erythroid-specific (GATA1, TAL1 binding)
@@ -108,11 +113,13 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 ### Experimental Design
 
 **CRISPR/Cas9 genome editing in HUDEP-2 cells:**
+
 - **WT:** Intact 3'HS1 CTCF site (baseline)
 - **B6, D3:** 3'HS1 **deletion** (CTCF site removed)
 - **A2, G3:** 3'HS1 **inversion** (CTCF motif reversed)
 
 **Published data (GSE160420, GSE160422):**
+
 - **Hi-C (GSE160422):** Chromatin loops before/after deletion
 - **RNA-seq (GSE160420):** Gene expression changes (CPM counts)
 
@@ -122,11 +129,11 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 
 **Paper focus:** Fetal hemoglobin (HBG1/2) reactivation
 
-| Clone | Modification | HBG1/2 Expression | HbF+ Cells | Paper Interpretation |
-|-------|--------------|-------------------|------------|----------------------|
-| **WT** | Intact | Baseline (low) | 4.3% | Normal adult erythroid |
-| **B6, D3** | 3'HS1 deletion | ↑2.5-8× | 37-53% | Loop disruption → fetal globin reactivation |
-| **A2, G3** | 3'HS1 inversion | Near-zero | <1% | Loop preserved (inverted) → fetal globin suppression |
+| Clone      | Modification    | HBG1/2 Expression | HbF+ Cells | Paper Interpretation                                 |
+| ---------- | --------------- | ----------------- | ---------- | ---------------------------------------------------- |
+| **WT**     | Intact          | Baseline (low)    | 4.3%       | Normal adult erythroid                               |
+| **B6, D3** | 3'HS1 deletion  | ↑2.5-8×           | 37-53%     | Loop disruption → fetal globin reactivation          |
+| **A2, G3** | 3'HS1 inversion | Near-zero         | <1%        | Loop preserved (inverted) → fetal globin suppression |
 
 **Paper's mechanism:** Loop rewiring changes LCR-globin contacts → developmental switching
 
@@ -136,13 +143,13 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 
 **We analyzed GSE160420 gene expression data:**
 
-| Clone | Modification | HBB Expression (CPM) | Change vs WT | Published? |
-|-------|--------------|----------------------|--------------|------------|
-| **WT** | Intact | 10,886 | Baseline | Yes (mentioned) |
-| **B6** | 3'HS1 deletion | 10,468 | -4% | No (not quantified) |
-| **D3** | 3'HS1 deletion | **6,947** | **-36%** ⚠️ | **No (NEW finding)** |
-| **A2** | 3'HS1 inversion | **13,978** | **+28%** ⚠️ | **No (NEW finding)** |
-| **G3** | 3'HS1 inversion | 8,767 | -19% | No (not quantified) |
+| Clone  | Modification    | HBB Expression (CPM) | Change vs WT | Published?           |
+| ------ | --------------- | -------------------- | ------------ | -------------------- |
+| **WT** | Intact          | 10,886               | Baseline     | Yes (mentioned)      |
+| **B6** | 3'HS1 deletion  | 10,468               | -4%          | No (not quantified)  |
+| **D3** | 3'HS1 deletion  | **6,947**            | **-36%** ⚠️  | **No (NEW finding)** |
+| **A2** | 3'HS1 inversion | **13,978**           | **+28%** ⚠️  | **No (NEW finding)** |
+| **G3** | 3'HS1 inversion | 8,767                | -19%         | No (not quantified)  |
 
 **Key observation:** Clone D3 shows dramatic HBB reduction (-36%), while A2 shows elevation (+28%).
 
@@ -177,6 +184,7 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 ```
 
 **Function of loop:**
+
 - **Spatial confinement:** HBB transcription occurs within loop
 - **Spliceosome recruitment:** Loop concentrates splicing factors
 - **Co-transcriptional splicing:** Splicing happens during transcription
@@ -251,18 +259,21 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 **Possible explanations:**
 
 **Hypothesis 1: Compensatory upregulation**
+
 - Loop still forms (CTCF-CTCF interaction preserved despite inversion)
 - But loop topology changed → alters LCR-HBB contact geometry
 - Cell compensates by upregulating HBB transcription
 - Splicing remains normal (loop still confines transcription)
 
 **Hypothesis 2: New enhancer interaction**
+
 - Inversion creates novel loop configuration
 - 3'HS1 (now inverted) contacts different region
 - New enhancer brought into proximity with HBB
 - Increased transcription, normal splicing
 
 **Hypothesis 3: mRNA stabilization**
+
 - Inverted 3'HS1 acts as RNA-stabilizing element
 - Affects mRNA half-life, not transcription rate
 - Post-transcriptional regulation
@@ -276,11 +287,13 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 ### 1. ARCHCODE Predictions (This Study)
 
 **CTCF site validation:**
+
 - ✅ All 6 predicted CTCF sites match literature (100% concordance)
 - ✅ HBB promoter (5.226 Mb) and 3'HS1 (5.248 Mb) both have CTCF sites
 - ✅ Loop 3 (HBB ↔ 3'HS1, 22 kb) predicted by convergent CTCF motif rule (Rao 2014)
 
 **Hi-C analysis:**
+
 - ⚠️ Weak TAD structure (0 boundaries detected at 5 kb resolution)
 - ✅ HBB in A compartment (active, PC1 = +0.098)
 - ⚠️ Modest correlation (r=0.16) due to missing compartmentalization
@@ -292,24 +305,29 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 ### 2. Literature Evidence
 
 **Bender et al. (2012):** CTCF ChIP-seq at β-globin locus
+
 - 3'HS1 = major CTCF binding site
 - Insulator activity confirmed (reporter assays)
 - Deletion reduces β-globin expression
 
 **Himadewi et al. (2021):** 3'HS1 deletion/inversion Hi-C
+
 - **Deletion (B6, D3):** Lost loops between 3'HS1 and upstream sites
 - **Inversion (A2, G3):** Gained loops between 3'HS1 and 3'-OR52A5
 - Loop rewiring confirmed by Hi-C
 
 **Deng et al. (2012):** CTCF role in globin regulation
+
 - CTCF knockdown → reduced β-globin expression
 - CTCF mediates long-range LCR-promoter interactions
 
 **Rao et al. (2014):** Convergent CTCF motif rule
+
 - Loops form between convergent CTCF motifs (+ ← → -)
 - HBB (→) and 3'HS1 (←) motifs converge → loop predicted
 
 **Lieberman-Aiden et al. (2009):** A/B compartments
+
 - A compartment = active chromatin (high transcription, open)
 - B compartment = inactive chromatin (low transcription, closed)
 - HBB in A compartment → high expression expected ✅
@@ -319,11 +337,13 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 ### 3. Functional Evidence (Our Analysis of GSE160420)
 
 **Gene expression (CPM):**
+
 - WT: 10,886 CPM (baseline, loop intact)
 - D3: 6,947 CPM (-36%, loop broken) ⚠️
 - A2: 13,978 CPM (+28%, loop inverted) ⚠️
 
 **Splicing analysis (pending FASTQ download tonight):**
+
 - Expected: D3 shows high aberrant splicing (15-30%)
 - Expected: A2 shows low aberrant splicing (<10%)
 - Method: STAR alignment → splice junction quantification → aberrant %
@@ -341,20 +361,24 @@ DNA: ─────[Enhancer]───(50kb)───[Promoter]───[Gene]�
 **Splice junctions to quantify:**
 
 **Canonical (expected in WT):**
+
 - Exon 1→2: chr11:5,225,726 → 5,226,405 (junction 1)
 - Exon 2→3: chr11:5,226,626 → 5,227,079 (junction 2)
 
 **Aberrant (expected in D3):**
+
 - Exon 1→3 skipping: chr11:5,225,726 → 5,227,079 (exon 2 skipped)
 - Intron 1 retention: reads spanning 5,226,405-5,226,626 (intron not spliced)
 - Intron 2 retention: reads spanning exon 2-3 boundary with intron sequence
 
 **Quantification:**
+
 ```
 aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 100
 ```
 
 **Expected values:**
+
 - WT: <5% (baseline, normal splicing)
 - D3: **15-30%** (loop broken, aberrant splicing)
 - A2: <10% (loop inverted but intact, splicing preserved)
@@ -380,17 +404,20 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 **Hypothesis:** Hi-C loop strength correlates with splicing fidelity
 
 **Test:**
+
 1. Quantify loop strength: SSIM (structural similarity) or contact frequency at HBB↔3'HS1
-2. Quantify splicing fidelity: 100% - aberrant_splicing_%
+2. Quantify splicing fidelity: 100% - aberrant*splicing*%
 3. Calculate correlation: Pearson r(loop_strength, splicing_fidelity)
 
 **Expected:** r ≥ 0.5, p < 0.05 (loop disruption → aberrant splicing)
 
 **Data sources:**
+
 - Loop strength: GSE160422 Hi-C (WT, B6, A2)
 - Splicing fidelity: GSE160420 RNA-seq (WT, D3, A2)
 
 **Problem:** Hi-C data missing for D3, G3 (only have WT, B6, A2)
+
 - Partial test possible: WT vs B6 vs A2 (n=3, low power)
 
 ---
@@ -400,33 +427,39 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 ### If D3 shows <5% aberrant splicing (hypothesis rejected):
 
 **Alternative 1: Transcriptional downregulation**
+
 - Loop disruption → reduced LCR-promoter contact
 - Less transcription initiation
 - Normal splicing, just lower mRNA abundance
 
 **Test:** Measure nascent transcription (GRO-seq or PRO-seq)
+
 - If nascent RNA also reduced → transcriptional mechanism
 - If nascent RNA normal → post-transcriptional mechanism
 
 ---
 
 **Alternative 2: mRNA instability**
+
 - Loop disruption → loss of mRNA-stabilizing elements
 - Splicing normal, but mRNA degraded faster
 - Post-transcriptional regulation
 
 **Test:** Measure mRNA half-life (actinomycin D chase + qPCR)
+
 - If D3 half-life shorter → instability mechanism
 - If D3 half-life normal → transcriptional mechanism
 
 ---
 
 **Alternative 3: Compensatory fetal globin**
+
 - D3 upregulates HBG1/2 (fetal, 2.5-8× increase per paper)
 - Reduced HBB due to **competitive inhibition** (shared LCR)
 - Not splicing defect, but resource allocation
 
 **Test:** Quantify total globin output (HBB + HBG1/2 + HBE + HBD)
+
 - If total globin similar → competitive inhibition
 - If total globin reduced → HBB-specific defect
 
@@ -437,11 +470,13 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 ### β-Thalassemia and 3'HS1 Mutations
 
 **Known clinical observations:**
+
 - Deletions near 3'HS1 → β-thalassemia (reduced HBB)
 - Patients heterogeneous: some mild, some severe
 - Mechanism unclear (assumed transcriptional)
 
 **"Loop That Stayed" hypothesis adds:**
+
 - **Mechanism:** Loop disruption → aberrant splicing → NMD → reduced HBB
 - **Variability:** Clonal effects (B6 vs D3), genetic background, compensatory mechanisms
 - **Therapeutic target:** Restore loop (CRISPR base editing to repair CTCF motif)
@@ -451,16 +486,19 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 ### Fetal Hemoglobin Reactivation Therapies
 
 **Current approaches:**
+
 - Hydroxyurea (epigenetic modifier, increases HbF)
 - BCL11A inhibitors (suppress HBG1/2 repressor)
 - CRISPR editing (disrupt HBG1/2 silencers)
 
 **"Loop That Stayed" insight:**
+
 - 3'HS1 deletion reactivates HbF (37-53% HbF+ cells)
 - But also reduces HBB (-36% in D3)
 - **Trade-off:** Gain HbF, lose HBB
 
 **Optimal strategy:**
+
 - Target 3'HS1 inversion (not deletion)
 - A2 shows high HBB (+28%) + low HbF (<1%)
 - If splicing normal in A2 → inversion better than deletion
@@ -474,11 +512,13 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 **Observation:** B6 (-4%) ≠ D3 (-36%) despite same 3'HS1 deletion
 
 **Possible causes:**
+
 - Off-target CRISPR effects
 - Clonal selection bias
 - Epigenetic differences (DNA methylation, histone marks)
 
 **Impact:** Cannot attribute D3 phenotype solely to 3'HS1 deletion
+
 - Need additional clones or isogenic controls
 
 ---
@@ -486,9 +526,11 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 ### Limitation 2: Gene Expression ≠ Splicing
 
 **Current data:** CPM counts (gene-level expression)
+
 - Cannot distinguish: transcription vs splicing vs stability
 
 **Solution:** Splice junction analysis (in progress)
+
 - Will distinguish mechanisms
 
 ---
@@ -496,9 +538,11 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 ### Limitation 3: Correlation ≠ Causation
 
 **Observation:** Loop disruption + HBB reduction co-occur
+
 - Does not prove loop causes splicing
 
 **Needed:** Functional rescue experiment
+
 - Restore 3'HS1 CTCF site → restore loop → restore splicing?
 - CRISPR base editing or site-directed insertion
 
@@ -507,11 +551,13 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 ### Limitation 4: Model Simplicity
 
 **ARCHCODE assumptions:**
+
 - Static loops (not dynamic)
 - Binary loop presence/absence (not strength/probability)
 - No compartmentalization (only loops)
 
 **Reality:**
+
 - Loops form/dissolve dynamically (cohesin processivity)
 - Loop strength varies (CTCF affinity, chromatin accessibility)
 - Compartments matter (A/B eigenvector)
@@ -548,7 +594,7 @@ aberrant_splicing_% = (aberrant_reads) / (canonical_reads + aberrant_reads) × 1
 
 ---
 
-*"The Loop That Stayed" Hypothesis*
-*Author: Sergey V. Boyko*
-*Created: 2026-02-05*
-*Status: Hypothesis formulated, experimental validation in progress*
+_"The Loop That Stayed" Hypothesis_
+_Author: Sergey V. Boyko_
+_Created: 2026-02-05_
+_Status: Hypothesis formulated, experimental validation in progress_

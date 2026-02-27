@@ -2,7 +2,7 @@
 
 ## High-throughput ARCHCODE simulation reveals systematic discordance between structural and sequence-based variant predictors
 
-To investigate whether 3D chromatin architecture disruption represents a clinically relevant pathogenic mechanism orthogonal to sequence-based predictions, we performed high-throughput ARCHCODE simulation of 366 pathogenic and VUS variants in the β-globin (*HBB*) gene (chr11:5,225,464-5,227,079, GRCh38). All variants were sourced from ClinVar (2026-02-01 release) with clinical significance classifications of Pathogenic, Likely Pathogenic, or VUS, and at least one-star review status (Supplementary Table S1).
+To investigate whether 3D chromatin architecture disruption represents a clinically relevant pathogenic mechanism orthogonal to sequence-based predictions, we performed high-throughput ARCHCODE simulation of 366 pathogenic and VUS variants in the β-globin (_HBB_) gene (chr11:5,225,464-5,227,079, GRCh38). All variants were sourced from ClinVar (2026-02-01 release) with clinical significance classifications of Pathogenic, Likely Pathogenic, or VUS, and at least one-star review status (Supplementary Table S1).
 
 For each variant, we simulated wild-type (WT) and mutant 3D chromatin contact matrices using a physics-based loop extrusion model with Kramer kinetics (α=0.92, γ=0.80, k_base=0.002), previously validated against experimental Hi-C data (R²=0.89 on blind loci; see Methods). We quantified structural disruption using the Structural Similarity Index (SSIM), where values range from 0 (complete structural disruption) to 1 (identical to WT). We then compared ARCHCODE structural predictions with AlphaGenome sequence-based pathogenicity scores to identify systematic discordance patterns.
 
@@ -27,18 +27,21 @@ To understand why these variants showed preserved chromatin architecture (SSIM 0
 This degree of loop preservation would typically suggest benign impact. However, variant position analysis revealed all three disrupted **cis-regulatory splice elements** while residing within stable chromatin loop domains:
 
 **VCV000000327** (chr11:5,225,695, Exon 1-Intron 1 boundary):
+
 - Disrupts splice enhancer cluster (predicted SF2/ASF and SC35 binding sites lost)
 - Located 75 bp downstream from VCV000000302 (same regulatory module)
 - Contact matrix shows asymmetric redistribution: contacts within loop domain preserved (55%), but cross-boundary contacts reduced by 45%
 - **Predicted splicing defect:** 15-30% exon 1 skipping based on enhancer strength loss
 
 **VCV000000026** (chr11:5,226,830, Exon 2 3' acceptor region):
+
 - Disrupts 3' splice acceptor consensus sequence and branch point
 - Located 1,135 bp downstream from VCV327/VCV302 cluster (separate functional domain but same LCR-HBB loop)
 - Despite highest SSIM (0.551), variant position directly at splice junction predicts severe defect
 - **Predicted splicing defect:** 20-35% intron 1 retention or cryptic splice site activation
 
 **VCV000000302** (chr11:5,225,620, Exon 1-Intron 1 boundary):
+
 - Disrupts exonic splice enhancer (ESE) sequence
 - Lowest SSIM of the three (0.5453), showing slightly more structural perturbation
 - Contact matrix reveals gradient effect: 45% preservation correlates with position at cluster edge
@@ -59,6 +62,7 @@ To establish whether the observed SSIM range (0.50-0.60) represents a functional
 **3. Minimal disruption (SSIM >0.85):** Variants in deep intronic or non-regulatory regions showing negligible structural impact. Both methods classify as benign/VUS (concordance rate 89.4%).
 
 The "Loop That Stayed" variants occupy a narrow SSIM band (0.545-0.551) within the broader 0.50-0.60 zone, suggesting this range represents a functional threshold where:
+
 - **Lower bound (SSIM ~0.45):** Loop structure too disrupted; massive loss of regulatory interactions (detectable by both predictors)
 - **Upper bound (SSIM ~0.60):** Loops too stable; regulatory flexibility preserved, allowing compensatory mechanisms (benign outcome)
 - **Goldilocks zone (0.50-0.60):** Loops stable enough to trap defects but disrupted enough to cause pathogenic mis-regulation
@@ -98,6 +102,7 @@ Based on ARCHCODE functional predictions, we propose reclassifying all three "Lo
 **PM2** (Moderate-strength rarity evidence): All three variants are absent from gnomAD v4.0 (MAF=0 in 807,162 exomes, 155,735 genomes) or present at MAF<0.0001, consistent with pathogenic status for a recessive hemoglobinopathy.
 
 **PP3** (Supporting computational evidence): Multiple lines of computational support:
+
 - **Conservation:** PhyloP scores >2.5 (top 1% conservation) for all three positions
 - **Structural clustering:** Extreme SSIM clustering (SD=0.0022, p<0.0001)
 - **Cross-predictor convergence:** CADD scores 15-18 (deleterious range), though splice-region specific tools (SpliceAI) show moderate impact consistent with enhancer disruption
@@ -105,6 +110,7 @@ Based on ARCHCODE functional predictions, we propose reclassifying all three "Lo
 **Total evidence:** PS3_moderate (4 points) + PM2 (2 points) + PP3 (1 point) = **7 points**
 
 Per ACMG guidelines, ≥6 points meets criteria for **Likely Pathogenic** classification (Richards et al., 2015). We recommend submitting this evidence to ClinVar and initiating clinical follow-up for patients harboring these variants, including:
+
 - Hemoglobin electrophoresis (expected: HbA2 >3.5%, indicating β-thalassemia minor)
 - Complete blood count (expected: microcytic anemia, MCV 60-75 fL)
 - Family cascade testing (25% recurrence risk if partner is carrier)
@@ -115,6 +121,7 @@ Per ACMG guidelines, ≥6 points meets criteria for **Likely Pathogenic** classi
 Based on predicted splice defect severity, we anticipate the following phenotypes (if carriers are identified):
 
 **VCV000000327** (highest validation priority):
+
 - **Predicted splicing:** 15-30% exon 1 skipping → reduced β-globin production
 - **Expected phenotype:** β-thalassemia minor (Hb 9-11 g/dL, MCV 60-70 fL, HbA2 3.5-5.5%)
 - **Validation Tier 1** (3-4 months, $45-75K): RT-PCR in K562 cells + Capture Hi-C for SSIM measurement
@@ -122,11 +129,13 @@ Based on predicted splice defect severity, we anticipate the following phenotype
 - **Validation Tier 3** (9-12 months, $15-23K): CRISPRi-mediated loop disruption to test rescue hypothesis
 
 **VCV000000026** (mechanistic validation):
+
 - **Predicted splicing:** 20-35% intron 1 retention → truncated/degraded transcript
 - **Expected phenotype:** β-thalassemia minor to intermedia (depending on cryptic splice site activation)
 - **Transformative experiment:** Minigene assay ± LCR loop anchors. Hypothesis: loop disruption rescues splicing defect (if confirmed, paradigm-shifting result for Nature Genetics main figure)
 
 **VCV000000302** (supporting evidence):
+
 - **Predicted splicing:** 10-25% aberrant splicing → mild reduction
 - **Expected phenotype:** β-thalassemia minor (mild end of spectrum)
 - **Role:** Validates SSIM gradient effect (lowest SSIM → mildest predicted defect)
@@ -136,23 +145,27 @@ We propose a two-track validation strategy: **(1) Experimental confirmation** (R
 ## Genome-wide implications: hundreds of ClinVar VUS may require re-evaluation
 
 To estimate genome-wide impact, we analyzed splice_region variant prevalence in ClinVar. As of 2026-02-01, ClinVar contains:
+
 - **~60,000 splice_region variants** (all genes)
 - **~6,000 classified as VUS** (uncertain significance)
 - **~12% discordance rate** observed in our HBB dataset (25.5% for splice_region specifically)
 
 If "Loop That Stayed" prevalence in HBB (3/47 = 6.4% of splice_region variants, 3/366 = 0.82% of all variants) generalizes genome-wide, we estimate:
+
 - **~380-640 splice_region VUS** (6-10% of 6,000) may exhibit loop-constrained pathogenicity
 - **~120-200 additional variants** in other categories with strong enhancer-promoter loops
 
 **Total estimate: ~500-1,000 ClinVar VUS** may require re-evaluation using ARCHCODE or equivalent structural predictors.
 
 Candidate genes for screening (based on known strong enhancer-promoter loops):
+
 - **FGFR2** (craniosynostosis): 8q11.23, LCR-driven expression
 - **SOX9** (campomelic dysplasia): 17q24.3, long-range enhancers (>1 Mb)
 - **SHH** (holoprosencephaly): 7q36.3, ZRS enhancer (1 Mb upstream)
 - **HBG1/HBG2** (fetal hemoglobin): Same LCR as HBB (β-globin cluster)
 
 We recommend systematic ARCHCODE screening of splice_region VUS in these genes, prioritizing variants with:
+
 1. SSIM 0.50-0.60 (Goldilocks zone)
 2. Preserved CTCF anchors (contact frequency >40%)
 3. Disrupted splice enhancer motifs (ESE, SF2/ASF, SC35)
@@ -170,6 +183,6 @@ We recommend systematic ARCHCODE screening of splice_region VUS in these genes, 
 
 ---
 
-*Results section prepared for bioRxiv submission*
-*Word count: 2,184 words*
-*Last updated: 2026-02-04*
+_Results section prepared for bioRxiv submission_
+_Word count: 2,184 words_
+_Last updated: 2026-02-04_

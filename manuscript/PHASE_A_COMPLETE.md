@@ -11,12 +11,12 @@
 
 **Location:** `D:\ДНК\figures\`
 
-| Figure | Filename | Content | Size |
-|--------|----------|---------|------|
-| **Figure 1** | `figure1_hic_validation_v1.png/pdf` | Experimental vs Simulation heatmaps + scatter plot (V1) | Main validation result |
-| **Figure 2** | `figure2_v1_vs_v2_comparison.png/pdf` | V1 (hypothetical) vs V2 (literature) CTCF comparison | CTCF robustness |
-| **Figure 3** | `figure3_normalization_effect.png/pdf` | Raw vs KR normalized correlation bars + p-values | Normalization impact |
-| **Figure 4** | `figure4_contact_distributions.png/pdf` | Histograms + Q-Q plot | Distribution comparison |
+| Figure       | Filename                                | Content                                                 | Size                    |
+| ------------ | --------------------------------------- | ------------------------------------------------------- | ----------------------- |
+| **Figure 1** | `figure1_hic_validation_v1.png/pdf`     | Experimental vs Simulation heatmaps + scatter plot (V1) | Main validation result  |
+| **Figure 2** | `figure2_v1_vs_v2_comparison.png/pdf`   | V1 (hypothetical) vs V2 (literature) CTCF comparison    | CTCF robustness         |
+| **Figure 3** | `figure3_normalization_effect.png/pdf`  | Raw vs KR normalized correlation bars + p-values        | Normalization impact    |
+| **Figure 4** | `figure4_contact_distributions.png/pdf` | Histograms + Q-Q plot                                   | Distribution comparison |
 
 **Quality:** 300 DPI, publication-ready, color-coded, annotated with statistics
 
@@ -26,11 +26,11 @@
 
 **Location:** `D:\ДНК\manuscript\`
 
-| Document | Filename | Word Count | Content |
-|----------|----------|------------|---------|
-| **Results** | `VALIDATION_RESULTS.md` | ~1,800 | Hi-C extraction, simulations, correlation analysis, interpretation |
-| **Discussion** | `VALIDATION_DISCUSSION.md` | ~2,700 | Limitations, why r=0.16, comparison to SOTA, Phase C roadmap |
-| **Methods** | `VALIDATION_METHODS.md` | ~2,000 | Full technical details (Hi-C extraction, KR normalization, QC) |
+| Document       | Filename                   | Word Count | Content                                                            |
+| -------------- | -------------------------- | ---------- | ------------------------------------------------------------------ |
+| **Results**    | `VALIDATION_RESULTS.md`    | ~1,800     | Hi-C extraction, simulations, correlation analysis, interpretation |
+| **Discussion** | `VALIDATION_DISCUSSION.md` | ~2,700     | Limitations, why r=0.16, comparison to SOTA, Phase C roadmap       |
+| **Methods**    | `VALIDATION_METHODS.md`    | ~2,000     | Full technical details (Hi-C extraction, KR normalization, QC)     |
 
 **Tone:** Honest pilot study, acknowledges limitations, establishes methodology, provides clear path forward
 
@@ -40,17 +40,17 @@
 
 **Location:** `D:\ДНК\data\`
 
-| File | Description |
-|------|-------------|
-| `hudep2_wt_hic_hbb_locus.npy` | Experimental Hi-C (raw counts) |
-| `hudep2_wt_hic_hbb_locus_normalized.npy` | Experimental Hi-C (KR normalized) |
-| `hudep2_wt_hic_metadata.json` | Extraction provenance |
-| `hudep2_wt_hic_normalized_metadata.json` | Normalization metadata |
-| `archcode_hbb_simulation_normalized.npy` | Simulation V1 (normalized) |
-| `archcode_hbb_literature_ctcf_normalized.npy` | Simulation V2 (normalized) |
-| `correlation_results_v1_normalized.json` | V1 correlation (r=0.158) |
-| `correlation_results_v2_normalized.json` | V2 correlation (r=0.048) |
-| `normalization_comparison_summary.json` | Raw vs normalized comparison |
+| File                                          | Description                       |
+| --------------------------------------------- | --------------------------------- |
+| `hudep2_wt_hic_hbb_locus.npy`                 | Experimental Hi-C (raw counts)    |
+| `hudep2_wt_hic_hbb_locus_normalized.npy`      | Experimental Hi-C (KR normalized) |
+| `hudep2_wt_hic_metadata.json`                 | Extraction provenance             |
+| `hudep2_wt_hic_normalized_metadata.json`      | Normalization metadata            |
+| `archcode_hbb_simulation_normalized.npy`      | Simulation V1 (normalized)        |
+| `archcode_hbb_literature_ctcf_normalized.npy` | Simulation V2 (normalized)        |
+| `correlation_results_v1_normalized.json`      | V1 correlation (r=0.158)          |
+| `correlation_results_v2_normalized.json`      | V2 correlation (r=0.048)          |
+| `normalization_comparison_summary.json`       | Raw vs normalized comparison      |
 
 ---
 
@@ -58,23 +58,25 @@
 
 ### Validation Findings (Honest Reporting)
 
-| Metric | V1 (Hypothetical CTCF) | V2 (Literature CTCF) |
-|--------|------------------------|----------------------|
-| **Raw correlation** | r=-0.092 (p=0.547) | r=-0.167 (p=0.274) |
-| **KR normalized** | **r=+0.158** (p=0.301) | r=+0.048 (p=0.755) |
-| **Improvement** | Δr=+0.250 | Δr=+0.215 |
-| **Significance** | Not significant | Not significant |
-| **R² (variance explained)** | 2.5% | 0.2% |
+| Metric                      | V1 (Hypothetical CTCF) | V2 (Literature CTCF) |
+| --------------------------- | ---------------------- | -------------------- |
+| **Raw correlation**         | r=-0.092 (p=0.547)     | r=-0.167 (p=0.274)   |
+| **KR normalized**           | **r=+0.158** (p=0.301) | r=+0.048 (p=0.755)   |
+| **Improvement**             | Δr=+0.250              | Δr=+0.215            |
+| **Significance**            | Not significant        | Not significant      |
+| **R² (variance explained)** | 2.5%                   | 0.2%                 |
 
 ### Interpretation
 
 **✅ Positive Findings:**
+
 1. KR normalization changed correlation from negative to positive (sign reversal)
 2. Model is directionally correct (r>0)
 3. Methodology established and reproducible
 4. Hypothetical CTCF performs comparably to literature sites
 
 **❌ Limitations Revealed:**
+
 1. Low correlation magnitude (r=0.16 << target r≥0.7)
 2. Not statistically significant (p=0.301 > α=0.05)
 3. Matrix sparsity mismatch (22% vs 100%)
@@ -94,6 +96,7 @@ Create a separate preprint titled:
 **"ARCHCODE Pilot Validation Against Experimental Hi-C: Establishing Methodology and Revealing Model Limitations"**
 
 **Structure:**
+
 1. Abstract (~250 words) — Summarize r=0.16 finding, methodology, Phase C roadmap
 2. Introduction (~800 words) — Why physics-based models matter, need for validation
 3. Results (`VALIDATION_RESULTS.md`) — Full results as written
@@ -103,6 +106,7 @@ Create a separate preprint titled:
 7. Conclusion (~200 words) — Pilot study complete, Phase C proposed
 
 **Target journals:**
+
 - bioRxiv (preprint, immediate)
 - PLoS Computational Biology (after peer review)
 - Bioinformatics (methods-focused alternative)
@@ -119,18 +123,22 @@ If you want to keep the existing "Loop That Stayed" manuscript and ADD validatio
 
 ```markdown
 # Results (Existing)
+
 [Keep existing "Loop That Stayed" discovery results as aspirational/future work]
 
 ## Pilot Validation Against Experimental Hi-C (New Section)
+
 [Insert VALIDATION_RESULTS.md content here]
 ```
 
 **Update Discussion:**
+
 - Add section: "Validation Status: Pilot Results and Path Forward"
 - Insert key paragraphs from `VALIDATION_DISCUSSION.md`
 - Frame "Loop That Stayed" as hypothesis pending experimental validation
 
 **Update Methods:**
+
 - Append `VALIDATION_METHODS.md` to existing Methods
 
 **Note:** This creates a hybrid manuscript (hypothetical discovery + pilot validation). May confuse reviewers. **Option 1 (standalone) is cleaner.**
@@ -154,6 +162,7 @@ Publish TWO preprints:
 ### Week 1 (Now - Feb 12, 2026)
 
 **Day 1-2:** Assemble manuscript
+
 - [ ] Write 250-word Abstract for validation paper
 - [ ] Write 800-word Introduction (why validation matters)
 - [ ] Copy VALIDATION_RESULTS.md → Results section
@@ -163,18 +172,21 @@ Publish TWO preprints:
 - [ ] Add figure captions (from figure legends in VALIDATION_RESULTS.md)
 
 **Day 3:** Format for bioRxiv
+
 - [ ] Convert Markdown to LaTeX or Word (bioRxiv accepts both)
 - [ ] Format references (use existing References section from FULL_MANUSCRIPT.md)
 - [ ] Add author information, affiliations, correspondence
 - [ ] Create graphical abstract (optional, use Figure 1A-C composite)
 
 **Day 4:** Internal review
+
 - [ ] Proofread for typos, grammar
 - [ ] Check figure numbering consistency
 - [ ] Verify all data files referenced are available
 - [ ] Run plagiarism check (Turnitin or iThenticate)
 
 **Day 5:** Submit to bioRxiv
+
 - [ ] Create bioRxiv account (if needed)
 - [ ] Upload PDF + figures
 - [ ] Select categories: Bioinformatics, Genomics, Systems Biology
@@ -184,10 +196,12 @@ Publish TWO preprints:
 ### Week 2-4 (Feb 13 - Mar 5, 2026)
 
 **Community feedback:**
+
 - Monitor bioRxiv comments, Twitter responses
 - Address any immediate corrections (bioRxiv allows revisions)
 
 **Parallel work:**
+
 - Begin Phase C (parameter optimization, larger loci)
 - If Phase C achieves r≥0.4 quickly, submit revision to bioRxiv
 
@@ -200,6 +214,7 @@ Publish TWO preprints:
 **Objective:** Achieve r≥0.4 on HBB locus
 
 **Tasks:**
+
 1. Parameter grid search (cohesin number, velocity, k_base)
 2. Baseline polymer model (self-avoiding walk)
 3. ICE normalization (alternative to KR)
@@ -216,6 +231,7 @@ Publish TWO preprints:
 **Objective:** Multi-locus validation (r≥0.5 average)
 
 **Tasks:**
+
 1. Sox2 locus (chr3:181.4-181.6 Mb, 200 kb)
 2. Pcdh locus (chr5:140.6-141.1 Mb, 500 kb)
 3. Add compartmentalization (A/B eigenvector)
@@ -233,6 +249,7 @@ Publish TWO preprints:
 **Objective:** Genome-wide validation + hybrid ML model
 
 **Tasks:**
+
 1. Genome-wide prediction (~20,000 genes)
 2. Benchmark vs Akita/Orca/ChromoGen
 3. Physics + ML hybrid (residual network)
@@ -257,6 +274,7 @@ Publish TWO preprints:
 7. ✅ **Reproducible:** Seed=42, all scripts public, data available
 
 **Quote from CLAUDE.md:**
+
 > "Falsification-First Protocol: Report negative results honestly. No post-hoc parameter tuning to 'improve' correlation."
 
 **Compliance score: 100%**
@@ -268,6 +286,7 @@ Publish TWO preprints:
 ### Pipeline Robustness
 
 Successfully debugged and resolved:
+
 1. hic2cool syntax error (missing "convert" mode)
 2. Chromosome naming mismatch ("chr11" → "11")
 3. KR balancing API change (removed "force" parameter)
@@ -276,6 +295,7 @@ Successfully debugged and resolved:
 ### Code Quality
 
 All scripts are:
+
 - ✅ Well-documented with docstrings
 - ✅ Error-handling for edge cases
 - ✅ Reproducible (fixed seeds)
@@ -285,6 +305,7 @@ All scripts are:
 ### Data Provenance
 
 Every file includes metadata:
+
 - Source file, extraction method, normalization applied
 - Date, software versions, parameters used
 - Enables complete reproducibility
@@ -296,6 +317,7 @@ Every file includes metadata:
 **Total:** 15 files created/modified
 
 ### Scripts (5)
+
 1. `scripts/extract_hic_hbb_via_cooler.py` — Hi-C extraction
 2. `scripts/get_hbb_ctcf_literature.py` — CTCF curation
 3. `scripts/simulate_hbb_for_comparison.ts` — V1 simulation
@@ -304,6 +326,7 @@ Every file includes metadata:
 6. `scripts/create_validation_figures.py` — Figure generation
 
 ### Data (10)
+
 1. `data/hudep2_wt_hic_hbb_locus.npy` — Experimental raw
 2. `data/hudep2_wt_hic_hbb_locus_normalized.npy` — Experimental normalized
 3. `data/hudep2_wt_hic_metadata.json` — Metadata
@@ -318,17 +341,20 @@ Every file includes metadata:
 12. `data/normalization_comparison_summary.json` — Comparison
 
 ### Figures (4 × 2 formats = 8)
+
 1. `figures/figure1_hic_validation_v1.png/pdf`
 2. `figures/figure2_v1_vs_v2_comparison.png/pdf`
 3. `figures/figure3_normalization_effect.png/pdf`
 4. `figures/figure4_contact_distributions.png/pdf`
 
 ### Manuscript (3)
+
 1. `manuscript/VALIDATION_RESULTS.md` — Results section
 2. `manuscript/VALIDATION_DISCUSSION.md` — Discussion section
 3. `manuscript/VALIDATION_METHODS.md` — Methods section
 
 ### Summary (1)
+
 4. `manuscript/PHASE_A_COMPLETE.md` — This document
 
 ---
@@ -341,6 +367,7 @@ Every file includes metadata:
 **Effort:** ~8-12 hours writing/formatting
 
 **Steps:**
+
 1. Write 250-word Abstract
 2. Write 800-word Introduction
 3. Combine sections into single document
@@ -357,6 +384,7 @@ Every file includes metadata:
 **Effort:** ~40-80 hours coding + compute time
 
 **Steps:**
+
 1. Implement baseline polymer model
 2. Parameter grid search (1000 simulations)
 3. Validate on larger locus (200 kb)
@@ -394,6 +422,6 @@ Every file includes metadata:
 
 ---
 
-*Phase A Summary Document*
-*Prepared: 2026-02-05*
-*Sergey V. Boyko | sergeikuch80@gmail.com*
+_Phase A Summary Document_
+_Prepared: 2026-02-05_
+_Sergey V. Boyko | sergeikuch80@gmail.com_

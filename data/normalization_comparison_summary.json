@@ -34,7 +34,7 @@
       "pearson_r": 0.1576,
       "pearson_p": 0.3013,
       "spearman_rho": 0.1105,
-      "spearman_p": 0.4700,
+      "spearman_p": 0.47,
       "significance": "not significant",
       "delta_r_vs_raw": 0.2497
     },
@@ -66,7 +66,7 @@
       "ignore_diags": 2,
       "mad_max": 5,
       "min_nnz": 10,
-      "tol": 1e-05,
+      "tol": 1e-5,
       "max_iters": 200
     },
     "simulation_scaling": "MinMaxScaler to match experimental range",

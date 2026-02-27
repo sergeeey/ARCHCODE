@@ -24,3 +24,12 @@ To list tags: `git tag -l`. To create a tag on the current commit: `git tag post
 ## Project rules for AI (Cursor)
 
 See [.cursorrules](../.cursorrules) in the repository root for ARCHCODE-specific rules (constants, CTCF types, randomness, file size, validation wording). These rules are intended to keep the codebase consistent and scientifically correct when using AI assistants.
+
+## PR gate
+
+For critical changes, fill out `docs/PR_GATE.md` and attach evidence from:
+
+- `docs/VALIDATION.md`
+- `docs/INVARIANTS.md`
+- `docs/FAILURE_MODES.md`
+- `docs/READINESS.md`

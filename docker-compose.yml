@@ -37,7 +37,15 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./results:/app/results
-    command: ["npx", "tsx", "scripts/run-fountain-ensemble.ts", "--beta=5", "--runs=20", "--out=ensemble_myc_beta5.json"]
+    command:
+      [
+        "npx",
+        "tsx",
+        "scripts/run-fountain-ensemble.ts",
+        "--beta=5",
+        "--runs=20",
+        "--out=ensemble_myc_beta5.json",
+      ]
     profiles:
       - myc
 
@@ -48,7 +56,15 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./results:/app/results
-    command: ["npx", "tsx", "scripts/run-fountain-igh.ts", "--beta=5", "--runs=20", "--out=ensemble_igh_beta5.json"]
+    command:
+      [
+        "npx",
+        "tsx",
+        "scripts/run-fountain-igh.ts",
+        "--beta=5",
+        "--runs=20",
+        "--out=ensemble_igh_beta5.json",
+      ]
     profiles:
       - igh
 
@@ -59,7 +75,15 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./results:/app/results
-    command: ["npx", "tsx", "scripts/run-fountain-tcra-final.ts", "--beta=5", "--runs=20", "--out=tcra_final_validation.json"]
+    command:
+      [
+        "npx",
+        "tsx",
+        "scripts/run-fountain-tcra-final.ts",
+        "--beta=5",
+        "--runs=20",
+        "--out=tcra_final_validation.json",
+      ]
     profiles:
       - tcra
 
@@ -70,7 +94,15 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./results:/app/results
-    command: ["npx", "tsx", "scripts/run-fountain-sox2.ts", "--beta=5", "--runs=20", "--out=ensemble_sox2_beta5.json"]
+    command:
+      [
+        "npx",
+        "tsx",
+        "scripts/run-fountain-sox2.ts",
+        "--beta=5",
+        "--runs=20",
+        "--out=ensemble_sox2_beta5.json",
+      ]
     profiles:
       - sox2
 

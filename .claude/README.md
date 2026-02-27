@@ -24,11 +24,13 @@ This directory contains Claude Code configuration for the ARCHCODE project.
 ### Using Subagents
 
 **VUS Analyzer** — Analyze variant pathogenicity:
+
 ```
 > Use vus-analyzer to analyze VCV000000302
 ```
 
 The agent will:
+
 1. Extract variant info from HBB_Clinical_Atlas.csv
 2. Run ARCHCODE simulation (or use cached)
 3. Calculate SSIM
@@ -38,16 +40,19 @@ The agent will:
 ### Using Slash Commands
 
 **Compare predictions:**
+
 ```
 /compare-alphagenome hbb
 ```
 
 **Generate figure:**
+
 ```
 /render-figure VCV000000302
 ```
 
 **Run validation:**
+
 ```
 /validate-blind igh
 ```
@@ -65,6 +70,7 @@ Then all responses will follow scientific communication guidelines (precise term
 ### Permissions (settings.json)
 
 **Allowed:**
+
 - File operations (Edit, Write, Read)
 - Search (Glob, Grep)
 - Git operations
@@ -72,16 +78,19 @@ Then all responses will follow scientific communication guidelines (precise term
 - Python scripts
 
 **Denied:**
+
 - Destructive commands (rm -rf, sudo)
 - Dangerous chmod operations
 
 ### Hooks (settings.json)
 
 **PostToolUse hooks:**
+
 - After **Edit**: Auto-run `npm run typecheck`
 - After **Write/Edit**: Auto-format with Prettier
 
 **Stop hooks:**
+
 - Remind to update CLAUDE.md if significant changes
 
 ## Adding New Components
@@ -89,6 +98,7 @@ Then all responses will follow scientific communication guidelines (precise term
 ### New Subagent
 
 Create `.claude/agents/my-agent.md`:
+
 ```markdown
 ---
 name: my-agent
@@ -105,6 +115,7 @@ Your detailed prompt here...
 ### New Slash Command
 
 Create `.claude/commands/my-command.md`:
+
 ```markdown
 ---
 allowed-tools: Bash, Read, Write
@@ -115,6 +126,7 @@ description: What this command does
 # Command Description
 
 Steps:
+
 1. Do this
 2. Do that
 3. Return result
@@ -123,6 +135,7 @@ Steps:
 ### New Output Style
 
 Create `.claude/output-styles/my-style.md`:
+
 ```markdown
 ---
 name: my-style
@@ -140,21 +153,25 @@ description: When to use this style
 ### Typical Session
 
 1. **Start with scientific style:**
+
    ```
    /output-style scientific
    ```
 
 2. **Analyze variants:**
+
    ```
    > Use vus-analyzer for batch analysis of variants in results/mysterious_vus.csv
    ```
 
 3. **Compare methods:**
+
    ```
    /compare-alphagenome hbb
    ```
 
 4. **Generate figures:**
+
    ```
    /render-figure VCV000000302
    ```
@@ -175,14 +192,17 @@ For analyzing multiple variants, the VUS analyzer agent will automatically use e
 ## Troubleshooting
 
 **Hooks failing:**
+
 - Check that npm/prettier are in PATH
 - Verify timeout is sufficient (15s for typecheck)
 
 **Subagent not auto-invoked:**
+
 - Use explicit invocation: `Use vus-analyzer agent to...`
 - Check that description keywords match your prompt
 
 **Slash command not found:**
+
 - Run `/help` to list available commands
 - Check file exists in `.claude/commands/`
 
@@ -195,4 +215,4 @@ For analyzing multiple variants, the VUS analyzer agent will automatically use e
 
 ---
 
-*Created: 2026-02-03 | ARCHCODE v1.1.0*
+_Created: 2026-02-03 | ARCHCODE v1.1.0_

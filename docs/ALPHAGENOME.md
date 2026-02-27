@@ -16,14 +16,14 @@ ARCHCODE поддерживает опциональную интеграцию 
 
 ## 📋 Что такое AlphaGenome
 
-| Характеристика | Описание |
-|----------------|----------|
-| **Разработчик** | Google DeepMind |
-| **Тип** | Deep Learning (Transformer-based) |
-| **Input** | До 1 Мб последовательности ДНК |
-| **Output** | Contact maps, chromatin accessibility, CTCF binding, gene expression |
-| **API** | REST API с rate limiting |
-| **Стоимость** | Бесплатно для non-commercial research |
+| Характеристика  | Описание                                                             |
+| --------------- | -------------------------------------------------------------------- |
+| **Разработчик** | Google DeepMind                                                      |
+| **Тип**         | Deep Learning (Transformer-based)                                    |
+| **Input**       | До 1 Мб последовательности ДНК                                       |
+| **Output**      | Contact maps, chromatin accessibility, CTCF binding, gene expression |
+| **API**         | REST API с rate limiting                                             |
+| **Стоимость**   | Бесплатно для non-commercial research                                |
 
 ---
 
@@ -42,6 +42,7 @@ ARCHCODE поддерживает опциональную интеграцию 
 ### 2. Настройка в приложении
 
 #### Через Web UI:
+
 ```
 1. Открой http://localhost:5173
 2. В правой панели найди "🔑 AlphaGenome API Key"
@@ -50,6 +51,7 @@ ARCHCODE поддерживает опциональную интеграцию 
 ```
 
 #### Через CLI:
+
 ```bash
 # Установи переменную окружения
 export ALPHAGENOME_API_KEY="your-api-key-here"
@@ -92,11 +94,11 @@ node scripts/validate-alphagenome.js -c data/input/ctcf/my_ctcf.bed
 
 ### Pearson Correlation (r)
 
-| Значение | Интерпретация |
-|----------|---------------|
-| r > 0.8 | ✅ **Отлично** — симуляция точно воспроизводит предсказания ИИ |
-| 0.6 < r < 0.8 | ⚠️ **Хорошо** — разумное согласие, есть отклонения |
-| r < 0.6 | ❌ **Плохо** — модель требует настройки |
+| Значение      | Интерпретация                                                  |
+| ------------- | -------------------------------------------------------------- |
+| r > 0.8       | ✅ **Отлично** — симуляция точно воспроизводит предсказания ИИ |
+| 0.6 < r < 0.8 | ⚠️ **Хорошо** — разумное согласие, есть отклонения             |
+| r < 0.6       | ❌ **Плохо** — модель требует настройки                        |
 
 ### Что делать при плохой корреляции?
 
@@ -109,13 +111,13 @@ node scripts/validate-alphagenome.js -c data/input/ctcf/my_ctcf.bed
 
 ## 🔍 Сравнение ARCHCODE vs AlphaGenome
 
-| Аспект | ARCHCODE | AlphaGenome |
-|--------|----------|-------------|
-| **Подход** | Физическая симуляция | Машинное обучение |
+| Аспект             | ARCHCODE                       | AlphaGenome                   |
+| ------------------ | ------------------------------ | ----------------------------- |
+| **Подход**         | Физическая симуляция           | Машинное обучение             |
 | **Explainability** | ✅ White box (понятная физика) | ❌ Black box (attention maps) |
-| **Скорость** | ⚡ Миллисекунды | 🌐 Секунды (API latency) |
-| **Гибкость** | ✅ Меняй параметры | ❌ Фиксированная модель |
-| **Ground Truth** | Модель | Экспериментальные данные |
+| **Скорость**       | ⚡ Миллисекунды                | 🌐 Секунды (API latency)      |
+| **Гибкость**       | ✅ Меняй параметры             | ❌ Фиксированная модель       |
+| **Ground Truth**   | Модель                         | Экспериментальные данные      |
 
 **Синергия:** Используй AlphaGenome как "ground truth" для калибровки ARCHCODE!
 
@@ -124,11 +126,12 @@ node scripts/validate-alphagenome.js -c data/input/ctcf/my_ctcf.bed
 ## 🧪 Примеры использования
 
 ### Пример 1: Валидация HBB локуса
+
 ```typescript
 const interval = {
-    chromosome: 'chr11',
-    start: 5240000,  // HBB gene
-    end: 5340000     // 100kb window
+  chromosome: "chr11",
+  start: 5240000, // HBB gene
+  end: 5340000, // 100kb window
 };
 
 // Твоя симуляция
@@ -142,6 +145,7 @@ console.log(`Pearson r: ${validation.pearsonCorrelation}`);
 ```
 
 ### Пример 2: Сравнение wild type vs deletion
+
 ```typescript
 // WT
 const wtMatrix = simulate(interval, wtCTCF);

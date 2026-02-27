@@ -1,5 +1,12 @@
 {
-  "timestamp": "2026-02-01T19:56:00.805Z",
+  "timestamp": "2026-02-27T18:12:43.264Z",
+  "provenance": {
+    "mode": "strict-real",
+    "data_source": "Rao et al. 2014 HiCCUPS loop calls",
+    "dataset_id": "rao2014_gm12878_loops",
+    "fallback_used": false,
+    "api_used": "downloadLoopList/validateLoops"
+  },
   "simulation": {
     "loops": 3,
     "matrixSize": 100

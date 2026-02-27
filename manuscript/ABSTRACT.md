@@ -8,7 +8,7 @@
 
 **Background:** Variants of Uncertain Significance (VUS) in disease-critical genes pose significant challenges for clinical interpretation. While machine learning approaches like AlphaGenome provide sequence-based pathogenicity predictions, they may systematically miss variants operating through 3D chromatin architecture disruption. Understanding the interplay between chromatin topology and variant pathogenicity is essential for comprehensive variant interpretation.
 
-**Methods:** We developed ARCHCODE, a physics-based 3D loop extrusion simulator implementing Kramer kinetics for cohesin dynamics (α=0.92, γ=0.80, fitted to FRAP data, R²=0.89). We performed high-throughput Monte Carlo simulation of 366 pathogenic β-globin (*HBB*) variants from ClinVar and calculated Structural Similarity Index (SSIM) scores comparing wild-type and mutant 3D chromatin architectures. We compared ARCHCODE structural predictions with AlphaGenome expression-based predictions to identify systematic discordance patterns.
+**Methods:** We developed ARCHCODE, a physics-based 3D loop extrusion simulator implementing Kramer kinetics for cohesin dynamics (α=0.92, γ=0.80, fitted to FRAP data, R²=0.89). We performed high-throughput Monte Carlo simulation of 366 pathogenic β-globin (_HBB_) variants from ClinVar and calculated Structural Similarity Index (SSIM) scores comparing wild-type and mutant 3D chromatin architectures. We compared ARCHCODE structural predictions with AlphaGenome expression-based predictions to identify systematic discordance patterns.
 
 **Results:** Of 366 clinically classified pathogenic variants, we identified 3 splice_region variants (0.82% of cohort) exhibiting a novel "Loop That Stayed" pattern: preserved chromatin loop architecture (SSIM 0.545-0.551, SD=0.0022, 0.4% coefficient of variation) coupled with predicted splice disruption. All three variants were classified as LIKELY_PATHOGENIC by ARCHCODE but missed by AlphaGenome (scores 0.454-0.456, all VUS). This extreme SSIM clustering (5.3 milli-SSIM spread) defines a "Goldilocks zone" (SSIM 0.50-0.60) where stable chromatin loops paradoxically create pathogenicity by trapping splice defects within regulatory confinement zones, preventing access to compensatory trans-acting splice factors. Mechanism analysis revealed:
 
@@ -44,6 +44,6 @@ Machine learning models for variant pathogenicity prediction are increasingly de
 
 ---
 
-*Manuscript prepared for bioRxiv preprint submission*
-*Date: 2026-02-04*
-*Correspondence: sergeikuch80@gmail.com*
+_Manuscript prepared for bioRxiv preprint submission_
+_Date: 2026-02-04_
+_Correspondence: sergeikuch80@gmail.com_

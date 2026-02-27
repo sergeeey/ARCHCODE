@@ -15,15 +15,19 @@ Generate a 3-panel publication-quality figure (WT | Mutant | Differential) for t
 ## Steps
 
 1. **Extract variant information**
+
    ```bash
    grep "$ARGUMENTS" results/HBB_Clinical_Atlas.csv
    ```
+
    Or from KEY_FINDINGS.json:
+
    ```bash
    cat results/KEY_FINDINGS.json | jq '.loopThatStayed[] | select(.clinvar_id == "$ARGUMENTS")'
    ```
 
 2. **Check if render_matrix.py needs updates**
+
    ```python
    # scripts/render_matrix.py
    VARIANT_VCV302 = {
@@ -36,6 +40,7 @@ Generate a 3-panel publication-quality figure (WT | Mutant | Differential) for t
    ```
 
 3. **Run visualization**
+
    ```bash
    python scripts/render_matrix.py
    ```
@@ -52,6 +57,7 @@ Generate a 3-panel publication-quality figure (WT | Mutant | Differential) for t
 ## Styling
 
 The figure uses ARCHCODE brand colors:
+
 - Dark background: `#0F172A`
 - Orange accent: `#FF6B35`
 - Text color: `#E2E8F0`

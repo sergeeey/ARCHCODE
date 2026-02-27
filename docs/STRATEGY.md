@@ -27,4 +27,4 @@ This document records high-level product and focus decisions for ARCHCODE. It do
 
 ---
 
-*Last updated: 2026-02-01. For detailed roadmap and technical limits, see KNOWN_ISSUES.md and AUDIT_RESPONSE.md.*
+_Last updated: 2026-02-01. For detailed roadmap and technical limits, see KNOWN_ISSUES.md and AUDIT_RESPONSE.md._

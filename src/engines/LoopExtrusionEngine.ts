@@ -83,6 +83,36 @@ export class LoopExtrusionEngine {
         }
     }
 
+
+    private isFiniteNumber(value: number): boolean {
+        return Number.isFinite(value);
+    }
+
+    private isValidCohesinState(cohesin: CohesinComplex): boolean {
+        if (!this.isFiniteNumber(cohesin.leftLeg) || !this.isFiniteNumber(cohesin.rightLeg)) {
+            console.warn(`[Step ${this.stepCount}] Invalid cohesin state: non-finite legs`, cohesin);
+            return false;
+        }
+        if (cohesin.leftLeg >= cohesin.rightLeg) {
+            console.warn(`[Step ${this.stepCount}] Invalid cohesin state: leftLeg >= rightLeg`, cohesin);
+            return false;
+        }
+        return true;
+    }
+
+    private isValidLoopAnchors(left: number, right: number): boolean {
+        if (!this.isFiniteNumber(left) || !this.isFiniteNumber(right)) {
+            return false;
+        }
+        if (left < 0 || right > this.genomeLength) {
+            return false;
+        }
+        if (left >= right) {
+            return false;
+        }
+        return true;
+    }
+
     /**
      * Check if cohesin legs hit CTCF barriers
      * Returns true if both legs hit convergent barriers (loop formed)
@@ -124,9 +154,16 @@ export class LoopExtrusionEngine {
                 cohesin.active = false;
                 cohesin.loopFormed = true;
 
+                const leftPos = leftBarrier.position;
+                const rightPos = rightBarrier.position;
+                if (!this.isValidLoopAnchors(leftPos, rightPos)) {
+                    console.warn(`[Step ${this.stepCount}] Invalid loop anchors: ${leftPos}-${rightPos}`);
+                    return false;
+                }
+
                 const loop = createLoop(
-                    leftBarrier.position,
-                    rightBarrier.position,
+                    leftPos,
+                    rightPos,
                     Math.min(leftBarrier.strength, rightBarrier.strength) * blockingEfficiency
                 );
                 this.loops.push(loop);
@@ -201,6 +238,10 @@ export class LoopExtrusionEngine {
             if (!cohesin.active) continue;
 
             stepCohesin(cohesin);
+            if (!this.isValidCohesinState(cohesin)) {
+                cohesin.active = false;
+                continue;
+            }
             this.checkBarriers(cohesin);
             this.checkBoundaries(cohesin);
         }

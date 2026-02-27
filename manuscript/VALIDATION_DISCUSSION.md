@@ -15,11 +15,13 @@ We identify four categories of model limitations revealed by this validation:
 ### 1. Biological Mechanisms Missing from ARCHCODE
 
 **Loop extrusion ≠ complete chromatin architecture.** Our model implements:
+
 - ✅ Cohesin-mediated loop extrusion
 - ✅ CTCF barrier dynamics
 - ✅ MED1-driven loading (FountainLoader)
 
 But experimental Hi-C captures additional phenomena:
+
 - ❌ **A/B compartmentalization:** Phase separation into active/inactive chromatin (Lieberman-Aiden et al. 2009)
 - ❌ **Enhancer-promoter loops:** Non-CTCF-mediated interactions (e.g., YY1, LDB1)
 - ❌ **Chromatin compaction:** Polymer self-avoidance and nucleosome-nucleosome interactions
@@ -35,11 +37,13 @@ But experimental Hi-C captures additional phenomena:
 ### 2. Parameter Uncertainty and Lack of Fitting
 
 ARCHCODE uses **literature-derived parameters**:
+
 - α=0.92, γ=0.80 (from Sabaté et al. 2024, FRAP data)
 - k_base=0.002 (estimated unloading rate)
 - 20 cohesins (calibrated to match TAD intensity in GM12878)
 
 These parameters were **not fitted to the HBB locus**. Cell-type-specific differences (HUDEP-2 erythroid cells vs GM12878 lymphoblasts) may alter:
+
 - MED1 occupancy patterns (erythroid-specific enhancers)
 - CTCF site occupancy (differential binding in different cell types)
 - Cohesin abundance (developmental stage-dependent)
@@ -55,6 +59,7 @@ These parameters were **not fitted to the HBB locus**. Cell-type-specific differ
 ### 3. Technical Limitations: Resolution and Sample Size
 
 **Small genomic region limits statistical power:**
+
 - 50 kb locus → 10×10 matrix → n=45 pairs (upper triangle)
 - Required n≈300 for 80% power to detect r=0.16 at α=0.05
 - Current power: ~30% (high Type II error rate)
@@ -72,11 +77,13 @@ These parameters were **not fitted to the HBB locus**. Cell-type-specific differ
 **KR normalization improved correlation substantially** (Δr=+0.25), demonstrating the importance of bias correction. However, remaining discrepancies suggest:
 
 **Incomplete normalization:**
+
 - KR balancing assumes equal visibility (sequencing depth) across bins
 - Capture Hi-C (GSM4873116) enriches target regions, violating this assumption
 - Solution: Use ICE (Iterative Correction and Eigendecomposition) normalization, which is more robust to capture bias
 
 **Simulation scaling artifacts:**
+
 - We scaled simulation to match experimental range (MinMaxScaler)
 - This assumes linear relationship between simulation output and Hi-C counts
 - Nonlinear effects (e.g., saturation at high contact frequency) may distort scaling
@@ -93,6 +100,7 @@ Despite low correlation magnitude, several methodological successes emerged:
 ### 1. Pipeline Functionality
 
 **End-to-end workflow operational:**
+
 - ✅ Hi-C extraction from .hic files (hic2cool + cooler)
 - ✅ KR normalization applied successfully (converged)
 - ✅ ARCHCODE simulation reproducible (seed=42)
@@ -104,6 +112,7 @@ Despite low correlation magnitude, several methodological successes emerged:
 ### 2. Directionality Correctness
 
 **Positive correlation (r>0), not random:**
+
 - Null hypothesis (r=0) rejected directionally (though not statistically)
 - Model captures **some** Hi-C signal, suggesting mechanism is partially correct
 - Sign reversal after normalization (r=-0.09 → r=+0.16) confirms scale mismatch was primary issue
@@ -113,6 +122,7 @@ Despite low correlation magnitude, several methodological successes emerged:
 ### 3. CTCF Robustness
 
 **V1 (hypothetical) ≈ V2 (literature):**
+
 - Both produce r≈0.05-0.16 (within margin of error)
 - Suggests CTCF site positions are **less critical** than expected
 - Implies other parameters (cohesin number, MED1 occupancy) may dominate
@@ -128,17 +138,20 @@ Despite low correlation magnitude, several methodological successes emerged:
 ### Advantages of ML Approaches
 
 **1. Implicit mechanism learning:**
+
 - Akita CNN learns spatial patterns (stripes, dots, domains) directly from data
 - Orca GNN learns graph relationships (node = bin, edge = contact)
 - ChromoGen diffusion model learns data distribution without mechanistic priors
-- **They don't need to know *why* TADs form, only *that* they exist in training data**
+- **They don't need to know _why_ TADs form, only _that_ they exist in training data**
 
 **2. Training on thousands of Hi-C datasets:**
+
 - Akita: 5,000+ Hi-C experiments across cell types, species, conditions
 - Orca: 1,200+ experiments with metadata-guided predictions
 - **Each training example teaches generalizable patterns**
 
 **3. Nonlinear feature extraction:**
+
 - Deep networks capture complex dependencies (e.g., CTCF + compartment + loop interactions)
 - Physics models use linear superposition (loops + polymer), missing higher-order effects
 
@@ -147,21 +160,25 @@ Despite low correlation magnitude, several methodological successes emerged:
 Despite lower accuracy, physics models offer unique value:
 
 **1. Mechanistic interpretability:**
+
 - ARCHCODE explains **why** contact forms (cohesin extrusion until CTCF block)
 - ML models provide **black-box predictions** without causal mechanism
-- **Clinical value:** Understanding *why* a variant disrupts loops enables therapeutic intervention
+- **Clinical value:** Understanding _why_ a variant disrupts loops enables therapeutic intervention
 
 **2. Counterfactual reasoning:**
+
 - ARCHCODE can simulate "what if CTCF site is deleted?" without retraining
 - ML models require retraining or transfer learning for novel scenarios
 - **Variant interpretation:** Predicting mutant Hi-C from WT sequence is a counterfactual
 
 **3. Data efficiency:**
+
 - ARCHCODE requires **zero Hi-C training data** (physics principles only)
 - ML models require **thousands of experiments** (expensive, time-consuming)
 - **Emerging applications:** New cell types, rare conditions, synthetic genomes lack Hi-C data
 
 **4. Generalization to unseen conditions:**
+
 - Physics principles (cohesin kinetics, CTCF blocking) are universal
 - ML models may fail on out-of-distribution data (different species, extreme mutations)
 - **Future-proofing:** Physics models remain valid as biology advances
@@ -173,20 +190,24 @@ Despite lower accuracy, physics models offer unique value:
 The optimal path forward may combine both paradigms:
 
 **Proposed architecture:**
+
 1. **Physics simulator** (ARCHCODE) generates mechanistic priors (expected loop positions)
 2. **ML residual model** learns to correct physics predictions (add missing mechanisms)
 3. **Joint optimization** fits physics parameters and ML weights simultaneously
 
 **Precedent:**
+
 - AlphaFold2 uses physics-based geometric constraints + deep learning refinement
 - Enformer uses sequence convolution + transformer (combines local + global structure)
 
 **Expected benefit:**
+
 - Physics provides **strong inductive bias** (fewer training samples needed)
 - ML captures **residual complexity** physics can't model
 - Hybrid model inherits interpretability from physics + accuracy from ML
 
 **Implementation (Phase C):**
+
 - Train residual neural network: `NN(ARCHCODE_output) → Hi-C_true - ARCHCODE_output`
 - Total prediction: `Hi-C_pred = ARCHCODE_output + NN(ARCHCODE_output)`
 - Use physics parameters as NN inputs (α, γ, k_base) for gradient-based optimization
@@ -198,12 +219,14 @@ The optimal path forward may combine both paradigms:
 We pre-specify conditions under which the loop extrusion model should be rejected:
 
 **Kill-criteria:**
+
 1. **r < 0 after parameter optimization** on ≥3 loci (implies model is anti-correlated with reality)
 2. **Random CTCF sites outperform literature sites** consistently (implies CTCF is irrelevant)
 3. **Polymer-only model (no loop extrusion) achieves higher r** (implies loops are noise, not signal)
 4. **All variance explained by diagonal + distance decay** (implies no off-diagonal structure)
 
 **None of these conditions were met in pilot study:**
+
 - ✅ r > 0 (directionally correct)
 - ✅ Literature CTCF comparable to hypothetical (not worse)
 - ✅ Loop extrusion adds structure beyond diagonal
@@ -220,6 +243,7 @@ We pre-specify conditions under which the loop extrusion model should be rejecte
 **Objective:** Achieve r≥0.4 on HBB locus through parameter optimization.
 
 **Tasks:**
+
 1. **Grid search:** Cohesin number (10-50), velocity (500-2000 bp/s), k_base (0.001-0.005)
    - Expected: 1000 simulations × 8 sec = 2.2 hours compute
 2. **Baseline polymer:** Implement self-avoiding walk (Fudenberg 2016 framework)
@@ -238,6 +262,7 @@ We pre-specify conditions under which the loop extrusion model should be rejecte
 **Objective:** Multi-locus validation (HBB, Sox2, Pcdh) with r≥0.5 average.
 
 **Tasks:**
+
 1. **Sox2 validation:** chr3:181.4-181.6 Mb (200 kb, known enhancer-promoter loops)
 2. **Pcdh validation:** chr5:140.6-141.1 Mb (500 kb, complex clustered gene regulation)
 3. **Compartmentalization:** Add A/B compartment eigenvector to model
@@ -258,6 +283,7 @@ We pre-specify conditions under which the loop extrusion model should be rejecte
 **Objective:** Genome-wide validation + benchmarking vs Akita/Orca.
 
 **Tasks:**
+
 1. **Genome-wide prediction:** All protein-coding gene loci (~20,000 genes)
    - Compute: 20,000 loci × 8 sec = 44 hours (parallelizable)
 2. **Benchmarking:** Head-to-head comparison with Akita, Orca, ChromoGen on same test set
@@ -281,6 +307,7 @@ We acknowledge specific limitations that constrain interpretation:
 ### 1. Single Locus
 
 **Issue:** HBB may not generalize to other genomic contexts.
+
 - HBB has strong LCR (Locus Control Region) with well-characterized loops
 - Other genes may have weaker or more complex regulatory architectures
 - **Mitigation:** Multi-locus validation (Phase C) required before claiming generalizability
@@ -288,6 +315,7 @@ We acknowledge specific limitations that constrain interpretation:
 ### 2. Single Cell Type
 
 **Issue:** HUDEP-2 erythroid cells vs GM12878 lymphoblasts (CTCF data source mismatch).
+
 - Erythroid cells have active β-globin expression
 - GM12878 cells silence β-globin cluster
 - MED1/CTCF occupancy may differ dramatically
@@ -296,6 +324,7 @@ We acknowledge specific limitations that constrain interpretation:
 ### 3. No Experimental Validation of Predictions
 
 **Issue:** ARCHCODE predicts loop positions, but we haven't validated these experimentally.
+
 - Predicted loops at positions X, Y, Z → do they exist in reality?
 - Capture Hi-C may miss weak loops or create false positives
 - **Mitigation:** Orthogonal validation (ChIA-PET, HiChIP) or direct FRAP on predicted loops
@@ -303,6 +332,7 @@ We acknowledge specific limitations that constrain interpretation:
 ### 4. Parameter Space Not Exhaustively Explored
 
 **Issue:** Grid search (Phase C) may reveal substantially better parameters.
+
 - Current α=0.92, γ=0.80 may be sub-optimal for HBB locus
 - Local minima in parameter space not ruled out
 - **Mitigation:** Bayesian optimization + multi-start to avoid local optima
@@ -310,6 +340,7 @@ We acknowledge specific limitations that constrain interpretation:
 ### 5. No Comparison to Simpler Baselines
 
 **Issue:** We didn't test whether a **distance-decay-only model** explains Hi-C equally well.
+
 - Hi-C contact frequency ~ 1/distance^α (power law)
 - Simple baseline may achieve similar r without loop extrusion
 - **Mitigation:** Implement baseline models (distance decay, random polymer) for comparison
@@ -321,6 +352,7 @@ We acknowledge specific limitations that constrain interpretation:
 This pilot study exemplifies a critical challenge in AI-driven biology: **validation against ground truth is hard, expensive, and often humbling**.
 
 **Lessons for the field:**
+
 1. **Phantom accuracy is pervasive:** Models optimized on synthetic benchmarks fail on real data
 2. **Honest reporting is essential:** Publishing r=0.16 (not significant) is more valuable than hiding negative results
 3. **Methodology > correlation:** Establishing validation pipeline enables future progress
@@ -351,7 +383,7 @@ We acknowledge that the current model performance (r=0.16) is insufficient for c
 
 ---
 
-*Discussion section prepared for bioRxiv submission*
-*Word count: ~2,700 words*
-*Last updated: 2026-02-05*
-*Tone: Honest pilot study, establishes methodology, acknowledges limitations, provides clear roadmap*
+_Discussion section prepared for bioRxiv submission_
+_Word count: ~2,700 words_
+_Last updated: 2026-02-05_
+_Tone: Honest pilot study, establishes methodology, acknowledges limitations, provides clear roadmap_

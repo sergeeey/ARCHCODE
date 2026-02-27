@@ -13,6 +13,7 @@
 **Key Dataset:** **GSE160420** — "Chromosomal loop engineering in human beta globin locus (RNA-Seq)"
 
 **Perfect match criteria:**
+
 - ✅ Same cell type (HUDEP2 erythroid progenitors)
 - ✅ Same research group (Liang et al., presumably)
 - ✅ Same experimental series (SuperSeries GSE160425)
@@ -29,6 +30,7 @@
 **Full Title:** "Chromosomal loop engineering in human beta globin locus (RNA-Seq)"
 
 **SuperSeries:** GSE160425 — Contains 5 complementary datasets:
+
 - **GSE160420** — **RNA-seq** (this dataset) ⭐
 - GSE160421 — ATAC-seq (chromatin accessibility)
 - GSE160422 — Hi-C (chromatin architecture) — ✅ Already used
@@ -37,6 +39,7 @@
 
 **Biological Context:**
 CRISPR/Cas9-engineered HUDEP2 cells with 3'HS1 (hypersensitivity site 1) modifications:
+
 - **Deletion** (B6, D3 clones)
 - **Inversion** (A2, G3 clones)
 - **WT** (wild-type control)
@@ -44,6 +47,7 @@ CRISPR/Cas9-engineered HUDEP2 cells with 3'HS1 (hypersensitivity site 1) modific
 **Hypothesis tested:** 3'HS1 modifications alter beta-globin locus looping and gene expression.
 
 **Relevance to "Loop That Stayed":** If 3'HS1 disrupts loops, we can compare:
+
 - **WT:** Normal loops + normal splicing
 - **B6/D3:** Disrupted loops + potential aberrant splicing
 - **A2/G3:** Inverted loops + potential aberrant splicing
@@ -52,21 +56,23 @@ CRISPR/Cas9-engineered HUDEP2 cells with 3'HS1 (hypersensitivity site 1) modific
 
 ### RNA-seq Samples (6 total)
 
-| GEO Accession | Sample Name | Clone | Replicate | Cell Type | Expected Use |
-|---------------|-------------|-------|-----------|-----------|--------------|
-| **GSM4873102** | WT-HUDEP2 rep1 | WT | 1 | Wild-type | ✅ Baseline splicing |
-| **GSM4873103** | WT-HUDEP2 rep2 | WT | 2 | Wild-type | ✅ Baseline splicing |
-| **GSM4873104** | 3'HS1 deleted B6 | B6 | 1 | 3'HS1 deletion | ⚠️ Test aberrant splicing |
-| **GSM4873105** | 3'HS1 deleted D3 | D3 | 1 | 3'HS1 deletion | ⚠️ Test aberrant splicing |
-| **GSM4873106** | 3'HS1 inverted A2 | A2 | 1 | 3'HS1 inversion | ⚠️ Test aberrant splicing |
-| **GSM4873107** | 3'HS1 inverted G3 | G3 | 1 | 3'HS1 inversion | ⚠️ Test aberrant splicing |
+| GEO Accession  | Sample Name       | Clone | Replicate | Cell Type       | Expected Use              |
+| -------------- | ----------------- | ----- | --------- | --------------- | ------------------------- |
+| **GSM4873102** | WT-HUDEP2 rep1    | WT    | 1         | Wild-type       | ✅ Baseline splicing      |
+| **GSM4873103** | WT-HUDEP2 rep2    | WT    | 2         | Wild-type       | ✅ Baseline splicing      |
+| **GSM4873104** | 3'HS1 deleted B6  | B6    | 1         | 3'HS1 deletion  | ⚠️ Test aberrant splicing |
+| **GSM4873105** | 3'HS1 deleted D3  | D3    | 1         | 3'HS1 deletion  | ⚠️ Test aberrant splicing |
+| **GSM4873106** | 3'HS1 inverted A2 | A2    | 1         | 3'HS1 inversion | ⚠️ Test aberrant splicing |
+| **GSM4873107** | 3'HS1 inverted G3 | G3    | 1         | 3'HS1 inversion | ⚠️ Test aberrant splicing |
 
 **Matching to Hi-C samples:**
+
 - ✅ WT-HUDEP2 → GSM4873116 (capture Hi-C) — **matches RNA-seq GSM4873102/103**
 - ✅ B6 clone → GSM4873117 (capture Hi-C) — **matches RNA-seq GSM4873104**
 - ✅ A2 clone → GSM4873118 (capture Hi-C) — **matches RNA-seq GSM4873106**
 
 **Perfect alignment!** We can directly correlate:
+
 - Hi-C loop changes (from GSE160422)
 - RNA-seq splicing changes (from GSE160420)
 - Same cells, same experiment
@@ -80,6 +86,7 @@ CRISPR/Cas9-engineered HUDEP2 cells with 3'HS1 (hypersensitivity site 1) modific
 **Experiment Type:** Expression profiling by high throughput sequencing
 
 **Data Availability:**
+
 - **GEO Archive:** GSE160420_RAW.tar (1.3 MB) — contains processed CSV files
 - **SRA Archive:** SRP290306 — contains raw FASTQ files (size unknown, likely ~20-30 GB total)
 - **BioProject:** PRJNA673298
@@ -89,6 +96,7 @@ CRISPR/Cas9-engineered HUDEP2 cells with 3'HS1 (hypersensitivity site 1) modific
 **Read Type:** Not specified (likely paired-end 2×100 or 2×150 bp based on HiSeq 4000 standard)
 
 **Processed Files (from RAW.tar):**
+
 - Likely gene expression matrices (counts or TPM)
 - May include splice junction files (if published)
 - Check after download
@@ -110,16 +118,19 @@ CRISPR/Cas9-engineered HUDEP2 cells with 3'HS1 (hypersensitivity site 1) modific
 **Limitation:** May not include splice junction information (need to check after download)
 
 **Download link:**
+
 ```
 ftp://ftp.ncbi.nlm.nih.gov/geo/series/GSE160nnn/GSE160420/suppl/GSE160420_RAW.tar
 ```
 
 **Alternative HTTP:**
+
 ```
 https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE160420&format=file
 ```
 
 **Steps:**
+
 1. Download tar file (1.3 MB)
 2. Extract: `tar -xf GSE160420_RAW.tar`
 3. Inspect CSV files
@@ -143,12 +154,14 @@ https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE160420&format=file
 **SRA Accession:** SRP290306
 
 **Access:**
+
 1. **Via SRA Run Selector:**
    - URL: https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP290306
    - Select samples (all 6 or just WT)
    - Download metadata table (SRR accessions)
 
 2. **Via SRA Toolkit (command line):**
+
    ```bash
    # Install SRA Toolkit
    conda install -c bioconda sra-tools
@@ -178,6 +191,7 @@ https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE160420&format=file
 **Advantage:** Faster download, establishes baseline splicing before analyzing variants
 
 **Workflow:**
+
 1. Download WT RNA-seq (2 samples)
 2. Align to GRCh38 using STAR aligner
 3. Call splice junctions
@@ -196,6 +210,7 @@ https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE160420&format=file
 **Why:** STAR is gold standard for RNA-seq alignment and splice junction calling
 
 **Command:**
+
 ```bash
 STAR --runThreadN 12 \
      --genomeDir /path/to/GRCh38_index \
@@ -209,6 +224,7 @@ STAR --runThreadN 12 \
 ```
 
 **Output:**
+
 - Aligned BAM file
 - SJ.out.tab — splice junction file (canonical + novel)
 - ReadsPerGene.out.tab — gene expression counts
@@ -222,6 +238,7 @@ STAR --runThreadN 12 \
 **Tool:** samtools
 
 **Command:**
+
 ```bash
 samtools view -b Aligned.sortedByCoord.out.bam \
          chr11:5200000-5250000 > HBB_locus.bam
@@ -229,6 +246,7 @@ samtools index HBB_locus.bam
 ```
 
 **Visualization:**
+
 ```bash
 # Convert to coverage track
 bamCoverage -b HBB_locus.bam -o HBB_coverage.bw --binSize 10
@@ -241,9 +259,11 @@ bamCoverage -b HBB_locus.bam -o HBB_coverage.bw --binSize 10
 **Input:** SJ.out.tab (from STAR) or BAM file
 
 **Tool Option A:** STAR SJ.out.tab (already generated)
+
 - Columns: chr, start, end, strand, motif, annotated, unique_reads, multimap_reads, max_overhang
 
 **Tool Option B:** LeafCutter (if more sophisticated analysis needed)
+
 ```bash
 # Convert BAM to junction file
 bam2junc.sh HBB_locus.bam HBB_junctions.junc
@@ -253,6 +273,7 @@ python leafcutter_cluster.py -j HBB_junctions.junc -o HBB
 ```
 
 **Tool Option C:** rMATS (if comparing WT vs variants)
+
 ```bash
 rmats.py --b1 WT_bam_list.txt --b2 B6_bam_list.txt \
          --gtf gencode.v38.gtf --readLength 100 --nthread 12 \
@@ -264,6 +285,7 @@ rmats.py --b1 WT_bam_list.txt --b2 B6_bam_list.txt \
 ### Step 4: Quantify Aberrant Splicing at HBB
 
 **HBB Gene Structure (chr11:5,225,464-5,227,079, GRCh38):**
+
 - Exon 1: chr11:5,225,464-5,225,726 (263 bp)
 - Intron 1: chr11:5,225,727-5,226,404 (678 bp)
 - Exon 2: chr11:5,226,405-5,226,626 (222 bp)
@@ -271,16 +293,19 @@ rmats.py --b1 WT_bam_list.txt --b2 B6_bam_list.txt \
 - Exon 3: chr11:5,227,079-5,227,472 (394 bp)
 
 **Canonical Junctions:**
+
 1. Exon 1 → Exon 2: chr11:5,225,726 → chr11:5,226,405
 2. Exon 2 → Exon 3: chr11:5,226,626 → chr11:5,227,079
 
 **Aberrant Patterns to Check:**
+
 1. **Exon skipping:** Exon 1 → Exon 3 (skipping exon 2)
 2. **Intron retention:** Reads spanning intron without splicing
 3. **Cryptic splice sites:** Non-canonical donor/acceptor usage
 4. **Partial exon inclusion:** Internal exon boundaries
 
 **Quantification:**
+
 ```python
 # Pseudo-code
 canonical_reads = count_junction_reads(chr11:5225726-5226405) + \
@@ -292,10 +317,12 @@ aberrant_splicing_rate = aberrant_reads / (canonical_reads + aberrant_reads)
 ```
 
 **Expected from literature:**
+
 - WT HUDEP2: <5% aberrant splicing (normal baseline)
 - Thalassemia variants: 10-30% aberrant splicing (pathogenic)
 
 **"Loop That Stayed" hypothesis prediction:**
+
 - If hypothesis correct: WT should show 0-5% aberrant, variants 10-30%
 - If hypothesis incorrect: No significant difference between WT and variants
 
@@ -304,6 +331,7 @@ aberrant_splicing_rate = aberrant_reads / (canonical_reads + aberrant_reads)
 ### Step 5: Correlate with Hi-C Loops
 
 **Data integration:**
+
 1. **Hi-C loop positions** (from GSE160422):
    - WT: Loop at [X, Y] kb
    - B6: Loop disrupted
@@ -315,6 +343,7 @@ aberrant_splicing_rate = aberrant_reads / (canonical_reads + aberrant_reads)
    - A2: Aberrant % at HBB
 
 **Correlation analysis:**
+
 ```python
 import numpy as np
 from scipy.stats import pearsonr
@@ -328,6 +357,7 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
 ```
 
 **Hypothesis test:**
+
 - **H0:** Loop disruption does NOT correlate with aberrant splicing (r≈0)
 - **H1:** Loop disruption DOES correlate with aberrant splicing (r>0.5, p<0.05)
 
@@ -343,12 +373,15 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
 **Task:** Download processed files from GEO and inspect
 
 **Steps:**
+
 1. ✅ Download GSE160420_RAW.tar (1.3 MB)
+
    ```bash
    wget https://www.ncbi.nlm.nih.gov/geo/download/?acc=GSE160420&format=file -O GSE160420_RAW.tar
    ```
 
 2. ✅ Extract and inspect
+
    ```bash
    tar -xf GSE160420_RAW.tar
    ls -lh GSE160420_RAW/
@@ -356,10 +389,11 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
    ```
 
 3. ✅ Check if splice junction data included
-   - Look for files named *_junctions.txt or *_SJ.txt
+   - Look for files named _\_junctions.txt or _\_SJ.txt
    - Check column headers for "junction", "splice", "intron"
 
 **Decision point after inspection:**
+
 - **If splice junctions included:** Proceed directly to Step 4 (quantify aberrant splicing)
 - **If only gene counts:** Proceed to Option 2 (download FASTQ for full analysis)
 
@@ -372,6 +406,7 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
 **Task:** Download WT FASTQ files (pilot)
 
 **Steps:**
+
 1. Access SRA Run Selector: https://www.ncbi.nlm.nih.gov/Traces/study/?acc=SRP290306
 2. Identify SRR accessions for GSM4873102 + GSM4873103 (WT replicates)
 3. Download via SRA Toolkit or ENA:
@@ -396,6 +431,7 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
 **Task:** Download variant samples (B6, A2) and correlate with Hi-C
 
 **Steps:**
+
 1. Download B6 + A2 RNA-seq (GSM4873104, GSM4873106)
 2. Align and call splice junctions
 3. Compare WT vs B6 vs A2 aberrant splicing rates
@@ -416,6 +452,7 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
 **Correlation:** r>0.5, p<0.05 (loop disruption predicts aberrant splicing)
 
 **Manuscript Impact:**
+
 - ✅ "Loop That Stayed" hypothesis validated functionally
 - ✅ Add Figure 5: RNA-seq validation
 - ✅ Upgrade from "pilot study" to "validated mechanism"
@@ -432,6 +469,7 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
 **Correlation:** r<0.3, p>0.05 (no relationship)
 
 **Manuscript Impact:**
+
 - ⚠️ "Loop That Stayed" hypothesis NOT validated functionally
 - ⚠️ Document as limitation in Discussion
 - ⚠️ Maintain "pilot study" framing
@@ -450,6 +488,7 @@ print(f"Correlation: r={r:.3f}, p={p:.3f}")
 **Interpretation:** Loop deletion (B6) affects splicing, loop inversion (A2) does not
 
 **Manuscript Impact:**
+
 - ⚠️ Partial validation, needs more replicates
 - ⚠️ Suggest mechanism is deletion-specific, not general loop disruption
 - ✅ Interesting biology: different loop perturbations have different functional consequences
@@ -484,6 +523,7 @@ All requirements met. Real experimental data identified, no synthetic workaround
 **Next Action:** Download processed files today, inspect for splice junction data
 
 **Timeline:**
+
 - Immediate (today): Download and inspect processed files (1 hour)
 - Short-term (tomorrow): Download FASTQ if needed, align (1-2 days)
 - Medium-term (next week): Full analysis, correlation with Hi-C (3-5 days)
@@ -493,6 +533,7 @@ All requirements met. Real experimental data identified, no synthetic workaround
 ---
 
 **Sources:**
+
 - [Nature Communications: Reactivation of embryonic globin gene](https://www.nature.com/articles/s41467-021-24402-3)
 - [OmicsDI: GSE173419 Dataset](https://www.omicsdi.org/dataset/geo/GSE173419)
 - [NCBI GEO Database](https://www.ncbi.nlm.nih.gov/geo/)
@@ -503,7 +544,7 @@ All requirements met. Real experimental data identified, no synthetic workaround
 
 ---
 
-*GEO Search Report*
-*Created: 2026-02-05*
-*Search Complete: HUDEP2 RNA-seq data FOUND and accessible*
-*Ready for download and analysis*
+_GEO Search Report_
+_Created: 2026-02-05_
+_Search Complete: HUDEP2 RNA-seq data FOUND and accessible_
+_Ready for download and analysis_
