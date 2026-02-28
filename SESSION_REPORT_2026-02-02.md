@@ -1,4 +1,5 @@
 # ARCHCODE Session Report
+
 ## Дата: 2026-02-02 | Reviewer: Claude Code (Opus 4.5)
 
 ---
@@ -16,14 +17,14 @@
 
 ### 2.1 Что было
 
-| Компонент | Статус | Проблемы |
-|-----------|--------|----------|
-| Convergent CTCF rule | ✅ Работал | — |
-| P0 fixes (аудит Kimi) | ✅ Сделаны | — |
-| Regression тесты | ✅ 37 тестов | — |
-| Документация | ⚠️ Неточности | Неверные citations |
-| Параметры | ⚠️ Неточности | Ganji vs Davidson |
-| physics.ts | ❌ Orphaned | Math.random() |
+| Компонент             | Статус        | Проблемы           |
+| --------------------- | ------------- | ------------------ |
+| Convergent CTCF rule  | ✅ Работал    | —                  |
+| P0 fixes (аудит Kimi) | ✅ Сделаны    | —                  |
+| Regression тесты      | ✅ 37 тестов  | —                  |
+| Документация          | ⚠️ Неточности | Неверные citations |
+| Параметры             | ⚠️ Неточности | Ganji vs Davidson  |
+| physics.ts            | ❌ Orphaned   | Math.random()      |
 
 ### 2.2 Критические проблемы найденные
 
@@ -43,13 +44,14 @@
 
 Применена методология HaluGate для верификации научных утверждений:
 
-| Категория | Количество | Действие |
-|-----------|------------|----------|
-| ENTAILMENT (верно) | 7 | Подтверждено |
-| NEUTRAL (нужен disclaimer) | 5 | Добавлены disclaimers |
-| CONTRADICTION (ошибка) | 2 | Исправлено |
+| Категория                  | Количество | Действие              |
+| -------------------------- | ---------- | --------------------- |
+| ENTAILMENT (верно)         | 7          | Подтверждено          |
+| NEUTRAL (нужен disclaimer) | 5          | Добавлены disclaimers |
+| CONTRADICTION (ошибка)     | 2          | Исправлено            |
 
 **Проверенные источники**:
+
 - Davidson et al. (2019) Science — cohesin single-molecule
 - Rao et al. (2014) Cell — Hi-C contact maps
 - Sanborn et al. (2015) PNAS — loop extrusion model
@@ -58,35 +60,35 @@
 
 ### 3.2 Documentation Fixes
 
-| Файл | Изменения |
-|------|-----------|
-| `METHODS.md` | Исправлены citations, добавлена таблица параметров |
-| `AUDIT_RESPONSE.md` | Исправлена классификация параметров |
-| `README.md` | Добавлены Davidson, Gerlich в acknowledgments |
-| `docs/COGNITIVE_CORE.md` | Полностью переписана секция velocity |
-| `KNOWN_ISSUES.md` | Добавлена документация processivity scaling |
-| `config/default.json` | Исправлены literature sources |
-| `biophysics.ts` | Исправлен header, добавлен PROCESSIVITY_KB |
+| Файл                     | Изменения                                          |
+| ------------------------ | -------------------------------------------------- |
+| `METHODS.md`             | Исправлены citations, добавлена таблица параметров |
+| `AUDIT_RESPONSE.md`      | Исправлена классификация параметров                |
+| `README.md`              | Добавлены Davidson, Gerlich в acknowledgments      |
+| `docs/COGNITIVE_CORE.md` | Полностью переписана секция velocity               |
+| `KNOWN_ISSUES.md`        | Добавлена документация processivity scaling        |
+| `config/default.json`    | Исправлены literature sources                      |
+| `biophysics.ts`          | Исправлен header, добавлен PROCESSIVITY_KB         |
 
 ### 3.3 Code Review & Fixes
 
-| Файл | P0/P1 | Исправление |
-|------|-------|-------------|
-| `genome.ts` | P0 | `velocity: 1.0` → `1000` |
-| `genome.ts` | P1 | `rightLeg = loadPosition + 1` (INV-1) |
-| `LoopExtrusionEngine.ts` | P1 | Добавлен stochastic blocking (85%) |
-| `MultiCohesinEngine.ts` | P1 | Добавлен leaky non-convergent (15%) |
-| `physics.ts` | P0 | Добавлен warning о Math.random() |
+| Файл                     | P0/P1 | Исправление                           |
+| ------------------------ | ----- | ------------------------------------- |
+| `genome.ts`              | P0    | `velocity: 1.0` → `1000`              |
+| `genome.ts`              | P1    | `rightLeg = loadPosition + 1` (INV-1) |
+| `LoopExtrusionEngine.ts` | P1    | Добавлен stochastic blocking (85%)    |
+| `MultiCohesinEngine.ts`  | P1    | Добавлен leaky non-convergent (15%)   |
+| `physics.ts`             | P0    | Добавлен warning о Math.random()      |
 
 ### 3.4 Hi-C Data Integration
 
 Создан полноценный pipeline для валидации против реальных Hi-C данных:
 
-| Компонент | Файл | Описание |
-|-----------|------|----------|
-| Hi-C Downloader | `src/downloaders/hic.ts` | Загрузка HiCCUPS loop calls |
-| Validation Script | `scripts/validate-hic.ts` | CLI для валидации |
-| NPM Commands | `package.json` | `validate:hic`, `validate:hic:download` |
+| Компонент         | Файл                      | Описание                                |
+| ----------------- | ------------------------- | --------------------------------------- |
+| Hi-C Downloader   | `src/downloaders/hic.ts`  | Загрузка HiCCUPS loop calls             |
+| Validation Script | `scripts/validate-hic.ts` | CLI для валидации                       |
+| NPM Commands      | `package.json`            | `validate:hic`, `validate:hic:download` |
 
 **Результаты валидации против Rao 2014:**
 
@@ -99,12 +101,13 @@ HBB region: 3 experimental loops
 
 **Ключевое наблюдение — масштабное несоответствие (ожидаемо):**
 
-| Источник | Размер петель | Причина |
-|----------|---------------|---------|
-| ARCHCODE | 15-45 kb | Индивидуальные CTCF-петли |
-| HiCCUPS | 180-260 kb | Ограничение разрешения Hi-C |
+| Источник | Размер петель | Причина                     |
+| -------- | ------------- | --------------------------- |
+| ARCHCODE | 15-45 kb      | Индивидуальные CTCF-петли   |
+| HiCCUPS  | 180-260 kb    | Ограничение разрешения Hi-C |
 
 **Power-law валидация (главный критерий):**
+
 ```
 Fitted α = -0.964 (expected: -1.0)
 Error: 3.6% — ОТЛИЧНО
@@ -112,14 +115,14 @@ Error: 3.6% — ОТЛИЧНО
 
 ### 3.5 Созданные артефакты
 
-| Файл | Назначение |
-|------|------------|
-| `HALUGATE_REPORT.md` | Полный отчёт верификации научных claims |
-| `CODE_REVIEW_PHYSICS.md` | Детальный code review физических движков |
-| `src/downloaders/hic.ts` | Hi-C data downloader (Rao 2014) |
-| `scripts/validate-hic.ts` | Validation CLI script |
-| `results/hic-validation.json` | Результаты валидации |
-| `SESSION_REPORT_2026-02-02.md` | Этот отчёт |
+| Файл                           | Назначение                               |
+| ------------------------------ | ---------------------------------------- |
+| `HALUGATE_REPORT.md`           | Полный отчёт верификации научных claims  |
+| `CODE_REVIEW_PHYSICS.md`       | Детальный code review физических движков |
+| `src/downloaders/hic.ts`       | Hi-C data downloader (Rao 2014)          |
+| `scripts/validate-hic.ts`      | Validation CLI script                    |
+| `results/hic-validation.json`  | Результаты валидации                     |
+| `SESSION_REPORT_2026-02-02.md` | Этот отчёт                               |
 
 ---
 
@@ -133,6 +136,7 @@ d1f395b fix(docs): correct citations per HaluGate verification
 ```
 
 **Статистика**:
+
 - Files changed: 17
 - Insertions: +2200
 - Deletions: -60
@@ -143,36 +147,36 @@ d1f395b fix(docs): correct citations per HaluGate verification
 
 ### 5.1 Научная корректность
 
-| Аспект | Статус | Примечание |
-|--------|--------|------------|
-| Convergent CTCF rule | ✅ Verified | R...F формирует петлю |
-| Velocity citation | ✅ Fixed | Davidson 2019, не Ganji |
-| Processivity | ✅ Documented | 33 kb lit → 600 kb model (18× scaling) |
-| P(s) exponent | ✅ Verified | α ≈ -1.0 соответствует литературе |
-| Residence time | ✅ Verified | ~20 min (Gerlich 2006) |
-| CTCF efficiency | ✅ Documented | 85% MODEL PARAMETER |
-| Stochastic blocking | ✅ Implemented | Оба движка теперь stochastic |
+| Аспект               | Статус         | Примечание                             |
+| -------------------- | -------------- | -------------------------------------- |
+| Convergent CTCF rule | ✅ Verified    | R...F формирует петлю                  |
+| Velocity citation    | ✅ Fixed       | Davidson 2019, не Ganji                |
+| Processivity         | ✅ Documented  | 33 kb lit → 600 kb model (18× scaling) |
+| P(s) exponent        | ✅ Verified    | α ≈ -1.0 соответствует литературе      |
+| Residence time       | ✅ Verified    | ~20 min (Gerlich 2006)                 |
+| CTCF efficiency      | ✅ Documented  | 85% MODEL PARAMETER                    |
+| Stochastic blocking  | ✅ Implemented | Оба движка теперь stochastic           |
 
 ### 5.2 Код
 
-| Компонент | Статус | Тесты |
-|-----------|--------|-------|
-| MultiCohesinEngine | ✅ Good | 37/37 pass |
-| LoopExtrusionEngine | ✅ Fixed | Stochastic blocking added |
-| contactMatrix | ✅ Good | — |
-| physics.ts | ⚠️ Warning | Документирован как non-reproducible |
-| genome.ts | ✅ Fixed | INV-1, velocity |
+| Компонент           | Статус     | Тесты                               |
+| ------------------- | ---------- | ----------------------------------- |
+| MultiCohesinEngine  | ✅ Good    | 37/37 pass                          |
+| LoopExtrusionEngine | ✅ Fixed   | Stochastic blocking added           |
+| contactMatrix       | ✅ Good    | —                                   |
+| physics.ts          | ⚠️ Warning | Документирован как non-reproducible |
+| genome.ts           | ✅ Fixed   | INV-1, velocity                     |
 
 ### 5.3 Документация
 
-| Документ | Статус |
-|----------|--------|
-| METHODS.md | ✅ HaluGate verified |
-| README.md | ✅ Updated |
-| KNOWN_ISSUES.md | ✅ Updated |
-| COGNITIVE_CORE.md | ✅ Updated |
-| HALUGATE_REPORT.md | ✅ New |
-| CODE_REVIEW_PHYSICS.md | ✅ New |
+| Документ               | Статус               |
+| ---------------------- | -------------------- |
+| METHODS.md             | ✅ HaluGate verified |
+| README.md              | ✅ Updated           |
+| KNOWN_ISSUES.md        | ✅ Updated           |
+| COGNITIVE_CORE.md      | ✅ Updated           |
+| HALUGATE_REPORT.md     | ✅ New               |
+| CODE_REVIEW_PHYSICS.md | ✅ New               |
 
 ### 5.4 Git Status
 
@@ -188,21 +192,21 @@ Ready to push: Yes
 
 ### 6.1 Высокий приоритет (перед публикацией)
 
-| # | Задача | Статус |
-|---|--------|--------|
-| 1 | Интеграция реальных Hi-C данных (Rao 2014) | ✅ **DONE** - hic.ts downloader |
-| 2 | Валидация против реальных данных | ✅ **DONE** - 8054 loops загружены |
-| 3 | Power-law P(s) validation | ✅ **DONE** - α = -0.964 (error 3.6%) |
-| 4 | Zenodo DOI | ❌ Manual step |
-| 5 | GitHub Pages demo | ❌ Not deployed |
+| #   | Задача                                     | Статус                                |
+| --- | ------------------------------------------ | ------------------------------------- |
+| 1   | Интеграция реальных Hi-C данных (Rao 2014) | ✅ **DONE** - hic.ts downloader       |
+| 2   | Валидация против реальных данных           | ✅ **DONE** - 8054 loops загружены    |
+| 3   | Power-law P(s) validation                  | ✅ **DONE** - α = -0.964 (error 3.6%) |
+| 4   | Zenodo DOI                                 | ❌ Manual step                        |
+| 5   | GitHub Pages demo                          | ❌ Not deployed                       |
 
 ### 6.2 Средний приоритет
 
-| # | Задача | Статус |
-|---|--------|--------|
-| 5 | Edge case тесты (extreme velocity) | ❌ Not covered |
-| 6 | Расширить валидацию до 10+ локусов | ⚠️ 3 локуса |
-| 7 | AlphaGenome API интеграция | ❌ Mock only |
+| #   | Задача                             | Статус         |
+| --- | ---------------------------------- | -------------- |
+| 5   | Edge case тесты (extreme velocity) | ❌ Not covered |
+| 6   | Расширить валидацию до 10+ локусов | ⚠️ 3 локуса    |
+| 7   | AlphaGenome API интеграция         | ❌ Mock only   |
 
 ### 6.3 Низкий приоритет (v2.0)
 
@@ -223,6 +227,7 @@ Ready to push: Yes
    - Power-law validation (offline)
 
 2. **Запустить полную валидацию**
+
    ```bash
    # Power-law validation (offline, quick)
    npm run validate:hic
@@ -238,6 +243,7 @@ Ready to push: Yes
    ```
 
 3. **Push changes**
+
    ```bash
    git push origin master
    ```
@@ -258,12 +264,12 @@ Ready to push: Yes
 
 Использованы компоненты из глобальной методологии:
 
-| Компонент | Применение |
-|-----------|------------|
-| **HaluGate Pipeline** | Верификация METHODS.md |
-| **CARE Framework** | Структура отчётов |
-| **TDD** | Тесты после каждого fix |
-| **AI-REPS** | Context → Audit → Plan → Realization → Verification |
+| Компонент             | Применение                                          |
+| --------------------- | --------------------------------------------------- |
+| **HaluGate Pipeline** | Верификация METHODS.md                              |
+| **CARE Framework**    | Структура отчётов                                   |
+| **TDD**               | Тесты после каждого fix                             |
+| **AI-REPS**           | Context → Audit → Plan → Realization → Verification |
 
 ### 8.2 Инструменты
 
@@ -278,6 +284,7 @@ Ready to push: Yes
 Проект ARCHCODE прошёл научную верификацию (HaluGate), code review, и валидацию против реальных Hi-C данных Rao 2014.
 
 **Главные достижения сессии**:
+
 1. ✅ Найдена и исправлена ошибка citation (Ganji → Davidson)
 2. ✅ Документирован processivity scaling (18×)
 3. ✅ Добавлен stochastic blocking в оба движка
@@ -287,6 +294,7 @@ Ready to push: Yes
 7. ✅ **Power-law валидация пройдена** (α = -0.964, error 3.6%)
 
 **Готовность к публикации**: 95%
+
 - Код: ✅ Ready
 - Документация: ✅ Ready
 - Валидация: ✅ Power-law PASSED

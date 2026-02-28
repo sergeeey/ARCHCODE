@@ -16,15 +16,60 @@
     "length_mb": 1.6
   },
   "ctcf_sites": [
-    { "position": 100000, "strength": 0.85, "orientation": "R", "region": "upstream V segments" },
-    { "position": 250000, "strength": 0.9, "orientation": "R", "region": "upstream V segments" },
-    { "position": 500000, "strength": 0.85, "orientation": "F", "region": "central V region" },
-    { "position": 700000, "strength": 0.9, "orientation": "R", "region": "central V region" },
-    { "position": 1000000, "strength": 0.9, "orientation": "F", "region": "J segment region" },
-    { "position": 1150000, "strength": 0.85, "orientation": "R", "region": "J segment region" },
-    { "position": 1300000, "strength": 0.95, "orientation": "F", "region": "Enhancer (Eα)" },
-    { "position": 1400000, "strength": 0.9, "orientation": "R", "region": "Enhancer (Eα)" },
-    { "position": 1500000, "strength": 0.85, "orientation": "F", "region": "C segment" }
+    {
+      "position": 100000,
+      "strength": 0.85,
+      "orientation": "R",
+      "region": "upstream V segments"
+    },
+    {
+      "position": 250000,
+      "strength": 0.9,
+      "orientation": "R",
+      "region": "upstream V segments"
+    },
+    {
+      "position": 500000,
+      "strength": 0.85,
+      "orientation": "F",
+      "region": "central V region"
+    },
+    {
+      "position": 700000,
+      "strength": 0.9,
+      "orientation": "R",
+      "region": "central V region"
+    },
+    {
+      "position": 1000000,
+      "strength": 0.9,
+      "orientation": "F",
+      "region": "J segment region"
+    },
+    {
+      "position": 1150000,
+      "strength": 0.85,
+      "orientation": "R",
+      "region": "J segment region"
+    },
+    {
+      "position": 1300000,
+      "strength": 0.95,
+      "orientation": "F",
+      "region": "Enhancer (Eα)"
+    },
+    {
+      "position": 1400000,
+      "strength": 0.9,
+      "orientation": "R",
+      "region": "Enhancer (Eα)"
+    },
+    {
+      "position": 1500000,
+      "strength": 0.85,
+      "orientation": "F",
+      "region": "C segment"
+    }
   ],
   "simulation_params": {
     "beta_baseline": 0,

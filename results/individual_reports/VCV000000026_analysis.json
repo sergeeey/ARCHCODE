@@ -423,8 +423,12 @@
     "analyst": "VUS Analyzer Agent",
     "analysis_date": "2026-02-03",
     "report_version": "1.0",
-    "priority_tags": ["HIGHEST_SSIM", "UPPER_BOUNDARY_DEFINITION", "MECHANISTIC_VALIDATION", "TRANSFORMATIVE_EXPERIMENT_CANDIDATE"],
+    "priority_tags": [
+      "HIGHEST_SSIM",
+      "UPPER_BOUNDARY_DEFINITION",
+      "MECHANISTIC_VALIDATION",
+      "TRANSFORMATIVE_EXPERIMENT_CANDIDATE"
+    ],
     "validation_status": "PENDING (HIGH PRIORITY - mechanistic depth + loop rescue experiment)"
   }
 }
-

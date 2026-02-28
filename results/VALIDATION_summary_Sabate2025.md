@@ -11,11 +11,11 @@
 
 ## Results
 
-| Locus/Condition | Mean Duration | 95% CI | Contact Prob | Verdict |
-|-----------------|---------------|--------|--------------|---------|
-| HBB (wild-type) | 16.17 min | [15.23, 17.11] | 3.15% | PASS |
-| Sox2 (blind) | 16.18 min | [15.28, 17.08] | 3.26% | PASS |
-| HBB-CTCFΔ (blind) | 16.17 min | [15.23, 17.11] | 3.15% | PASS |
+| Locus/Condition   | Mean Duration | 95% CI         | Contact Prob | Verdict |
+| ----------------- | ------------- | -------------- | ------------ | ------- |
+| HBB (wild-type)   | 16.17 min     | [15.23, 17.11] | 3.15%        | PASS    |
+| Sox2 (blind)      | 16.18 min     | [15.28, 17.08] | 3.26%        | PASS    |
+| HBB-CTCFΔ (blind) | 16.17 min     | [15.23, 17.11] | 3.15%        | PASS    |
 
 **Experimental Target:** 6–19 min (literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017))
 
@@ -55,6 +55,7 @@ Weak CTCF barriers (strength < 0.85) contribute minimally to loop stability. Onl
 ### Testable Prediction
 
 CRISPR deletion of weak vs strong CTCF sites should show:
+
 - Weak CTCF deletion: no effect on loop duration
 - Strong CTCF deletion: significant reduction in loop duration
 
@@ -79,7 +80,6 @@ Model quantitatively predicts loop kinetics across **two loci** and **one geneti
 
 ---
 
-*Generated: 2026-02-02*
-*ARCHCODE v1.0.2*
-*Seed: 2000 (all tests)*
-
+_Generated: 2026-02-02_
+_ARCHCODE v1.0.2_
+_Seed: 2000 (all tests)_

@@ -16,6 +16,7 @@ Role: Principal Investigator, Lead Developer, System Architect
 We present ARCHCODE (Architectural Code), a computational framework for simulating 3D chromatin loop extrusion with biologically-grounded parameters. Our key contribution is the **FountainLoader** model, which demonstrates that MED1-mediated cohesin loading bias is sufficient to explain super-enhancer (SE) spatial architecture. Through systematic validation across two independent cell lines (GM12878 lymphoblastoid and K562 erythroleukemia), four genomic loci, 40 super-enhancers, and virtual knockout experiments, we establish that this mechanism is **cell-type independent** and represents a fundamental principle of 3D genome organization.
 
 **Key Results:**
+
 - Mean contact enrichment at SE zones: **50.4x** (range: 47.3x–53.5x)
 - Mean lifetime ratio (SE vs background): **1.00x** (mechanism affects WHERE, not HOW LONG)
 - Virtual knockout contact loss: **80.3%** (consistent with experimental degron data)
@@ -35,9 +36,9 @@ The "cohesin fountain" hypothesis, proposed by Sabaté et al. (bioRxiv, 2024), s
 
 We tested two competing hypotheses for SE architecture:
 
-| Hypothesis | Mechanism | Prediction |
-|------------|-----------|------------|
-| **H1: Kinetic Trap** | Loops persist longer at SE | Lifetime ratio > 1.0 |
+| Hypothesis           | Mechanism                                       | Prediction                                    |
+| -------------------- | ----------------------------------------------- | --------------------------------------------- |
+| **H1: Kinetic Trap** | Loops persist longer at SE                      | Lifetime ratio > 1.0                          |
 | **H2: Loading Bias** | Cohesin loads preferentially at high-MED1 sites | Lifetime ratio ≈ 1.0, Contact enrichment >> 1 |
 
 Our results strongly support **H2 (Loading Bias)**.
@@ -48,19 +49,19 @@ Our results strongly support **H2 (Loading Bias)**.
 
 ### 2.1 Project Timeline
 
-| Date | Milestone | Commits |
-|------|-----------|---------|
-| **2026-02-01** | Project initialization, v1.0 release | ARCHCODE v1.0: Publication-ready release |
-| **2026-02-01** | UI implementation (Landing, Tailwind, 3D) | feat: Landing page, Router, 3D mode |
-| **2026-02-01** | Scientific correctness fixes (P0) | fix(P0): Complete scientific correctness fixes |
-| **2026-02-02** | Citation corrections (HaluGate) | fix(docs): correct citations per HaluGate verification |
-| **2026-02-02** | Hi-C validation (Rao 2014) | feat(validation): Hi-C validation against Rao 2014 |
-| **2026-02-02** | Blind-test validation (Sabaté 2024, bioRxiv) | feat(validation): blind-test validation |
-| **2026-02-03** | FountainLoader (H2) implementation | feat(H2): Mediator-driven Cohesin Fountains |
-| **2026-02-03** | Multi-locus validation (MYC, IGH, TCRα, SOX2) | feat(H2): add blind validations |
-| **2026-02-03** | K562 cross-cell validation | feat(H2): add automated cross-cell validation |
-| **2026-02-03** | Virtual Knockout simulation | feat: add virtual knockout simulation |
-| **2026-02-03** | Docker support for reproducibility | feat: add Docker support |
+| Date           | Milestone                                     | Commits                                                |
+| -------------- | --------------------------------------------- | ------------------------------------------------------ |
+| **2026-02-01** | Project initialization, v1.0 release          | ARCHCODE v1.0: Publication-ready release               |
+| **2026-02-01** | UI implementation (Landing, Tailwind, 3D)     | feat: Landing page, Router, 3D mode                    |
+| **2026-02-01** | Scientific correctness fixes (P0)             | fix(P0): Complete scientific correctness fixes         |
+| **2026-02-02** | Citation corrections (HaluGate)               | fix(docs): correct citations per HaluGate verification |
+| **2026-02-02** | Hi-C validation (Rao 2014)                    | feat(validation): Hi-C validation against Rao 2014     |
+| **2026-02-02** | Blind-test validation (Sabaté 2024, bioRxiv)  | feat(validation): blind-test validation                |
+| **2026-02-03** | FountainLoader (H2) implementation            | feat(H2): Mediator-driven Cohesin Fountains            |
+| **2026-02-03** | Multi-locus validation (MYC, IGH, TCRα, SOX2) | feat(H2): add blind validations                        |
+| **2026-02-03** | K562 cross-cell validation                    | feat(H2): add automated cross-cell validation          |
+| **2026-02-03** | Virtual Knockout simulation                   | feat: add virtual knockout simulation                  |
+| **2026-02-03** | Docker support for reproducibility            | feat: add Docker support                               |
 
 **Total development time:** ~48 hours (intensive sprint)
 **Total commits:** 69
@@ -69,26 +70,31 @@ Our results strongly support **H2 (Loading Bias)**.
 ### 2.2 Development Challenges and Solutions
 
 #### Challenge 1: Loop Lifetime Tracking
+
 **Problem:** Initial implementation did not properly track loop duration (lifetimeTicks was undefined).
 **Solution:** Implemented `formedAtStep` and `dissolvedAtStep` fields in Loop model; created `getLoopDurationSteps()` helper function.
 **Commit:** `feat(fountain): fix FountainLoader validation with beta=20`
 
 #### Challenge 2: Contact Density Calculation
+
 **Problem:** Contact density showed 0 because cohesins weren't detected as being "in SE" zone.
 **Solution:** Implemented occupancy matrix approach using `engine.updateOccupancyMatrix()` to track cohesin contact time.
 **Commit:** `feat(fountain): occupancy-based contact matrix for dynamic analysis`
 
 #### Challenge 3: MED1 Data for K562
+
 **Problem:** ENCODE MED1 BigWig file (ENCFF341MYG) returned 404 error.
 **Solution:** Used H3K27ac as proxy for MED1 signal (highly correlated at super-enhancers per literature).
 **Commit:** `feat(H2): add automated cross-cell validation script for K562`
 
 #### Challenge 4: CTCF Knockout Validation
+
 **Problem:** Initial CTCF-delta test showed no effect (seed contamination).
 **Solution:** Implemented independent seed for knockout test to ensure reproducibility.
 **Commit:** `fix(validation): independent seed for CTCF knockout test`
 
 #### Challenge 5: Cyrillic Path Support in Docker
+
 **Problem:** Docker compose failed with Cyrillic characters in path (D:\ДНК).
 **Solution:** Added explicit project name in docker-compose.yml.
 **Commit:** `fix(docker): add project name for Cyrillic path support`
@@ -97,12 +103,12 @@ Our results strongly support **H2 (Loading Bias)**.
 
 All scientific claims were verified through our HaluGate pipeline to prevent AI hallucinations:
 
-| Claim | Status | Action |
-|-------|--------|--------|
-| Ganji et al. 2018 = cohesin | **FALSE** | Corrected to "condensin" |
-| Davidson et al. 2019 = cohesin | **TRUE** | Primary citation for cohesin kinetics |
-| Rao et al. 2014 = convergent rule | **TRUE** | Used for CTCF efficiency calibration |
-| Sabaté et al. 2024 (bioRxiv) = fountain hypothesis | **TRUE** | Reference for validation parameters |
+| Claim                                              | Status    | Action                                |
+| -------------------------------------------------- | --------- | ------------------------------------- |
+| Ganji et al. 2018 = cohesin                        | **FALSE** | Corrected to "condensin"              |
+| Davidson et al. 2019 = cohesin                     | **TRUE**  | Primary citation for cohesin kinetics |
+| Rao et al. 2014 = convergent rule                  | **TRUE**  | Used for CTCF efficiency calibration  |
+| Sabaté et al. 2024 (bioRxiv) = fountain hypothesis | **TRUE**  | Reference for validation parameters   |
 
 ---
 
@@ -118,6 +124,7 @@ After t steps:  L-tv======R+tv  (symmetric extrusion at velocity v)
 ```
 
 **Algorithm per simulation step:**
+
 1. Move left leg: `leftLeg -= velocity`
 2. Move right leg: `rightLeg += velocity`
 3. Check nearest CTCF barriers
@@ -142,16 +149,16 @@ Where:
 
 ### 3.3 Simulation Parameters
 
-| Parameter | Value | Source |
-|-----------|-------|--------|
-| Extrusion velocity | 300 bp/step | Sabaté et al. 2024 (bioRxiv) |
-| Unloading probability | 1/1000 per step | Sabaté et al. 2024 (bioRxiv) |
-| CTCF blocking efficiency | 85% | Calibrated to Rao 2014 |
-| Number of cohesins | 15 | Model parameter |
-| Simulation steps | 50,000 | Ensemble convergence |
-| Ensemble runs | 20 | Statistical power |
-| Resolution | 5 kb | Hi-C compatibility |
-| Beta (FountainLoader) | 5 | Calibrated to MYC |
+| Parameter                | Value           | Source                       |
+| ------------------------ | --------------- | ---------------------------- |
+| Extrusion velocity       | 300 bp/step     | Sabaté et al. 2024 (bioRxiv) |
+| Unloading probability    | 1/1000 per step | Sabaté et al. 2024 (bioRxiv) |
+| CTCF blocking efficiency | 85%             | Calibrated to Rao 2014       |
+| Number of cohesins       | 15              | Model parameter              |
+| Simulation steps         | 50,000          | Ensemble convergence         |
+| Ensemble runs            | 20              | Statistical power            |
+| Resolution               | 5 kb            | Hi-C compatibility           |
+| Beta (FountainLoader)    | 5               | Calibrated to MYC            |
 
 ### 3.4 Validation Strategy
 
@@ -165,10 +172,10 @@ Where:
 
 ### 3.5 Data Sources
 
-| Cell Line | H3K27ac | MED1 | Source |
-|-----------|---------|------|--------|
-| GM12878 | H3K27ac_GM12878.bw | MED1_GM12878_Rep1.bw | ENCODE |
-| K562 | ENCSR000AKP | ENCSR269BSA (H3K27ac proxy) | ENCODE |
+| Cell Line | H3K27ac            | MED1                        | Source |
+| --------- | ------------------ | --------------------------- | ------ |
+| GM12878   | H3K27ac_GM12878.bw | MED1_GM12878_Rep1.bw        | ENCODE |
+| K562      | ENCSR000AKP        | ENCSR269BSA (H3K27ac proxy) | ENCODE |
 
 ### 3.6 Super-Enhancer Identification (ROSE-like)
 
@@ -185,35 +192,37 @@ Where:
 
 ### 4.1 Locus-Level Validation
 
-| Locus | Chr | Length | Loading↑ | Contact↑ | SE Zone↑ | Status |
-|-------|-----|--------|----------|----------|----------|--------|
-| **MYC** | chr8 | 1.10 Mb | 6.5x | 5.2x | 6.4x | PASS |
-| **IGH** | chr14 | 1.10 Mb | 8.0x | 6.6x | 5.0x | PASS |
-| **TCRα** | chr14 | 1.60 Mb | 8.4x | 5.2x | 5.8x | PASS |
-| **SOX2** | chr3 | 0.80 Mb | 6.0x | 3.3x | 5.0x | PASS |
+| Locus    | Chr   | Length  | Loading↑ | Contact↑ | SE Zone↑ | Status |
+| -------- | ----- | ------- | -------- | -------- | -------- | ------ |
+| **MYC**  | chr8  | 1.10 Mb | 6.5x     | 5.2x     | 6.4x     | PASS   |
+| **IGH**  | chr14 | 1.10 Mb | 8.0x     | 6.6x     | 5.0x     | PASS   |
+| **TCRα** | chr14 | 1.60 Mb | 8.4x     | 5.2x     | 5.8x     | PASS   |
+| **SOX2** | chr3  | 0.80 Mb | 6.0x     | 3.3x     | 5.0x     | PASS   |
 
 **Verdict:** 4/4 PASS — FountainLoader significantly enriches contacts at SE zones.
 
 ### 4.2 Cross-Cell Validation
 
-| Metric | GM12878 | K562 | Interpretation |
-|--------|---------|------|----------------|
-| **Cell Type** | Lymphoblastoid | Erythroleukemia | Different lineages |
-| **Super-Enhancers** | 32 | 448 | K562 more open chromatin |
-| **Contact Enrichment** | 47.33x | 53.50x | Both show high SE enrichment |
-| **Lifetime Ratio** | 0.99x | 1.01x | Both ~1.0 (expected for H2) |
-| **Verdict** | PASS | PASS | **Mechanism is universal** |
+| Metric                 | GM12878        | K562            | Interpretation               |
+| ---------------------- | -------------- | --------------- | ---------------------------- |
+| **Cell Type**          | Lymphoblastoid | Erythroleukemia | Different lineages           |
+| **Super-Enhancers**    | 32             | 448             | K562 more open chromatin     |
+| **Contact Enrichment** | 47.33x         | 53.50x          | Both show high SE enrichment |
+| **Lifetime Ratio**     | 0.99x          | 1.01x           | Both ~1.0 (expected for H2)  |
+| **Verdict**            | PASS           | PASS            | **Mechanism is universal**   |
 
 **Key Finding:** The FountainLoader mechanism is **cell-type independent**.
 
 ### 4.3 Super-Enhancer Mass Validation
 
 **GM12878 (20 Super-Enhancers):**
+
 - Mean Contact Enrichment: **47.33x**
 - Mean Lifetime Ratio: **0.99x**
 - Pass Rate: **20/20 (100%)**
 
 **K562 (20 Super-Enhancers):**
+
 - Mean Contact Enrichment: **53.50x**
 - Mean Lifetime Ratio: **1.01x**
 - Pass Rate: **20/20 (100%)**
@@ -222,13 +231,14 @@ Where:
 
 ### 4.4 Virtual Knockout (In Silico Degron)
 
-| Locus | WT SE Contact | KO SE Contact | Contact Loss |
-|-------|---------------|---------------|--------------|
-| **MYC** | 9.21e-4 | 1.97e-4 | **78.6%** |
-| **IGH** | 8.68e-4 | 1.56e-4 | **82.0%** |
-| **Mean** | — | — | **80.3%** |
+| Locus    | WT SE Contact | KO SE Contact | Contact Loss |
+| -------- | ------------- | ------------- | ------------ |
+| **MYC**  | 9.21e-4       | 1.97e-4       | **78.6%**    |
+| **IGH**  | 8.68e-4       | 1.56e-4       | **82.0%**    |
+| **Mean** | —             | —             | **80.3%**    |
 
 **Comparison with Experimental Data:**
+
 - Rinzema et al. (experimental degron): 50-70% contact loss
 - ARCHCODE Virtual Knockout: 80.3% contact loss
 
@@ -303,12 +313,12 @@ Our results support the cohesin fountain hypothesis proposed by Sabaté et al. (
 
 ### 6.3 Limitations
 
-| Limitation | Impact | Mitigation |
-|------------|--------|------------|
-| No supercoiling | Medium | Simplified CTCF efficiency compensates |
-| No cohesin collisions | Low | Low density minimizes collisions |
-| Fixed CTCF positions | Low | Use high-confidence ChIP-seq peaks |
-| H3K27ac as MED1 proxy (K562) | Low | High correlation at SE per literature |
+| Limitation                   | Impact | Mitigation                             |
+| ---------------------------- | ------ | -------------------------------------- |
+| No supercoiling              | Medium | Simplified CTCF efficiency compensates |
+| No cohesin collisions        | Low    | Low density minimizes collisions       |
+| Fixed CTCF positions         | Low    | Use high-confidence ChIP-seq peaks     |
+| H3K27ac as MED1 proxy (K562) | Low    | High correlation at SE per literature  |
 
 ### 6.4 Future Directions
 
@@ -343,13 +353,13 @@ ARCHCODE/
 
 ### 7.2 Test Coverage
 
-| Test Suite | Tests | Status |
-|------------|-------|--------|
-| BED Parser | 9 | PASS |
-| LoopExtrusionEngine | 12 | PASS |
-| Gold Standard Regression | 12 | PASS |
-| Physics Validation | 4 | PASS |
-| **Total** | **37** | **100% PASS** |
+| Test Suite               | Tests  | Status        |
+| ------------------------ | ------ | ------------- |
+| BED Parser               | 9      | PASS          |
+| LoopExtrusionEngine      | 12     | PASS          |
+| Gold Standard Regression | 12     | PASS          |
+| Physics Validation       | 4      | PASS          |
+| **Total**                | **37** | **100% PASS** |
 
 ### 7.3 Reproducibility
 
@@ -392,14 +402,14 @@ docker-compose --profile full up
 
 ## 9. Data Availability
 
-| File | Description |
-|------|-------------|
-| `results/validation_summary.json` | Locus validation summary |
-| `results/se_validation_report.json` | GM12878 SE validation |
+| File                                      | Description                |
+| ----------------------------------------- | -------------------------- |
+| `results/validation_summary.json`         | Locus validation summary   |
+| `results/se_validation_report.json`       | GM12878 SE validation      |
 | `results/cross_cell_k562_validation.json` | K562 cross-cell validation |
-| `results/virtual_knockout_report.json` | In Silico Degron results |
-| `results/super_enhancers_GM12878.bed` | GM12878 Super-Enhancers |
-| `results/super_enhancers_K562.bed` | K562 Super-Enhancers |
+| `results/virtual_knockout_report.json`    | In Silico Degron results   |
+| `results/super_enhancers_GM12878.bed`     | GM12878 Super-Enhancers    |
+| `results/super_enhancers_K562.bed`        | K562 Super-Enhancers       |
 
 **Repository:** https://github.com/sergeeey/ARCHCODE
 
@@ -407,19 +417,19 @@ docker-compose --profile full up
 
 ## 10. References
 
-1. Sabaté, T. et al. Cohesin-mediated loop extrusion co-opts repressive chromatin at TAD boundaries to promote enhancer blocking. *bioRxiv* 2024, DOI: 10.1101/2024.08.09.605990.
+1. Sabaté, T. et al. Cohesin-mediated loop extrusion co-opts repressive chromatin at TAD boundaries to promote enhancer blocking. _bioRxiv_ 2024, DOI: 10.1101/2024.08.09.605990.
 
-2. Davidson, I. F. et al. DNA loop extrusion by human cohesin. *Science* 366, 1338–1345 (2019).
+2. Davidson, I. F. et al. DNA loop extrusion by human cohesin. _Science_ 366, 1338–1345 (2019).
 
-3. Rao, S. S. P. et al. A 3D map of the human genome at kilobase resolution reveals principles of chromatin looping. *Cell* 159, 1665–1680 (2014).
+3. Rao, S. S. P. et al. A 3D map of the human genome at kilobase resolution reveals principles of chromatin looping. _Cell_ 159, 1665–1680 (2014).
 
-4. Fudenberg, G. et al. Formation of chromosomal domains by loop extrusion. *Cell Reports* 15, 2038–2049 (2016).
+4. Fudenberg, G. et al. Formation of chromosomal domains by loop extrusion. _Cell Reports_ 15, 2038–2049 (2016).
 
-5. Gerlich, D. et al. Live-cell imaging reveals a stable cohesin-chromatin interaction after but not before DNA replication. *Current Biology* 16, 1571–1578 (2006).
+5. Gerlich, D. et al. Live-cell imaging reveals a stable cohesin-chromatin interaction after but not before DNA replication. _Current Biology_ 16, 1571–1578 (2006).
 
-6. Rinzema, N. J. et al. Building regulatory landscapes: enhancer recruitment of cohesin defines chromatin architecture. *Molecular Cell* (2022).
+6. Rinzema, N. J. et al. Building regulatory landscapes: enhancer recruitment of cohesin defines chromatin architecture. _Molecular Cell_ (2022).
 
-7. Whyte, W. A. et al. Master transcription factors and mediator establish super-enhancers at key cell identity genes. *Cell* 153, 307–319 (2013).
+7. Whyte, W. A. et al. Master transcription factors and mediator establish super-enhancers at key cell identity genes. _Cell_ 153, 307–319 (2013).
 
 ---
 
@@ -435,5 +445,5 @@ This work was developed using Claude Code (Anthropic) as an AI-assisted programm
 
 ---
 
-*Generated: 2026-02-03*
-*ARCHCODE v1.1*
+_Generated: 2026-02-03_
+_ARCHCODE v1.1_
