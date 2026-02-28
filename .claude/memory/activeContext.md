@@ -1,8 +1,8 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-02-28 (session 3, post-K562 correlation)
+**Last Updated:** 2026-03-01 (session 4, post-positional signal analysis)
 **Branch:** main
-**Last Commit:** pending (K562 Hi-C correlation results)
+**Last Commit:** de84f7a (within-category positional signal — honest null)
 **GitHub:** https://github.com/sergeeey/ARCHCODE
 **Status:** SUBMITTED TO bioRxiv — awaiting DOI assignment
 
@@ -10,7 +10,7 @@
 
 ## Текущий статус проекта
 
-**Фаза:** v2.0 — K562 Hi-C correlation DONE, threshold recalibration next
+**Фаза:** v2.0 — Within-category analysis DONE (null result), CFTR next
 
 ### ✅ K562 Hi-C Correlation Results (MILESTONE)
 
@@ -21,21 +21,29 @@
 | p-value      | 0.30           | 2.19e-82    | <1e-300     |
 | n datapoints | 12             | 1,124       | 11,649      |
 
-- **r(95kb) > r(30kb)** как предсказано — реальные CTCF-якоря улучшают корреляцию
-- 95kb Pearson выше, Spearman ниже (sparse элементы зашумляют ранги при 159x159)
-- mcool: 4DNFI18UHVRO.mcool (7.5 GB), resolution 1000bp, KR-balanced
+### ✅ Within-Category Positional Signal (HONEST NULL — session 4)
 
-**Hi-C extraction details:**
+**Ключевой результат:** SSIM НЕ добавляет predictive value поверх категории на HBB.
 
-- 30kb: 30x30 matrix, 717/900 non-zero, 1 CTCF peak in region
-- 95kb: 95x95 matrix, 5559/9025 non-zero, 5 CTCF peaks in region
+| Тест                                | Результат     | p-value |
+| ----------------------------------- | ------------- | ------- |
+| Logistic regression (SSIM additive) | ΔAUC = -0.001 | 1.0     |
+| Mann-Whitney intronic (9 vs 658)    | Δ = 0.000008  | 0.69    |
+| Mann-Whitney other (12 vs 7)        | Δ = -0.0009   | 0.058   |
+| Mann-Whitney synonymous (3 vs 83)   | Δ = -0.00006  | 0.22    |
+| Permutation other (n=19)            | AUC = 0.77    | 0.032\* |
 
-### ✅ Locus Config Externalization (session 3)
+**Причина null:** Все 1,103 ClinVar варианта кластеризованы в 2.1 kb из 95 kb окна (2.2%). Distance-to-CTCF/LCR не варьируется (20-23 kb ≈ константа). Within-category positional diversity = 0.
 
-- `config/locus/hbb_30kb_v2.json` + `hbb_95kb_subTAD.json`
-- TS + Python loaders, `--locus 30kb|95kb` в 3 скриптах
-- 30kb backward compat: byte-identical CSV
-- 95kb: 159x159, 0 structural pathogenic (thresholds uncalibrated)
+**Модель IS positionally sensitive:** Distance-to-TSS коррелирует с SSIM (intronic ρ=0.80, splice_donor ρ=0.92) — но одинаково для path и benign.
+
+**Вывод:** AUC=0.977 = category-level structural model, не independent positional prediction. Для доказательства positional signal нужен CFTR (~4200 вариантов в 317 kb TAD).
+
+### ✅ Manuscript updated with K562 (session 4)
+
+- 14 правок: Abstract → Discussion → Supplementary
+- r=0.16 → K562 trajectory (0.16→0.53→0.59)
+- Commit: de4ac71, pushed
 
 ---
 
@@ -47,24 +55,27 @@
 4. ✅ Phase A-H: Documentation, ROC, bioRxiv submission
 5. ✅ Phase I: Unified pipeline (AUC 1.000 → 0.9766)
 6. ✅ Locus config externalization (30kb + 95kb)
-7. ✅ **K562 Hi-C correlation** (r=0.53/0.59, p<1e-82)
-8. 🔄 **95kb threshold recalibration + manuscript update**
+7. ✅ K562 Hi-C correlation (r=0.53/0.59, p<1e-82)
+8. ✅ Manuscript K562 update (14 edits, de4ac71)
+9. ✅ **Within-category positional signal** → honest null (de84f7a)
+10. 🔄 **CFTR locus — real positional signal test**
 
 ---
 
 ## Ключевые файлы v2.0
 
-| Файл                                     | Назначение                        |
-| ---------------------------------------- | --------------------------------- |
-| `config/locus/hbb_30kb_v2.json`          | 30kb config (MODEL_PARAMETER)     |
-| `config/locus/hbb_95kb_subTAD.json`      | 95kb config (ENCODE CTCF)         |
-| `src/domain/config/locus-config.ts`      | TS loader + LocusConfig interface |
-| `scripts/lib/locus_config.py`            | Python mirror loader              |
-| `scripts/generate-unified-atlas.ts`      | Main pipeline (`--locus`)         |
-| `scripts/extract_k562_hbb.py`            | Extract HBB from K562 mcool       |
-| `scripts/correlate_hic_archcode.py`      | K562 vs ARCHCODE correlation      |
-| `results/hic_correlation_k562.json`      | **NEW** 30kb: r=0.530, p=2.19e-82 |
-| `results/hic_correlation_k562_95kb.json` | **NEW** 95kb: r=0.588, p<1e-300   |
+| Файл                                   | Назначение                         |
+| -------------------------------------- | ---------------------------------- |
+| `config/locus/hbb_30kb_v2.json`        | 30kb config (MODEL_PARAMETER)      |
+| `config/locus/hbb_95kb_subTAD.json`    | 95kb config (ENCODE CTCF)          |
+| `src/domain/config/locus-config.ts`    | TS loader + LocusConfig interface  |
+| `scripts/lib/locus_config.py`          | Python mirror loader               |
+| `scripts/generate-unified-atlas.ts`    | Main pipeline (`--locus`)          |
+| `scripts/analyze_positional_signal.py` | **NEW** Within-category analysis   |
+| `scripts/correlate_hic_archcode.py`    | K562 vs ARCHCODE correlation       |
+| `results/positional_signal_95kb.json`  | **NEW** Honest null result         |
+| `docs/RESEARCH_POSITIONAL_SIGNAL.md`   | **NEW** 30-paper literature review |
+| `plots/positional_signal_95kb.png`     | **NEW** 3-panel diagnostic figure  |
 
 ---
 
@@ -73,17 +84,22 @@
 1. ~~Унифицировать пайплайн~~ ✅
 2. ~~Externalize locus config~~ ✅
 3. ~~K562 Hi-C correlation~~ ✅ (r=0.53/0.59)
-4. **95kb threshold recalibration** — SSIM thresholds для 159x159
-5. **Обновить манускрипт** с K562 результатами (r=0.53→0.59 vs GM12878 r=0.16)
-6. **Bayesian fit** HBB → SOX2 через Optuna GPSampler
-7. **CFTR локус** — config + 4,200 ClinVar variants
-8. **TDA proof-of-concept** — ripser + persim
+4. ~~Manuscript K562 update~~ ✅ (14 edits)
+5. ~~Within-category analysis~~ ✅ (honest null)
+6. **CFTR локус** — config + ~4,200 ClinVar variants (NEXT PRIORITY)
+   - Варианты распределены по всему 317kb TAD
+   - Реальный тест positional signal
+7. **95kb threshold recalibration** — SSIM thresholds для 159x159
+8. **Bayesian fit** HBB → CFTR через Optuna GPSampler
+9. **Manuscript update** — добавить within-category null + reframe AUC
+10. **TDA proof-of-concept** — ripser + persim
 
 ---
 
 ## Для следующей сессии
 
-1. **Рекалибровка thresholds** для 159x159: эмпирическое определение SSIM cutoffs
-2. **Манускрипт**: добавить K562 результаты (Table, Figure)
-3. Проверь: получен ли DOI от bioRxiv?
-4. Bayesian fit: Optuna GPSampler для 3 параметров (K_BASE, alpha, gamma)
+1. **CFTR locus config** — CTCF sites из ENCODE, enhancers из литературы
+2. **CFTR ClinVar download** — ~4200 variants via E-utilities
+3. **Manuscript**: добавить within-category null result в Discussion
+4. Проверь: получен ли DOI от bioRxiv?
+5. Обновить ссылку: Sabaté 2024 bioRxiv → Nature Genetics 2025

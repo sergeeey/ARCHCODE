@@ -4,12 +4,8 @@
   "locus_config_id": "hbb_30kb_v2",
   "locus_config_path": "D:\\ДНК\\config\\locus\\hbb_30kb_v2.json",
   "provenance": {
-    "ctcf_sources": [
-      "MODEL_PARAMETER"
-    ],
-    "enhancer_sources": [
-      "MODEL_PARAMETER"
-    ],
+    "ctcf_sources": ["MODEL_PARAMETER"],
+    "enhancer_sources": ["MODEL_PARAMETER"],
     "thresholds_calibrated": true
   },
   "fix_description": "All 1,103 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",

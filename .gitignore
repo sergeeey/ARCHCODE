@@ -8,6 +8,10 @@ dist/
 dist-ssr/
 build/
 *.local
+__pycache__/
+.playwright-mcp/
+manuscript/*.html
+manuscript/*.pdf
 
 # Environment variables
 .env
@@ -72,6 +76,8 @@ data/raw/
 fastq_data/
 data/temp_*.cool
 data/*.cool
+data/reference/*.mcool
+data/reference/*_pairs.txt.gz
 *.bam
 *.fastq
 *.fastq.gz

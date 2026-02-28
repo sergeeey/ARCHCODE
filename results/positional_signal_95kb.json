@@ -15,7 +15,7 @@
       "testable": true,
       "path_mean_ssim": 0.998688888888889,
       "ben_mean_ssim": 0.9986803951367782,
-      "delta_mean": 8.493752110760866e-06,
+      "delta_mean": 8.493752110760866e-6,
       "U_statistic": 2755.5,
       "p_two_sided": 0.6945923045306903,
       "p_one_sided_less": 0.34729615226534516,
@@ -41,7 +41,7 @@
       "testable": true,
       "path_mean_ssim": 0.9996,
       "ben_mean_ssim": 0.9996626506024097,
-      "delta_mean": -6.265060240961962e-05,
+      "delta_mean": -6.265060240961962e-5,
       "U_statistic": 81.0,
       "p_two_sided": 0.2229086546205451,
       "p_one_sided_less": 0.11145432731027255,
@@ -104,7 +104,7 @@
     "missense": {
       "n": 125,
       "spearman_rho": 0.4281514153796542,
-      "p_value": 6.332808801476471e-07,
+      "p_value": 6.332808801476471e-7,
       "dist_range": "0-1400 bp"
     },
     "nonsense": {
@@ -128,13 +128,13 @@
     "splice_donor": {
       "n": 22,
       "spearman_rho": 0.9208718885001841,
-      "p_value": 1.2491538923973296e-09,
+      "p_value": 1.2491538923973296e-9,
       "dist_range": "73-1275 bp"
     },
     "synonymous": {
       "n": 86,
       "spearman_rho": 0.48644069808345325,
-      "p_value": 2.048637354332374e-06,
+      "p_value": 2.048637354332374e-6,
       "dist_range": "1-1395 bp"
     }
   },
@@ -142,9 +142,9 @@
     "3_prime_UTR": {
       "n": 14,
       "mean_ssim": 0.9984928571428572,
-      "std_ssim": 4.746311465496052e-05,
+      "std_ssim": 4.746311465496052e-5,
       "mean_disruption": 0.001507142857142818,
-      "std_disruption": 4.746311465496052e-05,
+      "std_disruption": 4.746311465496052e-5,
       "disruption_cv": 0.03149211398907415,
       "detectable": false
     },
@@ -241,9 +241,9 @@
     "synonymous": {
       "n": 86,
       "mean_ssim": 0.9996604651162792,
-      "std_ssim": 8.848937426066148e-05,
+      "std_ssim": 8.848937426066148e-5,
       "mean_disruption": 0.00033953488372084895,
-      "std_disruption": 8.848937426066148e-05,
+      "std_disruption": 8.848937426066148e-5,
       "disruption_cv": 0.2606193899458462,
       "detectable": false
     }
