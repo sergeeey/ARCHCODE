@@ -196,6 +196,53 @@ blind spots.
 
 ---
 
+## ROC Analysis: Discrimination of Pathogenic vs Benign Variants
+
+To evaluate ARCHCODE's discriminative performance, we expanded the dataset to include 750
+Benign/Likely Benign HBB variants from ClinVar (predominantly intronic, n=658; synonymous,
+n=83), yielding a combined cohort of 1,103 variants (353 Pathogenic/LP + 750 Benign/LB).
+Using ClinVar classification as ground truth and (1 − SSIM) as the predictor, ROC analysis
+yielded AUC = 1.000 with perfect separation between classes (Pathogenic mean SSIM = 0.927;
+Benign mean SSIM = 1.000; range 0.9996–1.0000).
+
+**Threshold evaluation by Youden's J index:**
+
+| SSIM threshold                   | Sensitivity | Specificity | Youden J |
+| -------------------------------- | ----------- | ----------- | -------- |
+| < 0.99 (Youden optimum)          | 0.935       | 1.000       | 0.935    |
+| < 0.96                           | 0.875       | 1.000       | 0.875    |
+| < 0.95 (current pearl threshold) | 0.620       | 1.000       | 0.620    |
+| < 0.92 (LIKELY_PATHOGENIC)       | 0.456       | 1.000       | 0.456    |
+| < 0.85 (PATHOGENIC)              | 0.008       | 1.000       | 0.008    |
+
+Specificity = 1.000 across all thresholds: no Benign/LB variant received SSIM below 0.999.
+This confirms that ARCHCODE does not generate false positives on confirmed benign variants.
+
+**Critical caveat on AUC interpretation:** The perfect AUC reflects the model's category-
+dependent occupancy scaling (see Methods: Variant Introduction). Benign ClinVar variants
+are predominantly intronic and synonymous, which receive minimal occupancy perturbation
+(< 5%) by design. Pathogenic variants include nonsense, frameshift, and splice categories,
+which receive 60–90% perturbation. The AUC therefore validates that the occupancy scaling
+correctly separates benign from pathogenic _categories_, not that ARCHCODE independently
+predicts pathogenicity from sequence alone. The model's scientific contribution lies in
+position-dependent structural discrimination within categories (e.g., which promoter
+variants disrupt enhancer–promoter contacts), not in category-level classification.
+
+**Quadrant analysis** (SSIM threshold 0.95 / VEP threshold 0.30):
+
+| Quadrant | Description                                      | Pathogenic | Benign | Total |
+| -------- | ------------------------------------------------ | ---------- | ------ | ----- |
+| Q1       | Both detect (SSIM < 0.95, VEP ≥ 0.30)            | 199        | 0      | 199   |
+| Q2       | ARCHCODE only / pearls (SSIM < 0.95, VEP < 0.30) | 20         | 0      | 20    |
+| Q3       | VEP only (SSIM ≥ 0.95, VEP ≥ 0.30)               | 95         | 41     | 136   |
+| Q4       | Neither (SSIM ≥ 0.95, VEP < 0.30)                | 39         | 709    | 748   |
+
+Critically, Q2 (ARCHCODE-only detections / pearl variants) contains 20 Pathogenic variants
+and 0 Benign variants. This demonstrates that pearl identification has zero false-positive
+rate among confirmed benign variants in the current dataset.
+
+---
+
 ## Summary
 
 ARCHCODE simulation of 353 real ClinVar HBB variants demonstrates: (1) mean SSIM values

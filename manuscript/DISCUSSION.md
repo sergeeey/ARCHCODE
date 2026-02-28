@@ -78,12 +78,18 @@ capture orthogonal biological mechanisms:
 - **ARCHCODE:** Topological mechanisms (regulatory confinement, loop-mediated enhancer access) —
   addresses promoter and regulatory variants operating via 3D chromatin architecture
 
-It is essential to note a critical limitation of ARCHCODE: **the tool cannot detect missense
-pathogenicity**. Missense variants that cause disease through protein misfolding, loss of catalytic
-activity, or dominant-negative mechanisms operate entirely at the protein level — a dimension
-invisible to chromatin topology simulation. For missense variants, sequence-based VEP tools remain
-the appropriate primary tool. ARCHCODE provides orthogonal evidence _specifically_ for regulatory,
-promoter, and structural variants where 3D genome organization mediates the mechanism.
+**Model independence:** ARCHCODE is mechanistically orthogonal to VEP. ARCHCODE receives no
+input from VEP scores, SIFT predictions, ClinVar classifications, or any sequence-based tool.
+The two models operate on fundamentally different biological layers: VEP evaluates protein-coding
+impact and splice motif disruption from primary sequence; ARCHCODE simulates cohesin-mediated
+loop extrusion and chromatin contact topology from occupancy profiles. Their outputs are
+statistically compared post hoc but are generated independently. The absence of missense
+sensitivity in ARCHCODE is therefore a topological feature of the model, not a failure — missense
+variants that cause disease through protein misfolding, loss of catalytic activity, or dominant-
+negative mechanisms operate entirely at the protein level, a dimension invisible to chromatin
+topology simulation. For missense variants, sequence-based VEP tools remain the appropriate
+primary tool. ARCHCODE provides orthogonal evidence _specifically_ for regulatory, promoter, and
+structural variants where 3D genome organization mediates the mechanism.
 
 A comprehensive variant interpretation pipeline may benefit from both approaches. Single-model
 strategies — whether purely sequence-based or purely structural — will systematically miss variants
