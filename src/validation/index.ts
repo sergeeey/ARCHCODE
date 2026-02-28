@@ -1,2 +1,2 @@
 // Validation exports
-export * from './alphagenome';
+export * from "./alphagenome";

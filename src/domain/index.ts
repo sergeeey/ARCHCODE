@@ -1,3 +1,3 @@
 // Domain models exports
-export * from './models/genome';
-export * from './constants/biophysics';
+export * from "./models/genome";
+export * from "./constants/biophysics";
