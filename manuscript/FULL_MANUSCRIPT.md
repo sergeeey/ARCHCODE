@@ -724,14 +724,26 @@ VCV002664746, VCV000811500, VCV000015208, VCV002024192, VCV000869358, VCV0000154
 VCV000015470, VCV000869288, VCV000869290, VCV000015466. Full accession lists for all 20
 pearl variants are provided in Supplementary Table S1.
 
-**Table 2. Pearl variant summary (VEP < 0.30 AND SSIM < 0.95).**
+**Table 2. Top 5 pearl variants by ARCHCODE structural disruption (of 20 total; VEP < 0.30 AND SSIM < 0.95).**
 
-| Group                     | n      | Positions (chr11)     | Mean SSIM | Mean VEP | Molecular context                           |
-| ------------------------- | ------ | --------------------- | --------- | -------- | ------------------------------------------- |
-| Promoter                  | 15     | 5,227,099–5,227,172   | 0.928     | 0.18     | upstream_gene_variant (HBB promoter region) |
-| Missense at 5226613       | 3      | 5,226,613             | 0.949     | 0.20     | coding_sequence_variant (complex indel)     |
-| LoF (frameshift + splice) | 2      | 5,226,796 / 5,226,971 | 0.896     | 0.18     | frameshift / splice_acceptor                |
-| **Total**                 | **20** | —                     | **0.927** | **0.18** | —                                           |
+| ClinVar_ID   | HGVS_c              | Category        | ClinVar_Significance | SSIM   | VEP  | VEP_Consequence         | Mechanism                         |
+| ------------ | ------------------- | --------------- | -------------------- | ------ | ---- | ----------------------- | --------------------------------- |
+| VCV000869358 | c.50dup             | frameshift      | Pathogenic           | 0.8915 | 0.15 | synonymous_variant      | LoF, VEP misannotated             |
+| VCV002024192 | c.93-33_96delins... | splice_acceptor | Likely pathogenic    | 0.9004 | 0.20 | coding_sequence_variant | Complex indel, VEP underscored    |
+| VCV000015471 | c.-78A>G            | promoter        | Pathogenic/LP        | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter–enhancer loop disruption |
+| VCV000015470 | c.-78A>C            | promoter        | Pathogenic           | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter–enhancer loop disruption |
+| VCV000036284 | c.-136C>T           | promoter        | Pathogenic/LP        | 0.9277 | 0.20 | 5_prime_UTR_variant     | Promoter–enhancer loop disruption |
+
+_Full list of 20 pearls sorted by SSIM: Supplementary Table S1 (manuscript/TABLE_S1_PEARLS.md)._
+
+**Pearl summary by group:**
+
+| Group                     | n      | Positions (chr11)     | Mean SSIM | Mean VEP | Molecular context                       |
+| ------------------------- | ------ | --------------------- | --------- | -------- | --------------------------------------- |
+| Promoter                  | 15     | 5,227,099–5,227,172   | 0.928     | 0.20     | 5_prime_UTR_variant (HBB promoter)      |
+| Missense at 5226613       | 3      | 5,226,613             | 0.949     | 0.20     | coding_sequence_variant (complex indel) |
+| LoF (frameshift + splice) | 2      | 5,226,796 / 5,226,971 | 0.896     | 0.18     | frameshift / splice_acceptor            |
+| **Total**                 | **20** | —                     | **0.928** | **0.20** | —                                       |
 
 ---
 
