@@ -1,186 +1,100 @@
-# ARCHCODE v1.0
+# ARCHCODE: Physics-Based 3D Chromatin Simulator for Variant Pathogenicity
 
-[![Tests](https://img.shields.io/badge/tests-passing-brightgreen.svg)](./)
+![bioRxiv pending](https://img.shields.io/badge/bioRxiv-pending-yellow)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
-[![React](https://img.shields.io/badge/React-18-61dafb.svg)](https://react.dev/)
-[![Three.js](https://img.shields.io/badge/Three.js-black.svg)](https://threejs.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
-**ARCHCODE (Architectural Code)** — 3D DNA Loop Extrusion Simulator
+**ARCHCODE** (Architecture-Constrained Decoder) — an analytical mean-field loop extrusion
+simulator that predicts structural pathogenicity of genomic variants by comparing wild-type
+and mutant 3D chromatin contact maps via SSIM.
 
-A TypeScript/React implementation of chromatin loop extrusion physics. Validation: mock AlphaGenome for development; **publication target**: experimental Hi-C (e.g. Rao et al.) with Pearson r ≥ 0.7. Optional [AlphaGenome](https://deepmind.google.com/science/alphagenome) integration when API is available.
-
-![ARCHCODE Screenshot](docs/screenshot.png)
-
-## 🚀 Quick Start
+## Quick Start
 
 ```bash
-# 1. Clone repository
-git clone https://github.com/yourusername/archcode.git
-cd archcode
-
-# 2. Install dependencies
 npm install
-
-# 3. Run development server
-npm run dev
-
-# 4. Open http://localhost:5173
-```
-
-## 🧪 Reproduce Gold Standard Results
-
-```bash
-# Run all regression tests (requires build)
 npm run build
-npm run validate:hbb
-
-# Run specific test suite
-npm run test:regression
+npx tsx scripts/generate-real-atlas.ts   # 353 variants, 20 pearls
 ```
 
-Expected output: Pearson r ≥ 0.7 on HBB, Sox2, and Pcdh loci.
+## Key Results
 
-## 📊 Validation Results
+Analysis of **353 real ClinVar HBB variants** (β-thalassemia) using ARCHCODE + Ensembl VEP v113:
 
-| Locus          | Pearson r | Spearman ρ | Loops | Status |
-| -------------- | --------- | ---------- | ----- | ------ |
-| HBB (β-globin) | 0.72      | 0.68       | 5     | ✅     |
-| Sox2           | 0.71      | 0.69       | 3     | ✅     |
-| Pcdh           | 0.74      | 0.71       | 4     | ✅     |
+- **161/353 (45.6%)** classified as structurally pathogenic by ARCHCODE
+- **20 "pearl" variants** discovered (VEP < 0.30, SSIM < 0.95): 15 promoter, 3 missense, 1 splice_acceptor, 1 frameshift
+- **130/353 (36.8%)** discordant between ARCHCODE and VEP — complementary, not competing tools
+- Loss-of-function classes: 100% pathogenic (nonsense, frameshift); synonymous: 0% — biologically expected
 
-_Results from default parameters (velocity=1000 bp/s, 20 cohesins, seed=42)_
+### Figure 2: ARCHCODE SSIM vs VEP Score
 
-## 🧬 Features
+![SSIM vs VEP scatter plot](results/figures/fig_ssim_vs_vep.png)
 
-### Core Physics Engine
+_353 real ClinVar HBB variants. Red = 20 pearl variants (VEP-blind, ARCHCODE-detected). Pearl zone: VEP < 0.30 AND SSIM < 0.95._
 
-- **Loop Extrusion Simulation**: Cohesin motors extrude DNA until blocked by CTCF
-- **Convergent Rule**: R...F orientation forms loops; F...R blocks extrusion
-- **Ensemble Simulation**: Multiple cohesins for realistic contact matrices
-- **Deterministic**: Fixed seed for reproducible research
+### Table 2: Top 5 Pearl Variants (of 20 total)
 
-### Visualization
+| ClinVar_ID   | HGVS_c              | Category        | ClinVar_Significance    | SSIM   | VEP  | VEP_Consequence         | Mechanism                         |
+| ------------ | ------------------- | --------------- | ----------------------- | ------ | ---- | ----------------------- | --------------------------------- |
+| VCV000869358 | c.50dup             | frameshift      | Pathogenic              | 0.8915 | 0.15 | synonymous_variant      | LoF, VEP misannotated             |
+| VCV002024192 | c.93-33_96delins... | splice_acceptor | Likely pathogenic       | 0.9004 | 0.20 | coding_sequence_variant | Complex indel, VEP underscored    |
+| VCV000015471 | c.-78A>G            | promoter        | Pathogenic/Likely path. | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter–enhancer loop disruption |
+| VCV000015470 | c.-78A>C            | promoter        | Pathogenic              | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter–enhancer loop disruption |
+| VCV000036284 | c.-136C>T           | promoter        | Pathogenic/Likely path. | 0.9277 | 0.20 | 5_prime_UTR_variant     | Promoter–enhancer loop disruption |
 
-- **3D Browser Rendering**: React Three Fiber + WebGL
-- **Real-time Dashboard**: NASA-style telemetry display
-- **Contact Matrix Heatmaps**: Side-by-side comparison (optional AlphaGenome mock)
-- **P(s) Curves**: Power-law fitting (-1.0 exponent validation)
+_Sorted by SSIM ascending (strongest structural disruption first). Full list: [Supplementary Table S1](manuscript/TABLE_S1_PEARLS.md)._
 
-### Validation
+## Limitations
 
-- **Validation target**: Experimental Hi-C (Rao et al.); mock AlphaGenome for development
-- **Grid Search**: Parameter optimization for r > 0.7
-- **Gold Standard Tests**: HBB, Sox2, Pcdh loci from literature
+- **VEP proxy**: SpliceAI API was unreachable; Ensembl VEP used instead (different scope)
+- **Mean-field approximation**: analytical model, not full stochastic Monte Carlo
+- **Computational only**: Hi-C validation r = 0.16 (not significant); experimental validation required
+- **Parameters manually calibrated**: α=0.92, γ=0.80 from literature ranges, not fitted to data
+- **No missense sensitivity**: ARCHCODE models chromatin topology, not protein folding
 
-## 📁 Project Structure
+## Project Structure
 
 ```
-archcode/
-├── src/
-│   ├── components/        # React UI components
-│   │   └── dashboard/     # Real-time telemetry
-│   ├── domain/            # Core business logic
-│   │   ├── constants/     # Biophysical parameters
-│   │   └── models/        # TypeScript interfaces
-│   ├── engines/           # Physics engines
-│   │   ├── LoopExtrusionEngine.ts      # Single cohesin
-│   │   └── MultiCohesinEngine.ts       # Ensemble (20 LEFs)
-│   ├── parsers/           # BED file parsing
-│   ├── store/             # Zustand state management
-│   ├── utils/             # Seedable RNG, math helpers
-│   ├── validation/        # AlphaGenome client
-│   └── __tests__/         # Vitest test suites
-│       └── regression/    # Gold standard tests
-├── config/
-│   └── default.json       # Optimized parameters
-├── results/               # Validation outputs
-├── scripts/               # Grid search, CLI tools
-├── docs/                  # Documentation
-└── publication/           # Figures for paper
+├── manuscript/                    # Publication manuscript (all sections)
+│   ├── FULL_MANUSCRIPT.md         # Complete integrated manuscript
+│   ├── TABLE_2_PEARLS_TOP5.md     # Top 5 pearl variants
+│   └── TABLE_S1_PEARLS.md        # All 20 pearl variants
+├── results/
+│   ├── HBB_Clinical_Atlas_REAL.csv # 353 real variants (primary dataset)
+│   ├── REAL_ATLAS_SUMMARY.json    # Summary statistics
+│   └── figures/                   # Publication figures
+├── scripts/
+│   ├── generate-real-atlas.ts     # Atlas generator (analytical engine)
+│   ├── run_vep_predictions.py     # Ensembl VEP batch predictions
+│   ├── download_clinvar_hbb.ts    # ClinVar data acquisition
+│   ├── plot_ssim_vs_vep.py        # Figure 2 generator
+│   └── check_consistency_hbb_real.py  # Data/manuscript consistency check
+├── src/                           # Core TypeScript engine + React UI
+│   ├── engines/                   # Physics engines (loop extrusion)
+│   ├── domain/                    # Biophysical constants and models
+│   └── components/                # 3D visualization (Three.js)
+└── config/                        # Simulation parameters
 ```
 
-## ⚙️ Configuration
+## Citation
 
-Edit `config/default.json`:
-
-```json
-{
-  "biophysics": {
-    "cohesin": {
-      "velocity": 1000, // bp per step
-      "processivity": 600, // kb
-      "unloadingProbability": 0.0005
-    },
-    "ctcf": {
-      "convergentBlockingEfficiency": 0.9
-    }
-  },
-  "ensemble": {
-    "numCohesins": 20
-  }
+```bibtex
+@article{boyko2026archcode,
+  title   = {ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural
+             Pathogenicity Invisible to Sequence-Based Predictors in β-Globin Variants},
+  author  = {Boyko, Sergey V.},
+  year    = {2026},
+  note    = {bioRxiv preprint (pending)},
+  url     = {https://github.com/sergeeey/ARCHCODE}
 }
 ```
 
-## 🔬 Methodology
-
-See [METHODS.md](./METHODS.md) for detailed algorithm description suitable for publication Methods sections.
-
-### Key Equations
-
-**Cohesin Motion:**
-
-```
-leftLeg(t+1) = leftLeg(t) - velocity
-rightLeg(t+1) = rightLeg(t) + velocity
-```
-
-**Convergent Rule:**
-
-```
-Loop forms if: R@leftLeg AND F@rightLeg
-where R = reverse CTCF (<), F = forward CTCF (>)
-```
-
-**Contact Probability:**
-
-```
-P(s) ~ s^(-α) where α ≈ 1.0 (theoretical)
-```
-
-## Development
-
-Git tags (`pre-audit`, `post-p0-fixes`) and commit discipline for AI-assisted work are described in [docs/DEVELOPMENT.md](./docs/DEVELOPMENT.md). Project rules for Cursor/AI are in [.cursorrules](./.cursorrules).
-
-## 🐛 Known Issues
-
-See [KNOWN_ISSUES.md](./KNOWN_ISSUES.md) for limitations and future work.
-
-## 📄 License
+## License
 
 MIT License — See [LICENSE](./LICENSE)
 
-## 🙏 Acknowledgments
-
-- **Sanborn et al. (2015)** — Loop extrusion model foundation
-- **Rao et al. (2014)** — Hi-C contact maps and validation target
-- **Davidson et al. (2019)** — Human cohesin single-molecule kinetics
-- **Gerlich et al. (2006)** — Cohesin residence time FRAP data
-- **React Three Fiber** — 3D visualization
-- **AlphaGenome** — Optional integration (mock in v1.0)
-
-## 📚 Citation
-
-```bibtex
-@software{archcode2024,
-  title = {ARCHCODE: 3D DNA Loop Extrusion Simulator},
-  author = {Your Name},
-  year = {2024},
-  url = {https://doi.org/10.5281/zenodo.xxxxx}
-}
-```
-
 ---
 
-**Version**: 1.0.0  
-**Last Updated**: 2024-02-01  
-**Status**: In Development (scientific integrity review in progress)
+**Version**: 2.0.0
+**Last Updated**: 2026-02-28
+**Status**: Pre-publication (consistency pass complete, experimental validation pending)
+**Contact**: sergeikuch80@gmail.com
