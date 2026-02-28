@@ -95,6 +95,7 @@ const CONFIG_DIR = path.join(process.cwd(), "config", "locus");
 const ALIASES: Record<string, string> = {
   "30kb": "hbb_30kb_v2.json",
   "95kb": "hbb_95kb_subTAD.json",
+  cftr: "cftr_317kb.json",
 };
 
 /**

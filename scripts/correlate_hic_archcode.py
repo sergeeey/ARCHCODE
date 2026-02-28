@@ -48,6 +48,9 @@ ENHANCERS = LOCUS["features"]["enhancers"]
 CTCF_SITES = LOCUS["features"]["ctcf_sites"]
 
 # Kramer kinetics (from src/domain/constants/biophysics.ts — NOT in locus config)
+# Bayesian optimization (Optuna, 200 trials) confirmed these are near-optimal:
+# delta_r < 0.001 — kinetics params negligible for WT Hi-C correlation.
+# See results/bayesian_fit_hic.json
 K_BASE = 0.002
 DEFAULT_ALPHA = 0.92
 DEFAULT_GAMMA = 0.8

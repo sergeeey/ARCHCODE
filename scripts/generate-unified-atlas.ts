@@ -81,12 +81,64 @@ interface UnifiedAtlasRow {
   Source: string;
 }
 
-// HBB gene coordinates (GRCh38)
+// HBB gene coordinates (GRCh38) — used for HBB-specific logic
 const HBB_GENE = {
   chromosome: "chr11",
   start: 5225464,
   end: 5227079,
 };
+
+// ============================================================================
+// Generic CSV variant loader (for CFTR and future loci)
+// ============================================================================
+
+interface GenericVariant {
+  vcv_id: string;
+  position: number;
+  ref: string;
+  alt: string;
+  hgvs_c: string;
+  hgvs_p: string;
+  category: string;
+  clinical_significance: string;
+  label: "Pathogenic" | "Benign";
+}
+
+function loadGenericVariants(csvPath: string): GenericVariant[] {
+  const fullPath = path.join(process.cwd(), csvPath);
+  if (!fs.existsSync(fullPath)) {
+    console.error(`Error: ${csvPath} not found`);
+    console.error("Run: python scripts/download_clinvar_cftr.py");
+    process.exit(1);
+  }
+  const content = fs.readFileSync(fullPath, "utf-8");
+  const lines = content.trim().split("\n");
+  // Trim each header/value to handle \r from Windows line endings
+  const headers = lines[0].split(",").map((h) => h.trim());
+
+  const variants: GenericVariant[] = [];
+  for (let i = 1; i < lines.length; i++) {
+    const values = lines[i].split(",").map((v) => v.trim());
+    const row: any = {};
+    headers.forEach((h, idx) => (row[h] = values[idx]));
+
+    const label = row.label;
+    if (label !== "Pathogenic" && label !== "Benign") continue;
+
+    variants.push({
+      vcv_id: row.clinvar_id,
+      position: parseInt(row.position),
+      ref: row.ref || ".",
+      alt: row.alt || ".",
+      hgvs_c: row.hgvs_c || "",
+      hgvs_p: row.hgvs_p || "",
+      category: row.category || "other",
+      clinical_significance: row.clinical_significance || "",
+      label: label,
+    });
+  }
+  return variants;
+}
 
 // Load locus configuration from JSON (--locus 30kb | 95kb)
 const LOCUS_ARG = parseLocusArg();
@@ -438,47 +490,89 @@ async function main() {
   console.log(
     `Thresholds:    ${LOCUS_CONFIG.thresholds ? "calibrated" : "using 30kb defaults (uncalibrated)"}`,
   );
-  console.log("FIX: All 1,103 variants through ONE TypeScript engine.");
-  console.log("     getEffectStrength() sees ONLY category, NEVER label.");
   console.log(
     `Kramer kinetics: alpha=${KRAMER_KINETICS.DEFAULT_ALPHA}, gamma=${KRAMER_KINETICS.DEFAULT_GAMMA}`,
   );
   console.log();
 
-  // Load pathogenic variants (353)
-  console.log("Loading pathogenic variants (ClinVar JSON)...");
-  const pathogenicVariants = loadPathogenicVariants();
-  console.log(`  Loaded ${pathogenicVariants.length} pathogenic variants`);
+  // ============================================================================
+  // Variant loading — HBB vs CFTR (and future loci)
+  // ============================================================================
 
-  console.log("Loading pathogenic VEP results...");
-  const pathogenicVep = loadPathogenicVep();
-  console.log(`  Loaded ${pathogenicVep.size} pathogenic VEP entries`);
-
-  // Load benign variants (750)
-  console.log("Loading benign variants (CSV)...");
-  const benignVariants = loadBenignVariants();
-  console.log(`  Loaded ${benignVariants.length} benign variants`);
-
-  console.log("Loading benign VEP results...");
-  const benignVep = loadBenignVep();
-  console.log(`  Loaded ${benignVep.size} benign VEP entries`);
-
-  // Merge VEP maps
-  const vepMap = new Map<string, VepResult>([...pathogenicVep, ...benignVep]);
-  console.log(`  Merged VEP map: ${vepMap.size} total entries`);
-
-  // Tag variants with label
   type TaggedVariant = RealVariant & { label: "Pathogenic" | "Benign" };
-  const allVariants: TaggedVariant[] = [
-    ...pathogenicVariants.map((v) => ({ ...v, label: "Pathogenic" as const })),
-    ...benignVariants.map((v) => ({ ...v, label: "Benign" as const })),
-  ];
+  let allVariants: TaggedVariant[];
+  let vepMap: Map<string, VepResult>;
+  let hasVep: boolean;
+
+  const isGenericLocus = LOCUS_ARG === "cftr"; // extend as needed
+
+  if (isGenericLocus) {
+    // CFTR (and future loci): single CSV with both P/LP and B/LB
+    const csvFile = `data/${LOCUS_ARG}_variants.csv`;
+    console.log(`Loading variants from ${csvFile}...`);
+    const genericVariants = loadGenericVariants(csvFile);
+    allVariants = genericVariants.map((v) => ({
+      vcv_id: v.vcv_id,
+      position: v.position,
+      ref: v.ref,
+      alt: v.alt,
+      hgvs_c: v.hgvs_c,
+      hgvs_p: v.hgvs_p,
+      category: v.category,
+      clinical_significance: v.clinical_significance,
+      label: v.label,
+    }));
+    vepMap = new Map(); // No VEP for CFTR — not needed for within-category test
+    hasVep = false;
+
+    const pathCount = allVariants.filter(
+      (v) => v.label === "Pathogenic",
+    ).length;
+    const benCount = allVariants.filter((v) => v.label === "Benign").length;
+    console.log(`  Pathogenic/LP: ${pathCount}`);
+    console.log(`  Benign/LB:     ${benCount}`);
+    console.log(`  Total:         ${allVariants.length}`);
+    console.log("  VEP: skipped (not required for within-category analysis)");
+  } else {
+    // HBB: existing logic (unchanged)
+    console.log("Loading pathogenic variants (ClinVar JSON)...");
+    const pathogenicVariants = loadPathogenicVariants();
+    console.log(`  Loaded ${pathogenicVariants.length} pathogenic variants`);
+
+    console.log("Loading pathogenic VEP results...");
+    const pathogenicVep = loadPathogenicVep();
+    console.log(`  Loaded ${pathogenicVep.size} pathogenic VEP entries`);
+
+    console.log("Loading benign variants (CSV)...");
+    const benignVariants = loadBenignVariants();
+    console.log(`  Loaded ${benignVariants.length} benign variants`);
+
+    console.log("Loading benign VEP results...");
+    const benignVep = loadBenignVep();
+    console.log(`  Loaded ${benignVep.size} benign VEP entries`);
+
+    vepMap = new Map<string, VepResult>([...pathogenicVep, ...benignVep]);
+    console.log(`  Merged VEP map: ${vepMap.size} total entries`);
+    hasVep = true;
+
+    allVariants = [
+      ...pathogenicVariants.map((v) => ({
+        ...v,
+        label: "Pathogenic" as const,
+      })),
+      ...benignVariants.map((v) => ({ ...v, label: "Benign" as const })),
+    ];
+  }
   console.log(`\nTotal variants: ${allVariants.length}`);
 
-  // Match with VEP
-  const matchedVariants = allVariants.filter((v) => vepMap.has(v.vcv_id));
+  // Match with VEP (skip for generic loci)
+  const matchedVariants = hasVep
+    ? allVariants.filter((v) => vepMap.has(v.vcv_id))
+    : allVariants;
   const unmatchedCount = allVariants.length - matchedVariants.length;
-  console.log(`  Matched with VEP: ${matchedVariants.length}`);
+  if (hasVep) {
+    console.log(`  Matched with VEP: ${matchedVariants.length}`);
+  }
   if (unmatchedCount > 0) {
     console.log(`  Unmatched (skipped): ${unmatchedCount}`);
   }
@@ -505,7 +599,7 @@ async function main() {
     );
 
     for (const variant of batch) {
-      const vep = vepMap.get(variant.vcv_id)!;
+      const vep = vepMap.get(variant.vcv_id) ?? null;
       const variantBin = Math.floor(
         (variant.position - SIM_START) / RESOLUTION,
       );
@@ -550,26 +644,30 @@ async function main() {
         verdict = "BENIGN";
       }
 
-      const isPearl = vep.vep_score < 0.3 && ssim < 0.95;
+      const isPearl = vep ? vep.vep_score < 0.3 && ssim < 0.95 : false;
 
       const archcodePathogenic =
         verdict === "PATHOGENIC" || verdict === "LIKELY_PATHOGENIC";
-      const vepPathogenic = vep.vep_score >= 0.5;
-      let discordance = "AGREEMENT";
-      if (archcodePathogenic && !vepPathogenic) {
-        discordance = "ARCHCODE_ONLY";
-      } else if (!archcodePathogenic && vepPathogenic) {
-        discordance = "VEP_ONLY";
+      const vepPathogenic = vep ? vep.vep_score >= 0.5 : false;
+      let discordance = vep ? "AGREEMENT" : "NO_VEP";
+      if (vep) {
+        if (archcodePathogenic && !vepPathogenic) {
+          discordance = "ARCHCODE_ONLY";
+        } else if (!archcodePathogenic && vepPathogenic) {
+          discordance = "VEP_ONLY";
+        }
       }
 
       let insight =
         "Convergent evidence from structural and sequence analysis.";
-      if (discordance === "ARCHCODE_ONLY") {
+      if (discordance === "NO_VEP") {
+        insight = `Structural-only assessment (SSIM=${ssim.toFixed(3)}). VEP not available for this locus.`;
+      } else if (discordance === "ARCHCODE_ONLY") {
         insight = `3D structural disruption detected (SSIM=${ssim.toFixed(3)}) without sequence-level pathogenicity signal.`;
       } else if (discordance === "VEP_ONLY") {
-        insight = `Sequence-level pathogenicity (VEP: ${vep.vep_consequence}) without significant 3D structural change.`;
+        insight = `Sequence-level pathogenicity (VEP: ${vep!.vep_consequence}) without significant 3D structural change.`;
       }
-      if (isPearl) {
+      if (isPearl && vep) {
         insight = `PEARL: VEP blind (score=${vep.vep_score.toFixed(2)}) but ARCHCODE detects structural disruption (SSIM=${ssim.toFixed(3)}).`;
       }
 
@@ -586,14 +684,16 @@ async function main() {
         ARCHCODE_DeltaInsulation: parseFloat(deltaInsulation.toFixed(4)),
         ARCHCODE_LoopIntegrity: parseFloat(loopIntegrity.toFixed(4)),
         ARCHCODE_Verdict: verdict,
-        VEP_Consequence: vep.vep_consequence,
-        VEP_Score: parseFloat(vep.vep_score.toFixed(4)),
-        VEP_Impact: vep.vep_impact,
-        SIFT_Score: isNaN(vep.sift_score)
-          ? -1
-          : parseFloat(vep.sift_score.toFixed(4)),
-        SIFT_Prediction: vep.sift_prediction,
-        VEP_Interpretation: vep.interpretation,
+        VEP_Consequence: vep?.vep_consequence ?? "",
+        VEP_Score: vep ? parseFloat(vep.vep_score.toFixed(4)) : -1,
+        VEP_Impact: vep?.vep_impact ?? "",
+        SIFT_Score: vep
+          ? isNaN(vep.sift_score)
+            ? -1
+            : parseFloat(vep.sift_score.toFixed(4))
+          : -1,
+        SIFT_Prediction: vep?.sift_prediction ?? "",
+        VEP_Interpretation: vep?.interpretation ?? "",
         Pearl: isPearl,
         Discordance: discordance,
         Mechanism_Insight: insight,
@@ -622,8 +722,21 @@ async function main() {
   const outputDir = path.join(process.cwd(), "results");
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-  const csvSuffix = LOCUS_ARG === "30kb" ? "" : `_${LOCUS_ARG}`;
-  const csvPath = path.join(outputDir, `HBB_Unified_Atlas${csvSuffix}.csv`);
+  // Output naming: use gene name from config for non-HBB loci
+  const geneName = isGenericLocus
+    ? (LOCUS_CONFIG.features.genes[0]?.name ?? LOCUS_ARG.toUpperCase())
+    : "HBB";
+  const windowKb = `${Math.round((SIM_END - SIM_START) / 1000)}kb`;
+  const csvFilename = isGenericLocus
+    ? `${geneName}_Unified_Atlas_${windowKb}.csv`
+    : LOCUS_ARG === "30kb"
+      ? "HBB_Unified_Atlas.csv"
+      : `HBB_Unified_Atlas_${LOCUS_ARG}.csv`;
+  const csvPath = path.join(outputDir, csvFilename);
+  if (results.length === 0) {
+    console.error("ERROR: No results to write. Check variant loading.");
+    process.exit(1);
+  }
   const headers = Object.keys(results[0]);
   const csvLines = [
     headers.join(","),
@@ -693,9 +806,14 @@ async function main() {
   }
 
   // Write summary JSON
+  const summarySuffix = isGenericLocus
+    ? `_${geneName}_${windowKb}`
+    : LOCUS_ARG === "30kb"
+      ? ""
+      : `_${LOCUS_ARG}`;
   const summaryPath = path.join(
     outputDir,
-    `UNIFIED_ATLAS_SUMMARY${csvSuffix}.json`,
+    `UNIFIED_ATLAS_SUMMARY${summarySuffix}.json`,
   );
   const summary = {
     title: "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
@@ -712,21 +830,26 @@ async function main() {
       thresholds_calibrated: LOCUS_CONFIG.thresholds !== null,
     },
     fix_description:
-      "All 1,103 variants processed through identical TypeScript engine. " +
+      `All ${results.length} variants processed through identical TypeScript engine. ` +
       "getEffectStrength() sees only category, never ClinVar label. " +
       "Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
-    data_sources: {
-      pathogenic_variants: "NCBI ClinVar (clinvar_hbb_processed.json)",
-      benign_variants: "NCBI ClinVar (hbb_benign_variants.csv)",
-      sequence_predictor: "Ensembl VEP v113",
-      structural_predictor: "ARCHCODE loop extrusion (Kramer kinetics)",
-    },
+    data_sources: isGenericLocus
+      ? {
+          variants: `NCBI ClinVar (data/${LOCUS_ARG}_variants.csv)`,
+          structural_predictor: "ARCHCODE loop extrusion (Kramer kinetics)",
+        }
+      : {
+          pathogenic_variants: "NCBI ClinVar (clinvar_hbb_processed.json)",
+          benign_variants: "NCBI ClinVar (hbb_benign_variants.csv)",
+          sequence_predictor: "Ensembl VEP v113",
+          structural_predictor: "ARCHCODE loop extrusion (Kramer kinetics)",
+        },
     parameters: {
       alpha: KRAMER_KINETICS.DEFAULT_ALPHA,
       gamma: KRAMER_KINETICS.DEFAULT_GAMMA,
       k_base: KRAMER_KINETICS.K_BASE,
       resolution_bp: RESOLUTION,
-      simulation_window: `chr11:${SIM_START}-${SIM_END}`,
+      simulation_window: `${LOCUS_CONFIG.window.chromosome}:${SIM_START}-${SIM_END}`,
       n_bins: N_BINS,
     },
     statistics: {

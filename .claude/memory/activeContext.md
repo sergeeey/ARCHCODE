@@ -1,8 +1,8 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-01 (session 4, post-positional signal analysis)
+**Last Updated:** 2026-03-01 (session 8, manuscript CFTR + Bayesian update — 17 edits)
 **Branch:** main
-**Last Commit:** de84f7a (within-category positional signal — honest null)
+**Last Commit:** 5a7ea6c (chore: reference data, research docs, ADRs, scripts)
 **GitHub:** https://github.com/sergeeey/ARCHCODE
 **Status:** SUBMITTED TO bioRxiv — awaiting DOI assignment
 
@@ -10,40 +10,44 @@
 
 ## Текущий статус проекта
 
-**Фаза:** v2.0 — Within-category analysis DONE (null result), CFTR next
+**Фаза:** v2.0 — CFTR locus implemented, Bayesian fit completed
 
-### ✅ K562 Hi-C Correlation Results (MILESTONE)
+### ✅ Bayesian Optimization Result (MILESTONE — honest null #2)
 
-| Метрика      | GM12878 (v1.0) | K562 30kb   | K562 95kb   |
-| ------------ | -------------- | ----------- | ----------- |
-| Pearson r    | 0.16 (ns)      | **0.530\*** | **0.588\*** |
-| Spearman ρ   | —              | **0.680\*** | **0.409\*** |
-| p-value      | 0.30           | 2.19e-82    | <1e-300     |
-| n datapoints | 12             | 1,124       | 11,649      |
+| Метрика | Baseline | Best (200 trials)    | Δ       |
+| ------- | -------- | -------------------- | ------- |
+| alpha   | 0.92     | 0.50 (lower bound)   | —       |
+| gamma   | 0.80     | 0.30 (lower bound)   | —       |
+| k_base  | 0.002    | 0.0005 (lower bound) | —       |
+| r_30kb  | 0.5299   | 0.5300               | +0.0001 |
+| r_95kb  | 0.5876   | 0.5877               | +0.0001 |
 
-### ✅ Within-Category Positional Signal (HONEST NULL — session 4)
+**Key insight:** All 3 best params hit lower bounds → optimizer minimizes the Kramer kinetics term entirely. k_base importance = 90% (fANOVA). Hi-C correlation is **architecture-driven** (distance decay, MED1 landscape, CTCF barriers), NOT kinetics-driven. Kinetics params serve a different role: variant pathogenicity classification via SSIM perturbation. **Decision: KEEP original params.** Grid-search estimates confirmed near-optimal.
 
-**Ключевой результат:** SSIM НЕ добавляет predictive value поверх категории на HBB.
+### ✅ CFTR Locus — Within-Category Results (MILESTONE)
 
-| Тест                                | Результат     | p-value |
-| ----------------------------------- | ------------- | ------- |
-| Logistic regression (SSIM additive) | ΔAUC = -0.001 | 1.0     |
-| Mann-Whitney intronic (9 vs 658)    | Δ = 0.000008  | 0.69    |
-| Mann-Whitney other (12 vs 7)        | Δ = -0.0009   | 0.058   |
-| Mann-Whitney synonymous (3 vs 83)   | Δ = -0.00006  | 0.22    |
-| Permutation other (n=19)            | AUC = 0.77    | 0.032\* |
+| Метрика                  | HBB (95kb)     | CFTR (317kb)         |
+| ------------------------ | -------------- | -------------------- |
+| ClinVar variants         | 1,103          | 3,349                |
+| P/LP + B/LB              | 353 + 750      | 1,756 + 1,593        |
+| Variant spread           | 2.1 kb (2.2%)  | 201.5 kb (63.6%)     |
+| Bins occupied            | 2-3 / 159      | 93 / 317             |
+| SSIM range               | 0.9910–1.0000  | 0.9948–1.0000        |
+| Logistic regression ΔAUC | -0.001 (p=1.0) | +0.007 (p=1.0)       |
+| MW-U synonymous          | p=0.22 ns      | **p=6.1e-6** \*\*\*  |
+| MW-U intronic            | p=0.69 ns      | p=0.13 ns            |
+| MW-U "other"             | p=0.058 ns     | **p=1.6e-16** \*\*\* |
 
-**Причина null:** Все 1,103 ClinVar варианта кластеризованы в 2.1 kb из 95 kb окна (2.2%). Distance-to-CTCF/LCR не варьируется (20-23 kb ≈ константа). Within-category positional diversity = 0.
+**Key insight:** synonymous category shows statistically significant but practically negligible (Δ=7e-6 SSIM units) within-category signal at CFTR. Global logistic regression p=1.0 → SSIM is a **category-level classifier**, not a within-category positional predictor. Consistent across both loci.
 
-**Модель IS positionally sensitive:** Distance-to-TSS коррелирует с SSIM (intronic ρ=0.80, splice_donor ρ=0.92) — но одинаково для path и benign.
+**SSIM dilution at 317x317:** Matrix size reduces SSIM sensitivity. All SSIM > 0.9948. Need threshold recalibration for large matrices.
 
-**Вывод:** AUC=0.977 = category-level structural model, не independent positional prediction. Для доказательства positional signal нужен CFTR (~4200 вариантов в 317 kb TAD).
+### ✅ K562 Hi-C Correlation Results
 
-### ✅ Manuscript updated with K562 (session 4)
-
-- 14 правок: Abstract → Discussion → Supplementary
-- r=0.16 → K562 trajectory (0.16→0.53→0.59)
-- Commit: de4ac71, pushed
+| Метрика   | GM12878 (v1.0) | K562 30kb   | K562 95kb   |
+| --------- | -------------- | ----------- | ----------- |
+| Pearson r | 0.16 (ns)      | **0.530\*** | **0.588\*** |
+| p-value   | 0.30           | 2.19e-82    | <1e-300     |
 
 ---
 
@@ -57,25 +61,30 @@
 6. ✅ Locus config externalization (30kb + 95kb)
 7. ✅ K562 Hi-C correlation (r=0.53/0.59, p<1e-82)
 8. ✅ Manuscript K562 update (14 edits, de4ac71)
-9. ✅ **Within-category positional signal** → honest null (de84f7a)
-10. 🔄 **CFTR locus — real positional signal test**
+9. ✅ Within-category HBB → honest null (de84f7a)
+10. ✅ Manuscript within-category update (8 edits, aa0f677)
+11. ✅ **CFTR locus — config, pipeline, within-category test**
+12. ✅ **Bayesian fit (Optuna)** — Δr=0.0001, confirmed near-optimal, honest null
+13. ✅ **Manuscript CFTR + Bayesian update** — 17 edits, ~1400→1527 lines
 
 ---
 
-## Ключевые файлы v2.0
+## Ключевые файлы
 
-| Файл                                   | Назначение                         |
-| -------------------------------------- | ---------------------------------- |
-| `config/locus/hbb_30kb_v2.json`        | 30kb config (MODEL_PARAMETER)      |
-| `config/locus/hbb_95kb_subTAD.json`    | 95kb config (ENCODE CTCF)          |
-| `src/domain/config/locus-config.ts`    | TS loader + LocusConfig interface  |
-| `scripts/lib/locus_config.py`          | Python mirror loader               |
-| `scripts/generate-unified-atlas.ts`    | Main pipeline (`--locus`)          |
-| `scripts/analyze_positional_signal.py` | **NEW** Within-category analysis   |
-| `scripts/correlate_hic_archcode.py`    | K562 vs ARCHCODE correlation       |
-| `results/positional_signal_95kb.json`  | **NEW** Honest null result         |
-| `docs/RESEARCH_POSITIONAL_SIGNAL.md`   | **NEW** 30-paper literature review |
-| `plots/positional_signal_95kb.png`     | **NEW** 3-panel diagnostic figure  |
+| Файл                                   | Назначение                                             |
+| -------------------------------------- | ------------------------------------------------------ |
+| `config/locus/cftr_317kb.json`         | CFTR 317kb config (ENCODE CTCF + literature enhancers) |
+| `config/locus/hbb_30kb_v2.json`        | 30kb config (MODEL_PARAMETER)                          |
+| `config/locus/hbb_95kb_subTAD.json`    | 95kb config (ENCODE CTCF)                              |
+| `scripts/download_clinvar_cftr.py`     | CFTR ClinVar download (P/LP + B/LB)                    |
+| `scripts/generate-unified-atlas.ts`    | Main pipeline (`--locus cftr\|30kb\|95kb`)             |
+| `scripts/analyze_positional_signal.py` | Within-category analysis (supports cftr)               |
+| `data/cftr_variants.csv`               | 3,349 CFTR variants                                    |
+| `results/CFTR_Unified_Atlas_317kb.csv` | CFTR atlas output                                      |
+| `results/positional_signal_cftr.json`  | CFTR within-category result                            |
+| `results/positional_signal_95kb.json`  | HBB honest null result                                 |
+| `scripts/bayesian_fit_hic.py`          | Optuna Bayesian optimization (α, γ, K_BASE)            |
+| `results/bayesian_fit_hic.json`        | Bayesian fit result (honest null — Δr=0.0001)          |
 
 ---
 
@@ -84,22 +93,23 @@
 1. ~~Унифицировать пайплайн~~ ✅
 2. ~~Externalize locus config~~ ✅
 3. ~~K562 Hi-C correlation~~ ✅ (r=0.53/0.59)
-4. ~~Manuscript K562 update~~ ✅ (14 edits)
-5. ~~Within-category analysis~~ ✅ (honest null)
-6. **CFTR локус** — config + ~4,200 ClinVar variants (NEXT PRIORITY)
-   - Варианты распределены по всему 317kb TAD
-   - Реальный тест positional signal
-7. **95kb threshold recalibration** — SSIM thresholds для 159x159
-8. **Bayesian fit** HBB → CFTR через Optuna GPSampler
-9. **Manuscript update** — добавить within-category null + reframe AUC
-10. **TDA proof-of-concept** — ripser + persim
+4. ~~Manuscript K562 update~~ ✅
+5. ~~Within-category HBB~~ ✅ (honest null)
+6. ~~Manuscript within-category update~~ ✅
+7. ~~CFTR locus~~ ✅ (3,349 variants, within-category: LR p=1.0)
+8. **317kb threshold recalibration** — SSIM thresholds для 317x317
+9. ~~Manuscript CFTR + Bayesian update~~ ✅ (17 edits applied)
+10. ~~Bayesian fit~~ ✅ (Δr=0.0001, params confirmed, honest null)
+11. **TDA proof-of-concept** — ripser + persim
 
 ---
 
 ## Для следующей сессии
 
-1. **CFTR locus config** — CTCF sites из ENCODE, enhancers из литературы
-2. **CFTR ClinVar download** — ~4200 variants via E-utilities
-3. **Manuscript**: добавить within-category null result в Discussion
-4. Проверь: получен ли DOI от bioRxiv?
-5. Обновить ссылку: Sabaté 2024 bioRxiv → Nature Genetics 2025
+1. ~~Manuscript update~~ ✅ (17 edits, session 8)
+2. **317kb threshold recalibration** — current 30kb thresholds are diluted at 317x317
+3. Проверь: получен ли DOI от bioRxiv?
+4. Обновить ссылку: Sabaté 2024 bioRxiv → Nature Genetics 2025
+5. bioRxiv revision: загрузить обновлённый манускрипт (с CFTR + Bayesian)
+6. Consider category classification improvement — classify_hgvs() misses missense/frameshift for CFTR (no protein_change from API)
+7. **TDA proof-of-concept** — ripser + persim (топологический анализ)

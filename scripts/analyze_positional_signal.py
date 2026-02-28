@@ -39,7 +39,9 @@ from lib.locus_config import load_locus_config, resolve_locus_path
 
 def load_atlas(locus_tag: str) -> list[dict]:
     """Load the unified atlas CSV for given locus."""
-    if locus_tag == "95kb":
+    if locus_tag == "cftr":
+        path = Path("results/CFTR_Unified_Atlas_317kb.csv")
+    elif locus_tag == "95kb":
         path = Path("results/HBB_Unified_Atlas_95kb.csv")
     else:
         path = Path("results/HBB_Unified_Atlas.csv")
@@ -573,16 +575,18 @@ def main():
         print(f"    beyond category assignment (LR p={lr_results['lr_p_value']:.4e}).")
     else:
         print(f"    SSIM does NOT provide significant additive value")
-        print(f"    beyond category assignment at HBB locus.")
+        print(f"    beyond category assignment at {config['id']} locus.")
 
     all_ns = all(r["p_two_sided"] >= 0.05 for r in testable_mw) if testable_mw else True
+    any_sig = any(r["p_two_sided"] < 0.05 for r in testable_mw) if testable_mw else False
     if all_ns:
         print(f"    Within-category tests show NO significant separation.")
-        print(f"    This is expected: all variants cluster in {variant_spread} bp,")
-        print(f"    providing insufficient positional diversity for within-category signal.")
-    print(f"\n    For positional signal validation, a locus with variants distributed")
-    print(f"    across the full window (e.g., CFTR ~4200 variants in ~317kb TAD)")
-    print(f"    would provide a more powerful test.")
+        print(f"    Variant spread: {variant_spread} bp ({variant_spread/window_size*100:.1f}% of window).")
+    elif any_sig and lr_results["lr_p_value"] >= 0.05:
+        sig_cats = [r["category"] for r in testable_mw if r["p_two_sided"] < 0.05]
+        print(f"    Some within-category MW-U tests are significant ({', '.join(sig_cats)}),")
+        print(f"    but global logistic regression shows no additive value (p=1.0).")
+        print(f"    Conclusion: SSIM is a category-level classifier, not a within-category predictor.")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,120 @@
+{
+  "id": "cftr_317kb",
+  "name": "CFTR 317kb TAD (ENCODE CTCF + literature enhancers)",
+  "description": "317kb window spanning the CFTR TAD on chr7. CTCF boundaries from ENCODE K562 ChIP-seq (ENCFF660GHM, IDR narrowPeak) — CTCF boundaries are cell-type invariant (Smith 2016). Enhancer occupancy estimated from airway/intestinal literature (Gosalia 2020, Ott 2009, Blackledge 2009), NOT from K562 (CFTR is silent in K562). Occupancy values are LITERATURE-based estimates, marked accordingly.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr7",
+    "start": 117400000,
+    "end": 117717000,
+    "resolution_bp": 1000,
+    "n_bins": 317
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 117480025,
+        "occupancy": 0.85,
+        "name": "CFTR_promoter_TSS",
+        "source": "NCBI_RefSeq_TSS",
+        "note": "CFTR transcription start site (NM_000492.4)"
+      },
+      {
+        "position": 117436000,
+        "occupancy": 0.6,
+        "name": "minus44kb_CRE",
+        "source": "LITERATURE",
+        "note": "Cis-regulatory element -44kb upstream. Gosalia 2020 (PMC7144911)"
+      },
+      {
+        "position": 117445000,
+        "occupancy": 0.7,
+        "name": "minus35kb_CRE",
+        "source": "LITERATURE",
+        "note": "Cis-regulatory element -35kb upstream. Gosalia 2020, Ott 2009"
+      },
+      {
+        "position": 117490000,
+        "occupancy": 0.5,
+        "name": "intron1_DHS",
+        "source": "LITERATURE",
+        "note": "DNase I hypersensitive site in intron 1. Ott 2009 (PMC2785270)"
+      },
+      {
+        "position": 117560000,
+        "occupancy": 0.7,
+        "name": "intron11_DHS",
+        "source": "LITERATURE",
+        "note": "DNase I hypersensitive site in intron 11. Ott 2009 (PMC2785270)"
+      },
+      {
+        "position": 117674000,
+        "occupancy": 0.4,
+        "name": "plus6_8kb_DHS",
+        "source": "LITERATURE",
+        "note": "3' DNase I hypersensitive site +6.8kb from CDS. Blackledge 2009 (PMC2651798)"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 117400028,
+        "orientation": "+",
+        "signal": 136.35,
+        "name": "5prime_TAD_boundary",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "5' boundary of CFTR TAD. Strongest signal. Smith 2016 -80.1kb site"
+      },
+      {
+        "position": 117401499,
+        "orientation": "+",
+        "signal": 34.45,
+        "name": "5prime_TAD_secondary",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "Secondary 5' boundary element, 1.5kb from primary"
+      },
+      {
+        "position": 117459175,
+        "orientation": "-",
+        "signal": 124.8,
+        "name": "enhancer_blocker",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "Enhancer blocker -20.9kb from CFTR TSS. Blackledge 2007"
+      },
+      {
+        "position": 117670028,
+        "orientation": "+",
+        "signal": 88.97,
+        "name": "3prime_insulator_proximal",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "Proximal 3' insulator element downstream of CFTR CDS"
+      },
+      {
+        "position": 117674085,
+        "orientation": "-",
+        "signal": 28.65,
+        "name": "plus6_8kb_insulator",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "+6.8kb insulator from CDS end. Blackledge 2009"
+      },
+      {
+        "position": 117715999,
+        "orientation": "-",
+        "signal": 110.67,
+        "name": "3prime_TAD_boundary",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "3' boundary of CFTR TAD. Smith 2016 +48.9kb site"
+      }
+    ],
+    "genes": [
+      { "name": "CFTR", "start": 117480025, "end": 117668665, "strand": "+" }
+    ]
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 317x317 matrix. SSIM thresholds from 30kb HBB config will be diluted at this resolution — requires empirical recalibration after first CFTR run."
+}
