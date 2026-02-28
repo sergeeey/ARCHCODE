@@ -1,0 +1,1104 @@
+ClinVar_ID,Position_GRCh38,Ref,Alt,Category,ClinVar_Significance,ARCHCODE_SSIM,ARCHCODE_Verdict,VEP_Consequence,VEP_Score,SIFT_Score,Label,Source
+VCV000439130,5225466,G,A,3_prime_UTR,Likely pathogenic,0.9942,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869259,5225482,TTTTTT,TTTT,3_prime_UTR,Likely pathogenic,0.9941,BENIGN,3_prime_UTR_variant (from_category),0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015474,5225482,TTTTTT,TTTTT,3_prime_UTR,Pathogenic,0.9941,BENIGN,3_prime_UTR_variant (from_category),0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015506,5225484,TTTTATT,TT,3_prime_UTR,Pathogenic/Likely pathogenic,0.9943,BENIGN,3_prime_UTR_variant (from_category),0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015473,5225485,T,C,3_prime_UTR,Pathogenic,0.9943,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000632843,5225487,TAT,T,3_prime_UTR,Pathogenic/Likely pathogenic,0.9943,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015488,5225487,T,C,3_prime_UTR,Pathogenic,0.9943,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036332,5225488,A,G,3_prime_UTR,Pathogenic,0.9943,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015616,5225488,A,T,3_prime_UTR,Pathogenic,0.9943,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869258,5225490,T,C,3_prime_UTR,Pathogenic,0.994,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869261,5225493,GCAGAATCCAGATGC,GC,3_prime_UTR,Pathogenic,0.9941,BENIGN,3_prime_UTR_variant (from_category),0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869260,5225566,T,G,3_prime_UTR,Pathogenic,0.9943,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000393707,5225592,G,C,3_prime_UTR,Pathogenic/Likely pathogenic,0.994,BENIGN,3_prime_UTR_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015395,5225602,T,G,missense,Pathogenic,0.9576,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015144,5225602,T,A,missense,Pathogenic; other,0.9576,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015200,5225603,G,C,missense,Pathogenic; other,0.9595,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015265,5225604,A,T,nonsense,Pathogenic; other,0.8902,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015322,5225605,T,C,missense,Pathogenic,0.9588,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000633256,5225606,A,T,missense,Pathogenic,0.9589,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015112,5225606,A,G,missense,Pathogenic,0.9589,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015096,5225607,C,G,missense,Pathogenic,0.9582,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015250,5225610,G,Y,missense,Pathogenic,0.9589,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015365,5225611,T,G,missense,Pathogenic,0.9588,VUS,missense_variant,0.8,0.2,Pathogenic,ClinVar_Pathogenic
+VCV000015090,5225611,T,C,missense,Pathogenic/Likely pathogenic,0.9588,VUS,missense_variant,0.8,0.2,Pathogenic,ClinVar_Pathogenic
+VCV000869318,5225612,GGG,G,frameshift,Pathogenic,0.9067,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015545,5225620,G,A,missense,Pathogenic,0.9577,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000015339,5225621,C,T,missense,Pathogenic; other,0.9584,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869317,5225624,A,AA,nonsense,Pathogenic,0.8901,LIKELY_PATHOGENIC,nonsense_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV001189030,5225638,ACCACTTTCTGA,A,frameshift,Pathogenic,0.9064,LIKELY_PATHOGENIC,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015290,5225638,A,T,missense,Pathogenic,0.9583,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000928758,5225645,TCT,T,frameshift,Likely pathogenic,0.9073,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869314,5225645,T,A,nonsense,Pathogenic,0.8922,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV001459872,5225646,CTGATAGGCAGCCTGCACTG,CTG,frameshift,Pathogenic,0.9074,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869312,5225646,T,TT,frameshift,Pathogenic,0.9074,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015348,5225647,T,G,missense,Likely pathogenic,0.9578,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869311,5225648,G,A,nonsense,Pathogenic,0.8906,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000801192,5225649,A,T,nonsense,Pathogenic,0.8933,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869313,5225654,CAGC,TGTGG,frameshift,Pathogenic,0.9049,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015537,5225659,T,C,missense,Pathogenic; other,0.9592,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015409,5225659,T,G,missense,Pathogenic,0.9592,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV001705074,5225660,G,A,nonsense,Pathogenic,0.8894,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015483,5225662,A,C,missense,Pathogenic/Likely pathogenic,0.9592,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000495998,5225664,TGGTGGGGTG,TG,frameshift,Pathogenic,0.9077,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869284,5225666,T,TT,frameshift,Pathogenic,0.9073,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV003572119,5225678,TTT,TTTT,frameshift,Likely pathogenic,0.9061,LIKELY_PATHOGENIC,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000446736,5225678,C,T,missense,Pathogenic,0.9582,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000015404,5225678,C,A,nonsense,Pathogenic,0.8908,LIKELY_PATHOGENIC,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000015292,5225678,C,T,missense,Pathogenic/Likely pathogenic,0.9582,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000015152,5225678,C,G,missense,Pathogenic/Likely pathogenic,0.9582,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV003769274,5225693,GG,C,frameshift,Likely pathogenic,0.9045,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV002691364,5225693,GGCC,GGCCGGCC,frameshift,Pathogenic,0.9045,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015526,5225695,G,T,missense,Pathogenic,0.959,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV004531951,5225696,CC,C,frameshift,Pathogenic,0.905,LIKELY_PATHOGENIC,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869279,5225696,CAGCACACAG,CAGCACACAGCACACAG,frameshift,Pathogenic,0.905,LIKELY_PATHOGENIC,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015257,5225696,C,G,missense,Pathogenic,0.9578,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015513,5225698,A,G,missense,Pathogenic/Likely pathogenic,0.9595,VUS,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015425,5225698,AG,C,frameshift,Pathogenic,0.909,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV002681990,5225699,C,CC,frameshift,Pathogenic,0.9071,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869280,5225703,A,T,nonsense,Pathogenic,0.8884,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015207,5225705,A,G,missense,Pathogenic; other,0.9577,VUS,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV000015352,5225710,A,G,missense,Pathogenic,0.9592,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015342,5225714,C,T,missense,Pathogenic,0.9587,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015230,5225714,C,G,missense,Pathogenic,0.9587,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV003336287,5225715,G,C,missense,Likely pathogenic,0.9586,VUS,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV000439153,5225718,CCC,CCCC,frameshift,Pathogenic,0.9047,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV002735520,5225719,C,T,missense,Likely pathogenic,0.9592,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015487,5225722,A,C,missense,Pathogenic; other,0.9585,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015378,5225722,A,T,missense,Pathogenic,0.9585,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000552712,5225727,C,T,splice_donor,Pathogenic/Likely pathogenic,0.9207,VUS,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000038671,5225727,C,A,splice_donor,Likely pathogenic,0.9207,VUS,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015512,5225727,C,G,splice_donor,Pathogenic,0.9207,VUS,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000021191,5225728,T,C,splice_donor,Pathogenic,0.92,LIKELY_PATHOGENIC,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000021190,5225728,T,G,splice_donor,Pathogenic,0.92,LIKELY_PATHOGENIC,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000619687,5225729,G,C,splice_region,Likely pathogenic,0.9715,LIKELY_BENIGN,splice_donor_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015451,5225729,G,T,splice_region,Pathogenic/Likely pathogenic,0.9715,LIKELY_BENIGN,splice_donor_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869111,5225733,G,T,splice_region,Pathogenic,0.9717,LIKELY_BENIGN,splice_donor_5th_base_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036313,5225740,A,C,intronic,Pathogenic/Likely pathogenic,0.9958,BENIGN,splice_polypyrimidine_tract_variant,0.3,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869277,5225811,AAAATAAAAGCAGAA,AAAATAAAAGCAGAAAATAAAAGCAGAA,intronic,Pathogenic,0.9959,BENIGN,intronic_variant (from_category),0.1,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015457,5225832,G,C,intronic,Pathogenic/Likely pathogenic,0.9959,BENIGN,intron_variant,0.1,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036312,5225872,A,C,intronic,Pathogenic,0.9959,BENIGN,intron_variant,0.1,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015458,5225923,G,A,intronic,Pathogenic,0.996,BENIGN,intron_variant,0.1,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869236,5225928,AA,A,intronic,Pathogenic,0.996,BENIGN,intronic_variant (from_category),0.1,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869356,5226572,C,G,splice_region,Pathogenic,0.9663,LIKELY_BENIGN,missense_variant,0.81,0.18,Pathogenic,ClinVar_Pathogenic
+VCV000015515,5226572,CTC,C,intronic,Pathogenic,0.9951,BENIGN,missense_variant,0.81,0.18,Pathogenic,ClinVar_Pathogenic
+VCV000869355,5226575,A,G,splice_donor,Pathogenic,0.9053,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000439146,5226575,A,C,splice_donor,Likely pathogenic,0.9053,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV003781330,5226576,CCTGAAGTTCTCAGGATCC,CCTGAAGTTCTCAGGATCCTGAAGTTCTCAGGATCC,frameshift,Pathogenic,0.886,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869353,5226576,CCC,CC,splice_donor,Pathogenic,0.9018,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000619686,5226576,C,A,splice_donor,Pathogenic,0.9018,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000189128,5226576,C,G,splice_donor,Pathogenic,0.9018,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015438,5226576,C,T,splice_donor,Pathogenic,0.9018,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015192,5226580,G,C,missense,Pathogenic; other,0.9506,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015317,5226586,C,G,missense,Pathogenic; other,0.9497,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015094,5226587,T,C,missense,Pathogenic; other,0.9502,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015118,5226588,C,T,missense,Pathogenic; other,0.9485,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869351,5226590,GG,AAGTTCTCAGA,other,Pathogenic,0.9662,LIKELY_BENIGN,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015116,5226590,G,A,missense,Pathogenic; other,0.9495,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015315,5226593,T,G,missense,Pathogenic; other,0.9495,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015204,5226593,T,C,missense,Pathogenic; other,0.9495,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015134,5226593,T,A,missense,Pathogenic; other,0.9495,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015397,5226594,C,A,missense,Pathogenic,0.9497,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000015391,5226594,C,G,missense,Pathogenic; other,0.9497,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000015236,5226594,C,T,missense,Pathogenic; other,0.9497,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000869309,5226596,CGTGCAGCTTGTCACAGTGCAGCTC,CGTGCAGCTTGTCACAGTGCAGCTCGTGCAGCTTGTCACAGTGCAGCTC,other,Pathogenic,0.9666,LIKELY_BENIGN,other_variant (from_category),0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000619685,5226596,CGTGC,CGTGCGTGC,frameshift,Pathogenic/Likely pathogenic,0.8884,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015241,5226597,C,T,missense,Pathogenic,0.949,VUS,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV003766487,5226598,G,T,missense,Pathogenic,0.9501,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000801186,5226598,G,C,missense,Pathogenic/Likely pathogenic,0.9501,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015259,5226598,G,Y,missense,Pathogenic; other,0.9501,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015390,5226599,T,A,missense,Likely pathogenic,0.9502,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015607,5226600,G,T,missense,Likely pathogenic,0.9502,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV004277917,5226602,A,C,missense,Pathogenic,0.9508,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000036309,5226604,TT,TTT,frameshift,Pathogenic,0.888,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015428,5226608,CACA,CACACA,frameshift,Likely pathogenic,0.8902,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015104,5226609,C,G,missense,Pathogenic; other,0.9497,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV004280311,5226611,CAGTGCAGCTCACTCAGTG,CAGTG,nonsense,Pathogenic,0.8695,LIKELY_PATHOGENIC,nonsense_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV002664746,5226613,G,C,missense,Likely pathogenic,0.9492,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000811500,5226613,G,T,missense,Pathogenic,0.9492,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015208,5226613,G,Y,missense,Pathogenic,0.9492,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015494,5226615,G,T,missense,Pathogenic,0.9491,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015255,5226615,G,A,missense,Pathogenic,0.9491,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869310,5226616,A,AA,frameshift,Pathogenic,0.887,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015338,5226617,A,G,missense,Pathogenic,0.9496,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015311,5226619,C,G,missense,Pathogenic,0.9494,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869308,5226621,CAC,C,frameshift,Pathogenic,0.8875,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000446747,5226621,C,T,missense,Pathogenic,0.9498,VUS,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015504,5226621,C,A,nonsense,Pathogenic,0.8694,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015147,5226623,C,T,missense,Pathogenic/Likely pathogenic; other,0.9493,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV002681986,5226624,CAGTG,CAGTGCAGTG,nonsense,Likely pathogenic,0.8679,LIKELY_PATHOGENIC,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015383,5226624,T,G,missense,Pathogenic; other,0.9492,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869306,5226625,A,AA,frameshift,Pathogenic,0.8893,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015343,5226626,A,G,missense,Pathogenic/Likely pathogenic,0.9493,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015108,5226626,A,C,missense,Pathogenic; other,0.9493,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869275,5226627,GTGTGGCAAAGGTGCCCTTGAGGT,GT,nonsense,Pathogenic,0.8698,LIKELY_PATHOGENIC,nonsense_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015493,5226629,G,A,missense,Likely pathogenic,0.9497,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869301,5226632,GCAAAGGTGC,GC,frameshift,Pathogenic,0.8886,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869303,5226633,AAA,AAAA,frameshift,Pathogenic,0.8854,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015122,5226635,A,G,missense,Pathogenic,0.9504,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869302,5226636,GG,GGG,frameshift,Pathogenic,0.8874,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869274,5226636,AGGTGCCCTTGAGGTTGTCCAGGTG,AGGTG,frameshift,Pathogenic,0.8874,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036306,5226641,CCC,CC,frameshift,Pathogenic,0.8878,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000618675,5226643,C,G,missense,Likely pathogenic,0.9506,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000446737,5226643,C,R,missense,Pathogenic,0.9506,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015319,5226643,C,R,missense,Pathogenic; other,0.9506,VUS,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015321,5226644,T,G,missense,Pathogenic; other,0.9502,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015193,5226644,T,A,missense,Pathogenic,0.9502,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000869299,5226648,GG,G,frameshift,Pathogenic,0.8888,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869273,5226656,GG,GGG,frameshift,Pathogenic,0.8907,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000632846,5226657,GG,G,frameshift,Pathogenic/Likely pathogenic,0.8896,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV001065151,5226658,GTG,G,frameshift,Likely pathogenic,0.8881,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000495983,5226666,GG,G,frameshift,Pathogenic/Likely pathogenic,0.8881,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000993070,5226667,C,CTGGAC,frameshift,Likely pathogenic,0.8854,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000619856,5226667,CCATC,CCATCCATC,frameshift,Pathogenic/Likely pathogenic,0.8854,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015560,5226671,TCACT,A,frameshift,Pathogenic,0.8855,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV004280310,5226672,CA,AT,missense,Pathogenic,0.9508,VUS,missense_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869269,5226672,A,AA,nonsense,Pathogenic,0.8724,LIKELY_PATHOGENIC,missense_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000618160,5226672,CAC,C,frameshift,Pathogenic,0.89,LIKELY_PATHOGENIC,missense_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015419,5226674,T,TT,frameshift,Pathogenic/Likely pathogenic,0.8865,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015433,5226675,AAA,AAAA,nonsense,Pathogenic,0.8707,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869268,5226676,AAA,AA,frameshift,Pathogenic,0.8874,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869265,5226680,GCACCGAGCAC,GCAC,frameshift,Pathogenic,0.8877,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869266,5226683,CC,C,frameshift,Pathogenic/Likely pathogenic,0.8864,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015271,5226686,A,G,missense,Likely pathogenic,0.9491,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015117,5226686,A,T,missense,Pathogenic; other,0.9491,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015613,5226687,G,A,missense,Pathogenic/Likely pathogenic,0.949,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000036303,5226688,CAC,C,frameshift,Pathogenic,0.8861,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015254,5226689,A,T,missense,Pathogenic; other,0.9497,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV004532968,5226690,CTTTCTT,CTT,frameshift,Likely pathogenic,0.8887,LIKELY_PATHOGENIC,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015536,5226690,C,T,missense,Pathogenic,0.9503,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000036302,5226691,TTT,TT,frameshift,Likely pathogenic,0.8867,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015136,5226692,T,G,missense,Likely pathogenic,0.9508,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869229,5226693,T,A,nonsense,Pathogenic,0.8715,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV001074874,5226696,T,A,nonsense,Pathogenic,0.8678,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869228,5226697,GCCATGAGCC,GCC,frameshift,Pathogenic,0.8873,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015429,5226698,CC,C,frameshift,Pathogenic,0.885,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015400,5226701,T,C,missense,Likely pathogenic,0.9485,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000694445,5226702,G,T,missense,Pathogenic,0.9496,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015256,5226702,G,A,missense,Pathogenic,0.9496,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015407,5226708,T,A,nonsense,Pathogenic,0.8709,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015411,5226710,A,T,missense,Pathogenic; other,0.9496,VUS,stop_lost,0.85,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869225,5226713,TT,T,frameshift,Pathogenic,0.8851,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869224,5226714,T,A,nonsense,Pathogenic,0.8694,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869346,5226715,AGGGTTGCCCATAA,A,frameshift,Pathogenic,0.8852,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869223,5226715,GGG,GGGG,frameshift,Pathogenic,0.8852,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000632845,5226716,GGG,GG,frameshift,Likely pathogenic,0.8883,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869222,5226721,C,CACCTTAGGGTTGCC,nonsense,Pathogenic,0.8667,LIKELY_PATHOGENIC,nonsense_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000590977,5226724,CATAA,TGATGCC,frameshift,Pathogenic,0.8841,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869349,5226725,T,TT,frameshift,Pathogenic,0.8883,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869347,5226727,AA,A,frameshift,Pathogenic,0.8888,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869345,5226728,C,CC,frameshift,Pathogenic,0.887,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV003599785,5226732,C,T,missense,Likely pathogenic,0.9487,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000038659,5226737,GG,G,frameshift,Pathogenic,0.8879,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869342,5226742,GG,G,frameshift,Pathogenic,0.8852,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000439135,5226745,AGAT,AGATAGAT,frameshift,Pathogenic,0.8875,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015485,5226748,T,TT,frameshift,Pathogenic,0.8849,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869340,5226749,CCCC,CCCCC,frameshift,Pathogenic,0.8873,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869339,5226753,AAA,AAAA,frameshift,Pathogenic,0.8905,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869338,5226754,AAA,AA,frameshift,Pathogenic,0.886,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015546,5226755,A,C,missense,Likely pathogenic,0.9502,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015415,5226757,GG,G,frameshift,Pathogenic/Likely pathogenic,0.8849,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869298,5226761,C,CC,frameshift,Pathogenic,0.8857,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV003572115,5226762,AAAGAA,AAAGAAAGAA,nonsense,Pathogenic,0.8659,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869297,5226762,AAA,AAAA,nonsense,Pathogenic,0.8659,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015406,5226762,C,A,nonsense,Pathogenic,0.8659,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869296,5226763,AAA,AA,frameshift,Pathogenic,0.8889,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015417,5226763,AAAGAA,AA,frameshift,Pathogenic/Likely pathogenic,0.8889,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015190,5226764,A,G,missense,Pathogenic,0.9512,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV004795169,5226765,A,T,missense,Likely pathogenic,0.9494,VUS,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV001098798,5226765,G,GG,frameshift,Likely pathogenic,0.8867,LIKELY_PATHOGENIC,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV000015347,5226765,A,C,missense,Pathogenic,0.9494,VUS,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV000015251,5226765,A,G,missense,Pathogenic,0.9494,VUS,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV000869295,5226766,AA,AAA,frameshift,Pathogenic,0.8901,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869294,5226769,CC,C,frameshift,Pathogenic,0.887,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV002577315,5226770,TCTG,TCTGTCTG,frameshift,Pathogenic,0.8874,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015427,5226772,CTGGGTCC,C,nonsense,Pathogenic,0.8735,LIKELY_PATHOGENIC,nonsense_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869292,5226774,GGG,GG,frameshift,Pathogenic,0.8888,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869264,5226774,GGGTCCAAGGGT,GGGT,frameshift,Pathogenic,0.8888,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015551,5226774,GGG,G,frameshift,Pathogenic,0.8888,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015402,5226774,G,A,nonsense,Pathogenic,0.871,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV002681976,5226778,CC,C,nonsense,Pathogenic,0.8673,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015405,5226778,C,T,nonsense,Pathogenic,0.8673,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000439782,5226779,C,T,nonsense,Pathogenic,0.8678,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015431,5226780,AA,A,frameshift,Pathogenic,0.8891,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015424,5226782,GGG,GG,frameshift,Pathogenic/Likely pathogenic,0.8857,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869263,5226784,G,C,nonsense,Pathogenic,0.872,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015408,5226784,G,T,nonsense,Pathogenic,0.872,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869262,5226785,T,C,missense,Pathogenic,0.9503,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV003781328,5226786,G,GTAGG,frameshift,Pathogenic,0.8898,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015532,5226788,ACCACCA,ACCA,missense,Pathogenic,0.9499,VUS,missense_variant (from_category),0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015312,5226789,C,A,missense,Likely pathogenic,0.9505,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000478852,5226794,A,T,missense,Likely pathogenic,0.9483,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015308,5226794,A,G,missense,Pathogenic,0.9483,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV002024192,5226796,CAGCCTAAGGGTGGGAAAATAGACCAATAGGCAGAGA,TAATCTGAGGGTAGGAAAACAGCCCAAGGGACAGT,splice_acceptor,Likely pathogenic,0.9004,LIKELY_PATHOGENIC,coding_sequence_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869322,5226797,GCC,GCCGCC,splice_acceptor,Pathogenic,0.9027,LIKELY_PATHOGENIC,splice_acceptor_variant (from_category),0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015442,5226797,AGCCTAAGGGTGGGAAAATAGACCAA,A,splice_acceptor,Pathogenic,0.9027,LIKELY_PATHOGENIC,splice_acceptor_variant (from_category),0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869321,5226799,C,G,missense,Pathogenic,0.9486,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000439166,5226800,C,G,splice_donor,Pathogenic,0.9065,LIKELY_PATHOGENIC,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015446,5226800,C,T,splice_donor,Pathogenic,0.9065,LIKELY_PATHOGENIC,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000439167,5226801,T,G,splice_donor,Pathogenic,0.9045,LIKELY_PATHOGENIC,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015562,5226801,T,C,splice_donor,Pathogenic,0.9045,LIKELY_PATHOGENIC,splice_acceptor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036341,5226802,A,C,splice_region,Pathogenic/Likely pathogenic,0.9592,VUS,splice_region_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000550356,5226814,A,C,intronic,Pathogenic,0.9954,BENIGN,splice_polypyrimidine_tract_variant,0.3,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015454,5226820,C,T,intronic,Pathogenic/Likely pathogenic,0.9954,BENIGN,non_coding_transcript_exon_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015445,5226903,AACCTGTCTTGTAACCTTGATACCAACCTGCCCAGGGCCTCACCA,A,splice_donor,Likely pathogenic,0.9068,LIKELY_PATHOGENIC,splice_donor_variant (from_category),0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015450,5226924,A,G,splice_region,Pathogenic/Likely pathogenic,0.9594,VUS,splice_donor_region_variant,0.35,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015449,5226925,C,T,splice_region,Pathogenic,0.9592,VUS,splice_donor_5th_base_variant,0.4,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015448,5226925,C,A,splice_region,Pathogenic,0.9592,VUS,splice_donor_5th_base_variant,0.4,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015447,5226925,C,G,splice_region,Pathogenic,0.9592,VUS,splice_donor_5th_base_variant,0.4,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000619860,5226928,A,C,splice_donor,Pathogenic,0.9071,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000038667,5226928,A,T,splice_donor,Pathogenic,0.9071,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036334,5226928,A,G,splice_donor,Pathogenic,0.9071,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869246,5226929,C,G,splice_donor,Pathogenic,0.9075,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015437,5226929,C,A,splice_donor,Pathogenic,0.9075,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015436,5226929,C,T,splice_donor,Pathogenic,0.9075,LIKELY_PATHOGENIC,splice_donor_variant,0.95,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV003766927,5226930,C,A,missense,Likely pathogenic,0.9533,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000036337,5226930,C,T,missense,Likely pathogenic,0.9533,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015234,5226930,C,G,missense,Pathogenic,0.9533,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869243,5226931,T,C,missense,Pathogenic,0.952,VUS,splice_region_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000590773,5226931,T,G,synonymous,Likely pathogenic,0.9989,BENIGN,splice_region_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV004532970,5226932,GCCCAGGGCC,GCC,frameshift,Likely pathogenic,0.8932,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869241,5226933,CCC,CC,frameshift,Pathogenic,0.893,LIKELY_PATHOGENIC,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV000015252,5226933,C,T,missense,Likely pathogenic,0.9523,VUS,missense_variant,0.89,0.02,Pathogenic,ClinVar_Pathogenic
+VCV000015432,5226936,GGG,GGGG,frameshift,Pathogenic,0.8929,LIKELY_PATHOGENIC,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015361,5226936,A,T,missense,Pathogenic; other,0.9523,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015183,5226936,A,G,missense,Pathogenic,0.9523,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869240,5226937,GGG,GG,frameshift,Pathogenic,0.894,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015386,5226939,G,T,missense,Pathogenic,0.9518,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV004071470,5226940,C,T,missense,Likely pathogenic,0.9528,VUS,missense_variant,0.87,0.06,Pathogenic,ClinVar_Pathogenic
+VCV000015239,5226940,C,A,missense,Pathogenic,0.9528,VUS,missense_variant,0.87,0.06,Pathogenic,ClinVar_Pathogenic
+VCV000599394,5226941,C,G,missense,Pathogenic,0.9517,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015554,5226942,T,C,missense,Pathogenic,0.9527,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV003777010,5226943,C,T,missense,Pathogenic,0.953,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000869363,5226943,A,AA,nonsense,Pathogenic,0.8772,LIKELY_PATHOGENIC,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000038650,5226943,C,A,nonsense,Pathogenic,0.8772,LIKELY_PATHOGENIC,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015161,5226943,C,T,missense,Pathogenic,0.953,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015459,5226947,A,T,synonymous,Pathogenic/Likely pathogenic,0.9989,BENIGN,splice_region_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869362,5226948,C,GTG,frameshift,Pathogenic,0.8942,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869361,5226948,CC,C,frameshift,Pathogenic,0.8942,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869360,5226948,CCAACTTC,C,frameshift,Pathogenic,0.8942,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015166,5226949,CAAC,C,missense,Pathogenic,0.9529,VUS,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015306,5226952,C,A,missense,Pathogenic; other,0.9526,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000869359,5226955,C,A,nonsense,Pathogenic,0.8774,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000551389,5226957,CC,CCC,frameshift,Likely pathogenic,0.8939,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015300,5226961,C,T,missense,Pathogenic/Likely pathogenic,0.9525,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015258,5226963,T,C,missense,Pathogenic,0.9518,VUS,missense_variant,0.885,0.03,Pathogenic,ClinVar_Pathogenic
+VCV000015401,5226970,T,A,nonsense,Pathogenic,0.8741,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869358,5226971,CCCC,CCCCC,frameshift,Pathogenic,0.8915,LIKELY_PATHOGENIC,synonymous_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000811787,5226971,G,A,synonymous,Pathogenic/Likely pathogenic,0.9989,BENIGN,synonymous_variant,0.15,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869357,5226972,CCCC,CCC,frameshift,Pathogenic,0.8902,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000038646,5226974,C,T,nonsense,Pathogenic,0.8749,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015403,5226975,C,T,nonsense,Pathogenic,0.8739,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015426,5226976,C,CC,frameshift,Pathogenic,0.8909,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869320,5226977,A,AA,frameshift,Pathogenic,0.895,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869233,5226977,CAGGGCAGTAACGGCAGACTTCTCCTCAGG,CAGG,frameshift,Pathogenic,0.895,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV004074264,5226979,GGG,GG,frameshift,Pathogenic,0.8922,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015423,5226986,AA,A,frameshift,Pathogenic,0.8917,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000439154,5226988,GG,GGG,frameshift,Likely pathogenic,0.8919,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869281,5226989,GG,G,frameshift,Pathogenic,0.8926,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869352,5226991,A,AA,frameshift,Pathogenic,0.8934,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036308,5226994,C,CC,frameshift,Pathogenic,0.8925,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869300,5226997,C,CC,frameshift,Pathogenic,0.8948,LIKELY_PATHOGENIC,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015281,5226997,T,C,missense,Pathogenic,0.9531,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000869255,5226998,TCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGT,TCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGTCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGT,nonsense,Pathogenic,0.8755,LIKELY_PATHOGENIC,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015247,5226998,CTCCTC,CTC,missense,Likely pathogenic,0.9523,VUS,frameshift_variant,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869271,5227000,C,A,nonsense,Pathogenic,0.8746,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV003766686,5227001,CTC,C,frameshift,Pathogenic,0.8927,LIKELY_PATHOGENIC,inframe_deletion,0.6,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000446738,5227002,T,A,missense,Pathogenic,0.9518,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000446735,5227002,T,A,missense,Pathogenic,0.9518,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000036301,5227002,TC,AT,missense,Likely pathogenic,0.9518,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015333,5227002,T,A,missense,Pathogenic,0.9518,VUS,missense_variant,0.9,0.0,Pathogenic,ClinVar_Pathogenic
+VCV002573434,5227003,CAGGA,AAGAT,nonsense,Pathogenic,0.8767,LIKELY_PATHOGENIC,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000869230,5227003,C,A,nonsense,Pathogenic,0.8767,LIKELY_PATHOGENIC,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000015126,5227003,C,T,missense,Pathogenic/Likely pathogenic,0.9527,VUS,missense_variant,0.895,0.01,Pathogenic,ClinVar_Pathogenic
+VCV000869324,5227005,GG,G,frameshift,Pathogenic,0.8941,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869239,5227006,GAGTCAGAT,ACTTCTCCTCAGGCAGACTTCACCTCAG,nonsense,Pathogenic,0.8746,LIKELY_PATHOGENIC,stop_gained,0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869293,5227010,A,AA,frameshift,Pathogenic,0.8918,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015508,5227018,CC,C,frameshift,Pathogenic,0.8955,LIKELY_PATHOGENIC,frameshift_variant (from_category),0.9,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869316,5227019,C,A,missense,Likely pathogenic,0.9531,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869315,5227019,C,G,missense,Pathogenic,0.9531,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015519,5227019,C,T,missense,Pathogenic,0.9531,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000495986,5227020,A,T,missense,Pathogenic/Likely pathogenic,0.9525,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000036310,5227020,A,G,missense,Pathogenic,0.9525,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000015434,5227020,A,C,missense,Pathogenic,0.9525,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000869231,5227021,T,G,missense,Pathogenic/Likely pathogenic,0.952,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000439140,5227021,T,C,missense,Pathogenic,0.952,VUS,start_lost,0.85,0.0,Pathogenic,ClinVar_Pathogenic
+VCV000393704,5227039,G,C,5_prime_UTR,Pathogenic,0.9806,LIKELY_BENIGN,splice_region_variant,0.5,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000393702,5227050,C,T,5_prime_UTR,Pathogenic,0.9798,LIKELY_BENIGN,splice_polypyrimidine_tract_variant,0.3,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036292,5227071,T,G,5_prime_UTR,Pathogenic/Likely pathogenic,0.9799,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869256,5227096,C,A,other,Pathogenic,0.9672,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869286,5227097,T,G,other,Pathogenic,0.968,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869287,5227098,T,A,other,Pathogenic,0.9681,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015471,5227099,T,C,promoter,Pathogenic/Likely pathogenic,0.9276,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015470,5227099,T,G,promoter,Pathogenic,0.9276,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869288,5227100,T,G,promoter,Pathogenic,0.929,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015469,5227100,T,C,other,Pathogenic,0.968,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869290,5227101,A,G,promoter,Pathogenic,0.9282,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869289,5227101,A,C,other,Pathogenic,0.9676,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015467,5227101,A,T,other,Pathogenic,0.9676,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015466,5227102,T,C,promoter,Pathogenic,0.9287,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000801184,5227142,G,A,promoter,Pathogenic/Likely pathogenic,0.9279,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000869327,5227147,G,T,other,Pathogenic,0.9686,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV002506212,5227157,G,T,promoter,Likely pathogenic,0.9277,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036284,5227157,G,A,promoter,Pathogenic/Likely pathogenic,0.9277,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015465,5227157,G,C,other,Pathogenic/Likely pathogenic,0.9673,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036287,5227158,G,A,promoter,Pathogenic/Likely pathogenic,0.9289,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000036285,5227158,G,T,promoter,Pathogenic,0.9289,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015464,5227158,G,C,promoter,Pathogenic/Likely pathogenic,0.9289,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000393701,5227159,G,T,promoter,Pathogenic/Likely pathogenic,0.9297,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015460,5227159,G,A,other,Pathogenic/Likely pathogenic,0.9682,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015514,5227161,G,A,promoter,Pathogenic/Likely pathogenic,0.9292,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015462,5227163,G,A,promoter,Pathogenic/Likely pathogenic,0.929,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015586,5227172,G,C,promoter,Pathogenic,0.9284,VUS,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV000015461,5227172,G,A,other,Pathogenic,0.9677,LIKELY_BENIGN,5_prime_UTR_variant,0.2,-1.0,Pathogenic,ClinVar_Pathogenic
+VCV004771045,5226842,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV004766669,5226324,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV004753219,5225697,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV004735712,5226336,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV004734723,5226146,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV004734636,5226520,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV004729396,5226288,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV004692970,5226005,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV004685642,5226659,T,A,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.9,0.0,Benign,ClinVar_Benign
+VCV004535916,5225873,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV004525835,5227013,A,C,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.85,0.1,Benign,ClinVar_Benign
+VCV004280318,5226265,A,TTTTTAAGTTAAGTTAAGTTTTTT,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV003910010,5226703,A,G,synonymous,Benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV003910009,5225877,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003910008,5226469,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV003701912,5226506,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV003693356,5226098,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003672948,5226170,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003668877,5226220,AAGCA,A,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV003645123,5226706,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV003642561,5226564,C,G,intronic,Likely benign,1.0,BENIGN,missense_variant,0.895,0.01,Benign,ClinVar_Benign
+VCV003639424,5225919,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003638824,5226280,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV003638340,5225862,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003638132,5225906,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003638091,5226207,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003637486,5225823,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003633170,5226249,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003633051,5226374,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV003627289,5226685,G,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV003624952,5226151,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV003051702,5227091,C,T,other,Likely benign,0.9999,BENIGN,5_prime_UTR_variant,0.2,,Benign,ClinVar_Benign
+VCV003019267,5225985,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002962205,5226208,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002959873,5226216,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002955337,5226138,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002901561,5226721,G,T,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.9,0.0,Benign,ClinVar_Benign
+VCV002878634,5226854,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002877828,5225777,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002877762,5226410,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002877740,5225917,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002877060,5226905,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002876382,5226083,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002876055,5226171,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002875907,5225759,TT,T,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002875229,5226472,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002873194,5225703,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002873169,5226338,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002867760,5226938,G,T,synonymous,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV002862763,5226166,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002862258,5226010,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002862032,5225854,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002860725,5226625,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002860247,5226304,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002857197,5226191,AAA,AAAA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002856346,5226332,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002856031,5226326,T,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002854276,5226697,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002852384,5226034,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002851326,5226253,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002849928,5226040,AAAAAA,AAAAAAA,intronic,Benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002849566,5225740,A,G,intronic,Likely benign,1.0,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV002848166,5226283,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002847814,5226358,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002847426,5226315,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002846440,5226281,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002845945,5226221,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002845297,5226371,AAGAA,AA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002845263,5226487,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002844469,5225688,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002842293,5226481,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002837304,5225786,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002833520,5225974,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002832734,5225870,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002831713,5225845,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002831007,5226351,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002830937,5225848,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002830691,5225844,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002830420,5225843,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002829919,5226453,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002829888,5226252,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002829859,5226205,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002829137,5226386,AAACAAA,AAA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002828894,5226627,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002828044,5226185,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002827665,5226468,G,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002826978,5226118,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002826637,5225750,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002825403,5226807,GGG,GGGG,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002825370,5226826,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002825157,5225868,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002824341,5225881,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002824238,5226313,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002823430,5226554,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002823108,5226120,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002821618,5226745,C,G,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.59,0.62,Benign,ClinVar_Benign
+VCV002821601,5226403,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002819196,5226254,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002818822,5226503,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002818393,5226115,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002817876,5226168,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002817790,5226433,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002817359,5226827,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002816740,5226437,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002816145,5226835,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002815819,5225776,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002813160,5226072,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002812701,5226808,G,C,intronic,Likely benign,1.0,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV002812292,5226162,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002811923,5226861,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002811839,5226230,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002811518,5225753,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002810430,5226408,T,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002808627,5226694,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002808336,5226414,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002808048,5226470,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002807382,5226308,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002806723,5226307,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002804976,5226363,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002803917,5225798,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002802367,5226087,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002802003,5225853,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002798327,5226404,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002795099,5226420,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002793504,5226411,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002791980,5226840,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002790939,5226439,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002790355,5226356,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002789491,5226206,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002789444,5225735,G,A,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV002789363,5226091,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002787390,5226488,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002783192,5226804,G,C,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV002782584,5226293,T,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002782072,5226226,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002778654,5226559,A,G,intronic,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002778374,5226171,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002775957,5225908,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002771547,5226407,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002771206,5226610,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002770110,5226679,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002769315,5226473,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002767167,5226455,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002767052,5225896,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002765807,5226339,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002763854,5226376,AGCA,A,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002762750,5226818,A,G,intronic,Likely benign,1.0,BENIGN,non_coding_transcript_exon_variant,0.1,,Benign,ClinVar_Benign
+VCV002760823,5226116,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002760286,5226355,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002757925,5226413,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002757119,5226137,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002755775,5226074,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002754240,5225948,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002752834,5225694,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002752305,5226514,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002751019,5226558,A,C,intronic,Likely benign,1.0,BENIGN,stop_lost,0.85,,Benign,ClinVar_Benign
+VCV002747568,5226061,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002747182,5225739,G,A,intronic,Likely benign,1.0,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV002744953,5225995,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002743033,5226655,C,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002742971,5225750,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002742787,5225939,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002740244,5225917,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002736477,5226373,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002736437,5226304,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002733487,5226202,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002731683,5226239,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002727125,5226887,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002713508,5226472,G,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002709663,5226334,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002708823,5226517,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002707027,5226244,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002706270,5225902,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002705593,5225925,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002704864,5225875,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002704522,5225828,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002704284,5226540,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002702918,5225813,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002702236,5226035,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002700062,5225764,AAAA,AAA,intronic,Benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002698601,5226102,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002697598,5226143,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002697109,5226321,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002696165,5226467,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002696164,5226465,T,TTAGAAT,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002694305,5226317,A,AA,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002577313,5226616,C,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002573435,5227010,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002501083,5225670,G,C,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002421180,5226268,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002192067,5226289,T,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002159789,5226364,AAAAAAAAA,AAAAA,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002157541,5226533,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002135493,5226370,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002134390,5225845,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002134337,5226413,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002133999,5225804,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002133380,5226272,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002131711,5226034,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002131064,5225942,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002130510,5226532,T,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002129208,5226202,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002126175,5226226,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002124799,5226246,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002124508,5226311,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002121900,5226119,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002119846,5225857,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002116902,5226261,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002115831,5226865,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002113784,5226211,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002107655,5226086,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002107603,5225775,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002107559,5226340,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002107558,5226320,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002107209,5225990,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002105568,5226225,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002103997,5226262,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002103994,5226360,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002103983,5226235,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002103192,5226920,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002099827,5226372,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002098228,5226843,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002098074,5226488,TGT,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002097042,5225815,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002095288,5226860,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002091561,5226154,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002091277,5226866,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002090941,5225810,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002089612,5226409,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002088054,5226781,A,C,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.895,0.01,Benign,ClinVar_Benign
+VCV002088018,5226449,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002088016,5226448,CC,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002087515,5225996,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002086531,5226646,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002086460,5225751,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002069088,5226527,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002062347,5226329,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002058295,5226539,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002053821,5226640,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002052775,5226908,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002048985,5226235,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002045808,5225685,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002045391,5226378,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002045067,5226894,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002036940,5226366,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002036691,5226258,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002035733,5226977,C,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002035477,5225871,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002035022,5226112,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002034867,5226908,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002033805,5226012,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002032327,5225911,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002030369,5226830,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002027331,5226278,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002026415,5226071,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002026386,5226054,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002026143,5226790,C,A,synonymous,Likely benign,1.0,BENIGN,stop_gained,0.9,,Benign,ClinVar_Benign
+VCV002025792,5226054,AAAA,AAA,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002025778,5225961,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002025654,5226347,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002023608,5226102,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002022708,5226458,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002021501,5226453,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002019850,5226347,AAAAA,AAAAAA,intronic,Benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002019578,5226256,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002018766,5226501,TATC,TATCTATC,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002017700,5226017,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002017243,5225791,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002016705,5226277,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002016469,5225980,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002014931,5226397,AACAA,AA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV002010842,5225899,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002010262,5226616,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV002009669,5226838,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002009601,5225904,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002008559,5226270,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV002008558,5225892,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002007540,5225825,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002005596,5226096,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002003523,5226909,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV002002515,5226050,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001999798,5225634,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001997862,5226159,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001997666,5226494,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001997611,5226898,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001997274,5225711,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001996113,5226255,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001996000,5225875,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001992292,5226524,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001991864,5226070,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001985586,5226817,G,C,intronic,Likely benign,1.0,BENIGN,non_coding_transcript_exon_variant,0.1,,Benign,ClinVar_Benign
+VCV001983531,5226607,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001979288,5225454,A,C,other,Likely benign,1.0,BENIGN,non_coding_transcript_exon_variant,0.1,,Benign,ClinVar_Benign
+VCV001978912,5226551,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001978635,5226790,C,T,synonymous,Likely benign,1.0,BENIGN,stop_gained,0.9,,Benign,ClinVar_Benign
+VCV001978241,5226247,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001977229,5226565,C,A,intronic,Likely benign,1.0,BENIGN,missense_variant,0.86,0.08,Benign,ClinVar_Benign
+VCV001975392,5226865,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001972497,5226278,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001968570,5225986,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001965309,5225971,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001964131,5225751,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001962865,5225765,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001960918,5226569,A,G,intronic,Likely benign,1.0,BENIGN,missense_variant,0.895,0.01,Benign,ClinVar_Benign
+VCV001945194,5226173,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001942494,5226643,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001930030,5226530,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001929948,5226826,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001922054,5226530,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001802686,5226855,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001770789,5226757,G,C,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.685,0.43,Benign,ClinVar_Benign
+VCV001673500,5226557,C,G,intronic,Likely benign,1.0,BENIGN,stop_lost,0.85,,Benign,ClinVar_Benign
+VCV001673496,5225772,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001673467,5226854,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001673338,5226521,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001673148,5226866,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001672645,5225821,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001671411,5226935,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001670688,5226833,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001669845,5226876,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001669251,5226944,A,G,synonymous,Likely benign,1.0,BENIGN,splice_donor_variant,0.95,,Benign,ClinVar_Benign
+VCV001667603,5225982,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001667490,5226120,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001665450,5226396,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001663300,5226377,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001662829,5226890,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001662786,5226313,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001662306,5225978,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001662061,5226284,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001661917,5226358,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001661914,5225815,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001661893,5226130,CA,TG,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001661837,5226872,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001661185,5225880,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001660582,5226076,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001660101,5226459,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001659455,5226233,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001658438,5225935,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001657398,5226344,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001656658,5226463,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001656642,5226512,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001655708,5226348,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001655157,5226553,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001654849,5225843,GCTGCT,GCT,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001653217,5226532,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001651061,5225770,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001649952,5226563,T,G,intronic,Likely benign,1.0,BENIGN,missense_variant,0.895,0.01,Benign,ClinVar_Benign
+VCV001649396,5226804,G,A,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV001648977,5225792,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001644289,5226401,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001643392,5226468,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001641954,5226411,ACAGCAAATA,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001639168,5226555,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001637547,5226382,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001636161,5226247,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001635143,5226944,A,C,synonymous,Likely benign,1.0,BENIGN,splice_donor_variant,0.95,,Benign,ClinVar_Benign
+VCV001634543,5226603,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001634371,5226227,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001632385,5225766,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001630450,5225986,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001629054,5226130,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001627864,5225782,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001626697,5226429,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001625263,5226233,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001625041,5225971,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001623587,5225755,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001623512,5225779,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001623178,5226563,CCC,CCCCC,intronic,Likely benign,1.0,BENIGN,missense_variant,0.895,0.01,Benign,ClinVar_Benign
+VCV001621425,5226160,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001620530,5227004,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001618173,5226379,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001617068,5225775,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001616943,5225837,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001616432,5226293,TCTC,TC,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001616150,5226267,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001615668,5226873,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001614562,5226172,AATTAA,AA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001613967,5226193,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001613548,5226467,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001612817,5227016,C,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001612179,5226177,AAAATAAAA,AAAA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001611650,5226346,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001611236,5225888,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001610083,5226333,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001609604,5226024,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001608998,5226634,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001608900,5226906,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001606913,5226570,G,A,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV001606259,5225941,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001605684,5225905,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001602982,5226165,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001602775,5226331,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001602127,5226829,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001602126,5226827,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001602125,5226822,ATA,A,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001602124,5226818,A,C,intronic,Likely benign,1.0,BENIGN,non_coding_transcript_exon_variant,0.1,,Benign,ClinVar_Benign
+VCV001602123,5226815,T,C,intronic,Likely benign,1.0,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV001592636,5226187,AAAATAAA,AAA,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001591892,5226568,T,G,intronic,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001588617,5225769,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001588348,5226000,GAAAGAAAGA,GAAAGA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001588286,5226217,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001586850,5226367,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001585227,5226580,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001584803,5225902,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001584709,5225832,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001584154,5226364,AAAAAAAAA,AAAAAA,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001583301,5225735,G,C,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV001581167,5226697,G,C,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001580352,5226443,G,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001579555,5226265,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001579049,5225869,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001579014,5225999,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001576566,5226541,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001575692,5226263,T,TTTTTTAAGTTAAGTTTTT,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001573923,5225938,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001572170,5226010,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001571451,5225952,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001569465,5226175,TAAAAATAAAA,TAAAA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001568873,5226995,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001566948,5226187,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001565147,5226007,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001565090,5226399,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001564030,5225783,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001563749,5225881,ATTTATATGCAGAAATATTTATATGCAGA,ATTTATATGCAGAAATATTTATATGCAGAAATATTTATATGCAGA,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001563014,5225919,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001562797,5226390,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001561967,5226198,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001561745,5226199,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001560083,5226263,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001559725,5226092,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001557489,5226290,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001557222,5226863,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001556960,5225946,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001556906,5226840,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001554915,5226592,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001553467,5226136,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001553442,5225880,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001552953,5225706,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001552193,5225807,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001551548,5226658,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001550256,5226543,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001549965,5226352,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001548840,5226460,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001548194,5225858,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001546580,5226566,C,G,intronic,Likely benign,1.0,BENIGN,missense_variant,0.89,0.02,Benign,ClinVar_Benign
+VCV001546485,5226494,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001544426,5225754,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001542866,5226858,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001542738,5225988,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001538061,5226968,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001537687,5225898,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001537363,5225808,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001537336,5226394,G,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001537117,5226881,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001537040,5226873,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001536330,5225945,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001535667,5225942,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001533572,5226529,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001532941,5226884,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001531668,5226561,C,T,intronic,Likely benign,1.0,BENIGN,missense_variant,0.4,1.0,Benign,ClinVar_Benign
+VCV001531458,5226586,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001529989,5226682,A,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001529709,5225803,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001528012,5226523,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001331036,5227006,G,C,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.4,1.0,Benign,ClinVar_Benign
+VCV001330543,5226567,A,C,intronic,Likely benign,1.0,BENIGN,missense_variant,0.79,0.22,Benign,ClinVar_Benign
+VCV001321374,5225670,G,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001301331,5225670,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001250619,5227562,T,G,other,Benign,0.9999,BENIGN,5_prime_UTR_variant,0.2,,Benign,ClinVar_Benign
+VCV001167977,5226363,AAAAAAAAA,AAAAAAAAAA,intronic,Benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001161626,5226268,TTTTTTTTT,TTTTTTTTTT,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001161533,5225712,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001161505,5226913,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001161504,5226895,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001161484,5226287,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001160989,5226869,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001160210,5226089,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001159671,5226085,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001159538,5226923,T,C,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV001158961,5226412,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001158508,5226420,AAAAGAAA,AAA,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001157996,5226141,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001157947,5225794,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001157531,5226637,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001157380,5226340,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001157085,5225803,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001157001,5226167,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001156511,5226073,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001155998,5227012,GA,AG,other,Likely benign,0.9999,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001155441,5226828,AGAGAGAG,AGAG,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001155055,5226004,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001154176,5225873,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001154161,5225788,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001153807,5226845,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001153781,5226104,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001153698,5226742,G,T,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.9,0.0,Benign,ClinVar_Benign
+VCV001153690,5226869,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001153305,5225975,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001153073,5226831,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001153019,5226918,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001152502,5225950,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001152045,5226589,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001151871,5226290,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001151774,5226868,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001151547,5226536,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001149802,5226133,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001148975,5226016,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001148302,5226364,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001148301,5227246,C,T,other,Likely benign,0.9999,BENIGN,5_prime_UTR_variant,0.2,,Benign,ClinVar_Benign
+VCV001147444,5226751,C,G,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.805,0.19,Benign,ClinVar_Benign
+VCV001147067,5225924,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001146323,5225838,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001146145,5226366,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001145767,5226209,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001145475,5226250,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001145460,5226448,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001145451,5226137,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001144869,5226500,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001143503,5226733,A,G,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.9,0.0,Benign,ClinVar_Benign
+VCV001143473,5226065,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001143356,5226084,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001142119,5226912,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001142046,5225661,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001141382,5225949,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001140992,5225965,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001140225,5226261,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001140182,5226589,A,C,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001139577,5225792,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001139479,5226403,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001139383,5225930,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001138442,5226316,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001138404,5226238,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001137193,5226126,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001136434,5225984,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001136202,5225840,T,TT,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001135885,5226051,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001135734,5226434,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001134790,5226113,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001134251,5226058,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001133882,5225806,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001133359,5226806,G,T,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV001132923,5226105,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001132627,5226833,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001132191,5226921,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001131950,5226143,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001131624,5226891,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001131314,5226213,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001130698,5226503,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001130103,5226265,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001129520,5226631,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001129240,5226880,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001129052,5226561,C,A,intronic,Likely benign,1.0,BENIGN,missense_variant,0.4,1.0,Benign,ClinVar_Benign
+VCV001128010,5226008,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001127800,5226394,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001127713,5226839,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001127650,5226877,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001127638,5226501,T,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001127632,5226619,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001127267,5225564,C,T,3_prime_UTR,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001126808,5226477,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001126664,5226030,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001126429,5226845,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001126324,5226061,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001124975,5226419,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001124970,5226514,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001124939,5226375,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001124760,5226462,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001124758,5226163,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001124680,5226908,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001124679,5226893,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001124649,5226506,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001123454,5226826,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001123116,5226882,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001123082,5226417,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001122537,5226452,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001122528,5226331,G,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001122216,5226885,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001121778,5226873,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001121500,5225616,C,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001121394,5226382,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001121225,5225737,A,G,intronic,Likely benign,1.0,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV001121198,5225879,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001120940,5225679,T,C,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001120442,5226252,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001119536,5226342,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001119234,5226742,G,A,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.9,0.0,Benign,ClinVar_Benign
+VCV001119125,5226390,AAAAGAAAA,AAAA,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001119111,5226181,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001118834,5226904,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001118833,5226889,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001118813,5226487,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001118308,5226613,G,A,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001118139,5226123,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001117784,5225736,G,T,intronic,Likely benign,1.0,BENIGN,splice_region_variant,0.5,,Benign,ClinVar_Benign
+VCV001117654,5226112,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001116346,5226088,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001115568,5226323,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001115280,5225825,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001115039,5226242,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001114903,5226434,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001114525,5226508,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001113861,5226437,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001112986,5225955,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001112903,5226186,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001111753,5226183,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001111743,5226500,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001111710,5226667,G,C,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001111267,5226496,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001111255,5226736,A,G,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.9,0.0,Benign,ClinVar_Benign
+VCV001111047,5226477,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001110772,5226260,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001110755,5226312,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001110299,5226277,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001110073,5226549,G,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001110042,5226292,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001108644,5226260,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001108115,5226882,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001107574,5226223,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001106731,5226890,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001105735,5226109,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001104842,5226144,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001104520,5226260,TGTGT,TGT,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001104204,5225607,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001102136,5226408,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001101748,5226182,AAAAGAAAA,AAAA,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001101596,5226428,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001101564,5226345,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001101246,5225741,T,C,intronic,Likely benign,1.0,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV001100205,5226113,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001100138,5226522,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001099906,5226519,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001099874,5225793,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001099709,5226365,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001097379,5226492,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001097250,5226269,TTTTTTTTT,TTTTTT,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001097054,5226364,AAAAAAAAA,AAAAAAAA,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001096888,5226529,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001096696,5226267,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001096096,5226902,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001095878,5225855,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001095859,5226640,G,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV001095434,5225987,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001095205,5225991,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001095187,5226126,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001094628,5226319,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001094586,5226190,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001094558,5226115,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001094269,5226425,AAACTAAAAC,AAAC,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001094229,5226393,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001093303,5226915,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001092961,5226450,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001092862,5226063,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001091467,5225768,GGG,GG,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001091288,5225970,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001090894,5226041,AAAAAA,AAAAA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV001090577,5226796,C,A,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.55,0.7,Benign,ClinVar_Benign
+VCV001090534,5226246,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001090479,5226096,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001089678,5225830,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001089575,5226082,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001089508,5225757,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001089483,5226366,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001089337,5226461,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001088912,5226343,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001088500,5226228,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001087637,5225885,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001084859,5226285,T,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001084304,5226331,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001084273,5226131,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001084243,5226300,G,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001082749,5226434,C,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001081408,5226182,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001081010,5226271,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001080748,5225871,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001080158,5226364,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001080073,5226504,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001079811,5226294,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001077721,5226438,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV001077506,5226087,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV001077470,5226816,A,G,intronic,Likely benign,1.0,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV001077226,5226131,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000995801,5226982,C,T,synonymous,Benign,1.0,BENIGN,missense_variant,0.825,0.15,Benign,ClinVar_Benign
+VCV000995800,5225669,G,T,synonymous,Benign,1.0,BENIGN,missense_variant,0.895,0.01,Benign,ClinVar_Benign
+VCV000994010,5225816,T,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000991115,5225655,A,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV000981076,5225825,AA,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000981074,5225924,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000933190,5227001,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV000929231,5225807,A,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000929230,5226568,T,C,intronic,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV000928760,5226935,C,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV000928759,5226775,G,A,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.76,0.28,Benign,ClinVar_Benign
+VCV000917608,5225691,A,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV000869354,5226322,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000869330,5227540,G,A,other,Benign,0.9999,BENIGN,5_prime_UTR_variant,0.2,,Benign,ClinVar_Benign
+VCV000869329,5227411,G,A,other,Benign,0.9999,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000869257,5227056,T,C,5_prime_UTR,Benign,0.9996,BENIGN,splice_polypyrimidine_tract_variant,0.1,,Benign,ClinVar_Benign
+VCV000869245,5226917,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000869238,5225998,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000869237,5225934,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000830005,5226095,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000811029,5225754,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000801188,5225864,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000800025,5226452,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000799593,5225762,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000799058,5226727,A,G,synonymous,Likely benign,1.0,BENIGN,missense_variant,0.9,0.0,Benign,ClinVar_Benign
+VCV000798809,5226156,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000798571,5226215,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000798416,5225943,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000797803,5225903,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000797671,5226305,T,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000797670,5226435,G,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000797626,5226421,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000797051,5225821,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000796911,5225846,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000796462,5226839,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000796407,5226067,A,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000796185,5226459,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000796030,5226372,A,C,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000795422,5226445,C,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000795403,5226497,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000795281,5225998,C,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000795005,5226817,G,A,intronic,Likely benign,1.0,BENIGN,non_coding_transcript_exon_variant,0.1,,Benign,ClinVar_Benign
+VCV000794722,5227010,C,G,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV000794095,5226245,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000793871,5225972,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000793230,5225878,T,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000793229,5225876,G,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000793209,5226370,A,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000793174,5225797,C,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000792476,5225873,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000774507,5226107,C,T,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000766523,5226438,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000766521,5226402,T,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000766475,5226094,A,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000766099,5225768,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000766084,5226379,AA,A,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000765761,5226370,AAAGAAAG,AAAG,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000765568,5226242,G,C,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000765167,5226243,T,G,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000764715,5226021,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000764666,5226507,C,G,intronic,Benign/Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000763829,5226269,TTTTTTTTT,TTTTTTTT,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV000763631,5226356,C,T,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000763410,5226018,AAA,AA,intronic,Likely benign,1.0,BENIGN,unknown,0.1,,Benign,ClinVar_Benign
+VCV000763383,5226374,A,G,intronic,Likely benign,1.0,BENIGN,3_prime_UTR_variant,0.15,,Benign,ClinVar_Benign
+VCV000763094,5226562,G,A,intronic,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign
+VCV000762977,5226200,G,A,intronic,Likely benign,1.0,BENIGN,intron_variant,0.1,,Benign,ClinVar_Benign
+VCV000762836,5225640,C,T,synonymous,Likely benign,1.0,BENIGN,synonymous_variant,0.05,,Benign,ClinVar_Benign

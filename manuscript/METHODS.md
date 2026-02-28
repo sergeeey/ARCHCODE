@@ -67,6 +67,8 @@ Variants modulate the local chromatin occupancy profile used in the analytical c
 
 Categories with larger functional impact produce stronger reductions in occupancy factors, which propagate through the contact formula (see Contact Matrix Generation below) to yield lower SSIM values relative to the wild-type reference.
 
+**Methodological note on occupancy scaling:** The category-dependent occupancy impact functions as a standardized perturbation to probe topological vulnerability at each genomic position, not as an independent pathogenicity predictor. The scaling magnitudes are motivated by the expected transcriptional impact of each variant class on local chromatin environment (reviewed in Oudelaar & Higgs, 2021): loss-of-function variants (nonsense, frameshift) cause complete loss of nascent transcription, which is coupled to local chromatin remodeling and Mediator occupancy; synonymous variants preserve transcription and chromatin state. ARCHCODE does not use VEP scores, ClinVar classifications, or any sequence-based predictor output as input — the two models are mechanistically independent.
+
 ### Contact Matrix Generation
 
 Contact probabilities are computed analytically using a mean-field formula that combines four factors:
@@ -211,6 +213,10 @@ Category definitions:
 - `promoter`: -2000 to +200 bp from TSS
 - `5_prime_UTR`, `3_prime_UTR`, `intronic`
 
+## ROC Analysis and Benign Variant Evaluation
+
+To assess discriminative performance, the pathogenic dataset (353 variants) was supplemented with 750 Benign/Likely Benign HBB variants from ClinVar (queried via NCBI E-utilities API with significance filter "benign" OR "likely benign"). Benign variants were processed through the same VEP and ARCHCODE pipelines. The combined cohort (n=1,103) was used for ROC analysis with ClinVar classification as ground truth (Pathogenic/LP = positive, Benign/LB = negative) and (1 − SSIM) as the continuous predictor. AUC, sensitivity, specificity, and Youden's J index were computed using scikit-learn v1.6. Optimal SSIM threshold was determined by maximizing J = Sensitivity + Specificity − 1.
+
 ## Statistical Analysis
 
 ### Clustering Analysis
@@ -277,7 +283,8 @@ All simulations were run on:
 
 All data supporting the findings of this study are available from the corresponding author upon reasonable request. Key datasets include:
 
-- Full variant analysis (353 variants): `HBB_Clinical_Atlas_REAL.csv`
+- Full variant analysis (353 pathogenic + 750 benign = 1,103 variants): `HBB_Combined_Atlas.csv`
+- Pathogenic-only analysis (353 variants): `HBB_Clinical_Atlas_REAL.csv`
 - Pearl analysis summary: `REAL_ATLAS_SUMMARY.json`
 - VEP sequence-level predictions: `hbb_vep_results.csv`
 - Contact matrices (WT and mutant): Available as NumPy arrays (.npy format)

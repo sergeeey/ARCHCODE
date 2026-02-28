@@ -1,0 +1,10 @@
+{
+  "total_variants": 1103,
+  "pathogenic_count": 353,
+  "benign_count": 750,
+  "pathogenic_mean_ssim": 0.9267,
+  "benign_mean_ssim": 1.0,
+  "pathogenic_ssim_range": [0.8659, 0.9989],
+  "benign_ssim_range": [0.9996, 1.0],
+  "separation": 0.0733
+}
