@@ -1,0 +1,100 @@
+{
+  "id": "hbb_95kb_subTAD",
+  "name": "HBB 95kb sub-TAD (ENCODE-validated anchors)",
+  "description": "Extended 95kb window spanning the full HBB sub-TAD from 3'HS1 to HS5. CTCF anchors from ENCODE K562 ChIP-seq (ENCFF660GHM, IDR narrowPeak). Enhancers from literature (MED1 K562 ChIP-seq = 0 peaks in IDR). Covers all 6 globin genes and the LCR (HS1-HS5).",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr11",
+    "start": 5200000,
+    "end": 5295000,
+    "resolution_bp": 600,
+    "n_bins": 159
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 5226268,
+        "occupancy": 0.85,
+        "name": "HBB_promoter",
+        "source": "NCBI_RefSeq_TSS",
+        "note": "HBB transcription start site (NM_000518.5)"
+      },
+      {
+        "position": 5275800,
+        "occupancy": 0.4,
+        "name": "LCR_HS1",
+        "source": "LITERATURE",
+        "note": "Weakest hypersensitive site of the LCR"
+      },
+      {
+        "position": 5280700,
+        "occupancy": 0.9,
+        "name": "LCR_HS2",
+        "source": "LITERATURE",
+        "note": "Strongest LCR enhancer; drives high-level erythroid expression"
+      },
+      {
+        "position": 5284800,
+        "occupancy": 0.7,
+        "name": "LCR_HS3",
+        "source": "LITERATURE",
+        "note": "Chromatin opening activity"
+      },
+      {
+        "position": 5288250,
+        "occupancy": 0.6,
+        "name": "LCR_HS4",
+        "source": "LITERATURE",
+        "note": "Insulator/enhancer-blocking activity"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 5204979,
+        "orientation": "+",
+        "signal": 225,
+        "name": "3primeHS1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "3' boundary of HBB sub-TAD"
+      },
+      {
+        "position": 5280811,
+        "orientation": "-",
+        "signal": 22,
+        "name": "near_HS2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "Weak CTCF near LCR HS2"
+      },
+      {
+        "position": 5289092,
+        "orientation": "+",
+        "signal": 21.5,
+        "name": "near_HS4",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "Weak CTCF near LCR HS4"
+      },
+      {
+        "position": 5291442,
+        "orientation": "-",
+        "signal": 260,
+        "name": "HS5",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF660GHM",
+        "note": "5' boundary of HBB sub-TAD (strongest signal)"
+      }
+    ],
+    "genes": [
+      { "name": "HBB", "start": 5225464, "end": 5227079, "strand": "-" },
+      { "name": "HBD", "start": 5232428, "end": 5234258, "strand": "-" },
+      { "name": "HBBP1", "start": 5241068, "end": 5242619, "strand": "-" },
+      { "name": "HBG1", "start": 5248187, "end": 5249852, "strand": "-" },
+      { "name": "HBG2", "start": 5253126, "end": 5254791, "strand": "-" },
+      { "name": "HBE1", "start": 5289585, "end": 5291500, "strand": "-" }
+    ]
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 158x158 matrix. SSIM verdicts from 30kb config diluted at this resolution — requires empirical recalibration after first 95kb run."
+}
