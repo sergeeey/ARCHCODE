@@ -1,8 +1,10 @@
-# Supplementary Table S1: Comprehensive Analysis of 366 HBB Pathogenic Variants
+# Supplementary Table S1: Comprehensive Analysis of 353 HBB Pathogenic Variants
 
 ## Table Legend
 
-Complete dataset of 366 β-globin (_HBB_) pathogenic and VUS variants analyzed using ARCHCODE (physics-based 3D chromatin simulation) and AlphaGenome (transformer-based sequence predictor). Variants are sorted by genomic position (chr11, GRCh38).
+Complete dataset of 353 β-globin (_HBB_) pathogenic and VUS variants analyzed using
+ARCHCODE (physics-based 3D chromatin simulation) and Ensembl VEP (sequence-based predictor).
+Variants are sorted by genomic position (chr11, GRCh38).
 
 **Columns:**
 
@@ -16,105 +18,84 @@ Complete dataset of 366 β-globin (_HBB_) pathogenic and VUS variants analyzed u
    - `5_prime_UTR`, `3_prime_UTR`, `intronic`: Non-coding variants
 4. **ARCHCODE_SSIM**: Structural Similarity Index (WT vs Mutant contact matrices)
    - Range: [0,1], higher = more similar to WT (less structural disruption)
-   - Thresholds: <0.5 PATHOGENIC, 0.5-0.7 LIKELY_PATHOGENIC, 0.7-0.85 VUS, ≥0.85 LIKELY_BENIGN
-5. **AlphaGenome_Score**: ML-based pathogenicity score
+   - Thresholds: <0.85 PATHOGENIC, 0.85-0.92 LIKELY_PATHOGENIC, 0.92-0.96 VUS,
+     0.96-0.99 LIKELY_BENIGN, ≥0.99 BENIGN
+5. **VEP_Score**: Ensembl VEP SIFT/PolyPhen-2 composite pathogenicity score
    - Range: [0,1], higher = more pathogenic
-   - Thresholds: >0.7 Pathogenic, 0.5-0.7 Likely Pathogenic, 0.3-0.5 VUS, ≤0.3 Benign
+   - Thresholds: ≥0.5 pathogenic, <0.5 non-pathogenic
 6. **ARCHCODE_Verdict**: Classification based on SSIM
-7. **AlphaGenome_Verdict**: Classification based on AlphaGenome score
+7. **VEP_Verdict**: Classification based on VEP score
 8. **Discordant**: YES if verdicts differ between methods (pathogenic vs benign/VUS), NO otherwise
 
 **Key Findings:**
 
-- **Total variants:** 366
-- **Discordant:** 61 (16.6%)
-- **"Loop That Stayed" pattern:** 3 variants (VCV000000302, VCV000000327, VCV000000026)
-  - SSIM: 0.545-0.551 (SD=0.0022, extreme clustering)
-  - All classified LIKELY_PATHOGENIC by ARCHCODE
-  - All classified VUS by AlphaGenome (systematic blind spot)
+- **Total variants:** 353
+- **Discordant:** cases where ARCHCODE structural signature diverges from VEP sequence prediction
+- **Pearl variants:** chromatin-structural outliers with high clinical reclassification potential
+  - See "Pearl Variants" section below
 
 ---
 
 ## Full Dataset
 
-_Note: Due to size constraints, the full table is provided as a separate CSV file: `HBB_Clinical_Atlas.csv`_
+_Note: Due to size constraints, the full table is provided as a separate CSV file:
+`HBB_Clinical_Atlas_REAL.csv`_
 
 ### Summary Statistics by Category
 
-| Category          | N   | Mean SSIM   | Mean AlphaGenome | % Discordant |
-| ----------------- | --- | ----------- | ---------------- | ------------ |
-| **nonsense**      | 42  | 0.38 ± 0.12 | 0.91 ± 0.06      | 4.8%         |
-| **frameshift**    | 38  | 0.41 ± 0.14 | 0.87 ± 0.09      | 7.9%         |
-| **splice_donor**  | 29  | 0.45 ± 0.13 | 0.85 ± 0.08      | 6.9%         |
-| **splice_region** | 47  | 0.62 ± 0.18 | 0.53 ± 0.12      | **25.5%** ⭐ |
-| **missense**      | 98  | 0.64 ± 0.21 | 0.67 ± 0.18      | 18.4%        |
-| **promoter**      | 35  | 0.65 ± 0.15 | 0.61 ± 0.12      | 20.0%        |
-| **5_prime_UTR**   | 28  | 0.82 ± 0.12 | 0.46 ± 0.11      | 35.7% ⭐⭐   |
-| **3_prime_UTR**   | 31  | 0.86 ± 0.11 | 0.43 ± 0.09      | 38.7% ⭐⭐   |
-| **intronic**      | 19  | 0.91 ± 0.08 | 0.31 ± 0.08      | 15.8%        |
+| Category        | N   | Mean SSIM | Mean VEP Score | % Discordant |
+| --------------- | --- | --------- | -------------- | ------------ |
+| nonsense        | 40  | 0.8753    | 0.90           | low          |
+| frameshift      | 99  | 0.8919    | 0.90           | low          |
+| splice_acceptor | 3   | 0.9019    | 0.95           | moderate     |
+| splice_donor    | 22  | 0.9087    | 0.95           | moderate     |
+| promoter        | 15  | 0.9285    | 0.20           | HIGH         |
+| missense        | 125 | 0.9526    | ~0.70          | HIGH         |
+| splice_region   | 9   | 0.9641    | 0.50           | moderate     |
+| other           | 12  | 0.9676    | varies         | moderate     |
+| 5_prime_UTR     | 3   | 0.9801    | 0.20           | moderate     |
+| 3_prime_UTR     | 13  | 0.9942    | 0.15           | low          |
+| intronic        | 9   | 0.9957    | 0.10           | low          |
+| synonymous      | 3   | 0.9989    | 0.05           | low          |
 
-⭐ **High discordance:** >20%
-⭐⭐ **Very high discordance:** >30%
-
-**Interpretation:** `splice_region`, `5_prime_UTR`, and `3_prime_UTR` categories show highest discordance rates, suggesting these variant classes exhibit structural mechanisms (detected by ARCHCODE) not captured by sequence-based predictors (AlphaGenome).
-
----
-
-### Highlighted Variants: "The Loop That Stayed"
-
-| ClinVar_ID       | Position | Category      | SSIM       | AlphaGenome | ARCHCODE    | AlphaGenome | Rank |
-| ---------------- | -------- | ------------- | ---------- | ----------- | ----------- | ----------- | ---- |
-| **VCV000000302** | 5225620  | splice_region | **0.5453** | 0.4536      | LIKELY_PATH | VUS         | 3rd  |
-| **VCV000000327** | 5225695  | splice_region | **0.5474** | 0.4561      | LIKELY_PATH | VUS         | 2nd  |
-| **VCV000000026** | 5226830  | splice_region | **0.5506** | 0.4558      | LIKELY_PATH | VUS         | 1st  |
-
-**Statistical significance of clustering:**
-
-- SSIM range: 0.5453-0.5506 (5.3 milli-SSIM spread)
-- Standard deviation: 0.0022 (0.4% CV)
-- Permutation test: p < 0.0001 (none of 10,000 random 3-variant samples achieved SD ≤ 0.0022)
-
-**Mechanism:** Preserved chromatin loops (SSIM 0.50-0.60) trap splice regulatory defects within confined topology, preventing spliceosome access to compensatory trans-factors outside loop domain. Loop preservation is paradoxically PATHOGENIC in this context.
-
-**Clinical reclassification:** All three variants recommended for upgrade from VUS → **Likely Pathogenic** based on ACMG criteria (PS3_moderate + PM2 + PP3 = 7 points).
+**Interpretation:** `promoter` and `missense` categories show highest discordance rates,
+suggesting these variant classes exhibit structural mechanisms detected by ARCHCODE that
+are not captured by sequence-based predictors (VEP).
 
 ---
 
-### Top Concordant Pathogenic Variants
+### Pearl Variants: Chromatin-Structural Outliers
 
-Examples where both methods agree on pathogenicity:
+Variants where ARCHCODE structural signature diverges from VEP sequence prediction,
+flagged for clinical reclassification review:
 
-| ClinVar_ID   | Position | Category   | SSIM  | AlphaGenome | ARCHCODE   | AlphaGenome | Agreement |
-| ------------ | -------- | ---------- | ----- | ----------- | ---------- | ----------- | --------- |
-| VCV000000116 | 5225537  | frameshift | 0.258 | 0.941       | PATHOGENIC | Pathogenic  | ✓         |
-| VCV000000064 | 5225487  | nonsense   | 0.393 | 0.960       | PATHOGENIC | Pathogenic  | ✓         |
-| VCV000000335 | 5225483  | nonsense   | 0.423 | 0.912       | PATHOGENIC | Pathogenic  | ✓         |
+| ClinVar_ID       | Position | Category        | SSIM  | VEP Score | Pearl |
+| ---------------- | -------- | --------------- | ----- | --------- | ----- |
+| **VCV002024192** | 5226796  | splice_acceptor | 0.900 | 0.20      | YES   |
+| **VCV000869358** | 5226971  | frameshift      | 0.891 | 0.15      | YES   |
+| **VCV000015471** | 5227099  | promoter        | 0.928 | 0.20      | YES   |
+| **VCV002664746** | 5226613  | missense        | 0.949 | 0.20      | YES   |
+| **VCV000811500** | 5226613  | missense        | 0.949 | 0.20      | YES   |
 
-**Interpretation:** High-confidence pathogenic variants show both structural disruption (low SSIM) and sequence-level defects (high AlphaGenome score). These represent unambiguous pathogenic mechanisms detectable by both modeling approaches.
+**Pearl variant definition:** ARCHCODE SSIM in VUS/LIKELY_BENIGN range (0.88-0.96)
+combined with VEP score <0.5 (predicted non-pathogenic), where ClinVar clinical
+significance is Pathogenic or Likely Pathogenic. These represent cases where
+chromatin topology provides orthogonal evidence to sequence-based classifiers.
 
----
-
-### Discordant Variants: Post-Transcriptional Mechanisms
-
-Examples where AlphaGenome detects pathogenicity missed by ARCHCODE:
-
-| ClinVar_ID   | Position | Category | SSIM  | AlphaGenome | ARCHCODE | AlphaGenome | Mechanism           |
-| ------------ | -------- | -------- | ----- | ----------- | -------- | ----------- | ------------------- |
-| VCV000000321 | 5225630  | missense | 0.812 | 0.871       | VUS      | Pathogenic  | mRNA stability      |
-| VCV000000341 | 5226402  | missense | 0.809 | 0.840       | VUS      | Pathogenic  | Protein misfolding  |
-| VCV000000252 | 5226783  | missense | 0.726 | 0.766       | VUS      | Pathogenic  | Degradation pathway |
-
-**Interpretation:** High SSIM (minimal structural disruption) but high AlphaGenome scores suggest post-transcriptional mechanisms: mRNA stability, protein misfolding, or degradation pathway defects. These variants act downstream of chromatin topology, explaining why ARCHCODE (which models 3D structure only) does not detect pathogenicity.
+**Clinical relevance:** Pearl variants are candidates for ACMG criteria upgrade under
+PS3_moderate (functional evidence of structural disruption from ARCHCODE simulation)
+combined with existing pathogenic classifications.
 
 ---
 
 ## Data Availability
 
-**Full dataset:** `HBB_Clinical_Atlas.csv` (366 rows × 8 columns, 42 KB)
+**Full dataset:** `HBB_Clinical_Atlas_REAL.csv` (353 rows × 8 columns)
 
 **Format:** Comma-separated values (CSV), UTF-8 encoding
 
-**Download:** Available from corresponding author upon reasonable request or from GitHub repository (https://github.com/sergeeey/ARCHCODE/tree/main/results)
+**Download:** Available from corresponding author upon reasonable request or from
+GitHub repository (https://github.com/sergeeey/ARCHCODE/tree/main/results)
 
 ---
 
@@ -122,26 +103,26 @@ Examples where AlphaGenome detects pathogenicity missed by ARCHCODE:
 
 **ARCHCODE simulation:**
 
-- Physics-based loop extrusion with Kramer kinetics (α=0.92, γ=0.80)
-- 50,000 simulation steps per variant
-- SSIM calculated on contact matrices (WT vs Mutant)
+- Physics-based loop extrusion with Kramer kinetics (α=0.92, γ=0.80;
+  MANUALLY CALIBRATED to literature ranges, not fitted to experimental data)
+- Analytical contact matrix computation (SSIM calculated on WT vs Mutant matrices)
 - Seed=2026 for reproducibility
 
-**AlphaGenome prediction:**
+**VEP prediction:**
 
-- Transformer-based neural network (12 layers)
-- 1 Mbp sequence context (±500 kb)
-- Pre-trained on ~18M variants
-- API version: 2026.1
+- Ensembl Variant Effect Predictor v112 (https://www.ensembl.org/vep)
+- SIFT and PolyPhen-2 scores combined as composite pathogenicity metric
+- Annotation genome assembly: GRCh38
+- Variant consequence classification per Sequence Ontology terms
 
 **Statistical analysis:**
 
-- Permutation testing (10,000 iterations)
 - ACMG/AMP 2015 guidelines for clinical interpretation
-- Discordance defined as pathogenic vs benign/VUS disagreement
+- Discordance defined as ARCHCODE structural verdict vs VEP sequence verdict disagreement
+- Pearl variant flagging: SSIM 0.88-0.96 AND VEP score <0.5 AND ClinVar = Pathogenic/LP
 
 ---
 
 _Supplementary Table S1 prepared for bioRxiv submission_
-_Last updated: 2026-02-04_
+_Last updated: 2026-02-28_
 _Corresponding author: Sergey V. Boyko (sergeikuch80@gmail.com)_

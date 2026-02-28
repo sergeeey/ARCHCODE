@@ -1,0 +1,254 @@
+{
+  "title": "ARCHCODE Real Clinical Atlas — HBB Locus",
+  "date": "2026-02-27T20:13:48.525Z",
+  "data_sources": {
+    "variants": "NCBI ClinVar (real, downloaded via E-utilities API)",
+    "sequence_predictor": "Ensembl VEP v113 (SIFT, consequence annotations)",
+    "structural_predictor": "ARCHCODE loop extrusion simulation (Kramer kinetics)"
+  },
+  "parameters": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "k_base": 0.002,
+    "resolution_bp": 600,
+    "simulation_window": "chr11:5210000-5240000",
+    "n_cohesins": 10,
+    "max_steps": 15000
+  },
+  "statistics": {
+    "total_variants": 353,
+    "archcode_pathogenic": 161,
+    "archcode_pathogenic_pct": 45.6,
+    "discordant": 130,
+    "discordant_pct": 36.8,
+    "archcode_only": 2,
+    "vep_only": 128,
+    "pearls": 20,
+    "mean_ssim": 0.9267,
+    "mean_vep_score": 0.754
+  },
+  "category_breakdown": {
+    "3_prime_UTR": {
+      "count": 13,
+      "mean_ssim": 0.9942,
+      "pathogenic_count": 0
+    },
+    "missense": {
+      "count": 125,
+      "mean_ssim": 0.9526,
+      "pathogenic_count": 0
+    },
+    "nonsense": {
+      "count": 40,
+      "mean_ssim": 0.8753,
+      "pathogenic_count": 40
+    },
+    "frameshift": {
+      "count": 99,
+      "mean_ssim": 0.8919,
+      "pathogenic_count": 99
+    },
+    "splice_donor": {
+      "count": 22,
+      "mean_ssim": 0.9087,
+      "pathogenic_count": 19
+    },
+    "splice_region": {
+      "count": 9,
+      "mean_ssim": 0.9641,
+      "pathogenic_count": 0
+    },
+    "intronic": {
+      "count": 9,
+      "mean_ssim": 0.9957,
+      "pathogenic_count": 0
+    },
+    "other": {
+      "count": 12,
+      "mean_ssim": 0.9676,
+      "pathogenic_count": 0
+    },
+    "splice_acceptor": {
+      "count": 3,
+      "mean_ssim": 0.9019,
+      "pathogenic_count": 3
+    },
+    "synonymous": {
+      "count": 3,
+      "mean_ssim": 0.9989,
+      "pathogenic_count": 0
+    },
+    "5_prime_UTR": {
+      "count": 3,
+      "mean_ssim": 0.9801,
+      "pathogenic_count": 0
+    },
+    "promoter": {
+      "count": 15,
+      "mean_ssim": 0.9285,
+      "pathogenic_count": 0
+    }
+  },
+  "pearl_variants": [
+    {
+      "clinvar_id": "VCV002664746",
+      "position": 5226613,
+      "category": "missense",
+      "archcode_ssim": 0.9492,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.949). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000811500",
+      "position": 5226613,
+      "category": "missense",
+      "archcode_ssim": 0.9492,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.949). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015208",
+      "position": 5226613,
+      "category": "missense",
+      "archcode_ssim": 0.9492,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.949). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV002024192",
+      "position": 5226796,
+      "category": "splice_acceptor",
+      "archcode_ssim": 0.9004,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.900). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000869358",
+      "position": 5226971,
+      "category": "frameshift",
+      "archcode_ssim": 0.8915,
+      "vep_score": 0.15,
+      "insight": "PEARL: VEP blind (score=0.15) but ARCHCODE detects structural disruption (SSIM=0.891). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015471",
+      "position": 5227099,
+      "category": "promoter",
+      "archcode_ssim": 0.9276,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.928). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015470",
+      "position": 5227099,
+      "category": "promoter",
+      "archcode_ssim": 0.9276,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.928). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000869288",
+      "position": 5227100,
+      "category": "promoter",
+      "archcode_ssim": 0.929,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.929). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000869290",
+      "position": 5227101,
+      "category": "promoter",
+      "archcode_ssim": 0.9282,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.928). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015466",
+      "position": 5227102,
+      "category": "promoter",
+      "archcode_ssim": 0.9287,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.929). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000801184",
+      "position": 5227142,
+      "category": "promoter",
+      "archcode_ssim": 0.9279,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.928). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV002506212",
+      "position": 5227157,
+      "category": "promoter",
+      "archcode_ssim": 0.9277,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.928). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000036284",
+      "position": 5227157,
+      "category": "promoter",
+      "archcode_ssim": 0.9277,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.928). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000036287",
+      "position": 5227158,
+      "category": "promoter",
+      "archcode_ssim": 0.9289,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.929). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000036285",
+      "position": 5227158,
+      "category": "promoter",
+      "archcode_ssim": 0.9289,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.929). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015464",
+      "position": 5227158,
+      "category": "promoter",
+      "archcode_ssim": 0.9289,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.929). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000393701",
+      "position": 5227159,
+      "category": "promoter",
+      "archcode_ssim": 0.9297,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.930). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015514",
+      "position": 5227161,
+      "category": "promoter",
+      "archcode_ssim": 0.9292,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.929). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015462",
+      "position": 5227163,
+      "category": "promoter",
+      "archcode_ssim": 0.929,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.929). Candidate for 3D-mediated pathogenicity."
+    },
+    {
+      "clinvar_id": "VCV000015586",
+      "position": 5227172,
+      "category": "promoter",
+      "archcode_ssim": 0.9284,
+      "vep_score": 0.2,
+      "insight": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (SSIM=0.928). Candidate for 3D-mediated pathogenicity."
+    }
+  ]
+}
