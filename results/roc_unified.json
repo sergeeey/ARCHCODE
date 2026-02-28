@@ -1,0 +1,53 @@
+{
+  "roc": {
+    "auc": 0.9766,
+    "youden_optimal_ssim_threshold": 0.9943,
+    "youden_sensitivity": 0.966,
+    "youden_specificity": 0.988,
+    "average_precision": 0.9786
+  },
+  "thresholds": {
+    "SSIM_0.85": {
+      "sensitivity": 0.0085,
+      "specificity": 1.0,
+      "youden_j": 0.0085
+    },
+    "SSIM_0.92": {
+      "sensitivity": 0.4561,
+      "specificity": 1.0,
+      "youden_j": 0.4561
+    },
+    "SSIM_0.95": {
+      "sensitivity": 0.6204,
+      "specificity": 1.0,
+      "youden_j": 0.6204
+    },
+    "SSIM_0.96": {
+      "sensitivity": 0.8754,
+      "specificity": 1.0,
+      "youden_j": 0.8754
+    },
+    "SSIM_0.99": {
+      "sensitivity": 0.9348,
+      "specificity": 0.9893,
+      "youden_j": 0.9242
+    }
+  },
+  "quadrants": {
+    "ssim_threshold": 0.95,
+    "vep_threshold": 0.3,
+    "total": {
+      "Q1_both_detect": 199,
+      "Q2_archcode_only": 20,
+      "Q3_vep_only": 136,
+      "Q4_neither": 748
+    }
+  },
+  "dataset": {
+    "total": 1103,
+    "pathogenic": 353,
+    "benign": 750,
+    "pathogenic_mean_ssim": 0.9267,
+    "benign_mean_ssim": 0.9957
+  }
+}
