@@ -25,7 +25,7 @@ et al., 2006; Hansen et al., 2017; Sabaté et al., 2024). For each variant, ARCH
 Structural Similarity Index (SSIM) comparing wild-type and mutant predicted contact maps.
 Pre-defined thresholds classified variants as: PATHOGENIC (SSIM < 0.85), LIKELY_PATHOGENIC
 (0.85–0.92), VUS (0.92–0.96), LIKELY_BENIGN (0.96–0.99), BENIGN (≥ 0.99). Discordance
-analysis identified "pearl" variants: VEP-blind (SIFT score < 0.30) yet structurally disruptive
+analysis identified "pearl" variants: VEP-blind (VEP score < 0.30) yet structurally disruptive
 (SSIM < 0.95).
 
 **Results:** Of 353 HBB variants analyzed, ARCHCODE classified 161 (45.6%) as pathogenic
@@ -38,7 +38,7 @@ while sequence-neutral classes were correctly assigned as benign (synonymous: me
 intermediate structural preservation (mean SSIM = 0.9526, 0/125 pathogenic by structural
 threshold alone).
 
-Discordance analysis identified 20 "pearl" variants where VEP provided no signal (SIFT < 0.30)
+Discordance analysis identified 20 "pearl" variants where VEP provided no signal (VEP < 0.30)
 but ARCHCODE detected structural disruption (SSIM < 0.95): 15 promoter variants (mean VEP = 0.20,
 mean SSIM ≈ 0.928), 3 missense variants (mean VEP = 0.20, mean SSIM = 0.949), 1 frameshift
 (VEP = 0.15, SSIM = 0.891), and 1 splice_acceptor variant (VEP = 0.20, SSIM = 0.900). In total,
@@ -96,7 +96,7 @@ variant interpretation pipelines.
 
 1. **353 real ClinVar HBB variants** analyzed using ARCHCODE structural simulation + Ensembl VEP v113
 2. **45.6% (161/353) structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
-3. **20 "pearl" variants** identified: VEP-blind (SIFT < 0.30), ARCHCODE-detected (SSIM < 0.95)
+3. **20 "pearl" variants** identified: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
 4. **15 promoter-region pearls** highlight regulatory structural disruption invisible to sequence analysis
 5. **Hi-C validation r = 0.16** — honest negative: simulation requires experimental calibration before clinical deployment
 
@@ -547,7 +547,7 @@ evidence:
 
 - **ARCHCODE simulator:** https://github.com/sergeeey/ARCHCODE (v1.1.0)
 - **Analysis scripts:** TypeScript (Node.js v20), Python 3.11
-- **Visualization:** matplotlib 3.8.2, seaborn 0.13.0
+- **Visualization:** matplotlib 3.8.2
 - **Statistical analysis:** NumPy 1.26.3, SciPy 1.12.0
 - **Random number generation:** SeededRandom class (Mersenne Twister, seed=2026)
 
@@ -582,15 +582,17 @@ _Last updated: 2026-02-28_
 ## ClinVar HBB variant dataset
 
 We downloaded 431 HBB variant records from ClinVar via NCBI E-utilities (esearch + esummary
-API, accessed 2026-02-xx). After filtering for records that contained both reference and
+API, accessed 2026-02-28). After filtering for records that contained both reference and
 alternate allele information, 353 variants were retained for analysis (78 records were
 excluded due to missing allele data in the esummary response). The retained set comprised
 12 molecular consequence categories: nonsense (40), frameshift (99), missense (125),
 splice_donor (22), splice_acceptor (3), splice_region (9), promoter (15), 5_prime_UTR (3),
 3_prime_UTR (13), intronic (9), synonymous (3), and other (12). ClinVar clinical
-significance labels in the retained set included Pathogenic (299), Likely pathogenic (55),
-VUS (34), and other designations (Likely benign, Benign, conflicting). All downstream
-analyses used clinical significance as recorded in ClinVar without modification.
+significance labels in the retained set included Pathogenic (234), Pathogenic/Likely
+pathogenic (44), Likely pathogenic (46), Pathogenic with other interpretations (28), and
+Pathogenic/Likely pathogenic with other interpretations (1). No VUS remained in the final
+dataset after filtering. All downstream analyses used clinical significance as recorded in
+ClinVar without modification.
 
 ---
 
@@ -625,7 +627,7 @@ The complete rank order across all 12 categories is:
 
 synonymous (0.9989) > intronic (0.9957) > 3'UTR (0.9942) > 5'UTR (0.9801) >
 other (0.9676) > splice_region (0.9641) > missense (0.9526) > promoter (0.9285) >
-splice_acceptor (0.9019) > splice_donor (0.9087) > frameshift (0.8919) > nonsense (0.8753)
+splice_donor (0.9087) > splice_acceptor (0.9019) > frameshift (0.8919) > nonsense (0.8753)
 
 This ordering is biologically expected: loss-of-function variant classes (nonsense,
 frameshift) produce the most severe chromatin disruption in the model, while conservative
@@ -655,7 +657,7 @@ variants was 0.9267 (per-variant values are available in Supplementary Table S1)
 ## Concordance and discordance with VEP sequence-based predictions
 
 Across all 353 variants, ARCHCODE classified 161 (45.6%) as pathogenic and the sequence-
-based VEP pipeline classified 289 (81.9%) as pathogenic (mean VEP score 0.754 across the
+based VEP pipeline classified 287 (81.3%) as pathogenic (mean VEP score 0.754 across the
 full dataset). Overall discordance — defined as variants where ARCHCODE and VEP verdicts
 differ — was observed in 130 variants (36.8% of the dataset). The discordance was strongly
 asymmetric: 128 variants were called pathogenic by VEP but not by ARCHCODE (VEP-only), and
@@ -692,7 +694,7 @@ The 20 pearl variants fall into three groups by molecular context:
 
 **Group 1 — Promoter variants (15 of 20 pearls).** Fifteen variants map to positions
 5,227,099–5,227,172 on chr11, within the HBB proximal promoter region (SSIM range
-0.927–0.930; VEP score 0.15–0.20 for all). VEP annotates these as
+0.927–0.930; VEP score 0.20 for all). VEP annotates these as
 _upstream_gene_variant_, a consequence term associated with low predicted impact in
 standard VEP weighting schemes. However, the ARCHCODE simulation places this region within
 a simulated enhancer element (LCR–HBB contact domain), and substitutions here reduce
@@ -1044,8 +1046,8 @@ loss-of-function classes (nonsense, frameshift) where both methods detect severe
 | ------------------------ | ------- | ---------- | ------------------------------------------- |
 | VEP-only pathogenic      | 128     | 36.3%      | missense (125), splice_region (3)           |
 | ARCHCODE-only pathogenic | 2       | 0.6%       | frameshift (1), splice_acceptor (1)         |
-| Concordant pathogenic    | 161     | 45.6%      | nonsense, frameshift, splice donor/acceptor |
-| Concordant benign/VUS    | 62      | 17.6%      | synonymous, intronic, UTR, promoter         |
+| Concordant pathogenic    | 159     | 45.0%      | nonsense, frameshift, splice donor/acceptor |
+| Concordant benign/VUS    | 64      | 18.1%      | synonymous, intronic, UTR, promoter         |
 | **Total**                | **353** | **100%**   |                                             |
 
 ---
@@ -1061,15 +1063,15 @@ https://www.ncbi.nlm.nih.gov/clinvar/
 These variants map to the HBB proximal promoter region (chr11:5,227,099–5,227,172, GRCh38).
 VEP annotates them as `upstream_gene_variant` (low predicted impact). ARCHCODE places this
 region within a simulated LCR–HBB enhancer–promoter contact domain and detects disruption
-(mean SSIM 0.928, mean VEP 0.18).
+(mean SSIM 0.928, mean VEP 0.20).
 
 | ClinVar_ID                                               | Position (chr11) | Category | SSIM  | VEP Score | ClinVar Significance |
 | -------------------------------------------------------- | ---------------- | -------- | ----- | --------- | -------------------- |
 | VCV000015471                                             | 5,227,099        | promoter | 0.928 | 0.20      | Pathogenic           |
 | VCV000015470                                             | 5,227,100        | promoter | 0.928 | 0.20      | Pathogenic           |
-| VCV000015466                                             | 5,227,102        | promoter | 0.929 | 0.15      | Pathogenic           |
-| VCV000869288                                             | 5,227,110        | promoter | 0.928 | 0.18      | Likely Pathogenic    |
-| VCV000869290                                             | 5,227,115        | promoter | 0.928 | 0.18      | Likely Pathogenic    |
+| VCV000015466                                             | 5,227,102        | promoter | 0.929 | 0.20      | Pathogenic           |
+| VCV000869288                                             | 5,227,110        | promoter | 0.929 | 0.20      | Pathogenic           |
+| VCV000869290                                             | 5,227,115        | promoter | 0.928 | 0.20      | Pathogenic           |
 | VCV000015208                                             | 5,227,120        | promoter | 0.928 | 0.20      | Pathogenic           |
 | VCV000811500                                             | 5,227,130        | promoter | 0.928 | 0.20      | Pathogenic           |
 | (8 additional accessions in HBB_Clinical_Atlas_REAL.csv) |                  |          |       |           |                      |

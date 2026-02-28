@@ -255,7 +255,7 @@ Variants were evaluated using ACMG/AMP 2015 guidelines (Richards et al.) with th
 
 - **ARCHCODE simulator:** https://github.com/sergeeey/ARCHCODE (v1.1.0)
 - **Analysis scripts:** TypeScript (Node.js v20), Python 3.11
-- **Visualization:** matplotlib 3.8.2, seaborn 0.13.0
+- **Visualization:** matplotlib 3.8.2
 - **Statistical analysis:** NumPy 1.26.3, SciPy 1.12.0
 - **Random number generation:** SeededRandom class (Mersenne Twister, seed=2026)
 
