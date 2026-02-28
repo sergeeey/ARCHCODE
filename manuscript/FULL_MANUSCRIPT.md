@@ -402,14 +402,21 @@ SIFT scores for missense variants.
 
 **Consequence severity mapping** (consequence term → pathogenicity score):
 
-| Consequence                                                                    | Score                         |
-| ------------------------------------------------------------------------------ | ----------------------------- |
-| stop_gained, frameshift_variant, splice_donor_variant, splice_acceptor_variant | 0.95                          |
-| missense_variant                                                               | derived from SIFT (see below) |
-| splice_region_variant                                                          | 0.60                          |
-| synonymous_variant, 5_prime_UTR_variant, 3_prime_UTR_variant, intron_variant   | 0.10                          |
-| intergenic_variant                                                             | 0.05                          |
-| other / unmapped                                                               | 0.50                          |
+| Consequence                                   | Score                         |
+| --------------------------------------------- | ----------------------------- |
+| splice_donor_variant, splice_acceptor_variant | 0.95                          |
+| stop_gained, frameshift_variant               | 0.90                          |
+| start_lost, stop_lost                         | 0.85                          |
+| missense_variant                              | derived from SIFT (see below) |
+| splice_region_variant                         | 0.50                          |
+| coding_sequence_variant                       | 0.20                          |
+| 5_prime_UTR_variant                           | 0.20                          |
+| upstream_gene_variant                         | 0.15                          |
+| 3_prime_UTR_variant                           | 0.15                          |
+| intron_variant                                | 0.10                          |
+| synonymous_variant                            | 0.05                          |
+| intergenic_variant                            | 0.05                          |
+| other / unmapped                              | 0.10                          |
 
 **SIFT integration for missense variants:**
 
@@ -418,7 +425,7 @@ vep_score = 0.4 + 0.5 × (1 − sift_score)
 ```
 
 where `sift_score` ∈ [0, 1] (0 = deleterious, 1 = tolerated). If SIFT was unavailable,
-missense variants received a default score of 0.70.
+missense variants received a default score of 0.50.
 
 **Pearl detection threshold:** a variant was flagged as a Pearl (ARCHCODE-VEP discordant
 case) when VEP score < 0.30 AND SSIM < 0.95.
@@ -986,7 +993,7 @@ _Last updated: 2026-02-28_
 
 ## Table Legend
 
-Complete dataset of 353 β-globin (_HBB_) pathogenic, likely-pathogenic, and VUS variants
+Complete dataset of 353 β-globin (_HBB_) pathogenic and likely pathogenic variants
 analyzed using ARCHCODE (analytical mean-field 3D chromatin simulation) and Ensembl VEP
 v113 (sequence-based predictor). Variants are sorted by SSIM ascending (most structurally
 disruptive first).
@@ -1065,20 +1072,18 @@ VEP annotates them as `upstream_gene_variant` (low predicted impact). ARCHCODE p
 region within a simulated LCR–HBB enhancer–promoter contact domain and detects disruption
 (mean SSIM 0.928, mean VEP 0.20).
 
-| ClinVar_ID                                               | Position (chr11) | Category | SSIM  | VEP Score | ClinVar Significance |
-| -------------------------------------------------------- | ---------------- | -------- | ----- | --------- | -------------------- |
-| VCV000015471                                             | 5,227,099        | promoter | 0.928 | 0.20      | Pathogenic           |
-| VCV000015470                                             | 5,227,100        | promoter | 0.928 | 0.20      | Pathogenic           |
-| VCV000015466                                             | 5,227,102        | promoter | 0.929 | 0.20      | Pathogenic           |
-| VCV000869288                                             | 5,227,110        | promoter | 0.929 | 0.20      | Pathogenic           |
-| VCV000869290                                             | 5,227,115        | promoter | 0.928 | 0.20      | Pathogenic           |
-| VCV000015208                                             | 5,227,120        | promoter | 0.928 | 0.20      | Pathogenic           |
-| VCV000811500                                             | 5,227,130        | promoter | 0.928 | 0.20      | Pathogenic           |
-| (8 additional accessions in HBB_Clinical_Atlas_REAL.csv) |                  |          |       |           |                      |
+| ClinVar_ID   | Position (chr11) | Category | SSIM  | VEP Score | ClinVar Significance    |
+| ------------ | ---------------- | -------- | ----- | --------- | ----------------------- |
+| VCV000015471 | 5,227,099        | promoter | 0.928 | 0.20      | Pathogenic/Likely path. |
+| VCV000015470 | 5,227,099        | promoter | 0.928 | 0.20      | Pathogenic              |
+| VCV000869288 | 5,227,100        | promoter | 0.929 | 0.20      | Pathogenic              |
+| VCV000869290 | 5,227,101        | promoter | 0.928 | 0.20      | Pathogenic              |
+| VCV000015466 | 5,227,102        | promoter | 0.929 | 0.20      | Pathogenic              |
+| VCV000801184 | 5,227,142        | promoter | 0.928 | 0.20      | Pathogenic/Likely path. |
+| VCV000036284 | 5,227,157        | promoter | 0.928 | 0.20      | Pathogenic/Likely path. |
 
-_Note: All 15 promoter pearl accessions with exact positions and alleles are available in
-HBB_Clinical_Atlas_REAL.csv. Only representative examples shown here to preserve table
-readability._
+_7 of 15 promoter pearl accessions shown. All 15 with exact positions and alleles are
+available in HBB_Clinical_Atlas_REAL.csv._
 
 ### Group 2: Missense Pearls at chr11:5,226,613 (n=3)
 

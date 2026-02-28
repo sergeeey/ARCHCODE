@@ -2,8 +2,8 @@
 
 ## Table Legend
 
-Complete dataset of 353 β-globin (_HBB_) pathogenic and VUS variants analyzed using
-ARCHCODE (physics-based 3D chromatin simulation) and Ensembl VEP (sequence-based predictor).
+Complete dataset of 353 β-globin (_HBB_) pathogenic and likely pathogenic variants analyzed
+using ARCHCODE (physics-based 3D chromatin simulation) and Ensembl VEP (sequence-based predictor).
 Variants are sorted by genomic position (chr11, GRCh38).
 
 **Columns:**
