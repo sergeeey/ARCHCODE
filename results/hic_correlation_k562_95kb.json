@@ -1,0 +1,75 @@
+{
+  "analysis": "ARCHCODE vs K562 Hi-C correlation",
+  "locus_config_id": "hbb_95kb_subTAD",
+  "archcode": {
+    "region": "chr11:5200000-5295000",
+    "resolution_bp": 600,
+    "matrix_size": 159,
+    "parameters": {
+      "K_BASE": 0.002,
+      "alpha": 0.92,
+      "gamma": 0.8
+    }
+  },
+  "hic": {
+    "source": "4DNFI18UHVRO.mcool (4DN Data Portal)",
+    "cell_line": "K562",
+    "original_resolution_bp": 1000,
+    "interpolated_to": 159
+  },
+  "correlations": {
+    "k_min_2": {
+      "k_min": 2,
+      "n_total": 12403,
+      "n_valid": 11649,
+      "n_zero_removed": 754,
+      "pearson_r": 0.5876,
+      "pearson_p": 0.0,
+      "spearman_rho": 0.4093,
+      "spearman_p": 0.0
+    },
+    "k_min_3": {
+      "k_min": 3,
+      "n_total": 12246,
+      "n_valid": 11495,
+      "n_zero_removed": 751,
+      "pearson_r": 0.5749,
+      "pearson_p": 0.0,
+      "spearman_rho": 0.3873,
+      "spearman_p": 0.0
+    },
+    "k_min_5": {
+      "k_min": 5,
+      "n_total": 11935,
+      "n_valid": 11188,
+      "n_zero_removed": 747,
+      "pearson_r": 0.4467,
+      "pearson_p": 0.0,
+      "spearman_rho": 0.3464,
+      "spearman_p": 0.0
+    }
+  },
+  "primary_result": {
+    "k_min": 2,
+    "n_total": 12403,
+    "n_valid": 11649,
+    "n_zero_removed": 754,
+    "pearson_r": 0.5876,
+    "pearson_p": 0.0,
+    "spearman_rho": 0.4093,
+    "spearman_p": 0.0
+  },
+  "comparison": {
+    "gm12878_v1": {
+      "pearson_r": 0.16,
+      "pearson_p": 0.3,
+      "n": 12,
+      "cell_line": "GM12878"
+    },
+    "k562_v2": {
+      "pearson_r": 0.5876,
+      "pearson_p": 0.0,
+      "n": 11649
+    }
+  }
+}
