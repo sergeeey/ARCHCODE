@@ -12,13 +12,20 @@
  *
  * Ожидаемый результат: within-category AUC ≈ 0.5, global AUC > 0.5
  *
- * Usage: npx tsx scripts/generate-unified-atlas.ts
+ * Usage: npx tsx scripts/generate-unified-atlas.ts [--locus 30kb|95kb]
  */
 
 import * as fs from "fs";
 import * as path from "path";
 import { SeededRandom } from "../src/utils/random";
 import { KRAMER_KINETICS } from "../src/domain/constants/biophysics";
+import {
+  loadLocusConfig,
+  resolveLocusPath,
+  parseLocusArg,
+  getLocusFeatures,
+  type LocusConfig,
+} from "../src/domain/config/locus-config";
 
 // ============================================================================
 // Types
@@ -81,30 +88,16 @@ const HBB_GENE = {
   end: 5227079,
 };
 
-// Simulation window (same as generate-real-atlas.ts — identical physics)
-const SIM_START = 5210000;
-const SIM_END = 5240000; // 30kb window
-const RESOLUTION = 600; // 600bp bins → 50 bins
-const N_BINS = Math.ceil((SIM_END - SIM_START) / RESOLUTION);
+// Load locus configuration from JSON (--locus 30kb | 95kb)
+const LOCUS_ARG = parseLocusArg();
+const LOCUS_CONFIG_PATH = resolveLocusPath(LOCUS_ARG);
+const LOCUS_CONFIG: LocusConfig = loadLocusConfig(LOCUS_CONFIG_PATH);
 
-// Biologically accurate feature positions (GRCh38, HBB locus)
-const LOCUS_FEATURES = {
-  enhancers: [
-    { position: 5227000, occupancy: 0.85, name: "HBB_promoter" },
-    { position: 5225500, occupancy: 0.75, name: "3prime_HS1" },
-    { position: 5230000, occupancy: 0.7, name: "LCR_HS2_proximal" },
-    { position: 5233000, occupancy: 0.65, name: "LCR_HS3_proximal" },
-    { position: 5220000, occupancy: 0.5, name: "downstream_enhancer" },
-  ],
-  ctcfSites: [
-    { position: 5212000, orientation: "+" },
-    { position: 5218000, orientation: "-" },
-    { position: 5224000, orientation: "+" },
-    { position: 5228000, orientation: "-" },
-    { position: 5232000, orientation: "+" },
-    { position: 5236000, orientation: "-" },
-  ],
-};
+const SIM_START = LOCUS_CONFIG.window.start;
+const SIM_END = LOCUS_CONFIG.window.end;
+const RESOLUTION = LOCUS_CONFIG.window.resolution_bp;
+const N_BINS = LOCUS_CONFIG.window.n_bins;
+const LOCUS_FEATURES = getLocusFeatures(LOCUS_CONFIG);
 
 // ============================================================================
 // Data Loading — Pathogenic variants (from ClinVar JSON)
@@ -435,6 +428,16 @@ async function main() {
   console.log("=".repeat(70));
   console.log("ARCHCODE Unified Atlas Generator — v2.0 Pipeline Fix");
   console.log("=".repeat(70));
+  console.log(`Locus config:  ${LOCUS_CONFIG.id} (${LOCUS_CONFIG.name})`);
+  console.log(
+    `Window:        ${LOCUS_CONFIG.window.chromosome}:${SIM_START}-${SIM_END} (${(SIM_END - SIM_START) / 1000}kb)`,
+  );
+  console.log(
+    `Matrix:        ${N_BINS}x${N_BINS} (${RESOLUTION}bp resolution)`,
+  );
+  console.log(
+    `Thresholds:    ${LOCUS_CONFIG.thresholds ? "calibrated" : "using 30kb defaults (uncalibrated)"}`,
+  );
   console.log("FIX: All 1,103 variants through ONE TypeScript engine.");
   console.log("     getEffectStrength() sees ONLY category, NEVER label.");
   console.log(
@@ -527,15 +530,21 @@ async function main() {
       );
       const loopIntegrity = calculateLoopIntegrity(mutantMatrix);
 
-      // Verdict thresholds (same as generate-real-atlas.ts)
+      // Verdict thresholds — from config if calibrated, else defaults (30kb values)
+      const t = LOCUS_CONFIG.thresholds ?? {
+        ssim_pathogenic: 0.85,
+        ssim_likely_pathogenic: 0.92,
+        ssim_vus: 0.96,
+        ssim_likely_benign: 0.99,
+      };
       let verdict: string;
-      if (ssim < 0.85) {
+      if (ssim < t.ssim_pathogenic) {
         verdict = "PATHOGENIC";
-      } else if (ssim < 0.92) {
+      } else if (ssim < t.ssim_likely_pathogenic) {
         verdict = "LIKELY_PATHOGENIC";
-      } else if (ssim < 0.96) {
+      } else if (ssim < t.ssim_vus) {
         verdict = "VUS";
-      } else if (ssim < 0.99) {
+      } else if (ssim < t.ssim_likely_benign) {
         verdict = "LIKELY_BENIGN";
       } else {
         verdict = "BENIGN";
@@ -613,7 +622,8 @@ async function main() {
   const outputDir = path.join(process.cwd(), "results");
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-  const csvPath = path.join(outputDir, "HBB_Unified_Atlas.csv");
+  const csvSuffix = LOCUS_ARG === "30kb" ? "" : `_${LOCUS_ARG}`;
+  const csvPath = path.join(outputDir, `HBB_Unified_Atlas${csvSuffix}.csv`);
   const headers = Object.keys(results[0]);
   const csvLines = [
     headers.join(","),
@@ -683,10 +693,24 @@ async function main() {
   }
 
   // Write summary JSON
-  const summaryPath = path.join(outputDir, "UNIFIED_ATLAS_SUMMARY.json");
+  const summaryPath = path.join(
+    outputDir,
+    `UNIFIED_ATLAS_SUMMARY${csvSuffix}.json`,
+  );
   const summary = {
     title: "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
     date: new Date().toISOString(),
+    locus_config_id: LOCUS_CONFIG.id,
+    locus_config_path: LOCUS_CONFIG_PATH,
+    provenance: {
+      ctcf_sources: [
+        ...new Set(LOCUS_CONFIG.features.ctcf_sites.map((c) => c.source)),
+      ],
+      enhancer_sources: [
+        ...new Set(LOCUS_CONFIG.features.enhancers.map((e) => e.source)),
+      ],
+      thresholds_calibrated: LOCUS_CONFIG.thresholds !== null,
+    },
     fix_description:
       "All 1,103 variants processed through identical TypeScript engine. " +
       "getEffectStrength() sees only category, never ClinVar label. " +

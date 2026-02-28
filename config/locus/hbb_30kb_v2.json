@@ -1,0 +1,63 @@
+{
+  "id": "hbb_30kb_v2",
+  "name": "HBB 30kb window (v2.0 manuscript)",
+  "description": "Original 30kb simulation window from ARCHCODE v2.0. All features are MODEL_PARAMETER — not derived from experimental ChIP-seq data. Preserved for backward compatibility and manuscript reproducibility.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr11",
+    "start": 5210000,
+    "end": 5240000,
+    "resolution_bp": 600,
+    "n_bins": 50
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 5227000,
+        "occupancy": 0.85,
+        "name": "HBB_promoter",
+        "source": "MODEL_PARAMETER"
+      },
+      {
+        "position": 5225500,
+        "occupancy": 0.75,
+        "name": "3prime_HS1",
+        "source": "MODEL_PARAMETER"
+      },
+      {
+        "position": 5230000,
+        "occupancy": 0.7,
+        "name": "LCR_HS2_proximal",
+        "source": "MODEL_PARAMETER"
+      },
+      {
+        "position": 5233000,
+        "occupancy": 0.65,
+        "name": "LCR_HS3_proximal",
+        "source": "MODEL_PARAMETER"
+      },
+      {
+        "position": 5220000,
+        "occupancy": 0.5,
+        "name": "downstream_enhancer",
+        "source": "MODEL_PARAMETER"
+      }
+    ],
+    "ctcf_sites": [
+      { "position": 5212000, "orientation": "+", "source": "MODEL_PARAMETER" },
+      { "position": 5218000, "orientation": "-", "source": "MODEL_PARAMETER" },
+      { "position": 5224000, "orientation": "+", "source": "MODEL_PARAMETER" },
+      { "position": 5228000, "orientation": "-", "source": "MODEL_PARAMETER" },
+      { "position": 5232000, "orientation": "+", "source": "MODEL_PARAMETER" },
+      { "position": 5236000, "orientation": "-", "source": "MODEL_PARAMETER" }
+    ],
+    "genes": []
+  },
+  "thresholds": {
+    "ssim_pathogenic": 0.85,
+    "ssim_likely_pathogenic": 0.92,
+    "ssim_vus": 0.96,
+    "ssim_likely_benign": 0.99,
+    "note": "Calibrated for 50x50 matrix (30kb / 600bp)"
+  }
+}
