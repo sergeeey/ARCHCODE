@@ -1,6 +1,9 @@
-import type { InputHTMLAttributes } from 'react';
+import type { InputHTMLAttributes } from "react";
 
-interface SliderProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {
+interface SliderProps extends Omit<
+  InputHTMLAttributes<HTMLInputElement>,
+  "type"
+> {
   label?: string;
   value: number;
   onValueChange: (value: number) => void;
@@ -18,7 +21,7 @@ export const Slider = ({
   max,
   step = 1,
   valueLabel,
-  className = '',
+  className = "",
   ...props
 }: SliderProps) => {
   const pct = ((value - min) / (max - min || 1)) * 100;
@@ -28,7 +31,9 @@ export const Slider = ({
       {(label !== undefined || valueLabel !== undefined) && (
         <label className="flex justify-between items-baseline gap-2 mb-1.5 text-xs text-[var(--text-label)] font-mono">
           {label != null && <span>{label}</span>}
-          {valueLabel != null && <span className="tabular-nums">{valueLabel}</span>}
+          {valueLabel != null && (
+            <span className="tabular-nums">{valueLabel}</span>
+          )}
         </label>
       )}
       <input

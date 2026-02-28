@@ -17,11 +17,11 @@ This contract defines minimum integrity and validation rules for simulation outp
 
 ## Decision Matrix
 
-| Scenario | Source | Allowed for dev | Allowed for publication |
-| --- | --- | --- | --- |
-| Quick local simulation | Synthetic/mock | Yes | No |
-| Hi-C validation script | Experimental Hi-C | Yes | Yes |
-| Missing experimental source metadata | Unknown | Yes (temporary) | No |
+| Scenario                             | Source            | Allowed for dev | Allowed for publication |
+| ------------------------------------ | ----------------- | --------------- | ----------------------- |
+| Quick local simulation               | Synthetic/mock    | Yes             | No                      |
+| Hi-C validation script               | Experimental Hi-C | Yes             | Yes                     |
+| Missing experimental source metadata | Unknown           | Yes (temporary) | No                      |
 
 ## Required Evidence for Publication
 

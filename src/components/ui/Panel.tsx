@@ -1,10 +1,15 @@
-import type { HTMLAttributes } from 'react';
+import type { HTMLAttributes } from "react";
 
 interface PanelProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
 }
 
-export const Panel = ({ title, className = '', children, ...props }: PanelProps) => {
+export const Panel = ({
+  title,
+  className = "",
+  children,
+  ...props
+}: PanelProps) => {
   return (
     <div
       className={`panel-glass rounded-[var(--radius-md)] p-5 font-mono ${className}`}

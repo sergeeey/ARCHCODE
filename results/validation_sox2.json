@@ -16,14 +16,54 @@
     "length_mb": 0.8
   },
   "ctcf_sites": [
-    { "position": 50000, "strength": 0.9, "orientation": "R", "region": "5' TAD boundary" },
-    { "position": 150000, "strength": 0.85, "orientation": "R", "region": "5' TAD boundary" },
-    { "position": 300000, "strength": 0.85, "orientation": "F", "region": "upstream enhancer" },
-    { "position": 400000, "strength": 0.9, "orientation": "R", "region": "upstream enhancer" },
-    { "position": 500000, "strength": 0.9, "orientation": "F", "region": "near SOX2 gene" },
-    { "position": 600000, "strength": 0.85, "orientation": "R", "region": "near SOX2 gene" },
-    { "position": 700000, "strength": 0.95, "orientation": "F", "region": "SCR enhancer" },
-    { "position": 750000, "strength": 0.9, "orientation": "R", "region": "SCR enhancer" }
+    {
+      "position": 50000,
+      "strength": 0.9,
+      "orientation": "R",
+      "region": "5' TAD boundary"
+    },
+    {
+      "position": 150000,
+      "strength": 0.85,
+      "orientation": "R",
+      "region": "5' TAD boundary"
+    },
+    {
+      "position": 300000,
+      "strength": 0.85,
+      "orientation": "F",
+      "region": "upstream enhancer"
+    },
+    {
+      "position": 400000,
+      "strength": 0.9,
+      "orientation": "R",
+      "region": "upstream enhancer"
+    },
+    {
+      "position": 500000,
+      "strength": 0.9,
+      "orientation": "F",
+      "region": "near SOX2 gene"
+    },
+    {
+      "position": 600000,
+      "strength": 0.85,
+      "orientation": "R",
+      "region": "near SOX2 gene"
+    },
+    {
+      "position": 700000,
+      "strength": 0.95,
+      "orientation": "F",
+      "region": "SCR enhancer"
+    },
+    {
+      "position": 750000,
+      "strength": 0.9,
+      "orientation": "R",
+      "region": "SCR enhancer"
+    }
   ],
   "simulation_params": {
     "beta_baseline": 0,
