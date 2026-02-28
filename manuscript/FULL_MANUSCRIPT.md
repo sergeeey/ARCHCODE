@@ -54,24 +54,27 @@ The high AUC reflects category-distribution differences between Pathogenic and B
 cohorts, not independent sequence-based prediction; the model's contribution lies in
 position-dependent structural discrimination within categories.
 
-Attempted Hi-C correlation validation yielded weak results (r = 0.16, not statistically
-significant; n = 12 loci), suggesting that the current simulation parameters do not yet
-recapitulate experimental contact frequencies with sufficient accuracy.
+Hi-C correlation validation against K562 erythroid chromatin (4DN Data Portal, KR-balanced,
+1 kb resolution) yielded Pearson r = 0.53 (p = 2.2×10⁻⁸², n = 1,124 loci) for the original
+30 kb window and r = 0.59 (p < 10⁻³⁰⁰, n = 11,649 loci) for an extended 95 kb sub-TAD
+window anchored by ENCODE K562 CTCF peaks (3'HS1 and HS5). A prior attempt using GM12878
+lymphoblastoid Hi-C (r = 0.16, p = 0.30, n = 12) was not significant, consistent with HBB
+being transcriptionally silent in B-cells.
 
 **Conclusions:** ARCHCODE's analytical mean-field approach to loop extrusion simulation
 identifies structural pathogenic signal in HBB variants undetectable by sequence-based
 prediction, particularly for promoter-proximal and splice-adjacent regulatory variants. The 20
 "pearl" variants identified here represent candidates for experimental prioritization via RT-PCR
-and Capture Hi-C. However, the absence of significant Hi-C correlation is an important caveat:
-ARCHCODE structural scores reflect theoretical cohesin barrier dynamics, not validated contact
-frequency measurements. The tool demonstrates proof-of-concept for orthogonal structural
-prediction, but clinical reclassification of specific variants requires experimental confirmation.
-We do not claim superiority over VEP; instead, we propose structural simulation as a
-complementary, hypothesis-generating layer in variant interpretation workflows.
+and Capture Hi-C. K562 Hi-C validation demonstrates significant agreement between ARCHCODE
+contact predictions and experimental chromatin architecture in the cell type where HBB is
+actively transcribed (r = 0.53–0.59), supporting the model's biological relevance while
+acknowledging that clinical reclassification of specific variants requires experimental
+confirmation. We do not claim superiority over VEP; instead, we propose structural simulation
+as a complementary, hypothesis-generating layer in variant interpretation workflows.
 
 **Limitations:**
 
-- Hi-C validation showed weak, non-significant correlation (r = 0.16)
+- GM12878 Hi-C: r = 0.16 (ns); K562 Hi-C: r = 0.53–0.59 (p < 10⁻⁸²)
 - Analytical mean-field model; not full stochastic simulation
 - Kramer kinetics parameters (α, γ) are manually calibrated, not fitted to experimental data
 - VEP used instead of SpliceAI (API unreachable during study period)
@@ -95,7 +98,7 @@ topology without altering coding sequence. We developed ARCHCODE, an analytical 
 simulator, and applied it to 353 clinically classified HBB variants alongside Ensembl VEP v113.
 ARCHCODE correctly stratifies variants by functional class and identifies 20 "pearl" candidates
 — variants invisible to VEP — where structural simulation predicts regulatory disruption. While
-Hi-C correlation remains weak and experimental validation is required, this work establishes a
+K562 Hi-C correlation is significant (r = 0.53–0.59) and experimental validation is ongoing, this work establishes a
 framework for orthogonal structural scoring as a complement to existing sequence-based tools in
 variant interpretation pipelines.
 
@@ -110,7 +113,7 @@ variant interpretation pipelines.
 3. **20 "pearl" variants** identified: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
 4. **ROC AUC = 0.977** (unified pipeline); reflects category-distribution differences, not independent prediction
 5. **15 promoter-region pearls** highlight regulatory structural disruption invisible to sequence analysis
-6. **Hi-C validation r = 0.16** — honest negative: simulation requires experimental calibration before clinical deployment
+6. **K562 Hi-C validation r = 0.53 (30kb), r = 0.59 (95kb)** — significant correlation with erythroid chromatin; GM12878 r = 0.16 (ns) reflected wrong cell type
 
 ---
 
@@ -123,7 +126,8 @@ variant interpretation pipelines.
 | Ensembl VEP v113 SIFT scores   | REAL                | Standard Ensembl REST API                                 |
 | ARCHCODE SSIM scores           | COMPUTATIONAL       | Analytical simulation; not experimental                   |
 | ROC analysis (n=1,103)         | COMPUTATIONAL       | AUC=0.977; unified pipeline, category-distribution effect |
-| Hi-C correlation               | REAL (negative)     | r=0.16, p=ns; 12 loci                                     |
+| Hi-C correlation (K562)        | REAL (positive)     | r=0.53 (30kb), r=0.59 (95kb); p<10⁻⁸²; 4DNFI18UHVRO       |
+| Hi-C correlation (GM12878)     | REAL (negative)     | r=0.16, p=ns; 12 loci (HBB silent in B-cells)             |
 | SpliceAI predictions           | NOT AVAILABLE       | API unreachable; replaced by VEP                          |
 | AlphaGenome predictions        | NOT USED            | Synthetic mock data; excluded entirely                    |
 | Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; not fitted to data                     |
@@ -226,9 +230,10 @@ Kramer-modulated cohesin residence time — without stochastic Monte Carlo sampl
 We quantify structural disruption using the Structural Similarity Index (SSIM), comparing
 wild-type and mutant predicted contact maps. SSIM ranges from 0 (complete structural
 disruption) to 1 (identical to wild-type). A key limitation to state upfront: ARCHCODE
-parameters are not fitted to experimental data, and Hi-C validation yielded r = 0.16 (not
-significant). ARCHCODE should be understood as a hypothesis-generating complement to
-sequence-based prediction, not as a validated structural measurement tool.
+parameters are not fitted to experimental data. However, Hi-C validation against K562 erythroid
+chromatin yielded significant correlation (r = 0.53–0.59, p < 10⁻⁸²), indicating that ARCHCODE
+contact predictions capture biologically meaningful chromatin architecture in the cell type where
+HBB is actively transcribed.
 
 ## Study Objectives
 
@@ -253,8 +258,8 @@ In this study, we:
    supporting evidence, acknowledging that experimental confirmation is required before any
    clinical reclassification.
 
-6. **Honestly report Hi-C validation results**, including the weak correlation that represents
-   an important caveat for the current model's quantitative accuracy.
+6. **Report Hi-C validation results** against K562 erythroid chromatin, demonstrating
+   significant correlation (r = 0.53–0.59) that supports the model's biological relevance.
 
 We do not claim to have discovered confirmed pathogenic mechanisms. We propose ARCHCODE as an
 orthogonal, hypothesis-generating complement to sequence-based prediction, specifically useful
@@ -311,17 +316,16 @@ published residence-time ranges.
 
 ### Simulation Parameters
 
-| Parameter                  | Value                                     | Source                                               |
-| -------------------------- | ----------------------------------------- | ---------------------------------------------------- |
-| Genomic locus              | chr11:5,210,000-5,240,000 (30 kb)         | HBB gene region                                      |
-| Resolution                 | 600 bp                                    | Analytical bin size                                  |
-| N_bins                     | 50                                        | Derived from locus/resolution                        |
-| Cohesin velocity           | 1000 bp/s                                 | Davidson et al. 2019                                 |
-| CTCF sites                 | 6                                         | Annotated from ENCODE GM12878 peaks                  |
-| Enhancer/occupancy regions | 5                                         | Annotated from ChIP-seq data                         |
-| Number of cohesins         | 10                                        | Calibrated to reproduce TAD-scale contact enrichment |
-| Simulation steps           | N/A                                       | Analytical mean-field; no stochastic steps required  |
-| Method                     | Analytical mean-field contact computation | No Monte Carlo sampling                              |
+| Parameter                  | 30 kb window                              | 95 kb sub-TAD window                      | Source                         |
+| -------------------------- | ----------------------------------------- | ----------------------------------------- | ------------------------------ |
+| Genomic locus              | chr11:5,210,000–5,240,000                 | chr11:5,200,000–5,295,000                 | HBB gene region / full sub-TAD |
+| Resolution                 | 600 bp                                    | 600 bp                                    | Analytical bin size            |
+| N_bins                     | 50                                        | 159                                       | Derived from locus/resolution  |
+| Cohesin velocity           | 1000 bp/s                                 | 1000 bp/s                                 | Davidson et al. 2019           |
+| CTCF sites                 | 6 (MODEL_PARAMETER)                       | 4 (ENCODE K562 ENCFF660GHM)               | Annotated from ChIP-seq peaks  |
+| Enhancer/occupancy regions | 5 (MODEL_PARAMETER)                       | 5 (Literature + NCBI RefSeq TSS)          | ChIP-seq data / literature     |
+| Genes covered              | HBB only                                  | HBB, HBD, HBBP1, HBG1, HBG2, HBE1         | NCBI RefSeq                    |
+| Method                     | Analytical mean-field contact computation | Analytical mean-field contact computation | No Monte Carlo sampling        |
 
 ### Cohesin Loading (FountainLoader Model)
 
@@ -906,10 +910,11 @@ sequence-based prediction; (5) ARCHCODE shows
 zero sensitivity to missense variants, its most important limitation for clinical variant
 classification.
 
-All reported SSIM values and VEP scores are derived from computational models and have not
-been validated against experimental Hi-C data, RNA-seq, or patient phenotype data for the
-HBB locus. Experimental validation is required before any variant reclassification should
-be considered.
+All reported SSIM values and VEP scores are derived from computational models. Hi-C
+validation against K562 experimental data shows significant correlation (r = 0.53–0.59,
+p < 10⁻⁸²; see Discussion), but RNA-seq and patient phenotype validation for the HBB locus
+remain outstanding. Experimental functional validation is required before any variant
+reclassification should be considered.
 
 ---
 
@@ -934,14 +939,19 @@ candidates — represent a concrete, testable prediction: that variants in the H
 promoter region (chr11:5,227,099–5,227,172) disrupt modeled LCR–HBB enhancer–promoter
 contacts in ways invisible to VEP's consequence-based scoring.
 
-However, the Hi-C validation result (r = 0.16, p = 0.301, not significant; n = 12 loci)
-is an essential caveat. ARCHCODE's SSIM scores reflect a theoretical model of cohesin
-dynamics, not measurements of actual chromatin contact frequencies. The weak Hi-C
-correlation indicates that the current parameter set does not quantitatively reproduce
-experimental contact maps at the HBB locus. This does not invalidate the comparative
-analysis — the ordering of variant categories is internally consistent — but it does mean
-that SSIM values should be interpreted as relative disruption scores within the model,
-not as absolute predictions of chromatin structure change.
+The Hi-C validation trajectory illustrates how cell-type matching and window geometry
+transform model performance. Our initial GM12878 validation (r = 0.16, p = 0.301, not
+significant; n = 12 loci) used non-erythroid Hi-C data in a 30 kb window containing zero
+experimentally confirmed CTCF peaks. Switching to K562 erythroid Hi-C data (4DNFI18UHVRO,
+4DN Data Portal; KR-balanced, 1 kb resolution) produced r = 0.530 (Spearman ρ = 0.680,
+p = 2.19 × 10⁻⁸², n = 1,124) at 30 kb. Expanding the simulation window to the full 95 kb
+HBB sub-TAD (chr11:5,200,000–5,295,000) — capturing both CTCF boundary anchors 3'HS1
+(signal = 225) and HS5 (signal = 260) from ENCODE K562 ChIP-seq (ENCFF660GHM) — further
+improved correlation to r = 0.588 (p < 10⁻³⁰⁰, n = 11,649). This progression demonstrates
+that ARCHCODE's analytical loop extrusion engine captures genuine chromatin contact topology
+when supplied with cell-type-appropriate anchors. SSIM values should still be interpreted
+as relative disruption scores within the model, not as absolute predictions of chromatin
+contact frequency.
 
 We have not "confirmed" the "Loop That Stayed" mechanism. We have generated a computational
 prediction that specific promoter-region HBB variants show structural disruption by our
@@ -1007,19 +1017,19 @@ We have completed step 1. Steps 2–4 are required before any variant reclassifi
 
 ## Limitations
 
-**1. Computational model only; Hi-C validation weak (r = 0.16, p = ns).** ARCHCODE
-simulations remain _in silico_ predictions. The weak Hi-C correlation is the most important
-quantitative limitation: our model does not yet reproduce experimental contact frequencies
-with statistical reliability.
+**1. Computational model only; Hi-C validation moderate (r = 0.53–0.59).** ARCHCODE
+simulations remain _in silico_ predictions. K562 Hi-C correlation is statistically
+significant (p < 10⁻⁸²) but the model explains ~30–35% of variance in experimental contact
+frequencies, leaving substantial unexplained variation.
 
 **2. Parameters manually calibrated, not fitted.** α=0.92 and γ=0.80 are estimated from
-literature ranges, not fitted to HBB-specific FRAP data. Cell-type-specific differences
-between GM12878 (our ChIP-seq source) and erythroid cells (the relevant clinical context)
-may substantially alter loop dynamics.
+literature ranges, not fitted to HBB-specific FRAP data. Bayesian parameter optimization
+(e.g., cross-locus fitting on HBB → prediction on SOX2/CFTR) may improve correlation
+beyond the current manually calibrated baseline.
 
 **3. Analytical mean-field model.** The model lacks polymer physics baseline, A/B
 compartmentalization, non-CTCF enhancer loops (YY1, LDB1), and cell-to-cell heterogeneity.
-These omissions likely explain the weak Hi-C correlation.
+These omissions likely explain the remaining ~65–70% of unexplained Hi-C variance.
 
 **4. VEP instead of SpliceAI.** The SpliceAI API was unreachable during the study period.
 SpliceAI provides higher-resolution splice disruption prediction than VEP/SIFT and would
@@ -1045,7 +1055,8 @@ in HBB transcript abundance or splicing.
 
 **Step 3 (6–12 months):** Capture Hi-C at the HBB locus in erythroid cells, comparing
 wild-type to variants with the largest SSIM deviations. This would validate or refute the
-model's contact disruption predictions and improve the r = 0.16 correlation baseline.
+model's contact disruption predictions and extend the current r = 0.59 correlation to
+variant-specific perturbation resolution.
 
 **Step 4 (if experimental evidence positive):** Apply ACMG PS3 criteria (functional
 studies) with experimental RT-PCR data and submit evidence to ClinVar for affected accessions.
@@ -1062,15 +1073,17 @@ screening all 353 variants individually.
 
 For the broader field of variant interpretation, this work illustrates that different
 computational tools capture different biological dimensions. Adding a structural simulation
-layer to existing sequence-based pipelines does not require high Hi-C correlation accuracy
-to provide hypothesis-generating utility: even a model with weak absolute accuracy can
-correctly rank variants by structural disruption severity and flag specific candidates where
-sequence-based methods have known blind spots.
+layer to existing sequence-based pipelines benefits from moderate Hi-C correlation (r ≈ 0.59)
+that grounds the model in experimental reality while providing hypothesis-generating utility:
+a model explaining ~35% of contact variance can correctly rank variants by structural
+disruption severity and flag specific candidates where sequence-based methods have known
+blind spots.
 
 The most important recommendation we can make is methodological: validation against
-experimental data should precede clinical deployment. The r = 0.16 result is not a
-publication failure — it is the honest establishment of a baseline that the next model
-iteration must exceed.
+experimental data should precede clinical deployment. The progression from r = 0.16
+(GM12878, mismatched cell type) to r = 0.59 (K562, erythroid-matched) demonstrates that
+cell-type-appropriate inputs are essential — and suggests that parameter optimization and
+polymer physics extensions could further improve correlation.
 
 ---
 
@@ -1298,9 +1311,9 @@ without experimental confirmation.
 
 **Known limitations for interpretation:**
 
-- Hi-C validation: r = 0.16, p = 0.301 (not significant; n = 12 loci)
+- Hi-C validation: GM12878 r = 0.16, p = 0.301, ns (n = 12); K562 30kb r = 0.530, p = 2.19 × 10⁻⁸² (n = 1,124); K562 95kb r = 0.588, p < 10⁻³⁰⁰ (n = 11,649)
 - Parameters manually calibrated, not fitted to HBB locus
-- GM12878 ChIP-seq used; erythroid-specific data not available
+- K562 ENCODE ChIP-seq used for 95kb config; 30kb config uses model parameters
 
 ---
 
