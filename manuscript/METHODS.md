@@ -116,14 +116,21 @@ Variants were submitted in batch mode (200 variants per request) with hg38 refer
 
 **Consequence severity mapping** (consequence term → pathogenicity score):
 
-| Consequence                                                                    | Score                         |
-| ------------------------------------------------------------------------------ | ----------------------------- |
-| stop_gained, frameshift_variant, splice_donor_variant, splice_acceptor_variant | 0.95                          |
-| missense_variant                                                               | derived from SIFT (see below) |
-| splice_region_variant                                                          | 0.60                          |
-| synonymous_variant, 5_prime_UTR_variant, 3_prime_UTR_variant, intron_variant   | 0.10                          |
-| intergenic_variant                                                             | 0.05                          |
-| other / unmapped                                                               | 0.50                          |
+| Consequence                                   | Score                         |
+| --------------------------------------------- | ----------------------------- |
+| splice_donor_variant, splice_acceptor_variant | 0.95                          |
+| stop_gained, frameshift_variant               | 0.90                          |
+| start_lost, stop_lost                         | 0.85                          |
+| missense_variant                              | derived from SIFT (see below) |
+| splice_region_variant                         | 0.50                          |
+| coding_sequence_variant                       | 0.20                          |
+| 5_prime_UTR_variant                           | 0.20                          |
+| upstream_gene_variant                         | 0.15                          |
+| 3_prime_UTR_variant                           | 0.15                          |
+| intron_variant                                | 0.10                          |
+| synonymous_variant                            | 0.05                          |
+| intergenic_variant                            | 0.05                          |
+| other / unmapped                              | 0.10                          |
 
 **SIFT integration for missense variants:**
 
@@ -131,7 +138,7 @@ Variants were submitted in batch mode (200 variants per request) with hg38 refer
 vep_score = 0.4 + 0.5 × (1 − sift_score)
 ```
 
-where `sift_score` ∈ [0, 1] (0 = deleterious, 1 = tolerated). If SIFT was unavailable, missense variants received a default score of 0.70.
+where `sift_score` ∈ [0, 1] (0 = deleterious, 1 = tolerated). If SIFT was unavailable, missense variants received a default score of 0.50.
 
 **Pearl detection threshold:** a variant was flagged as a Pearl (ARCHCODE-VEP discordant case) when VEP score < 0.30 AND SSIM < 0.95.
 
