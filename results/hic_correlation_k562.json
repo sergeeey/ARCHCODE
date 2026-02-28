@@ -1,0 +1,75 @@
+{
+  "analysis": "ARCHCODE vs K562 Hi-C correlation",
+  "locus_config_id": "hbb_30kb_v2",
+  "archcode": {
+    "region": "chr11:5210000-5240000",
+    "resolution_bp": 600,
+    "matrix_size": 50,
+    "parameters": {
+      "K_BASE": 0.002,
+      "alpha": 0.92,
+      "gamma": 0.8
+    }
+  },
+  "hic": {
+    "source": "4DNFI18UHVRO.mcool (4DN Data Portal)",
+    "cell_line": "K562",
+    "original_resolution_bp": 1000,
+    "interpolated_to": 50
+  },
+  "correlations": {
+    "k_min_2": {
+      "k_min": 2,
+      "n_total": 1176,
+      "n_valid": 1124,
+      "n_zero_removed": 52,
+      "pearson_r": 0.5299,
+      "pearson_p": 2.1897468830036406e-82,
+      "spearman_rho": 0.6795,
+      "spearman_p": 4.4074668874609753e-153
+    },
+    "k_min_3": {
+      "k_min": 3,
+      "n_total": 1128,
+      "n_valid": 1077,
+      "n_zero_removed": 51,
+      "pearson_r": 0.4853,
+      "pearson_p": 1.0228255881042615e-64,
+      "spearman_rho": 0.6387,
+      "spearman_p": 1.7561733502441014e-124
+    },
+    "k_min_5": {
+      "k_min": 5,
+      "n_total": 1035,
+      "n_valid": 986,
+      "n_zero_removed": 49,
+      "pearson_r": 0.3442,
+      "pearson_p": 8.435603057476732e-29,
+      "spearman_rho": 0.564,
+      "spearman_p": 6.720061062204191e-84
+    }
+  },
+  "primary_result": {
+    "k_min": 2,
+    "n_total": 1176,
+    "n_valid": 1124,
+    "n_zero_removed": 52,
+    "pearson_r": 0.5299,
+    "pearson_p": 2.1897468830036406e-82,
+    "spearman_rho": 0.6795,
+    "spearman_p": 4.4074668874609753e-153
+  },
+  "comparison": {
+    "gm12878_v1": {
+      "pearson_r": 0.16,
+      "pearson_p": 0.3,
+      "n": 12,
+      "cell_line": "GM12878"
+    },
+    "k562_v2": {
+      "pearson_r": 0.5299,
+      "pearson_p": 2.1897468830036406e-82,
+      "n": 1124
+    }
+  }
+}

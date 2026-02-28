@@ -1,8 +1,8 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-02-28
+**Last Updated:** 2026-02-28 (session 3, post-K562 correlation)
 **Branch:** main
-**Last Commit:** 584171b (docs: update README with bioRxiv submission status)
+**Last Commit:** pending (K562 Hi-C correlation results)
 **GitHub:** https://github.com/sergeeey/ARCHCODE
 **Status:** SUBMITTED TO bioRxiv — awaiting DOI assignment
 
@@ -10,100 +10,80 @@
 
 ## Текущий статус проекта
 
-**Фаза:** bioRxiv submission complete, DOI pending
+**Фаза:** v2.0 — K562 Hi-C correlation DONE, threshold recalibration next
 
-Все фазы завершены:
+### ✅ K562 Hi-C Correlation Results (MILESTONE)
+
+| Метрика      | GM12878 (v1.0) | K562 30kb   | K562 95kb   |
+| ------------ | -------------- | ----------- | ----------- |
+| Pearson r    | 0.16 (ns)      | **0.530\*** | **0.588\*** |
+| Spearman ρ   | —              | **0.680\*** | **0.409\*** |
+| p-value      | 0.30           | 2.19e-82    | <1e-300     |
+| n datapoints | 12             | 1,124       | 11,649      |
+
+- **r(95kb) > r(30kb)** как предсказано — реальные CTCF-якоря улучшают корреляцию
+- 95kb Pearson выше, Spearman ниже (sparse элементы зашумляют ранги при 159x159)
+- mcool: 4DNFI18UHVRO.mcool (7.5 GB), resolution 1000bp, KR-balanced
+
+**Hi-C extraction details:**
+
+- 30kb: 30x30 matrix, 717/900 non-zero, 1 CTCF peak in region
+- 95kb: 95x95 matrix, 5559/9025 non-zero, 5 CTCF peaks in region
+
+### ✅ Locus Config Externalization (session 3)
+
+- `config/locus/hbb_30kb_v2.json` + `hbb_95kb_subTAD.json`
+- TS + Python loaders, `--locus 30kb|95kb` в 3 скриптах
+- 30kb backward compat: byte-identical CSV
+- 95kb: 159x159, 0 structural pathogenic (thresholds uncalibrated)
+
+---
+
+## Все фазы
 
 1. ✅ Phase 0-2: Core engine + mock validation + manuscript draft
-2. ✅ Phase 3: Audit & integrity fixes (FALSIFICATION_REPORT.md)
-3. ✅ Phase 4-6: Real Hi-C validation (r=+0.16, не значимо)
-4. ✅ Phase A: Documentation + hypothesis "The Loop That Stayed"
-5. ✅ Phase B: Real Data Replacement (AlphaGenome → VEP)
-6. ✅ Phase C: Consistency check (4 ошибки найдены и исправлены)
-7. ✅ Phase D: PDF v2 rebuild + visual verification
-8. ✅ Phase E: v1.0 freeze + ROADMAP_v2.md
-9. ✅ Phase F: ROC analysis (750 Benign variants, AUC=1.000, Quadrant analysis)
-10. ✅ Phase G: FULL_MANUSCRIPT.md updated + PDF rebuilt (28 стр, 628 KB)
-11. ✅ Phase H: bioRxiv submission (файлы загружены, PDF конвертация пройдена)
+2. ✅ Phase 3: Audit & integrity fixes
+3. ✅ Phase 4-6: Real Hi-C validation GM12878 (r=+0.16, p=0.30)
+4. ✅ Phase A-H: Documentation, ROC, bioRxiv submission
+5. ✅ Phase I: Unified pipeline (AUC 1.000 → 0.9766)
+6. ✅ Locus config externalization (30kb + 95kb)
+7. ✅ **K562 Hi-C correlation** (r=0.53/0.59, p<1e-82)
+8. 🔄 **95kb threshold recalibration + manuscript update**
 
 ---
 
-## Коммиты этой сессии (2026-02-28)
+## Ключевые файлы v2.0
 
-1. `b10e5dc` — chore: sync src/ engine, UI, and config files (32 файла)
-2. `0cf2a5c` — fix(pdf): rebuild preprint v2 with corrected VEP table and SIFT default
-3. `3da1d91` — docs: add preprint page screenshots for visual verification
-4. `9e935d1` — docs: lock v1.0 state and define rigorous cross-validation roadmap for v2.0
-5. `763eea1` — feat: ROC analysis with 750 Benign variants + methodological defense
-6. `d76fa71` — feat(manuscript): add ROC analysis to FULL_MANUSCRIPT.md and rebuild PDF
-7. `584171b` — docs: update README with bioRxiv submission status and ROC results
-
----
-
-## Ключевые результаты v1.0
-
-### Данные
-
-- **1,103** real ClinVar HBB variants (353 Pathogenic/LP + 750 Benign/LB)
-- 161/353 (45.6%) structurally pathogenic by ARCHCODE
-- 20 pearl variants (VEP < 0.30, SSIM < 0.95): 15 promoter, 3 missense, 1 frameshift, 1 splice_acceptor
-- Discordance: 130/353 (36.8%)
-
-### ROC Analysis
-
-- AUC = 1.000 (reflects category-dependent occupancy scaling, NOT independent prediction)
-- Zero false positives among 750 benign variants across all SSIM thresholds
-- Youden optimum: SSIM < 0.99 (Sens=0.935, Spec=1.000)
-- Q2 (pearls): 20 Pathogenic, 0 Benign — zero FPR
-
-### Валидация
-
-- Hi-C: r=+0.16 (p=0.30, n=12) — не значимо, честно задокументировано
-- Категориальная стратификация биологически корректна
+| Файл                                     | Назначение                        |
+| ---------------------------------------- | --------------------------------- |
+| `config/locus/hbb_30kb_v2.json`          | 30kb config (MODEL_PARAMETER)     |
+| `config/locus/hbb_95kb_subTAD.json`      | 95kb config (ENCODE CTCF)         |
+| `src/domain/config/locus-config.ts`      | TS loader + LocusConfig interface |
+| `scripts/lib/locus_config.py`            | Python mirror loader              |
+| `scripts/generate-unified-atlas.ts`      | Main pipeline (`--locus`)         |
+| `scripts/extract_k562_hbb.py`            | Extract HBB from K562 mcool       |
+| `scripts/correlate_hic_archcode.py`      | K562 vs ARCHCODE correlation      |
+| `results/hic_correlation_k562.json`      | **NEW** 30kb: r=0.530, p=2.19e-82 |
+| `results/hic_correlation_k562_95kb.json` | **NEW** 95kb: r=0.588, p<1e-300   |
 
 ---
 
-## Файлы bioRxiv (в `C:\Users\serge\Desktop\ДНК\2026 архив\`)
+## v2.0 Research Roadmap (оставшиеся действия)
 
-| Файл                          | Размер | Назначение                 |
-| ----------------------------- | ------ | -------------------------- |
-| `ARCHCODE_Preprint_v2.pdf`    | 628 KB | Manuscript (28 стр, с ROC) |
-| `HBB_Clinical_Atlas_REAL.csv` | 91 KB  | 353 Pathogenic variants    |
-| `HBB_Combined_Atlas.csv`      | 126 KB | 1,103 variants (353+750)   |
-| `fig_roc_curve.png`           | 279 KB | ROC + SSIM distribution    |
-| `fig_ssim_vs_vep.png`         | 374 KB | SSIM vs VEP scatter        |
-| `roc_analysis.json`           | 1 KB   | Machine-readable stats     |
-
-### Метаданные
-
-- **Author:** Sergey V. Boyko
-- **Affiliation:** Independent Researcher, Almaty, Kazakhstan
-- **Email:** sergeikuch80@gmail.com
-- **Subject:** Bioinformatics
-- **Article Type:** New Results
-- **License:** CC-BY 4.0
-- **Data:** https://github.com/sergeeey/ARCHCODE
-
----
-
-## Post-Publication: ROADMAP v2.0
-
-Подробный план в `ROADMAP_v2.md`. Ключевое:
-
-1. Micro-C для двух локусов (HBB + SOX2, K562)
-2. Bayesian fit на HBB → predict SOX2 (cross-validation)
-3. TDA (Wasserstein distance) как топологическая метрика
-4. Обновлённый препринт v2.0
-
-**Принцип:** Fit on A, Predict on B — никакого overfitting.
+1. ~~Унифицировать пайплайн~~ ✅
+2. ~~Externalize locus config~~ ✅
+3. ~~K562 Hi-C correlation~~ ✅ (r=0.53/0.59)
+4. **95kb threshold recalibration** — SSIM thresholds для 159x159
+5. **Обновить манускрипт** с K562 результатами (r=0.53→0.59 vs GM12878 r=0.16)
+6. **Bayesian fit** HBB → SOX2 через Optuna GPSampler
+7. **CFTR локус** — config + 4,200 ClinVar variants
+8. **TDA proof-of-concept** — ripser + persim
 
 ---
 
 ## Для следующей сессии
 
-1. Прочитай этот файл
-2. Проверь: получен ли DOI от bioRxiv? (модерация 24-48 часов)
-3. Если DOI получен → обнови README.md (бейдж зелёный + ссылка), обнови BibTeX
-4. Если нет → жди модерации
-5. Следующая цель: ROADMAP_v2.md Phase 1 (Micro-C download for K562)
-6. Опционально: Twitter-тред о препринте после получения DOI
+1. **Рекалибровка thresholds** для 159x159: эмпирическое определение SSIM cutoffs
+2. **Манускрипт**: добавить K562 результаты (Table, Figure)
+3. Проверь: получен ли DOI от bioRxiv?
+4. Bayesian fit: Optuna GPSampler для 3 параметров (K_BASE, alpha, gamma)
