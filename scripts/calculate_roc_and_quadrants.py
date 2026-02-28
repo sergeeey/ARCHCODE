@@ -10,6 +10,7 @@ Output:
   - results/roc_analysis.json
 """
 
+import sys
 import pandas as pd
 import numpy as np
 import json
@@ -20,13 +21,20 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 
-COMBINED_CSV = Path(__file__).parent.parent / "results" / "HBB_Combined_Atlas.csv"
-OUTPUT_DIR = Path(__file__).parent.parent / "results" / "figures"
-OUTPUT_JSON = Path(__file__).parent.parent / "results" / "roc_analysis.json"
+BASE_DIR = Path(__file__).parent.parent
+
+# Support CLI argument for input path (default: Combined Atlas for v1.0 compat)
+COMBINED_CSV = Path(sys.argv[1]) if len(sys.argv) > 1 else BASE_DIR / "results" / "HBB_Combined_Atlas.csv"
+OUTPUT_DIR = BASE_DIR / "results" / "figures"
+OUTPUT_JSON = BASE_DIR / "results" / "roc_analysis.json"
+
+# If unified atlas → write to separate output files
+if "Unified" in COMBINED_CSV.name:
+    OUTPUT_JSON = BASE_DIR / "results" / "roc_unified.json"
 
 
 def main():
-    print("Loading combined atlas...")
+    print(f"Loading atlas: {COMBINED_CSV.name}")
     df = pd.read_csv(COMBINED_CSV)
     print(f"  Total: {len(df)} variants ({df['Label'].value_counts().to_dict()})")
 
