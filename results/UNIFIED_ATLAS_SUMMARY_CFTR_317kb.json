@@ -1,0 +1,81 @@
+{
+  "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
+  "date": "2026-02-28T19:54:19.667Z",
+  "locus_config_id": "cftr_317kb",
+  "locus_config_path": "D:\\ДНК\\config\\locus\\cftr_317kb.json",
+  "provenance": {
+    "ctcf_sources": ["ENCODE_K562_CTCF"],
+    "enhancer_sources": ["NCBI_RefSeq_TSS", "LITERATURE"],
+    "thresholds_calibrated": false
+  },
+  "fix_description": "All 3349 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
+  "data_sources": {
+    "variants": "NCBI ClinVar (data/cftr_variants.csv)",
+    "structural_predictor": "ARCHCODE loop extrusion (Kramer kinetics)"
+  },
+  "parameters": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "k_base": 0.002,
+    "resolution_bp": 1000,
+    "simulation_window": "chr7:117400000-117717000",
+    "n_bins": 317
+  },
+  "statistics": {
+    "total_variants": 3349,
+    "pathogenic_variants": 1756,
+    "benign_variants": 1593,
+    "archcode_structural_pathogenic": 0,
+    "pearls": 0,
+    "mean_ssim_all": 0.9999,
+    "mean_ssim_pathogenic": 0.9998,
+    "mean_ssim_benign": 0.9999
+  },
+  "category_breakdown": {
+    "other": {
+      "total": 603,
+      "pathogenic_count": 591,
+      "benign_count": 12,
+      "mean_ssim_all": 0.9995,
+      "mean_ssim_pathogenic": 0.9995,
+      "mean_ssim_benign": 0.9968
+    },
+    "5_prime_UTR": {
+      "total": 18,
+      "pathogenic_count": 5,
+      "benign_count": 13,
+      "mean_ssim_all": 0.9972,
+      "mean_ssim_pathogenic": 0.9974,
+      "mean_ssim_benign": 0.9971
+    },
+    "synonymous": {
+      "total": 1798,
+      "pathogenic_count": 854,
+      "benign_count": 944,
+      "mean_ssim_all": 1,
+      "mean_ssim_pathogenic": 1,
+      "mean_ssim_benign": 1
+    },
+    "intronic": {
+      "total": 924,
+      "pathogenic_count": 305,
+      "benign_count": 619,
+      "mean_ssim_all": 1,
+      "mean_ssim_pathogenic": 1,
+      "mean_ssim_benign": 1
+    },
+    "3_prime_UTR": {
+      "total": 6,
+      "pathogenic_count": 1,
+      "benign_count": 5,
+      "mean_ssim_all": 0.9999,
+      "mean_ssim_pathogenic": 0.9999,
+      "mean_ssim_benign": 0.9999
+    }
+  },
+  "pipeline_integrity": {
+    "single_engine": true,
+    "label_blind_simulation": true,
+    "effect_strength_source": "getEffectStrength(category) — category only"
+  }
+}

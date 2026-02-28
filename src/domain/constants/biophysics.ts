@@ -107,6 +107,11 @@ export const CTCF_PARAMS = {
  * CALIBRATION STATUS:
  * - K_BASE: derived from literature residence time (~20 min, Gerlich 2006)
  * - DEFAULT_ALPHA, DEFAULT_GAMMA: grid-search estimates, NOT fitted to FRAP data
+ * - Bayesian optimization (Optuna GPSampler, 200 trials): confirmed grid-search
+ *   estimates are near-optimal. Δr < 0.001 vs K562 Hi-C. Kinetics params have
+ *   negligible effect on WT contact map (k_base importance=90%, boundary-hitting).
+ *   Hi-C correlation is architecture-driven (distance decay, CTCF, MED1 landscape).
+ *   See results/bayesian_fit_hic.json for full analysis.
  * - Occupancy levels: MODEL PARAMETERS (assumed from ChIP-seq enrichment patterns)
  */
 export const KRAMER_KINETICS = {

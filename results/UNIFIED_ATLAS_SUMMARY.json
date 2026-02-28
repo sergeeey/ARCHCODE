@@ -1,6 +1,6 @@
 {
   "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
-  "date": "2026-02-28T17:57:50.460Z",
+  "date": "2026-02-28T19:46:26.687Z",
   "locus_config_id": "hbb_30kb_v2",
   "locus_config_path": "D:\\ДНК\\config\\locus\\hbb_30kb_v2.json",
   "provenance": {
@@ -8,7 +8,7 @@
     "enhancer_sources": ["MODEL_PARAMETER"],
     "thresholds_calibrated": true
   },
-  "fix_description": "All 1,103 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
+  "fix_description": "All 1103 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
   "data_sources": {
     "pathogenic_variants": "NCBI ClinVar (clinvar_hbb_processed.json)",
     "benign_variants": "NCBI ClinVar (hbb_benign_variants.csv)",

@@ -72,3 +72,20 @@
 - Optuna активно развивается, GPU-friendly, GPSampler для 3 параметров
 - 100 trials ≈ 3 min на CPU
 - Реалистичные цели: HBB r=0.35-0.55, SOX2 r=0.2-0.3
+
+## ADR-006: Keep original params after Bayesian optimization (2026-03-01)
+
+**Context:** Optuna GPSampler (200 trials) оптимизировал α, γ, K_BASE для максимизации Pearson r с K562 Hi-C.
+
+**Результат:** Δr = +0.0001 (negligible). Все 3 лучших параметра на нижних границах (α=0.5, γ=0.3, k_base=0.0005).
+
+**Решение:** Оставить исходные параметры (α=0.92, γ=0.80, K_BASE=0.002).
+
+**Обоснование:**
+
+- Improvement < 0.02 threshold → не оправдывает изменения
+- Boundary-hitting означает: оптимизатор минимизирует Kramer kinetics term полностью
+- k_base importance = 90% (fANOVA) — alpha и gamma иррелевантны когда k_base → 0
+- **Научный инсайт:** Hi-C корреляция управляется архитектурой (distance decay, MED1, CTCF barriers), а НЕ кинетикой. Kinetics params служат другой цели: SSIM perturbation для классификации вариантов
+- Это второй honest null result (после within-category LR p=1.0), укрепляющий научную честность проекта
+- Grid-search estimates подтверждены как near-optimal

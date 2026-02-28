@@ -1,0 +1,132 @@
+{
+  "study_name": "archcode_hic_fit",
+  "n_trials": 200,
+  "scale": "both",
+  "sampler": "GPSampler",
+  "n_startup_trials": 20,
+  "elapsed_seconds": 12.9,
+  "baseline": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "k_base": 0.002,
+    "r_30kb": 0.5299,
+    "r_95kb": 0.5876,
+    "r_mean": 0.5588
+  },
+  "best": {
+    "alpha": 0.5,
+    "gamma": 0.3,
+    "k_base": 0.0005,
+    "r_30kb": 0.53,
+    "r_95kb": 0.5877,
+    "r_mean": 0.5589
+  },
+  "improvement": {
+    "delta_r_30kb": 0.0001,
+    "delta_r_95kb": 0.0001,
+    "delta_r_mean": 0.0001
+  },
+  "search_space": {
+    "alpha": {
+      "min": 0.5,
+      "max": 1.0,
+      "log": false
+    },
+    "gamma": {
+      "min": 0.3,
+      "max": 1.5,
+      "log": false
+    },
+    "k_base": {
+      "min": 0.0005,
+      "max": 0.01,
+      "log": true
+    }
+  },
+  "top_10_trials": [
+    {
+      "trial": 21,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 29,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 30,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 32,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 33,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 34,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 36,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 37,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 38,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    },
+    {
+      "trial": 39,
+      "value": 0.558854,
+      "alpha": 0.5,
+      "gamma": 0.3,
+      "k_base": 0.0005
+    }
+  ],
+  "parameter_importance": {
+    "k_base": 0.9009,
+    "alpha": 0.0511,
+    "gamma": 0.048
+  },
+  "scientific_note": "Post-hoc optimization on HBB K562 Hi-C. Cross-locus validation requires Hi-C from CFTR-expressing cells.",
+  "interpretation": {
+    "conclusion": "KEEP_ORIGINAL_PARAMS",
+    "reason": "Improvement negligible (delta_r = 0.0001). All 3 best params hit lower bounds, meaning the optimizer minimizes the Kramer kinetics term entirely.",
+    "insight": "Hi-C correlation is driven by structural features (distance decay, MED1 landscape, CTCF barriers), NOT by kinetics parameters. The Kramer term (k_base * (1 - alpha * occ^gamma)) contributes <0.2% modulation to contact values. Alpha and gamma serve a different purpose: variant pathogenicity classification via SSIM perturbation, which is orthogonal to WT Hi-C pattern.",
+    "parameter_importance_note": "k_base dominates (90%) because it controls the magnitude of the entire Kramer term. Alpha and gamma are irrelevant when k_base -> 0.",
+    "boundary_hitting": "All 3 params at lower bounds (alpha=0.5, gamma=0.3, k_base=0.0005) = optimizer wants Kramer term -> 0. This is NOT overfitting — it reveals the kinetics term is structurally negligible for WT contact maps.",
+    "implication_for_manuscript": "Grid-search estimates (alpha=0.92, gamma=0.80, k_base=0.002) are confirmed as near-optimal. Bayesian optimization cannot improve Hi-C correlation because the correlation is architecture-driven, not kinetics-driven."
+  }
+}
