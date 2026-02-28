@@ -51,8 +51,11 @@ n=1,103), with all variants processed through a single unified TypeScript simula
 yielded AUC = 0.977 (Pathogenic mean SSIM = 0.927; Benign mean SSIM = 0.996). Youden
 optimal threshold (SSIM < 0.994) achieved sensitivity = 0.966 and specificity = 0.988.
 The high AUC reflects category-distribution differences between Pathogenic and Benign
-cohorts, not independent sequence-based prediction; the model's contribution lies in
-position-dependent structural discrimination within categories.
+cohorts, not independent sequence-based prediction. Formal within-category testing
+(logistic regression, Mann–Whitney U, permutation) confirms that SSIM does not add
+significant predictive value beyond category assignment on this locus (p = 1.0 for
+SSIM additive term), consistent with all 1,103 ClinVar variants clustering within
+2.1 kb (2.2% of the 95 kb window).
 
 Hi-C correlation validation against K562 erythroid chromatin (4DN Data Portal, KR-balanced,
 1 kb resolution) yielded Pearson r = 0.53 (p = 2.2×10⁻⁸², n = 1,124 loci) for the original
@@ -81,6 +84,7 @@ as a complementary, hypothesis-generating layer in variant interpretation workfl
 - Pearl variants require experimental validation before clinical use
 - No experimental RNA or protein data confirming predicted effects
 - AUC = 0.977 reflects category-distribution differences, not independent prediction
+- Within-category SSIM adds no predictive value beyond category on HBB (all variants in 2.1 kb cluster)
 
 **Keywords:** β-thalassemia, HBB, chromatin loops, loop extrusion, cohesin, SSIM, structural
 pathogenicity predictor, VEP, regulatory variants, promoter variants, pearl variants,
@@ -593,6 +597,33 @@ Benign/LB = negative) and (1 − SSIM) as the continuous predictor. AUC, sensiti
 specificity, and Youden's J index were computed using scikit-learn v1.6. Optimal SSIM
 threshold was determined by maximizing J = Sensitivity + Specificity − 1.
 
+## Within-Category Positional Signal Analysis
+
+To test whether SSIM captures positional pathogenicity signal independent of variant
+category, we performed three complementary analyses on the unified 95 kb atlas
+(n = 1,103 variants):
+
+**Logistic regression (additive value test).** We fit two models:
+Model 1: pathogenicity ~ category (11 dummy-coded categories);
+Model 2: pathogenicity ~ category + SSIM.
+AUC improvement (ΔAUC) and log-likelihood ratio test assessed whether SSIM adds
+predictive value beyond category assignment.
+
+**Within-category Mann–Whitney U tests.** For each category with ≥3 pathogenic and ≥3
+benign variants, a two-sided Mann–Whitney U test compared SSIM distributions. Categories
+tested: intronic (9 pathogenic vs 658 benign), other (12 vs 7), synonymous (3 vs 83).
+
+**Permutation testing.** For categories with ≥5 pathogenic variants, we shuffled
+pathogenicity labels within category 10,000 times and computed AUC(SSIM) for each
+permutation to derive empirical p-values.
+
+**Distance-to-TSS correlation.** Spearman correlation between each variant's distance
+to the HBB transcription start site (chr11:5,227,071) and SSIM was computed per category
+to assess positional sensitivity of the model independent of pathogenicity.
+
+All analyses were performed using `scripts/analyze_positional_signal.py` (SciPy 1.12.0,
+scikit-learn 1.6).
+
 ## Software and Code Availability
 
 - **ARCHCODE simulator:** https://github.com/sergeeey/ARCHCODE (v1.1.0)
@@ -872,11 +903,31 @@ synonymous) cohorts, not independent variant-level prediction.
 differences between the Pathogenic and Benign cohorts (see Methods: Variant Introduction).
 Benign ClinVar variants are predominantly intronic and synonymous, which receive minimal
 occupancy perturbation by design. Pathogenic variants include nonsense, frameshift, and
-splice categories, which receive stronger perturbation. Within any single category,
-Pathogenic and Benign variants receive identical treatment — confirmed by within-category
-SSIM differences < 0.001 (e.g., intronic: Δ = 0.0002). The model's scientific contribution
-lies in position-dependent structural discrimination within categories (e.g., which promoter
-variants disrupt enhancer–promoter contacts), not in category-level classification.
+splice categories, which receive stronger perturbation. Formal within-category testing
+confirms that SSIM does not add significant predictive value beyond category on this locus:
+
+- **Logistic regression:** pathogenicity ~ category + SSIM yields ΔAUC = −0.001
+  relative to category-only model (log-likelihood ratio p = 1.0).
+- **Mann–Whitney U (intronic):** 9 pathogenic vs 658 benign, Δ mean SSIM = 0.000008,
+  p = 0.69 (two-sided).
+- **Mann–Whitney U (other):** 12 pathogenic vs 7 benign, Δ = −0.0009, p = 0.058.
+- **Mann–Whitney U (synonymous):** 3 pathogenic vs 83 benign, Δ = −0.00006, p = 0.22.
+- **Permutation test (other, n = 19):** observed AUC = 0.77, empirical p = 0.032.
+
+The null result is consistent with a fundamental data limitation: all 1,103 ClinVar
+HBB variants cluster within 2.1 kb of the 95 kb simulation window (2.2%), producing
+near-zero variance in distance to regulatory features (CTCF anchors: 20–23 kb,
+LCR: 53–55 kb). The model _is_ positionally sensitive — distance-to-TSS correlates
+strongly with SSIM (intronic Spearman ρ = 0.80, splice_donor ρ = 0.92, p < 10⁻⁹) —
+but this sensitivity affects pathogenic and benign variants equally because they
+occupy the same narrow genomic interval.
+
+The model's scientific contribution on HBB is therefore a category-level structural
+model: it correctly assigns perturbation magnitude to functional categories and
+identifies 20 pearl candidates, but does not independently predict pathogenicity
+within categories at this locus. Testing within-category positional prediction
+requires a locus with variants distributed across a full TAD, such as CFTR
+(~4,200 ClinVar variants in a 317 kb TAD).
 
 **Quadrant analysis** (SSIM threshold 0.95 / VEP threshold 0.30):
 
@@ -906,7 +957,10 @@ detects disruption not captured by VEP consequence annotation; (4) ROC analysis 
 combined cohort of 1,103 variants (353 Pathogenic + 750 Benign), processed through a unified
 pipeline, yielded AUC = 0.977 with near-zero false positives among benign variants at
 stringent thresholds, reflecting category-distribution differences rather than independent
-sequence-based prediction; (5) ARCHCODE shows
+sequence-based prediction; (5) formal within-category testing (logistic regression p = 1.0,
+Mann–Whitney p = 0.22–0.69) confirms that SSIM does not add significant predictive value
+beyond category at this locus, consistent with all ClinVar variants clustering in 2.1 kb
+(2.2% of the 95 kb window); (6) ARCHCODE shows
 zero sensitivity to missense variants, its most important limitation for clinical variant
 classification.
 
@@ -952,6 +1006,17 @@ that ARCHCODE's analytical loop extrusion engine captures genuine chromatin cont
 when supplied with cell-type-appropriate anchors. SSIM values should still be interpreted
 as relative disruption scores within the model, not as absolute predictions of chromatin
 contact frequency.
+
+Importantly, the AUC of 0.977 is a category-level structural model, not evidence of
+within-category positional prediction. Formal testing (logistic regression, Mann–Whitney U,
+permutation; see Results) confirms that SSIM adds no significant predictive value beyond
+category assignment on HBB. This null result is not a model failure but a data limitation:
+all 1,103 ClinVar HBB variants cluster in a 2.1 kb segment (2.2% of the 95 kb window),
+providing near-zero variance in distance to regulatory features. The model _is_ positionally
+sensitive — distance-to-TSS correlates strongly with SSIM (intronic ρ = 0.80, p < 10⁻¹⁵¹) —
+but this sensitivity affects pathogenic and benign variants equally at HBB because they
+occupy the same narrow interval. A definitive test of within-category positional prediction
+requires a locus with greater variant positional diversity, such as CFTR.
 
 We have not "confirmed" the "Loop That Stayed" mechanism. We have generated a computational
 prediction that specific promoter-region HBB variants show structural disruption by our
@@ -1041,6 +1106,14 @@ available in ClinVar records to validate computational predictions against clini
 **6. Pearl variants not experimentally validated.** The 20 pearl variants are computational
 candidates. None have been tested by RT-PCR, Capture Hi-C, or functional assay in this study.
 
+**7. Within-category positional signal not demonstrated on HBB.** All 1,103 ClinVar HBB
+variants cluster within 2.1 kb (chr11:5,225,454–5,227,562), occupying only 2.2% of the
+95 kb simulation window. Distance to CTCF anchors varies by ~3 kb (20–23 kb to 3'HS1),
+and distance to the LCR varies by ~2 kb (53–55 kb). This provides insufficient positional
+diversity to test whether SSIM captures within-category pathogenicity signal independent of
+category assignment. The CFTR locus (~4,200 ClinVar variants distributed across a 317 kb
+TAD) would provide the variant positional diversity required for this test.
+
 ## Path to Clinical Translation
 
 Clinical reclassification of any variant based on ARCHCODE predictions alone would be
@@ -1083,7 +1156,11 @@ The most important recommendation we can make is methodological: validation agai
 experimental data should precede clinical deployment. The progression from r = 0.16
 (GM12878, mismatched cell type) to r = 0.59 (K562, erythroid-matched) demonstrates that
 cell-type-appropriate inputs are essential — and suggests that parameter optimization and
-polymer physics extensions could further improve correlation.
+polymer physics extensions could further improve correlation. A critical next step is
+testing within-category positional prediction at a locus with greater variant diversity:
+the CFTR gene (~4,200 ClinVar variants distributed across a 317 kb TAD) would provide
+the positional heterogeneity that HBB lacks, enabling a genuine test of whether SSIM
+captures pathogenicity signal independent of functional category assignment.
 
 ---
 
