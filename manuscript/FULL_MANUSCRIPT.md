@@ -1,6 +1,8 @@
 # ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors in β-Globin Variants
 
-**Sergey V. Boyko**
+**Sergey V. Boyko**¹
+
+¹Independent Researcher, Almaty, Kazakhstan
 
 _Correspondence: sergeikuch80@gmail.com_
 _Date: 2026-02-28_
