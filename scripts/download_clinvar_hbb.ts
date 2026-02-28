@@ -100,39 +100,94 @@ async function downloadClinVarVariants(): Promise<ClinVarVariant[]> {
 }
 
 /**
- * Parse ClinVar variant summary
+ * Parse ClinVar variant summary (adapted to real NCBI esummary format)
+ *
+ * Real format uses:
+ * - germline_classification.description (not clinical_significance)
+ * - variation_set[0].variation_loc[] for coordinates (find GRCh38 entry)
+ * - canonical_spdi for SPDI format ref/alt (seq:pos:deleted:inserted)
+ * - molecular_consequence_list (array, not string)
+ * - genes[] array with symbol
  */
 function parseVariantSummary(data: any): ClinVarVariant | null {
     try {
+        // Filter by gene — only accept HBB variants
+        const genes = data.genes || [];
+        const isHBB = genes.some((g: any) => g.symbol === 'HBB');
+        if (!isHBB) return null;
+
         // Extract VCV accession
         const vcvAccession = data.accession || `VCV${String(data.uid).padStart(9, '0')}`;
 
-        // Extract position from variant_set
-        const variantSet = data.variation_set?.[0] || data;
-        const position = variantSet.chr_coords?.[0]?.start || 0;
+        // Extract position from variation_loc (GRCh38)
+        const variantSet = data.variation_set?.[0];
+        if (!variantSet) return null;
 
-        // Filter: only variants within HBB locus
-        if (position < HBB_GENE.start || position > HBB_GENE.end) {
+        const locs = variantSet.variation_loc || [];
+        const grch38Loc = locs.find((loc: any) => loc.assembly_name === 'GRCh38');
+        if (!grch38Loc) return null;
+
+        const position = parseInt(grch38Loc.start || grch38Loc.display_start || '0', 10);
+        if (position === 0) return null;
+
+        // Filter: only variants within HBB locus (with 1kb padding for promoter/UTR)
+        if (position < HBB_GENE.start - 1000 || position > HBB_GENE.end + 500) {
             return null;
         }
 
+        // Extract ref/alt from canonical_spdi (format: seq:pos:deleted:inserted)
+        let ref = grch38Loc.ref || '';
+        let alt = grch38Loc.alt || '';
+        const spdi = variantSet.canonical_spdi || '';
+        if (spdi && (!ref || !alt)) {
+            const spdiParts = spdi.split(':');
+            if (spdiParts.length === 4) {
+                ref = spdiParts[2] || ref;
+                alt = spdiParts[3] || alt;
+            }
+        }
+        // Fallback: try to extract from variant name for SNVs
+        if (!ref || !alt) {
+            const nameMatch = (data.title || '').match(/([ACGT])>([ACGT])/);
+            if (nameMatch) {
+                ref = ref || nameMatch[1];
+                alt = alt || nameMatch[2];
+            }
+        }
+
+        // Clinical significance from germline_classification
+        const clinSig = data.germline_classification?.description || '';
+        const reviewStatus = data.germline_classification?.review_status || '';
+        const lastEval = data.germline_classification?.last_evaluated || '';
+
+        // Molecular consequence (array → join)
+        const molConseq = Array.isArray(data.molecular_consequence_list)
+            ? data.molecular_consequence_list.join(', ')
+            : (data.molecular_consequence_list || '');
+
+        // HGVS coding from cdna_change or title
+        const hgvsCoding = variantSet.cdna_change || data.title || '';
+
+        // Submission count from supporting_submissions.scv array
+        const submissionCount = data.supporting_submissions?.scv?.length || 0;
+
         return {
             vcv_id: vcvAccession,
-            variation_id: data.uid,
-            position: position,
-            ref: variantSet.chr_coords?.[0]?.reference_allele || 'N',
-            alt: variantSet.chr_coords?.[0]?.alternate_allele || 'N',
-            hgvs_genomic: variantSet.chr_coords?.[0]?.assembly_accession_version || '',
-            hgvs_coding: data.canonical_spdi || '',
+            variation_id: parseInt(data.uid, 10),
+            position,
+            ref: ref || 'N',
+            alt: alt || 'N',
+            hgvs_genomic: spdi,
+            hgvs_coding: hgvsCoding,
             hgvs_protein: data.protein_change || '',
-            molecular_consequence: data.molecular_consequence || '',
-            clinical_significance: data.clinical_significance?.description || '',
-            review_status: data.clinical_significance?.review_status || '',
-            last_evaluated: data.clinical_significance?.last_evaluated || '',
-            submission_count: data.supporting_submissions?.length || 0,
+            molecular_consequence: molConseq,
+            clinical_significance: clinSig,
+            review_status: reviewStatus,
+            last_evaluated: lastEval,
+            submission_count: submissionCount,
         };
     } catch (error) {
-        console.error(`⚠️ Error parsing variant: ${error}`);
+        console.error(`⚠️ Error parsing variant ${data?.uid}: ${error}`);
         return null;
     }
 }
@@ -186,7 +241,7 @@ async function main() {
     const variants = await downloadClinVarVariants();
 
     // Save raw data
-    const dataDir = path.join(__dirname, '..', 'data');
+    const dataDir = path.join(process.cwd(), 'data');
     if (!fs.existsSync(dataDir)) {
         fs.mkdirSync(dataDir, { recursive: true });
     }

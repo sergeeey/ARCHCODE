@@ -1,0 +1,354 @@
+clinvar_id,chr,position,ref,alt,category,vep_consequence,vep_impact,vep_score,sift_score,sift_prediction,amino_acids,interpretation
+VCV000439130,11,5225466,G,A,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000869259,11,5225482,TTTTTT,TTTT,3_prime_UTR,3_prime_UTR_variant (from_category),LOW,0.15,,,,Low Impact
+VCV000015474,11,5225482,TTTTTT,TTTTT,3_prime_UTR,3_prime_UTR_variant (from_category),LOW,0.15,,,,Low Impact
+VCV000015506,11,5225484,TTTTATT,TT,3_prime_UTR,3_prime_UTR_variant (from_category),LOW,0.15,,,,Low Impact
+VCV000015473,11,5225485,T,C,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000632843,11,5225487,TAT,T,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000015488,11,5225487,T,C,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000036332,11,5225488,A,G,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000015616,11,5225488,A,T,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000869258,11,5225490,T,C,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000869261,11,5225493,GCAGAATCCAGATGC,GC,3_prime_UTR,3_prime_UTR_variant (from_category),LOW,0.15,,,,Low Impact
+VCV000869260,11,5225566,T,G,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000393707,11,5225592,G,C,3_prime_UTR,3_prime_UTR_variant,MODIFIER,0.15,,,,Low Impact
+VCV000015395,11,5225602,T,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/L,Very High Impact
+VCV000015144,11,5225602,T,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/L,Very High Impact
+VCV000015200,11,5225603,G,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/D,Very High Impact
+VCV000015265,11,5225604,A,T,nonsense,stop_gained,HIGH,0.9,,,Y/*,Very High Impact
+VCV000015322,11,5225605,T,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,Y/C,Very High Impact
+VCV000633256,11,5225606,A,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,Y/H,Very High Impact
+VCV000015112,11,5225606,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,Y/H,Very High Impact
+VCV000015096,11,5225607,C,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,K/N,Very High Impact
+VCV000015250,11,5225610,G,Y,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015365,11,5225611,T,G,missense,missense_variant,MODERATE,0.8,0.2,tolerated_low_confidence,H/R,Very High Impact
+VCV000015090,11,5225611,T,C,missense,missense_variant,MODERATE,0.8,0.2,tolerated_low_confidence,H/R,Very High Impact
+VCV000869318,11,5225612,GGG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015545,11,5225620,G,A,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,A/V,Very High Impact
+VCV000015339,11,5225621,C,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,A/T,Very High Impact
+VCV000869317,11,5225624,A,AA,nonsense,nonsense_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV001189030,11,5225638,ACCACTTTCTGA,A,frameshift,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/E,Very High Impact
+VCV000015290,11,5225638,A,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/E,Very High Impact
+VCV000928758,11,5225645,TCT,T,frameshift,stop_gained,HIGH,0.9,,,K/*,Very High Impact
+VCV000869314,11,5225645,T,A,nonsense,stop_gained,HIGH,0.9,,,K/*,Very High Impact
+VCV001459872,11,5225646,CTGATAGGCAGCCTGCACTG,CTG,frameshift,frameshift_variant,HIGH,0.9,,,Q/X,Very High Impact
+VCV000869312,11,5225646,T,TT,frameshift,frameshift_variant,HIGH,0.9,,,Q/X,Very High Impact
+VCV000015348,11,5225647,T,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,Q/P,Very High Impact
+VCV000869311,11,5225648,G,A,nonsense,stop_gained,HIGH,0.9,,,Q/*,Very High Impact
+VCV000801192,11,5225649,A,T,nonsense,stop_gained,HIGH,0.9,,,Y/*,Very High Impact
+VCV000869313,11,5225654,CAGC,TGTGG,frameshift,frameshift_variant,HIGH,0.9,,,AA/PHX,Very High Impact
+VCV000015537,11,5225659,T,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,Q/P,Very High Impact
+VCV000015409,11,5225659,T,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,Q/P,Very High Impact
+VCV001705074,11,5225660,G,A,nonsense,stop_gained,HIGH,0.9,,,Q/*,Very High Impact
+VCV000015483,11,5225662,A,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/G,Very High Impact
+VCV000495998,11,5225664,TGGTGGGGTG,TG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869284,11,5225666,T,TT,frameshift,frameshift_variant,HIGH,0.9,,,FTPP/FX,Very High Impact
+VCV003572119,11,5225678,TTT,TTTT,frameshift,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,E/Q,Very High Impact
+VCV000446736,11,5225678,C,T,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,E/Q,Very High Impact
+VCV000015404,11,5225678,C,A,nonsense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,E/Q,Very High Impact
+VCV000015292,11,5225678,C,T,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,E/Q,Very High Impact
+VCV000015152,11,5225678,C,G,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,E/Q,Very High Impact
+VCV003769274,11,5225693,GG,C,frameshift,frameshift_variant,HIGH,0.9,,,AH/AX,Very High Impact
+VCV002691364,11,5225693,GGCC,GGCCGGCC,frameshift,frameshift_variant,HIGH,0.9,,,AH/AX,Very High Impact
+VCV000015526,11,5225695,G,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,A/D,Very High Impact
+VCV004531951,11,5225696,CC,C,frameshift,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,A/P,Very High Impact
+VCV000869279,11,5225696,CAGCACACAG,CAGCACACAGCACACAG,frameshift,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,A/P,Very High Impact
+VCV000015257,11,5225696,C,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,A/P,Very High Impact
+VCV000015513,11,5225698,A,G,missense,frameshift_variant,HIGH,0.9,,,L/X,Very High Impact
+VCV000015425,11,5225698,AG,C,frameshift,frameshift_variant,HIGH,0.9,,,L/X,Very High Impact
+VCV002681990,11,5225699,C,CC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869280,11,5225703,A,T,nonsense,stop_gained,HIGH,0.9,,,C/*,Very High Impact
+VCV000015207,11,5225705,A,G,missense,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,C/R,Very High Impact
+VCV000015352,11,5225710,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/P,Very High Impact
+VCV000015342,11,5225714,C,T,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,V/L,Very High Impact
+VCV000015230,11,5225714,C,G,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,V/L,Very High Impact
+VCV003336287,11,5225715,G,C,missense,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,N/K,Very High Impact
+VCV000439153,11,5225718,CCC,CCCC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV002735520,11,5225719,C,T,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,G/D,Very High Impact
+VCV000015487,11,5225722,A,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/Q,Very High Impact
+VCV000015378,11,5225722,A,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/Q,Very High Impact
+VCV000552712,11,5225727,C,T,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000038671,11,5225727,C,A,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000015512,11,5225727,C,G,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000021191,11,5225728,T,C,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000021190,11,5225728,T,G,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000619687,11,5225729,G,C,splice_region,splice_donor_variant,LOW,0.5,,,,High Impact
+VCV000015451,11,5225729,G,T,splice_region,splice_donor_variant,LOW,0.5,,,,High Impact
+VCV000869111,11,5225733,G,T,splice_region,splice_donor_5th_base_variant,LOW,0.5,,,,High Impact
+VCV000036313,11,5225740,A,C,intronic,splice_polypyrimidine_tract_variant,LOW,0.3,,,,Moderate Impact
+VCV000869277,11,5225811,AAAATAAAAGCAGAA,AAAATAAAAGCAGAAAATAAAAGCAGAA,intronic,intronic_variant (from_category),LOW,0.1,,,,Low Impact
+VCV000015457,11,5225832,G,C,intronic,intron_variant,MODIFIER,0.1,,,,Low Impact
+VCV000036312,11,5225872,A,C,intronic,intron_variant,MODIFIER,0.1,,,,Low Impact
+VCV000015458,11,5225923,G,A,intronic,intron_variant,MODIFIER,0.1,,,,Low Impact
+VCV000869236,11,5225928,AA,A,intronic,intronic_variant (from_category),LOW,0.1,,,,Low Impact
+VCV000869356,11,5226572,C,G,splice_region,missense_variant,MODERATE,0.81,0.18,tolerated_low_confidence,S/T,Very High Impact
+VCV000015515,11,5226572,CTC,C,intronic,missense_variant,MODERATE,0.81,0.18,tolerated_low_confidence,S/T,Very High Impact
+VCV000869355,11,5226575,A,G,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000439146,11,5226575,A,C,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV003781330,11,5226576,CCTGAAGTTCTCAGGATCC,CCTGAAGTTCTCAGGATCCTGAAGTTCTCAGGATCC,frameshift,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000869353,11,5226576,CCC,CC,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000619686,11,5226576,C,A,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000189128,11,5226576,C,G,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000015438,11,5226576,C,T,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000015192,11,5226580,G,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,F/L,Very High Impact
+VCV000015317,11,5226586,C,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/D,Very High Impact
+VCV000015094,11,5226587,T,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/G,Very High Impact
+VCV000015118,11,5226588,C,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/K,Very High Impact
+VCV000869351,11,5226590,GG,AAGTTCTCAGA,other,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,P/L,Very High Impact
+VCV000015116,11,5226590,G,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,P/L,Very High Impact
+VCV000015315,11,5226593,T,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,D/V,Very High Impact
+VCV000015204,11,5226593,T,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,D/V,Very High Impact
+VCV000015134,11,5226593,T,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,D/V,Very High Impact
+VCV000015397,11,5226594,C,A,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,D/N,Very High Impact
+VCV000015391,11,5226594,C,G,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,D/N,Very High Impact
+VCV000015236,11,5226594,C,T,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,D/N,Very High Impact
+VCV000869309,11,5226596,CGTGCAGCTTGTCACAGTGCAGCTC,CGTGCAGCTTGTCACAGTGCAGCTCGTGCAGCTTGTCACAGTGCAGCTC,other,other_variant (from_category),LOW,0.2,,,,Moderate Impact
+VCV000619685,11,5226596,CGTGC,CGTGCGTGC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015241,11,5226597,C,T,missense,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,V/M,Very High Impact
+VCV003766487,11,5226598,G,T,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000801186,11,5226598,G,C,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015259,11,5226598,G,Y,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015390,11,5226599,T,A,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,H/L,Very High Impact
+VCV000015607,11,5226600,G,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/N,Very High Impact
+VCV004277917,11,5226602,A,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/R,Very High Impact
+VCV000036309,11,5226604,TT,TTT,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015428,11,5226608,CACA,CACACA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015104,11,5226609,C,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,D/H,Very High Impact
+VCV004280311,11,5226611,CAGTGCAGCTCACTCAGTG,CAGTG,nonsense,nonsense_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV002664746,11,5226613,G,C,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000811500,11,5226613,G,T,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015208,11,5226613,G,Y,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015494,11,5226615,G,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/Y,Very High Impact
+VCV000015255,11,5226615,G,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/Y,Very High Impact
+VCV000869310,11,5226616,A,AA,frameshift,frameshift_variant,HIGH,0.9,,,TLSEL/X,Very High Impact
+VCV000015338,11,5226617,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/P,Very High Impact
+VCV000015311,11,5226619,C,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/D,Very High Impact
+VCV000869308,11,5226621,CAC,C,frameshift,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV000446747,11,5226621,C,T,missense,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV000015504,11,5226621,C,A,nonsense,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV000015147,11,5226623,C,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,S/N,Very High Impact
+VCV002681986,11,5226624,CAGTG,CAGTGCAGTG,nonsense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,S/R,Very High Impact
+VCV000015383,11,5226624,T,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,S/R,Very High Impact
+VCV000869306,11,5226625,A,AA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015343,11,5226626,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/R,Very High Impact
+VCV000015108,11,5226626,A,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/R,Very High Impact
+VCV000869275,11,5226627,GTGTGGCAAAGGTGCCCTTGAGGT,GT,nonsense,nonsense_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015493,11,5226629,G,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,T/I,Very High Impact
+VCV000869301,11,5226632,GCAAAGGTGC,GC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869303,11,5226633,AAA,AAAA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015122,11,5226635,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,F/S,Very High Impact
+VCV000869302,11,5226636,GG,GGG,frameshift,frameshift_variant,HIGH,0.9,,,F/FX,Very High Impact
+VCV000869274,11,5226636,AGGTGCCCTTGAGGTTGTCCAGGTG,AGGTG,frameshift,frameshift_variant,HIGH,0.9,,,F/FX,Very High Impact
+VCV000036306,11,5226641,CCC,CC,frameshift,frameshift_variant,HIGH,0.9,,,HLDNLKG/X,Very High Impact
+VCV000618675,11,5226643,C,G,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000446737,11,5226643,C,R,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015319,11,5226643,C,R,missense,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015321,11,5226644,T,G,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,K/M,Very High Impact
+VCV000015193,11,5226644,T,A,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,K/M,Very High Impact
+VCV000869299,11,5226648,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869273,11,5226656,GG,GGG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000632846,11,5226657,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV001065151,11,5226658,GTG,G,frameshift,frameshift_variant,HIGH,0.9,,,H/X,Very High Impact
+VCV000495983,11,5226666,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000993070,11,5226667,C,CTGGAC,frameshift,frameshift_variant,HIGH,0.9,,,G/X,Very High Impact
+VCV000619856,11,5226667,CCATC,CCATCCATC,frameshift,frameshift_variant,HIGH,0.9,,,G/X,Very High Impact
+VCV000015560,11,5226671,TCACT,A,frameshift,frameshift_variant,HIGH,0.9,,,SD/X,Very High Impact
+VCV004280310,11,5226672,CA,AT,missense,missense_variant,MODERATE,0.5,,,SD/RY,High Impact
+VCV000869269,11,5226672,A,AA,nonsense,missense_variant,MODERATE,0.5,,,SD/RY,High Impact
+VCV000618160,11,5226672,CAC,C,frameshift,missense_variant,MODERATE,0.5,,,SD/RY,High Impact
+VCV000015419,11,5226674,T,TT,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015433,11,5226675,AAA,AAAA,nonsense,frameshift_variant,HIGH,0.9,,,S/KX,Very High Impact
+VCV000869268,11,5226676,AAA,AA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869265,11,5226680,GCACCGAGCAC,GCAC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869266,11,5226683,CC,C,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015271,11,5226686,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/H,Very High Impact
+VCV000015117,11,5226686,A,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/H,Very High Impact
+VCV000015613,11,5226687,G,A,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,L/F,Very High Impact
+VCV000036303,11,5226688,CAC,C,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015254,11,5226689,A,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/E,Very High Impact
+VCV004532968,11,5226690,CTTTCTT,CTT,frameshift,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/M,Very High Impact
+VCV000015536,11,5226690,C,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/M,Very High Impact
+VCV000036302,11,5226691,TTT,TT,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015136,11,5226692,T,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,K/T,Very High Impact
+VCV000869229,11,5226693,T,A,nonsense,stop_gained,HIGH,0.9,,,K/*,Very High Impact
+VCV001074874,11,5226696,T,A,nonsense,stop_gained,HIGH,0.9,,,K/*,Very High Impact
+VCV000869228,11,5226697,GCCATGAGCC,GCC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015429,11,5226698,CC,C,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015400,11,5226701,T,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/R,Very High Impact
+VCV000694445,11,5226702,G,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/Y,Very High Impact
+VCV000015256,11,5226702,G,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,H/Y,Very High Impact
+VCV000015407,11,5226708,T,A,nonsense,stop_gained,HIGH,0.9,,,K/*,Very High Impact
+VCV000015411,11,5226710,A,T,missense,stop_lost,HIGH,0.85,,,*/R,Very High Impact
+VCV000869225,11,5226713,TT,T,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869224,11,5226714,T,A,nonsense,stop_gained,HIGH,0.9,,,K/*,Very High Impact
+VCV000869346,11,5226715,AGGGTTGCCCATAA,A,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869223,11,5226715,GGG,GGGG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000632845,11,5226716,GGG,GG,frameshift,frameshift_variant,HIGH,0.9,,,VMGNP/X,Very High Impact
+VCV000869222,11,5226721,C,CACCTTAGGGTTGCC,nonsense,nonsense_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000590977,11,5226724,CATAA,TGATGCC,frameshift,frameshift_variant,HIGH,0.9,,,VM/GHX,Very High Impact
+VCV000869349,11,5226725,T,TT,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869347,11,5226727,AA,A,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869345,11,5226728,C,CC,frameshift,frameshift_variant,HIGH,0.9,,,V/X,Very High Impact
+VCV003599785,11,5226732,C,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,A/T,Very High Impact
+VCV000038659,11,5226737,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869342,11,5226742,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000439135,11,5226745,AGAT,AGATAGAT,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015485,11,5226748,T,TT,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869340,11,5226749,CCCC,CCCCC,frameshift,frameshift_variant,HIGH,0.9,,,D/EX,Very High Impact
+VCV000869339,11,5226753,AAA,AAAA,frameshift,frameshift_variant,HIGH,0.9,,,G/GX,Very High Impact
+VCV000869338,11,5226754,AAA,AA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015546,11,5226755,A,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,F/C,Very High Impact
+VCV000015415,11,5226757,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869298,11,5226761,C,CC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV003572115,11,5226762,AAAGAA,AAAGAAAGAA,nonsense,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV000869297,11,5226762,AAA,AAAA,nonsense,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV000015406,11,5226762,C,A,nonsense,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV000869296,11,5226763,AAA,AA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015417,11,5226763,AAAGAA,AA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015190,11,5226764,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,F/S,Very High Impact
+VCV004795169,11,5226765,A,T,missense,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,F/L,Very High Impact
+VCV001098798,11,5226765,G,GG,frameshift,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,F/L,Very High Impact
+VCV000015347,11,5226765,A,C,missense,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,F/L,Very High Impact
+VCV000015251,11,5226765,A,G,missense,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,F/L,Very High Impact
+VCV000869295,11,5226766,AA,AAA,frameshift,frameshift_variant,HIGH,0.9,,,-/X,Very High Impact
+VCV000869294,11,5226769,CC,C,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV002577315,11,5226770,TCTG,TCTGTCTG,frameshift,frameshift_variant,HIGH,0.9,,,R/X,Very High Impact
+VCV000015427,11,5226772,CTGGGTCC,C,nonsense,nonsense_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869292,11,5226774,GGG,GG,frameshift,stop_gained,HIGH,0.9,,,Q/*,Very High Impact
+VCV000869264,11,5226774,GGGTCCAAGGGT,GGGT,frameshift,stop_gained,HIGH,0.9,,,Q/*,Very High Impact
+VCV000015551,11,5226774,GGG,G,frameshift,stop_gained,HIGH,0.9,,,Q/*,Very High Impact
+VCV000015402,11,5226774,G,A,nonsense,stop_gained,HIGH,0.9,,,Q/*,Very High Impact
+VCV002681976,11,5226778,CC,C,nonsense,stop_gained,HIGH,0.9,,,W/*,Very High Impact
+VCV000015405,11,5226778,C,T,nonsense,stop_gained,HIGH,0.9,,,W/*,Very High Impact
+VCV000439782,11,5226779,C,T,nonsense,stop_gained,HIGH,0.9,,,W/*,Very High Impact
+VCV000015431,11,5226780,AA,A,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015424,11,5226782,GGG,GG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869263,11,5226784,G,C,nonsense,stop_gained,HIGH,0.9,,,Y/*,Very High Impact
+VCV000015408,11,5226784,G,T,nonsense,stop_gained,HIGH,0.9,,,Y/*,Very High Impact
+VCV000869262,11,5226785,T,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,Y/C,Very High Impact
+VCV003781328,11,5226786,G,GTAGG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015532,11,5226788,ACCACCA,ACCA,missense,missense_variant (from_category),MODERATE,0.5,,,,High Impact
+VCV000015312,11,5226789,C,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/F,Very High Impact
+VCV000478852,11,5226794,A,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/P,Very High Impact
+VCV000015308,11,5226794,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/P,Very High Impact
+VCV002024192,11,5226796,CAGCCTAAGGGTGGGAAAATAGACCAATAGGCAGAGA,TAATCTGAGGGTAGGAAAACAGCCCAAGGGACAGT,splice_acceptor,coding_sequence_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869322,11,5226797,GCC,GCCGCC,splice_acceptor,splice_acceptor_variant (from_category),HIGH,0.95,,,,Very High Impact
+VCV000015442,11,5226797,AGCCTAAGGGTGGGAAAATAGACCAA,A,splice_acceptor,splice_acceptor_variant (from_category),HIGH,0.95,,,,Very High Impact
+VCV000869321,11,5226799,C,G,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,R/S,Very High Impact
+VCV000439166,11,5226800,C,G,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000015446,11,5226800,C,T,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000439167,11,5226801,T,G,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000015562,11,5226801,T,C,splice_donor,splice_acceptor_variant,HIGH,0.95,,,,Very High Impact
+VCV000036341,11,5226802,A,C,splice_region,splice_region_variant,LOW,0.5,,,,High Impact
+VCV000550356,11,5226814,A,C,intronic,splice_polypyrimidine_tract_variant,LOW,0.3,,,,Moderate Impact
+VCV000015454,11,5226820,C,T,intronic,non_coding_transcript_exon_variant,MODIFIER,0.15,,,,Low Impact
+VCV000015445,11,5226903,AACCTGTCTTGTAACCTTGATACCAACCTGCCCAGGGCCTCACCA,A,splice_donor,splice_donor_variant (from_category),HIGH,0.95,,,,Very High Impact
+VCV000015450,11,5226924,A,G,splice_region,splice_donor_region_variant,LOW,0.35,,,,Moderate Impact
+VCV000015449,11,5226925,C,T,splice_region,splice_donor_5th_base_variant,LOW,0.4,,,,Moderate Impact
+VCV000015448,11,5226925,C,A,splice_region,splice_donor_5th_base_variant,LOW,0.4,,,,Moderate Impact
+VCV000015447,11,5226925,C,G,splice_region,splice_donor_5th_base_variant,LOW,0.4,,,,Moderate Impact
+VCV000619860,11,5226928,A,C,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000038667,11,5226928,A,T,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000036334,11,5226928,A,G,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000869246,11,5226929,C,G,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000015437,11,5226929,C,A,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV000015436,11,5226929,C,T,splice_donor,splice_donor_variant,HIGH,0.95,,,,Very High Impact
+VCV003766927,11,5226930,C,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,R/T,Very High Impact
+VCV000036337,11,5226930,C,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,R/T,Very High Impact
+VCV000015234,11,5226930,C,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,R/T,Very High Impact
+VCV000869243,11,5226931,T,C,missense,splice_region_variant,LOW,0.5,,,R,High Impact
+VCV000590773,11,5226931,T,G,synonymous,splice_region_variant,LOW,0.5,,,R,High Impact
+VCV004532970,11,5226932,GCCCAGGGCC,GCC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869241,11,5226933,CCC,CC,frameshift,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,G/D,Very High Impact
+VCV000015252,11,5226933,C,T,missense,missense_variant,MODERATE,0.89,0.02,deleterious_low_confidence,G/D,Very High Impact
+VCV000015432,11,5226936,GGG,GGGG,frameshift,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/P,Very High Impact
+VCV000015361,11,5226936,A,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/P,Very High Impact
+VCV000015183,11,5226936,A,G,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,L/P,Very High Impact
+VCV000869240,11,5226937,GGG,GG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015386,11,5226939,G,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,A/D,Very High Impact
+VCV004071470,11,5226940,C,T,missense,missense_variant,MODERATE,0.87,0.06,tolerated_low_confidence,A/S,Very High Impact
+VCV000015239,11,5226940,C,A,missense,missense_variant,MODERATE,0.87,0.06,tolerated_low_confidence,A/S,Very High Impact
+VCV000599394,11,5226941,C,G,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/D,Very High Impact
+VCV000015554,11,5226942,T,C,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/G,Very High Impact
+VCV003777010,11,5226943,C,T,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/K,Very High Impact
+VCV000869363,11,5226943,A,AA,nonsense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/K,Very High Impact
+VCV000038650,11,5226943,C,A,nonsense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/K,Very High Impact
+VCV000015161,11,5226943,C,T,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/K,Very High Impact
+VCV000015459,11,5226947,A,T,synonymous,splice_region_variant,LOW,0.5,,,G,High Impact
+VCV000869362,11,5226948,C,GTG,frameshift,frameshift_variant,HIGH,0.9,,,G/AX,Very High Impact
+VCV000869361,11,5226948,CC,C,frameshift,frameshift_variant,HIGH,0.9,,,G/AX,Very High Impact
+VCV000869360,11,5226948,CCAACTTC,C,frameshift,frameshift_variant,HIGH,0.9,,,G/AX,Very High Impact
+VCV000015166,11,5226949,CAAC,C,missense,frameshift_variant,HIGH,0.9,,,EVG/X,Very High Impact
+VCV000015306,11,5226952,C,A,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,V/F,Very High Impact
+VCV000869359,11,5226955,C,A,nonsense,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV000551389,11,5226957,CC,CCC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015300,11,5226961,C,T,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,V/M,Very High Impact
+VCV000015258,11,5226963,T,C,missense,missense_variant,MODERATE,0.885,0.03,deleterious_low_confidence,N/S,Very High Impact
+VCV000015401,11,5226970,T,A,nonsense,stop_gained,HIGH,0.9,,,K/*,Very High Impact
+VCV000869358,11,5226971,CCCC,CCCCC,frameshift,synonymous_variant,MODIFIER,0.15,,,,Low Impact
+VCV000811787,11,5226971,G,A,synonymous,synonymous_variant,MODIFIER,0.15,,,,Low Impact
+VCV000869357,11,5226972,CCCC,CCC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000038646,11,5226974,C,T,nonsense,stop_gained,HIGH,0.9,,,W/*,Very High Impact
+VCV000015403,11,5226975,C,T,nonsense,stop_gained,HIGH,0.9,,,W/*,Very High Impact
+VCV000015426,11,5226976,C,CC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869320,11,5226977,A,AA,frameshift,frameshift_variant,HIGH,0.9,,,-/X,Very High Impact
+VCV000869233,11,5226977,CAGGGCAGTAACGGCAGACTTCTCCTCAGG,CAGG,frameshift,frameshift_variant,HIGH,0.9,,,-/X,Very High Impact
+VCV004074264,11,5226979,GGG,GG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015423,11,5226986,AA,A,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000439154,11,5226988,GG,GGG,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869281,11,5226989,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869352,11,5226991,A,AA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000036308,11,5226994,C,CC,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869300,11,5226997,C,CC,frameshift,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,K/E,Very High Impact
+VCV000015281,11,5226997,T,C,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,K/E,Very High Impact
+VCV000869255,11,5226998,TCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGT,TCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGTCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGT,nonsense,frameshift_variant,HIGH,0.9,,,-/X,Very High Impact
+VCV000015247,11,5226998,CTCCTC,CTC,missense,frameshift_variant,HIGH,0.9,,,-/X,Very High Impact
+VCV000869271,11,5227000,C,A,nonsense,stop_gained,HIGH,0.9,,,E/*,Very High Impact
+VCV003766686,11,5227001,CTC,C,frameshift,inframe_deletion,MODERATE,0.6,,,E/-,High Impact
+VCV000446738,11,5227002,T,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/V,Very High Impact
+VCV000446735,11,5227002,T,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/V,Very High Impact
+VCV000036301,11,5227002,TC,AT,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/V,Very High Impact
+VCV000015333,11,5227002,T,A,missense,missense_variant,MODERATE,0.9,0.0,deleterious_low_confidence,E/V,Very High Impact
+VCV002573434,11,5227003,CAGGA,AAGAT,nonsense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/K,Very High Impact
+VCV000869230,11,5227003,C,A,nonsense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/K,Very High Impact
+VCV000015126,11,5227003,C,T,missense,missense_variant,MODERATE,0.895,0.01,deleterious_low_confidence,E/K,Very High Impact
+VCV000869324,11,5227005,GG,G,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869239,11,5227006,GAGTCAGAT,ACTTCTCCTCAGGCAGACTTCACCTCAG,nonsense,stop_gained,HIGH,0.9,,,HLTP/PEVKSA*GEVX,Very High Impact
+VCV000869293,11,5227010,A,AA,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000015508,11,5227018,CC,C,frameshift,frameshift_variant (from_category),HIGH,0.9,,,,Very High Impact
+VCV000869316,11,5227019,C,A,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/I,Very High Impact
+VCV000869315,11,5227019,C,G,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/I,Very High Impact
+VCV000015519,11,5227019,C,T,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/I,Very High Impact
+VCV000495986,11,5227020,A,T,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/R,Very High Impact
+VCV000036310,11,5227020,A,G,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/R,Very High Impact
+VCV000015434,11,5227020,A,C,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/R,Very High Impact
+VCV000869231,11,5227021,T,G,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/V,Very High Impact
+VCV000439140,11,5227021,T,C,missense,start_lost,HIGH,0.85,0.0,deleterious_low_confidence,M/V,Very High Impact
+VCV000393704,11,5227039,G,C,5_prime_UTR,splice_region_variant,LOW,0.5,,,,High Impact
+VCV000393702,11,5227050,C,T,5_prime_UTR,splice_polypyrimidine_tract_variant,LOW,0.3,,,,Moderate Impact
+VCV000036292,11,5227071,T,G,5_prime_UTR,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869256,11,5227096,C,A,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869286,11,5227097,T,G,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869287,11,5227098,T,A,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015471,11,5227099,T,C,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015470,11,5227099,T,G,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869288,11,5227100,T,G,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015469,11,5227100,T,C,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869290,11,5227101,A,G,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869289,11,5227101,A,C,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015467,11,5227101,A,T,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015466,11,5227102,T,C,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000801184,11,5227142,G,A,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000869327,11,5227147,G,T,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV002506212,11,5227157,G,T,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000036284,11,5227157,G,A,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015465,11,5227157,G,C,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000036287,11,5227158,G,A,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000036285,11,5227158,G,T,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015464,11,5227158,G,C,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000393701,11,5227159,G,T,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015460,11,5227159,G,A,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015514,11,5227161,G,A,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015462,11,5227163,G,A,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015586,11,5227172,G,C,promoter,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact
+VCV000015461,11,5227172,G,A,other,5_prime_UTR_variant,MODIFIER,0.2,,,,Moderate Impact

@@ -1,0 +1,354 @@
+clinvar_id,chr,position,ref,alt,category,hgvs_c,hgvs_p,clinical_significance
+VCV000439130,11,5225466,G,A,3_prime_UTR,"NM_000518.5(HBB):c.*132C>T","",Likely pathogenic
+VCV000869259,11,5225482,TTTTTT,TTTT,3_prime_UTR,"NM_000518.5(HBB):c.*115_*116del","",Likely pathogenic
+VCV000015474,11,5225482,TTTTTT,TTTTT,3_prime_UTR,"NM_000518.5(HBB):c.*116del","",Pathogenic
+VCV000015506,11,5225484,TTTTATT,TT,3_prime_UTR,"NM_000518.5(HBB):c.*110_*114del","",Pathogenic/Likely pathogenic
+VCV000015473,11,5225485,T,C,3_prime_UTR,"NM_000518.5(HBB):c.*113A>G","",Pathogenic
+VCV000632843,11,5225487,TAT,T,3_prime_UTR,"NM_000518.5(HBB):c.*110_*111del","",Pathogenic/Likely pathogenic
+VCV000015488,11,5225487,T,C,3_prime_UTR,"NM_000518.5(HBB):c.*111A>G","",Pathogenic
+VCV000036332,11,5225488,A,G,3_prime_UTR,"NM_000518.5(HBB):c.*110T>C","",Pathogenic
+VCV000015616,11,5225488,A,T,3_prime_UTR,"NM_000518.5(HBB):c.*110T>A","",Pathogenic
+VCV000869258,11,5225490,T,C,3_prime_UTR,"NM_000518.5(HBB):c.*108A>G","",Pathogenic
+VCV000869261,11,5225493,GCAGAATCCAGATGC,GC,3_prime_UTR,"NM_000518.5(HBB):c.*93_*105del","",Pathogenic
+VCV000869260,11,5225566,T,G,3_prime_UTR,"NM_000518.5(HBB):c.*32A>C","",Pathogenic
+VCV000393707,11,5225592,G,C,3_prime_UTR,"NM_000518.5(HBB):c.*6C>G","",Pathogenic/Likely pathogenic
+VCV000015395,11,5225602,T,G,missense,"c.440A>C","H147P",Pathogenic
+VCV000015144,11,5225602,T,A,missense,"c.440A>T","H147L",Pathogenic; other
+VCV000015200,11,5225603,G,C,missense,"c.439C>G","H147D",Pathogenic; other
+VCV000015265,11,5225604,A,T,nonsense,"c.438T>A","Y146*",Pathogenic; other
+VCV000015322,11,5225605,T,C,missense,"c.437A>G","Y146C",Pathogenic
+VCV000633256,11,5225606,A,T,missense,"c.436T>A","Y146N",Pathogenic
+VCV000015112,11,5225606,A,G,missense,"c.436T>C","Y146H",Pathogenic
+VCV000015096,11,5225607,C,G,missense,"c.435G>C","K145N",Pathogenic
+VCV000015250,11,5225610,G,Y,missense,"Hb Little Rock","H144Q",Pathogenic
+VCV000015365,11,5225611,T,G,missense,"c.431A>C","H144P",Pathogenic
+VCV000015090,11,5225611,T,C,missense,"c.431A>G","H144R",Pathogenic/Likely pathogenic
+VCV000869318,11,5225612,GGG,G,frameshift,"c.429_430del","H144fs",Pathogenic
+VCV000015545,11,5225620,G,A,missense,"c.422C>T","A141V",Pathogenic
+VCV000015339,11,5225621,C,T,missense,"c.421G>A","A141T",Pathogenic; other
+VCV000869317,11,5225624,A,AA,nonsense,"c.417dup","N140*",Pathogenic
+VCV001189030,11,5225638,ACCACTTTCTGA,A,frameshift,"c.394_404del","Q132fs",Pathogenic
+VCV000015290,11,5225638,A,T,missense,"c.404T>A","V135E",Pathogenic
+VCV000928758,11,5225645,TCT,T,frameshift,"c.396_397del","K133fs",Likely pathogenic
+VCV000869314,11,5225645,T,A,nonsense,"c.397A>T","K133*",Pathogenic
+VCV001459872,11,5225646,CTGATAGGCAGCCTGCACTG,CTG,frameshift,"c.380_396del","V127fs",Pathogenic
+VCV000869312,11,5225646,T,TT,frameshift,"c.395dup","K133fs",Pathogenic
+VCV000015348,11,5225647,T,G,missense,"c.395A>C","Q132P",Likely pathogenic
+VCV000869311,11,5225648,G,A,nonsense,"c.394C>T","Q132*",Pathogenic
+VCV000801192,11,5225649,A,T,nonsense,"c.393T>A","Y131*",Pathogenic
+VCV000869313,11,5225654,CAGC,TGTGG,frameshift,"c.385_388delinsCCACA","A129fs, K133fs",Pathogenic
+VCV000015537,11,5225659,T,C,missense,"c.383A>G","Q128R",Pathogenic; other
+VCV000015409,11,5225659,T,G,missense,"c.383A>C","Q128P",Pathogenic
+VCV001705074,11,5225660,G,A,nonsense,"c.382C>T","Q128*",Pathogenic
+VCV000015483,11,5225662,A,C,missense,"c.380T>G","V127G",Pathogenic/Likely pathogenic
+VCV000495998,11,5225664,TGGTGGGGTG,TG,frameshift,"c.371_378del","T124fs",Pathogenic
+VCV000869284,11,5225666,T,TT,frameshift,"c.375dup","P126fs",Pathogenic
+VCV003572119,11,5225678,TTT,TTTT,frameshift,"c.363dup","E122fs",Likely pathogenic
+VCV000446736,11,5225678,C,T,missense,"c.364G>A","E122K, E7V",Pathogenic
+VCV000015404,11,5225678,C,A,nonsense,"c.364G>T","E122*",Pathogenic
+VCV000015292,11,5225678,C,T,missense,"c.364G>A","E122K",Pathogenic/Likely pathogenic
+VCV000015152,11,5225678,C,G,missense,"c.364G>C","E122Q",Pathogenic/Likely pathogenic
+VCV003769274,11,5225693,GG,C,frameshift,"c.348_349delinsG","H117fs",Likely pathogenic
+VCV002691364,11,5225693,GGCC,GGCCGGCC,frameshift,"c.345_348dup","H117fs",Pathogenic
+VCV000015526,11,5225695,G,T,missense,"c.347C>A","A116D",Pathogenic
+VCV004531951,11,5225696,CC,C,frameshift,"c.346del","A116fs",Pathogenic
+VCV000869279,11,5225696,CAGCACACAG,CAGCACACAGCACACAG,frameshift,"c.339_345dup","A116fs",Pathogenic
+VCV000015257,11,5225696,C,G,missense,"c.346G>C","A116P",Pathogenic
+VCV000015513,11,5225698,A,G,missense,"c.344T>C","L115P",Pathogenic/Likely pathogenic
+VCV000015425,11,5225698,AG,C,frameshift,"c.343_344delinsG","L115fs",Pathogenic
+VCV002681990,11,5225699,C,CC,frameshift,"c.342dup","L115fs",Pathogenic
+VCV000869280,11,5225703,A,T,nonsense,"c.339T>A","C113*",Pathogenic
+VCV000015207,11,5225705,A,G,missense,"c.337T>C","C113R",Pathogenic; other
+VCV000015352,11,5225710,A,G,missense,"c.332T>C","L111P",Pathogenic
+VCV000015342,11,5225714,C,T,missense,"c.328G>A","V110M",Pathogenic
+VCV000015230,11,5225714,C,G,missense,"c.328G>C","V110L",Pathogenic
+VCV003336287,11,5225715,G,C,missense,"c.327C>G","N109K",Likely pathogenic
+VCV000439153,11,5225718,CCC,CCCC,frameshift,"c.323dup","N109fs",Pathogenic
+VCV002735520,11,5225719,C,T,missense,"c.323G>A","G108D",Likely pathogenic
+VCV000015487,11,5225722,A,C,missense,"c.320T>G","L107R",Pathogenic; other
+VCV000015378,11,5225722,A,T,missense,"c.320T>A","L107Q",Pathogenic
+VCV000552712,11,5225727,C,T,splice_donor,"NM_000518.5(HBB):c.316-1G>A","",Pathogenic/Likely pathogenic
+VCV000038671,11,5225727,C,A,splice_donor,"NM_000518.5(HBB):c.316-1G>T","",Likely pathogenic
+VCV000015512,11,5225727,C,G,splice_donor,"NM_000518.5(HBB):c.316-1G>C","",Pathogenic
+VCV000021191,11,5225728,T,C,splice_donor,"NM_000518.5(HBB):c.316-2A>G","",Pathogenic
+VCV000021190,11,5225728,T,G,splice_donor,"NM_000518.5(HBB):c.316-2A>C","",Pathogenic
+VCV000619687,11,5225729,G,C,splice_region,"NM_000518.5(HBB):c.316-3C>G","",Likely pathogenic
+VCV000015451,11,5225729,G,T,splice_region,"NM_000518.5(HBB):c.316-3C>A","",Pathogenic/Likely pathogenic
+VCV000869111,11,5225733,G,T,splice_region,"NM_000518.5(HBB):c.316-7C>A","",Pathogenic
+VCV000036313,11,5225740,A,C,intronic,"NM_000518.5(HBB):c.316-14T>G","",Pathogenic/Likely pathogenic
+VCV000869277,11,5225811,AAAATAAAAGCAGAA,AAAATAAAAGCAGAAAATAAAAGCAGAA,intronic,"NM_000518.5(HBB):c.316-98_316-86dup","",Pathogenic
+VCV000015457,11,5225832,G,C,intronic,"NM_000518.5(HBB):c.316-106C>G","",Pathogenic/Likely pathogenic
+VCV000036312,11,5225872,A,C,intronic,"NM_000518.5(HBB):c.316-146T>G","",Pathogenic
+VCV000015458,11,5225923,G,A,intronic,"NM_000518.5(HBB):c.316-197C>T","",Pathogenic
+VCV000869236,11,5225928,AA,A,intronic,"NM_000518.5(HBB):c.316-202del","",Pathogenic
+VCV000869356,11,5226572,C,G,splice_region,"NM_000518.5(HBB):c.315+5G>C","",Pathogenic
+VCV000015515,11,5226572,CTC,C,intronic,"NM_000518.5(HBB):c.315+4_315+5del","",Pathogenic
+VCV000869355,11,5226575,A,G,splice_donor,"NM_000518.5(HBB):c.315+2T>C","",Pathogenic
+VCV000439146,11,5226575,A,C,splice_donor,"NM_000518.5(HBB):c.315+2T>G","",Likely pathogenic
+VCV003781330,11,5226576,CCTGAAGTTCTCAGGATCC,CCTGAAGTTCTCAGGATCCTGAAGTTCTCAGGATCC,frameshift,"c.299_315dup","L106fs",Pathogenic
+VCV000869353,11,5226576,CCC,CC,splice_donor,"NM_000518.5(HBB):c.315+1del","",Pathogenic
+VCV000619686,11,5226576,C,A,splice_donor,"NM_000518.5(HBB):c.315+1G>T","",Pathogenic
+VCV000189128,11,5226576,C,G,splice_donor,"NM_000518.5(HBB):c.315+1G>C","",Pathogenic
+VCV000015438,11,5226576,C,T,splice_donor,"NM_000518.5(HBB):c.315+1G>A","",Pathogenic
+VCV000015192,11,5226580,G,C,missense,"c.312C>G","F104L",Pathogenic; other
+VCV000015317,11,5226586,C,G,missense,"c.306G>C","E102D",Pathogenic; other
+VCV000015094,11,5226587,T,C,missense,"c.305A>G","E102G",Pathogenic; other
+VCV000015118,11,5226588,C,T,missense,"c.304G>A","E102K",Pathogenic; other
+VCV000869351,11,5226590,GG,AAGTTCTCAGA,other,"c.301_302delinsTCTGAGAACTT","",Pathogenic
+VCV000015116,11,5226590,G,A,missense,"c.302C>T","P101L",Pathogenic; other
+VCV000015315,11,5226593,T,G,missense,"c.299A>C","D100A",Pathogenic; other
+VCV000015204,11,5226593,T,C,missense,"c.299A>G","D100G",Pathogenic; other
+VCV000015134,11,5226593,T,A,missense,"c.299A>T","D100V",Pathogenic; other
+VCV000015397,11,5226594,C,A,missense,"c.298G>T","D100Y",Pathogenic
+VCV000015391,11,5226594,C,G,missense,"c.298G>C","D100H",Pathogenic; other
+VCV000015236,11,5226594,C,T,missense,"c.298G>A","D100N",Pathogenic; other
+VCV000869309,11,5226596,CGTGCAGCTTGTCACAGTGCAGCTC,CGTGCAGCTTGTCACAGTGCAGCTCGTGCAGCTTGTCACAGTGCAGCTC,other,"c.272_295dup","",Pathogenic
+VCV000619685,11,5226596,CGTGC,CGTGCGTGC,frameshift,"c.292_295dup","V99fs",Pathogenic/Likely pathogenic
+VCV000015241,11,5226597,C,T,missense,"c.295G>A","V99M",Pathogenic
+VCV003766487,11,5226598,G,T,missense,"c.294C>A","H98Q",Pathogenic
+VCV000801186,11,5226598,G,C,missense,"c.294C>G","H98Q",Pathogenic/Likely pathogenic
+VCV000015259,11,5226598,G,Y,missense,"c.294C>R","H98Q",Pathogenic; other
+VCV000015390,11,5226599,T,A,missense,"c.293A>T","H98L",Likely pathogenic
+VCV000015607,11,5226600,G,T,missense,"c.292C>A","H98N",Likely pathogenic
+VCV004277917,11,5226602,A,C,missense,"c.290T>G","L97R",Pathogenic
+VCV000036309,11,5226604,TT,TTT,frameshift,"c.287dup","L97fs",Pathogenic
+VCV000015428,11,5226608,CACA,CACACA,frameshift,"c.282_283dup","D95fs",Likely pathogenic
+VCV000015104,11,5226609,C,G,missense,"c.283G>C","D95H",Pathogenic; other
+VCV004280311,11,5226611,CAGTGCAGCTCACTCAGTG,CAGTG,nonsense,"c.268_281del","",Pathogenic
+VCV002664746,11,5226613,G,C,missense,"c.279C>G","H93Q",Likely pathogenic
+VCV000811500,11,5226613,G,T,missense,"c.279C>A","H93Q",Pathogenic
+VCV000015208,11,5226613,G,Y,missense,"c.279C>R","H93Q",Pathogenic
+VCV000015494,11,5226615,G,T,missense,"c.277C>A","H93N",Pathogenic
+VCV000015255,11,5226615,G,A,missense,"c.277C>T","H93Y",Pathogenic
+VCV000869310,11,5226616,A,AA,frameshift,"c.275dup","H93fs",Pathogenic
+VCV000015338,11,5226617,A,G,missense,"c.275T>C","L92P",Pathogenic
+VCV000015311,11,5226619,C,G,missense,"c.273G>C","E91D",Pathogenic
+VCV000869308,11,5226621,CAC,C,frameshift,"c.270_271del","S90fs",Pathogenic
+VCV000446747,11,5226621,C,T,missense,"c.271G>A","E91K, E7V",Pathogenic
+VCV000015504,11,5226621,C,A,nonsense,"c.271G>T","E91*",Pathogenic
+VCV000015147,11,5226623,C,T,missense,"c.269G>A","S90N",Pathogenic/Likely pathogenic; other
+VCV002681986,11,5226624,CAGTG,CAGTGCAGTG,nonsense,"c.263_267dup","",Likely pathogenic
+VCV000015383,11,5226624,T,G,missense,"c.268A>C","S90R",Pathogenic; other
+VCV000869306,11,5226625,A,AA,frameshift,"c.266dup","S90fs",Pathogenic
+VCV000015343,11,5226626,A,G,missense,"c.266T>C","L89P",Pathogenic/Likely pathogenic
+VCV000015108,11,5226626,A,C,missense,"c.266T>G","L89R",Pathogenic; other
+VCV000869275,11,5226627,GTGTGGCAAAGGTGCCCTTGAGGT,GT,nonsense,"c.244_265del","",Pathogenic
+VCV000015493,11,5226629,G,A,missense,"c.263C>T","T88I",Likely pathogenic
+VCV000869301,11,5226632,GCAAAGGTGC,GC,frameshift,"c.253_260del","T85fs",Pathogenic
+VCV000869303,11,5226633,AAA,AAAA,frameshift,"c.258dup","A87fs",Pathogenic
+VCV000015122,11,5226635,A,G,missense,"c.257T>C","F86S",Pathogenic
+VCV000869302,11,5226636,GG,GGG,frameshift,"c.255dup","F86fs",Pathogenic
+VCV000869274,11,5226636,AGGTGCCCTTGAGGTTGTCCAGGTG,AGGTG,frameshift,"c.237_256del","D80fs",Pathogenic
+VCV000036306,11,5226641,CCC,CC,frameshift,"c.251del","G84fs",Pathogenic
+VCV000618675,11,5226643,C,G,missense,"c.249G>C","K83N",Likely pathogenic
+VCV000446737,11,5226643,C,R,missense,"c.249G>Y","K83N, E7V",Pathogenic
+VCV000015319,11,5226643,C,R,missense,"c.249G>Y","K83N",Pathogenic; other
+VCV000015321,11,5226644,T,G,missense,"c.248A>C","K83T",Pathogenic; other
+VCV000015193,11,5226644,T,A,missense,"c.248A>T","K83M",Pathogenic
+VCV000869299,11,5226648,GG,G,frameshift,"c.244del","L82fs",Pathogenic
+VCV000869273,11,5226656,GG,GGG,frameshift,"c.235dup","L79fs",Pathogenic
+VCV000632846,11,5226657,GG,G,frameshift,"c.235del","L79fs",Pathogenic/Likely pathogenic
+VCV001065151,11,5226658,GTG,G,frameshift,"c.233_234del","H78fs",Likely pathogenic
+VCV000495983,11,5226666,GG,G,frameshift,"c.226del","L76fs",Pathogenic/Likely pathogenic
+VCV000993070,11,5226667,C,CTGGAC,frameshift,"c.224_225insTCCAG","L76fs",Likely pathogenic
+VCV000619856,11,5226667,CCATC,CCATCCATC,frameshift,"c.221_224dup","L76fs",Pathogenic/Likely pathogenic
+VCV000015560,11,5226671,TCACT,A,frameshift,"c.217_221delinsT","S73fs",Pathogenic
+VCV004280310,11,5226672,CA,AT,missense,"c.219_220delinsAT","",Pathogenic
+VCV000869269,11,5226672,A,AA,nonsense,"c.219dup","D74*",Pathogenic
+VCV000618160,11,5226672,CAC,C,frameshift,"c.219_220del","S73fs",Pathogenic
+VCV000015419,11,5226674,T,TT,frameshift,"c.217dup","S73fs",Pathogenic/Likely pathogenic
+VCV000015433,11,5226675,AAA,AAAA,nonsense,"c.216dup","S73*",Pathogenic
+VCV000869268,11,5226676,AAA,AA,frameshift,"c.216del","F72fs",Pathogenic
+VCV000869265,11,5226680,GCACCGAGCAC,GCAC,frameshift,"c.206_212del","L69fs",Pathogenic
+VCV000869266,11,5226683,CC,C,frameshift,"c.209del","G70fs",Pathogenic/Likely pathogenic
+VCV000015271,11,5226686,A,G,missense,"c.206T>C","L69P",Likely pathogenic
+VCV000015117,11,5226686,A,T,missense,"c.206T>A","L69H",Pathogenic; other
+VCV000015613,11,5226687,G,A,missense,"c.205C>T","L69F",Pathogenic/Likely pathogenic
+VCV000036303,11,5226688,CAC,C,frameshift,"c.203_204del","V68fs",Pathogenic
+VCV000015254,11,5226689,A,T,missense,"c.203T>A","V68E",Pathogenic; other
+VCV004532968,11,5226690,CTTTCTT,CTT,frameshift,"c.199_202del","K67fs",Likely pathogenic
+VCV000015536,11,5226690,C,T,missense,"c.202G>A","V68M",Pathogenic
+VCV000036302,11,5226691,TTT,TT,frameshift,"c.201del","V68fs",Likely pathogenic
+VCV000015136,11,5226692,T,G,missense,"c.200A>C","K67T",Likely pathogenic
+VCV000869229,11,5226693,T,A,nonsense,"c.199A>T","K67*",Pathogenic
+VCV001074874,11,5226696,T,A,nonsense,"c.196A>T","K66*",Pathogenic
+VCV000869228,11,5226697,GCCATGAGCC,GCC,frameshift,"c.189_195del","H64fs",Pathogenic
+VCV000015429,11,5226698,CC,C,frameshift,"c.194del","G65fs",Pathogenic
+VCV000015400,11,5226701,T,C,missense,"c.191A>G","H64R",Likely pathogenic
+VCV000694445,11,5226702,G,T,missense,"c.190C>A","H64N",Pathogenic
+VCV000015256,11,5226702,G,A,missense,"c.190C>T","H64Y",Pathogenic
+VCV000015407,11,5226708,T,A,nonsense,"c.184A>T","K62*",Pathogenic
+VCV000015411,11,5226710,A,T,missense,"c.182T>A","V61E",Pathogenic; other
+VCV000869225,11,5226713,TT,T,frameshift,"c.179del","K60fs",Pathogenic
+VCV000869224,11,5226714,T,A,nonsense,"c.178A>T","K60*",Pathogenic
+VCV000869346,11,5226715,AGGGTTGCCCATAA,A,frameshift,"c.165_177del","M56fs",Pathogenic
+VCV000869223,11,5226715,GGG,GGGG,frameshift,"c.176dup","",Pathogenic
+VCV000632845,11,5226716,GGG,GG,frameshift,"c.176del","P59fs",Likely pathogenic
+VCV000869222,11,5226721,C,CACCTTAGGGTTGCC,nonsense,"c.170_171insGCAACCCTAAGGTG","",Pathogenic
+VCV000590977,11,5226724,CATAA,TGATGCC,frameshift,"c.164_168delinsGGCATCA","V55fs",Pathogenic
+VCV000869349,11,5226725,T,TT,frameshift,"c.166dup","M56fs",Pathogenic
+VCV000869347,11,5226727,AA,A,frameshift,"c.165del","M56fs",Pathogenic
+VCV000869345,11,5226728,C,CC,frameshift,"c.163dup","V55fs",Pathogenic
+VCV003599785,11,5226732,C,T,missense,"c.160G>A","A54T",Likely pathogenic
+VCV000038659,11,5226737,GG,G,frameshift,"c.155del","P52fs",Pathogenic
+VCV000869342,11,5226742,GG,G,frameshift,"c.150del","T51fs",Pathogenic
+VCV000439135,11,5226745,AGAT,AGATAGAT,frameshift,"c.143_146dup","T51fs",Pathogenic
+VCV000015485,11,5226748,T,TT,frameshift,"c.143dup","D48fs",Pathogenic
+VCV000869340,11,5226749,CCCC,CCCCC,frameshift,"c.142dup","D48fs",Pathogenic
+VCV000869339,11,5226753,AAA,AAAA,frameshift,"c.138dup","G47fs",Pathogenic
+VCV000869338,11,5226754,AAA,AA,frameshift,"c.138del","F46fs",Pathogenic
+VCV000015546,11,5226755,A,C,missense,"c.137T>G","F46C",Likely pathogenic
+VCV000015415,11,5226757,GG,G,frameshift,"c.135del","F46fs",Pathogenic/Likely pathogenic
+VCV000869298,11,5226761,C,CC,frameshift,"c.130dup","E44fs",Pathogenic
+VCV003572115,11,5226762,AAAGAA,AAAGAAAGAA,nonsense,"c.126_129dup","",Pathogenic
+VCV000869297,11,5226762,AAA,AAAA,nonsense,"c.129dup","E44*",Pathogenic
+VCV000015406,11,5226762,C,A,nonsense,"c.130G>T","E44*",Pathogenic
+VCV000869296,11,5226763,AAA,AA,frameshift,"c.129del","F43fs",Pathogenic
+VCV000015417,11,5226763,AAAGAA,AA,frameshift,"c.126_129del","F42fs",Pathogenic/Likely pathogenic
+VCV000015190,11,5226764,A,G,missense,"c.128T>C","F43S",Pathogenic
+VCV004795169,11,5226765,A,T,missense,"c.127T>A","F43I",Likely pathogenic
+VCV001098798,11,5226765,G,GG,frameshift,"c.126dup","F43fs",Likely pathogenic
+VCV000015347,11,5226765,A,C,missense,"c.127T>G","F43V",Pathogenic
+VCV000015251,11,5226765,A,G,missense,"c.127T>C","F43L",Pathogenic
+VCV000869295,11,5226766,AA,AAA,frameshift,"c.125dup","F43fs",Pathogenic
+VCV000869294,11,5226769,CC,C,frameshift,"c.123del","R41fs",Pathogenic
+VCV002577315,11,5226770,TCTG,TCTGTCTG,frameshift,"c.118_121dup","R41fs",Pathogenic
+VCV000015427,11,5226772,CTGGGTCC,C,nonsense,"c.114_120del","",Pathogenic
+VCV000869292,11,5226774,GGG,GG,frameshift,"c.118del","Q40fs",Pathogenic
+VCV000869264,11,5226774,GGGTCCAAGGGT,GGGT,frameshift,"c.111_118del","W38fs",Pathogenic
+VCV000015551,11,5226774,GGG,G,frameshift,"c.117_118del","Q40fs",Pathogenic
+VCV000015402,11,5226774,G,A,nonsense,"c.118C>T","Q40*",Pathogenic
+VCV002681976,11,5226778,CC,C,nonsense,"c.114del","",Pathogenic
+VCV000015405,11,5226778,C,T,nonsense,"c.114G>A","W38*",Pathogenic
+VCV000439782,11,5226779,C,T,nonsense,"c.113G>A","W38*",Pathogenic
+VCV000015431,11,5226780,AA,A,frameshift,"c.112del","W38fs",Pathogenic
+VCV000015424,11,5226782,GGG,GG,frameshift,"c.110del","P37fs",Pathogenic/Likely pathogenic
+VCV000869263,11,5226784,G,C,nonsense,"c.108C>G","Y36*",Pathogenic
+VCV000015408,11,5226784,G,T,nonsense,"c.108C>A","Y36*",Pathogenic
+VCV000869262,11,5226785,T,C,missense,"c.107A>G","Y36C",Pathogenic
+VCV003781328,11,5226786,G,GTAGG,frameshift,"c.105_106insCTAC","Y36fs",Pathogenic
+VCV000015532,11,5226788,ACCACCA,ACCA,missense,"c.99GGT[1]","V35del",Pathogenic
+VCV000015312,11,5226789,C,A,missense,"c.103G>T","V35F",Likely pathogenic
+VCV000478852,11,5226794,A,T,missense,"c.98T>A","L33Q",Likely pathogenic
+VCV000015308,11,5226794,A,G,missense,"c.98T>C","L33P",Pathogenic
+VCV002024192,11,5226796,CAGCCTAAGGGTGGGAAAATAGACCAATAGGCAGAGA,TAATCTGAGGGTAGGAAAACAGCCCAAGGGACAGT,splice_acceptor,"NM_000518.5(HBB):c.93-33_96delinsACTGTCCCTTGGGCTGTTTTCCTACCCTCAGATTA","",Likely pathogenic
+VCV000869322,11,5226797,GCC,GCCGCC,splice_acceptor,"c.92_94dup","",Pathogenic
+VCV000015442,11,5226797,AGCCTAAGGGTGGGAAAATAGACCAA,A,splice_acceptor,"NM_000518.5(HBB):c.93-22_95del","",Pathogenic
+VCV000869321,11,5226799,C,G,missense,"c.93G>C","R31S",Pathogenic
+VCV000439166,11,5226800,C,G,splice_donor,"NM_000518.5(HBB):c.93-1G>C","",Pathogenic
+VCV000015446,11,5226800,C,T,splice_donor,"NM_000518.5(HBB):c.93-1G>A","",Pathogenic
+VCV000439167,11,5226801,T,G,splice_donor,"NM_000518.5(HBB):c.93-2A>C","",Pathogenic
+VCV000015562,11,5226801,T,C,splice_donor,"NM_000518.5(HBB):c.93-2A>G","",Pathogenic
+VCV000036341,11,5226802,A,C,splice_region,"NM_000518.5(HBB):c.93-3T>G","",Pathogenic/Likely pathogenic
+VCV000550356,11,5226814,A,C,intronic,"NM_000518.5(HBB):c.93-15T>G","",Pathogenic
+VCV000015454,11,5226820,C,T,intronic,"NM_000518.5(HBB):c.93-21G>A","",Pathogenic/Likely pathogenic
+VCV000015445,11,5226903,AACCTGTCTTGTAACCTTGATACCAACCTGCCCAGGGCCTCACCA,A,splice_donor,"NM_000518.5(HBB):c.76_92+27del","",Likely pathogenic
+VCV000015450,11,5226924,A,G,splice_region,"NM_000518.5(HBB):c.92+6T>C","",Pathogenic/Likely pathogenic
+VCV000015449,11,5226925,C,T,splice_region,"NM_000518.5(HBB):c.92+5G>A","",Pathogenic
+VCV000015448,11,5226925,C,A,splice_region,"NM_000518.5(HBB):c.92+5G>T","",Pathogenic
+VCV000015447,11,5226925,C,G,splice_region,"NM_000518.5(HBB):c.92+5G>C","",Pathogenic
+VCV000619860,11,5226928,A,C,splice_donor,"NM_000518.5(HBB):c.92+2T>G","",Pathogenic
+VCV000038667,11,5226928,A,T,splice_donor,"NM_000518.5(HBB):c.92+2T>A","",Pathogenic
+VCV000036334,11,5226928,A,G,splice_donor,"NM_000518.5(HBB):c.92+2T>C","",Pathogenic
+VCV000869246,11,5226929,C,G,splice_donor,"NM_000518.5(HBB):c.92+1G>C","",Pathogenic
+VCV000015437,11,5226929,C,A,splice_donor,"NM_000518.5(HBB):c.92+1G>T","",Pathogenic
+VCV000015436,11,5226929,C,T,splice_donor,"NM_000518.5(HBB):c.92+1G>A","",Pathogenic
+VCV003766927,11,5226930,C,A,missense,"c.92G>T","R31M",Likely pathogenic
+VCV000036337,11,5226930,C,T,missense,"c.92G>A","R31K",Likely pathogenic
+VCV000015234,11,5226930,C,G,missense,"c.92G>C","R31T",Pathogenic
+VCV000869243,11,5226931,T,C,missense,"c.91A>G","R31G",Pathogenic
+VCV000590773,11,5226931,T,G,synonymous,"c.91A>C","",Likely pathogenic
+VCV004532970,11,5226932,GCCCAGGGCC,GCC,frameshift,"c.84_90del","L29fs",Likely pathogenic
+VCV000869241,11,5226933,CCC,CC,frameshift,"c.89del","G30fs",Pathogenic
+VCV000015252,11,5226933,C,T,missense,"c.89G>A","G30D",Likely pathogenic
+VCV000015432,11,5226936,GGG,GGGG,frameshift,"c.85dup","L29fs",Pathogenic
+VCV000015361,11,5226936,A,T,missense,"c.86T>A","L29Q",Pathogenic; other
+VCV000015183,11,5226936,A,G,missense,"c.86T>C","L29P",Pathogenic
+VCV000869240,11,5226937,GGG,GG,frameshift,"c.85del","L29fs",Pathogenic
+VCV000015386,11,5226939,G,T,missense,"c.83C>A","A28D",Pathogenic
+VCV004071470,11,5226940,C,T,missense,"c.82G>A","A28T",Likely pathogenic
+VCV000015239,11,5226940,C,A,missense,"c.82G>T","A28S",Pathogenic
+VCV000599394,11,5226941,C,G,missense,"c.81G>C","E27D",Pathogenic
+VCV000015554,11,5226942,T,C,missense,"c.80A>G","E27G",Pathogenic
+VCV003777010,11,5226943,C,T,missense,"c.79G>A","E27K, V24F",Pathogenic
+VCV000869363,11,5226943,A,AA,nonsense,"c.78dup","E27*",Pathogenic
+VCV000038650,11,5226943,C,A,nonsense,"c.79G>T","E27*",Pathogenic
+VCV000015161,11,5226943,C,T,missense,"c.79G>A","E27K",Pathogenic
+VCV000015459,11,5226947,A,T,synonymous,"c.75T>A","",Pathogenic/Likely pathogenic
+VCV000869362,11,5226948,C,GTG,frameshift,"c.74delinsCAC","G25fs",Pathogenic
+VCV000869361,11,5226948,CC,C,frameshift,"c.74del","G25fs",Pathogenic
+VCV000869360,11,5226948,CCAACTTC,C,frameshift,"c.68_74del","E23fs",Pathogenic
+VCV000015166,11,5226949,CAAC,C,missense,"c.71_73del","V24del",Pathogenic
+VCV000015306,11,5226952,C,A,missense,"c.70G>T","V24F",Pathogenic; other
+VCV000869359,11,5226955,C,A,nonsense,"c.67G>T","E23*",Pathogenic
+VCV000551389,11,5226957,CC,CCC,frameshift,"c.64dup","D22fs",Likely pathogenic
+VCV000015300,11,5226961,C,T,missense,"c.61G>A","V21M",Pathogenic/Likely pathogenic
+VCV000015258,11,5226963,T,C,missense,"c.59A>G","N20S",Pathogenic
+VCV000015401,11,5226970,T,A,nonsense,"c.52A>T","K18*",Pathogenic
+VCV000869358,11,5226971,CCCC,CCCCC,frameshift,"c.50dup","K18fs",Pathogenic
+VCV000811787,11,5226971,G,A,synonymous,"c.51C>T","",Pathogenic/Likely pathogenic
+VCV000869357,11,5226972,CCCC,CCC,frameshift,"c.50del","G17fs",Pathogenic
+VCV000038646,11,5226974,C,T,nonsense,"c.48G>A","W16*",Pathogenic
+VCV000015403,11,5226975,C,T,nonsense,"c.47G>A","W16*",Pathogenic
+VCV000015426,11,5226976,C,CC,frameshift,"c.45dup","W16fs",Pathogenic
+VCV000869320,11,5226977,A,AA,frameshift,"c.44dup","W16fs",Pathogenic
+VCV000869233,11,5226977,CAGGGCAGTAACGGCAGACTTCTCCTCAGG,CAGG,frameshift,"c.20_45del","E7fs",Pathogenic
+VCV004074264,11,5226979,GGG,GG,frameshift,"c.43del","L15fs",Pathogenic
+VCV000015423,11,5226986,AA,A,frameshift,"c.36del","T13fs",Pathogenic
+VCV000439154,11,5226988,GG,GGG,frameshift,"c.33dup","V12fs",Likely pathogenic
+VCV000869281,11,5226989,GG,G,frameshift,"c.33del","V12fs",Pathogenic
+VCV000869352,11,5226991,A,AA,frameshift,"c.30dup","A11fs",Pathogenic
+VCV000036308,11,5226994,C,CC,frameshift,"c.27dup","S10fs",Pathogenic
+VCV000869300,11,5226997,C,CC,frameshift,"c.24dup","K9fs",Pathogenic
+VCV000015281,11,5226997,T,C,missense,"c.25A>G","K9E",Pathogenic
+VCV000869255,11,5226998,TCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGT,TCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGTCCTCAGGAGTCAGATGCACCATGGTGTCTGTTTGAGGTTGCTAGT,nonsense,"c.-22_23dup","",Pathogenic
+VCV000015247,11,5226998,CTCCTC,CTC,missense,"c.19GAG[1]","E8del",Likely pathogenic
+VCV000869271,11,5227000,C,A,nonsense,"c.22G>T","E8*",Pathogenic
+VCV003766686,11,5227001,CTC,C,frameshift,"c.20_21del","E7fs",Pathogenic
+VCV000446738,11,5227002,T,A,missense,"c.20A>T","E7V, A143V",Pathogenic
+VCV000446735,11,5227002,T,A,missense,"c.20A>T","E7V, V24I",Pathogenic
+VCV000036301,11,5227002,TC,AT,missense,"c.19_20delinsAT","E7M",Likely pathogenic
+VCV000015333,11,5227002,T,A,missense,"c.20A>T","E7V",Pathogenic
+VCV002573434,11,5227003,CAGGA,AAGAT,nonsense,"c.15_19delinsATCTT","",Pathogenic
+VCV000869230,11,5227003,C,A,nonsense,"c.19G>T","E7*",Pathogenic
+VCV000015126,11,5227003,C,T,missense,"c.19G>A","E7K",Pathogenic/Likely pathogenic
+VCV000869324,11,5227005,GG,G,frameshift,"c.17del","P6fs, L4fs",Pathogenic
+VCV000869239,11,5227006,GAGTCAGAT,ACTTCTCCTCAGGCAGACTTCACCTCAG,nonsense,"c.8_16delinsCTGAGGTGAAGTCTGCCTGAGGAGAAGT","",Pathogenic
+VCV000869293,11,5227010,A,AA,frameshift,"c.11dup","T5fs",Pathogenic
+VCV000015508,11,5227018,CC,C,frameshift,"c.4del","V2fs",Pathogenic
+VCV000869316,11,5227019,C,A,missense,"c.3G>T","M1I",Likely pathogenic
+VCV000869315,11,5227019,C,G,missense,"c.3G>C","M1I",Pathogenic
+VCV000015519,11,5227019,C,T,missense,"c.3G>A","M1I",Pathogenic
+VCV000495986,11,5227020,A,T,missense,"c.2T>A","M1K",Pathogenic/Likely pathogenic
+VCV000036310,11,5227020,A,G,missense,"c.2T>C","M1T",Pathogenic
+VCV000015434,11,5227020,A,C,missense,"c.2T>G","M1R",Pathogenic
+VCV000869231,11,5227021,T,G,missense,"c.1A>C","M1L",Pathogenic/Likely pathogenic
+VCV000439140,11,5227021,T,C,missense,"c.1A>G","M1V",Pathogenic
+VCV000393704,11,5227039,G,C,5_prime_UTR,"NM_000518.5(HBB):c.-18C>G","",Pathogenic
+VCV000393702,11,5227050,C,T,5_prime_UTR,"NM_000518.5(HBB):c.-29G>A","",Pathogenic
+VCV000036292,11,5227071,T,G,5_prime_UTR,"NM_000518.5(HBB):c.-50A>C","",Pathogenic/Likely pathogenic
+VCV000869256,11,5227096,C,A,other,"NC_000011.10:g.5227096C>A","",Pathogenic
+VCV000869286,11,5227097,T,G,other,"NC_000011.10:g.5227097T>G","",Pathogenic
+VCV000869287,11,5227098,T,A,other,"NC_000011.10:g.5227098T>A","",Pathogenic
+VCV000015471,11,5227099,T,C,promoter,"NM_000518.5(HBB):c.-78A>G","",Pathogenic/Likely pathogenic
+VCV000015470,11,5227099,T,G,promoter,"NM_000518.5(HBB):c.-78A>C","",Pathogenic
+VCV000869288,11,5227100,T,G,promoter,"NM_000518.5(HBB):c.-79A>C","",Pathogenic
+VCV000015469,11,5227100,T,C,other,"NC_000011.10:g.5227100T>C","",Pathogenic
+VCV000869290,11,5227101,A,G,promoter,"NM_000518.5(HBB):c.-80T>C","",Pathogenic
+VCV000869289,11,5227101,A,C,other,"NC_000011.10:g.5227101A>C","",Pathogenic
+VCV000015467,11,5227101,A,T,other,"NC_000011.10:g.5227101A>T","",Pathogenic
+VCV000015466,11,5227102,T,C,promoter,"NM_000518.5(HBB):c.-81A>G","",Pathogenic
+VCV000801184,11,5227142,G,A,promoter,"NM_000518.5(HBB):c.-121C>T","",Pathogenic/Likely pathogenic
+VCV000869327,11,5227147,G,T,other,"NC_000011.10:g.5227147G>T","",Pathogenic
+VCV002506212,11,5227157,G,T,promoter,"NM_000518.4(HBB):c.-136C>A","",Likely pathogenic
+VCV000036284,11,5227157,G,A,promoter,"NM_000518.4(HBB):c.-136C>T","",Pathogenic/Likely pathogenic
+VCV000015465,11,5227157,G,C,other,"NC_000011.10:g.5227157G>C","",Pathogenic/Likely pathogenic
+VCV000036287,11,5227158,G,A,promoter,"NM_000518.5(HBB):c.-137C>T","",Pathogenic/Likely pathogenic
+VCV000036285,11,5227158,G,T,promoter,"NM_000518.5(HBB):c.-137C>A","",Pathogenic
+VCV000015464,11,5227158,G,C,promoter,"NM_000518.5(HBB):c.-137C>G","",Pathogenic/Likely pathogenic
+VCV000393701,11,5227159,G,T,promoter,"NM_000518.5(HBB):c.-138C>A","",Pathogenic/Likely pathogenic
+VCV000015460,11,5227159,G,A,other,"NC_000011.10:g.5227159G>A","",Pathogenic/Likely pathogenic
+VCV000015514,11,5227161,G,A,promoter,"NM_000518.5(HBB):c.-140C>T","",Pathogenic/Likely pathogenic
+VCV000015462,11,5227163,G,A,promoter,"NM_000518.5(HBB):c.-142C>T","",Pathogenic/Likely pathogenic
+VCV000015586,11,5227172,G,C,promoter,"NM_000518.5(HBB):c.-151C>G","",Pathogenic
+VCV000015461,11,5227172,G,A,other,"NC_000011.10:g.5227172G>A","",Pathogenic

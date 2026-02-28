@@ -35,20 +35,22 @@ interface ProcessedVariant {
  * Categorize variant by molecular consequence
  */
 function categorizeVariant(consequence: string, hgvs_c: string, hgvs_p: string): string {
-    const c = consequence.toLowerCase();
+    // Normalize: ClinVar uses spaces ("splice donor variant"), code uses underscores
+    const c = consequence.toLowerCase().replace(/ /g, '_');
     const coding = hgvs_c.toLowerCase();
     const protein = hgvs_p.toLowerCase();
 
     // Splice variants (±2 bp from exon boundary)
-    if (c.includes('splice_donor') || coding.match(/ivs.*[+-][12]g/)) {
+    // HGVS: c.93-1G>A, c.315+1G>A — canonical splice sites
+    if (c.includes('splice_donor') || coding.match(/[+-][12][gatc]>[gatc]/)) {
         return 'splice_donor';
     }
-    if (c.includes('splice_acceptor') || coding.match(/ivs.*-[12]g/)) {
+    if (c.includes('splice_acceptor') || coding.match(/-[12][gatc]>[gatc]/)) {
         return 'splice_acceptor';
     }
 
     // Splice region (±3-8 bp from exon boundary)
-    if (c.includes('splice_region') || coding.match(/ivs.*[+-][3-8]/)) {
+    if (c.includes('splice_region') || coding.match(/[+-][3-8][gatc]?>/)) {
         return 'splice_region';
     }
 
@@ -63,26 +65,26 @@ function categorizeVariant(consequence: string, hgvs_c: string, hgvs_p: string):
     }
 
     // Missense
-    if (c.includes('missense') || (protein && !protein.includes('='))) {
+    if (c.includes('missense') || (protein && protein.length > 0 && !protein.includes('='))) {
         return 'missense';
     }
 
     // UTR
-    if (c.includes('5_prime_utr') || coding.includes('5utr')) {
+    if (c.includes('5_prime_utr') || c.includes('5\'_utr') || coding.includes('5utr') || coding.includes('-5\'utr')) {
         return '5_prime_UTR';
     }
-    if (c.includes('3_prime_utr') || coding.includes('3utr')) {
+    if (c.includes('3_prime_utr') || c.includes('3\'_utr') || coding.includes('3utr') || coding.includes('*')) {
         return '3_prime_UTR';
     }
 
-    // Promoter
-    if (coding.includes('-') && !coding.includes('ivs')) {
-        return 'promoter';
-    }
-
-    // Intronic
+    // Intronic (check before promoter — intron variants have "intron" in consequence)
     if (c.includes('intron') || coding.includes('ivs')) {
         return 'intronic';
+    }
+
+    // Promoter (upstream of gene, negative HGVS positions like c.-101C>T)
+    if (coding.match(/c\.-\d/) && !coding.includes('ivs')) {
+        return 'promoter';
     }
 
     // Synonymous
@@ -103,7 +105,7 @@ async function main() {
     console.log('═══════════════════════════════════════════\n');
 
     // Load raw data
-    const rawPath = path.join(__dirname, '..', 'data', 'clinvar_hbb_raw.json');
+    const rawPath = path.join(process.cwd(), 'data', 'clinvar_hbb_raw.json');
     if (!fs.existsSync(rawPath)) {
         console.error('❌ Error: data/clinvar_hbb_raw.json not found');
         console.error('   Run: npx tsx scripts/download_clinvar_hbb.ts first');
@@ -149,7 +151,7 @@ async function main() {
     processed.sort((a, b) => a.position - b.position);
 
     // Save processed data
-    const outputPath = path.join(__dirname, '..', 'data', 'clinvar_hbb_processed.json');
+    const outputPath = path.join(process.cwd(), 'data', 'clinvar_hbb_processed.json');
     fs.writeFileSync(outputPath, JSON.stringify({
         metadata: {
             source: rawData.metadata,
@@ -174,8 +176,21 @@ async function main() {
         console.log(`  ${cat.padEnd(20)} ${count}`);
     }
 
+    // Also export CSV for SpliceAI (needs: clinvar_id, chr, position, ref, alt)
+    const csvVariants = processed.filter(v => v.ref !== 'N' && v.alt !== 'N');
+    const csvHeader = 'clinvar_id,chr,position,ref,alt,category,hgvs_c,hgvs_p,clinical_significance';
+    const csvRows = csvVariants.map(v =>
+        [v.vcv_id, '11', v.position, v.ref, v.alt, v.category,
+         `"${v.hgvs_c.replace(/"/g, '""')}"`,
+         `"${v.hgvs_p.replace(/"/g, '""')}"`,
+         v.clinical_significance].join(',')
+    );
+    const csvPath = path.join(process.cwd(), 'data', 'hbb_real_variants.csv');
+    fs.writeFileSync(csvPath, [csvHeader, ...csvRows].join('\n'));
+    console.log(`\n📁 CSV for SpliceAI: ${csvPath} (${csvVariants.length} variants with ref/alt)`);
+
     console.log('\n═══════════════════════════════════════════');
-    console.log('Next step: npx tsx scripts/simulate_real_variants.ts');
+    console.log('Next step: python scripts/run_spliceai_hbb.py --variants data/hbb_real_variants.csv');
     console.log('═══════════════════════════════════════════\n');
 }
 

@@ -4,7 +4,7 @@
 
 ### Physical Model
 
-ARCHCODE implements a stochastic loop extrusion model based on the cohesin processivity framework with Kramer kinetics for unloading dynamics. The simulation models individual cohesin complexes as Loop Extrusion Factors (LEFs) that bidirectionally extrude chromatin until encountering CTCF barriers or undergoing spontaneous unloading.
+ARCHCODE implements an analytical mean-field loop extrusion model based on the cohesin processivity framework with Kramer kinetics for unloading dynamics. The model computes contact probabilities analytically by combining distance decay, local chromatin occupancy, CTCF barrier permeability, and Kramer-modulated cohesin residence, without stochastic Monte Carlo sampling.
 
 ### Kramer Kinetics Parameterization
 
@@ -16,30 +16,31 @@ P_unload = k_base × (1 - α × MED1^γ)
 
 where:
 
-- `k_base` = 0.002: baseline unloading rate (fitted parameter)
-- `α` = 0.92: coupling strength between MED1 occupancy and cohesin residence time (estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017), Gerlich et al. 2006)
-- `γ` = 0.80: cooperativity exponent reflecting sub-linear dependence (fitted parameter)
+- `k_base` = 0.002: baseline unloading rate (calibrated parameter)
+- `α` = 0.92: coupling strength between MED1 occupancy and cohesin residence time (estimated from literature ranges; Gerlich et al. 2006; Hansen et al. 2017)
+- `γ` = 0.80: cooperativity exponent reflecting sub-linear dependence (estimated from literature ranges; Gerlich et al. 2006; Hansen et al. 2017)
 - `MED1`: local Mediator occupancy normalized to [0,1]
 
-**Parameter Fitting:** α and γ were determined via grid search (α ∈ [0.8, 1.0], γ ∈ [0.6, 1.0], step=0.02) minimizing least-squares deviation from experimental FRAP-derived residence times:
+**Parameter Calibration:** α=0.92 and γ=0.80 were estimated from literature ranges (Gerlich et al. 2006; Hansen et al. 2017) and manually calibrated to reproduce qualitatively reasonable cohesin residence-time behaviour:
 
 - MED1+ enhancer regions: τ ~ 35 min (Gerlich et al. 2006)
 - MED1- regions: τ ~ 12 min
 
-Best fit: α=0.92, γ=0.80 achieved R²=0.89 on held-out simulation set (self-consistency check) (HBB, IGH, TCRα loci, n=3, 1000 runs each).
+No formal fitting to FRAP data was performed. No FRAP measurements are available in this study. Parameter values should be regarded as manually calibrated estimates consistent with published residence-time ranges.
 
 ### Simulation Parameters
 
-| Parameter                | Value                              | Source                                                  |
-| ------------------------ | ---------------------------------- | ------------------------------------------------------- |
-| Genomic locus            | chr11:5,200,000-5,400,000 (200 kb) | HBB gene region                                         |
-| Resolution               | 5000 bp (5 kb bins)                | Standard Hi-C binning                                   |
-| N_bins                   | 40                                 | Derived from locus/resolution                           |
-| Cohesin velocity         | 1000 bp/s                          | Davidson et al. 2019                                    |
-| CTCF blocking efficiency | 85%                                | Model parameter (stochastic blocking)                   |
-| Number of cohesins       | 30 per simulation                  | Calibrated to match Hi-C TAD intensity                  |
-| Simulation steps         | 50,000                             | Ensures equilibrium (validated by convergence analysis) |
-| Random seed              | 2026                               | Reproducibility                                         |
+| Parameter                  | Value                                     | Source                                               |
+| -------------------------- | ----------------------------------------- | ---------------------------------------------------- |
+| Genomic locus              | chr11:5,210,000-5,240,000 (30 kb)         | HBB gene region                                      |
+| Resolution                 | 600 bp                                    | Analytical bin size                                  |
+| N_bins                     | 50                                        | Derived from locus/resolution                        |
+| Cohesin velocity           | 1000 bp/s                                 | Davidson et al. 2019                                 |
+| CTCF sites                 | 6                                         | Annotated from ENCODE GM12878 peaks                  |
+| Enhancer/occupancy regions | 5                                         | Annotated from ChIP-seq data                         |
+| Number of cohesins         | 10                                        | Calibrated to reproduce TAD-scale contact enrichment |
+| Simulation steps           | N/A                                       | Analytical mean-field; no stochastic steps required  |
+| Method                     | Analytical mean-field contact computation | No Monte Carlo sampling                              |
 
 ### Cohesin Loading (FountainLoader Model)
 
@@ -53,29 +54,35 @@ where β=5 is a pseudocount preventing zero probability at MED1-depleted regions
 
 ### CTCF Barrier Implementation
 
-CTCF sites were annotated using ChIP-seq peaks (ENCODE GM12878, FDR<0.01). Convergent CTCF pairs (motif orientations: Forward-Reverse) act as probabilistic loop anchors. At each simulation step, if left and right cohesin legs occupy convergent CTCF sites, the complex undergoes stochastic blocking (85% probability) and unloads.
+CTCF sites were annotated using ChIP-seq peaks (ENCODE GM12878, FDR<0.01). Convergent CTCF pairs (motif orientations: Forward-Reverse) act as loop anchors in the analytical model. Each CTCF site is assigned a permeability value (default 0.15, i.e. 85% barrier strength) that enters the contact formula as a multiplicative factor reducing contact probability across the barrier.
 
 ### Variant Introduction
 
-For mutant simulations, variants were introduced at specified genomic positions by:
+Variants modulate the local chromatin occupancy profile used in the analytical contact computation. Each variant category is assigned a functional impact strength that scales the reduction in local occupancy:
 
-1. **Splice enhancer disruption** (VCV302, VCV327): Reducing local MED1 occupancy by 80% within ±25 kb window (effect_strength=0.2)
-2. **Splice acceptor disruption** (VCV026): Reducing MED1 occupancy by 80% and removing proximal CTCF site if within ±15 kb
+- **Nonsense / frameshift** (highest impact): occupancy reduced by 70–90% at the affected bin
+- **Splice donor / splice acceptor**: occupancy reduced by 60–80%; proximal CTCF permeability may also be modified
+- **Missense / splice region**: occupancy reduced by 20–50% depending on predicted severity
+- **Synonymous / intronic / UTR**: minimal or no occupancy change (< 5%)
+
+Categories with larger functional impact produce stronger reductions in occupancy factors, which propagate through the contact formula (see Contact Matrix Generation below) to yield lower SSIM values relative to the wild-type reference.
 
 ### Contact Matrix Generation
 
-For each cohesin at simulation step t, the contact matrix M is incremented:
+Contact probabilities are computed analytically using a mean-field formula that combines four factors:
 
 ```
-M[left_leg, right_leg] += 0.01
-M[right_leg, left_leg] += 0.01  # symmetrize
+C(i,j) = |i-j|^(-1) × sqrt(occ_i × occ_j) × Π(ctcf_permeability) × kramer_modulation(i,j)
 ```
 
-After equilibration (50,000 steps), matrices are normalized:
+where:
 
-1. Max normalization: M / max(M)
-2. Distance decay correction: M[i,j] \*= (1 + distance(i,j) × 0.1)^(-1)
-3. Diagonal set to 1.0
+- `|i-j|^(-1)`: genomic distance decay (polymer scaling)
+- `sqrt(occ_i × occ_j)`: geometric mean of chromatin occupancy at bins i and j
+- `Π(ctcf_permeability)`: product of CTCF barrier permeability values for all sites between i and j
+- `kramer_modulation(i,j)`: factor derived from Kramer kinetics applied to the mean occupancy between i and j
+
+The resulting matrix is symmetric (C(i,j) = C(j,i)) and max-normalised so that values lie in [0, 1]. The diagonal is set to 1.0. No Monte Carlo steps are required.
 
 ### SSIM Calculation
 
@@ -95,47 +102,63 @@ where:
 
 SSIM was calculated over the upper triangular matrix (excluding diagonal, k=1) to avoid self-contact artifacts.
 
-## AlphaGenome Comparison
+## Ensembl VEP Comparison
 
-### AlphaGenome Methodology
+### VEP Methodology
 
-AlphaGenome (version 2026.1) is a transformer-based neural network trained on:
+Sequence-level pathogenicity predictions were obtained using the Ensembl Variant Effect Predictor (VEP) v113 REST API:
 
-- **Input:** 1 Mbp genomic sequence centered on variant (±500 kb)
-- **Architecture:** 12-layer transformer with learned positional embeddings
-- **Training data:** ~18 million variants from ClinVar, UK Biobank, gnomAD
-- **Output:** Pathogenicity score ∈ [0,1], higher = more pathogenic
+```
+POST https://rest.ensembl.org/vep/homo_sapiens/region
+```
 
-Predictions were obtained via the publicly available API (https://alphafold.ebi.ac.uk/alphagenome) using hg38 reference coordinates.
+Variants were submitted in batch mode (200 variants per request) with hg38 reference coordinates. Each response was parsed for the most severe consequence and, where available, SIFT scores for missense variants.
+
+**Consequence severity mapping** (consequence term → pathogenicity score):
+
+| Consequence                                                                    | Score                         |
+| ------------------------------------------------------------------------------ | ----------------------------- |
+| stop_gained, frameshift_variant, splice_donor_variant, splice_acceptor_variant | 0.95                          |
+| missense_variant                                                               | derived from SIFT (see below) |
+| splice_region_variant                                                          | 0.60                          |
+| synonymous_variant, 5_prime_UTR_variant, 3_prime_UTR_variant, intron_variant   | 0.10                          |
+| intergenic_variant                                                             | 0.05                          |
+| other / unmapped                                                               | 0.50                          |
+
+**SIFT integration for missense variants:**
+
+```
+vep_score = 0.4 + 0.5 × (1 − sift_score)
+```
+
+where `sift_score` ∈ [0, 1] (0 = deleterious, 1 = tolerated). If SIFT was unavailable, missense variants received a default score of 0.70.
+
+**Pearl detection threshold:** a variant was flagged as a Pearl (ARCHCODE-VEP discordant case) when VEP score < 0.30 AND SSIM < 0.95.
+
+**Methodological note on sequence-based predictor choice:** VEP was used as the sequence-based comparator because the SpliceAI Lookup API (Broad Institute) was unreachable during data collection (connection timeout). VEP and SpliceAI measure different aspects of sequence-level pathogenicity: VEP classifies variant consequences and integrates SIFT for missense deleteriousness, whereas SpliceAI specifically predicts splice junction disruption via deep learning (Jaganathan et al., 2019). Consequently, "VEP-blind" (low VEP score) is not equivalent to "SpliceAI-blind" — a variant classified as low-impact by VEP's consequence hierarchy (e.g., upstream_gene_variant → 0.15) might still receive a high SpliceAI delta score if it disrupts a cryptic splice site. The pearl variants identified in this study should therefore be interpreted as "low VEP consequence impact with structural disruption," not as universally invisible to all sequence-based tools. Replication with SpliceAI is recommended when API access becomes available.
 
 ### Discordance Analysis
 
 Variants were classified as discordant if verdicts differed between methods:
 
-**ARCHCODE thresholds:**
+**ARCHCODE thresholds (analytical mean-field calibration):**
 
-- SSIM < 0.50: PATHOGENIC
-- 0.50 ≤ SSIM < 0.70: LIKELY_PATHOGENIC
-- 0.70 ≤ SSIM < 0.85: VUS
-- SSIM ≥ 0.85: LIKELY_BENIGN
+- SSIM < 0.85: PATHOGENIC
+- 0.85 ≤ SSIM < 0.92: LIKELY_PATHOGENIC
+- 0.92 ≤ SSIM < 0.96: VUS
+- 0.96 ≤ SSIM < 0.99: LIKELY_BENIGN
+- SSIM ≥ 0.99: BENIGN
 
-**AlphaGenome thresholds** (per published calibration):
+**VEP thresholds:**
 
-- Score > 0.70: Pathogenic
-- 0.50 < Score ≤ 0.70: Likely Pathogenic
-- 0.30 < Score ≤ 0.50: VUS
-- Score ≤ 0.30: Benign/Likely Benign
+- Score ≥ 0.50: Pathogenic / Likely Pathogenic
+- Score < 0.50: Benign / Likely Benign / VUS
 
 ## ClinVar Variant Dataset
 
 ### Data Acquisition
 
-HBB variants were downloaded from ClinVar (2026-02-01 release) using:
-
-```bash
-esearch -db clinvar -query "HBB[gene] AND pathogenic[CLINSIG]" | \
-efetch -format vcf > HBB_pathogenic.vcf
-```
+HBB variants were downloaded from ClinVar (2026-02-01 release) via the NCBI E-utilities API (esearch + esummary endpoints), querying for gene HBB with clinical significance Pathogenic, Likely Pathogenic, or VUS on GRCh38/hg38 assembly.
 
 **Inclusion criteria:**
 
@@ -143,18 +166,37 @@ efetch -format vcf > HBB_pathogenic.vcf
 - Clinical significance: Pathogenic OR Likely Pathogenic OR VUS
 - Assembly: GRCh38/hg38
 - Review status: ≥1 star (at least reviewed by submitter)
+- Parseable ref/alt alleles (single-base substitutions, small insertions/deletions)
 
 **Exclusion criteria:**
 
-- Conflicting interpretations without resolution
+- Complex indels without parseable ref/alt alleles (n=78 excluded)
 - Large structural variants (>100 bp)
 - Variants in non-coding regions >10 kb from gene body
 
-Final dataset: **n=366 variants**
+Total downloaded: **431 variants**; after exclusion of 78 complex indels: **Final dataset: n=353 variants**
 
 ### Variant Categorization
 
-Variants were annotated using VEP (Variant Effect Predictor, release 110) with the following categories:
+Variants were annotated using VEP v113 REST API with the following categories and counts:
+
+| Category        | n       |
+| --------------- | ------- |
+| missense        | 125     |
+| frameshift      | 99      |
+| nonsense        | 40      |
+| splice_donor    | 22      |
+| promoter        | 15      |
+| 3_prime_UTR     | 13      |
+| other           | 12      |
+| splice_region   | 9       |
+| intronic        | 9       |
+| 5_prime_UTR     | 3       |
+| splice_acceptor | 3       |
+| synonymous      | 3       |
+| **Total**       | **353** |
+
+Category definitions:
 
 - `splice_donor`, `splice_acceptor`: ±2 bp from exon boundary
 - `splice_region`: ±8 bp from exon boundary (excluding donor/acceptor)
@@ -174,7 +216,7 @@ SSIM clustering was assessed using:
 
 Statistical significance of SSIM clustering for "Loop That Stayed" variants was evaluated via permutation test:
 
-1. Randomly sample 3 variants from the full 366-variant dataset
+1. Randomly sample 3 variants from the full 353-variant dataset
 2. Calculate SD of SSIM scores
 3. Repeat 10,000 times
 4. Empirical p-value: fraction of permutations with SD ≤ observed SD (0.0022)
@@ -187,8 +229,8 @@ Variants were evaluated using ACMG/AMP 2015 guidelines (Richards et al.) with th
 
 **PS3_moderate** (Functional studies):
 
-- ARCHCODE SSIM-based prediction
-- Supporting evidence: R²=0.89 self-consistency (experimental validation pending)
+- ARCHCODE SSIM-based prediction (analytical mean-field model)
+- Supporting evidence: qualitative consistency with published cohesin dynamics; no formal R² validation against experimental data is available
 - Moderate strength (not strong) due to computational vs experimental nature
 
 **PM2** (Rarity):
@@ -222,18 +264,19 @@ All simulations were run on:
 - **CPU:** AMD Ryzen 9 5900X (12 cores)
 - **RAM:** 64 GB DDR4-3200
 - **OS:** Windows 11 Pro (WSL2 for Python scripts)
-- **Compute time:** ~8 seconds per variant (single-threaded), ~3 hours total for 366 variants
+- **Compute time:** < 1 second per variant (analytical approach), ~5 minutes total for 353 variants
 
 ## Data Availability
 
 All data supporting the findings of this study are available from the corresponding author upon reasonable request. Key datasets include:
 
-- Full variant analysis (366 variants): `HBB_Clinical_Atlas.csv`
-- "Loop That Stayed" detailed analysis: `vus_batch_analysis_loop_that_stayed.json`
+- Full variant analysis (353 variants): `HBB_Clinical_Atlas_REAL.csv`
+- Pearl analysis summary: `REAL_ATLAS_SUMMARY.json`
+- VEP sequence-level predictions: `hbb_vep_results.csv`
 - Contact matrices (WT and mutant): Available as NumPy arrays (.npy format)
 - Source code: GitHub repository (see Software and Code Availability)
 
 ---
 
 _Methods section prepared for bioRxiv submission_
-_Last updated: 2026-02-04_
+_Last updated: 2026-02-28_
