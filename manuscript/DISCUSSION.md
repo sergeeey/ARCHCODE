@@ -1,5 +1,11 @@
 # Discussion
 
+> **NOTE (2026-02-28):** This standalone Discussion file is from an earlier manuscript phase
+> and uses outdated SSIM thresholds (0.50–0.60). The current Discussion section is in
+> `FULL_MANUSCRIPT.md` (lines 807–951), which uses analytically calibrated thresholds
+> (PATHOGENIC < 0.85, LP 0.85–0.92, VUS 0.92–0.96, LB 0.96–0.99, B ≥ 0.99).
+> Pearl SSIM range: 0.89–0.95. **Use FULL_MANUSCRIPT.md as the authoritative version.**
+
 ## Revisiting the Paradox: When Chromatin Stability Becomes a Molecular Cage
 
 We began this study with a counterintuitive hypothesis: chromatin loop preservation, traditionally

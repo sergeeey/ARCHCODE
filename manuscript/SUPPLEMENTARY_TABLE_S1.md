@@ -77,10 +77,9 @@ flagged for clinical reclassification review:
 | **VCV002664746** | 5226613  | missense        | 0.949 | 0.20      | YES   |
 | **VCV000811500** | 5226613  | missense        | 0.949 | 0.20      | YES   |
 
-**Pearl variant definition:** ARCHCODE SSIM in VUS/LIKELY_BENIGN range (0.88-0.96)
-combined with VEP score <0.5 (predicted non-pathogenic), where ClinVar clinical
-significance is Pathogenic or Likely Pathogenic. These represent cases where
-chromatin topology provides orthogonal evidence to sequence-based classifiers.
+**Pearl variant definition:** VEP score < 0.30 (VEP classifies as low-impact) AND
+ARCHCODE SSIM < 0.95 (structural disruption detected). These represent cases where
+sequence-based prediction is blind but the structural model detects disruption.
 
 **Clinical relevance:** Pearl variants are candidates for ACMG criteria upgrade under
 PS3_moderate (functional evidence of structural disruption from ARCHCODE simulation)
@@ -110,7 +109,7 @@ GitHub repository (https://github.com/sergeeey/ARCHCODE/tree/main/results)
 
 **VEP prediction:**
 
-- Ensembl Variant Effect Predictor v112 (https://www.ensembl.org/vep)
+- Ensembl Variant Effect Predictor v113 (https://www.ensembl.org/vep)
 - SIFT and PolyPhen-2 scores combined as composite pathogenicity metric
 - Annotation genome assembly: GRCh38
 - Variant consequence classification per Sequence Ontology terms
@@ -119,7 +118,7 @@ GitHub repository (https://github.com/sergeeey/ARCHCODE/tree/main/results)
 
 - ACMG/AMP 2015 guidelines for clinical interpretation
 - Discordance defined as ARCHCODE structural verdict vs VEP sequence verdict disagreement
-- Pearl variant flagging: SSIM 0.88-0.96 AND VEP score <0.5 AND ClinVar = Pathogenic/LP
+- Pearl variant flagging: SSIM < 0.95 AND VEP score < 0.30
 
 ---
 

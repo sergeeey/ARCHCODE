@@ -3,15 +3,17 @@
 ## ClinVar HBB variant dataset
 
 We downloaded 431 HBB variant records from ClinVar via NCBI E-utilities (esearch + esummary
-API, accessed 2026-02-xx). After filtering for records that contained both reference and
+API, accessed 2026-02-28). After filtering for records that contained both reference and
 alternate allele information, 353 variants were retained for analysis (78 records were
 excluded due to missing allele data in the esummary response). The retained set comprised
 12 molecular consequence categories: nonsense (40), frameshift (99), missense (125),
 splice_donor (22), splice_acceptor (3), splice_region (9), promoter (15), 5_prime_UTR (3),
 3_prime_UTR (13), intronic (9), synonymous (3), and other (12). ClinVar clinical
-significance labels in the retained set included Pathogenic (299), Likely pathogenic (55),
-VUS (34), and other designations (Likely benign, Benign, conflicting). All downstream
-analyses used clinical significance as recorded in ClinVar without modification.
+significance labels in the retained set included Pathogenic (234), Pathogenic/Likely
+pathogenic (44), Likely pathogenic (46), Pathogenic with other interpretations (28), and
+Pathogenic/Likely pathogenic with other interpretations (1). No VUS remained in the final
+dataset after filtering. All downstream analyses used clinical significance as recorded in
+ClinVar without modification.
 
 ---
 
@@ -46,7 +48,7 @@ The complete rank order across all 12 categories is:
 
 synonymous (0.9989) > intronic (0.9957) > 3'UTR (0.9942) > 5'UTR (0.9801) >
 other (0.9676) > splice_region (0.9641) > missense (0.9526) > promoter (0.9285) >
-splice_acceptor (0.9019) > splice_donor (0.9087) > frameshift (0.8919) > nonsense (0.8753)
+splice_donor (0.9087) > splice_acceptor (0.9019) > frameshift (0.8919) > nonsense (0.8753)
 
 This ordering is biologically expected: loss-of-function variant classes (nonsense,
 frameshift) produce the most severe chromatin disruption in the model, while conservative
@@ -77,7 +79,7 @@ Supplementary Table S1).
 ## Concordance and discordance with VEP sequence-based predictions
 
 Across all 353 variants, ARCHCODE classified 161 (45.6%) as pathogenic and the sequence-
-based VEP pipeline classified 289 (81.9%) as pathogenic (mean VEP score 0.754 across the
+based VEP pipeline classified 287 (81.3%) as pathogenic (mean VEP score 0.754 across the
 full dataset). Overall discordance — defined as variants where ARCHCODE and VEP verdicts
 differ — was observed in 130 variants (36.8% of the dataset). The discordance was strongly
 asymmetric: 128 variants were called pathogenic by VEP but not by ARCHCODE (VEP-only), and
@@ -120,7 +122,7 @@ The 20 pearl variants fall into three groups by molecular context:
 
 **Group 1 — Promoter variants (15 of 20 pearls).** Fifteen variants map to positions
 5,227,099–5,227,172 on chr11, within the HBB proximal promoter region (SSIM range
-0.927–0.930; VEP score 0.15–0.20 for all). VEP annotates these as
+0.927–0.930; VEP score 0.20 for all). VEP annotates these as
 _upstream_gene_variant_, a consequence term associated with low predicted impact in
 standard VEP weighting schemes. However, the ARCHCODE simulation places this region within
 a simulated enhancer element (LCR–HBB contact domain), and substitutions here reduce
@@ -156,10 +158,10 @@ pearl variants are provided in Supplementary Table S1.
 
 | Group                     | n      | Positions (chr11)     | Mean SSIM | Mean VEP | Molecular context                           |
 | ------------------------- | ------ | --------------------- | --------- | -------- | ------------------------------------------- |
-| Promoter                  | 15     | 5,227,099–5,227,172   | 0.928     | 0.18     | upstream_gene_variant (HBB promoter region) |
+| Promoter                  | 15     | 5,227,099–5,227,172   | 0.928     | 0.20     | upstream_gene_variant (HBB promoter region) |
 | Missense at 5226613       | 3      | 5,226,613             | 0.949     | 0.20     | coding_sequence_variant (complex indel)     |
 | LoF (frameshift + splice) | 2      | 5,226,796 / 5,226,971 | 0.896     | 0.18     | frameshift / splice_acceptor                |
-| **Total**                 | **20** | —                     | **0.927** | **0.18** | —                                           |
+| **Total**                 | **20** | —                     | **0.928** | **0.20** | —                                           |
 
 ---
 

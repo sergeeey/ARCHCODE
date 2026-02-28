@@ -22,7 +22,7 @@ et al., 2006; Hansen et al., 2017; Sabaté et al., 2024). For each variant, ARCH
 Structural Similarity Index (SSIM) comparing wild-type and mutant predicted contact maps.
 Pre-defined thresholds classified variants as: PATHOGENIC (SSIM < 0.85), LIKELY_PATHOGENIC
 (0.85–0.92), VUS (0.92–0.96), LIKELY_BENIGN (0.96–0.99), BENIGN (≥ 0.99). Discordance
-analysis identified "pearl" variants: VEP-blind (SIFT score < 0.30) yet structurally disruptive
+analysis identified "pearl" variants: VEP-blind (VEP score < 0.30) yet structurally disruptive
 (SSIM < 0.95).
 
 **Results:** Of 353 HBB variants analyzed, ARCHCODE classified 161 (45.6%) as pathogenic
@@ -35,7 +35,7 @@ while sequence-neutral classes were correctly assigned as benign (synonymous: me
 intermediate structural preservation (mean SSIM = 0.9526, 0/125 pathogenic by structural
 threshold alone).
 
-Discordance analysis identified 20 "pearl" variants where VEP provided no signal (SIFT < 0.30)
+Discordance analysis identified 20 "pearl" variants where VEP provided no signal (VEP < 0.30)
 but ARCHCODE detected structural disruption (SSIM < 0.95): 15 promoter variants (mean VEP = 0.20,
 mean SSIM ≈ 0.928), 3 missense variants (mean VEP = 0.20, mean SSIM = 0.949), 1 frameshift
 (VEP = 0.15, SSIM = 0.891), and 1 splice_acceptor variant (VEP = 0.20, SSIM = 0.900). In total,
@@ -93,7 +93,7 @@ variant interpretation pipelines.
 
 1. **353 real ClinVar HBB variants** analyzed using ARCHCODE structural simulation + Ensembl VEP v113
 2. **45.6% (161/353) structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
-3. **20 "pearl" variants** identified: VEP-blind (SIFT < 0.30), ARCHCODE-detected (SSIM < 0.95)
+3. **20 "pearl" variants** identified: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
 4. **15 promoter-region pearls** highlight regulatory structural disruption invisible to sequence analysis
 5. **Hi-C validation r = 0.16** — honest negative: simulation requires experimental calibration before clinical deployment
 
