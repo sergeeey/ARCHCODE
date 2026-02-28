@@ -47,10 +47,12 @@ mean SSIM ≈ 0.928), 3 missense variants (mean VEP = 0.20, mean SSIM = 0.949), 
 130 variants (36.8%) showed discordance between ARCHCODE and VEP classifications.
 
 ROC analysis on an expanded cohort including 750 Benign/Likely Benign HBB variants (total
-n=1,103) yielded AUC = 1.000 with zero false positives among benign variants across all
-SSIM thresholds. We note that this perfect discrimination reflects category-dependent
-occupancy scaling, not independent sequence-based prediction; the model's contribution lies
-in position-dependent structural discrimination within categories.
+n=1,103), with all variants processed through a single unified TypeScript simulation engine,
+yielded AUC = 0.977 (Pathogenic mean SSIM = 0.927; Benign mean SSIM = 0.996). Youden
+optimal threshold (SSIM < 0.994) achieved sensitivity = 0.966 and specificity = 0.988.
+The high AUC reflects category-distribution differences between Pathogenic and Benign
+cohorts, not independent sequence-based prediction; the model's contribution lies in
+position-dependent structural discrimination within categories.
 
 Attempted Hi-C correlation validation yielded weak results (r = 0.16, not statistically
 significant; n = 12 loci), suggesting that the current simulation parameters do not yet
@@ -75,7 +77,7 @@ complementary, hypothesis-generating layer in variant interpretation workflows.
 - VEP used instead of SpliceAI (API unreachable during study period)
 - Pearl variants require experimental validation before clinical use
 - No experimental RNA or protein data confirming predicted effects
-- AUC = 1.000 reflects category-dependent occupancy scaling, not independent prediction
+- AUC = 0.977 reflects category-distribution differences, not independent prediction
 
 **Keywords:** β-thalassemia, HBB, chromatin loops, loop extrusion, cohesin, SSIM, structural
 pathogenicity predictor, VEP, regulatory variants, promoter variants, pearl variants,
@@ -106,7 +108,7 @@ variant interpretation pipelines.
 1. **1,103 real ClinVar HBB variants** (353 Pathogenic + 750 Benign) analyzed using ARCHCODE + Ensembl VEP v113
 2. **45.6% (161/353) structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
 3. **20 "pearl" variants** identified: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
-4. **ROC AUC = 1.000** with zero false positives; reflects category-dependent occupancy scaling
+4. **ROC AUC = 0.977** (unified pipeline); reflects category-distribution differences, not independent prediction
 5. **15 promoter-region pearls** highlight regulatory structural disruption invisible to sequence analysis
 6. **Hi-C validation r = 0.16** — honest negative: simulation requires experimental calibration before clinical deployment
 
@@ -114,17 +116,17 @@ variant interpretation pipelines.
 
 ## Data Transparency Declaration
 
-| Data source                    | Status              | Notes                                   |
-| ------------------------------ | ------------------- | --------------------------------------- |
-| ClinVar HBB pathogenic (n=353) | REAL                | NCBI E-utilities API, April 2026        |
-| ClinVar HBB benign (n=750)     | REAL                | NCBI E-utilities API, April 2026        |
-| Ensembl VEP v113 SIFT scores   | REAL                | Standard Ensembl REST API               |
-| ARCHCODE SSIM scores           | COMPUTATIONAL       | Analytical simulation; not experimental |
-| ROC analysis (n=1,103)         | COMPUTATIONAL       | AUC=1.000; reflects occupancy scaling   |
-| Hi-C correlation               | REAL (negative)     | r=0.16, p=ns; 12 loci                   |
-| SpliceAI predictions           | NOT AVAILABLE       | API unreachable; replaced by VEP        |
-| AlphaGenome predictions        | NOT USED            | Synthetic mock data; excluded entirely  |
-| Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; not fitted to data   |
+| Data source                    | Status              | Notes                                                     |
+| ------------------------------ | ------------------- | --------------------------------------------------------- |
+| ClinVar HBB pathogenic (n=353) | REAL                | NCBI E-utilities API, April 2026                          |
+| ClinVar HBB benign (n=750)     | REAL                | NCBI E-utilities API, April 2026                          |
+| Ensembl VEP v113 SIFT scores   | REAL                | Standard Ensembl REST API                                 |
+| ARCHCODE SSIM scores           | COMPUTATIONAL       | Analytical simulation; not experimental                   |
+| ROC analysis (n=1,103)         | COMPUTATIONAL       | AUC=0.977; unified pipeline, category-distribution effect |
+| Hi-C correlation               | REAL (negative)     | r=0.16, p=ns; 12 loci                                     |
+| SpliceAI predictions           | NOT AVAILABLE       | API unreachable; replaced by VEP                          |
+| AlphaGenome predictions        | NOT USED            | Synthetic mock data; excluded entirely                    |
+| Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; not fitted to data                     |
 
 ---
 
@@ -576,8 +578,12 @@ evidence:
 
 To assess discriminative performance, the pathogenic dataset (353 variants) was supplemented
 with 750 Benign/Likely Benign HBB variants from ClinVar (queried via NCBI E-utilities API
-with significance filter "benign" OR "likely benign"). Benign variants were processed
-through the same VEP and ARCHCODE pipelines. The combined cohort (n=1,103) was used for
+with significance filter "benign" OR "likely benign"). **All 1,103 variants were processed
+through a single unified TypeScript simulation engine** (`generate-unified-atlas.ts`),
+ensuring that `getEffectStrength()` receives only the variant's functional category and
+never the ClinVar classification label. This eliminates a pipeline discrepancy present in
+the initial analysis where pathogenic and benign variants were processed through different
+engines with incompatible perturbation scales. The combined cohort (n=1,103) was used for
 ROC analysis with ClinVar classification as ground truth (Pathogenic/LP = positive,
 Benign/LB = negative) and (1 − SSIM) as the continuous predictor. AUC, sensitivity,
 specificity, and Youden's J index were computed using scikit-learn v1.6. Optimal SSIM
@@ -596,19 +602,20 @@ All simulations were run on:
 - **CPU:** AMD Ryzen 9 5900X (12 cores)
 - **RAM:** 64 GB DDR4-3200
 - **OS:** Windows 11 Pro (WSL2 for Python scripts)
-- **Compute time:** < 1 second per variant (analytical approach), ~5 minutes total for 353
-  variants
+- **Compute time:** < 1 second per variant (analytical approach), ~50 seconds total for 1,103
+  variants (unified pipeline)
 
 ## Data Availability
 
 All data supporting the findings of this study are available from the corresponding author
 upon reasonable request. Key datasets include:
 
-- Full variant analysis (353 pathogenic + 750 benign = 1,103 variants): `HBB_Combined_Atlas.csv`
+- Unified variant analysis (353 pathogenic + 750 benign = 1,103 variants): `HBB_Unified_Atlas.csv`
+- Legacy combined analysis (v1.0, dual-pipeline): `HBB_Combined_Atlas.csv`
 - Pathogenic-only analysis (353 variants): `HBB_Clinical_Atlas_REAL.csv`
 - Pearl analysis summary: `REAL_ATLAS_SUMMARY.json`
-- VEP sequence-level predictions: `hbb_vep_results.csv`
-- Contact matrices (WT and mutant): Available as NumPy arrays (.npy format)
+- VEP sequence-level predictions: `hbb_vep_results.csv`, `hbb_benign_vep_results.csv`
+- ROC analysis (unified): `roc_unified.json`
 - Source code: GitHub repository (see Software and Code Availability)
 
 ---
@@ -826,31 +833,45 @@ blind spots.
 To evaluate ARCHCODE's discriminative performance, we expanded the dataset to include 750
 Benign/Likely Benign HBB variants from ClinVar (predominantly intronic, n=658; synonymous,
 n=83), yielding a combined cohort of 1,103 variants (353 Pathogenic/LP + 750 Benign/LB).
-Using ClinVar classification as ground truth and (1 − SSIM) as the predictor, ROC analysis
-yielded AUC = 1.000 with perfect separation between classes (Pathogenic mean SSIM = 0.927;
-Benign mean SSIM = 1.000; range 0.9996–1.0000).
+**All 1,103 variants were processed through a single unified TypeScript simulation engine**,
+ensuring label-blind physics: `getEffectStrength()` receives only the functional category,
+never the ClinVar classification. Using ClinVar classification as ground truth and
+(1 − SSIM) as the predictor, ROC analysis yielded AUC = 0.977 (Pathogenic mean SSIM =
+0.927; Benign mean SSIM = 0.996; range 0.968–0.999).
 
 **Threshold evaluation by Youden's J index:**
 
 | SSIM threshold                   | Sensitivity | Specificity | Youden J |
 | -------------------------------- | ----------- | ----------- | -------- |
-| < 0.99 (Youden optimum)          | 0.935       | 1.000       | 0.935    |
+| < 0.994 (Youden optimum)         | 0.966       | 0.988       | 0.954    |
+| < 0.99                           | 0.935       | 0.989       | 0.924    |
 | < 0.96                           | 0.875       | 1.000       | 0.875    |
 | < 0.95 (current pearl threshold) | 0.620       | 1.000       | 0.620    |
 | < 0.92 (LIKELY_PATHOGENIC)       | 0.456       | 1.000       | 0.456    |
-| < 0.85 (PATHOGENIC)              | 0.008       | 1.000       | 0.008    |
+| < 0.85 (PATHOGENIC)              | 0.009       | 1.000       | 0.009    |
 
-Specificity = 1.000 across all thresholds: no Benign/LB variant received SSIM below 0.999.
-This confirms that ARCHCODE does not generate false positives on confirmed benign variants.
+At stringent thresholds (SSIM < 0.96 and below), specificity remains 1.000. At the Youden
+optimum (SSIM < 0.994), 8 Benign variants fall below the threshold (all from the "other"
+and "5_prime_UTR" categories), yielding specificity = 0.988.
 
-**Critical caveat on AUC interpretation:** The perfect AUC reflects the model's category-
-dependent occupancy scaling (see Methods: Variant Introduction). Benign ClinVar variants
-are predominantly intronic and synonymous, which receive minimal occupancy perturbation
-(< 5%) by design. Pathogenic variants include nonsense, frameshift, and splice categories,
-which receive 60–90% perturbation. The AUC therefore validates that the occupancy scaling
-correctly separates benign from pathogenic _categories_, not that ARCHCODE independently
-predicts pathogenicity from sequence alone. The model's scientific contribution lies in
-position-dependent structural discrimination within categories (e.g., which promoter
+**Note on pipeline unification:** An initial analysis using separate processing pipelines
+for pathogenic (TypeScript) and benign (Python) variants yielded AUC = 1.000 due to a
+10-fold difference in perturbation scaling between engines (e.g., intronic: 20% vs 2%
+occupancy reduction). After unifying all variants through a single engine, benign intronic
+SSIM decreased from 1.000 to 0.996 — matching pathogenic intronic SSIM (0.996) — and AUC
+dropped to 0.977. This confirms that the previous perfect AUC was a pipeline artifact.
+The current AUC of 0.977 reflects the genuine category-distribution difference between
+Pathogenic (enriched in nonsense/frameshift/splice) and Benign (enriched in intronic/
+synonymous) cohorts, not independent variant-level prediction.
+
+**Critical caveat on AUC interpretation:** The AUC reflects category-distribution
+differences between the Pathogenic and Benign cohorts (see Methods: Variant Introduction).
+Benign ClinVar variants are predominantly intronic and synonymous, which receive minimal
+occupancy perturbation by design. Pathogenic variants include nonsense, frameshift, and
+splice categories, which receive stronger perturbation. Within any single category,
+Pathogenic and Benign variants receive identical treatment — confirmed by within-category
+SSIM differences < 0.001 (e.g., intronic: Δ = 0.0002). The model's scientific contribution
+lies in position-dependent structural discrimination within categories (e.g., which promoter
 variants disrupt enhancer–promoter contacts), not in category-level classification.
 
 **Quadrant analysis** (SSIM threshold 0.95 / VEP threshold 0.30):
@@ -863,8 +884,8 @@ variants disrupt enhancer–promoter contacts), not in category-level classifica
 | Q4       | Neither (SSIM ≥ 0.95, VEP < 0.30)                | 39         | 709    | 748   |
 
 Critically, Q2 (ARCHCODE-only detections / pearl variants) contains 20 Pathogenic variants
-and 0 Benign variants. This demonstrates that pearl identification has zero false-positive
-rate among confirmed benign variants in the current dataset.
+and 0 Benign variants under the unified pipeline. This demonstrates that pearl identification
+has zero false-positive rate among confirmed benign variants in the current dataset.
 
 ---
 
@@ -878,9 +899,10 @@ outside ARCHCODE's scope; (3) 20 pearl variants with VEP score < 0.30 and SSIM <
 suggest candidate cases for structural-level re-evaluation, with the strongest biological
 signal in promoter-region variants where the LCR–HBB enhancer–promoter contact model
 detects disruption not captured by VEP consequence annotation; (4) ROC analysis on a
-combined cohort of 1,103 variants (353 Pathogenic + 750 Benign) yielded AUC = 1.000 with
-zero false positives among benign variants, though this reflects category-dependent
-occupancy scaling rather than independent sequence-based prediction; (5) ARCHCODE shows
+combined cohort of 1,103 variants (353 Pathogenic + 750 Benign), processed through a unified
+pipeline, yielded AUC = 0.977 with near-zero false positives among benign variants at
+stringent thresholds, reflecting category-distribution differences rather than independent
+sequence-based prediction; (5) ARCHCODE shows
 zero sensitivity to missense variants, its most important limitation for clinical variant
 classification.
 
@@ -1230,15 +1252,19 @@ without experimental confirmation.
 
 ## Data Availability
 
-**Combined dataset:** `HBB_Combined_Atlas.csv` (1,103 rows: 353 Pathogenic + 750 Benign)
+**Unified dataset (v2.0):** `HBB_Unified_Atlas.csv` (1,103 rows: 353 Pathogenic + 750 Benign, single pipeline)
+
+**Legacy combined dataset (v1.0):** `HBB_Combined_Atlas.csv` (1,103 rows, dual-pipeline; preserved for reproducibility)
 
 **Pathogenic-only dataset:** `HBB_Clinical_Atlas_REAL.csv` (353 rows × 10 columns)
 
 **Pearl analysis summary:** `REAL_ATLAS_SUMMARY.json`
 
-**VEP predictions:** `hbb_vep_results.csv`
+**VEP predictions:** `hbb_vep_results.csv` (pathogenic), `hbb_benign_vep_results.csv` (benign)
 
-**ROC analysis:** `roc_analysis.json`
+**ROC analysis (unified):** `roc_unified.json`
+
+**ROC analysis (v1.0 legacy):** `roc_analysis.json`
 
 **Format:** Comma-separated values (CSV), UTF-8 encoding
 
