@@ -13,7 +13,7 @@ and mutant 3D chromatin contact maps via SSIM.
 ```bash
 npm install
 npm run build
-npx tsx scripts/generate-real-atlas.ts   # 353 variants, 20 pearls
+npx tsx scripts/generate-unified-atlas.ts  # 1,103 variants (unified pipeline)
 ```
 
 ## Key Results
@@ -22,9 +22,10 @@ Analysis of **1,103 real ClinVar HBB variants** (353 Pathogenic/LP + 750 Benign/
 
 - **161/353 (45.6%)** classified as structurally pathogenic by ARCHCODE
 - **20 "pearl" variants** discovered (VEP < 0.30, SSIM < 0.95): 15 promoter, 3 missense, 1 splice_acceptor, 1 frameshift
-- **ROC AUC = 1.000** with zero false positives among 750 benign variants (reflects category-dependent occupancy scaling)
+- **ROC AUC = 0.977** (unified pipeline, all 1,103 through one TS engine); Youden optimum SSIM < 0.994 (Sens=0.966, Spec=0.988)
 - **130/353 (36.8%)** discordant between ARCHCODE and VEP — complementary, not competing tools
 - Loss-of-function classes: 100% pathogenic (nonsense, frameshift); synonymous: 0% — biologically expected
+- Within-category SSIM is **label-blind**: intronic Δ = 0.0002 between Pathogenic and Benign
 
 ### Figure 2: ARCHCODE SSIM vs VEP Score
 
@@ -60,15 +61,19 @@ _Sorted by SSIM ascending (strongest structural disruption first). Full list: [S
 │   ├── TABLE_2_PEARLS_TOP5.md     # Top 5 pearl variants
 │   └── TABLE_S1_PEARLS.md        # All 20 pearl variants
 ├── results/
-│   ├── HBB_Clinical_Atlas_REAL.csv # 353 real variants (primary dataset)
-│   ├── REAL_ATLAS_SUMMARY.json    # Summary statistics
+│   ├── HBB_Unified_Atlas.csv      # 1,103 variants (unified pipeline, v2.0)
+│   ├── HBB_Clinical_Atlas_REAL.csv # 353 pathogenic variants (v1.0)
+│   ├── UNIFIED_ATLAS_SUMMARY.json # Summary statistics (v2.0)
+│   ├── roc_unified.json           # ROC analysis (AUC=0.977)
 │   └── figures/                   # Publication figures
 ├── scripts/
-│   ├── generate-real-atlas.ts     # Atlas generator (analytical engine)
+│   ├── generate-unified-atlas.ts  # Unified pipeline (all 1,103 variants)
+│   ├── generate-real-atlas.ts     # Pathogenic-only atlas (v1.0, preserved)
+│   ├── compare_pipelines.py       # v1.0 vs v2.0 comparison report
+│   ├── calculate_roc_and_quadrants.py # ROC + quadrant analysis
 │   ├── run_vep_predictions.py     # Ensembl VEP batch predictions
 │   ├── download_clinvar_hbb.ts    # ClinVar data acquisition
-│   ├── plot_ssim_vs_vep.py        # Figure 2 generator
-│   └── check_consistency_hbb_real.py  # Data/manuscript consistency check
+│   └── plot_ssim_vs_vep.py        # Figure 2 generator
 ├── src/                           # Core TypeScript engine + React UI
 │   ├── engines/                   # Physics engines (loop extrusion)
 │   ├── domain/                    # Biophysical constants and models
