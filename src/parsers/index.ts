@@ -1,2 +1,2 @@
 // Parser exports
-export * from './bed';
+export * from "./bed";

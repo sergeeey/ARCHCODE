@@ -1,1 +1,1 @@
-export { FountainLoader, type ISpatialLoader } from './SpatialLoadingModule';
+export { FountainLoader, type ISpatialLoader } from "./SpatialLoadingModule";

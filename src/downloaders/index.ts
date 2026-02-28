@@ -1,3 +1,3 @@
 // Downloader exports
-export * from './encode';
-export * from './hic';
+export * from "./encode";
+export * from "./hic";
