@@ -12,7 +12,7 @@ from pathlib import Path
 
 # Paths
 MANUSCRIPT_DIR = Path(__file__).parent.parent / "manuscript"
-OUTPUT_PDF = Path(__file__).parent.parent / "ARCHCODE_Preprint.pdf"
+OUTPUT_PDF = Path(__file__).parent.parent / "results" / "ARCHCODE_Preprint_v2.pdf"
 FULL_MD = MANUSCRIPT_DIR / "FULL_MANUSCRIPT.md"
 
 # CSS for scientific paper formatting
@@ -140,11 +140,11 @@ def main():
 
 **Sergey V. Boyko**¹
 
-¹Independent Researcher, Astana, Kazakhstan
+¹Independent Researcher, Almaty, Kazakhstan
 
 **Correspondence:** sergeikuch80@gmail.com
 
-**Date:** February 4, 2026
+**Date:** February 28, 2026
 
 ---
 
