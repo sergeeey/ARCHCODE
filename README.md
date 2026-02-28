@@ -1,6 +1,6 @@
 # ARCHCODE: Physics-Based 3D Chromatin Simulator for Variant Pathogenicity
 
-![bioRxiv pending](https://img.shields.io/badge/bioRxiv-pending-yellow)
+![bioRxiv submitted](https://img.shields.io/badge/bioRxiv-submitted-orange)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
@@ -18,10 +18,11 @@ npx tsx scripts/generate-real-atlas.ts   # 353 variants, 20 pearls
 
 ## Key Results
 
-Analysis of **353 real ClinVar HBB variants** (β-thalassemia) using ARCHCODE + Ensembl VEP v113:
+Analysis of **1,103 real ClinVar HBB variants** (353 Pathogenic/LP + 750 Benign/LB) using ARCHCODE + Ensembl VEP v113:
 
 - **161/353 (45.6%)** classified as structurally pathogenic by ARCHCODE
 - **20 "pearl" variants** discovered (VEP < 0.30, SSIM < 0.95): 15 promoter, 3 missense, 1 splice_acceptor, 1 frameshift
+- **ROC AUC = 1.000** with zero false positives among 750 benign variants (reflects category-dependent occupancy scaling)
 - **130/353 (36.8%)** discordant between ARCHCODE and VEP — complementary, not competing tools
 - Loss-of-function classes: 100% pathogenic (nonsense, frameshift); synonymous: 0% — biologically expected
 
@@ -75,6 +76,12 @@ _Sorted by SSIM ascending (strongest structural disruption first). Full list: [S
 └── config/                        # Simulation parameters
 ```
 
+## Preprint
+
+Manuscript submitted to **bioRxiv** on February 28, 2026. DOI pending — will be updated here once assigned.
+
+> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors in β-Globin Variants. _bioRxiv_ (submitted).
+
 ## Citation
 
 ```bibtex
@@ -83,7 +90,7 @@ _Sorted by SSIM ascending (strongest structural disruption first). Full list: [S
              Pathogenicity Invisible to Sequence-Based Predictors in β-Globin Variants},
   author  = {Boyko, Sergey V.},
   year    = {2026},
-  note    = {bioRxiv preprint (pending)},
+  note    = {bioRxiv preprint (submitted 2026-02-28, DOI pending)},
   url     = {https://github.com/sergeeey/ARCHCODE}
 }
 ```
@@ -96,5 +103,5 @@ MIT License — See [LICENSE](./LICENSE)
 
 **Version**: 2.0.0
 **Last Updated**: 2026-02-28
-**Status**: Pre-publication (consistency pass complete, experimental validation pending)
+**Status**: Submitted to bioRxiv (2026-02-28); DOI pending
 **Contact**: sergeikuch80@gmail.com
