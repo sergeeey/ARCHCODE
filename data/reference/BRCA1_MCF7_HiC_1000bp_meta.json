@@ -1,0 +1,13 @@
+{
+  "gene": "BRCA1",
+  "cell_type": "MCF7",
+  "experiment": "ENCSR660LPJ",
+  "source": "ENCODE_MCF7_intact_HiC",
+  "assembly": "GRCh38",
+  "region": "chr17:42900000-43300000",
+  "resolution_bp": 1000,
+  "matrix_shape": [400, 400],
+  "normalization": "NONE_VCSQRT",
+  "nonzero_fraction": 0.0933875,
+  "value_range": [0.0, 0.3333333333333333]
+}

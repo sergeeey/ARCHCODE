@@ -1,40 +1,44 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-01 (session 9, TP53 locus implementation + generic ClinVar downloader)
+**Last Updated:** 2026-03-01 (session 11, 4-step plan complete: classify_hgvs fix + BRCA1 + 5kb Hi-C + manuscript v2.1)
 **Branch:** main
-**Last Commit:** 6904d5a (docs + strategic prompt)
+**Last Commit:** 5a7ea6c (pending — manuscript and pipeline updates not yet committed)
 **GitHub:** https://github.com/sergeeey/ARCHCODE
-**Status:** SUBMITTED TO bioRxiv — awaiting DOI assignment
+**Status:** SUBMITTED TO bioRxiv — awaiting DOI assignment. Manuscript v2.1 ready.
 
 ---
 
 ## Текущий статус проекта
 
-**Фаза:** v2.1 — Multi-locus expansion (TP53 complete, 4 remaining)
+**Фаза:** v2.1 — Multi-locus expansion COMPLETE (4 loci done, manuscript updated)
 
-### ✅ TP53 Locus — Complete (MILESTONE — 3rd locus)
+### 4-Locus Summary Table
 
-| Метрика             | HBB (95kb)     | CFTR (317kb)     | TP53 (300kb)     |
-| ------------------- | -------------- | ---------------- | ---------------- |
-| ClinVar variants    | 1,103          | 3,349            | 2,795            |
-| P/LP + B/LB         | 353 + 750      | 1,756 + 1,593    | 1,646 + 1,149    |
-| Variant spread      | 2.1 kb (2.2%)  | 201.5 kb (63.6%) | 109.9 kb (36.6%) |
-| SSIM range          | 0.9910–1.0000  | 0.9948–1.0000    | 0.9983–1.0000    |
-| LR AUC (cat only)   | —              | —                | 0.7715           |
-| LR AUC (cat+SSIM)   | —              | —                | 0.8001           |
-| LR ΔAUC             | -0.001 (p=1.0) | +0.007 (p=1.0)   | +0.029 (p=0.77)  |
-| MW-U synonymous     | p=0.22 ns      | p=6.1e-6 \*\*\*  | p=7.2e-10 \*\*\* |
-| MW-U intronic       | p=0.69 ns      | p=0.13 ns        | p=1.7e-3 \*\*    |
-| MW-U "other"        | p=0.058 ns     | p=1.6e-16 \*\*\* | p=1.1e-14 \*\*\* |
-| TDA rho (SSIM↔W_H1) | -0.964         | -1.000           | -0.852           |
+| Метрика           | HBB (95kb)     | CFTR (317kb)     | TP53 (300kb)     | BRCA1 (400kb)    |
+| ----------------- | -------------- | ---------------- | ---------------- | ---------------- |
+| ClinVar variants  | 1,103          | 3,349            | 2,795            | 10,682           |
+| P/LP + B/LB       | 353 + 750      | 1,756 + 1,593    | 1,646 + 1,149    | 7,062 + 3,620    |
+| Variant spread    | 2.1 kb (2.2%)  | 201.5 kb (63.6%) | 109.9 kb (36.6%) | 103.6 kb (25.9%) |
+| SSIM range        | 0.8753–0.9989  | 0.9948–1.0000    | 0.9983–1.0000    | 0.9982–1.0000    |
+| LR ΔAUC           | -0.001 (p=1.0) | +0.008 (p=1.0)   | +0.023 (p=0.65)  | -0.000 (p=1.0)   |
+| K562 Hi-C r       | 0.53 / 0.59    | —                | 0.29             | 0.53             |
+| MCF7 Hi-C r       | —              | —                | 0.28             | 0.50             |
+| TDA ρ (SSIM↔W_H1) | -0.96          | -1.00            | -0.85            | NaN              |
+| Pearl variants    | 20             | 0                | 0                | 0                |
 
-**Key insight:** TP53 confirms SSIM is a category-level classifier (LR p=0.77). MW-U shows statistically significant but practically negligible within-category differences. TDA correlation slightly weaker (rho=-0.85) but still strong. Category breakdown dominated by synonymous (1,399) and "other" (709) — no missense/frameshift detected by classify_hgvs().
+**Key findings:**
 
-### ✅ New Infrastructure
+- Within-category null confirmed on ALL 4 loci (LR p > 0.6) — ARCHCODE is definitively a category-level classifier
+- Matrix-size dilution monotonically reduces SSIM sensitivity (50×50 → 400×400)
+- Hi-C correlation locus-dependent: best for HBB/BRCA1 (r~0.53), lowest for TP53 (r~0.29)
+- classify_hgvs() fix resolved >90% of "other" variants via cDNA indel length modulo 3
 
-- **`scripts/download_clinvar_generic.py`** — Generic ClinVar downloader for any gene (replaces per-gene scripts)
-- **Pipeline extended:** `--locus tp53` now works in generate-unified-atlas.ts, analyze_positional_signal.py, tda_proof_of_concept.py
-- **Gene name resolution fix:** Pipeline now finds target gene by name match, not first gene in window
+### ✅ Session 11 Completed Steps
+
+1. ✅ **classify_hgvs() fix** — Added `_cdna_indel_length()`, rewrote classify_hgvs() to detect frameshift/inframe from cDNA notation. TP53 "other" 709→53, CFTR "other" 603→54.
+2. ✅ **BRCA1 implementation** — Config (13 CTCF, 9 enhancers), 10,682 ClinVar variants, pipeline, within-category (ΔAUC=-0.0002), Hi-C (K562 r=0.53, MCF7 r=0.50), TDA
+3. ✅ **5kb Hi-C test** — TP53 r improved 0.29→0.42 at 5kb; KR normalization unavailable in ENCODE intact Hi-C
+4. ✅ **Manuscript v2.1 update** — ~15 edits: TP53+BRCA1 Results sections, multi-locus Table 6, abstract/significance/discussion/methods/data availability updates
 
 ---
 
@@ -47,58 +51,64 @@
 5. ✅ Phase I: Unified pipeline (AUC 1.000 → 0.9766)
 6. ✅ Locus config externalization (30kb + 95kb)
 7. ✅ K562 Hi-C correlation (r=0.53/0.59, p<1e-82)
-8. ✅ Manuscript K562 update (14 edits, de4ac71)
-9. ✅ Within-category HBB → honest null (de84f7a)
-10. ✅ Manuscript within-category update (8 edits, aa0f677)
+8. ✅ Manuscript K562 update (14 edits)
+9. ✅ Within-category HBB → honest null
+10. ✅ Manuscript within-category update (8 edits)
 11. ✅ CFTR locus — config, pipeline, within-category test
 12. ✅ Bayesian fit (Optuna) — Δr=0.0001, confirmed near-optimal
 13. ✅ Manuscript CFTR + Bayesian update — 17 edits
 14. ✅ TDA proof-of-concept — ripser on HBB+CFTR+TP53
 15. ✅ Multi-locus candidate research — 25 ACMG genes screened
-16. ✅ **TP53 locus — config, ClinVar, pipeline, within-category, TDA**
+16. ✅ TP53 locus — config, ClinVar, pipeline, within-category, TDA
+17. ✅ **classify_hgvs() fix — frameshift detection from cDNA notation**
+18. ✅ **BRCA1 locus — config, ClinVar, pipeline, Hi-C (K562+MCF7), TDA**
+19. ✅ **5kb Hi-C test for TP53**
+20. ✅ **Manuscript v2.1 — 4-locus update (1,765 lines)**
 
 ---
 
 ## Ключевые файлы
 
-| Файл                                     | Назначение                                          |
-| ---------------------------------------- | --------------------------------------------------- |
-| `config/locus/tp53_300kb.json`           | TP53 300kb config (ENCODE K562 CTCF + H3K27ac)      |
-| `config/locus/cftr_317kb.json`           | CFTR 317kb config                                   |
-| `config/locus/hbb_30kb_v2.json`          | HBB 30kb config                                     |
-| `config/locus/hbb_95kb_subTAD.json`      | HBB 95kb config                                     |
-| `scripts/download_clinvar_generic.py`    | Generic ClinVar downloader (--gene TP53/BRCA1/etc.) |
-| `scripts/generate-unified-atlas.ts`      | Main pipeline (`--locus tp53\|cftr\|30kb\|95kb`)    |
-| `scripts/analyze_positional_signal.py`   | Within-category analysis (all loci)                 |
-| `scripts/tda_proof_of_concept.py`        | TDA analysis (all loci)                             |
-| `data/tp53_variants.csv`                 | 2,795 TP53 variants                                 |
-| `results/TP53_Unified_Atlas_300kb.csv`   | TP53 atlas output                                   |
-| `results/positional_signal_tp53.json`    | TP53 within-category result                         |
-| `results/tda_proof_of_concept_tp53.json` | TP53 TDA result                                     |
-| `results/locus_selection_research.json`  | Tier 1/2 candidate data                             |
-| `docs/STRATEGIC_PROMPT.md`               | Strategic development prompt                        |
+| Файл                                    | Назначение                                              |
+| --------------------------------------- | ------------------------------------------------------- |
+| `config/locus/brca1_400kb.json`         | BRCA1 400kb config (K562+MCF7 CTCF, MCF7 H3K27ac)       |
+| `config/locus/tp53_300kb.json`          | TP53 300kb config (ENCODE K562 CTCF + H3K27ac)          |
+| `config/locus/cftr_317kb.json`          | CFTR 317kb config                                       |
+| `config/locus/hbb_30kb_v2.json`         | HBB 30kb config                                         |
+| `config/locus/hbb_95kb_subTAD.json`     | HBB 95kb config                                         |
+| `scripts/download_clinvar_generic.py`   | Generic ClinVar downloader (--gene TP53/BRCA1/etc.)     |
+| `scripts/generate-unified-atlas.ts`     | Main pipeline (`--locus brca1\|tp53\|cftr\|30kb\|95kb`) |
+| `scripts/analyze_positional_signal.py`  | Within-category analysis (all loci)                     |
+| `scripts/tda_proof_of_concept.py`       | TDA analysis (all loci)                                 |
+| `scripts/download_hic_regions.py`       | Hi-C download + correlation                             |
+| `data/brca1_variants.csv`               | 10,682 BRCA1 variants                                   |
+| `data/tp53_variants.csv`                | 2,795 TP53 variants                                     |
+| `results/BRCA1_Unified_Atlas_400kb.csv` | BRCA1 atlas output                                      |
+| `results/positional_signal_brca1.json`  | BRCA1 within-category result                            |
+| `results/hic_correlation_brca1.json`    | BRCA1 Hi-C: K562 r=0.53, MCF7 r=0.50                    |
+| `results/hic_correlation_tp53.json`     | TP53 Hi-C: K562 r=0.29, MCF7 r=0.28                     |
+| `manuscript/FULL_MANUSCRIPT.md`         | Manuscript v2.1 (1,765 lines, 4-locus)                  |
 
 ---
 
-## v2.1 Research Roadmap
+## v2.1 Research Roadmap — Remaining
 
-1. ~~TP53~~ ✅ (2,795 variants, LR p=0.77, TDA rho=-0.85)
-2. **BRCA1** — next Tier 1 (8,603 variants, MCF7 Hi-C, chr17)
-3. **MLH1** — Tier 1 (4,314 variants, HCT116 Hi-C, chr3)
+1. ~~TP53~~ ✅
+2. ~~BRCA1~~ ✅ (10,682 variants, LR p=1.0, Hi-C r=0.50-0.53)
+3. **MLH1** — Tier 1 (4,314 variants, HCT116 Hi-C, chr3) — next candidate
 4. **LDLR** — Tier 1 (3,721 variants, HepG2 Hi-C, chr19)
 5. **SCN5A** — Tier 1 (2,333 variants, iPSC-CM Hi-C, chr3)
-6. **Hi-C data download** — MCF7 (GSE144380), HCT116 (GSE104334), HepG2 (ENCSR194SRI)
-7. **Threshold recalibration** — SSIM thresholds for 300x300 matrices
-8. **Manuscript update** — TP53 results + multi-locus comparison table
-9. **bioRxiv revision** — upload updated manuscript
+6. **Threshold recalibration** — SSIM thresholds for large matrices (>200×200)
+7. **bioRxiv revision** — upload updated manuscript with 4-locus data
+8. **Git commit** — all changes from session 11
 
 ---
 
 ## Для следующей сессии
 
-1. **BRCA1 implementation** — create config, download ClinVar, run pipeline
-2. **MLH1 implementation** — same workflow as TP53
-3. Consider classify_hgvs() improvement — misses missense/frameshift for TP53/CFTR
-4. Проверь: получен ли DOI от bioRxiv?
-5. **Multi-locus comparison table** — compile all 3 loci results
-6. **Hi-C validation for TP53** — need MCF7 Hi-C data (GSE144380)
+1. **Git commit** — commit all session 11 changes (classify_hgvs fix, BRCA1, manuscript v2.1)
+2. **bioRxiv revision** — upload updated manuscript with 4-locus data
+3. Проверь: получен ли DOI от bioRxiv?
+4. **MLH1 implementation** — same workflow (config, ClinVar, pipeline, Hi-C, TDA)
+5. Consider: threshold recalibration for large matrices
+6. Consider: resolution-adaptive SSIM normalization

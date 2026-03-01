@@ -97,6 +97,7 @@ const ALIASES: Record<string, string> = {
   "95kb": "hbb_95kb_subTAD.json",
   cftr: "cftr_317kb.json",
   tp53: "tp53_300kb.json",
+  brca1: "brca1_400kb.json",
 };
 
 /**

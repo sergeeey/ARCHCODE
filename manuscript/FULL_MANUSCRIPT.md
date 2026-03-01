@@ -5,7 +5,7 @@
 ¹Independent Researcher, Almaty, Kazakhstan
 
 _Correspondence: sergeikuch80@gmail.com_
-_Date: 2026-02-28_
+_Date: 2026-03-01_
 
 ---
 
@@ -26,7 +26,10 @@ mean-field loop extrusion simulator implementing Kramer kinetics for cohesin bar
 et al., 2006; Hansen et al., 2017; Sabaté et al., 2024). We extended the analysis to CFTR
 (chr7, 317 kb TAD, 3,349 ClinVar variants: 1,756 Pathogenic/LP + 1,593 Benign/LB) to test
 cross-gene generalization at a locus with greater variant positional diversity (201.5 kb
-spread, 63.6% of TAD). For each variant, ARCHCODE computed a
+spread, 63.6% of TAD), TP53 (chr17, 300 kb TAD, 2,795 variants: 1,646 P/LP + 1,149 B/LB),
+and BRCA1 (chr17, 400 kb TAD, 10,682 variants: 7,062 P/LP + 3,620 B/LB) — the largest
+ClinVar cohort among loci tested. Variant functional classification was improved by
+determining frameshift vs inframe status from cDNA indel length modulo 3. For each variant, ARCHCODE computed a
 Structural Similarity Index (SSIM) comparing wild-type and mutant predicted contact maps.
 Pre-defined thresholds classified variants as: PATHOGENIC (SSIM < 0.85), LIKELY_PATHOGENIC
 (0.85–0.92), VUS (0.92–0.96), LIKELY_BENIGN (0.96–0.99), BENIGN (≥ 0.99). Discordance
@@ -60,13 +63,15 @@ significant predictive value beyond category assignment on this locus (p = 1.0 f
 SSIM additive term), consistent with all 1,103 ClinVar variants clustering within
 2.1 kb (2.2% of the 95 kb window).
 
-Cross-gene testing at the CFTR locus (3,349 variants, 317 kb TAD) confirmed the null
-result: within-category logistic regression ΔAUC = +0.007 (p = 1.0), with SSIM compressed
-to 0.9948–1.0000 due to matrix-size dilution at 317×317 resolution. Bayesian parameter
-optimization (Optuna GPSampler, 200 trials) confirmed that kinetics parameters (α, γ,
-k_base) are near-optimal: Δr = +0.0001. All three parameters converged to lower bounds,
-revealing that Hi-C correlation is architecture-driven (distance decay, CTCF barriers,
-MED1 landscape), not kinetics-driven.
+Cross-gene testing confirmed the null result at all three additional loci: CFTR (3,349
+variants, ΔAUC = +0.008, p = 1.0), TP53 (2,795 variants, ΔAUC = +0.023, p = 0.65), and
+BRCA1 (10,682 variants, ΔAUC = −0.0002, p = 1.0). SSIM ranges were compressed by
+matrix-size dilution (317×317 to 400×400), with all values exceeding 0.9948. Hi-C
+correlation varied by locus: BRCA1 K562 r = 0.53, MCF7 r = 0.50; TP53 K562 r = 0.29,
+MCF7 r = 0.28. Bayesian parameter optimization (Optuna GPSampler, 200 trials) confirmed
+that kinetics parameters (α, γ, k_base) are near-optimal: Δr = +0.0001. All three
+parameters converged to lower bounds, revealing that Hi-C correlation is
+architecture-driven (distance decay, CTCF barriers, MED1 landscape), not kinetics-driven.
 
 Hi-C correlation validation against K562 erythroid chromatin (4DN Data Portal, KR-balanced,
 1 kb resolution) yielded Pearson r = 0.53 (p = 2.2×10⁻⁸², n = 1,124 loci) for the original
@@ -96,12 +101,16 @@ as a complementary, hypothesis-generating layer in variant interpretation workfl
 - No experimental RNA or protein data confirming predicted effects
 - AUC = 0.977 reflects category-distribution differences, not independent prediction
 - Within-category SSIM adds no predictive value beyond category on HBB (all variants in 2.1 kb cluster)
-- CFTR within-category: ΔAUC = +0.007 (p = 1.0); SSIM adds no signal despite 63.6% TAD coverage
+- CFTR within-category: ΔAUC = +0.008 (p = 1.0); SSIM adds no signal despite 63.6% TAD coverage
+- TP53 within-category: ΔAUC = +0.023 (p = 0.65); SSIM adds no signal at 300 kb TAD
+- BRCA1 within-category: ΔAUC = −0.0002 (p = 1.0); largest cohort (10,682 variants), still null
 - Bayesian optimization (Optuna, 200 trials): Δr = 0.0001; kinetics params confirmed near-optimal
+- Hi-C correlation locus-dependent: BRCA1 r = 0.50–0.53; TP53 r = 0.28–0.29 (lower, sparser contact map)
 
 **Keywords:** β-thalassemia, HBB, chromatin loops, loop extrusion, cohesin, SSIM, structural
 pathogenicity predictor, VEP, regulatory variants, promoter variants, pearl variants,
-variant interpretation, mean-field simulation, CFTR, Bayesian optimization, Optuna, multi-locus
+variant interpretation, mean-field simulation, CFTR, TP53, BRCA1, multi-locus validation,
+Bayesian optimization, Optuna, ENCODE Hi-C, classify_hgvs
 
 **Word Count:** ~480 words
 
@@ -112,12 +121,14 @@ variant interpretation, mean-field simulation, CFTR, Bayesian optimization, Optu
 Sequence-based variant effect predictors score variants by their impact on protein sequence and
 canonical splice motifs, leaving a structural blind spot for variants that disrupt 3D chromatin
 topology without altering coding sequence. We developed ARCHCODE, an analytical loop extrusion
-simulator, and applied it to 353 clinically classified HBB variants alongside Ensembl VEP v113.
-ARCHCODE correctly stratifies variants by functional class and identifies 20 "pearl" candidates
-— variants invisible to VEP — where structural simulation predicts regulatory disruption. While
-K562 Hi-C correlation is significant (r = 0.53–0.59) and experimental validation is ongoing, this work establishes a
-framework for orthogonal structural scoring as a complement to existing sequence-based tools in
-variant interpretation pipelines.
+simulator, and applied it to 17,929 clinically classified variants across four loci: HBB (1,103),
+CFTR (3,349), TP53 (2,795), and BRCA1 (10,682). ARCHCODE correctly stratifies variants by
+functional class and identifies 20 "pearl" candidates on HBB — variants invisible to VEP —
+where structural simulation predicts regulatory disruption. Within-category testing across all
+four loci confirms ARCHCODE as a category-level structural classifier (all LR p > 0.6). K562
+Hi-C correlation ranges from r = 0.29 (TP53) to r = 0.59 (HBB 95kb), demonstrating
+locus-dependent model performance. This work establishes a framework for orthogonal structural
+scoring as a complement to existing sequence-based tools in variant interpretation pipelines.
 
 **Word Count:** ~110 words
 
@@ -125,12 +136,13 @@ variant interpretation pipelines.
 
 ## Main Findings (for graphical abstract)
 
-1. **1,103 real ClinVar HBB variants** (353 Pathogenic + 750 Benign) analyzed using ARCHCODE + Ensembl VEP v113
-2. **45.6% (161/353) structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
-3. **20 "pearl" variants** identified: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
+1. **17,929 real ClinVar variants across 4 loci** (HBB 1,103 + CFTR 3,349 + TP53 2,795 + BRCA1 10,682) analyzed
+2. **45.6% (161/353) HBB structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
+3. **20 "pearl" variants** identified on HBB: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
 4. **ROC AUC = 0.977** (unified pipeline); reflects category-distribution differences, not independent prediction
-5. **15 promoter-region pearls** highlight regulatory structural disruption invisible to sequence analysis
-6. **K562 Hi-C validation r = 0.53 (30kb), r = 0.59 (95kb)** — significant correlation with erythroid chromatin; GM12878 r = 0.16 (ns) reflected wrong cell type
+5. **Within-category null confirmed across 4 loci** (LR p = 0.65–1.0); ARCHCODE is a category-level classifier
+6. **Multi-locus Hi-C validation:** HBB r = 0.53–0.59, BRCA1 r = 0.50–0.53, TP53 r = 0.28–0.29 (K562 + MCF7)
+7. **Improved classify_hgvs()** detects frameshift vs inframe from cDNA indel length, resolving >90% of "other" variants
 
 ---
 
@@ -149,13 +161,19 @@ variant interpretation pipelines.
 | AlphaGenome predictions        | NOT USED            | Synthetic mock data; excluded entirely                                      |
 | Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; Bayesian optimization confirmed near-optimal (Δr=0.0001) |
 | ClinVar CFTR (n=3,349)         | REAL                | NCBI E-utilities API; 1,756 P/LP + 1,593 B/LB                               |
-| CFTR within-category           | COMPUTATIONAL       | LR ΔAUC=+0.007, p=1.0; null result                                          |
+| ClinVar TP53 (n=2,795)         | REAL                | NCBI E-utilities API; 1,646 P/LP + 1,149 B/LB                               |
+| ClinVar BRCA1 (n=10,682)       | REAL                | NCBI E-utilities API; 7,062 P/LP + 3,620 B/LB                               |
+| CFTR within-category           | COMPUTATIONAL       | LR ΔAUC=+0.008, p=1.0; null result                                          |
+| TP53 within-category           | COMPUTATIONAL       | LR ΔAUC=+0.023, p=0.65; null result                                         |
+| BRCA1 within-category          | COMPUTATIONAL       | LR ΔAUC=−0.0002, p=1.0; null result                                         |
+| Hi-C correlation (BRCA1)       | REAL (positive)     | K562 r=0.53; MCF7 r=0.50; p≈0                                               |
+| Hi-C correlation (TP53)        | REAL (moderate)     | K562 r=0.29; MCF7 r=0.28; p<10⁻¹³⁶                                          |
 | Bayesian optimization          | COMPUTATIONAL       | Optuna 4.7.0, 200 trials; Δr=0.0001                                         |
 
 ---
 
 _Manuscript prepared for bioRxiv preprint submission_
-_Date: 2026-02-28_
+_Date: 2026-03-01_
 _Correspondence: sergeikuch80@gmail.com_
 
 ---
@@ -374,15 +392,34 @@ barrier.
 
 ### Multi-Locus Extension
 
-To test cross-gene generalization, ARCHCODE was applied to the CFTR locus
-(chr7:116,907,253–117,224,349, 317 kb) at 1000 bp resolution (317 bins). Locus
-configuration included 3 CTCF anchor sites from ENCODE K562 ChIP-seq (ENCFF660GHM) and
-4 enhancer elements from published literature (CFTR promoter at chr7:117,119,149,
-intronic enhancers at 117,170,000 and 117,188,000, and a 3' regulatory element at
-117,210,000). CFTR variants (n=3,349: 1,756 Pathogenic/LP + 1,593 Benign/LB) were
-downloaded from ClinVar via NCBI E-utilities API. Variant categorization used HGVS
-nomenclature parsing; missense and frameshift variants could not be identified for CFTR
-because the ClinVar esummary API does not return protein change annotations for this gene.
+To test cross-gene generalization, ARCHCODE was applied to three additional loci:
+
+**CFTR** (chr7:116,907,253–117,224,349, 317 kb, 1000 bp resolution, 317 bins). Locus
+configuration: 3 CTCF anchor sites from ENCODE K562 ChIP-seq (ENCFF660GHM), 4 enhancer
+elements from published literature. ClinVar variants: n=3,349 (1,756 P/LP + 1,593 B/LB).
+
+**TP53** (chr17:7,550,000–7,850,000, 300 kb, 1000 bp resolution, 300 bins). Locus
+configuration: 6 CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE), 5
+enhancer elements from ENCODE K562 H3K27ac (ENCFF864OSZ) and literature (including TP53
+P1 and P2 promoters; Marcel et al. 2010). ClinVar variants: n=2,795 (1,646 P/LP +
+1,149 B/LB).
+
+**BRCA1** (chr17:42,900,000–43,300,000, 400 kb, 1000 bp resolution, 400 bins). Locus
+configuration: 13 CTCF sites from ENCODE K562 (ENCFF736NYC) cross-validated with MCF7
+(ENCFF163JHE), 9 enhancer elements from MCF7 H3K27ac (ENCFF340KSH) — MCF7 used as
+primary enhancer source because BRCA1 is actively transcribed in breast cancer cells.
+Includes the BRCA1/NBR2 bidirectional promoter (Suen et al. 1998). ClinVar variants:
+n=10,682 (7,062 P/LP + 3,620 B/LB).
+
+All variants were downloaded from ClinVar via NCBI E-utilities API using a generic
+downloader (`download_clinvar_generic.py --gene <GENE>`). Variant categorization used
+improved HGVS nomenclature parsing that determines frameshift vs inframe status from cDNA
+indel length modulo 3, resolving >90% of previously unclassified "other" variants (e.g.,
+`c.403del` → 1 bp deletion → frameshift; `c.575_580del` → 6 bp deletion → inframe).
+
+Hi-C validation for TP53 and BRCA1 used ENCODE K562 intact Hi-C (ENCFF725EXS,
+ENCSR479XDG) and MCF7 intact Hi-C (ENCFF776XCM, ENCSR660LPJ) at 1000 bp resolution with
+VC_SQRT normalization (KR normalization unavailable in ENCODE intact Hi-C files).
 
 ### Bayesian Parameter Optimization
 
@@ -987,37 +1024,182 @@ CFTR locus (chr7:116,907,253–117,224,349, 317 kb TAD, 1000 bp resolution, 317 
 We retrieved 3,349 CFTR variants from ClinVar (1,756 Pathogenic/Likely Pathogenic +
 1,593 Benign/Likely Benign). Unlike HBB, CFTR variants span 201.5 kb (63.6% of the
 simulation window), providing 29-fold greater positional diversity. The variant
-composition is predominantly non-coding: synonymous (n=1,798), intronic (n=924),
-other (n=603), 5'UTR (n=18), and 3'UTR (n=6).
+composition includes: synonymous (n=1,799), intronic (n=779), frameshift (n=516),
+splice_region (n=149), other (n=54), 5'UTR (n=19), inframe_deletion (n=17),
+inframe_indel (n=9), 3'UTR (n=6), and splice_donor (n=1). Variant functional
+categories were assigned using improved HGVS parsing that determines frameshift vs
+inframe status from cDNA indel length modulo 3 (see Methods).
 
 **Table 3. CFTR SSIM statistics by variant category (317 kb window).**
 
-| Category   | n     | Mean SSIM (Path) | Mean SSIM (Ben) | MW-U p    |
-| ---------- | ----- | ---------------- | --------------- | --------- |
-| Other      | 603   | 0.9995           | 0.9968          | 1.6×10⁻¹⁶ |
-| 5'UTR      | 18    | 0.9974           | 0.9971          | 0.15      |
-| Intronic   | 924   | 1.0000           | 1.0000          | 0.13      |
-| Synonymous | 1,798 | 1.0000           | 1.0000          | 6.1×10⁻⁶  |
-| 3'UTR      | 6     | 0.9999           | 0.9999          | —         |
+| Category      | n     | Mean SSIM (Path) | Mean SSIM (Ben) | MW-U p   |
+| ------------- | ----- | ---------------- | --------------- | -------- |
+| Frameshift    | 516   | 0.9986           | N/A             | —        |
+| Splice region | 149   | 0.9997           | 0.9996          | 0.84     |
+| Synonymous    | 1,799 | 1.0000           | 1.0000          | 9.1×10⁻⁶ |
+| Intronic      | 779   | 1.0000           | 1.0000          | 0.28     |
+| Other         | 54    | 0.9992           | 0.9983          | 0.10     |
+| 5'UTR         | 19    | 0.9975           | 0.9971          | 0.10     |
+| Inframe del.  | 17    | 0.9992           | N/A             | —        |
+| 3'UTR         | 6     | 0.9999           | 0.9999          | —        |
 
 SSIM values were severely compressed compared to HBB (range 0.9948–1.0000 vs
 0.8753–0.9989), reflecting matrix-size dilution: a single-bin perturbation in a
 317×317 matrix affects proportionally fewer entries than in a 50×50 matrix, reducing
-SSIM sensitivity.
+SSIM sensitivity. Frameshift variants (n=516, all pathogenic) show the lowest mean
+SSIM (0.9986), consistent with their strong occupancy perturbation.
 
 Despite the greater positional diversity, within-category testing confirmed the null
-result. Logistic regression (pathogenicity ~ category + SSIM) yielded ΔAUC = +0.007
-(p = 1.0). Two categories showed statistically significant Mann–Whitney U results:
-synonymous (p = 6.1×10⁻⁶, ΔSSIM = 7×10⁻⁶) and "other" (p = 1.6×10⁻¹⁶); however,
-the synonymous effect size is practically negligible (7 millionths of an SSIM unit),
-and the "other" category is 98% pathogenic (591:12), making the comparison
-uninformative. SSIM does not predict pathogenicity within functional categories on
-either locus.
+result. Logistic regression (pathogenicity ~ category + SSIM) yielded ΔAUC = +0.008
+(p = 1.0). Only synonymous variants showed statistically significant MW-U results
+(p = 9.1×10⁻⁶, ΔSSIM = 7×10⁻⁶); the effect size is practically negligible
+(7 millionths of an SSIM unit). SSIM does not predict pathogenicity within functional
+categories on either locus.
 
 No CFTR variants met the pearl criteria (SSIM < 0.95 and VEP < 0.30): all SSIM
 values exceeded 0.9948. This absence of predicted structural disruption reflects both
 the matrix-size dilution effect and the predominantly non-coding composition of the
 CFTR ClinVar dataset.
+
+---
+
+## TP53 Locus: Third Cross-Gene Test
+
+To further probe generalizability, we extended ARCHCODE to the TP53 tumor suppressor
+locus (chr17:7,550,000–7,850,000, 300 kb TAD, 1000 bp resolution, 300 bins). TP53 was
+selected because it ranks among the most clinically consequential genes in oncology,
+resides on chr17 (same chromosome as BRCA1, enabling shared CTCF data from ENCODE K562
+ENCFF736NYC), and has extensive ClinVar variant coverage.
+
+We retrieved 2,795 TP53 variants from ClinVar (1,646 Pathogenic/Likely Pathogenic +
+1,149 Benign/Likely Benign). Variants span 109.9 kb (36.6% of the 300 kb window) —
+intermediate between HBB (2.2%) and CFTR (63.6%). The improved classify_hgvs() function
+resolved the majority of previously unclassified variants: synonymous (n=1,400),
+frameshift (n=534), intronic (n=528), splice_region (n=139), inframe_deletion (n=76),
+other (n=53), inframe_indel (n=35), 3'UTR (n=22), and 5'UTR (n=8).
+
+**Table 4. TP53 SSIM statistics by variant category (300 kb window).**
+
+| Category      | n     | Mean SSIM (Path) | Mean SSIM (Ben) | MW-U p    |
+| ------------- | ----- | ---------------- | --------------- | --------- |
+| Frameshift    | 534   | 0.9964           | N/A             | —         |
+| Splice region | 139   | 0.9980           | 0.9986          | 8.0×10⁻⁵  |
+| Inframe del.  | 76    | 0.9986           | 0.9993          | 0.060     |
+| Inframe indel | 35    | 0.9988           | 0.9993          | 0.060     |
+| Synonymous    | 1,400 | 0.9999           | 1.0000          | 6.2×10⁻¹⁰ |
+| Intronic      | 528   | 0.9998           | 0.9998          | 0.029     |
+| Other         | 53    | 0.9982           | 0.9993          | 0.0025    |
+| 3'UTR         | 22    | 0.9999           | 0.9999          | 0.79      |
+| 5'UTR         | 8     | 0.9984           | N/A             | —         |
+
+SSIM values ranged from 0.9983 to 1.0000, severely compressed compared to HBB (0.8753–
+0.9989) but slightly wider than BRCA1 (0.9982–1.0000), reflecting the 300×300 matrix size.
+Frameshift variants (n=534, all pathogenic) show the strongest mean disruption (SSIM=0.9964).
+
+Within-category testing yielded a near-null result: logistic regression ΔAUC = +0.023
+(p = 0.65). While four categories showed statistically significant MW-U results —
+synonymous (p = 6.2×10⁻¹⁰), splice_region (p = 8.0×10⁻⁵), intronic (p = 0.029), other
+(p = 0.0025) — the effect sizes are negligible (ΔSSIM < 0.001 for all). This represents
+the smallest p-value among loci tested (p = 0.65 vs 1.0 for HBB, CFTR, BRCA1) but remains
+firmly non-significant by any standard threshold.
+
+No TP53 variants met the pearl criteria (SSIM < 0.95): all SSIM values exceeded 0.9983,
+reflecting matrix-size dilution at 300×300 resolution.
+
+**Hi-C validation:** K562 Hi-C correlation yielded r = 0.29 (p < 10⁻¹⁵⁴, n = 7,821 loci);
+MCF7 Hi-C yielded r = 0.28 (p < 10⁻¹³⁶, n = 7,821). Both are statistically significant
+but substantially lower than HBB (r = 0.53–0.59) and BRCA1 (r = 0.50–0.53), likely
+reflecting the greater structural complexity of the TP53 locus (7 H1 persistent homology
+features vs 3–4 for HBB), the presence of the internal P2 promoter generating Δ133p53
+isoforms, and higher CTCF density in the TP53 genomic neighborhood.
+
+**TDA analysis:** Spearman correlation between SSIM and Wasserstein H1 distance was
+ρ = −0.85 (p = 0.015), confirming that topological perturbation and SSIM disruption
+remain correlated on this locus, though weaker than HBB (ρ = −0.96) and CFTR (ρ = −1.00).
+
+---
+
+## BRCA1 Locus: Largest ClinVar Cohort
+
+The BRCA1 breast cancer susceptibility gene (chr17:42,900,000–43,300,000, 400 kb TAD,
+1000 bp resolution, 400 bins) provided the largest variant cohort and a critical test of
+ARCHCODE in a clinically high-impact oncogene with well-characterized regulatory
+architecture. BRCA1 shares chr17 with TP53, enabling reuse of the same ENCODE K562 CTCF
+ChIP-seq peaks (ENCFF736NYC). MCF7 breast cancer cell line data was used as the primary
+enhancer source (H3K27ac, ENCFF340KSH) because BRCA1 is actively transcribed in breast
+tissue.
+
+We retrieved 10,682 BRCA1 variants from ClinVar (7,062 Pathogenic/Likely Pathogenic +
+3,620 Benign/Likely Benign) — by far the largest cohort in this study. Variants span
+103.6 kb (25.9% of the 400 kb window). The improved classify_hgvs() function yielded:
+synonymous (n=5,520), frameshift (n=2,806), intronic (n=1,584), splice_region (n=363),
+other (n=221), inframe_indel (n=56), 3'UTR (n=48), 5'UTR (n=46), inframe_deletion
+(n=37), and splice_donor (n=1).
+
+**Table 5. BRCA1 SSIM statistics by variant category (400 kb window).**
+
+| Category      | n     | Mean SSIM (Path) | Mean SSIM (Ben) | MW-U p    |
+| ------------- | ----- | ---------------- | --------------- | --------- |
+| Frameshift    | 2,806 | 0.9995           | N/A             | —         |
+| Splice region | 363   | 0.9999           | 0.9999          | 0.68      |
+| Synonymous    | 5,520 | 1.0000           | 1.0000          | 0.53      |
+| Intronic      | 1,584 | 1.0000           | 1.0000          | 0.0014    |
+| Other         | 221   | 0.9998           | 0.9982          | 2.4×10⁻²⁶ |
+| 5'UTR         | 46    | 0.9985           | 0.9985          | 0.32      |
+| 3'UTR         | 48    | 1.0000           | 1.0000          | 1.0       |
+| Inframe indel | 56    | 0.9999           | 0.9999          | 0.80      |
+| Inframe del.  | 37    | 0.9998           | 0.9999          | 0.57      |
+
+SSIM values ranged from 0.9982 to 1.0000, the most compressed range of any locus —
+consistent with the largest matrix size (400×400). Frameshift variants (n=2,806, all
+pathogenic) show mean SSIM = 0.9995; the dilution effect reduces structural signal to
+near-undetectable levels at this resolution.
+
+Within-category testing produced the most decisive null result: logistic regression
+ΔAUC = −0.0002 (p = 1.0). Only two categories showed MW-U significance: "other"
+(p = 2.4×10⁻²⁶, inverted direction — benign have lower SSIM due to imbalanced composition:
+149 pathogenic vs 72 benign) and intronic (p = 0.0014, ΔSSIM = 8.8×10⁻⁶ — negligible).
+For synonymous (n=5,520, the largest single-category test), MW-U p = 0.53 — completely
+null despite massive statistical power.
+
+No BRCA1 variants met the pearl criteria: all SSIM values exceeded 0.9982.
+
+**Hi-C validation:** K562 Hi-C correlation yielded r = 0.53 (p ≈ 0, n = 12,093 loci);
+MCF7 Hi-C yielded r = 0.50 (p ≈ 0, n = 7,307). Both are comparable to HBB K562 results
+(r = 0.53), demonstrating that ARCHCODE's contact model generalizes well to loci with
+dense regulatory architecture. The similar K562 and MCF7 correlations suggest that the
+architectural features driving the model (distance decay, CTCF positions, enhancer
+occupancy) are largely cell-type-invariant at this resolution.
+
+**TDA analysis:** Spearman correlation between SSIM and Wasserstein H1 distance was
+ρ = NaN (all category-level perturbations produced zero TDA signal at 400×400 resolution).
+Positional scan showed ρ = −0.21 (p = 0.43, not significant), indicating that TDA
+sensitivity drops sharply with increasing matrix size, consistent with the dilution
+interpretation.
+
+---
+
+## Multi-Locus Comparison
+
+**Table 6. ARCHCODE results across four genomic loci.**
+
+| Metric            | HBB (95 kb)      | CFTR (317 kb)    | TP53 (300 kb)     | BRCA1 (400 kb)   |
+| ----------------- | ---------------- | ---------------- | ----------------- | ---------------- |
+| ClinVar variants  | 1,103            | 3,349            | 2,795             | 10,682           |
+| P/LP + B/LB       | 353 + 750        | 1,756 + 1,593    | 1,646 + 1,149     | 7,062 + 3,620    |
+| Variant spread    | 2.1 kb (2.2%)    | 201.5 kb (63.6%) | 109.9 kb (36.6%)  | 103.6 kb (25.9%) |
+| SSIM range        | 0.8753–0.9989    | 0.9948–1.0000    | 0.9983–1.0000     | 0.9982–1.0000    |
+| LR ΔAUC           | −0.001 (p = 1.0) | +0.008 (p = 1.0) | +0.023 (p = 0.65) | −0.000 (p = 1.0) |
+| K562 Hi-C r       | 0.53 / 0.59      | —                | 0.29              | 0.53             |
+| MCF7 Hi-C r       | —                | —                | 0.28              | 0.50             |
+| TDA ρ (SSIM↔W_H1) | −0.96            | −1.00            | −0.85             | NaN              |
+| Pearl variants    | 20               | 0                | 0                 | 0                |
+
+The multi-locus comparison reveals three consistent patterns: (1) within-category SSIM
+does not predict pathogenicity on any locus (all LR p > 0.6); (2) SSIM dynamic range
+decreases monotonically with matrix size due to dilution; (3) Hi-C correlation varies
+by locus, with the highest values for loci where the model's enhancer/CTCF configuration
+best captures the dominant regulatory architecture.
 
 ---
 
@@ -1082,21 +1264,26 @@ beyond category at this locus, consistent with all ClinVar variants clustering i
 zero sensitivity to missense variants, its most important limitation for clinical variant
 classification; (7) cross-gene analysis at the CFTR locus (3,349 variants, 317 kb TAD) confirms that
 within-category SSIM does not predict pathogenicity beyond category assignment even with
-63.6% TAD coverage (LR ΔAUC = +0.007, p = 1.0); (8) Bayesian parameter optimization
+63.6% TAD coverage (LR ΔAUC = +0.008, p = 1.0); (8) Bayesian parameter optimization
 (200 trials) confirms grid-search kinetics estimates as near-optimal (Δr = 0.0001),
-with Hi-C correlation driven by structural architecture rather than kinetics parameters.
+with Hi-C correlation driven by structural architecture rather than kinetics parameters;
+(9) TP53 locus analysis (2,795 variants, 300 kb TAD) yields LR ΔAUC = +0.023 (p = 0.65)
+— the smallest p-value but still non-significant — with K562 Hi-C r = 0.29, reflecting
+greater structural complexity; (10) BRCA1 locus analysis (10,682 variants, 400 kb TAD)
+— the largest cohort — yields LR ΔAUC = −0.0002 (p = 1.0), with K562 Hi-C r = 0.53
+and MCF7 Hi-C r = 0.50, confirming model generalization to dense regulatory loci.
 
 All reported SSIM values and VEP scores are derived from computational models. Hi-C
-validation against K562 experimental data shows significant correlation (r = 0.53–0.59,
-p < 10⁻⁸²; see Discussion), but RNA-seq and patient phenotype validation for the HBB locus
+validation against K562 and MCF7 experimental data shows significant correlation
+(r = 0.28–0.59 across loci; see Discussion), but RNA-seq and patient phenotype validation
 remain outstanding. Experimental functional validation is required before any variant
 reclassification should be considered.
 
 ---
 
-_Results section — based on real ClinVar data (353 variants, downloaded via NCBI E-utilities)_
-_Word count: ~1,450_
-_Last updated: 2026-02-28_
+_Results section — based on real ClinVar data (17,929 variants across 4 loci, NCBI E-utilities)_
+_Word count: ~3,500_
+_Last updated: 2026-03-01_
 
 ---
 
@@ -1125,20 +1312,28 @@ HBB sub-TAD (chr11:5,200,000–5,295,000) — capturing both CTCF boundary ancho
 (signal = 225) and HS5 (signal = 260) from ENCODE K562 ChIP-seq (ENCFF660GHM) — further
 improved correlation to r = 0.588 (p < 10⁻³⁰⁰, n = 11,649). This progression demonstrates
 that ARCHCODE's analytical loop extrusion engine captures genuine chromatin contact topology
-when supplied with cell-type-appropriate anchors. SSIM values should still be interpreted
-as relative disruption scores within the model, not as absolute predictions of chromatin
-contact frequency.
+when supplied with cell-type-appropriate anchors.
+
+Multi-locus Hi-C validation reveals locus-dependent performance. BRCA1 achieves K562
+r = 0.53 and MCF7 r = 0.50 (comparable to HBB K562), while TP53 shows lower correlation
+(K562 r = 0.29, MCF7 r = 0.28). The TP53 result likely reflects greater structural
+complexity: 7 persistent homology H1 features (vs 3–4 for HBB), an internal P2 promoter
+generating Δ133p53 isoforms, and higher CTCF density creating a more intricate contact
+landscape that the mean-field model captures less completely. The BRCA1 result is
+encouraging: despite a 400×400 matrix (the largest tested), Hi-C correlation matches HBB,
+suggesting that dense enhancer/CTCF annotation compensates for dilution effects in
+contact map fidelity. SSIM values should still be interpreted as relative disruption
+scores within the model, not as absolute predictions of chromatin contact frequency.
 
 Importantly, the AUC of 0.977 is a category-level structural model, not evidence of
-within-category positional prediction. Formal testing (logistic regression, Mann–Whitney U,
-permutation; see Results) confirms that SSIM adds no significant predictive value beyond
-category assignment on HBB. This null result is not a model failure but a data limitation:
-all 1,103 ClinVar HBB variants cluster in a 2.1 kb segment (2.2% of the 95 kb window),
-providing near-zero variance in distance to regulatory features. The model _is_ positionally
-sensitive — distance-to-TSS correlates strongly with SSIM (intronic ρ = 0.80, p < 10⁻¹⁵¹) —
-but this sensitivity affects pathogenic and benign variants equally at HBB because they
-occupy the same narrow interval. A definitive test of within-category positional prediction
-requires a locus with greater variant positional diversity, such as CFTR.
+within-category positional prediction. Multi-locus testing across four loci (17,929
+variants total) unequivocally confirms that SSIM adds no significant predictive value
+beyond category assignment (all LR p > 0.6). This null result is not a model failure but
+a structural property of the occupancy-scaling approach: perturbation magnitude is
+assigned by functional category, not by genomic position within category. The model _is_
+positionally sensitive — distance-to-TSS correlates with SSIM at multiple loci — but
+this sensitivity affects pathogenic and benign variants equally when they share similar
+genomic positions within each category.
 
 We have not "confirmed" the "Loop That Stayed" mechanism. We have generated a computational
 prediction that specific promoter-region HBB variants show structural disruption by our
@@ -1204,10 +1399,11 @@ We have completed step 1. Steps 2–4 are required before any variant reclassifi
 
 ## Limitations
 
-**1. Computational model only; Hi-C validation moderate (r = 0.53–0.59).** ARCHCODE
-simulations remain _in silico_ predictions. K562 Hi-C correlation is statistically
-significant (p < 10⁻⁸²) but the model explains ~30–35% of variance in experimental contact
-frequencies, leaving substantial unexplained variation.
+**1. Computational model only; Hi-C validation locus-dependent (r = 0.28–0.59).** ARCHCODE
+simulations remain _in silico_ predictions. Multi-locus Hi-C correlation ranges from
+r = 0.28 (TP53 MCF7) to r = 0.59 (HBB K562 95kb), explaining 8–35% of variance in
+experimental contact frequencies. Performance is best for loci with well-characterized
+enhancer/CTCF architecture and drops for structurally complex loci like TP53.
 
 **2. Kinetics parameters confirmed near-optimal; no room for improvement.** α=0.92 and
 γ=0.80 are grid-search estimates from literature ranges. Bayesian optimization (Optuna
@@ -1233,13 +1429,23 @@ available in ClinVar records to validate computational predictions against clini
 **6. Pearl variants not experimentally validated.** The 20 pearl variants are computational
 candidates. None have been tested by RT-PCR, Capture Hi-C, or functional assay in this study.
 
-**7. Within-category positional signal not demonstrated on either locus.** All 1,103
-ClinVar HBB variants cluster within 2.1 kb (2.2% of window). We tested the hypothesis
-that greater positional diversity would reveal signal at the CFTR locus (3,349 variants
-spanning 201.5 kb, 63.6% of 317 kb TAD). Within-category testing yielded the same null
-(LR ΔAUC = +0.007, p = 1.0). This confirms ARCHCODE as a category-level structural
-classifier: the occupancy-scaling approach assigns perturbation magnitude by functional
-category, not by genomic position within category.
+**7. Within-category positional signal not demonstrated on any locus.** Testing across
+four loci with diverse characteristics — HBB (1,103 variants, 2.2% spread), CFTR (3,349,
+63.6%), TP53 (2,795, 36.6%), BRCA1 (10,682, 25.9%) — yielded consistent null results
+(LR p = 0.65–1.0). This confirms ARCHCODE as a category-level structural classifier:
+the occupancy-scaling approach assigns perturbation magnitude by functional category, not
+by genomic position within category. The BRCA1 result (n = 10,682, LR p = 1.0) is
+particularly decisive given its statistical power.
+
+**8. Matrix-size dilution limits pearl detection on large loci.** SSIM dynamic range
+decreases monotonically with matrix size: HBB 50×50 yields SSIM 0.8753–0.9989; BRCA1
+400×400 yields 0.9982–1.0000. No pearls (SSIM < 0.95) were found on any locus except HBB.
+Threshold recalibration for larger matrices remains an open problem.
+
+**9. Hi-C correlation does not validate variant-level predictions.** Multi-locus Hi-C
+correlation (r = 0.28–0.59) validates wild-type contact map fidelity, not variant-specific
+structural disruption. No variant-level Hi-C perturbation data exists to validate SSIM
+as a variant classifier directly.
 
 ## Path to Clinical Translation
 
@@ -1267,31 +1473,35 @@ results reported here.
 ## Broader Implications
 
 Despite the quantitative limitations, the ARCHCODE approach demonstrates a proof-of-concept
-for orthogonal structural scoring. The identification of 20 pearl variants provides a
-concrete, size-limited prioritization list for experimental groups — far more tractable than
-screening all 353 variants individually.
+for orthogonal structural scoring. The identification of 20 pearl variants on HBB provides
+a concrete, size-limited prioritization list for experimental groups — far more tractable
+than screening all 353 variants individually.
 
 For the broader field of variant interpretation, this work illustrates that different
-computational tools capture different biological dimensions. Adding a structural simulation
-layer to existing sequence-based pipelines benefits from moderate Hi-C correlation (r ≈ 0.59)
-that grounds the model in experimental reality while providing hypothesis-generating utility:
-a model explaining ~35% of contact variance can correctly rank variants by structural
-disruption severity and flag specific candidates where sequence-based methods have known
-blind spots.
+computational tools capture different biological dimensions. Multi-locus Hi-C validation
+(r = 0.28–0.59 across four loci) grounds the model in experimental reality, with
+performance varying by locus complexity. The BRCA1 result (K562 r = 0.53, MCF7 r = 0.50
+with 10,682 variants) demonstrates scalability to clinically important oncogenes.
 
-Cross-gene analysis at the CFTR locus (3,349 variants, 317 kb TAD) confirmed the null
-result: within-category SSIM adds no predictive value beyond category assignment, even
-with 63.6% TAD coverage. Combined with the Bayesian optimization null (Δr = 0.0001),
-these results clarify ARCHCODE's scope: a category-level structural classifier grounded
-in moderate Hi-C correlation (r ≈ 0.59), not a within-category positional predictor. The
-honest reporting of these null results — across two independent loci and via formal
+Cross-gene analysis across four loci (17,929 total variants: HBB, CFTR, TP53, BRCA1)
+produced unanimous null results for within-category prediction (all LR p > 0.6). Combined
+with the Bayesian optimization null (Δr = 0.0001), these results clarify ARCHCODE's scope:
+a category-level structural classifier with locus-dependent Hi-C correlation (r = 0.28–
+0.59), not a within-category positional predictor. The honest reporting of these null
+results — across four independent loci spanning three chromosomes and via formal parameter
 optimization — strengthens the model's credibility as a transparent computational tool.
+
+The progressive matrix-size dilution observed across loci (HBB 50×50 → BRCA1 400×400)
+identifies a fundamental limitation of SSIM-based structural comparison at genomic scale.
+Future work should explore resolution-adaptive thresholds or alternative structural
+metrics (e.g., topological data analysis, which showed ρ = −0.85 to −1.00 correlation with
+SSIM on smaller loci but lost sensitivity at 400×400 resolution).
 
 ---
 
 _Discussion section prepared for bioRxiv submission_
-_Word count: ~1,100 words_
-_Last updated: 2026-02-28_
+_Word count: ~1,500 words_
+_Last updated: 2026-03-01_
 
 ---
 
@@ -1482,6 +1692,24 @@ without experimental confirmation.
 
 **ROC analysis (v1.0 legacy):** `roc_analysis.json`
 
+**CFTR unified dataset:** `CFTR_Unified_Atlas_317kb.csv` (3,349 rows)
+
+**CFTR within-category analysis:** `positional_signal_cftr.json`
+
+**TP53 unified dataset:** `TP53_Unified_Atlas_300kb.csv` (2,795 rows)
+
+**TP53 within-category analysis:** `positional_signal_tp53.json`
+
+**BRCA1 unified dataset:** `BRCA1_Unified_Atlas_400kb.csv` (10,682 rows)
+
+**BRCA1 within-category analysis:** `positional_signal_brca1.json`
+
+**Hi-C correlation results:** `hic_correlation_brca1.json`, `hic_correlation_tp53.json`
+
+**TDA results:** `tda_proof_of_concept_tp53.json`, `tda_proof_of_concept_brca1.json`
+
+**Bayesian optimization results:** `bayesian_fit_hic.json`
+
 **Format:** Comma-separated values (CSV), UTF-8 encoding
 
 **Repository:** https://github.com/sergeeey/ARCHCODE
@@ -1497,9 +1725,12 @@ without experimental confirmation.
 - Analytical mean-field contact computation (no Monte Carlo sampling)
 - Kramer kinetics: α=0.92, γ=0.80 (grid-search; Bayesian optimization Δr=0.0001, confirmed near-optimal)
 - HBB: 50 bins × 600 bp = 30 kb; 159 bins × 600 bp = 95 kb
-- CFTR: 317 bins × 1000 bp = 317 kb
+- CFTR: 317 bins × 1000 bp = 317 kb; 3 CTCF (ENCODE K562 ENCFF660GHM), 4 enhancers (literature)
+- TP53: 300 bins × 1000 bp = 300 kb; 6 CTCF (ENCODE K562 ENCFF736NYC), 5 enhancers (ENCODE K562 H3K27ac ENCFF864OSZ + literature)
+- BRCA1: 400 bins × 1000 bp = 400 kb; 13 CTCF (ENCODE K562 ENCFF736NYC), 9 enhancers (ENCODE MCF7 H3K27ac ENCFF340KSH)
 - SSIM calculated on upper triangular matrix (k=1, excluding diagonal)
 - Seed=2026 for reproducibility
+- classify_hgvs(): cDNA indel length modulo 3 for frameshift/inframe detection (resolves >90% of "other" category)
 
 **VEP predictions:**
 
@@ -1515,13 +1746,20 @@ without experimental confirmation.
 
 **Known limitations for interpretation:**
 
-- Hi-C validation: GM12878 r = 0.16, p = 0.301, ns (n = 12); K562 30kb r = 0.530, p = 2.19 × 10⁻⁸² (n = 1,124); K562 95kb r = 0.588, p < 10⁻³⁰⁰ (n = 11,649)
+- Hi-C validation (HBB): GM12878 r = 0.16, p = 0.301, ns (n = 12); K562 30kb r = 0.530, p = 2.19 × 10⁻⁸² (n = 1,124); K562 95kb r = 0.588, p < 10⁻³⁰⁰ (n = 11,649)
+- Hi-C validation (TP53): K562 r = 0.293, MCF7 r = 0.276; both p < 10⁻¹³⁶ (n = 7,821)
+- Hi-C validation (BRCA1): K562 r = 0.530 (n = 12,093), MCF7 r = 0.500 (n = 7,307); both p ≈ 0
 - Parameters manually calibrated, not fitted to HBB locus; Bayesian optimization (Optuna, 200 trials) confirmed near-optimal (Δr=0.0001)
-- K562 ENCODE ChIP-seq used for 95kb config; 30kb config uses model parameters
-- CFTR: 317 kb window, 1000 bp resolution, 3 CTCF (ENCODE K562), 4 enhancers (literature)
+- Within-category null confirmed on all 4 loci (LR p = 0.65–1.0); ARCHCODE is category-level classifier
+- Matrix-size dilution: pearl detection only possible on HBB (50×50); all larger loci show SSIM > 0.99
+
+**Software:**
+
+- ARCHCODE v2.1 (TypeScript + Python), Optuna 4.7.0, ripser 0.6.10
+- Scripts: `generate-unified-atlas.ts`, `analyze_positional_signal.py`, `tda_proof_of_concept.py`, `download_clinvar_generic.py`, `bayesian_fit_hic.py`
 
 ---
 
 _Supplementary Table S1 prepared for bioRxiv submission_
-_Last updated: 2026-02-28_
+_Last updated: 2026-03-01_
 _Corresponding author: Sergey V. Boyko (sergeikuch80@gmail.com)_

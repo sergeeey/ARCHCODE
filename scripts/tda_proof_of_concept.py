@@ -39,6 +39,7 @@ def load_locus_config(locus_name: str) -> dict:
         "95kb": "config/locus/hbb_95kb_subTAD.json",
         "cftr": "config/locus/cftr_317kb.json",
         "tp53": "config/locus/tp53_300kb.json",
+        "brca1": "config/locus/brca1_400kb.json",
     }
     config_path = Path(config_map.get(locus_name, f"config/locus/{locus_name}.json"))
     if not config_path.exists():

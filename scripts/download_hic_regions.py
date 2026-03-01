@@ -50,6 +50,15 @@ HIC_SOURCES: dict[str, dict] = {
     },
     "brca1": {
         "gene": "BRCA1",
+        "cell_type": "K562",
+        "url": "https://encode-public.s3.amazonaws.com/2022/05/15/e6fd8021-6548-4cf8-88bb-151103cb066e/ENCFF725EXS.hic",
+        "experiment": "ENCSR479XDG",
+        "chr_prefix": "chr",
+        "assembly": "GRCh38",
+        "source": "ENCODE_K562_intact_HiC",
+    },
+    "brca1_mcf7": {
+        "gene": "BRCA1",
         "cell_type": "MCF7",
         "url": "https://encode-public.s3.amazonaws.com/2022/02/14/cad3402e-8bd5-4d22-b4b2-0b22cbb2aa09/ENCFF776XCM.hic",
         "experiment": "ENCSR660LPJ",
@@ -98,6 +107,7 @@ LOCUS_ALIASES: dict[str, str] = {
     "95kb": "hbb_95kb_subTAD.json",
     "cftr": "cftr_317kb.json",
     "tp53": "tp53_300kb.json",
+    "brca1": "brca1_400kb.json",
 }
 
 
