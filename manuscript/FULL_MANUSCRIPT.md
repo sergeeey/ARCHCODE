@@ -1447,6 +1447,14 @@ correlation (r = 0.28–0.59) validates wild-type contact map fidelity, not vari
 structural disruption. No variant-level Hi-C perturbation data exists to validate SSIM
 as a variant classifier directly.
 
+**10. No benchmarking against deep learning 3D genome models.** Direct comparison with
+sequence-based deep learning models that predict chromatin contact maps (Akita; Fudenberg
+et al., 2020) or gene expression from sequence (Enformer; Avsec et al., 2021) was not
+performed. Such benchmarking — particularly testing whether these models detect the 20
+pearl variants missed by VEP — is planned for the journal submission and would clarify
+whether ARCHCODE's mechanistic loop extrusion approach provides orthogonal signal to
+data-driven sequence models.
+
 ## Path to Clinical Translation
 
 Clinical reclassification of any variant based on ARCHCODE predictions alone would be
