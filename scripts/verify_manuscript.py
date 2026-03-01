@@ -76,6 +76,15 @@ LOCUS_CONFIG = {
         "window_kb": 300,
         "label": "MLH1 (300 kb)",
     },
+    "LDLR": {
+        "csv": "results/LDLR_Unified_Atlas_300kb.csv",
+        "summary_json": "results/UNIFIED_ATLAS_SUMMARY_LDLR_300kb.json",
+        "positional_json": "results/positional_signal_ldlr.json",
+        "hic_json": "results/hic_correlation_ldlr.json",
+        "tda_json": "results/tda_proof_of_concept_ldlr.json",
+        "window_kb": 300,
+        "label": "LDLR (300 kb)",
+    },
 }
 
 # ПОЧЕМУ: допуск для сравнения float нужен — CSV хранит округлённые значения,
@@ -734,11 +743,13 @@ def load_hic_data(json_path: Optional[Path]) -> dict:
         return {}
     data = json.loads(json_path.read_text(encoding="utf-8"))
     result = {}
-    # Формат может быть: {"gene": ..., "K562": {"r": ...}} или {"pearson_r": ...}
+    # Формат может быть: {"gene": ..., "K562": {"r": ...}} или {"pearson_r": ..., "cell_type": ...}
     if "K562" in data:
         result["k562_r"] = data["K562"].get("r")
     elif "pearson_r" in data:
-        result["k562_r"] = data["pearson_r"]
+        cell_type = data.get("cell_type", "K562")
+        key = f"{cell_type.lower()}_r"
+        result[key] = data["pearson_r"]
     if "MCF7" in data:
         result["mcf7_r"] = data["MCF7"].get("r")
     return result
@@ -814,6 +825,7 @@ def build_table6_data() -> dict[str, dict]:
             "lr_p": lr_p,
             "k562_r": hic_data.get("k562_r"),
             "mcf7_r": hic_data.get("mcf7_r"),
+            "hepg2_r": hic_data.get("hepg2_r"),
             "tda_rho": tda_rho,
             "spread": spread,
         }
@@ -994,6 +1006,20 @@ def format_table6_markdown(rows: dict[str, dict]) -> str:
             ]
         ) + " |"
     )
+
+    # HepG2 Hi-C row (only show if any locus has HepG2 data)
+    has_hepg2 = any(rows.get(n, {}).get("hepg2_r") is not None for n in loci)
+    if has_hepg2:
+        lines.append(
+            "| " + " | ".join(
+                [f"{'HepG2 Hi-C r':<18}"]
+                + [
+                    fmt_hic_r(rows[n].get("hepg2_r")).rjust(18)
+                    if n in rows else f"{'N/A':>18}"
+                    for n in loci
+                ]
+            ) + " |"
+        )
 
     lines.append(
         "| " + " | ".join(

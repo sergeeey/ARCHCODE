@@ -1,0 +1,13 @@
+{
+  "gene": "LDLR",
+  "cell_type": "HepG2",
+  "experiment": "ENCSR194SRI",
+  "source": "ENCODE_HepG2_insitu_HiC",
+  "assembly": "GRCh38",
+  "region": "chr19:10940000-11240000",
+  "resolution_bp": 1000,
+  "matrix_shape": [300, 300],
+  "normalization": "NONE_VCSQRT",
+  "nonzero_fraction": 0.429,
+  "value_range": [0.0, 1.0000000000000002]
+}

@@ -1,0 +1,251 @@
+{
+  "id": "ldlr_300kb",
+  "name": "LDLR 300kb TAD (ENCODE HepG2 CTCF + H3K27ac)",
+  "description": "300kb window spanning the LDLR locus on chr19p13.2. LDLR (Low-Density Lipoprotein Receptor) encodes the primary receptor for LDL cholesterol clearance; germline pathogenic variants cause Familial Hypercholesterolemia (FH, OMIM:143890). CTCF sites from ENCODE HepG2 ChIP-seq (ENCFF205OKL, ENCSR000AMA, ENCODE4 IDR narrowPeak, GRCh38). H3K27ac enhancer peaks from ENCODE HepG2 (ENCFF012ADZ, ENCSR000AMO, replicated peaks, GRCh38). HepG2 is a hepatocyte carcinoma cell line where LDLR is actively expressed under SREBP regulation — liver is the primary site of LDL receptor-mediated cholesterol clearance. K562 CTCF (ENCFF736NYC, ENCSR000DWE) used for cross-validation: 7/10 HepG2 CTCF peaks co-localize with K562 (cell-type invariant, Cuddapah 2009 PMID:19030024). Window contains SMARCA4 (SWI/SNF chromatin remodeler) upstream and SPC24/KANK2/DOCK6 downstream.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr19",
+    "start": 10940000,
+    "end": 11240000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 11091749,
+        "occupancy": 0.95,
+        "name": "LDLR_promoter_super_enhancer",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "STRONGEST H3K27ac in window (Peak_174, 11090529-11096833, signal=111.34, score=1000, 6.3kb broad). Spans LDLR exon 1, CpG island promoter, and SRE (sterol regulatory element). Adjacent upstream peak (Peak_2739, 11088453-11090401, signal=49.66) extends active chromatin to ~8.4kb. LDLR promoter is SREBP-regulated in hepatocytes. MANUALLY CALIBRATED occupancy — highest signal in window"
+      },
+      {
+        "position": 11090157,
+        "occupancy": 0.7,
+        "name": "LDLR_upstream_enhancer",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "Strong H3K27ac peak immediately upstream of LDLR promoter (Peak_2739, 11088453-11090401, signal=49.66, 1.9kb). Contiguous with LDLR promoter super-enhancer (128bp gap). Part of the extended LDLR regulatory region. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 11143271,
+        "occupancy": 0.75,
+        "name": "SPC24_enhancer",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "Strong H3K27ac peak downstream of LDLR (Peak_1626, 11142662-11144364, signal=55.31, score=1000, 1.7kb). At SPC24 (Ndc80 kinetochore complex) promoter region. Co-localizes with moderate CTCF (HepG2 signal=21.98). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 11239069,
+        "occupancy": 0.6,
+        "name": "ANGPTL8_enhancer",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "Broad H3K27ac peak at 3-prime window edge (Peak_4283, 11235317-11240699, signal=37.08, 5.4kb broad). Overlaps ANGPTL8 (angiopoietin-like 8, betatrophin) — liver-expressed gene involved in lipid metabolism. Functionally relevant: ANGPTL8 and LDLR are both SREBP targets in hepatocytes. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 11129583,
+        "occupancy": 0.5,
+        "name": "LDLR_3prime_H3K27ac",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "H3K27ac peak at LDLR 3-prime end (Peak_8355, 11129338-11131474, signal=27.46, 2.1kb). Co-localizes with strong CTCF (HepG2 signal=114.49, K562 signal=185.46). Potential insulator/boundary at LDLR 3-prime. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 10960576,
+        "occupancy": 0.45,
+        "name": "SMARCA4_intron_H3K27ac_1",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "H3K27ac peak in SMARCA4 gene body (Peak_8821, 10959627-10960773, signal=22.72, 1.1kb). SMARCA4 (BRG1) encodes SWI/SNF chromatin remodeler, a tumor suppressor. Adjacent to a second SMARCA4 peak (signal=13.83). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 10961602,
+        "occupancy": 0.35,
+        "name": "SMARCA4_intron_H3K27ac_2",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "H3K27ac peak in SMARCA4 gene body (Peak_16110, 10961275-10962603, signal=13.83, 1.3kb). Part of SMARCA4 intron regulatory cluster with adjacent peak (signal=22.72). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 11142383,
+        "occupancy": 0.35,
+        "name": "SPC24_promoter_H3K27ac",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "H3K27ac peak at SPC24 promoter region (Peak_17946, 11141698-11142621, signal=13.31). Adjacent to stronger SPC24 enhancer (Peak_1626, signal=55.31). Dual-peak promoter architecture. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 11197330,
+        "occupancy": 0.3,
+        "name": "KANK2_H3K27ac",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "H3K27ac peak near KANK2 3-prime end (Peak_21007, 11197097-11197500, signal=11.44). KANK2 encodes KN motif and ankyrin repeat domain 2. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 11156223,
+        "occupancy": 0.3,
+        "name": "SPC24_KANK2_intergenic_H3K27ac",
+        "source": "ENCODE_HepG2_H3K27ac",
+        "encode_accession": "ENCFF012ADZ",
+        "note": "H3K27ac peak in intergenic region between SPC24 and KANK2 (Peak_18785, 11156054-11156483, signal=10.06). MANUALLY CALIBRATED occupancy"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 10942194,
+        "orientation": "unknown",
+        "signal": 118.49,
+        "name": "upstream_boundary_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "STRONGEST HepG2 CTCF in window (10942085-10942329, score=1000, signal=118.49). K562 co-localization confirmed (signal=145.09). Candidate 5-prime TAD/sub-TAD boundary. ~147kb upstream of LDLR TSS. Cell-type invariant binding"
+      },
+      {
+        "position": 11011894,
+        "orientation": "unknown",
+        "signal": 17.21,
+        "name": "SMARCA4_LDLR_intergenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Weak CTCF in intergenic region between SMARCA4 and LDLR (11011739-11012049, score=774, signal=17.21). HepG2-enriched — no strong K562 co-localization"
+      },
+      {
+        "position": 11036090,
+        "orientation": "unknown",
+        "signal": 107.02,
+        "name": "SMARCA4_intragenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF within SMARCA4 gene body (11035980-11036215, score=1000, signal=107.02). K562 co-localization confirmed (signal=153.61). Potential intragenic insulator or sub-domain boundary. Cell-type invariant"
+      },
+      {
+        "position": 11085703,
+        "orientation": "unknown",
+        "signal": 33.18,
+        "name": "LDLR_upstream_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Moderate CTCF ~4kb upstream of LDLR TSS (11085548-11085858, score=1000, signal=33.18). HepG2-enriched — no K562 peak at exact position. May function as liver-specific regulatory element"
+      },
+      {
+        "position": 11126284,
+        "orientation": "unknown",
+        "signal": 70.0,
+        "name": "LDLR_intragenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF within LDLR gene body (11126187-11126365, score=1000, signal=70.00). K562 co-localization confirmed (signal=104.19). Intragenic insulator — may define sub-domain within LDLR. Cell-type invariant"
+      },
+      {
+        "position": 11131142,
+        "orientation": "unknown",
+        "signal": 114.49,
+        "name": "LDLR_3prime_boundary_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Very strong CTCF near LDLR 3-prime end (11131011-11131272, score=1000, signal=114.49). K562 co-localization confirmed (signal=185.46). Co-localizes with H3K27ac (signal=27.46). Key insulator between LDLR and downstream genes. Cell-type invariant"
+      },
+      {
+        "position": 11137854,
+        "orientation": "unknown",
+        "signal": 63.25,
+        "name": "LDLR_SPC24_intergenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF between LDLR and SPC24 (11137757-11137916, score=1000, signal=63.25). K562 co-localization confirmed (signal=115.37). ~4kb downstream of LDLR 3-prime end, ~8kb upstream of SPC24. Cell-type invariant"
+      },
+      {
+        "position": 11142179,
+        "orientation": "unknown",
+        "signal": 21.98,
+        "name": "SPC24_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Moderate CTCF at SPC24 locus (11142024-11142334, score=990, signal=21.98). Co-localizes with H3K27ac dual-peak (signals 13.31 + 55.31). No strong K562 co-localization at this exact position"
+      },
+      {
+        "position": 11204034,
+        "orientation": "unknown",
+        "signal": 50.92,
+        "name": "DOCK6_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF at DOCK6 locus (11203948-11204111, score=1000, signal=50.92). K562 co-localization confirmed and MUCH stronger (K562 signal=213.76 — strongest K562 CTCF in window). Cell-type differential: K562 4x stronger than HepG2"
+      },
+      {
+        "position": 11227282,
+        "orientation": "unknown",
+        "signal": 64.54,
+        "name": "downstream_boundary_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF near 3-prime window edge (11227183-11227357, score=1000, signal=64.54). K562 co-localization confirmed (signal=91.16). Candidate 3-prime TAD/sub-TAD boundary. ~93kb downstream of LDLR 3-prime end. Cell-type invariant"
+      }
+    ],
+    "genes": [
+      { "name": "SMARCA4", "start": 10961032, "end": 11062273, "strand": "+" },
+      { "name": "LDLR", "start": 11089362, "end": 11133820, "strand": "+" },
+      { "name": "SPC24", "start": 11145492, "end": 11155782, "strand": "-" },
+      { "name": "KANK2", "start": 11164269, "end": 11197865, "strand": "-" },
+      { "name": "DOCK6", "start": 11199294, "end": 11240000, "strand": "-" }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq_hepg2": {
+      "experiment": "ENCSR000AMA",
+      "file": "ENCFF205OKL",
+      "type": "ENCODE4 IDR thresholded narrowPeak",
+      "cell_line": "HepG2",
+      "assembly": "GRCh38",
+      "peaks_in_window": 10,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AMA/",
+      "note": "HepG2 is hepatocyte carcinoma cell line. CTCF binding is largely cell-type invariant (Cuddapah 2009 PMID:19030024). ENCODE4 pipeline v1.5.1 with updated alignment and filtering. 46,196 total peaks genome-wide"
+    },
+    "ctcf_chipseq_k562": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 18,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/",
+      "note": "K562 CTCF used for cross-validation. 7/10 HepG2 CTCF peaks co-localize with K562, confirming cell-type invariance. DOCK6 site shows 4x higher K562 signal (213.76 vs 50.92), suggesting cell-type-specific regulatory function"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR000AMO",
+      "file": "ENCFF012ADZ",
+      "type": "replicated peaks (overlap-based concordance)",
+      "cell_line": "HepG2",
+      "assembly": "GRCh38",
+      "peaks_in_window": 28,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AMO/",
+      "note": "HepG2 H3K27ac marks active enhancers and promoters in hepatocytes. ENCODE does NOT apply IDR to histone marks — replicated peaks use overlap-based concordance between biological replicates, which is the standard approach for broad histone marks. LDLR promoter shows strongest H3K27ac in window (signal=111.34, 6.3kb broad), consistent with high LDLR expression in hepatocytes under SREBP regulation. 48,298 total peaks genome-wide"
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API + NCBI Gene",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeq",
+      "note": "LDLR coordinates from NM_000527.5 (NCBI Gene ID: 3949). SMARCA4 from NCBI Gene ID: 6597. DOCK6 3-prime end truncated at window boundary (full gene: 11199294-11262524). ANGPTL8 (11239618-11241943) excluded from gene list as mostly outside window, but its enhancer is captured in H3K27ac features"
+    },
+    "ldlr_biology": {
+      "studies": [
+        {
+          "finding": "LDLR is the primary receptor for LDL cholesterol clearance. Germline loss-of-function variants cause Familial Hypercholesterolemia (FH), affecting ~1:250 individuals worldwide. LDLR expression is regulated by SREBP-2 via SRE (sterol regulatory element) in the promoter",
+          "source": "OMIM:143890"
+        },
+        {
+          "authors": "Cuddapah et al.",
+          "year": 2009,
+          "journal": "Genome Research",
+          "pmid": "19030024",
+          "finding": "CTCF binding sites are largely invariant across cell types"
+        }
+      ]
+    }
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 300x300 matrix. Requires empirical calibration after first LDLR ARCHCODE run. SSIM thresholds from HBB 30kb config will be diluted at this resolution."
+}
