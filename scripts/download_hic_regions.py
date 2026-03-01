@@ -118,6 +118,7 @@ LOCUS_ALIASES: dict[str, str] = {
     "tp53": "tp53_300kb.json",
     "brca1": "brca1_400kb.json",
     "mlh1": "mlh1_300kb.json",
+    "ldlr": "ldlr_300kb.json",
 }
 
 

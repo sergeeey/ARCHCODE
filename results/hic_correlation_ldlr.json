@@ -1,0 +1,10 @@
+{
+  "gene": "LDLR",
+  "cell_type": "HepG2",
+  "region": "chr19:10940000-11240000",
+  "resolution_bp": 1000,
+  "pearson_r": 0.31953813481485144,
+  "p_value": 0.0,
+  "n_valid_pairs": 19156,
+  "n_total_pairs": 44850
+}

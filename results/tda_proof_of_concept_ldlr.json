@@ -1,0 +1,247 @@
+{
+  "analysis": "ARCHCODE TDA proof-of-concept",
+  "locus": "ldlr",
+  "n_bins": 300,
+  "resolution": 1000,
+  "wt_persistence": {
+    "H0_components": {
+      "n_features": 0,
+      "total_persistence": 0.0,
+      "max_persistence": 0.0,
+      "mean_persistence": 0.0,
+      "entropy": 0.0
+    },
+    "H1_loops": {
+      "n_features": 6,
+      "total_persistence": 0.138058602809906,
+      "max_persistence": 0.11947911977767944,
+      "mean_persistence": 0.023009767134984333,
+      "entropy": 0.5308687239551472
+    }
+  },
+  "variant_comparison": [
+    {
+      "category": "nonsense",
+      "effect_strength": 0.1,
+      "ssim": 0.976184,
+      "lssim": 0.81578,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.097516,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.061552,
+      "landscape_dist_h1": 0.122664,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.138059,
+      "h1_total_pers_mut": 0.161742
+    },
+    {
+      "category": "frameshift",
+      "effect_strength": 0.15,
+      "ssim": 0.979457,
+      "lssim": 0.850316,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.097516,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.061552,
+      "landscape_dist_h1": 0.122664,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.138059,
+      "h1_total_pers_mut": 0.161742
+    },
+    {
+      "category": "splice_donor",
+      "effect_strength": 0.2,
+      "ssim": 0.982187,
+      "lssim": 0.878685,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.097516,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.061552,
+      "landscape_dist_h1": 0.122664,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.138059,
+      "h1_total_pers_mut": 0.161742
+    },
+    {
+      "category": "promoter",
+      "effect_strength": 0.3,
+      "ssim": 0.98655,
+      "lssim": 0.922549,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.097516,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.061552,
+      "landscape_dist_h1": 0.122664,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.138059,
+      "h1_total_pers_mut": 0.161742
+    },
+    {
+      "category": "missense",
+      "effect_strength": 0.4,
+      "ssim": 0.98981,
+      "lssim": 0.953449,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.097628,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.061552,
+      "landscape_dist_h1": 0.122664,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 7,
+      "h1_total_pers_wt": 0.138059,
+      "h1_total_pers_mut": 0.1619
+    },
+    {
+      "category": "intronic",
+      "effect_strength": 0.8,
+      "ssim": 0.9978,
+      "lssim": 0.996685,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.024292,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.012463,
+      "landscape_dist_h1": 0.044703,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 5,
+      "h1_total_pers_wt": 0.138059,
+      "h1_total_pers_mut": 0.152962
+    },
+    {
+      "category": "synonymous",
+      "effect_strength": 0.9,
+      "ssim": 0.999504,
+      "lssim": 0.999249,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.012197,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.00607,
+      "landscape_dist_h1": 0.020448,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 5,
+      "h1_total_pers_wt": 0.138059,
+      "h1_total_pers_mut": 0.144553
+    }
+  ],
+  "rank_correlations": {
+    "ssim_vs_wasserstein_h1": {
+      "rho": -0.5123,
+      "p": 0.2398
+    },
+    "lssim_vs_wasserstein_h1": {
+      "rho": -0.5123,
+      "p": 0.2398
+    },
+    "ssim_vs_bottleneck_h1": {
+      "rho": -0.8018,
+      "p": 0.0301
+    },
+    "ssim_vs_landscape_h1": {
+      "rho": -0.8018,
+      "p": 0.0301
+    }
+  },
+  "positional_scan": {
+    "n_positions": 15,
+    "ssim_range": [0.991311, 0.999914],
+    "wasserstein_h1_range": [0.0, 0.002906],
+    "positional_rho": -0.0868,
+    "positional_p": 0.758492
+  },
+  "scan_data": [
+    {
+      "bin": 0,
+      "genomic_pos": 10940000,
+      "ssim": 0.999914,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 20,
+      "genomic_pos": 10960000,
+      "ssim": 0.991311,
+      "wasserstein_h1": 0.00021
+    },
+    {
+      "bin": 40,
+      "genomic_pos": 10980000,
+      "ssim": 0.999733,
+      "wasserstein_h1": 0.000349
+    },
+    {
+      "bin": 60,
+      "genomic_pos": 11000000,
+      "ssim": 0.999714,
+      "wasserstein_h1": 4.9e-5
+    },
+    {
+      "bin": 80,
+      "genomic_pos": 11020000,
+      "ssim": 0.999731,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 100,
+      "genomic_pos": 11040000,
+      "ssim": 0.999728,
+      "wasserstein_h1": 0.001738
+    },
+    {
+      "bin": 120,
+      "genomic_pos": 11060000,
+      "ssim": 0.999705,
+      "wasserstein_h1": 0.000572
+    },
+    {
+      "bin": 140,
+      "genomic_pos": 11080000,
+      "ssim": 0.999783,
+      "wasserstein_h1": 0.000314
+    },
+    {
+      "bin": 160,
+      "genomic_pos": 11100000,
+      "ssim": 0.999778,
+      "wasserstein_h1": 0.002906
+    },
+    {
+      "bin": 180,
+      "genomic_pos": 11120000,
+      "ssim": 0.999813,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 200,
+      "genomic_pos": 11140000,
+      "ssim": 0.998398,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 220,
+      "genomic_pos": 11160000,
+      "ssim": 0.999672,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 240,
+      "genomic_pos": 11180000,
+      "ssim": 0.99973,
+      "wasserstein_h1": 2.5e-5
+    },
+    {
+      "bin": 260,
+      "genomic_pos": 11200000,
+      "ssim": 0.999259,
+      "wasserstein_h1": 0.000314
+    },
+    {
+      "bin": 280,
+      "genomic_pos": 11220000,
+      "ssim": 0.999772,
+      "wasserstein_h1": 0.0
+    }
+  ],
+  "interpretation": "MODERATE correlation. TDA and SSIM capture partially overlapping structural information. This is the ideal scenario: TDA adds complementary topological signal beyond SSIM pixel comparison."
+}

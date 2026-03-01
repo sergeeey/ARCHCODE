@@ -77,7 +77,7 @@ reflects statistical power at large sample sizes rather than meaningful position
 prediction (ΔAUC < 0.02 in both cases). LSSIM expanded the dynamic range from
 0.98–1.00 (global SSIM) to 0.75–1.00, enabling verdict assignment across all loci.
 Hi-C correlation varied by locus: MLH1 K562 r = 0.59, BRCA1 K562 r = 0.53, MCF7
-r = 0.50; TP53 K562 r = 0.29, MCF7 r = 0.28.
+r = 0.50; LDLR HepG2 r = 0.32; TP53 K562 r = 0.29, MCF7 r = 0.28.
 Bayesian parameter optimization (Optuna GPSampler, 200 trials) confirmed that kinetics
 parameters (α, γ, k_base) are near-optimal: Δr = +0.0001. All three parameters converged
 to lower bounds, revealing that Hi-C correlation is architecture-driven (distance decay,
@@ -120,9 +120,9 @@ as a complementary, hypothesis-generating layer in variant interpretation workfl
 
 **Keywords:** β-thalassemia, HBB, chromatin loops, loop extrusion, cohesin, SSIM, structural
 pathogenicity predictor, VEP, regulatory variants, promoter variants, pearl variants,
-variant interpretation, mean-field simulation, CFTR, TP53, BRCA1, MLH1, Lynch syndrome,
-multi-locus validation, Bayesian optimization, Optuna, ENCODE Hi-C, classify_hgvs,
-Local SSIM, matrix-size dilution, threshold recalibration
+variant interpretation, mean-field simulation, CFTR, TP53, BRCA1, MLH1, LDLR, Lynch syndrome,
+familial hypercholesterolemia, multi-locus validation, Bayesian optimization, Optuna, ENCODE Hi-C,
+HepG2, classify_hgvs, Local SSIM, matrix-size dilution, threshold recalibration
 
 **Word Count:** ~480 words
 
@@ -133,17 +133,18 @@ Local SSIM, matrix-size dilution, threshold recalibration
 Sequence-based variant effect predictors score variants by their impact on protein sequence and
 canonical splice motifs, leaving a structural blind spot for variants that disrupt 3D chromatin
 topology without altering coding sequence. We developed ARCHCODE, an analytical loop extrusion
-simulator, and applied it to 21,988 clinically classified variants across five loci: HBB (1,103),
-CFTR (3,349), TP53 (2,794), BRCA1 (10,682), and MLH1 (4,060). ARCHCODE correctly stratifies variants by
+simulator, and applied it to 25,272 clinically classified variants across six loci: HBB (1,103),
+CFTR (3,349), TP53 (2,794), BRCA1 (10,682), MLH1 (4,060), and LDLR (3,284). ARCHCODE correctly stratifies variants by
 functional class and identifies 20 "pearl" candidates on HBB — variants invisible to VEP —
 where structural simulation predicts regulatory disruption. Local SSIM (LSSIM) resolves
 matrix-size dilution, expanding SSIM dynamic range from 0.98–1.00 to 0.75–1.00 and enabling
 verdict assignment across all matrix sizes. Within-category testing confirms ARCHCODE as
-primarily a category-level structural classifier (CFTR/TP53 p > 0.29; BRCA1/MLH1 show
+primarily a category-level structural classifier (CFTR/TP53 p > 0.29; BRCA1/MLH1/LDLR show
 statistical significance at ΔAUC < 0.02 — a power effect, not meaningful prediction). K562
-Hi-C correlation ranges from r = 0.29 (TP53) to r = 0.59 (HBB 95kb, MLH1), demonstrating
-locus-dependent model performance. This work establishes a framework for orthogonal structural
-scoring as a complement to existing sequence-based tools in variant interpretation pipelines.
+Hi-C correlation ranges from r = 0.29 (TP53) to r = 0.59 (HBB 95kb, MLH1) using K562 data;
+HepG2 Hi-C validation for LDLR (r = 0.32) extends the framework to tissue-specific chromatin.
+This work establishes a framework for orthogonal structural scoring as a complement to existing
+sequence-based tools in variant interpretation pipelines.
 
 **Word Count:** ~110 words
 
@@ -151,13 +152,13 @@ scoring as a complement to existing sequence-based tools in variant interpretati
 
 ## Main Findings (for graphical abstract)
 
-1. **21,988 real ClinVar variants across 5 loci** (HBB 1,103 + CFTR 3,349 + TP53 2,794 + BRCA1 10,682 + MLH1 4,060) analyzed
+1. **25,272 real ClinVar variants across 6 loci** (HBB 1,103 + CFTR 3,349 + TP53 2,794 + BRCA1 10,682 + MLH1 4,060 + LDLR 3,284) analyzed
 2. **45.6% (161/353) HBB structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
 3. **20 "pearl" variants** identified on HBB: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
 4. **ROC AUC = 0.977** (unified pipeline); reflects category-distribution differences, not independent prediction
 5. **Local SSIM (LSSIM)** resolves matrix-size dilution: dynamic range 0.75–1.00 (vs 0.98–1.00 global); verdicts now work on all matrix sizes
-6. **Within-category: primarily null** (CFTR/TP53 p > 0.29); BRCA1/MLH1 statistically significant at ΔAUC < 0.02 (power effect, not meaningful prediction)
-7. **Multi-locus Hi-C validation:** MLH1 r = 0.59, HBB r = 0.53–0.59, BRCA1 r = 0.50–0.53, TP53 r = 0.28–0.29 (K562 + MCF7)
+6. **Within-category: primarily null** (CFTR/TP53 p > 0.29); BRCA1/MLH1/LDLR statistically significant at ΔAUC < 0.02 (power effect, not meaningful prediction)
+7. **Multi-locus Hi-C validation:** MLH1 r = 0.59, HBB r = 0.53–0.59, BRCA1 r = 0.50–0.53, LDLR r = 0.32 (HepG2), TP53 r = 0.28–0.29 (K562 + MCF7 + HepG2)
 8. **Improved classify_hgvs()** detects frameshift vs inframe from cDNA indel length, resolving >90% of "other" variants
 
 ---
@@ -187,6 +188,8 @@ scoring as a complement to existing sequence-based tools in variant interpretati
 | Hi-C correlation (MLH1)        | REAL (positive)     | K562 r=0.59; p≈0                                                            |
 | Hi-C correlation (BRCA1)       | REAL (positive)     | K562 r=0.53; MCF7 r=0.50; p≈0                                               |
 | Hi-C correlation (TP53)        | REAL (moderate)     | K562 r=0.29; MCF7 r=0.28; p<10⁻¹³⁶                                          |
+| Hi-C correlation (LDLR)        | REAL (positive)     | HepG2 r=0.32; p≈0; first tissue-specific validation                         |
+| LDLR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.003, p=0.004; significant but ΔAUC negligible                    |
 | Bayesian optimization          | COMPUTATIONAL       | Optuna 4.7.0, 200 trials; Δr=0.0001                                         |
 
 ---
@@ -1244,25 +1247,66 @@ MLH1 is epigenetically silenced) Hi-C data was inaccessible within the study tim
 and stronger than TP53 (ρ = −0.85). Positional scan across 15 positions showed ρ = −0.64
 (p = 0.011), confirming consistent SSIM–TDA correspondence at 300×300 resolution.
 
+## LDLR Locus: Tissue-Specific Chromatin Validation
+
+LDLR (Low-Density Lipoprotein Receptor, chr19p13.2) encodes the primary receptor for LDL
+cholesterol clearance. Germline pathogenic variants cause Familial Hypercholesterolemia (FH),
+affecting ~1:250 individuals worldwide. LDLR is the first ARCHCODE locus validated with
+tissue-specific Hi-C data (HepG2 hepatocyte line) rather than K562.
+
+**Variant analysis:** 3,284 ClinVar variants (2,274 P/LP + 1,010 B/LB) were analyzed in a
+300kb window (chr19:10,940,000–11,240,000) at 1kb resolution. The window contains 6 genes
+including SMARCA4 (SWI/SNF chromatin remodeler) upstream. CTCF sites from ENCODE HepG2
+(ENCSR000AMA, 10 peaks) co-localize with K562 CTCF at 7/10 positions, confirming cell-type
+invariance. H3K27ac from HepG2 (ENCSR000AMO) shows a 6.3kb super-enhancer at the LDLR
+promoter (signal = 111.3), consistent with high LDLR expression in hepatocytes under SREBP
+regulation.
+
+**SSIM results:** Global SSIM range 0.9895–1.0000; LSSIM range 0.9061–1.0000.
+LSSIM identified 10 structurally pathogenic variants. Variant spread is only 2.1 kb (0.7%
+of window), similar to HBB — all ClinVar variants cluster within the LDLR gene body.
+
+**Within-category analysis:** Logistic regression shows statistical significance (p = 0.004)
+but ΔAUC = −0.003, confirming the power-effect pattern seen in BRCA1 and MLH1. Mann-Whitney
+U test within the "other" category shows significant separation (Δ = −0.007, p = 0.008),
+while intronic and synonymous categories show no signal. ARCHCODE remains a category-level
+classifier.
+
+No LDLR pearls were detected (VEP data not available for this locus).
+
+**Hi-C validation:** HepG2 Hi-C correlation yielded r = 0.32 (p ≈ 0, n = 19,156 loci).
+This is the first tissue-specific validation: LDLR is highly expressed in hepatocytes,
+and HepG2 Hi-C captures liver-specific chromatin architecture. The correlation is comparable
+to TP53 (K562 r = 0.29) and lower than HBB/MLH1 (r = 0.53–0.59), likely reflecting
+the gene-dense chr19 environment where multiple regulatory domains create complex contact
+patterns that the mean-field model captures partially.
+
+**TDA analysis:** Spearman correlation between SSIM and Wasserstein H1 distance was
+ρ = −0.51 (p = 0.24), the weakest TDA–SSIM correspondence across all loci. Bottleneck
+distance showed stronger correlation (ρ = −0.80, p = 0.03). Positional scan across 15
+positions showed ρ = −0.09 (p = 0.76), indicating that TDA captures complementary
+topological information not fully reflected in SSIM at this locus.
+
 ---
 
 ## Multi-Locus Comparison
 
-**Table 6. ARCHCODE results across five genomic loci.**
+**Table 6. ARCHCODE results across six genomic loci.**
 
-| Metric            | HBB (95 kb)      | CFTR (317 kb)     | TP53 (300 kb)     | BRCA1 (400 kb)   | MLH1 (300 kb)    |
-| ----------------- | ---------------- | ----------------- | ----------------- | ---------------- | ---------------- |
-| ClinVar variants  | 1,103            | 3,349             | 2,794             | 10,682           | 4,060            |
-| P/LP + B/LB       | 353 + 750        | 1,756 + 1,593     | 1,645 + 1,149     | 7,062 + 3,620    | 2,425 + 1,635    |
-| Variant spread    | 2.1 kb (2.2%)    | 201.5 kb (63.6%)  | 109.9 kb (36.6%)  | 103.6 kb (25.9%) | 130.3 kb (43.4%) |
-| Global SSIM range | 0.9611–0.9998    | 0.9836–1.0000     | 0.9934–1.0000     | 0.9938–1.0000    | 0.9838–1.0000    |
-| LSSIM range       | 0.7537–0.9992    | 0.8329–0.9999     | 0.9443–1.0000     | 0.8767–0.9999    | 0.8417–0.9999    |
-| Struct. path.     | 254              | 35                | 0 (12 VUS)        | 52               | 72               |
-| LR ΔAUC (LSSIM)   | −0.001 (p = 1.0) | −0.012 (p = 0.79) | +0.032 (p = 0.29) | +0.002 (p≈10⁻²⁰) | +0.011 (p=0.005) |
-| K562 Hi-C r       | 0.53 / 0.59      | —                 | 0.29              | 0.53             | 0.59             |
-| MCF7 Hi-C r       | —                | —                 | 0.28              | 0.50             | —                |
-| TDA ρ (SSIM↔W_H1) | −0.96            | −1.00             | −0.85             | NaN              | −0.76            |
-| Pearl variants    | 27               | 0                 | 0                 | 0                | 0                |
+| Metric            | HBB (95 kb)      | CFTR (317 kb)     | TP53 (300 kb)     | BRCA1 (400 kb)   | MLH1 (300 kb)    | LDLR (300 kb)    |
+| ----------------- | ---------------- | ----------------- | ----------------- | ---------------- | ---------------- | ---------------- |
+| ClinVar variants  | 1,103            | 3,349             | 2,794             | 10,682           | 4,060            | 3,284            |
+| P/LP + B/LB       | 353 + 750        | 1,756 + 1,593     | 1,645 + 1,149     | 7,062 + 3,620    | 2,425 + 1,635    | 2,274 + 1,010    |
+| Variant spread    | 2.1 kb (2.2%)    | 201.5 kb (63.6%)  | 109.9 kb (36.6%)  | 103.6 kb (25.9%) | 130.3 kb (43.4%) | 2.1 kb (0.7%)    |
+| Global SSIM range | 0.9611–0.9998    | 0.9836–1.0000     | 0.9934–1.0000     | 0.9938–1.0000    | 0.9838–1.0000    | 0.9895–1.0000    |
+| LSSIM range       | 0.7537–0.9992    | 0.8329–0.9999     | 0.9443–1.0000     | 0.8767–0.9999    | 0.8417–0.9999    | 0.9061–1.0000    |
+| Struct. path.     | 254              | 35                | 0 (12 VUS)        | 52               | 72               | 10               |
+| LR ΔAUC (LSSIM)   | -0.001 (p = 1.0) | -0.012 (p = 0.79) | +0.031 (p = 0.29) | +0.002 (p≈10⁻20) | +0.011 (p=0.005) | -0.003 (p=0.004) |
+| K562 Hi-C r       | 0.53 / 0.59      | —                 | 0.29              | 0.53             | 0.59             | —                |
+| MCF7 Hi-C r       | —                | —                 | 0.28              | 0.50             | —                | —                |
+| HepG2 Hi-C r      | —                | —                 | —                 | —                | —                | 0.32             |
+| TDA ρ (SSIM↔W_H1) | -0.96            | -1.00             | -0.85             | NaN              | -0.76            | -0.51            |
+| Pearl variants    | 27               | 0                 | 0                 | 0                | 0                | 0                |
 
 The multi-locus comparison reveals three consistent patterns: (1) LSSIM resolves
 matrix-size dilution, expanding dynamic range from 0.98–1.00 (global SSIM) to 0.75–1.00
@@ -1341,24 +1385,24 @@ zero sensitivity to missense variants, its most important limitation for clinica
 classification; (7) Local SSIM (LSSIM) resolves matrix-size dilution by computing SSIM on a 50×50
 submatrix centered on each variant, expanding dynamic range from 0.98–1.00 to 0.75–1.00;
 (8) cross-gene within-category testing using LSSIM: CFTR (ΔAUC = −0.012, p = 0.79)
-and TP53 (ΔAUC = +0.032, p = 0.29) null; BRCA1 (ΔAUC = +0.002, p ≈ 10⁻²⁰) and MLH1
-(ΔAUC = +0.011, p = 0.005) statistically significant but ΔAUC < 0.02 (power effect);
+and TP53 (ΔAUC = +0.032, p = 0.29) null; BRCA1 (ΔAUC = +0.002, p ≈ 10⁻²⁰), MLH1
+(ΔAUC = +0.011, p = 0.005), and LDLR (ΔAUC = −0.003, p = 0.004) statistically significant but ΔAUC < 0.02 (power effect);
 (9) Bayesian parameter optimization (200 trials) confirms grid-search kinetics estimates
 as near-optimal (Δr = 0.0001), with Hi-C correlation driven by structural architecture
 rather than kinetics parameters; (10) Hi-C validation: MLH1 K562 r = 0.59, BRCA1 K562
-r = 0.53 / MCF7 r = 0.50, TP53 K562 r = 0.29 — locus-dependent performance;
+r = 0.53 / MCF7 r = 0.50, LDLR HepG2 r = 0.32, TP53 K562 r = 0.29 — locus-dependent performance;
 (11) LSSIM enables structural pathogenic verdicts on all loci (HBB 95kb: 254, MLH1: 72,
-BRCA1: 52, CFTR: 35, TP53: 12 VUS).
+BRCA1: 52, CFTR: 35, TP53: 12 VUS, LDLR: 10).
 
 All reported SSIM values and VEP scores are derived from computational models. Hi-C
-validation against K562 and MCF7 experimental data shows significant correlation
-(r = 0.28–0.59 across five loci; see Discussion), but RNA-seq and patient phenotype validation
+validation against K562, MCF7, and HepG2 experimental data shows significant correlation
+(r = 0.28–0.59 across six loci; see Discussion), but RNA-seq and patient phenotype validation
 remain outstanding. Experimental functional validation is required before any variant
 reclassification should be considered.
 
 ---
 
-_Results section — based on real ClinVar data (21,988 variants across 5 loci, NCBI E-utilities)_
+_Results section — based on real ClinVar data (25,272 variants across 6 loci, NCBI E-utilities)_
 _Word count: ~3,500_
 _Last updated: 2026-03-02_
 
@@ -1401,12 +1445,16 @@ internal P2 promoter generating Δ133p53 isoforms, and higher CTCF density creat
 more intricate contact landscape that the mean-field model captures less completely. The
 BRCA1 result is encouraging: despite a 400×400 matrix (the largest tested), Hi-C
 correlation matches HBB, suggesting that dense enhancer/CTCF annotation compensates for
-dilution effects in contact map fidelity. SSIM values should still be interpreted as relative disruption
+dilution effects in contact map fidelity. LDLR (HepG2 r = 0.32) is the first
+tissue-specific validation, using hepatocyte Hi-C instead of K562. The moderate correlation
+is comparable to TP53 and likely reflects the gene-dense chr19 environment, where multiple
+overlapping regulatory domains (including the upstream SMARCA4 chromatin remodeler) create
+complex contact patterns. SSIM values should still be interpreted as relative disruption
 scores within the model, not as absolute predictions of chromatin contact frequency.
 
 Importantly, the AUC of 0.977 is a category-level structural model, not evidence of
-within-category positional prediction. Multi-locus testing using LSSIM across five loci
-(21,988 variants total) confirms that LSSIM adds no clinically meaningful predictive
+within-category positional prediction. Multi-locus testing using LSSIM across six loci
+(25,272 variants total) confirms that LSSIM adds no clinically meaningful predictive
 value beyond category assignment: CFTR and TP53 show clear null results (p > 0.29),
 while BRCA1 (p ≈ 10⁻²⁰) and MLH1 (p = 0.005) show statistical significance with
 negligible effect sizes (ΔAUC < 0.02). The significance at larger loci reflects
@@ -1512,9 +1560,9 @@ available in ClinVar records to validate computational predictions against clini
 candidates. None have been tested by RT-PCR, Capture Hi-C, or functional assay in this study.
 
 **7. Within-category positional signal: primarily null, power-driven on large cohorts.**
-Testing across five loci with LSSIM: HBB (p = 1.0), CFTR (p = 0.79), and TP53 (p = 0.29)
-show clear null results. BRCA1 (p ≈ 10⁻²⁰, ΔAUC = +0.002) and MLH1 (p = 0.005,
-ΔAUC = +0.011) are statistically significant but with negligible effect sizes. This
+Testing across six loci with LSSIM: HBB (p = 1.0), CFTR (p = 0.79), and TP53 (p = 0.29)
+show clear null results. BRCA1 (p ≈ 10⁻²⁰, ΔAUC = +0.002), MLH1 (p = 0.005,
+ΔAUC = +0.011), and LDLR (p = 0.004, ΔAUC = −0.003) are statistically significant but with negligible effect sizes. This
 reflects statistical power at large n (>4,000 variants) with expanded LSSIM dynamic
 range, not meaningful within-category prediction. ARCHCODE remains primarily a
 category-level structural classifier.
@@ -1573,15 +1621,15 @@ than screening all 353 variants individually.
 
 For the broader field of variant interpretation, this work illustrates that different
 computational tools capture different biological dimensions. Multi-locus Hi-C validation
-(r = 0.28–0.59 across five loci) grounds the model in experimental reality, with
+(r = 0.28–0.59 across six loci) grounds the model in experimental reality, with
 performance varying by locus complexity. MLH1 (K562 r = 0.59, 4,060 variants) achieves
-the joint-highest correlation, adding a DNA mismatch repair gene to the portfolio. The
+the joint-highest correlation, and LDLR (HepG2 r = 0.32, 3,284 variants) extends validation to tissue-specific (hepatocyte) chromatin, adding cholesterol metabolism and DNA mismatch repair genes to the portfolio. The
 BRCA1 result (K562 r = 0.53, MCF7 r = 0.50 with 10,682 variants) demonstrates
 scalability to clinically important oncogenes.
 
-Cross-gene analysis across five loci (21,988 total variants) using LSSIM showed a nuanced
-picture: CFTR and TP53 produced clear null results (p > 0.29), while BRCA1 (p ≈ 10⁻²⁰)
-and MLH1 (p = 0.005) showed statistical significance — but with negligible effect sizes
+Cross-gene analysis across six loci (25,272 total variants) using LSSIM showed a nuanced
+picture: CFTR and TP53 produced clear null results (p > 0.29), while BRCA1 (p ≈ 10⁻²⁰),
+MLH1 (p = 0.005), and LDLR (p = 0.004) showed statistical significance — but with negligible effect sizes
 (ΔAUC < 0.02). This pattern is consistent with a power effect: at n > 4,000 with expanded
 LSSIM dynamic range, even tiny positional SSIM variations become statistically detectable
 without being clinically meaningful. Combined with the Bayesian optimization null
@@ -1595,9 +1643,9 @@ was addressed in v2.3 by Local SSIM (LSSIM): computing SSIM on a 50×50 submatri
 on each variant. This normalizes perturbation fraction to ~12% regardless of total matrix size,
 expanding the dynamic range from 0.98–1.00 (global) to 0.75–1.00 (LSSIM) and enabling
 threshold transfer from the calibrated HBB 30kb locus. LSSIM revealed structural pathogenic
-verdicts across all loci (HBB 95kb: 254; MLH1: 72; BRCA1: 52; CFTR: 35; TP53: 12 VUS),
+verdicts across all loci (HBB 95kb: 254; MLH1: 72; BRCA1: 52; CFTR: 35; TP53: 12 VUS; LDLR: 10),
 demonstrating that matrix-size dilution was the primary barrier to verdict assignment, not
-lack of structural signal. Topological data analysis (ρ = −0.76 to −1.00 correlation with
+lack of structural signal. Topological data analysis (ρ = −0.51 to −1.00 correlation with
 SSIM on smaller loci) provides a complementary perspective on structural disruption.
 
 ---
@@ -1861,8 +1909,9 @@ without experimental confirmation.
 - Hi-C validation (TP53): K562 r = 0.293, MCF7 r = 0.276; both p < 10⁻¹³⁶ (n = 7,821)
 - Hi-C validation (BRCA1): K562 r = 0.530 (n = 12,093), MCF7 r = 0.500 (n = 7,307); both p ≈ 0
 - Hi-C validation (MLH1): K562 r = 0.589 (n = 20,432); p ≈ 0
+- Hi-C validation (LDLR): HepG2 r = 0.320 (n = 19,156); p ≈ 0
 - Parameters manually calibrated, not fitted to HBB locus; Bayesian optimization (Optuna, 200 trials) confirmed near-optimal (Δr=0.0001)
-- Within-category (LSSIM): null on HBB/CFTR/TP53 (p > 0.29); BRCA1/MLH1 significant but ΔAUC < 0.02 (power effect)
+- Within-category (LSSIM): null on HBB/CFTR/TP53 (p > 0.29); BRCA1/MLH1/LDLR significant but ΔAUC < 0.02 (power effect)
 - Matrix-size dilution resolved by LSSIM (50×50 window); LSSIM range 0.75–1.00 across all loci
 
 **Software:**
