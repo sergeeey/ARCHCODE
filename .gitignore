@@ -89,5 +89,10 @@ data/reference/*_pairs.txt.gz
 # External tools (download separately)
 tools/*.jar
 
+# Akita/Basenji (local inference)
+data/models/
+external/
+data/reference_sequences/
+
 # Downloaded DNA samples (local only)
 ДНК Образцы СКАЧЕННЫЙ/
