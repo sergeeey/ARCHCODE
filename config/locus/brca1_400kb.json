@@ -1,0 +1,337 @@
+{
+  "id": "brca1_400kb",
+  "name": "BRCA1 400kb TAD (ENCODE K562+MCF7 CTCF + MCF7 H3K27ac)",
+  "description": "400kb window spanning the BRCA1 TAD on chr17q21.31. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE) and MCF7 ChIP-seq (ENCFF163JHE, ENCSR000DMV), both IDR narrowPeak, GRCh38. H3K27ac enhancer peaks from ENCODE MCF7 (ENCFF340KSH, ENCSR000EWR) — MCF7 is breast cancer cell line where BRCA1 is actively transcribed. K562 H3K27ac (ENCFF864OSZ, ENCSR000AKP) used for cross-validation. BRCA1 is on the MINUS strand; TSS is at the 3-prime end (43,125,364). BRCA1 and NBR2 share a bidirectional promoter separated by ~218bp (Suen et al. 1998, PMID:9685411). TAD boundaries from Rao et al. 2014 K562 Arrowhead domains (GSE63525, hg19 lifted to hg38 with +1,847,982bp offset — APPROXIMATE). CTCF sites are largely cell-type invariant (Cuddapah 2009, PMID:19030024); K562 and MCF7 peaks co-localize at all major sites in this window.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr17",
+    "start": 42900000,
+    "end": 43300000,
+    "resolution_bp": 1000,
+    "n_bins": 400
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 43125364,
+        "occupancy": 0.9,
+        "name": "BRCA1_TSS_NBR2_bidirectional_promoter",
+        "source": "ENCODE_MCF7_H3K27ac",
+        "encode_accession": "ENCFF340KSH",
+        "note": "BRCA1 TSS (minus strand, NM_007294.4). Bidirectional promoter shared with NBR2 lncRNA, separated by ~218bp. MCF7 H3K27ac signal=6.46 (Peak_8575, 43125615-43126163). K562 H3K27ac signal=72.62 (Peak_723, 43124355-43126810, strongest in K562 — CpG island). Suen et al. 1998 (PMID:9685411)"
+      },
+      {
+        "position": 43170700,
+        "occupancy": 0.85,
+        "name": "NBR1_promoter_H3K27ac",
+        "source": "ENCODE_MCF7_H3K27ac",
+        "encode_accession": "ENCFF340KSH",
+        "note": "Strong MCF7 H3K27ac peak at NBR1 promoter (Peak_7461, 43170409-43171012, signal=6.48). Second MCF7 H3K27ac peak nearby (Peak_20783, 43171213-43171892, signal=5.18). K562 H3K27ac mega-peak signal=50.77 (43168861-43172854, 4kb). Co-localizes with strong CTCF cluster. MANUALLY CALIBRATED occupancy from signal ratio"
+      },
+      {
+        "position": 42981500,
+        "occupancy": 0.7,
+        "name": "PTGES3L_RUNDC1_enhancer_H3K27ac",
+        "source": "ENCODE_MCF7_H3K27ac",
+        "encode_accession": "ENCFF340KSH",
+        "note": "MCF7 H3K27ac peak at PTGES3L/RUNDC1 boundary (Peak_11808, 42981232-42981777, signal=6.10). K562 H3K27ac signal=42.22 (42979094-42981963, 2.9kb broad). Co-localizes with CTCF peak. ~63kb upstream of BRCA1 TSS"
+      },
+      {
+        "position": 43007000,
+        "occupancy": 0.65,
+        "name": "IFI35_promoter_H3K27ac",
+        "source": "ENCODE_MCF7_H3K27ac",
+        "encode_accession": "ENCFF340KSH",
+        "note": "MCF7 H3K27ac peak at IFI35 promoter (Peak_14328, 43006792-43007347, signal=5.66). K562 signal=25.03. Co-localizes with strong CTCF (K562 signal=76.68, MCF7 signal=56.92). ~118kb upstream of BRCA1 TSS"
+      },
+      {
+        "position": 42998900,
+        "occupancy": 0.6,
+        "name": "RPL27_promoter_H3K27ac",
+        "source": "ENCODE_MCF7_H3K27ac",
+        "encode_accession": "ENCFF340KSH",
+        "note": "MCF7 H3K27ac twin peaks (Peak_39312, 42998568-42998778, signal=3.66 and Peak_40498, 42998839-42999307, signal=3.70). K562 H3K27ac signal=38.91 (42997379-43000593, 3.2kb broad). Co-localizes with strongest CTCF in window. Housekeeping gene RPL27"
+      },
+      {
+        "position": 42929000,
+        "occupancy": 0.5,
+        "name": "G6PC1_downstream_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac signal=58.86 (42928242-42929442). No corresponding MCF7 peak. Co-localizes with CTCF. ~196kb upstream of BRCA1 TSS. MANUALLY CALIBRATED occupancy — K562-specific activity"
+      },
+      {
+        "position": 42964500,
+        "occupancy": 0.45,
+        "name": "AARSD1_promoter_H3K27ac",
+        "source": "ENCODE_MCF7_H3K27ac",
+        "encode_accession": "ENCFF340KSH",
+        "note": "MCF7 H3K27ac peak (Peak_33803, 42964600-42964855, signal=4.26). K562 signal=28.86 (42963531-42964966). Near AARSD1 promoter. ~161kb upstream of BRCA1 TSS"
+      },
+      {
+        "position": 43024600,
+        "occupancy": 0.55,
+        "name": "VAT1_RND2_boundary_H3K27ac",
+        "source": "ENCODE_MCF7_H3K27ac",
+        "encode_accession": "ENCFF340KSH",
+        "note": "Weak MCF7 H3K27ac (Peak_50769, 43024811-43025024, signal=3.52). K562 signal=24.20 (43024191-43025125). Co-localizes with strongest CTCF in window. ~101kb upstream of BRCA1 TSS"
+      },
+      {
+        "position": 43021500,
+        "occupancy": 0.4,
+        "name": "VAT1_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac twin peaks (17.59 at 43020887-43022646 and 13.52 at 43019469-43020849). Overlaps VAT1 gene (minus strand). ~104kb upstream of BRCA1 TSS"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 42929437,
+        "orientation": "unknown",
+        "signal": 70.87,
+        "name": "G6PC1_downstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=70.87 (42929302-42929572). MCF7 signal=49.21 (42929352-42929542). ENCODE clustered TF score=1000. Near 5-prime window boundary"
+      },
+      {
+        "position": 42937930,
+        "orientation": "unknown",
+        "signal": 74.93,
+        "name": "AARSD1_upstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=74.93 (42937795-42938065). MCF7 signal=85.08 (42937831-42938021). ENCODE clustered TF score=1000. Candidate 5-prime TAD boundary element. MCF7 signal STRONGER than K562"
+      },
+      {
+        "position": 42964377,
+        "orientation": "unknown",
+        "signal": 20.47,
+        "name": "AARSD1_promoter_CTCF",
+        "source": "ENCODE_MCF7_CTCF",
+        "encode_accession": "ENCFF163JHE",
+        "note": "MCF7 signal=20.47 (42964282-42964472). Near AARSD1 promoter. ENCODE clustered TF score=314"
+      },
+      {
+        "position": 42980938,
+        "orientation": "unknown",
+        "signal": 55.72,
+        "name": "RUNDC1_boundary_CTCF",
+        "source": "ENCODE_MCF7_CTCF",
+        "encode_accession": "ENCFF163JHE",
+        "note": "MCF7 signal=55.72 (42980830-42981020). K562 signal=38.67 (42980803-42981073). ENCODE clustered TF score=733. At PTGES3L/RUNDC1 boundary, co-localizes with H3K27ac"
+      },
+      {
+        "position": 42998141,
+        "orientation": "unknown",
+        "signal": 95.03,
+        "name": "RPL27_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=95.03 (42998070-42998208). MCF7 signal=83.40 (42998163-42998213). ENCODE clustered TF score=1000 (185 sources). Co-localizes with RPL27 promoter. Candidate sub-TAD boundary. ENCODE cCRE type: PLS (z=7.47)"
+      },
+      {
+        "position": 43004047,
+        "orientation": "unknown",
+        "signal": 10.76,
+        "name": "RPL27_IFI35_intergenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=10.76 (43003912-43004182). No MCF7 peak at this site. ENCODE clustered TF score=318. Weak but reproducible"
+      },
+      {
+        "position": 43006741,
+        "orientation": "unknown",
+        "signal": 76.68,
+        "name": "IFI35_promoter_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=76.68 (43006606-43006876). MCF7 signal=56.92 (43006641-43006831). ENCODE clustered TF score=1000. At IFI35 promoter, co-localizes with strong H3K27ac"
+      },
+      {
+        "position": 43024579,
+        "orientation": "unknown",
+        "signal": 147.45,
+        "name": "VAT1_RND2_boundary_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "STRONGEST CTCF in window. K562 signal=147.45 (43024479-43024679). MCF7 signal=131.59 (43024502-43024648). ENCODE clustered TF score=1000 (173 sources). Between VAT1 and RND2. ~20kb upstream of BRCA1 start. ENCODE cCRE type: pELS (z=5.06)"
+      },
+      {
+        "position": 43042287,
+        "orientation": "unknown",
+        "signal": 27.68,
+        "name": "BRCA1_5prime_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Weak K562-only CTCF ~2kb upstream of BRCA1 CDS start (43042167-43042407). No MCF7 peak. ENCODE clustered TF score=205"
+      },
+      {
+        "position": 43085710,
+        "orientation": "unknown",
+        "signal": 14.77,
+        "name": "BRCA1_intragenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Weak K562-only CTCF within BRCA1 gene body (intron region, 43085590-43085830). No MCF7 peak. ENCODE clustered TF score=533. May function as intragenic insulator"
+      },
+      {
+        "position": 43124566,
+        "orientation": "unknown",
+        "signal": 22.19,
+        "name": "BRCA1_promoter_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=22.19 (43124431-43124701). No MCF7 peak at this exact site. ENCODE clustered TF score=348. At BRCA1/NBR2 bidirectional promoter boundary. Co-localizes with strongest H3K27ac in K562 (signal=72.62). ENCODE cCRE type: PLS (z=6.87)"
+      },
+      {
+        "position": 43171272,
+        "orientation": "unknown",
+        "signal": 45.94,
+        "name": "NBR1_boundary_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=45.94 (43171137-43171407). MCF7 signal=19.74 (43171188-43171378). ENCODE clustered TF score=783. Strong CTCF at NBR1 5-prime region. Co-localizes with H3K27ac. Candidate 3-prime TAD boundary element. ENCODE cCRE type: PLS (z=7.32)"
+      },
+      {
+        "position": 43172342,
+        "orientation": "unknown",
+        "signal": 31.05,
+        "name": "NBR1_boundary_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=31.05 (43172207-43172477). ~1kb from NBR1_boundary_CTCF_1, likely tandem boundary pair. ENCODE clustered TF score=589. Co-localizes with broad H3K27ac"
+      },
+      {
+        "position": 43214276,
+        "orientation": "unknown",
+        "signal": 15.22,
+        "name": "TMEM106A_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=15.22 (43214141-43214411). MCF7 signal=17.95 (43211948-43212138). Within TMEM106A gene. Near 3-prime window boundary"
+      }
+    ],
+    "tad_boundaries": [
+      {
+        "position_start": 43007982,
+        "position_end": 43227982,
+        "name": "BRCA1_primary_TAD",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Primary TAD containing BRCA1 (220kb). hg19: 41160000-41380000 lifted to hg38 with +1,847,982bp offset (APPROXIMATE — not formal liftOver). Contains IFI35, VAT1, RND2, BRCA1, NBR2, BRCA1P1, NBR1, TMEM106A. Rao et al. 2014 Cell (PMID:25497547)"
+      },
+      {
+        "position_start": 43277982,
+        "position_end": 43727982,
+        "name": "downstream_TAD",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Downstream TAD (450kb). hg19: 41430000-41880000. Contains CCDC200 and extends beyond window"
+      }
+    ],
+    "genes": [
+      { "name": "G6PC1", "start": 42900798, "end": 42914438, "strand": "+" },
+      { "name": "AARSD1", "start": 42950525, "end": 42964454, "strand": "-" },
+      { "name": "PTGES3L", "start": 42968102, "end": 42980080, "strand": "-" },
+      { "name": "RUNDC1", "start": 42980564, "end": 42995142, "strand": "+" },
+      { "name": "RPL27", "start": 42998272, "end": 43002959, "strand": "+" },
+      { "name": "IFI35", "start": 43006783, "end": 43014456, "strand": "+" },
+      { "name": "VAT1", "start": 43014606, "end": 43022385, "strand": "-" },
+      { "name": "RND2", "start": 43025230, "end": 43032041, "strand": "+" },
+      { "name": "BRCA1", "start": 43044294, "end": 43125364, "strand": "-" },
+      { "name": "NBR2", "start": 43125556, "end": 43153671, "strand": "+" },
+      { "name": "BRCA1P1", "start": 43168070, "end": 43169954, "strand": "-" },
+      { "name": "NBR1", "start": 43170408, "end": 43211688, "strand": "+" },
+      { "name": "TMEM106A", "start": 43211874, "end": 43220041, "strand": "+" },
+      { "name": "CCDC200", "start": 43221416, "end": 43231269, "strand": "-" }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq_k562": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 11,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/"
+    },
+    "ctcf_chipseq_mcf7": {
+      "experiment": "ENCSR000DMV",
+      "file": "ENCFF163JHE",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "MCF7",
+      "assembly": "GRCh38",
+      "peaks_in_window": 9,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DMV/",
+      "note": "MCF7 is breast cancer cell line where BRCA1 is actively expressed. CTCF sites largely overlap with K562 (cell-type invariant). MCF7 CTCF used as primary reference for BRCA1 regulatory context"
+    },
+    "h3k27ac_chipseq_mcf7": {
+      "experiment": "ENCSR000EWR",
+      "file": "ENCFF340KSH",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "MCF7",
+      "assembly": "GRCh38",
+      "peaks_in_window": 14,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000EWR/",
+      "note": "MCF7 H3K27ac marks active enhancers and promoters in breast cancer cells. BRCA1 is active in MCF7. Used as primary source for enhancer occupancy estimates"
+    },
+    "h3k27ac_chipseq_k562": {
+      "experiment": "ENCSR000AKP",
+      "file": "ENCFF864OSZ",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 18,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/",
+      "note": "K562 H3K27ac used for cross-validation. K562 shows strong H3K27ac at BRCA1 promoter CpG island (signal=72.62) despite BRCA1 being largely inactive in K562 — reflects CpG island constitutive acetylation"
+    },
+    "tad_domains": {
+      "study": "Rao et al. 2014",
+      "pmid": "25497547",
+      "geo": "GSE63525",
+      "file": "GSE63525_K562_Arrowhead_domainlist.txt",
+      "assembly_original": "hg19",
+      "liftover_method": "linear offset +1847982bp (APPROXIMATE — not formal liftOver, based on BRCA1 NM_007294 hg19=41196312 vs hg38=43044294)",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
+    },
+    "ccre_annotations": {
+      "source": "ENCODE SCREEN cCREs (encodeCcreCombined track)",
+      "assembly": "GRCh38",
+      "note": "ENCODE Registry of candidate cis-Regulatory Elements. Types: PLS=promoter-like, pELS=proximal enhancer-like, dELS=distal enhancer-like. Used for functional annotation of CTCF sites"
+    },
+    "ctcf_clustered": {
+      "source": "ENCODE encRegTfbsClustered (ENCODE 3, 340 factors, 129 cell types)",
+      "assembly": "GRCh38",
+      "note": "Multi-cell-type CTCF cluster scores (0-1000). Score=1000 indicates binding detected across many cell types (cell-type invariant). Used to confirm CTCF site robustness"
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeq",
+      "note": "NBR2 coordinates from ncbiRefSeq (not ncbiRefSeqCurated) as NBR2 is a lncRNA. BRCA1P1 coordinates from GeneCards. NBR1 from NCBI Gene ID 4077"
+    },
+    "brca1_nbr2_promoter": {
+      "studies": [
+        {
+          "authors": "Suen et al.",
+          "year": 1998,
+          "journal": "J Biol Chem",
+          "pmid": "9685411",
+          "finding": "BRCA1 and NBR2 share a bidirectional promoter; TSS separated by ~218bp"
+        },
+        {
+          "authors": "Xu et al.",
+          "year": 2015,
+          "journal": "Cell Research",
+          "pmid": "26504226",
+          "finding": "NBR2 lncRNA is activated by AMPK under energy stress via shared bidirectional promoter with BRCA1"
+        }
+      ]
+    }
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 400x400 matrix. SSIM thresholds require empirical calibration after first BRCA1 ARCHCODE run. Matrix-size dilution expected to be stronger than TP53 (400 bins vs 300 bins)."
+}

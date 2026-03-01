@@ -1,0 +1,12 @@
+{
+  "gene": "BRCA1",
+  "download_date": "2026-03-01T12:04:43.552906",
+  "pathogenic_ids_count": 14083,
+  "benign_ids_count": 8185,
+  "combined_unique_ids": 15138,
+  "summaries_count": 15138,
+  "window": {
+    "start": 42900000,
+    "end": 43300000
+  }
+}

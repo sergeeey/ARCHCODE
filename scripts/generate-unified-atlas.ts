@@ -504,7 +504,8 @@ async function main() {
   let vepMap: Map<string, VepResult>;
   let hasVep: boolean;
 
-  const isGenericLocus = LOCUS_ARG === "cftr" || LOCUS_ARG === "tp53"; // extend as needed
+  const isGenericLocus =
+    LOCUS_ARG === "cftr" || LOCUS_ARG === "tp53" || LOCUS_ARG === "brca1"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB

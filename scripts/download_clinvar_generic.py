@@ -92,18 +92,43 @@ def esummary_batch(ids: list, batch_size: int = 20) -> list:
     return all_results
 
 
+def _cdna_indel_length(h: str) -> int | None:
+    """Extract indel length from cDNA HGVS notation. Returns None if ambiguous."""
+    # c.403del → 1 bp
+    m = re.search(r'c\.(\d+)del($|[^i])', h)
+    if m:
+        return 1
+    # c.575_580del → 580-575+1 = 6 bp
+    m = re.search(r'c\.(\d+)_(\d+)del($|[^i])', h)
+    if m:
+        return int(m.group(2)) - int(m.group(1)) + 1
+    # c.91dup → 1 bp
+    m = re.search(r'c\.(\d+)dup', h)
+    if m and not re.search(r'c\.\d+_\d+dup', h):
+        return 1
+    # c.XXX_YYYdup → YYY-XXX+1
+    m = re.search(r'c\.(\d+)_(\d+)dup', h)
+    if m:
+        return int(m.group(2)) - int(m.group(1)) + 1
+    # c.XXX_YYYinsNNN → len(NNN)
+    m = re.search(r'c\.\d+_?\d*ins([ACGT]+)', h)
+    if m:
+        return len(m.group(1))
+    return None
+
+
 def classify_hgvs(hgvs: str) -> str:
-    """Determine variant category from HGVS notation."""
+    """Determine variant category from HGVS notation.
+
+    Uses both protein-level (p.) and cDNA-level (c.) annotations.
+    For indels without protein annotation, infers frameshift vs inframe
+    from cDNA indel length modulo 3.
+    """
     if not hgvs:
         return "other"
     h = str(hgvs)
 
-    if re.search(r'c\.\d+[\+\-]\d+', h):
-        return "intronic"
-    if "c.*" in h or "c.+" in h:
-        return "3_prime_UTR"
-    if "c.-" in h and ">" in h:
-        return "5_prime_UTR"
+    # --- Protein-level annotations (most reliable when present) ---
     if "fs" in h:
         return "frameshift"
     if "p." in h:
@@ -120,10 +145,64 @@ def classify_hgvs(hgvs: str) -> str:
         return "synonymous"
     if re.search(r'p\.\(?[A-Z][a-z]{2}\d+[A-Z][a-z]{2}', h):
         return "missense"
+
+    # --- cDNA-level: splice boundary (exon/intron) ---
+    # c.917_919+6del → spans splice site
+    if re.search(r'c\.\d+[_\d]*[\+\-]\d+.*del', h) or re.search(r'c\.\d+[_\d]*[\+\-]\d+.*dup', h):
+        return "splice_region"
+
+    # --- cDNA-level: pure intronic ---
+    if re.search(r'c\.\d+[\+\-]\d+[ACGT]>[ACGT]', h):
+        return "intronic"
+    if re.search(r'c\.\d+[\+\-]\d+', h) and "del" not in h and "dup" not in h and "ins" not in h:
+        return "intronic"
+
+    # --- cDNA-level: UTR ---
+    if "c.*" in h or "c.+" in h:
+        return "3_prime_UTR"
+    if re.search(r'c\.-\d+[ACGT]>[ACGT]', h):
+        return "5_prime_UTR"
+    if re.search(r'c\.-\d+del', h) or re.search(r'c\.-\d+dup', h):
+        return "5_prime_UTR"
+
+    # --- cDNA-level: splice donor/acceptor (canonical ±1,2) ---
     if re.search(r'c\.\d+[\+\-][12][^\d]', h) or re.search(r'c\.\d+[\+\-][12]$', h):
         return "splice_donor"
+
+    # --- cDNA-level: synonymous (c.NNN=) ---
+    if re.search(r'c\.\d+=', h):
+        return "synonymous"
+
+    # --- cDNA-level: delins (determine frame from net change) ---
+    m = re.search(r'c\.(\d+)_(\d+)delins([ACGT]+)', h)
+    if m:
+        deleted = int(m.group(2)) - int(m.group(1)) + 1
+        inserted = len(m.group(3))
+        net = abs(deleted - inserted)
+        if net % 3 == 0:
+            return "inframe_indel"
+        return "frameshift"
+    # delins without explicit bases → classify as "other"
+    if "delins" in h:
+        return "other"
+
+    # --- cDNA-level: del/dup/ins → frameshift vs inframe by length mod 3 ---
+    indel_len = _cdna_indel_length(h)
+    if indel_len is not None:
+        if indel_len % 3 == 0:
+            # Distinguish deletion from insertion/duplication
+            if "del" in h:
+                return "inframe_deletion"
+            return "inframe_indel"
+        return "frameshift"
+
+    # --- cDNA-level: SNV without protein annotation ---
     if re.search(r'c\.\d+[ACGT]>[ACGT]', h):
         return "synonymous"
+
+    # --- Repeat contractions: c.85AAC[1] → inframe deletion of repeat unit ---
+    if re.search(r'c\.\d+[ACGT]{3}\[1\]', h):
+        return "inframe_deletion"
 
     return "other"
 
