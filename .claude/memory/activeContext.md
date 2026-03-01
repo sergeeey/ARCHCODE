@@ -1,93 +1,95 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-01 (session 15: commit + sensitivity analysis)
+**Last Updated:** 2026-03-01 (session 16: hallucination audit + integrity tools)
 **Branch:** main
-**Last Commit:** 558ae7b (MLH1 + LSSIM + manuscript v2.3)
+**Last Commit:** 4c558a4 (hallucination audit fixes — pushed)
 **GitHub:** https://github.com/sergeeey/ARCHCODE
-**bioRxiv ID:** BIORXIV/2026/708672 — awaiting screening (24-48h) → DOI assignment
-**Status:** Committed. Sensitivity analysis complete. Ready for push + next locus.
+**bioRxiv ID:** BIORXIV/2026/708672 — awaiting screening
+**Status:** Integrity tools created. Ready for commit + next locus.
 
 ---
 
 ## Текущий статус проекта
 
-**Фаза:** v2.3 — Post-LSSIM, sensitivity validated
+**Фаза:** v2.4 — Post-audit, integrity enforcement layer built
 
-### Session 15: Commit + Sensitivity Analysis
+### Session 16: Hallucination Audit + Integrity Tools
 
-**Commit 558ae7b:** MLH1 locus + LSSIM threshold recalibration + manuscript v2.3 (6-locus, 21,989 variants). 39 files changed.
+**Commits this session (all pushed):**
 
-**Sensitivity analysis (LSSIM window size):**
+- `558ae7b` — MLH1 + LSSIM + manuscript v2.3 (39 files)
+- `eebf11e` — LSSIM sensitivity analysis script + results
+- `4c558a4` — hallucination audit fixes (5 DOIs, Table 6, TP53 count, overclaim guards)
 
-| Window | LSSIM range   | P+LP    | Δ vs w=50    |
-| ------ | ------------- | ------- | ------------ |
-| 20     | 0.36–1.00     | 876     | +81          |
-| 30     | 0.49–1.00     | 873     | +78          |
-| 40     | 0.59–1.00     | 795     | 0            |
-| **50** | **0.67–1.00** | **795** | **baseline** |
-| 60     | 0.72–1.00     | 758     | −37          |
-| 70     | 0.76–1.00     | 758     | −37          |
-| 80     | 0.80–1.00     | 703     | −92          |
+**Hallucination audit findings (fixed in 4c558a4):**
 
-**Key findings:**
+- 5 citation DOIs/journals corrected (Akita, Taher, Baralle, Harrison, Whalen)
+- Table 6 Global SSIM ranges recalculated from per-variant CSV min/max
+- TP53 variant count: 2,795→2,794, propagated through all occurrences
+- JSON interpretations updated with ΔAUC threshold guard (`_interpret_lr()`)
 
-- w=40 and w=50 produce identical verdict counts → plateau (stable region)
-- w<40: overshoot — perturbation fraction too high, false positives
-- w>60: dilution returns — loses 37–92 structural pathogenic verdicts
-- 50 bins × 600 bp = 30 kb = HBB sub-TAD size (physical justification)
-- Absolute LSSIM values differ from pipeline (different seed), but trend is valid
+**Integrity tools created (uncommitted):**
 
-**Note:** Sensitivity script uses exact same `simulatePairedMatrices` from pipeline (imports `SeededRandom`, `KRAMER_KINETICS`, `locus-config`). Verdict count discrepancy vs pipeline (795 vs 254) due to different random seed — only the window-size trend matters.
+| Tool                                               | Purpose                                                                              |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------ |
+| `scripts/verify_manuscript.py`                     | 3-module automated verification: DOI check, Table 6 vs CSV/JSON, overclaim detection |
+| `scripts/verify_manuscript.py --fix-table6`        | Auto-generates Table 6 from real data (CSV + JSON)                                   |
+| `scripts/verify_manuscript.py --update-manuscript` | Writes generated Table 6 directly into manuscript                                    |
+| `scripts/verify_manuscript.py --skip-doi`          | Offline mode (skips HTTP DOI checks)                                                 |
+| `.claude/agents/integrity-checker.md`              | Agent for periodic integrity verification                                            |
 
-### 6-Locus Summary Table (with LSSIM)
+**Verification results:** ALL CHECKS PASSED (14 DOIs verified, 5 loci consistent, 0 overclaims)
 
-| Метрика           | HBB (30kb)     | HBB (95kb)     | CFTR (317kb)    | TP53 (300kb)    | BRCA1 (400kb)    | MLH1 (300kb)     |
-| ----------------- | -------------- | -------------- | --------------- | --------------- | ---------------- | ---------------- |
-| Matrix size       | 50×50          | 159×159        | 317×317         | 300×300         | 400×400          | 300×300          |
-| LSSIM range       | 0.8753–0.9989  | 0.7537–0.9992  | 0.8329–0.9999   | 0.9443–1.0000   | 0.8767–0.9999    | 0.8417–0.9999    |
-| Global SSIM range | (same)         | 0.9611–0.9998  | 0.9948–1.0000   | 0.9983–1.0000   | 0.9982–1.0000    | 0.9838–1.0000    |
-| Struct. path.     | 161            | 254            | 35              | 0 (12 VUS)      | 52               | 72               |
-| Pearls            | 20             | 27             | 0 (no VEP)      | 0 (no VEP)      | 0 (no VEP)       | 0 (no VEP)       |
-| LR ΔAUC (LSSIM)   | −0.001 (p=1.0) | −0.001 (p=1.0) | −0.012 (p=0.79) | +0.032 (p=0.29) | +0.002 (p≈10⁻²⁰) | +0.011 (p=0.005) |
+### Root cause analysis
 
----
+CLAUDE.md policy prevents **intentional** fabrication but misses **drift** errors:
 
-## Ключевые файлы (changed in session 15)
+- Cross-source drift: numbers copied from wrong analysis window
+- Accumulation errors: off-by-one from pipeline re-runs
+- Stale logic: JSON interpretation not updated after methodology change
 
-| Файл                                    | Изменения                                                     |
-| --------------------------------------- | ------------------------------------------------------------- |
-| `scripts/sensitivity_lssim.ts`          | NEW — LSSIM window sensitivity analysis (7 windows, HBB 95kb) |
-| `results/sensitivity_lssim_window.json` | NEW — sensitivity results                                     |
+**Solution:** 3 layers of automated enforcement:
+
+1. **verify_manuscript.py** — catches drift at commit time
+2. **Generative Table 6** — eliminates manual copy entirely
+3. **integrity-checker agent** — periodic holistic audit
 
 ---
 
-## Все фазы
+## Ключевые файлы (session 16)
 
-1–23. (see previous sessions) 24. ✅ **Git commit** — 558ae7b (MLH1 + LSSIM + manuscript v2.3) 25. ✅ **LSSIM sensitivity analysis** — w=50 validated (plateau at w=40–50)
+| Файл                                   | Изменения                                              |
+| -------------------------------------- | ------------------------------------------------------ |
+| `scripts/verify_manuscript.py`         | NEW — 917 lines, 3 modules, 4 modes                    |
+| `.claude/agents/integrity-checker.md`  | NEW — agent definition for periodic verification       |
+| `manuscript/FULL_MANUSCRIPT.md`        | 5 DOI fixes, Table 6 fix, TP53 count fix, inline fixes |
+| `scripts/analyze_positional_signal.py` | `_interpret_lr()` function with ΔAUC threshold         |
+| `results/positional_signal_brca1.json` | overclaim → power effect disclaimer                    |
+| `results/positional_signal_mlh1.json`  | overclaim → power effect disclaimer                    |
 
 ---
 
-## v3.0 Roadmap — Post-Submission
+## v3.0 Roadmap
 
 1. ~~TP53~~ ✅
 2. ~~BRCA1~~ ✅
 3. ~~bioRxiv submission~~ ✅ (BIORXIV/2026/708672)
 4. ~~MLH1~~ ✅
 5. ~~LSSIM threshold recalibration~~ ✅
-6. ~~Git commit~~ ✅ (558ae7b)
-7. ~~LSSIM sensitivity analysis~~ ✅
-8. **LDLR** — Tier 1 (3,721 variants, HepG2 Hi-C, chr19)
-9. **SCN5A** — Tier 1 (2,333 variants, iPSC-CM Hi-C, chr3)
-10. **Akita/Enformer benchmarking** — pearl detection rate comparison
-11. **bioRxiv v2 update** — submit revised preprint with LSSIM
+6. ~~LSSIM sensitivity analysis~~ ✅
+7. ~~Hallucination audit~~ ✅
+8. ~~Integrity enforcement tools~~ ✅
+9. **LDLR** — Tier 1 (3,721 variants, HepG2 Hi-C, chr19)
+10. **SCN5A** — Tier 1 (2,333 variants, iPSC-CM Hi-C, chr3)
+11. **Akita/Enformer benchmarking**
+12. **bioRxiv v2 update** — submit with LSSIM + audit fixes
 
 ---
 
 ## Для следующей сессии
 
-1. **Git push** — push 558ae7b to origin/main
+1. **Git commit** integrity tools (verify_manuscript.py + integrity-checker agent)
 2. Проверь: получен ли DOI от bioRxiv?
-3. **bioRxiv v2 preprint** — submit updated version with LSSIM + sensitivity
+3. **bioRxiv v2 preprint** — submit updated version
 4. **LDLR implementation** — next locus
-5. **Akita/Enformer research** — feasibility check
-6. Optionally: commit sensitivity script + results
+5. Run `python scripts/verify_manuscript.py` before every commit
