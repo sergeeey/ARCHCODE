@@ -1,0 +1,556 @@
+{
+  "analysis": "epigenome_crossvalidation_alphagenome_vs_encode",
+  "sdk_version": "0.6.0",
+  "tolerance_bp": 2000,
+  "peak_threshold_percentile": 90,
+  "n_loci": 6,
+  "n_successful": 6,
+  "aggregate": {
+    "ctcf_mean_recall": 1.0,
+    "ctcf_mean_f1": 0.7007,
+    "h3k27ac_mean_recall": 0.8535,
+    "h3k27ac_mean_f1": 0.5057
+  },
+  "loci": [
+    {
+      "locus": "95kb",
+      "locus_id": "hbb_95kb_subTAD",
+      "window": {
+        "chromosome": "chr11",
+        "start": 5200000,
+        "end": 5295000
+      },
+      "status": "success",
+      "ctcf": {
+        "ag_track": "CL:0000062 TF ChIP-seq CTCF",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 103,
+        "n_encode": 4,
+        "n_ag_peaks": 89,
+        "matched_encode": 4,
+        "recall": 1.0,
+        "precision": 0.7079,
+        "f1": 0.8289,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 5204979,
+            "nearest_ag_dist_bp": 25
+          },
+          {
+            "encode_pos": 5280811,
+            "nearest_ag_dist_bp": 31
+          },
+          {
+            "encode_pos": 5289092,
+            "nearest_ag_dist_bp": 136
+          },
+          {
+            "encode_pos": 5291442,
+            "nearest_ag_dist_bp": 38
+          }
+        ]
+      },
+      "h3k27ac": {
+        "status": "no_data",
+        "reason": "no AG H3K27ac track or no ENCODE H3K27ac"
+      }
+    },
+    {
+      "locus": "cftr",
+      "locus_id": "cftr_317kb",
+      "window": {
+        "chromosome": "chr7",
+        "start": 117400000,
+        "end": 117717000
+      },
+      "status": "success",
+      "ctcf": {
+        "ag_track": "CL:0000062 TF ChIP-seq CTCF",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 425,
+        "n_encode": 6,
+        "n_ag_peaks": 210,
+        "matched_encode": 6,
+        "recall": 1.0,
+        "precision": 0.4762,
+        "f1": 0.6452,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 117400028,
+            "nearest_ag_dist_bp": 8
+          },
+          {
+            "encode_pos": 117401499,
+            "nearest_ag_dist_bp": 55
+          },
+          {
+            "encode_pos": 117459175,
+            "nearest_ag_dist_bp": 3
+          },
+          {
+            "encode_pos": 117670028,
+            "nearest_ag_dist_bp": 40
+          },
+          {
+            "encode_pos": 117674085,
+            "nearest_ag_dist_bp": 1
+          },
+          {
+            "encode_pos": 117715999,
+            "nearest_ag_dist_bp": 59
+          }
+        ]
+      },
+      "h3k27ac": {
+        "status": "no_data",
+        "reason": "no AG H3K27ac track or no ENCODE H3K27ac"
+      }
+    },
+    {
+      "locus": "tp53",
+      "locus_id": "tp53_300kb",
+      "window": {
+        "chromosome": "chr17",
+        "start": 7550000,
+        "end": 7850000
+      },
+      "status": "success",
+      "ctcf": {
+        "ag_track": "CL:0000062 TF ChIP-seq CTCF",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 415,
+        "n_encode": 13,
+        "n_ag_peaks": 241,
+        "matched_encode": 13,
+        "recall": 1.0,
+        "precision": 0.5851,
+        "f1": 0.7382,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 7560547,
+            "nearest_ag_dist_bp": 61
+          },
+          {
+            "encode_pos": 7561144,
+            "nearest_ag_dist_bp": 24
+          },
+          {
+            "encode_pos": 7586899,
+            "nearest_ag_dist_bp": 51
+          },
+          {
+            "encode_pos": 7614996,
+            "nearest_ag_dist_bp": 12
+          },
+          {
+            "encode_pos": 7632642,
+            "nearest_ag_dist_bp": 30
+          },
+          {
+            "encode_pos": 7634528,
+            "nearest_ag_dist_bp": 64
+          },
+          {
+            "encode_pos": 7673425,
+            "nearest_ag_dist_bp": 49
+          },
+          {
+            "encode_pos": 7688184,
+            "nearest_ag_dist_bp": 40
+          },
+          {
+            "encode_pos": 7711574,
+            "nearest_ag_dist_bp": 54
+          },
+          {
+            "encode_pos": 7717400,
+            "nearest_ag_dist_bp": 8
+          },
+          {
+            "encode_pos": 7743735,
+            "nearest_ag_dist_bp": 41
+          },
+          {
+            "encode_pos": 7822881,
+            "nearest_ag_dist_bp": 1
+          },
+          {
+            "encode_pos": 7835005,
+            "nearest_ag_dist_bp": 35
+          }
+        ]
+      },
+      "h3k27ac": {
+        "ag_track": "CL:0000047 Histone ChIP-seq H3K27ac",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 410,
+        "n_encode": 7,
+        "n_ag_peaks": 269,
+        "matched_encode": 7,
+        "recall": 1.0,
+        "precision": 0.3792,
+        "f1": 0.5499,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 7584500,
+            "nearest_ag_dist_bp": 44
+          },
+          {
+            "encode_pos": 7573270,
+            "nearest_ag_dist_bp": 10
+          },
+          {
+            "encode_pos": 7580250,
+            "nearest_ag_dist_bp": 698
+          },
+          {
+            "encode_pos": 7650332,
+            "nearest_ag_dist_bp": 4
+          },
+          {
+            "encode_pos": 7686445,
+            "nearest_ag_dist_bp": 13
+          },
+          {
+            "encode_pos": 7839108,
+            "nearest_ag_dist_bp": 28
+          },
+          {
+            "encode_pos": 7843367,
+            "nearest_ag_dist_bp": 7
+          }
+        ]
+      }
+    },
+    {
+      "locus": "brca1",
+      "locus_id": "brca1_400kb",
+      "window": {
+        "chromosome": "chr17",
+        "start": 42900000,
+        "end": 43300000
+      },
+      "status": "success",
+      "ctcf": {
+        "ag_track": "CL:0000062 TF ChIP-seq CTCF",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 410,
+        "n_encode": 14,
+        "n_ag_peaks": 259,
+        "matched_encode": 14,
+        "recall": 1.0,
+        "precision": 0.6602,
+        "f1": 0.7953,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 42929437,
+            "nearest_ag_dist_bp": 61
+          },
+          {
+            "encode_pos": 42937930,
+            "nearest_ag_dist_bp": 22
+          },
+          {
+            "encode_pos": 42964377,
+            "nearest_ag_dist_bp": 57
+          },
+          {
+            "encode_pos": 42980938,
+            "nearest_ag_dist_bp": 22
+          },
+          {
+            "encode_pos": 42998141,
+            "nearest_ag_dist_bp": 29
+          },
+          {
+            "encode_pos": 43004047,
+            "nearest_ag_dist_bp": 47
+          },
+          {
+            "encode_pos": 43006741,
+            "nearest_ag_dist_bp": 53
+          },
+          {
+            "encode_pos": 43024579,
+            "nearest_ag_dist_bp": 29
+          },
+          {
+            "encode_pos": 43042287,
+            "nearest_ag_dist_bp": 15
+          },
+          {
+            "encode_pos": 43085710,
+            "nearest_ag_dist_bp": 46
+          },
+          {
+            "encode_pos": 43124566,
+            "nearest_ag_dist_bp": 10
+          },
+          {
+            "encode_pos": 43171272,
+            "nearest_ag_dist_bp": 24
+          },
+          {
+            "encode_pos": 43172342,
+            "nearest_ag_dist_bp": 22
+          },
+          {
+            "encode_pos": 43214276,
+            "nearest_ag_dist_bp": 28
+          }
+        ]
+      },
+      "h3k27ac": {
+        "ag_track": "CL:0000047 Histone ChIP-seq H3K27ac",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 416,
+        "n_encode": 9,
+        "n_ag_peaks": 351,
+        "matched_encode": 8,
+        "recall": 0.8889,
+        "precision": 0.3618,
+        "f1": 0.5143,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 43125364,
+            "nearest_ag_dist_bp": 20
+          },
+          {
+            "encode_pos": 43170700,
+            "nearest_ag_dist_bp": 44
+          },
+          {
+            "encode_pos": 42981500,
+            "nearest_ag_dist_bp": 412
+          },
+          {
+            "encode_pos": 43007000,
+            "nearest_ag_dist_bp": 56
+          },
+          {
+            "encode_pos": 42998900,
+            "nearest_ag_dist_bp": 20
+          },
+          {
+            "encode_pos": 42964500,
+            "nearest_ag_dist_bp": 76
+          },
+          {
+            "encode_pos": 43024600,
+            "nearest_ag_dist_bp": 8
+          },
+          {
+            "encode_pos": 43021500,
+            "nearest_ag_dist_bp": 36
+          }
+        ]
+      }
+    },
+    {
+      "locus": "mlh1",
+      "locus_id": "mlh1_300kb",
+      "window": {
+        "chromosome": "chr3",
+        "start": 36900000,
+        "end": 37200000
+      },
+      "status": "success",
+      "ctcf": {
+        "ag_track": "CL:0000062 TF ChIP-seq CTCF",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 423,
+        "n_encode": 7,
+        "n_ag_peaks": 251,
+        "matched_encode": 7,
+        "recall": 1.0,
+        "precision": 0.3745,
+        "f1": 0.5449,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 36902861,
+            "nearest_ag_dist_bp": 61
+          },
+          {
+            "encode_pos": 36904858,
+            "nearest_ag_dist_bp": 10
+          },
+          {
+            "encode_pos": 36923654,
+            "nearest_ag_dist_bp": 10
+          },
+          {
+            "encode_pos": 36957245,
+            "nearest_ag_dist_bp": 45
+          },
+          {
+            "encode_pos": 36958900,
+            "nearest_ag_dist_bp": 36
+          },
+          {
+            "encode_pos": 37024286,
+            "nearest_ag_dist_bp": 14
+          },
+          {
+            "encode_pos": 37175898,
+            "nearest_ag_dist_bp": 54
+          }
+        ]
+      },
+      "h3k27ac": {
+        "ag_track": "CL:0000047 Histone ChIP-seq H3K27ac",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 428,
+        "n_encode": 8,
+        "n_ag_peaks": 279,
+        "matched_encode": 5,
+        "recall": 0.625,
+        "precision": 0.19,
+        "f1": 0.2914,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 36912819,
+            "nearest_ag_dist_bp": 989
+          },
+          {
+            "encode_pos": 36924379,
+            "nearest_ag_dist_bp": 437
+          },
+          {
+            "encode_pos": 36970078,
+            "nearest_ag_dist_bp": 50
+          },
+          {
+            "encode_pos": 36993300,
+            "nearest_ag_dist_bp": 4
+          },
+          {
+            "encode_pos": 37175999,
+            "nearest_ag_dist_bp": 47
+          }
+        ]
+      }
+    },
+    {
+      "locus": "ldlr",
+      "locus_id": "ldlr_300kb",
+      "window": {
+        "chromosome": "chr19",
+        "start": 10940000,
+        "end": 11240000
+      },
+      "status": "success",
+      "ctcf": {
+        "ag_track": "CL:0000062 TF ChIP-seq CTCF",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 411,
+        "n_encode": 10,
+        "n_ag_peaks": 213,
+        "matched_encode": 10,
+        "recall": 1.0,
+        "precision": 0.4836,
+        "f1": 0.6519,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 10942194,
+            "nearest_ag_dist_bp": 34
+          },
+          {
+            "encode_pos": 11011894,
+            "nearest_ag_dist_bp": 26
+          },
+          {
+            "encode_pos": 11036090,
+            "nearest_ag_dist_bp": 22
+          },
+          {
+            "encode_pos": 11085703,
+            "nearest_ag_dist_bp": 55
+          },
+          {
+            "encode_pos": 11126284,
+            "nearest_ag_dist_bp": 60
+          },
+          {
+            "encode_pos": 11131142,
+            "nearest_ag_dist_bp": 54
+          },
+          {
+            "encode_pos": 11137854,
+            "nearest_ag_dist_bp": 18
+          },
+          {
+            "encode_pos": 11142179,
+            "nearest_ag_dist_bp": 45
+          },
+          {
+            "encode_pos": 11204034,
+            "nearest_ag_dist_bp": 14
+          },
+          {
+            "encode_pos": 11227282,
+            "nearest_ag_dist_bp": 62
+          }
+        ]
+      },
+      "h3k27ac": {
+        "ag_track": "CL:0000047 Histone ChIP-seq H3K27ac",
+        "ag_resolution_bp": 128,
+        "ag_total_peaks": 422,
+        "n_encode": 10,
+        "n_ag_peaks": 183,
+        "matched_encode": 9,
+        "recall": 0.9,
+        "precision": 0.5301,
+        "f1": 0.6672,
+        "tolerance_bp": 2000,
+        "match_details": [
+          {
+            "encode_pos": 11091749,
+            "nearest_ag_dist_bp": 43
+          },
+          {
+            "encode_pos": 11090157,
+            "nearest_ag_dist_bp": 29
+          },
+          {
+            "encode_pos": 11143271,
+            "nearest_ag_dist_bp": 23
+          },
+          {
+            "encode_pos": 11129583,
+            "nearest_ag_dist_bp": 31
+          },
+          {
+            "encode_pos": 10960576,
+            "nearest_ag_dist_bp": 16
+          },
+          {
+            "encode_pos": 10961602,
+            "nearest_ag_dist_bp": 14
+          },
+          {
+            "encode_pos": 11142383,
+            "nearest_ag_dist_bp": 31
+          },
+          {
+            "encode_pos": 11197330,
+            "nearest_ag_dist_bp": 62
+          },
+          {
+            "encode_pos": 11156223,
+            "nearest_ag_dist_bp": 47
+          }
+        ]
+      }
+    }
+  ]
+}
