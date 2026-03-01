@@ -45,6 +45,8 @@ def load_atlas(locus_tag: str) -> list[dict]:
         path = Path("results/TP53_Unified_Atlas_300kb.csv")
     elif locus_tag == "brca1":
         path = Path("results/BRCA1_Unified_Atlas_400kb.csv")
+    elif locus_tag == "mlh1":
+        path = Path("results/MLH1_Unified_Atlas_300kb.csv")
     elif locus_tag == "95kb":
         path = Path("results/HBB_Unified_Atlas_95kb.csv")
     else:
@@ -58,9 +60,13 @@ def load_atlas(locus_tag: str) -> list[dict]:
         rows = list(reader)
 
     # Parse numeric fields
+    # ПОЧЕМУ LSSIM: Local SSIM нормализует к 50×50 окну, давая реальный spread
+    # на больших матрицах. Глобальный SSIM сохраняется для обратной совместимости.
     for r in rows:
         r["pos"] = int(r["Position_GRCh38"])
-        r["ssim"] = float(r["ARCHCODE_SSIM"])
+        r["ssim_global"] = float(r["ARCHCODE_SSIM"])
+        # Use LSSIM if available (v2.1+), fallback to global SSIM
+        r["ssim"] = float(r.get("ARCHCODE_LSSIM", r["ARCHCODE_SSIM"]))
         r["delta_ssim"] = 1.0 - r["ssim"]  # disruption score
         r["is_pathogenic"] = 1 if r["Label"] == "Pathogenic" else 0
 

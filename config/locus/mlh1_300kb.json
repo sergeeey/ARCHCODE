@@ -1,0 +1,221 @@
+{
+  "id": "mlh1_300kb",
+  "name": "MLH1 300kb TAD (ENCODE K562 CTCF + H3K27ac)",
+  "description": "300kb window spanning the MLH1 locus on chr3p21.3. MLH1 (MutL Homolog 1) is a key DNA mismatch repair gene; germline pathogenic variants cause Lynch syndrome (HNPCC). CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE, IDR narrowPeak, GRCh38). H3K27ac enhancer peaks from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP, GRCh38). MLH1 and EPM2AIP1 share a bidirectional CpG island promoter; hypermethylation causes Lynch syndrome and sporadic MSI-high cancers. K562 CTCF used because CTCF binding is largely cell-type invariant (Cuddapah 2009, PMID:19030024). TAD boundaries estimated from Rao et al. 2014 K562 Arrowhead (GSE63525, hg19 lifted to hg38 with approximately -41,324bp offset).",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr3",
+    "start": 36900000,
+    "end": 37200000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 36908307,
+        "occupancy": 0.35,
+        "name": "TRANK1_3prime_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at TRANK1 3-prime end (Peak_30635, 36907805-36908808, signal=5.65). Near 5-prime window boundary. MANUALLY CALIBRATED occupancy from signal ratio"
+      },
+      {
+        "position": 36912819,
+        "occupancy": 0.45,
+        "name": "TRANK1_intron_H3K27ac_1",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak in TRANK1 intron (Peak_21725, 36912140-36913498, signal=7.58, 1.4kb wide). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 36924379,
+        "occupancy": 0.5,
+        "name": "TRANK1_intron_H3K27ac_2",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak in TRANK1 intron (Peak_22813, 36923636-36925122, signal=8.07, 1.5kb wide). Co-localizes with CTCF (signal=15.59). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 36941766,
+        "occupancy": 0.4,
+        "name": "TRANK1_intron_H3K27ac_3",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak in TRANK1 intron (Peak_29489, 36941394-36942138, signal=6.49). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 36957855,
+        "occupancy": 0.7,
+        "name": "Intergenic_boundary_super_enhancer",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Strong H3K27ac peak (Peak_6995, 36956491-36959219, signal=21.87, 2.7kb wide). Co-localizes with STRONGEST CTCF in window (signal=178.74). Located ~35kb upstream of MLH1 TSS. Active insulator/boundary element between TRANK1 and MLH1 regulatory domains. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 36970078,
+        "occupancy": 0.65,
+        "name": "Intergenic_enhancer_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Strong H3K27ac peak (Peak_8353, 36968997-36971159, signal=20.46, 2.2kb wide). Located ~23kb upstream of MLH1 TSS in intergenic region between TRANK1 and EPM2AIP1. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 36993300,
+        "occupancy": 0.95,
+        "name": "MLH1_EPM2AIP1_bidirectional_promoter",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "STRONGEST H3K27ac in window (Peak_403, 36990680-36994774, signal=62.86, score=1000, 4.1kb wide). Spans EPM2AIP1/MLH1 bidirectional CpG island promoter. MLH1 TSS at 36993466 (+ strand, NM_000249.4). EPM2AIP1 ends at 36993131 (- strand). Promoters separated by ~335bp. Hypermethylation of this CpG island causes Lynch syndrome. MANUALLY CALIBRATED occupancy — highest signal in window"
+      },
+      {
+        "position": 37175999,
+        "occupancy": 0.8,
+        "name": "LRRFIP2_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Strong H3K27ac peak at LRRFIP2 promoter (Peak_5755, 37175159-37176839, signal=29.08, score=1000, 1.7kb wide). Co-localizes with CTCF (signal=48.79). Adjacent H3K27ac peak (Peak_18487, 37176963-37177578, signal=10.96). Candidate 3-prime TAD boundary element. MANUALLY CALIBRATED occupancy"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 36902861,
+        "orientation": "unknown",
+        "signal": 16.13,
+        "name": "TRANK1_intron_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF in TRANK1 intron (36902726-36902996, score=795). Near 5-prime window boundary"
+      },
+      {
+        "position": 36904858,
+        "orientation": "unknown",
+        "signal": 84.15,
+        "name": "TRANK1_intron_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF in TRANK1 intron (36904723-36904993, score=1000). ~2kb from TRANK1_CTCF_1, potential tandem boundary pair"
+      },
+      {
+        "position": 36923654,
+        "orientation": "unknown",
+        "signal": 15.59,
+        "name": "TRANK1_intron_CTCF_3",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF in TRANK1 intron (36923519-36923789, score=793). Co-localizes with H3K27ac peak (signal=8.07)"
+      },
+      {
+        "position": 36957245,
+        "orientation": "unknown",
+        "signal": 68.85,
+        "name": "Intergenic_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF in intergenic region between TRANK1 and EPM2AIP1 (36957110-36957380, score=1000). Part of tandem pair with strongest CTCF ~1.7kb downstream"
+      },
+      {
+        "position": 36958900,
+        "orientation": "unknown",
+        "signal": 178.74,
+        "name": "Intergenic_boundary_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "STRONGEST CTCF in window (36958797-36959014, score=1000, signal=178.74). Co-localizes with strong H3K27ac (signal=21.87). Key insulator/boundary element defining upstream limit of MLH1 regulatory domain. ~34kb upstream of MLH1 TSS"
+      },
+      {
+        "position": 37024286,
+        "orientation": "unknown",
+        "signal": 26.6,
+        "name": "MLH1_intron12_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF within MLH1 gene body, intron 12 (37024151-37024421, score=1000). May function as intragenic insulator or sub-domain boundary"
+      },
+      {
+        "position": 37175898,
+        "orientation": "unknown",
+        "signal": 48.79,
+        "name": "LRRFIP2_promoter_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF at LRRFIP2 promoter (37175763-37176033, score=1000). Co-localizes with strong H3K27ac (signal=29.08). Candidate 3-prime TAD boundary element"
+      }
+    ],
+    "tad_boundaries": [
+      {
+        "position_start": 36958676,
+        "position_end": 37178676,
+        "name": "MLH1_primary_TAD",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Primary TAD containing MLH1 (~220kb). hg19: ~37000000-37220000 lifted to hg38 with -41324bp offset (APPROXIMATE — not formal liftOver, based on MLH1 NM_000249 hg19=37034841 vs hg38=36993466). Contains EPM2AIP1, MLH1, LRRFIP2. Boundaries align with strong CTCF sites at 36958900 (signal=178.74) and 37175898 (signal=48.79). Rao et al. 2014 Cell (PMID:25497547)"
+      },
+      {
+        "position_start": 36758676,
+        "position_end": 36958676,
+        "name": "upstream_TAD",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Upstream TAD (~200kb). hg19: ~36800000-37000000. Contains TRANK1. Boundary at CTCF tandem pair (36957245-36958900)"
+      }
+    ],
+    "genes": [
+      { "name": "TRANK1", "start": 36826818, "end": 36945054, "strand": "-" },
+      { "name": "EPM2AIP1", "start": 36985042, "end": 36993131, "strand": "-" },
+      { "name": "MLH1", "start": 36993466, "end": 37050846, "strand": "+" },
+      { "name": "LRRFIP2", "start": 37052625, "end": 37176360, "strand": "-" }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 7,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR000AKP",
+      "file": "ENCFF864OSZ",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 19,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/"
+    },
+    "tad_domains": {
+      "study": "Rao et al. 2014",
+      "pmid": "25497547",
+      "geo": "GSE63525",
+      "file": "GSE63525_K562_Arrowhead_domainlist.txt",
+      "assembly_original": "hg19",
+      "liftover_method": "linear offset -41324bp (APPROXIMATE — not formal liftOver, based on MLH1 NM_000249 hg19=37034841 vs hg38=36993466)",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeq"
+    },
+    "mlh1_biology": {
+      "studies": [
+        {
+          "finding": "MLH1 and EPM2AIP1 share a bidirectional CpG island promoter. Hypermethylation of this promoter is the most common cause of sporadic MSI-high colorectal cancer and the defining mechanism in Lynch syndrome epimutation",
+          "source": "OMIM:120436"
+        },
+        {
+          "authors": "Cuddapah et al.",
+          "year": 2009,
+          "journal": "Genome Research",
+          "pmid": "19030024",
+          "finding": "CTCF binding sites are largely invariant across cell types"
+        }
+      ]
+    }
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 300x300 matrix. Requires empirical calibration after first MLH1 ARCHCODE run. SSIM thresholds from HBB 30kb config will be diluted at this resolution."
+}

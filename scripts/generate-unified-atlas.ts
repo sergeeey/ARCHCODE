@@ -65,6 +65,7 @@ interface UnifiedAtlasRow {
   Category: string;
   ClinVar_Significance: string;
   ARCHCODE_SSIM: number;
+  ARCHCODE_LSSIM: number;
   ARCHCODE_DeltaInsulation: number;
   ARCHCODE_LoopIntegrity: number;
   ARCHCODE_Verdict: string;
@@ -430,6 +431,58 @@ function calculateSSIM(a: number[][], b: number[][]): number {
   );
 }
 
+// ПОЧЕМУ Local SSIM: глобальный SSIM разбавляется на больших матрицах.
+// Вариант возмущает ~6 бинов (±3). В 50×50 это ~12% → SSIM падает до 0.87.
+// В 300×300 это ~2% → SSIM не опускается ниже 0.98. Пороги pearl (0.95) недостижимы.
+// Решение: извлекаем 50×50 подматрицу вокруг варианта → доля возмущения всегда ~12%.
+// Для матриц ≤50 бинов (HBB 30kb) LSSIM ≡ global SSIM — нет разбавления.
+const LOCAL_SSIM_WINDOW = 50;
+
+function calculateLocalSSIM(
+  reference: number[][],
+  mutant: number[][],
+  variantBin: number,
+  windowSize: number = LOCAL_SSIM_WINDOW,
+): number {
+  const n = reference.length;
+
+  // For small matrices, local SSIM equals global SSIM
+  if (n <= windowSize) {
+    return calculateSSIM(reference, mutant);
+  }
+
+  // Window centered on variantBin with clamp+shift edge handling
+  const halfWindow = Math.floor(windowSize / 2);
+  let start = variantBin - halfWindow;
+  let end = start + windowSize;
+
+  // Shift window if it exceeds matrix bounds (never crop)
+  if (start < 0) {
+    start = 0;
+    end = windowSize;
+  }
+  if (end > n) {
+    end = n;
+    start = n - windowSize;
+  }
+
+  // Extract submatrices
+  const refSub: number[][] = [];
+  const mutSub: number[][] = [];
+  for (let i = start; i < end; i++) {
+    const refRow: number[] = [];
+    const mutRow: number[] = [];
+    for (let j = start; j < end; j++) {
+      refRow.push(reference[i][j]);
+      mutRow.push(mutant[i][j]);
+    }
+    refSub.push(refRow);
+    mutSub.push(mutRow);
+  }
+
+  return calculateSSIM(refSub, mutSub);
+}
+
 function calculateInsulationDelta(
   ref: number[][],
   mut: number[][],
@@ -505,7 +558,10 @@ async function main() {
   let hasVep: boolean;
 
   const isGenericLocus =
-    LOCUS_ARG === "cftr" || LOCUS_ARG === "tp53" || LOCUS_ARG === "brca1"; // extend as needed
+    LOCUS_ARG === "cftr" ||
+    LOCUS_ARG === "tp53" ||
+    LOCUS_ARG === "brca1" ||
+    LOCUS_ARG === "mlh1"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
@@ -618,6 +674,11 @@ async function main() {
         );
 
       const ssim = calculateSSIM(referenceMatrix, mutantMatrix);
+      const lssim = calculateLocalSSIM(
+        referenceMatrix,
+        mutantMatrix,
+        variantBin,
+      );
       const deltaInsulation = calculateInsulationDelta(
         referenceMatrix,
         mutantMatrix,
@@ -632,20 +693,22 @@ async function main() {
         ssim_vus: 0.96,
         ssim_likely_benign: 0.99,
       };
+      // ПОЧЕМУ lssim для verdict: глобальный SSIM разбавлен на больших матрицах,
+      // LSSIM нормализует к 50×50 окну → пороги HBB 30kb переносятся напрямую
       let verdict: string;
-      if (ssim < t.ssim_pathogenic) {
+      if (lssim < t.ssim_pathogenic) {
         verdict = "PATHOGENIC";
-      } else if (ssim < t.ssim_likely_pathogenic) {
+      } else if (lssim < t.ssim_likely_pathogenic) {
         verdict = "LIKELY_PATHOGENIC";
-      } else if (ssim < t.ssim_vus) {
+      } else if (lssim < t.ssim_vus) {
         verdict = "VUS";
-      } else if (ssim < t.ssim_likely_benign) {
+      } else if (lssim < t.ssim_likely_benign) {
         verdict = "LIKELY_BENIGN";
       } else {
         verdict = "BENIGN";
       }
 
-      const isPearl = vep ? vep.vep_score < 0.3 && ssim < 0.95 : false;
+      const isPearl = vep ? vep.vep_score < 0.3 && lssim < 0.95 : false;
 
       const archcodePathogenic =
         verdict === "PATHOGENIC" || verdict === "LIKELY_PATHOGENIC";
@@ -662,14 +725,14 @@ async function main() {
       let insight =
         "Convergent evidence from structural and sequence analysis.";
       if (discordance === "NO_VEP") {
-        insight = `Structural-only assessment (SSIM=${ssim.toFixed(3)}). VEP not available for this locus.`;
+        insight = `Structural-only assessment (LSSIM=${lssim.toFixed(3)}, global SSIM=${ssim.toFixed(3)}). VEP not available for this locus.`;
       } else if (discordance === "ARCHCODE_ONLY") {
-        insight = `3D structural disruption detected (SSIM=${ssim.toFixed(3)}) without sequence-level pathogenicity signal.`;
+        insight = `3D structural disruption detected (LSSIM=${lssim.toFixed(3)}) without sequence-level pathogenicity signal.`;
       } else if (discordance === "VEP_ONLY") {
         insight = `Sequence-level pathogenicity (VEP: ${vep!.vep_consequence}) without significant 3D structural change.`;
       }
       if (isPearl && vep) {
-        insight = `PEARL: VEP blind (score=${vep.vep_score.toFixed(2)}) but ARCHCODE detects structural disruption (SSIM=${ssim.toFixed(3)}).`;
+        insight = `PEARL: VEP blind (score=${vep.vep_score.toFixed(2)}) but ARCHCODE detects structural disruption (LSSIM=${lssim.toFixed(3)}).`;
       }
 
       results.push({
@@ -682,6 +745,7 @@ async function main() {
         Category: variant.category,
         ClinVar_Significance: variant.clinical_significance,
         ARCHCODE_SSIM: parseFloat(ssim.toFixed(4)),
+        ARCHCODE_LSSIM: parseFloat(lssim.toFixed(4)),
         ARCHCODE_DeltaInsulation: parseFloat(deltaInsulation.toFixed(4)),
         ARCHCODE_LoopIntegrity: parseFloat(loopIntegrity.toFixed(4)),
         ARCHCODE_Verdict: verdict,
@@ -807,6 +871,29 @@ async function main() {
               ).toFixed(4),
             )
           : null,
+      mean_lssim_all: parseFloat(
+        (
+          catAll.reduce((s, r) => s + r.ARCHCODE_LSSIM, 0) / catAll.length
+        ).toFixed(4),
+      ),
+      mean_lssim_pathogenic:
+        catPath.length > 0
+          ? parseFloat(
+              (
+                catPath.reduce((s, r) => s + r.ARCHCODE_LSSIM, 0) /
+                catPath.length
+              ).toFixed(4),
+            )
+          : null,
+      mean_lssim_benign:
+        catBenign.length > 0
+          ? parseFloat(
+              (
+                catBenign.reduce((s, r) => s + r.ARCHCODE_LSSIM, 0) /
+                catBenign.length
+              ).toFixed(4),
+            )
+          : null,
     };
   }
 
@@ -880,6 +967,24 @@ async function main() {
           benignResults.length
         ).toFixed(4),
       ),
+      mean_lssim_all: parseFloat(
+        (
+          results.reduce((s, r) => s + r.ARCHCODE_LSSIM, 0) / results.length
+        ).toFixed(4),
+      ),
+      mean_lssim_pathogenic: parseFloat(
+        (
+          pathogenicResults.reduce((s, r) => s + r.ARCHCODE_LSSIM, 0) /
+          pathogenicResults.length
+        ).toFixed(4),
+      ),
+      mean_lssim_benign: parseFloat(
+        (
+          benignResults.reduce((s, r) => s + r.ARCHCODE_LSSIM, 0) /
+          benignResults.length
+        ).toFixed(4),
+      ),
+      local_ssim_window: LOCAL_SSIM_WINDOW,
     },
     category_breakdown: categoryBreakdown,
     pipeline_integrity: {
@@ -893,17 +998,22 @@ async function main() {
 
   // ======== Print summary ========
   console.log("\n" + "=".repeat(70));
-  console.log("SUMMARY — UNIFIED ATLAS (v2.0 Pipeline Fix)");
+  console.log("SUMMARY — UNIFIED ATLAS (v2.0 Pipeline Fix + LSSIM)");
   console.log("=".repeat(70));
   console.log(`Total variants:          ${results.length}`);
   console.log(
-    `  Pathogenic:            ${pathogenicResults.length}  (mean SSIM = ${summary.statistics.mean_ssim_pathogenic})`,
+    `  Pathogenic:            ${pathogenicResults.length}  (mean SSIM=${summary.statistics.mean_ssim_pathogenic}, LSSIM=${summary.statistics.mean_lssim_pathogenic})`,
   );
   console.log(
-    `  Benign:                ${benignResults.length}  (mean SSIM = ${summary.statistics.mean_ssim_benign})`,
+    `  Benign:                ${benignResults.length}  (mean SSIM=${summary.statistics.mean_ssim_benign}, LSSIM=${summary.statistics.mean_lssim_benign})`,
   );
-  console.log(`ARCHCODE struct. path.:  ${archcodePathogenic.length}`);
+  console.log(
+    `ARCHCODE struct. path.:  ${archcodePathogenic.length} (verdict based on LSSIM)`,
+  );
   console.log(`Pearls:                  ${pearls.length}`);
+  console.log(
+    `Local SSIM window:       ${LOCAL_SSIM_WINDOW}×${LOCAL_SSIM_WINDOW} bins`,
+  );
 
   console.log(
     "\nCategory breakdown (Pathogenic mean SSIM vs Benign mean SSIM):",

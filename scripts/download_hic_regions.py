@@ -68,6 +68,15 @@ HIC_SOURCES: dict[str, dict] = {
     },
     "mlh1": {
         "gene": "MLH1",
+        "cell_type": "K562",
+        "url": "https://encode-public.s3.amazonaws.com/2022/05/15/e6fd8021-6548-4cf8-88bb-151103cb066e/ENCFF725EXS.hic",
+        "experiment": "ENCSR479XDG",
+        "chr_prefix": "chr",
+        "assembly": "GRCh38",
+        "source": "ENCODE_K562_intact_HiC",
+    },
+    "mlh1_hct116": {
+        "gene": "MLH1",
         "cell_type": "HCT116",
         "url": "https://4dn-open-data-public.s3.amazonaws.com/fourfront-webprod/wfoutput/c51bc383-04e0-40cf-a72f-589524efd8f7/4DNFIXB4O92R.hic",
         "experiment": "4DNESOE1RAS4",
@@ -108,6 +117,7 @@ LOCUS_ALIASES: dict[str, str] = {
     "cftr": "cftr_317kb.json",
     "tp53": "tp53_300kb.json",
     "brca1": "brca1_400kb.json",
+    "mlh1": "mlh1_300kb.json",
 }
 
 
@@ -155,7 +165,7 @@ def juicer_dump(url: str, chr_name: str, resolution: int, normalization: str = "
     print(f"  URL: {url[:80]}...")
 
     result = subprocess.run(
-        cmd, capture_output=True, text=True, timeout=600
+        cmd, capture_output=True, text=True, timeout=1800
     )
 
     if result.returncode != 0:
@@ -288,8 +298,8 @@ def download_hic_region(
             raise ValueError("KR returned empty output")
         print(f"  KR normalization: {lines:,} records")
         used_norm = "KR"
-    except (ValueError, RuntimeError):
-        print(f"  KR not available, using NONE + VC_SQRT normalization")
+    except (ValueError, RuntimeError, subprocess.TimeoutExpired):
+        print(f"  KR not available or timed out, using NONE + VC_SQRT normalization")
         dump_path = juicer_dump(url, chr_name, resolution, "NONE")
         lines = sum(1 for _ in open(dump_path))
         if lines == 0:
