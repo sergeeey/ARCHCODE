@@ -1,0 +1,46 @@
+{
+  "locus": "mlh1",
+  "locus_id": "mlh1_300kb",
+  "window": {
+    "chromosome": "chr3",
+    "start": 36900000,
+    "end": 37200000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "akita": {
+    "framework": "basenji",
+    "model_file": "model_best.h5",
+    "reference": "Fudenberg et al. 2020, Nature Methods",
+    "seq_length": 1048576,
+    "contact_map_resolution": 2048,
+    "contact_map_shape": [448, 448],
+    "cell_type": "GM12878",
+    "target_index": 2,
+    "akita_window_bins": 147,
+    "prediction_time_sec": 147.3
+  },
+  "correlations": {
+    "archcode_vs_akita": {
+      "pearson_r": 0.12019187414719976,
+      "pearson_p": 5.379671944715174e-143,
+      "spearman_rho": 0.22421364900432691,
+      "spearman_p": 0.0,
+      "n": 44551
+    },
+    "archcode_vs_hic": {
+      "pearson_r": 0.105570417305581,
+      "pearson_p": 1.3596178344644317e-110,
+      "spearman_rho": 0.12115060053747917,
+      "spearman_p": 2.8571164116855093e-145,
+      "n": 44551
+    },
+    "akita_vs_hic": {
+      "pearson_r": -0.09144673578434104,
+      "pearson_p": 2.391940950446042e-83,
+      "spearman_rho": -0.18864489894259026,
+      "spearman_p": 0.0,
+      "n": 44551
+    }
+  }
+}

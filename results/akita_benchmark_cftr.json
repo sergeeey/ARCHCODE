@@ -1,0 +1,32 @@
+{
+  "locus": "cftr",
+  "locus_id": "cftr_317kb",
+  "window": {
+    "chromosome": "chr7",
+    "start": 117400000,
+    "end": 117717000,
+    "resolution_bp": 1000,
+    "n_bins": 317
+  },
+  "akita": {
+    "framework": "basenji",
+    "model_file": "model_best.h5",
+    "reference": "Fudenberg et al. 2020, Nature Methods",
+    "seq_length": 1048576,
+    "contact_map_resolution": 2048,
+    "contact_map_shape": [448, 448],
+    "cell_type": "GM12878",
+    "target_index": 2,
+    "akita_window_bins": 155,
+    "prediction_time_sec": 142.9
+  },
+  "correlations": {
+    "archcode_vs_akita": {
+      "pearson_r": 0.2717138686613936,
+      "pearson_p": 0.0,
+      "spearman_rho": 0.4069810688838124,
+      "spearman_p": 0.0,
+      "n": 49770
+    }
+  }
+}
