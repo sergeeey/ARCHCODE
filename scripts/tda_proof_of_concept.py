@@ -40,6 +40,7 @@ def load_locus_config(locus_name: str) -> dict:
         "cftr": "config/locus/cftr_317kb.json",
         "tp53": "config/locus/tp53_300kb.json",
         "brca1": "config/locus/brca1_400kb.json",
+        "mlh1": "config/locus/mlh1_300kb.json",
     }
     config_path = Path(config_map.get(locus_name, f"config/locus/{locus_name}.json"))
     if not config_path.exists():
@@ -250,6 +251,48 @@ def compute_landscape_vector(dgm: np.ndarray, n_points: int = 100) -> np.ndarray
 # Effect strength mapping (same as TypeScript engine)
 # ============================================================================
 
+LOCAL_SSIM_WINDOW = 50
+
+
+def _compute_ssim(a: np.ndarray, b: np.ndarray) -> float:
+    """Compute SSIM between two flattened arrays."""
+    mu_a, mu_b = a.mean(), b.mean()
+    sig_a2 = ((a - mu_a) ** 2).mean()
+    sig_b2 = ((b - mu_b) ** 2).mean()
+    sig_ab = ((a - mu_a) * (b - mu_b)).mean()
+    c1, c2 = 0.0001, 0.0009
+    return float(
+        ((2 * mu_a * mu_b + c1) * (2 * sig_ab + c2))
+        / ((mu_a**2 + mu_b**2 + c1) * (sig_a2 + sig_b2 + c2))
+    )
+
+
+def _compute_local_ssim(
+    ref: np.ndarray, mut: np.ndarray, variant_bin: int, window: int = LOCAL_SSIM_WINDOW
+) -> float:
+    """Local SSIM on window×window submatrix centered on variant_bin."""
+    n = ref.shape[0]
+    if n <= window:
+        flat_ref = ref[np.triu_indices(n, k=1)]
+        flat_mut = mut[np.triu_indices(n, k=1)]
+        return _compute_ssim(flat_ref, flat_mut)
+
+    half = window // 2
+    start = variant_bin - half
+    end = start + window
+    if start < 0:
+        start = 0
+        end = window
+    if end > n:
+        end = n
+        start = n - window
+
+    sub_ref = ref[start:end, start:end]
+    sub_mut = mut[start:end, start:end]
+    idx = np.triu_indices(window, k=1)
+    return _compute_ssim(sub_ref[idx], sub_mut[idx])
+
+
 EFFECT_STRENGTHS = {
     "nonsense": 0.1,
     "frameshift": 0.15,
@@ -323,7 +366,7 @@ def main():
         mut_result = compute_persistence(mut_dist, maxdim=1)
         mut_summary = persistence_summary(mut_result["dgms"])
 
-        # SSIM (for comparison)
+        # SSIM (global — for comparison)
         flat_wt = wt_matrix[np.triu_indices(n_bins, k=1)]
         flat_mut = mut_matrix[np.triu_indices(n_bins, k=1)]
         mu_a, mu_b = flat_wt.mean(), flat_mut.mean()
@@ -333,6 +376,9 @@ def main():
         c1, c2 = 0.0001, 0.0009
         ssim = ((2 * mu_a * mu_b + c1) * (2 * sig_ab + c2)) / \
                ((mu_a**2 + mu_b**2 + c1) * (sig_a2 + sig_b2 + c2))
+
+        # LSSIM (local 50×50 window — matches pipeline threshold calibration)
+        lssim = _compute_local_ssim(wt_matrix, mut_matrix, variant_bin)
 
         # Wasserstein distance between persistence diagrams
         w_h0 = wasserstein(wt_result["dgms"][0], mut_result["dgms"][0])
@@ -350,6 +396,7 @@ def main():
             "category": cat,
             "effect_strength": eff,
             "ssim": round(ssim, 6),
+            "lssim": round(lssim, 6),
             "wasserstein_h0": round(w_h0, 6),
             "wasserstein_h1": round(w_h1, 6),
             "bottleneck_h0": round(b_h0, 6),
@@ -362,7 +409,7 @@ def main():
         }
         results.append(row)
 
-        print(f"  {cat:16s} | eff={eff:.2f} | SSIM={ssim:.4f} | "
+        print(f"  {cat:16s} | eff={eff:.2f} | SSIM={ssim:.4f} | LSSIM={lssim:.4f} | "
               f"W_H1={w_h1:.6f} | B_H1={b_h1:.6f} | L_H1={landscape_dist:.6f}")
 
     # Step 3: Correlation analysis — does TDA rank correlate with SSIM rank?
@@ -370,6 +417,7 @@ def main():
     from scipy.stats import spearmanr
 
     ssim_vals = [r["ssim"] for r in results]
+    lssim_vals = [r["lssim"] for r in results]
     w_h1_vals = [r["wasserstein_h1"] for r in results]
     b_h1_vals = [r["bottleneck_h1"] for r in results]
     l_h1_vals = [r["landscape_dist_h1"] for r in results]
@@ -380,9 +428,13 @@ def main():
     rho_b, p_b = spearmanr(ssim_vals, b_h1_vals)
     rho_l, p_l = spearmanr(ssim_vals, l_h1_vals)
 
-    print(f"  SSIM vs Wasserstein H1: rho = {rho_w:.4f}, p = {p_w:.4f}")
-    print(f"  SSIM vs Bottleneck  H1: rho = {rho_b:.4f}, p = {p_b:.4f}")
-    print(f"  SSIM vs Landscape   H1: rho = {rho_l:.4f}, p = {rho_l:.4f}")
+    # LSSIM correlations (may differ from global SSIM on large matrices)
+    rho_lw, p_lw = spearmanr(lssim_vals, w_h1_vals)
+
+    print(f"  SSIM vs Wasserstein H1:  rho = {rho_w:.4f}, p = {p_w:.4f}")
+    print(f"  LSSIM vs Wasserstein H1: rho = {rho_lw:.4f}, p = {p_lw:.4f}")
+    print(f"  SSIM vs Bottleneck  H1:  rho = {rho_b:.4f}, p = {p_b:.4f}")
+    print(f"  SSIM vs Landscape   H1:  rho = {rho_l:.4f}, p = {rho_l:.4f}")
 
     # Step 4: Multi-position scan — test TDA sensitivity across genome
     print("\n--- Step 4: Positional scan (nonsense at every 10th bin) ---")
@@ -429,6 +481,7 @@ def main():
         "variant_comparison": results,
         "rank_correlations": {
             "ssim_vs_wasserstein_h1": {"rho": round(rho_w, 4), "p": round(p_w, 4)},
+            "lssim_vs_wasserstein_h1": {"rho": round(rho_lw, 4), "p": round(p_lw, 4)},
             "ssim_vs_bottleneck_h1": {"rho": round(rho_b, 4), "p": round(p_b, 4)},
             "ssim_vs_landscape_h1": {"rho": round(rho_l, 4), "p": round(p_l, 4)},
         },

@@ -1,6 +1,6 @@
 {
   "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
-  "date": "2026-03-01T06:38:13.625Z",
+  "date": "2026-03-01T13:41:58.812Z",
   "locus_config_id": "tp53_300kb",
   "locus_config_path": "D:\\ДНК\\config\\locus\\tp53_300kb.json",
   "provenance": {
@@ -33,7 +33,11 @@
     "pearls": 0,
     "mean_ssim_all": 0.9991,
     "mean_ssim_pathogenic": 0.9986,
-    "mean_ssim_benign": 0.9998
+    "mean_ssim_benign": 0.9998,
+    "mean_lssim_all": 0.9933,
+    "mean_lssim_pathogenic": 0.9896,
+    "mean_lssim_benign": 0.9986,
+    "local_ssim_window": 50
   },
   "category_breakdown": {
     "other": {
@@ -42,7 +46,10 @@
       "benign_count": 34,
       "mean_ssim_all": 0.9989,
       "mean_ssim_pathogenic": 0.9982,
-      "mean_ssim_benign": 0.9993
+      "mean_ssim_benign": 0.9993,
+      "mean_lssim_all": 0.991,
+      "mean_lssim_pathogenic": 0.9856,
+      "mean_lssim_benign": 0.9941
     },
     "3_prime_UTR": {
       "total": 22,
@@ -50,7 +57,10 @@
       "benign_count": 19,
       "mean_ssim_all": 0.9999,
       "mean_ssim_pathogenic": 0.9999,
-      "mean_ssim_benign": 0.9999
+      "mean_ssim_benign": 0.9999,
+      "mean_lssim_all": 0.9996,
+      "mean_lssim_pathogenic": 0.9996,
+      "mean_lssim_benign": 0.9996
     },
     "frameshift": {
       "total": 534,
@@ -58,7 +68,10 @@
       "benign_count": 0,
       "mean_ssim_all": 0.9964,
       "mean_ssim_pathogenic": 0.9964,
-      "mean_ssim_benign": null
+      "mean_ssim_benign": null,
+      "mean_lssim_all": 0.9733,
+      "mean_lssim_pathogenic": 0.9733,
+      "mean_lssim_benign": null
     },
     "synonymous": {
       "total": 1399,
@@ -66,7 +79,10 @@
       "benign_count": 613,
       "mean_ssim_all": 1,
       "mean_ssim_pathogenic": 0.9999,
-      "mean_ssim_benign": 1
+      "mean_ssim_benign": 1,
+      "mean_lssim_all": 0.9997,
+      "mean_lssim_pathogenic": 0.9997,
+      "mean_lssim_benign": 0.9997
     },
     "intronic": {
       "total": 528,
@@ -74,7 +90,10 @@
       "benign_count": 406,
       "mean_ssim_all": 0.9998,
       "mean_ssim_pathogenic": 0.9998,
-      "mean_ssim_benign": 0.9998
+      "mean_ssim_benign": 0.9998,
+      "mean_lssim_all": 0.9988,
+      "mean_lssim_pathogenic": 0.9987,
+      "mean_lssim_benign": 0.9988
     },
     "splice_region": {
       "total": 139,
@@ -82,7 +101,10 @@
       "benign_count": 66,
       "mean_ssim_all": 0.9983,
       "mean_ssim_pathogenic": 0.998,
-      "mean_ssim_benign": 0.9986
+      "mean_ssim_benign": 0.9986,
+      "mean_lssim_all": 0.9873,
+      "mean_lssim_pathogenic": 0.9851,
+      "mean_lssim_benign": 0.9897
     },
     "inframe_indel": {
       "total": 35,
@@ -90,7 +112,10 @@
       "benign_count": 4,
       "mean_ssim_all": 0.9989,
       "mean_ssim_pathogenic": 0.9988,
-      "mean_ssim_benign": 0.9993
+      "mean_ssim_benign": 0.9993,
+      "mean_lssim_all": 0.992,
+      "mean_lssim_pathogenic": 0.9916,
+      "mean_lssim_benign": 0.9947
     },
     "inframe_deletion": {
       "total": 76,
@@ -98,7 +123,10 @@
       "benign_count": 1,
       "mean_ssim_all": 0.9986,
       "mean_ssim_pathogenic": 0.9986,
-      "mean_ssim_benign": 0.9993
+      "mean_ssim_benign": 0.9993,
+      "mean_lssim_all": 0.99,
+      "mean_lssim_pathogenic": 0.9899,
+      "mean_lssim_benign": 0.9944
     },
     "5_prime_UTR": {
       "total": 8,
@@ -106,7 +134,10 @@
       "benign_count": 6,
       "mean_ssim_all": 0.9983,
       "mean_ssim_pathogenic": 0.9995,
-      "mean_ssim_benign": 0.998
+      "mean_ssim_benign": 0.998,
+      "mean_lssim_all": 0.9869,
+      "mean_lssim_pathogenic": 0.9965,
+      "mean_lssim_benign": 0.9837
     }
   },
   "pipeline_integrity": {

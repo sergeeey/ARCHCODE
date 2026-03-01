@@ -24,6 +24,7 @@
       "category": "nonsense",
       "effect_strength": 0.1,
       "ssim": 0.99485,
+      "lssim": 0.91563,
       "wasserstein_h0": 0.0,
       "wasserstein_h1": 0.002534,
       "bottleneck_h0": 0.0,
@@ -38,6 +39,7 @@
       "category": "frameshift",
       "effect_strength": 0.15,
       "ssim": 0.995529,
+      "lssim": 0.927294,
       "wasserstein_h0": 0.0,
       "wasserstein_h1": 0.002367,
       "bottleneck_h0": 0.0,
@@ -52,6 +54,7 @@
       "category": "splice_donor",
       "effect_strength": 0.2,
       "ssim": 0.996122,
+      "lssim": 0.937418,
       "wasserstein_h0": 0.0,
       "wasserstein_h1": 0.002202,
       "bottleneck_h0": 0.0,
@@ -66,6 +69,7 @@
       "category": "promoter",
       "effect_strength": 0.3,
       "ssim": 0.997124,
+      "lssim": 0.954349,
       "wasserstein_h0": 0.0,
       "wasserstein_h1": 0.001886,
       "bottleneck_h0": 0.0,
@@ -80,6 +84,7 @@
       "category": "missense",
       "effect_strength": 0.4,
       "ssim": 0.997938,
+      "lssim": 0.967836,
       "wasserstein_h0": 0.0,
       "wasserstein_h1": 0.001633,
       "bottleneck_h0": 0.0,
@@ -94,6 +99,7 @@
       "category": "intronic",
       "effect_strength": 0.8,
       "ssim": 0.999785,
+      "lssim": 0.996901,
       "wasserstein_h0": 0.0,
       "wasserstein_h1": 0.000488,
       "bottleneck_h0": 0.0,
@@ -108,6 +114,7 @@
       "category": "synonymous",
       "effect_strength": 0.9,
       "ssim": 0.999947,
+      "lssim": 0.99925,
       "wasserstein_h0": 0.0,
       "wasserstein_h1": 0.000233,
       "bottleneck_h0": 0.0,
@@ -121,6 +128,10 @@
   ],
   "rank_correlations": {
     "ssim_vs_wasserstein_h1": {
+      "rho": -1.0,
+      "p": 0.0
+    },
+    "lssim_vs_wasserstein_h1": {
       "rho": -1.0,
       "p": 0.0
     },

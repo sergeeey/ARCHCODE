@@ -1,0 +1,10 @@
+{
+  "gene": "MLH1",
+  "cell_type": "K562",
+  "region": "chr3:36900000-37200000",
+  "resolution_bp": 1000,
+  "pearson_r": 0.5886026123000523,
+  "p_value": 0.0,
+  "n_valid_pairs": 20432,
+  "n_total_pairs": 44850
+}

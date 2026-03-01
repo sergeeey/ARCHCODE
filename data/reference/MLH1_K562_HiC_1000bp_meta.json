@@ -1,0 +1,13 @@
+{
+  "gene": "MLH1",
+  "cell_type": "K562",
+  "experiment": "ENCSR479XDG",
+  "source": "ENCODE_K562_intact_HiC",
+  "assembly": "GRCh38",
+  "region": "chr3:36900000-37200000",
+  "resolution_bp": 1000,
+  "matrix_shape": [300, 300],
+  "normalization": "NONE_VCSQRT",
+  "nonzero_fraction": 0.45737777777777777,
+  "value_range": [0.0, 0.22392302924226767]
+}
