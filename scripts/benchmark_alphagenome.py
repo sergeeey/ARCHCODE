@@ -376,14 +376,12 @@ def main():
     # Step 5: Load Hi-C if available
     print(f"\n--- Step 5: Correlation analysis ---")
     hic_matrix = None
-    # ПОЧЕМУ locus-specific first: generic *HBB* glob матчил для всех локусов.
-    # Ищем сначала по gene name из config, потом fallback на HBB.
+    # ПОЧЕМУ только locus-specific: ранее fallback на *HBB* давал ложные корреляции
+    # для CFTR и других локусов, где нет своего Hi-C файла. Загрузка Hi-C с чужого
+    # локуса = ложная валидация. Лучше честно сказать "No Hi-C" чем показать
+    # неверную корреляцию.
     gene_name = config.get("id", args.locus).split("_")[0].upper()
     hic_files = list((PROJECT_ROOT / "data" / "reference").glob(f"*{gene_name}*HiC*1000bp.npy"))
-    if not hic_files:
-        hic_files = list((PROJECT_ROOT / "data" / "reference").glob(f"*HBB*HiC*1000bp.npy"))
-    if not hic_files:
-        hic_files = list((PROJECT_ROOT / "data" / "reference").glob(f"*K562*HiC*.npy"))
 
     if hic_files:
         hic_path = hic_files[0]
