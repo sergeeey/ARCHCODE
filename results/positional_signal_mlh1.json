@@ -97,7 +97,7 @@
     "lr_statistic": 7.986566744968513,
     "lr_p_value": 0.004712569542665284,
     "n_categories": 9,
-    "interpretation": "SSIM adds significant predictive value beyond category"
+    "interpretation": "Statistically significant (p=0.005) but ΔAUC=+0.011 — power effect at n=4,060, not clinically meaningful prediction"
   },
   "permutation_results": [
     {
