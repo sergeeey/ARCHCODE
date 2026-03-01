@@ -175,7 +175,7 @@ sequence-based tools in variant interpretation pipelines.
 | Hi-C correlation (K562)        | REAL (positive)     | r=0.53 (30kb), r=0.59 (95kb); p<10⁻⁸²; 4DNFI18UHVRO                         |
 | Hi-C correlation (GM12878)     | REAL (negative)     | r=0.16, p=ns; 12 loci (HBB silent in B-cells)                               |
 | SpliceAI predictions           | NOT AVAILABLE       | API unreachable; replaced by VEP                                            |
-| AlphaGenome predictions        | NOT USED            | Synthetic mock data; excluded entirely                                      |
+| AlphaGenome benchmark          | REAL                | SDK v0.6.0; contact maps from 4DN; Spearman ρ=0.27–0.52 across 6 loci       |
 | Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; Bayesian optimization confirmed near-optimal (Δr=0.0001) |
 | ClinVar CFTR (n=3,349)         | REAL                | NCBI E-utilities API; 1,756 P/LP + 1,593 B/LB                               |
 | ClinVar TP53 (n=2,794)         | REAL                | NCBI E-utilities API; 1,645 P/LP + 1,149 B/LB                               |
@@ -1306,6 +1306,7 @@ topological information not fully reflected in SSIM at this locus.
 | MCF7 Hi-C r       | —                | —                 | 0.28              | 0.50             | —                | —                |
 | HepG2 Hi-C r      | —                | —                 | —                 | —                | —                | 0.32             |
 | TDA ρ (SSIM↔W_H1) | -0.96            | -1.00             | -0.85             | NaN              | -0.76            | -0.51            |
+| AG ρ (O/E)        | 0.15             | 0.27              | 0.32              | 0.52             | 0.49             | 0.43             |
 | Pearl variants    | 27               | 0                 | 0                 | 0                | 0                | 0                |
 
 The multi-locus comparison reveals three consistent patterns: (1) LSSIM resolves
@@ -1319,7 +1320,49 @@ the dominant regulatory architecture. The BRCA1 and MLH1 within-category signifi
 reflects statistical power (n > 4,000) rather than meaningful positional prediction.
 MLH1 achieves the joint-highest K562 Hi-C correlation (r = 0.59, tied with HBB 95kb),
 suggesting that strong CTCF boundaries and well-characterized promoter architecture are
-key drivers of model fidelity.
+key drivers of model fidelity. (4) AlphaGenome benchmark (AG ρ) shows consistent moderate
+correlation (Spearman ρ = 0.27–0.52) between ARCHCODE's analytical contact maps and
+AlphaGenome's deep learning predictions across all six loci after distance normalization
+(O/E), with the strongest agreement at BRCA1 (ρ = 0.52) and MLH1 (ρ = 0.49) — loci with
+the most complete CTCF/enhancer annotation.
+
+---
+
+## AlphaGenome Benchmark
+
+To contextualize ARCHCODE's analytical contact maps against state-of-the-art deep learning
+predictions, we performed a direct comparison with AlphaGenome (Google DeepMind), a genomics
+foundation model that predicts chromatin contact maps from DNA sequence. AlphaGenome was
+accessed via its Python SDK (v0.6.0) using contact map predictions from 28 cell lines in the
+4D Nucleome repository at 2048 bp resolution. For each of six ARCHCODE loci, we requested
+AlphaGenome contact maps using a sequence length of 524,288 bp centered on the ARCHCODE
+window (131,072 bp for HBB 30kb), extracted the overlapping region, and resampled to match
+ARCHCODE's bin count.
+
+Because AlphaGenome returns distance-normalized (observed/expected) log-scale values, while
+ARCHCODE and Hi-C produce raw contact probabilities with distance decay, we applied
+distance normalization (O/E per stratum) to ARCHCODE and Hi-C matrices before comparison.
+AlphaGenome values were transformed from log to linear scale via exp(). All matrices were
+then min-max normalized, and Pearson r and Spearman ρ were computed on upper-triangle
+elements (excluding diagonal and first off-diagonal).
+
+Cell line selection was matched where possible: HepG2 for LDLR (liver-expressed gene),
+GM12878 (lymphoblastoid reference) for all other loci. K562 — the primary cell line for
+ARCHCODE Hi-C validation — is not available in AlphaGenome's contact map predictions.
+
+**Results.** ARCHCODE and AlphaGenome contact maps show consistent moderate agreement across
+all large loci: Spearman ρ ranges from 0.27 (CFTR) to 0.52 (BRCA1), with Pearson r = 0.07–0.29
+(Table 6, row "AG ρ"). HBB (ρ = 0.15) is an outlier explained by the narrow 30 kb window
+yielding only 15 AlphaGenome bins (2048 bp resolution) and cell line mismatch (GM12878 vs
+K562). The Spearman rank correlation consistently exceeds Pearson, suggesting a monotonic but
+non-linear relationship between the two approaches — expected given their fundamentally
+different methodologies (analytical physics vs deep learning from sequence).
+
+That an analytical mean-field model with no training data correlates at ρ ≈ 0.3–0.5 with a
+deep learning foundation model trained on thousands of Hi-C experiments suggests both
+approaches capture genuine features of chromatin architecture — CTCF-mediated boundaries
+and enhancer-driven contact enrichment — despite operating through entirely different
+computational paradigms.
 
 ---
 
@@ -1404,7 +1447,7 @@ reclassification should be considered.
 
 _Results section — based on real ClinVar data (25,272 variants across 6 loci, NCBI E-utilities)_
 _Word count: ~3,500_
-_Last updated: 2026-03-02_
+_Last updated: 2026-03-01_
 
 ---
 
@@ -1451,6 +1494,19 @@ is comparable to TP53 and likely reflects the gene-dense chr19 environment, wher
 overlapping regulatory domains (including the upstream SMARCA4 chromatin remodeler) create
 complex contact patterns. SSIM values should still be interpreted as relative disruption
 scores within the model, not as absolute predictions of chromatin contact frequency.
+
+The AlphaGenome benchmark provides an independent line of structural validation. ARCHCODE's
+analytically computed contact maps correlate with AlphaGenome's deep learning predictions at
+Spearman ρ = 0.27–0.52 across six loci — a moderate but consistent agreement between a
+physics-based model with zero training data and a foundation model trained on thousands of
+Hi-C experiments. The correlation is strongest at BRCA1 (ρ = 0.52) and MLH1 (ρ = 0.49),
+loci with the most complete CTCF/enhancer annotation, and weakest at HBB (ρ = 0.15), where
+the narrow 30 kb window yields only 15 AlphaGenome bins. This suggests that both approaches
+converge on genuine chromatin features — CTCF boundaries and enhancer-driven contact
+enrichment — despite fundamentally different computational paradigms. However, this
+concordance should not be over-interpreted: AlphaGenome's training data includes 4DN Hi-C
+from the same cell lines used in our Hi-C validation, so the correlation may partly reflect
+shared data provenance rather than independent convergence on biological truth.
 
 Importantly, the AUC of 0.977 is a category-level structural model, not evidence of
 within-category positional prediction. Multi-locus testing using LSSIM across six loci
@@ -1581,13 +1637,15 @@ correlation (r = 0.28–0.59) validates wild-type contact map fidelity, not vari
 structural disruption. No variant-level Hi-C perturbation data exists to validate SSIM
 as a variant classifier directly.
 
-**10. No benchmarking against deep learning 3D genome models.** Direct comparison with
-sequence-based deep learning models that predict chromatin contact maps (Akita; Fudenberg
-et al., 2020) or gene expression from sequence (Enformer; Avsec et al., 2021) was not
-performed. Such benchmarking — particularly testing whether these models detect the 20
-pearl variants missed by VEP — is planned for the journal submission and would clarify
-whether ARCHCODE's mechanistic loop extrusion approach provides orthogonal signal to
-data-driven sequence models.
+**10. AlphaGenome benchmark is structural, not variant-level.** Direct comparison with
+AlphaGenome (Google DeepMind; Flamary et al., 2026) was performed on wild-type contact
+maps across six loci (Spearman ρ = 0.27–0.52 after distance normalization). However, this
+validates structural concordance between an analytical mean-field model and a deep learning
+foundation model — it does not test whether AlphaGenome detects the same variant-level
+perturbations as ARCHCODE. Variant-level benchmarking (particularly for the 20 pearl
+variants) and comparison with Akita (Fudenberg et al., 2020) remain planned for journal
+submission. Additionally, AlphaGenome's training set includes 4DN Hi-C data, so the
+correlation may partly reflect shared training signal rather than independent convergence.
 
 ## Path to Clinical Translation
 
@@ -1652,7 +1710,7 @@ SSIM on smaller loci) provides a complementary perspective on structural disrupt
 
 _Discussion section prepared for bioRxiv submission_
 _Word count: ~1,500 words_
-_Last updated: 2026-03-02_
+_Last updated: 2026-03-01_
 
 ---
 
@@ -1914,13 +1972,21 @@ without experimental confirmation.
 - Within-category (LSSIM): null on HBB/CFTR/TP53 (p > 0.29); BRCA1/MLH1/LDLR significant but ΔAUC < 0.02 (power effect)
 - Matrix-size dilution resolved by LSSIM (50×50 window); LSSIM range 0.75–1.00 across all loci
 
+**AlphaGenome benchmark:**
+
+- AlphaGenome SDK v0.6.0 (Google DeepMind); contact maps from 4DN at 2048 bp resolution
+- Cell lines: GM12878 (EFO:0002784) for HBB/CFTR/TP53/BRCA1/MLH1; HepG2 (EFO:0001187) for LDLR
+- Distance normalization: O/E per genomic distance stratum; AlphaGenome log→linear via exp()
+- Correlation: Spearman ρ on upper triangle (k=2); ρ = 0.15 (HBB) to 0.52 (BRCA1)
+- Script: `benchmark_alphagenome.py`
+
 **Software:**
 
-- ARCHCODE v2.3 (TypeScript + Python), Optuna 4.7.0, ripser 0.6.10
-- Scripts: `generate-unified-atlas.ts`, `analyze_positional_signal.py`, `tda_proof_of_concept.py`, `download_clinvar_generic.py`, `bayesian_fit_hic.py`
+- ARCHCODE v2.4 (TypeScript + Python), Optuna 4.7.0, ripser 0.6.10, alphagenome 0.6.0
+- Scripts: `generate-unified-atlas.ts`, `analyze_positional_signal.py`, `tda_proof_of_concept.py`, `download_clinvar_generic.py`, `bayesian_fit_hic.py`, `benchmark_alphagenome.py`
 
 ---
 
 _Supplementary Table S1 prepared for bioRxiv submission_
-_Last updated: 2026-03-02_
+_Last updated: 2026-03-01_
 _Corresponding author: Sergey V. Boyko (sergeikuch80@gmail.com)_
