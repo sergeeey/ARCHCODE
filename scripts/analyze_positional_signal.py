@@ -41,6 +41,8 @@ def load_atlas(locus_tag: str) -> list[dict]:
     """Load the unified atlas CSV for given locus."""
     if locus_tag == "cftr":
         path = Path("results/CFTR_Unified_Atlas_317kb.csv")
+    elif locus_tag == "tp53":
+        path = Path("results/TP53_Unified_Atlas_300kb.csv")
     elif locus_tag == "95kb":
         path = Path("results/HBB_Unified_Atlas_95kb.csv")
     else:

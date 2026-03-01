@@ -1,0 +1,13 @@
+{
+  "gene": "TP53",
+  "cell_type": "K562",
+  "experiment": "ENCSR479XDG",
+  "source": "ENCODE_K562_intact_HiC",
+  "assembly": "GRCh38",
+  "region": "chr17:7550000-7850000",
+  "resolution_bp": 1000,
+  "matrix_shape": [300, 300],
+  "normalization": "NONE_VCSQRT",
+  "nonzero_fraction": 0.20633333333333334,
+  "value_range": [0.0, 0.2753623188405797]
+}

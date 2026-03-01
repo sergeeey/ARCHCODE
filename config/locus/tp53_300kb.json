@@ -1,0 +1,332 @@
+{
+  "id": "tp53_300kb",
+  "name": "TP53 300kb TAD (ENCODE K562 CTCF + H3K27ac)",
+  "description": "300kb window spanning the TP53 TAD on chr17p13.1. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE, IDR narrowPeak, GRCh38). H3K27ac enhancer peaks from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). TAD boundaries from Rao et al. 2014 K562 Arrowhead domains (GSE63525, hg19 lifted to hg38 with +96,701bp offset — approximate). TP53 is on the MINUS strand; TSS is at the 3' end of the gene coordinates. CTCF site at TP53/WRAP53 bidirectional promoter validated by Soto-Reyes & Recillas-Targa 2010 (PMID:20101205) and Saldana-Meyer et al. 2014 (PMID:24681887). TP53 has two promoters: P1 upstream of exon 1 and P2 internal in intron 4 (delta133p53 isoforms).",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr17",
+    "start": 7550000,
+    "end": 7850000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 7687490,
+        "occupancy": 0.9,
+        "name": "TP53_P1_promoter_TSS",
+        "source": "NCBI_RefSeq_TSS",
+        "note": "TP53 transcription start site for P1 promoter (NM_000546.6, minus strand so TSS is at txEnd=7687490). CDS: 7669608-7676594. Confirmed by ENCODE H3K27ac peak (ENCFF864OSZ signal=70.08) and CTCF peak (ENCFF736NYC signal=132.79)"
+      },
+      {
+        "position": 7674000,
+        "occupancy": 0.5,
+        "name": "TP53_P2_internal_promoter",
+        "source": "LITERATURE",
+        "note": "Internal promoter P2 at intron 4/exon 5 junction, drives delta133p53 isoforms. Approximate position based on exon 4 (7673700-7673837) and exon 5 (7674180-7674290). Marcel et al. 2010 (PMID:20190805)"
+      },
+      {
+        "position": 7584500,
+        "occupancy": 0.7,
+        "name": "MPDU1_SOX15_enhancer_cluster",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Strong H3K27ac peak (signal=85.29) spanning 4.9kb (7582057-7586946). Largest H3K27ac peak in the 5-prime portion of the window. Located ~84kb upstream of TP53 TSS. MANUALLY CALIBRATED occupancy from signal ratio"
+      },
+      {
+        "position": 7573270,
+        "occupancy": 0.5,
+        "name": "EIF4A1_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at EIF4A1 promoter (signal=38.63). Located ~114kb upstream of TP53 TSS"
+      },
+      {
+        "position": 7580250,
+        "occupancy": 0.4,
+        "name": "CD68_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at CD68 promoter (signal=23.46, 7578968-7581532). Located ~107kb upstream of TP53 TSS"
+      },
+      {
+        "position": 7650332,
+        "occupancy": 0.3,
+        "name": "ATP1B2_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Weak H3K27ac peak at ATP1B2 (signal=12.10). Located ~37kb upstream of TP53 TSS"
+      },
+      {
+        "position": 7686445,
+        "occupancy": 0.85,
+        "name": "TP53_WRAP53_bidirectional_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Major H3K27ac peak (signal=70.08) spanning TP53 promoter and WRAP53 overlap region (7684755-7688135, 3.4kb wide). Bidirectional promoter activity confirmed by Saldana-Meyer et al. 2014 (PMID:24681887)"
+      },
+      {
+        "position": 7839108,
+        "occupancy": 0.6,
+        "name": "KDM6B_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Strong H3K27ac peak at KDM6B/JMJD3 promoter (signal=42.97, 7838447-7839768). Located ~152kb downstream of TP53 TSS"
+      },
+      {
+        "position": 7843367,
+        "occupancy": 0.6,
+        "name": "KDM6B_5prime_enhancer_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Broad H3K27ac peak in KDM6B 5-prime region (signal=45.47, 7841021-7845712, 4.7kb wide)"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 7560547,
+        "orientation": "unknown",
+        "signal": 106.36,
+        "name": "SENP3_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF near SENP3 promoter (7560494-7560600). Near 5-prime TAD boundary"
+      },
+      {
+        "position": 7561144,
+        "orientation": "unknown",
+        "signal": 131.0,
+        "name": "SENP3_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strongest 5-prime CTCF in window (7561043-7561245). Co-localizes with H3K27ac peak. Candidate 5-prime TAD boundary element"
+      },
+      {
+        "position": 7586899,
+        "orientation": "unknown",
+        "signal": 108.84,
+        "name": "SOX15_FXR2_insulator",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF between SOX15 and FXR2 (7586828-7586970). Within H3K27ac super-enhancer candidate region"
+      },
+      {
+        "position": 7614996,
+        "orientation": "unknown",
+        "signal": 89.55,
+        "name": "SHBG_FXR2_boundary",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF at SHBG/FXR2 gene boundary (7614957-7615035)"
+      },
+      {
+        "position": 7632642,
+        "orientation": "unknown",
+        "signal": 76.85,
+        "name": "SHBG_internal_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF within SHBG gene (7632507-7632777)"
+      },
+      {
+        "position": 7634528,
+        "orientation": "unknown",
+        "signal": 97.61,
+        "name": "SHBG_downstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF downstream of SHBG (7634454-7634601)"
+      },
+      {
+        "position": 7673425,
+        "orientation": "unknown",
+        "signal": 37.4,
+        "name": "TP53_intron3_4_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF within TP53 gene body, intron 3-4 region (7673290-7673560). Near P2 internal promoter. Soto-Reyes & Recillas-Targa 2010 (PMID:20101205) identified CTCF binding in TP53 promoter region"
+      },
+      {
+        "position": 7688184,
+        "orientation": "unknown",
+        "signal": 132.79,
+        "name": "TP53_WRAP53_bidirectional_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "STRONGEST CTCF in TP53 vicinity (7688098-7688269). At TP53/WRAP53 bidirectional promoter. CTCF regulates p53 through interaction with Wrap53 antisense RNA (Saldana-Meyer et al. 2014, PMID:24681887). Co-localizes with strongest H3K27ac peak in TP53 region"
+      },
+      {
+        "position": 7711574,
+        "orientation": "unknown",
+        "signal": 31.76,
+        "name": "EFNB3_downstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF just downstream of EFNB3 (7711439-7711709)"
+      },
+      {
+        "position": 7717400,
+        "orientation": "unknown",
+        "signal": 71.85,
+        "name": "DNAH2_promoter_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF at DNAH2 promoter (7717265-7717535). Near potential intra-TAD boundary"
+      },
+      {
+        "position": 7743735,
+        "orientation": "unknown",
+        "signal": 111.26,
+        "name": "DNAH2_internal_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF within DNAH2 gene body (7743658-7743812)"
+      },
+      {
+        "position": 7822881,
+        "orientation": "unknown",
+        "signal": 69.92,
+        "name": "DNAH2_3prime_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF near DNAH2 3-prime end (7822846-7822915)"
+      },
+      {
+        "position": 7835005,
+        "orientation": "unknown",
+        "signal": 114.77,
+        "name": "KDM6B_upstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF upstream of KDM6B (7834924-7835086). Candidate 3-prime TAD boundary element. Co-localizes with H3K27ac"
+      }
+    ],
+    "tad_boundaries": [
+      {
+        "position_start": 7566701,
+        "position_end": 7726701,
+        "name": "TP53_primary_TAD",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Primary TAD containing TP53 (160kb). hg19: 7470000-7630000 lifted to hg38 with +96701bp offset (APPROXIMATE). Contains TP53, WRAP53, EFNB3, parts of ATP1B2 and DNAH2. Rao et al. 2014 Cell (PMID:25497547)"
+      },
+      {
+        "position_start": 7716701,
+        "position_end": 8066701,
+        "name": "downstream_TAD",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Downstream TAD (350kb). hg19: 7620000-7970000. Contains bulk of DNAH2 and KDM6B. Boundary overlaps with TP53 TAD by ~10kb"
+      }
+    ],
+    "genes": [
+      { "name": "TNFSF12", "start": 7549057, "end": 7557881, "strand": "+" },
+      { "name": "TNFSF13", "start": 7558749, "end": 7561601, "strand": "+" },
+      { "name": "SENP3", "start": 7561918, "end": 7571969, "strand": "+" },
+      { "name": "EIF4A1", "start": 7572824, "end": 7579006, "strand": "+" },
+      { "name": "CD68", "start": 7579637, "end": 7582111, "strand": "+" },
+      { "name": "MPDU1", "start": 7583646, "end": 7588212, "strand": "+" },
+      { "name": "SOX15", "start": 7588177, "end": 7590094, "strand": "-" },
+      { "name": "FXR2", "start": 7591229, "end": 7614897, "strand": "-" },
+      { "name": "SHBG", "start": 7614063, "end": 7633372, "strand": "+" },
+      { "name": "SAT2", "start": 7626233, "end": 7627876, "strand": "-" },
+      { "name": "ATP1B2", "start": 7646626, "end": 7657770, "strand": "+" },
+      { "name": "TP53", "start": 7668420, "end": 7687490, "strand": "-" },
+      { "name": "WRAP53", "start": 7686070, "end": 7703502, "strand": "+" },
+      { "name": "EFNB3", "start": 7705201, "end": 7711372, "strand": "+" },
+      { "name": "DNAH2", "start": 7717743, "end": 7833742, "strand": "+" },
+      { "name": "KDM6B", "start": 7834216, "end": 7854796, "strand": "+" }
+    ]
+  },
+  "tp53_exons": {
+    "_note": "TP53 canonical transcript NM_000546.6, minus strand. 11 exons. CDS: 7669608-7676594",
+    "exons": [
+      {
+        "exon": 1,
+        "start": 7668420,
+        "end": 7669690,
+        "contains": "3-prime UTR + CDS start"
+      },
+      { "exon": 2, "start": 7670608, "end": 7670715 },
+      { "exon": 3, "start": 7673534, "end": 7673608 },
+      {
+        "exon": 4,
+        "start": 7673700,
+        "end": 7673837,
+        "contains": "P2 promoter boundary"
+      },
+      {
+        "exon": 5,
+        "start": 7674180,
+        "end": 7674290,
+        "contains": "delta133p53 start"
+      },
+      { "exon": 6, "start": 7674858, "end": 7674971 },
+      { "exon": 7, "start": 7675052, "end": 7675236 },
+      { "exon": 8, "start": 7675993, "end": 7676272 },
+      { "exon": 9, "start": 7676381, "end": 7676403 },
+      { "exon": 10, "start": 7676520, "end": 7676622 },
+      {
+        "exon": 11,
+        "start": 7687376,
+        "end": 7687490,
+        "contains": "5-prime UTR + TSS (P1)"
+      }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 16,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR000AKP",
+      "file": "ENCFF864OSZ",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 14,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/"
+    },
+    "tad_domains": {
+      "study": "Rao et al. 2014",
+      "pmid": "25497547",
+      "geo": "GSE63525",
+      "file": "GSE63525_K562_Arrowhead_domainlist.txt",
+      "assembly_original": "hg19",
+      "liftover_method": "linear offset +96701bp (APPROXIMATE — not formal liftOver)",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
+    },
+    "ctcf_promoter_regulation": {
+      "studies": [
+        {
+          "authors": "Soto-Reyes & Recillas-Targa",
+          "year": 2010,
+          "journal": "Oncogene",
+          "pmid": "20101205",
+          "finding": "CTCF binds TP53 promoter, maintains open chromatin, protects against repressive histone marks"
+        },
+        {
+          "authors": "Saldana-Meyer et al.",
+          "year": 2014,
+          "journal": "Genes & Development",
+          "pmid": "24681887",
+          "finding": "CTCF regulates p53 through direct interaction with Wrap53 antisense RNA via RNA-binding region"
+        }
+      ]
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeq"
+    }
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 300x300 matrix. Requires empirical calibration after first TP53 ARCHCODE run. SSIM thresholds from HBB 30kb config will be diluted at this resolution."
+}

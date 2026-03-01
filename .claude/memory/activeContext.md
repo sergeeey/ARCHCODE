@@ -1,8 +1,8 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-01 (session 8, manuscript CFTR + Bayesian update — 17 edits)
+**Last Updated:** 2026-03-01 (session 9, TP53 locus implementation + generic ClinVar downloader)
 **Branch:** main
-**Last Commit:** 5a7ea6c (chore: reference data, research docs, ADRs, scripts)
+**Last Commit:** 6904d5a (docs + strategic prompt)
 **GitHub:** https://github.com/sergeeey/ARCHCODE
 **Status:** SUBMITTED TO bioRxiv — awaiting DOI assignment
 
@@ -10,44 +10,31 @@
 
 ## Текущий статус проекта
 
-**Фаза:** v2.0 — CFTR locus implemented, Bayesian fit completed
+**Фаза:** v2.1 — Multi-locus expansion (TP53 complete, 4 remaining)
 
-### ✅ Bayesian Optimization Result (MILESTONE — honest null #2)
+### ✅ TP53 Locus — Complete (MILESTONE — 3rd locus)
 
-| Метрика | Baseline | Best (200 trials)    | Δ       |
-| ------- | -------- | -------------------- | ------- |
-| alpha   | 0.92     | 0.50 (lower bound)   | —       |
-| gamma   | 0.80     | 0.30 (lower bound)   | —       |
-| k_base  | 0.002    | 0.0005 (lower bound) | —       |
-| r_30kb  | 0.5299   | 0.5300               | +0.0001 |
-| r_95kb  | 0.5876   | 0.5877               | +0.0001 |
+| Метрика             | HBB (95kb)     | CFTR (317kb)     | TP53 (300kb)     |
+| ------------------- | -------------- | ---------------- | ---------------- |
+| ClinVar variants    | 1,103          | 3,349            | 2,795            |
+| P/LP + B/LB         | 353 + 750      | 1,756 + 1,593    | 1,646 + 1,149    |
+| Variant spread      | 2.1 kb (2.2%)  | 201.5 kb (63.6%) | 109.9 kb (36.6%) |
+| SSIM range          | 0.9910–1.0000  | 0.9948–1.0000    | 0.9983–1.0000    |
+| LR AUC (cat only)   | —              | —                | 0.7715           |
+| LR AUC (cat+SSIM)   | —              | —                | 0.8001           |
+| LR ΔAUC             | -0.001 (p=1.0) | +0.007 (p=1.0)   | +0.029 (p=0.77)  |
+| MW-U synonymous     | p=0.22 ns      | p=6.1e-6 \*\*\*  | p=7.2e-10 \*\*\* |
+| MW-U intronic       | p=0.69 ns      | p=0.13 ns        | p=1.7e-3 \*\*    |
+| MW-U "other"        | p=0.058 ns     | p=1.6e-16 \*\*\* | p=1.1e-14 \*\*\* |
+| TDA rho (SSIM↔W_H1) | -0.964         | -1.000           | -0.852           |
 
-**Key insight:** All 3 best params hit lower bounds → optimizer minimizes the Kramer kinetics term entirely. k_base importance = 90% (fANOVA). Hi-C correlation is **architecture-driven** (distance decay, MED1 landscape, CTCF barriers), NOT kinetics-driven. Kinetics params serve a different role: variant pathogenicity classification via SSIM perturbation. **Decision: KEEP original params.** Grid-search estimates confirmed near-optimal.
+**Key insight:** TP53 confirms SSIM is a category-level classifier (LR p=0.77). MW-U shows statistically significant but practically negligible within-category differences. TDA correlation slightly weaker (rho=-0.85) but still strong. Category breakdown dominated by synonymous (1,399) and "other" (709) — no missense/frameshift detected by classify_hgvs().
 
-### ✅ CFTR Locus — Within-Category Results (MILESTONE)
+### ✅ New Infrastructure
 
-| Метрика                  | HBB (95kb)     | CFTR (317kb)         |
-| ------------------------ | -------------- | -------------------- |
-| ClinVar variants         | 1,103          | 3,349                |
-| P/LP + B/LB              | 353 + 750      | 1,756 + 1,593        |
-| Variant spread           | 2.1 kb (2.2%)  | 201.5 kb (63.6%)     |
-| Bins occupied            | 2-3 / 159      | 93 / 317             |
-| SSIM range               | 0.9910–1.0000  | 0.9948–1.0000        |
-| Logistic regression ΔAUC | -0.001 (p=1.0) | +0.007 (p=1.0)       |
-| MW-U synonymous          | p=0.22 ns      | **p=6.1e-6** \*\*\*  |
-| MW-U intronic            | p=0.69 ns      | p=0.13 ns            |
-| MW-U "other"             | p=0.058 ns     | **p=1.6e-16** \*\*\* |
-
-**Key insight:** synonymous category shows statistically significant but practically negligible (Δ=7e-6 SSIM units) within-category signal at CFTR. Global logistic regression p=1.0 → SSIM is a **category-level classifier**, not a within-category positional predictor. Consistent across both loci.
-
-**SSIM dilution at 317x317:** Matrix size reduces SSIM sensitivity. All SSIM > 0.9948. Need threshold recalibration for large matrices.
-
-### ✅ K562 Hi-C Correlation Results
-
-| Метрика   | GM12878 (v1.0) | K562 30kb   | K562 95kb   |
-| --------- | -------------- | ----------- | ----------- |
-| Pearson r | 0.16 (ns)      | **0.530\*** | **0.588\*** |
-| p-value   | 0.30           | 2.19e-82    | <1e-300     |
+- **`scripts/download_clinvar_generic.py`** — Generic ClinVar downloader for any gene (replaces per-gene scripts)
+- **Pipeline extended:** `--locus tp53` now works in generate-unified-atlas.ts, analyze_positional_signal.py, tda_proof_of_concept.py
+- **Gene name resolution fix:** Pipeline now finds target gene by name match, not first gene in window
 
 ---
 
@@ -63,53 +50,55 @@
 8. ✅ Manuscript K562 update (14 edits, de4ac71)
 9. ✅ Within-category HBB → honest null (de84f7a)
 10. ✅ Manuscript within-category update (8 edits, aa0f677)
-11. ✅ **CFTR locus — config, pipeline, within-category test**
-12. ✅ **Bayesian fit (Optuna)** — Δr=0.0001, confirmed near-optimal, honest null
-13. ✅ **Manuscript CFTR + Bayesian update** — 17 edits, ~1400→1527 lines
+11. ✅ CFTR locus — config, pipeline, within-category test
+12. ✅ Bayesian fit (Optuna) — Δr=0.0001, confirmed near-optimal
+13. ✅ Manuscript CFTR + Bayesian update — 17 edits
+14. ✅ TDA proof-of-concept — ripser on HBB+CFTR+TP53
+15. ✅ Multi-locus candidate research — 25 ACMG genes screened
+16. ✅ **TP53 locus — config, ClinVar, pipeline, within-category, TDA**
 
 ---
 
 ## Ключевые файлы
 
-| Файл                                   | Назначение                                             |
-| -------------------------------------- | ------------------------------------------------------ |
-| `config/locus/cftr_317kb.json`         | CFTR 317kb config (ENCODE CTCF + literature enhancers) |
-| `config/locus/hbb_30kb_v2.json`        | 30kb config (MODEL_PARAMETER)                          |
-| `config/locus/hbb_95kb_subTAD.json`    | 95kb config (ENCODE CTCF)                              |
-| `scripts/download_clinvar_cftr.py`     | CFTR ClinVar download (P/LP + B/LB)                    |
-| `scripts/generate-unified-atlas.ts`    | Main pipeline (`--locus cftr\|30kb\|95kb`)             |
-| `scripts/analyze_positional_signal.py` | Within-category analysis (supports cftr)               |
-| `data/cftr_variants.csv`               | 3,349 CFTR variants                                    |
-| `results/CFTR_Unified_Atlas_317kb.csv` | CFTR atlas output                                      |
-| `results/positional_signal_cftr.json`  | CFTR within-category result                            |
-| `results/positional_signal_95kb.json`  | HBB honest null result                                 |
-| `scripts/bayesian_fit_hic.py`          | Optuna Bayesian optimization (α, γ, K_BASE)            |
-| `results/bayesian_fit_hic.json`        | Bayesian fit result (honest null — Δr=0.0001)          |
+| Файл                                     | Назначение                                          |
+| ---------------------------------------- | --------------------------------------------------- |
+| `config/locus/tp53_300kb.json`           | TP53 300kb config (ENCODE K562 CTCF + H3K27ac)      |
+| `config/locus/cftr_317kb.json`           | CFTR 317kb config                                   |
+| `config/locus/hbb_30kb_v2.json`          | HBB 30kb config                                     |
+| `config/locus/hbb_95kb_subTAD.json`      | HBB 95kb config                                     |
+| `scripts/download_clinvar_generic.py`    | Generic ClinVar downloader (--gene TP53/BRCA1/etc.) |
+| `scripts/generate-unified-atlas.ts`      | Main pipeline (`--locus tp53\|cftr\|30kb\|95kb`)    |
+| `scripts/analyze_positional_signal.py`   | Within-category analysis (all loci)                 |
+| `scripts/tda_proof_of_concept.py`        | TDA analysis (all loci)                             |
+| `data/tp53_variants.csv`                 | 2,795 TP53 variants                                 |
+| `results/TP53_Unified_Atlas_300kb.csv`   | TP53 atlas output                                   |
+| `results/positional_signal_tp53.json`    | TP53 within-category result                         |
+| `results/tda_proof_of_concept_tp53.json` | TP53 TDA result                                     |
+| `results/locus_selection_research.json`  | Tier 1/2 candidate data                             |
+| `docs/STRATEGIC_PROMPT.md`               | Strategic development prompt                        |
 
 ---
 
-## v2.0 Research Roadmap (оставшиеся действия)
+## v2.1 Research Roadmap
 
-1. ~~Унифицировать пайплайн~~ ✅
-2. ~~Externalize locus config~~ ✅
-3. ~~K562 Hi-C correlation~~ ✅ (r=0.53/0.59)
-4. ~~Manuscript K562 update~~ ✅
-5. ~~Within-category HBB~~ ✅ (honest null)
-6. ~~Manuscript within-category update~~ ✅
-7. ~~CFTR locus~~ ✅ (3,349 variants, within-category: LR p=1.0)
-8. **317kb threshold recalibration** — SSIM thresholds для 317x317
-9. ~~Manuscript CFTR + Bayesian update~~ ✅ (17 edits applied)
-10. ~~Bayesian fit~~ ✅ (Δr=0.0001, params confirmed, honest null)
-11. **TDA proof-of-concept** — ripser + persim
+1. ~~TP53~~ ✅ (2,795 variants, LR p=0.77, TDA rho=-0.85)
+2. **BRCA1** — next Tier 1 (8,603 variants, MCF7 Hi-C, chr17)
+3. **MLH1** — Tier 1 (4,314 variants, HCT116 Hi-C, chr3)
+4. **LDLR** — Tier 1 (3,721 variants, HepG2 Hi-C, chr19)
+5. **SCN5A** — Tier 1 (2,333 variants, iPSC-CM Hi-C, chr3)
+6. **Hi-C data download** — MCF7 (GSE144380), HCT116 (GSE104334), HepG2 (ENCSR194SRI)
+7. **Threshold recalibration** — SSIM thresholds for 300x300 matrices
+8. **Manuscript update** — TP53 results + multi-locus comparison table
+9. **bioRxiv revision** — upload updated manuscript
 
 ---
 
 ## Для следующей сессии
 
-1. ~~Manuscript update~~ ✅ (17 edits, session 8)
-2. **317kb threshold recalibration** — current 30kb thresholds are diluted at 317x317
-3. Проверь: получен ли DOI от bioRxiv?
-4. Обновить ссылку: Sabaté 2024 bioRxiv → Nature Genetics 2025
-5. bioRxiv revision: загрузить обновлённый манускрипт (с CFTR + Bayesian)
-6. Consider category classification improvement — classify_hgvs() misses missense/frameshift for CFTR (no protein_change from API)
-7. **TDA proof-of-concept** — ripser + persim (топологический анализ)
+1. **BRCA1 implementation** — create config, download ClinVar, run pipeline
+2. **MLH1 implementation** — same workflow as TP53
+3. Consider classify_hgvs() improvement — misses missense/frameshift for TP53/CFTR
+4. Проверь: получен ли DOI от bioRxiv?
+5. **Multi-locus comparison table** — compile all 3 loci results
+6. **Hi-C validation for TP53** — need MCF7 Hi-C data (GSE144380)

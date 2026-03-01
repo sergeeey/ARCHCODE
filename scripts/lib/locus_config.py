@@ -21,6 +21,7 @@ ALIASES: dict[str, str] = {
     "30kb": "hbb_30kb_v2.json",
     "95kb": "hbb_95kb_subTAD.json",
     "cftr": "cftr_317kb.json",
+    "tp53": "tp53_300kb.json",
 }
 
 

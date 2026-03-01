@@ -86,5 +86,8 @@ data/reference/*_pairs.txt.gz
 *.bw
 *.bigwig
 
+# External tools (download separately)
+tools/*.jar
+
 # Downloaded DNA samples (local only)
 ДНК Образцы СКАЧЕННЫЙ/

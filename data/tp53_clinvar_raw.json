@@ -1,0 +1,12 @@
+{
+  "gene": "TP53",
+  "download_date": "2026-03-01T02:26:17.970132",
+  "pathogenic_ids_count": 1726,
+  "benign_ids_count": 1951,
+  "combined_unique_ids": 3075,
+  "summaries_count": 3075,
+  "window": {
+    "start": 7550000,
+    "end": 7850000
+  }
+}
