@@ -1,0 +1,92 @@
+{
+  "title": "LSSIM Window Size Sensitivity Analysis",
+  "locus": "HBB 95kb",
+  "n_bins": 159,
+  "n_variants": 1103,
+  "date": "2026-03-01T14:36:34.637Z",
+  "thresholds": {
+    "ssim_pathogenic": 0.85,
+    "ssim_likely_pathogenic": 0.92,
+    "ssim_vus": 0.96,
+    "ssim_likely_benign": 0.99
+  },
+  "results": [
+    {
+      "window": 20,
+      "lssim_min": 0.3616,
+      "lssim_max": 1,
+      "lssim_mean": 0.6177,
+      "pathogenic": 795,
+      "likely_pathogenic": 81,
+      "vus": 47,
+      "likely_benign": 18,
+      "benign": 162
+    },
+    {
+      "window": 30,
+      "lssim_min": 0.4949,
+      "lssim_max": 1,
+      "lssim_mean": 0.7009,
+      "pathogenic": 758,
+      "likely_pathogenic": 115,
+      "vus": 20,
+      "likely_benign": 48,
+      "benign": 162
+    },
+    {
+      "window": 40,
+      "lssim_min": 0.5935,
+      "lssim_max": 1,
+      "lssim_mean": 0.7595,
+      "pathogenic": 736,
+      "likely_pathogenic": 59,
+      "vus": 98,
+      "likely_benign": 48,
+      "benign": 162
+    },
+    {
+      "window": 50,
+      "lssim_min": 0.6659,
+      "lssim_max": 1,
+      "lssim_mean": 0.8026,
+      "pathogenic": 690,
+      "likely_pathogenic": 105,
+      "vus": 82,
+      "likely_benign": 64,
+      "benign": 162
+    },
+    {
+      "window": 60,
+      "lssim_min": 0.7206,
+      "lssim_max": 1,
+      "lssim_mean": 0.8351,
+      "pathogenic": 690,
+      "likely_pathogenic": 68,
+      "vus": 118,
+      "likely_benign": 65,
+      "benign": 162
+    },
+    {
+      "window": 70,
+      "lssim_min": 0.7637,
+      "lssim_max": 1,
+      "lssim_mean": 0.8603,
+      "pathogenic": 683,
+      "likely_pathogenic": 75,
+      "vus": 115,
+      "likely_benign": 53,
+      "benign": 177
+    },
+    {
+      "window": 80,
+      "lssim_min": 0.7977,
+      "lssim_max": 1,
+      "lssim_mean": 0.8806,
+      "pathogenic": 683,
+      "likely_pathogenic": 20,
+      "vus": 92,
+      "likely_benign": 129,
+      "benign": 179
+    }
+  ]
+}
