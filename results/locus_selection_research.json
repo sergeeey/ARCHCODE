@@ -1,0 +1,165 @@
+{
+  "analysis": "ARCHCODE multi-locus candidate selection",
+  "date": "2026-03-01",
+  "methodology": "ClinVar variant counts + TAD size estimates + Hi-C availability cross-reference",
+  "filter_criteria": {
+    "min_plp_blb": 500,
+    "tad_range_kb": [50, 500],
+    "hic_required": true
+  },
+  "tier1_candidates": [
+    {
+      "gene": "TP53",
+      "chromosome": "chr17",
+      "coordinates_grch38": "7,668,421-7,687,490",
+      "gene_size_kb": 19,
+      "clinvar_plp": 1392,
+      "clinvar_blb": 1418,
+      "clinvar_total_classified": 2810,
+      "plp_blb_ratio": 0.98,
+      "tad_size_kb": "400-800",
+      "window_feasible": true,
+      "recommended_window_kb": 300,
+      "hic_cell_type": "MCF7",
+      "hic_dataset": "GSE144380",
+      "notes": "Compact gene (19kb), near-perfect P/LP:B/LB balance, Li-Fraumeni syndrome",
+      "priority": 1
+    },
+    {
+      "gene": "BRCA2",
+      "chromosome": "chr13",
+      "coordinates_grch38": "32,315,077-32,400,268",
+      "gene_size_kb": 85,
+      "clinvar_plp": 6262,
+      "clinvar_blb": 5802,
+      "clinvar_total_classified": 12064,
+      "plp_blb_ratio": 1.08,
+      "tad_size_kb": "800-1200",
+      "window_feasible": "sub-TAD required",
+      "recommended_window_kb": 400,
+      "hic_cell_type": "MCF7",
+      "hic_dataset": "GSE144380",
+      "notes": "Maximum variant count, sits at TAD boundary in some cell types — challenging",
+      "priority": 2
+    },
+    {
+      "gene": "BRCA1",
+      "chromosome": "chr17",
+      "coordinates_grch38": "43,044,295-43,170,327",
+      "gene_size_kb": 126,
+      "clinvar_plp": 4882,
+      "clinvar_blb": 3721,
+      "clinvar_total_classified": 8603,
+      "plp_blb_ratio": 1.31,
+      "tad_size_kb": "600-1000",
+      "window_feasible": "sub-TAD ~300-500kb",
+      "recommended_window_kb": 400,
+      "hic_cell_type": "MCF7",
+      "hic_dataset": "GSE144380",
+      "notes": "Dense gene cluster at 17q21, NBR1/NBR2 neighbors share regulatory domain",
+      "priority": 3
+    },
+    {
+      "gene": "MLH1",
+      "chromosome": "chr3",
+      "coordinates_grch38": "36,993,466-37,050,846",
+      "gene_size_kb": 57,
+      "clinvar_plp": 2250,
+      "clinvar_blb": 2064,
+      "clinvar_total_classified": 4314,
+      "plp_blb_ratio": 1.09,
+      "tad_size_kb": "600-1000",
+      "window_feasible": "sub-TAD ~300-500kb",
+      "recommended_window_kb": 300,
+      "hic_cell_type": "HCT116",
+      "hic_dataset": "GSE104334",
+      "notes": "Lynch syndrome, promoter CpG methylation is key regulatory feature",
+      "priority": 4
+    },
+    {
+      "gene": "LDLR",
+      "chromosome": "chr19",
+      "coordinates_grch38": "11,089,463-11,133,820",
+      "gene_size_kb": 44,
+      "clinvar_plp": 2668,
+      "clinvar_blb": 1053,
+      "clinvar_total_classified": 3721,
+      "plp_blb_ratio": 2.53,
+      "tad_size_kb": "400-800",
+      "window_feasible": true,
+      "recommended_window_kb": 300,
+      "hic_cell_type": "HepG2",
+      "hic_dataset": "ENCSR194SRI",
+      "notes": "Chr19 has smaller TADs, FH well-studied, ENCODE Hi-C available",
+      "priority": 5
+    }
+  ],
+  "tier2_candidates": [
+    {
+      "gene": "SCN5A",
+      "chromosome": "chr3",
+      "gene_size_kb": 102,
+      "clinvar_total_classified": 2333,
+      "tad_size_kb": "500-580",
+      "hic_cell_type": "iPSC-CM",
+      "hic_dataset": "4DN (WTC-11)",
+      "notes": "Best-characterized cardiac TAD, published enhancer architecture"
+    },
+    {
+      "gene": "MYH7",
+      "chromosome": "chr14",
+      "gene_size_kb": 23,
+      "clinvar_total_classified": 2532,
+      "tad_size_kb": "400-800",
+      "hic_cell_type": "iPSC-CM",
+      "hic_dataset": "4DN (WTC-11)",
+      "notes": "Tissue-specific TAD boundary split in ventricles, HCM gene"
+    },
+    {
+      "gene": "FBN1",
+      "chromosome": "chr15",
+      "gene_size_kb": 237,
+      "clinvar_total_classified": 6559,
+      "tad_size_kb": "800-1200",
+      "hic_cell_type": "Fibroblast (IMR90)",
+      "hic_dataset": "GSE35156",
+      "notes": "Marfan syndrome, very large gene, high P/LP count"
+    },
+    {
+      "gene": "MYBPC3",
+      "chromosome": "chr11",
+      "gene_size_kb": 21,
+      "clinvar_total_classified": 2664,
+      "tad_size_kb": "600-1000",
+      "hic_cell_type": "iPSC-CM",
+      "hic_dataset": "4DN (WTC-11)",
+      "notes": "Most common HCM gene, 127 var/kb density"
+    },
+    {
+      "gene": "MSH2",
+      "chromosome": "chr2",
+      "gene_size_kb": 307,
+      "clinvar_total_classified": 5483,
+      "tad_size_kb": "800-1200",
+      "hic_cell_type": "HCT116",
+      "hic_dataset": "GSE104334",
+      "notes": "Large gene, near-symmetric P/LP:B/LB, shares context with EPCAM"
+    }
+  ],
+  "excluded": [
+    {
+      "gene": "PKD1",
+      "reason": "6 pseudogenes with 97.7% identity cause Hi-C multi-mapping issues"
+    },
+    {
+      "gene": "KCNQ1",
+      "reason": "Imprinted locus with allele-specific TADs — too complex for analytical model"
+    },
+    {
+      "gene": "RYR2",
+      "reason": "Gene is 792 kb — exceeds recommended window, only 339 P/LP"
+    }
+  ],
+  "recommended_first_batch": ["TP53", "BRCA1", "MLH1", "LDLR", "SCN5A"],
+  "recommendation_rationale": "TP53 first: small gene (19kb), perfect balance, MCF7 Hi-C. BRCA1: high impact, MCF7 Hi-C shared with TP53. MLH1: different cell type (HCT116), Lynch syndrome. LDLR: different organ (liver, HepG2), FH. SCN5A: cardiac TAD, iPSC-CM Hi-C — demonstrates cross-organ generalization."
+}

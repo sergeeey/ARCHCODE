@@ -1,0 +1,242 @@
+{
+  "analysis": "ARCHCODE TDA proof-of-concept",
+  "locus": "cftr",
+  "n_bins": 317,
+  "resolution": 1000,
+  "wt_persistence": {
+    "H0_components": {
+      "n_features": 0,
+      "total_persistence": 0.0,
+      "max_persistence": 0.0,
+      "mean_persistence": 0.0,
+      "entropy": 0.0
+    },
+    "H1_loops": {
+      "n_features": 6,
+      "total_persistence": 0.19741100072860718,
+      "max_persistence": 0.13421869277954102,
+      "mean_persistence": 0.03290183345476786,
+      "entropy": 1.0617038875889238
+    }
+  },
+  "variant_comparison": [
+    {
+      "category": "nonsense",
+      "effect_strength": 0.1,
+      "ssim": 0.99485,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.002534,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.002135,
+      "landscape_dist_h1": 0.003955,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.197411,
+      "h1_total_pers_mut": 0.196298
+    },
+    {
+      "category": "frameshift",
+      "effect_strength": 0.15,
+      "ssim": 0.995529,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.002367,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.002123,
+      "landscape_dist_h1": 0.003638,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.197411,
+      "h1_total_pers_mut": 0.196336
+    },
+    {
+      "category": "splice_donor",
+      "effect_strength": 0.2,
+      "ssim": 0.996122,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.002202,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.001987,
+      "landscape_dist_h1": 0.00333,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.197411,
+      "h1_total_pers_mut": 0.196373
+    },
+    {
+      "category": "promoter",
+      "effect_strength": 0.3,
+      "ssim": 0.997124,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.001886,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.001721,
+      "landscape_dist_h1": 0.002765,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.197411,
+      "h1_total_pers_mut": 0.196461
+    },
+    {
+      "category": "missense",
+      "effect_strength": 0.4,
+      "ssim": 0.997938,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.001633,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.00146,
+      "landscape_dist_h1": 0.002567,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.197411,
+      "h1_total_pers_mut": 0.196681
+    },
+    {
+      "category": "intronic",
+      "effect_strength": 0.8,
+      "ssim": 0.999785,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.000488,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.000469,
+      "landscape_dist_h1": 0.000561,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.197411,
+      "h1_total_pers_mut": 0.197078
+    },
+    {
+      "category": "synonymous",
+      "effect_strength": 0.9,
+      "ssim": 0.999947,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.000233,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.000233,
+      "landscape_dist_h1": 0.000233,
+      "h1_n_features_wt": 6,
+      "h1_n_features_mut": 6,
+      "h1_total_pers_wt": 0.197411,
+      "h1_total_pers_mut": 0.197178
+    }
+  ],
+  "rank_correlations": {
+    "ssim_vs_wasserstein_h1": {
+      "rho": -1.0,
+      "p": 0.0
+    },
+    "ssim_vs_bottleneck_h1": {
+      "rho": -1.0,
+      "p": 0.0
+    },
+    "ssim_vs_landscape_h1": {
+      "rho": -1.0,
+      "p": 0.0
+    }
+  },
+  "positional_scan": {
+    "n_positions": 16,
+    "ssim_range": [0.995942, 0.999882],
+    "wasserstein_h1_range": [0.0, 0.075275],
+    "positional_rho": -0.5864,
+    "positional_p": 0.016972
+  },
+  "scan_data": [
+    {
+      "bin": 0,
+      "genomic_pos": 117400000,
+      "ssim": 0.999882,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 21,
+      "genomic_pos": 117421000,
+      "ssim": 0.999723,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 42,
+      "genomic_pos": 117442000,
+      "ssim": 0.998548,
+      "wasserstein_h1": 0.007397
+    },
+    {
+      "bin": 63,
+      "genomic_pos": 117463000,
+      "ssim": 0.999638,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 84,
+      "genomic_pos": 117484000,
+      "ssim": 0.999147,
+      "wasserstein_h1": 0.075275
+    },
+    {
+      "bin": 105,
+      "genomic_pos": 117505000,
+      "ssim": 0.99957,
+      "wasserstein_h1": 0.000634
+    },
+    {
+      "bin": 126,
+      "genomic_pos": 117526000,
+      "ssim": 0.999616,
+      "wasserstein_h1": 0.000548
+    },
+    {
+      "bin": 147,
+      "genomic_pos": 117547000,
+      "ssim": 0.999518,
+      "wasserstein_h1": 0.002085
+    },
+    {
+      "bin": 168,
+      "genomic_pos": 117568000,
+      "ssim": 0.999531,
+      "wasserstein_h1": 0.001251
+    },
+    {
+      "bin": 189,
+      "genomic_pos": 117589000,
+      "ssim": 0.99954,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 210,
+      "genomic_pos": 117610000,
+      "ssim": 0.999548,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 231,
+      "genomic_pos": 117631000,
+      "ssim": 0.999696,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 252,
+      "genomic_pos": 117652000,
+      "ssim": 0.999589,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 273,
+      "genomic_pos": 117673000,
+      "ssim": 0.995942,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 294,
+      "genomic_pos": 117694000,
+      "ssim": 0.999572,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 315,
+      "genomic_pos": 117715000,
+      "ssim": 0.999811,
+      "wasserstein_h1": 0.0
+    }
+  ],
+  "interpretation": "STRONG correlation between SSIM and TDA metrics. TDA captures similar structural information as SSIM but in topological space. Potential value: TDA may detect topological changes (loop merging, domain splitting) that SSIM misses as pixel-level perturbations."
+}

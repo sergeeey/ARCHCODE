@@ -504,7 +504,7 @@ async function main() {
   let vepMap: Map<string, VepResult>;
   let hasVep: boolean;
 
-  const isGenericLocus = LOCUS_ARG === "cftr"; // extend as needed
+  const isGenericLocus = LOCUS_ARG === "cftr" || LOCUS_ARG === "tp53"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
@@ -722,9 +722,13 @@ async function main() {
   const outputDir = path.join(process.cwd(), "results");
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-  // Output naming: use gene name from config for non-HBB loci
+  // Output naming: use gene name matching locus arg, fallback to first gene or arg
   const geneName = isGenericLocus
-    ? (LOCUS_CONFIG.features.genes[0]?.name ?? LOCUS_ARG.toUpperCase())
+    ? (LOCUS_CONFIG.features.genes.find(
+        (g) => g.name.toLowerCase() === LOCUS_ARG.toLowerCase(),
+      )?.name ??
+      LOCUS_CONFIG.features.genes[0]?.name ??
+      LOCUS_ARG.toUpperCase())
     : "HBB";
   const windowKb = `${Math.round((SIM_END - SIM_START) / 1000)}kb`;
   const csvFilename = isGenericLocus

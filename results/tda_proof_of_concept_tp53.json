@@ -1,0 +1,236 @@
+{
+  "analysis": "ARCHCODE TDA proof-of-concept",
+  "locus": "tp53",
+  "n_bins": 300,
+  "resolution": 1000,
+  "wt_persistence": {
+    "H0_components": {
+      "n_features": 0,
+      "total_persistence": 0.0,
+      "max_persistence": 0.0,
+      "mean_persistence": 0.0,
+      "entropy": 0.0
+    },
+    "H1_loops": {
+      "n_features": 7,
+      "total_persistence": 0.07916730642318726,
+      "max_persistence": 0.031529009342193604,
+      "mean_persistence": 0.011309615203312464,
+      "entropy": 1.4525929363936878
+    }
+  },
+  "variant_comparison": [
+    {
+      "category": "nonsense",
+      "effect_strength": 0.1,
+      "ssim": 0.999705,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.000538,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.000381,
+      "landscape_dist_h1": 0.006406,
+      "h1_n_features_wt": 7,
+      "h1_n_features_mut": 8,
+      "h1_total_pers_wt": 0.079167,
+      "h1_total_pers_mut": 0.079929
+    },
+    {
+      "category": "frameshift",
+      "effect_strength": 0.15,
+      "ssim": 0.999747,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.002123,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.001501,
+      "landscape_dist_h1": 0.0,
+      "h1_n_features_wt": 7,
+      "h1_n_features_mut": 8,
+      "h1_total_pers_wt": 0.079167,
+      "h1_total_pers_mut": 0.08217
+    },
+    {
+      "category": "splice_donor",
+      "effect_strength": 0.2,
+      "ssim": 0.999782,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.001197,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.000846,
+      "landscape_dist_h1": 0.0,
+      "h1_n_features_wt": 7,
+      "h1_n_features_mut": 8,
+      "h1_total_pers_wt": 0.079167,
+      "h1_total_pers_mut": 0.08086
+    },
+    {
+      "category": "promoter",
+      "effect_strength": 0.3,
+      "ssim": 0.99984,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.000487,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.000345,
+      "landscape_dist_h1": 0.0,
+      "h1_n_features_wt": 7,
+      "h1_n_features_mut": 8,
+      "h1_total_pers_wt": 0.079167,
+      "h1_total_pers_mut": 0.079856
+    },
+    {
+      "category": "missense",
+      "effect_strength": 0.4,
+      "ssim": 0.999886,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.0,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.0,
+      "landscape_dist_h1": 0.0,
+      "h1_n_features_wt": 7,
+      "h1_n_features_mut": 7,
+      "h1_total_pers_wt": 0.079167,
+      "h1_total_pers_mut": 0.079167
+    },
+    {
+      "category": "intronic",
+      "effect_strength": 0.8,
+      "ssim": 0.999988,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.0,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.0,
+      "landscape_dist_h1": 0.0,
+      "h1_n_features_wt": 7,
+      "h1_n_features_mut": 7,
+      "h1_total_pers_wt": 0.079167,
+      "h1_total_pers_mut": 0.079167
+    },
+    {
+      "category": "synonymous",
+      "effect_strength": 0.9,
+      "ssim": 0.999997,
+      "wasserstein_h0": 0.0,
+      "wasserstein_h1": 0.0,
+      "bottleneck_h0": 0.0,
+      "bottleneck_h1": 0.0,
+      "landscape_dist_h1": 0.0,
+      "h1_n_features_wt": 7,
+      "h1_n_features_mut": 7,
+      "h1_total_pers_wt": 0.079167,
+      "h1_total_pers_mut": 0.079167
+    }
+  ],
+  "rank_correlations": {
+    "ssim_vs_wasserstein_h1": {
+      "rho": -0.8524,
+      "p": 0.0148
+    },
+    "ssim_vs_bottleneck_h1": {
+      "rho": -0.8524,
+      "p": 0.0148
+    },
+    "ssim_vs_landscape_h1": {
+      "rho": -0.6124,
+      "p": 0.1438
+    }
+  },
+  "positional_scan": {
+    "n_positions": 15,
+    "ssim_range": [0.997028, 0.999899],
+    "wasserstein_h1_range": [0.0, 0.1268],
+    "positional_rho": -0.5685,
+    "positional_p": 0.02703
+  },
+  "scan_data": [
+    {
+      "bin": 0,
+      "genomic_pos": 7550000,
+      "ssim": 0.999899,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 20,
+      "genomic_pos": 7570000,
+      "ssim": 0.999465,
+      "wasserstein_h1": 8.6e-5
+    },
+    {
+      "bin": 40,
+      "genomic_pos": 7590000,
+      "ssim": 0.999731,
+      "wasserstein_h1": 0.00152
+    },
+    {
+      "bin": 60,
+      "genomic_pos": 7610000,
+      "ssim": 0.999727,
+      "wasserstein_h1": 4.9e-5
+    },
+    {
+      "bin": 80,
+      "genomic_pos": 7630000,
+      "ssim": 0.999753,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 100,
+      "genomic_pos": 7650000,
+      "ssim": 0.997237,
+      "wasserstein_h1": 0.001166
+    },
+    {
+      "bin": 120,
+      "genomic_pos": 7670000,
+      "ssim": 0.999619,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 140,
+      "genomic_pos": 7690000,
+      "ssim": 0.997028,
+      "wasserstein_h1": 0.1268
+    },
+    {
+      "bin": 160,
+      "genomic_pos": 7710000,
+      "ssim": 0.999843,
+      "wasserstein_h1": 0.000189
+    },
+    {
+      "bin": 180,
+      "genomic_pos": 7730000,
+      "ssim": 0.999814,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 200,
+      "genomic_pos": 7750000,
+      "ssim": 0.999812,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 220,
+      "genomic_pos": 7770000,
+      "ssim": 0.999774,
+      "wasserstein_h1": 6.8e-5
+    },
+    {
+      "bin": 240,
+      "genomic_pos": 7790000,
+      "ssim": 0.999732,
+      "wasserstein_h1": 0.0
+    },
+    {
+      "bin": 260,
+      "genomic_pos": 7810000,
+      "ssim": 0.999691,
+      "wasserstein_h1": 0.00021
+    },
+    {
+      "bin": 280,
+      "genomic_pos": 7830000,
+      "ssim": 0.999777,
+      "wasserstein_h1": 0.0
+    }
+  ],
+  "interpretation": "STRONG correlation between SSIM and TDA metrics. TDA captures similar structural information as SSIM but in topological space. Potential value: TDA may detect topological changes (loop merging, domain splitting) that SSIM misses as pixel-level perturbations."
+}

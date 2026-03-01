@@ -1,0 +1,200 @@
+{
+  "analysis": "ARCHCODE within-category positional signal",
+  "locus": "tp53",
+  "n_variants": 2794,
+  "variant_spread_bp": 109863,
+  "window_size_bp": 300000,
+  "spread_fraction": 0.36621,
+  "honest_limitation": "All 2794 ClinVar variants cluster in 109863 bp (36.6% of 300kb window). Distance-to-feature predictors have minimal variance.",
+  "testable_categories": 5,
+  "mann_whitney_results": [
+    {
+      "category": "3_prime_UTR",
+      "n_pathogenic": 3,
+      "n_benign": 19,
+      "testable": true,
+      "path_mean_ssim": 0.9999,
+      "ben_mean_ssim": 0.9999052631578947,
+      "delta_mean": -5.263157894730419e-6,
+      "U_statistic": 27.0,
+      "p_two_sided": 0.7910815129207817,
+      "p_one_sided_less": 0.39554075646039083,
+      "rank_biserial_r": 0.052631578947368474
+    },
+    {
+      "category": "5_prime_UTR",
+      "n_pathogenic": 3,
+      "n_benign": 14,
+      "testable": true,
+      "path_mean_ssim": 0.9982666666666667,
+      "ben_mean_ssim": 0.9983857142857143,
+      "delta_mean": -0.00011904761904757422,
+      "U_statistic": 14.5,
+      "p_two_sided": 0.4379457468710285,
+      "p_one_sided_less": 0.21897287343551425,
+      "rank_biserial_r": 0.30952380952380953
+    },
+    {
+      "category": "intronic",
+      "n_pathogenic": 173,
+      "n_benign": 475,
+      "testable": true,
+      "path_mean_ssim": 0.9998132947976879,
+      "ben_mean_ssim": 0.9998366315789474,
+      "delta_mean": -2.3336781259541972e-5,
+      "U_statistic": 34911.5,
+      "p_two_sided": 0.0016564638191746807,
+      "p_one_sided_less": 0.0008282319095873404,
+      "rank_biserial_r": 0.15031335564344384
+    },
+    {
+      "category": "other",
+      "n_pathogenic": 680,
+      "n_benign": 29,
+      "testable": true,
+      "path_mean_ssim": 0.9988142647058823,
+      "ben_mean_ssim": 0.9996448275862069,
+      "delta_mean": -0.0008305628803245702,
+      "U_statistic": 1644.5,
+      "p_two_sided": 1.0642791027447754e-14,
+      "p_one_sided_less": 5.321395513723877e-15,
+      "rank_biserial_r": 0.8332150101419878
+    },
+    {
+      "category": "synonymous",
+      "n_pathogenic": 786,
+      "n_benign": 612,
+      "testable": true,
+      "path_mean_ssim": 0.9999478371501273,
+      "ben_mean_ssim": 0.9999642156862745,
+      "delta_mean": -1.637853614722129e-5,
+      "U_statistic": 200747.0,
+      "p_two_sided": 7.217971399673324e-10,
+      "p_one_sided_less": 3.608985699836662e-10,
+      "rank_biserial_r": 0.1653486670325467
+    }
+  ],
+  "logistic_regression": {
+    "model1_auc": 0.7714740715462898,
+    "model2_auc": 0.8001330613907693,
+    "auc_improvement": 0.028658989844479565,
+    "ssim_coefficient": -0.9682421472323222,
+    "log_likelihood_1": -1471.9481037434361,
+    "log_likelihood_2": -1471.9040594436528,
+    "lr_statistic": 0.08808859956661763,
+    "lr_p_value": 0.7666213154510257,
+    "n_categories": 4,
+    "interpretation": "SSIM does NOT add significant value beyond category"
+  },
+  "permutation_results": [
+    {
+      "category": "intronic",
+      "n_path": 173,
+      "n_ben": 475,
+      "observed_auc": 0.575156677821722,
+      "perm_mean_auc": 0.4997460821417706,
+      "perm_std_auc": 0.024089074848116253,
+      "p_value": 0.0004,
+      "n_permutations": 10000
+    },
+    {
+      "category": "other",
+      "n_path": 680,
+      "n_ben": 29,
+      "observed_auc": 0.9166075050709939,
+      "perm_mean_auc": 0.5005434863083165,
+      "perm_std_auc": 0.05356442658658791,
+      "p_value": 0.0,
+      "n_permutations": 10000
+    },
+    {
+      "category": "synonymous",
+      "n_path": 786,
+      "n_ben": 612,
+      "observed_auc": 0.5826743335162733,
+      "perm_mean_auc": 0.49981783904189325,
+      "perm_std_auc": 0.013430028513836864,
+      "p_value": 0.0,
+      "n_permutations": 10000
+    }
+  ],
+  "tss_correlation": {
+    "3_prime_UTR": {
+      "n": 22,
+      "spearman_rho": 0.1547818111102747,
+      "p_value": 0.49159365221022583,
+      "dist_range": "2440906-2442606 bp"
+    },
+    "5_prime_UTR": {
+      "n": 17,
+      "spearman_rho": -0.4592648510864934,
+      "p_value": 0.06366212314200168,
+      "dist_range": "2449603-2461441 bp"
+    },
+    "intronic": {
+      "n": 648,
+      "spearman_rho": 0.05445630885745767,
+      "p_value": 0.1661801995725352,
+      "dist_range": "2442689-2449516 bp"
+    },
+    "other": {
+      "n": 709,
+      "spearman_rho": 0.2115290426347325,
+      "p_value": 1.2934341139340736e-8,
+      "dist_range": "2352815-2460604 bp"
+    },
+    "synonymous": {
+      "n": 1398,
+      "spearman_rho": 0.1229635822969506,
+      "p_value": 4.007673906896365e-6,
+      "dist_range": "2442610-2462678 bp"
+    }
+  },
+  "dilution_assessment": {
+    "3_prime_UTR": {
+      "n": 22,
+      "mean_ssim": 0.9999045454545454,
+      "std_ssim": 2.1320071635558697e-5,
+      "mean_disruption": 9.545454545456522e-5,
+      "std_disruption": 2.1320071635558697e-5,
+      "disruption_cv": 0.22335313142009247,
+      "detectable": false
+    },
+    "5_prime_UTR": {
+      "n": 17,
+      "mean_ssim": 0.9983647058823529,
+      "std_ssim": 0.0017467617097326903,
+      "mean_disruption": 0.0016352941176470681,
+      "std_disruption": 0.0017467617097326903,
+      "disruption_cv": 1.068163635448042,
+      "detectable": true
+    },
+    "intronic": {
+      "n": 648,
+      "mean_ssim": 0.9998304012345679,
+      "std_ssim": 8.783059145877839e-5,
+      "mean_disruption": 0.00016959876543209962,
+      "std_disruption": 8.783059145877839e-5,
+      "disruption_cv": 0.5178728231600374,
+      "detectable": false
+    },
+    "other": {
+      "n": 709,
+      "mean_ssim": 0.9988482369534556,
+      "std_ssim": 0.0005438540746452292,
+      "mean_disruption": 0.0011517630465444073,
+      "std_disruption": 0.0005438540746452292,
+      "disruption_cv": 0.4721926756349188,
+      "detectable": false
+    },
+    "synonymous": {
+      "n": 1398,
+      "mean_ssim": 0.9999550071530758,
+      "std_ssim": 5.0053299640648926e-5,
+      "mean_disruption": 4.499284692416339e-5,
+      "std_disruption": 5.0053299640648926e-5,
+      "disruption_cv": 1.1124723831104768,
+      "detectable": false
+    }
+  }
+}
