@@ -1307,10 +1307,11 @@ topological information not fully reflected in SSIM at this locus.
 | HepG2 Hi-C r      | —                | —                 | —                 | —                | —                | 0.32             |
 | TDA ρ (SSIM↔W_H1) | -0.96            | -1.00             | -0.85             | NaN              | -0.76            | -0.51            |
 | AG ρ (O/E)        | 0.15 / 0.12†     | 0.27              | 0.32              | 0.52             | 0.49             | 0.43             |
+| Akita ρ (O/E)     | 0.13 / −0.27†    | 0.41              | 0.17              | 0.43             | 0.22             | 0.34             |
 | CTCF recall (AG)  | 100% (F1=0.83)   | 100% (F1=0.65)    | 100% (F1=0.74)    | 100% (F1=0.80)   | 100% (F1=0.54)   | 100% (F1=0.65)   |
 | Pearl variants    | 27               | 0                 | 0                 | 0                | 0                | 0                |
 
-†HBB AG ρ: 0.15 = 30kb window (15 AG bins), 0.12 = 95kb window (47 AG bins, resampled to 159). The lower ρ for 95kb reflects interpolation artifacts from 3.4× upsampling.
+†HBB values: AG ρ 0.15 / 0.12 and Akita ρ 0.13 / −0.27 correspond to 30kb / 95kb windows. Both DL models yield only 15 (30kb) or 47 (95kb) bins at 2048 bp resolution, requiring 3.4× upsampling to match ARCHCODE's 159 bins. The negative Akita ρ for 95kb likely reflects interpolation artifacts dominating the correlation signal.
 
 The multi-locus comparison reveals three consistent patterns: (1) LSSIM resolves
 matrix-size dilution, expanding dynamic range from 0.98–1.00 (global SSIM) to 0.75–1.00
@@ -1392,8 +1393,55 @@ perturbs loop extrusion parameters at the variant position, amplifying structura
 regardless of sequence length. The two approaches thus have complementary resolution
 regimes: AlphaGenome excels at wild-type structural prediction (ρ = 0.27–0.52, see above),
 while ARCHCODE's analytical perturbation model provides variant-level sensitivity that
-sequence-based deep learning cannot currently achieve at this resolution. This finding
-partially addresses Limitation #10.
+sequence-based deep learning cannot currently achieve at this resolution. Together with
+the Akita null result below, this dual-DL benchmark fully addresses Limitation #10.
+
+### Akita Benchmark
+
+To verify that the AlphaGenome wild-type results are not model-specific, we performed an
+independent benchmark against Akita (Fudenberg et al., 2020, _Nature Methods_), a deep
+learning model for chromatin contact map prediction from DNA sequence. Akita uses the
+Basenji framework (Kelley et al., 2020) and operates at the same 2048 bp resolution as
+AlphaGenome, but was developed independently (Calico, TensorFlow) with earlier training data
+(Rao et al. 2014 Hi-C). Critically, Akita is fully open-source — model weights, architecture,
+and training code are publicly available — enabling local CPU inference without cloud API
+dependency.
+
+For each of six ARCHCODE loci, we fetched a 1,048,576 bp reference sequence centered on the
+locus (Ensembl REST API, GRCh38), one-hot encoded it, and predicted a 448×448 contact map
+(GM12878, target index 2). The Akita output (upper triangle vector of 99,681 elements) was
+reshaped to a 2D matrix, the locus window extracted, resampled to match ARCHCODE's bin count,
+and distance-normalized identically to the AlphaGenome comparison.
+
+**Results.** Akita and ARCHCODE contact maps show moderate agreement across large loci:
+Spearman ρ ranges from 0.17 (TP53) to 0.43 (BRCA1), comparable to AlphaGenome's 0.27–0.52
+(Table 6, row "Akita ρ"). The pattern across loci is consistent: larger windows with more
+Akita bins yield stronger correlations (BRCA1: 195 bins, ρ = 0.43; CFTR: 155 bins, ρ = 0.41),
+while narrow HBB windows produce weak or artifactual results due to aggressive upsampling
+(95kb: 47→159 bins, ρ = −0.27).
+
+**Variant-level mutagenesis.** To test whether Akita detects variant-level perturbations, we
+performed ref/alt in-silico mutagenesis on the same 23 pearl variants from the HBB 95kb atlas.
+Unlike AlphaGenome (which provides a `predict_variant()` API), Akita requires manual sequence
+substitution: for each variant, we created an alternate 1Mb sequence, predicted both ref and
+alt contact maps, and computed ΔSSIM. Akita ΔSSIM ranged from 4.6 × 10⁻⁷ to 5.5 × 10⁻²
+(mean = 5.7 × 10⁻³), with the upper range driven by three large indels (≥25 bp) that alter
+a detectable fraction of the 1Mb input. For point mutations (SNVs), Akita ΔSSIM was uniformly
+< 10⁻⁴ — comparable to AlphaGenome's noise floor. Spearman rank correlation between ARCHCODE
+and Akita ΔSSIM was non-significant (ρ = −0.17, p = 0.45; n = 23), while Pearson r = 0.56
+(p = 0.005) was driven entirely by the shared indel signal. This constitutes a dual-DL null
+result for point mutations — two independent models, same conclusion.
+
+**Interpretation.** The concordance between AlphaGenome and Akita wild-type results (both
+showing ρ ≈ 0.2–0.5) and their shared inability to detect SNV-level perturbations
+strengthens two conclusions: (1) ARCHCODE's analytical contact maps capture genuine features of
+chromatin architecture that two independent DL approaches independently recover; (2) ARCHCODE's
+direct perturbation of loop extrusion parameters provides variant-level sensitivity that
+sequence-based DL models at 2048 bp resolution cannot match. Akita's sensitivity to large
+indels but not SNVs is consistent with the 2048 bp resolution limit: a 25 bp duplication
+alters ~1.2% of a bin, while a single SNV alters < 0.05%. Notably, Akita was trained on
+Rao et al. 2014 Hi-C data (not 4DN), so the wild-type concordance cannot be attributed to
+shared training signal — unlike AlphaGenome (see Limitation #10).
 
 ### Epigenome Cross-Validation
 
@@ -1693,16 +1741,19 @@ correlation (r = 0.28–0.59) validates wild-type contact map fidelity, not vari
 structural disruption. No variant-level Hi-C perturbation data exists to validate SSIM
 as a variant classifier directly.
 
-**10. AlphaGenome variant-level signal is below detection threshold.** Variant-level
-mutagenesis with AlphaGenome's `predict_variant()` API was performed on 23 pearl variants
-from the HBB 95kb atlas. AlphaGenome ΔSSIM (7.5 × 10⁻⁵ to 6.3 × 10⁻⁴) was ~49× smaller
-than ARCHCODE ΔSSIM (0.010–0.031), and the two sets showed no significant correlation
-(r = 0.06, p = 0.78; ρ = −0.32, p = 0.13). This reflects AlphaGenome's 2048 bp resolution
-limitation: individual SNVs affect < 0.05% of input sequence, producing near-noise-floor
-contact map perturbations. Wild-type structural concordance remains moderate (ρ = 0.27–0.52).
-Comparison with Akita (Fudenberg et al., 2020) remains planned for journal submission.
-Additionally, AlphaGenome's training set includes 4DN Hi-C data, so the wild-type
-correlation may partly reflect shared training signal rather than independent convergence.
+**10. Two independent DL models confirm 2048 bp resolution limitation.** Variant-level
+mutagenesis was performed with both AlphaGenome (`predict_variant()` API) and Akita
+(Fudenberg et al. 2020; local ref/alt mutagenesis) on 23 pearl variants from the HBB 95kb
+atlas. AlphaGenome ΔSSIM (7.5 × 10⁻⁵ to 6.3 × 10⁻⁴, ~49× smaller than ARCHCODE) and Akita
+ΔSSIM (< 10⁻⁴ for SNVs; up to 0.055 for large indels, Spearman ρ = −0.17, p = 0.45) both
+showed negligible SNV-level signal, with no significant rank correlation to ARCHCODE
+perturbation scores. This dual-DL null result
+confirms that the 2048 bp resolution of current sequence-based contact map models is
+fundamentally insufficient for SNV-level structural perturbation detection. Wild-type
+concordance remains moderate for both models (AlphaGenome ρ = 0.27–0.52; Akita ρ = 0.17–0.43).
+AlphaGenome's training set includes 4DN Hi-C data, so its wild-type correlation may partly
+reflect shared training signal; Akita (trained on Rao et al. 2014) does not share this
+confound, strengthening the case for genuine structural concordance.
 
 ## Path to Clinical Translation
 
@@ -2040,10 +2091,21 @@ without experimental confirmation.
 - Epigenome: CHIP_TF (CTCF) and CHIP_HISTONE (H3K27ac) at 128 bp resolution; peak detection at 90th percentile; overlap tolerance 2 kb
 - Scripts: `benchmark_alphagenome.py`, `variant_mutagenesis_alphagenome.py`, `epigenome_crossval_alphagenome.py`
 
+**Akita benchmark:**
+
+- Akita (Fudenberg et al. 2020, Nature Methods); Basenji framework (Kelley et al. 2020), TensorFlow 2.20.0, local CPU inference
+- Model: `model_best.h5` from `gs://basenji_hic/1m/models/9-14/`; 751,653 parameters
+- Input: 1,048,576 bp one-hot DNA; output: 448×448 contact map (upper triangle, 99,681 elements) at 2048 bp resolution
+- Cell types: HFF, H1-hESC, GM12878 (idx=2), IMR-90, HCT-116; GM12878 used for all loci
+- Reference sequences: Ensembl REST API (GRCh38), cached locally
+- Distance normalization and correlation: identical to AlphaGenome benchmark (O/E, Spearman ρ, k=2)
+- Variant-level: manual ref/alt sequence substitution + dual prediction + ΔSSIM; 23 pearl variants
+- Scripts: `benchmark_akita.py`, `variant_mutagenesis_akita.py`
+
 **Software:**
 
-- ARCHCODE v2.5 (TypeScript + Python), Optuna 4.7.0, ripser 0.6.10, alphagenome 0.6.0, scikit-image 0.26.0
-- Scripts: `generate-unified-atlas.ts`, `analyze_positional_signal.py`, `tda_proof_of_concept.py`, `download_clinvar_generic.py`, `bayesian_fit_hic.py`, `benchmark_alphagenome.py`, `variant_mutagenesis_alphagenome.py`, `epigenome_crossval_alphagenome.py`
+- ARCHCODE v2.5 (TypeScript + Python), Optuna 4.7.0, ripser 0.6.10, alphagenome 0.6.0, scikit-image 0.26.0, tensorflow-cpu 2.20.0, basenji (Calico)
+- Scripts: `generate-unified-atlas.ts`, `analyze_positional_signal.py`, `tda_proof_of_concept.py`, `download_clinvar_generic.py`, `bayesian_fit_hic.py`, `benchmark_alphagenome.py`, `variant_mutagenesis_alphagenome.py`, `epigenome_crossval_alphagenome.py`, `benchmark_akita.py`, `variant_mutagenesis_akita.py`
 
 ---
 
