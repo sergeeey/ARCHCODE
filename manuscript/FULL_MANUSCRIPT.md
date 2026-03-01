@@ -26,7 +26,7 @@ mean-field loop extrusion simulator implementing Kramer kinetics for cohesin bar
 et al., 2006; Hansen et al., 2017; Sabaté et al., 2024). We extended the analysis to CFTR
 (chr7, 317 kb TAD, 3,349 ClinVar variants: 1,756 Pathogenic/LP + 1,593 Benign/LB) to test
 cross-gene generalization at a locus with greater variant positional diversity (201.5 kb
-spread, 63.6% of TAD), TP53 (chr17, 300 kb TAD, 2,795 variants: 1,646 P/LP + 1,149 B/LB),
+spread, 63.6% of TAD), TP53 (chr17, 300 kb TAD, 2,794 variants: 1,645 P/LP + 1,149 B/LB),
 BRCA1 (chr17, 400 kb TAD, 10,682 variants: 7,062 P/LP + 3,620 B/LB) — the largest
 ClinVar cohort among loci tested, and MLH1 (chr3, 300 kb TAD, 4,060 variants: 2,425 P/LP +
 1,635 B/LB) — the first DNA mismatch repair gene, associated with Lynch syndrome. Variant functional classification was improved by
@@ -69,7 +69,7 @@ SSIM additive term), consistent with all 1,103 ClinVar variants clustering withi
 2.1 kb (2.2% of the 95 kb window).
 
 Cross-gene within-category testing using LSSIM yielded null results at two loci: CFTR
-(3,349 variants, ΔAUC = −0.012, p = 0.79) and TP53 (2,795 variants, ΔAUC = +0.032,
+(3,349 variants, ΔAUC = −0.012, p = 0.79) and TP53 (2,794 variants, ΔAUC = +0.032,
 p = 0.29). Two larger loci showed statistically significant but clinically negligible
 additive signal: BRCA1 (10,682 variants, ΔAUC = +0.002, p = 1.1×10⁻²⁰) and MLH1
 (4,060 variants, ΔAUC = +0.011, p = 4.7×10⁻³). The BRCA1 and MLH1 significance
@@ -133,8 +133,8 @@ Local SSIM, matrix-size dilution, threshold recalibration
 Sequence-based variant effect predictors score variants by their impact on protein sequence and
 canonical splice motifs, leaving a structural blind spot for variants that disrupt 3D chromatin
 topology without altering coding sequence. We developed ARCHCODE, an analytical loop extrusion
-simulator, and applied it to 21,989 clinically classified variants across five loci: HBB (1,103),
-CFTR (3,349), TP53 (2,795), BRCA1 (10,682), and MLH1 (4,060). ARCHCODE correctly stratifies variants by
+simulator, and applied it to 21,988 clinically classified variants across five loci: HBB (1,103),
+CFTR (3,349), TP53 (2,794), BRCA1 (10,682), and MLH1 (4,060). ARCHCODE correctly stratifies variants by
 functional class and identifies 20 "pearl" candidates on HBB — variants invisible to VEP —
 where structural simulation predicts regulatory disruption. Local SSIM (LSSIM) resolves
 matrix-size dilution, expanding SSIM dynamic range from 0.98–1.00 to 0.75–1.00 and enabling
@@ -151,7 +151,7 @@ scoring as a complement to existing sequence-based tools in variant interpretati
 
 ## Main Findings (for graphical abstract)
 
-1. **21,989 real ClinVar variants across 5 loci** (HBB 1,103 + CFTR 3,349 + TP53 2,795 + BRCA1 10,682 + MLH1 4,060) analyzed
+1. **21,988 real ClinVar variants across 5 loci** (HBB 1,103 + CFTR 3,349 + TP53 2,794 + BRCA1 10,682 + MLH1 4,060) analyzed
 2. **45.6% (161/353) HBB structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
 3. **20 "pearl" variants** identified on HBB: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
 4. **ROC AUC = 0.977** (unified pipeline); reflects category-distribution differences, not independent prediction
@@ -177,7 +177,7 @@ scoring as a complement to existing sequence-based tools in variant interpretati
 | AlphaGenome predictions        | NOT USED            | Synthetic mock data; excluded entirely                                      |
 | Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; Bayesian optimization confirmed near-optimal (Δr=0.0001) |
 | ClinVar CFTR (n=3,349)         | REAL                | NCBI E-utilities API; 1,756 P/LP + 1,593 B/LB                               |
-| ClinVar TP53 (n=2,795)         | REAL                | NCBI E-utilities API; 1,646 P/LP + 1,149 B/LB                               |
+| ClinVar TP53 (n=2,794)         | REAL                | NCBI E-utilities API; 1,645 P/LP + 1,149 B/LB                               |
 | ClinVar BRCA1 (n=10,682)       | REAL                | NCBI E-utilities API; 7,062 P/LP + 3,620 B/LB                               |
 | CFTR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.012, p=0.79; null result                                         |
 | TP53 within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=+0.032, p=0.29; null result                                         |
@@ -422,7 +422,7 @@ elements from published literature. ClinVar variants: n=3,349 (1,756 P/LP + 1,59
 **TP53** (chr17:7,550,000–7,850,000, 300 kb, 1000 bp resolution, 300 bins). Locus
 configuration: 6 CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE), 5
 enhancer elements from ENCODE K562 H3K27ac (ENCFF864OSZ) and literature (including TP53
-P1 and P2 promoters; Marcel et al. 2010). ClinVar variants: n=2,795 (1,646 P/LP +
+P1 and P2 promoters; Marcel et al. 2010). ClinVar variants: n=2,794 (1,645 P/LP +
 1,149 B/LB).
 
 **BRCA1** (chr17:42,900,000–43,300,000, 400 kb, 1000 bp resolution, 400 bins). Locus
@@ -1066,8 +1066,8 @@ inframe status from cDNA indel length modulo 3 (see Methods).
 | Inframe del.  | 17    | 0.9992           | N/A             | —        |
 | 3'UTR         | 6     | 0.9999           | 0.9999          | —        |
 
-Global SSIM values were severely compressed compared to HBB (range 0.9948–1.0000 vs
-0.8753–0.9989), reflecting matrix-size dilution: a single-bin perturbation in a
+Global SSIM values were severely compressed compared to HBB (range 0.9836–1.0000 vs
+0.9611–0.9998 at 95kb), reflecting matrix-size dilution: a single-bin perturbation in a
 317×317 matrix affects proportionally fewer entries than in a 50×50 matrix. LSSIM
 (50×50 local window) resolved this, expanding the range to 0.8329–0.9999 and enabling
 35 structural pathogenic verdicts. Frameshift variants (n=516, all pathogenic) show
@@ -1091,7 +1091,7 @@ selected because it ranks among the most clinically consequential genes in oncol
 resides on chr17 (same chromosome as BRCA1, enabling shared CTCF data from ENCODE K562
 ENCFF736NYC), and has extensive ClinVar variant coverage.
 
-We retrieved 2,795 TP53 variants from ClinVar (1,646 Pathogenic/Likely Pathogenic +
+We retrieved 2,794 TP53 variants from ClinVar (1,645 Pathogenic/Likely Pathogenic +
 1,149 Benign/Likely Benign). Variants span 109.9 kb (36.6% of the 300 kb window) —
 intermediate between HBB (2.2%) and CFTR (63.6%). The improved classify_hgvs() function
 resolved the majority of previously unclassified variants: synonymous (n=1,400),
@@ -1112,7 +1112,7 @@ other (n=53), inframe_indel (n=35), 3'UTR (n=22), and 5'UTR (n=8).
 | 3'UTR         | 22    | 0.9999           | 0.9999          | 0.79      |
 | 5'UTR         | 8     | 0.9984           | N/A             | —         |
 
-Global SSIM values ranged from 0.9983 to 1.0000, severely compressed by matrix-size
+Global SSIM values ranged from 0.9934 to 1.0000, severely compressed by matrix-size
 dilution. LSSIM expanded the range to 0.9443–1.0000 — narrower than other loci but
 sufficient to assign 12 VUS verdicts (0 PATHOGENIC/LIKELY_PATHOGENIC).
 
@@ -1165,7 +1165,7 @@ other (n=221), inframe_indel (n=56), 3'UTR (n=48), 5'UTR (n=46), inframe_deletio
 | Inframe indel | 56    | 0.9999           | 0.9999          | 0.80      |
 | Inframe del.  | 37    | 0.9998           | 0.9999          | 0.57      |
 
-Global SSIM values ranged from 0.9982 to 1.0000, the most compressed range of any locus —
+Global SSIM values ranged from 0.9938 to 1.0000, the most compressed range of any locus —
 consistent with the largest matrix size (400×400). LSSIM expanded the range to
 0.8767–0.9999, enabling 52 structural pathogenic verdicts.
 
@@ -1252,17 +1252,17 @@ and stronger than TP53 (ρ = −0.85). Positional scan across 15 positions showe
 
 | Metric            | HBB (95 kb)      | CFTR (317 kb)     | TP53 (300 kb)     | BRCA1 (400 kb)   | MLH1 (300 kb)    |
 | ----------------- | ---------------- | ----------------- | ----------------- | ---------------- | ---------------- |
-| ClinVar variants  | 1,103            | 3,349             | 2,795             | 10,682           | 4,060            |
-| P/LP + B/LB       | 353 + 750        | 1,756 + 1,593     | 1,646 + 1,149     | 7,062 + 3,620    | 2,425 + 1,635    |
+| ClinVar variants  | 1,103            | 3,349             | 2,794             | 10,682           | 4,060            |
+| P/LP + B/LB       | 353 + 750        | 1,756 + 1,593     | 1,645 + 1,149     | 7,062 + 3,620    | 2,425 + 1,635    |
 | Variant spread    | 2.1 kb (2.2%)    | 201.5 kb (63.6%)  | 109.9 kb (36.6%)  | 103.6 kb (25.9%) | 130.3 kb (43.4%) |
-| Global SSIM range | 0.8753–0.9989    | 0.9948–1.0000     | 0.9983–1.0000     | 0.9982–1.0000    | 0.9838–1.0000    |
+| Global SSIM range | 0.9611–0.9998    | 0.9836–1.0000     | 0.9934–1.0000     | 0.9938–1.0000    | 0.9838–1.0000    |
 | LSSIM range       | 0.7537–0.9992    | 0.8329–0.9999     | 0.9443–1.0000     | 0.8767–0.9999    | 0.8417–0.9999    |
 | Struct. path.     | 254              | 35                | 0 (12 VUS)        | 52               | 72               |
 | LR ΔAUC (LSSIM)   | −0.001 (p = 1.0) | −0.012 (p = 0.79) | +0.032 (p = 0.29) | +0.002 (p≈10⁻²⁰) | +0.011 (p=0.005) |
 | K562 Hi-C r       | 0.53 / 0.59      | —                 | 0.29              | 0.53             | 0.59             |
 | MCF7 Hi-C r       | —                | —                 | 0.28              | 0.50             | —                |
 | TDA ρ (SSIM↔W_H1) | −0.96            | −1.00             | −0.85             | NaN              | −0.76            |
-| Pearl variants    | 20               | 0                 | 0                 | 0                | 0                |
+| Pearl variants    | 27               | 0                 | 0                 | 0                | 0                |
 
 The multi-locus comparison reveals three consistent patterns: (1) LSSIM resolves
 matrix-size dilution, expanding dynamic range from 0.98–1.00 (global SSIM) to 0.75–1.00
@@ -1358,7 +1358,7 @@ reclassification should be considered.
 
 ---
 
-_Results section — based on real ClinVar data (21,989 variants across 5 loci, NCBI E-utilities)_
+_Results section — based on real ClinVar data (21,988 variants across 5 loci, NCBI E-utilities)_
 _Word count: ~3,500_
 _Last updated: 2026-03-02_
 
@@ -1406,7 +1406,7 @@ scores within the model, not as absolute predictions of chromatin contact freque
 
 Importantly, the AUC of 0.977 is a category-level structural model, not evidence of
 within-category positional prediction. Multi-locus testing using LSSIM across five loci
-(21,989 variants total) confirms that LSSIM adds no clinically meaningful predictive
+(21,988 variants total) confirms that LSSIM adds no clinically meaningful predictive
 value beyond category assignment: CFTR and TP53 show clear null results (p > 0.29),
 while BRCA1 (p ≈ 10⁻²⁰) and MLH1 (p = 0.005) show statistical significance with
 negligible effect sizes (ΔAUC < 0.02). The significance at larger loci reflects
@@ -1520,13 +1520,13 @@ range, not meaningful within-category prediction. ARCHCODE remains primarily a
 category-level structural classifier.
 
 **8. Matrix-size dilution addressed by Local SSIM (LSSIM).** Global SSIM dynamic range
-decreases monotonically with matrix size: HBB 50×50 yields SSIM 0.8753–0.9989; BRCA1
+decreases monotonically with matrix size: HBB 50×50 yields SSIM 0.8659–0.9990; BRCA1
 400×400 yields 0.9938–1.0000. We introduced LSSIM (50×50 submatrix centered on variant)
 to normalize perturbation fraction. LSSIM ranges: HBB 95kb 0.7537–0.9992; CFTR
 0.8329–0.9999; BRCA1 0.8767–0.9999; MLH1 0.8417–0.9999; TP53 0.9443–1.0000. Verdict
 assignment now works across all matrix sizes. However, pearl detection still requires VEP
-data (available only for HBB); 20 HBB pearls are preserved, 27 additional detected on
-HBB 95kb window.
+data (available only for HBB); 20 pearls in the 30kb window, 27 pearls in the 95kb window
+(which encompasses the 30kb region plus 7 additional candidates in the extended LCR).
 
 **9. Hi-C correlation does not validate variant-level predictions.** Multi-locus Hi-C
 correlation (r = 0.28–0.59) validates wild-type contact map fidelity, not variant-specific
@@ -1579,7 +1579,7 @@ the joint-highest correlation, adding a DNA mismatch repair gene to the portfoli
 BRCA1 result (K562 r = 0.53, MCF7 r = 0.50 with 10,682 variants) demonstrates
 scalability to clinically important oncogenes.
 
-Cross-gene analysis across five loci (21,989 total variants) using LSSIM showed a nuanced
+Cross-gene analysis across five loci (21,988 total variants) using LSSIM showed a nuanced
 picture: CFTR and TP53 produced clear null results (p > 0.29), while BRCA1 (p ≈ 10⁻²⁰)
 and MLH1 (p = 0.005) showed statistical significance — but with negligible effect sizes
 (ΔAUC < 0.02). This pattern is consistent with a power effect: at n > 4,000 with expanded
@@ -1613,12 +1613,12 @@ _Last updated: 2026-03-02_
 1. Gerlich et al. (2006). Live-cell imaging reveals a stable cohesin-chromatin interaction. Curr Biol.
 2. Gabriele et al. (2022). Dynamics of CTCF- and cohesin-mediated chromatin looping. Science. doi:10.1126/science.abn6583
 3. Avsec et al. (2021). Enformer. Nature Methods. doi:10.1038/s41592-021-01252-x
-4. Fudenberg et al. (2020). Akita. Nature Methods. doi:10.1038/s41592-020-0909-0
+4. Fudenberg et al. (2020). Predicting 3D genome folding from DNA sequence with Akita. Nature Methods. doi:10.1038/s41592-020-0958-x
 5. Richards et al. (2015). ACMG Guidelines. Genetics in Medicine. doi:10.1038/gim.2015.30
-6. Taher et al. (2021). β-Thalassemia. NEJM. doi:10.1056/NEJMra2104721
-7. Baralle & Baralle (2018). Splicing in health and disease. CSH Perspect Biol. doi:10.1101/cshperspect.a032482
+6. Taher et al. (2021). β-Thalassemia. NEJM. doi:10.1056/NEJMra2021838
+7. Baralle & Baralle (2018). The splicing code. Biosystems. doi:10.1016/j.biosystems.2017.11.002
 8. Wang et al. (2004). SSIM. IEEE TIP. doi:10.1109/TIP.2003.819861
-9. Harrison et al. (2019). VUS interpretations. Genetics in Medicine.
+9. Harrison et al. (2019). Overview of Specifications to the ACMG/AMP Variant Interpretation Guidelines. Current Protocols in Human Genetics. doi:10.1002/cphg.93
 10. Manrai et al. (2016). Genetic Misdiagnoses. NEJM.
 11. Hansen et al. (2017). CTCF and Cohesin. eLife.
 12. Davidson et al. (2019). DNA Loop Extrusion. Science.
@@ -1627,7 +1627,7 @@ _Last updated: 2026-03-02_
 15. Kagey et al. (2010). Mediator and cohesin. Nature.
 16. Landrum et al. (2018). ClinVar. NAR.
 17. Boyko (2026). ARCHCODE GitHub: https://github.com/sergeeey/ARCHCODE
-18. Whalen et al. (2022). 3D genome ML. Nature Genetics.
+18. Whalen et al. (2022). Navigating the pitfalls of applying machine learning in genomics. Nature Reviews Genetics. doi:10.1038/s41576-021-00434-9
 19. McLaren et al. (2016). The Ensembl Variant Effect Predictor. Genome Biology. doi:10.1186/s13059-016-0974-4
 20. Jaganathan et al. (2019). Predicting Splicing from Primary Sequence with Deep Learning. Cell. doi:10.1016/j.cell.2018.12.015
 21. Ng & Henikoff (2003). SIFT: predicting amino acid changes that affect protein function. Nucleic Acids Research. doi:10.1093/nar/gkg509
@@ -1799,7 +1799,7 @@ without experimental confirmation.
 
 **CFTR within-category analysis:** `positional_signal_cftr.json`
 
-**TP53 unified dataset:** `TP53_Unified_Atlas_300kb.csv` (2,795 rows)
+**TP53 unified dataset:** `TP53_Unified_Atlas_300kb.csv` (2,794 rows)
 
 **TP53 within-category analysis:** `positional_signal_tp53.json`
 

@@ -137,6 +137,18 @@ def within_category_mann_whitney(rows: list[dict], min_per_group: int = 3) -> li
     return results
 
 
+def _interpret_lr(p: float, delta_auc: float) -> str:
+    """Interpret LR result with both statistical and practical significance."""
+    if p >= 0.05:
+        return "SSIM does NOT add significant value beyond category"
+    if abs(delta_auc) < 0.02:
+        return (
+            f"Statistically significant (p={p:.2e}) but ΔAUC={delta_auc:+.3f} — "
+            "power effect, not clinically meaningful prediction"
+        )
+    return f"SSIM adds significant predictive value beyond category (ΔAUC={delta_auc:+.3f})"
+
+
 def logistic_regression_additive(rows: list[dict]) -> dict:
     """
     Test whether SSIM adds predictive value beyond category alone.
@@ -191,11 +203,7 @@ def logistic_regression_additive(rows: list[dict]) -> dict:
         "lr_statistic": lr_stat,
         "lr_p_value": lr_p,
         "n_categories": X_cat.shape[1],
-        "interpretation": (
-            "SSIM adds significant predictive value beyond category"
-            if lr_p < 0.05
-            else "SSIM does NOT add significant value beyond category"
-        ),
+        "interpretation": _interpret_lr(lr_p, auc2 - auc1),
     }
 
 
