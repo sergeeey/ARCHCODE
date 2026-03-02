@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Multimodal AlphaGenome validation: RNA_SEQ + ATAC for pearl variants.
+Multimodal AlphaGenome validation: RNA_SEQ + ATAC for pearl and benign variants.
 
 ПОЧЕМУ этот скрипт:
 Contact maps (2048bp resolution) дают null на variant-level (ΔSSIM < 10⁻⁴).
@@ -10,8 +10,16 @@ Contact maps (2048bp resolution) дают null на variant-level (ΔSSIM < 10�
 в contact maps. Если delta > noise → functional validation pearl variants.
 Если delta ≈ noise → ещё одно evidence что DL модели не видят SNVs.
 
+ПОЧЕМУ control group (v2):
+Pearl variants дают mean max_delta=28 (RNA) и 5.7 (ATAC). Но без контроля
+неясно, специфичен ли этот сигнал. --variant-mode benign загружает Label==Benign
+non-pearl variants и прогоняет тот же pipeline. --compare сравнивает группы
+через Mann-Whitney U (non-parametric, не требует нормальности).
+
 Usage:
-    python scripts/multimodal_alphagenome.py
+    python scripts/multimodal_alphagenome.py                              # pearl (default)
+    python scripts/multimodal_alphagenome.py --variant-mode benign --sample-size 23 --seed 42
+    python scripts/multimodal_alphagenome.py --compare                    # load both JSONs, Mann-Whitney U
     python scripts/multimodal_alphagenome.py --api-key YOUR_KEY
     python scripts/multimodal_alphagenome.py --cell-line GM12878
 """
@@ -20,6 +28,7 @@ import argparse
 import csv
 import json
 import os
+import random
 import sys
 import time
 from pathlib import Path
@@ -60,15 +69,37 @@ def get_api_key(args: argparse.Namespace) -> str:
     sys.exit(1)
 
 
-def load_pearl_variants(csv_path: str) -> list[dict]:
-    """Load pearl variants from unified atlas CSV, skipping IUPAC codes."""
+def load_variants(
+    csv_path: str,
+    mode: str = "pearl",
+    sample_size: int | None = None,
+    seed: int = 42,
+) -> list[dict]:
+    """
+    Load variants from unified atlas CSV, skipping IUPAC codes.
+
+    ПОЧЕМУ два режима:
+    - mode="pearl" → Pearl==true (existing behavior, pathogenic variants of interest)
+    - mode="benign" → Label==Benign AND Pearl!=true (control group for comparison)
+    Benign variants are randomly sampled to match pearl count for fair comparison.
+    """
     valid_bases = set("ACGTN")
-    pearls = []
+    variants = []
     with open(csv_path, newline="") as f:
         reader = csv.DictReader(f)
         for row in reader:
-            if row.get("Pearl", "").lower() != "true":
-                continue
+            # ПОЧЕМУ разные фильтры: pearl = наши ARCHCODE-only detections,
+            # benign = ClinVar Benign variants вне pearl set (контрольная группа)
+            if mode == "pearl":
+                if row.get("Pearl", "").lower() != "true":
+                    continue
+            elif mode == "benign":
+                if row.get("Label", "") != "Benign":
+                    continue
+                if row.get("Pearl", "").lower() == "true":
+                    continue
+            else:
+                raise ValueError(f"Unknown variant mode: {mode}")
 
             ref = row["Ref"]
             alt = row["Alt"]
@@ -79,7 +110,7 @@ def load_pearl_variants(csv_path: str) -> list[dict]:
             if not all(b in valid_bases for b in alt.upper()):
                 continue
 
-            pearls.append({
+            variants.append({
                 "clinvar_id": row["ClinVar_ID"],
                 "position": int(row["Position_GRCh38"]),
                 "ref": ref,
@@ -91,7 +122,14 @@ def load_pearl_variants(csv_path: str) -> list[dict]:
                 "hgvs_c": row.get("HGVS_c", ""),
                 "variant_type": "SNV" if len(ref) == 1 and len(alt) == 1 else "indel",
             })
-    return pearls
+
+    # ПОЧЕМУ random sample для benign: fair comparison требует одинакового n.
+    # seed фиксирован для воспроизводимости.
+    if mode == "benign" and sample_size is not None and len(variants) > sample_size:
+        rng = random.Random(seed)
+        variants = rng.sample(variants, sample_size)
+
+    return variants
 
 
 def compute_track_metrics(
@@ -148,7 +186,7 @@ def compute_track_metrics(
 
 def run_multimodal_analysis(
     api_key: str,
-    pearls: list[dict],
+    variants: list[dict],
     chromosome: str,
     window_start: int,
     window_end: int,
@@ -157,7 +195,7 @@ def run_multimodal_analysis(
     batch_size: int = 5,
     batch_delay: float = 3.0,
 ) -> list[dict]:
-    """Run predict_variant with RNA_SEQ + ATAC for each pearl variant."""
+    """Run predict_variant with RNA_SEQ + ATAC for each variant."""
     from alphagenome.models import dna_client
     from alphagenome.models.dna_output import OutputType
     from alphagenome.data.genome import Variant, Interval
@@ -178,10 +216,10 @@ def run_multimodal_analysis(
     print(f"  Interval: {interval} (seq_length={seq_length})")
     print(f"  Cell line: {cell_line} ({ontology_term})")
     print(f"  Locus window bins: {locus_start_bin}-{locus_end_bin} ({locus_end_bin - locus_start_bin} bins)")
-    print(f"  Variants to process: {len(pearls)}")
+    print(f"  Variants to process: {len(variants)}")
 
     results = []
-    for i, pearl in enumerate(pearls):
+    for i, pearl in enumerate(variants):
         pos = pearl["position"]
         ref = pearl["ref"]
         alt = pearl["alt"]
@@ -189,12 +227,12 @@ def run_multimodal_analysis(
 
         # Skip very large indels (>50bp each allele)
         if len(ref) > 50 or len(alt) > 50:
-            print(f"  [{i+1}/{len(pearls)}] SKIP {pearl['clinvar_id']}: "
+            print(f"  [{i+1}/{len(variants)}] SKIP {pearl['clinvar_id']}: "
                   f"complex variant ({len(ref)}bp>{len(alt)}bp)")
             results.append({**pearl, "status": "skipped_complex"})
             continue
 
-        print(f"  [{i+1}/{len(pearls)}] {pearl['clinvar_id']} "
+        print(f"  [{i+1}/{len(variants)}] {pearl['clinvar_id']} "
               f"{chromosome}:{pos} {ref}>{alt} ({pearl['variant_type']}, "
               f"ARCHCODE SSIM={pearl['archcode_ssim']:.4f})")
 
@@ -271,7 +309,7 @@ def run_multimodal_analysis(
             results.append({**pearl, "status": f"error_{type(e).__name__}"})
 
         # Rate limiting
-        if (i + 1) % batch_size == 0 and i + 1 < len(pearls):
+        if (i + 1) % batch_size == 0 and i + 1 < len(variants):
             print(f"  --- Batch pause ({batch_delay}s) ---")
             time.sleep(batch_delay)
 
@@ -336,6 +374,115 @@ def compute_correlations(results: list[dict]) -> dict:
     return correlations
 
 
+def run_comparison(
+    pearl_json_path: Path,
+    benign_json_path: Path,
+    output_path: Path,
+) -> dict:
+    """
+    Compare pearl vs benign multimodal results using Mann-Whitney U test.
+
+    ПОЧЕМУ Mann-Whitney U: non-parametric тест, не требует нормальности.
+    Наши данные — малые выборки (n=23), скошенные (indels >> SNVs).
+    Rank-biserial r = effect size: 1 − 2U/(n1×n2).
+    """
+    from scipy.stats import mannwhitneyu
+
+    pearl_data = json.loads(pearl_json_path.read_text())
+    benign_data = json.loads(benign_json_path.read_text())
+
+    pearl_variants = [v for v in pearl_data["variants"] if v.get("status") == "success"]
+    benign_variants = [v for v in benign_data["variants"] if v.get("status") == "success"]
+
+    n1, n2 = len(pearl_variants), len(benign_variants)
+    print(f"  Pearl variants (success): {n1}")
+    print(f"  Benign variants (success): {n2}")
+
+    # Verify no overlap
+    pearl_ids = {v["clinvar_id"] for v in pearl_variants}
+    benign_ids = {v["clinvar_id"] for v in benign_variants}
+    overlap = pearl_ids & benign_ids
+    if overlap:
+        print(f"  WARNING: {len(overlap)} overlapping variants: {overlap}")
+
+    metrics = ["max_abs_delta", "mean_abs_delta", "cosine_similarity",
+               "delta_at_variant_bin", "signal_concentration_ratio"]
+    modalities = ["rna_seq", "atac"]
+
+    comparison_results = {
+        "analysis": "pearl_vs_benign_multimodal_comparison",
+        "pearl_json": str(pearl_json_path),
+        "benign_json": str(benign_json_path),
+        "n_pearl": n1,
+        "n_benign": n2,
+        "overlap_count": len(overlap),
+        "tests": {},
+    }
+
+    print(f"\n  {'Modality':<10} {'Metric':<30} {'Pearl mean':>12} {'Benign mean':>12} {'U':>8} {'p-value':>10} {'Effect r':>10}")
+    print(f"  {'-'*92}")
+
+    for modality in modalities:
+        for metric in metrics:
+            pearl_vals = []
+            benign_vals = []
+
+            for v in pearl_variants:
+                mod_data = v.get(modality, {})
+                if metric in mod_data:
+                    pearl_vals.append(mod_data[metric])
+
+            for v in benign_variants:
+                mod_data = v.get(modality, {})
+                if metric in mod_data:
+                    benign_vals.append(mod_data[metric])
+
+            if len(pearl_vals) < 3 or len(benign_vals) < 3:
+                continue
+
+            pearl_arr = np.array(pearl_vals)
+            benign_arr = np.array(benign_vals)
+
+            try:
+                U, p = mannwhitneyu(pearl_arr, benign_arr, alternative="two-sided")
+                # ПОЧЕМУ rank-biserial: стандартный effect size для Mann-Whitney.
+                # r = 1 → полное разделение групп, r = 0 → перекрытие.
+                r_effect = 1.0 - (2.0 * U) / (len(pearl_arr) * len(benign_arr))
+            except ValueError:
+                U, p, r_effect = float("nan"), float("nan"), float("nan")
+
+            key = f"{modality}_{metric}"
+            comparison_results["tests"][key] = {
+                "pearl_mean": round(float(pearl_arr.mean()), 6),
+                "pearl_median": round(float(np.median(pearl_arr)), 6),
+                "pearl_std": round(float(pearl_arr.std()), 6),
+                "benign_mean": round(float(benign_arr.mean()), 6),
+                "benign_median": round(float(np.median(benign_arr)), 6),
+                "benign_std": round(float(benign_arr.std()), 6),
+                "mann_whitney_U": round(float(U), 2),
+                "p_value": round(float(p), 6),
+                "rank_biserial_r": round(float(r_effect), 4),
+                "significant_005": bool(p < 0.05),
+                "n_pearl": len(pearl_arr),
+                "n_benign": len(benign_arr),
+            }
+
+            sig = "*" if p < 0.05 else " "
+            print(f"  {modality:<10} {metric:<30} {pearl_arr.mean():>12.4f} {benign_arr.mean():>12.4f} "
+                  f"{U:>8.0f} {p:>10.4f} {r_effect:>9.4f} {sig}")
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(comparison_results, indent=2))
+    print(f"\n  Comparison saved: {output_path}")
+
+    # Count significant results
+    sig_count = sum(1 for t in comparison_results["tests"].values() if t.get("significant_005"))
+    total_tests = len(comparison_results["tests"])
+    print(f"  Significant tests (p<0.05): {sig_count}/{total_tests}")
+
+    return comparison_results
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Multimodal AlphaGenome validation: RNA_SEQ + ATAC"
@@ -357,12 +504,48 @@ def main():
     parser.add_argument("--batch-size", type=int, default=5)
     parser.add_argument("--batch-delay", type=float, default=3.0)
     parser.add_argument("--output", help="Output JSON path")
+    parser.add_argument(
+        "--variant-mode", choices=["pearl", "benign"], default="pearl",
+        help="Variant selection mode: pearl (default) or benign control",
+    )
+    parser.add_argument(
+        "--sample-size", type=int, default=None,
+        help="Sample size for benign mode (default: match pearl count)",
+    )
+    parser.add_argument("--seed", type=int, default=42, help="Random seed (default: 42)")
+    parser.add_argument(
+        "--compare", action="store_true",
+        help="Skip API, load pearl+benign JSONs, compute Mann-Whitney U comparison",
+    )
     args = parser.parse_args()
+
+    # ПОЧЕМУ --compare отдельно: не тратит API calls, просто загружает
+    # два уже готовых JSON и считает статистику.
+    if args.compare:
+        print("=" * 70)
+        print("ARCHCODE Pearl vs Benign Multimodal Comparison (Mann-Whitney U)")
+        print("=" * 70)
+
+        pearl_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
+        benign_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb_benign_control.json"
+        comparison_path = PROJECT_ROOT / "results" / "multimodal_pearl_vs_benign_comparison.json"
+
+        if not pearl_path.exists():
+            print(f"  ERROR: Pearl results not found: {pearl_path}")
+            sys.exit(1)
+        if not benign_path.exists():
+            print(f"  ERROR: Benign results not found: {benign_path}")
+            print("  Run: python scripts/multimodal_alphagenome.py --variant-mode benign --sample-size 23 --seed 42")
+            sys.exit(1)
+
+        run_comparison(pearl_path, benign_path, comparison_path)
+        return
 
     api_key = get_api_key(args)
 
+    variant_mode = args.variant_mode
     print("=" * 70)
-    print("ARCHCODE Multimodal AlphaGenome Validation (RNA_SEQ + ATAC)")
+    print(f"ARCHCODE Multimodal AlphaGenome Validation (RNA_SEQ + ATAC) — {variant_mode}")
     print("=" * 70)
 
     # Step 1: Load locus config
@@ -376,22 +559,42 @@ def main():
     end = window["end"]
     print(f"  {chrom}:{start}-{end}")
 
-    # Step 2: Load pearl variants
+    # Step 2: Load variants (pearl or benign)
     atlas_path = PROJECT_ROOT / args.atlas
-    print(f"\n--- Step 2: Load pearl variants ({atlas_path.name}) ---")
-    pearls = load_pearl_variants(str(atlas_path))
-    n_snv = sum(1 for p in pearls if p["variant_type"] == "SNV")
-    n_indel = sum(1 for p in pearls if p["variant_type"] == "indel")
-    print(f"  Found {len(pearls)} usable pearls ({n_snv} SNV, {n_indel} indel)")
-    if not pearls:
-        print("  ERROR: No pearl variants found.")
+
+    # ПОЧЕМУ default sample_size = None для pearl: pearls и так мало (~23),
+    # не нужно семплировать. Для benign — если не указан, берём столько же
+    # сколько pearls в предыдущем запуске (23).
+    sample_size = args.sample_size
+    if variant_mode == "benign" and sample_size is None:
+        # Default: match pearl count from existing results
+        pearl_json = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
+        if pearl_json.exists():
+            pearl_data = json.loads(pearl_json.read_text())
+            sample_size = pearl_data["counts"]["total_pearls"]
+            print(f"  Auto-matching benign sample size to pearl count: {sample_size}")
+        else:
+            sample_size = 23
+            print(f"  Default benign sample size: {sample_size}")
+
+    print(f"\n--- Step 2: Load {variant_mode} variants ({atlas_path.name}) ---")
+    variants = load_variants(
+        str(atlas_path), mode=variant_mode, sample_size=sample_size, seed=args.seed,
+    )
+    n_snv = sum(1 for p in variants if p["variant_type"] == "SNV")
+    n_indel = sum(1 for p in variants if p["variant_type"] == "indel")
+    print(f"  Found {len(variants)} usable {variant_mode} variants ({n_snv} SNV, {n_indel} indel)")
+    if variant_mode == "benign":
+        print(f"  Seed: {args.seed}, sample_size: {sample_size}")
+    if not variants:
+        print(f"  ERROR: No {variant_mode} variants found.")
         sys.exit(1)
 
     # Step 3: Run multimodal analysis
     print(f"\n--- Step 3: Multimodal predict_variant ---")
     results = run_multimodal_analysis(
         api_key=api_key,
-        pearls=pearls,
+        variants=variants,
         chromosome=chrom,
         window_start=start,
         window_end=end,
@@ -416,10 +619,14 @@ def main():
                       f"ρ={c['rho']:.4f} (p={c['p']:.4f})")
 
     # Step 5: Save results
-    output_path = (
-        Path(args.output) if args.output
-        else PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
-    )
+    # ПОЧЕМУ dynamic naming: pearl → existing path (не ломаем backward compatibility),
+    # benign → отдельный файл для сравнения.
+    if args.output:
+        output_path = Path(args.output)
+    elif variant_mode == "benign":
+        output_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb_benign_control.json"
+    else:
+        output_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
 
     successful = [r for r in results if r.get("status") == "success"]
 
@@ -438,7 +645,8 @@ def main():
 
     output = {
         "analysis": "multimodal_alphagenome_validation",
-        "description": "RNA_SEQ + ATAC predict_variant for pearl variants at 1bp resolution",
+        "description": f"RNA_SEQ + ATAC predict_variant for {variant_mode} variants at 1bp resolution",
+        "variant_mode": variant_mode,
         "locus": args.locus,
         "locus_id": config.get("id"),
         "window": {"chromosome": chrom, "start": start, "end": end},
@@ -449,9 +657,12 @@ def main():
             "resolution_bp": 1,
             "variant_window_bp": VARIANT_WINDOW_BP,
             "sdk_version": "0.6.0",
+            "variant_mode": variant_mode,
+            "sample_size": sample_size if variant_mode == "benign" else None,
+            "seed": args.seed if variant_mode == "benign" else None,
         },
         "counts": {
-            "total_pearls": len(pearls),
+            "total_variants": len(variants),
             "successful": len(successful),
             "snv": sum(1 for r in successful if r.get("variant_type") == "SNV"),
             "indel": sum(1 for r in successful if r.get("variant_type") == "indel"),
@@ -471,7 +682,7 @@ def main():
     print(f"\n{'=' * 70}")
     print("SUMMARY")
     print(f"{'=' * 70}")
-    print(f"  Variants processed: {len(successful)}/{len(pearls)}")
+    print(f"  Variants processed: {len(successful)}/{len(variants)} ({variant_mode})")
 
     for mod_name, mod_label in [("rna_seq", "RNA_SEQ"), ("atac", "ATAC")]:
         if mod_name in summary_stats:
