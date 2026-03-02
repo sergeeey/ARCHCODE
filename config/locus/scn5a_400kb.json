@@ -1,0 +1,213 @@
+{
+  "id": "scn5a_400kb",
+  "name": "SCN5A 400kb TAD (ENCODE K562 CTCF + K562 H3K27ac)",
+  "description": "400kb window spanning the SCN5A cardiac sodium channel locus on chr3p22.2. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE), IDR narrowPeak, GRCh38. H3K27ac enhancer peaks from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). LIMITATION: K562 is an erythroid leukemia cell line, not cardiac — SCN5A is primarily expressed in cardiomyocytes. K562 H3K27ac may underrepresent cardiac-specific enhancers. iPSC-CM Hi-C data (not available in ENCODE) would be the biologically relevant reference for SCN5A. CTCF sites are largely cell-type invariant (Cuddapah 2009, PMID:19030024); K562 CTCF is expected to reflect cardiac CTCF binding at most sites. SCN5A (NM_198056.3) is on the MINUS strand; TSS is at 38649687 (txEnd). SCN10A, a neighboring sodium channel gene, lies ~47kb downstream.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr3",
+    "start": 38400000,
+    "end": 38800000,
+    "resolution_bp": 1000,
+    "n_bins": 400
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 38454700,
+        "occupancy": 0.8,
+        "name": "ACVR2B_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak cluster at ACVR2B promoter. Peak_11515 (38454074-38455388, signal=19.45) and adjacent Peak_37979 (38453284-38453601, signal=5.75). Strongest H3K27ac in window. Co-localizes with CTCF cluster (38479940-38482274). ACVR2B (activin receptor type 2B) is a TGF-beta superfamily receptor. MANUALLY CALIBRATED occupancy from signal intensity"
+      },
+      {
+        "position": 38496600,
+        "occupancy": 0.65,
+        "name": "EXOG_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak at EXOG promoter region (Peak_14358, 38496381-38496904, signal=15.19). Co-localizes with strongest CTCF in window (38496125-38496384, signal=226.16). EXOG encodes mitochondrial endo/exonuclease. MANUALLY CALIBRATED occupancy from signal"
+      },
+      {
+        "position": 38650100,
+        "occupancy": 0.5,
+        "name": "SCN5A_TSS_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak near SCN5A TSS (Peak_34818, 38649827-38650307, signal=5.98). SCN5A is on minus strand, TSS at 38649687. Weak signal expected in K562 (erythroid, not cardiac). Co-localizes with strong CTCF cluster at SCN5A promoter. LIMITATION: cardiac-specific enhancers likely underrepresented in K562"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 38480022,
+        "orientation": "unknown",
+        "signal": 123.47,
+        "name": "ACVR2B_upstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=123.47 (38479940-38480104). Near ACVR2B gene body. Co-localizes with weaker CTCF at 38482139 (signal=9.26)"
+      },
+      {
+        "position": 38496255,
+        "orientation": "unknown",
+        "signal": 226.16,
+        "name": "EXOG_boundary_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "STRONGEST CTCF in window. K562 signal=226.16 (38496125-38496384). At EXOG promoter, co-localizes with H3K27ac (signal=15.19). Candidate sub-TAD boundary between ACVR2B and EXOG/SCN5A domains"
+      },
+      {
+        "position": 38521570,
+        "orientation": "unknown",
+        "signal": 165.9,
+        "name": "EXOG_intragenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=165.90 (38521471-38521668). Within EXOG gene body. Second strongest CTCF in window"
+      },
+      {
+        "position": 38528640,
+        "orientation": "unknown",
+        "signal": 21.37,
+        "name": "EXOG_SCN5A_intergenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=21.37 (38528505-38528775). Between EXOG 3-prime end and SCN5A 3-prime end (minus strand)"
+      },
+      {
+        "position": 38559059,
+        "orientation": "unknown",
+        "signal": 11.43,
+        "name": "SCN5A_intragenic_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Weak K562 signal=11.43 (38558924-38559194). Within SCN5A gene body (intron region)"
+      },
+      {
+        "position": 38560613,
+        "orientation": "unknown",
+        "signal": 38.76,
+        "name": "SCN5A_intragenic_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=38.76 (38560478-38560748). Within SCN5A gene body. ~1.5kb from SCN5A_intragenic_CTCF_1, possible tandem pair"
+      },
+      {
+        "position": 38623798,
+        "orientation": "unknown",
+        "signal": 63.09,
+        "name": "SCN5A_intragenic_CTCF_3",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=63.09 (38623663-38623933). Within SCN5A gene body. May function as intragenic insulator"
+      },
+      {
+        "position": 38628150,
+        "orientation": "unknown",
+        "signal": 178.31,
+        "name": "SCN5A_promoter_proximal_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=178.31 (38628053-38628247). Third strongest CTCF in window. ~22kb from SCN5A TSS (minus strand). Likely promoter-proximal regulatory element"
+      },
+      {
+        "position": 38646773,
+        "orientation": "unknown",
+        "signal": 72.79,
+        "name": "SCN5A_TSS_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=72.79 (38646638-38646908). ~3kb from SCN5A TSS (38649687). Part of promoter CTCF cluster"
+      },
+      {
+        "position": 38651400,
+        "orientation": "unknown",
+        "signal": 306.8,
+        "name": "SCN5A_TSS_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "SECOND STRONGEST CTCF in window. K562 signal=306.80 (38651268-38651531). ~1.7kb downstream of SCN5A TSS. Co-localizes with H3K27ac (signal=5.98). Strong candidate for promoter-associated insulator element"
+      },
+      {
+        "position": 38655893,
+        "orientation": "unknown",
+        "signal": 56.17,
+        "name": "SCN5A_downstream_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=56.17 (38655758-38656028). ~6kb downstream of SCN5A TSS"
+      },
+      {
+        "position": 38662801,
+        "orientation": "unknown",
+        "signal": 59.22,
+        "name": "SCN5A_downstream_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=59.22 (38662666-38662936). ~13kb downstream of SCN5A TSS"
+      },
+      {
+        "position": 38707936,
+        "orientation": "unknown",
+        "signal": 58.77,
+        "name": "SCN5A_SCN10A_intergenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=58.77 (38707801-38708071). In intergenic region between SCN5A and SCN10A (~58kb from SCN5A TSS, ~11kb upstream of SCN10A)"
+      },
+      {
+        "position": 38738840,
+        "orientation": "unknown",
+        "signal": 107.0,
+        "name": "SCN10A_intragenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "K562 signal=107.00 (38738705-38738975). Within SCN10A gene body. Fourth strongest CTCF in window"
+      }
+    ],
+    "tad_boundaries": [],
+    "genes": [
+      { "name": "XYLB", "start": 38346784, "end": 38427186, "strand": "+" },
+      {
+        "name": "ACVR2B-AS1",
+        "start": 38451026,
+        "end": 38454820,
+        "strand": "-"
+      },
+      { "name": "ACVR2B", "start": 38453889, "end": 38493142, "strand": "+" },
+      { "name": "EXOG", "start": 38496339, "end": 38526303, "strand": "+" },
+      { "name": "SCN5A", "start": 38548061, "end": 38649687, "strand": "-" },
+      { "name": "SCN10A", "start": 38696806, "end": 38816217, "strand": "-" }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq_k562": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 15,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/",
+      "note": "Same K562 CTCF source used for TP53, BRCA1, MLH1, LDLR. CTCF binding is largely cell-type invariant (Cuddapah 2009, PMID:19030024). Expected to reflect cardiac CTCF at most positions"
+    },
+    "h3k27ac_chipseq_k562": {
+      "experiment": "ENCSR000AKP",
+      "file": "ENCFF864OSZ",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 4,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/",
+      "note": "LIMITATION: K562 is erythroid, not cardiac. Only 4 H3K27ac peaks in 400kb window (vs 7-14 for other loci). SCN5A is primarily expressed in cardiomyocytes, so K562 H3K27ac severely underrepresents cardiac-specific regulatory elements. iPSC-CM or primary cardiac tissue H3K27ac data would be the appropriate reference"
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeqCurated",
+      "note": "Gene coordinates represent the union of all curated transcript isoforms (min txStart to max txEnd). SCN5A coordinates based on NM_198056.3 (major cardiac isoform). SCN10A extends beyond the 400kb window (to 38816217)"
+    }
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 400x400 matrix. SSIM thresholds require empirical calibration after first SCN5A ARCHCODE run. Matrix-size dilution expected (400 bins, same as BRCA1). Additional limitation: K562 H3K27ac may produce incomplete enhancer landscape for this cardiac gene."
+}

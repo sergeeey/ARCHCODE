@@ -1,0 +1,30 @@
+{
+  "locus": "scn5a",
+  "locus_id": "scn5a_400kb",
+  "window": {
+    "chromosome": "chr3",
+    "start": 38400000,
+    "end": 38800000,
+    "resolution_bp": 1000,
+    "n_bins": 400
+  },
+  "alphagenome": {
+    "sdk_version": "0.6.0",
+    "sequence_length": 524288,
+    "contact_map_resolution": 2048,
+    "contact_map_shape": [256, 256],
+    "cell_line": "GM12878",
+    "track_name": "4dn:4DNFIXP4QG5B",
+    "assay": "in situ Hi-C",
+    "ontology_curie": "EFO:0002784"
+  },
+  "correlations": {
+    "archcode_vs_alphagenome": {
+      "pearson_r": -0.08264311379111694,
+      "pearson_p": 2.366782369623211e-120,
+      "spearman_rho": -0.1715400252675283,
+      "spearman_p": 0.0,
+      "n": 79401
+    }
+  }
+}
