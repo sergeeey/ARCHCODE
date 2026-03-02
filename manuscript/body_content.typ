@@ -1489,7 +1489,7 @@ regulatory activity in erythroid cells.
 0.9960--1.0000. Zero structurally pathogenic variants were identified (0
 pearls). The near-unit SSIM values across all 2,488 variants demonstrate
 that ARCHCODE's perturbation model produces negligible signal when the
-enhancer landscape is sparse --- the 3 K562 H3K27ac peaks do not provide
+enhancer annotation is sparse --- the 3 K562 H3K27ac peaks do not provide
 sufficient regulatory context for meaningful variant-level
 discrimination.
 
@@ -1497,7 +1497,7 @@ discrimination.
 lowest across all seven loci. AlphaGenome contact maps were obtained
 from GM12878 (lymphoblastoid --- no K562 available). The near-zero
 correlation reflects both cell-type mismatch and the sparse regulatory
-landscape: without tissue-appropriate enhancer features, the analytical
+context: without tissue-appropriate enhancer features, the analytical
 model cannot reconstruct a contact pattern that meaningfully corresponds
 to deep learning predictions from sequence.
 
@@ -1525,61 +1525,54 @@ pathogenicity in the same variants.
 
 == Multi-Locus Comparison
 <multi-locus-comparison>
-#strong[Table 6. ARCHCODE results across seven genomic loci.]
+#strong[Table 6a. Dataset overview and structural classification across seven loci.]
 
 #figure(
   align(center)[#table(
-    columns: (12.98%, 12.21%, 12.98%, 12.98%, 12.21%, 12.21%, 12.21%, 12.21%),
-    align: (auto,auto,auto,auto,auto,auto,auto,auto,),
-    table.header([Metric], [HBB (95 kb)], [CFTR (317 kb)], [TP53 (300
-      kb)], [BRCA1 (400 kb)], [MLH1 (300 kb)], [LDLR (300 kb)], [SCN5A
-      (400 kb)],),
+    columns: (18%, 10%, 16%, 14%, 14%, 12%, 8%),
+    align: (left, center, center, center, center, center, center),
+    table.header([Locus (window)], [_n_], [P/LP + B/LB], [Variant spread], [LSSIM range], [Struct. path.], [Pearls]),
     table.hline(),
-    [ClinVar
-    variants], [1,103], [3,349], [2,794], [10,682], [4,060], [3,284], [2,488],
-    [P/LP + B/LB], [353 + 750], [1,756 + 1,593], [1,645 + 1,149], [7,062
-    \+ 3,620], [2,425 + 1,635], [2,274 + 1,010], [928 + 1,560],
-    [Variant spread], [2.1 kb (2.2%)], [201.5 kb (63.6%)], [109.9 kb
-    (36.6%)], [103.6 kb (25.9%)], [130.3 kb (43.4%)], [2.1 kb
-    (0.7%)], [101.7 kb (25.4%)],
-    [Global SSIM
-    range], [0.9611--0.9998], [0.9836--1.0000], [0.9934--1.0000], [0.9938--1.0000], [0.9838--1.0000], [0.9895--1.0000], [0.9995--1.0000],
-    [LSSIM
-    range], [0.7537--0.9992], [0.8329--0.9999], [0.9443--1.0000], [0.8767--0.9999], [0.8417--0.9999], [0.9061--1.0000], [0.9960--1.0000],
-    [Struct. path.], [254], [35], [0 (12 VUS)], [52], [72], [10], [0],
-    [LR ΔAUC (LSSIM)], [-0.001 (p = 1.0)], [-0.012 (p = 0.79)], [+0.031
-    (p = 0.29)], [+0.002 (p≈10⁻20)], [+0.011 (p=0.005)], [-0.003
-    (p=0.004)], [‡],
-    [K562 Hi-C r], [0.53 /
-    0.59], [---], [0.29], [0.53], [0.59], [---], [---],
-    [MCF7 Hi-C r], [---], [---], [0.28], [0.50], [---], [---], [---],
-    [HepG2 Hi-C r], [---], [---], [---], [---], [---], [0.32], [---],
-    [TDA ρ
-    (SSIM↔W\_H1)], [-0.96], [-1.00], [-0.85], [NaN], [-0.76], [-0.51], [---],
-    [AG ρ (O/E)], [0.15 /
-    0.12†], [0.27], [0.32], [0.52], [0.49], [0.43], [-0.17],
-    [Akita ρ (O/E)], [0.13 /
-    −0.27†], [0.41], [0.17], [0.43], [0.22], [0.34], [---],
-    [CTCF recall (AG)], [100% (F1=0.83)], [100% (F1=0.65)], [100%
-    (F1=0.74)], [100% (F1=0.80)], [100% (F1=0.54)], [100%
-    (F1=0.65)], [100% (F1=0.76)],
-    [H3K27ac recall], [---], [---], [75% (F1=0.40)], [85%
-    (F1=0.67)], [62% (F1=0.29)], [80% (F1=0.57)], [67% (F1=0.18)],
-    [Pearl variants], [27], [0], [0], [0], [0], [0], [0],
+    [HBB (95 kb)], [1,103], [353 + 750], [2.1 kb (2.2%)], [0.75--1.00], [254], [27],
+    [CFTR (317 kb)], [3,349], [1,756 + 1,593], [201.5 kb (63.6%)], [0.83--1.00], [35], [0],
+    [TP53 (300 kb)], [2,794], [1,645 + 1,149], [109.9 kb (36.6%)], [0.94--1.00], [0 (12 VUS)], [0],
+    [BRCA1 (400 kb)], [10,682], [7,062 + 3,620], [103.6 kb (25.9%)], [0.88--1.00], [52], [0],
+    [MLH1 (300 kb)], [4,060], [2,425 + 1,635], [130.3 kb (43.4%)], [0.84--1.00], [72], [0],
+    [LDLR (300 kb)], [3,284], [2,274 + 1,010], [2.1 kb (0.7%)], [0.91--1.00], [10], [0],
+    [SCN5A (400 kb)], [2,488], [928 + 1,560], [101.7 kb (25.4%)], [1.00--1.00], [0], [0],
+    table.hline(),
+    [*Total*], [*27,760*], [], [], [], [*423*], [*27*],
   )]
   , kind: table
-  )
+)
 
-†HBB values: AG ρ 0.15 / 0.12 and Akita ρ 0.13 / −0.27 correspond to
+#v(0.5em)
+
+#strong[Table 6b. Validation metrics across seven loci.]
+
+#figure(
+  align(center)[#table(
+    columns: (12%, 16%, 10%, 12%, 10%, 10%, 14%, 14%),
+    align: (left, center, center, center, center, center, center, center),
+    table.header([Locus], [LR ΔAUC], [K562 _r_], [Other _r_], [AG ρ], [Akita ρ], [CTCF F1], [H3K27ac F1]),
+    table.hline(),
+    [HBB], [−0.001 (p=1.0)], [0.53 / 0.59], [---], [0.15 / 0.12†], [0.13 / −0.27†], [0.83], [---],
+    [CFTR], [−0.012 (p=0.79)], [---], [---], [0.27], [0.41], [0.65], [---],
+    [TP53], [+0.031 (p=0.29)], [0.29], [MCF7: 0.28], [0.32], [0.17], [0.74], [0.40],
+    [BRCA1], [+0.002 (p≈10⁻²⁰)], [0.53], [MCF7: 0.50], [0.52], [0.43], [0.80], [0.67],
+    [MLH1], [+0.011 (p=0.005)], [0.59], [---], [0.49], [0.22], [0.54], [0.29],
+    [LDLR], [−0.003 (p=0.004)], [---], [HepG2: 0.32], [0.43], [0.34], [0.65], [0.57],
+    [SCN5A], [‡], [---], [---], [−0.17], [---], [0.76], [0.18],
+  )]
+  , kind: table
+)
+
+CTCF recall = 100% for all loci; F1 values shown. †HBB AG/Akita values:
 30kb / 95kb windows. Both DL models yield only 15 (30kb) or 47 (95kb)
 bins at 2048 bp resolution, requiring 3.4× upsampling to match
 ARCHCODE's 159 bins. The negative Akita ρ for 95kb likely reflects
-interpolation artifacts dominating the correlation signal.
-
-‡SCN5A: LR ΔAUC not computed --- zero structural pathogenicity calls
-(all SSIM \> 0.99, all LSSIM \> 0.99). K562 H3K27ac captures only 3
-peaks in the 400 kb window, reflecting minimal regulatory annotation for
-this cardiac gene in erythroid cells.
+interpolation artifacts. ‡SCN5A: LR ΔAUC not computed --- zero
+structural pathogenicity calls (all LSSIM \> 0.99).
 
 The multi-locus comparison reveals three consistent patterns: (1) LSSIM
 resolves matrix-size dilution, expanding dynamic range from 0.98--1.00
@@ -1603,7 +1596,7 @@ strongest agreement at BRCA1 (ρ = 0.52) and MLH1 (ρ = 0.49) --- loci
 with the most complete CTCF/enhancer annotation. SCN5A is the exception
 (ρ = −0.17), consistent with severe cell-type mismatch: K562 captures
 only 3 H3K27ac peaks across the 400 kb window, producing a near-empty
-enhancer landscape for this cardiac-expressed gene. (5) Epigenome
+enhancer environment for this cardiac-expressed gene. (5) Epigenome
 cross-validation confirms 100% CTCF recall across all seven loci (mean
 F1 = 0.71): AlphaGenome independently predicts CTCF binding at every
 ENCODE-annotated position used in ARCHCODE configs, validating the input
@@ -1631,7 +1624,7 @@ on computational artifacts.
 == AlphaGenome Benchmark
 <alphagenome-benchmark>
 To contextualize ARCHCODE's analytical contact maps against
-state-of-the-art deep learning predictions, we performed a direct
+deep learning predictions, we performed a direct
 comparison with AlphaGenome (Google DeepMind), a genomics foundation
 model that predicts chromatin contact maps from DNA sequence.
 AlphaGenome was accessed via its Python SDK (v0.6.0) using contact map
@@ -1657,12 +1650,12 @@ not available in AlphaGenome's contact map predictions.
 
 #strong[Results.] ARCHCODE and AlphaGenome contact maps show consistent
 moderate agreement across most loci: Spearman ρ ranges from 0.27 (CFTR)
-to 0.52 (BRCA1), with Pearson r = 0.07--0.29 (Table 6, row "AG ρ"). HBB
+to 0.52 (BRCA1), with Pearson r = 0.07--0.29 (Table 6b). HBB
 (ρ = 0.15) is an outlier explained by the narrow 30 kb window yielding
 only 15 AlphaGenome bins (2048 bp resolution) and cell line mismatch
 (GM12878 vs K562). The Spearman rank correlation consistently exceeds
 Pearson, suggesting a monotonic but non-linear relationship between the
-two approaches --- expected given their fundamentally different
+two approaches --- expected given their distinct
 methodologies (analytical physics vs deep learning from sequence).
 
 That an analytical mean-field model with no training data correlates at
@@ -1712,7 +1705,7 @@ contact map prediction from DNA sequence. Akita uses the Basenji
 framework (Kelley et al., 2020) and operates at the same 2048 bp
 resolution as AlphaGenome, but was developed independently (Calico,
 TensorFlow) with earlier training data (Rao et al.~2014 Hi-C).
-Critically, Akita is fully open-source --- model weights, architecture,
+Akita is fully open-source --- model weights, architecture,
 and training code are publicly available --- enabling local CPU
 inference without cloud API dependency.
 
@@ -1726,8 +1719,7 @@ AlphaGenome comparison.
 
 #strong[Results.] Akita and ARCHCODE contact maps show moderate
 agreement across large loci: Spearman ρ ranges from 0.17 (TP53) to 0.43
-(BRCA1), comparable to AlphaGenome's 0.12--0.52 (Table 6, row "Akita
-ρ"). The pattern across loci is consistent: larger windows with more
+(BRCA1), comparable to AlphaGenome's 0.12--0.52 (Table 6b). The pattern across loci is consistent: larger windows with more
 Akita bins yield stronger correlations (BRCA1: 195 bins, ρ = 0.43; CFTR:
 155 bins, ρ = 0.41), while narrow HBB windows produce weak or
 artifactual results due to aggressive upsampling (95kb: 47→159 bins, ρ =
@@ -1759,7 +1751,7 @@ variant-level sensitivity that sequence-based DL models at 2048 bp
 resolution cannot match. Akita's sensitivity to large indels but not
 SNVs is consistent with the 2048 bp resolution limit: a 25 bp
 duplication alters \~1.2% of a bin, while a single SNV alters \< 0.05%.
-Notably, Akita was trained on Rao et al.~2014 Hi-C data (not 4DN), so
+Akita was trained on Rao et al.~2014 Hi-C data (not 4DN), so
 the wild-type concordance cannot be attributed to shared training signal
 --- unlike AlphaGenome (see Limitation \#10).
 
@@ -1821,7 +1813,7 @@ ARCHCODE ΔSSIM and AlphaGenome multimodal deltas was non-significant:
 RNA-seq max\_delta ρ = −0.22 (p = 0.31); ATAC max\_delta ρ = −0.32 (p =
 0.14); n = 23. This indicates that while both methods detect
 variant-level perturbations, they rank variants differently ---
-consistent with fundamentally different mechanisms (analytical loop
+consistent with different mechanisms (analytical loop
 extrusion vs deep learning from sequence).
 
 #strong[Interpretation.] The multimodal analysis reveals a
@@ -2055,7 +2047,7 @@ as a failed optimization.
   , kind: table
   )
 
-Critically, Q2 (ARCHCODE-only detections / pearl variants) contains 20
+Q2 (ARCHCODE-only detections / pearl variants) contains 20
 Pathogenic variants and 0 Benign variants under the unified pipeline.
 This demonstrates that pearl identification has zero false-positive rate
 among confirmed benign variants in the current dataset.
@@ -2162,8 +2154,8 @@ and MCF7 r = 0.50 (comparable to HBB K562), while TP53 shows lower
 correlation (K562 r = 0.29, MCF7 r = 0.28). The TP53 result likely
 reflects greater structural complexity: 7 persistent homology H1
 features (vs 3--4 for HBB), an internal P2 promoter generating Δ133p53
-isoforms, and higher CTCF density creating a more intricate contact
-landscape that the mean-field model captures less completely. The BRCA1
+isoforms, and higher CTCF density creating a denser contact
+pattern that the mean-field model captures less completely. The BRCA1
 result is encouraging: despite a 400×400 matrix (the largest tested),
 Hi-C correlation matches HBB, suggesting that dense enhancer/CTCF
 annotation compensates for dilution effects in contact map fidelity.
@@ -2186,13 +2178,13 @@ loci with the most complete CTCF/enhancer annotation, and weakest at HBB
 (ρ = 0.15), where the narrow 30 kb window yields only 15 AlphaGenome
 bins. This suggests that both approaches converge on genuine chromatin
 features --- CTCF boundaries and enhancer-driven contact enrichment ---
-despite fundamentally different computational paradigms. However, this
+despite different computational approaches. However, this
 concordance should not be over-interpreted: AlphaGenome's training data
 includes 4DN Hi-C from the same cell lines used in our Hi-C validation,
 so the correlation may partly reflect shared data provenance rather than
 independent convergence on biological truth.
 
-Importantly, the AUC of 0.977 is a category-level structural model, not
+The AUC of 0.977 reflects a category-level structural model, not
 evidence of within-category positional prediction. A position-only
 control experiment (fixed effectStrength = 0.3 for all variants,
 removing all category information) yielded AUC = 0.551 ---
@@ -2321,6 +2313,9 @@ explain the remaining \~65--70% of unexplained Hi-C variance.
 during the study period. SpliceAI provides higher-resolution splice
 disruption prediction than VEP/SIFT and would likely improve the
 sequence-based baseline, potentially reclassifying some current pearls.
+Future iterations will integrate the locally installable SpliceAI model
+(Jaganathan et al., 2019; available via `pip install spliceai`) to
+replace VEP as the sequence-based comparator.
 
 #strong[\5. No patient-level validation.] No patients with these
 variants and phenotype data are available in ClinVar records to validate
