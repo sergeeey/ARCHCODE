@@ -1497,6 +1497,35 @@ reflects transcriptional effects, ATAC-seq reflects chromatin accessibility, whi
 models loop extrusion dynamics — three distinct biological mechanisms that need not correlate
 for individual variants.
 
+**Pearl vs Benign Control.** To test whether the multimodal signal is specific to
+pathogenic pearl variants or a generic property of all variants in the locus, we ran the
+identical analysis on 23 randomly sampled benign non-pearl variants (seed = 42, matched
+sample size). Mann-Whitney U tests (two-sided, non-parametric) reveal that pearl variants
+produce significantly different signal across all 10 metric × modality combinations
+(p < 0.05 for all):
+
+| Metric               | Modality | Pearl (n = 23) | Benign (n = 23) | U   | p-value  | Effect size r |
+| -------------------- | -------- | -------------- | --------------- | --- | -------- | ------------- |
+| Signal concentration | RNA-seq  | 16.97×         | 6.09×           | 450 | < 0.0001 | −0.70         |
+| Delta at variant bin | RNA-seq  | 0.381          | 0.109           | 410 | 0.0014   | −0.55         |
+| Mean abs delta       | RNA-seq  | 0.075          | 0.032           | 407 | 0.0018   | −0.54         |
+| Signal concentration | ATAC     | 11.15×         | 6.39×           | 402 | 0.0026   | −0.52         |
+| Mean abs delta       | ATAC     | 0.046          | 0.058           | 401 | 0.0028   | −0.52         |
+| Cosine similarity    | ATAC     | 0.921          | 0.891           | 132 | 0.0037   | +0.50         |
+| Max abs delta        | ATAC     | 5.70           | 4.88            | 394 | 0.0045   | −0.49         |
+| Cosine similarity    | RNA-seq  | 0.995          | 0.999           | 148 | 0.011    | +0.44         |
+| Max abs delta        | RNA-seq  | 28.13          | 27.43           | 370 | 0.012    | −0.40         |
+| Delta at variant bin | ATAC     | 0.268          | 0.098           | 364 | 0.029    | −0.38         |
+
+The most discriminative metric is **signal concentration ratio** (RNA-seq: r = −0.70,
+p < 0.0001), indicating that pearl variants concentrate perturbation signal within ±500 bp
+of the variant position 2.8× more strongly than benign variants (16.97× vs 6.09×). Raw
+max_delta values are similar between groups (28.13 vs 27.43 for RNA-seq) because both
+groups contain indels that produce large absolute deltas; the key difference is _where_
+the signal localizes. Pearl variants alter the local sequence context at positions where
+the deep learning model predicts the largest regulatory effects, while benign variants
+produce more diffuse perturbation.
+
 ### Epigenome Cross-Validation
 
 To independently validate the ENCODE ChIP-seq features used as ARCHCODE input parameters
