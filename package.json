@@ -1,8 +1,25 @@
 {
-  "name": "vite-react-ts-app",
+  "name": "archcode",
   "private": true,
-  "version": "1.5.0",
+  "version": "2.0.0",
+  "description": "Physics-based 3D chromatin loop extrusion simulator for variant pathogenicity prediction",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sergeeey/ARCHCODE"
+  },
+  "author": "Sergey V. Boyko <sergeikuch80@gmail.com>",
+  "homepage": "https://github.com/sergeeey/ARCHCODE#readme",
+  "keywords": [
+    "chromatin",
+    "loop-extrusion",
+    "cohesin",
+    "variant-pathogenicity",
+    "3d-genome",
+    "SSIM",
+    "ClinVar",
+    "bioinformatics"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
