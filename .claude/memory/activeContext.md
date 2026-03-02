@@ -1,59 +1,43 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-02 (session 22: Position-only control experiment)
+**Last Updated:** 2026-03-02 (session 23: Publication figures + manuscript restructuring)
 **Branch:** main
-**Last Commit:** 1141f86 (SCN5A multimodal cell-type mismatch — pushed)
+**Last Commit:** d85aed3 (docs(manuscript): position-only control section + Typst bioRxiv preprint)
 **GitHub:** https://github.com/sergeeev/ARCHCODE
 **bioRxiv ID:** BIORXIV/2026/708672 — awaiting screening
-**Status:** Position-only control experiment complete. Ready for commit + push.
+**Status:** 6 publication figures generated, integrated into Typst, abstract shortened. Ready for commit + push.
 
 ---
 
 ## Текущий статус проекта
 
-**Фаза:** v2.10 — position-only control experiment (AUC ablation)
+**Фаза:** v2.11 — publication figures + manuscript polish
 
-### Session 22: Position-only control + CADD experiment
+### Session 23: Publication Figures + Manuscript Restructuring
 
-**Key finding:** AUC 0.977 → 0.551 when category information removed (fixed effectStrength=0.3).
-This is the definitive proof that AUC = category-distribution effect, not independent prediction.
+**Key changes:**
 
-**Three effectStrength models tested:**
+1. **6 publication-quality figures** generated via `scripts/generate_publication_figures.py`:
+   - Fig 1: SSIM violin plot by category (184mm, seaborn)
+   - Fig 2: ROC curves — categorical vs position-only + within-category inset
+   - Fig 3: Pearl variant quadrant plot (VEP vs LSSIM, 4 quadrants)
+   - Fig 4: Hi-C validation bar chart across 8 locus×cell-type combinations
+   - Fig 5: Multi-locus summary table (7 loci, color-coded)
+   - Fig 6: Contact map triptych (WT / Cd39 mutant / differential)
 
-| Model                 | AUC   | Within-syn AUC | Verdict                                     |
-| --------------------- | ----- | -------------- | ------------------------------------------- |
-| Categorical (default) | 0.976 | 0.570          | Primary model (documented)                  |
-| CADD-based            | 0.977 | 0.988          | REJECTED (CADD leaks pathogenicity)         |
-| Position-only         | 0.551 | 0.558          | Control experiment (proves category effect) |
+2. **Typst integration:** All 6 figures inserted in body_content.typ with figure captions and labels
 
-**Changes this session (not yet committed):**
+3. **Formulas converted to Typst math:** Kramers, contact matrix, SSIM
 
-1. `scripts/fetch_cadd_scores.py` — NEW — downloads CADD phred via Ensembl VEP REST API
-2. `scripts/generate-unified-atlas.ts` — EDIT — dual-mode (categorical + position-only via --effect-mode)
-3. `data/hbb_vep_results.csv` — EDIT — added cadd_phred, cadd_raw columns
-4. `data/hbb_benign_vep_results.csv` — EDIT — added cadd_phred, cadd_raw columns
-5. `results/HBB_Unified_Atlas_95kb_POSITION_ONLY.csv` — NEW — position-only atlas
-6. `results/UNIFIED_ATLAS_SUMMARY_95kb_POSITION_ONLY.json` — NEW
-7. `results/position_only_control_experiment.json` — NEW — comparison metrics
-8. `manuscript/FULL_MANUSCRIPT.md` — EDIT — Position-Only Control section, Methods update, Discussion update
+4. **Text fixes:** Abstract ~250 words, "March 2026", no internal labels
 
----
-
-## Ключевые файлы (session 22)
-
-| Файл                                               | Действие                                             |
-| -------------------------------------------------- | ---------------------------------------------------- |
-| `scripts/generate-unified-atlas.ts`                | EDIT — EFFECT_MODE flag, CADD parsing, position-only |
-| `scripts/fetch_cadd_scores.py`                     | NEW — CADD score downloader                          |
-| `results/position_only_control_experiment.json`    | NEW — ablation results                               |
-| `results/HBB_Unified_Atlas_95kb_POSITION_ONLY.csv` | NEW — control atlas                                  |
-| `manuscript/FULL_MANUSCRIPT.md`                    | EDIT — 3 sections updated                            |
+5. **Final PDF:** 53 pages with 6 embedded figures
 
 ---
 
 ## Для следующей сессии
 
-1. **Commit + push** session 22 changes
-2. **bioRxiv v2 preprint** — submit updated manuscript
-3. Consider: Run position-only on other loci (CFTR, BRCA1) for multi-locus confirmation
-4. Consider: iPSC-CM H3K27ac for SCN5A (tissue-matched positive control)
+1. **Commit + push** session 23 changes
+2. **bioRxiv v2 preprint** — resubmit with figures
+3. Consider: Figure quality review (inset overlap in Fig 2)
+4. Consider: Supplementary figures (per-locus SSIM distributions)
