@@ -165,33 +165,33 @@ sequence-based tools in variant interpretation pipelines.
 
 ## Data Transparency Declaration
 
-| Data source                    | Status              | Notes                                                                       |
-| ------------------------------ | ------------------- | --------------------------------------------------------------------------- |
-| ClinVar HBB pathogenic (n=353) | REAL                | NCBI E-utilities API, April 2026                                            |
-| ClinVar HBB benign (n=750)     | REAL                | NCBI E-utilities API, April 2026                                            |
-| Ensembl VEP v113 SIFT scores   | REAL                | Standard Ensembl REST API                                                   |
-| ARCHCODE SSIM/LSSIM scores     | COMPUTATIONAL       | Analytical simulation; LSSIM = 50×50 local window                           |
-| ROC analysis (n=1,103)         | COMPUTATIONAL       | AUC=0.977; unified pipeline, category-distribution effect                   |
-| Hi-C correlation (K562)        | REAL (positive)     | r=0.53 (30kb), r=0.59 (95kb); p<10⁻⁸²; 4DNFI18UHVRO                         |
-| Hi-C correlation (GM12878)     | REAL (negative)     | r=0.16, p=ns; 12 loci (HBB silent in B-cells)                               |
-| SpliceAI predictions           | NOT AVAILABLE       | API unreachable; replaced by VEP                                            |
-| AlphaGenome benchmark          | REAL                | SDK v0.6.0; contact maps from 4DN; Spearman ρ=0.27–0.52 across 6 loci       |
-| Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; Bayesian optimization confirmed near-optimal (Δr=0.0001) |
-| ClinVar CFTR (n=3,349)         | REAL                | NCBI E-utilities API; 1,756 P/LP + 1,593 B/LB                               |
-| ClinVar TP53 (n=2,794)         | REAL                | NCBI E-utilities API; 1,645 P/LP + 1,149 B/LB                               |
-| ClinVar BRCA1 (n=10,682)       | REAL                | NCBI E-utilities API; 7,062 P/LP + 3,620 B/LB                               |
-| CFTR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.012, p=0.79; null result                                         |
-| TP53 within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=+0.032, p=0.29; null result                                         |
-| BRCA1 within-category (LSSIM)  | COMPUTATIONAL       | LR ΔAUC=+0.002, p≈10⁻²⁰; significant but ΔAUC negligible                    |
-| ClinVar MLH1 (n=4,060)         | REAL                | NCBI E-utilities API; 2,425 P/LP + 1,635 B/LB                               |
-| MLH1 within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=+0.011, p=0.005; significant but ΔAUC negligible                    |
-| Hi-C correlation (MLH1)        | REAL (positive)     | K562 r=0.59; p≈0                                                            |
-| Hi-C correlation (BRCA1)       | REAL (positive)     | K562 r=0.53; MCF7 r=0.50; p≈0                                               |
-| Hi-C correlation (TP53)        | REAL (moderate)     | K562 r=0.29; MCF7 r=0.28; p<10⁻¹³⁶                                          |
-| Hi-C correlation (LDLR)        | REAL (positive)     | HepG2 r=0.32; p≈0; first tissue-specific validation                         |
-| LDLR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.003, p=0.004; significant but ΔAUC negligible                    |
-| Bayesian optimization          | COMPUTATIONAL       | Optuna 4.7.0, 200 trials; Δr=0.0001                                         |
-| Multimodal AG (RNA-seq/ATAC)   | REAL                | SDK v0.6.0; 1bp resolution; K562; detectable signal (RNA max_delta=28.13)   |
+| Data source                    | Status              | Notes                                                                                                         |
+| ------------------------------ | ------------------- | ------------------------------------------------------------------------------------------------------------- |
+| ClinVar HBB pathogenic (n=353) | REAL                | NCBI E-utilities API, April 2026                                                                              |
+| ClinVar HBB benign (n=750)     | REAL                | NCBI E-utilities API, April 2026                                                                              |
+| Ensembl VEP v113 SIFT scores   | REAL                | Standard Ensembl REST API                                                                                     |
+| ARCHCODE SSIM/LSSIM scores     | COMPUTATIONAL       | Analytical simulation; LSSIM = 50×50 local window                                                             |
+| ROC analysis (n=1,103)         | COMPUTATIONAL       | AUC=0.977; unified pipeline, category-distribution effect                                                     |
+| Hi-C correlation (K562)        | REAL (positive)     | r=0.53 (30kb), r=0.59 (95kb); p<10⁻⁸²; 4DNFI18UHVRO                                                           |
+| Hi-C correlation (GM12878)     | REAL (negative)     | r=0.16, p=ns; 12 loci (HBB silent in B-cells)                                                                 |
+| SpliceAI predictions           | NOT AVAILABLE       | API unreachable; replaced by VEP                                                                              |
+| AlphaGenome benchmark          | REAL                | SDK v0.6.0; contact maps from 4DN; Spearman ρ=0.12–0.52 across 6 loci (HBB lowest due to resolution mismatch) |
+| Kramer parameters (α, γ)       | MANUALLY CALIBRATED | Literature ranges; Bayesian optimization confirmed near-optimal (Δr=0.0001)                                   |
+| ClinVar CFTR (n=3,349)         | REAL                | NCBI E-utilities API; 1,756 P/LP + 1,593 B/LB                                                                 |
+| ClinVar TP53 (n=2,794)         | REAL                | NCBI E-utilities API; 1,645 P/LP + 1,149 B/LB                                                                 |
+| ClinVar BRCA1 (n=10,682)       | REAL                | NCBI E-utilities API; 7,062 P/LP + 3,620 B/LB                                                                 |
+| CFTR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.012, p=0.79; null result                                                                           |
+| TP53 within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=+0.032, p=0.29; null result                                                                           |
+| BRCA1 within-category (LSSIM)  | COMPUTATIONAL       | LR ΔAUC=+0.002, p≈10⁻²⁰; significant but ΔAUC negligible                                                      |
+| ClinVar MLH1 (n=4,060)         | REAL                | NCBI E-utilities API; 2,425 P/LP + 1,635 B/LB                                                                 |
+| MLH1 within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=+0.011, p=0.005; significant but ΔAUC negligible                                                      |
+| Hi-C correlation (MLH1)        | REAL (positive)     | K562 r=0.59; p≈0                                                                                              |
+| Hi-C correlation (BRCA1)       | REAL (positive)     | K562 r=0.53; MCF7 r=0.50; p≈0                                                                                 |
+| Hi-C correlation (TP53)        | REAL (moderate)     | K562 r=0.29; MCF7 r=0.28; p<10⁻¹³⁶                                                                            |
+| Hi-C correlation (LDLR)        | REAL (positive)     | HepG2 r=0.32; p≈0; first tissue-specific validation                                                           |
+| LDLR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.003, p=0.004; significant but ΔAUC negligible                                                      |
+| Bayesian optimization          | COMPUTATIONAL       | Optuna 4.7.0, 200 trials; Δr=0.0001                                                                           |
+| Multimodal AG (RNA-seq/ATAC)   | REAL                | SDK v0.6.0; 1bp resolution; K562; detectable signal (RNA max_delta=28.13)                                     |
 
 ---
 
@@ -1375,7 +1375,7 @@ reflects statistical power (n > 4,000) rather than meaningful positional predict
 MLH1 achieves the joint-highest K562 Hi-C correlation (r = 0.59, tied with HBB 95kb),
 suggesting that strong CTCF boundaries and well-characterized promoter architecture are
 key drivers of model fidelity. (4) AlphaGenome benchmark (AG ρ) shows consistent moderate
-correlation (Spearman ρ = 0.27–0.52) between ARCHCODE's analytical contact maps and
+correlation (Spearman ρ = 0.12–0.52) between ARCHCODE's analytical contact maps and
 AlphaGenome's deep learning predictions across six of seven loci after distance normalization
 (O/E), with the strongest agreement at BRCA1 (ρ = 0.52) and MLH1 (ρ = 0.49) — loci with
 the most complete CTCF/enhancer annotation. SCN5A is the exception (ρ = −0.17), consistent
@@ -1447,7 +1447,7 @@ operates at 2048 bp resolution — individual SNVs affect < 0.05% of the input s
 producing contact map changes near the noise floor. ARCHCODE, by contrast, directly
 perturbs loop extrusion parameters at the variant position, amplifying structural signal
 regardless of sequence length. The two approaches thus have complementary resolution
-regimes: AlphaGenome excels at wild-type structural prediction (ρ = 0.27–0.52, see above),
+regimes: AlphaGenome excels at wild-type structural prediction (ρ = 0.12–0.52, see above),
 while ARCHCODE's analytical perturbation model provides variant-level sensitivity that
 sequence-based deep learning cannot currently achieve at this resolution. Together with
 the Akita null result below, this dual-DL benchmark fully addresses Limitation #10.
@@ -1470,7 +1470,7 @@ reshaped to a 2D matrix, the locus window extracted, resampled to match ARCHCODE
 and distance-normalized identically to the AlphaGenome comparison.
 
 **Results.** Akita and ARCHCODE contact maps show moderate agreement across large loci:
-Spearman ρ ranges from 0.17 (TP53) to 0.43 (BRCA1), comparable to AlphaGenome's 0.27–0.52
+Spearman ρ ranges from 0.17 (TP53) to 0.43 (BRCA1), comparable to AlphaGenome's 0.12–0.52
 (Table 6, row "Akita ρ"). The pattern across loci is consistent: larger windows with more
 Akita bins yield stronger correlations (BRCA1: 195 bins, ρ = 0.43; CFTR: 155 bins, ρ = 0.41),
 while narrow HBB windows produce weak or artifactual results due to aggressive upsampling
@@ -1797,7 +1797,7 @@ scores within the model, not as absolute predictions of chromatin contact freque
 
 The AlphaGenome benchmark provides an independent line of structural validation. ARCHCODE's
 analytically computed contact maps correlate with AlphaGenome's deep learning predictions at
-Spearman ρ = 0.27–0.52 across six of seven loci (SCN5A excluded; see below) — a moderate but consistent agreement between a
+Spearman ρ = 0.12–0.52 across six of seven loci (SCN5A excluded; see below) — a moderate but consistent agreement between a
 physics-based model with zero training data and a foundation model trained on thousands of
 Hi-C experiments. The correlation is strongest at BRCA1 (ρ = 0.52) and MLH1 (ρ = 0.49),
 loci with the most complete CTCF/enhancer annotation, and weakest at HBB (ρ = 0.15), where
@@ -1951,7 +1951,7 @@ the methods detect perturbations through different biological mechanisms. This e
 resolution hierarchy: DL models detect variant effects in epigenomic tracks (1 bp) but not
 contact maps (2048 bp), while ARCHCODE's analytical loop extrusion approach provides variant
 sensitivity regardless of resolution. Wild-type concordance remains moderate for both contact
-map models (AlphaGenome ρ = 0.27–0.52; Akita ρ = 0.17–0.43). AlphaGenome's training set
+map models (AlphaGenome ρ = 0.12–0.52; Akita ρ = 0.17–0.43). AlphaGenome's training set
 includes 4DN Hi-C data, so its wild-type correlation may partly reflect shared training
 signal; Akita (trained on Rao et al. 2014) does not share this confound.
 
