@@ -4,13 +4,8 @@
   "locus_config_id": "hbb_95kb_subTAD",
   "locus_config_path": "D:\\ДНК\\config\\locus\\hbb_95kb_subTAD.json",
   "provenance": {
-    "ctcf_sources": [
-      "ENCODE_K562_CTCF"
-    ],
-    "enhancer_sources": [
-      "NCBI_RefSeq_TSS",
-      "LITERATURE"
-    ],
+    "ctcf_sources": ["ENCODE_K562_CTCF"],
+    "enhancer_sources": ["NCBI_RefSeq_TSS", "LITERATURE"],
     "thresholds_calibrated": false
   },
   "fix_description": "All 1103 variants processed through identical TypeScript engine. effectStrength fixed at 0.3 for ALL variants (position-only model). Discrimination comes solely from variant position in MED1 occupancy landscape and proximity to CTCF/enhancer features. No category or CADD dependency.",
