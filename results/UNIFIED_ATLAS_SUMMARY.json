@@ -4,12 +4,8 @@
   "locus_config_id": "hbb_30kb_v2",
   "locus_config_path": "D:\\ДНК\\config\\locus\\hbb_30kb_v2.json",
   "provenance": {
-    "ctcf_sources": [
-      "MODEL_PARAMETER"
-    ],
-    "enhancer_sources": [
-      "MODEL_PARAMETER"
-    ],
+    "ctcf_sources": ["MODEL_PARAMETER"],
+    "enhancer_sources": ["MODEL_PARAMETER"],
     "thresholds_calibrated": true
   },
   "fix_description": "All 1103 variants processed through identical TypeScript engine. effectStrength uses CADD phred (continuous, per-variant) when available, categorical fallback for variants without CADD. Breaks deterministic category→SSIM mapping from v1.0/v2.0.",
