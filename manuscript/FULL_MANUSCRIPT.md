@@ -191,6 +191,7 @@ sequence-based tools in variant interpretation pipelines.
 | Hi-C correlation (LDLR)        | REAL (positive)     | HepG2 r=0.32; p≈0; first tissue-specific validation                         |
 | LDLR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.003, p=0.004; significant but ΔAUC negligible                    |
 | Bayesian optimization          | COMPUTATIONAL       | Optuna 4.7.0, 200 trials; Δr=0.0001                                         |
+| Multimodal AG (RNA-seq/ATAC)   | REAL                | SDK v0.6.0; 1bp resolution; K562; detectable signal (RNA max_delta=28.13)   |
 
 ---
 
@@ -1443,6 +1444,59 @@ alters ~1.2% of a bin, while a single SNV alters < 0.05%. Notably, Akita was tra
 Rao et al. 2014 Hi-C data (not 4DN), so the wild-type concordance cannot be attributed to
 shared training signal — unlike AlphaGenome (see Limitation #10).
 
+### Multimodal AlphaGenome Validation (RNA-seq + ATAC)
+
+Contact maps operate at 2048 bp resolution, where individual SNVs alter < 0.05% of an input
+bin — producing perturbation signals near the noise floor. However, AlphaGenome also predicts
+RNA-seq and ATAC-seq tracks at **1 bp resolution** — a 2048-fold increase. At this resolution,
+each SNV directly modifies 1 of ~131,000 bins (0.0008%), a substantially larger fractional
+effect than the contact map case. We therefore tested whether these orthogonal epigenomic
+modalities detect variant-level signal invisible to contact maps.
+
+Using AlphaGenome's `predict_variant()` API, we obtained reference and alternate RNA-seq and
+ATAC-seq predictions for all 23 processable pearl variants (20 SNVs, 3 indels) from the HBB
+95kb atlas. Predictions were filtered to K562 (EFO:0002067) — the most biologically relevant
+cell line for the HBB locus — yielding 5 RNA-seq tracks (polyA+/total, ±strand and unstranded)
+and 1 ATAC-seq track per variant. Metrics were computed on the unstranded polyA+ RNA-seq track
+and the K562 ATAC-seq track within the 95 kb locus window.
+
+**Results.** In sharp contrast to the contact map null (ΔSSIM < 10⁻⁴), both modalities show
+substantial variant-level signal at 1 bp resolution:
+
+| Metric                    | RNA-seq (K562) | ATAC-seq (K562) | Contact maps (2048 bp) |
+| ------------------------- | -------------- | --------------- | ---------------------- | ---- | -------------- |
+| Mean max                  | ref − alt      |                 | 28.13                  | 5.70 | < 10⁻⁴ (ΔSSIM) |
+| Mean delta at variant bin | 0.38           | 0.27            | —                      |
+| Mean cosine similarity    | 0.9954         | 0.9205          | ~1.0000                |
+| Mean signal concentration | 16.97×         | 11.15×          | —                      |
+| Indel max delta range     | 99.8–220.7     | 23.4–23.9       | —                      |
+| SNV max delta range       | 6.0–15.1       | 0.5–6.6         | —                      |
+
+Signal concentration ratio measures the mean delta within ±500 bp of the variant divided by
+the mean delta across the full locus window. Values of 11–17× indicate that perturbation
+signal is strongly localized around the variant position rather than uniformly distributed
+(which would give a ratio of ~1.0). This confirms genuine variant-level effect rather than
+global numerical noise.
+
+Indels show dramatically larger deltas than SNVs (RNA-seq: 99–221 vs 6–15; ATAC: 23 vs 0.5–7),
+consistent with the resolution-dependent pattern observed in Akita contact maps (where large
+indels but not SNVs were detectable at 2048 bp).
+
+**Correlation with ARCHCODE.** Spearman rank correlation between ARCHCODE ΔSSIM and
+AlphaGenome multimodal deltas was non-significant: RNA-seq max_delta ρ = −0.22 (p = 0.31);
+ATAC max_delta ρ = −0.32 (p = 0.14); n = 23. This indicates that while both methods detect
+variant-level perturbations, they rank variants differently — consistent with fundamentally
+different mechanisms (analytical loop extrusion vs deep learning from sequence).
+
+**Interpretation.** The multimodal analysis reveals a resolution-dependent hierarchy in
+AlphaGenome's ability to detect variant effects: contact maps (2048 bp) → null; RNA-seq and
+ATAC-seq (1 bp) → detectable signal. This demonstrates that the contact map null result
+(Limitation #10) is a resolution limitation, not a fundamental inability of deep learning to
+detect sequence variants. The lack of rank correlation with ARCHCODE is expected: RNA-seq
+reflects transcriptional effects, ATAC-seq reflects chromatin accessibility, while ARCHCODE
+models loop extrusion dynamics — three distinct biological mechanisms that need not correlate
+for individual variants.
+
 ### Epigenome Cross-Validation
 
 To independently validate the ENCODE ChIP-seq features used as ARCHCODE input parameters
@@ -1543,15 +1597,18 @@ BRCA1: 52, CFTR: 35, TP53: 12 VUS, LDLR: 10).
 
 All reported SSIM values and VEP scores are derived from computational models. Hi-C
 validation against K562, MCF7, and HepG2 experimental data shows significant correlation
-(r = 0.28–0.59 across six loci; see Discussion), but RNA-seq and patient phenotype validation
-remain outstanding. Experimental functional validation is required before any variant
+(r = 0.28–0.59 across six loci; see Discussion). Multimodal AlphaGenome analysis (RNA-seq
+and ATAC-seq at 1 bp resolution) detects variant-level perturbation signal invisible to
+contact maps, but does not rank variants concordantly with ARCHCODE (Spearman ρ = −0.22
+to −0.32, ns). Patient phenotype validation and experimental functional validation (RT-PCR,
+CRISPR) remain outstanding. Experimental validation is required before any variant
 reclassification should be considered.
 
 ---
 
 _Results section — based on real ClinVar data (25,272 variants across 6 loci, NCBI E-utilities)_
 _Word count: ~3,500_
-_Last updated: 2026-03-01_
+_Last updated: 2026-03-02_
 
 ---
 
@@ -1741,19 +1798,23 @@ correlation (r = 0.28–0.59) validates wild-type contact map fidelity, not vari
 structural disruption. No variant-level Hi-C perturbation data exists to validate SSIM
 as a variant classifier directly.
 
-**10. Two independent DL models confirm 2048 bp resolution limitation.** Variant-level
-mutagenesis was performed with both AlphaGenome (`predict_variant()` API) and Akita
-(Fudenberg et al. 2020; local ref/alt mutagenesis) on 23 pearl variants from the HBB 95kb
-atlas. AlphaGenome ΔSSIM (7.5 × 10⁻⁵ to 6.3 × 10⁻⁴, ~49× smaller than ARCHCODE) and Akita
-ΔSSIM (< 10⁻⁴ for SNVs; up to 0.055 for large indels, Spearman ρ = −0.17, p = 0.45) both
-showed negligible SNV-level signal, with no significant rank correlation to ARCHCODE
-perturbation scores. This dual-DL null result
-confirms that the 2048 bp resolution of current sequence-based contact map models is
-fundamentally insufficient for SNV-level structural perturbation detection. Wild-type
-concordance remains moderate for both models (AlphaGenome ρ = 0.27–0.52; Akita ρ = 0.17–0.43).
-AlphaGenome's training set includes 4DN Hi-C data, so its wild-type correlation may partly
-reflect shared training signal; Akita (trained on Rao et al. 2014) does not share this
-confound, strengthening the case for genuine structural concordance.
+**10. Resolution-dependent DL variant sensitivity: null at 2048 bp, detectable at 1 bp.**
+Variant-level mutagenesis was performed with both AlphaGenome (`predict_variant()` API) and
+Akita (Fudenberg et al. 2020; local ref/alt mutagenesis) on 23 pearl variants from the HBB
+95kb atlas. For **contact maps** (2048 bp resolution): AlphaGenome ΔSSIM (7.5 × 10⁻⁵ to
+6.3 × 10⁻⁴, ~49× smaller than ARCHCODE) and Akita ΔSSIM (< 10⁻⁴ for SNVs; up to 0.055 for
+large indels, Spearman ρ = −0.17, p = 0.45) both showed negligible SNV-level signal. For
+**RNA-seq and ATAC-seq** (1 bp resolution): AlphaGenome shows substantial signal — RNA-seq
+mean max_delta = 28.13, ATAC mean max_delta = 5.70, with signal concentration 11–17× higher
+around the variant than background (confirming localized, non-noise effects). However, rank
+correlation with ARCHCODE remains non-significant (ρ = −0.22 to −0.32, p > 0.13), indicating
+the methods detect perturbations through different biological mechanisms. This establishes a
+resolution hierarchy: DL models detect variant effects in epigenomic tracks (1 bp) but not
+contact maps (2048 bp), while ARCHCODE's analytical loop extrusion approach provides variant
+sensitivity regardless of resolution. Wild-type concordance remains moderate for both contact
+map models (AlphaGenome ρ = 0.27–0.52; Akita ρ = 0.17–0.43). AlphaGenome's training set
+includes 4DN Hi-C data, so its wild-type correlation may partly reflect shared training
+signal; Akita (trained on Rao et al. 2014) does not share this confound.
 
 ## Path to Clinical Translation
 
@@ -1818,7 +1879,7 @@ SSIM on smaller loci) provides a complementary perspective on structural disrupt
 
 _Discussion section prepared for bioRxiv submission_
 _Word count: ~1,500 words_
-_Last updated: 2026-03-01_
+_Last updated: 2026-03-02_
 
 ---
 
@@ -2089,7 +2150,8 @@ without experimental confirmation.
 - CFTR benchmark: no Hi-C ground truth available (no cross-locus fallback used)
 - Variant-level: `predict_variant()` API on 23 pearl variants; ΔSSIM via scikit-image SSIM
 - Epigenome: CHIP_TF (CTCF) and CHIP_HISTONE (H3K27ac) at 128 bp resolution; peak detection at 90th percentile; overlap tolerance 2 kb
-- Scripts: `benchmark_alphagenome.py`, `variant_mutagenesis_alphagenome.py`, `epigenome_crossval_alphagenome.py`
+- Multimodal: `predict_variant()` with RNA_SEQ + ATAC at 1 bp resolution; K562 (EFO:0002067); 23 pearl variants; metrics: max_abs_delta, cosine_similarity, signal_concentration_ratio (±500 bp window)
+- Scripts: `benchmark_alphagenome.py`, `variant_mutagenesis_alphagenome.py`, `epigenome_crossval_alphagenome.py`, `multimodal_alphagenome.py`
 
 **Akita benchmark:**
 
@@ -2105,10 +2167,10 @@ without experimental confirmation.
 **Software:**
 
 - ARCHCODE v2.5 (TypeScript + Python), Optuna 4.7.0, ripser 0.6.10, alphagenome 0.6.0, scikit-image 0.26.0, tensorflow-cpu 2.20.0, basenji (Calico)
-- Scripts: `generate-unified-atlas.ts`, `analyze_positional_signal.py`, `tda_proof_of_concept.py`, `download_clinvar_generic.py`, `bayesian_fit_hic.py`, `benchmark_alphagenome.py`, `variant_mutagenesis_alphagenome.py`, `epigenome_crossval_alphagenome.py`, `benchmark_akita.py`, `variant_mutagenesis_akita.py`
+- Scripts: `generate-unified-atlas.ts`, `analyze_positional_signal.py`, `tda_proof_of_concept.py`, `download_clinvar_generic.py`, `bayesian_fit_hic.py`, `benchmark_alphagenome.py`, `variant_mutagenesis_alphagenome.py`, `epigenome_crossval_alphagenome.py`, `multimodal_alphagenome.py`, `benchmark_akita.py`, `variant_mutagenesis_akita.py`
 
 ---
 
 _Supplementary Table S1 prepared for bioRxiv submission_
-_Last updated: 2026-03-01_
+_Last updated: 2026-03-02_
 _Corresponding author: Sergey V. Boyko (sergeikuch80@gmail.com)_
