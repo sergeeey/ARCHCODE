@@ -70,7 +70,7 @@
       "benign_median": 4.8396,
       "benign_std": 5.014549,
       "mann_whitney_U": 450.0,
-      "p_value": 4.8e-05,
+      "p_value": 4.8e-5,
       "rank_biserial_r": -0.7013,
       "significant_005": true,
       "n_pearl": 23,

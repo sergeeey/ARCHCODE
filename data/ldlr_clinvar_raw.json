@@ -1,0 +1,12 @@
+{
+  "gene": "LDLR",
+  "download_date": "2026-03-01T21:34:39.070761",
+  "pathogenic_ids_count": 4650,
+  "benign_ids_count": 1959,
+  "combined_unique_ids": 4763,
+  "summaries_count": 4763,
+  "window": {
+    "start": 10940000,
+    "end": 11240000
+  }
+}

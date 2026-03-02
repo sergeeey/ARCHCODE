@@ -1,0 +1,56 @@
+{
+  "experiment": "Position-Only Control Experiment",
+  "date": "2026-03-02",
+  "description": "Ablation study: fixed effectStrength=0.3 for all variants removes category information. AUC drops to chance level, confirming AUC 0.977 is category-distribution effect.",
+  "categorical": {
+    "model": "categorical",
+    "global_lssim_auc": 0.9755,
+    "path_mean_lssim": 0.8822,
+    "ben_mean_lssim": 0.9931,
+    "delta_mean": -0.1109,
+    "within_category": {
+      "intronic": {
+        "auc": 0.524,
+        "n": 667
+      },
+      "synonymous": {
+        "auc": 0.5703,
+        "n": 86
+      },
+      "other": {
+        "auc": 0.7738,
+        "n": 19
+      },
+      "3_prime_UTR": {
+        "auc": 0.1923,
+        "n": 14
+      }
+    }
+  },
+  "position_only": {
+    "model": "position_only",
+    "global_lssim_auc": 0.5509,
+    "path_mean_lssim": 0.8952,
+    "ben_mean_lssim": 0.8903,
+    "delta_mean": 0.0049,
+    "within_category": {
+      "intronic": {
+        "auc": 0.5296,
+        "n": 667
+      },
+      "synonymous": {
+        "auc": 0.5582,
+        "n": 86
+      },
+      "other": {
+        "auc": 0.7619,
+        "n": 19
+      },
+      "3_prime_UTR": {
+        "auc": 0.0769,
+        "n": 14
+      }
+    }
+  },
+  "conclusion": "AUC 0.977 \u2192 0.551 when category information removed. Position alone does not discriminate pathogenic from benign HBB variants."
+}
