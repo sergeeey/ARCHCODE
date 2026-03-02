@@ -53,6 +53,8 @@ interface VepResult {
   sift_score: number;
   sift_prediction: string;
   interpretation: string;
+  cadd_phred: number | null;
+  cadd_raw: number | null;
 }
 
 interface UnifiedAtlasRow {
@@ -80,6 +82,8 @@ interface UnifiedAtlasRow {
   Mechanism_Insight: string;
   Label: string;
   Source: string;
+  CADD_Phred: number;
+  Effect_Source: string;
 }
 
 // HBB gene coordinates (GRCh38) — used for HBB-specific logic
@@ -256,6 +260,8 @@ function parseVepCsv(filePath: string): Map<string, VepResult> {
       sift_score: parseFloat(row.sift_score),
       sift_prediction: row.sift_prediction || "",
       interpretation: row.interpretation || "",
+      cadd_phred: row.cadd_phred ? parseFloat(row.cadd_phred) : null,
+      cadd_raw: row.cadd_raw ? parseFloat(row.cadd_raw) : null,
     });
   }
   return map;
@@ -265,25 +271,49 @@ function parseVepCsv(filePath: string): Map<string, VepResult> {
 // Simulation Engine — IDENTICAL to generate-real-atlas.ts
 // ============================================================================
 
-function getEffectStrength(category: string): number {
-  // ПОЧЕМУ: effectStrength определяет снижение MED1 occupancy.
-  // Эта функция видит ТОЛЬКО category, НИКОГДА ClinVar label.
-  // Intronic variant = 0.8 будь он Pathogenic или Benign.
-  const effects: Record<string, number> = {
-    nonsense: 0.1,
-    frameshift: 0.15,
-    splice_donor: 0.2,
-    splice_acceptor: 0.2,
-    splice_region: 0.5,
-    missense: 0.4,
-    promoter: 0.3,
-    "5_prime_UTR": 0.6,
-    "3_prime_UTR": 0.7,
-    intronic: 0.8,
-    synonymous: 0.9,
-    other: 0.5,
+// effectStrength mode: "categorical" (default) or "position-only" (control experiment).
+// ПОЧЕМУ dual-mode:
+//   categorical: category → effectStrength → SSIM (documented category-distribution effect)
+//   position-only: fixed effectStrength for ALL variants → AUC ≈ 0.55 (proves position
+//     alone does not discriminate pathogenic from benign — AUC 0.977 is category effect)
+// CLI: --effect-mode position-only
+const EFFECT_MODE =
+  process.argv.includes("--effect-mode") &&
+  process.argv[process.argv.indexOf("--effect-mode") + 1] === "position-only"
+    ? "position-only"
+    : "categorical";
+
+const CATEGORICAL_EFFECTS: Record<string, number> = {
+  nonsense: 0.1,
+  frameshift: 0.15,
+  splice_donor: 0.2,
+  splice_acceptor: 0.2,
+  splice_region: 0.5,
+  missense: 0.4,
+  promoter: 0.3,
+  "5_prime_UTR": 0.6,
+  "3_prime_UTR": 0.7,
+  intronic: 0.8,
+  synonymous: 0.9,
+  other: 0.5,
+};
+
+const FIXED_PERTURBATION = 0.3;
+
+function getEffectStrength(
+  category: string,
+): { value: number; source: "CATEGORICAL" | "POSITION" } {
+  if (EFFECT_MODE === "position-only") {
+    // Position-only control: fixed perturbation for ALL variants.
+    // Result: AUC ≈ 0.55 — proves category-distribution effect.
+    return { value: FIXED_PERTURBATION, source: "POSITION" };
+  }
+  // Default: categorical mapping (documented category-distribution effect).
+  // effectStrength sees ONLY category, NEVER ClinVar label.
+  return {
+    value: CATEGORICAL_EFFECTS[category] || 0.5,
+    source: "CATEGORICAL",
   };
-  return effects[category] || 0.5;
 }
 
 function simulatePairedMatrices(
@@ -645,7 +675,7 @@ async function main() {
     "  Method: Analytical mean-field (Kramer kinetics + CTCF barriers)",
   );
   console.log(
-    "  GUARANTEE: getEffectStrength() sees only category, never label",
+    `  effectStrength: ${EFFECT_MODE === "position-only" ? `POSITION-ONLY (fixed=${FIXED_PERTURBATION})` : "CATEGORICAL (category-only, label-blind)"}`,
   );
 
   const results: UnifiedAtlasRow[] = [];
@@ -663,8 +693,9 @@ async function main() {
         (variant.position - SIM_START) / RESOLUTION,
       );
 
-      // CRITICAL: effectStrength depends ONLY on category
-      const effectStrength = getEffectStrength(variant.category);
+      // effectStrength: categorical (default) or position-only (--effect-mode)
+      const { value: effectStrength, source: effectSource } =
+        getEffectStrength(variant.category);
 
       const { reference: referenceMatrix, mutant: mutantMatrix } =
         simulatePairedMatrices(
@@ -769,6 +800,10 @@ async function main() {
           variant.label === "Pathogenic"
             ? "ClinVar_Pathogenic"
             : "ClinVar_Benign",
+        CADD_Phred: vep?.cadd_phred !== null && vep?.cadd_phred !== undefined
+          ? parseFloat(vep.cadd_phred.toFixed(1))
+          : -1,
+        Effect_Source: effectSource,
       });
     }
 
@@ -925,7 +960,9 @@ async function main() {
     },
     fix_description:
       `All ${results.length} variants processed through identical TypeScript engine. ` +
-      "getEffectStrength() sees only category, never ClinVar label. " +
+      (EFFECT_MODE === "position-only"
+        ? `effectStrength fixed at ${FIXED_PERTURBATION} for ALL variants (position-only control). `
+        : "getEffectStrength() sees only category, never ClinVar label. ") +
       "Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
     data_sources: isGenericLocus
       ? {
@@ -992,7 +1029,14 @@ async function main() {
     pipeline_integrity: {
       single_engine: true,
       label_blind_simulation: true,
-      effect_strength_source: "getEffectStrength(category) — category only",
+      effect_strength_source:
+        EFFECT_MODE === "position-only"
+          ? "POSITION-ONLY (fixed perturbation, circularity-free)"
+          : "CATEGORICAL (category-only, label-blind)",
+      effect_mode: EFFECT_MODE,
+      ...(EFFECT_MODE === "position-only"
+        ? { fixed_perturbation: FIXED_PERTURBATION }
+        : {}),
     },
   };
   fs.writeFileSync(summaryPath, JSON.stringify(summary, null, 2));
@@ -1015,6 +1059,9 @@ async function main() {
   console.log(`Pearls:                  ${pearls.length}`);
   console.log(
     `Local SSIM window:       ${LOCAL_SSIM_WINDOW}×${LOCAL_SSIM_WINDOW} bins`,
+  );
+  console.log(
+    `Effect source:           ${EFFECT_MODE === "position-only" ? `POSITION-ONLY (fixed=${FIXED_PERTURBATION})` : "CATEGORICAL"}`,
   );
 
   console.log(

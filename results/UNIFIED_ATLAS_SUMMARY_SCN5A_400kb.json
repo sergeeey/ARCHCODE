@@ -4,12 +4,8 @@
   "locus_config_id": "scn5a_400kb",
   "locus_config_path": "D:\\ДНК\\config\\locus\\scn5a_400kb.json",
   "provenance": {
-    "ctcf_sources": [
-      "ENCODE_K562_CTCF"
-    ],
-    "enhancer_sources": [
-      "ENCODE_K562_H3K27ac"
-    ],
+    "ctcf_sources": ["ENCODE_K562_CTCF"],
+    "enhancer_sources": ["ENCODE_K562_H3K27ac"],
     "thresholds_calibrated": false
   },
   "fix_description": "All 2488 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",

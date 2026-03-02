@@ -12,10 +12,7 @@
   "parameters": {
     "cell_line": "K562",
     "ontology_term": "EFO:0002067",
-    "output_types": [
-      "RNA_SEQ",
-      "ATAC"
-    ],
+    "output_types": ["RNA_SEQ", "ATAC"],
     "resolution_bp": 1,
     "variant_window_bp": 500,
     "sdk_version": "0.6.0",
@@ -75,10 +72,7 @@
       "p": 0.0008
     },
     "rna_seq_summary": {
-      "max_delta_range": [
-        6.0,
-        143.875
-      ],
+      "max_delta_range": [6.0, 143.875],
       "max_delta_mean": 27.434783,
       "mean_delta_mean": 0.032076,
       "variant_delta_mean": 0.108738
@@ -108,10 +102,7 @@
       "p": 0.9427
     },
     "atac_summary": {
-      "max_delta_range": [
-        0.25,
-        24.29443359375
-      ],
+      "max_delta_range": [0.25, 24.29443359375],
       "max_delta_mean": 4.88398,
       "mean_delta_mean": 0.057714,
       "variant_delta_mean": 0.097776
@@ -259,7 +250,7 @@
         "max_abs_delta": 0.3125,
         "mean_abs_delta": 0.0009974518325179815,
         "cosine_similarity": 0.9999809265136719,
-        "delta_at_variant_bin": 1.2353062629699707e-05,
+        "delta_at_variant_bin": 1.2353062629699707e-5,
         "n_bins_above_1e4": 19746,
         "n_bins_above_1e3": 12438,
         "signal_concentration_ratio": 4.6154,
@@ -592,7 +583,7 @@
         "max_abs_delta": 24.29443359375,
         "mean_abs_delta": 0.3395066559314728,
         "cosine_similarity": 0.34028828144073486,
-        "delta_at_variant_bin": 3.5446137189865112e-06,
+        "delta_at_variant_bin": 3.5446137189865112e-6,
         "n_bins_above_1e4": 79324,
         "n_bins_above_1e3": 71445,
         "signal_concentration_ratio": 0.6913,

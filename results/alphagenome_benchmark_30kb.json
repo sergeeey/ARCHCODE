@@ -12,10 +12,7 @@
     "sdk_version": "0.6.0",
     "sequence_length": 131072,
     "contact_map_resolution": 2048,
-    "contact_map_shape": [
-      64,
-      64
-    ],
+    "contact_map_shape": [64, 64],
     "cell_line": "GM12878",
     "track_name": "4dn:4DNFIXP4QG5B",
     "assay": "in situ Hi-C",
@@ -26,14 +23,14 @@
       "pearson_r": 0.0987360670087013,
       "pearson_p": 0.0006973246343985577,
       "spearman_rho": 0.15338906431764202,
-      "spearman_p": 1.251119187213457e-07,
+      "spearman_p": 1.251119187213457e-7,
       "n": 1176
     },
     "archcode_vs_hic": {
       "pearson_r": 0.13428708128622588,
-      "pearson_p": 3.816449792391092e-06,
+      "pearson_p": 3.816449792391092e-6,
       "spearman_rho": 0.14090783733970105,
-      "spearman_p": 1.2270654726433319e-06,
+      "spearman_p": 1.2270654726433319e-6,
       "n": 1176
     },
     "alphagenome_vs_hic": {

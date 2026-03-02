@@ -1,0 +1,12 @@
+{
+  "gene": "SCN5A",
+  "download_date": "2026-03-02T08:37:23.219881",
+  "pathogenic_ids_count": 1565,
+  "benign_ids_count": 4099,
+  "combined_unique_ids": 4369,
+  "summaries_count": 4369,
+  "window": {
+    "start": 38400000,
+    "end": 38800000
+  }
+}
