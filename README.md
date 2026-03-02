@@ -20,8 +20,9 @@
 
 </div>
 
-<!-- Hero image placeholder — add screenshot or figure here -->
-<!-- <img src="results/figures/hero.png" alt="ARCHCODE 3D visualization" width="100%"> -->
+![Figure 1: SSIM distribution across variant categories](results/figures/fig1_ssim_violin.png)
+
+*LSSIM distribution across 12 variant categories (n=1,103 HBB). LoF classes (nonsense, frameshift) cluster below 0.85; benign classes (intronic, synonymous) near 1.0. Red diamonds = pearl variants.*
 
 ---
 
@@ -151,19 +152,27 @@ ARCHCODE was applied to **7 clinically significant loci** across 27,760 ClinVar 
 
 All loci use identical Kramer kinetics parameters (&alpha;=0.92, &gamma;=0.80, k<sub>base</sub>=0.002). HBB shows the highest structural sensitivity — consistent with its well-characterized LCR enhancer-promoter architecture and compact 30 kb window.
 
+![Figure 5: Multi-locus summary](results/figures/fig5_multilocus_summary.png)
+
+*Cross-locus validation summary. &Delta;LSSIM = separation between benign and pathogenic mean SSIM. Green cells: Hi-C r &ge; 0.50. SCN5A (gray) = negative control (K562 cell-type mismatch).*
+
 ## Benchmarks: ARCHCODE vs Deep Learning Models
 
-ARCHCODE was benchmarked against two state-of-the-art deep learning chromatin structure predictors on identical loci and Hi-C reference data (GSM4873116, WT-HUDEP2 Capture Hi-C):
+ARCHCODE was benchmarked against deep learning chromatin structure predictors across 7 loci using ENCODE Hi-C data (K562, MCF7, HepG2):
+
+![Figure 4: Hi-C validation across loci and cell types](results/figures/fig4_hic_validation.png)
+
+*Pearson r (ARCHCODE vs Hi-C) across 8 locus&times;cell-type combinations. All p < 10<sup>&minus;82</sup>. Color = cell type.*
 
 ### Contact Map Prediction (Hi-C correlation)
 
-| Model | Type | Hi-C r (HBB) | Training data | Speed | Reference |
-|-------|------|-------------|--------------|-------|-----------|
-| **ARCHCODE** | Physics (Kramer LEF) | 0.16 | 0 (analytical) | **< 1 s** | This study |
+| Model | Type | Hi-C r (range) | Training data | Speed | Reference |
+|-------|------|---------------|--------------|-------|-----------|
+| **ARCHCODE** | Physics (Kramer LEF) | **0.28 &ndash; 0.59** | 0 (analytical) | **< 1 s** | This study |
 | **Akita** | Deep learning CNN | 0.59 | ~4,000 Hi-C maps | ~145 s (GPU) | Fudenberg et al. 2020 |
 | **Orca** | Graph neural network | 0.71 | Multi-scale Hi-C | N/A | Zhou et al. 2022 |
 
-ARCHCODE trades Hi-C accuracy for **zero training data**, **interpretable physics**, and **100&times; speed advantage**. Unlike DL models, its parameters (&alpha;, &gamma;, k<sub>base</sub>) map directly to measurable biophysical quantities (cohesin residence time, processivity, loading rate).
+Best ARCHCODE loci: **MLH1 r=0.59**, **HBB 95 kb r=0.59**, **BRCA1 r=0.53** (K562). ARCHCODE achieves Akita-level correlation on top loci with **zero training data**, **interpretable physics**, and **100&times; speed advantage**. Its parameters (&alpha;, &gamma;, k<sub>base</sub>) map directly to measurable biophysical quantities (cohesin residence time, processivity, loading rate).
 
 ### Cross-Model Agreement (ARCHCODE vs DL predictions)
 
@@ -266,7 +275,7 @@ ARCHCODE/
 
 - **VEP proxy**: SpliceAI API was unreachable; Ensembl VEP used instead (different scope, see Methods)
 - **Mean-field approximation**: analytical Kramer-rate model, not full stochastic Monte Carlo simulation
-- **Hi-C validation**: experimental correlation r = 0.16 (KR-normalized, not significant); computational validation only
+- **Hi-C validation**: ENCODE Hi-C r = 0.28&ndash;0.59 across loci (significant, p < 10<sup>&minus;82</sup>); pilot HUDEP2 Capture Hi-C r = 0.16 (not significant, small sample)
 - **Parameters manually calibrated**: &alpha;=0.92, &gamma;=0.80 from literature ranges (Gerlich 2006, Davidson 2019), not fitted to data
 - **No missense sensitivity**: ARCHCODE models chromatin topology, not protein folding — missense detected only via CADD-derived effect strength
 - **HBB-centric ROC**: AUC 0.977 validated on HBB; other loci show limited structural signal (SSIM ~1.0 for most variants)
@@ -297,7 +306,7 @@ Manuscript submitted to **bioRxiv** (ID: BIORXIV/2026/708672). Under screening �
              \beta-Globin Variants},
   author  = {Boyko, Sergey V.},
   year    = {2026},
-  note    = {bioRxiv preprint (submitted 2026-02-28, DOI pending)},
+  note    = {bioRxiv preprint (submitted 2026-03-02, ID: BIORXIV/2026/708672)},
   url     = {https://github.com/sergeeey/ARCHCODE}
 }
 ```
