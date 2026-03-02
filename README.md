@@ -10,7 +10,7 @@
 
 ---
 
-[![bioRxiv](https://img.shields.io/badge/bioRxiv-submitted-B31B1B)](https://doi.org/10.1101/2026.XX.XX.XXXXXX)
+[![bioRxiv](https://img.shields.io/badge/bioRxiv-2026.708672-B31B1B)](https://www.biorxiv.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Three.js](https://img.shields.io/badge/Three.js-r181-000000?logo=threedotjs&logoColor=white)](https://threejs.org/)
@@ -151,6 +151,53 @@ ARCHCODE was applied to **7 clinically significant loci** across 27,760 ClinVar 
 
 All loci use identical Kramer kinetics parameters (&alpha;=0.92, &gamma;=0.80, k<sub>base</sub>=0.002). HBB shows the highest structural sensitivity — consistent with its well-characterized LCR enhancer-promoter architecture and compact 30 kb window.
 
+## Benchmarks: ARCHCODE vs Deep Learning Models
+
+ARCHCODE was benchmarked against two state-of-the-art deep learning chromatin structure predictors on identical loci and Hi-C reference data (GSM4873116, WT-HUDEP2 Capture Hi-C):
+
+### Contact Map Prediction (Hi-C correlation)
+
+| Model | Type | Hi-C r (HBB) | Training data | Speed | Reference |
+|-------|------|-------------|--------------|-------|-----------|
+| **ARCHCODE** | Physics (Kramer LEF) | 0.16 | 0 (analytical) | **< 1 s** | This study |
+| **Akita** | Deep learning CNN | 0.59 | ~4,000 Hi-C maps | ~145 s (GPU) | Fudenberg et al. 2020 |
+| **Orca** | Graph neural network | 0.71 | Multi-scale Hi-C | N/A | Zhou et al. 2022 |
+
+ARCHCODE trades Hi-C accuracy for **zero training data**, **interpretable physics**, and **100&times; speed advantage**. Unlike DL models, its parameters (&alpha;, &gamma;, k<sub>base</sub>) map directly to measurable biophysical quantities (cohesin residence time, processivity, loading rate).
+
+### Cross-Model Agreement (ARCHCODE vs DL predictions)
+
+<details>
+<summary><b>Per-locus Pearson r / Spearman &rho;</b></summary>
+
+| Locus | ARCHCODE vs Akita (r / &rho;) | ARCHCODE vs AlphaGenome (r / &rho;) |
+|-------|-------------------------------|--------------------------------------|
+| HBB (30 kb) | 0.056 / 0.128 | 0.099 / 0.153 |
+| HBB (95 kb) | &minus;0.126 / &minus;0.273 | 0.052 / 0.125 |
+| BRCA1 | 0.154 / 0.426 | 0.210 / 0.524 |
+| CFTR | 0.272 / 0.407 | 0.071 / 0.271 |
+| TP53 | &minus;0.007 / 0.171 | 0.270 / 0.316 |
+| MLH1 | 0.120 / 0.224 | 0.283 / 0.486 |
+| LDLR | 0.177 / 0.338 | 0.293 / 0.432 |
+| SCN5A | — | &minus;0.083 / &minus;0.172 |
+
+Low cross-model correlation is expected: ARCHCODE captures **loop-level topology** (cohesin barriers, enhancer contacts), while DL models learn **genome-wide distance decay patterns** from Hi-C training data. The models answer fundamentally different questions.
+
+</details>
+
+### Multimodal Validation of Pearl Variants
+
+To verify that ARCHCODE-discovered pearls represent real biology (not simulation artifacts), we compared predicted chromatin accessibility and expression changes between pearl and benign variant groups using AlphaGenome RNA-seq and ATAC-seq tracks:
+
+| Modality | Metric | Pearl (n=23) | Benign (n=23) | p-value |
+|----------|--------|-------------|--------------|---------|
+| **RNA-seq** | Signal concentration ratio | 16.97 | 6.09 | 4.8 &times; 10<sup>&minus;5</sup> |
+| **RNA-seq** | &Delta; at variant bin | 0.381 | 0.109 | 0.0014 |
+| **ATAC-seq** | Signal concentration ratio | 11.15 | 6.39 | 0.0026 |
+| **ATAC-seq** | &Delta; at variant bin | 0.268 | 0.098 | 0.029 |
+
+All metrics significant at p < 0.05. Pearl variants show **2.8&times; higher RNA-seq signal concentration** and **2.7&times; higher ATAC-seq &Delta;** at the variant position compared to benign controls, consistent with genuine regulatory disruption.
+
 ## Tech Stack
 
 | Layer | Technology | Purpose |
@@ -237,9 +284,9 @@ This protocol was developed after a self-audit identified risks of AI-generated 
 
 ## Preprint
 
-Manuscript submitted to **bioRxiv** on February 28, 2026. DOI pending.
+Manuscript submitted to **bioRxiv** (ID: BIORXIV/2026/708672). Under screening — DOI will be updated once assigned.
 
-> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors in &beta;-Globin Variants. *bioRxiv* (submitted).
+> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors in &beta;-Globin Variants. *bioRxiv* (submitted 2026-03-02, under review).
 
 ## Citation
 
