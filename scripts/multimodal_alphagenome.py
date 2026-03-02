@@ -16,12 +16,18 @@ Pearl variants дают mean max_delta=28 (RNA) и 5.7 (ATAC). Но без ко�
 non-pearl variants и прогоняет тот же pipeline. --compare сравнивает группы
 через Mann-Whitney U (non-parametric, не требует нормальности).
 
+ПОЧЕМУ cross-locus (v3):
+Для локусов без pearls (BRCA1, SCN5A) используем --variant-mode pathogenic
+для ClinVar Pathogenic variants. Сравнение pathogenic vs benign — внешняя
+ground truth от ClinVar вместо ARCHCODE-internal pearl detection.
+
 Usage:
-    python scripts/multimodal_alphagenome.py                              # pearl (default)
+    python scripts/multimodal_alphagenome.py                              # HBB pearl (default)
     python scripts/multimodal_alphagenome.py --variant-mode benign --sample-size 23 --seed 42
-    python scripts/multimodal_alphagenome.py --compare                    # load both JSONs, Mann-Whitney U
+    python scripts/multimodal_alphagenome.py --variant-mode pathogenic --locus brca1 --atlas results/BRCA1_Unified_Atlas_400kb.csv --sample-size 23
+    python scripts/multimodal_alphagenome.py --compare --locus brca1      # load both JSONs for locus
     python scripts/multimodal_alphagenome.py --api-key YOUR_KEY
-    python scripts/multimodal_alphagenome.py --cell-line GM12878
+    python scripts/multimodal_alphagenome.py --cell-line MCF7 --ontology-term EFO:0001203
 """
 
 import argparse
@@ -78,10 +84,11 @@ def load_variants(
     """
     Load variants from unified atlas CSV, skipping IUPAC codes.
 
-    ПОЧЕМУ два режима:
-    - mode="pearl" → Pearl==true (existing behavior, pathogenic variants of interest)
-    - mode="benign" → Label==Benign AND Pearl!=true (control group for comparison)
-    Benign variants are randomly sampled to match pearl count for fair comparison.
+    ПОЧЕМУ три режима:
+    - mode="pearl" → Pearl==true (ARCHCODE-only detections, HBB specific)
+    - mode="benign" → Label==Benign AND Pearl!=true (control group)
+    - mode="pathogenic" → Label==Pathogenic (ClinVar ground truth, for cross-locus)
+    Benign and pathogenic variants are randomly sampled for fair comparison.
     """
     valid_bases = set("ACGTN")
     variants = []
@@ -89,7 +96,8 @@ def load_variants(
         reader = csv.DictReader(f)
         for row in reader:
             # ПОЧЕМУ разные фильтры: pearl = наши ARCHCODE-only detections,
-            # benign = ClinVar Benign variants вне pearl set (контрольная группа)
+            # benign = ClinVar Benign (контрольная группа),
+            # pathogenic = ClinVar Pathogenic (для локусов без pearls)
             if mode == "pearl":
                 if row.get("Pearl", "").lower() != "true":
                     continue
@@ -97,6 +105,9 @@ def load_variants(
                 if row.get("Label", "") != "Benign":
                     continue
                 if row.get("Pearl", "").lower() == "true":
+                    continue
+            elif mode == "pathogenic":
+                if row.get("Label", "") != "Pathogenic":
                     continue
             else:
                 raise ValueError(f"Unknown variant mode: {mode}")
@@ -123,9 +134,9 @@ def load_variants(
                 "variant_type": "SNV" if len(ref) == 1 and len(alt) == 1 else "indel",
             })
 
-    # ПОЧЕМУ random sample для benign: fair comparison требует одинакового n.
+    # ПОЧЕМУ random sample: fair comparison требует одинакового n.
     # seed фиксирован для воспроизводимости.
-    if mode == "benign" and sample_size is not None and len(variants) > sample_size:
+    if mode in ("benign", "pathogenic") and sample_size is not None and len(variants) > sample_size:
         rng = random.Random(seed)
         variants = rng.sample(variants, sample_size)
 
@@ -505,8 +516,8 @@ def main():
     parser.add_argument("--batch-delay", type=float, default=3.0)
     parser.add_argument("--output", help="Output JSON path")
     parser.add_argument(
-        "--variant-mode", choices=["pearl", "benign"], default="pearl",
-        help="Variant selection mode: pearl (default) or benign control",
+        "--variant-mode", choices=["pearl", "benign", "pathogenic"], default="pearl",
+        help="Variant selection mode: pearl (default), benign control, or pathogenic (ClinVar)",
     )
     parser.add_argument(
         "--sample-size", type=int, default=None,
@@ -522,23 +533,34 @@ def main():
     # ПОЧЕМУ --compare отдельно: не тратит API calls, просто загружает
     # два уже готовых JSON и считает статистику.
     if args.compare:
+        # ПОЧЕМУ locus-aware paths: для HBB — pearl vs benign,
+        # для других локусов (BRCA1, SCN5A) — pathogenic vs benign.
+        locus = args.locus.lower().replace("_400kb", "").replace("_95kb", "")
+
+        if locus in ("95kb", "hbb"):
+            # Legacy HBB paths (backward compatible)
+            group_a_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
+            group_b_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb_benign_control.json"
+            comparison_path = PROJECT_ROOT / "results" / "multimodal_pearl_vs_benign_comparison.json"
+            label = "Pearl vs Benign"
+        else:
+            group_a_path = PROJECT_ROOT / "results" / f"multimodal_alphagenome_{locus}_pathogenic.json"
+            group_b_path = PROJECT_ROOT / "results" / f"multimodal_alphagenome_{locus}_benign.json"
+            comparison_path = PROJECT_ROOT / "results" / f"multimodal_{locus}_path_vs_benign_comparison.json"
+            label = "Pathogenic vs Benign"
+
         print("=" * 70)
-        print("ARCHCODE Pearl vs Benign Multimodal Comparison (Mann-Whitney U)")
+        print(f"ARCHCODE {label} Multimodal Comparison — {locus.upper()} (Mann-Whitney U)")
         print("=" * 70)
 
-        pearl_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
-        benign_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb_benign_control.json"
-        comparison_path = PROJECT_ROOT / "results" / "multimodal_pearl_vs_benign_comparison.json"
-
-        if not pearl_path.exists():
-            print(f"  ERROR: Pearl results not found: {pearl_path}")
+        if not group_a_path.exists():
+            print(f"  ERROR: Group A results not found: {group_a_path}")
             sys.exit(1)
-        if not benign_path.exists():
-            print(f"  ERROR: Benign results not found: {benign_path}")
-            print("  Run: python scripts/multimodal_alphagenome.py --variant-mode benign --sample-size 23 --seed 42")
+        if not group_b_path.exists():
+            print(f"  ERROR: Group B results not found: {group_b_path}")
             sys.exit(1)
 
-        run_comparison(pearl_path, benign_path, comparison_path)
+        run_comparison(group_a_path, group_b_path, comparison_path)
         return
 
     api_key = get_api_key(args)
@@ -563,19 +585,11 @@ def main():
     atlas_path = PROJECT_ROOT / args.atlas
 
     # ПОЧЕМУ default sample_size = None для pearl: pearls и так мало (~23),
-    # не нужно семплировать. Для benign — если не указан, берём столько же
-    # сколько pearls в предыдущем запуске (23).
+    # не нужно семплировать. Для benign/pathogenic — если не указан, 23 (как HBB baseline).
     sample_size = args.sample_size
-    if variant_mode == "benign" and sample_size is None:
-        # Default: match pearl count from existing results
-        pearl_json = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
-        if pearl_json.exists():
-            pearl_data = json.loads(pearl_json.read_text())
-            sample_size = pearl_data["counts"]["total_pearls"]
-            print(f"  Auto-matching benign sample size to pearl count: {sample_size}")
-        else:
-            sample_size = 23
-            print(f"  Default benign sample size: {sample_size}")
+    if variant_mode in ("benign", "pathogenic") and sample_size is None:
+        sample_size = 23
+        print(f"  Default sample size: {sample_size}")
 
     print(f"\n--- Step 2: Load {variant_mode} variants ({atlas_path.name}) ---")
     variants = load_variants(
@@ -584,7 +598,7 @@ def main():
     n_snv = sum(1 for p in variants if p["variant_type"] == "SNV")
     n_indel = sum(1 for p in variants if p["variant_type"] == "indel")
     print(f"  Found {len(variants)} usable {variant_mode} variants ({n_snv} SNV, {n_indel} indel)")
-    if variant_mode == "benign":
+    if variant_mode in ("benign", "pathogenic"):
         print(f"  Seed: {args.seed}, sample_size: {sample_size}")
     if not variants:
         print(f"  ERROR: No {variant_mode} variants found.")
@@ -619,14 +633,18 @@ def main():
                       f"ρ={c['rho']:.4f} (p={c['p']:.4f})")
 
     # Step 5: Save results
-    # ПОЧЕМУ dynamic naming: pearl → existing path (не ломаем backward compatibility),
-    # benign → отдельный файл для сравнения.
+    # ПОЧЕМУ dynamic naming: locus-aware paths. HBB pearl/benign — legacy paths
+    # для backward compatibility. Другие локусы — {locus}_{mode}.json.
+    locus_tag = args.locus.lower().replace("_400kb", "").replace("_95kb", "")
     if args.output:
         output_path = Path(args.output)
-    elif variant_mode == "benign":
-        output_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb_benign_control.json"
+    elif locus_tag in ("95kb", "hbb"):
+        if variant_mode == "benign":
+            output_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb_benign_control.json"
+        else:
+            output_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
     else:
-        output_path = PROJECT_ROOT / "results" / "multimodal_alphagenome_hbb.json"
+        output_path = PROJECT_ROOT / "results" / f"multimodal_alphagenome_{locus_tag}_{variant_mode}.json"
 
     successful = [r for r in results if r.get("status") == "success"]
 
@@ -658,8 +676,8 @@ def main():
             "variant_window_bp": VARIANT_WINDOW_BP,
             "sdk_version": "0.6.0",
             "variant_mode": variant_mode,
-            "sample_size": sample_size if variant_mode == "benign" else None,
-            "seed": args.seed if variant_mode == "benign" else None,
+            "sample_size": sample_size if variant_mode in ("benign", "pathogenic") else None,
+            "seed": args.seed if variant_mode in ("benign", "pathogenic") else None,
         },
         "counts": {
             "total_variants": len(variants),
