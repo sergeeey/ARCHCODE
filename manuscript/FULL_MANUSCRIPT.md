@@ -157,7 +157,7 @@ sequence-based tools in variant interpretation pipelines.
 3. **20 "pearl" variants** identified on HBB: VEP-blind (VEP < 0.30), ARCHCODE-detected (SSIM < 0.95)
 4. **ROC AUC = 0.977** (unified pipeline); reflects category-distribution differences, not independent prediction
 5. **Local SSIM (LSSIM)** resolves matrix-size dilution: dynamic range 0.75–1.00 (vs 0.98–1.00 global); verdicts now work on all matrix sizes
-6. **Within-category: primarily null** (CFTR/TP53 p > 0.29); BRCA1/MLH1/LDLR statistically significant at ΔAUC < 0.02 (power effect, not meaningful prediction)
+6. **Within-category: primarily null** (CFTR/TP53 p > 0.29); BRCA1/MLH1/LDLR statistically significant at ΔAUC < 0.02 (power effect, not meaningful prediction); **position-only control: AUC = 0.551** (confirms category-distribution effect)
 7. **Multi-locus Hi-C validation:** MLH1 r = 0.59, HBB r = 0.53–0.59, BRCA1 r = 0.50–0.53, LDLR r = 0.32 (HepG2), TP53 r = 0.28–0.29 (K562 + MCF7 + HepG2)
 8. **Improved classify_hgvs()** detects frameshift vs inframe from cDNA indel length, resolving >90% of "other" variants
 
@@ -190,6 +190,7 @@ sequence-based tools in variant interpretation pipelines.
 | Hi-C correlation (TP53)        | REAL (moderate)     | K562 r=0.29; MCF7 r=0.28; p<10⁻¹³⁶                                                                            |
 | Hi-C correlation (LDLR)        | REAL (positive)     | HepG2 r=0.32; p≈0; first tissue-specific validation                                                           |
 | LDLR within-category (LSSIM)   | COMPUTATIONAL       | LR ΔAUC=−0.003, p=0.004; significant but ΔAUC negligible                                                      |
+| Position-only control          | COMPUTATIONAL       | Fixed effectStrength=0.3; AUC=0.551 (≈chance); confirms AUC 0.977 = category effect                           |
 | Bayesian optimization          | COMPUTATIONAL       | Optuna 4.7.0, 200 trials; Δr=0.0001                                                                           |
 | Multimodal AG (RNA-seq/ATAC)   | REAL                | SDK v0.6.0; 1bp resolution; K562; detectable signal (RNA max_delta=28.13)                                     |
 
@@ -484,6 +485,14 @@ and Mediator occupancy; synonymous variants preserve transcription and chromatin
 ARCHCODE does not use VEP scores, ClinVar classifications, or any sequence-based predictor
 output as input — the two models are mechanistically independent.
 
+**Position-only control:** To quantify the contribution of category-dependent scaling to
+classification performance, a control mode (`--effect-mode position-only`) applies a fixed
+effectStrength = 0.3 to all variants regardless of category. In this mode, the only source
+of SSIM variance is variant position relative to architectural features (CTCF barriers,
+enhancers, MED1 landscape). The resulting AUC = 0.551 confirms that the reported AUC = 0.977
+is attributable to the categorical occupancy scaling, not to position-dependent structural
+sensitivity (see Results: Position-Only Control Experiment).
+
 ### Contact Matrix Generation
 
 Contact probabilities are computed analytically using a mean-field formula that combines four
@@ -763,6 +772,7 @@ upon reasonable request. Key datasets include:
 - MLH1 unified dataset: `MLH1_Unified_Atlas_300kb.csv` (4,060 rows)
 - MLH1 within-category analysis: `positional_signal_mlh1.json`
 - Bayesian optimization results: `bayesian_fit_hic.json`
+- Position-only control atlas: `HBB_Unified_Atlas_95kb_POSITION_ONLY.csv` (1,103 rows, fixed effectStrength=0.3)
 - Source code: GitHub repository (see Software and Code Availability)
 
 ---
@@ -1038,6 +1048,44 @@ The model's scientific contribution on HBB is therefore a category-level structu
 model: it correctly assigns perturbation magnitude to functional categories and
 identifies 20 pearl candidates, but does not independently predict pathogenicity
 within categories at this locus.
+
+### Position-Only Control Experiment
+
+To definitively quantify the contribution of variant category to the AUC, we ran an
+ablation experiment: all 1,103 HBB variants were re-processed with a fixed
+effectStrength = 0.3 for every variant regardless of functional category
+(`--effect-mode position-only`). In this configuration, the only source of SSIM
+variance is variant **position** relative to CTCF barriers, enhancers, and the MED1
+occupancy landscape — no sequence-level information enters the model.
+
+| Metric                | Categorical model | Position-only model |
+| --------------------- | :---------------: | :-----------------: |
+| Global LSSIM AUC      |       0.976       |      **0.551**      |
+| Path mean LSSIM       |       0.882       |        0.895        |
+| Ben mean LSSIM        |       0.993       |        0.890        |
+| Δ(mean LSSIM)         |      −0.111       |       +0.005        |
+| Within-intronic AUC   |       0.524       |        0.530        |
+| Within-synonymous AUC |       0.570       |        0.558        |
+
+The position-only AUC of 0.551 is indistinguishable from chance (0.5), confirming
+that variant position within the 95 kb window does not discriminate pathogenic from
+benign variants. Both cohorts occupy a 2.1 kb cluster in the gene body, producing
+near-identical MED1 occupancy environments. The within-category AUC remains
+unchanged (~0.53), consistent with position being the sole residual signal in both
+models.
+
+We also tested a CADD-based effectStrength mapping (sigmoid transform of CADD phred
+scores), which yielded within-synonymous AUC = 0.988 — revealing that CADD scores
+themselves discriminate pathogenic from benign within categories, creating a new
+circularity rather than resolving the original one. This approach was therefore
+rejected.
+
+**Conclusion:** The AUC of 0.977 is entirely attributable to the categorical
+effectStrength mapping (nonsense = 0.1 vs intronic = 0.8), which encodes the
+well-established correlation between functional consequence and clinical
+significance. ARCHCODE's structural model provides value through Hi-C contact
+prediction (r = 0.53–0.59) and pearl identification, not through independent
+variant-level pathogenicity discrimination.
 
 ---
 
@@ -1809,11 +1857,14 @@ from the same cell lines used in our Hi-C validation, so the correlation may par
 shared data provenance rather than independent convergence on biological truth.
 
 Importantly, the AUC of 0.977 is a category-level structural model, not evidence of
-within-category positional prediction. Multi-locus testing using LSSIM across seven loci
-(25,272 variants total) confirms that LSSIM adds no clinically meaningful predictive
-value beyond category assignment: CFTR and TP53 show clear null results (p > 0.29),
-while BRCA1 (p ≈ 10⁻²⁰) and MLH1 (p = 0.005) show statistical significance with
-negligible effect sizes (ΔAUC < 0.02). The significance at larger loci reflects
+within-category positional prediction. A position-only control experiment (fixed
+effectStrength = 0.3 for all variants, removing all category information) yielded
+AUC = 0.551 — indistinguishable from chance — confirming that the AUC is entirely
+attributable to the categorical effectStrength mapping. Multi-locus testing using LSSIM
+across seven loci (25,272 variants total) confirms that LSSIM adds no clinically
+meaningful predictive value beyond category assignment: CFTR and TP53 show clear null
+results (p > 0.29), while BRCA1 (p ≈ 10⁻²⁰) and MLH1 (p = 0.005) show statistical
+significance with negligible effect sizes (ΔAUC < 0.02). The significance at larger loci reflects
 statistical power rather than a biologically meaningful within-category signal. This is
 a structural property of the occupancy-scaling approach: perturbation magnitude is
 assigned by functional category, not by genomic position within category. The model _is_
