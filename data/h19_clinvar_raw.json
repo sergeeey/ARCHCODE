@@ -1,0 +1,12 @@
+{
+  "gene": "H19",
+  "download_date": "2026-03-04T11:57:16.764600",
+  "pathogenic_ids_count": 40,
+  "benign_ids_count": 55,
+  "combined_unique_ids": 85,
+  "summaries_count": 85,
+  "window": {
+    "start": 0,
+    "end": 999999999
+  }
+}
