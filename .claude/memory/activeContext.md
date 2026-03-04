@@ -1,105 +1,108 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-04 (session 27: 9-locus expansion + threshold/CTCF analysis)
+**Last Updated:** 2026-03-04 (session 28-29: orthogonal validation + manuscript v2.8)
 **Branch:** main
-**Last Commit:** pending (uncommitted: TERT + GJB2 pipeline, threshold analysis, CTCF distance)
-**GitHub:** https://github.com/sergeeev/ARCHCODE
+**Last Commit:** 638a5d9 — `feat: v2.8 orthogonal validation — SpliceAI null + MPRA cross-validation + Figure 10`
+**GitHub:** https://github.com/sergeeey/ARCHCODE
 **bioRxiv ID:** BIORXIV/2026/708672 — REJECTED ("not complete research with new data")
-**Status:** 9 loci, 30,318 variants. Per-locus thresholds + CTCF/enhancer proximity analysis complete. Manuscript reframe next.
+**Zenodo DOI:** 10.5281/zenodo.18867051 (PUBLISHED, 2026-03-04)
+**arXiv:** endorsement requested from Dr. Guang Shi (DIMES, polymer chromatin modeling), code B9P837
+**Status:** v2.8 published on Zenodo. arXiv endorsement pending. gnomAD AF analysis complete.
 
 ---
 
 ## Текущий статус проекта
 
-**Фаза:** v3.1 — 9-locus expansion + mechanistic analysis + manuscript reframe
+**Фаза:** v2.8 — orthogonal validation complete, arXiv submission pending
 
-### Session 27: Full Pipeline — 2 New Loci + Threshold + CTCF Analysis
+### Manuscript v2.8 (current) — what's new vs v2.7
 
-**Part 1: Two New Loci (TERT + GJB2)**
+1. **SpliceAI validation** — 20/20 pearl SNVs = 0.00 via Ensembl VEP REST API with SpliceAI plugin. Closes Limitation #4.
+2. **MPRA cross-validation** — Kircher et al. 2019 (Nat Commun 10:3583), MaveDB urn:mavedb:00000018-a-1. 623 variants, HBB promoter 187bp, HEL 92.1.7 cells. Allele-specific match: n=22, r=−0.21 p=0.36. Informative null — MPRA = episomal, pearl = 3D structural.
+3. **Figure 10** — AlphaGenome multimodal validation (dual-panel: signal concentration + 3-locus tissue gradient)
+4. **Structural Blind Spot table** — 5 methods: VEP(0), SpliceAI(0.00), CADD(15.7), MPRA(null), ARCHCODE(<0.92)
+5. **New Results section:** "Orthogonal Validation: SpliceAI and MPRA Cross-Reference"
+6. **Discussion paragraph:** "Orthogonal Evidence Strengthens the Structural Blind Spot" — 5-method convergence
+7. **Limitation #4 rewritten:** was "API unreachable" → now "SpliceAI confirms pearl invisibility"
 
-1. **TERT locus (chr5p15.33)** — 2,089 ClinVar variants (431 P/LP, 1,658 B/LB). Inter-TAD boundary region. 10 CTCF sites, 5 H3K27ac peaks. Mean LSSIM: Path=0.9798, Ben=0.9986 (Δ=0.019). 27 structural pathogenic. 0 pearls. CADD: 1,957/2,089 scored (93.7%)
-2. **GJB2 locus (chr13q12.11)** — 469 ClinVar variants (314 P/LP, 155 B/LB). **Intentional tissue-mismatch benchmark** (cochlear gene in K562 erythroid). Mean LSSIM: Path=0.9916, Ben=0.9978 (Δ=0.006). **0 structural pathogenic, 0 pearls — expected null**. CADD: 379/469 scored (80.8%)
-3. **Missense misclassification fix** — Created `reclassify_with_vep.py` using Ensembl VEP REST API
-4. **Integrative benchmark** — 30,318 variants (9 loci), 20,029 CADD-scored (66.1%)
+### Core findings (unchanged from v2.7)
 
-**Part 2: Per-Locus Threshold Analysis (KEY RESULT)**
+- 30,318 ClinVar variants across 9 loci (HBB/CFTR/TP53/BRCA1/MLH1/LDLR/SCN5A/TERT/GJB2)
+- 27 pearl variants on HBB — VEP-blind, ARCHCODE-detected
+- Enhancer proximity drives discrimination: ≤1kb Δ=0.039 (7× average)
+- Tissue-specificity gradient: matched (HBB Δ=0.111) → mismatch (GJB2: null)
+- Per-locus thresholds: HBB 0.977 (92.9% sens) to GJB2 (no threshold works)
+- Hi-C validation: r=0.28-0.59 across loci
+- AlphaGenome multimodal: pearl RNA-seq 2.8× higher than benign (p<0.0001)
+- CADD complementarity: pearl CADD median=15.7 (ambiguous zone)
 
-5. **Per-locus thresholds** — universal 0.95 works only for HBB (79.6% sens). Per-locus optimal (FPR≤1%):
-   - HBB: 0.977 → 92.9% sensitivity (vs 79.6% at 0.95)
-   - TERT: 0.968 → 22.7%
-   - TP53: 0.982 → 22.6%
-   - SCN5A: 0.994 → 22.4% (but tissue-mismatch caveat)
-   - MLH1: 0.972 → 5.5%
-   - LDLR: 0.989 → 4.2%
-   - CFTR: 0.971 → 2.6%
-   - BRCA1: 0.965 → 0.9%
-   - GJB2: **NO THRESHOLD** achieves FPR≤1% with any sensitivity
+### Key files (v2.8)
 
-6. **Tissue-specificity gradient confirmed (9 loci):**
-   ```
-   HBB  (matched)   Δ=0.111  STRONG
-   TERT (expressed)  Δ=0.019  STRONG
-   MLH1 (partial)    Δ=0.009  MODERATE
-   TP53 (partial)    Δ=0.009  MODERATE
-   CFTR (partial)    Δ=0.007  MODERATE
-   GJB2 (mismatch)   Δ=0.006  MODERATE  ← expected null
-   BRCA1(partial)    Δ=0.006  MODERATE
-   SCN5A(mismatch)   Δ=0.003  MODERATE  ← expected null
-   LDLR (partial)    Δ=0.002  WEAK
-   ```
+**Manuscript:**
 
-**Part 3: CTCF Distance + ARCHCODE-Only Clustering (MECHANISTIC INSIGHT)**
+- `manuscript/body_content.typ` — English, main content
+- `manuscript/body_content_ru.typ` — Russian translation
+- `manuscript/main.typ` / `main_ru.typ` — entry points
+- `manuscript/main.pdf` / `main_ru.pdf` — compiled PDFs
+- Desktop copy: `C:\Users\serge\Desktop\arxiv 0403\ARCHCODE_arXiv_2026_v1.pdf`
 
-7. **Pearl variants (n=27) cluster near ENHANCERS, not CTCF:**
-   - Median CTCF distance: 22,120bp (far)
-   - Median enhancer distance: 831bp (close!)
-   - Pearl vs non-pearl pathogenic: p = 1.08e-8 (Mann-Whitney)
+**Validation data (new in v2.8):**
 
-8. **Enhancer proximity = strongest structural predictor:**
+- `results/spliceai_pearl_variants.csv` — 20 pearl SNVs, all SpliceAI=0.00
+- `data/mpra_kircher_hbb_raw.csv` — 623 MPRA variants from MaveDB
+- `results/mpra_crossvalidation_summary.json` — analysis summary
+- `results/mpra_archcode_crossvalidation.csv` — 22 allele-matched variants
+- `results/mpra_archcode_position_match.csv` — 30 position-level matches
+- `scripts/mpra_crossvalidation.py` — cross-validation analysis script
 
-   ```
-   ≤1kb from enhancer:  Δ(path-ben) = 0.039  ← 7× average
-   1-5kb:               Δ = 0.011
-   5-20kb:              Δ = 0.002
-   >20kb:               Δ = 0.005
-   ```
+**Figures:**
 
-9. **ARCHCODE-only clustering (n=394, LSSIM<0.95 + CADD<20):**
-   - True Positives (364): 83% frameshift, median enhancer dist=494bp, across 7 loci
-   - False Positives (30): 93% "other" (CNVs), median CTCF dist=692bp, 87% BRCA1
-   - TP vs FP CTCF distance: p = 3.69e-8
-   - **Actionable: filter "other" category to reduce FP**
+- `figures/fig1-fig10` — all 10 publication figures (PDF+PNG)
+- Figure 10 = AlphaGenome multimodal validation (new in v2.8)
 
-**Files created/modified this session:**
+**Core pipeline:**
 
-- `config/locus/tert_300kb.json`, `config/locus/gjb2_300kb.json`
-- `data/tert_variants.csv`, `data/gjb2_variants.csv`
-- `results/TERT_Unified_Atlas_300kb.csv`, `results/GJB2_Unified_Atlas_300kb.csv`
-- `results/cadd_scores_TERT.csv`, `results/cadd_scores_GJB2.csv`
-- `results/integrative_benchmark.csv` (30,318 rows, 9 loci)
-- `results/per_locus_thresholds.csv` + `_summary.json`
-- `results/ctcf_distance_analysis.json`
-- `scripts/reclassify_with_vep.py` (VEP missense fix)
-- `scripts/per_locus_thresholds.py`
-- `scripts/ctcf_distance_analysis.py`
-- Modified: `locus-config.ts`, `generate-unified-atlas.ts`, `build_integrative_benchmark.py`, `fetch_cadd_scores.py`
+- `scripts/generate_publication_figures.py` — all figure generation
+- `scripts/per_locus_thresholds.py`, `scripts/ctcf_distance_analysis.py`
+- `config/locus/*.json` — 9 locus configs
+- `results/*_Unified_Atlas_*.csv` — per-locus atlases
+
+### Compilation
+
+```bash
+cd D:/ДНК/manuscript
+python -c "import typst; typst.compile('main.typ', output='main.pdf', root='..')"
+python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root='..')"
+```
+
+**НЕ** typst CLI (не установлен), а Python package `typst` (v0.14.8). Обязательно `root='..'` для доступа к `../figures/`.
+
+### Technical notes
+
+- Windows: `python` не `python3`
+- HBB minus strand: `genomic_pos = 5,227,208 - (mpra_pos - 1)` для MPRA координат
+- SpliceAI: Ensembl VEP REST API POST `/vep/homo_sapiens/region` с `?SpliceAI=1` (Broad Institute API timeout)
+- MaveDB API возвращает CSV не JSON
+- Typst needs `root='..'` parameter
 
 ---
 
-## Key Manuscript Findings (Ready for Reframe)
-
-1. **Enhancer proximity drives ARCHCODE discrimination** — Δ at ≤1kb = 7× average. Pearl variants = enhancer-proximal, not CTCF-proximal.
-2. **Per-locus thresholds required** — universal 0.95 only works for HBB. Table ready.
-3. **Tissue-specificity confirmed with 9 loci** — 2 mismatches (SCN5A, GJB2) = nulls; 1 inter-TAD (TERT) = moderate; 6 partial/matched = gradient.
-4. **FP filtering possible** — 93% FP are "other" category CNVs. Category filter eliminates most.
-5. **CADD complementarity** — 20,029/30,318 scored (66.1%). Pearl CADD median=15.7 (ambiguous zone). ARCHCODE detects what CADD misses at enhancer-proximal positions.
-
 ## Backlog
 
-1. **P0: Manuscript reframe** — "structural annotation tool" not "predictor". Add: tissue gradient, enhancer proximity figure, per-locus threshold table
-2. **P1: arXiv q-bio.GN** — submit reframed manuscript with 9 loci
-3. **P2: Commit + push** — all new files
-4. SpliceAI локальная интеграция (postponed)
-5. Bioinformatics (Oxford) submission — after arXiv
-6. gnomAD constraint correlation (low priority)
-7. GTEx AE check (low priority, n=27 too small)
+1. **P0: arXiv submission** — ждём endorsement от Dr. Guang Shi (q-bio.GN)
+2. **P0: Zenodo upload** — вручную через браузер для DOI
+3. **P2: gnomAD constraint** — HBB enhancer region depletion (бонус, не блокирует)
+4. **P3: Bioinformatics (Oxford)** — after arXiv
+5. **P3: GTEx AE check** — low priority, n=27 too small
+
+---
+
+## Commit history (recent)
+
+```
+638a5d9 feat: v2.8 orthogonal validation — SpliceAI null + MPRA cross-validation + Figure 10
+8cb537d feat: v2.6 reproducibility infrastructure + Limitation #11
+eac8376 feat: v2.6 — ablation analysis, conservation evidence, literature integration (3 refs)
+5eccbfd chore: add H19/IGF2 ClinVar data + CADD VCF + minor template fixes
+ce54d48 docs: update README and GitHub issue templates for 9-locus version
+```
