@@ -1,0 +1,42 @@
+{
+  "experiment": "Evolutionary conservation at pearl positions",
+  "source": "UCSC phyloP100way (hg38) + Ensembl GERP constrained elements",
+  "date": "2026-03-04",
+  "pearl_positions": {
+    "n_unique": 17,
+    "region": "chr11:5226596-5227172",
+    "categories": {
+      "promoter": 11,
+      "missense": 3,
+      "other": 1,
+      "splice_acceptor": 1,
+      "frameshift": 1
+    },
+    "phyloP_mean": 2.394,
+    "phyloP_median": 2.188,
+    "phyloP_range": [-0.195, 7.114],
+    "pct_conserved_gt2": 0.529,
+    "pct_highly_conserved_gt4": 0.176,
+    "gerp_mean": 33.0,
+    "gerp_range": [8.4, 81.3]
+  },
+  "background": {
+    "region": "flanking 150bp",
+    "n_positions": 15,
+    "phyloP_mean": 0.728
+  },
+  "fold_enrichment": 3.2884615384615388,
+  "gtex_eqtl": {
+    "gene": "HBB",
+    "tissue": "Whole_Blood",
+    "n_eqtls": 0,
+    "interpretation": "Zero eQTLs across entire beta-globin cluster \u2014 extreme purifying selection depletes common regulatory variants"
+  },
+  "conclusions": [
+    "Pearl positions are 3.3x more conserved than flanking background (PhyloP 2.39 vs 0.73)",
+    "53% of pearl positions have PhyloP > 2 (conserved); 18% have PhyloP > 4 (highly conserved)",
+    "All pearl positions fall within GERP constrained elements (scores 8.4-81.3, threshold > 4)",
+    "Zero GTEx eQTLs for HBB in Whole Blood \u2014 consistent with strong purifying selection",
+    "Evolutionary conservation independently supports ARCHCODE's identification of these positions as functionally important"
+  ]
+}
