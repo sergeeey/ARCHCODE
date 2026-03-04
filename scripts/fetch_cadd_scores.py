@@ -1,17 +1,18 @@
 #!/usr/bin/env python3
 """
-Fetch CADD scores for variants via Ensembl VEP REST API.
+Fetch CADD v1.7 scores for all ARCHCODE variants via Ensembl VEP REST API.
 
-ПОЧЕМУ: effectStrength в ARCHCODE использует categorical mapping (nonsense=0.1,
-intronic=0.8). Это создаёт circular dependency: category → effectStrength → SSIM → AUC.
-CADD scores — continuous, per-variant scores, которые разрывают эту связь.
+ПОЧЕМУ Ensembl VEP, а не прямой CADD API:
+- VEP API поддерживает батчи по 200 вариантов (vs 1 позиция у CADD API)
+- VEP возвращает CADD для SNVs И indels
+- Прямой CADD API = "experimental", не для тысяч вариантов
 
 Usage:
-    python scripts/fetch_cadd_scores.py --locus hbb
-    python scripts/fetch_cadd_scores.py --locus brca1
-    python scripts/fetch_cadd_scores.py --locus all
+    python scripts/fetch_cadd_scores.py                 # all loci
+    python scripts/fetch_cadd_scores.py --locus CFTR     # single locus
+    python scripts/fetch_cadd_scores.py --resume         # resume from cache
 
-Output: Adds cadd_phred, cadd_raw columns to VEP result CSV files.
+Output: results/cadd_scores_<LOCUS>.csv for each locus
 """
 
 import csv
@@ -20,96 +21,84 @@ import time
 import argparse
 import requests
 from pathlib import Path
-from typing import Optional
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
+RESULTS_DIR = PROJECT_ROOT / "results"
+CACHE_DIR = PROJECT_ROOT / "data" / "cadd_cache"
 
 VEP_POST_URL = "https://rest.ensembl.org/vep/human/region"
 BATCH_SIZE = 200  # Ensembl limit
 RATE_LIMIT_PAUSE = 1.0  # seconds between batches
 
-# ПОЧЕМУ: locus → VEP CSV file mapping. Pathogenic and benign files separate.
-LOCUS_VEP_FILES: dict[str, list[str]] = {
-    "hbb": [
-        "data/hbb_vep_results.csv",
-        "data/hbb_benign_vep_results.csv",
-    ],
-    "cftr": [
-        "data/cftr_vep_results.csv",
-        "data/cftr_benign_vep_results.csv",
-    ],
-    "tp53": [
-        "data/tp53_vep_results.csv",
-        "data/tp53_benign_vep_results.csv",
-    ],
-    "brca1": [
-        "data/brca1_vep_results.csv",
-        "data/brca1_benign_vep_results.csv",
-    ],
-    "mlh1": [
-        "data/mlh1_vep_results.csv",
-        "data/mlh1_benign_vep_results.csv",
-    ],
-    "ldlr": [
-        "data/ldlr_vep_results.csv",
-        "data/ldlr_benign_vep_results.csv",
-    ],
-    "scn5a": [
-        "data/scn5a_vep_results.csv",
-        "data/scn5a_benign_vep_results.csv",
-    ],
+# Unified atlas files — source of truth for all variants
+LOCI = {
+    "CFTR":  {"file": "CFTR_Unified_Atlas_317kb.csv",  "chrom": "7"},
+    "TP53":  {"file": "TP53_Unified_Atlas_300kb.csv",   "chrom": "17"},
+    "BRCA1": {"file": "BRCA1_Unified_Atlas_400kb.csv",  "chrom": "17"},
+    "MLH1":  {"file": "MLH1_Unified_Atlas_300kb.csv",   "chrom": "3"},
+    "LDLR":  {"file": "LDLR_Unified_Atlas_300kb.csv",   "chrom": "19"},
+    "SCN5A": {"file": "SCN5A_Unified_Atlas_400kb.csv",  "chrom": "3"},
 }
+# HBB already scored — skip
 
 
-def variant_to_vep_input(chr: str, pos: str, ref: str, alt: str) -> Optional[str]:
-    """Convert variant to Ensembl VEP input format: 'chr pos end allele_string strand'.
+def load_cache(locus: str) -> dict:
+    cache_file = CACHE_DIR / f"cadd_cache_{locus}.json"
+    if cache_file.exists():
+        with open(cache_file) as f:
+            return json.load(f)
+    return {}
 
-    ПОЧЕМУ формат: VEP REST POST endpoint принимает варианты в формате
-    'chr start end allele_string strand'. Для SNVs: start=end=pos.
-    Для deletions/insertions — нужна специальная обработка.
-    """
+
+def save_cache(locus: str, cache: dict):
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    with open(CACHE_DIR / f"cadd_cache_{locus}.json", "w") as f:
+        json.dump(cache, f)
+
+
+def variant_to_vep_input(chrom: str, pos: str, ref: str, alt: str) -> str | None:
+    """Convert to Ensembl VEP input format: 'chr start end allele_string strand'."""
     pos_int = int(pos)
 
     if len(ref) == 1 and len(alt) == 1:
-        # SNV
-        return f"{chr} {pos_int} {pos_int} {ref}/{alt} 1"
+        return f"{chrom} {pos_int} {pos_int} {ref}/{alt} 1"
     elif len(ref) > len(alt):
         # Deletion
-        # ПОЧЕМУ: VEP deletion format = start+1 to start+len(deleted)
-        # ref=TTTTTT alt=TTTTT → deletion of 1 T at specific position
         deleted = ref[len(alt):]
         start = pos_int + len(alt)
         end = start + len(deleted) - 1
-        return f"{chr} {start} {end} {deleted}/- 1"
+        return f"{chrom} {start} {end} {deleted}/- 1"
     elif len(alt) > len(ref):
         # Insertion
-        # ПОЧЕМУ: VEP insertion format = pos to pos-1 (signals insertion point)
         inserted = alt[len(ref):]
         start = pos_int + len(ref) - 1
-        end = start  # insertion between start and start+1
-        return f"{chr} {start} {end + 1} -/{inserted} 1"
+        return f"{chrom} {start} {start + 1} -/{inserted} 1"
     else:
-        # MNV (multi-nucleotide variant)
+        # MNV
         end = pos_int + len(ref) - 1
-        return f"{chr} {pos_int} {end} {ref}/{alt} 1"
+        return f"{chrom} {pos_int} {end} {ref}/{alt} 1"
 
 
-def fetch_cadd_batch(variants_batch: list[dict]) -> dict[str, dict]:
-    """Query Ensembl VEP REST API for a batch of variants with CADD scores.
+def extract_cadd_from_vep(result: dict) -> tuple[float | None, float | None]:
+    """Extract CADD phred and raw scores from VEP response."""
+    for key in ("transcript_consequences", "intergenic_consequences",
+                "regulatory_feature_consequences", "motif_feature_consequences"):
+        for item in result.get(key, []):
+            if "cadd_phred" in item:
+                return item["cadd_phred"], item.get("cadd_raw")
+    return None, None
 
-    Returns: {clinvar_id: {cadd_phred: float, cadd_raw: float}}
-    """
-    # Build VEP input strings
+
+def fetch_batch(variants: list[dict], chrom: str) -> dict[str, dict]:
+    """Fetch CADD scores for a batch of variants via Ensembl VEP."""
     vep_inputs = []
-    id_map = {}  # vep_input_str → clinvar_id (for matching results back)
+    input_to_id = {}
 
-    for v in variants_batch:
-        vep_str = variant_to_vep_input(v["chr"], v["position"], v["ref"], v["alt"])
+    for v in variants:
+        vep_str = variant_to_vep_input(chrom, v["pos"], v["ref"], v["alt"])
         if vep_str:
             vep_inputs.append(vep_str)
-            # ПОЧЕМУ: key = chr:pos:ref>alt для уникальной идентификации
-            key = f"{v['chr']}:{v['position']}:{v['ref']}>{v['alt']}"
-            id_map[key] = v["clinvar_id"]
+            input_to_id[vep_str] = v["id"]
 
     if not vep_inputs:
         return {}
@@ -117,194 +106,165 @@ def fetch_cadd_batch(variants_batch: list[dict]) -> dict[str, dict]:
     headers = {"Content-Type": "application/json", "Accept": "application/json"}
     payload = {"variants": vep_inputs, "CADD": 1}
 
-    try:
-        resp = requests.post(
-            VEP_POST_URL,
-            headers=headers,
-            json=payload,
-            timeout=120,
-        )
+    max_retries = 3
+    for attempt in range(max_retries):
+        try:
+            resp = requests.post(VEP_POST_URL, headers=headers, json=payload, timeout=120)
 
-        if resp.status_code == 429:
-            # Rate limited — wait and retry
-            retry_after = int(resp.headers.get("Retry-After", 5))
-            print(f"  Rate limited, waiting {retry_after}s...")
-            time.sleep(retry_after)
-            resp = requests.post(
-                VEP_POST_URL, headers=headers, json=payload, timeout=120
-            )
+            if resp.status_code == 429:
+                retry_after = int(resp.headers.get("Retry-After", 10))
+                print(f"    Rate limited, waiting {retry_after}s...")
+                time.sleep(retry_after)
+                continue
 
-        resp.raise_for_status()
-        results = resp.json()
-    except requests.RequestException as e:
-        print(f"  API error: {e}")
+            if resp.status_code == 503:
+                print(f"    Server busy, retrying in 30s (attempt {attempt+1}/{max_retries})...")
+                time.sleep(30)
+                continue
+
+            resp.raise_for_status()
+            results = resp.json()
+            break
+        except requests.RequestException as e:
+            if attempt < max_retries - 1:
+                print(f"    Error: {e}, retrying in 10s...")
+                time.sleep(10)
+            else:
+                print(f"    Failed after {max_retries} attempts: {e}")
+                return {}
+    else:
         return {}
 
-    # Parse CADD scores from response
-    cadd_scores = {}
-    for result in results:
-        # Extract position info to match back
-        input_str = result.get("input", "")
-        parts = input_str.split()
-        if len(parts) >= 4:
-            chr_r = parts[0]
-            pos_r = parts[1]
-            alleles = parts[3].split("/")
-            ref_r = alleles[0] if alleles[0] != "-" else ""
-            alt_r = alleles[1] if len(alleles) > 1 and alleles[1] != "-" else ""
-
-        # Get CADD from transcript_consequences
-        cadd_phred = None
-        cadd_raw = None
-
-        for tc in result.get("transcript_consequences", []):
-            if "cadd_phred" in tc:
-                cadd_phred = tc["cadd_phred"]
-                cadd_raw = tc.get("cadd_raw")
-                break
-
-        # Also check intergenic_consequences
-        if cadd_phred is None:
-            for ic in result.get("intergenic_consequences", []):
-                if "cadd_phred" in ic:
-                    cadd_phred = ic["cadd_phred"]
-                    cadd_raw = ic.get("cadd_raw")
-                    break
-
-        # Match back to clinvar_id using input string
-        # Try to find matching variant
-        matched_id = None
-        for key, cid in id_map.items():
-            chr_k, pos_k, allele_k = key.split(":")
-            ref_k, alt_k = allele_k.split(">")
-            # Direct position match for SNVs
-            if chr_k == chr_r and pos_k == pos_r and len(ref_k) == 1 and len(alt_k) == 1:
-                if ref_k == ref_r and alt_k == alt_r:
-                    matched_id = cid
-                    break
-            # For indels, use the input string match
-            elif input_str == variant_to_vep_input(chr_k, pos_k, ref_k, alt_k):
-                matched_id = cid
-                break
-
-        if matched_id and cadd_phred is not None:
-            cadd_scores[matched_id] = {
+    # Parse results
+    scores = {}
+    for r in results:
+        input_str = r.get("input", "")
+        cadd_phred, cadd_raw = extract_cadd_from_vep(r)
+        if input_str in input_to_id and cadd_phred is not None:
+            scores[input_to_id[input_str]] = {
                 "cadd_phred": cadd_phred,
                 "cadd_raw": cadd_raw,
             }
 
-    return cadd_scores
+    return scores
 
 
-def process_vep_file(filepath: Path) -> int:
-    """Add CADD scores to a VEP results CSV file.
+def process_locus(locus: str, info: dict, resume: bool = False):
+    """Process all variants for a single locus."""
+    filepath = RESULTS_DIR / info["file"]
+    chrom = info["chrom"]
+    output_file = RESULTS_DIR / f"cadd_scores_{locus}.csv"
 
-    Returns number of variants with CADD scores found.
-    """
-    if not filepath.exists():
-        print(f"  SKIP: {filepath} not found")
-        return 0
-
-    # Read existing data
-    with open(filepath, "r", newline="", encoding="utf-8") as f:
+    with open(filepath) as f:
         reader = csv.DictReader(f)
-        fieldnames = list(reader.fieldnames or [])
         rows = list(reader)
 
-    print(f"  Processing {filepath.name}: {len(rows)} variants")
+    total = len(rows)
+    print(f"\n{'='*60}")
+    print(f"{locus} (chr{chrom}): {total} variants")
+    print(f"{'='*60}")
 
-    # Check if CADD already present
-    if "cadd_phred" in fieldnames:
-        existing = sum(1 for r in rows if r.get("cadd_phred", ""))
-        print(f"    CADD already present ({existing}/{len(rows)} filled)")
-        if existing == len(rows):
-            return existing
+    # Load cache
+    cache = load_cache(locus) if resume else {}
+    if cache:
+        print(f"  Cache loaded: {len(cache)} entries")
 
-    # Prepare variant dicts for API
-    variants = []
+    # Prepare variants, skip cached
+    to_fetch = []
     for row in rows:
-        variants.append({
-            "clinvar_id": row["clinvar_id"],
-            "chr": row["chr"],
-            "position": row["position"],
-            "ref": row["ref"],
-            "alt": row["alt"],
-        })
+        cid = row["ClinVar_ID"]
+        if cid not in cache:
+            to_fetch.append({
+                "id": cid,
+                "pos": row["Position_GRCh38"],
+                "ref": row["Ref"],
+                "alt": row["Alt"],
+            })
+
+    print(f"  Need to fetch: {len(to_fetch)} (cached: {len(cache)})")
 
     # Fetch in batches
-    all_cadd: dict[str, dict] = {}
-    n_batches = (len(variants) + BATCH_SIZE - 1) // BATCH_SIZE
+    n_batches = (len(to_fetch) + BATCH_SIZE - 1) // BATCH_SIZE if to_fetch else 0
+    fetched = 0
 
-    for i in range(0, len(variants), BATCH_SIZE):
-        batch = variants[i : i + BATCH_SIZE]
+    for i in range(0, len(to_fetch), BATCH_SIZE):
+        batch = to_fetch[i:i + BATCH_SIZE]
         batch_num = i // BATCH_SIZE + 1
-        print(f"    Batch {batch_num}/{n_batches} ({len(batch)} variants)...")
+        print(f"  Batch {batch_num}/{n_batches} ({len(batch)} variants)...", end=" ", flush=True)
 
-        cadd_results = fetch_cadd_batch(batch)
-        all_cadd.update(cadd_results)
+        scores = fetch_batch(batch, chrom)
+        for cid, score_data in scores.items():
+            cache[cid] = score_data
+        fetched += len(scores)
+        print(f"got {len(scores)} scores")
+
+        # Save cache every 5 batches
+        if batch_num % 5 == 0:
+            save_cache(locus, cache)
 
         if batch_num < n_batches:
             time.sleep(RATE_LIMIT_PAUSE)
 
-    print(f"    Got CADD scores for {len(all_cadd)}/{len(rows)} variants")
+    # Final cache save
+    save_cache(locus, cache)
 
-    # Update CSV with CADD scores
-    if "cadd_phred" not in fieldnames:
-        fieldnames.extend(["cadd_phred", "cadd_raw"])
+    # Write output CSV
+    with open(output_file, "w", newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["ClinVar_ID", "Position_GRCh38", "Ref", "Alt",
+                         "Category", "CADD_Phred", "CADD_Raw"])
+        scored = 0
+        for row in rows:
+            cid = row["ClinVar_ID"]
+            cadd = cache.get(cid, {})
+            phred = cadd.get("cadd_phred", "NA")
+            raw = cadd.get("cadd_raw", "NA")
+            if phred != "NA":
+                scored += 1
+            writer.writerow([
+                cid, row["Position_GRCh38"], row["Ref"], row["Alt"],
+                row["Category"], phred, raw,
+            ])
 
-    for row in rows:
-        cid = row["clinvar_id"]
-        if cid in all_cadd:
-            row["cadd_phred"] = all_cadd[cid]["cadd_phred"]
-            row["cadd_raw"] = all_cadd[cid]["cadd_raw"]
-        else:
-            row.setdefault("cadd_phred", "")
-            row.setdefault("cadd_raw", "")
-
-    # Write back
-    with open(filepath, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        writer.writerows(rows)
-
-    return len(all_cadd)
+    print(f"\n  DONE: {scored}/{total} scored ({scored/total*100:.1f}%)")
+    print(f"  Output: {output_file}")
+    return scored, total
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Fetch CADD scores via Ensembl VEP")
-    parser.add_argument(
-        "--locus",
-        required=True,
-        help="Locus name (hbb, brca1, ...) or 'all'",
-    )
+    parser = argparse.ArgumentParser(description="Fetch CADD v1.7 scores via Ensembl VEP")
+    parser.add_argument("--locus", help="Single locus (CFTR, TP53, etc.) or omit for all")
+    parser.add_argument("--resume", action="store_true", help="Resume from cache")
     args = parser.parse_args()
 
-    locus = args.locus.lower()
-    if locus == "all":
-        loci = list(LOCUS_VEP_FILES.keys())
-    else:
-        if locus not in LOCUS_VEP_FILES:
-            print(f"ERROR: Unknown locus '{locus}'. Available: {list(LOCUS_VEP_FILES.keys())}")
+    if args.locus:
+        locus = args.locus.upper()
+        if locus not in LOCI:
+            print(f"ERROR: Unknown locus '{locus}'. Available: {list(LOCI.keys())}")
             return
-        loci = [locus]
+        loci_to_process = {locus: LOCI[locus]}
+    else:
+        loci_to_process = LOCI
 
-    total_found = 0
+    print("CADD v1.7 Score Fetcher for ARCHCODE")
+    print(f"Loci: {', '.join(loci_to_process.keys())}")
+    print(f"API: Ensembl VEP REST + CADD plugin")
+    print(f"Batch size: {BATCH_SIZE}, rate limit: {RATE_LIMIT_PAUSE}s")
+    if args.resume:
+        print("Mode: RESUME from cache")
+
+    total_scored = 0
     total_variants = 0
 
-    for loc in loci:
-        print(f"\n=== {loc.upper()} ===")
-        for rel_path in LOCUS_VEP_FILES[loc]:
-            filepath = PROJECT_ROOT / rel_path
-            found = process_vep_file(filepath)
-            total_found += found
+    for locus, info in loci_to_process.items():
+        scored, total = process_locus(locus, info, args.resume)
+        total_scored += scored
+        total_variants += total
 
-            if filepath.exists():
-                with open(filepath, "r", encoding="utf-8") as f:
-                    total_variants += sum(1 for _ in f) - 1  # minus header
-
-    print(f"\n{'='*50}")
-    print(f"Total: {total_found}/{total_variants} variants with CADD scores")
-    print(f"Coverage: {total_found/total_variants*100:.1f}%" if total_variants > 0 else "")
+    print(f"\n{'='*60}")
+    print(f"ALL DONE: {total_scored}/{total_variants} scored "
+          f"({total_scored/total_variants*100:.1f}%)")
+    print(f"{'='*60}")
 
 
 if __name__ == "__main__":

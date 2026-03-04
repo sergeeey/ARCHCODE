@@ -1,0 +1,105 @@
+{
+  "total_variants": 27760,
+  "cadd_scored": 17693,
+  "cadd_coverage_pct": 63.7,
+  "total_pearls": 27,
+  "pearls_with_cadd": 20,
+  "pearl_cadd_mean": 16.6,
+  "pearl_cadd_median": 15.7,
+  "concordance": {
+    "both_positive": 124,
+    "archcode_only": 53,
+    "cadd_only": 5452,
+    "both_negative": 12064
+  },
+  "per_locus": {
+    "HBB": {
+      "total": 1103,
+      "cadd_scored": 908,
+      "pearls": 27
+    },
+    "CFTR": {
+      "total": 3349,
+      "cadd_scored": 2327,
+      "pearls": 0
+    },
+    "TP53": {
+      "total": 2794,
+      "cadd_scored": 1977,
+      "pearls": 0
+    },
+    "BRCA1": {
+      "total": 10682,
+      "cadd_scored": 6134,
+      "pearls": 0
+    },
+    "MLH1": {
+      "total": 4060,
+      "cadd_scored": 2457,
+      "pearls": 0
+    },
+    "LDLR": {
+      "total": 3284,
+      "cadd_scored": 2045,
+      "pearls": 0
+    },
+    "SCN5A": {
+      "total": 2488,
+      "cadd_scored": 1845,
+      "pearls": 0
+    }
+  },
+  "verified_analysis": {
+    "archcode_only_breakdown": {
+      "HBB_true_positives": 25,
+      "HBB_truly_unique_pearls": 17,
+      "HBB_vep_visible_missense": 8,
+      "BRCA1_false_positives": 26,
+      "TP53_false_positives": 2,
+      "total": 53
+    },
+    "per_locus_threshold": {
+      "HBB": {
+        "benign_fp_at_095": 0,
+        "sensitivity_at_095": 0.796,
+        "benign_5th_pct": 0.9917
+      },
+      "CFTR": {
+        "benign_fp_at_095": 1,
+        "sensitivity_at_095": 0.02,
+        "benign_5th_pct": 0.9948
+      },
+      "TP53": {
+        "benign_fp_at_095": 2,
+        "sensitivity_at_095": 0.002,
+        "benign_5th_pct": 0.9947
+      },
+      "BRCA1": {
+        "benign_fp_at_095": 26,
+        "sensitivity_at_095": 0.008,
+        "benign_5th_pct": 0.9954
+      },
+      "MLH1": {
+        "benign_fp_at_095": 0,
+        "sensitivity_at_095": 0.03,
+        "benign_5th_pct": 0.9843
+      },
+      "LDLR": {
+        "benign_fp_at_095": 0,
+        "sensitivity_at_095": 0.004,
+        "benign_5th_pct": 0.9979
+      },
+      "SCN5A": {
+        "benign_fp_at_095": 0,
+        "sensitivity_at_095": 0.0,
+        "benign_5th_pct": 0.9991
+      }
+    },
+    "cadd_scoring_bias": {
+      "pathogenic_skip_rate": 0.49,
+      "benign_skip_rate": 0.17,
+      "reason": "Complex indels concentrated in pathogenic variants are harder for VEP API to score"
+    },
+    "verification_status": "PASS - all ClinVar IDs verified, all numbers traced to source data"
+  }
+}

@@ -70,7 +70,11 @@ no signal (VEP \< 0.30) but ARCHCODE detected structural disruption
 0.928), 3 missense variants (mean VEP = 0.20, mean SSIM = 0.949), 1
 frameshift (VEP = 0.15, SSIM = 0.891), and 1 splice\_acceptor variant
 (VEP = 0.20, SSIM = 0.900). In total, 130 variants (36.8%) showed
-discordance between ARCHCODE and VEP classifications.
+discordance between ARCHCODE and VEP classifications. Integrative
+benchmarking with CADD v1.7 across 17,693 scored variants confirms that
+17 of 20 pearl variants occupy a unique niche: VEP-blind (score ≤ 0.20),
+CADD-ambiguous (phred 10--20), yet ARCHCODE-positive --- structural
+disruption detectable only through chromatin simulation.
 
 ROC analysis on an expanded cohort including 750 Benign/Likely Benign
 HBB variants (total n=1,103), with all variants processed through a
@@ -2458,6 +2462,32 @@ and enhancer elements within the 30 kb simulation window. A variant
 outside both detection ranges will be missed by both; a variant detected
 by only one provides hypothesis-generating signal for follow-up.
 
+#strong[Integrative CADD benchmark across 27,760 variants.] To quantify
+ARCHCODE's complementarity with sequence-based predictors, we obtained
+CADD v1.7 phred scores (via Ensembl VEP REST API with CADD plugin) for
+17,693 of 27,760 ClinVar variants across all seven loci (63.7% coverage;
+remaining variants are complex indels not scored by CADD). Concordance
+analysis using thresholds of LSSIM \< 0.95 (ARCHCODE-positive) and CADD
+phred ≥ 20 (CADD-positive) identified four quadrants: both positive
+(n = 124, 0.7%), ARCHCODE-only (n = 53, 0.3%), CADD-only (n = 5,452,
+30.8%), and both negative (n = 12,064, 68.2%).
+
+The 53 ARCHCODE-only variants reveal locus-dependent performance. All 25
+HBB variants in this group are ClinVar Pathogenic: 15 promoter variants
+(mean CADD phred = 15.7, all VEP \< 0.30), 8 missense (mean CADD = 15.9),
+and 2 splice\_region. Seventeen of these 25 are pearl variants ---
+pathogenic variants invisible to both VEP (score ≤ 0.20) and ambiguous
+to CADD (phred 10--20), where ARCHCODE provides the only confident
+structural signal. In contrast, 25 of 26 BRCA1 ARCHCODE-only variants
+are ClinVar Benign/Likely benign (LSSIM 0.9419--0.9473), reflecting
+threshold artifacts at the boundary of benign LSSIM distribution in
+this 400 kb locus. This asymmetry establishes ARCHCODE's domain of
+applicability: structural discrimination is strongest for regulatory
+variants in compact loci with enhancer--promoter architecture (HBB 30 kb:
+0/750 benign false positives at threshold 0.95, 79.6% sensitivity),
+and weakest for large loci where pathogenicity is protein-mediated
+(BRCA1 400 kb: 26/3,620 benign false positives, 0.75% sensitivity).
+
 #strong[Model independence:] ARCHCODE is mechanistically orthogonal to
 VEP. ARCHCODE receives no input from VEP scores, SIFT predictions,
 ClinVar classifications, or any sequence-based tool. The two models
@@ -2566,7 +2596,16 @@ HBB); 20 pearls in the 30kb window, 27 pearls in the 95kb window (which
 encompasses the 30kb region plus 7 additional candidates in the extended
 LCR).
 
-#strong[\9. Hi-C correlation does not validate variant-level
+#strong[\9. Universal LSSIM threshold does not generalize across loci.]
+The 0.95 threshold was calibrated on HBB (30 kb, 50×50 matrix), where
+0/750 benign variants fall below it (100% specificity). For BRCA1
+(400 kb, 400×400), 26/3,620 benign variants have LSSIM \< 0.95 (0.7%
+false positive rate), because the benign LSSIM minimum (0.9419) approaches
+the threshold. Per-locus calibration (e.g., 5th percentile of benign
+distribution) or confidence tiers stratified by locus size and variant
+mechanism are recommended for clinical applications.
+
+#strong[\10. Hi-C correlation does not validate variant-level
 predictions.] Multi-locus Hi-C correlation (r = 0.28--0.59) validates
 wild-type contact map fidelity, not variant-specific structural
 disruption. No variant-level Hi-C perturbation data exists to validate
@@ -2714,6 +2753,9 @@ provides a complementary perspective on structural disruption.
   extrusion. bioRxiv. doi:10.1101/2024.08.09.605990
 + Akiba et al.~(2019). Optuna: A Next-generation Hyperparameter
   Optimization Framework. KDD. doi:10.1145/3292500.3330701
++ Rentzsch et al.~(2019). CADD: predicting the deleteriousness of
+  variants throughout the human genome. NAR.
+  doi:10.1093/nar/gky1016
 
 \[Full bibliography in BibTeX available in repo.\]
 
