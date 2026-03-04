@@ -2684,6 +2684,18 @@ wild-type contact map fidelity, not variant-specific structural
 disruption. No variant-level Hi-C perturbation data exists to validate
 SSIM as a variant classifier directly.
 
+#strong[\11. AUC is driven by category-dependent effectStrength, not
+genomic position.] The five-point ablation study (Table 5) confirms that
+ARCHCODE's discriminative power derives from category→severity mapping
+(nonsense = 0.1, synonymous = 0.9), not from variant position within the
+locus. Position-only (AUC = 0.551), uniform-medium (0.551), and random
+(0.490) modes all collapse to chance. Inverted mapping (AUC = 0.022 ≈
+1 − 0.975) mirrors the categorical result, proving direction-dependence.
+This means ARCHCODE is a #emph[category-level structural classifier]:
+it translates known mutation categories into 3D chromatin perturbation
+scores, providing a structural interpretation layer rather than
+discovering novel variant-level genomic signals.
+
 #strong[\10. Resolution-dependent DL variant sensitivity: null at 2048
 bp, detectable at 1 bp.] Variant-level mutagenesis was performed with
 both AlphaGenome (`predict_variant()` API) and Akita (Fudenberg et
