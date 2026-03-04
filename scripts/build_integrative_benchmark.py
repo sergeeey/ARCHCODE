@@ -32,6 +32,8 @@ CADD_FILES = {
     "MLH1": "cadd_scores_MLH1.csv",
     "LDLR": "cadd_scores_LDLR.csv",
     "SCN5A": "cadd_scores_SCN5A.csv",
+    "TERT": "cadd_scores_TERT.csv",
+    "GJB2": "cadd_scores_GJB2.csv",
 }
 ATLAS_FILES = {
     "CFTR": "CFTR_Unified_Atlas_317kb.csv",
@@ -40,6 +42,8 @@ ATLAS_FILES = {
     "MLH1": "MLH1_Unified_Atlas_300kb.csv",
     "LDLR": "LDLR_Unified_Atlas_300kb.csv",
     "SCN5A": "SCN5A_Unified_Atlas_400kb.csv",
+    "TERT": "TERT_Unified_Atlas_300kb.csv",
+    "GJB2": "GJB2_Unified_Atlas_300kb.csv",
 }
 
 
@@ -126,7 +130,7 @@ def analyze(all_rows):
     for r in all_rows:
         loci[r["Locus"]].append(r)
 
-    for locus in ["HBB", "CFTR", "TP53", "BRCA1", "MLH1", "LDLR", "SCN5A"]:
+    for locus in ["HBB", "CFTR", "TP53", "BRCA1", "MLH1", "LDLR", "SCN5A", "TERT", "GJB2"]:
         rows = loci[locus]
         scored = [r for r in rows if r["CADD_Phred"] not in ("NA", "")]
         locus_pearls = [r for r in rows if r["Pearl"].lower() == "true"]
@@ -227,10 +231,10 @@ def main():
     all_rows = load_hbb()
     print(f"  HBB: {len(all_rows)} variants")
 
-    for locus in ["CFTR", "TP53", "BRCA1", "MLH1", "LDLR", "SCN5A"]:
-        cadd_file = RESULTS_DIR / CADD_FILES[locus]
-        if not cadd_file.exists():
-            print(f"  {locus}: CADD scores not yet available, skipping")
+    for locus in ["CFTR", "TP53", "BRCA1", "MLH1", "LDLR", "SCN5A", "TERT", "GJB2"]:
+        atlas_file = RESULTS_DIR / ATLAS_FILES[locus]
+        if not atlas_file.exists():
+            print(f"  {locus}: Atlas not yet generated, skipping")
             continue
         rows = load_other_locus(locus)
         all_rows.extend(rows)

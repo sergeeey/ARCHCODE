@@ -1,0 +1,12 @@
+{
+  "gene": "TERT",
+  "download_date": "2026-03-04T11:59:27.100552",
+  "pathogenic_ids_count": 548,
+  "benign_ids_count": 2366,
+  "combined_unique_ids": 2627,
+  "summaries_count": 2627,
+  "window": {
+    "start": 0,
+    "end": 999999999
+  }
+}

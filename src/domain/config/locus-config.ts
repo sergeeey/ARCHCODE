@@ -101,6 +101,8 @@ const ALIASES: Record<string, string> = {
   mlh1: "mlh1_300kb.json",
   ldlr: "ldlr_300kb.json",
   scn5a: "scn5a_400kb.json",
+  tert: "tert_300kb.json",
+  gjb2: "gjb2_300kb.json",
 };
 
 /**

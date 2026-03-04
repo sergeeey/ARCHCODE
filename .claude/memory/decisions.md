@@ -262,3 +262,81 @@
 - Within-category AUC одинаков (~0.53) во всех моделях → baseline от position
 - Седьмой honest null result (position-only control)
 - Сильнейший ответ на AUC tautology criticism: "we agree, here's the proof"
+
+## ADR-016: TERT as inter-TAD benchmark + GJB2 as tissue-mismatch null (2026-03-04)
+
+**Context:** bioRxiv отклонил за "not complete research with new data". Нужны новые локусы. IGF2/H19 отвергнут (только 140 вариантов, механизм = CNV/methylation).
+
+**Решение:** TERT (chr5, inter-TAD gap, telomerase) + GJB2 (chr13, tissue-mismatch benchmark).
+
+**Результаты:**
+
+- TERT: 2,089 variants, Δ=0.019 (STRONG), 27 struct. pathogenic, 0 pearls
+- GJB2: 469 variants, Δ=0.006, 0 struct. pathogenic, 0 pearls (expected null)
+- TERT inter-TAD = unique: CTCF/enhancers sparse → weaker signal than intra-TAD, but detectable
+- GJB2 = second mismatch null (cochlear gene in erythroid cells), confirms SCN5A finding
+
+**Обоснование:**
+
+- TERT clinically important (promoter hotspot mutations in cancer), well-studied in K562
+- GJB2 clinically important (most common cause of hearing loss), но intentional negative control
+- Together expand portfolio to 9 loci (7 signal + 2 nulls)
+- Missense misclassification bug discovered + fixed with VEP reclassification script
+
+## ADR-017: Per-locus thresholds — universal 0.95 fails beyond HBB (2026-03-04)
+
+**Context:** Universal LSSIM threshold 0.95 gives 0% FP for HBB but 26 FP for BRCA1. Need per-locus calibration.
+
+**Решение:** Compute optimal thresholds per locus at FPR≤1%, using benign LSSIM distribution.
+
+**Результат:**
+
+| Locus | Optimal Threshold | Sensitivity | vs Universal 0.95  |
+| ----- | ----------------- | ----------- | ------------------ |
+| HBB   | 0.977             | 92.9%       | +13.3pp            |
+| TERT  | 0.968             | 22.7%       | +11.8pp            |
+| TP53  | 0.982             | 22.6%       | +22.4pp            |
+| MLH1  | 0.972             | 5.5%        | +2.5pp             |
+| GJB2  | N/A               | 0%          | no threshold works |
+
+**Обоснование:**
+
+- Per-locus thresholds improve sensitivity 1.2-100× at same FPR
+- HBB uniquely strong because: tissue-matched + regulatory variants + strong enhancer landscape
+- GJB2 has no achievable threshold → honest mismatch null
+- Manuscript Table ready (9-locus comparison)
+
+## ADR-018: Enhancer proximity drives ARCHCODE discrimination (2026-03-04)
+
+**Context:** Нужна механистическая гипотеза: что именно ARCHCODE детектирует? CTCF disruption? Enhancer proximity?
+
+**Анализ:** 30,318 вариантов по 9 локусам, distance-to-nearest-CTCF и distance-to-nearest-enhancer.
+
+**Ключевая находка:**
+
+- **Pearl variants:** median enhancer dist = 831bp (CLOSE), median CTCF dist = 22,120bp (FAR)
+- **Enhancer ≤1kb zone:** Δ(path-ben) = 0.039 — 7× average discrimination
+- **CTCF zones:** no clear gradient (≤1kb Δ=0.010, 10-50kb Δ=0.012)
+- Pearl vs non-pearl pathogenic CTCF distance: p = 1.08e-8
+
+**Вывод:** ARCHCODE detects enhancer-proximal structural perturbations, NOT CTCF barrier disruption. Механизм: variants near enhancers alter occupancy→extrusion dynamics→local SSIM.
+
+**Для manuscript:** This is the key mechanistic Figure — enhancer proximity gradient.
+
+## ADR-019: ARCHCODE-only FP = "other" category CNVs (2026-03-04)
+
+**Context:** 394 ARCHCODE-only variants (LSSIM<0.95, CADD<20). True positives vs false positives?
+
+**Результат:**
+
+- True Positives (364): 83% frameshift, distributed across 7 loci, median enhancer=494bp
+- False Positives (30): 93% "other" category (CNVs), 87% from BRCA1, median CTCF=692bp
+- TP vs FP CTCF distance: p = 3.69e-8
+
+**Решение:** "other" category = noise source. Recommend filtering in clinical application.
+
+**Обоснование:**
+
+- CNVs have extreme effectStrength but poorly defined positions → artifact
+- Filtering "other" would eliminate 28/30 FP (93%) while keeping 359/364 TP (99%)
+- Simple, interpretable rule for clinical implementation
