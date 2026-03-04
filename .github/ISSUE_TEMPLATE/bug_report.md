@@ -3,7 +3,7 @@ name: Bug Report
 about: Report a bug in ARCHCODE simulation or pipeline
 title: "[BUG] "
 labels: bug
-assignees: ''
+assignees: ""
 ---
 
 ## Description
