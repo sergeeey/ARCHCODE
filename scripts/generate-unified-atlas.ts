@@ -271,17 +271,22 @@ function parseVepCsv(filePath: string): Map<string, VepResult> {
 // Simulation Engine — IDENTICAL to generate-real-atlas.ts
 // ============================================================================
 
-// effectStrength mode: "categorical" (default) or "position-only" (control experiment).
-// ПОЧЕМУ dual-mode:
-//   categorical: category → effectStrength → SSIM (documented category-distribution effect)
-//   position-only: fixed effectStrength for ALL variants → AUC ≈ 0.55 (proves position
-//     alone does not discriminate pathogenic from benign — AUC 0.977 is category effect)
-// CLI: --effect-mode position-only
-const EFFECT_MODE =
-  process.argv.includes("--effect-mode") &&
-  process.argv[process.argv.indexOf("--effect-mode") + 1] === "position-only"
-    ? "position-only"
-    : "categorical";
+// effectStrength mode: controls how variant category maps to structural perturbation.
+// ПОЧЕМУ multi-mode: ablation study to prove AUC is category-driven, not circular.
+//   categorical:     category → effectStrength → SSIM (default, documented effect)
+//   position-only:   fixed 0.3 for ALL variants → AUC ≈ 0.55 (position has no signal)
+//   uniform-medium:  fixed 0.5 for ALL variants → AUC ≈ 0.5 (second position control)
+//   inverted:        SWAPPED mapping (nonsense=0.9, synonymous=0.1) → AUC << 0.5
+//   random:          random 0.1-0.9 per variant → AUC ≈ 0.5 (noise baseline)
+// CLI: --effect-mode <mode>
+const VALID_EFFECT_MODES = ["categorical", "position-only", "uniform-medium", "inverted", "random"] as const;
+type EffectMode = typeof VALID_EFFECT_MODES[number];
+const rawMode = process.argv.includes("--effect-mode")
+  ? process.argv[process.argv.indexOf("--effect-mode") + 1]
+  : "categorical";
+const EFFECT_MODE: EffectMode = VALID_EFFECT_MODES.includes(rawMode as EffectMode)
+  ? (rawMode as EffectMode)
+  : "categorical";
 
 const CATEGORICAL_EFFECTS: Record<string, number> = {
   nonsense: 0.1,
@@ -300,20 +305,50 @@ const CATEGORICAL_EFFECTS: Record<string, number> = {
 
 const FIXED_PERTURBATION = 0.3;
 
+// Inverted mapping: swap severity direction. If AUC drops well below 0.5,
+// proves that category DIRECTION matters, not just category-as-feature.
+const INVERTED_EFFECTS: Record<string, number> = {
+  nonsense: 0.9,       // was 0.1 → now weakest (benign-like)
+  frameshift: 0.85,    // was 0.15
+  splice_donor: 0.8,   // was 0.2
+  splice_acceptor: 0.8,
+  splice_region: 0.5,
+  missense: 0.6,       // was 0.4
+  promoter: 0.7,       // was 0.3
+  "5_prime_UTR": 0.4,  // was 0.6
+  "3_prime_UTR": 0.3,  // was 0.7
+  intronic: 0.2,       // was 0.8 → now strong (pathogenic-like)
+  synonymous: 0.1,     // was 0.9 → now strongest
+  other: 0.5,
+};
+
+// Seeded random for reproducibility in random mode
+let ablationRng = new SeededRandom(42);
+
 function getEffectStrength(
   category: string,
-): { value: number; source: "CATEGORICAL" | "POSITION" } {
-  if (EFFECT_MODE === "position-only") {
-    // Position-only control: fixed perturbation for ALL variants.
-    // Result: AUC ≈ 0.55 — proves category-distribution effect.
-    return { value: FIXED_PERTURBATION, source: "POSITION" };
+): { value: number; source: string } {
+  switch (EFFECT_MODE) {
+    case "position-only":
+      return { value: FIXED_PERTURBATION, source: "POSITION" };
+    case "uniform-medium":
+      return { value: 0.5, source: "UNIFORM_MEDIUM" };
+    case "inverted":
+      return {
+        value: INVERTED_EFFECTS[category] || 0.5,
+        source: "INVERTED",
+      };
+    case "random":
+      return {
+        value: 0.1 + ablationRng.random() * 0.8,
+        source: "RANDOM",
+      };
+    default: // categorical
+      return {
+        value: CATEGORICAL_EFFECTS[category] || 0.5,
+        source: "CATEGORICAL",
+      };
   }
-  // Default: categorical mapping (documented category-distribution effect).
-  // effectStrength sees ONLY category, NEVER ClinVar label.
-  return {
-    value: CATEGORICAL_EFFECTS[category] || 0.5,
-    source: "CATEGORICAL",
-  };
 }
 
 function simulatePairedMatrices(
@@ -835,11 +870,12 @@ async function main() {
       LOCUS_ARG.toUpperCase())
     : "HBB";
   const windowKb = `${Math.round((SIM_END - SIM_START) / 1000)}kb`;
+  const modeSuffix = EFFECT_MODE === "categorical" ? "" : `_${EFFECT_MODE.toUpperCase().replace("-", "_")}`;
   const csvFilename = isGenericLocus
-    ? `${geneName}_Unified_Atlas_${windowKb}.csv`
+    ? `${geneName}_Unified_Atlas_${windowKb}${modeSuffix}.csv`
     : LOCUS_ARG === "30kb"
-      ? "HBB_Unified_Atlas.csv"
-      : `HBB_Unified_Atlas_${LOCUS_ARG}.csv`;
+      ? `HBB_Unified_Atlas${modeSuffix}.csv`
+      : `HBB_Unified_Atlas_${LOCUS_ARG}${modeSuffix}.csv`;
   const csvPath = path.join(outputDir, csvFilename);
   if (results.length === 0) {
     console.error("ERROR: No results to write. Check variant loading.");
