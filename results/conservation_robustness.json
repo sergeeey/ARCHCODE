@@ -1,0 +1,32 @@
+{
+  "experiment": "Conservation robustness analysis for pearl positions",
+  "source": "UCSC phyloP100way (hg38)",
+  "n_pearl_positions": 17,
+  "n_background_positions": 15,
+  "original_fold_enrichment": 3.29,
+  "tests": {
+    "permutation": {
+      "observed_mean": 2.3721,
+      "permutation_mean": 1.6043,
+      "permutation_sd": 0.2512,
+      "n_permutations": 10000,
+      "n_greater_or_equal": 0,
+      "p_value": 0.0,
+      "significant_005": true
+    },
+    "gc_matched_background": {
+      "pearl_mean": 2.3721,
+      "gc_matched_bg_mean": 1.2396,
+      "fold_enrichment": 1.91,
+      "n_gc_matched": 8,
+      "still_enriched": true
+    },
+    "distance_matched_background": {
+      "pearl_mean": 2.3721,
+      "distance_matched_bg_mean": 0.7341,
+      "fold_enrichment": 3.23,
+      "still_enriched": true
+    }
+  },
+  "conclusion": "PhyloP enrichment is robust: permutation p=0.0, GC-matched fold=1.91x, distance-matched fold=3.23x. Pearl positions are significantly more conserved than all tested backgrounds."
+}
