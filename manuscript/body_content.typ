@@ -6,26 +6,28 @@ altering coding sequence. We developed ARCHCODE, an analytical loop
 extrusion simulator, and applied it to 30,318 clinically classified
 variants across nine loci: HBB (1,103), CFTR (3,349), TP53 (2,794),
 BRCA1 (10,682), MLH1 (4,060), LDLR (3,284), SCN5A (2,488), TERT (2,089),
-and GJB2 (469). ARCHCODE correctly stratifies variants by functional
-class and identifies 27 "pearl" candidates on HBB --- variants invisible
-to VEP --- where structural simulation predicts regulatory disruption.
-Enhancer proximity analysis across all nine loci reveals that ARCHCODE
-discrimination concentrates at enhancer-proximal positions (≤1 kb, Δ
-LSSIM = 0.039, 7× average), establishing the mechanistic basis of the
-structural signal. A tissue-specificity gradient from matched (HBB, Δ =
-0.111) through expressed (TERT, Δ = 0.019) to mismatched (SCN5A/GJB2, Δ
-≤ 0.006) negative controls defines the domain of applicability. Local
-SSIM (LSSIM) resolves matrix-size dilution, expanding SSIM dynamic range
-from 0.98--1.00 to 0.75--1.00 and enabling verdict assignment across all
-matrix sizes. Within-category testing confirms ARCHCODE as primarily a
-category-level structural classifier (CFTR/TP53 p \> 0.29;
-BRCA1/MLH1/LDLR show statistical significance at ΔAUC \< 0.02 --- a
-power effect, not meaningful prediction). K562 Hi-C correlation ranges
-from r = 0.29 (TP53) to r = 0.59 (HBB 95kb, MLH1) using K562 data; HepG2
-Hi-C validation for LDLR (r = 0.32) extends the framework to
-tissue-specific chromatin. This work establishes a framework for
-orthogonal structural scoring as a complement to existing sequence-based
-tools in variant interpretation pipelines.
+and GJB2 (469). ARCHCODE identifies 27 "pearl" candidates on HBB ---
+variants invisible to six independent methods: VEP (score \< 0.30),
+SpliceAI (0.00 for all 20 SNVs), CADD (median phred 15.7), MPRA
+(Kircher et al.~2019; null correlation), and gnomAD v4 (85% absent from
+\>800,000 genomes) --- yet structurally disruptive by ARCHCODE (LSSIM \<
+0.92). Enhancer proximity analysis across all nine loci reveals that
+ARCHCODE discrimination concentrates at enhancer-proximal positions (≤1
+kb, Δ LSSIM = 0.039, 7× average), establishing the mechanistic basis of
+the structural signal. AlphaGenome deep-learning multimodal analysis
+independently confirms pearl disruption (RNA-seq signal 2.8× higher
+than benign, p \< 0.0001). A tissue-specificity gradient from matched
+(HBB, Δ = 0.111) through expressed (TERT, Δ = 0.019) to mismatched
+(SCN5A/GJB2, Δ ≤ 0.006) negative controls defines the domain of
+applicability. Local SSIM (LSSIM) resolves matrix-size dilution,
+expanding dynamic range from 0.98--1.00 to 0.75--1.00. Within-category
+testing confirms ARCHCODE as primarily a category-level structural
+classifier (CFTR/TP53 p \> 0.29; BRCA1/MLH1/LDLR significant at ΔAUC \<
+0.02 --- a power effect). K562 Hi-C correlation ranges from r = 0.29
+(TP53) to r = 0.59 (HBB 95kb, MLH1); HepG2 Hi-C for LDLR (r = 0.32)
+extends to tissue-specific chromatin. The convergence of six orthogonal
+methods on the same structural blind spot establishes ARCHCODE as a
+complementary layer for variant interpretation pipelines.
 
 == Main Findings (for graphical abstract)
 + #strong[30,318 real ClinVar variants across 9 loci] (HBB 1,103 + CFTR
@@ -1053,7 +1055,7 @@ provided in Supplementary Table S1.
 
 === Orthogonal Conservation Evidence for Pearl Positions
 
-Pearl variant positions show strong evolutionary conservation independent of ARCHCODE's structural model. Using phyloP 100-way vertebrate conservation scores (UCSC Genome Browser, hg38), mean PhyloP at 17 unique pearl positions = 2.39 compared to 0.73 for flanking background positions in the HBB region (3.3× enrichment). Of 17 scored pearl positions, 9 (53%) have PhyloP > 2.0 (conserved across vertebrates), and 3 (18%) exceed PhyloP > 4.0 (highly conserved). GERP rejected substitution scores for pearl positions range from 8.4 to 81.3, all exceeding the constrained element threshold of 4.0. This conservation signal is independent of ARCHCODE's physics model and VEP's consequence annotation, providing population-genetic evidence that pearl positions are under purifying selection.
+Pearl variant positions show strong evolutionary conservation independent of ARCHCODE's structural model. Using phyloP 100-way vertebrate conservation scores (UCSC Genome Browser, hg38), mean PhyloP at 17 unique pearl positions = 2.37 compared to 0.73 for flanking background positions in the HBB region (3.2× enrichment). Of 17 scored pearl positions, 9 (53%) have PhyloP > 2.0 (conserved across vertebrates), and 3 (18%) exceed PhyloP > 4.0 (highly conserved). GERP rejected substitution scores for pearl positions range from 8.4 to 81.3, all exceeding the constrained element threshold of 4.0. This conservation signal is independent of ARCHCODE's physics model and VEP's consequence annotation, providing population-genetic evidence that pearl positions are under purifying selection.
 
 GTEx v8 eQTL analysis revealed zero significant eQTLs for HBB in Whole Blood — and indeed zero eQTLs across the entire β-globin cluster (HBB, HBD, HBG1, HBG2, HBE1) in any of 49 GTEx tissues. This null result is consistent with extreme purifying selection at this locus: common variants with detectable expression effects are depleted by natural selection. However, this should be interpreted with the caveat that GTEx does not include erythroid-lineage tissues (bone marrow, HUDEP-2, K562) where HBB is primarily expressed, limiting the power to detect tissue-specific regulatory eQTLs.
 
