@@ -4,7 +4,7 @@
 #import "template.typ": biorxiv-template
 
 #show: biorxiv-template.with(
-  title: [ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors in β-Globin Variants],
+  title: [ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Enhancer-Proximal Structural Pathogenicity Across Nine Genomic Loci],
   authors: (
     (
       name: "Sergey V. Boyko",
