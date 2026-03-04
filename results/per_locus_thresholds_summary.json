@@ -1,0 +1,796 @@
+[
+  {
+    "locus": "HBB",
+    "n_path": 353,
+    "n_ben": 750,
+    "n_total": 1103,
+    "path_mean": 0.882221,
+    "path_median": 0.9102,
+    "path_min": 0.7537,
+    "path_5th": 0.763,
+    "ben_mean": 0.993121,
+    "ben_median": 0.9929,
+    "ben_min": 0.9607,
+    "ben_1st": 0.983952,
+    "ben_5th": 0.9917,
+    "delta_mean": 0.1109,
+    "delta_median": 0.0827,
+    "univ_sens": 0.796,
+    "univ_spec": 1.0,
+    "univ_fp": 0,
+    "univ_tp": 281,
+    "opt_threshold": 0.9767,
+    "opt_sens": 0.9292,
+    "opt_spec": 0.9907,
+    "ben1_threshold": 0.983952,
+    "ben1_sens": 0.9292,
+    "ben1_spec": 0.9893,
+    "categories": {
+      "intronic": {
+        "n_path": 9,
+        "n_ben": 658,
+        "path_mean": 0.992944,
+        "ben_mean": 0.992807,
+        "delta": -0.000138
+      },
+      "missense": {
+        "n_path": 125,
+        "n_ben": 0,
+        "path_mean": 0.926711
+      },
+      "frameshift": {
+        "n_path": 99,
+        "n_ben": 0,
+        "path_mean": 0.817642
+      },
+      "synonymous": {
+        "n_path": 3,
+        "n_ben": 83,
+        "path_mean": 0.998067,
+        "ben_mean": 0.998353,
+        "delta": 0.000286
+      },
+      "nonsense": {
+        "n_path": 40,
+        "n_ben": 0,
+        "path_mean": 0.798435
+      },
+      "splice_donor": {
+        "n_path": 22,
+        "n_ben": 0,
+        "path_mean": 0.849368
+      },
+      "other": {
+        "n_path": 12,
+        "n_ben": 7,
+        "path_mean": 0.957317,
+        "ben_mean": 0.963143,
+        "delta": 0.005826
+      },
+      "promoter": {
+        "n_path": 15,
+        "n_ben": 0,
+        "path_mean": 0.91612
+      },
+      "3_prime_UTR": {
+        "n_path": 13,
+        "n_ben": 1,
+        "path_mean": 0.991754,
+        "ben_mean": 0.9916,
+        "delta": -0.000154
+      },
+      "splice_region": {
+        "n_path": 9,
+        "n_ben": 0,
+        "path_mean": 0.952322
+      }
+    },
+    "tissue": "matched",
+    "gene_type": "regulatory"
+  },
+  {
+    "locus": "CFTR",
+    "n_path": 1756,
+    "n_ben": 1593,
+    "n_total": 3349,
+    "path_mean": 0.991976,
+    "path_median": 0.9993,
+    "path_min": 0.8329,
+    "path_5th": 0.9802,
+    "ben_mean": 0.998752,
+    "ben_median": 0.9998,
+    "ben_min": 0.9462,
+    "ben_1st": 0.9705,
+    "ben_5th": 0.99486,
+    "delta_mean": 0.006776,
+    "delta_median": 0.0005,
+    "univ_sens": 0.0199,
+    "univ_spec": 0.9994,
+    "univ_fp": 1,
+    "univ_tp": 35,
+    "opt_threshold": 0.9705,
+    "opt_sens": 0.0256,
+    "opt_spec": 0.9912,
+    "ben1_threshold": 0.9705,
+    "ben1_sens": 0.0256,
+    "ben1_spec": 0.9912,
+    "categories": {
+      "synonymous": {
+        "n_path": 854,
+        "n_ben": 945,
+        "path_mean": 0.999683,
+        "ben_mean": 0.999759,
+        "delta": 7.5e-05
+      },
+      "intronic": {
+        "n_path": 245,
+        "n_ben": 534,
+        "path_mean": 0.999021,
+        "ben_mean": 0.998964,
+        "delta": -5.7e-05
+      },
+      "frameshift": {
+        "n_path": 516,
+        "n_ben": 0,
+        "path_mean": 0.975786
+      },
+      "splice_region": {
+        "n_path": 75,
+        "n_ben": 74,
+        "path_mean": 0.994876,
+        "ben_mean": 0.993331,
+        "delta": -0.001545
+      },
+      "other": {
+        "n_path": 32,
+        "n_ben": 22,
+        "path_mean": 0.990941,
+        "ben_mean": 0.983736,
+        "delta": -0.007204
+      },
+      "5_prime_UTR": {
+        "n_path": 6,
+        "n_ben": 13,
+        "path_mean": 0.977033,
+        "ben_mean": 0.973085,
+        "delta": -0.003949
+      },
+      "inframe_deletion": {
+        "n_path": 17,
+        "n_ben": 0,
+        "path_mean": 0.986929
+      },
+      "inframe_indel": {
+        "n_path": 9,
+        "n_ben": 0,
+        "path_mean": 0.995733
+      },
+      "3_prime_UTR": {
+        "n_path": 1,
+        "n_ben": 5,
+        "path_mean": 0.9989,
+        "ben_mean": 0.99884,
+        "delta": -6e-05
+      }
+    },
+    "tissue": "partial",
+    "gene_type": "mixed"
+  },
+  {
+    "locus": "TP53",
+    "n_path": 1645,
+    "n_ben": 1149,
+    "n_total": 2794,
+    "path_mean": 0.98962,
+    "path_median": 0.9988,
+    "path_min": 0.9444,
+    "path_5th": 0.96232,
+    "ben_mean": 0.998552,
+    "ben_median": 0.9996,
+    "ben_min": 0.9443,
+    "ben_1st": 0.9818,
+    "ben_5th": 0.9947,
+    "delta_mean": 0.008932,
+    "delta_median": 0.0008,
+    "univ_sens": 0.0018,
+    "univ_spec": 0.9983,
+    "univ_fp": 2,
+    "univ_tp": 3,
+    "opt_threshold": 0.9818,
+    "opt_sens": 0.2261,
+    "opt_spec": 0.9904,
+    "ben1_threshold": 0.9818,
+    "ben1_sens": 0.2261,
+    "ben1_spec": 0.9904,
+    "categories": {
+      "synonymous": {
+        "n_path": 786,
+        "n_ben": 613,
+        "path_mean": 0.999682,
+        "ben_mean": 0.999731,
+        "delta": 4.9e-05
+      },
+      "frameshift": {
+        "n_path": 534,
+        "n_ben": 0,
+        "path_mean": 0.973265
+      },
+      "intronic": {
+        "n_path": 122,
+        "n_ben": 406,
+        "path_mean": 0.998686,
+        "ben_mean": 0.998803,
+        "delta": 0.000117
+      },
+      "splice_region": {
+        "n_path": 73,
+        "n_ben": 66,
+        "path_mean": 0.985067,
+        "ben_mean": 0.989695,
+        "delta": 0.004628
+      },
+      "inframe_deletion": {
+        "n_path": 75,
+        "n_ben": 1,
+        "path_mean": 0.989904,
+        "ben_mean": 0.9944,
+        "delta": 0.004496
+      },
+      "other": {
+        "n_path": 19,
+        "n_ben": 34,
+        "path_mean": 0.985574,
+        "ben_mean": 0.994109,
+        "delta": 0.008535
+      },
+      "inframe_indel": {
+        "n_path": 31,
+        "n_ben": 4,
+        "path_mean": 0.991645,
+        "ben_mean": 0.99465,
+        "delta": 0.003005
+      },
+      "3_prime_UTR": {
+        "n_path": 3,
+        "n_ben": 19,
+        "path_mean": 0.9996,
+        "ben_mean": 0.999579,
+        "delta": -2.1e-05
+      },
+      "5_prime_UTR": {
+        "n_path": 2,
+        "n_ben": 6,
+        "path_mean": 0.9965,
+        "ben_mean": 0.983733,
+        "delta": -0.012767
+      }
+    },
+    "tissue": "partial",
+    "gene_type": "coding"
+  },
+  {
+    "locus": "BRCA1",
+    "n_path": 7062,
+    "n_ben": 3620,
+    "n_total": 10682,
+    "path_mean": 0.99292,
+    "path_median": 0.9996,
+    "path_min": 0.8767,
+    "path_5th": 0.9827,
+    "ben_mean": 0.998458,
+    "ben_median": 0.9998,
+    "ben_min": 0.9419,
+    "ben_1st": 0.964819,
+    "ben_5th": 0.9954,
+    "delta_mean": 0.005538,
+    "delta_median": 0.0002,
+    "univ_sens": 0.0075,
+    "univ_spec": 0.9928,
+    "univ_fp": 26,
+    "univ_tp": 53,
+    "opt_threshold": 0.9648,
+    "opt_sens": 0.0085,
+    "opt_spec": 0.9901,
+    "ben1_threshold": 0.964819,
+    "ben1_sens": 0.0086,
+    "ben1_spec": 0.9898,
+    "categories": {
+      "synonymous": {
+        "n_path": 3494,
+        "n_ben": 2026,
+        "path_mean": 0.9998,
+        "ben_mean": 0.999802,
+        "delta": 1e-06
+      },
+      "frameshift": {
+        "n_path": 2806,
+        "n_ben": 0,
+        "path_mean": 0.983376
+      },
+      "intronic": {
+        "n_path": 346,
+        "n_ben": 1238,
+        "path_mean": 0.99925,
+        "ben_mean": 0.999382,
+        "delta": 0.000132
+      },
+      "splice_region": {
+        "n_path": 169,
+        "n_ben": 194,
+        "path_mean": 0.99527,
+        "ben_mean": 0.995703,
+        "delta": 0.000433
+      },
+      "other": {
+        "n_path": 149,
+        "n_ben": 72,
+        "path_mean": 0.994204,
+        "ben_mean": 0.965375,
+        "delta": -0.028829
+      },
+      "inframe_indel": {
+        "n_path": 51,
+        "n_ben": 5,
+        "path_mean": 0.995082,
+        "ben_mean": 0.99514,
+        "delta": 5.8e-05
+      },
+      "3_prime_UTR": {
+        "n_path": 5,
+        "n_ben": 43,
+        "path_mean": 0.9993,
+        "ben_mean": 0.999272,
+        "delta": -2.8e-05
+      },
+      "5_prime_UTR": {
+        "n_path": 8,
+        "n_ben": 38,
+        "path_mean": 0.971838,
+        "ben_mean": 0.973289,
+        "delta": 0.001452
+      },
+      "inframe_deletion": {
+        "n_path": 33,
+        "n_ben": 4,
+        "path_mean": 0.992767,
+        "ben_mean": 0.99585,
+        "delta": 0.003083
+      }
+    },
+    "tissue": "partial",
+    "gene_type": "coding"
+  },
+  {
+    "locus": "MLH1",
+    "n_path": 2425,
+    "n_ben": 1635,
+    "n_total": 4060,
+    "path_mean": 0.988998,
+    "path_median": 0.9961,
+    "path_min": 0.8417,
+    "path_5th": 0.9687,
+    "ben_mean": 0.998113,
+    "ben_median": 0.9997,
+    "ben_min": 0.9539,
+    "ben_1st": 0.972034,
+    "ben_5th": 0.9843,
+    "delta_mean": 0.009115,
+    "delta_median": 0.0036,
+    "univ_sens": 0.0297,
+    "univ_spec": 1.0,
+    "univ_fp": 0,
+    "univ_tp": 72,
+    "opt_threshold": 0.972,
+    "opt_sens": 0.0553,
+    "opt_spec": 0.9908,
+    "ben1_threshold": 0.972034,
+    "ben1_sens": 0.0557,
+    "ben1_spec": 0.9896,
+    "categories": {
+      "synonymous": {
+        "n_path": 800,
+        "n_ben": 792,
+        "path_mean": 0.99972,
+        "ben_mean": 0.999724,
+        "delta": 4e-06
+      },
+      "frameshift": {
+        "n_path": 1028,
+        "n_ben": 1,
+        "path_mean": 0.976734,
+        "ben_mean": 0.9862,
+        "delta": 0.009466
+      },
+      "intronic": {
+        "n_path": 316,
+        "n_ben": 639,
+        "path_mean": 0.999123,
+        "ben_mean": 0.99918,
+        "delta": 5.6e-05
+      },
+      "splice_region": {
+        "n_path": 154,
+        "n_ben": 132,
+        "path_mean": 0.99467,
+        "ben_mean": 0.989492,
+        "delta": -0.005178
+      },
+      "other": {
+        "n_path": 59,
+        "n_ben": 46,
+        "path_mean": 0.988839,
+        "ben_mean": 0.988441,
+        "delta": -0.000398
+      },
+      "inframe_deletion": {
+        "n_path": 34,
+        "n_ben": 0,
+        "path_mean": 0.993165
+      },
+      "5_prime_UTR": {
+        "n_path": 11,
+        "n_ben": 15,
+        "path_mean": 0.972355,
+        "ben_mean": 0.974,
+        "delta": 0.001645
+      },
+      "inframe_indel": {
+        "n_path": 17,
+        "n_ben": 2,
+        "path_mean": 0.986435,
+        "ben_mean": 0.9963,
+        "delta": 0.009865
+      },
+      "3_prime_UTR": {
+        "n_path": 5,
+        "n_ben": 8,
+        "path_mean": 0.9984,
+        "ben_mean": 0.998425,
+        "delta": 2.5e-05
+      }
+    },
+    "tissue": "partial",
+    "gene_type": "coding"
+  },
+  {
+    "locus": "LDLR",
+    "n_path": 2274,
+    "n_ben": 1010,
+    "n_total": 3284,
+    "path_mean": 0.996945,
+    "path_median": 0.9998,
+    "path_min": 0.9061,
+    "path_5th": 0.9935,
+    "ben_mean": 0.999355,
+    "ben_median": 0.9999,
+    "ben_min": 0.9691,
+    "ben_1st": 0.988836,
+    "ben_5th": 0.9979,
+    "delta_mean": 0.00241,
+    "delta_median": 0.0001,
+    "univ_sens": 0.0044,
+    "univ_spec": 1.0,
+    "univ_fp": 0,
+    "univ_tp": 10,
+    "opt_threshold": 0.9888,
+    "opt_sens": 0.0418,
+    "opt_spec": 0.9911,
+    "ben1_threshold": 0.988836,
+    "ben1_sens": 0.0418,
+    "ben1_spec": 0.9891,
+    "categories": {
+      "synonymous": {
+        "n_path": 1164,
+        "n_ben": 583,
+        "path_mean": 0.999915,
+        "ben_mean": 0.999879,
+        "delta": -3.6e-05
+      },
+      "frameshift": {
+        "n_path": 654,
+        "n_ben": 1,
+        "path_mean": 0.991511,
+        "ben_mean": 0.9691,
+        "delta": -0.022411
+      },
+      "intronic": {
+        "n_path": 184,
+        "n_ben": 343,
+        "path_mean": 0.999543,
+        "ben_mean": 0.999371,
+        "delta": -0.000172
+      },
+      "splice_region": {
+        "n_path": 69,
+        "n_ben": 24,
+        "path_mean": 0.99713,
+        "ben_mean": 0.9973,
+        "delta": 0.00017
+      },
+      "other": {
+        "n_path": 71,
+        "n_ben": 5,
+        "path_mean": 0.992586,
+        "ben_mean": 0.97274,
+        "delta": -0.019846
+      },
+      "inframe_deletion": {
+        "n_path": 71,
+        "n_ben": 0,
+        "path_mean": 0.997611
+      },
+      "3_prime_UTR": {
+        "n_path": 3,
+        "n_ben": 49,
+        "path_mean": 0.998467,
+        "ben_mean": 0.998359,
+        "delta": -0.000107
+      },
+      "inframe_indel": {
+        "n_path": 43,
+        "n_ben": 1,
+        "path_mean": 0.998235,
+        "ben_mean": 0.9989,
+        "delta": 0.000665
+      },
+      "5_prime_UTR": {
+        "n_path": 14,
+        "n_ben": 4,
+        "path_mean": 0.983429,
+        "ben_mean": 0.987,
+        "delta": 0.003571
+      }
+    },
+    "tissue": "partial",
+    "gene_type": "coding"
+  },
+  {
+    "locus": "SCN5A",
+    "n_path": 928,
+    "n_ben": 1560,
+    "n_total": 2488,
+    "path_mean": 0.996025,
+    "path_median": 0.9998,
+    "path_min": 0.974,
+    "path_5th": 0.9819,
+    "ben_mean": 0.999456,
+    "ben_median": 0.9998,
+    "ben_min": 0.9724,
+    "ben_1st": 0.994159,
+    "ben_5th": 0.9991,
+    "delta_mean": 0.003432,
+    "delta_median": 0.0,
+    "univ_sens": 0.0,
+    "univ_spec": 1.0,
+    "univ_fp": 0,
+    "univ_tp": 0,
+    "opt_threshold": 0.9941,
+    "opt_sens": 0.2241,
+    "opt_spec": 0.9936,
+    "ben1_threshold": 0.994159,
+    "ben1_sens": 0.2241,
+    "ben1_spec": 0.9897,
+    "categories": {
+      "synonymous": {
+        "n_path": 563,
+        "n_ben": 1094,
+        "path_mean": 0.99981,
+        "ben_mean": 0.999813,
+        "delta": 3e-06
+      },
+      "intronic": {
+        "n_path": 114,
+        "n_ben": 406,
+        "path_mean": 0.999273,
+        "ben_mean": 0.999257,
+        "delta": -1.5e-05
+      },
+      "frameshift": {
+        "n_path": 198,
+        "n_ben": 0,
+        "path_mean": 0.983678
+      },
+      "splice_region": {
+        "n_path": 14,
+        "n_ben": 31,
+        "path_mean": 0.992679,
+        "ben_mean": 0.994816,
+        "delta": 0.002138
+      },
+      "3_prime_UTR": {
+        "n_path": 9,
+        "n_ben": 14,
+        "path_mean": 0.998344,
+        "ben_mean": 0.998243,
+        "delta": -0.000102
+      },
+      "other": {
+        "n_path": 9,
+        "n_ben": 12,
+        "path_mean": 0.994678,
+        "ben_mean": 0.989867,
+        "delta": -0.004811
+      },
+      "inframe_deletion": {
+        "n_path": 14,
+        "n_ben": 0,
+        "path_mean": 0.995179
+      },
+      "inframe_indel": {
+        "n_path": 7,
+        "n_ben": 0,
+        "path_mean": 0.995057
+      }
+    },
+    "tissue": "mismatch",
+    "gene_type": "coding"
+  },
+  {
+    "locus": "TERT",
+    "n_path": 431,
+    "n_ben": 1658,
+    "n_total": 2089,
+    "path_mean": 0.979752,
+    "path_median": 0.9936,
+    "path_min": 0.8726,
+    "path_5th": 0.8952,
+    "ben_mean": 0.99857,
+    "ben_median": 0.9995,
+    "ben_min": 0.9488,
+    "ben_1st": 0.971095,
+    "ben_5th": 0.9955,
+    "delta_mean": 0.018818,
+    "delta_median": 0.0059,
+    "univ_sens": 0.109,
+    "univ_spec": 0.9994,
+    "univ_fp": 1,
+    "univ_tp": 47,
+    "opt_threshold": 0.9681,
+    "opt_sens": 0.2274,
+    "opt_spec": 0.9928,
+    "ben1_threshold": 0.971095,
+    "ben1_sens": 0.2274,
+    "ben1_spec": 0.9897,
+    "categories": {
+      "synonymous": {
+        "n_path": 51,
+        "n_ben": 1143,
+        "path_mean": 0.999551,
+        "ben_mean": 0.999488,
+        "delta": -6.3e-05
+      },
+      "intronic": {
+        "n_path": 45,
+        "n_ben": 394,
+        "path_mean": 0.999044,
+        "ben_mean": 0.999083,
+        "delta": 3.8e-05
+      },
+      "missense": {
+        "n_path": 218,
+        "n_ben": 31,
+        "path_mean": 0.983136,
+        "ben_mean": 0.981068,
+        "delta": -0.002068
+      },
+      "splice_region": {
+        "n_path": 8,
+        "n_ben": 68,
+        "path_mean": 0.996188,
+        "ben_mean": 0.99369,
+        "delta": -0.002498
+      },
+      "frameshift": {
+        "n_path": 60,
+        "n_ben": 0,
+        "path_mean": 0.944892
+      },
+      "nonsense": {
+        "n_path": 28,
+        "n_ben": 0,
+        "path_mean": 0.946821
+      },
+      "other": {
+        "n_path": 13,
+        "n_ben": 11,
+        "path_mean": 0.998162,
+        "ben_mean": 0.977736,
+        "delta": -0.020425
+      },
+      "5_prime_UTR": {
+        "n_path": 3,
+        "n_ben": 7,
+        "path_mean": 0.973633,
+        "ben_mean": 0.977471,
+        "delta": 0.003838
+      },
+      "3_prime_UTR": {
+        "n_path": 1,
+        "n_ben": 4,
+        "path_mean": 0.9985,
+        "ben_mean": 0.9985,
+        "delta": 0.0
+      }
+    },
+    "tissue": "expressed",
+    "gene_type": "inter-TAD"
+  },
+  {
+    "locus": "GJB2",
+    "n_path": 314,
+    "n_ben": 155,
+    "n_total": 469,
+    "path_mean": 0.991582,
+    "path_median": 0.9935,
+    "path_min": 0.9791,
+    "path_5th": 0.9836,
+    "ben_mean": 0.997823,
+    "ben_median": 0.9998,
+    "ben_min": 0.9764,
+    "ben_1st": 0.97707,
+    "ben_5th": 0.98578,
+    "delta_mean": 0.006241,
+    "delta_median": 0.0063,
+    "univ_sens": 0.0,
+    "univ_spec": 1.0,
+    "univ_fp": 0,
+    "univ_tp": 0,
+    "ben1_threshold": 0.97707,
+    "ben1_sens": 0.0,
+    "ben1_spec": 0.9871,
+    "categories": {
+      "missense": {
+        "n_path": 175,
+        "n_ben": 9,
+        "path_mean": 0.993806,
+        "ben_mean": 0.993556,
+        "delta": -0.00025
+      },
+      "synonymous": {
+        "n_path": 5,
+        "n_ben": 118,
+        "path_mean": 0.99986,
+        "ben_mean": 0.999843,
+        "delta": -1.7e-05
+      },
+      "frameshift": {
+        "n_path": 66,
+        "n_ben": 0,
+        "path_mean": 0.986253
+      },
+      "other": {
+        "n_path": 23,
+        "n_ben": 13,
+        "path_mean": 0.996265,
+        "ben_mean": 0.984815,
+        "delta": -0.01145
+      },
+      "nonsense": {
+        "n_path": 33,
+        "n_ben": 0,
+        "path_mean": 0.98417
+      },
+      "3_prime_UTR": {
+        "n_path": 4,
+        "n_ben": 10,
+        "path_mean": 0.99885,
+        "ben_mean": 0.99872,
+        "delta": -0.00013
+      },
+      "5_prime_UTR": {
+        "n_path": 2,
+        "n_ben": 5,
+        "path_mean": 0.99275,
+        "ben_mean": 0.98986,
+        "delta": -0.00289
+      },
+      "inframe_deletion": {
+        "n_path": 5,
+        "n_ben": 0,
+        "path_mean": 0.99614
+      }
+    },
+    "tissue": "mismatch",
+    "gene_type": "coding"
+  }
+]

@@ -1,0 +1,19 @@
+{
+  "total_variants": 30318,
+  "archcode_only_count": 394,
+  "archcode_only_by_locus": {
+    "HBB": 158,
+    "CFTR": 36,
+    "TP53": 4,
+    "BRCA1": 79,
+    "MLH1": 72,
+    "LDLR": 10,
+    "TERT": 35
+  },
+  "archcode_only_tp": 364,
+  "archcode_only_fp": 30,
+  "tp_ctcf_median": 21949,
+  "tp_ctcf_mean": 27293,
+  "fp_ctcf_median": 692,
+  "fp_ctcf_mean": 5734
+}

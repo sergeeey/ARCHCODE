@@ -1,0 +1,12 @@
+{
+  "gene": "GJB2",
+  "download_date": "2026-03-04T12:10:06.809055",
+  "pathogenic_ids_count": 412,
+  "benign_ids_count": 566,
+  "combined_unique_ids": 666,
+  "summaries_count": 666,
+  "window": {
+    "start": 0,
+    "end": 999999999
+  }
+}

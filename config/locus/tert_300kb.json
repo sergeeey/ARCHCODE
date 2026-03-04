@@ -1,0 +1,248 @@
+{
+  "id": "tert_300kb",
+  "name": "TERT 300kb inter-TAD region (ENCODE K562 CTCF + H3K27ac)",
+  "description": "300kb window spanning the TERT inter-TAD boundary region on chr5p15.33. TERT sits in a ~120kb gap between two K562 Arrowhead contact domains (Rao et al. 2014, GSE63525). The left TAD boundary ends at ~1,240,000, the right starts at ~1,360,000. A 470kb chromatin loop (HiCCUPS, anchors at ~1,170kb and ~1,640kb, 45 obs contacts, FDR=4.4e-6) encloses TERT. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE, IDR narrowPeak, GRCh38). H3K27ac from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). NOTE: No CTCF or H3K27ac peaks overlap TERT gene body — consistent with TERT being regulated via BCR-ABL/STAT5a in K562, not through local enhancers. TERT promoter hotspot mutations (C228T at 1,295,113, C250T at 1,295,135) create de novo ETS binding sites.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr5",
+    "start": 1150000,
+    "end": 1450000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 1295068,
+        "occupancy": 0.6,
+        "name": "TERT_TSS_promoter",
+        "source": "NCBI_RefSeq_TSS",
+        "note": "TERT transcription start site (NM_198253.3, minus strand, TSS at txEnd=1,295,068). K562 expresses TERT via BCR-ABL/STAT5a pathway. No H3K27ac peak at this position in ENCODE K562 data — regulation is trans-acting, not enhancer-driven. MANUALLY CALIBRATED occupancy=0.6 reflecting moderate transcriptional activity without local enhancer marks"
+      },
+      {
+        "position": 1200709,
+        "occupancy": 0.7,
+        "name": "SLC6A19_promoter_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Two overlapping H3K27ac peaks at SLC6A19 promoter: 1,199,226-1,200,103 (signal=14.57) and 1,200,160-1,201,257 (signal=14.57). Combined ~2kb active promoter. Located ~94kb upstream of TERT TSS"
+      },
+      {
+        "position": 1185916,
+        "occupancy": 0.5,
+        "name": "LOC124900189_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at LOC124900189 region (1,185,092-1,186,739, 1.6kb, signal=10.56). Located ~109kb upstream of TERT TSS"
+      },
+      {
+        "position": 1345654,
+        "occupancy": 0.8,
+        "name": "CLPTM1L_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "Strongest H3K27ac peak in window: 1,345,202-1,346,105 (signal=16.44, -log10q=42.59). At CLPTM1L 3' end/intron. Part of the 5p15.33 TERT-CLPTM1L cancer susceptibility locus. Located ~50kb downstream of TERT TSS"
+      },
+      {
+        "position": 1344398,
+        "occupancy": 0.6,
+        "name": "CLPTM1L_intron_H3K27ac",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak in CLPTM1L intron (1,343,941-1,344,855, signal=11.99, -log10q=24.10)"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 1174595,
+        "orientation": "unknown",
+        "signal": 186.14,
+        "name": "TERLR1_CTCF_strongest",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strongest CTCF in window (1,174,481-1,174,709, signal=186.14). Near TERLR1/LOC124900189. Co-localizes with left anchor of 470kb chromatin loop (Rao 2014 HiCCUPS). Candidate left TAD boundary element"
+      },
+      {
+        "position": 1168313,
+        "orientation": "unknown",
+        "signal": 169.36,
+        "name": "upstream_TERLR1_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF upstream of TERLR1 (1,168,206-1,168,420, signal=169.36). Part of CTCF cluster at left TAD boundary"
+      },
+      {
+        "position": 1167861,
+        "orientation": "unknown",
+        "signal": 131.55,
+        "name": "upstream_TERLR1_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF upstream of TERLR1 (1,167,763-1,167,959, signal=131.55). Part of CTCF cluster at left TAD boundary"
+      },
+      {
+        "position": 1209085,
+        "orientation": "unknown",
+        "signal": 127.7,
+        "name": "SLC6A19_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF in SLC6A19 gene body (1,209,000-1,209,169, signal=127.70)"
+      },
+      {
+        "position": 1204880,
+        "orientation": "unknown",
+        "signal": 84.68,
+        "name": "TERLR1_SLC6A19_intergenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF between TERLR1 and SLC6A19 (1,204,846-1,204,914, signal=84.68)"
+      },
+      {
+        "position": 1235579,
+        "orientation": "unknown",
+        "signal": 58.64,
+        "name": "SLC6A18_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF in SLC6A18 gene body (1,235,444-1,235,714, signal=58.64)"
+      },
+      {
+        "position": 1245206,
+        "orientation": "unknown",
+        "signal": 37.92,
+        "name": "SLC6A18_3prime_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF near SLC6A18 3' end (1,245,071-1,245,341, signal=37.92). Nearest CTCF to TERT 5' end (~8kb upstream). Candidate intra-loop insulator"
+      },
+      {
+        "position": 1380532,
+        "orientation": "unknown",
+        "signal": 69.42,
+        "name": "LINC01511_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF at LINC01511 3' end (1,380,397-1,380,667, signal=69.42). ~85kb downstream of TERT. Near right TAD boundary start (~1,360,000)"
+      },
+      {
+        "position": 1408725,
+        "orientation": "unknown",
+        "signal": 14.23,
+        "name": "SLC6A3_CTCF_1",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Weak CTCF in SLC6A3 gene body (1,408,590-1,408,860, signal=14.23)"
+      },
+      {
+        "position": 1437679,
+        "orientation": "unknown",
+        "signal": 15.98,
+        "name": "SLC6A3_CTCF_2",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Weak CTCF in SLC6A3 gene body (1,437,544-1,437,814, signal=15.98)"
+      }
+    ],
+    "tad_boundaries": [
+      {
+        "position_start": 1150000,
+        "position_end": 1240000,
+        "name": "left_TAD_right_edge",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Right edge of Domain A (hg19: 910,000-1,240,000, 330kb, f1=1.138). Contains SLC12A7, TERLR1, SLC6A19, SLC6A18. TERT is NOT within this domain. Rao et al. 2014 Cell (PMID:25497547). Offset hg19→hg38 negligible (<200bp at this locus)"
+      },
+      {
+        "position_start": 1360000,
+        "position_end": 1450000,
+        "name": "right_TAD_left_edge",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Left edge of Domain C (hg19: 1,360,000-1,660,000, 300kb, f1=1.306). Contains LINC01511, SLC6A3. TERT is in the 120kb INTER-TAD GAP between Domain A and Domain C"
+      }
+    ],
+    "genes": [
+      { "name": "TERLR1", "start": 1173095, "end": 1178605, "strand": "-" },
+      {
+        "name": "LOC124900189",
+        "start": 1173095,
+        "end": 1182183,
+        "strand": "-"
+      },
+      { "name": "SLC6A19", "start": 1201594, "end": 1225111, "strand": "+" },
+      { "name": "SLC6A18", "start": 1225380, "end": 1246189, "strand": "+" },
+      { "name": "TERT", "start": 1253166, "end": 1295068, "strand": "-" },
+      { "name": "MIR4457", "start": 1309309, "end": 1309377, "strand": "-" },
+      { "name": "CLPTM1L", "start": 1317751, "end": 1339179, "strand": "-" },
+      { "name": "LINC01511", "start": 1363581, "end": 1380073, "strand": "-" },
+      { "name": "SLC6A3", "start": 1392793, "end": 1445440, "strand": "-" }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 10,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR000AKP",
+      "file": "ENCFF864OSZ",
+      "type": "Pseudoreplicated peaks",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 6,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/"
+    },
+    "tad_domains": {
+      "study": "Rao et al. 2014",
+      "pmid": "25497547",
+      "geo": "GSE63525",
+      "file": "GSE63525_K562_Arrowhead_domainlist.txt",
+      "assembly_original": "hg19",
+      "liftover_method": "minimal offset (<200bp at this locus, negligible at TAD resolution)",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
+    },
+    "tert_expression": {
+      "studies": [
+        {
+          "authors": "Chai et al.",
+          "year": 2011,
+          "journal": "BMC Cancer",
+          "pmid": "22151235",
+          "finding": "BCR-ABL regulates hTERT at multiple levels in K562 via STAT5a pathway. Gleevec inhibits hTERT mRNA and telomerase activity"
+        }
+      ]
+    },
+    "gene_annotations": {
+      "source": "UCSC ncbiRefSeq track via API",
+      "assembly": "GRCh38",
+      "verification": "VERIFIED 2026-03-04 via api.genome.ucsc.edu"
+    }
+  },
+  "tert_promoter_hotspots": {
+    "_note": "Two somatic hotspot mutations creating de novo ETS binding sites. Positions verified via dbSNP/ClinVar",
+    "C228T": {
+      "position_grch38": 1295113,
+      "rs": "rs1242535815",
+      "ref_plus": "G",
+      "alt_plus": "A",
+      "hgvs": "NM_198253.3(TERT):c.-124C>T",
+      "mechanism": "Creates 5'-CCCCTTCCGG-3' ETS binding motif"
+    },
+    "C250T": {
+      "position_grch38": 1295135,
+      "rs": "rs1561215364",
+      "ref_plus": "G",
+      "alt_plus": "A",
+      "hgvs": "NM_198253.3(TERT):c.-146C>T",
+      "mechanism": "Creates identical de novo ETS binding motif as C228T"
+    }
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 300x300 matrix. TERT sits in an inter-TAD boundary region with sparse CTCF/enhancer features — may show weaker structural discrimination than loci within well-defined TADs (e.g., HBB, TP53). Requires empirical recalibration."
+}

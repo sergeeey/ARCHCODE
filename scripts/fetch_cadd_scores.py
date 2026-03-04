@@ -38,6 +38,8 @@ LOCI = {
     "MLH1":  {"file": "MLH1_Unified_Atlas_300kb.csv",   "chrom": "3"},
     "LDLR":  {"file": "LDLR_Unified_Atlas_300kb.csv",   "chrom": "19"},
     "SCN5A": {"file": "SCN5A_Unified_Atlas_400kb.csv",  "chrom": "3"},
+    "TERT":  {"file": "TERT_Unified_Atlas_300kb.csv",   "chrom": "5"},
+    "GJB2":  {"file": "GJB2_Unified_Atlas_300kb.csv",   "chrom": "13"},
 }
 # HBB already scored — skip
 
