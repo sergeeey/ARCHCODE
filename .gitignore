@@ -12,6 +12,7 @@ __pycache__/
 .playwright-mcp/
 manuscript/*.html
 manuscript/*.pdf
+manuscript/_template_test.typ
 
 # Environment variables
 .env

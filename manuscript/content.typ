@@ -2677,7 +2677,7 @@ provides a complementary perspective on structural disruption.
 = References
 <references>
 + Gerlich et al.~(2006). Live-cell imaging reveals a stable
-  cohesin-chromatin interaction. Curr Biol.
+  cohesin-chromatin interaction. Curr Biol. doi:10.1016/j.cub.2006.06.068
 + Gabriele et al.~(2022). Dynamics of CTCF- and cohesin-mediated
   chromatin looping. Science. doi:10.1126/science.abn6583
 + Avsec et al.~(2021). Enformer. Nature Methods.
@@ -2693,13 +2693,13 @@ provides a complementary perspective on structural disruption.
 + Harrison et al.~(2019). Overview of Specifications to the ACMG/AMP
   Variant Interpretation Guidelines. Current Protocols in Human
   Genetics. doi:10.1002/cphg.93
-+ Manrai et al.~(2016). Genetic Misdiagnoses. NEJM.
-+ Hansen et al.~(2017). CTCF and Cohesin. eLife.
-+ Davidson et al.~(2019). DNA Loop Extrusion. Science.
-+ Sanborn et al.~(2015). Chromatin extrusion. PNAS.
-+ Schwarzer et al.~(2017). Cohesin removal. Nature.
-+ Kagey et al.~(2010). Mediator and cohesin. Nature.
-+ Landrum et al.~(2018). ClinVar. NAR.
++ Manrai et al.~(2016). Genetic Misdiagnoses. NEJM. doi:10.1056/NEJMsa1507092
++ Hansen et al.~(2017). CTCF and Cohesin. eLife. doi:10.7554/eLife.25776
++ Davidson et al.~(2019). DNA Loop Extrusion. Science. doi:10.1126/science.aaz3418
++ Sanborn et al.~(2015). Chromatin extrusion. PNAS. doi:10.1073/pnas.1518552112
++ Schwarzer et al.~(2017). Cohesin removal. Nature. doi:10.1038/nature24281
++ Kagey et al.~(2010). Mediator and cohesin. Nature. doi:10.1038/nature09380
++ Landrum et al.~(2018). ClinVar. NAR. doi:10.1093/nar/gkx1153
 + Boyko (2026). ARCHCODE GitHub: https:/\/github.com/sergeeey/ARCHCODE
 + Whalen et al.~(2022). Navigating the pitfalls of applying machine
   learning in genomics. Nature Reviews Genetics.
