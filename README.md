@@ -22,7 +22,7 @@
 
 ![Figure 1: SSIM distribution across variant categories](results/figures/fig1_ssim_violin.png)
 
-*LSSIM distribution across 12 variant categories (n=1,103 HBB). LoF classes (nonsense, frameshift) cluster below 0.85; benign classes (intronic, synonymous) near 1.0. Red diamonds = pearl variants.*
+_LSSIM distribution across 12 variant categories (n=1,103 HBB). LoF classes (nonsense, frameshift) cluster below 0.85; benign classes (intronic, synonymous) near 1.0. Red diamonds = pearl variants._
 
 ---
 
@@ -113,26 +113,26 @@ Analysis of **1,103 real ClinVar HBB variants** (353 Pathogenic/LP + 750 Benign/
 
 ![SSIM vs VEP scatter plot](results/figures/fig_ssim_vs_vep.png)
 
-*353 real ClinVar HBB variants. Red = 20 pearl variants (VEP-blind, ARCHCODE-detected). Pearl zone: VEP < 0.30 AND SSIM < 0.95.*
+_353 real ClinVar HBB variants. Red = 20 pearl variants (VEP-blind, ARCHCODE-detected). Pearl zone: VEP < 0.30 AND SSIM < 0.95._
 
 ### Figure 3: ROC Curve
 
 ![ROC curve](results/figures/fig_roc_curve.png)
 
-*Unified pipeline ROC. AUC = 0.977. Youden threshold SSIM < 0.994.*
+_Unified pipeline ROC. AUC = 0.977. Youden threshold SSIM < 0.994._
 
 <details>
 <summary><b>Table: Top 5 Pearl Variants (of 20 total)</b></summary>
 
-| ClinVar ID   | HGVS_c              | Category        | Significance       | SSIM   | VEP  | VEP Consequence         | Mechanism                         |
-| ------------ | ------------------- | --------------- | ------------------ | ------ | ---- | ----------------------- | --------------------------------- |
-| VCV000869358 | c.50dup             | frameshift      | Pathogenic         | 0.8915 | 0.15 | synonymous_variant      | LoF, VEP misannotated             |
-| VCV002024192 | c.93-33_96delins... | splice_acceptor | Likely pathogenic  | 0.9004 | 0.20 | coding_sequence_variant | Complex indel, VEP underscored    |
-| VCV000015471 | c.-78A>G            | promoter        | Pathogenic/LP      | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter-enhancer loop disruption |
-| VCV000015470 | c.-78A>C            | promoter        | Pathogenic         | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter-enhancer loop disruption |
-| VCV000036284 | c.-136C>T           | promoter        | Pathogenic/LP      | 0.9277 | 0.20 | 5_prime_UTR_variant     | Promoter-enhancer loop disruption |
+| ClinVar ID   | HGVS_c              | Category        | Significance      | SSIM   | VEP  | VEP Consequence         | Mechanism                         |
+| ------------ | ------------------- | --------------- | ----------------- | ------ | ---- | ----------------------- | --------------------------------- |
+| VCV000869358 | c.50dup             | frameshift      | Pathogenic        | 0.8915 | 0.15 | synonymous_variant      | LoF, VEP misannotated             |
+| VCV002024192 | c.93-33_96delins... | splice_acceptor | Likely pathogenic | 0.9004 | 0.20 | coding_sequence_variant | Complex indel, VEP underscored    |
+| VCV000015471 | c.-78A>G            | promoter        | Pathogenic/LP     | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter-enhancer loop disruption |
+| VCV000015470 | c.-78A>C            | promoter        | Pathogenic        | 0.9276 | 0.20 | 5_prime_UTR_variant     | Promoter-enhancer loop disruption |
+| VCV000036284 | c.-136C>T           | promoter        | Pathogenic/LP     | 0.9277 | 0.20 | 5_prime_UTR_variant     | Promoter-enhancer loop disruption |
 
-*Sorted by SSIM ascending (strongest structural disruption first). Full list: [Supplementary Table S1](manuscript/TABLE_S1_PEARLS.md).*
+_Sorted by SSIM ascending (strongest structural disruption first). Full list: [Supplementary Table S1](manuscript/TABLE_S1_PEARLS.md)._
 
 </details>
 
@@ -140,21 +140,21 @@ Analysis of **1,103 real ClinVar HBB variants** (353 Pathogenic/LP + 750 Benign/
 
 ARCHCODE was applied to **7 clinically significant loci** across 27,760 ClinVar variants to test generalizability beyond HBB:
 
-| Locus | Disease | Chr | Variants | Pathogenic | Benign | Struct. Path. | Pearls |
-|-------|---------|-----|----------|-----------|--------|--------------|--------|
-| **HBB** | &beta;-thalassemia | 11 | 1,103 | 353 | 750 | 242 | 20 |
-| **BRCA1** | Breast/ovarian cancer | 17 | 10,682 | 7,062 | 3,620 | 52 | 0 |
-| **CFTR** | Cystic fibrosis | 7 | 3,349 | 1,756 | 1,593 | 35 | 0 |
-| **TP53** | Li-Fraumeni syndrome | 17 | 2,794 | 1,645 | 1,149 | 0 | 0 |
-| **MLH1** | Lynch syndrome | 3 | 4,060 | 2,425 | 1,635 | 72 | 0 |
-| **LDLR** | Familial hyperchol. | 19 | 3,284 | 2,274 | 1,010 | 10 | 0 |
-| **SCN5A** | Brugada / Long QT | 3 | 2,488 | 928 | 1,560 | 0 | 0 |
+| Locus     | Disease               | Chr | Variants | Pathogenic | Benign | Struct. Path. | Pearls |
+| --------- | --------------------- | --- | -------- | ---------- | ------ | ------------- | ------ |
+| **HBB**   | &beta;-thalassemia    | 11  | 1,103    | 353        | 750    | 242           | 20     |
+| **BRCA1** | Breast/ovarian cancer | 17  | 10,682   | 7,062      | 3,620  | 52            | 0      |
+| **CFTR**  | Cystic fibrosis       | 7   | 3,349    | 1,756      | 1,593  | 35            | 0      |
+| **TP53**  | Li-Fraumeni syndrome  | 17  | 2,794    | 1,645      | 1,149  | 0             | 0      |
+| **MLH1**  | Lynch syndrome        | 3   | 4,060    | 2,425      | 1,635  | 72            | 0      |
+| **LDLR**  | Familial hyperchol.   | 19  | 3,284    | 2,274      | 1,010  | 10            | 0      |
+| **SCN5A** | Brugada / Long QT     | 3   | 2,488    | 928        | 1,560  | 0             | 0      |
 
 All loci use identical Kramer kinetics parameters (&alpha;=0.92, &gamma;=0.80, k<sub>base</sub>=0.002). HBB shows the highest structural sensitivity — consistent with its well-characterized LCR enhancer-promoter architecture and compact 30 kb window.
 
 ![Figure 5: Multi-locus summary](results/figures/fig5_multilocus_summary.png)
 
-*Cross-locus validation summary. &Delta;LSSIM = separation between benign and pathogenic mean SSIM. Green cells: Hi-C r &ge; 0.50. SCN5A (gray) = negative control (K562 cell-type mismatch).*
+_Cross-locus validation summary. &Delta;LSSIM = separation between benign and pathogenic mean SSIM. Green cells: Hi-C r &ge; 0.50. SCN5A (gray) = negative control (K562 cell-type mismatch)._
 
 ## Benchmarks: ARCHCODE vs Deep Learning Models
 
@@ -162,15 +162,15 @@ ARCHCODE was benchmarked against deep learning chromatin structure predictors ac
 
 ![Figure 4: Hi-C validation across loci and cell types](results/figures/fig4_hic_validation.png)
 
-*Pearson r (ARCHCODE vs Hi-C) across 8 locus&times;cell-type combinations. All p < 10<sup>&minus;82</sup>. Color = cell type.*
+_Pearson r (ARCHCODE vs Hi-C) across 8 locus&times;cell-type combinations. All p < 10<sup>&minus;82</sup>. Color = cell type._
 
 ### Contact Map Prediction (Hi-C correlation)
 
-| Model | Type | Hi-C r (range) | Training data | Speed | Reference |
-|-------|------|---------------|--------------|-------|-----------|
-| **ARCHCODE** | Physics (Kramer LEF) | **0.28 &ndash; 0.59** | 0 (analytical) | **< 1 s** | This study |
-| **Akita** | Deep learning CNN | 0.59 | ~4,000 Hi-C maps | ~145 s (GPU) | Fudenberg et al. 2020 |
-| **Orca** | Graph neural network | 0.71 | Multi-scale Hi-C | N/A | Zhou et al. 2022 |
+| Model        | Type                 | Hi-C r (range)        | Training data    | Speed        | Reference             |
+| ------------ | -------------------- | --------------------- | ---------------- | ------------ | --------------------- |
+| **ARCHCODE** | Physics (Kramer LEF) | **0.28 &ndash; 0.59** | 0 (analytical)   | **< 1 s**    | This study            |
+| **Akita**    | Deep learning CNN    | 0.59                  | ~4,000 Hi-C maps | ~145 s (GPU) | Fudenberg et al. 2020 |
+| **Orca**     | Graph neural network | 0.71                  | Multi-scale Hi-C | N/A          | Zhou et al. 2022      |
 
 Best ARCHCODE loci: **MLH1 r=0.59**, **HBB 95 kb r=0.59**, **BRCA1 r=0.53** (K562). ARCHCODE achieves Akita-level correlation on top loci with **zero training data**, **interpretable physics**, and **100&times; speed advantage**. Its parameters (&alpha;, &gamma;, k<sub>base</sub>) map directly to measurable biophysical quantities (cohesin residence time, processivity, loading rate).
 
@@ -179,16 +179,16 @@ Best ARCHCODE loci: **MLH1 r=0.59**, **HBB 95 kb r=0.59**, **BRCA1 r=0.53** (K56
 <details>
 <summary><b>Per-locus Pearson r / Spearman &rho;</b></summary>
 
-| Locus | ARCHCODE vs Akita (r / &rho;) | ARCHCODE vs AlphaGenome (r / &rho;) |
-|-------|-------------------------------|--------------------------------------|
-| HBB (30 kb) | 0.056 / 0.128 | 0.099 / 0.153 |
-| HBB (95 kb) | &minus;0.126 / &minus;0.273 | 0.052 / 0.125 |
-| BRCA1 | 0.154 / 0.426 | 0.210 / 0.524 |
-| CFTR | 0.272 / 0.407 | 0.071 / 0.271 |
-| TP53 | &minus;0.007 / 0.171 | 0.270 / 0.316 |
-| MLH1 | 0.120 / 0.224 | 0.283 / 0.486 |
-| LDLR | 0.177 / 0.338 | 0.293 / 0.432 |
-| SCN5A | — | &minus;0.083 / &minus;0.172 |
+| Locus       | ARCHCODE vs Akita (r / &rho;) | ARCHCODE vs AlphaGenome (r / &rho;) |
+| ----------- | ----------------------------- | ----------------------------------- |
+| HBB (30 kb) | 0.056 / 0.128                 | 0.099 / 0.153                       |
+| HBB (95 kb) | &minus;0.126 / &minus;0.273   | 0.052 / 0.125                       |
+| BRCA1       | 0.154 / 0.426                 | 0.210 / 0.524                       |
+| CFTR        | 0.272 / 0.407                 | 0.071 / 0.271                       |
+| TP53        | &minus;0.007 / 0.171          | 0.270 / 0.316                       |
+| MLH1        | 0.120 / 0.224                 | 0.283 / 0.486                       |
+| LDLR        | 0.177 / 0.338                 | 0.293 / 0.432                       |
+| SCN5A       | —                             | &minus;0.083 / &minus;0.172         |
 
 Low cross-model correlation is expected: ARCHCODE captures **loop-level topology** (cohesin barriers, enhancer contacts), while DL models learn **genome-wide distance decay patterns** from Hi-C training data. The models answer fundamentally different questions.
 
@@ -198,27 +198,27 @@ Low cross-model correlation is expected: ARCHCODE captures **loop-level topology
 
 To verify that ARCHCODE-discovered pearls represent real biology (not simulation artifacts), we compared predicted chromatin accessibility and expression changes between pearl and benign variant groups using AlphaGenome RNA-seq and ATAC-seq tracks:
 
-| Modality | Metric | Pearl (n=23) | Benign (n=23) | p-value |
-|----------|--------|-------------|--------------|---------|
-| **RNA-seq** | Signal concentration ratio | 16.97 | 6.09 | 4.8 &times; 10<sup>&minus;5</sup> |
-| **RNA-seq** | &Delta; at variant bin | 0.381 | 0.109 | 0.0014 |
-| **ATAC-seq** | Signal concentration ratio | 11.15 | 6.39 | 0.0026 |
-| **ATAC-seq** | &Delta; at variant bin | 0.268 | 0.098 | 0.029 |
+| Modality     | Metric                     | Pearl (n=23) | Benign (n=23) | p-value                           |
+| ------------ | -------------------------- | ------------ | ------------- | --------------------------------- |
+| **RNA-seq**  | Signal concentration ratio | 16.97        | 6.09          | 4.8 &times; 10<sup>&minus;5</sup> |
+| **RNA-seq**  | &Delta; at variant bin     | 0.381        | 0.109         | 0.0014                            |
+| **ATAC-seq** | Signal concentration ratio | 11.15        | 6.39          | 0.0026                            |
+| **ATAC-seq** | &Delta; at variant bin     | 0.268        | 0.098         | 0.029                             |
 
 All metrics significant at p < 0.05. Pearl variants show **2.8&times; higher RNA-seq signal concentration** and **2.7&times; higher ATAC-seq &Delta;** at the variant position compared to benign controls, consistent with genuine regulatory disruption.
 
 ## Tech Stack
 
-| Layer | Technology | Purpose |
-|-------|-----------|---------|
-| **Simulation engine** | TypeScript 5.2 | Kramer-rate loop extrusion, contact matrices, SSIM |
-| **3D visualization** | React 18 + Three.js (r181) | Interactive chromatin fiber viewer |
-| **State management** | Zustand | Reactive simulation parameters |
-| **Styling** | Tailwind CSS 4 | Responsive UI components |
-| **Data pipeline** | Python 3.11 + matplotlib | ROC analysis, VEP integration, figure generation |
-| **Testing** | Vitest | Physics regression tests, gold-standard validation |
-| **Build** | Vite 5 | Fast HMR, optimized production builds |
-| **Containerization** | Docker | Reproducible scientific environment |
+| Layer                 | Technology                 | Purpose                                            |
+| --------------------- | -------------------------- | -------------------------------------------------- |
+| **Simulation engine** | TypeScript 5.2             | Kramer-rate loop extrusion, contact matrices, SSIM |
+| **3D visualization**  | React 18 + Three.js (r181) | Interactive chromatin fiber viewer                 |
+| **State management**  | Zustand                    | Reactive simulation parameters                     |
+| **Styling**           | Tailwind CSS 4             | Responsive UI components                           |
+| **Data pipeline**     | Python 3.11 + matplotlib   | ROC analysis, VEP integration, figure generation   |
+| **Testing**           | Vitest                     | Physics regression tests, gold-standard validation |
+| **Build**             | Vite 5                     | Fast HMR, optimized production builds              |
+| **Containerization**  | Docker                     | Reproducible scientific environment                |
 
 <details>
 <summary><b>Project Structure</b></summary>
@@ -295,7 +295,7 @@ This protocol was developed after a self-audit identified risks of AI-generated 
 
 Manuscript submitted to **bioRxiv** (ID: BIORXIV/2026/708672). Under screening — DOI will be updated once assigned.
 
-> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors in &beta;-Globin Variants. *bioRxiv* (submitted 2026-03-02, under review).
+> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors in &beta;-Globin Variants. _bioRxiv_ (submitted 2026-03-02, under review).
 
 ## Citation
 
