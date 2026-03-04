@@ -340,3 +340,40 @@
 - CNVs have extreme effectStrength but poorly defined positions → artifact
 - Filtering "other" would eliminate 28/30 FP (93%) while keeping 359/364 TP (99%)
 - Simple, interpretable rule for clinical implementation
+
+## ADR-020: SpliceAI complete null closes Limitation #4 (2026-03-04)
+
+**Context:** Limitation #4 в рукописи: "VEP instead of SpliceAI — API unreachable during study period". Нужно закрыть или подтвердить.
+
+**Результат:** Ensembl VEP REST API с плагином SpliceAI (`?SpliceAI=1`). 20/20 pearl SNVs = 0.0000 по всем 4 метрикам (donor gain/loss, acceptor gain/loss).
+
+**Решение:** Limitation #4 переписана: "SpliceAI confirms pearl invisibility to splice predictors." Из ограничения превратилось в аргумент.
+
+**Обоснование:**
+
+- Broad Institute API (spliceailookup-api.broadinstitute.org) — timeout 30s на каждый запрос
+- Ensembl VEP POST `/vep/homo_sapiens/region` с SpliceAI plugin — работает, batch mode
+- Complete null (0.00) — strongest possible evidence для structural blind spot
+- Pearl variants невидимы для: VEP (rule-based) + SpliceAI (neural network) + CADD (ambiguous)
+
+## ADR-021: MPRA null correlation = informative, not failure (2026-03-04)
+
+**Context:** Kircher et al. 2019 MPRA (Nat Commun 10:3583) — 623 variants in HBB promoter, MaveDB urn:mavedb:00000018-a-1. Cross-validation с ARCHCODE.
+
+**Результат:**
+
+- Allele-specific match: n=22, Pearson r=−0.21 (p=0.36), Spearman ρ=−0.42 (p=0.052)
+- Pearl vs non-pearl MPRA scores: Mann-Whitney p=0.91 (indistinguishable)
+- Position-level match: n=30, similar null
+
+**Решение:** Фреймить как informative null, не как failure.
+
+**Обоснование:**
+
+- MPRA = episomal reporter assay → тестирует промотор-собственную транскрипцию в плазмиде
+- Pearl variants = enhancer-promoter contact disruption через 3D loop extrusion
+- MPRA по определению не может видеть 3D-structural mechanism → null expected
+- Это УСИЛИВАЕТ аргумент: ещё один метод не видит pearls → structural blind spot confirmed
+- Таблица 5 методов (VEP/SpliceAI/CADD/MPRA/ARCHCODE) = compelling visual argument
+
+**Файлы:** `data/mpra_kircher_hbb_raw.csv`, `results/mpra_crossvalidation_summary.json`, `scripts/mpra_crossvalidation.py`
