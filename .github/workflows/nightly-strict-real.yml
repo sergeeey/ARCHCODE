@@ -1,0 +1,46 @@
+name: Nightly Gold Strict-Real
+
+on:
+  schedule:
+    - cron: "30 3 * * *"
+  workflow_dispatch:
+
+jobs:
+  strict-real-gold:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check strict-real secret availability
+        id: secret-check
+        run: |
+          if [ -z "${{ secrets.ALPHAGENOME_API_KEY }}" ]; then
+            echo "has_key=false" >> "$GITHUB_OUTPUT"
+            echo "ALPHAGENOME_API_KEY is not configured. Skipping strict-real nightly run."
+          else
+            echo "has_key=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Skip notice
+        if: steps.secret-check.outputs.has_key != 'true'
+        run: echo "Nightly strict-real gate skipped due to missing ALPHAGENOME_API_KEY."
+
+      - name: Checkout
+        if: steps.secret-check.outputs.has_key == 'true'
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        if: steps.secret-check.outputs.has_key == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        if: steps.secret-check.outputs.has_key == 'true'
+        run: npm ci
+
+      - name: Run gold-standard in strict-real mode
+        if: steps.secret-check.outputs.has_key == 'true'
+        env:
+          ALPHAGENOME_TEST_MODE: strict-real
+          ALPHAGENOME_API_KEY: ${{ secrets.ALPHAGENOME_API_KEY }}
+        run: npm run test:gold
