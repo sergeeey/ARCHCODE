@@ -1,0 +1,204 @@
+{
+  "generated_at_utc": "2026-03-05T20:08:04.350009+00:00",
+  "task": "HBB_VUS_STRICT_VALIDATION",
+  "hypothesis": {
+    "h0": "ARCHCODE does not provide useful ranking signal among HBB VUS beyond category structure.",
+    "h1": "ARCHCODE provides reproducible ranking signal among HBB VUS suitable for prioritization of follow-up assays."
+  },
+  "claim_level": {
+    "ranking_signal_hbb_vus": "EXPLORATORY",
+    "clinical_reclassification": "UNVERIFIED",
+    "causal_mechanism_assignment": "EXPLORATORY"
+  },
+  "provenance": {
+    "type": "COMPUTATIONAL_DERIVED",
+    "sources": [
+      "results/HBB_Unified_Atlas_95kb.csv",
+      "results/within_category_analysis.json",
+      "results/vus_validation_report.json"
+    ]
+  },
+  "predeclared_criteria": {
+    "criterion_1_sample_size": "20 <= N_HBB_VUS <= 60",
+    "criterion_2_within_category": "mean_within_category_auc(HBB) >= 0.60 and n_categories_with_auc >= 3",
+    "criterion_3_topk_enrichment": "topK pearl-like enrichment fold >= 1.25 and one-sided hypergeom p <= 0.05"
+  },
+  "metrics": {
+    "n_hbb_vus": 28,
+    "top_k": 10,
+    "topk_pearl_like": 10,
+    "total_pearl_like": 23,
+    "topk_pearl_like_rate": 1.0,
+    "background_pearl_like_rate": 0.821429,
+    "enrichment_fold": 1.217391,
+    "enrichment_pvalue_one_sided_hypergeom": 0.08717949,
+    "hbb_overall_auc": 0.9755,
+    "hbb_mean_within_category_auc": 0.6227,
+    "hbb_n_categories_with_auc": 3
+  },
+  "criteria_results": {
+    "criterion_1_sample_size_pass": true,
+    "criterion_2_within_category_pass": true,
+    "criterion_3_topk_enrichment_pass": false
+  },
+  "go_no_go": "NO_GO",
+  "no_go_reason": "At least one predeclared criterion failed; keep claim at EXPLORATORY and do not escalate to clinical utility claims.",
+  "top_k_variants_by_lowest_lssim": [
+    {
+      "clinvar_id": "VCV001189030",
+      "position_grch38": "5225638",
+      "category": "frameshift",
+      "archcode_lssim": 0.9202,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000552712",
+      "position_grch38": "5225727",
+      "category": "splice_donor",
+      "archcode_lssim": 0.9277,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000038671",
+      "position_grch38": "5225727",
+      "category": "splice_donor",
+      "archcode_lssim": 0.9277,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000015512",
+      "position_grch38": "5225727",
+      "category": "splice_donor",
+      "archcode_lssim": 0.9277,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000021191",
+      "position_grch38": "5225728",
+      "category": "splice_donor",
+      "archcode_lssim": 0.9302,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000021190",
+      "position_grch38": "5225728",
+      "category": "splice_donor",
+      "archcode_lssim": 0.9302,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000869309",
+      "position_grch38": "5226596",
+      "category": "other",
+      "archcode_lssim": 0.9395,
+      "discordance": "AGREEMENT",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000869316",
+      "position_grch38": "5227019",
+      "category": "missense",
+      "archcode_lssim": 0.9397,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000869315",
+      "position_grch38": "5227019",
+      "category": "missense",
+      "archcode_lssim": 0.9397,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    },
+    {
+      "clinvar_id": "VCV000015519",
+      "position_grch38": "5227019",
+      "category": "missense",
+      "archcode_lssim": 0.9397,
+      "discordance": "VEP_ONLY",
+      "pearl_like": true
+    }
+  ],
+  "hbb_within_category_details": {
+    "overall_auc": 0.9755,
+    "mean_within_category_auc": 0.6227,
+    "n_categories_with_auc": 3,
+    "valid_categories": [
+      {
+        "category": "intronic",
+        "within_category_auc": 0.524,
+        "n_pathogenic": 9,
+        "n_benign": 658
+      },
+      {
+        "category": "other",
+        "within_category_auc": 0.7738,
+        "n_pathogenic": 12,
+        "n_benign": 7
+      },
+      {
+        "category": "synonymous",
+        "within_category_auc": 0.5703,
+        "n_pathogenic": 3,
+        "n_benign": 83
+      }
+    ]
+  },
+  "variant_rationale_sample": [
+    {
+      "clinvar_id": "VCV000015151.60",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015151.60 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000439152.5",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000439152.5 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000619855.11",
+      "category": "splice_site",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: Splice site variant VCV000619855.11 shows minimal 3D impact. AlphaGenome predicts pathogenicity likely through splicing defects, not structural changes. Recommend: RNA-seq validation to confirm aberrant splicing.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000015171.31",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015171.31 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000015316.16",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015316.16 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    }
+  ],
+  "allowed_claims": [
+    "Strict HBB VUS ranking diagnostics were computed with predeclared criteria.",
+    "Go/No-Go decision is reproducible from local artifacts.",
+    "Interpretation remains computational and hypothesis-level without wet-lab confirmation."
+  ],
+  "blocked_claims": [
+    "Clinical reclassification based on this report alone.",
+    "Causal disease mechanism assignment without orthogonal experimental evidence."
+  ]
+}
