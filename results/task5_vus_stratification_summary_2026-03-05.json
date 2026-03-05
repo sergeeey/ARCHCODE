@@ -1,0 +1,38 @@
+{
+  "generated_at_utc": "2026-03-05T18:10:54.2866232Z",
+  "task": "Task5_VUS_Stratification",
+  "claim_level": {
+    "vus_stratification_signal": "SUPPORTED",
+    "clinical_reclassification": "UNVERIFIED",
+    "causal_mechanism_assignment": "EXPLORATORY"
+  },
+  "provenance": {
+    "type": "COMPUTATIONAL_DERIVED",
+    "sources": [
+      "results/within_category_analysis.json",
+      "results/*_Unified_Atlas_*.csv"
+    ]
+  },
+  "vus_total_in_windows": 30952,
+  "candidates_total": 760,
+  "pearl_like_total": 641,
+  "pearl_like_fraction_of_vus": 0.020709,
+  "mean_within_category_auc_across_loci": 0.482278,
+  "loci_with_high_overall_but_low_within_category": [
+    "TERT",
+    "GJB2"
+  ],
+  "interpretation": "Global discrimination exists, but within-category separability is modest in many loci; mechanistic stratification should remain hypothesis-level pending functional validation.",
+  "allowed_claims": [
+    "Computational stratification signal is present in this data slice.",
+    "Within-category discrimination is limited in multiple loci and constrains overinterpretation."
+  ],
+  "blocked_claims": [
+    "Clinical reclassification from these metrics alone",
+    "Disease-causal mechanism assignment without orthogonal experiments"
+  ],
+  "limitations": [
+    "No direct functional wet-lab validation in this artifact",
+    "Category structure and class imbalance can influence global metrics"
+  ]
+}
