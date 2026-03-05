@@ -111,7 +111,8 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 
 - Task 5:
   - `results/task5_vus_stratification_summary_2026-03-05.json`
-  - Combines VUS reclassification and within-category discrimination context.
+  - Combines candidate stratification and within-category discrimination context.
+  - Anti-overclaim policy embedded: clinical reclassification remains `UNVERIFIED`.
 
 ---
 
@@ -120,6 +121,10 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 - Weak CTCF paradox as strict claim:
   - Direct weak-site-only perturbation with explicit `<0.85` site mutation is executed, but strict interpretation is inconclusive in this slice due to `weakEncounter=0`.
   - Current status: `PARTIAL_SUPPORT` (CTCF-KD kinetics validated; weak-site strict claim not resolved for this locus geometry).
+
+- Task 4/5 causal and clinical claims:
+  - Task 4 overlap metrics validate input-feature consistency, not causal biology.
+  - Task 5 stratification metrics are hypothesis-generating; clinical reclassification remains unverified without orthogonal validation.
 
 ---
 
@@ -136,6 +141,7 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 - Task 4:
   - Strong CTCF positional recall against ENCODE-aligned config features across 6 loci.
   - H3K27ac agreement is locus-dependent and lower precision/F1 than CTCF.
+  - Interpretation limited to input-feature alignment (`SUPPORTED`), not causal/clinical inference (`UNVERIFIED`).
 
 - Task 3:
   - Isolated weak-CTCF experiment executed (`task3_weak_ctcf_isolated_2026-03-05.json`).
@@ -144,6 +150,7 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 - Task 5:
   - Global separation may exist in some loci, but within-category separation is often modest.
   - Supports conservative interpretation: stratification is hypothesis-generating unless functionally validated.
+  - Candidate counts are not equivalent to clinical reclassification.
 
 ---
 
