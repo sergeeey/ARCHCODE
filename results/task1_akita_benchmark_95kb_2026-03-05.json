@@ -45,5 +45,22 @@
       "spearman_p": 1.6453600756516868e-21,
       "n": 12403
     }
+  },
+  "local_metrics": {
+    "archcode_vs_akita": {
+      "local_ssim_mean": -0.01345164530700127,
+      "window_size": 50,
+      "n_local_windows": 25
+    },
+    "archcode_vs_hic": {
+      "local_ssim_mean": 0.21006215591647132,
+      "window_size": 50,
+      "n_local_windows": 25
+    },
+    "akita_vs_hic": {
+      "local_ssim_mean": 0.0017844003582763574,
+      "window_size": 50,
+      "n_local_windows": 25
+    }
   }
 }

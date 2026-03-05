@@ -228,6 +228,83 @@ def distance_normalize(matrix: np.ndarray) -> np.ndarray:
     return result
 
 
+def _global_ssim_from_arrays(a: np.ndarray, b: np.ndarray) -> float:
+    """Compute SSIM on two flattened arrays."""
+    if a.size == 0 or b.size == 0:
+        return 1.0
+    mu_a = float(np.mean(a))
+    mu_b = float(np.mean(b))
+    sig_a2 = float(np.mean((a - mu_a) ** 2))
+    sig_b2 = float(np.mean((b - mu_b) ** 2))
+    sig_ab = float(np.mean((a - mu_a) * (b - mu_b)))
+    c1 = 0.0001
+    c2 = 0.0009
+    denom = (mu_a * mu_a + mu_b * mu_b + c1) * (sig_a2 + sig_b2 + c2)
+    if abs(denom) < 1e-15:
+        return 1.0
+    return float(((2 * mu_a * mu_b + c1) * (2 * sig_ab + c2)) / denom)
+
+
+def local_ssim_mean(
+    ref: np.ndarray,
+    mut: np.ndarray,
+    window_size: int = 50,
+) -> tuple[float, int]:
+    """
+    Sliding-window local SSIM mean over contact matrices.
+    Uses upper triangle (k=1) within each local window.
+    """
+    n = ref.shape[0]
+    if n == 0 or ref.shape != mut.shape:
+        return 0.0, 0
+
+    if n <= window_size:
+        idx = np.triu_indices(n, k=1)
+        return _global_ssim_from_arrays(ref[idx], mut[idx]), 1
+
+    step = max(1, window_size // 2)
+    ssim_sum = 0.0
+    count = 0
+    for i in range(0, n - window_size + 1, step):
+        for j in range(0, n - window_size + 1, step):
+            sub_ref = ref[i : i + window_size, j : j + window_size]
+            sub_mut = mut[i : i + window_size, j : j + window_size]
+            idx = np.triu_indices(window_size, k=1)
+            ssim_sum += _global_ssim_from_arrays(sub_ref[idx], sub_mut[idx])
+            count += 1
+    return (ssim_sum / count if count > 0 else 0.0), count
+
+
+def compute_local_metrics(
+    archcode: np.ndarray,
+    alphagenome: np.ndarray,
+    hic: np.ndarray | None = None,
+    window_size: int = 50,
+) -> dict:
+    """Compute local SSIM metrics for the same pairs as correlation metrics."""
+    local = {}
+    lssim, nwin = local_ssim_mean(archcode, alphagenome, window_size)
+    local["archcode_vs_alphagenome"] = {
+        "local_ssim_mean": float(lssim),
+        "window_size": int(window_size),
+        "n_local_windows": int(nwin),
+    }
+    if hic is not None:
+        lssim_ah, nwin_ah = local_ssim_mean(archcode, hic, window_size)
+        local["archcode_vs_hic"] = {
+            "local_ssim_mean": float(lssim_ah),
+            "window_size": int(window_size),
+            "n_local_windows": int(nwin_ah),
+        }
+        lssim_gh, nwin_gh = local_ssim_mean(alphagenome, hic, window_size)
+        local["alphagenome_vs_hic"] = {
+            "local_ssim_mean": float(lssim_gh),
+            "window_size": int(window_size),
+            "n_local_windows": int(nwin_gh),
+        }
+    return local
+
+
 def correlate_matrices(
     archcode: np.ndarray,
     alphagenome: np.ndarray,
@@ -395,6 +472,7 @@ def main():
         print("  No Hi-C data found for this locus")
 
     correlations = correlate_matrices(archcode_norm, ag_norm, hic_matrix)
+    local_metrics = compute_local_metrics(archcode_norm, ag_norm, hic_matrix, window_size=50)
 
     # Step 6: Save results
     output_path = args.output or f"results/alphagenome_benchmark_{args.locus.replace('/', '_')}.json"
@@ -421,6 +499,7 @@ def main():
             "ontology_curie": track_meta.get("ontology_curie", ""),
         },
         "correlations": correlations,
+        "local_metrics": local_metrics,
     }
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -439,6 +518,11 @@ def main():
         if key in correlations:
             c = correlations[key]
             print(f"  {label:25s}  r = {c['pearson_r']:.4f}  ρ = {c['spearman_rho']:.4f}")
+            if key in local_metrics:
+                print(
+                    f"  {'':25s}  LSSIM = {local_metrics[key]['local_ssim_mean']:.4f} "
+                    f"(w={local_metrics[key]['window_size']}, n={local_metrics[key]['n_local_windows']})"
+                )
     print()
 
 

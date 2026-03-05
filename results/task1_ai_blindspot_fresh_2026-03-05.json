@@ -1,13 +1,25 @@
 {
-  "generated_at_utc": "2026-03-05T18:17:41.8930929Z",
+  "generated_at_utc": "2026-03-05T18:48:12.000Z",
   "task": "Task1_AI_blind_spot_fresh_run",
   "locus": "95kb",
   "provenance": "fresh_run_real_api_and_local_dl",
+  "metric_policy": {
+    "pearson_role_95kb": "secondary",
+    "local_ssim_role_95kb": "primary",
+    "local_ssim_window_size": 50
+  },
   "archcode_vs_alphagenome_pearson": 0.052529325492108495,
   "archcode_vs_akita_pearson": -0.12587508122359398,
   "archcode_vs_hic_pearson_from_alpha": 0.07239077004297371,
   "archcode_vs_hic_pearson_from_akita": 0.07239077004297371,
   "alphagenome_vs_hic_pearson": 0.05103871737084728,
   "akita_vs_hic_pearson": -0.04985198771312985,
+  "archcode_vs_alphagenome_lssim": 0.28797282153013737,
+  "archcode_vs_akita_lssim": -0.01345164530700127,
+  "archcode_vs_hic_lssim_from_alpha": 0.21006215591647132,
+  "archcode_vs_hic_lssim_from_akita": 0.21006215591647132,
+  "alphagenome_vs_hic_lssim": 0.22719384006009044,
+  "akita_vs_hic_lssim": 0.0017844003582763574,
+  "local_windows_count": 25,
   "n_pairs": 12403
 }
