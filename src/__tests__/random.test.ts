@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from "vitest";
+import { describe, it, expect, beforeEach, vi } from "vitest";
 import {
   SeededRandom,
   getGlobalRNG,
@@ -90,5 +90,20 @@ describe("global random helpers", () => {
     const a = getGlobalRNG();
     const b = getGlobalRNG();
     expect(a).toBe(b);
+  });
+});
+
+describe("module initialization branches", () => {
+  it("initializes lazy global RNG and supports Math.random fallback path", async () => {
+    vi.resetModules();
+    const mod = await import("../utils/random");
+
+    const first = mod.random();
+    expect(first).toBeGreaterThanOrEqual(0);
+    expect(first).toBeLessThan(1);
+
+    const rngA = mod.getGlobalRNG();
+    const rngB = mod.getGlobalRNG();
+    expect(rngA).toBe(rngB);
   });
 });
