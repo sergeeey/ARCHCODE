@@ -25,6 +25,7 @@ import {
 type SiteDef = { pos: number; strength: number; orient: "F" | "R" };
 
 type ScenarioName = "baseline" | "weak_halved" | "strong_control";
+type LocusPreset = "hbb" | "weak_probe";
 
 interface ScenarioResult {
   name: ScenarioName;
@@ -55,6 +56,15 @@ const HBB_SITES: SiteDef[] = [
   { pos: 90000, strength: 0.9, orient: "R" },
 ];
 
+// Purpose-built preset for Task 3 isolation:
+// central R...F weak convergent pair guarantees weak barrier encounters.
+const WEAK_PROBE_SITES: SiteDef[] = [
+  { pos: 25000, strength: 0.95, orient: "R" },
+  { pos: 45000, strength: 0.72, orient: "R" },
+  { pos: 55000, strength: 0.72, orient: "F" },
+  { pos: 75000, strength: 0.95, orient: "F" },
+];
+
 const GENOME_LENGTH = 100_000;
 const WEAK_THRESHOLD = 0.85;
 const TARGET_WEAK_STRENGTH = 0.5;
@@ -65,6 +75,7 @@ const args = parseArgs({
     runs: { type: "string", default: "200" },
     steps: { type: "string", default: "36000" },
     seedOffset: { type: "string", default: "0" },
+    locusPreset: { type: "string", default: "hbb" },
     out: { type: "string" },
   },
 });
@@ -72,6 +83,14 @@ const args = parseArgs({
 const NUM_RUNS = Number(args.values.runs ?? 200);
 const STEPS_PER_RUN = Number(args.values.steps ?? 36000);
 const SEED_OFFSET = Number(args.values.seedOffset ?? 0);
+const LOCUS_PRESET = ((args.values.locusPreset ?? "hbb").toLowerCase() ===
+"weak_probe"
+  ? "weak_probe"
+  : "hbb") as LocusPreset;
+
+function getSitesForPreset(preset: LocusPreset): SiteDef[] {
+  return preset === "weak_probe" ? WEAK_PROBE_SITES : HBB_SITES;
+}
 
 function withScenarioStrengths(
   sites: SiteDef[],
@@ -104,7 +123,8 @@ function ci95Binomial(p: number, n: number): [number, number] | null {
 }
 
 function runOneScenario(name: ScenarioName): ScenarioResult {
-  const sites = withScenarioStrengths(HBB_SITES, name);
+  const baseSites = getSitesForPreset(LOCUS_PRESET);
+  const sites = withScenarioStrengths(baseSites, name);
 
   const totals: BarrierStatsSnapshot = {
     weakThreshold: WEAK_THRESHOLD,
@@ -187,18 +207,25 @@ function main() {
     baseline.weakEncounter > 0 && weakHalved.weakEncounter > 0;
   const weakNoEffectObserved =
     hasWeakEvents && Math.abs(weakDelta) <= noEffectThreshold;
-  const verdict = hasWeakEvents
-    ? weakNoEffectObserved
-      ? "SUPPORTED_IN_MODEL"
-      : "NEEDS_FIXES"
-    : "INCONCLUSIVE_NO_WEAK_EVENTS";
+  const verdict =
+    hasWeakEvents
+      ? weakNoEffectObserved
+        ? "SUPPORTED_IN_MODEL"
+        : "NEEDS_FIXES"
+      : "NO_GO_NO_WEAK_EVENTS";
+  const goNoGo = hasWeakEvents ? "GO" : "NO_GO";
+  const noGoReason = hasWeakEvents
+    ? null
+    : "weakEncounter=0 in baseline and/or perturbation; ablation cannot be interpreted";
+  const dateStamp = new Date().toISOString().slice(0, 10);
 
   const report = {
     generated_at_utc: new Date().toISOString(),
     task: "Task3_Weak_CTCF_Isolated",
     provenance: "SIMULATION",
     configuration: {
-      locus: "HBB",
+      locus: LOCUS_PRESET.toUpperCase(),
+      locusPreset: LOCUS_PRESET,
       genomeLength: GENOME_LENGTH,
       runs: NUM_RUNS,
       stepsPerRun: STEPS_PER_RUN,
@@ -218,6 +245,8 @@ function main() {
       noEffectThresholdAbs: noEffectThreshold,
       hasWeakEvents,
       weakNoEffectObserved,
+      goNoGo,
+      noGoReason,
     },
     verdict,
     note: "This is an in-model isolated perturbation. External biological validation remains required.",
@@ -229,7 +258,7 @@ function main() {
       __dirname,
       "..",
       "results",
-      "task3_weak_ctcf_isolated_2026-03-05.json",
+      `task3_weak_ctcf_isolated_${dateStamp}.json`,
     );
 
   fs.mkdirSync(path.dirname(outputPath), { recursive: true });
