@@ -75,6 +75,10 @@ interpretation pipelines. Genome-wide scaling to 13 loci (32,201 variants) confi
   conservation (17/17 below WT baseline, _r_ = 0.82); mouse Hi-C
   validation (G1E-ER4, 4DN) confirms ARCHCODE WT prediction (_r_ =
   0.531); 9 orthogonal methods now blind to pearls (Figures 12--13, 17)
++ #strong[MaveDB experimental cross-validation:] BRCA1 SGE (Findlay 2018,
+  1,422 matched variants, _r_ = −0.045) and TP53 DMS (HCT116, 1,080
+  matched, _r_ = −0.383) confirm ARCHCODE is orthogonal to experimental
+  functional assays — 9th independent validation method (Figure 17)
 
 #v(0.8em)
 #line(length: 100%, stroke: 0.3pt + luma(200))
@@ -160,6 +164,15 @@ interpretation pipelines. Genome-wide scaling to 13 loci (32,201 variants) confi
     B/LB; Δ LSSIM = --0.014],
     [ClinVar PTEN (n=1,496)], [REAL], [NCBI E-utilities API; 703 P/LP + 793
     B/LB; Δ LSSIM = --0.010],
+    [K562 RNA-seq expression], [REAL], [ENCODE ENCSR000AEM / ENCFF742CVV;
+    polyA RNA-seq; gene quantifications (RSEM); used for expression vs
+    structural signal analysis],
+    [Mutual information analysis], [COMPUTATIONAL], [NMI: ARCHCODE vs CADD =
+    0.024 (orthogonal); VEP vs CADD = 0.231 (redundant); 9-locus dataset],
+    [MaveDB BRCA1 SGE], [REAL], [Findlay et al.~Nature 2018 (PMID 30209399);
+    MaveDB urn:mavedb:00000097-0-2; 3,893 scores; 1,422 matched; r = --0.045],
+    [MaveDB TP53 DMS], [REAL], [DMS in HCT116; MaveDB urn:mavedb:00001213-a-1;
+    8,052 scores; 1,080 matched; r = --0.383],
   )]
   , kind: table
   )

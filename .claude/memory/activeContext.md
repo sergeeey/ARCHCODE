@@ -168,3 +168,7 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 93e856c feat: v2.8.1 — gnomAD AF analysis, README v2.8, Zenodo DOI
 638a5d9 feat: v2.8 orthogonal validation — SpliceAI null + MPRA cross-validation + Figure 10
 ```
+
+## Auto-commit log
+
+- [2026-03-05 15:48] `c2510b6`: feat: v2.13 — MaveDB cross-validation + genome-wide scaling (13 loci, 32,201 variants, 9 orthogonal methods)
