@@ -43,7 +43,7 @@ jobs:
       - name: Unit test gate
         run: npm test
 
-      - name: Coverage gate (40/45/40/40)
+      - name: Coverage gate (45/50/45/45)
         run: npm run test:coverage
 
       - name: Gold-standard regression gate (mock smoke)
