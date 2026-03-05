@@ -31,3 +31,15 @@ Provide a repeatable scoring and evidence map for release readiness.
 - `D:\ДНК\docs\INVARIANTS.md`
 - `D:\ДНК\docs\FAILURE_MODES.md`
 - `D:\ДНК\docs\PR_GATE.md`
+
+## CI gates (2026-03-06 baseline)
+
+- `security-gates.yml` enforces:
+  - lint/build/unit tests
+  - coverage gate at `60/55/60/60`
+  - gold-standard mock smoke (`ALPHAGENOME_TEST_MODE=mock`)
+  - dependency, python, and secret scans
+- On `push` to `main`, strict-real is enforced:
+  - fails if `ALPHAGENOME_API_KEY` is missing
+  - runs `test:gold` with `ALPHAGENOME_TEST_MODE=strict-real`
+- Nightly strict-real remains as orthogonal monitoring workflow.
