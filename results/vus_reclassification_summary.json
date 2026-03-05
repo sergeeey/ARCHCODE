@@ -1,0 +1,99 @@
+{
+  "analysis": "VUS reclassification",
+  "total_vus_in_windows": 30952,
+  "total_candidates": 760,
+  "total_pearl_like": 641,
+  "per_locus": [
+    {
+      "gene": "HBB",
+      "total_vus": 1494,
+      "in_window": 1465,
+      "candidates": 327,
+      "pearl_like": 255
+    },
+    {
+      "gene": "BRCA1",
+      "total_vus": 7763,
+      "in_window": 7652,
+      "candidates": 81,
+      "pearl_like": 71
+    },
+    {
+      "gene": "TP53",
+      "total_vus": 2242,
+      "in_window": 2210,
+      "candidates": 13,
+      "pearl_like": 13
+    },
+    {
+      "gene": "CFTR",
+      "total_vus": 3562,
+      "in_window": 3498,
+      "candidates": 54,
+      "pearl_like": 44
+    },
+    {
+      "gene": "MLH1",
+      "total_vus": 3613,
+      "in_window": 3584,
+      "candidates": 122,
+      "pearl_like": 111
+    },
+    {
+      "gene": "LDLR",
+      "total_vus": 2218,
+      "in_window": 2158,
+      "candidates": 11,
+      "pearl_like": 9
+    },
+    {
+      "gene": "SCN5A",
+      "total_vus": 4420,
+      "in_window": 4396,
+      "candidates": 0,
+      "pearl_like": 0
+    },
+    {
+      "gene": "TERT",
+      "total_vus": 2268,
+      "in_window": 2181,
+      "candidates": 79,
+      "pearl_like": 76
+    },
+    {
+      "gene": "GJB2",
+      "total_vus": 612,
+      "in_window": 575,
+      "candidates": 0,
+      "pearl_like": 0
+    },
+    {
+      "gene": "HBA1",
+      "total_vus": 235,
+      "in_window": 206,
+      "candidates": 0,
+      "pearl_like": 0
+    },
+    {
+      "gene": "GATA1",
+      "total_vus": 292,
+      "in_window": 248,
+      "candidates": 0,
+      "pearl_like": 0
+    },
+    {
+      "gene": "BCL11A",
+      "total_vus": 266,
+      "in_window": 250,
+      "candidates": 0,
+      "pearl_like": 0
+    },
+    {
+      "gene": "PTEN",
+      "total_vus": 2558,
+      "in_window": 2529,
+      "candidates": 73,
+      "pearl_like": 62
+    }
+  ]
+}
