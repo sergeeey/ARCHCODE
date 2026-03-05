@@ -1,0 +1,28 @@
+uid,accession,title,chrom,pos_start,pos_end,pos_relative,clinical_significance,gene,review_status
+4343273,VCV004343273,NM_002467.6(MYC):c.31-11C>A,chr8,127738237,127738237,149045,,MYC,
+4343268,VCV004343268,NM_002467.6(MYC):c.14G>A (p.Arg5Gln),chr8,127736607,127736607,147415,,MYC,
+2658815,VCV002658815,NM_002467.6(MYC):c.217A>G (p.Thr73Ala),chr8,127738434,127738434,149242,Pathogenic,MYC,"criteria provided, single submitter"
+12577,VCV000012577,NM_002467.6(MYC):c.220C>G (p.Pro74Ala),chr8,127738437,127738437,149245,other,MYC,"criteria provided, single submitter"
+12576,VCV000012576,NM_002467.6(MYC):c.162G>C (p.Glu54Asp),chr8,127738379,127738379,149187,Pathogenic,MYC,no assertion criteria provided
+12575,VCV000012575,NM_002467.6(MYC):c.302A>C (p.Asn101Thr),chr8,127738519,127738519,149327,Pathogenic,MYC,no assertion criteria provided
+12574,VCV000012574,NM_002467.6(MYC):c.214C>T (p.Pro72Ser),chr8,127738431,127738431,149239,Pathogenic,MYC,no assertion criteria provided
+3915251,VCV003915251,NM_002467.6(MYC):c.688G>T (p.Ala230Ser),chr8,127738905,127738905,149713,Uncertain significance,MYC,"criteria provided, single submitter"
+3770573,VCV003770573,NM_001354870.1(MYC):c.-772G>A,chr8,127735822,127735822,146630,Likely benign,LOC106867047,"criteria provided, single submitter"
+3400454,VCV003400454,NM_002467.6(MYC):c.814G>A (p.Glu272Lys),chr8,127740407,127740407,151215,Uncertain significance,MYC,"criteria provided, single submitter"
+3297249,VCV003297249,NM_002467.6(MYC):c.544G>A (p.Gly182Ser),chr8,127738761,127738761,149569,Uncertain significance,MYC,"criteria provided, single submitter"
+3154448,VCV003154448,NM_002467.6(MYC):c.1297G>C (p.Asp433His),chr8,127740890,127740890,151698,Uncertain significance,MYC,"criteria provided, single submitter"
+3154445,VCV003154445,NM_002467.6(MYC):c.1228A>G (p.Ile410Val),chr8,127740821,127740821,151629,Uncertain significance,MYC,"criteria provided, single submitter"
+3058659,VCV003058659,NM_002467.6(MYC):c.438G>A (p.Gln146=),chr8,127738655,127738655,149463,Likely benign,MYC,no assertion criteria provided
+3057137,VCV003057137,NM_002467.6(MYC):c.738G>A (p.Pro246=),chr8,127738955,127738955,149763,Benign,MYC,no assertion criteria provided
+2658814,VCV002658814,NM_002467.6(MYC):c.31-172G>A,chr8,127738076,127738076,148884,Benign,MYC,"criteria provided, single submitter"
+2658813,VCV002658813,NM_002467.6(MYC):c.30+600C>T,chr8,127737223,127737223,148031,Benign,MYC,"criteria provided, single submitter"
+2658812,VCV002658812,NM_002467.6(MYC):c.30+4A>T,chr8,127736627,127736627,147435,Uncertain significance,MYC,"criteria provided, single submitter"
+2658811,VCV002658811,NM_002467.6(MYC):c.-96C>T,chr8,127736498,127736498,147306,Benign,MYC,"criteria provided, single submitter"
+2658810,VCV002658810,NM_002467.6(MYC):c.-263G>A,chr8,127736331,127736331,147139,Likely benign,MYC,"criteria provided, single submitter"
+2510151,VCV002510151,NM_002467.6(MYC):c.671C>T (p.Ala224Val),chr8,127738888,127738888,149696,Uncertain significance,MYC,"criteria provided, single submitter"
+2468497,VCV002468497,NM_002467.6(MYC):c.909C>G (p.Ser303Arg),chr8,127740502,127740502,151310,Uncertain significance,MYC,"criteria provided, single submitter"
+2286886,VCV002286886,NM_002467.6(MYC):c.409G>C (p.Glu137Gln),chr8,127738626,127738626,149434,Uncertain significance,MYC,"criteria provided, single submitter"
+1679939,VCV001679939,NM_002467.6(MYC):c.77A>G (p.Asn26Ser),chr8,127738294,127738294,149102,Uncertain significance,MYC,"criteria provided, multiple submitters, no conflicts"
+791168,VCV000791168,NM_002467.6(MYC):c.144G>A (p.Gln48=),chr8,127738361,127738361,149169,Benign,MYC,"criteria provided, multiple submitters, no conflicts"
+722844,VCV000722844,NM_002467.6(MYC):c.64T>C (p.Phe22Leu),chr8,127738281,127738281,149089,Benign/Likely benign,MYC,"criteria provided, multiple submitters, no conflicts"
+719682,VCV000719682,NM_002467.6(MYC):c.1085C>T (p.Ser362Phe),chr8,127740678,127740678,151486,Benign/Likely benign,MYC,"criteria provided, multiple submitters, no conflicts"

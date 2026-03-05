@@ -26,6 +26,13 @@ ALIASES: dict[str, str] = {
     "mlh1": "mlh1_300kb.json",
     "ldlr": "ldlr_300kb.json",
     "scn5a": "scn5a_400kb.json",
+    "tert": "tert_300kb.json",
+    "gjb2": "gjb2_300kb.json",
+    "mouse_hbb": "mouse_hbb_130kb.json",
+    "hba1": "hba1_300kb.json",
+    "gata1": "gata1_300kb.json",
+    "bcl11a": "bcl11a_300kb.json",
+    "pten": "pten_300kb.json",
 }
 
 

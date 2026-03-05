@@ -1,0 +1,149 @@
+{
+  "date": "2026-03-05",
+  "description": "Cross-locus ARCHCODE atlas comparison (13 loci)",
+  "loci": [
+    {
+      "locus": "tert_300kb",
+      "total_variants": 2089,
+      "pathogenic_n": 431,
+      "benign_n": 1658,
+      "mean_lssim_pathogenic": 0.9798,
+      "mean_lssim_benign": 0.9986,
+      "delta_lssim": -0.0188,
+      "pearls": 0,
+      "structural_pathogenic": 27
+    },
+    {
+      "locus": "bcl11a_300kb",
+      "total_variants": 93,
+      "pathogenic_n": 44,
+      "benign_n": 49,
+      "mean_lssim_pathogenic": 0.9834,
+      "mean_lssim_benign": 0.9971,
+      "delta_lssim": -0.0137,
+      "pearls": 0,
+      "structural_pathogenic": 0
+    },
+    {
+      "locus": "pten_300kb",
+      "total_variants": 1496,
+      "pathogenic_n": 703,
+      "benign_n": 793,
+      "mean_lssim_pathogenic": 0.9885,
+      "mean_lssim_benign": 0.9982,
+      "delta_lssim": -0.0097,
+      "pearls": 0,
+      "structural_pathogenic": 9
+    },
+    {
+      "locus": "mlh1_300kb",
+      "total_variants": 4060,
+      "pathogenic_n": 2425,
+      "benign_n": 1635,
+      "mean_lssim_pathogenic": 0.989,
+      "mean_lssim_benign": 0.9981,
+      "delta_lssim": -0.0091,
+      "pearls": 0,
+      "structural_pathogenic": 72
+    },
+    {
+      "locus": "tp53_300kb",
+      "total_variants": 2794,
+      "pathogenic_n": 1645,
+      "benign_n": 1149,
+      "mean_lssim_pathogenic": 0.9896,
+      "mean_lssim_benign": 0.9986,
+      "delta_lssim": -0.009,
+      "pearls": 0,
+      "structural_pathogenic": 0
+    },
+    {
+      "locus": "cftr_317kb",
+      "total_variants": 3349,
+      "pathogenic_n": 1756,
+      "benign_n": 1593,
+      "mean_lssim_pathogenic": 0.992,
+      "mean_lssim_benign": 0.9988,
+      "delta_lssim": -0.0068,
+      "pearls": 0,
+      "structural_pathogenic": 35
+    },
+    {
+      "locus": "gjb2_300kb",
+      "total_variants": 469,
+      "pathogenic_n": 314,
+      "benign_n": 155,
+      "mean_lssim_pathogenic": 0.9916,
+      "mean_lssim_benign": 0.9978,
+      "delta_lssim": -0.0062,
+      "pearls": 0,
+      "structural_pathogenic": 0
+    },
+    {
+      "locus": "brca1_400kb",
+      "total_variants": 10682,
+      "pathogenic_n": 7062,
+      "benign_n": 3620,
+      "mean_lssim_pathogenic": 0.9929,
+      "mean_lssim_benign": 0.9985,
+      "delta_lssim": -0.0056,
+      "pearls": 0,
+      "structural_pathogenic": 52
+    },
+    {
+      "locus": "gata1_300kb",
+      "total_variants": 183,
+      "pathogenic_n": 52,
+      "benign_n": 131,
+      "mean_lssim_pathogenic": 0.9951,
+      "mean_lssim_benign": 0.9987,
+      "delta_lssim": -0.0036,
+      "pearls": 0,
+      "structural_pathogenic": 0
+    },
+    {
+      "locus": "scn5a_400kb",
+      "total_variants": 2488,
+      "pathogenic_n": 928,
+      "benign_n": 1560,
+      "mean_lssim_pathogenic": 0.996,
+      "mean_lssim_benign": 0.9995,
+      "delta_lssim": -0.0035,
+      "pearls": 0,
+      "structural_pathogenic": 0
+    },
+    {
+      "locus": "ldlr_300kb",
+      "total_variants": 3284,
+      "pathogenic_n": 2274,
+      "benign_n": 1010,
+      "mean_lssim_pathogenic": 0.9969,
+      "mean_lssim_benign": 0.9994,
+      "delta_lssim": -0.0025,
+      "pearls": 0,
+      "structural_pathogenic": 10
+    },
+    {
+      "locus": "hba1_300kb",
+      "total_variants": 111,
+      "pathogenic_n": 67,
+      "benign_n": 44,
+      "mean_lssim_pathogenic": 0.9953,
+      "mean_lssim_benign": 0.9976,
+      "delta_lssim": -0.0023,
+      "pearls": 0,
+      "structural_pathogenic": 0
+    },
+    {
+      "locus": "hbb_95kb_subTAD",
+      "total_variants": 1103,
+      "pathogenic_n": 353,
+      "benign_n": 750,
+      "mean_lssim_pathogenic": 0.8952,
+      "mean_lssim_benign": 0.8903,
+      "delta_lssim": 0.0049,
+      "pearls": 765,
+      "structural_pathogenic": 962
+    }
+  ]
+}

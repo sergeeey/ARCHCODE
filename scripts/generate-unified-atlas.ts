@@ -630,7 +630,11 @@ async function main() {
     LOCUS_ARG === "ldlr" ||
     LOCUS_ARG === "scn5a" ||
     LOCUS_ARG === "tert" ||
-    LOCUS_ARG === "gjb2"; // extend as needed
+    LOCUS_ARG === "gjb2" ||
+    LOCUS_ARG === "hba1" ||
+    LOCUS_ARG === "gata1" ||
+    LOCUS_ARG === "bcl11a" ||
+    LOCUS_ARG === "pten"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB

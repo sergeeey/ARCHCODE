@@ -1,0 +1,269 @@
+{
+  "generated": "2026-03-05",
+  "api": "Ensembl VEP REST (https://rest.ensembl.org/vep/homo_sapiens/region)",
+  "scoring_formula": "CONSEQUENCE_SCORES[most_severe] + SIFT refinement for missense (0.4 + 0.5*(1-sift_score))",
+  "pearl_threshold": "VEP_Score < 0.30 AND ARCHCODE_LSSIM < 0.95",
+  "total_pearls_across_8_loci": 26,
+  "loci": {
+    "MLH1": {
+      "locus": "MLH1",
+      "total_variants": 4060,
+      "vep_scored": 2580,
+      "vep_unscored": 1480,
+      "vep_score_mean": 0.488,
+      "vep_score_median": 0.35,
+      "vep_score_q25": 0.15,
+      "vep_score_q75": 0.9,
+      "pearl_count": 0,
+      "pearl_variants": [],
+      "discordance": {
+        "NO_VEP": 1480,
+        "AGREEMENT": 1337,
+        "VEP_ONLY": 1243
+      },
+      "consequence_breakdown": {
+        "synonymous_variant": 705,
+        "missense_variant": 654,
+        "intron_variant": 313,
+        "stop_gained": 221,
+        "splice_region_variant": 171,
+        "splice_polypyrimidine_tract_variant": 135,
+        "splice_donor_variant": 97,
+        "splice_acceptor_variant": 96,
+        "non_coding_transcript_exon_variant": 52,
+        "5_prime_UTR_variant": 35
+      }
+    },
+    "CFTR": {
+      "locus": "CFTR",
+      "total_variants": 3349,
+      "vep_scored": 2594,
+      "vep_unscored": 755,
+      "vep_score_mean": 0.455,
+      "vep_score_median": 0.2,
+      "vep_score_q25": 0.15,
+      "vep_score_q75": 0.9,
+      "pearl_count": 0,
+      "pearl_variants": [],
+      "discordance": {
+        "AGREEMENT": 1473,
+        "VEP_ONLY": 1121,
+        "NO_VEP": 755
+      },
+      "consequence_breakdown": {
+        "synonymous_variant": 931,
+        "missense_variant": 549,
+        "intron_variant": 331,
+        "stop_gained": 283,
+        "splice_region_variant": 145,
+        "splice_polypyrimidine_tract_variant": 101,
+        "splice_donor_variant": 84,
+        "splice_acceptor_variant": 73,
+        "3_prime_UTR_variant": 27,
+        "non_coding_transcript_exon_variant": 25
+      }
+    },
+    "TP53": {
+      "locus": "TP53",
+      "total_variants": 2794,
+      "vep_scored": 1978,
+      "vep_unscored": 816,
+      "vep_score_mean": 0.5429,
+      "vep_score_median": 0.535,
+      "vep_score_q25": 0.15,
+      "vep_score_q75": 0.9,
+      "pearl_count": 2,
+      "pearl_variants": [
+        "VCV000224043",
+        "VCV000516754"
+      ],
+      "discordance": {
+        "VEP_ONLY": 1105,
+        "AGREEMENT": 873,
+        "NO_VEP": 816
+      },
+      "consequence_breakdown": {
+        "missense_variant": 848,
+        "synonymous_variant": 450,
+        "intron_variant": 150,
+        "stop_gained": 96,
+        "splice_region_variant": 96,
+        "splice_polypyrimidine_tract_variant": 91,
+        "5_prime_UTR_variant": 69,
+        "splice_acceptor_variant": 48,
+        "3_prime_UTR_variant": 40,
+        "splice_donor_variant": 40
+      }
+    },
+    "BRCA1": {
+      "locus": "BRCA1",
+      "total_variants": 10682,
+      "vep_scored": 7219,
+      "vep_unscored": 3463,
+      "vep_score_mean": 0.5496,
+      "vep_score_median": 0.735,
+      "vep_score_q25": 0.15,
+      "vep_score_q75": 0.89,
+      "pearl_count": 24,
+      "pearl_variants": [
+        "VCV000209578",
+        "VCV000803421",
+        "VCV001130395",
+        "VCV000189123",
+        "VCV000548880",
+        "VCV000371899",
+        "VCV000803422",
+        "VCV001083391",
+        "VCV002087470",
+        "VCV001666620",
+        "VCV001156639",
+        "VCV001081125",
+        "VCV001106468",
+        "VCV001146356",
+        "VCV001158610",
+        "VCV000382001",
+        "VCV000758289",
+        "VCV001108085",
+        "VCV000125464",
+        "VCV003688243",
+        "VCV003724822",
+        "VCV000803424",
+        "VCV000209582",
+        "VCV000209583"
+      ],
+      "discordance": {
+        "VEP_ONLY": 4067,
+        "NO_VEP": 3463,
+        "AGREEMENT": 3152
+      },
+      "consequence_breakdown": {
+        "missense_variant": 3241,
+        "synonymous_variant": 1664,
+        "intron_variant": 752,
+        "stop_gained": 573,
+        "non_coding_transcript_exon_variant": 217,
+        "splice_region_variant": 201,
+        "splice_polypyrimidine_tract_variant": 195,
+        "splice_donor_variant": 100,
+        "splice_acceptor_variant": 92,
+        "splice_donor_region_variant": 50
+      }
+    },
+    "LDLR": {
+      "locus": "LDLR",
+      "total_variants": 3284,
+      "vep_scored": 2345,
+      "vep_unscored": 939,
+      "vep_score_mean": 0.5957,
+      "vep_score_median": 0.895,
+      "vep_score_q25": 0.15,
+      "vep_score_q75": 0.9,
+      "pearl_count": 0,
+      "pearl_variants": [],
+      "discordance": {
+        "VEP_ONLY": 1442,
+        "NO_VEP": 939,
+        "AGREEMENT": 903
+      },
+      "consequence_breakdown": {
+        "missense_variant": 1015,
+        "synonymous_variant": 513,
+        "stop_gained": 211,
+        "intron_variant": 175,
+        "splice_region_variant": 90,
+        "splice_polypyrimidine_tract_variant": 80,
+        "splice_donor_variant": 69,
+        "splice_acceptor_variant": 67,
+        "3_prime_UTR_variant": 39,
+        "non_coding_transcript_exon_variant": 30
+      }
+    },
+    "SCN5A": {
+      "locus": "SCN5A",
+      "total_variants": 2488,
+      "vep_scored": 2202,
+      "vep_unscored": 286,
+      "vep_score_mean": 0.3665,
+      "vep_score_median": 0.15,
+      "vep_score_q25": 0.15,
+      "vep_score_q75": 0.6775,
+      "pearl_count": 0,
+      "pearl_variants": [],
+      "discordance": {
+        "AGREEMENT": 1508,
+        "VEP_ONLY": 694,
+        "NO_VEP": 286
+      },
+      "consequence_breakdown": {
+        "synonymous_variant": 1095,
+        "missense_variant": 394,
+        "intron_variant": 223,
+        "stop_gained": 141,
+        "splice_polypyrimidine_tract_variant": 108,
+        "splice_region_variant": 104,
+        "splice_donor_variant": 38,
+        "splice_acceptor_variant": 31,
+        "3_prime_UTR_variant": 25,
+        "non_coding_transcript_exon_variant": 18
+      }
+    },
+    "TERT": {
+      "locus": "TERT",
+      "total_variants": 2089,
+      "vep_scored": 1957,
+      "vep_unscored": 132,
+      "vep_score_mean": 0.2726,
+      "vep_score_median": 0.15,
+      "vep_score_q25": 0.1,
+      "vep_score_q75": 0.3,
+      "pearl_count": 0,
+      "pearl_variants": [],
+      "discordance": {
+        "AGREEMENT": 1587,
+        "VEP_ONLY": 370,
+        "NO_VEP": 132
+      },
+      "consequence_breakdown": {
+        "synonymous_variant": 1136,
+        "missense_variant": 307,
+        "intron_variant": 195,
+        "splice_region_variant": 117,
+        "splice_polypyrimidine_tract_variant": 102,
+        "stop_gained": 30,
+        "non_coding_transcript_exon_variant": 25,
+        "splice_donor_variant": 17,
+        "splice_acceptor_variant": 11,
+        "3_prime_UTR_variant": 6
+      }
+    },
+    "GJB2": {
+      "locus": "GJB2",
+      "total_variants": 469,
+      "vep_scored": 379,
+      "vep_unscored": 90,
+      "vep_score_mean": 0.5541,
+      "vep_score_median": 0.885,
+      "vep_score_q25": 0.05,
+      "vep_score_q75": 0.9,
+      "pearl_count": 0,
+      "pearl_variants": [],
+      "discordance": {
+        "VEP_ONLY": 224,
+        "AGREEMENT": 155,
+        "NO_VEP": 90
+      },
+      "consequence_breakdown": {
+        "missense_variant": 184,
+        "synonymous_variant": 122,
+        "stop_gained": 28,
+        "3_prime_UTR_variant": 14,
+        "intron_variant": 9,
+        "5_prime_UTR_variant": 8,
+        "start_lost": 5,
+        "splice_acceptor_variant": 3,
+        "splice_region_variant": 2,
+        "splice_donor_variant": 2
+      }
+    }
+  }
+}

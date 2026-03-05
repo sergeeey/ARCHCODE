@@ -135,13 +135,13 @@ _HBB ROC. AUC = 0.977. Youden threshold LSSIM &lt; 0.994._
 <details>
 <summary><b>Table: Top 5 Pearl Variants (of 27 total, all HBB)</b></summary>
 
-| ClinVar ID   | HGVS_c    | Category | Significance  | LSSIM  | VEP  | SpliceAI | Mechanism                         |
-|:-------------|:----------|:---------|:--------------|:-------|:-----|:---------|:----------------------------------|
-| VCV000869358 | c.50dup   | frameshift | Pathogenic  | 0.8915 | 0.15 | 0.00     | LoF, VEP misannotated             |
-| VCV002024192 | c.93-33_96delins... | splice_acceptor | Likely pathogenic | 0.9004 | 0.20 | 0.00 | Complex indel, VEP underscored |
-| VCV000015471 | c.-78A>G  | promoter | Pathogenic/LP | 0.9276 | 0.20 | 0.00     | Promoter-enhancer loop disruption |
-| VCV000015470 | c.-78A>C  | promoter | Pathogenic    | 0.9276 | 0.20 | 0.00     | Promoter-enhancer loop disruption |
-| VCV000036284 | c.-136C>T | promoter | Pathogenic/LP | 0.9277 | 0.20 | 0.00     | Promoter-enhancer loop disruption |
+| ClinVar ID   | HGVS_c              | Category        | Significance      | LSSIM  | VEP  | SpliceAI | Mechanism                         |
+| :----------- | :------------------ | :-------------- | :---------------- | :----- | :--- | :------- | :-------------------------------- |
+| VCV000869358 | c.50dup             | frameshift      | Pathogenic        | 0.8915 | 0.15 | 0.00     | LoF, VEP misannotated             |
+| VCV002024192 | c.93-33_96delins... | splice_acceptor | Likely pathogenic | 0.9004 | 0.20 | 0.00     | Complex indel, VEP underscored    |
+| VCV000015471 | c.-78A>G            | promoter        | Pathogenic/LP     | 0.9276 | 0.20 | 0.00     | Promoter-enhancer loop disruption |
+| VCV000015470 | c.-78A>C            | promoter        | Pathogenic        | 0.9276 | 0.20 | 0.00     | Promoter-enhancer loop disruption |
+| VCV000036284 | c.-136C>T           | promoter        | Pathogenic/LP     | 0.9277 | 0.20 | 0.00     | Promoter-enhancer loop disruption |
 
 _Sorted by LSSIM ascending (strongest structural disruption first). Full list: [Supplementary Table S1](manuscript/TABLE_S1_PEARLS.md)._
 
@@ -152,7 +152,7 @@ _Sorted by LSSIM ascending (strongest structural disruption first). Full list: [
 ARCHCODE was applied to **9 clinically significant loci** across 30,318 ClinVar variants to test generalizability beyond HBB:
 
 | Locus     | Disease               | Chr | Variants | Pathogenic | Benign | Tissue match | &Delta;LSSIM | Pearls |
-|:----------|:----------------------|:----|:---------|:-----------|:-------|:-------------|:-------------|:-------|
+| :-------- | :-------------------- | :-- | :------- | :--------- | :----- | :----------- | :----------- | :----- |
 | **HBB**   | &beta;-thalassemia    | 11  | 1,103    | 353        | 750    | Matched      | 0.111        | 27     |
 | **BRCA1** | Breast/ovarian cancer | 17  | 10,682   | 7,062      | 3,620  | Partial      | 0.006        | 0      |
 | **CFTR**  | Cystic fibrosis       | 7   | 3,349    | 1,756      | 1,593  | Partial      | 0.007        | 0      |
@@ -183,11 +183,11 @@ ARCHCODE was benchmarked against ENCODE Hi-C data (K562, MCF7, HepG2, GM12878) a
 
 _Pearson r (ARCHCODE vs Hi-C) across 8 locus&times;cell-type combinations. All p &lt; 10<sup>&minus;82</sup>._
 
-| Model        | Type                 | Hi-C r (range)        | Training data    | Speed        | Reference             |
-|:-------------|:---------------------|:----------------------|:-----------------|:-------------|:----------------------|
-| **ARCHCODE** | Physics (Kramer LEF) | **0.28&ndash;0.59**   | 0 (analytical)   | **&lt; 1 s** | This study            |
-| **Akita**    | Deep learning CNN    | 0.59                  | ~4,000 Hi-C maps | ~145 s (GPU) | Fudenberg et al. 2020 |
-| **Orca**     | Graph neural network | 0.71                  | Multi-scale Hi-C | N/A          | Zhou et al. 2022      |
+| Model        | Type                 | Hi-C r (range)      | Training data    | Speed        | Reference             |
+| :----------- | :------------------- | :------------------ | :--------------- | :----------- | :-------------------- |
+| **ARCHCODE** | Physics (Kramer LEF) | **0.28&ndash;0.59** | 0 (analytical)   | **&lt; 1 s** | This study            |
+| **Akita**    | Deep learning CNN    | 0.59                | ~4,000 Hi-C maps | ~145 s (GPU) | Fudenberg et al. 2020 |
+| **Orca**     | Graph neural network | 0.71                | Multi-scale Hi-C | N/A          | Zhou et al. 2022      |
 
 Best ARCHCODE loci: MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562). ARCHCODE achieves Akita-level correlation on top loci with zero training data, interpretable physics, and 100&times; speed advantage. Parameters (&alpha;, &gamma;, k<sub>base</sub>) map directly to measurable biophysical quantities (cohesin residence time, processivity, loading rate).
 
@@ -195,13 +195,13 @@ Best ARCHCODE loci: MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562). AR
 
 Pearl variants (n = 27, all HBB) were evaluated against five independent predictors:
 
-| Predictor           | Pearl score          | Detection?         | Mechanism tested                        |
-|:--------------------|:---------------------|:-------------------|:----------------------------------------|
-| VEP/SIFT            | &lt; 0.30 (all 20)   | No                 | Protein sequence + canonical splice     |
-| SpliceAI            | 0.00 (all 20 SNVs)   | No                 | Deep-learning splice disruption         |
-| CADD v1.7           | median 15.7          | Ambiguous          | Sequence conservation + annotations     |
-| MPRA (Kircher 2019) | mean &minus;0.015    | No (p = 0.91)      | Promoter-intrinsic transcription        |
-| **ARCHCODE LSSIM**  | **&lt; 0.92 (all 27)** | **Yes**          | **3D enhancer-promoter contact**        |
+| Predictor           | Pearl score            | Detection?    | Mechanism tested                    |
+| :------------------ | :--------------------- | :------------ | :---------------------------------- |
+| VEP/SIFT            | &lt; 0.30 (all 20)     | No            | Protein sequence + canonical splice |
+| SpliceAI            | 0.00 (all 20 SNVs)     | No            | Deep-learning splice disruption     |
+| CADD v1.7           | median 15.7            | Ambiguous     | Sequence conservation + annotations |
+| MPRA (Kircher 2019) | mean &minus;0.015      | No (p = 0.91) | Promoter-intrinsic transcription    |
+| **ARCHCODE LSSIM**  | **&lt; 0.92 (all 27)** | **Yes**       | **3D enhancer-promoter contact**    |
 
 Only ARCHCODE detects these variants, confirming they operate through enhancer-promoter contact disruption — a structural mechanism invisible to both rule-based (VEP) and neural-network-based (SpliceAI) sequence predictors, as well as episomal functional assays (MPRA).
 
@@ -217,12 +217,12 @@ Cross-validation against the Kircher et al. 2019 MPRA dataset (MaveDB: urn:maved
 
 AlphaGenome RNA-seq and ATAC-seq tracks were used to assess whether ARCHCODE pearl variants produce independent regulatory signals at 1 bp resolution:
 
-| Modality     | Metric                      | Pearl (n = 23) | Benign (n = 23) | p-value                                    |
-|:-------------|:----------------------------|:---------------|:----------------|:-------------------------------------------|
-| **RNA-seq**  | Signal concentration ratio  | 16.97          | 6.09            | 4.8 &times; 10<sup>&minus;5</sup>          |
-| **RNA-seq**  | &Delta; at variant bin      | 0.381          | 0.109           | 0.0014                                     |
-| **ATAC-seq** | Signal concentration ratio  | 11.15          | 6.39            | 0.0026                                     |
-| **ATAC-seq** | &Delta; at variant bin      | 0.268          | 0.098           | 0.029                                      |
+| Modality     | Metric                     | Pearl (n = 23) | Benign (n = 23) | p-value                           |
+| :----------- | :------------------------- | :------------- | :-------------- | :-------------------------------- |
+| **RNA-seq**  | Signal concentration ratio | 16.97          | 6.09            | 4.8 &times; 10<sup>&minus;5</sup> |
+| **RNA-seq**  | &Delta; at variant bin     | 0.381          | 0.109           | 0.0014                            |
+| **ATAC-seq** | Signal concentration ratio | 11.15          | 6.39            | 0.0026                            |
+| **ATAC-seq** | &Delta; at variant bin     | 0.268          | 0.098           | 0.029                             |
 
 Pearl variants show **2.8&times; higher RNA-seq signal concentration** and **2.7&times; higher ATAC-seq &Delta;** at the variant position compared to benign controls (all p &lt; 0.05). The three-locus tissue gradient (HBB: 10/10 significant tests; BRCA1: 1/10; SCN5A: 0/10) mirrors ARCHCODE's tissue-specificity gradient, indicating biological specificity rather than simulation artifact.
 
@@ -242,28 +242,28 @@ _Enhancer proximity drives ARCHCODE structural discrimination. Variants within &
 
 ## Tech Stack
 
-| Layer                 | Technology                 | Purpose                                            |
-|:----------------------|:---------------------------|:---------------------------------------------------|
+| Layer                 | Technology                 | Purpose                                             |
+| :-------------------- | :------------------------- | :-------------------------------------------------- |
 | **Simulation engine** | TypeScript 5.2             | Kramer-rate loop extrusion, contact matrices, LSSIM |
-| **3D visualization**  | React 18 + Three.js (r181) | Interactive chromatin fiber viewer                 |
-| **State management**  | Zustand                    | Reactive simulation parameters                     |
-| **Styling**           | Tailwind CSS 4             | Responsive UI components                           |
-| **Data pipeline**     | Python 3.11 + matplotlib   | ROC analysis, VEP integration, figure generation   |
-| **Testing**           | Vitest                     | Physics regression tests, gold-standard validation |
-| **Build**             | Vite 5                     | Fast HMR, optimized production builds              |
-| **Containerization**  | Docker                     | Reproducible scientific environment                |
+| **3D visualization**  | React 18 + Three.js (r181) | Interactive chromatin fiber viewer                  |
+| **State management**  | Zustand                    | Reactive simulation parameters                      |
+| **Styling**           | Tailwind CSS 4             | Responsive UI components                            |
+| **Data pipeline**     | Python 3.11 + matplotlib   | ROC analysis, VEP integration, figure generation    |
+| **Testing**           | Vitest                     | Physics regression tests, gold-standard validation  |
+| **Build**             | Vite 5                     | Fast HMR, optimized production builds               |
+| **Containerization**  | Docker                     | Reproducible scientific environment                 |
 
 ## Data Sources
 
-| Dataset     | Source                                        | Version / Access                     |
-|:------------|:----------------------------------------------|:-------------------------------------|
-| ClinVar variants | NCBI E-utilities (esearch + efetch)      | Retrieved 2025-2026                  |
-| Hi-C contact maps | 4DN Data Portal (K562, MCF7, HepG2, GM12878) | ENCODE accessions per locus   |
-| MPRA functional scores | MaveDB                           | urn:mavedb:00000018-a-1 (Kircher et al. 2019, _Nat Commun_ 10:3583) |
-| SpliceAI scores | Ensembl VEP REST API + SpliceAI plugin    | VEP v113                             |
-| CADD scores | Ensembl VEP REST API                          | CADD v1.7                            |
-| Evolutionary conservation | UCSC phyloP100way (hg38)        | GERP constrained elements (Ensembl)  |
-| AlphaGenome tracks | AlphaGenome SDK v0.6.0                 | RNA-seq, ATAC-seq, CTCF ChIP-seq     |
+| Dataset                   | Source                                       | Version / Access                                                    |
+| :------------------------ | :------------------------------------------- | :------------------------------------------------------------------ |
+| ClinVar variants          | NCBI E-utilities (esearch + efetch)          | Retrieved 2025-2026                                                 |
+| Hi-C contact maps         | 4DN Data Portal (K562, MCF7, HepG2, GM12878) | ENCODE accessions per locus                                         |
+| MPRA functional scores    | MaveDB                                       | urn:mavedb:00000018-a-1 (Kircher et al. 2019, _Nat Commun_ 10:3583) |
+| SpliceAI scores           | Ensembl VEP REST API + SpliceAI plugin       | VEP v113                                                            |
+| CADD scores               | Ensembl VEP REST API                         | CADD v1.7                                                           |
+| Evolutionary conservation | UCSC phyloP100way (hg38)                     | GERP constrained elements (Ensembl)                                 |
+| AlphaGenome tracks        | AlphaGenome SDK v0.6.0                       | RNA-seq, ATAC-seq, CTCF ChIP-seq                                    |
 
 <details>
 <summary><b>Project Structure</b></summary>

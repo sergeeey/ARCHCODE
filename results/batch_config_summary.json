@@ -1,0 +1,27 @@
+{
+  "success": [
+    {
+      "gene": "PAX6",
+      "config_id": "pax6_300kb",
+      "ctcf_count": 3,
+      "enhancer_count": 1,
+      "gene_count": 3
+    },
+    {
+      "gene": "NF1",
+      "config_id": "nf1_300kb",
+      "ctcf_count": 3,
+      "enhancer_count": 6,
+      "gene_count": 5
+    },
+    {
+      "gene": "APC",
+      "config_id": "apc_300kb",
+      "ctcf_count": 6,
+      "enhancer_count": 13,
+      "gene_count": 4
+    }
+  ],
+  "failed": [],
+  "skipped": []
+}

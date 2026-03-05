@@ -1478,7 +1478,7 @@ structural pathogenicity emerges with tissue-matched annotation.
 | CADD coverage      | 82%           | 69%           | 71%           | 57%            | 61%           | 62%           | 74%            | 94%           | 81%           |
 | K562 Hi-C r        | 0.53 / 0.59   | —             | 0.29          | 0.53           | 0.59          | —             | —              | —             | —             |
 | AG ρ (O/E)         | 0.15 / 0.12†  | 0.27          | 0.32          | 0.52           | 0.49          | 0.43          | -0.17          | —             | —             |
-| Pearl variants     | 27            | 0             | 0             | 0              | 0             | 0             | 0              | 0             | 0             |
+| Pearl variants     | 27            | 0             | 2             | 24             | 0             | 0             | 0              | 0             | 0             |
 
 †HBB values: AG ρ 0.15 / 0.12 and Akita ρ 0.13 / −0.27 correspond to 30kb / 95kb windows. Both DL models yield only 15 (30kb) or 47 (95kb) bins at 2048 bp resolution, requiring 3.4× upsampling to match ARCHCODE's 159 bins. The negative Akita ρ for 95kb likely reflects interpolation artifacts dominating the correlation signal.
 

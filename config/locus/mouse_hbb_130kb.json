@@ -1,0 +1,143 @@
+{
+  "id": "mouse_hbb_130kb",
+  "name": "Mouse Hbb 130kb sub-TAD (ENCODE MEL CTCF + H3K27ac)",
+  "description": "130kb window spanning the full mouse beta-globin sub-TAD from 3'HS1 to HS-85. CTCF anchors from ENCODE MEL ChIP-seq (ENCSR000CFH / ENCFF142CNG, IDR narrowPeak, mm10). Enhancers from ENCODE MEL H3K27ac ChIP-seq (ENCSR000CEV / ENCFF078RJZ, replicated narrowPeak, mm10). Covers 4 globin genes (Hbb-bt, Hbb-bs, Hbb-bh1, Hbb-y) and the LCR (HS1-HS4). Cross-species comparison with human HBB config (hbb_95kb_subTAD).",
+  "genome_assembly": "GRCm38/mm10",
+  "organism": "Mus musculus",
+  "cross_species_reference": "hbb_95kb_subTAD",
+  "window": {
+    "chromosome": "chr7",
+    "start": 103788000,
+    "end": 103918000,
+    "resolution_bp": 600,
+    "n_bins": 217
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 103809860,
+        "occupancy": 0.75,
+        "name": "Hbb-bt_promoter_H3K27ac",
+        "source": "ENCODE_MEL_H3K27ac",
+        "encode_accession": "ENCFF078RJZ",
+        "note": "Strongest gene-proximal H3K27ac peak (signal 43.3), center of Peak_2766. Near Hbb-bt promoter."
+      },
+      {
+        "position": 103812500,
+        "occupancy": 0.45,
+        "name": "Hbb-bt_gene_H3K27ac",
+        "source": "ENCODE_MEL_H3K27ac",
+        "encode_accession": "ENCFF078RJZ",
+        "note": "H3K27ac peak at Hbb-bt gene body (signal 26.3), Peak_7226."
+      },
+      {
+        "position": 103858922,
+        "occupancy": 0.6,
+        "name": "LCR_HS1_H3K27ac",
+        "source": "ENCODE_MEL_H3K27ac",
+        "encode_accession": "ENCFF078RJZ",
+        "note": "H3K27ac at LCR HS1 equivalent (signal 35.2), Peak_2908. Matches literature HS1 position ~103,859kb."
+      },
+      {
+        "position": 103861305,
+        "occupancy": 0.3,
+        "name": "LCR_HS2_H3K27ac",
+        "source": "ENCODE_MEL_H3K27ac",
+        "encode_accession": "ENCFF078RJZ",
+        "note": "Broad H3K27ac at LCR HS2 (signal 18.4, 2.3kb wide), Peak_7713. Note: HS2 is strongest ENHANCER but moderate H3K27ac — consistent with active transcription vs poised state in MEL."
+      },
+      {
+        "position": 103870566,
+        "occupancy": 0.9,
+        "name": "LCR_HS3_HS4_H3K27ac",
+        "source": "ENCODE_MEL_H3K27ac",
+        "encode_accession": "ENCFF078RJZ",
+        "note": "STRONGEST H3K27ac peak in entire region (signal 57.9), Peak_2280. Spans HS3-HS4 junction. Major enhancer mark."
+      },
+      {
+        "position": 103872420,
+        "occupancy": 0.3,
+        "name": "LCR_HS4_distal_H3K27ac",
+        "source": "ENCODE_MEL_H3K27ac",
+        "encode_accession": "ENCFF078RJZ",
+        "note": "H3K27ac distal to HS4 (signal 17.6), Peak_14984."
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 103793148,
+        "orientation": "+",
+        "signal": 29.4,
+        "name": "3primeHS1",
+        "source": "ENCODE_MEL_CTCF",
+        "encode_accession": "ENCFF142CNG",
+        "note": "3' boundary of mouse Hbb sub-TAD (conserved with human 3'HS1)"
+      },
+      {
+        "position": 103807089,
+        "orientation": "-",
+        "signal": 33.5,
+        "name": "near_bt",
+        "source": "ENCODE_MEL_CTCF",
+        "encode_accession": "ENCFF142CNG",
+        "note": "CTCF between 3'HS1 and Hbb-bt gene, possible internal boundary"
+      },
+      {
+        "position": 103913187,
+        "orientation": "-",
+        "signal": 26.8,
+        "name": "HS85",
+        "source": "ENCODE_MEL_CTCF",
+        "encode_accession": "ENCFF142CNG",
+        "note": "5' boundary of mouse Hbb sub-TAD, ~60kb upstream of LCR (conserved with human HS5/HS-85)"
+      }
+    ],
+    "genes": [
+      {
+        "name": "Hbb-bt",
+        "start": 103812524,
+        "end": 103813923,
+        "strand": "-",
+        "note": "adult beta-t chain (ortholog of human HBB)"
+      },
+      {
+        "name": "Hbb-bs",
+        "start": 103826523,
+        "end": 103827928,
+        "strand": "-",
+        "note": "adult beta-s chain (ortholog of human HBB)"
+      },
+      {
+        "name": "Hbb-bh1",
+        "start": 103841638,
+        "end": 103843162,
+        "strand": "-",
+        "note": "embryonic beta-h1 chain"
+      },
+      {
+        "name": "Hbb-y",
+        "start": 103851754,
+        "end": 103853207,
+        "strand": "-",
+        "note": "embryonic epsilon-y chain (ortholog of human HBE1)"
+      }
+    ]
+  },
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated. Will be derived from mouse ClinVar/MGI variants after initial run.",
+  "_cross_species_notes": {
+    "human_to_mouse_mapping": {
+      "human_3primeHS1": "mouse_3primeHS1 (conserved CTCF boundary)",
+      "human_HS5": "mouse_HS85 (conserved CTCF boundary)",
+      "human_LCR_HS2": "mouse_LCR_HS2 (strongest enhancer, conserved)",
+      "human_HBB": "mouse_Hbb-bs/Hbb-bt (two adult beta genes in mouse)"
+    },
+    "architecture_conservation": "Mouse and human beta-globin loci share conserved LCR-gene-boundary topology: 3'HS1-CTCF | genes (developmental order 3'→5') | LCR (HS1-HS4/5) | 5'-CTCF boundary. Both are on minus strand with identical gene order.",
+    "key_differences": [
+      "Mouse has 2 adult beta genes (Hbb-bs, Hbb-bt) vs human 1 (HBB)",
+      "Mouse LCR-gene distance ~30kb vs human ~55kb (more compact)",
+      "Mouse has HS-85 boundary (85kb 5' of cluster) vs human HS5 (65kb)",
+      "Mouse 3 CTCF sites in ENCODE MEL vs human 4 in K562"
+    ]
+  }
+}
