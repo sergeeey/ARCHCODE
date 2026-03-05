@@ -1,0 +1,13 @@
+{
+  "generated_at_utc": "2026-03-05T18:17:41.8930929Z",
+  "task": "Task1_AI_blind_spot_fresh_run",
+  "locus": "95kb",
+  "provenance": "fresh_run_real_api_and_local_dl",
+  "archcode_vs_alphagenome_pearson": 0.052529325492108495,
+  "archcode_vs_akita_pearson": -0.12587508122359398,
+  "archcode_vs_hic_pearson_from_alpha": 0.07239077004297371,
+  "archcode_vs_hic_pearson_from_akita": 0.07239077004297371,
+  "alphagenome_vs_hic_pearson": 0.05103871737084728,
+  "akita_vs_hic_pearson": -0.04985198771312985,
+  "n_pairs": 12403
+}
