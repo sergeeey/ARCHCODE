@@ -29,7 +29,7 @@
     "security:python": "python -m bandit -r src scripts tests -lll",
     "preview": "vite preview",
     "test": "vitest run",
-    "test:coverage": "vitest run --coverage --coverage.provider=v8 --coverage.thresholds.lines=45 --coverage.thresholds.functions=50 --coverage.thresholds.statements=45 --coverage.thresholds.branches=45",
+    "test:coverage": "vitest run --coverage --coverage.provider=v8 --coverage.thresholds.lines=50 --coverage.thresholds.functions=55 --coverage.thresholds.statements=50 --coverage.thresholds.branches=50",
     "test:gold": "vitest run src/__tests__/regression/gold-standard.test.ts",
     "test:watch": "vitest",
     "test:regression": "vitest run src/__tests__/regression/",
