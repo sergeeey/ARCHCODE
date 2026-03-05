@@ -1,0 +1,1096 @@
+{
+  "analysis": "within_category_auc",
+  "purpose": "Address category leakage concern: does ARCHCODE discriminate WITHIN variant categories?",
+  "method": "Per-category ROC AUC using 1-LSSIM as score, minimum 3 per class",
+  "loci": [
+    {
+      "locus": "HBB",
+      "n_variants": 1103,
+      "n_pathogenic": 353,
+      "n_benign": 750,
+      "overall_auc": 0.9755,
+      "n_categories_with_auc": 3,
+      "mean_within_category_auc": 0.6227,
+      "categories": [
+        {
+          "locus": "HBB",
+          "category": "3_prime_UTR",
+          "n_total": 14,
+          "n_pathogenic": 13,
+          "n_benign": 1,
+          "mean_lssim_pathogenic": 0.991754,
+          "mean_lssim_benign": 0.9916,
+          "delta_lssim": -0.000154,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "5_prime_UTR",
+          "n_total": 4,
+          "n_pathogenic": 3,
+          "n_benign": 1,
+          "mean_lssim_pathogenic": 0.975767,
+          "mean_lssim_benign": 0.9767,
+          "delta_lssim": 0.000933,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "frameshift",
+          "n_total": 99,
+          "n_pathogenic": 99,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.817642,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "intronic",
+          "n_total": 667,
+          "n_pathogenic": 9,
+          "n_benign": 658,
+          "mean_lssim_pathogenic": 0.992944,
+          "mean_lssim_benign": 0.992807,
+          "delta_lssim": -0.000138,
+          "within_category_auc": 0.524
+        },
+        {
+          "locus": "HBB",
+          "category": "missense",
+          "n_total": 125,
+          "n_pathogenic": 125,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.926711,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "nonsense",
+          "n_total": 40,
+          "n_pathogenic": 40,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.798435,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "other",
+          "n_total": 19,
+          "n_pathogenic": 12,
+          "n_benign": 7,
+          "mean_lssim_pathogenic": 0.957317,
+          "mean_lssim_benign": 0.963143,
+          "delta_lssim": 0.005826,
+          "within_category_auc": 0.7738
+        },
+        {
+          "locus": "HBB",
+          "category": "promoter",
+          "n_total": 15,
+          "n_pathogenic": 15,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.91612,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "splice_acceptor",
+          "n_total": 3,
+          "n_pathogenic": 3,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.8212,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "splice_donor",
+          "n_total": 22,
+          "n_pathogenic": 22,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.849368,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "splice_region",
+          "n_total": 9,
+          "n_pathogenic": 9,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.952322,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "HBB",
+          "category": "synonymous",
+          "n_total": 86,
+          "n_pathogenic": 3,
+          "n_benign": 83,
+          "mean_lssim_pathogenic": 0.998067,
+          "mean_lssim_benign": 0.998353,
+          "delta_lssim": 0.000286,
+          "within_category_auc": 0.5703
+        }
+      ]
+    },
+    {
+      "locus": "BRCA1",
+      "n_variants": 10682,
+      "n_pathogenic": 7062,
+      "n_benign": 3620,
+      "overall_auc": 0.6246,
+      "n_categories_with_auc": 8,
+      "mean_within_category_auc": 0.4934,
+      "categories": [
+        {
+          "locus": "BRCA1",
+          "category": "3_prime_UTR",
+          "n_total": 48,
+          "n_pathogenic": 5,
+          "n_benign": 43,
+          "mean_lssim_pathogenic": 0.9993,
+          "mean_lssim_benign": 0.999272,
+          "delta_lssim": -2.8e-05,
+          "within_category_auc": 0.4256
+        },
+        {
+          "locus": "BRCA1",
+          "category": "5_prime_UTR",
+          "n_total": 46,
+          "n_pathogenic": 8,
+          "n_benign": 38,
+          "mean_lssim_pathogenic": 0.971838,
+          "mean_lssim_benign": 0.973289,
+          "delta_lssim": 0.001452,
+          "within_category_auc": 0.6053
+        },
+        {
+          "locus": "BRCA1",
+          "category": "frameshift",
+          "n_total": 2806,
+          "n_pathogenic": 2806,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.983376,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "BRCA1",
+          "category": "inframe_deletion",
+          "n_total": 37,
+          "n_pathogenic": 33,
+          "n_benign": 4,
+          "mean_lssim_pathogenic": 0.992767,
+          "mean_lssim_benign": 0.99585,
+          "delta_lssim": 0.003083,
+          "within_category_auc": 0.7879
+        },
+        {
+          "locus": "BRCA1",
+          "category": "inframe_indel",
+          "n_total": 56,
+          "n_pathogenic": 51,
+          "n_benign": 5,
+          "mean_lssim_pathogenic": 0.995082,
+          "mean_lssim_benign": 0.99514,
+          "delta_lssim": 5.8e-05,
+          "within_category_auc": 0.3725
+        },
+        {
+          "locus": "BRCA1",
+          "category": "intronic",
+          "n_total": 1584,
+          "n_pathogenic": 346,
+          "n_benign": 1238,
+          "mean_lssim_pathogenic": 0.99925,
+          "mean_lssim_benign": 0.999382,
+          "delta_lssim": 0.000132,
+          "within_category_auc": 0.5233
+        },
+        {
+          "locus": "BRCA1",
+          "category": "other",
+          "n_total": 221,
+          "n_pathogenic": 149,
+          "n_benign": 72,
+          "mean_lssim_pathogenic": 0.994204,
+          "mean_lssim_benign": 0.965375,
+          "delta_lssim": -0.028829,
+          "within_category_auc": 0.1421
+        },
+        {
+          "locus": "BRCA1",
+          "category": "splice_donor",
+          "n_total": 1,
+          "n_pathogenic": 1,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.9881,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "BRCA1",
+          "category": "splice_region",
+          "n_total": 363,
+          "n_pathogenic": 169,
+          "n_benign": 194,
+          "mean_lssim_pathogenic": 0.99527,
+          "mean_lssim_benign": 0.995703,
+          "delta_lssim": 0.000433,
+          "within_category_auc": 0.5745
+        },
+        {
+          "locus": "BRCA1",
+          "category": "synonymous",
+          "n_total": 5520,
+          "n_pathogenic": 3494,
+          "n_benign": 2026,
+          "mean_lssim_pathogenic": 0.9998,
+          "mean_lssim_benign": 0.999802,
+          "delta_lssim": 1e-06,
+          "within_category_auc": 0.5163
+        }
+      ]
+    },
+    {
+      "locus": "CFTR",
+      "n_variants": 3349,
+      "n_pathogenic": 1756,
+      "n_benign": 1593,
+      "overall_auc": 0.6409,
+      "n_categories_with_auc": 5,
+      "mean_within_category_auc": 0.4654,
+      "categories": [
+        {
+          "locus": "CFTR",
+          "category": "3_prime_UTR",
+          "n_total": 6,
+          "n_pathogenic": 1,
+          "n_benign": 5,
+          "mean_lssim_pathogenic": 0.9989,
+          "mean_lssim_benign": 0.99884,
+          "delta_lssim": -6e-05,
+          "within_category_auc": null
+        },
+        {
+          "locus": "CFTR",
+          "category": "5_prime_UTR",
+          "n_total": 19,
+          "n_pathogenic": 6,
+          "n_benign": 13,
+          "mean_lssim_pathogenic": 0.977033,
+          "mean_lssim_benign": 0.973085,
+          "delta_lssim": -0.003949,
+          "within_category_auc": 0.2756
+        },
+        {
+          "locus": "CFTR",
+          "category": "frameshift",
+          "n_total": 516,
+          "n_pathogenic": 516,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.975786,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "CFTR",
+          "category": "inframe_deletion",
+          "n_total": 17,
+          "n_pathogenic": 17,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.986929,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "CFTR",
+          "category": "inframe_indel",
+          "n_total": 9,
+          "n_pathogenic": 9,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.995733,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "CFTR",
+          "category": "intronic",
+          "n_total": 779,
+          "n_pathogenic": 245,
+          "n_benign": 534,
+          "mean_lssim_pathogenic": 0.999021,
+          "mean_lssim_benign": 0.998964,
+          "delta_lssim": -5.7e-05,
+          "within_category_auc": 0.5109
+        },
+        {
+          "locus": "CFTR",
+          "category": "other",
+          "n_total": 54,
+          "n_pathogenic": 32,
+          "n_benign": 22,
+          "mean_lssim_pathogenic": 0.990941,
+          "mean_lssim_benign": 0.983736,
+          "delta_lssim": -0.007204,
+          "within_category_auc": 0.495
+        },
+        {
+          "locus": "CFTR",
+          "category": "splice_donor",
+          "n_total": 1,
+          "n_pathogenic": 1,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.9876,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "CFTR",
+          "category": "splice_region",
+          "n_total": 149,
+          "n_pathogenic": 75,
+          "n_benign": 74,
+          "mean_lssim_pathogenic": 0.994876,
+          "mean_lssim_benign": 0.993331,
+          "delta_lssim": -0.001545,
+          "within_category_auc": 0.5071
+        },
+        {
+          "locus": "CFTR",
+          "category": "synonymous",
+          "n_total": 1799,
+          "n_pathogenic": 854,
+          "n_benign": 945,
+          "mean_lssim_pathogenic": 0.999683,
+          "mean_lssim_benign": 0.999759,
+          "delta_lssim": 7.5e-05,
+          "within_category_auc": 0.5386
+        }
+      ]
+    },
+    {
+      "locus": "TP53",
+      "n_variants": 2794,
+      "n_pathogenic": 1645,
+      "n_benign": 1149,
+      "overall_auc": 0.6676,
+      "n_categories_with_auc": 6,
+      "mean_within_category_auc": 0.6228,
+      "categories": [
+        {
+          "locus": "TP53",
+          "category": "3_prime_UTR",
+          "n_total": 22,
+          "n_pathogenic": 3,
+          "n_benign": 19,
+          "mean_lssim_pathogenic": 0.9996,
+          "mean_lssim_benign": 0.999579,
+          "delta_lssim": -2.1e-05,
+          "within_category_auc": 0.3947
+        },
+        {
+          "locus": "TP53",
+          "category": "5_prime_UTR",
+          "n_total": 8,
+          "n_pathogenic": 2,
+          "n_benign": 6,
+          "mean_lssim_pathogenic": 0.9965,
+          "mean_lssim_benign": 0.983733,
+          "delta_lssim": -0.012767,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TP53",
+          "category": "frameshift",
+          "n_total": 534,
+          "n_pathogenic": 534,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.973265,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TP53",
+          "category": "inframe_deletion",
+          "n_total": 76,
+          "n_pathogenic": 75,
+          "n_benign": 1,
+          "mean_lssim_pathogenic": 0.989904,
+          "mean_lssim_benign": 0.9944,
+          "delta_lssim": 0.004496,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TP53",
+          "category": "inframe_indel",
+          "n_total": 35,
+          "n_pathogenic": 31,
+          "n_benign": 4,
+          "mean_lssim_pathogenic": 0.991645,
+          "mean_lssim_benign": 0.99465,
+          "delta_lssim": 0.003005,
+          "within_category_auc": 0.7419
+        },
+        {
+          "locus": "TP53",
+          "category": "intronic",
+          "n_total": 528,
+          "n_pathogenic": 122,
+          "n_benign": 406,
+          "mean_lssim_pathogenic": 0.998686,
+          "mean_lssim_benign": 0.998803,
+          "delta_lssim": 0.000117,
+          "within_category_auc": 0.5714
+        },
+        {
+          "locus": "TP53",
+          "category": "other",
+          "n_total": 53,
+          "n_pathogenic": 19,
+          "n_benign": 34,
+          "mean_lssim_pathogenic": 0.985574,
+          "mean_lssim_benign": 0.994109,
+          "delta_lssim": 0.008535,
+          "within_category_auc": 0.7299
+        },
+        {
+          "locus": "TP53",
+          "category": "splice_region",
+          "n_total": 139,
+          "n_pathogenic": 73,
+          "n_benign": 66,
+          "mean_lssim_pathogenic": 0.985067,
+          "mean_lssim_benign": 0.989695,
+          "delta_lssim": 0.004628,
+          "within_category_auc": 0.6849
+        },
+        {
+          "locus": "TP53",
+          "category": "synonymous",
+          "n_total": 1399,
+          "n_pathogenic": 786,
+          "n_benign": 613,
+          "mean_lssim_pathogenic": 0.999682,
+          "mean_lssim_benign": 0.999731,
+          "delta_lssim": 4.9e-05,
+          "within_category_auc": 0.614
+        }
+      ]
+    },
+    {
+      "locus": "MLH1",
+      "n_variants": 4060,
+      "n_pathogenic": 2425,
+      "n_benign": 1635,
+      "overall_auc": 0.6854,
+      "n_categories_with_auc": 6,
+      "mean_within_category_auc": 0.4771,
+      "categories": [
+        {
+          "locus": "MLH1",
+          "category": "3_prime_UTR",
+          "n_total": 13,
+          "n_pathogenic": 5,
+          "n_benign": 8,
+          "mean_lssim_pathogenic": 0.9984,
+          "mean_lssim_benign": 0.998425,
+          "delta_lssim": 2.5e-05,
+          "within_category_auc": 0.525
+        },
+        {
+          "locus": "MLH1",
+          "category": "5_prime_UTR",
+          "n_total": 26,
+          "n_pathogenic": 11,
+          "n_benign": 15,
+          "mean_lssim_pathogenic": 0.972355,
+          "mean_lssim_benign": 0.974,
+          "delta_lssim": 0.001645,
+          "within_category_auc": 0.4545
+        },
+        {
+          "locus": "MLH1",
+          "category": "frameshift",
+          "n_total": 1029,
+          "n_pathogenic": 1028,
+          "n_benign": 1,
+          "mean_lssim_pathogenic": 0.976734,
+          "mean_lssim_benign": 0.9862,
+          "delta_lssim": 0.009466,
+          "within_category_auc": null
+        },
+        {
+          "locus": "MLH1",
+          "category": "inframe_deletion",
+          "n_total": 34,
+          "n_pathogenic": 34,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.993165,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "MLH1",
+          "category": "inframe_indel",
+          "n_total": 19,
+          "n_pathogenic": 17,
+          "n_benign": 2,
+          "mean_lssim_pathogenic": 0.986435,
+          "mean_lssim_benign": 0.9963,
+          "delta_lssim": 0.009865,
+          "within_category_auc": null
+        },
+        {
+          "locus": "MLH1",
+          "category": "intronic",
+          "n_total": 955,
+          "n_pathogenic": 316,
+          "n_benign": 639,
+          "mean_lssim_pathogenic": 0.999123,
+          "mean_lssim_benign": 0.99918,
+          "delta_lssim": 5.6e-05,
+          "within_category_auc": 0.5062
+        },
+        {
+          "locus": "MLH1",
+          "category": "other",
+          "n_total": 105,
+          "n_pathogenic": 59,
+          "n_benign": 46,
+          "mean_lssim_pathogenic": 0.988839,
+          "mean_lssim_benign": 0.988441,
+          "delta_lssim": -0.000398,
+          "within_category_auc": 0.5586
+        },
+        {
+          "locus": "MLH1",
+          "category": "splice_donor",
+          "n_total": 1,
+          "n_pathogenic": 1,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.9938,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "MLH1",
+          "category": "splice_region",
+          "n_total": 286,
+          "n_pathogenic": 154,
+          "n_benign": 132,
+          "mean_lssim_pathogenic": 0.99467,
+          "mean_lssim_benign": 0.989492,
+          "delta_lssim": -0.005178,
+          "within_category_auc": 0.3256
+        },
+        {
+          "locus": "MLH1",
+          "category": "synonymous",
+          "n_total": 1592,
+          "n_pathogenic": 800,
+          "n_benign": 792,
+          "mean_lssim_pathogenic": 0.99972,
+          "mean_lssim_benign": 0.999724,
+          "delta_lssim": 4e-06,
+          "within_category_auc": 0.4929
+        }
+      ]
+    },
+    {
+      "locus": "LDLR",
+      "n_variants": 3284,
+      "n_pathogenic": 2274,
+      "n_benign": 1010,
+      "overall_auc": 0.5916,
+      "n_categories_with_auc": 6,
+      "mean_within_category_auc": 0.4119,
+      "categories": [
+        {
+          "locus": "LDLR",
+          "category": "3_prime_UTR",
+          "n_total": 52,
+          "n_pathogenic": 3,
+          "n_benign": 49,
+          "mean_lssim_pathogenic": 0.998467,
+          "mean_lssim_benign": 0.998359,
+          "delta_lssim": -0.000107,
+          "within_category_auc": 0.3776
+        },
+        {
+          "locus": "LDLR",
+          "category": "5_prime_UTR",
+          "n_total": 18,
+          "n_pathogenic": 14,
+          "n_benign": 4,
+          "mean_lssim_pathogenic": 0.983429,
+          "mean_lssim_benign": 0.987,
+          "delta_lssim": 0.003571,
+          "within_category_auc": 0.5893
+        },
+        {
+          "locus": "LDLR",
+          "category": "frameshift",
+          "n_total": 655,
+          "n_pathogenic": 654,
+          "n_benign": 1,
+          "mean_lssim_pathogenic": 0.991511,
+          "mean_lssim_benign": 0.9691,
+          "delta_lssim": -0.022411,
+          "within_category_auc": null
+        },
+        {
+          "locus": "LDLR",
+          "category": "inframe_deletion",
+          "n_total": 71,
+          "n_pathogenic": 71,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.997611,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "LDLR",
+          "category": "inframe_indel",
+          "n_total": 44,
+          "n_pathogenic": 43,
+          "n_benign": 1,
+          "mean_lssim_pathogenic": 0.998235,
+          "mean_lssim_benign": 0.9989,
+          "delta_lssim": 0.000665,
+          "within_category_auc": null
+        },
+        {
+          "locus": "LDLR",
+          "category": "intronic",
+          "n_total": 527,
+          "n_pathogenic": 184,
+          "n_benign": 343,
+          "mean_lssim_pathogenic": 0.999543,
+          "mean_lssim_benign": 0.999371,
+          "delta_lssim": -0.000172,
+          "within_category_auc": 0.4915
+        },
+        {
+          "locus": "LDLR",
+          "category": "other",
+          "n_total": 76,
+          "n_pathogenic": 71,
+          "n_benign": 5,
+          "mean_lssim_pathogenic": 0.992586,
+          "mean_lssim_benign": 0.97274,
+          "delta_lssim": -0.019846,
+          "within_category_auc": 0.0592
+        },
+        {
+          "locus": "LDLR",
+          "category": "splice_donor",
+          "n_total": 1,
+          "n_pathogenic": 1,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.9947,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "LDLR",
+          "category": "splice_region",
+          "n_total": 93,
+          "n_pathogenic": 69,
+          "n_benign": 24,
+          "mean_lssim_pathogenic": 0.99713,
+          "mean_lssim_benign": 0.9973,
+          "delta_lssim": 0.00017,
+          "within_category_auc": 0.5015
+        },
+        {
+          "locus": "LDLR",
+          "category": "synonymous",
+          "n_total": 1747,
+          "n_pathogenic": 1164,
+          "n_benign": 583,
+          "mean_lssim_pathogenic": 0.999915,
+          "mean_lssim_benign": 0.999879,
+          "delta_lssim": -3.6e-05,
+          "within_category_auc": 0.4526
+        }
+      ]
+    },
+    {
+      "locus": "SCN5A",
+      "n_variants": 2488,
+      "n_pathogenic": 928,
+      "n_benign": 1560,
+      "overall_auc": 0.5892,
+      "n_categories_with_auc": 5,
+      "mean_within_category_auc": 0.5002,
+      "categories": [
+        {
+          "locus": "SCN5A",
+          "category": "3_prime_UTR",
+          "n_total": 23,
+          "n_pathogenic": 9,
+          "n_benign": 14,
+          "mean_lssim_pathogenic": 0.998344,
+          "mean_lssim_benign": 0.998243,
+          "delta_lssim": -0.000102,
+          "within_category_auc": 0.373
+        },
+        {
+          "locus": "SCN5A",
+          "category": "5_prime_UTR",
+          "n_total": 3,
+          "n_pathogenic": 0,
+          "n_benign": 3,
+          "mean_lssim_pathogenic": null,
+          "mean_lssim_benign": 0.9884,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "SCN5A",
+          "category": "frameshift",
+          "n_total": 198,
+          "n_pathogenic": 198,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.983678,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "SCN5A",
+          "category": "inframe_deletion",
+          "n_total": 14,
+          "n_pathogenic": 14,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.995179,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "SCN5A",
+          "category": "inframe_indel",
+          "n_total": 7,
+          "n_pathogenic": 7,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.995057,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "SCN5A",
+          "category": "intronic",
+          "n_total": 520,
+          "n_pathogenic": 114,
+          "n_benign": 406,
+          "mean_lssim_pathogenic": 0.999273,
+          "mean_lssim_benign": 0.999257,
+          "delta_lssim": -1.5e-05,
+          "within_category_auc": 0.458
+        },
+        {
+          "locus": "SCN5A",
+          "category": "other",
+          "n_total": 21,
+          "n_pathogenic": 9,
+          "n_benign": 12,
+          "mean_lssim_pathogenic": 0.994678,
+          "mean_lssim_benign": 0.989867,
+          "delta_lssim": -0.004811,
+          "within_category_auc": 0.4676
+        },
+        {
+          "locus": "SCN5A",
+          "category": "splice_region",
+          "n_total": 45,
+          "n_pathogenic": 14,
+          "n_benign": 31,
+          "mean_lssim_pathogenic": 0.992679,
+          "mean_lssim_benign": 0.994816,
+          "delta_lssim": 0.002138,
+          "within_category_auc": 0.6866
+        },
+        {
+          "locus": "SCN5A",
+          "category": "synonymous",
+          "n_total": 1657,
+          "n_pathogenic": 563,
+          "n_benign": 1094,
+          "mean_lssim_pathogenic": 0.99981,
+          "mean_lssim_benign": 0.999813,
+          "delta_lssim": 3e-06,
+          "within_category_auc": 0.516
+        }
+      ]
+    },
+    {
+      "locus": "TERT",
+      "n_variants": 2089,
+      "n_pathogenic": 431,
+      "n_benign": 1658,
+      "overall_auc": 0.8405,
+      "n_categories_with_auc": 6,
+      "mean_within_category_auc": 0.4646,
+      "categories": [
+        {
+          "locus": "TERT",
+          "category": "3_prime_UTR",
+          "n_total": 5,
+          "n_pathogenic": 1,
+          "n_benign": 4,
+          "mean_lssim_pathogenic": 0.9985,
+          "mean_lssim_benign": 0.9985,
+          "delta_lssim": -0.0,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TERT",
+          "category": "5_prime_UTR",
+          "n_total": 10,
+          "n_pathogenic": 3,
+          "n_benign": 7,
+          "mean_lssim_pathogenic": 0.973633,
+          "mean_lssim_benign": 0.977471,
+          "delta_lssim": 0.003838,
+          "within_category_auc": 0.8095
+        },
+        {
+          "locus": "TERT",
+          "category": "frameshift",
+          "n_total": 60,
+          "n_pathogenic": 60,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.944892,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TERT",
+          "category": "inframe_deletion",
+          "n_total": 2,
+          "n_pathogenic": 2,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.99085,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TERT",
+          "category": "inframe_indel",
+          "n_total": 2,
+          "n_pathogenic": 2,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.982,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TERT",
+          "category": "intronic",
+          "n_total": 439,
+          "n_pathogenic": 45,
+          "n_benign": 394,
+          "mean_lssim_pathogenic": 0.999044,
+          "mean_lssim_benign": 0.999083,
+          "delta_lssim": 3.8e-05,
+          "within_category_auc": 0.4716
+        },
+        {
+          "locus": "TERT",
+          "category": "missense",
+          "n_total": 249,
+          "n_pathogenic": 218,
+          "n_benign": 31,
+          "mean_lssim_pathogenic": 0.983136,
+          "mean_lssim_benign": 0.981068,
+          "delta_lssim": -0.002068,
+          "within_category_auc": 0.4772
+        },
+        {
+          "locus": "TERT",
+          "category": "nonsense",
+          "n_total": 28,
+          "n_pathogenic": 28,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.946821,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "TERT",
+          "category": "other",
+          "n_total": 24,
+          "n_pathogenic": 13,
+          "n_benign": 11,
+          "mean_lssim_pathogenic": 0.998162,
+          "mean_lssim_benign": 0.977736,
+          "delta_lssim": -0.020425,
+          "within_category_auc": 0.1329
+        },
+        {
+          "locus": "TERT",
+          "category": "splice_region",
+          "n_total": 76,
+          "n_pathogenic": 8,
+          "n_benign": 68,
+          "mean_lssim_pathogenic": 0.996188,
+          "mean_lssim_benign": 0.99369,
+          "delta_lssim": -0.002498,
+          "within_category_auc": 0.4605
+        },
+        {
+          "locus": "TERT",
+          "category": "synonymous",
+          "n_total": 1194,
+          "n_pathogenic": 51,
+          "n_benign": 1143,
+          "mean_lssim_pathogenic": 0.999551,
+          "mean_lssim_benign": 0.999488,
+          "delta_lssim": -6.3e-05,
+          "within_category_auc": 0.436
+        }
+      ]
+    },
+    {
+      "locus": "GJB2",
+      "n_variants": 469,
+      "n_pathogenic": 314,
+      "n_benign": 155,
+      "overall_auc": 0.8529,
+      "n_categories_with_auc": 4,
+      "mean_within_category_auc": 0.2824,
+      "categories": [
+        {
+          "locus": "GJB2",
+          "category": "3_prime_UTR",
+          "n_total": 14,
+          "n_pathogenic": 4,
+          "n_benign": 10,
+          "mean_lssim_pathogenic": 0.99885,
+          "mean_lssim_benign": 0.99872,
+          "delta_lssim": -0.00013,
+          "within_category_auc": 0.15
+        },
+        {
+          "locus": "GJB2",
+          "category": "5_prime_UTR",
+          "n_total": 7,
+          "n_pathogenic": 2,
+          "n_benign": 5,
+          "mean_lssim_pathogenic": 0.99275,
+          "mean_lssim_benign": 0.98986,
+          "delta_lssim": -0.00289,
+          "within_category_auc": null
+        },
+        {
+          "locus": "GJB2",
+          "category": "frameshift",
+          "n_total": 66,
+          "n_pathogenic": 66,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.986253,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "GJB2",
+          "category": "inframe_deletion",
+          "n_total": 5,
+          "n_pathogenic": 5,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.99614,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "GJB2",
+          "category": "inframe_indel",
+          "n_total": 1,
+          "n_pathogenic": 1,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.9954,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "GJB2",
+          "category": "missense",
+          "n_total": 184,
+          "n_pathogenic": 175,
+          "n_benign": 9,
+          "mean_lssim_pathogenic": 0.993806,
+          "mean_lssim_benign": 0.993556,
+          "delta_lssim": -0.00025,
+          "within_category_auc": 0.4432
+        },
+        {
+          "locus": "GJB2",
+          "category": "nonsense",
+          "n_total": 33,
+          "n_pathogenic": 33,
+          "n_benign": 0,
+          "mean_lssim_pathogenic": 0.98417,
+          "mean_lssim_benign": null,
+          "delta_lssim": null,
+          "within_category_auc": null
+        },
+        {
+          "locus": "GJB2",
+          "category": "other",
+          "n_total": 36,
+          "n_pathogenic": 23,
+          "n_benign": 13,
+          "mean_lssim_pathogenic": 0.996265,
+          "mean_lssim_benign": 0.984815,
+          "delta_lssim": -0.01145,
+          "within_category_auc": 0.1204
+        },
+        {
+          "locus": "GJB2",
+          "category": "synonymous",
+          "n_total": 123,
+          "n_pathogenic": 5,
+          "n_benign": 118,
+          "mean_lssim_pathogenic": 0.99986,
+          "mean_lssim_benign": 0.999843,
+          "delta_lssim": -1.7e-05,
+          "within_category_auc": 0.4161
+        }
+      ]
+    }
+  ]
+}
