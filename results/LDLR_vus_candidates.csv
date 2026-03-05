@@ -1,0 +1,12 @@
+accession,position,hgvs,clinsig,lssim
+VCV000250971,11089552,NM_000527.5(LDLR):c.4G>C (p.Gly2Arg),Uncertain significance,0.907
+VCV000250970,11089552,NM_000527.5(LDLR):c.4G>A (p.Gly2Arg),Uncertain significance,0.907
+VCV000226303,11089551,NM_000527.5(LDLR):c.6del (p.Trp4fs),Pathogenic,0.907
+VCV001809533,11089549,NM_000527.5(LDLR):c.1_67del (p.Met1fs),Pathogenic,0.9072
+VCV000250968,11089549,NM_000527.5(LDLR):c.1A>T (p.Met1Leu),Pathogenic,0.9072
+VCV003290390,11089585,NM_000527.5(LDLR):c.38_58del (p.Ala13_Ala19del),Uncertain significance,0.9085
+VCV003894200,11089573,NM_000527.5(LDLR):c.25C>A (p.Arg9Ser),Uncertain significance,0.9088
+VCV004069800,11089613,NM_000527.5(LDLR):c.65C>T (p.Ala22Val),Uncertain significance,0.9091
+VCV000630382,11089612,NM_000527.5(LDLR):c.64G>T (p.Ala22Ser),Uncertain significance,0.9091
+VCV000643347,11089579,NM_000527.5(LDLR):c.31A>T (p.Thr11Ser),Uncertain significance,0.9096
+VCV003071388,11089555,NM_000527.5(LDLR):c.7C>A (p.Pro3Thr),Uncertain significance,0.9102

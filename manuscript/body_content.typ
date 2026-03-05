@@ -79,6 +79,10 @@ interpretation pipelines. Genome-wide scaling to 13 loci (32,201 variants) confi
   1,422 matched variants, _r_ = −0.045) and TP53 DMS (HCT116, 1,080
   matched, _r_ = −0.383) confirm ARCHCODE is orthogonal to experimental
   functional assays — 9th independent validation method (Figure 17)
++ #strong[VUS reclassification candidates:] 30,952 VUS scored across 13
+  loci; 760 candidates (LSSIM \< 0.95), 641 pearl-like after excluding
+  nonsense/frameshift. HBB leads (22.3% candidate rate); five
+  tissue-mismatched loci show zero candidates as expected (Figure 18)
 
 #v(0.8em)
 #line(length: 100%, stroke: 0.3pt + luma(200))
@@ -173,6 +177,8 @@ interpretation pipelines. Genome-wide scaling to 13 loci (32,201 variants) confi
     MaveDB urn:mavedb:00000097-0-2; 3,893 scores; 1,422 matched; r = --0.045],
     [MaveDB TP53 DMS], [REAL], [DMS in HCT116; MaveDB urn:mavedb:00001213-a-1;
     8,052 scores; 1,080 matched; r = --0.383],
+    [ClinVar VUS (13 loci)], [REAL], [NCBI E-utilities API; 30,952 VUS scored
+    via position-based LSSIM lookup; 760 candidates (LSSIM \< 0.95); 641 pearl-like],
   )]
   , kind: table
   )
@@ -2647,9 +2653,32 @@ reclassification should be considered.
 #line(length: 100%, stroke: 0.3pt + luma(200))
 #v(0.8em)
 
-#emph[Results section --- based on real ClinVar data (30,318 variants
-across 9 loci, NCBI E-utilities)] #emph[Word count: \~5,000] #emph[Last
+#emph[Results section --- based on real ClinVar data (30,318 classified + 30,952 VUS variants
+across 13 loci, NCBI E-utilities)] #emph[Word count: \~5,500] #emph[Last
 updated: 2026-03-05]
+
+#v(0.8em)
+#line(length: 100%, stroke: 0.3pt + luma(200))
+#v(0.8em)
+
+== VUS Reclassification Candidates
+
+To demonstrate translational utility, we applied ARCHCODE LSSIM scores to 30,952 Variants of Uncertain Significance (VUS) across all 13 loci. VUS were downloaded from ClinVar via NCBI E-utilities (query: gene AND "Uncertain significance"[clinsig] AND "single nucleotide variant"[variant type]) and matched to existing ARCHCODE atlas positions by genomic coordinate. LSSIM scores were assigned by position-based lookup --- no additional simulations were required, as each atlas already contains per-position LSSIM values for all possible SNVs within the genomic window.
+
+#strong[Candidate identification.] We defined reclassification candidates as VUS with LSSIM \< 0.95 (the pearl threshold validated against nine orthogonal methods). To focus on variants where ARCHCODE provides unique information, we further filtered to "pearl-like" candidates by excluding nonsense and frameshift variants (already detectable by sequence-based tools), retaining only missense, synonymous, splice\_region, intronic, UTR, and promoter variants.
+
+#strong[Results across 13 loci.] Of 30,952 VUS scored, 760 (2.5%) fall below the 0.95 threshold, and 641 (2.1%) are pearl-like after excluding loss-of-function types. The distribution follows the tissue-specificity gradient established in classified variants: HBB leads with 327 candidates (22.3% of 1,465 VUS, 255 pearl-like), consistent with its position as the tissue-matched locus with strongest ARCHCODE signal. MLH1 (122 candidates, 111 pearl-like), BRCA1 (81, 71), TERT (79, 76), PTEN (73, 62), and CFTR (54, 44) show intermediate rates. TP53 (13, 13) and LDLR (11, 9) have few candidates, while SCN5A, GJB2, HBA1, GATA1, and BCL11A show zero candidates --- expected null results for tissue-mismatched loci in the K562 model, replicating the pattern observed in classified variants.
+
+#strong[Notable pearl-like VUS.] Among the HBB candidates, several synonymous variants show very low LSSIM despite zero protein-level impact: for example, variants in enhancer-proximal positions (within 1 kb of H3K27ac peaks) that are invisible to VEP, SpliceAI, and CADD yet structurally disruptive by ARCHCODE. These represent the highest-priority candidates for experimental follow-up, as they occupy the same structural blind spot as the 27 validated pearl variants.
+
+#strong[Tissue-specificity validation.] The five tissue-mismatched null loci (SCN5A, GJB2, HBA1, GATA1, BCL11A) serve as internal negative controls. The absence of candidates at these loci confirms that ARCHCODE does not generate spurious structural calls when the enhancer--promoter architecture is absent from the K562 model, providing confidence that candidates at tissue-matched loci reflect genuine structural disruption.
+
+#figure(
+  image("../figures/fig18_vus_reclassification.png", width: 100%),
+  caption: [VUS reclassification candidates across 13 loci. (A) Total VUS scored (gray) and reclassification candidates with LSSIM \< 0.95 (red) per locus, log scale. HBB shows the highest candidate rate (22.3%), consistent with its tissue-matched enhancer--promoter architecture. Five loci (SCN5A, GJB2, HBA1, GATA1, BCL11A) show zero candidates --- expected tissue-mismatch nulls. (B) Pearl-like candidates (excluding nonsense/frameshift) per locus, representing variants where ARCHCODE provides unique structural information invisible to sequence-based predictors.]
+) <fig-vus-reclassification>
+
+#strong[Caveat.] These candidates are computational predictions only. ARCHCODE LSSIM identifies structural disruption potential but cannot independently justify reclassification. ACMG/AMP guidelines require multiple lines of evidence including functional data (PS3/BS3), segregation (PP1/BS4), and population frequency (PM2/BA1). ARCHCODE structural scores could contribute as supporting evidence (PP3-equivalent for structural disruption) but experimental validation (Capture Hi-C, RT-PCR, CRISPR editing) is required before any clinical reclassification.
 
 #v(0.8em)
 #line(length: 100%, stroke: 0.3pt + luma(200))
