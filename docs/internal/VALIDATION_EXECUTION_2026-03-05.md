@@ -84,8 +84,8 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
     - `results/task1_ai_blindspot_fresh_2026-03-05.json`
 
 - Task 2:
-  - esults/task2_loop_that_stayed_status_2026-03-05.json
-  - esults/task2_reconciliation_2026-03-05.json
+  - `results/task2_loop_that_stayed_status_2026-03-05.json`
+  - `results/task2_reconciliation_2026-03-05.json`
   - Detects contradiction between legacy and fresh artifacts and records reconciliation policy.
 
 - Task 3:
@@ -136,5 +136,6 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 - `NEEDS_FIXES` before publication-grade claims for:
   - strict weak-CTCF isolated experiment,
   - reconciliation of contradictory Loop That Stayed narratives.
+
 
 
