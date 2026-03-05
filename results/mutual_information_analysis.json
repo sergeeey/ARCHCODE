@@ -1,0 +1,26 @@
+{
+  "description": "Mutual information analysis: ARCHCODE vs sequence-based predictors",
+  "n_total": 36613,
+  "n_with_vep": 26769,
+  "n_with_cadd": 4540,
+  "comparisons": {
+    "ARCHCODE_vs_VEP": {
+      "spearman_rho": 0.2682,
+      "MI": 0.1815,
+      "NMI": 0.1005
+    },
+    "ARCHCODE_vs_CADD": {
+      "spearman_rho": 0.0367,
+      "MI": 0.0562,
+      "NMI": 0.0244
+    },
+    "VEP_vs_CADD_positive_control": {
+      "spearman_rho": 0.4688,
+      "MI": 0.4258,
+      "NMI": 0.2311
+    },
+    "ARCHCODE_vs_Label": {
+      "NMI": 0.0519
+    }
+  }
+}

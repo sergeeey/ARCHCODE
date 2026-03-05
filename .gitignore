@@ -77,6 +77,7 @@ data/raw/
 fastq_data/
 data/temp_*.cool
 data/*.cool
+data/**/*.mcool
 data/reference/*.mcool
 data/reference/*_pairs.txt.gz
 *.bam
@@ -86,6 +87,15 @@ data/reference/*_pairs.txt.gz
 *.fq.gz
 *.bw
 *.bigwig
+
+# ENCODE bulk data (reproducible via accession)
+data/encode/*.tsv
+
+# Python egg-info
+*.egg-info/
+
+# Lock files
+uv.lock
 
 # External tools (download separately)
 tools/*.jar

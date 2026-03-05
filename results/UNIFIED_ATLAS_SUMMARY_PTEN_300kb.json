@@ -1,0 +1,116 @@
+{
+  "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
+  "date": "2026-03-05T08:03:12.227Z",
+  "locus_config_id": "pten_300kb",
+  "locus_config_path": "D:\\ДНК\\config\\locus\\pten_300kb.json",
+  "provenance": {
+    "ctcf_sources": [
+      "ENCODE_K562_CTCF"
+    ],
+    "enhancer_sources": [
+      "ENCODE_K562_H3K27ac"
+    ],
+    "thresholds_calibrated": false
+  },
+  "fix_description": "All 1496 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
+  "data_sources": {
+    "variants": "NCBI ClinVar (data/pten_variants.csv)",
+    "structural_predictor": "ARCHCODE loop extrusion (Kramer kinetics)"
+  },
+  "parameters": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "k_base": 0.002,
+    "resolution_bp": 1000,
+    "simulation_window": "chr10:87767284-88067284",
+    "n_bins": 300
+  },
+  "statistics": {
+    "total_variants": 1496,
+    "pathogenic_variants": 703,
+    "benign_variants": 793,
+    "archcode_structural_pathogenic": 9,
+    "pearls": 0,
+    "mean_ssim_all": 0.9992,
+    "mean_ssim_pathogenic": 0.9987,
+    "mean_ssim_benign": 0.9997,
+    "mean_lssim_all": 0.9937,
+    "mean_lssim_pathogenic": 0.9885,
+    "mean_lssim_benign": 0.9982,
+    "local_ssim_window": 50
+  },
+  "category_breakdown": {
+    "missense": {
+      "total": 380,
+      "pathogenic_count": 370,
+      "benign_count": 10,
+      "mean_ssim_all": 0.9986,
+      "mean_ssim_pathogenic": 0.9986,
+      "mean_ssim_benign": 0.9977,
+      "mean_lssim_all": 0.9886,
+      "mean_lssim_pathogenic": 0.9887,
+      "mean_lssim_benign": 0.9851
+    },
+    "intronic": {
+      "total": 465,
+      "pathogenic_count": 76,
+      "benign_count": 389,
+      "mean_ssim_all": 0.9996,
+      "mean_ssim_pathogenic": 0.9995,
+      "mean_ssim_benign": 0.9997,
+      "mean_lssim_all": 0.9978,
+      "mean_lssim_pathogenic": 0.9972,
+      "mean_lssim_benign": 0.9979
+    },
+    "other": {
+      "total": 47,
+      "pathogenic_count": 15,
+      "benign_count": 32,
+      "mean_ssim_all": 0.9988,
+      "mean_ssim_pathogenic": 0.9998,
+      "mean_ssim_benign": 0.9984,
+      "mean_lssim_all": 0.9918,
+      "mean_lssim_pathogenic": 0.9972,
+      "mean_lssim_benign": 0.9892
+    },
+    "synonymous": {
+      "total": 391,
+      "pathogenic_count": 29,
+      "benign_count": 362,
+      "mean_ssim_all": 1,
+      "mean_ssim_pathogenic": 1,
+      "mean_ssim_benign": 1,
+      "mean_lssim_all": 0.9998,
+      "mean_lssim_pathogenic": 0.9997,
+      "mean_lssim_benign": 0.9998
+    },
+    "nonsense": {
+      "total": 137,
+      "pathogenic_count": 137,
+      "benign_count": 0,
+      "mean_ssim_all": 0.9975,
+      "mean_ssim_pathogenic": 0.9975,
+      "mean_ssim_benign": null,
+      "mean_lssim_all": 0.9761,
+      "mean_lssim_pathogenic": 0.9761,
+      "mean_lssim_benign": null
+    },
+    "splice": {
+      "total": 76,
+      "pathogenic_count": 76,
+      "benign_count": 0,
+      "mean_ssim_all": 0.9996,
+      "mean_ssim_pathogenic": 0.9996,
+      "mean_ssim_benign": null,
+      "mean_lssim_all": 0.9954,
+      "mean_lssim_pathogenic": 0.9954,
+      "mean_lssim_benign": null
+    }
+  },
+  "pipeline_integrity": {
+    "single_engine": true,
+    "label_blind_simulation": true,
+    "effect_strength_source": "CATEGORICAL (category-only, label-blind)",
+    "effect_mode": "categorical"
+  }
+}

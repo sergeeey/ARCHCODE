@@ -1,0 +1,147 @@
+{
+  "finding": "Structural pathogenicity correlates with enhancer architecture, NOT gene expression",
+  "expression_correlation": {
+    "spearman_rho": -0.4484,
+    "p": 0.124328,
+    "n": 13,
+    "interpretation": "NOT significant \u2014 mRNA level does not predict structural signal"
+  },
+  "enhancer_correlations": {
+    "local_enh_signal_50kb": {
+      "spearman_rho": -0.4561,
+      "p": 0.136106
+    },
+    "total_enh_signal": {
+      "spearman_rho": -0.5245,
+      "p": 0.080019
+    },
+    "n_enhancers": {
+      "spearman_rho": -0.5474,
+      "p": 0.06547
+    },
+    "n_enhancers_with_hbb": {
+      "spearman_rho": -0.5379,
+      "p": 0.057926,
+      "n": 13
+    }
+  },
+  "loci": [
+    {
+      "locus": "TERT",
+      "delta": 0.0188,
+      "local_enh_signal": 0.6,
+      "n_local_enh": 1,
+      "total_enh_signal": 3.1999999999999997,
+      "n_total_enh": 5,
+      "n_ctcf": 10
+    },
+    {
+      "locus": "BCL11A",
+      "delta": 0.0137,
+      "local_enh_signal": 0,
+      "n_local_enh": 0,
+      "total_enh_signal": 0,
+      "n_total_enh": 0,
+      "n_ctcf": 6
+    },
+    {
+      "locus": "PTEN",
+      "delta": 0.0097,
+      "local_enh_signal": 1.28,
+      "n_local_enh": 2,
+      "total_enh_signal": 4.5,
+      "n_total_enh": 7,
+      "n_ctcf": 4
+    },
+    {
+      "locus": "MLH1",
+      "delta": 0.0091,
+      "local_enh_signal": 0.95,
+      "n_local_enh": 1,
+      "total_enh_signal": 4.8,
+      "n_total_enh": 8,
+      "n_ctcf": 7
+    },
+    {
+      "locus": "TP53",
+      "delta": 0.009,
+      "local_enh_signal": 2.55,
+      "n_local_enh": 4,
+      "total_enh_signal": 5.349999999999999,
+      "n_total_enh": 9,
+      "n_ctcf": 13
+    },
+    {
+      "locus": "CFTR",
+      "delta": 0.0068,
+      "local_enh_signal": 0.7,
+      "n_local_enh": 1,
+      "total_enh_signal": 3.7499999999999996,
+      "n_total_enh": 6,
+      "n_ctcf": 6
+    },
+    {
+      "locus": "GJB2",
+      "delta": 0.0062,
+      "local_enh_signal": 0.6,
+      "n_local_enh": 2,
+      "total_enh_signal": 1.4000000000000001,
+      "n_total_enh": 4,
+      "n_ctcf": 6
+    },
+    {
+      "locus": "BRCA1",
+      "delta": 0.0056,
+      "local_enh_signal": 0.9,
+      "n_local_enh": 1,
+      "total_enh_signal": 5.6000000000000005,
+      "n_total_enh": 9,
+      "n_ctcf": 14
+    },
+    {
+      "locus": "GATA1",
+      "delta": 0.0036,
+      "local_enh_signal": 3.0599999999999996,
+      "n_local_enh": 6,
+      "total_enh_signal": 6.840000000000001,
+      "n_total_enh": 15,
+      "n_ctcf": 8
+    },
+    {
+      "locus": "SCN5A",
+      "delta": 0.0035,
+      "local_enh_signal": 0,
+      "n_local_enh": 0,
+      "total_enh_signal": 1.9500000000000002,
+      "n_total_enh": 3,
+      "n_ctcf": 14
+    },
+    {
+      "locus": "LDLR",
+      "delta": 0.0025,
+      "local_enh_signal": 3.55,
+      "n_local_enh": 6,
+      "total_enh_signal": 5.249999999999999,
+      "n_total_enh": 10,
+      "n_ctcf": 10
+    },
+    {
+      "locus": "HBA1",
+      "delta": 0.0023,
+      "local_enh_signal": 3.0500000000000003,
+      "n_local_enh": 5,
+      "total_enh_signal": 9.4,
+      "n_total_enh": 15,
+      "n_ctcf": 10
+    },
+    {
+      "locus": "HBB",
+      "delta": 0.111,
+      "local_enh_signal": 1.25,
+      "n_local_enh": 2,
+      "total_enh_signal": 3.4499999999999997,
+      "n_total_enh": 5,
+      "n_ctcf": 4
+    }
+  ]
+}

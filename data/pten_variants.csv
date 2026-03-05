@@ -1,0 +1,1497 @@
+clinvar_id,chr,position,ref,alt,category,hgvs_c,hgvs_p,clinical_significance,label
+VCV004744225,10,87894040,.,.,missense,c.95T>G,p.Ile32Ser,Likely pathogenic,Pathogenic
+VCV004677133,10,87933120,.,.,missense,c.361G>T,p.Ala121Ser,Likely pathogenic,Pathogenic
+VCV004538586,10,87952145,.,.,missense,c.520T>G,p.Tyr174Asp,Pathogenic,Pathogenic
+VCV004531608,10,87933157,.,.,missense,c.398T>A,p.Val133Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV004530405,10,87864513,.,.,missense,c.44G>T,p.Arg15Ile,Likely pathogenic,Pathogenic
+VCV004527406,10,87933033,.,.,missense,c.274G>A,p.Asp92Asn,Likely pathogenic,Pathogenic
+VCV004293030,10,87960954,.,.,nonsense,c.862G>T,p.Glu288Ter,Likely pathogenic,Pathogenic
+VCV004075814,10,87894081,.,.,missense,c.136T>A,p.Tyr46Asn,Likely pathogenic,Pathogenic
+VCV004073572,10,87965578,.,.,other,c.*106A>G,,Benign,Benign
+VCV004073520,10,87862876,.,.,other,,,Benign,Benign
+VCV004073515,10,87865326,.,.,intronic,c.79+778C>T,,Benign,Benign
+VCV004071798,10,87894024,.,.,splice,c.80-1G>A,,Pathogenic/Likely pathogenic,Pathogenic
+VCV004056257,10,87952159,.,.,nonsense,c.534T>G,p.Tyr178Ter,Pathogenic,Pathogenic
+VCV003903209,10,87864486,.,.,missense,c.17A>T,p.Lys6Ile,Likely pathogenic,Pathogenic
+VCV003780931,10,87863549,.,.,intronic,c.-921G>T,,Likely pathogenic,Pathogenic
+VCV003780930,10,87863574,.,.,intronic,c.-896T>C,,Likely pathogenic,Pathogenic
+VCV003780929,10,87863616,.,.,intronic,c.-854C>G,,Likely pathogenic,Pathogenic
+VCV003780928,10,87863231,.,.,intronic,c.-1239A>G,,Likely pathogenic,Pathogenic
+VCV003780927,10,87863292,.,.,intronic,c.-1178C>T,,Likely pathogenic,Pathogenic
+VCV003780926,10,87863359,.,.,intronic,c.-1111A>G,,Likely pathogenic,Pathogenic
+VCV003780925,10,87863469,.,.,intronic,c.-1001T>C,,Likely pathogenic,Pathogenic
+VCV003780923,10,87965537,.,.,other,c.*65T>A,,Likely pathogenic,Pathogenic
+VCV003767590,10,87933052,.,.,missense,c.293T>C,p.Leu98Pro,Pathogenic,Pathogenic
+VCV003764883,10,87957921,.,.,nonsense,c.703G>T,p.Glu235Ter,Pathogenic,Pathogenic
+VCV003729632,10,87965298,.,.,nonsense,c.1038C>G,p.Tyr346Ter,Conflicting classifications of pathogenicity,Pathogenic
+VCV003726581,10,87933144,.,.,nonsense,c.385G>T,p.Gly129Ter,Pathogenic,Pathogenic
+VCV003720944,10,87933073,.,.,missense,c.314G>T,p.Cys105Phe,Conflicting classifications of pathogenicity,Pathogenic
+VCV003707469,10,87952138,.,.,missense,c.513G>T,p.Gln171His,Conflicting classifications of pathogenicity,Pathogenic
+VCV003669092,10,87933092,.,.,missense,c.333G>T,p.Trp111Cys,Pathogenic,Pathogenic
+VCV003667044,10,87933234,.,.,missense,c.475A>T,p.Arg159Trp,Pathogenic,Pathogenic
+VCV003663585,10,87894050,.,.,missense,c.105G>T,p.Met35Ile,Likely pathogenic,Pathogenic
+VCV003654598,10,87933132,.,.,nonsense,c.373A>T,p.Lys125Ter,Pathogenic,Pathogenic
+VCV003650080,10,87864521,.,.,nonsense,c.52G>T,p.Glu18Ter,Pathogenic,Pathogenic
+VCV003637460,10,87925561,.,.,intronic,c.209+4A>C,,Pathogenic,Pathogenic
+VCV003572467,10,87933126,.,.,missense,c.367C>A,p.His123Asn,Likely pathogenic,Pathogenic
+VCV003427428,10,87925479,.,.,intronic,c.165-34A>G,,Likely pathogenic,Pathogenic
+VCV003381971,10,87957982,.,.,missense,c.764T>G,p.Val255Gly,Likely pathogenic,Pathogenic
+VCV003361877,10,87965476,.,.,other,c.*4T>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV003340277,10,87864470,.,.,missense,c.1A>C,p.Met1Leu,Pathogenic,Pathogenic
+VCV003340217,10,87933169,.,.,missense,c.410C>A,p.Ala137Glu,Likely pathogenic,Pathogenic
+VCV003338761,10,87864531,.,.,missense,c.62T>C,p.Phe21Ser,Pathogenic,Pathogenic
+VCV003337498,10,87925541,.,.,missense,c.193T>G,p.Tyr65Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV003256748,10,87933115,.,.,missense,c.356T>C,p.Val119Ala,Likely pathogenic,Pathogenic
+VCV003254879,10,87864483,.,.,missense,c.14T>C,p.Ile5Thr,Likely pathogenic,Pathogenic
+VCV003231166,10,87864534,.,.,missense,c.65A>T,p.Asp22Val,Likely pathogenic,Pathogenic
+VCV003231146,10,87925530,.,.,missense,c.182A>C,p.His61Pro,Likely pathogenic,Pathogenic
+VCV003220859,10,87952145,.,.,missense,c.520T>C,p.Tyr174His,Conflicting classifications of pathogenicity,Pathogenic
+VCV003148533,10,87864470,.,.,missense,c.1A>T,p.Met1Leu,Likely pathogenic,Pathogenic
+VCV003026433,10,87957879,.,.,missense,c.661A>G,p.Lys221Glu,Likely pathogenic,Pathogenic
+VCV002884029,10,87952206,.,.,nonsense,c.581T>A,p.Leu194Ter,Pathogenic,Pathogenic
+VCV002858163,10,87931044,.,.,splice,c.210-2A>T,,Pathogenic,Pathogenic
+VCV002827098,10,87864537,.,.,missense,c.68T>C,p.Leu23Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV002767402,10,87925511,.,.,splice,c.165-2A>C,,Pathogenic,Pathogenic
+VCV002764628,10,87933082,.,.,missense,c.323T>G,p.Leu108Arg,Likely pathogenic,Pathogenic
+VCV002735432,10,87864548,.,.,missense,c.79T>A,p.Tyr27Asn,Likely pathogenic,Pathogenic
+VCV002707439,10,87933244,.,.,missense,c.485A>T,p.Asp162Val,Conflicting classifications of pathogenicity,Pathogenic
+VCV002687614,10,87933120,.,.,missense,c.361G>C,p.Ala121Pro,Likely pathogenic,Pathogenic
+VCV002674382,10,87894026,.,.,nonsense,c.81T>A,p.Tyr27Ter,Pathogenic,Pathogenic
+VCV002674374,10,87957938,.,.,nonsense,c.720C>A,p.Tyr240Ter,Pathogenic,Pathogenic
+VCV002674372,10,87894066,.,.,nonsense,c.121A>T,p.Arg41Ter,Pathogenic,Pathogenic
+VCV002674368,10,87933178,.,.,nonsense,c.419T>A,p.Leu140Ter,Pathogenic,Pathogenic
+VCV002674361,10,87957904,.,.,nonsense,c.686C>A,p.Ser229Ter,Pathogenic,Pathogenic
+VCV002674347,10,87933249,.,.,nonsense,c.490A>T,p.Lys164Ter,Pathogenic,Pathogenic
+VCV002674344,10,87957942,.,.,nonsense,c.724G>T,p.Glu242Ter,Pathogenic,Pathogenic
+VCV002674336,10,87933099,.,.,nonsense,c.340G>T,p.Glu114Ter,Pathogenic,Pathogenic
+VCV002674322,10,87864500,.,.,nonsense,c.31A>T,p.Arg11Ter,Pathogenic,Pathogenic
+VCV002674316,10,87894111,.,.,splice,c.164+2T>A,,Pathogenic,Pathogenic
+VCV002674312,10,87933030,.,.,nonsense,c.271G>T,p.Glu91Ter,Pathogenic,Pathogenic
+VCV002674308,10,87933023,.,.,nonsense,c.264T>G,p.Tyr88Ter,Pathogenic,Pathogenic
+VCV002674303,10,87933094,.,.,missense,c.335T>G,p.Leu112Arg,Pathogenic,Pathogenic
+VCV002674284,10,87933121,.,.,missense,c.362C>A,p.Ala121Glu,Likely pathogenic,Pathogenic
+VCV002674283,10,87933138,.,.,missense,c.379G>C,p.Gly127Arg,Likely pathogenic,Pathogenic
+VCV002674280,10,87933136,.,.,missense,c.377C>A,p.Ala126Asp,Likely pathogenic,Pathogenic
+VCV002674279,10,87864471,.,.,missense,c.2T>G,p.Met1Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV002673929,10,87961116,.,.,nonsense,c.1024A>T,p.Lys342Ter,Pathogenic,Pathogenic
+VCV002673923,10,87960893,.,.,splice,c.802-1G>C,,Pathogenic,Pathogenic
+VCV002673922,10,87960963,.,.,nonsense,c.871G>T,p.Glu291Ter,Pathogenic,Pathogenic
+VCV002673917,10,87965286,.,.,splice,c.1027-1G>T,,Likely pathogenic,Pathogenic
+VCV002673901,10,87961120,.,.,splice,c.1026+2T>A,,Likely pathogenic,Pathogenic
+VCV002673893,10,87961120,.,.,splice,c.1026+2T>C,,Likely pathogenic,Pathogenic
+VCV002663545,10,87933007,.,.,intronic,c.254-6C>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV002663192,10,87894025,.,.,missense,c.80A>T,p.Tyr27Phe,Pathogenic,Pathogenic
+VCV002630888,10,87957873,.,.,nonsense,c.655C>T,p.Gln219Ter,Pathogenic,Pathogenic
+VCV002628372,10,87933072,.,.,missense,c.313T>C,p.Cys105Arg,Likely pathogenic,Pathogenic
+VCV002627316,10,87863673,.,.,intronic,c.-797G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV002624869,10,87933112,.,.,missense,c.353A>C,p.His118Pro,Likely pathogenic,Pathogenic
+VCV002624868,10,87957978,.,.,nonsense,c.760A>T,p.Lys254Ter,Pathogenic,Pathogenic
+VCV002587202,10,87942769,.,.,intronic,c.493-9349A>G,,Likely pathogenic,Pathogenic
+VCV002574568,10,87957879,.,.,nonsense,c.661A>T,p.Lys221Ter,Pathogenic,Pathogenic
+VCV002574362,10,87925539,.,.,missense,c.191A>C,p.His64Pro,Pathogenic/Likely pathogenic,Pathogenic
+VCV002567268,10,87933094,.,.,missense,c.335T>A,p.Leu112Gln,Conflicting classifications of pathogenicity,Pathogenic
+VCV002562404,10,87894083,.,.,nonsense,c.138C>G,p.Tyr46Ter,Pathogenic,Pathogenic
+VCV002562403,10,87933081,.,.,missense,c.322C>T,p.Leu108Phe,Likely pathogenic,Pathogenic
+VCV002503327,10,87952214,.,.,nonsense,c.589A>T,p.Lys197Ter,Pathogenic,Pathogenic
+VCV002502558,10,87933120,.,.,missense,c.361G>A,p.Ala121Thr,Likely pathogenic,Pathogenic
+VCV002502345,10,87960919,.,.,missense,c.827A>G,p.Asn276Ser,Pathogenic,Pathogenic
+VCV002499958,10,87925544,.,.,missense,c.196A>G,p.Lys66Glu,Likely pathogenic,Pathogenic
+VCV002498032,10,87961068,.,.,missense,c.976G>A,p.Asp326Asn,Pathogenic,Pathogenic
+VCV002452980,10,87961086,.,.,nonsense,c.994A>T,p.Lys332Ter,Pathogenic,Pathogenic
+VCV002447222,10,87963435,.,.,intronic,c.1027-1852A>G,,Likely pathogenic,Pathogenic
+VCV002447221,10,87933091,.,.,nonsense,c.332G>A,p.Trp111Ter,Pathogenic,Pathogenic
+VCV002447220,10,87933130,.,.,missense,c.371G>C,p.Cys124Ser,Pathogenic/Likely pathogenic,Pathogenic
+VCV002429351,10,87925548,.,.,missense,c.200T>G,p.Ile67Arg,Likely pathogenic,Pathogenic
+VCV002136911,10,87960945,.,.,nonsense,c.853G>T,p.Glu285Ter,Pathogenic,Pathogenic
+VCV002136910,10,87952165,.,.,nonsense,c.540C>A,p.Tyr180Ter,Pathogenic,Pathogenic
+VCV002136908,10,87925558,.,.,splice,c.209+1G>C,,Pathogenic,Pathogenic
+VCV002136907,10,87894102,.,.,missense,c.157G>A,p.Val53Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV002131002,10,87957906,.,.,nonsense,c.688G>T,p.Gly230Ter,Pathogenic,Pathogenic
+VCV002109004,10,87925563,.,.,intronic,c.209+6T>A,,Pathogenic,Pathogenic
+VCV002106630,10,87864549,.,.,splice,c.79+1G>A,,Likely pathogenic,Pathogenic
+VCV002091925,10,87933070,.,.,missense,c.311T>C,p.Phe104Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV002033861,10,87933159,.,.,missense,c.400A>G,p.Met134Val,Conflicting classifications of pathogenicity,Pathogenic
+VCV002028290,10,87933161,.,.,missense,c.402G>A,p.Met134Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV002022313,10,87894061,.,.,missense,c.116C>T,p.Ala39Val,Conflicting classifications of pathogenicity,Pathogenic
+VCV002010415,10,87958014,.,.,missense,c.796A>G,p.Lys266Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV002001733,10,87864525,.,.,missense,c.56A>T,p.Asp19Val,Pathogenic,Pathogenic
+VCV001967574,10,87933139,.,.,missense,c.380G>C,p.Gly127Ala,Conflicting classifications of pathogenicity,Pathogenic
+VCV001803052,10,87933133,.,.,missense,c.374A>G,p.Lys125Arg,Likely pathogenic,Pathogenic
+VCV001802604,10,87931079,.,.,missense,c.243T>G,p.Phe81Leu,Pathogenic,Pathogenic
+VCV001796695,10,87933042,.,.,missense,c.283C>G,p.Pro95Ala,Conflicting classifications of pathogenicity,Pathogenic
+VCV001795656,10,87933034,.,.,missense,c.275A>T,p.Asp92Val,Pathogenic,Pathogenic
+VCV001790285,10,87961100,.,.,nonsense,c.1008C>A,p.Tyr336Ter,Pathogenic,Pathogenic
+VCV001785916,10,87931034,.,.,intronic,c.210-12C>G,,Likely pathogenic,Pathogenic
+VCV001785871,10,87925557,.,.,missense,c.209T>G,p.Leu70Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV001785727,10,87927604,.,.,intronic,c.209+2047A>G,,Likely pathogenic,Pathogenic
+VCV001780734,10,87925529,.,.,missense,c.181C>A,p.His61Asn,Conflicting classifications of pathogenicity,Pathogenic
+VCV001780374,10,87965321,.,.,missense,c.1061C>G,p.Pro354Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV001778538,10,87925518,.,.,missense,c.170T>C,p.Leu57Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV001777889,10,87925515,.,.,missense,c.167T>C,p.Phe56Ser,Likely pathogenic,Pathogenic
+VCV001777276,10,87925511,.,.,splice,c.165-2A>T,,Pathogenic,Pathogenic
+VCV001770991,10,87965290,.,.,nonsense,c.1030A>T,p.Lys344Ter,Pathogenic,Pathogenic
+VCV001762511,10,87960913,.,.,nonsense,c.821G>A,p.Trp274Ter,Pathogenic,Pathogenic
+VCV001755303,10,87957893,.,.,nonsense,c.675T>A,p.Tyr225Ter,Pathogenic,Pathogenic
+VCV001750675,10,87952219,.,.,missense,c.594G>A,p.Met198Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV001750526,10,87965471,.,.,nonsense,c.1211G>C,p.Ter404Ser,Likely pathogenic,Pathogenic
+VCV001750073,10,87952209,.,.,missense,c.584T>C,p.Phe195Ser,Likely pathogenic,Pathogenic
+VCV001742096,10,87933222,.,.,missense,c.463T>A,p.Tyr155Asn,Likely pathogenic,Pathogenic
+VCV001737618,10,87933166,.,.,missense,c.407G>T,p.Cys136Phe,Pathogenic/Likely pathogenic,Pathogenic
+VCV001737440,10,87933164,.,.,missense,c.405A>G,p.Ile135Met,Conflicting classifications of pathogenicity,Pathogenic
+VCV001734391,10,87933131,.,.,missense,c.372T>G,p.Cys124Trp,Pathogenic/Likely pathogenic,Pathogenic
+VCV001728902,10,87933079,.,.,missense,c.320A>G,p.Asp107Gly,Likely pathogenic,Pathogenic
+VCV001728081,10,87933072,.,.,missense,c.313T>G,p.Cys105Gly,Likely pathogenic,Pathogenic
+VCV001722926,10,87931064,.,.,nonsense,c.228T>A,p.Tyr76Ter,Pathogenic,Pathogenic
+VCV001719163,10,87894045,.,.,missense,c.100G>A,p.Ala34Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV001708039,10,87933181,.,.,missense,c.422A>T,p.His141Leu,Likely pathogenic,Pathogenic
+VCV001701143,10,87894081,.,.,missense,c.136T>C,p.Tyr46His,Likely pathogenic,Pathogenic
+VCV001700398,10,87961004,.,.,nonsense,c.912C>A,p.Cys304Ter,Pathogenic,Pathogenic
+VCV001692635,10,87864398,.,.,intronic,c.-72C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001692371,10,87957927,.,.,nonsense,c.709A>T,p.Lys237Ter,Pathogenic,Pathogenic
+VCV001691744,10,87925546,.,.,missense,c.198G>T,p.Lys66Asn,Likely pathogenic,Pathogenic
+VCV001686107,10,87952124,.,.,missense,c.499A>G,p.Thr167Ala,Conflicting classifications of pathogenicity,Pathogenic
+VCV001686106,10,87864471,.,.,missense,c.2T>C,p.Met1Thr,Pathogenic,Pathogenic
+VCV001525684,10,87957964,.,.,missense,c.746T>A,p.Val249Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV001511392,10,87864540,.,.,missense,c.71A>T,p.Asp24Val,Pathogenic/Likely pathogenic,Pathogenic
+VCV001507218,10,87864549,.,.,splice,c.79+1G>C,,Likely pathogenic,Pathogenic
+VCV001506231,10,87894060,.,.,missense,c.115G>A,p.Ala39Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV001505883,10,87952262,.,.,intronic,c.634+3A>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001501773,10,87960996,.,.,missense,c.904A>G,p.Ser302Gly,Conflicting classifications of pathogenicity,Pathogenic
+VCV001478930,10,87957976,.,.,missense,c.758T>G,p.Ile253Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV001457954,10,87864472,.,.,missense,c.3G>A,p.Met1Ile,Pathogenic,Pathogenic
+VCV001457597,10,87933046,.,.,missense,c.287C>A,p.Pro96Gln,Pathogenic/Likely pathogenic,Pathogenic
+VCV001456749,10,87894051,.,.,nonsense,c.106G>T,p.Gly36Ter,Pathogenic,Pathogenic
+VCV001451649,10,87952261,.,.,splice,c.634+2T>A,,Pathogenic,Pathogenic
+VCV001422662,10,87864512,.,.,nonsense,c.43A>T,p.Arg15Ter,Pathogenic,Pathogenic
+VCV001406308,10,87933093,.,.,missense,c.334C>G,p.Leu112Val,Likely pathogenic,Pathogenic
+VCV001401407,10,87952187,.,.,missense,c.562T>G,p.Tyr188Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV001393794,10,87925504,.,.,intronic,c.165-9T>A,,Likely pathogenic,Pathogenic
+VCV001393293,10,87958021,.,.,splice,c.801+2T>C,,Pathogenic,Pathogenic
+VCV001388819,10,87933224,.,.,nonsense,c.465T>G,p.Tyr155Ter,Pathogenic,Pathogenic
+VCV001381124,10,87933042,.,.,missense,c.283C>T,p.Pro95Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV001379224,10,87894088,.,.,missense,c.143A>G,p.Asn48Ser,Pathogenic,Pathogenic
+VCV001341516,10,87952119,.,.,missense,c.494G>T,p.Gly165Val,Pathogenic/Likely pathogenic,Pathogenic
+VCV001339947,10,87925526,.,.,nonsense,c.178A>T,p.Lys60Ter,Pathogenic,Pathogenic
+VCV001338631,10,87952264,.,.,intronic,c.634+5G>T,,Likely pathogenic,Pathogenic
+VCV001338262,10,87933132,.,.,missense,c.373A>G,p.Lys125Glu,Pathogenic,Pathogenic
+VCV001334551,10,87894051,.,.,missense,c.106G>A,p.Gly36Arg,Likely pathogenic,Pathogenic
+VCV001333638,10,87952117,.,.,splice,c.493-1G>T,,Pathogenic/Likely pathogenic,Pathogenic
+VCV001332212,10,87957961,.,.,missense,c.743C>G,p.Pro248Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV001320862,10,87925562,.,.,intronic,c.209+5G>T,,Likely pathogenic,Pathogenic
+VCV001320461,10,87952226,.,.,nonsense,c.601G>T,p.Glu201Ter,Pathogenic,Pathogenic
+VCV001319460,10,87952188,.,.,missense,c.563A>G,p.Tyr188Cys,Conflicting classifications of pathogenicity,Pathogenic
+VCV001317879,10,87952260,.,.,splice,c.634+1G>T,,Pathogenic,Pathogenic
+VCV001317087,10,87961048,.,.,missense,c.956C>T,p.Thr319Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV001264324,10,87864334,.,.,intronic,c.-136G>C,,Pathogenic,Pathogenic
+VCV001213667,10,87933183,.,.,synonymous,c.424C>A,p.Arg142=,Conflicting classifications of pathogenicity,Pathogenic
+VCV001212937,10,87965485,.,.,other,c.*13C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001212448,10,87933252,.,.,splice,c.492+1G>A,,Pathogenic/Likely pathogenic,Pathogenic
+VCV001207213,10,87933057,.,.,missense,c.298C>T,p.Leu100Phe,Likely pathogenic,Pathogenic
+VCV001204117,10,87863522,.,.,other,,,Likely benign,Benign
+VCV001198486,10,87952136,.,.,missense,c.511C>A,p.Gln171Lys,Pathogenic,Pathogenic
+VCV001195871,10,87925552,.,.,nonsense,c.204C>A,p.Tyr68Ter,Pathogenic,Pathogenic
+VCV001195176,10,87933138,.,.,nonsense,c.379G>T,p.Gly127Ter,Pathogenic,Pathogenic
+VCV001192170,10,87894028,.,.,missense,c.83T>C,p.Ile28Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV001182096,10,87925561,.,.,intronic,c.209+4A>G,,Pathogenic,Pathogenic
+VCV001176553,10,87952142,.,.,missense,c.517C>G,p.Arg173Gly,Pathogenic,Pathogenic
+VCV001175130,10,87933220,.,.,missense,c.461T>G,p.Phe154Cys,Likely pathogenic,Pathogenic
+VCV001075939,10,87931086,.,.,nonsense,c.250A>T,p.Arg84Ter,Pathogenic,Pathogenic
+VCV001074078,10,87933063,.,.,nonsense,c.304A>T,p.Lys102Ter,Pathogenic,Pathogenic
+VCV001072198,10,87933252,.,.,splice,c.492+1G>C,,Pathogenic/Likely pathogenic,Pathogenic
+VCV001069915,10,87925532,.,.,nonsense,c.184A>T,p.Lys62Ter,Pathogenic,Pathogenic
+VCV001068214,10,87864544,.,.,missense,c.75G>C,p.Leu25Phe,Pathogenic,Pathogenic
+VCV001067498,10,87952118,.,.,missense,c.493G>C,p.Gly165Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV001067478,10,87961118,.,.,missense,c.1026G>T,p.Lys342Asn,Likely pathogenic,Pathogenic
+VCV001067224,10,87952148,.,.,missense,c.523G>A,p.Val175Met,Pathogenic,Pathogenic
+VCV001067089,10,87933135,.,.,missense,c.376G>C,p.Ala126Pro,Pathogenic,Pathogenic
+VCV001066605,10,87894023,.,.,splice,c.80-2A>C,,Likely pathogenic,Pathogenic
+VCV001066565,10,87957964,.,.,missense,c.746T>G,p.Val249Gly,Likely pathogenic,Pathogenic
+VCV001066560,10,87965428,.,.,nonsense,c.1168G>T,p.Glu390Ter,Conflicting classifications of pathogenicity,Pathogenic
+VCV001064566,10,87957970,.,.,missense,c.752G>A,p.Gly251Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV001053430,10,87894078,.,.,missense,c.133G>A,p.Val45Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV001043063,10,87961051,.,.,missense,c.959T>C,p.Leu320Ser,Likely pathogenic,Pathogenic
+VCV001043062,10,87933035,.,.,missense,c.276C>G,p.Asp92Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV001042020,10,87925562,.,.,intronic,c.209+5G>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001037500,10,87933231,.,.,missense,c.472G>T,p.Val158Leu,Conflicting classifications of pathogenicity,Pathogenic
+VCV001022675,10,87965350,.,.,missense,c.1090T>C,p.Ser364Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV001014805,10,87958019,.,.,missense,c.801G>C,p.Lys267Asn,Pathogenic,Pathogenic
+VCV001012092,10,87894058,.,.,missense,c.113C>A,p.Pro38His,Conflicting classifications of pathogenicity,Pathogenic
+VCV001003503,10,87894028,.,.,missense,c.83T>G,p.Ile28Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000988006,10,87960919,.,.,missense,c.827A>T,p.Asn276Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV000988005,10,87952154,.,.,missense,c.529T>G,p.Tyr177Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV000988004,10,87864506,.,.,missense,c.37A>G,p.Lys13Glu,Pathogenic/Likely pathogenic,Pathogenic
+VCV000976722,10,87894048,.,.,missense,c.103A>C,p.Met35Leu,Likely pathogenic,Pathogenic
+VCV000976246,10,87933028,.,.,missense,c.269T>C,p.Phe90Ser,Pathogenic/Likely pathogenic,Pathogenic
+VCV000974864,10,87952154,.,.,missense,c.529T>C,p.Tyr177His,Likely pathogenic,Pathogenic
+VCV000971265,10,87933156,.,.,missense,c.397G>A,p.Val133Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV000968699,10,87931094,.,.,intronic,c.253+5G>C,,Likely pathogenic,Pathogenic
+VCV000958105,10,87933141,.,.,missense,c.382A>G,p.Lys128Glu,Likely pathogenic,Pathogenic
+VCV000951765,10,87952134,.,.,missense,c.509G>A,p.Ser170Asn,Likely pathogenic,Pathogenic
+VCV000949068,10,87864546,.,.,missense,c.77C>A,p.Thr26Asn,Likely pathogenic,Pathogenic
+VCV000944445,10,87864504,.,.,missense,c.35A>T,p.Asn12Ile,Likely pathogenic,Pathogenic
+VCV000943637,10,87894036,.,.,missense,c.91A>G,p.Asn31Asp,Likely pathogenic,Pathogenic
+VCV000936561,10,87931048,.,.,missense,c.212G>A,p.Cys71Tyr,Pathogenic,Pathogenic
+VCV000933785,10,87958020,.,.,splice,c.801+1G>C,,Pathogenic,Pathogenic
+VCV000933378,10,87894110,.,.,splice,c.164+1G>A,,Pathogenic,Pathogenic
+VCV000928466,10,87957877,.,.,missense,c.659T>C,p.Leu220Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000928126,10,87925553,.,.,missense,c.205A>C,p.Asn69His,Conflicting classifications of pathogenicity,Pathogenic
+VCV000919891,10,87952220,.,.,missense,c.595A>T,p.Met199Leu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000917617,10,87960980,.,.,nonsense,c.888T>A,p.Cys296Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000916219,10,87894103,.,.,missense,c.158T>C,p.Val53Ala,Likely pathogenic,Pathogenic
+VCV000873326,10,87932992,.,.,intronic,c.254-21G>C,,Likely pathogenic,Pathogenic
+VCV000864223,10,87933142,.,.,missense,c.383A>G,p.Lys128Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV000860189,10,87894111,.,.,splice,c.164+2T>G,,Pathogenic,Pathogenic
+VCV000857491,10,87965351,.,.,missense,c.1091C>G,p.Ser364Cys,Conflicting classifications of pathogenicity,Pathogenic
+VCV000857109,10,87961069,.,.,missense,c.977A>G,p.Asp326Gly,Likely pathogenic,Pathogenic
+VCV000856796,10,87933153,.,.,missense,c.394G>A,p.Gly132Ser,Pathogenic/Likely pathogenic,Pathogenic
+VCV000856036,10,87933145,.,.,missense,c.386G>T,p.Gly129Val,Pathogenic/Likely pathogenic,Pathogenic
+VCV000849802,10,87933107,.,.,missense,c.348C>A,p.Asp116Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000847797,10,87925524,.,.,nonsense,c.176C>A,p.Ser59Ter,Pathogenic,Pathogenic
+VCV000846550,10,87864506,.,.,missense,c.37A>C,p.Lys13Gln,Likely pathogenic,Pathogenic
+VCV000844941,10,87952136,.,.,missense,c.511C>G,p.Gln171Glu,Likely pathogenic,Pathogenic
+VCV000844343,10,87952119,.,.,missense,c.494G>A,p.Gly165Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000835735,10,87957904,.,.,nonsense,c.686C>G,p.Ser229Ter,Pathogenic,Pathogenic
+VCV000830307,10,87863995,.,.,intronic,c.-475G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000827401,10,87960893,.,.,splice,c.802-1G>T,,Pathogenic,Pathogenic
+VCV000827393,10,87958020,.,.,splice,c.801+1G>T,,Pathogenic,Pathogenic
+VCV000826884,10,87957934,.,.,missense,c.716T>C,p.Met239Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000826697,10,87864537,.,.,nonsense,c.68T>G,p.Leu23Ter,Pathogenic,Pathogenic
+VCV000826335,10,87952260,.,.,splice,c.634+1G>A,,Pathogenic,Pathogenic
+VCV000825875,10,87952189,.,.,nonsense,c.564T>G,p.Tyr188Ter,Pathogenic,Pathogenic
+VCV000825730,10,87952167,.,.,missense,c.542T>C,p.Leu181Pro,Pathogenic,Pathogenic
+VCV000825458,10,87952135,.,.,missense,c.510T>G,p.Ser170Arg,Pathogenic,Pathogenic
+VCV000825303,10,87952117,.,.,splice,c.493-1G>C,,Pathogenic,Pathogenic
+VCV000824108,10,87933129,.,.,missense,c.370T>A,p.Cys124Ser,Likely pathogenic,Pathogenic
+VCV000824039,10,87933124,.,.,missense,c.365T>G,p.Ile122Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000822660,10,87933061,.,.,missense,c.302T>C,p.Ile101Thr,Pathogenic/Likely pathogenic,Pathogenic
+VCV000822002,10,87894045,.,.,missense,c.100G>C,p.Ala34Pro,Pathogenic,Pathogenic
+VCV000820795,10,87931049,.,.,missense,c.213T>G,p.Cys71Trp,Conflicting classifications of pathogenicity,Pathogenic
+VCV000820721,10,87931044,.,.,splice,c.210-2A>C,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000820695,10,87925559,.,.,splice,c.209+2T>G,,Likely pathogenic,Pathogenic
+VCV000819752,10,87925508,.,.,intronic,c.165-5T>C,,Benign/Likely benign,Benign
+VCV000818421,10,87894058,.,.,missense,c.113C>T,p.Pro38Leu,Pathogenic,Pathogenic
+VCV000818395,10,87965397,.,.,nonsense,c.1137T>G,p.Tyr379Ter,Likely pathogenic,Pathogenic
+VCV000818353,10,87965348,.,.,missense,c.1088C>T,p.Thr363Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV000810888,10,87863959,.,.,intronic,c.-511G>A,,Benign/Likely benign,Benign
+VCV000804339,10,87933144,.,.,missense,c.385G>C,p.Gly129Arg,Pathogenic,Pathogenic
+VCV000802613,10,87965294,.,.,missense,c.1034T>G,p.Leu345Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV000760194,10,87952237,.,.,synonymous,c.612A>G,p.Pro204=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000718233,10,87933143,.,.,synonymous,c.384G>A,p.Lys128=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000689447,10,87960893,.,.,splice,c.802-1G>A,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000653985,10,87960918,.,.,missense,c.826A>G,p.Asn276Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV000651305,10,87925518,.,.,nonsense,c.170T>A,p.Leu57Ter,Pathogenic,Pathogenic
+VCV000648578,10,87933061,.,.,missense,c.302T>A,p.Ile101Asn,Pathogenic/Likely pathogenic,Pathogenic
+VCV000647926,10,87958014,.,.,nonsense,c.796A>T,p.Lys266Ter,Pathogenic,Pathogenic
+VCV000646993,10,87933036,.,.,missense,c.277C>T,p.His93Tyr,Pathogenic/Likely pathogenic,Pathogenic
+VCV000646006,10,87933235,.,.,missense,c.476G>A,p.Arg159Lys,Pathogenic,Pathogenic
+VCV000644390,10,87864485,.,.,missense,c.16A>G,p.Lys6Glu,Pathogenic,Pathogenic
+VCV000635377,10,87961119,.,.,splice,c.1026+1G>T,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000635376,10,87965285,.,.,splice,c.1027-2A>T,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000635375,10,87957851,.,.,splice,c.635-2A>C,,Pathogenic,Pathogenic
+VCV000631516,10,87957872,.,.,nonsense,c.654C>A,p.Cys218Ter,Pathogenic,Pathogenic
+VCV000629479,10,87952220,.,.,missense,c.595A>G,p.Met199Val,Conflicting classifications of pathogenicity,Pathogenic
+VCV000627703,10,87960915,.,.,missense,c.823G>A,p.Val275Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV000623214,10,87957982,.,.,missense,c.764T>A,p.Val255Glu,Likely pathogenic,Pathogenic
+VCV000619908,10,87933161,.,.,missense,c.402G>C,p.Met134Ile,Likely pathogenic,Pathogenic
+VCV000594139,10,87957851,.,.,splice,c.635-2A>G,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000584751,10,87925559,.,.,splice,c.209+2T>C,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000580948,10,87952155,.,.,missense,c.530A>G,p.Tyr177Cys,Likely pathogenic,Pathogenic
+VCV000580731,10,87894089,.,.,missense,c.144C>A,p.Asn48Lys,Pathogenic/Likely pathogenic,Pathogenic
+VCV000580498,10,87957958,.,.,nonsense,c.740T>A,p.Leu247Ter,Pathogenic,Pathogenic
+VCV000578650,10,87952232,.,.,missense,c.607A>G,p.Ile203Val,Conflicting classifications of pathogenicity,Pathogenic
+VCV000576440,10,87931044,.,.,splice,c.210-2A>G,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000575811,10,87957973,.,.,missense,c.755A>T,p.Asp252Val,Pathogenic/Likely pathogenic,Pathogenic
+VCV000575793,10,87961051,.,.,nonsense,c.959T>A,p.Leu320Ter,Pathogenic,Pathogenic
+VCV000573168,10,87952137,.,.,missense,c.512A>C,p.Gln171Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000572503,10,87957938,.,.,nonsense,c.720C>G,p.Tyr240Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000571869,10,87960921,.,.,missense,c.829A>G,p.Thr277Ala,Pathogenic,Pathogenic
+VCV000569301,10,87952133,.,.,missense,c.508A>C,p.Ser170Arg,Pathogenic,Pathogenic
+VCV000566673,10,87961021,.,.,missense,c.929A>G,p.Asp310Gly,Pathogenic/Likely pathogenic,Pathogenic
+VCV000565960,10,87933034,.,.,missense,c.275A>G,p.Asp92Gly,Pathogenic/Likely pathogenic,Pathogenic
+VCV000565348,10,87933111,.,.,missense,c.352C>T,p.His118Tyr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000547759,10,87933223,.,.,missense,c.464A>C,p.Tyr155Ser,Pathogenic/Likely pathogenic,Pathogenic
+VCV000546013,10,87931064,.,.,nonsense,c.228T>G,p.Tyr76Ter,Pathogenic,Pathogenic
+VCV000545959,10,87933173,.,.,nonsense,c.414T>G,p.Tyr138Ter,Pathogenic,Pathogenic
+VCV000545958,10,87933023,.,.,nonsense,c.264T>A,p.Tyr88Ter,Pathogenic,Pathogenic
+VCV000536572,10,87957992,.,.,synonymous,c.774C>T,p.Phe258=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000536556,10,87864517,.,.,nonsense,c.48T>G,p.Tyr16Ter,Pathogenic,Pathogenic
+VCV000536551,10,87933214,.,.,missense,c.455T>C,p.Leu152Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000536549,10,87958019,.,.,missense,c.801G>T,p.Lys267Asn,Pathogenic,Pathogenic
+VCV000536548,10,87957970,.,.,missense,c.752G>T,p.Gly251Val,Likely pathogenic,Pathogenic
+VCV000536545,10,87894032,.,.,nonsense,c.87T>A,p.Tyr29Ter,Pathogenic,Pathogenic
+VCV000536540,10,87925550,.,.,missense,c.202T>G,p.Tyr68Asp,Pathogenic/Likely pathogenic,Pathogenic
+VCV000523356,10,87933036,.,.,missense,c.277C>A,p.His93Asn,Likely pathogenic,Pathogenic
+VCV000517520,10,87952147,.,.,nonsense,c.522T>G,p.Tyr174Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000512586,10,87931064,.,.,synonymous,c.228T>C,p.Tyr76=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000495807,10,87863411,.,.,intronic,c.-1058C>G,,Benign,Benign
+VCV000495803,10,87965482,.,.,other,c.*10T>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000493079,10,87864488,.,.,nonsense,c.19G>T,p.Glu7Ter,Pathogenic,Pathogenic
+VCV000492733,10,87952190,.,.,nonsense,c.565A>T,p.Arg189Ter,Pathogenic,Pathogenic
+VCV000492732,10,87952153,.,.,nonsense,c.528T>G,p.Tyr176Ter,Likely pathogenic,Pathogenic
+VCV000492730,10,87933046,.,.,missense,c.287C>G,p.Pro96Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV000492727,10,87894094,.,.,missense,c.149T>C,p.Ile50Thr,Pathogenic,Pathogenic
+VCV000492350,10,87961032,.,.,nonsense,c.940G>T,p.Glu314Ter,Pathogenic,Pathogenic
+VCV000492318,10,87894113,.,.,intronic,c.164+4A>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000492315,10,87965358,.,.,synonymous,c.1098A>C,p.Thr366=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000492314,10,87965341,.,.,missense,c.1081A>C,p.Ser361Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV000490114,10,87952250,.,.,missense,c.625G>A,p.Gly209Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV000490113,10,87933199,.,.,missense,c.440A>G,p.Lys147Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV000490112,10,87965432,.,.,missense,c.1172C>T,p.Pro391Leu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000490110,10,87961093,.,.,missense,c.1001A>G,p.Asn334Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000488775,10,87863655,.,.,intronic,c.-815T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000488768,10,87863560,.,.,intronic,c.-910T>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000486974,10,87952122,.,.,missense,c.497T>A,p.Val166Glu,Likely pathogenic,Pathogenic
+VCV000486972,10,87894052,.,.,missense,c.107G>A,p.Gly36Glu,Pathogenic,Pathogenic
+VCV000486228,10,87894072,.,.,nonsense,c.127G>T,p.Glu43Ter,Pathogenic,Pathogenic
+VCV000486227,10,87952147,.,.,nonsense,c.522T>A,p.Tyr174Ter,Pathogenic,Pathogenic
+VCV000486226,10,87960997,.,.,missense,c.905G>A,p.Ser302Asn,Conflicting classifications of pathogenicity,Pathogenic
+VCV000486225,10,87933184,.,.,missense,c.425G>C,p.Arg142Pro,Likely pathogenic,Pathogenic
+VCV000486222,10,87894072,.,.,missense,c.127G>A,p.Glu43Lys,Conflicting classifications of pathogenicity,Pathogenic
+VCV000486221,10,87864534,.,.,missense,c.65A>G,p.Asp22Gly,Conflicting classifications of pathogenicity,Pathogenic
+VCV000484619,10,87933115,.,.,missense,c.356T>G,p.Val119Gly,Likely pathogenic,Pathogenic
+VCV000484618,10,87931056,.,.,nonsense,c.220A>T,p.Arg74Ter,Pathogenic,Pathogenic
+VCV000484617,10,87960973,.,.,missense,c.881G>A,p.Ser294Asn,Conflicting classifications of pathogenicity,Pathogenic
+VCV000484614,10,87933078,.,.,missense,c.319G>T,p.Asp107Tyr,Pathogenic,Pathogenic
+VCV000484611,10,87952116,.,.,splice,c.493-2A>T,,Likely pathogenic,Pathogenic
+VCV000484609,10,87933092,.,.,nonsense,c.333G>A,p.Trp111Ter,Pathogenic,Pathogenic
+VCV000484607,10,87965347,.,.,missense,c.1087A>G,p.Thr363Ala,Conflicting classifications of pathogenicity,Pathogenic
+VCV000484605,10,87965294,.,.,missense,c.1034T>C,p.Leu345Pro,Pathogenic,Pathogenic
+VCV000484600,10,87864470,.,.,missense,c.1A>G,p.Met1Val,Pathogenic,Pathogenic
+VCV000481172,10,87961100,.,.,nonsense,c.1008C>G,p.Tyr336Ter,Pathogenic,Pathogenic
+VCV000481153,10,87965286,.,.,splice,c.1027-1G>C,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000481129,10,87952163,.,.,missense,c.538T>C,p.Tyr180His,Conflicting classifications of pathogenicity,Pathogenic
+VCV000481032,10,87925551,.,.,missense,c.203A>C,p.Tyr68Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000480942,10,87957976,.,.,missense,c.758T>A,p.Ile253Asn,Conflicting classifications of pathogenicity,Pathogenic
+VCV000480381,10,87952239,.,.,missense,c.614T>C,p.Met205Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000480375,10,87961097,.,.,synonymous,c.1005A>G,p.Arg335=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468706,10,87864533,.,.,missense,c.64G>T,p.Asp22Tyr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468704,10,87952235,.,.,missense,c.610C>T,p.Pro204Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468703,10,87952250,.,.,nonsense,c.625G>T,p.Gly209Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000468702,10,87952218,.,.,missense,c.593T>A,p.Met198Lys,Likely pathogenic,Pathogenic
+VCV000468694,10,87952128,.,.,missense,c.503T>C,p.Ile168Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468692,10,87952116,.,.,splice,c.493-2A>C,,Pathogenic,Pathogenic
+VCV000468687,10,87933208,.,.,missense,c.449A>G,p.Glu150Gly,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468686,10,87933224,.,.,nonsense,c.465T>A,p.Tyr155Ter,Pathogenic,Pathogenic
+VCV000468683,10,87933135,.,.,missense,c.376G>A,p.Ala126Thr,Likely pathogenic,Pathogenic
+VCV000468682,10,87864506,.,.,nonsense,c.37A>T,p.Lys13Ter,Pathogenic,Pathogenic
+VCV000468680,10,87933037,.,.,missense,c.278A>C,p.His93Pro,Likely pathogenic,Pathogenic
+VCV000468679,10,87933033,.,.,missense,c.274G>T,p.Asp92Tyr,Pathogenic/Likely pathogenic,Pathogenic
+VCV000468678,10,87933018,.,.,nonsense,c.259C>T,p.Gln87Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000468676,10,87931091,.,.,splice,c.253+2T>A,,Pathogenic,Pathogenic
+VCV000468675,10,87931048,.,.,missense,c.212G>T,p.Cys71Phe,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468674,10,87925563,.,.,intronic,c.209+6T>G,,Pathogenic,Pathogenic
+VCV000468673,10,87925552,.,.,nonsense,c.204C>G,p.Tyr68Ter,Pathogenic,Pathogenic
+VCV000468670,10,87965375,.,.,missense,c.1115A>G,p.Asn372Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000452024,10,87961033,.,.,missense,c.941A>C,p.Glu314Ala,Conflicting classifications of pathogenicity,Pathogenic
+VCV000449272,10,87965472,.,.,nonsense,c.1212A>G,p.Ter404Trp,Likely pathogenic,Pathogenic
+VCV000449090,10,87957874,.,.,missense,c.656A>C,p.Gln219Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000449089,10,87933046,.,.,missense,c.287C>T,p.Pro96Leu,Likely pathogenic,Pathogenic
+VCV000446475,10,87931085,.,.,nonsense,c.249C>A,p.Cys83Ter,Pathogenic,Pathogenic
+VCV000440223,10,87957852,.,.,splice,c.635-1G>T,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000440220,10,87957939,.,.,missense,c.721T>C,p.Phe241Leu,Likely pathogenic,Pathogenic
+VCV000437440,10,87925544,.,.,nonsense,c.196A>T,p.Lys66Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000432049,10,87933246,.,.,nonsense,c.487A>T,p.Lys163Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000431875,10,87952203,.,.,missense,c.578T>C,p.Leu193Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000431851,10,87933238,.,.,missense,c.479C>T,p.Thr160Ile,Likely pathogenic,Pathogenic
+VCV000431829,10,87933160,.,.,missense,c.401T>G,p.Met134Arg,Likely pathogenic,Pathogenic
+VCV000428278,10,87931045,.,.,splice,c.210-1G>T,,Likely pathogenic,Pathogenic
+VCV000428277,10,87933126,.,.,missense,c.367C>G,p.His123Asp,Pathogenic,Pathogenic
+VCV000428269,10,87925543,.,.,nonsense,c.195C>A,p.Tyr65Ter,Pathogenic,Pathogenic
+VCV000428268,10,87960922,.,.,missense,c.830C>G,p.Thr277Arg,Likely pathogenic,Pathogenic
+VCV000428267,10,87933161,.,.,missense,c.402G>T,p.Met134Ile,Likely pathogenic,Pathogenic
+VCV000428266,10,87864528,.,.,missense,c.59G>T,p.Gly20Val,Likely pathogenic,Pathogenic
+VCV000428265,10,87965472,.,.,nonsense,c.1212A>C,p.Ter404Cys,Likely pathogenic,Pathogenic
+VCV000428263,10,87960987,.,.,nonsense,c.895G>T,p.Glu299Ter,Pathogenic,Pathogenic
+VCV000428262,10,87933235,.,.,missense,c.476G>T,p.Arg159Met,Conflicting classifications of pathogenicity,Pathogenic
+VCV000428261,10,87894083,.,.,nonsense,c.138C>A,p.Tyr46Ter,Pathogenic,Pathogenic
+VCV000428260,10,87931045,.,.,splice,c.210-1G>C,,Likely pathogenic,Pathogenic
+VCV000428258,10,87952143,.,.,missense,c.518G>T,p.Arg173Leu,Likely pathogenic,Pathogenic
+VCV000428256,10,87952118,.,.,missense,c.493G>A,p.Gly165Arg,Pathogenic,Pathogenic
+VCV000428253,10,87961051,.,.,nonsense,c.959T>G,p.Leu320Ter,Pathogenic,Pathogenic
+VCV000428251,10,87961066,.,.,missense,c.974T>G,p.Leu325Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV000428250,10,87958021,.,.,splice,c.801+2T>A,,Pathogenic,Pathogenic
+VCV000428247,10,87957941,.,.,missense,c.723T>G,p.Phe241Leu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000428244,10,87894049,.,.,missense,c.104T>C,p.Met35Thr,Likely pathogenic,Pathogenic
+VCV000428243,10,87864513,.,.,missense,c.44G>C,p.Arg15Thr,Likely pathogenic,Pathogenic
+VCV000428241,10,87952170,.,.,nonsense,c.545T>G,p.Leu182Ter,Pathogenic,Pathogenic
+VCV000428238,10,87960952,.,.,nonsense,c.860C>A,p.Ser287Ter,Pathogenic,Pathogenic
+VCV000428237,10,87933222,.,.,missense,c.463T>C,p.Tyr155His,Pathogenic/Likely pathogenic,Pathogenic
+VCV000428235,10,87933163,.,.,missense,c.404T>A,p.Ile135Lys,Pathogenic/Likely pathogenic,Pathogenic
+VCV000428234,10,87933136,.,.,missense,c.377C>T,p.Ala126Val,Pathogenic/Likely pathogenic,Pathogenic
+VCV000428232,10,87952170,.,.,nonsense,c.545T>A,p.Leu182Ter,Pathogenic,Pathogenic
+VCV000428231,10,87961066,.,.,missense,c.974T>C,p.Leu325Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000428229,10,87933087,.,.,missense,c.328C>G,p.Gln110Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000428226,10,87933114,.,.,missense,c.355G>C,p.Val119Leu,Likely pathogenic,Pathogenic
+VCV000428225,10,87933139,.,.,missense,c.380G>A,p.Gly127Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000428223,10,87960907,.,.,missense,c.815A>C,p.His272Pro,Likely pathogenic,Pathogenic
+VCV000428220,10,87933143,.,.,missense,c.384G>C,p.Lys128Asn,Likely pathogenic,Pathogenic
+VCV000428210,10,87957958,.,.,nonsense,c.740T>G,p.Leu247Ter,Pathogenic,Pathogenic
+VCV000428207,10,87957979,.,.,missense,c.761A>C,p.Lys254Thr,Likely pathogenic,Pathogenic
+VCV000428203,10,87933087,.,.,nonsense,c.328C>T,p.Gln110Ter,Pathogenic,Pathogenic
+VCV000428198,10,87960957,.,.,nonsense,c.865A>T,p.Lys289Ter,Pathogenic,Pathogenic
+VCV000428197,10,87961120,.,.,splice,c.1026+2T>G,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000428196,10,87933034,.,.,missense,c.275A>C,p.Asp92Ala,Pathogenic/Likely pathogenic,Pathogenic
+VCV000428194,10,87864514,.,.,missense,c.45A>C,p.Arg15Ser,Pathogenic/Likely pathogenic,Pathogenic
+VCV000428193,10,87933114,.,.,missense,c.355G>T,p.Val119Phe,Likely pathogenic,Pathogenic
+VCV000427624,10,87965285,.,.,splice,c.1027-2A>C,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427623,10,87952264,.,.,intronic,c.634+5G>C,,Pathogenic,Pathogenic
+VCV000427622,10,87952263,.,.,intronic,c.634+4A>T,,Pathogenic,Pathogenic
+VCV000427621,10,87952261,.,.,splice,c.634+2T>C,,Pathogenic,Pathogenic
+VCV000427620,10,87952260,.,.,splice,c.634+1G>C,,Pathogenic,Pathogenic
+VCV000427619,10,87933252,.,.,splice,c.492+1G>T,,Pathogenic,Pathogenic
+VCV000427618,10,87931094,.,.,intronic,c.253+5G>A,,Likely pathogenic,Pathogenic
+VCV000427617,10,87931094,.,.,intronic,c.253+5G>T,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427616,10,87931045,.,.,splice,c.210-1G>A,,Pathogenic,Pathogenic
+VCV000427614,10,87925562,.,.,intronic,c.209+5G>A,,Pathogenic,Pathogenic
+VCV000427613,10,87925512,.,.,splice,c.165-1G>C,,Pathogenic,Pathogenic
+VCV000427600,10,87960913,.,.,missense,c.821G>T,p.Trp274Leu,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427599,10,87957850,.,.,intronic,c.635-3C>G,,Likely pathogenic,Pathogenic
+VCV000427598,10,87957852,.,.,splice,c.635-1G>A,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427595,10,87952230,.,.,missense,c.605C>T,p.Thr202Ile,Pathogenic,Pathogenic
+VCV000427593,10,87933229,.,.,missense,c.470A>G,p.Glu157Gly,Conflicting classifications of pathogenicity,Pathogenic
+VCV000427591,10,87957885,.,.,nonsense,c.667A>T,p.Lys223Ter,Pathogenic,Pathogenic
+VCV000427590,10,87933175,.,.,nonsense,c.416T>G,p.Leu139Ter,Pathogenic,Pathogenic
+VCV000427588,10,87933160,.,.,missense,c.401T>C,p.Met134Thr,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427587,10,87933128,.,.,missense,c.369C>G,p.His123Gln,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427586,10,87864504,.,.,missense,c.35A>C,p.Asn12Thr,Pathogenic,Pathogenic
+VCV000427585,10,87931090,.,.,splice,c.253+1G>C,,Pathogenic,Pathogenic
+VCV000427584,10,87925511,.,.,splice,c.165-2A>G,,Pathogenic,Pathogenic
+VCV000427583,10,87894110,.,.,splice,c.164+1G>C,,Pathogenic,Pathogenic
+VCV000427582,10,87894076,.,.,missense,c.131G>A,p.Gly44Asp,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427581,10,87965285,.,.,splice,c.1027-2A>G,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000427579,10,87933075,.,.,nonsense,c.316G>T,p.Glu106Ter,Pathogenic,Pathogenic
+VCV000424262,10,87894058,.,.,missense,c.113C>G,p.Pro38Arg,Pathogenic,Pathogenic
+VCV000422899,10,87864515,.,.,missense,c.46T>G,p.Tyr16Asp,Pathogenic/Likely pathogenic,Pathogenic
+VCV000422815,10,87965466,.,.,missense,c.1206A>C,p.Lys402Asn,Conflicting classifications of pathogenicity,Pathogenic
+VCV000421963,10,87933251,.,.,synonymous,c.492G>A,p.Lys164=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000421922,10,87933213,.,.,synonymous,c.454C>T,p.Leu152=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000421730,10,87957911,.,.,synonymous,c.693C>T,p.Pro231=,Likely benign,Benign
+VCV000421205,10,87965478,.,.,other,c.*6T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000420367,10,87961014,.,.,missense,c.922C>T,p.Arg308Cys,Conflicting classifications of pathogenicity,Pathogenic
+VCV000419769,10,87864514,.,.,missense,c.45A>T,p.Arg15Ser,Pathogenic,Pathogenic
+VCV000419119,10,87965477,.,.,other,c.*5T>C,,Likely benign,Benign
+VCV000418653,10,87961039,.,.,missense,c.947T>C,p.Leu316Pro,Likely pathogenic,Pathogenic
+VCV000418614,10,87894081,.,.,missense,c.136T>G,p.Tyr46Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV000418438,10,87933181,.,.,missense,c.422A>G,p.His141Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV000418436,10,87933082,.,.,missense,c.323T>C,p.Leu108Pro,Pathogenic/Likely pathogenic,Pathogenic
+VCV000418434,10,87925558,.,.,splice,c.209+1G>A,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000412807,10,87957977,.,.,synonymous,c.759C>T,p.Ile253=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000404170,10,87933237,.,.,missense,c.478A>C,p.Thr160Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000404168,10,87933223,.,.,missense,c.464A>G,p.Tyr155Cys,Pathogenic,Pathogenic
+VCV000404167,10,87957997,.,.,missense,c.779A>G,p.Lys260Arg,Conflicting classifications of pathogenicity,Pathogenic
+VCV000404164,10,87933204,.,.,nonsense,c.445C>T,p.Gln149Ter,Pathogenic,Pathogenic
+VCV000404163,10,87960979,.,.,missense,c.887G>A,p.Cys296Tyr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000404162,10,87957893,.,.,nonsense,c.675T>G,p.Tyr225Ter,Pathogenic,Pathogenic
+VCV000404160,10,87894025,.,.,missense,c.80A>G,p.Tyr27Cys,Likely pathogenic,Pathogenic
+VCV000404157,10,87961037,.,.,nonsense,c.945T>G,p.Tyr315Ter,Pathogenic,Pathogenic
+VCV000404155,10,87931071,.,.,missense,c.235G>T,p.Ala79Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000404154,10,87957901,.,.,missense,c.683A>G,p.Asn228Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000404153,10,87925523,.,.,missense,c.175T>C,p.Ser59Pro,Conflicting classifications of pathogenicity,Pathogenic
+VCV000404151,10,87925524,.,.,nonsense,c.176C>G,p.Ser59Ter,Pathogenic,Pathogenic
+VCV000404147,10,87864513,.,.,missense,c.44G>A,p.Arg15Lys,Likely pathogenic,Pathogenic
+VCV000404143,10,87933052,.,.,missense,c.293T>G,p.Leu98Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV000404142,10,87952142,.,.,missense,c.517C>A,p.Arg173Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000381529,10,87894110,.,.,splice,c.164+1G>T,,Pathogenic,Pathogenic
+VCV000379501,10,87933189,.,.,nonsense,c.430A>T,p.Lys144Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000377376,10,87933012,.,.,splice,c.254-1G>A,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000376509,10,87933148,.,.,missense,c.389G>T,p.Arg130Leu,Pathogenic/Likely pathogenic,Pathogenic
+VCV000376032,10,87952143,.,.,missense,c.518G>A,p.Arg173His,Pathogenic/Likely pathogenic,Pathogenic
+VCV000375959,10,87933236,.,.,missense,c.477G>T,p.Arg159Ser,Likely pathogenic,Pathogenic
+VCV000375958,10,87933147,.,.,missense,c.388C>G,p.Arg130Gly,Pathogenic,Pathogenic
+VCV000373446,10,87894085,.,.,missense,c.140G>A,p.Arg47Lys,Likely pathogenic,Pathogenic
+VCV000372482,10,87965286,.,.,splice,c.1027-1G>A,,Pathogenic,Pathogenic
+VCV000372481,10,87933079,.,.,missense,c.320A>T,p.Asp107Val,Pathogenic,Pathogenic
+VCV000301418,10,87864305,.,.,intronic,c.-165C>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000280724,10,87894025,.,.,missense,c.80A>C,p.Tyr27Ser,Likely pathogenic,Pathogenic
+VCV000280630,10,87933045,.,.,missense,c.286C>G,p.Pro96Ala,Conflicting classifications of pathogenicity,Pathogenic
+VCV000280031,10,87952264,.,.,intronic,c.634+5G>A,,Pathogenic,Pathogenic
+VCV000279878,10,87952258,.,.,missense,c.633C>G,p.Cys211Trp,Pathogenic,Pathogenic
+VCV000237654,10,87960969,.,.,nonsense,c.877G>T,p.Gly293Ter,Pathogenic,Pathogenic
+VCV000237646,10,87933184,.,.,missense,c.425G>A,p.Arg142Gln,Conflicting classifications of pathogenicity,Pathogenic
+VCV000237644,10,87925559,.,.,splice,c.209+2T>A,,Pathogenic,Pathogenic
+VCV000237643,10,87925543,.,.,nonsense,c.195C>G,p.Tyr65Ter,Pathogenic,Pathogenic
+VCV000235334,10,87952156,.,.,nonsense,c.531T>G,p.Tyr177Ter,Pathogenic,Pathogenic
+VCV000234861,10,87965329,.,.,missense,c.1069C>A,p.Pro357Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000234830,10,87864536,.,.,missense,c.67T>G,p.Leu23Val,Likely pathogenic,Pathogenic
+VCV000234710,10,87931078,.,.,missense,c.242T>G,p.Phe81Cys,Likely pathogenic,Pathogenic
+VCV000234620,10,87933253,.,.,splice,c.492+2T>C,,Pathogenic,Pathogenic
+VCV000234509,10,87961037,.,.,nonsense,c.945T>A,p.Tyr315Ter,Pathogenic,Pathogenic
+VCV000234446,10,87957852,.,.,splice,c.635-1G>C,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000234410,10,87864545,.,.,missense,c.76A>C,p.Thr26Pro,Pathogenic,Pathogenic
+VCV000234400,10,87863483,.,.,intronic,c.-996G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000234144,10,87965472,.,.,nonsense,c.1212A>T,p.Ter404Cys,Pathogenic,Pathogenic
+VCV000233963,10,87960993,.,.,missense,c.901G>A,p.Asp301Asn,Conflicting classifications of pathogenicity,Pathogenic
+VCV000233777,10,87925551,.,.,missense,c.203A>G,p.Tyr68Cys,Pathogenic/Likely pathogenic,Pathogenic
+VCV000233631,10,87933130,.,.,missense,c.371G>A,p.Cys124Tyr,Pathogenic/Likely pathogenic,Pathogenic
+VCV000233590,10,87952134,.,.,missense,c.509G>T,p.Ser170Ile,Pathogenic,Pathogenic
+VCV000233456,10,87864533,.,.,missense,c.64G>C,p.Asp22His,Likely pathogenic,Pathogenic
+VCV000232528,10,87957968,.,.,nonsense,c.750T>A,p.Cys250Ter,Pathogenic,Pathogenic
+VCV000231962,10,87965334,.,.,missense,c.1074G>C,p.Glu358Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV000231916,10,87894048,.,.,missense,c.103A>G,p.Met35Val,Pathogenic,Pathogenic
+VCV000231899,10,87957891,.,.,missense,c.673T>C,p.Tyr225His,Conflicting classifications of pathogenicity,Pathogenic
+VCV000231771,10,87894089,.,.,missense,c.144C>G,p.Asn48Lys,Pathogenic/Likely pathogenic,Pathogenic
+VCV000230819,10,87961005,.,.,missense,c.913A>G,p.Ser305Gly,Conflicting classifications of pathogenicity,Pathogenic
+VCV000230633,10,87961000,.,.,missense,c.908T>G,p.Ile303Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000229912,10,87894057,.,.,missense,c.112C>A,p.Pro38Thr,Likely pathogenic,Pathogenic
+VCV000229705,10,87925558,.,.,splice,c.209+1G>T,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000224545,10,87894063,.,.,nonsense,c.118G>T,p.Glu40Ter,Pathogenic,Pathogenic
+VCV000224544,10,87933245,.,.,missense,c.486C>G,p.Asp162Glu,Likely pathogenic,Pathogenic
+VCV000224543,10,87933167,.,.,missense,c.408T>G,p.Cys136Trp,Pathogenic,Pathogenic
+VCV000223142,10,87957958,.,.,missense,c.740T>C,p.Leu247Ser,Likely pathogenic,Pathogenic
+VCV000220007,10,87952146,.,.,missense,c.521A>G,p.Tyr174Cys,Likely pathogenic,Pathogenic
+VCV000216987,10,87960952,.,.,nonsense,c.860C>G,p.Ser287Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000216423,10,87961027,.,.,missense,c.935A>G,p.Asp312Gly,Conflicting classifications of pathogenicity,Pathogenic
+VCV000216422,10,87933181,.,.,missense,c.422A>C,p.His141Pro,Likely pathogenic,Pathogenic
+VCV000216068,10,87933196,.,.,nonsense,c.437T>G,p.Leu146Ter,Pathogenic,Pathogenic
+VCV000215730,10,87925522,.,.,synonymous,c.174T>C,p.Asp58=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000208723,10,87864540,.,.,missense,c.71A>G,p.Asp24Gly,Pathogenic/Likely pathogenic,Pathogenic
+VCV000189525,10,87863769,.,.,intronic,c.-701G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189520,10,87863410,.,.,intronic,c.-1059C>G,,Benign,Benign
+VCV000189511,10,87961119,.,.,splice,c.1026+1G>C,,Pathogenic,Pathogenic
+VCV000189510,10,87961110,.,.,missense,c.1018A>C,p.Asn340His,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189509,10,87960892,.,.,splice,c.802-2A>G,,Pathogenic,Pathogenic
+VCV000189500,10,87952142,.,.,missense,c.517C>T,p.Arg173Cys,Pathogenic,Pathogenic
+VCV000189492,10,87863549,.,.,intronic,c.-921G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189489,10,87933207,.,.,nonsense,c.448G>T,p.Glu150Ter,Pathogenic,Pathogenic
+VCV000189488,10,87933196,.,.,nonsense,c.437T>A,p.Leu146Ter,Pathogenic,Pathogenic
+VCV000189486,10,87933126,.,.,missense,c.367C>T,p.His123Tyr,Pathogenic/Likely pathogenic,Pathogenic
+VCV000189485,10,87933117,.,.,missense,c.358G>A,p.Ala120Thr,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189484,10,87933144,.,.,missense,c.385G>A,p.Gly129Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV000189483,10,87933048,.,.,nonsense,c.289C>T,p.Gln97Ter,Pathogenic,Pathogenic
+VCV000189482,10,87933036,.,.,missense,c.277C>G,p.His93Asp,Likely pathogenic,Pathogenic
+VCV000189476,10,87925554,.,.,missense,c.206A>G,p.Asn69Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189475,10,87931090,.,.,splice,c.253+1G>T,,Pathogenic,Pathogenic
+VCV000189474,10,87925550,.,.,missense,c.202T>C,p.Tyr68His,Pathogenic/Likely pathogenic,Pathogenic
+VCV000189473,10,87863425,.,.,intronic,c.-938A>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189464,10,87894105,.,.,missense,c.160G>A,p.Val54Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189462,10,87894024,.,.,splice,c.80-1G>C,,Pathogenic,Pathogenic
+VCV000189460,10,87864543,.,.,missense,c.74T>C,p.Leu25Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189458,10,87864518,.,.,nonsense,c.49C>T,p.Gln17Ter,Pathogenic,Pathogenic
+VCV000189423,10,87961011,.,.,nonsense,c.919G>T,p.Glu307Ter,Pathogenic,Pathogenic
+VCV000189420,10,87958020,.,.,splice,c.801+1G>A,,Pathogenic/Likely pathogenic,Pathogenic
+VCV000189415,10,87952235,.,.,missense,c.610C>G,p.Pro204Ala,Pathogenic,Pathogenic
+VCV000189414,10,87952224,.,.,missense,c.599T>C,p.Phe200Ser,Likely pathogenic,Pathogenic
+VCV000189413,10,87952158,.,.,missense,c.533A>G,p.Tyr178Cys,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189412,10,87952137,.,.,missense,c.512A>G,p.Gln171Arg,Likely pathogenic,Pathogenic
+VCV000189411,10,87952136,.,.,nonsense,c.511C>T,p.Gln171Ter,Pathogenic,Pathogenic
+VCV000189409,10,87952117,.,.,splice,c.493-1G>A,,Pathogenic,Pathogenic
+VCV000189406,10,87933166,.,.,missense,c.407G>A,p.Cys136Tyr,Pathogenic,Pathogenic
+VCV000189403,10,87933043,.,.,missense,c.284C>T,p.Pro95Leu,Pathogenic,Pathogenic
+VCV000189402,10,87925530,.,.,missense,c.182A>G,p.His61Arg,Likely pathogenic,Pathogenic
+VCV000189401,10,87894084,.,.,missense,c.139A>G,p.Arg47Gly,Pathogenic,Pathogenic
+VCV000189400,10,87894051,.,.,missense,c.106G>C,p.Gly36Arg,Likely pathogenic,Pathogenic
+VCV000189399,10,87864546,.,.,missense,c.77C>T,p.Thr26Ile,Pathogenic/Likely pathogenic,Pathogenic
+VCV000189398,10,87864539,.,.,missense,c.70G>T,p.Asp24Tyr,Pathogenic,Pathogenic
+VCV000187657,10,87960984,.,.,nonsense,c.892C>T,p.Gln298Ter,Pathogenic,Pathogenic
+VCV000187590,10,87925512,.,.,splice,c.165-1G>A,,Likely pathogenic,Pathogenic
+VCV000187015,10,87952121,.,.,missense,c.496G>A,p.Val166Ile,Conflicting classifications of pathogenicity,Pathogenic
+VCV000186450,10,87965390,.,.,missense,c.1130A>T,p.Tyr377Phe,Conflicting classifications of pathogenicity,Pathogenic
+VCV000186396,10,87957951,.,.,nonsense,c.733C>T,p.Gln245Ter,Pathogenic,Pathogenic
+VCV000186293,10,87960942,.,.,nonsense,c.850G>T,p.Glu284Ter,Pathogenic,Pathogenic
+VCV000186153,10,87952165,.,.,nonsense,c.540C>G,p.Tyr180Ter,Pathogenic,Pathogenic
+VCV000186094,10,87933234,.,.,missense,c.475A>G,p.Arg159Gly,Pathogenic/Likely pathogenic,Pathogenic
+VCV000186005,10,87864539,.,.,missense,c.70G>C,p.Asp24His,Pathogenic,Pathogenic
+VCV000185817,10,87933129,.,.,missense,c.370T>G,p.Cys124Gly,Pathogenic,Pathogenic
+VCV000185713,10,87925518,.,.,missense,c.170T>G,p.Leu57Trp,Likely pathogenic,Pathogenic
+VCV000185588,10,87933108,.,.,missense,c.349A>C,p.Asn117His,Conflicting classifications of pathogenicity,Pathogenic
+VCV000185585,10,87952152,.,.,missense,c.527A>G,p.Tyr176Cys,Conflicting classifications of pathogenicity,Pathogenic
+VCV000185517,10,87961011,.,.,missense,c.919G>C,p.Glu307Gln,Conflicting classifications of pathogenicity,Pathogenic
+VCV000185213,10,87961056,.,.,nonsense,c.964A>T,p.Lys322Ter,Likely pathogenic,Pathogenic
+VCV000185200,10,87864539,.,.,missense,c.70G>A,p.Asp24Asn,Pathogenic,Pathogenic
+VCV000185195,10,87952143,.,.,missense,c.518G>C,p.Arg173Pro,Pathogenic,Pathogenic
+VCV000184506,10,87961015,.,.,missense,c.923G>A,p.Arg308His,Conflicting classifications of pathogenicity,Pathogenic
+VCV000184505,10,87864544,.,.,synonymous,c.75G>A,p.Leu25=,Likely benign,Benign
+VCV000184413,10,87933080,.,.,synonymous,c.321T>C,p.Asp107=,Benign/Likely benign,Benign
+VCV000184304,10,87961058,.,.,synonymous,c.966A>G,p.Lys322=,Benign/Likely benign,Benign
+VCV000184277,10,87960922,.,.,missense,c.830C>T,p.Thr277Ile,Pathogenic,Pathogenic
+VCV000184068,10,87894059,.,.,synonymous,c.114T>G,p.Pro38=,Likely benign,Benign
+VCV000183726,10,87933165,.,.,missense,c.406T>C,p.Cys136Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV000183722,10,87961119,.,.,splice,c.1026+1G>A,,Pathogenic,Pathogenic
+VCV000183073,10,87957999,.,.,nonsense,c.781C>T,p.Gln261Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000167550,10,87952261,.,.,splice,c.634+2T>G,,Pathogenic,Pathogenic
+VCV000143020,10,87965321,.,.,missense,c.1061C>A,p.Pro354Gln,Likely benign,Benign
+VCV000142844,10,87863293,.,.,intronic,c.-806A>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000142640,10,87960914,.,.,nonsense,c.822G>A,p.Trp274Ter,Pathogenic,Pathogenic
+VCV000142636,10,87952118,.,.,nonsense,c.493G>T,p.Gly165Ter,Pathogenic,Pathogenic
+VCV000142452,10,87952223,.,.,missense,c.598T>G,p.Phe200Val,Likely pathogenic,Pathogenic
+VCV000142423,10,87960892,.,.,splice,c.802-2A>T,,Pathogenic,Pathogenic
+VCV000142287,10,87933162,.,.,missense,c.403A>G,p.Ile135Val,Pathogenic/Likely pathogenic,Pathogenic
+VCV000142269,10,87957955,.,.,missense,c.737C>T,p.Pro246Leu,Pathogenic,Pathogenic
+VCV000142263,10,87965326,.,.,missense,c.1066A>G,p.Asn356Asp,Conflicting classifications of pathogenicity,Pathogenic
+VCV000142261,10,87933073,.,.,missense,c.314G>A,p.Cys105Tyr,Pathogenic,Pathogenic
+VCV000142220,10,87952145,.,.,missense,c.520T>A,p.Tyr174Asn,Likely pathogenic,Pathogenic
+VCV000142027,10,87864517,.,.,nonsense,c.48T>A,p.Tyr16Ter,Pathogenic,Pathogenic
+VCV000142018,10,87933148,.,.,missense,c.389G>C,p.Arg130Pro,Pathogenic,Pathogenic
+VCV000141949,10,87863601,.,.,intronic,c.-868G>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000141771,10,87957903,.,.,missense,c.685T>A,p.Ser229Thr,Likely benign,Benign
+VCV000141485,10,87952116,.,.,splice,c.493-2A>G,,Pathogenic,Pathogenic
+VCV000140777,10,87965338,.,.,missense,c.1078A>G,p.Ser360Gly,Likely benign,Benign
+VCV000139568,10,87933138,.,.,missense,c.379G>A,p.Gly127Arg,Pathogenic/Likely pathogenic,Pathogenic
+VCV000138835,10,87965364,.,.,synonymous,c.1104T>C,p.Asp368=,Likely benign,Benign
+VCV000127695,10,87960984,.,.,missense,c.892C>G,p.Gln298Glu,Likely benign,Benign
+VCV000127693,10,87960974,.,.,missense,c.882T>G,p.Ser294Arg,Likely benign,Benign
+VCV000127692,10,87864555,.,.,intronic,c.79+7A>G,,Likely benign,Benign
+VCV000127691,10,87931070,.,.,synonymous,c.234C>T,p.Thr78=,Benign/Likely benign,Benign
+VCV000127685,10,87863494,.,.,other,,,Likely benign,Benign
+VCV000127684,10,87863494,.,.,intronic,c.-975G>A,,Likely benign,Benign
+VCV000127681,10,87863560,.,.,intronic,c.-910T>C,,Likely benign,Benign
+VCV000127671,10,87863756,.,.,intronic,c.-714G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000127663,10,87863279,.,.,intronic,c.-792C>T,,Benign,Benign
+VCV000127662,10,87863299,.,.,intronic,c.-812G>A,,Likely benign,Benign
+VCV000127661,10,87863327,.,.,intronic,c.-840G>A,,Likely benign,Benign
+VCV000127660,10,87863385,.,.,intronic,c.-898G>A,,Likely benign,Benign
+VCV000092822,10,87933154,.,.,missense,c.395G>A,p.Gly132Asp,Pathogenic,Pathogenic
+VCV000092820,10,87933090,.,.,missense,c.331T>C,p.Trp111Arg,Pathogenic,Pathogenic
+VCV000092819,10,87933045,.,.,missense,c.286C>T,p.Pro96Ser,Pathogenic,Pathogenic
+VCV000092815,10,87925550,.,.,missense,c.202T>A,p.Tyr68Asn,Conflicting classifications of pathogenicity,Pathogenic
+VCV000092813,10,87894077,.,.,synonymous,c.132C>T,p.Gly44=,Likely benign,Benign
+VCV000092808,10,87864461,.,.,intronic,c.-9C>G,,Benign,Benign
+VCV000041682,10,87931071,.,.,missense,c.235G>A,p.Ala79Thr,Likely benign,Benign
+VCV000039669,10,87933151,.,.,missense,c.392C>T,p.Thr131Ile,Pathogenic,Pathogenic
+VCV000039668,10,87952125,.,.,missense,c.500C>A,p.Thr167Asn,Likely pathogenic,Pathogenic
+VCV000007852,10,87933154,.,.,missense,c.395G>T,p.Gly132Val,Pathogenic/Likely pathogenic,Pathogenic
+VCV000007850,10,87957940,.,.,missense,c.722T>C,p.Phe241Ser,Likely pathogenic,Pathogenic
+VCV000007849,10,87957973,.,.,missense,c.755A>G,p.Asp252Gly,Pathogenic,Pathogenic
+VCV000007848,10,87933037,.,.,missense,c.278A>G,p.His93Arg,Pathogenic,Pathogenic
+VCV000007842,10,87933121,.,.,missense,c.362C>G,p.Ala121Gly,Pathogenic,Pathogenic
+VCV000007841,10,87925529,.,.,missense,c.181C>G,p.His61Asp,Likely pathogenic,Pathogenic
+VCV000007836,10,87952258,.,.,nonsense,c.633C>A,p.Cys211Ter,Pathogenic,Pathogenic
+VCV000007833,10,87961095,.,.,nonsense,c.1003C>T,p.Arg335Ter,Pathogenic,Pathogenic
+VCV000007832,10,87933094,.,.,missense,c.335T>C,p.Leu112Pro,Pathogenic,Pathogenic
+VCV000007831,10,87952189,.,.,nonsense,c.564T>A,p.Tyr188Ter,Likely pathogenic,Pathogenic
+VCV000007829,10,87933148,.,.,missense,c.389G>A,p.Arg130Gln,Pathogenic,Pathogenic
+VCV000007828,10,87957984,.,.,nonsense,c.766G>T,p.Glu256Ter,Pathogenic,Pathogenic
+VCV000007827,10,87957858,.,.,nonsense,c.640C>T,p.Gln214Ter,Pathogenic,Pathogenic
+VCV000007826,10,87925557,.,.,missense,c.209T>C,p.Leu70Pro,Likely pathogenic,Pathogenic
+VCV000007825,10,87894049,.,.,missense,c.104T>G,p.Met35Arg,Pathogenic,Pathogenic
+VCV000007821,10,87933253,.,.,splice,c.492+2T>G,,Pathogenic,Pathogenic
+VCV000007820,10,87931090,.,.,splice,c.253+1G>A,,Pathogenic,Pathogenic
+VCV000007819,10,87933147,.,.,nonsense,c.388C>T,p.Arg130Ter,Pathogenic,Pathogenic
+VCV000007817,10,87933129,.,.,missense,c.370T>C,p.Cys124Arg,Pathogenic,Pathogenic
+VCV000007816,10,87933127,.,.,missense,c.368A>G,p.His123Arg,Pathogenic,Pathogenic
+VCV000007815,10,87952135,.,.,missense,c.510T>A,p.Ser170Arg,Pathogenic,Pathogenic
+VCV000007814,10,87933228,.,.,nonsense,c.469G>T,p.Glu157Ter,Pathogenic,Pathogenic
+VCV000007813,10,87957915,.,.,nonsense,c.697C>T,p.Arg233Ter,Pathogenic/Likely pathogenic,Pathogenic
+VCV000007812,10,87933145,.,.,missense,c.386G>A,p.Gly129Glu,Pathogenic/Likely pathogenic,Pathogenic
+VCV004758390,10,87957875,.,.,synonymous,c.657G>A,p.Gln219=,Likely benign,Benign
+VCV004748906,10,87925571,.,.,intronic,c.209+14C>G,,Likely benign,Benign
+VCV004733965,10,87965277,.,.,intronic,c.1027-10C>G,,Likely benign,Benign
+VCV004731791,10,87925564,.,.,intronic,c.209+7A>C,,Likely benign,Benign
+VCV004723507,10,87961019,.,.,synonymous,c.927A>C,p.Ala309=,Likely benign,Benign
+VCV004722455,10,87957971,.,.,synonymous,c.753T>G,p.Gly251=,Likely benign,Benign
+VCV004720334,10,87952102,.,.,intronic,c.493-16T>A,,Likely benign,Benign
+VCV004717081,10,87965275,.,.,intronic,c.1027-12T>C,,Likely benign,Benign
+VCV004712386,10,87952186,.,.,synonymous,c.561T>C,p.Asp187=,Likely benign,Benign
+VCV004701091,10,87931102,.,.,intronic,c.253+13G>A,,Likely benign,Benign
+VCV004698747,10,87864568,.,.,intronic,c.79+20C>T,,Likely benign,Benign
+VCV004683524,10,87863879,.,.,intronic,c.-591G>A,,Benign,Benign
+VCV004683523,10,87863870,.,.,intronic,c.-600C>T,,Benign,Benign
+VCV004683522,10,87863761,.,.,intronic,c.-709G>A,,Likely benign,Benign
+VCV004677068,10,87961061,.,.,synonymous,c.969T>C,p.Asn323=,Likely benign,Benign
+VCV004676953,10,87961028,.,.,synonymous,c.936C>T,p.Asp312=,Likely benign,Benign
+VCV004676410,10,87957956,.,.,synonymous,c.738G>T,p.Pro246=,Likely benign,Benign
+VCV004539270,10,87965251,.,.,intronic,c.1027-36A>G,,Likely benign,Benign
+VCV004539269,10,87961151,.,.,intronic,c.1026+33T>G,,Likely benign,Benign
+VCV004539268,10,87958042,.,.,intronic,c.801+23G>T,,Likely benign,Benign
+VCV004539267,10,87931132,.,.,intronic,c.253+43G>A,,Likely benign,Benign
+VCV004281011,10,87863997,.,.,intronic,c.-473A>C,,Likely benign,Benign
+VCV004280819,10,87958083,.,.,intronic,c.801+64A>G,,Likely benign,Benign
+VCV004280319,10,87894053,.,.,synonymous,c.108A>C,p.Gly36=,Likely benign,Benign
+VCV004147012,10,87957878,.,.,synonymous,c.660A>G,p.Leu220=,Likely benign,Benign
+VCV004146996,10,87965320,.,.,missense,c.1060C>T,p.Pro354Ser,Likely benign,Benign
+VCV004085734,10,87864051,.,.,intronic,c.-419C>T,,Likely benign,Benign
+VCV004085249,10,87864205,.,.,intronic,c.-265G>T,,Likely benign,Benign
+VCV004085066,10,87869328,.,.,intronic,c.79+4780C>T,,Likely benign,Benign
+VCV004084854,10,87864075,.,.,intronic,c.-395A>C,,Likely benign,Benign
+VCV004084756,10,87864190,.,.,intronic,c.-280C>A,,Likely benign,Benign
+VCV004084755,10,87864178,.,.,intronic,c.-292G>A,,Likely benign,Benign
+VCV004084754,10,87864073,.,.,intronic,c.-397C>T,,Likely benign,Benign
+VCV004084753,10,87864072,.,.,intronic,c.-398T>C,,Likely benign,Benign
+VCV004084752,10,87864015,.,.,intronic,c.-455T>G,,Likely benign,Benign
+VCV004084751,10,87864003,.,.,intronic,c.-467A>G,,Likely benign,Benign
+VCV004084618,10,87864142,.,.,intronic,c.-328G>T,,Likely benign,Benign
+VCV004084509,10,87864250,.,.,intronic,c.-220G>A,,Likely benign,Benign
+VCV004084481,10,87864346,.,.,intronic,c.-124G>A,,Likely benign,Benign
+VCV004084480,10,87864343,.,.,intronic,c.-127G>A,,Likely benign,Benign
+VCV004084479,10,87864328,.,.,intronic,c.-142G>A,,Likely benign,Benign
+VCV004084478,10,87864322,.,.,intronic,c.-148G>A,,Likely benign,Benign
+VCV004084416,10,87864232,.,.,intronic,c.-238C>T,,Likely benign,Benign
+VCV004083742,10,87863985,.,.,intronic,c.-485C>G,,Likely benign,Benign
+VCV003940107,10,87864481,.,.,synonymous,c.12C>A,p.Ile4=,Likely benign,Benign
+VCV003940106,10,87931206,.,.,intronic,c.253+117T>C,,Likely benign,Benign
+VCV003940100,10,87965346,.,.,synonymous,c.1086A>C,p.Ser362=,Likely benign,Benign
+VCV003940086,10,87864490,.,.,synonymous,c.21G>A,p.Glu7=,Likely benign,Benign
+VCV003906093,10,87909491,.,.,intronic,c.164+15382C>T,,Likely benign,Benign
+VCV003905840,10,87864151,.,.,intronic,c.-319C>T,,Likely benign,Benign
+VCV003905721,10,87958550,.,.,intronic,c.801+531A>T,,Likely benign,Benign
+VCV003905720,10,87909569,.,.,intronic,c.164+15460T>C,,Likely benign,Benign
+VCV003905719,10,87909515,.,.,intronic,c.164+15406T>C,,Likely benign,Benign
+VCV003904773,10,87925497,.,.,intronic,c.165-16T>C,,Likely benign,Benign
+VCV003904671,10,87925565,.,.,intronic,c.209+8T>G,,Likely benign,Benign
+VCV003904545,10,87960880,.,.,intronic,c.802-14T>C,,Likely benign,Benign
+VCV003904433,10,87965473,.,.,other,c.*1A>G,,Benign,Benign
+VCV003904430,10,87952150,.,.,synonymous,c.525G>A,p.Val175=,Benign,Benign
+VCV003904419,10,87933093,.,.,synonymous,c.334C>T,p.Leu112=,Benign,Benign
+VCV003904337,10,87965477,.,.,other,c.*5T>G,,Benign,Benign
+VCV003904323,10,87933062,.,.,synonymous,c.303C>A,p.Ile101=,Benign,Benign
+VCV003904307,10,87965272,.,.,intronic,c.1027-15A>T,,Likely benign,Benign
+VCV003904296,10,87957965,.,.,synonymous,c.747G>T,p.Val249=,Benign,Benign
+VCV003904232,10,87952267,.,.,intronic,c.634+8C>T,,Likely benign,Benign
+VCV003904229,10,87960883,.,.,intronic,c.802-11T>C,,Likely benign,Benign
+VCV003904224,10,87952098,.,.,intronic,c.493-20C>T,,Likely benign,Benign
+VCV003904193,10,87933047,.,.,synonymous,c.288A>C,p.Pro96=,Benign,Benign
+VCV003904174,10,87932994,.,.,intronic,c.254-19G>C,,Likely benign,Benign
+VCV003904160,10,87952252,.,.,synonymous,c.627A>C,p.Gly209=,Benign,Benign
+VCV003904151,10,87925500,.,.,intronic,c.165-13G>C,,Likely benign,Benign
+VCV003904069,10,87958022,.,.,intronic,c.801+3T>A,,Likely benign,Benign
+VCV003904054,10,87952190,.,.,synonymous,c.565A>C,p.Arg189=,Benign,Benign
+VCV003904012,10,87952109,.,.,intronic,c.493-9G>C,,Likely benign,Benign
+VCV003903985,10,87965283,.,.,intronic,c.1027-4C>T,,Likely benign,Benign
+VCV003903969,10,87965454,.,.,synonymous,c.1194A>G,p.Thr398=,Benign,Benign
+VCV003903909,10,87931026,.,.,intronic,c.210-20C>T,,Likely benign,Benign
+VCV003903898,10,87957956,.,.,synonymous,c.738G>C,p.Pro246=,Benign,Benign
+VCV003903894,10,87952267,.,.,intronic,c.634+8C>A,,Likely benign,Benign
+VCV003903886,10,87961043,.,.,synonymous,c.951A>G,p.Val317=,Benign,Benign
+VCV003903878,10,87965400,.,.,synonymous,c.1140T>C,p.Ser380=,Benign,Benign
+VCV003903847,10,87864512,.,.,synonymous,c.43A>C,p.Arg15=,Benign,Benign
+VCV003903842,10,87960875,.,.,intronic,c.802-19T>C,,Likely benign,Benign
+VCV003903841,10,87965269,.,.,intronic,c.1027-18T>C,,Likely benign,Benign
+VCV003903837,10,87933083,.,.,synonymous,c.324T>A,p.Leu108=,Benign,Benign
+VCV003903832,10,87933149,.,.,synonymous,c.390A>G,p.Arg130=,Benign/Likely benign,Benign
+VCV003903826,10,87925499,.,.,intronic,c.165-14T>C,,Likely benign,Benign
+VCV003903820,10,87864505,.,.,synonymous,c.36C>T,p.Asn12=,Benign,Benign
+VCV003903814,10,87952107,.,.,intronic,c.493-11C>T,,Likely benign,Benign
+VCV003903772,10,87932996,.,.,intronic,c.254-17T>C,,Likely benign,Benign
+VCV003903756,10,87965466,.,.,synonymous,c.1206A>G,p.Lys402=,Benign,Benign
+VCV003903751,10,87961064,.,.,synonymous,c.972T>C,p.Asp324=,Benign,Benign
+VCV003903744,10,87957896,.,.,synonymous,c.678C>T,p.Ser226=,Benign,Benign
+VCV003903736,10,87952106,.,.,intronic,c.493-12T>C,,Likely benign,Benign
+VCV003903728,10,87952269,.,.,intronic,c.634+10T>G,,Likely benign,Benign
+VCV003903719,10,87952255,.,.,synonymous,c.630T>G,p.Thr210=,Benign,Benign
+VCV003903714,10,87960874,.,.,intronic,c.802-20T>C,,Likely benign,Benign
+VCV003903690,10,87965442,.,.,synonymous,c.1182A>G,p.Glu394=,Benign,Benign
+VCV003903666,10,87894035,.,.,synonymous,c.90A>G,p.Pro30=,Benign,Benign
+VCV003903664,10,87894077,.,.,synonymous,c.132C>G,p.Gly44=,Benign,Benign
+VCV003903657,10,87952168,.,.,synonymous,c.543G>A,p.Leu181=,Benign,Benign
+VCV003903645,10,87952156,.,.,synonymous,c.531T>C,p.Tyr177=,Benign,Benign
+VCV003903638,10,87952135,.,.,synonymous,c.510T>C,p.Ser170=,Benign,Benign
+VCV003903546,10,87960998,.,.,synonymous,c.906C>T,p.Ser302=,Benign,Benign
+VCV003903535,10,87961007,.,.,synonymous,c.915T>C,p.Ser305=,Benign,Benign
+VCV003903512,10,87958026,.,.,intronic,c.801+7A>C,,Likely benign,Benign
+VCV003903511,10,87957838,.,.,intronic,c.635-15T>C,,Likely benign,Benign
+VCV003903510,10,87952120,.,.,synonymous,c.495A>G,p.Gly165=,Benign,Benign
+VCV003903509,10,87952113,.,.,intronic,c.493-5A>G,,Likely benign,Benign
+VCV003903477,10,87960879,.,.,intronic,c.802-15T>C,,Likely benign,Benign
+VCV003903466,10,87933095,.,.,synonymous,c.336A>G,p.Leu112=,Benign,Benign
+VCV003903451,10,87925495,.,.,intronic,c.165-18T>C,,Likely benign,Benign
+VCV003903443,10,87925517,.,.,synonymous,c.169T>C,p.Leu57=,Benign,Benign
+VCV003903439,10,87960899,.,.,synonymous,c.807A>G,p.Lys269=,Benign,Benign
+VCV003903434,10,87933035,.,.,synonymous,c.276C>T,p.Asp92=,Benign,Benign
+VCV003894398,10,87960989,.,.,synonymous,c.897A>G,p.Glu299=,Likely benign,Benign
+VCV003784754,10,87965409,.,.,synonymous,c.1149T>A,p.Thr383=,Likely benign,Benign
+VCV003769562,10,87965474,.,.,other,c.*2T>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV003728776,10,87864529,.,.,synonymous,c.60A>C,p.Gly20=,Benign/Likely benign,Benign
+VCV003727242,10,87965445,.,.,synonymous,c.1185T>C,p.Asp395=,Benign/Likely benign,Benign
+VCV003726472,10,87933026,.,.,synonymous,c.267T>G,p.Pro89=,Likely benign,Benign
+VCV003726097,10,87958032,.,.,intronic,c.801+13C>G,,Likely benign,Benign
+VCV003723710,10,87961046,.,.,synonymous,c.954T>A,p.Leu318=,Likely benign,Benign
+VCV003723709,10,87931099,.,.,intronic,c.253+10A>G,,Likely benign,Benign
+VCV003708849,10,87933083,.,.,synonymous,c.324T>C,p.Leu108=,Benign/Likely benign,Benign
+VCV003708407,10,87864520,.,.,synonymous,c.51A>G,p.Gln17=,Likely benign,Benign
+VCV003700992,10,87961094,.,.,synonymous,c.1002C>T,p.Asn334=,Likely benign,Benign
+VCV003698221,10,87952169,.,.,synonymous,c.544T>C,p.Leu182=,Benign/Likely benign,Benign
+VCV003695555,10,87925568,.,.,intronic,c.209+11T>G,,Likely benign,Benign
+VCV003677718,10,87932993,.,.,intronic,c.254-20A>T,,Likely benign,Benign
+VCV003675214,10,87925571,.,.,intronic,c.209+14C>T,,Likely benign,Benign
+VCV003670717,10,87952266,.,.,intronic,c.634+7G>T,,Likely benign,Benign
+VCV003669466,10,87952279,.,.,intronic,c.634+20A>T,,Likely benign,Benign
+VCV003668490,10,87894122,.,.,intronic,c.164+13T>C,,Likely benign,Benign
+VCV003667001,10,87957836,.,.,intronic,c.635-17T>C,,Likely benign,Benign
+VCV003664891,10,87965269,.,.,intronic,c.1027-18T>A,,Likely benign,Benign
+VCV003664459,10,87960884,.,.,intronic,c.802-10T>G,,Likely benign,Benign
+VCV003662212,10,87957914,.,.,synonymous,c.696A>G,p.Thr232=,Benign/Likely benign,Benign
+VCV003660396,10,87931107,.,.,intronic,c.253+18G>C,,Likely benign,Benign
+VCV003660164,10,87965292,.,.,synonymous,c.1032G>A,p.Lys344=,Benign/Likely benign,Benign
+VCV003658575,10,87864558,.,.,intronic,c.79+10T>G,,Likely benign,Benign
+VCV003652625,10,87952102,.,.,intronic,c.493-16T>C,,Likely benign,Benign
+VCV003646079,10,87933266,.,.,intronic,c.492+15G>C,,Likely benign,Benign
+VCV003616113,10,87960889,.,.,intronic,c.802-5T>C,,Likely benign,Benign
+VCV003427452,10,87965322,.,.,synonymous,c.1062G>T,p.Pro354=,Likely benign,Benign
+VCV003427441,10,87960935,.,.,synonymous,c.843A>C,p.Pro281=,Likely benign,Benign
+VCV003427438,10,87933248,.,.,synonymous,c.489A>G,p.Lys163=,Benign/Likely benign,Benign
+VCV003427436,10,87925546,.,.,synonymous,c.198G>A,p.Lys66=,Benign/Likely benign,Benign
+VCV003427430,10,87952205,.,.,synonymous,c.580T>C,p.Leu194=,Likely benign,Benign
+VCV003427429,10,87960941,.,.,synonymous,c.849A>G,p.Pro283=,Likely benign,Benign
+VCV003427417,10,87965451,.,.,synonymous,c.1191T>C,p.His397=,Likely benign,Benign
+VCV003387548,10,87965319,.,.,synonymous,c.1059G>A,p.Glu353=,Likely benign,Benign
+VCV003387547,10,87965313,.,.,synonymous,c.1053A>G,p.Val351=,Likely benign,Benign
+VCV003358543,10,87864032,.,.,intronic,c.-438T>C,,Likely benign,Benign
+VCV003355529,10,87864218,.,.,intronic,c.-252T>C,,Likely benign,Benign
+VCV003354440,10,87863409,.,.,other,,,Likely benign,Benign
+VCV003345950,10,87925510,.,.,intronic,c.165-3A>C,,Likely benign,Benign
+VCV003311263,10,87864478,.,.,synonymous,c.9C>G,p.Ala3=,Benign/Likely benign,Benign
+VCV003311262,10,87965322,.,.,synonymous,c.1062G>C,p.Pro354=,Likely benign,Benign
+VCV003311253,10,87933059,.,.,synonymous,c.300T>C,p.Leu100=,Likely benign,Benign
+VCV003311246,10,87933056,.,.,synonymous,c.297A>G,p.Glu99=,Likely benign,Benign
+VCV003311245,10,87933051,.,.,synonymous,c.292C>T,p.Leu98=,Likely benign,Benign
+VCV003256501,10,87931004,.,.,intronic,c.210-42T>C,,Likely benign,Benign
+VCV003231168,10,87864475,.,.,synonymous,c.6A>T,p.Thr2=,Likely benign,Benign
+VCV003231164,10,87952216,.,.,synonymous,c.591G>A,p.Lys197=,Likely benign,Benign
+VCV003231161,10,87952183,.,.,synonymous,c.558G>A,p.Leu186=,Likely benign,Benign
+VCV003231155,10,87933158,.,.,synonymous,c.399A>G,p.Val133=,Likely benign,Benign
+VCV003231154,10,87933134,.,.,synonymous,c.375A>G,p.Lys125=,Benign/Likely benign,Benign
+VCV003231152,10,87933083,.,.,synonymous,c.324T>G,p.Leu108=,Likely benign,Benign
+VCV003231150,10,87933071,.,.,synonymous,c.312T>C,p.Phe104=,Likely benign,Benign
+VCV003070345,10,87957890,.,.,synonymous,c.672A>T,p.Ile224=,Likely benign,Benign
+VCV003067415,10,87864136,.,.,intronic,c.-334C>T,,Likely benign,Benign
+VCV003052131,10,87863958,.,.,intronic,c.-512G>T,,Likely benign,Benign
+VCV003051701,10,87864141,.,.,intronic,c.-329C>T,,Likely benign,Benign
+VCV003051450,10,87863957,.,.,intronic,c.-513G>T,,Likely benign,Benign
+VCV003051078,10,87864004,.,.,intronic,c.-466G>A,,Likely benign,Benign
+VCV003048505,10,87864157,.,.,intronic,c.-313A>G,,Likely benign,Benign
+VCV003046566,10,87863301,.,.,other,,,Likely benign,Benign
+VCV003045216,10,87864010,.,.,intronic,c.-460G>C,,Likely benign,Benign
+VCV003045045,10,87864163,.,.,intronic,c.-307C>A,,Likely benign,Benign
+VCV003030802,10,87864295,.,.,intronic,c.-175C>G,,Likely benign,Benign
+VCV003029786,10,87864121,.,.,intronic,c.-349C>T,,Likely benign,Benign
+VCV003026903,10,87864127,.,.,intronic,c.-343G>T,,Likely benign,Benign
+VCV003026891,10,87863956,.,.,intronic,c.-514C>A,,Likely benign,Benign
+VCV003026758,10,87864247,.,.,intronic,c.-223C>A,,Likely benign,Benign
+VCV003026438,10,87864205,.,.,intronic,c.-265G>A,,Likely benign,Benign
+VCV003025853,10,87863958,.,.,intronic,c.-512G>C,,Likely benign,Benign
+VCV003025766,10,87863824,.,.,intronic,c.-646C>T,,Likely benign,Benign
+VCV003024685,10,87864148,.,.,intronic,c.-322C>T,,Likely benign,Benign
+VCV003013989,10,87864563,.,.,intronic,c.79+15G>A,,Likely benign,Benign
+VCV002975037,10,87931073,.,.,synonymous,c.237C>G,p.Ala79=,Likely benign,Benign
+VCV002909973,10,87952100,.,.,intronic,c.493-18T>C,,Likely benign,Benign
+VCV002900423,10,87931100,.,.,intronic,c.253+11A>C,,Likely benign,Benign
+VCV002880317,10,87894098,.,.,synonymous,c.153T>C,p.Asp51=,Benign/Likely benign,Benign
+VCV002875887,10,87925572,.,.,intronic,c.209+15T>G,,Likely benign,Benign
+VCV002875398,10,87925566,.,.,intronic,c.209+9G>A,,Likely benign,Benign
+VCV002873711,10,87932995,.,.,intronic,c.254-18G>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV002862986,10,87864566,.,.,intronic,c.79+18T>A,,Likely benign,Benign
+VCV002861979,10,87952103,.,.,intronic,c.493-15T>C,,Likely benign,Benign
+VCV002861973,10,87958039,.,.,intronic,c.801+20T>G,,Likely benign,Benign
+VCV002858087,10,87952108,.,.,intronic,c.493-10T>G,,Likely benign,Benign
+VCV002851339,10,87957848,.,.,intronic,c.635-5T>C,,Likely benign,Benign
+VCV002850582,10,87925496,.,.,intronic,c.165-17G>A,,Likely benign,Benign
+VCV002849895,10,87931039,.,.,intronic,c.210-7C>G,,Likely benign,Benign
+VCV002849639,10,87931073,.,.,synonymous,c.237C>T,p.Ala79=,Likely benign,Benign
+VCV002843189,10,87864566,.,.,intronic,c.79+18T>C,,Likely benign,Benign
+VCV002837724,10,87952111,.,.,intronic,c.493-7C>G,,Likely benign,Benign
+VCV002827381,10,87864475,.,.,synonymous,c.6A>G,p.Thr2=,Likely benign,Benign
+VCV002826609,10,87925569,.,.,intronic,c.209+12T>G,,Likely benign,Benign
+VCV002817616,10,87864484,.,.,synonymous,c.15C>T,p.Ile5=,Benign/Likely benign,Benign
+VCV002814012,10,87952270,.,.,intronic,c.634+11G>C,,Likely benign,Benign
+VCV002812725,10,87864499,.,.,synonymous,c.30C>T,p.Ser10=,Likely benign,Benign
+VCV002796533,10,87931039,.,.,intronic,c.210-7C>T,,Likely benign,Benign
+VCV002790050,10,87933173,.,.,synonymous,c.414T>C,p.Tyr138=,Benign/Likely benign,Benign
+VCV002779510,10,87965273,.,.,intronic,c.1027-14T>C,,Likely benign,Benign
+VCV002774182,10,87957962,.,.,synonymous,c.744T>G,p.Pro248=,Likely benign,Benign
+VCV002770199,10,87931098,.,.,intronic,c.253+9G>A,,Likely benign,Benign
+VCV002765306,10,87925502,.,.,intronic,c.165-11T>A,,Likely benign,Benign
+VCV002764816,10,87957911,.,.,synonymous,c.693C>A,p.Pro231=,Likely benign,Benign
+VCV002743879,10,87864529,.,.,synonymous,c.60A>G,p.Gly20=,Conflicting classifications of pathogenicity,Pathogenic
+VCV002736849,10,87931107,.,.,intronic,c.253+18G>A,,Likely benign,Benign
+VCV002708133,10,87931038,.,.,intronic,c.210-8T>G,,Likely benign,Benign
+VCV002705136,10,87952255,.,.,synonymous,c.630T>A,p.Thr210=,Likely benign,Benign
+VCV002702156,10,87931039,.,.,intronic,c.210-7C>A,,Likely benign,Benign
+VCV002701825,10,87933227,.,.,synonymous,c.468G>A,p.Gly156=,Likely benign,Benign
+VCV002692154,10,87961146,.,.,intronic,c.1026+28G>C,,Likely benign,Benign
+VCV002692153,10,87864536,.,.,synonymous,c.67T>C,p.Leu23=,Likely benign,Benign
+VCV002687552,10,87933240,.,.,synonymous,c.481A>C,p.Arg161=,Likely benign,Benign
+VCV002687551,10,87933197,.,.,synonymous,c.438A>G,p.Leu146=,Likely benign,Benign
+VCV002640666,10,87966599,.,.,other,c.*1127T>A,,Likely benign,Benign
+VCV002640665,10,87864295,.,.,intronic,c.-175C>T,,Likely benign,Benign
+VCV002607952,10,87894065,.,.,synonymous,c.120A>G,p.Glu40=,Benign/Likely benign,Benign
+VCV002587210,10,87931076,.,.,synonymous,c.240A>G,p.Lys80=,Likely benign,Benign
+VCV002587209,10,87952246,.,.,synonymous,c.621T>C,p.Ser207=,Benign/Likely benign,Benign
+VCV002577891,10,87932993,.,.,intronic,c.254-20A>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV002576516,10,87894095,.,.,synonymous,c.150T>C,p.Ile50=,Likely benign,Benign
+VCV002576378,10,87933236,.,.,synonymous,c.477G>A,p.Arg159=,Likely benign,Benign
+VCV002573217,10,87960889,.,.,intronic,c.802-5T>G,,Benign,Benign
+VCV002567271,10,87952162,.,.,synonymous,c.537C>T,p.Ser179=,Likely benign,Benign
+VCV002562402,10,87894104,.,.,synonymous,c.159A>T,p.Val53=,Likely benign,Benign
+VCV002498465,10,87966915,.,.,other,c.*1443T>G,,Likely benign,Benign
+VCV002488657,10,87925555,.,.,synonymous,c.207T>C,p.Asn69=,Likely benign,Benign
+VCV002452974,10,87952141,.,.,synonymous,c.516G>A,p.Arg172=,Likely benign,Benign
+VCV002452969,10,87864529,.,.,synonymous,c.60A>T,p.Gly20=,Likely benign,Benign
+VCV002452968,10,87952123,.,.,synonymous,c.498A>G,p.Val166=,Benign/Likely benign,Benign
+VCV002416106,10,87957833,.,.,intronic,c.635-20G>T,,Likely benign,Benign
+VCV002159982,10,87952174,.,.,synonymous,c.549G>A,p.Lys183=,Benign/Likely benign,Benign
+VCV002138705,10,87925572,.,.,intronic,c.209+15T>A,,Likely benign,Benign
+VCV002132892,10,87894041,.,.,synonymous,c.96T>C,p.Ile32=,Benign/Likely benign,Benign
+VCV002099744,10,87864567,.,.,intronic,c.79+19G>A,,Likely benign,Benign
+VCV002089135,10,87958039,.,.,intronic,c.801+20T>C,,Likely benign,Benign
+VCV002087485,10,87952150,.,.,synonymous,c.525G>T,p.Val175=,Benign/Likely benign,Benign
+VCV002084233,10,87931100,.,.,intronic,c.253+11A>T,,Likely benign,Benign
+VCV002082767,10,87952144,.,.,synonymous,c.519C>T,p.Arg173=,Benign/Likely benign,Benign
+VCV002063842,10,87958030,.,.,intronic,c.801+11T>C,,Likely benign,Benign
+VCV002059435,10,87965331,.,.,synonymous,c.1071A>G,p.Pro357=,Benign/Likely benign,Benign
+VCV002057874,10,87952277,.,.,intronic,c.634+18T>G,,Likely benign,Benign
+VCV002050752,10,87932993,.,.,intronic,c.254-20A>C,,Likely benign,Benign
+VCV002039879,10,87931035,.,.,intronic,c.210-11T>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV002035995,10,87960977,.,.,synonymous,c.885A>T,p.Leu295=,Likely benign,Benign
+VCV002033387,10,87864567,.,.,intronic,c.79+19G>C,,Likely benign,Benign
+VCV002031374,10,87952110,.,.,intronic,c.493-8T>C,,Likely benign,Benign
+VCV002029226,10,87965433,.,.,synonymous,c.1173T>C,p.Pro391=,Benign/Likely benign,Benign
+VCV002018365,10,87932998,.,.,intronic,c.254-15A>G,,Likely benign,Benign
+VCV002015807,10,87894118,.,.,intronic,c.164+9G>T,,Likely benign,Benign
+VCV002013115,10,87958032,.,.,intronic,c.801+13C>T,,Likely benign,Benign
+VCV002002627,10,87957876,.,.,synonymous,c.658C>T,p.Leu220=,Likely benign,Benign
+VCV001999120,10,87957849,.,.,intronic,c.635-4G>A,,Likely benign,Benign
+VCV001982967,10,87965268,.,.,intronic,c.1027-19T>C,,Likely benign,Benign
+VCV001976699,10,87960986,.,.,synonymous,c.894A>G,p.Gln298=,Likely benign,Benign
+VCV001961980,10,87894005,.,.,intronic,c.80-20T>C,,Likely benign,Benign
+VCV001949070,10,87961067,.,.,synonymous,c.975T>C,p.Leu325=,Benign/Likely benign,Benign
+VCV001912465,10,87933009,.,.,intronic,c.254-4A>G,,Likely benign,Benign
+VCV001879137,10,87864241,.,.,intronic,c.-229C>T,,Likely benign,Benign
+VCV001879136,10,87864087,.,.,intronic,c.-383A>C,,Likely benign,Benign
+VCV001802787,10,87960870,.,.,intronic,c.802-24T>C,,Likely benign,Benign
+VCV001802786,10,87952266,.,.,intronic,c.634+7G>A,,Likely benign,Benign
+VCV001802784,10,87952072,.,.,intronic,c.493-46G>A,,Likely benign,Benign
+VCV001802783,10,87864581,.,.,intronic,c.79+33T>A,,Likely benign,Benign
+VCV001802782,10,87864578,.,.,intronic,c.79+30C>T,,Likely benign,Benign
+VCV001796964,10,87965379,.,.,synonymous,c.1119A>G,p.Glu373=,Likely benign,Benign
+VCV001792412,10,87965361,.,.,synonymous,c.1101A>C,p.Pro367=,Likely benign,Benign
+VCV001792202,10,87864493,.,.,synonymous,c.24C>A,p.Ile8=,Likely benign,Benign
+VCV001791167,10,87965358,.,.,synonymous,c.1098A>G,p.Thr366=,Likely benign,Benign
+VCV001777347,10,87925508,.,.,intronic,c.165-5T>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001776778,10,87894107,.,.,synonymous,c.162A>G,p.Val54=,Benign/Likely benign,Benign
+VCV001776391,10,87863420,.,.,intronic,c.-1049C>T,,Benign,Benign
+VCV001768914,10,87864478,.,.,synonymous,c.9C>A,p.Ala3=,Likely benign,Benign
+VCV001768371,10,87961076,.,.,synonymous,c.984A>C,p.Ala328=,Likely benign,Benign
+VCV001766404,10,87961019,.,.,synonymous,c.927A>G,p.Ala309=,Benign/Likely benign,Benign
+VCV001766334,10,87961016,.,.,synonymous,c.924T>G,p.Arg308=,Likely benign,Benign
+VCV001761795,10,87960896,.,.,synonymous,c.804C>T,p.Asp268=,Likely benign,Benign
+VCV001758153,10,87957947,.,.,synonymous,c.729C>T,p.Phe243=,Benign/Likely benign,Benign
+VCV001756916,10,87957923,.,.,synonymous,c.705A>G,p.Glu235=,Likely benign,Benign
+VCV001753827,10,87957866,.,.,synonymous,c.648G>T,p.Val216=,Likely benign,Benign
+VCV001751388,10,87952231,.,.,synonymous,c.606T>A,p.Thr202=,Likely benign,Benign
+VCV001748140,10,87952177,.,.,synonymous,c.552T>C,p.Asn184=,Likely benign,Benign
+VCV001747507,10,87965460,.,.,synonymous,c.1200T>A,p.Ile400=,Likely benign,Benign
+VCV001746704,10,87961109,.,.,synonymous,c.1017A>C,p.Pro339=,Likely benign,Benign
+VCV001743248,10,87933239,.,.,synonymous,c.480C>A,p.Thr160=,Likely benign,Benign
+VCV001741672,10,87894062,.,.,synonymous,c.117A>G,p.Ala39=,Benign/Likely benign,Benign
+VCV001737444,10,87933164,.,.,synonymous,c.405A>T,p.Ile135=,Likely benign,Benign
+VCV001736760,10,87965421,.,.,synonymous,c.1161A>C,p.Pro387=,Benign/Likely benign,Benign
+VCV001735874,10,87933147,.,.,synonymous,c.388C>A,p.Arg130=,Benign/Likely benign,Benign
+VCV001729713,10,87933086,.,.,synonymous,c.327C>T,p.Asp109=,Likely benign,Benign
+VCV001727566,10,87933068,.,.,synonymous,c.309C>T,p.Pro103=,Likely benign,Benign
+VCV001701142,10,87863957,.,.,intronic,c.-513G>C,,Benign/Likely benign,Benign
+VCV001697363,10,87952165,.,.,synonymous,c.540C>T,p.Tyr180=,Likely benign,Benign
+VCV001697362,10,87894137,.,.,intronic,c.164+28A>G,,Likely benign,Benign
+VCV001697360,10,87864157,.,.,intronic,c.-313A>C,,Likely benign,Benign
+VCV001697359,10,87863848,.,.,intronic,c.-622C>T,,Likely benign,Benign
+VCV001694567,10,87864217,.,.,intronic,c.-253G>C,,Likely benign,Benign
+VCV001692374,10,87863534,.,.,intronic,c.-935G>A,,Likely benign,Benign
+VCV001692370,10,87863893,.,.,intronic,c.-577C>T,,Likely benign,Benign
+VCV001692369,10,87864169,.,.,intronic,c.-301C>T,,Likely benign,Benign
+VCV001673033,10,87957995,.,.,synonymous,c.777C>T,p.His259=,Likely benign,Benign
+VCV001672390,10,87933242,.,.,synonymous,c.483A>G,p.Arg161=,Likely benign,Benign
+VCV001670585,10,87965412,.,.,synonymous,c.1152C>T,p.Asp384=,Benign/Likely benign,Benign
+VCV001667442,10,87933215,.,.,synonymous,c.456A>C,p.Leu152=,Benign/Likely benign,Benign
+VCV001665694,10,87952279,.,.,intronic,c.634+20A>G,,Likely benign,Benign
+VCV001660956,10,87931070,.,.,synonymous,c.234C>G,p.Thr78=,Likely benign,Benign
+VCV001653852,10,87931029,.,.,intronic,c.210-17T>A,,Likely benign,Benign
+VCV001652090,10,87894008,.,.,intronic,c.80-17T>G,,Likely benign,Benign
+VCV001652063,10,87960887,.,.,intronic,c.802-7T>G,,Likely benign,Benign
+VCV001648484,10,87933149,.,.,synonymous,c.390A>T,p.Arg130=,Likely benign,Benign
+VCV001647641,10,87931033,.,.,intronic,c.210-13A>G,,Likely benign,Benign
+VCV001646116,10,87933062,.,.,synonymous,c.303C>T,p.Ile101=,Benign/Likely benign,Benign
+VCV001642626,10,87864500,.,.,synonymous,c.31A>C,p.Arg11=,Likely benign,Benign
+VCV001638717,10,87958035,.,.,intronic,c.801+16T>C,,Likely benign,Benign
+VCV001632542,10,87960992,.,.,synonymous,c.900C>A,p.Ile300=,Benign/Likely benign,Benign
+VCV001626637,10,87933119,.,.,synonymous,c.360A>G,p.Ala120=,Benign/Likely benign,Benign
+VCV001626085,10,87925496,.,.,intronic,c.165-17G>T,,Likely benign,Benign
+VCV001625957,10,87957833,.,.,intronic,c.635-20G>A,,Likely benign,Benign
+VCV001619452,10,87952278,.,.,intronic,c.634+19C>T,,Likely benign,Benign
+VCV001613438,10,87952189,.,.,synonymous,c.564T>C,p.Tyr188=,Benign/Likely benign,Benign
+VCV001613303,10,87894009,.,.,intronic,c.80-16T>G,,Likely benign,Benign
+VCV001605748,10,87960975,.,.,synonymous,c.883C>T,p.Leu295=,Likely benign,Benign
+VCV001596972,10,87957842,.,.,intronic,c.635-11T>G,,Likely benign,Benign
+VCV001595940,10,87933001,.,.,intronic,c.254-12T>G,,Likely benign,Benign
+VCV001595549,10,87864526,.,.,synonymous,c.57T>C,p.Asp19=,Benign/Likely benign,Benign
+VCV001594029,10,87933179,.,.,synonymous,c.420A>G,p.Leu140=,Likely benign,Benign
+VCV001591196,10,87933068,.,.,synonymous,c.309C>G,p.Pro103=,Likely benign,Benign
+VCV001589600,10,87894129,.,.,intronic,c.164+20C>G,,Likely benign,Benign
+VCV001579335,10,87931029,.,.,intronic,c.210-17T>G,,Likely benign,Benign
+VCV001576465,10,87952266,.,.,intronic,c.634+7G>C,,Likely benign,Benign
+VCV001575718,10,87958038,.,.,intronic,c.801+19T>C,,Likely benign,Benign
+VCV001573834,10,87933203,.,.,synonymous,c.444A>T,p.Ala148=,Likely benign,Benign
+VCV001569208,10,87960977,.,.,synonymous,c.885A>C,p.Leu295=,Likely benign,Benign
+VCV001566336,10,87925537,.,.,synonymous,c.189C>T,p.Asn63=,Likely benign,Benign
+VCV001564721,10,87957902,.,.,synonymous,c.684T>C,p.Asn228=,Benign/Likely benign,Benign
+VCV001559299,10,87933038,.,.,synonymous,c.279T>C,p.His93=,Benign/Likely benign,Benign
+VCV001556355,10,87933002,.,.,intronic,c.254-11T>C,,Likely benign,Benign
+VCV001556116,10,87864563,.,.,intronic,c.79+15G>T,,Likely benign,Benign
+VCV001552538,10,87933260,.,.,intronic,c.492+9T>A,,Likely benign,Benign
+VCV001551628,10,87952272,.,.,intronic,c.634+13A>T,,Likely benign,Benign
+VCV001547985,10,87864563,.,.,intronic,c.79+15G>C,,Likely benign,Benign
+VCV001546262,10,87958004,.,.,synonymous,c.786C>T,p.Asn262=,Likely benign,Benign
+VCV001545375,10,87931106,.,.,intronic,c.253+17T>G,,Likely benign,Benign
+VCV001543965,10,87894032,.,.,synonymous,c.87T>C,p.Tyr29=,Benign/Likely benign,Benign
+VCV001543951,10,87894047,.,.,synonymous,c.102T>A,p.Ala34=,Conflicting classifications of pathogenicity,Pathogenic
+VCV001535115,10,87864557,.,.,intronic,c.79+9T>A,,Likely benign,Benign
+VCV001534984,10,87957950,.,.,synonymous,c.732T>C,p.Pro244=,Benign/Likely benign,Benign
+VCV001532739,10,87894015,.,.,intronic,c.80-10A>T,,Likely benign,Benign
+VCV001530345,10,87933191,.,.,synonymous,c.432A>G,p.Lys144=,Likely benign,Benign
+VCV001530344,10,87933185,.,.,synonymous,c.426G>A,p.Arg142=,Benign/Likely benign,Benign
+VCV001528694,10,87957974,.,.,synonymous,c.756T>C,p.Asp252=,Likely benign,Benign
+VCV001528120,10,87961085,.,.,synonymous,c.993C>T,p.Asp331=,Likely benign,Benign
+VCV001463027,10,87961091,.,.,synonymous,c.999C>T,p.Ala333=,Benign/Likely benign,Benign
+VCV001460594,10,87961121,.,.,intronic,c.1026+3C>T,,Likely benign,Benign
+VCV001337856,10,87862096,.,.,missense,c.392A>G,p.Asn131Ser,Benign/Likely benign,Benign
+VCV001337818,10,87862043,.,.,missense,c.445T>A,p.Trp149Arg,Benign/Likely benign,Benign
+VCV001337087,10,87862430,.,.,intronic,c.-2039A>G,,Likely benign,Benign
+VCV001337086,10,87862431,.,.,intronic,c.-2038A>G,,Likely benign,Benign
+VCV001336781,10,87864254,.,.,intronic,c.-216C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001332661,10,87957842,.,.,intronic,c.635-11T>C,,Likely benign,Benign
+VCV001332364,10,87894010,.,.,intronic,c.80-15A>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001330509,10,87864157,.,.,intronic,c.-313A>T,,Likely benign,Benign
+VCV001298492,10,87864181,.,.,intronic,c.-289G>A,,Likely benign,Benign
+VCV001284449,10,87864009,.,.,intronic,c.-461G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001262961,10,87863444,.,.,other,,,Benign,Benign
+VCV001262710,10,87925633,.,.,intronic,c.209+76A>C,,Benign,Benign
+VCV001260306,10,87932976,.,.,intronic,c.254-37T>C,,Benign,Benign
+VCV001245322,10,87961337,.,.,intronic,c.1026+219C>T,,Benign,Benign
+VCV001220191,10,87960871,.,.,intronic,c.802-23C>T,,Likely benign,Benign
+VCV001191461,10,87965688,.,.,other,c.*216A>G,,Likely benign,Benign
+VCV001181945,10,87952395,.,.,intronic,c.634+136G>A,,Benign,Benign
+VCV001174734,10,87862106,.,.,missense,c.382C>G,p.Arg128Gly,Benign/Likely benign,Benign
+VCV001159948,10,87933260,.,.,intronic,c.492+9T>C,,Likely benign,Benign
+VCV001153033,10,87894053,.,.,synonymous,c.108A>G,p.Gly36=,Likely benign,Benign
+VCV001152631,10,87931082,.,.,synonymous,c.246T>C,p.Asn82=,Likely benign,Benign
+VCV001146931,10,87957932,.,.,synonymous,c.714C>T,p.Phe238=,Likely benign,Benign
+VCV001142042,10,87961004,.,.,synonymous,c.912C>T,p.Cys304=,Benign/Likely benign,Benign
+VCV001140735,10,87894021,.,.,intronic,c.80-4T>C,,Likely benign,Benign
+VCV001140463,10,87957846,.,.,intronic,c.635-7C>T,,Likely benign,Benign
+VCV001138458,10,87931036,.,.,intronic,c.210-10T>C,,Likely benign,Benign
+VCV001137872,10,87931038,.,.,intronic,c.210-8T>C,,Likely benign,Benign
+VCV001137796,10,87864508,.,.,synonymous,c.39A>G,p.Lys13=,Likely benign,Benign
+VCV001134280,10,87931096,.,.,intronic,c.253+7A>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV001129736,10,87925549,.,.,synonymous,c.201A>T,p.Ile67=,Likely benign,Benign
+VCV001126632,10,87894119,.,.,intronic,c.164+10C>T,,Likely benign,Benign
+VCV001126148,10,87960962,.,.,synonymous,c.870A>C,p.Val290=,Likely benign,Benign
+VCV001120948,10,87961076,.,.,synonymous,c.984A>G,p.Ala328=,Likely benign,Benign
+VCV001119572,10,87933006,.,.,intronic,c.254-7A>G,,Likely benign,Benign
+VCV001118243,10,87965403,.,.,synonymous,c.1143C>T,p.Asp381=,Benign/Likely benign,Benign
+VCV001117013,10,87965280,.,.,intronic,c.1027-7T>C,,Likely benign,Benign
+VCV001116891,10,87933140,.,.,synonymous,c.381A>C,p.Gly127=,Likely benign,Benign
+VCV001115301,10,87925505,.,.,intronic,c.165-8G>A,,Likely benign,Benign
+VCV001114109,10,87965361,.,.,synonymous,c.1101A>G,p.Pro367=,Likely benign,Benign
+VCV001112277,10,87960929,.,.,synonymous,c.837C>T,p.Phe279=,Benign/Likely benign,Benign
+VCV001110738,10,87933032,.,.,synonymous,c.273A>G,p.Glu91=,Benign/Likely benign,Benign
+VCV001110431,10,87933146,.,.,synonymous,c.387A>G,p.Gly129=,Likely benign,Benign
+VCV001108328,10,87864481,.,.,synonymous,c.12C>T,p.Ile4=,Likely benign,Benign
+VCV001107976,10,87965298,.,.,synonymous,c.1038C>T,p.Tyr346=,Likely benign,Benign
+VCV001101588,10,87952126,.,.,synonymous,c.501T>C,p.Thr167=,Benign/Likely benign,Benign
+VCV001097596,10,87965469,.,.,synonymous,c.1209C>G,p.Val403=,Likely benign,Benign
+VCV001095875,10,87960959,.,.,synonymous,c.867A>G,p.Lys289=,Benign/Likely benign,Benign
+VCV001094776,10,87961049,.,.,synonymous,c.957T>C,p.Thr319=,Likely benign,Benign
+VCV001093857,10,87952181,.,.,synonymous,c.556C>T,p.Leu186=,Likely benign,Benign
+VCV001093821,10,87965278,.,.,intronic,c.1027-9T>C,,Likely benign,Benign
+VCV001091264,10,87957854,.,.,synonymous,c.636T>C,p.Asn212=,Likely benign,Benign
+VCV001088256,10,87960944,.,.,synonymous,c.852G>A,p.Glu284=,Likely benign,Benign
+VCV001088177,10,87961025,.,.,synonymous,c.933T>C,p.Asn311=,Benign/Likely benign,Benign
+VCV001087600,10,87931079,.,.,synonymous,c.243T>C,p.Phe81=,Likely benign,Benign
+VCV001087392,10,87965415,.,.,synonymous,c.1155T>C,p.Ser385=,Benign/Likely benign,Benign
+VCV001087247,10,87933110,.,.,synonymous,c.351T>C,p.Asn117=,Benign/Likely benign,Benign
+VCV001085522,10,87965304,.,.,synonymous,c.1044A>G,p.Thr348=,Benign/Likely benign,Benign
+VCV001084665,10,87960995,.,.,synonymous,c.903T>C,p.Asp301=,Benign/Likely benign,Benign
+VCV001078708,10,87933212,.,.,synonymous,c.453C>T,p.Ala151=,Likely benign,Benign
+VCV001077370,10,87960926,.,.,synonymous,c.834C>T,p.Phe278=,Likely benign,Benign
+VCV001040098,10,87894119,.,.,intronic,c.164+10C>G,,Likely benign,Benign
+VCV001009027,10,87952112,.,.,intronic,c.493-6C>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000993646,10,87925654,.,.,intronic,c.209+97T>C,,Likely benign,Benign
+VCV000993121,10,87960917,.,.,synonymous,c.825A>G,p.Val275=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000993088,10,87952207,.,.,synonymous,c.582G>A,p.Leu194=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000928678,10,87952231,.,.,synonymous,c.606T>C,p.Thr202=,Benign/Likely benign,Benign
+VCV000928615,10,87957845,.,.,intronic,c.635-8C>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000928468,10,87965279,.,.,intronic,c.1027-8T>C,,Likely benign,Benign
+VCV000928467,10,87960881,.,.,intronic,c.802-13T>C,,Likely benign,Benign
+VCV000928375,10,87965281,.,.,intronic,c.1027-6C>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000928281,10,87931085,.,.,synonymous,c.249C>T,p.Cys83=,Likely benign,Benign
+VCV000927719,10,87965469,.,.,synonymous,c.1209C>T,p.Val403=,Likely benign,Benign
+VCV000927527,10,87965334,.,.,synonymous,c.1074G>A,p.Glu358=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000927311,10,87894068,.,.,synonymous,c.123A>G,p.Arg41=,Likely benign,Benign
+VCV000927285,10,87864532,.,.,synonymous,c.63C>T,p.Phe21=,Benign/Likely benign,Benign
+VCV000926985,10,87864562,.,.,intronic,c.79+14C>T,,Likely benign,Benign
+VCV000926445,10,87952237,.,.,synonymous,c.612A>C,p.Pro204=,Benign/Likely benign,Benign
+VCV000926380,10,87952109,.,.,intronic,c.493-9G>A,,Likely benign,Benign
+VCV000926277,10,87961013,.,.,synonymous,c.921G>A,p.Glu307=,Benign/Likely benign,Benign
+VCV000925898,10,87933209,.,.,synonymous,c.450G>A,p.Glu150=,Benign/Likely benign,Benign
+VCV000923233,10,87933203,.,.,synonymous,c.444A>G,p.Ala148=,Benign/Likely benign,Benign
+VCV000923125,10,87931006,.,.,intronic,c.210-40C>T,,Likely benign,Benign
+VCV000922853,10,87931034,.,.,intronic,c.210-12C>A,,Likely benign,Benign
+VCV000922502,10,87965307,.,.,synonymous,c.1047A>G,p.Lys349=,Likely benign,Benign
+VCV000922380,10,87894047,.,.,synonymous,c.102T>C,p.Ala34=,Likely benign,Benign
+VCV000921791,10,87925493,.,.,intronic,c.165-20T>C,,Likely benign,Benign
+VCV000921211,10,87933266,.,.,intronic,c.492+15G>T,,Likely benign,Benign
+VCV000921175,10,87933265,.,.,intronic,c.492+14T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000921070,10,87933259,.,.,intronic,c.492+8A>G,,Likely benign,Benign
+VCV000920830,10,87958038,.,.,intronic,c.801+19T>A,,Likely benign,Benign
+VCV000919579,10,87952213,.,.,synonymous,c.588C>T,p.His196=,Likely benign,Benign
+VCV000918809,10,87961038,.,.,synonymous,c.946C>T,p.Leu316=,Benign/Likely benign,Benign
+VCV000918525,10,87933221,.,.,synonymous,c.462C>T,p.Phe154=,Benign/Likely benign,Benign
+VCV000918379,10,87952258,.,.,synonymous,c.633C>T,p.Cys211=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000879353,10,87966500,.,.,other,c.*1028T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000878766,10,87966442,.,.,other,c.*970C>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000877771,10,87967167,.,.,other,c.*1695C>A,,Benign,Benign
+VCV000873423,10,87868777,.,.,intronic,c.79+4229A>T,,Benign,Benign
+VCV000873422,10,87940665,.,.,intronic,c.492+7414A>G,,Benign,Benign
+VCV000844592,10,87925509,.,.,intronic,c.165-4T>G,,Likely benign,Benign
+VCV000827320,10,87864547,.,.,synonymous,c.78C>G,p.Thr26=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000826397,10,87957860,.,.,synonymous,c.642G>A,p.Gln214=,Likely benign,Benign
+VCV000825719,10,87952166,.,.,synonymous,c.541C>T,p.Leu181=,Likely benign,Benign
+VCV000825402,10,87952129,.,.,synonymous,c.504T>A,p.Ile168=,Benign/Likely benign,Benign
+VCV000824766,10,87933188,.,.,synonymous,c.429C>T,p.Gly143=,Benign/Likely benign,Benign
+VCV000823245,10,87961034,.,.,synonymous,c.942A>G,p.Glu314=,Benign/Likely benign,Benign
+VCV000822663,10,87960960,.,.,missense,c.868G>C,p.Val290Leu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000822154,10,87965355,.,.,synonymous,c.1095A>G,p.Val365=,Benign/Likely benign,Benign
+VCV000822093,10,87965346,.,.,synonymous,c.1086A>G,p.Ser362=,Benign/Likely benign,Benign
+VCV000821476,10,87933014,.,.,synonymous,c.255T>C,p.Val85=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000821448,10,87933008,.,.,intronic,c.254-5C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000821392,10,87864493,.,.,synonymous,c.24C>T,p.Ile8=,Benign/Likely benign,Benign
+VCV000819569,10,87894101,.,.,synonymous,c.156T>C,p.Asp52=,Likely benign,Benign
+VCV000811630,10,87952076,.,.,intronic,c.493-42A>G,,Benign,Benign
+VCV000811210,10,87932951,.,.,intronic,c.254-62A>C,,Likely benign,Benign
+VCV000802610,10,87960860,.,.,intronic,c.802-34C>A,,Likely benign,Benign
+VCV000802609,10,87952091,.,.,intronic,c.493-27G>T,,Likely benign,Benign
+VCV000802608,10,87933282,.,.,intronic,c.492+31T>C,,Likely benign,Benign
+VCV000802607,10,87932990,.,.,intronic,c.254-23C>T,,Benign,Benign
+VCV000802606,10,87932987,.,.,intronic,c.254-26A>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000802605,10,87932984,.,.,intronic,c.254-29C>T,,Benign,Benign
+VCV000802604,10,87932979,.,.,intronic,c.254-34T>G,,Benign/Likely benign,Benign
+VCV000802603,10,87925641,.,.,intronic,c.209+84G>A,,Benign/Likely benign,Benign
+VCV000802602,10,87864190,.,.,intronic,c.-280C>T,,Likely benign,Benign
+VCV000798997,10,87952180,.,.,synonymous,c.555T>C,p.His185=,Benign/Likely benign,Benign
+VCV000798672,10,87933113,.,.,synonymous,c.354T>C,p.His118=,Benign/Likely benign,Benign
+VCV000798507,10,87952192,.,.,synonymous,c.567A>G,p.Arg189=,Benign/Likely benign,Benign
+VCV000798333,10,87960971,.,.,synonymous,c.879A>G,p.Gly293=,Likely benign,Benign
+VCV000797957,10,87933258,.,.,intronic,c.492+7T>C,,Likely benign,Benign
+VCV000796069,10,87960950,.,.,synonymous,c.858C>T,p.Thr286=,Benign/Likely benign,Benign
+VCV000794497,10,87957896,.,.,synonymous,c.678C>G,p.Ser226=,Benign/Likely benign,Benign
+VCV000792662,10,87957962,.,.,synonymous,c.744T>C,p.Pro248=,Likely benign,Benign
+VCV000765965,10,87960884,.,.,intronic,c.802-10T>C,,Likely benign,Benign
+VCV000764606,10,87864514,.,.,synonymous,c.45A>G,p.Arg15=,Benign/Likely benign,Benign
+VCV000762545,10,87961095,.,.,synonymous,c.1003C>A,p.Arg335=,Likely benign,Benign
+VCV000762195,10,87894062,.,.,synonymous,c.117A>C,p.Ala39=,Likely benign,Benign
+VCV000762169,10,87961125,.,.,intronic,c.1026+7T>A,,Likely benign,Benign
+VCV000760644,10,87957983,.,.,synonymous,c.765A>G,p.Val255=,Likely benign,Benign
+VCV000760399,10,87894074,.,.,synonymous,c.129A>G,p.Glu43=,Benign/Likely benign,Benign
+VCV000760118,10,87957926,.,.,synonymous,c.708C>T,p.Asp236=,Benign/Likely benign,Benign
+VCV000759715,10,87894077,.,.,synonymous,c.132C>A,p.Gly44=,Benign/Likely benign,Benign
+VCV000759189,10,87894080,.,.,synonymous,c.135A>G,p.Val45=,Benign/Likely benign,Benign
+VCV000758284,10,87952168,.,.,synonymous,c.543G>C,p.Leu181=,Likely benign,Benign
+VCV000758040,10,87933155,.,.,synonymous,c.396T>C,p.Gly132=,Benign/Likely benign,Benign
+VCV000756810,10,87933239,.,.,synonymous,c.480C>T,p.Thr160=,Benign/Likely benign,Benign
+VCV000754704,10,87931042,.,.,intronic,c.210-4T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000750929,10,87961097,.,.,synonymous,c.1005A>T,p.Arg335=,Benign/Likely benign,Benign
+VCV000750508,10,87933182,.,.,synonymous,c.423T>C,p.His141=,Benign/Likely benign,Benign
+VCV000747424,10,87957917,.,.,synonymous,c.699A>G,p.Arg233=,Benign/Likely benign,Benign
+VCV000737570,10,87952268,.,.,intronic,c.634+9T>C,,Likely benign,Benign
+VCV000733239,10,87957843,.,.,intronic,c.635-10A>G,,Likely benign,Benign
+VCV000718232,10,87933041,.,.,synonymous,c.282C>T,p.Asn94=,Likely benign,Benign
+VCV000707788,10,87960890,.,.,intronic,c.802-4T>C,,Likely benign,Benign
+VCV000697304,10,87894116,.,.,intronic,c.164+7A>G,,Likely benign,Benign
+VCV000682576,10,87933101,.,.,synonymous,c.342A>G,p.Glu114=,Benign/Likely benign,Benign
+VCV000679770,10,87932697,.,.,intronic,c.254-316T>C,,Benign,Benign
+VCV000679728,10,87933543,.,.,intronic,c.492+292T>C,,Benign,Benign
+VCV000677795,10,87933468,.,.,intronic,c.492+217C>T,,Benign,Benign
+VCV000677729,10,87960687,.,.,intronic,c.802-207T>C,,Benign,Benign
+VCV000665362,10,87961124,.,.,intronic,c.1026+6T>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000631428,10,87958037,.,.,intronic,c.801+18A>T,,Benign/Likely benign,Benign
+VCV000631411,10,87864502,.,.,synonymous,c.33A>G,p.Arg11=,Benign/Likely benign,Benign
+VCV000631352,10,87952273,.,.,intronic,c.634+14A>T,,Likely benign,Benign
+VCV000631118,10,87894017,.,.,intronic,c.80-8G>A,,Likely benign,Benign
+VCV000630754,10,87933200,.,.,synonymous,c.441G>A,p.Lys147=,Benign/Likely benign,Benign
+VCV000630692,10,87931049,.,.,synonymous,c.213T>C,p.Cys71=,Likely benign,Benign
+VCV000630077,10,87960953,.,.,synonymous,c.861A>G,p.Ser287=,Benign/Likely benign,Benign
+VCV000629835,10,87965473,.,.,other,c.*1A>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000628945,10,87894007,.,.,intronic,c.80-18C>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000628709,10,87960974,.,.,synonymous,c.882T>C,p.Ser294=,Likely benign,Benign
+VCV000628466,10,87958033,.,.,intronic,c.801+14T>C,,Likely benign,Benign
+VCV000628239,10,87965295,.,.,synonymous,c.1035G>A,p.Leu345=,Benign/Likely benign,Benign
+VCV000628213,10,87933167,.,.,synonymous,c.408T>C,p.Cys136=,Benign/Likely benign,Benign
+VCV000628202,10,87933125,.,.,synonymous,c.366T>C,p.Ile122=,Likely benign,Benign
+VCV000628163,10,87864559,.,.,intronic,c.79+11C>T,,Likely benign,Benign
+VCV000628046,10,87864460,.,.,intronic,c.-10G>A,,Likely benign,Benign
+VCV000627851,10,87952104,.,.,intronic,c.493-14T>C,,Likely benign,Benign
+VCV000627837,10,87932974,.,.,intronic,c.254-39G>A,,Likely benign,Benign
+VCV000627805,10,87933050,.,.,synonymous,c.291G>A,p.Gln97=,Benign/Likely benign,Benign
+VCV000548913,10,87931034,.,.,intronic,c.210-12C>T,,Likely benign,Benign
+VCV000548830,10,87957837,.,.,intronic,c.635-16G>A,,Benign/Likely benign,Benign
+VCV000536573,10,87864475,.,.,synonymous,c.6A>C,p.Thr2=,Benign/Likely benign,Benign
+VCV000536571,10,87952201,.,.,synonymous,c.576A>G,p.Ala192=,Benign/Likely benign,Benign
+VCV000536570,10,87965352,.,.,synonymous,c.1092T>G,p.Ser364=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000536569,10,87894019,.,.,intronic,c.80-6A>G,,Likely benign,Benign
+VCV000536568,10,87957959,.,.,synonymous,c.741A>G,p.Leu247=,Likely benign,Benign
+VCV000536567,10,87958013,.,.,synonymous,c.795A>C,p.Leu265=,Benign/Likely benign,Benign
+VCV000536566,10,87925567,.,.,intronic,c.209+10T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000536565,10,87965301,.,.,synonymous,c.1041C>T,p.Phe347=,Benign/Likely benign,Benign
+VCV000536564,10,87957899,.,.,synonymous,c.681C>T,p.Ser227=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000536563,10,87958026,.,.,intronic,c.801+7A>T,,Likely benign,Benign
+VCV000536562,10,87952112,.,.,intronic,c.493-6C>T,,Likely benign,Benign
+VCV000515681,10,87933128,.,.,synonymous,c.369C>T,p.His123=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000515054,10,87952105,.,.,intronic,c.493-13T>C,,Likely benign,Benign
+VCV000512857,10,87952099,.,.,intronic,c.493-19T>C,,Likely benign,Benign
+VCV000512488,10,87957929,.,.,synonymous,c.711G>A,p.Lys237=,Benign/Likely benign,Benign
+VCV000506559,10,87952138,.,.,synonymous,c.513G>A,p.Gln171=,Likely benign,Benign
+VCV000495813,10,87863533,.,.,intronic,c.-936G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000492735,10,87965550,.,.,other,c.*78T>G,,Likely benign,Benign
+VCV000492728,10,87925564,.,.,intronic,c.209+7A>G,,Likely benign,Benign
+VCV000492724,10,87864180,.,.,intronic,c.-290A>T,,Likely benign,Benign
+VCV000492351,10,87864478,.,.,synonymous,c.9C>T,p.Ala3=,Likely benign,Benign
+VCV000492349,10,87960935,.,.,synonymous,c.843A>G,p.Pro281=,Benign/Likely benign,Benign
+VCV000492347,10,87894006,.,.,intronic,c.80-19C>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000492346,10,87894011,.,.,intronic,c.80-14A>T,,Likely benign,Benign
+VCV000492345,10,87958013,.,.,synonymous,c.795A>G,p.Leu265=,Likely benign,Benign
+VCV000492342,10,87864564,.,.,intronic,c.79+16G>C,,Likely benign,Benign
+VCV000492338,10,87957944,.,.,synonymous,c.726G>A,p.Glu242=,Benign/Likely benign,Benign
+VCV000492336,10,87957834,.,.,intronic,c.635-19T>C,,Likely benign,Benign
+VCV000492335,10,87952249,.,.,synonymous,c.624C>T,p.Gly208=,Benign/Likely benign,Benign
+VCV000492334,10,87952204,.,.,synonymous,c.579G>C,p.Leu193=,Benign/Likely benign,Benign
+VCV000492323,10,87932973,.,.,intronic,c.254-40A>G,,Likely benign,Benign
+VCV000492321,10,87925564,.,.,intronic,c.209+7A>T,,Likely benign,Benign
+VCV000492319,10,87925509,.,.,intronic,c.165-4T>C,,Likely benign,Benign
+VCV000492317,10,87965397,.,.,synonymous,c.1137T>C,p.Tyr379=,Benign/Likely benign,Benign
+VCV000492316,10,87965394,.,.,synonymous,c.1134A>G,p.Arg378=,Likely benign,Benign
+VCV000492313,10,87965289,.,.,synonymous,c.1029G>A,p.Val343=,Benign/Likely benign,Benign
+VCV000492312,10,87965281,.,.,intronic,c.1027-6C>T,,Likely benign,Benign
+VCV000492311,10,87961138,.,.,intronic,c.1026+20T>G,,Benign/Likely benign,Benign
+VCV000492308,10,87864456,.,.,intronic,c.-14A>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000490115,10,87957846,.,.,intronic,c.635-7C>A,,Likely benign,Benign
+VCV000486229,10,87925560,.,.,intronic,c.209+3A>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000486224,10,87965352,.,.,synonymous,c.1092T>C,p.Ser364=,Benign/Likely benign,Benign
+VCV000486223,10,87957905,.,.,synonymous,c.687A>G,p.Ser229=,Likely benign,Benign
+VCV000484628,10,87961040,.,.,synonymous,c.948A>G,p.Leu316=,Benign/Likely benign,Benign
+VCV000484621,10,87957986,.,.,synonymous,c.768G>A,p.Glu256=,Benign/Likely benign,Benign
+VCV000484615,10,87933023,.,.,synonymous,c.264T>C,p.Tyr88=,Benign/Likely benign,Benign
+VCV000484612,10,87965433,.,.,synonymous,c.1173T>G,p.Pro391=,Benign/Likely benign,Benign
+VCV000484602,10,87957915,.,.,synonymous,c.697C>A,p.Arg233=,Benign/Likely benign,Benign
+VCV000482076,10,87961109,.,.,synonymous,c.1017A>G,p.Pro339=,Benign/Likely benign,Benign
+VCV000482075,10,87925528,.,.,synonymous,c.180G>A,p.Lys60=,Benign/Likely benign,Benign
+VCV000482072,10,87952198,.,.,synonymous,c.573G>A,p.Val191=,Benign/Likely benign,Benign
+VCV000482070,10,87933047,.,.,synonymous,c.288A>G,p.Pro96=,Benign/Likely benign,Benign
+VCV000481156,10,87952202,.,.,synonymous,c.577C>T,p.Leu193=,Likely benign,Benign
+VCV000481057,10,87933116,.,.,synonymous,c.357T>G,p.Val119=,Benign/Likely benign,Benign
+VCV000481024,10,87894089,.,.,synonymous,c.144C>T,p.Asn48=,Benign/Likely benign,Benign
+VCV000480859,10,87894038,.,.,synonymous,c.93C>T,p.Asn31=,Benign/Likely benign,Benign
+VCV000480385,10,87965391,.,.,synonymous,c.1131T>C,p.Tyr377=,Benign/Likely benign,Benign
+VCV000480384,10,87925543,.,.,synonymous,c.195C>T,p.Tyr65=,Benign/Likely benign,Benign
+VCV000480379,10,87931067,.,.,synonymous,c.231C>T,p.Asp77=,Benign/Likely benign,Benign
+VCV000468718,10,87960920,.,.,synonymous,c.828T>C,p.Asn276=,Likely benign,Benign
+VCV000468714,10,87864547,.,.,synonymous,c.78C>A,p.Thr26=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468712,10,87957971,.,.,synonymous,c.753T>A,p.Gly251=,Likely benign,Benign
+VCV000468710,10,87864541,.,.,synonymous,c.72C>T,p.Asp24=,Benign/Likely benign,Benign
+VCV000468707,10,87957878,.,.,synonymous,c.660A>C,p.Leu220=,Benign/Likely benign,Benign
+VCV000468700,10,87952210,.,.,synonymous,c.585T>C,p.Phe195=,Benign/Likely benign,Benign
+VCV000468699,10,87952204,.,.,synonymous,c.579G>T,p.Leu193=,Benign/Likely benign,Benign
+VCV000468697,10,87864523,.,.,synonymous,c.54G>A,p.Glu18=,Benign/Likely benign,Benign
+VCV000468696,10,87952150,.,.,synonymous,c.525G>C,p.Val175=,Benign/Likely benign,Benign
+VCV000468693,10,87952109,.,.,intronic,c.493-9G>T,,Likely benign,Benign
+VCV000468691,10,87933258,.,.,intronic,c.492+7T>G,,Likely benign,Benign
+VCV000468677,10,87933003,.,.,intronic,c.254-10T>C,,Likely benign,Benign
+VCV000468669,10,87965367,.,.,synonymous,c.1107T>C,p.Val369=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000468668,10,87961127,.,.,intronic,c.1026+9A>C,,Likely benign,Benign
+VCV000468667,10,87961128,.,.,intronic,c.1026+10A>G,,Likely benign,Benign
+VCV000440222,10,87931155,.,.,intronic,c.253+66A>G,,Benign,Benign
+VCV000440219,10,87893929,.,.,intronic,c.80-96A>G,,Benign,Benign
+VCV000440217,10,87864144,.,.,intronic,c.-326G>C,,Benign,Benign
+VCV000439288,10,87930999,.,.,intronic,c.210-47C>T,,Likely benign,Benign
+VCV000428227,10,87933107,.,.,synonymous,c.348C>T,p.Asp116=,Benign/Likely benign,Benign
+VCV000427631,10,87952087,.,.,intronic,c.493-31A>G,,Benign,Benign
+VCV000420786,10,87965479,.,.,other,c.*7T>G,,Benign/Likely benign,Benign
+VCV000412809,10,87965376,.,.,synonymous,c.1116T>C,p.Asn372=,Likely benign,Benign
+VCV000412808,10,87925506,.,.,intronic,c.165-7T>C,,Likely benign,Benign
+VCV000412806,10,87965310,.,.,synonymous,c.1050A>G,p.Thr350=,Benign/Likely benign,Benign
+VCV000412804,10,87958001,.,.,synonymous,c.783G>A,p.Gln261=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000412803,10,87960971,.,.,synonymous,c.879A>C,p.Gly293=,Benign/Likely benign,Benign
+VCV000412800,10,87957965,.,.,synonymous,c.747G>A,p.Val249=,Benign/Likely benign,Benign
+VCV000412799,10,87958028,.,.,intronic,c.801+9T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000412798,10,87961073,.,.,synonymous,c.981A>G,p.Lys327=,Benign/Likely benign,Benign
+VCV000392623,10,87965385,.,.,synonymous,c.1125T>C,p.Asp375=,Benign/Likely benign,Benign
+VCV000391233,10,87965430,.,.,synonymous,c.1170A>G,p.Glu390=,Benign/Likely benign,Benign
+VCV000391121,10,87965421,.,.,synonymous,c.1161A>G,p.Pro387=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000388560,10,87925496,.,.,intronic,c.165-17G>C,,Likely benign,Benign
+VCV000388506,10,87933265,.,.,intronic,c.492+14T>A,,Likely benign,Benign
+VCV000386631,10,87952114,.,.,intronic,c.493-4C>T,,Likely benign,Benign
+VCV000386304,10,87952276,.,.,intronic,c.634+17C>T,,Likely benign,Benign
+VCV000385643,10,87952153,.,.,synonymous,c.528T>C,p.Tyr176=,Benign/Likely benign,Benign
+VCV000385642,10,87960888,.,.,intronic,c.802-6T>G,,Likely benign,Benign
+VCV000384791,10,87933267,.,.,intronic,c.492+16A>G,,Likely benign,Benign
+VCV000384657,10,87894014,.,.,intronic,c.80-11A>G,,Benign/Likely benign,Benign
+VCV000383798,10,87965275,.,.,intronic,c.1027-12T>G,,Likely benign,Benign
+VCV000383529,10,87894121,.,.,intronic,c.164+12T>C,,Likely benign,Benign
+VCV000381929,10,87931040,.,.,intronic,c.210-6T>C,,Likely benign,Benign
+VCV000381346,10,87864458,.,.,intronic,c.-12A>T,,Likely benign,Benign
+VCV000380746,10,87957893,.,.,synonymous,c.675T>C,p.Tyr225=,Benign/Likely benign,Benign
+VCV000380564,10,87931052,.,.,synonymous,c.216T>C,p.Ala72=,Benign/Likely benign,Benign
+VCV000380538,10,87931070,.,.,synonymous,c.234C>A,p.Thr78=,Benign/Likely benign,Benign
+VCV000380344,10,87958034,.,.,intronic,c.801+15T>C,,Likely benign,Benign
+VCV000380307,10,87932996,.,.,intronic,c.254-17T>G,,Likely benign,Benign
+VCV000379793,10,87931037,.,.,intronic,c.210-9T>C,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000379703,10,87957847,.,.,intronic,c.635-6A>G,,Likely benign,Benign
+VCV000379538,10,87931103,.,.,intronic,c.253+14T>A,,Likely benign,Benign
+VCV000379202,10,87933007,.,.,intronic,c.254-6C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000379201,10,87925574,.,.,intronic,c.209+17A>G,,Likely benign,Benign
+VCV000379087,10,87931058,.,.,synonymous,c.222A>G,p.Arg74=,Benign/Likely benign,Benign
+VCV000378970,10,87957835,.,.,intronic,c.635-18A>G,,Likely benign,Benign
+VCV000378934,10,87960877,.,.,intronic,c.802-17T>C,,Likely benign,Benign
+VCV000378918,10,87933176,.,.,synonymous,c.417A>G,p.Leu139=,Benign/Likely benign,Benign
+VCV000378442,10,87965270,.,.,intronic,c.1027-17A>T,,Likely benign,Benign
+VCV000378441,10,87960885,.,.,intronic,c.802-9T>G,,Likely benign,Benign
+VCV000378440,10,87957839,.,.,intronic,c.635-14A>G,,Likely benign,Benign
+VCV000378439,10,87933203,.,.,synonymous,c.444A>C,p.Ala148=,Benign/Likely benign,Benign
+VCV000372052,10,87958027,.,.,intronic,c.801+8C>G,,Likely benign,Benign
+VCV000372041,10,87931020,.,.,intronic,c.210-26A>T,,Likely benign,Benign
+VCV000372033,10,87931020,.,.,intronic,c.210-26A>G,,Likely benign,Benign
+VCV000371877,10,87931029,.,.,intronic,c.210-17T>C,,Likely benign,Benign
+VCV000301490,10,87967909,.,.,other,c.*2437A>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301489,10,87967887,.,.,other,c.*2415C>G,,Benign,Benign
+VCV000301483,10,87967657,.,.,other,c.*2185C>T,,Benign,Benign
+VCV000301482,10,87967645,.,.,other,c.*2173C>T,,Benign,Benign
+VCV000301481,10,87967634,.,.,other,c.*2162A>G,,Benign,Benign
+VCV000301477,10,87967427,.,.,other,c.*1955T>A,,Benign,Benign
+VCV000301476,10,87967426,.,.,other,c.*1954A>T,,Benign,Benign
+VCV000301475,10,87967417,.,.,other,c.*1945G>A,,Benign,Benign
+VCV000301472,10,87967174,.,.,other,c.*1702G>A,,Benign/Likely benign,Benign
+VCV000301470,10,87967092,.,.,other,c.*1620T>C,,Benign/Likely benign,Benign
+VCV000301468,10,87967055,.,.,other,c.*1583G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301465,10,87967037,.,.,other,c.*1565C>A,,Benign,Benign
+VCV000301463,10,87966988,.,.,other,c.*1516T>C,,Benign,Benign
+VCV000301462,10,87966971,.,.,other,c.*1499C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301449,10,87966709,.,.,other,c.*1237A>G,,Benign,Benign
+VCV000301440,10,87966260,.,.,other,c.*788T>C,,Benign,Benign
+VCV000301439,10,87966139,.,.,other,c.*667A>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301434,10,87966073,.,.,other,c.*601A>G,,Likely benign,Benign
+VCV000301430,10,87965893,.,.,other,c.*421T>C,,Likely benign,Benign
+VCV000301429,10,87965825,.,.,other,c.*353C>T,,Benign,Benign
+VCV000301428,10,87965754,.,.,other,c.*282G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301421,10,87864359,.,.,intronic,c.-111G>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301420,10,87864349,.,.,intronic,c.-121A>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301419,10,87864318,.,.,intronic,c.-152A>G,,Benign,Benign
+VCV000301416,10,87864224,.,.,intronic,c.-246C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000301415,10,87864186,.,.,intronic,c.-284C>T,,Benign,Benign
+VCV000301409,10,87863958,.,.,intronic,c.-512G>A,,Benign,Benign
+VCV000301407,10,87863936,.,.,intronic,c.-534G>T,,Likely benign,Benign
+VCV000255815,10,87961052,.,.,synonymous,c.960A>G,p.Leu320=,Benign,Benign
+VCV000255814,10,87957869,.,.,synonymous,c.651C>T,p.Val217=,Likely benign,Benign
+VCV000255812,10,87931007,.,.,intronic,c.210-39A>G,,Benign,Benign
+VCV000237657,10,87961031,.,.,synonymous,c.939G>A,p.Lys313=,Benign/Likely benign,Benign
+VCV000237655,10,87961001,.,.,synonymous,c.909T>A,p.Ile303=,Benign/Likely benign,Benign
+VCV000237653,10,87957977,.,.,synonymous,c.759C>A,p.Ile253=,Likely benign,Benign
+VCV000237647,10,87933185,.,.,synonymous,c.426G>C,p.Arg142=,Benign/Likely benign,Benign
+VCV000237642,10,87925525,.,.,synonymous,c.177A>G,p.Ser59=,Benign/Likely benign,Benign
+VCV000237641,10,87925504,.,.,intronic,c.165-9T>G,,Likely benign,Benign
+VCV000233741,10,87933206,.,.,synonymous,c.447A>G,p.Gln149=,Benign/Likely benign,Benign
+VCV000233644,10,87960962,.,.,synonymous,c.870A>G,p.Val290=,Benign/Likely benign,Benign
+VCV000233492,10,87960950,.,.,synonymous,c.858C>G,p.Thr286=,Benign/Likely benign,Benign
+VCV000233415,10,87864487,.,.,synonymous,c.18A>G,p.Lys6=,Likely benign,Benign
+VCV000232812,10,87933053,.,.,synonymous,c.294A>G,p.Leu98=,Benign/Likely benign,Benign
+VCV000232796,10,87961043,.,.,synonymous,c.951A>C,p.Val317=,Benign/Likely benign,Benign
+VCV000232768,10,87925531,.,.,synonymous,c.183T>C,p.His61=,Benign/Likely benign,Benign
+VCV000232679,10,87961103,.,.,synonymous,c.1011T>C,p.Phe337=,Benign/Likely benign,Benign
+VCV000232432,10,87960908,.,.,synonymous,c.816C>T,p.His272=,Benign/Likely benign,Benign
+VCV000231929,10,87960923,.,.,synonymous,c.831A>G,p.Thr277=,Benign/Likely benign,Benign
+VCV000231805,10,87952159,.,.,synonymous,c.534T>C,p.Tyr178=,Benign/Likely benign,Benign
+VCV000231341,10,87965463,.,.,synonymous,c.1203A>G,p.Thr401=,Benign/Likely benign,Benign
+VCV000230727,10,87960911,.,.,synonymous,c.819T>C,p.Phe273=,Benign/Likely benign,Benign
+VCV000230707,10,87957998,.,.,synonymous,c.780A>G,p.Lys260=,Benign/Likely benign,Benign
+VCV000224942,10,87863384,.,.,intronic,c.-1085T>C,,Benign,Benign
+VCV000223988,10,87958300,.,.,intronic,c.801+281A>G,,Likely benign,Benign
+VCV000223987,10,87957157,.,.,intronic,c.635-696G>C,,Likely benign,Benign
+VCV000223986,10,87865516,.,.,intronic,c.79+968A>G,,Likely benign,Benign
+VCV000223985,10,87944629,.,.,intronic,c.493-7489A>G,,Likely benign,Benign
+VCV000223984,10,87864917,.,.,intronic,c.79+369G>A,,Likely benign,Benign
+VCV000223983,10,87952904,.,.,intronic,c.634+645G>A,,Likely benign,Benign
+VCV000223982,10,87868947,.,.,intronic,c.79+4399C>T,,Likely benign,Benign
+VCV000223981,10,87894433,.,.,intronic,c.164+324G>A,,Likely benign,Benign
+VCV000223980,10,87864924,.,.,intronic,c.79+376T>A,,Likely benign,Benign
+VCV000223979,10,87960336,.,.,intronic,c.802-558T>C,,Likely benign,Benign
+VCV000223978,10,87926293,.,.,intronic,c.209+736A>G,,Likely benign,Benign
+VCV000223977,10,87882266,.,.,intronic,c.80-11759G>A,,Likely benign,Benign
+VCV000223976,10,87951229,.,.,intronic,c.493-889G>A,,Likely benign,Benign
+VCV000223975,10,87867741,.,.,intronic,c.79+3193A>G,,Likely benign,Benign
+VCV000223974,10,87864984,.,.,intronic,c.79+436C>T,,Likely benign,Benign
+VCV000223973,10,87878960,.,.,intronic,c.79+14412A>G,,Likely benign,Benign
+VCV000223972,10,87949309,.,.,intronic,c.493-2809A>G,,Likely benign,Benign
+VCV000223971,10,87866927,.,.,intronic,c.79+2379G>A,,Likely benign,Benign
+VCV000223970,10,87961239,.,.,intronic,c.1026+121C>T,,Benign/Likely benign,Benign
+VCV000223969,10,87959206,.,.,intronic,c.801+1187A>G,,Likely benign,Benign
+VCV000223968,10,87865000,.,.,intronic,c.79+452C>T,,Likely benign,Benign
+VCV000223967,10,87874310,.,.,intronic,c.79+9762G>A,,Likely benign,Benign
+VCV000223966,10,87879967,.,.,intronic,c.80-14058G>C,,Likely benign,Benign
+VCV000223965,10,87933308,.,.,intronic,c.492+57A>G,,Likely benign,Benign
+VCV000223964,10,87916228,.,.,intronic,c.165-9285G>A,,Likely benign,Benign
+VCV000223963,10,87916233,.,.,intronic,c.165-9280G>A,,Likely benign,Benign
+VCV000223962,10,87925796,.,.,intronic,c.209+239A>G,,Likely benign,Benign
+VCV000223961,10,87961229,.,.,intronic,c.1026+111T>C,,Likely benign,Benign
+VCV000223960,10,87915280,.,.,intronic,c.165-10233G>A,,Likely benign,Benign
+VCV000223959,10,87865957,.,.,intronic,c.79+1409T>C,,Likely benign,Benign
+VCV000223958,10,87882611,.,.,intronic,c.80-11414T>C,,Likely benign,Benign
+VCV000223957,10,87939101,.,.,intronic,c.492+5850T>A,,Likely benign,Benign
+VCV000223956,10,87915279,.,.,intronic,c.165-10234C>T,,Likely benign,Benign
+VCV000223955,10,87926326,.,.,intronic,c.209+769T>C,,Likely benign,Benign
+VCV000223954,10,87879185,.,.,intronic,c.79+14637T>C,,Likely benign,Benign
+VCV000223953,10,87876421,.,.,intronic,c.79+11873T>C,,Likely benign,Benign
+VCV000223952,10,87939083,.,.,intronic,c.492+5832A>G,,Likely benign,Benign
+VCV000223951,10,87876439,.,.,intronic,c.79+11891T>C,,Likely benign,Benign
+VCV000223950,10,87875319,.,.,intronic,c.79+10771G>T,,Likely benign,Benign
+VCV000223949,10,87876767,.,.,intronic,c.79+12219A>G,,Likely benign,Benign
+VCV000223948,10,87927603,.,.,intronic,c.209+2046C>T,,Likely benign,Benign
+VCV000223947,10,87875205,.,.,intronic,c.79+10657T>C,,Likely benign,Benign
+VCV000223946,10,87877999,.,.,intronic,c.79+13451A>C,,Likely benign,Benign
+VCV000223945,10,87875320,.,.,intronic,c.79+10772A>G,,Likely benign,Benign
+VCV000223944,10,87876096,.,.,intronic,c.79+11548A>G,,Likely benign,Benign
+VCV000223943,10,87928430,.,.,intronic,c.210-2616C>T,,Likely benign,Benign
+VCV000223942,10,87876105,.,.,intronic,c.79+11557A>C,,Likely benign,Benign
+VCV000223941,10,87881074,.,.,intronic,c.80-12951T>C,,Likely benign,Benign
+VCV000220902,10,87965349,.,.,synonymous,c.1089T>C,p.Thr363=,Benign/Likely benign,Benign
+VCV000219453,10,87960968,.,.,synonymous,c.876T>C,p.Asn292=,Likely benign,Benign
+VCV000216421,10,87933109,.,.,missense,c.350A>G,p.Asn117Ser,Conflicting classifications of pathogenicity,Pathogenic
+VCV000215734,10,87957956,.,.,synonymous,c.738G>A,p.Pro246=,Benign/Likely benign,Benign
+VCV000215733,10,87957941,.,.,synonymous,c.723T>C,p.Phe241=,Benign/Likely benign,Benign
+VCV000215732,10,87864517,.,.,synonymous,c.48T>C,p.Tyr16=,Benign/Likely benign,Benign
+VCV000215731,10,87931041,.,.,intronic,c.210-5T>C,,Likely benign,Benign
+VCV000189528,10,87863804,.,.,intronic,c.-666G>A,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000189497,10,87863633,.,.,intronic,c.-837C>T,,Likely benign,Benign
+VCV000189426,10,87933119,.,.,synonymous,c.360A>C,p.Ala120=,Likely benign,Benign
+VCV000187128,10,87933020,.,.,synonymous,c.261A>G,p.Gln87=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000186386,10,87925552,.,.,synonymous,c.204C>T,p.Tyr68=,Benign/Likely benign,Benign
+VCV000186205,10,87952243,.,.,synonymous,c.618C>T,p.Phe206=,Likely benign,Benign
+VCV000186178,10,87965322,.,.,synonymous,c.1062G>A,p.Pro354=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000186082,10,87933170,.,.,synonymous,c.411A>G,p.Ala137=,Benign/Likely benign,Benign
+VCV000185952,10,87933215,.,.,synonymous,c.456A>G,p.Leu152=,Benign/Likely benign,Benign
+VCV000185739,10,87965457,.,.,synonymous,c.1197A>G,p.Gln399=,Benign/Likely benign,Benign
+VCV000185293,10,87965448,.,.,synonymous,c.1188G>A,p.Gln396=,Benign/Likely benign,Benign
+VCV000185102,10,87933089,.,.,synonymous,c.330A>G,p.Gln110=,Benign/Likely benign,Benign
+VCV000185014,10,87952147,.,.,synonymous,c.522T>C,p.Tyr174=,Benign/Likely benign,Benign
+VCV000184954,10,87961100,.,.,synonymous,c.1008C>T,p.Tyr336=,Benign/Likely benign,Benign
+VCV000184913,10,87957968,.,.,synonymous,c.750T>C,p.Cys250=,Benign/Likely benign,Benign
+VCV000184734,10,87894044,.,.,synonymous,c.99T>C,p.Ile33=,Likely benign,Benign
+VCV000184295,10,87960992,.,.,synonymous,c.900C>T,p.Ile300=,Benign/Likely benign,Benign
+VCV000184205,10,87864535,.,.,synonymous,c.66C>T,p.Asp22=,Likely benign,Benign
+VCV000184020,10,87894104,.,.,synonymous,c.159A>G,p.Val53=,Likely benign,Benign
+VCV000183876,10,87957938,.,.,synonymous,c.720C>T,p.Tyr240=,Likely benign,Benign
+VCV000183799,10,87960947,.,.,synonymous,c.855A>G,p.Glu285=,Benign/Likely benign,Benign
+VCV000183706,10,87863442,.,.,intronic,c.-1027C>A,,Benign/Likely benign,Benign
+VCV000167551,10,87965480,.,.,other,c.*8T>G,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000141864,10,87863332,.,.,intronic,c.-845C>T,,Conflicting classifications of pathogenicity,Pathogenic
+VCV000138838,10,87960882,.,.,intronic,c.802-12T>C,,Benign/Likely benign,Benign
+VCV000138837,10,87863566,.,.,intronic,c.-903G>A,,Benign,Benign
+VCV000138836,10,87863443,.,.,intronic,c.-956G>T,,Likely benign,Benign
+VCV000135913,10,87960977,.,.,synonymous,c.885A>G,p.Leu295=,Benign/Likely benign,Benign
+VCV000135912,10,87960891,.,.,intronic,c.802-3T>A,,Likely benign,Benign
+VCV000135911,10,87952204,.,.,synonymous,c.579G>A,p.Leu193=,Likely benign,Benign
+VCV000135909,10,87933017,.,.,synonymous,c.258A>G,p.Ala86=,Conflicting classifications of pathogenicity,Pathogenic
+VCV000127672,10,87863735,.,.,intronic,c.-735G>A,,Likely benign,Benign
+VCV000127667,10,87863158,.,.,intronic,c.-1311T>C,,Benign,Benign
+VCV000127659,10,87863409,.,.,intronic,c.-1060C>G,,Benign/Likely benign,Benign
+VCV000092834,10,87960896,.,.,missense,c.804C>A,p.Asp268Glu,Conflicting classifications of pathogenicity,Pathogenic
+VCV000092830,10,87960876,.,.,intronic,c.802-18C>T,,Benign/Likely benign,Benign
+VCV000092829,10,87958042,.,.,intronic,c.801+23G>A,,Likely benign,Benign
+VCV000092827,10,87864583,.,.,intronic,c.79+35C>T,,Benign,Benign
+VCV000092818,10,87932974,.,.,intronic,c.254-39G>T,,Likely benign,Benign
+VCV000092810,10,87961150,.,.,intronic,c.1026+32T>G,,Benign,Benign
