@@ -31,6 +31,13 @@
 - часть quality/security automation еще не полностью "жесткая" (coverage gate и scheduled history secret scan пока не обязательны);
 - для долгосрочной прозрачности нужен формальный threat model для `mock/real`.
 
+Validation decision update (2026-03-06):
+- HBB VUS strict gate зафиксирован как `NO_GO`.
+- Следствие: claim-уровень для HBB VUS ranking остается `EXPLORATORY`, clinical utility escalation заблокирован до прохождения порогов.
+- Артефакты:
+  - `results/hbb_vus_validation_report_2026-03-06.json`
+  - `docs/internal/VALIDATION_EXECUTION_2026-03-06_HBB_VUS.md`
+
 ---
 
 ## Findings by Priority

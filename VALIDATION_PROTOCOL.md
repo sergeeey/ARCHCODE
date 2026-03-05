@@ -108,6 +108,8 @@ Go when all are true:
 
 No-Go:
 - Reclassification claims without functional validation disclaimer.
+- For strict HBB VUS ranking gate: if `within-category LSSIM AUC < 0.55` or `enrichment p-value > 0.01`, set claim level to `EXPLORATORY` and block clinical utility escalation.
+- Reference artifact (2026-03-06): `results/hbb_vus_validation_report_2026-03-06.json` (`go_no_go=NO_GO`).
 
 ## 8) Required Report Format (per task)
 
@@ -124,4 +126,3 @@ No merge for validation updates unless:
 - Evidence contract is complete.
 - Security/secret checks pass for touched scope.
 - Contradictions with existing audit/falsification docs are resolved or explicitly documented.
-
