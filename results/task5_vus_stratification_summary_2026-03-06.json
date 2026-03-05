@@ -1,0 +1,165 @@
+{
+  "generated_at_utc": "2026-03-05T19:57:56.316193+00:00",
+  "task": "Task5_VUS_Stratification",
+  "claim_level": {
+    "vus_stratification_signal": "SUPPORTED",
+    "clinical_reclassification": "UNVERIFIED",
+    "causal_mechanism_assignment": "EXPLORATORY"
+  },
+  "provenance": {
+    "type": "COMPUTATIONAL_DERIVED",
+    "sources": [
+      "results/within_category_analysis.json",
+      "results/vus_validation_report.json",
+      "results/*_Unified_Atlas_*.csv"
+    ]
+  },
+  "stratification_rules": [
+    "Candidate VUS = ARCHCODE_Verdict == 'VUS' in locus atlas rows.",
+    "Pearl-like VUS = Candidate VUS with Pearl == true OR Discordance in {VEP_ONLY, ARCHCODE_ONLY}.",
+    "Within-category discrimination metric = ROC AUC(1-LSSIM) with minimum 3 pathogenic and 3 benign variants per category.",
+    "Clinical reclassification is blocked without orthogonal experimental validation."
+  ],
+  "atlas_files": [
+    "results/HBB_Unified_Atlas_95kb.csv",
+    "results/BRCA1_Unified_Atlas_400kb.csv",
+    "results/CFTR_Unified_Atlas_317kb.csv",
+    "results/TP53_Unified_Atlas_300kb.csv",
+    "results/MLH1_Unified_Atlas_300kb.csv",
+    "results/LDLR_Unified_Atlas_300kb.csv",
+    "results/SCN5A_Unified_Atlas_400kb.csv",
+    "results/TERT_Unified_Atlas_300kb.csv",
+    "results/GJB2_Unified_Atlas_300kb.csv"
+  ],
+  "vus_total_in_windows": 219,
+  "candidates_total": 219,
+  "pearl_like_total": 49,
+  "pearl_like_fraction_of_vus": 0.223744,
+  "per_locus_counts": [
+    {
+      "locus": "HBB",
+      "n_rows": 1103,
+      "vus": 28,
+      "candidates": 28,
+      "pearl_like": 23
+    },
+    {
+      "locus": "BRCA1",
+      "n_rows": 10682,
+      "vus": 29,
+      "candidates": 29,
+      "pearl_like": 24
+    },
+    {
+      "locus": "CFTR",
+      "n_rows": 3349,
+      "vus": 10,
+      "candidates": 10,
+      "pearl_like": 0
+    },
+    {
+      "locus": "TP53",
+      "n_rows": 2794,
+      "vus": 12,
+      "candidates": 12,
+      "pearl_like": 2
+    },
+    {
+      "locus": "MLH1",
+      "n_rows": 4060,
+      "vus": 29,
+      "candidates": 29,
+      "pearl_like": 0
+    },
+    {
+      "locus": "LDLR",
+      "n_rows": 3284,
+      "vus": 30,
+      "candidates": 30,
+      "pearl_like": 0
+    },
+    {
+      "locus": "SCN5A",
+      "n_rows": 2488,
+      "vus": 0,
+      "candidates": 0,
+      "pearl_like": 0
+    },
+    {
+      "locus": "TERT",
+      "n_rows": 2089,
+      "vus": 81,
+      "candidates": 81,
+      "pearl_like": 0
+    },
+    {
+      "locus": "GJB2",
+      "n_rows": 469,
+      "vus": 0,
+      "candidates": 0,
+      "pearl_like": 0
+    }
+  ],
+  "mean_within_category_auc_across_loci": 0.482278,
+  "loci_with_high_overall_but_low_within_category": [
+    "TERT",
+    "GJB2"
+  ],
+  "variant_rationale_sample": [
+    {
+      "clinvar_id": "VCV000015151.60",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015151.60 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000439152.5",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000439152.5 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000619855.11",
+      "category": "splice_site",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: Splice site variant VCV000619855.11 shows minimal 3D impact. AlphaGenome predicts pathogenicity likely through splicing defects, not structural changes. Recommend: RNA-seq validation to confirm aberrant splicing.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000015171.31",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015171.31 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    },
+    {
+      "clinvar_id": "VCV000015316.16",
+      "category": "3_prime_UTR",
+      "archcode_verdict": "BENIGN",
+      "alphagenome_prediction": "Likely Pathogenic",
+      "interpretation": "MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015316.16 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.",
+      "provenance_tag": "COMPUTATIONAL_HYPOTHESIS_LEVEL"
+    }
+  ],
+  "interpretation": "Computational stratification signal exists, but within-category separability is modest in several loci; findings remain hypothesis-generating pending functional validation.",
+  "allowed_claims": [
+    "Computational stratification signal is present in this data slice.",
+    "Within-category discrimination is limited in multiple loci and constrains overinterpretation.",
+    "Variant-level rationale is available as hypothesis-level computational evidence."
+  ],
+  "blocked_claims": [
+    "Clinical reclassification from these metrics alone",
+    "Disease-causal mechanism assignment without orthogonal experiments"
+  ],
+  "limitations": [
+    "No direct wet-lab validation in this artifact",
+    "Category structure and class imbalance can influence global metrics",
+    "Variant rationale sample is computational and non-causal by itself"
+  ]
+}
