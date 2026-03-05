@@ -29,6 +29,7 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
   - `results/task1_akita_benchmark_95kb_2026-03-05.json`
   - `results/task2_loop_that_stayed_status_2026-03-05.json`
   - `results/task3_ctcf_summary_2026-03-05.json`
+  - `results/task3_weak_ctcf_isolated_2026-03-05.json`
   - `results/task4_epigenome_crossval_2026-03-05.json`
   - `results/task5_vus_stratification_summary_2026-03-05.json`
 
@@ -51,6 +52,14 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
     - 95% CI: `[13.42, 20.35]`
   - Evidence:
     - `results/blind_test_validation_2025.md`
+
+- `npx tsx scripts/test_weak_ctcf.ts --runs=200 --steps=36000`
+  - Result: `PASS` (script execution)
+  - Key output:
+    - Weak readthrough delta vs baseline: `0.00 pp`
+    - Verdict: `INCONCLUSIVE_NO_WEAK_EVENTS`
+  - Evidence:
+    - `results/task3_weak_ctcf_isolated_2026-03-05.json`
 
 - `python scripts/epigenome_crossval_alphagenome.py --loci 95kb cftr tp53 brca1 mlh1 ldlr --output results/task4_epigenome_crossval_2026-03-05.json`
   - Result: `PASS` (6/6 loci successful)
@@ -90,7 +99,8 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 
 - Task 3:
   - `results/task3_ctcf_summary_2026-03-05.json`
-  - Combines ablation + CTCF-KD kinetics evidence.
+  - `results/task3_weak_ctcf_isolated_2026-03-05.json`
+  - Combines ablation + CTCF-KD kinetics evidence + isolated weak-site perturbation run.
 
 - Task 5:
   - `results/task5_vus_stratification_summary_2026-03-05.json`
@@ -101,8 +111,8 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 ## UNVERIFIED
 
 - Weak CTCF paradox as strict claim:
-  - Direct weak-site-only perturbation experiment with explicit `<0.85` site selection is not yet separately executed in this run.
-  - Current status: `PARTIAL_SUPPORT` (CTCF-KD kinetics validated; weak-site paradox not fully isolated).
+  - Direct weak-site-only perturbation with explicit `<0.85` site mutation is executed, but strict interpretation is inconclusive in this slice due to `weakEncounter=0`.
+  - Current status: `PARTIAL_SUPPORT` (CTCF-KD kinetics validated; weak-site strict claim not resolved for this locus geometry).
 
 ---
 
@@ -115,6 +125,10 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 - Task 4:
   - Strong CTCF positional recall against ENCODE-aligned config features across 6 loci.
   - H3K27ac agreement is locus-dependent and lower precision/F1 than CTCF.
+
+- Task 3:
+  - Isolated weak-CTCF experiment executed (`task3_weak_ctcf_isolated_2026-03-05.json`).
+  - For current HBB setup, strict weak-site readthrough claim is inconclusive because weak-barrier encounters were not observed.
 
 - Task 5:
   - Global separation may exist in some loci, but within-category separation is often modest.

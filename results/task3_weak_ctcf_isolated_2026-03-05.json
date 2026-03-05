@@ -1,0 +1,83 @@
+{
+  "generated_at_utc": "2026-03-05T18:45:13.717Z",
+  "task": "Task3_Weak_CTCF_Isolated",
+  "provenance": "SIMULATION",
+  "configuration": {
+    "locus": "HBB",
+    "genomeLength": 100000,
+    "runs": 200,
+    "stepsPerRun": 36000,
+    "modelTimePerRunMin": 600,
+    "weakThreshold": 0.85,
+    "targetWeakStrength": 0.5,
+    "seedOffset": 0
+  },
+  "scenarios": {
+    "baseline": {
+      "name": "baseline",
+      "runs": 200,
+      "stepsPerRun": 36000,
+      "weakThreshold": 0.85,
+      "weakEncounter": 0,
+      "weakBlocked": 0,
+      "weakReadthrough": 0,
+      "strongEncounter": 237,
+      "strongBlocked": 200,
+      "strongReadthrough": 37,
+      "weakReadthroughRate": 0,
+      "strongReadthroughRate": 0.15611814345991562,
+      "weakReadthroughCi95": null,
+      "strongReadthroughCi95": [
+        0.10990671299632825,
+        0.20232957392350298
+      ]
+    },
+    "weak_halved": {
+      "name": "weak_halved",
+      "runs": 200,
+      "stepsPerRun": 36000,
+      "weakThreshold": 0.85,
+      "weakEncounter": 0,
+      "weakBlocked": 0,
+      "weakReadthrough": 0,
+      "strongEncounter": 237,
+      "strongBlocked": 200,
+      "strongReadthrough": 37,
+      "weakReadthroughRate": 0,
+      "strongReadthroughRate": 0.15611814345991562,
+      "weakReadthroughCi95": null,
+      "strongReadthroughCi95": [
+        0.10990671299632825,
+        0.20232957392350298
+      ]
+    },
+    "strong_control": {
+      "name": "strong_control",
+      "runs": 200,
+      "stepsPerRun": 36000,
+      "weakThreshold": 0.85,
+      "weakEncounter": 237,
+      "weakBlocked": 200,
+      "weakReadthrough": 37,
+      "strongEncounter": 0,
+      "strongBlocked": 0,
+      "strongReadthrough": 0,
+      "weakReadthroughRate": 0.15611814345991562,
+      "strongReadthroughRate": 0,
+      "weakReadthroughCi95": [
+        0.10990671299632825,
+        0.20232957392350298
+      ],
+      "strongReadthroughCi95": null
+    }
+  },
+  "comparisons": {
+    "weakReadthroughRateDelta_vs_baseline": 0,
+    "strongReadthroughRateDelta_vs_baseline": -0.15611814345991562,
+    "noEffectThresholdAbs": 0.02,
+    "hasWeakEvents": false,
+    "weakNoEffectObserved": false
+  },
+  "verdict": "INCONCLUSIVE_NO_WEAK_EVENTS",
+  "note": "This is an in-model isolated perturbation. External biological validation remains required."
+}

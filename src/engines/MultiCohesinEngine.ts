@@ -59,6 +59,21 @@ export interface MultiCohesinConfig {
   kramerKinetics?: KramerKineticsConfig;
   /** Enable verbose console logs (default: true for backward compatibility). */
   verbose?: boolean;
+  /** Optional barrier telemetry for weak/strong CTCF encounter statistics. */
+  barrierStats?: {
+    enabled?: boolean;
+    weakThreshold?: number;
+  };
+}
+
+export interface BarrierStatsSnapshot {
+  weakThreshold: number;
+  weakEncounter: number;
+  weakBlocked: number;
+  weakReadthrough: number;
+  strongEncounter: number;
+  strongBlocked: number;
+  strongReadthrough: number;
 }
 
 export class MultiCohesinEngine {
@@ -74,6 +89,8 @@ export class MultiCohesinEngine {
   readonly spatialLoader: ISpatialLoader | undefined;
   readonly trackLoopDuration: boolean;
   readonly verbose: boolean;
+  readonly barrierStatsEnabled: boolean;
+  readonly weakBarrierThreshold: number;
 
   // Kramer's rate theory parameters
   readonly kramerEnabled: boolean;
@@ -89,6 +106,7 @@ export class MultiCohesinEngine {
   private targetMaxSteps: number;
   private rng: SeededRandom;
   private isDestroyed: boolean = false;
+  private barrierStats: BarrierStatsSnapshot;
 
   constructor(config: MultiCohesinConfig) {
     this.genomeLength = config.genomeLength;
@@ -107,6 +125,8 @@ export class MultiCohesinEngine {
     this.spatialLoader = config.spatialLoader;
     this.trackLoopDuration = config.trackLoopDuration ?? false;
     this.verbose = config.verbose ?? true;
+    this.barrierStatsEnabled = config.barrierStats?.enabled ?? false;
+    this.weakBarrierThreshold = config.barrierStats?.weakThreshold ?? 0.85;
 
     // Initialize Kramer's rate theory parameters
     const kramer = config.kramerKinetics;
@@ -123,6 +143,15 @@ export class MultiCohesinEngine {
     }
 
     this.rng = new SeededRandom(this.seed);
+    this.barrierStats = {
+      weakThreshold: this.weakBarrierThreshold,
+      weakEncounter: 0,
+      weakBlocked: 0,
+      weakReadthrough: 0,
+      strongEncounter: 0,
+      strongBlocked: 0,
+      strongReadthrough: 0,
+    };
 
     const useProbabilisticLoading =
       this.spatialLoader != null || this.loadingProbabilityPerStep != null;
@@ -410,7 +439,13 @@ export class MultiCohesinEngine {
     // Конвергентная пара? R...F формирует петлю
     if (leftBarrier && rightBarrier) {
       const blockingEfficiency = CTCF_PARAMS.CONVERGENT_BLOCKING_EFFICIENCY;
-      if (this.rng.random() < blockingEfficiency) {
+      const blocked = this.rng.random() < blockingEfficiency;
+      if (this.barrierStatsEnabled) {
+        const minStrength = Math.min(leftBarrier.strength, rightBarrier.strength);
+        const isWeak = minStrength < this.weakBarrierThreshold;
+        this.recordBarrierEvent(isWeak, blocked);
+      }
+      if (blocked) {
         cohesin.loopFormed = true;
         const strength =
           Math.min(leftBarrier.strength, rightBarrier.strength) *
@@ -452,7 +487,13 @@ export class MultiCohesinEngine {
     } else if (leftBarrier || rightBarrier) {
       // Non-convergent: leaky blocking (15% chance to stall on single barrier)
       const leakyEfficiency = CTCF_PARAMS.NON_CONVERGENT_BLOCKING_EFFICIENCY;
-      if (this.rng.random() < leakyEfficiency) {
+      const blocked = this.rng.random() < leakyEfficiency;
+      if (this.barrierStatsEnabled) {
+        const barrier = leftBarrier ?? rightBarrier;
+        const isWeak = (barrier?.strength ?? 1) < this.weakBarrierThreshold;
+        this.recordBarrierEvent(isWeak, blocked);
+      }
+      if (blocked) {
         // Single-sided stall (partial blocking, not full loop)
         cohesin.active = false;
         // Don't create a loop - just stall
@@ -487,6 +528,22 @@ export class MultiCohesinEngine {
 
   getActiveCohesinCount(): number {
     return this.cohesins.filter((c) => c.active).length;
+  }
+
+  getBarrierStats(): BarrierStatsSnapshot {
+    return { ...this.barrierStats };
+  }
+
+  private recordBarrierEvent(isWeak: boolean, blocked: boolean): void {
+    if (isWeak) {
+      this.barrierStats.weakEncounter++;
+      if (blocked) this.barrierStats.weakBlocked++;
+      else this.barrierStats.weakReadthrough++;
+      return;
+    }
+    this.barrierStats.strongEncounter++;
+    if (blocked) this.barrierStats.strongBlocked++;
+    else this.barrierStats.strongReadthrough++;
   }
 
   getContactMatrix(
