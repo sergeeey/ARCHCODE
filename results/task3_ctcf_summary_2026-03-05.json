@@ -1,0 +1,21 @@
+{
+  "generated_at_utc": "2026-03-05T18:45:13.717Z",
+  "task": "Task3_Weak_CTCF_and_CTCF_KD",
+  "ablation_artifact": "results/ablation_effectstrength.json",
+  "ctcf_kd_artifact": "results/blind_test_validation_2025.md",
+  "weak_ctcf_isolated_artifact": "results/task3_weak_ctcf_isolated_2026-03-05.json",
+  "ablation_categorical_auc": 0.975,
+  "ablation_position_only_auc": 0.551,
+  "ablation_inverted_auc": 0.022,
+  "ctcf_kd_mean_loop_duration_min": 16.89,
+  "ctcf_kd_ci_min": [
+    13.42,
+    20.35
+  ],
+  "weak_ctcf_baseline_encounters": 0,
+  "weak_ctcf_delta_vs_baseline": 0,
+  "weak_ctcf_has_events": false,
+  "weak_ctcf_verdict": "INCONCLUSIVE_NO_WEAK_EVENTS",
+  "verdict": "PARTIAL_SUPPORT",
+  "note": "CTCF-KD kinetics validation passed and isolated weak-site perturbation was executed, but strict claim remains inconclusive in this locus/run due to zero weak-barrier encounters."
+}
