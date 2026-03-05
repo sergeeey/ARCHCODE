@@ -1,0 +1,46 @@
+{
+  "title": "ARCHCODE: Architecture-Constrained Decoder reveals structural blind spots in variant pathogenicity prediction across 13 genomic loci",
+  "authors": [
+    {
+      "name": "Sergey V. Boiko",
+      "affiliation": "Independent Researcher, Almaty, Kazakhstan",
+      "orcid": ""
+    }
+  ],
+  "abstract_word_count": "see manuscript",
+  "keywords": [
+    "variant pathogenicity",
+    "chromatin architecture",
+    "loop extrusion",
+    "structural variants",
+    "SSIM",
+    "ClinVar",
+    "beta-globin",
+    "enhancer-promoter contacts",
+    "3D genome",
+    "variant interpretation"
+  ],
+  "version": "v2.14",
+  "figures": 18,
+  "variants_classified": 32201,
+  "vus_scored": 30952,
+  "vus_candidates": 760,
+  "vus_pearl_like": 641,
+  "total_variants_analyzed": 63153,
+  "loci": 13,
+  "orthogonal_methods": 9,
+  "data_availability": {
+    "github": "https://github.com/sergeeey/ARCHCODE",
+    "zenodo_v2.9": "https://doi.org/10.5281/zenodo.18867448"
+  },
+  "preprint_platforms": {
+    "bioRxiv": "REJECTED (2026-02, \"not complete research with new data\")",
+    "arXiv": "PENDING endorsement (q-bio.GN, code B9P837)",
+    "research_square": "READY TO SUBMIT — no endorsement required",
+    "osf_preprints": "BACKUP — if Research Square delayed"
+  },
+  "submission_files": {
+    "manuscript_en": "C:/Users/serge/Desktop/ARCHCODE_v2.14_EN.pdf",
+    "manuscript_ru": "C:/Users/serge/Desktop/ARCHCODE_v2.14_RU.pdf"
+  }
+}
