@@ -1,0 +1,58 @@
+{
+  "generated_at_utc": "2026-03-05T00:00:00Z",
+  "task": "Task2_Loop_That_Stayed_Reconciliation",
+  "implemented_from": {
+    "legacy_artifact": "results/vus_batch_analysis_loop_that_stayed.json",
+    "fresh_artifact": "results/vus_validation_report.json",
+    "status_artifact": "results/task2_loop_that_stayed_status_2026-03-05.json"
+  },
+  "verified_by": {
+    "command": "npx tsx scripts/validate-mysterious-vus.ts",
+    "fresh_run_date": "2026-03-05",
+    "output_artifacts": [
+      "results/vus_validation_report.json",
+      "results/alphagenome_forum_post.md"
+    ]
+  },
+  "legacy_claims": {
+    "pattern": "Loop That Stayed",
+    "variants_count": 3,
+    "archcode_label": "LIKELY_PATHOGENIC",
+    "claim_level_before_reconciliation": "EXPLORATORY",
+    "provenance_tag": "MOCK_SYNTHETIC_OR_MIXED"
+  },
+  "fresh_observations": {
+    "variants_count": 5,
+    "archcode_verdict_distribution": {
+      "BENIGN": 5,
+      "MILD_EFFECT": 0,
+      "TAD_DISRUPTION": 0,
+      "LOOP_COLLAPSE": 0
+    },
+    "strong_convergent_evidence": 0,
+    "conclusion": "No variants showed strong convergent evidence. Further experimental validation recommended.",
+    "provenance_tag": "MOCK_SYNTHETIC_OR_MIXED"
+  },
+  "consistency_status": "CONTRADICTION_CONFIRMED",
+  "claim_level_after_reconciliation": {
+    "loop_that_stayed_as_pathogenic_class": "UNVERIFIED",
+    "discordance_between_structure_and_sequence_predictors": "SUPPORTED",
+    "post_transcriptional_mechanism_statement": "EXPLORATORY"
+  },
+  "allowed_conclusion": [
+    "Current Task2 evidence supports only model-discordance observation.",
+    "Current Task2 evidence does not support clinical reclassification claim.",
+    "Any disease-causal statement requires orthogonal experimental validation."
+  ],
+  "blocked_conclusions": [
+    "VUS -> Likely Pathogenic based on current Task2 artifacts only",
+    "Proven clinical utility of Loop That Stayed mechanism",
+    "Publication-grade mechanistic causality from current computational-only slice"
+  ],
+  "next_required_evidence": [
+    "RT-PCR or RNA-seq splice evidence for candidate variants",
+    "Explicit REAL_API provenance for sequence model outputs if used",
+    "Replicated runs with fixed seeds and independent loci"
+  ],
+  "verdict": "NEEDS_FIXES"
+}

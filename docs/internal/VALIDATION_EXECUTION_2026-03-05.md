@@ -84,8 +84,9 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
     - `results/task1_ai_blindspot_fresh_2026-03-05.json`
 
 - Task 2:
-  - `results/task2_loop_that_stayed_status_2026-03-05.json`
-  - Detects contradiction between legacy and fresh artifacts.
+  - esults/task2_loop_that_stayed_status_2026-03-05.json
+  - esults/task2_reconciliation_2026-03-05.json
+  - Detects contradiction between legacy and fresh artifacts and records reconciliation policy.
 
 - Task 3:
   - `results/task3_ctcf_summary_2026-03-05.json`
@@ -109,7 +110,7 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 
 - Task 2 (fresh pipeline):
   - Top-5 VUS batch produced `BENIGN` structural verdicts with mechanistic interpretation toward post-transcriptional effects.
-  - This conflicts with older high-claim Loop That Stayed artifact; contradiction is explicitly recorded.
+  - This conflicts with older high-claim Loop That Stayed artifact; contradiction is explicitly recorded and reconciled in `results/task2_reconciliation_2026-03-05.json`.
 
 - Task 4:
   - Strong CTCF positional recall against ENCODE-aligned config features across 6 loci.
@@ -135,3 +136,5 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 - `NEEDS_FIXES` before publication-grade claims for:
   - strict weak-CTCF isolated experiment,
   - reconciliation of contradictory Loop That Stayed narratives.
+
+
