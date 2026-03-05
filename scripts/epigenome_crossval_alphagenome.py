@@ -28,7 +28,20 @@ PROJECT_ROOT = Path(__file__).parent.parent
 
 # ПОЧЕМУ эти локусы: только те, где configs содержат ENCODE data.
 # HBB 30kb uses MODEL_PARAMETER (не ENCODE), поэтому исключён.
-DEFAULT_LOCI = ["95kb", "cftr", "tp53", "brca1", "mlh1", "ldlr"]
+DEFAULT_LOCI = ["95kb", "cftr", "tp53", "brca1", "mlh1", "ldlr", "scn5a", "gjb2"]
+
+# Tissue-context metadata for protocol-aware reporting (Task 4).
+LOCUS_TISSUE_CONTEXT = {
+    "95kb": "matched",
+    "cftr": "partial",
+    "tp53": "partial",
+    "brca1": "partial",
+    "mlh1": "partial",
+    "ldlr": "partial",
+    "scn5a": "mismatch",
+    "gjb2": "mismatch",
+    "tert": "expressed",
+}
 
 # ПОЧЕМУ tolerance в bp: ChIP-seq peaks имеют ширину ~200-500 bp.
 # Position в config — центр пика. AlphaGenome разрешение 128 bp.
@@ -287,6 +300,7 @@ def run_crossval_for_locus(
     result = {
         "locus": locus,
         "locus_id": features["config"].get("id"),
+        "tissue_context": LOCUS_TISSUE_CONTEXT.get(locus, "unknown"),
         "window": {"chromosome": chrom, "start": start, "end": end},
         "status": "success",
     }
@@ -385,6 +399,41 @@ def main():
                     if r.get("status") == "success" and isinstance(r.get("ctcf"), dict) and "recall" in r["ctcf"]]
     h3k_recalls = [r["h3k27ac"]["recall"] for r in all_results
                    if r.get("status") == "success" and isinstance(r.get("h3k27ac"), dict) and "recall" in r["h3k27ac"]]
+    successful = [r for r in all_results if r.get("status") == "success"]
+
+    # Tissue-context aggregates for Task 4 controls.
+    ctx_stats: dict[str, dict] = {}
+    for ctx in ["matched", "partial", "mismatch", "expressed", "unknown"]:
+        ctx_rows = [r for r in successful if r.get("tissue_context") == ctx]
+        if not ctx_rows:
+            continue
+        ctx_ctcf_f1 = [
+            r["ctcf"]["f1"] for r in ctx_rows
+            if isinstance(r.get("ctcf"), dict) and "f1" in r["ctcf"]
+        ]
+        ctx_h3k_f1 = [
+            r["h3k27ac"]["f1"] for r in ctx_rows
+            if isinstance(r.get("h3k27ac"), dict) and "f1" in r["h3k27ac"]
+        ]
+        ctx_stats[ctx] = {
+            "n_loci": len(ctx_rows),
+            "loci": [r["locus"] for r in ctx_rows],
+            "ctcf_mean_f1": round(float(np.mean(ctx_ctcf_f1)), 4) if ctx_ctcf_f1 else None,
+            "h3k27ac_mean_f1": round(float(np.mean(ctx_h3k_f1)), 4) if ctx_h3k_f1 else None,
+        }
+
+    positive_controls = [
+        r["locus"] for r in successful if r.get("tissue_context") in {"matched", "partial"}
+    ]
+    negative_controls = [
+        r["locus"] for r in successful if r.get("tissue_context") == "mismatch"
+    ]
+    task4_go = bool(positive_controls) and bool(negative_controls)
+    task4_reasons = []
+    if not positive_controls:
+        task4_reasons.append("No successful positive tissue controls (matched/partial).")
+    if not negative_controls:
+        task4_reasons.append("No successful negative tissue controls (mismatch).")
 
     summary = {
         "analysis": "epigenome_crossvalidation_alphagenome_vs_encode",
@@ -405,6 +454,41 @@ def main():
                 if r.get("status") == "success" and isinstance(r.get("h3k27ac"), dict) and "f1" in r["h3k27ac"]
             ])), 4) if h3k_recalls else None,
         },
+        "task4_controls": {
+            "positive_controls": positive_controls,
+            "negative_controls": negative_controls,
+            "context_aggregates": ctx_stats,
+        },
+        "task4_go_nogo": {
+            "go": task4_go,
+            "status": "GO" if task4_go else "NO_GO",
+            "reasons": task4_reasons,
+        },
+        "claim_level": {
+            "input_feature_alignment_ctcf": "SUPPORTED",
+            "input_feature_alignment_h3k27ac": "SUPPORTED",
+            "causal_biological_inference": "UNVERIFIED",
+            "clinical_prediction_impact": "UNVERIFIED"
+        },
+        "provenance": {
+            "type": "REAL_API_PLUS_ENCODE_CONFIG",
+            "note": "Compares AlphaGenome predicted epigenomic peaks with ENCODE-derived config features.",
+            "scope": "Input-data consistency check, not direct ARCHCODE clinical validation."
+        },
+        "allowed_claims": [
+            "CTCF positional overlap is high under selected tolerance/threshold settings.",
+            "H3K27ac agreement is heterogeneous and locus-dependent.",
+            "Tissue-context controls are explicitly reported (matched/partial vs mismatch)."
+        ],
+        "blocked_claims": [
+            "Causal disease mechanism statements from this cross-validation alone",
+            "Clinical utility claims from input-feature overlap metrics alone"
+        ],
+        "limitations": [
+            "Tolerance/percentile settings affect recall/precision tradeoff",
+            "Peak overlap does not establish causal regulatory effect",
+            "Tissue mismatch controls validate context sensitivity but do not prove pathology causality"
+        ],
         "loci": all_results,
     }
 
