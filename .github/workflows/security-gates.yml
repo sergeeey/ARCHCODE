@@ -1,0 +1,58 @@
+name: Security Gates
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install JS dependencies
+        run: npm ci
+
+      - name: Install Python security tooling
+        run: pip install bandit
+
+      - name: Secret scan
+        run: npm run security:secrets
+
+      - name: Lint gate
+        run: npm run lint
+
+      - name: Build gate
+        run: npm run build
+
+      - name: Unit test gate
+        run: npm test
+
+      - name: Coverage gate (40/45/40/40)
+        run: npm run test:coverage
+
+      - name: Gold-standard regression gate (mock smoke)
+        env:
+          ALPHAGENOME_TEST_MODE: mock
+        run: npm run test:gold
+
+      - name: Dependency audit (high+)
+        run: npm run security:deps
+
+      - name: Python security scan (high)
+        run: npm run security:python
