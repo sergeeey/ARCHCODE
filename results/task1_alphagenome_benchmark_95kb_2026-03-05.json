@@ -1,0 +1,47 @@
+{
+  "locus": "95kb",
+  "locus_id": "hbb_95kb_subTAD",
+  "window": {
+    "chromosome": "chr11",
+    "start": 5200000,
+    "end": 5295000,
+    "resolution_bp": 600,
+    "n_bins": 159
+  },
+  "alphagenome": {
+    "sdk_version": "0.6.0",
+    "sequence_length": 131072,
+    "contact_map_resolution": 2048,
+    "contact_map_shape": [
+      64,
+      64
+    ],
+    "cell_line": "GM12878",
+    "track_name": "4dn:4DNFIXP4QG5B",
+    "assay": "in situ Hi-C",
+    "ontology_curie": "EFO:0002784"
+  },
+  "correlations": {
+    "archcode_vs_alphagenome": {
+      "pearson_r": 0.052529325492108495,
+      "pearson_p": 4.8111038961237564e-09,
+      "spearman_rho": 0.12457758678897274,
+      "spearman_p": 4.3461144855255765e-44,
+      "n": 12403
+    },
+    "archcode_vs_hic": {
+      "pearson_r": 0.07239077004297371,
+      "pearson_p": 6.924160523869207e-16,
+      "spearman_rho": 0.127506312572454,
+      "spearman_p": 4.054400626615876e-46,
+      "n": 12403
+    },
+    "alphagenome_vs_hic": {
+      "pearson_r": 0.05103871737084728,
+      "pearson_p": 1.290997207892825e-08,
+      "spearman_rho": 0.13388790216862076,
+      "spearman_p": 1.0395388218091426e-50,
+      "n": 12403
+    }
+  }
+}
