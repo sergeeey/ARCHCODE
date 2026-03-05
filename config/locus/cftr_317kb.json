@@ -1,7 +1,7 @@
 {
   "id": "cftr_317kb",
   "name": "CFTR 317kb TAD (ENCODE CTCF + literature enhancers)",
-  "description": "317kb window spanning the CFTR TAD on chr7. CTCF boundaries from ENCODE K562 ChIP-seq (ENCFF660GHM, IDR narrowPeak) — CTCF boundaries are cell-type invariant (Smith 2016). Enhancer occupancy estimated from airway/intestinal literature (Gosalia 2020, Ott 2009, Blackledge 2009), NOT from K562 (CFTR is silent in K562). Occupancy values are LITERATURE-based estimates, marked accordingly.",
+  "description": "317kb window spanning the CFTR TAD on chr7. CTCF boundaries from ENCODE K562 ChIP-seq (ENCFF660GHM, IDR narrowPeak) \u2014 CTCF boundaries are cell-type invariant (Smith 2016). Enhancer occupancy estimated from airway/intestinal literature (Gosalia 2020, Ott 2009, Blackledge 2009), NOT from K562 (CFTR is silent in K562). Occupancy values are LITERATURE-based estimates, marked accordingly.",
   "genome_assembly": "GRCh38",
   "window": {
     "chromosome": "chr7",
@@ -112,9 +112,20 @@
       }
     ],
     "genes": [
-      { "name": "CFTR", "start": 117480025, "end": 117668665, "strand": "+" }
+      {
+        "name": "CFTR",
+        "start": 117480025,
+        "end": 117668665,
+        "strand": "+"
+      }
     ]
   },
-  "thresholds": null,
-  "_thresholds_note": "Not calibrated for 317x317 matrix. SSIM thresholds from 30kb HBB config will be diluted at this resolution — requires empirical recalibration after first CFTR run."
+  "thresholds": {
+    "ssim_pathogenic": 0.9105,
+    "ssim_likely_pathogenic": 0.9405,
+    "ssim_vus": 0.9705,
+    "ssim_likely_benign": 0.9905,
+    "note": "Calibrated at FPR \u2264 1% (opt_threshold=0.9705, sensitivity=2.6%, tissue=partial)"
+  },
+  "_thresholds_note": "Not calibrated for 317x317 matrix. SSIM thresholds from 30kb HBB config will be diluted at this resolution \u2014 requires empirical recalibration after first CFTR run."
 }

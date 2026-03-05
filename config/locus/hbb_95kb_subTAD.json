@@ -87,14 +87,50 @@
       }
     ],
     "genes": [
-      { "name": "HBB", "start": 5225464, "end": 5227079, "strand": "-" },
-      { "name": "HBD", "start": 5232428, "end": 5234258, "strand": "-" },
-      { "name": "HBBP1", "start": 5241068, "end": 5242619, "strand": "-" },
-      { "name": "HBG1", "start": 5248187, "end": 5249852, "strand": "-" },
-      { "name": "HBG2", "start": 5253126, "end": 5254791, "strand": "-" },
-      { "name": "HBE1", "start": 5289585, "end": 5291500, "strand": "-" }
+      {
+        "name": "HBB",
+        "start": 5225464,
+        "end": 5227079,
+        "strand": "-"
+      },
+      {
+        "name": "HBD",
+        "start": 5232428,
+        "end": 5234258,
+        "strand": "-"
+      },
+      {
+        "name": "HBBP1",
+        "start": 5241068,
+        "end": 5242619,
+        "strand": "-"
+      },
+      {
+        "name": "HBG1",
+        "start": 5248187,
+        "end": 5249852,
+        "strand": "-"
+      },
+      {
+        "name": "HBG2",
+        "start": 5253126,
+        "end": 5254791,
+        "strand": "-"
+      },
+      {
+        "name": "HBE1",
+        "start": 5289585,
+        "end": 5291500,
+        "strand": "-"
+      }
     ]
   },
-  "thresholds": null,
-  "_thresholds_note": "Not calibrated for 158x158 matrix. SSIM verdicts from 30kb config diluted at this resolution — requires empirical recalibration after first 95kb run."
+  "thresholds": {
+    "ssim_pathogenic": 0.8567,
+    "ssim_likely_pathogenic": 0.9267,
+    "ssim_vus": 0.9767,
+    "ssim_likely_benign": 0.9967,
+    "note": "Calibrated at FPR \u2264 1% (opt_threshold=0.9767, sensitivity=92.9%, tissue=matched)"
+  },
+  "_thresholds_note": "Not calibrated for 158x158 matrix. SSIM verdicts from 30kb config diluted at this resolution \u2014 requires empirical recalibration after first 95kb run."
 }

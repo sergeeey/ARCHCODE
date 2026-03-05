@@ -1,7 +1,7 @@
 {
   "id": "tp53_300kb",
   "name": "TP53 300kb TAD (ENCODE K562 CTCF + H3K27ac)",
-  "description": "300kb window spanning the TP53 TAD on chr17p13.1. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE, IDR narrowPeak, GRCh38). H3K27ac enhancer peaks from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). TAD boundaries from Rao et al. 2014 K562 Arrowhead domains (GSE63525, hg19 lifted to hg38 with +96,701bp offset — approximate). TP53 is on the MINUS strand; TSS is at the 3' end of the gene coordinates. CTCF site at TP53/WRAP53 bidirectional promoter validated by Soto-Reyes & Recillas-Targa 2010 (PMID:20101205) and Saldana-Meyer et al. 2014 (PMID:24681887). TP53 has two promoters: P1 upstream of exon 1 and P2 internal in intron 4 (delta133p53 isoforms).",
+  "description": "300kb window spanning the TP53 TAD on chr17p13.1. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE, IDR narrowPeak, GRCh38). H3K27ac enhancer peaks from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). TAD boundaries from Rao et al. 2014 K562 Arrowhead domains (GSE63525, hg19 lifted to hg38 with +96,701bp offset \u2014 approximate). TP53 is on the MINUS strand; TSS is at the 3' end of the gene coordinates. CTCF site at TP53/WRAP53 bidirectional promoter validated by Soto-Reyes & Recillas-Targa 2010 (PMID:20101205) and Saldana-Meyer et al. 2014 (PMID:24681887). TP53 has two promoters: P1 upstream of exon 1 and P2 internal in intron 4 (delta133p53 isoforms).",
   "genome_assembly": "GRCh38",
   "window": {
     "chromosome": "chr17",
@@ -221,22 +221,102 @@
       }
     ],
     "genes": [
-      { "name": "TNFSF12", "start": 7549057, "end": 7557881, "strand": "+" },
-      { "name": "TNFSF13", "start": 7558749, "end": 7561601, "strand": "+" },
-      { "name": "SENP3", "start": 7561918, "end": 7571969, "strand": "+" },
-      { "name": "EIF4A1", "start": 7572824, "end": 7579006, "strand": "+" },
-      { "name": "CD68", "start": 7579637, "end": 7582111, "strand": "+" },
-      { "name": "MPDU1", "start": 7583646, "end": 7588212, "strand": "+" },
-      { "name": "SOX15", "start": 7588177, "end": 7590094, "strand": "-" },
-      { "name": "FXR2", "start": 7591229, "end": 7614897, "strand": "-" },
-      { "name": "SHBG", "start": 7614063, "end": 7633372, "strand": "+" },
-      { "name": "SAT2", "start": 7626233, "end": 7627876, "strand": "-" },
-      { "name": "ATP1B2", "start": 7646626, "end": 7657770, "strand": "+" },
-      { "name": "TP53", "start": 7668420, "end": 7687490, "strand": "-" },
-      { "name": "WRAP53", "start": 7686070, "end": 7703502, "strand": "+" },
-      { "name": "EFNB3", "start": 7705201, "end": 7711372, "strand": "+" },
-      { "name": "DNAH2", "start": 7717743, "end": 7833742, "strand": "+" },
-      { "name": "KDM6B", "start": 7834216, "end": 7854796, "strand": "+" }
+      {
+        "name": "TNFSF12",
+        "start": 7549057,
+        "end": 7557881,
+        "strand": "+"
+      },
+      {
+        "name": "TNFSF13",
+        "start": 7558749,
+        "end": 7561601,
+        "strand": "+"
+      },
+      {
+        "name": "SENP3",
+        "start": 7561918,
+        "end": 7571969,
+        "strand": "+"
+      },
+      {
+        "name": "EIF4A1",
+        "start": 7572824,
+        "end": 7579006,
+        "strand": "+"
+      },
+      {
+        "name": "CD68",
+        "start": 7579637,
+        "end": 7582111,
+        "strand": "+"
+      },
+      {
+        "name": "MPDU1",
+        "start": 7583646,
+        "end": 7588212,
+        "strand": "+"
+      },
+      {
+        "name": "SOX15",
+        "start": 7588177,
+        "end": 7590094,
+        "strand": "-"
+      },
+      {
+        "name": "FXR2",
+        "start": 7591229,
+        "end": 7614897,
+        "strand": "-"
+      },
+      {
+        "name": "SHBG",
+        "start": 7614063,
+        "end": 7633372,
+        "strand": "+"
+      },
+      {
+        "name": "SAT2",
+        "start": 7626233,
+        "end": 7627876,
+        "strand": "-"
+      },
+      {
+        "name": "ATP1B2",
+        "start": 7646626,
+        "end": 7657770,
+        "strand": "+"
+      },
+      {
+        "name": "TP53",
+        "start": 7668420,
+        "end": 7687490,
+        "strand": "-"
+      },
+      {
+        "name": "WRAP53",
+        "start": 7686070,
+        "end": 7703502,
+        "strand": "+"
+      },
+      {
+        "name": "EFNB3",
+        "start": 7705201,
+        "end": 7711372,
+        "strand": "+"
+      },
+      {
+        "name": "DNAH2",
+        "start": 7717743,
+        "end": 7833742,
+        "strand": "+"
+      },
+      {
+        "name": "KDM6B",
+        "start": 7834216,
+        "end": 7854796,
+        "strand": "+"
+      }
     ]
   },
   "tp53_exons": {
@@ -248,8 +328,16 @@
         "end": 7669690,
         "contains": "3-prime UTR + CDS start"
       },
-      { "exon": 2, "start": 7670608, "end": 7670715 },
-      { "exon": 3, "start": 7673534, "end": 7673608 },
+      {
+        "exon": 2,
+        "start": 7670608,
+        "end": 7670715
+      },
+      {
+        "exon": 3,
+        "start": 7673534,
+        "end": 7673608
+      },
       {
         "exon": 4,
         "start": 7673700,
@@ -262,11 +350,31 @@
         "end": 7674290,
         "contains": "delta133p53 start"
       },
-      { "exon": 6, "start": 7674858, "end": 7674971 },
-      { "exon": 7, "start": 7675052, "end": 7675236 },
-      { "exon": 8, "start": 7675993, "end": 7676272 },
-      { "exon": 9, "start": 7676381, "end": 7676403 },
-      { "exon": 10, "start": 7676520, "end": 7676622 },
+      {
+        "exon": 6,
+        "start": 7674858,
+        "end": 7674971
+      },
+      {
+        "exon": 7,
+        "start": 7675052,
+        "end": 7675236
+      },
+      {
+        "exon": 8,
+        "start": 7675993,
+        "end": 7676272
+      },
+      {
+        "exon": 9,
+        "start": 7676381,
+        "end": 7676403
+      },
+      {
+        "exon": 10,
+        "start": 7676520,
+        "end": 7676622
+      },
       {
         "exon": 11,
         "start": 7687376,
@@ -300,7 +408,7 @@
       "geo": "GSE63525",
       "file": "GSE63525_K562_Arrowhead_domainlist.txt",
       "assembly_original": "hg19",
-      "liftover_method": "linear offset +96701bp (APPROXIMATE — not formal liftOver)",
+      "liftover_method": "linear offset +96701bp (APPROXIMATE \u2014 not formal liftOver)",
       "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
     },
     "ctcf_promoter_regulation": {
@@ -327,6 +435,12 @@
       "track": "ncbiRefSeq"
     }
   },
-  "thresholds": null,
+  "thresholds": {
+    "ssim_pathogenic": 0.9218,
+    "ssim_likely_pathogenic": 0.9518,
+    "ssim_vus": 0.9818,
+    "ssim_likely_benign": 0.999,
+    "note": "Calibrated at FPR \u2264 1% (opt_threshold=0.9818, sensitivity=22.6%, tissue=partial)"
+  },
   "_thresholds_note": "Not calibrated for 300x300 matrix. Requires empirical calibration after first TP53 ARCHCODE run. SSIM thresholds from HBB 30kb config will be diluted at this resolution."
 }

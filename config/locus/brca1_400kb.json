@@ -1,7 +1,7 @@
 {
   "id": "brca1_400kb",
   "name": "BRCA1 400kb TAD (ENCODE K562+MCF7 CTCF + MCF7 H3K27ac)",
-  "description": "400kb window spanning the BRCA1 TAD on chr17q21.31. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE) and MCF7 ChIP-seq (ENCFF163JHE, ENCSR000DMV), both IDR narrowPeak, GRCh38. H3K27ac enhancer peaks from ENCODE MCF7 (ENCFF340KSH, ENCSR000EWR) — MCF7 is breast cancer cell line where BRCA1 is actively transcribed. K562 H3K27ac (ENCFF864OSZ, ENCSR000AKP) used for cross-validation. BRCA1 is on the MINUS strand; TSS is at the 3-prime end (43,125,364). BRCA1 and NBR2 share a bidirectional promoter separated by ~218bp (Suen et al. 1998, PMID:9685411). TAD boundaries from Rao et al. 2014 K562 Arrowhead domains (GSE63525, hg19 lifted to hg38 with +1,847,982bp offset — APPROXIMATE). CTCF sites are largely cell-type invariant (Cuddapah 2009, PMID:19030024); K562 and MCF7 peaks co-localize at all major sites in this window.",
+  "description": "400kb window spanning the BRCA1 TAD on chr17q21.31. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE) and MCF7 ChIP-seq (ENCFF163JHE, ENCSR000DMV), both IDR narrowPeak, GRCh38. H3K27ac enhancer peaks from ENCODE MCF7 (ENCFF340KSH, ENCSR000EWR) \u2014 MCF7 is breast cancer cell line where BRCA1 is actively transcribed. K562 H3K27ac (ENCFF864OSZ, ENCSR000AKP) used for cross-validation. BRCA1 is on the MINUS strand; TSS is at the 3-prime end (43,125,364). BRCA1 and NBR2 share a bidirectional promoter separated by ~218bp (Suen et al. 1998, PMID:9685411). TAD boundaries from Rao et al. 2014 K562 Arrowhead domains (GSE63525, hg19 lifted to hg38 with +1,847,982bp offset \u2014 APPROXIMATE). CTCF sites are largely cell-type invariant (Cuddapah 2009, PMID:19030024); K562 and MCF7 peaks co-localize at all major sites in this window.",
   "genome_assembly": "GRCh38",
   "window": {
     "chromosome": "chr17",
@@ -18,7 +18,7 @@
         "name": "BRCA1_TSS_NBR2_bidirectional_promoter",
         "source": "ENCODE_MCF7_H3K27ac",
         "encode_accession": "ENCFF340KSH",
-        "note": "BRCA1 TSS (minus strand, NM_007294.4). Bidirectional promoter shared with NBR2 lncRNA, separated by ~218bp. MCF7 H3K27ac signal=6.46 (Peak_8575, 43125615-43126163). K562 H3K27ac signal=72.62 (Peak_723, 43124355-43126810, strongest in K562 — CpG island). Suen et al. 1998 (PMID:9685411)"
+        "note": "BRCA1 TSS (minus strand, NM_007294.4). Bidirectional promoter shared with NBR2 lncRNA, separated by ~218bp. MCF7 H3K27ac signal=6.46 (Peak_8575, 43125615-43126163). K562 H3K27ac signal=72.62 (Peak_723, 43124355-43126810, strongest in K562 \u2014 CpG island). Suen et al. 1998 (PMID:9685411)"
       },
       {
         "position": 43170700,
@@ -58,7 +58,7 @@
         "name": "G6PC1_downstream_H3K27ac",
         "source": "ENCODE_K562_H3K27ac",
         "encode_accession": "ENCFF864OSZ",
-        "note": "K562 H3K27ac signal=58.86 (42928242-42929442). No corresponding MCF7 peak. Co-localizes with CTCF. ~196kb upstream of BRCA1 TSS. MANUALLY CALIBRATED occupancy — K562-specific activity"
+        "note": "K562 H3K27ac signal=58.86 (42928242-42929442). No corresponding MCF7 peak. Co-localizes with CTCF. ~196kb upstream of BRCA1 TSS. MANUALLY CALIBRATED occupancy \u2014 K562-specific activity"
       },
       {
         "position": 42964500,
@@ -220,7 +220,7 @@
         "name": "BRCA1_primary_TAD",
         "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
         "geo_accession": "GSE63525",
-        "note": "Primary TAD containing BRCA1 (220kb). hg19: 41160000-41380000 lifted to hg38 with +1,847,982bp offset (APPROXIMATE — not formal liftOver). Contains IFI35, VAT1, RND2, BRCA1, NBR2, BRCA1P1, NBR1, TMEM106A. Rao et al. 2014 Cell (PMID:25497547)"
+        "note": "Primary TAD containing BRCA1 (220kb). hg19: 41160000-41380000 lifted to hg38 with +1,847,982bp offset (APPROXIMATE \u2014 not formal liftOver). Contains IFI35, VAT1, RND2, BRCA1, NBR2, BRCA1P1, NBR1, TMEM106A. Rao et al. 2014 Cell (PMID:25497547)"
       },
       {
         "position_start": 43277982,
@@ -232,20 +232,90 @@
       }
     ],
     "genes": [
-      { "name": "G6PC1", "start": 42900798, "end": 42914438, "strand": "+" },
-      { "name": "AARSD1", "start": 42950525, "end": 42964454, "strand": "-" },
-      { "name": "PTGES3L", "start": 42968102, "end": 42980080, "strand": "-" },
-      { "name": "RUNDC1", "start": 42980564, "end": 42995142, "strand": "+" },
-      { "name": "RPL27", "start": 42998272, "end": 43002959, "strand": "+" },
-      { "name": "IFI35", "start": 43006783, "end": 43014456, "strand": "+" },
-      { "name": "VAT1", "start": 43014606, "end": 43022385, "strand": "-" },
-      { "name": "RND2", "start": 43025230, "end": 43032041, "strand": "+" },
-      { "name": "BRCA1", "start": 43044294, "end": 43125364, "strand": "-" },
-      { "name": "NBR2", "start": 43125556, "end": 43153671, "strand": "+" },
-      { "name": "BRCA1P1", "start": 43168070, "end": 43169954, "strand": "-" },
-      { "name": "NBR1", "start": 43170408, "end": 43211688, "strand": "+" },
-      { "name": "TMEM106A", "start": 43211874, "end": 43220041, "strand": "+" },
-      { "name": "CCDC200", "start": 43221416, "end": 43231269, "strand": "-" }
+      {
+        "name": "G6PC1",
+        "start": 42900798,
+        "end": 42914438,
+        "strand": "+"
+      },
+      {
+        "name": "AARSD1",
+        "start": 42950525,
+        "end": 42964454,
+        "strand": "-"
+      },
+      {
+        "name": "PTGES3L",
+        "start": 42968102,
+        "end": 42980080,
+        "strand": "-"
+      },
+      {
+        "name": "RUNDC1",
+        "start": 42980564,
+        "end": 42995142,
+        "strand": "+"
+      },
+      {
+        "name": "RPL27",
+        "start": 42998272,
+        "end": 43002959,
+        "strand": "+"
+      },
+      {
+        "name": "IFI35",
+        "start": 43006783,
+        "end": 43014456,
+        "strand": "+"
+      },
+      {
+        "name": "VAT1",
+        "start": 43014606,
+        "end": 43022385,
+        "strand": "-"
+      },
+      {
+        "name": "RND2",
+        "start": 43025230,
+        "end": 43032041,
+        "strand": "+"
+      },
+      {
+        "name": "BRCA1",
+        "start": 43044294,
+        "end": 43125364,
+        "strand": "-"
+      },
+      {
+        "name": "NBR2",
+        "start": 43125556,
+        "end": 43153671,
+        "strand": "+"
+      },
+      {
+        "name": "BRCA1P1",
+        "start": 43168070,
+        "end": 43169954,
+        "strand": "-"
+      },
+      {
+        "name": "NBR1",
+        "start": 43170408,
+        "end": 43211688,
+        "strand": "+"
+      },
+      {
+        "name": "TMEM106A",
+        "start": 43211874,
+        "end": 43220041,
+        "strand": "+"
+      },
+      {
+        "name": "CCDC200",
+        "start": 43221416,
+        "end": 43231269,
+        "strand": "-"
+      }
     ]
   },
   "data_sources": {
@@ -286,7 +356,7 @@
       "assembly": "GRCh38",
       "peaks_in_window": 18,
       "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/",
-      "note": "K562 H3K27ac used for cross-validation. K562 shows strong H3K27ac at BRCA1 promoter CpG island (signal=72.62) despite BRCA1 being largely inactive in K562 — reflects CpG island constitutive acetylation"
+      "note": "K562 H3K27ac used for cross-validation. K562 shows strong H3K27ac at BRCA1 promoter CpG island (signal=72.62) despite BRCA1 being largely inactive in K562 \u2014 reflects CpG island constitutive acetylation"
     },
     "tad_domains": {
       "study": "Rao et al. 2014",
@@ -294,7 +364,7 @@
       "geo": "GSE63525",
       "file": "GSE63525_K562_Arrowhead_domainlist.txt",
       "assembly_original": "hg19",
-      "liftover_method": "linear offset +1847982bp (APPROXIMATE — not formal liftOver, based on BRCA1 NM_007294 hg19=41196312 vs hg38=43044294)",
+      "liftover_method": "linear offset +1847982bp (APPROXIMATE \u2014 not formal liftOver, based on BRCA1 NM_007294 hg19=41196312 vs hg38=43044294)",
       "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
     },
     "ccre_annotations": {
@@ -332,6 +402,12 @@
       ]
     }
   },
-  "thresholds": null,
+  "thresholds": {
+    "ssim_pathogenic": 0.9048,
+    "ssim_likely_pathogenic": 0.9348,
+    "ssim_vus": 0.9648,
+    "ssim_likely_benign": 0.9848,
+    "note": "Calibrated at FPR \u2264 1% (opt_threshold=0.9648, sensitivity=0.9%, tissue=partial)"
+  },
   "_thresholds_note": "Not calibrated for 400x400 matrix. SSIM thresholds require empirical calibration after first BRCA1 ARCHCODE run. Matrix-size dilution expected to be stronger than TP53 (400 bins vs 300 bins)."
 }

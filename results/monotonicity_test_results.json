@@ -1,0 +1,444 @@
+{
+  "test": "Monotonicity: \u0394LSSIM vs enhancer distance",
+  "hypothesis": "\u0394LSSIM decreases monotonically with distance to nearest enhancer",
+  "method": "Spearman rank correlation of bin midpoints vs \u0394LSSIM",
+  "bins": [
+    "\u22641kb",
+    "1-5kb",
+    "5-20kb",
+    "20-50kb",
+    ">50kb"
+  ],
+  "per_locus": [
+    {
+      "locus": "CFTR",
+      "n_enhancers": 6,
+      "n_path": 1756,
+      "n_ben": 1593,
+      "bins": [
+        {
+          "bin": "\u22641kb",
+          "lo": 0,
+          "hi": 1000,
+          "midpoint": 500.0,
+          "n_path": 162,
+          "n_ben": 116,
+          "path_mean_lssim": 0.963551,
+          "ben_mean_lssim": 0.989856,
+          "delta_lssim": 0.026305
+        },
+        {
+          "bin": "1-5kb",
+          "lo": 1000,
+          "hi": 5000,
+          "midpoint": 3000.0,
+          "n_path": 3,
+          "n_ben": 6,
+          "path_mean_lssim": 0.9859,
+          "ben_mean_lssim": 0.9978,
+          "delta_lssim": 0.0119
+        },
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 450,
+          "n_ben": 474,
+          "path_mean_lssim": 0.996663,
+          "ben_mean_lssim": 0.999521,
+          "delta_lssim": 0.002858
+        },
+        {
+          "bin": "20-50kb",
+          "lo": 20000,
+          "hi": 50000,
+          "midpoint": 35000.0,
+          "n_path": 961,
+          "n_ben": 845,
+          "path_mean_lssim": 0.994015,
+          "ben_mean_lssim": 0.999442,
+          "delta_lssim": 0.005427
+        },
+        {
+          "bin": ">50kb",
+          "lo": 50000,
+          "hi": 200000,
+          "midpoint": 125000.0,
+          "n_path": 180,
+          "n_ben": 152,
+          "path_mean_lssim": 0.995052,
+          "ben_mean_lssim": 0.999341,
+          "delta_lssim": 0.00429
+        }
+      ],
+      "spearman_rho": -0.7,
+      "spearman_p": 0.18812,
+      "strictly_monotone": false,
+      "monotonicity_violations": 1
+    },
+    {
+      "locus": "TP53",
+      "n_enhancers": 9,
+      "n_path": 1645,
+      "n_ben": 1149,
+      "bins": [
+        {
+          "bin": "\u22641kb",
+          "lo": 0,
+          "hi": 1000,
+          "midpoint": 500.0,
+          "n_path": 782,
+          "n_ben": 441,
+          "path_mean_lssim": 0.987182,
+          "ben_mean_lssim": 0.99781,
+          "delta_lssim": 0.010627
+        },
+        {
+          "bin": "1-5kb",
+          "lo": 1000,
+          "hi": 5000,
+          "midpoint": 3000.0,
+          "n_path": 860,
+          "n_ben": 679,
+          "path_mean_lssim": 0.991803,
+          "ben_mean_lssim": 0.999014,
+          "delta_lssim": 0.00721
+        },
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 3,
+          "n_ben": 29,
+          "path_mean_lssim": 0.999067,
+          "ben_mean_lssim": 0.999038,
+          "delta_lssim": -2.9e-05
+        }
+      ],
+      "spearman_rho": -1.0,
+      "spearman_p": 0.0,
+      "strictly_monotone": true,
+      "monotonicity_violations": 0
+    },
+    {
+      "locus": "BRCA1",
+      "n_enhancers": 9,
+      "n_path": 7062,
+      "n_ben": 3620,
+      "bins": [
+        {
+          "bin": "\u22641kb",
+          "lo": 0,
+          "hi": 1000,
+          "midpoint": 500.0,
+          "n_path": 6,
+          "n_ben": 47,
+          "path_mean_lssim": 0.963533,
+          "ben_mean_lssim": 0.952983,
+          "delta_lssim": -0.01055
+        },
+        {
+          "bin": "1-5kb",
+          "lo": 1000,
+          "hi": 5000,
+          "midpoint": 3000.0,
+          "n_path": 139,
+          "n_ben": 112,
+          "path_mean_lssim": 0.950684,
+          "ben_mean_lssim": 0.987491,
+          "delta_lssim": 0.036807
+        },
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 228,
+          "n_ben": 251,
+          "path_mean_lssim": 0.997756,
+          "ben_mean_lssim": 0.999483,
+          "delta_lssim": 0.001727
+        },
+        {
+          "bin": "20-50kb",
+          "lo": 20000,
+          "hi": 50000,
+          "midpoint": 35000.0,
+          "n_path": 6689,
+          "n_ben": 3204,
+          "path_mean_lssim": 0.993659,
+          "ben_mean_lssim": 0.99943,
+          "delta_lssim": 0.00577
+        }
+      ],
+      "spearman_rho": 0.4,
+      "spearman_p": 0.6,
+      "strictly_monotone": false,
+      "monotonicity_violations": 2
+    },
+    {
+      "locus": "MLH1",
+      "n_enhancers": 8,
+      "n_path": 2425,
+      "n_ben": 1635,
+      "bins": [
+        {
+          "bin": "\u22641kb",
+          "lo": 0,
+          "hi": 1000,
+          "midpoint": 500.0,
+          "n_path": 183,
+          "n_ben": 114,
+          "path_mean_lssim": 0.932587,
+          "ben_mean_lssim": 0.989675,
+          "delta_lssim": 0.057089
+        },
+        {
+          "bin": "1-5kb",
+          "lo": 1000,
+          "hi": 5000,
+          "midpoint": 3000.0,
+          "n_path": 128,
+          "n_ben": 73,
+          "path_mean_lssim": 0.987124,
+          "ben_mean_lssim": 0.998479,
+          "delta_lssim": 0.011355
+        },
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 504,
+          "n_ben": 377,
+          "path_mean_lssim": 0.997108,
+          "ben_mean_lssim": 0.99965,
+          "delta_lssim": 0.002543
+        },
+        {
+          "bin": "20-50kb",
+          "lo": 20000,
+          "hi": 50000,
+          "midpoint": 35000.0,
+          "n_path": 1003,
+          "n_ben": 743,
+          "path_mean_lssim": 0.9937,
+          "ben_mean_lssim": 0.998021,
+          "delta_lssim": 0.004321
+        },
+        {
+          "bin": ">50kb",
+          "lo": 50000,
+          "hi": 200000,
+          "midpoint": 125000.0,
+          "n_path": 607,
+          "n_ben": 328,
+          "path_mean_lssim": 0.991898,
+          "ben_mean_lssim": 0.999406,
+          "delta_lssim": 0.007508
+        }
+      ],
+      "spearman_rho": -0.6,
+      "spearman_p": 0.28476,
+      "strictly_monotone": false,
+      "monotonicity_violations": 2
+    },
+    {
+      "locus": "LDLR",
+      "n_enhancers": 10,
+      "n_path": 2274,
+      "n_ben": 1010,
+      "bins": [
+        {
+          "bin": "\u22641kb",
+          "lo": 0,
+          "hi": 1000,
+          "midpoint": 500.0,
+          "n_path": 140,
+          "n_ben": 91,
+          "path_mean_lssim": 0.978033,
+          "ben_mean_lssim": 0.996309,
+          "delta_lssim": 0.018276
+        },
+        {
+          "bin": "1-5kb",
+          "lo": 1000,
+          "hi": 5000,
+          "midpoint": 3000.0,
+          "n_path": 58,
+          "n_ben": 113,
+          "path_mean_lssim": 0.990695,
+          "ben_mean_lssim": 0.998303,
+          "delta_lssim": 0.007608
+        },
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 2076,
+          "n_ben": 806,
+          "path_mean_lssim": 0.998395,
+          "ben_mean_lssim": 0.999846,
+          "delta_lssim": 0.001451
+        }
+      ],
+      "spearman_rho": -1.0,
+      "spearman_p": 0.0,
+      "strictly_monotone": true,
+      "monotonicity_violations": 0
+    },
+    {
+      "locus": "SCN5A",
+      "n_enhancers": 3,
+      "n_path": 928,
+      "n_ben": 1560,
+      "bins": [
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 43,
+          "n_ben": 107,
+          "path_mean_lssim": 0.996486,
+          "ben_mean_lssim": 0.999675,
+          "delta_lssim": 0.003189
+        },
+        {
+          "bin": "20-50kb",
+          "lo": 20000,
+          "hi": 50000,
+          "midpoint": 35000.0,
+          "n_path": 238,
+          "n_ben": 421,
+          "path_mean_lssim": 0.99613,
+          "ben_mean_lssim": 0.999534,
+          "delta_lssim": 0.003404
+        },
+        {
+          "bin": ">50kb",
+          "lo": 50000,
+          "hi": 200000,
+          "midpoint": 125000.0,
+          "n_path": 647,
+          "n_ben": 1027,
+          "path_mean_lssim": 0.995955,
+          "ben_mean_lssim": 0.999507,
+          "delta_lssim": 0.003552
+        }
+      ],
+      "spearman_rho": 1.0,
+      "spearman_p": 0.0,
+      "strictly_monotone": false,
+      "monotonicity_violations": 2
+    },
+    {
+      "locus": "TERT",
+      "n_enhancers": 5,
+      "n_path": 431,
+      "n_ben": 1658,
+      "bins": [
+        {
+          "bin": "\u22641kb",
+          "lo": 0,
+          "hi": 1000,
+          "midpoint": 500.0,
+          "n_path": 91,
+          "n_ben": 370,
+          "path_mean_lssim": 0.943243,
+          "ben_mean_lssim": 0.996652,
+          "delta_lssim": 0.053409
+        },
+        {
+          "bin": "1-5kb",
+          "lo": 1000,
+          "hi": 5000,
+          "midpoint": 3000.0,
+          "n_path": 73,
+          "n_ben": 301,
+          "path_mean_lssim": 0.968552,
+          "ben_mean_lssim": 0.998232,
+          "delta_lssim": 0.02968
+        },
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 107,
+          "n_ben": 357,
+          "path_mean_lssim": 0.996372,
+          "ben_mean_lssim": 0.999524,
+          "delta_lssim": 0.003152
+        },
+        {
+          "bin": "20-50kb",
+          "lo": 20000,
+          "hi": 50000,
+          "midpoint": 35000.0,
+          "n_path": 151,
+          "n_ben": 628,
+          "path_mean_lssim": 0.994184,
+          "ben_mean_lssim": 0.999314,
+          "delta_lssim": 0.00513
+        }
+      ],
+      "spearman_rho": -0.8,
+      "spearman_p": 0.2,
+      "strictly_monotone": false,
+      "monotonicity_violations": 1
+    },
+    {
+      "locus": "GJB2",
+      "n_enhancers": 4,
+      "n_path": 314,
+      "n_ben": 155,
+      "bins": [
+        {
+          "bin": "\u22641kb",
+          "lo": 0,
+          "hi": 1000,
+          "midpoint": 500.0,
+          "n_path": 4,
+          "n_ben": 13,
+          "path_mean_lssim": 0.98155,
+          "ben_mean_lssim": 0.982392,
+          "delta_lssim": 0.000842
+        },
+        {
+          "bin": "1-5kb",
+          "lo": 1000,
+          "hi": 5000,
+          "midpoint": 3000.0,
+          "n_path": 293,
+          "n_ben": 137,
+          "path_mean_lssim": 0.991256,
+          "ben_mean_lssim": 0.999269,
+          "delta_lssim": 0.008013
+        },
+        {
+          "bin": "5-20kb",
+          "lo": 5000,
+          "hi": 20000,
+          "midpoint": 12500.0,
+          "n_path": 2,
+          "n_ben": 5,
+          "path_mean_lssim": 0.99885,
+          "ben_mean_lssim": 0.99834,
+          "delta_lssim": -0.00051
+        }
+      ],
+      "spearman_rho": -0.5,
+      "spearman_p": 0.66667,
+      "strictly_monotone": false,
+      "monotonicity_violations": 1
+    }
+  ],
+  "pooled_spearman_rho": -0.3935,
+  "pooled_spearman_p": 0.031443,
+  "pooled_n_bins": 30,
+  "direction_confirmed": true
+}
