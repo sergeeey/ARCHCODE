@@ -1,7 +1,7 @@
 {
   "id": "ldlr_300kb",
   "name": "LDLR 300kb TAD (ENCODE HepG2 CTCF + H3K27ac)",
-  "description": "300kb window spanning the LDLR locus on chr19p13.2. LDLR (Low-Density Lipoprotein Receptor) encodes the primary receptor for LDL cholesterol clearance; germline pathogenic variants cause Familial Hypercholesterolemia (FH, OMIM:143890). CTCF sites from ENCODE HepG2 ChIP-seq (ENCFF205OKL, ENCSR000AMA, ENCODE4 IDR narrowPeak, GRCh38). H3K27ac enhancer peaks from ENCODE HepG2 (ENCFF012ADZ, ENCSR000AMO, replicated peaks, GRCh38). HepG2 is a hepatocyte carcinoma cell line where LDLR is actively expressed under SREBP regulation — liver is the primary site of LDL receptor-mediated cholesterol clearance. K562 CTCF (ENCFF736NYC, ENCSR000DWE) used for cross-validation: 7/10 HepG2 CTCF peaks co-localize with K562 (cell-type invariant, Cuddapah 2009 PMID:19030024). Window contains SMARCA4 (SWI/SNF chromatin remodeler) upstream and SPC24/KANK2/DOCK6 downstream.",
+  "description": "300kb window spanning the LDLR locus on chr19p13.2. LDLR (Low-Density Lipoprotein Receptor) encodes the primary receptor for LDL cholesterol clearance; germline pathogenic variants cause Familial Hypercholesterolemia (FH, OMIM:143890). CTCF sites from ENCODE HepG2 ChIP-seq (ENCFF205OKL, ENCSR000AMA, ENCODE4 IDR narrowPeak, GRCh38). H3K27ac enhancer peaks from ENCODE HepG2 (ENCFF012ADZ, ENCSR000AMO, replicated peaks, GRCh38). HepG2 is a hepatocyte carcinoma cell line where LDLR is actively expressed under SREBP regulation \u2014 liver is the primary site of LDL receptor-mediated cholesterol clearance. K562 CTCF (ENCFF736NYC, ENCSR000DWE) used for cross-validation: 7/10 HepG2 CTCF peaks co-localize with K562 (cell-type invariant, Cuddapah 2009 PMID:19030024). Window contains SMARCA4 (SWI/SNF chromatin remodeler) upstream and SPC24/KANK2/DOCK6 downstream.",
   "genome_assembly": "GRCh38",
   "window": {
     "chromosome": "chr19",
@@ -18,7 +18,7 @@
         "name": "LDLR_promoter_super_enhancer",
         "source": "ENCODE_HepG2_H3K27ac",
         "encode_accession": "ENCFF012ADZ",
-        "note": "STRONGEST H3K27ac in window (Peak_174, 11090529-11096833, signal=111.34, score=1000, 6.3kb broad). Spans LDLR exon 1, CpG island promoter, and SRE (sterol regulatory element). Adjacent upstream peak (Peak_2739, 11088453-11090401, signal=49.66) extends active chromatin to ~8.4kb. LDLR promoter is SREBP-regulated in hepatocytes. MANUALLY CALIBRATED occupancy — highest signal in window"
+        "note": "STRONGEST H3K27ac in window (Peak_174, 11090529-11096833, signal=111.34, score=1000, 6.3kb broad). Spans LDLR exon 1, CpG island promoter, and SRE (sterol regulatory element). Adjacent upstream peak (Peak_2739, 11088453-11090401, signal=49.66) extends active chromatin to ~8.4kb. LDLR promoter is SREBP-regulated in hepatocytes. MANUALLY CALIBRATED occupancy \u2014 highest signal in window"
       },
       {
         "position": 11090157,
@@ -42,7 +42,7 @@
         "name": "ANGPTL8_enhancer",
         "source": "ENCODE_HepG2_H3K27ac",
         "encode_accession": "ENCFF012ADZ",
-        "note": "Broad H3K27ac peak at 3-prime window edge (Peak_4283, 11235317-11240699, signal=37.08, 5.4kb broad). Overlaps ANGPTL8 (angiopoietin-like 8, betatrophin) — liver-expressed gene involved in lipid metabolism. Functionally relevant: ANGPTL8 and LDLR are both SREBP targets in hepatocytes. MANUALLY CALIBRATED occupancy"
+        "note": "Broad H3K27ac peak at 3-prime window edge (Peak_4283, 11235317-11240699, signal=37.08, 5.4kb broad). Overlaps ANGPTL8 (angiopoietin-like 8, betatrophin) \u2014 liver-expressed gene involved in lipid metabolism. Functionally relevant: ANGPTL8 and LDLR are both SREBP targets in hepatocytes. MANUALLY CALIBRATED occupancy"
       },
       {
         "position": 11129583,
@@ -110,7 +110,7 @@
         "name": "SMARCA4_LDLR_intergenic_CTCF",
         "source": "ENCODE_HepG2_CTCF",
         "encode_accession": "ENCFF205OKL",
-        "note": "Weak CTCF in intergenic region between SMARCA4 and LDLR (11011739-11012049, score=774, signal=17.21). HepG2-enriched — no strong K562 co-localization"
+        "note": "Weak CTCF in intergenic region between SMARCA4 and LDLR (11011739-11012049, score=774, signal=17.21). HepG2-enriched \u2014 no strong K562 co-localization"
       },
       {
         "position": 11036090,
@@ -128,7 +128,7 @@
         "name": "LDLR_upstream_CTCF",
         "source": "ENCODE_HepG2_CTCF",
         "encode_accession": "ENCFF205OKL",
-        "note": "Moderate CTCF ~4kb upstream of LDLR TSS (11085548-11085858, score=1000, signal=33.18). HepG2-enriched — no K562 peak at exact position. May function as liver-specific regulatory element"
+        "note": "Moderate CTCF ~4kb upstream of LDLR TSS (11085548-11085858, score=1000, signal=33.18). HepG2-enriched \u2014 no K562 peak at exact position. May function as liver-specific regulatory element"
       },
       {
         "position": 11126284,
@@ -137,7 +137,7 @@
         "name": "LDLR_intragenic_CTCF",
         "source": "ENCODE_HepG2_CTCF",
         "encode_accession": "ENCFF205OKL",
-        "note": "Strong CTCF within LDLR gene body (11126187-11126365, score=1000, signal=70.00). K562 co-localization confirmed (signal=104.19). Intragenic insulator — may define sub-domain within LDLR. Cell-type invariant"
+        "note": "Strong CTCF within LDLR gene body (11126187-11126365, score=1000, signal=70.00). K562 co-localization confirmed (signal=104.19). Intragenic insulator \u2014 may define sub-domain within LDLR. Cell-type invariant"
       },
       {
         "position": 11131142,
@@ -173,7 +173,7 @@
         "name": "DOCK6_CTCF",
         "source": "ENCODE_HepG2_CTCF",
         "encode_accession": "ENCFF205OKL",
-        "note": "Strong CTCF at DOCK6 locus (11203948-11204111, score=1000, signal=50.92). K562 co-localization confirmed and MUCH stronger (K562 signal=213.76 — strongest K562 CTCF in window). Cell-type differential: K562 4x stronger than HepG2"
+        "note": "Strong CTCF at DOCK6 locus (11203948-11204111, score=1000, signal=50.92). K562 co-localization confirmed and MUCH stronger (K562 signal=213.76 \u2014 strongest K562 CTCF in window). Cell-type differential: K562 4x stronger than HepG2"
       },
       {
         "position": 11227282,
@@ -186,11 +186,36 @@
       }
     ],
     "genes": [
-      { "name": "SMARCA4", "start": 10961032, "end": 11062273, "strand": "+" },
-      { "name": "LDLR", "start": 11089362, "end": 11133820, "strand": "+" },
-      { "name": "SPC24", "start": 11145492, "end": 11155782, "strand": "-" },
-      { "name": "KANK2", "start": 11164269, "end": 11197865, "strand": "-" },
-      { "name": "DOCK6", "start": 11199294, "end": 11240000, "strand": "-" }
+      {
+        "name": "SMARCA4",
+        "start": 10961032,
+        "end": 11062273,
+        "strand": "+"
+      },
+      {
+        "name": "LDLR",
+        "start": 11089362,
+        "end": 11133820,
+        "strand": "+"
+      },
+      {
+        "name": "SPC24",
+        "start": 11145492,
+        "end": 11155782,
+        "strand": "-"
+      },
+      {
+        "name": "KANK2",
+        "start": 11164269,
+        "end": 11197865,
+        "strand": "-"
+      },
+      {
+        "name": "DOCK6",
+        "start": 11199294,
+        "end": 11240000,
+        "strand": "-"
+      }
     ]
   },
   "data_sources": {
@@ -222,7 +247,7 @@
       "assembly": "GRCh38",
       "peaks_in_window": 28,
       "url": "https://www.encodeproject.org/experiments/ENCSR000AMO/",
-      "note": "HepG2 H3K27ac marks active enhancers and promoters in hepatocytes. ENCODE does NOT apply IDR to histone marks — replicated peaks use overlap-based concordance between biological replicates, which is the standard approach for broad histone marks. LDLR promoter shows strongest H3K27ac in window (signal=111.34, 6.3kb broad), consistent with high LDLR expression in hepatocytes under SREBP regulation. 48,298 total peaks genome-wide"
+      "note": "HepG2 H3K27ac marks active enhancers and promoters in hepatocytes. ENCODE does NOT apply IDR to histone marks \u2014 replicated peaks use overlap-based concordance between biological replicates, which is the standard approach for broad histone marks. LDLR promoter shows strongest H3K27ac in window (signal=111.34, 6.3kb broad), consistent with high LDLR expression in hepatocytes under SREBP regulation. 48,298 total peaks genome-wide"
     },
     "gene_annotations": {
       "source": "NCBI RefSeq via UCSC API + NCBI Gene",
@@ -246,6 +271,12 @@
       ]
     }
   },
-  "thresholds": null,
+  "thresholds": {
+    "ssim_pathogenic": 0.9588,
+    "ssim_likely_pathogenic": 0.9788,
+    "ssim_vus": 0.9888,
+    "ssim_likely_benign": 0.999,
+    "note": "Calibrated at FPR \u2264 1% (opt_threshold=0.9888, sensitivity=4.2%, tissue=partial)"
+  },
   "_thresholds_note": "Not calibrated for 300x300 matrix. Requires empirical calibration after first LDLR ARCHCODE run. SSIM thresholds from HBB 30kb config will be diluted at this resolution."
 }

@@ -66,7 +66,7 @@
         "name": "MLH1_EPM2AIP1_bidirectional_promoter",
         "source": "ENCODE_K562_H3K27ac",
         "encode_accession": "ENCFF864OSZ",
-        "note": "STRONGEST H3K27ac in window (Peak_403, 36990680-36994774, signal=62.86, score=1000, 4.1kb wide). Spans EPM2AIP1/MLH1 bidirectional CpG island promoter. MLH1 TSS at 36993466 (+ strand, NM_000249.4). EPM2AIP1 ends at 36993131 (- strand). Promoters separated by ~335bp. Hypermethylation of this CpG island causes Lynch syndrome. MANUALLY CALIBRATED occupancy — highest signal in window"
+        "note": "STRONGEST H3K27ac in window (Peak_403, 36990680-36994774, signal=62.86, score=1000, 4.1kb wide). Spans EPM2AIP1/MLH1 bidirectional CpG island promoter. MLH1 TSS at 36993466 (+ strand, NM_000249.4). EPM2AIP1 ends at 36993131 (- strand). Promoters separated by ~335bp. Hypermethylation of this CpG island causes Lynch syndrome. MANUALLY CALIBRATED occupancy \u2014 highest signal in window"
       },
       {
         "position": 37175999,
@@ -149,7 +149,7 @@
         "name": "MLH1_primary_TAD",
         "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
         "geo_accession": "GSE63525",
-        "note": "Primary TAD containing MLH1 (~220kb). hg19: ~37000000-37220000 lifted to hg38 with -41324bp offset (APPROXIMATE — not formal liftOver, based on MLH1 NM_000249 hg19=37034841 vs hg38=36993466). Contains EPM2AIP1, MLH1, LRRFIP2. Boundaries align with strong CTCF sites at 36958900 (signal=178.74) and 37175898 (signal=48.79). Rao et al. 2014 Cell (PMID:25497547)"
+        "note": "Primary TAD containing MLH1 (~220kb). hg19: ~37000000-37220000 lifted to hg38 with -41324bp offset (APPROXIMATE \u2014 not formal liftOver, based on MLH1 NM_000249 hg19=37034841 vs hg38=36993466). Contains EPM2AIP1, MLH1, LRRFIP2. Boundaries align with strong CTCF sites at 36958900 (signal=178.74) and 37175898 (signal=48.79). Rao et al. 2014 Cell (PMID:25497547)"
       },
       {
         "position_start": 36758676,
@@ -161,10 +161,30 @@
       }
     ],
     "genes": [
-      { "name": "TRANK1", "start": 36826818, "end": 36945054, "strand": "-" },
-      { "name": "EPM2AIP1", "start": 36985042, "end": 36993131, "strand": "-" },
-      { "name": "MLH1", "start": 36993466, "end": 37050846, "strand": "+" },
-      { "name": "LRRFIP2", "start": 37052625, "end": 37176360, "strand": "-" }
+      {
+        "name": "TRANK1",
+        "start": 36826818,
+        "end": 36945054,
+        "strand": "-"
+      },
+      {
+        "name": "EPM2AIP1",
+        "start": 36985042,
+        "end": 36993131,
+        "strand": "-"
+      },
+      {
+        "name": "MLH1",
+        "start": 36993466,
+        "end": 37050846,
+        "strand": "+"
+      },
+      {
+        "name": "LRRFIP2",
+        "start": 37052625,
+        "end": 37176360,
+        "strand": "-"
+      }
     ]
   },
   "data_sources": {
@@ -192,7 +212,7 @@
       "geo": "GSE63525",
       "file": "GSE63525_K562_Arrowhead_domainlist.txt",
       "assembly_original": "hg19",
-      "liftover_method": "linear offset -41324bp (APPROXIMATE — not formal liftOver, based on MLH1 NM_000249 hg19=37034841 vs hg38=36993466)",
+      "liftover_method": "linear offset -41324bp (APPROXIMATE \u2014 not formal liftOver, based on MLH1 NM_000249 hg19=37034841 vs hg38=36993466)",
       "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
     },
     "gene_annotations": {
@@ -216,6 +236,12 @@
       ]
     }
   },
-  "thresholds": null,
+  "thresholds": {
+    "ssim_pathogenic": 0.912,
+    "ssim_likely_pathogenic": 0.942,
+    "ssim_vus": 0.972,
+    "ssim_likely_benign": 0.992,
+    "note": "Calibrated at FPR \u2264 1% (opt_threshold=0.9720, sensitivity=5.5%, tissue=partial)"
+  },
   "_thresholds_note": "Not calibrated for 300x300 matrix. Requires empirical calibration after first MLH1 ARCHCODE run. SSIM thresholds from HBB 30kb config will be diluted at this resolution."
 }

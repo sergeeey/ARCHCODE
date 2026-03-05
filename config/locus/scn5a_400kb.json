@@ -1,7 +1,7 @@
 {
   "id": "scn5a_400kb",
   "name": "SCN5A 400kb TAD (ENCODE K562 CTCF + K562 H3K27ac)",
-  "description": "400kb window spanning the SCN5A cardiac sodium channel locus on chr3p22.2. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE), IDR narrowPeak, GRCh38. H3K27ac enhancer peaks from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). LIMITATION: K562 is an erythroid leukemia cell line, not cardiac — SCN5A is primarily expressed in cardiomyocytes. K562 H3K27ac may underrepresent cardiac-specific enhancers. iPSC-CM Hi-C data (not available in ENCODE) would be the biologically relevant reference for SCN5A. CTCF sites are largely cell-type invariant (Cuddapah 2009, PMID:19030024); K562 CTCF is expected to reflect cardiac CTCF binding at most sites. SCN5A (NM_198056.3) is on the MINUS strand; TSS is at 38649687 (txEnd). SCN10A, a neighboring sodium channel gene, lies ~47kb downstream.",
+  "description": "400kb window spanning the SCN5A cardiac sodium channel locus on chr3p22.2. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE), IDR narrowPeak, GRCh38. H3K27ac enhancer peaks from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). LIMITATION: K562 is an erythroid leukemia cell line, not cardiac \u2014 SCN5A is primarily expressed in cardiomyocytes. K562 H3K27ac may underrepresent cardiac-specific enhancers. iPSC-CM Hi-C data (not available in ENCODE) would be the biologically relevant reference for SCN5A. CTCF sites are largely cell-type invariant (Cuddapah 2009, PMID:19030024); K562 CTCF is expected to reflect cardiac CTCF binding at most sites. SCN5A (NM_198056.3) is on the MINUS strand; TSS is at 38649687 (txEnd). SCN10A, a neighboring sodium channel gene, lies ~47kb downstream.",
   "genome_assembly": "GRCh38",
   "window": {
     "chromosome": "chr3",
@@ -167,17 +167,42 @@
     ],
     "tad_boundaries": [],
     "genes": [
-      { "name": "XYLB", "start": 38346784, "end": 38427186, "strand": "+" },
+      {
+        "name": "XYLB",
+        "start": 38346784,
+        "end": 38427186,
+        "strand": "+"
+      },
       {
         "name": "ACVR2B-AS1",
         "start": 38451026,
         "end": 38454820,
         "strand": "-"
       },
-      { "name": "ACVR2B", "start": 38453889, "end": 38493142, "strand": "+" },
-      { "name": "EXOG", "start": 38496339, "end": 38526303, "strand": "+" },
-      { "name": "SCN5A", "start": 38548061, "end": 38649687, "strand": "-" },
-      { "name": "SCN10A", "start": 38696806, "end": 38816217, "strand": "-" }
+      {
+        "name": "ACVR2B",
+        "start": 38453889,
+        "end": 38493142,
+        "strand": "+"
+      },
+      {
+        "name": "EXOG",
+        "start": 38496339,
+        "end": 38526303,
+        "strand": "+"
+      },
+      {
+        "name": "SCN5A",
+        "start": 38548061,
+        "end": 38649687,
+        "strand": "-"
+      },
+      {
+        "name": "SCN10A",
+        "start": 38696806,
+        "end": 38816217,
+        "strand": "-"
+      }
     ]
   },
   "data_sources": {
@@ -208,6 +233,12 @@
       "note": "Gene coordinates represent the union of all curated transcript isoforms (min txStart to max txEnd). SCN5A coordinates based on NM_198056.3 (major cardiac isoform). SCN10A extends beyond the 400kb window (to 38816217)"
     }
   },
-  "thresholds": null,
+  "thresholds": {
+    "ssim_pathogenic": 0.9641,
+    "ssim_likely_pathogenic": 0.9841,
+    "ssim_vus": 0.9941,
+    "ssim_likely_benign": 0.999,
+    "note": "Calibrated at FPR \u2264 1% (opt_threshold=0.9941, sensitivity=22.4%, tissue=mismatch)"
+  },
   "_thresholds_note": "Not calibrated for 400x400 matrix. SSIM thresholds require empirical calibration after first SCN5A ARCHCODE run. Matrix-size dilution expected (400 bins, same as BRCA1). Additional limitation: K562 H3K27ac may produce incomplete enhancer landscape for this cardiac gene."
 }

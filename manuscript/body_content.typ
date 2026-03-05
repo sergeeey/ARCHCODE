@@ -33,8 +33,8 @@ _Hbb-bs_ demonstrates directional conservation (_r_ = 0.82, 17/17 sign
 test _p_ < 0.001), with mouse Hi-C validation (_r_ = 0.531, G1E-ER4
 erythroid cells) confirming model fidelity across species. The
 convergence of nine orthogonal methods on the same structural blind
-spot establishes ARCHCODE as a complementary layer for variant
-interpretation pipelines. Genome-wide scaling to 13 loci (32,201 variants) confirms a tissue-specificity gradient: TERT (Δ = --0.019) and BCL11A (Δ = --0.014) show the strongest non-HBB signals, while HBA1 (same pathway, Δ = --0.002) provides a within-pathway negative control.
+spot establishes ARCHCODE as a complementary layer --- not a replacement --- for variant
+interpretation pipelines. Per-locus threshold calibration (FPR ≤ 1%) is mandatory: a universal 0.95 threshold produces 0.7% false positives on BRCA1, eliminated by calibrated threshold 0.965. ARCHCODE is a category-level structural classifier; it does not provide independent positional prediction within functional categories and requires experimental validation (Capture Hi-C, RT-PCR) before any clinical reclassification. Genome-wide scaling to 13 loci (32,201 variants) confirms a tissue-specificity gradient: TERT (Δ = --0.019) and BCL11A (Δ = --0.014) show the strongest non-HBB signals, while HBA1 (same pathway, Δ = --0.002) provides a within-pathway negative control. Application to 30,952 VUS identifies 641 pearl-like reclassification candidates as computational hypotheses for experimental follow-up.
 
 == Main Findings (for graphical abstract)
 + #strong[32,201 real ClinVar variants across 13 loci] (9 primary: HBB 1,103 + CFTR
