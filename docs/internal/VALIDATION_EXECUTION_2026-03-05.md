@@ -78,11 +78,15 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
   - Result: `PASS`
   - Evidence:
     - `results/task1_alphagenome_benchmark_95kb_2026-03-05.json`
+  - Added metrics:
+    - `local_metrics.*.local_ssim_mean` (window=50, n=25 windows)
 
 - `.venv\\Scripts\\python.exe scripts/benchmark_akita.py --locus 95kb --cell-type GM12878 --output results/task1_akita_benchmark_95kb_2026-03-05.json`
   - Result: `PASS`
   - Evidence:
     - `results/task1_akita_benchmark_95kb_2026-03-05.json`
+  - Added metrics:
+    - `local_metrics.*.local_ssim_mean` (window=50, n=25 windows)
 
 ### Task-specific summaries generated
 
@@ -91,6 +95,9 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
   - Built from available benchmark artifacts in `results/alphagenome_benchmark_*.json` and `results/akita_benchmark_*.json`.
   - Fresh rerun summary:
     - `results/task1_ai_blindspot_fresh_2026-03-05.json`
+  - 95kb interpretation policy:
+    - Pearson/Spearman kept as secondary
+    - Local SSIM (`window=50`) added as primary micro-window metric
 
 - Task 2:
   - `results/task2_loop_that_stayed_status_2026-03-05.json`
@@ -121,6 +128,10 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 - Task 2 (fresh pipeline):
   - Top-5 VUS batch produced `BENIGN` structural verdicts with mechanistic interpretation toward post-transcriptional effects.
   - This conflicts with older high-claim Loop That Stayed artifact; contradiction is explicitly recorded and reconciled in `results/task2_reconciliation_2026-03-05.json`.
+
+- Task 1 (95kb metric hardening):
+  - LSSIM was added to both AlphaGenome and Akita benchmarks.
+  - For 95kb, Pearson remains low and is treated as secondary; LSSIM is now recorded as the primary local structural metric.
 
 - Task 4:
   - Strong CTCF positional recall against ENCODE-aligned config features across 6 loci.
