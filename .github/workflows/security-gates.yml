@@ -43,12 +43,27 @@ jobs:
       - name: Unit test gate
         run: npm test
 
-      - name: Coverage gate (50/55/50/50)
+      - name: Coverage gate (60/55/60/60)
         run: npm run test:coverage
 
       - name: Gold-standard regression gate (mock smoke)
         env:
           ALPHAGENOME_TEST_MODE: mock
+        run: npm run test:gold
+
+      - name: Enforce strict-real key on main push
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        run: |
+          if [ -z "${{ secrets.ALPHAGENOME_API_KEY }}" ]; then
+            echo "ALPHAGENOME_API_KEY is required for main push strict-real gate."
+            exit 1
+          fi
+
+      - name: Gold-standard regression gate (strict-real, main push)
+        if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+        env:
+          ALPHAGENOME_TEST_MODE: strict-real
+          ALPHAGENOME_API_KEY: ${{ secrets.ALPHAGENOME_API_KEY }}
         run: npm run test:gold
 
       - name: Dependency audit (high+)
