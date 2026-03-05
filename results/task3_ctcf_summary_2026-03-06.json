@@ -1,0 +1,41 @@
+{
+  "generated_at_utc": "2026-03-05T19:34:53.7208135Z",
+  "task": "Task3_Weak_CTCF_and_CTCF_KD",
+  "protocol": "VALIDATION_PROTOCOL.md",
+  "weak_ctcf_artifacts": [
+    "results/task3_weak_ctcf_isolated_2026-03-06_seed0.json",
+    "results/task3_weak_ctcf_isolated_2026-03-06_seed10000.json"
+  ],
+  "ctcf_kd_artifact": "results/blind_test_validation_2025.md",
+  "ablation_artifact": "results/ablation_effectstrength.json",
+  "ablation_categorical_auc": 0.975,
+  "ablation_position_only_auc": 0.551,
+  "ablation_inverted_auc": 0.022,
+  "ctcf_kd_mean_loop_duration_min": 16.89,
+  "ctcf_kd_ci_min": [
+    13.42,
+    20.35
+  ],
+  "weak_ctcf_seed0": {
+    "weak_encounter": 237,
+    "weak_readthrough_rate_baseline": 0.15611814345991562,
+    "weak_readthrough_rate_perturbed": 0.15611814345991562,
+    "weak_delta_vs_baseline": 0,
+    "verdict": "SUPPORTED_IN_MODEL"
+  },
+  "weak_ctcf_seed10000": {
+    "weak_encounter": 224,
+    "weak_readthrough_rate_baseline": 0.10714285714285714,
+    "weak_readthrough_rate_perturbed": 0.10714285714285714,
+    "weak_delta_vs_baseline": 0,
+    "verdict": "SUPPORTED_IN_MODEL"
+  },
+  "stability": {
+    "both_runs_have_weak_events": true,
+    "delta_difference_abs": 0.0,
+    "weak_baseline_rate_difference_abs": 0.04897528631705848
+  },
+  "provenance": "SIMULATION + EXPERIMENTAL_REFERENCE",
+  "verdict": "SUPPORTED_IN_MODEL",
+  "note": "Weak-site isolated ablation is now GO (events observed in both seed batches). External biological validation still required for publication-grade claims."
+}
