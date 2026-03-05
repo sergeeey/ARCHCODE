@@ -57,6 +57,8 @@ export interface MultiCohesinConfig {
   trackLoopDuration?: boolean;
   /** Kramer's rate theory kinetics (replaces fixed unloadingProbability) */
   kramerKinetics?: KramerKineticsConfig;
+  /** Enable verbose console logs (default: true for backward compatibility). */
+  verbose?: boolean;
 }
 
 export class MultiCohesinEngine {
@@ -71,6 +73,7 @@ export class MultiCohesinEngine {
   readonly loadingProbabilityPerStep: number | undefined;
   readonly spatialLoader: ISpatialLoader | undefined;
   readonly trackLoopDuration: boolean;
+  readonly verbose: boolean;
 
   // Kramer's rate theory parameters
   readonly kramerEnabled: boolean;
@@ -103,6 +106,7 @@ export class MultiCohesinEngine {
     this.loadingProbabilityPerStep = config.loadingProbabilityPerStep;
     this.spatialLoader = config.spatialLoader;
     this.trackLoopDuration = config.trackLoopDuration ?? false;
+    this.verbose = config.verbose ?? true;
 
     // Initialize Kramer's rate theory parameters
     const kramer = config.kramerKinetics;
@@ -143,7 +147,7 @@ export class MultiCohesinEngine {
     this.loops = [];
     this.stepCount = 0;
 
-    if (!useProbabilisticLoading) {
+    if (!useProbabilisticLoading && this.verbose) {
       console.log(
         `[MultiEngine] Created ${this.cohesins.length} cohesins across ${this.genomeLength}bp`,
       );
@@ -377,7 +381,7 @@ export class MultiCohesinEngine {
       spawned++;
     }
 
-    if (spawned > 0 && this.stepCount % 100 === 0) {
+    if (this.verbose && spawned > 0 && this.stepCount % 100 === 0) {
       console.log(`[Step ${this.stepCount}] Respawned ${spawned} cohesins`);
     }
   }
@@ -436,7 +440,7 @@ export class MultiCohesinEngine {
               createLoop(leftBarrier.position, rightBarrier.position, strength),
             );
           }
-          if (this.loops.length <= 5 || this.stepCount % 100 === 0) {
+          if (this.verbose && (this.loops.length <= 5 || this.stepCount % 100 === 0)) {
             console.log(
               `[Step ${this.stepCount}] Loop #${this.loops.length}:`,
               `${leftBarrier.position}-${rightBarrier.position}`,
@@ -452,7 +456,7 @@ export class MultiCohesinEngine {
         // Single-sided stall (partial blocking, not full loop)
         cohesin.active = false;
         // Don't create a loop - just stall
-        if (this.stepCount % 500 === 0) {
+        if (this.verbose && this.stepCount % 500 === 0) {
           console.log(
             `[Step ${this.stepCount}] Leaky stall at non-convergent barrier`,
           );
