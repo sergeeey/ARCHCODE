@@ -31,13 +31,21 @@ npm run build     # TypeScript compilation + Vite build
 
 1. Create a feature branch from `main` (`feat/your-feature` or `fix/your-fix`)
 2. Ensure all tests pass: `npm test`
-3. Review the [PR Gate checklist](./PR_GATE.md) before submitting
+3. Review the [PR Gate checklist](./docs/PR_GATE.md) before submitting
 4. Open a PR with a clear description of changes and their scientific rationale
 5. At least one reviewer must approve before merge
 
 ## Reporting Issues
 
 Use the [issue templates](./.github/ISSUE_TEMPLATE/) to report bugs or request features. For scientific questions about the methodology, please open a Discussion or contact the author directly.
+
+## Codex-Specific Process (Optional)
+
+If you use Codex for implementation work in this repository, follow:
+
+- [AGENTS.md](./AGENTS.md) for plan/approval/execute protocol
+- [Codex Zero-Hallucination Gates](./docs/CODEX_ZERO_HALLUCINATION_GATES.md)
+- [Implemented vs Verified template](./docs/templates/IMPLEMENTED_VERIFIED_TEMPLATE.md)
 
 ## License
 

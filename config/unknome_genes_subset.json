@@ -1,0 +1,20 @@
+{
+  "description": "Subset of genes for 3D-guided unknomics prototype. Overlap with ARCHCODE locus configs (symbol → locus_id). Can be replaced by Unknome-derived list (filter human, low knownness).",
+  "source": "https://unknome.mrc-lmb.cam.ac.uk/about/",
+  "citation": "Rocha J et al. PLoS Biol 2023;21(8):e3002222",
+  "genes": [
+    { "symbol": "HBB", "locus_id": "hbb_95kb_subTAD" },
+    { "symbol": "BRCA1", "locus_id": "brca1_400kb" },
+    { "symbol": "CFTR", "locus_id": "cftr_317kb" },
+    { "symbol": "TP53", "locus_id": "tp53_300kb" },
+    { "symbol": "MLH1", "locus_id": "mlh1_300kb" },
+    { "symbol": "LDLR", "locus_id": "ldlr_300kb" },
+    { "symbol": "TERT", "locus_id": "tert_300kb" },
+    { "symbol": "GJB2", "locus_id": "gjb2_300kb" },
+    { "symbol": "SCN5A", "locus_id": "scn5a_400kb" },
+    { "symbol": "PTEN", "locus_id": "pten_300kb" },
+    { "symbol": "BCL11A", "locus_id": "bcl11a_300kb" },
+    { "symbol": "GATA1", "locus_id": "gata1_300kb" },
+    { "symbol": "HBA1", "locus_id": "hba1_300kb" }
+  ]
+}

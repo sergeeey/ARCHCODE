@@ -1,0 +1,797 @@
+[
+  {
+    "sample": "WT",
+    "total_junctions": 33,
+    "canonical_junctions": 2,
+    "novel_junctions": 31,
+    "canonical_reads": 423443,
+    "novel_reads": 279,
+    "total_reads": 423722,
+    "canonical_pct": 99.9,
+    "novel_pct": 0.1,
+    "junctions_detail": [
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226929,
+        "reads": 3
+      },
+      {
+        "chr": "chr11",
+        "start": 5225663,
+        "end": 5226576,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225671,
+        "end": 5226590,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5225727,
+        "end": 5226711,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225753,
+        "end": 5226516,
+        "reads": 3
+      },
+      {
+        "chr": "chr11",
+        "start": 5225772,
+        "end": 5226576,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225925,
+        "end": 5228120,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225998,
+        "end": 5226576,
+        "reads": 27
+      },
+      {
+        "chr": "chr11",
+        "start": 5226629,
+        "end": 5226679,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226629,
+        "end": 5226731,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226690,
+        "end": 5230653,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226706,
+        "end": 5226961,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226718,
+        "end": 5227035,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226718,
+        "end": 5227548,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226772,
+        "end": 5226948,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226917,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226925,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226945,
+        "reads": 75
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226967,
+        "reads": 52
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5227200,
+        "reads": 17
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5230653,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226806,
+        "end": 5226860,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226806,
+        "end": 5226937,
+        "reads": 38
+      },
+      {
+        "chr": "chr11",
+        "start": 5226843,
+        "end": 5226929,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226952,
+        "end": 5228120,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5227027,
+        "end": 5230653,
+        "reads": 3
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227200,
+        "reads": 29
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227444,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227511,
+        "reads": 8
+      },
+      {
+        "chr": "chr11",
+        "start": 5227577,
+        "end": 5227833,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5227580,
+        "end": 5227833,
+        "reads": 2
+      }
+    ]
+  },
+  {
+    "sample": "B6",
+    "total_junctions": 39,
+    "canonical_junctions": 2,
+    "novel_junctions": 37,
+    "canonical_reads": 734318,
+    "novel_reads": 417,
+    "total_reads": 734735,
+    "canonical_pct": 99.9,
+    "novel_pct": 0.1,
+    "junctions_detail": [
+      {
+        "chr": "chr11",
+        "start": 5225565,
+        "end": 5226576,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225597,
+        "end": 5226745,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5225607,
+        "end": 5226745,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5225610,
+        "end": 5226657,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225626,
+        "end": 5226666,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226597,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226769,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226929,
+        "reads": 13
+      },
+      {
+        "chr": "chr11",
+        "start": 5225663,
+        "end": 5226623,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225663,
+        "end": 5226929,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225663,
+        "end": 5226945,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225666,
+        "end": 5226627,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225666,
+        "end": 5226637,
+        "reads": 5
+      },
+      {
+        "chr": "chr11",
+        "start": 5225666,
+        "end": 5227005,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5225671,
+        "end": 5226637,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225671,
+        "end": 5226648,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225715,
+        "end": 5226648,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225727,
+        "end": 5226623,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5225727,
+        "end": 5226729,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225772,
+        "end": 5226576,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225998,
+        "end": 5226576,
+        "reads": 25
+      },
+      {
+        "chr": "chr11",
+        "start": 5226439,
+        "end": 5226492,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226604,
+        "end": 5226967,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226638,
+        "end": 5226679,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226649,
+        "end": 5226704,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226706,
+        "end": 5226769,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226760,
+        "end": 5226789,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226772,
+        "end": 5226929,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226917,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226945,
+        "reads": 120
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226967,
+        "reads": 140
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226977,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5227200,
+        "reads": 14
+      },
+      {
+        "chr": "chr11",
+        "start": 5226806,
+        "end": 5226937,
+        "reads": 9
+      },
+      {
+        "chr": "chr11",
+        "start": 5226843,
+        "end": 5226929,
+        "reads": 5
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227200,
+        "reads": 54
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227511,
+        "reads": 4
+      }
+    ]
+  },
+  {
+    "sample": "A2",
+    "total_junctions": 60,
+    "canonical_junctions": 2,
+    "novel_junctions": 58,
+    "canonical_reads": 1275169,
+    "novel_reads": 814,
+    "total_reads": 1275983,
+    "canonical_pct": 99.9,
+    "novel_pct": 0.1,
+    "junctions_detail": [
+      {
+        "chr": "chr11",
+        "start": 5225542,
+        "end": 5225576,
+        "reads": 4
+      },
+      {
+        "chr": "chr11",
+        "start": 5225597,
+        "end": 5226745,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5225607,
+        "end": 5226745,
+        "reads": 3
+      },
+      {
+        "chr": "chr11",
+        "start": 5225610,
+        "end": 5226657,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5225708,
+        "reads": 4
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226597,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226711,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226769,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225658,
+        "end": 5226929,
+        "reads": 23
+      },
+      {
+        "chr": "chr11",
+        "start": 5225663,
+        "end": 5226576,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5225663,
+        "end": 5226929,
+        "reads": 5
+      },
+      {
+        "chr": "chr11",
+        "start": 5225663,
+        "end": 5226945,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225666,
+        "end": 5226613,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225671,
+        "end": 5226590,
+        "reads": 6
+      },
+      {
+        "chr": "chr11",
+        "start": 5225671,
+        "end": 5226613,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225671,
+        "end": 5226637,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5225671,
+        "end": 5226648,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225678,
+        "end": 5226769,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225688,
+        "end": 5226937,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225715,
+        "end": 5226603,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225727,
+        "end": 5226529,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225727,
+        "end": 5226729,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225727,
+        "end": 5226967,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5225747,
+        "end": 5226583,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5225998,
+        "end": 5226576,
+        "reads": 68
+      },
+      {
+        "chr": "chr11",
+        "start": 5226439,
+        "end": 5226492,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226613,
+        "end": 5226937,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226629,
+        "end": 5226662,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226629,
+        "end": 5226679,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226638,
+        "end": 5226757,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226674,
+        "end": 5226711,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226674,
+        "end": 5226929,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226694,
+        "end": 5226917,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226694,
+        "end": 5226967,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226706,
+        "end": 5226729,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226712,
+        "end": 5226769,
+        "reads": 0
+      },
+      {
+        "chr": "chr11",
+        "start": 5226712,
+        "end": 5226945,
+        "reads": 3
+      },
+      {
+        "chr": "chr11",
+        "start": 5226760,
+        "end": 5226952,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226772,
+        "end": 5226948,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226917,
+        "reads": 4
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226925,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226945,
+        "reads": 229
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226952,
+        "reads": 3
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5226967,
+        "reads": 269
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5227200,
+        "reads": 34
+      },
+      {
+        "chr": "chr11",
+        "start": 5226800,
+        "end": 5227511,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226806,
+        "end": 5226937,
+        "reads": 39
+      },
+      {
+        "chr": "chr11",
+        "start": 5226835,
+        "end": 5226937,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5226843,
+        "end": 5226929,
+        "reads": 4
+      },
+      {
+        "chr": "chr11",
+        "start": 5226968,
+        "end": 5226988,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5227027,
+        "end": 5227200,
+        "reads": 2
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227200,
+        "reads": 62
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227444,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227511,
+        "reads": 4
+      },
+      {
+        "chr": "chr11",
+        "start": 5227040,
+        "end": 5227536,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5227360,
+        "end": 5227454,
+        "reads": 1
+      },
+      {
+        "chr": "chr11",
+        "start": 5227360,
+        "end": 5227513,
+        "reads": 3
+      },
+      {
+        "chr": "chr11",
+        "start": 5227580,
+        "end": 5227833,
+        "reads": 3
+      }
+    ]
+  }
+]

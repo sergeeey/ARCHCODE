@@ -4,18 +4,38 @@ This document records high-level product and focus decisions for ARCHCODE. It do
 
 ---
 
+## 🎯 Core Strategic Positioning
+
+### CRITICAL DISTINCTION: Discovery Engine, NOT Prediction Tool
+
+**ARCHCODE — это Discovery Engine, а НЕ Prediction Tool.**
+
+| Критерий | Prediction Tool | Discovery Engine | ARCHCODE |
+|----------|-----------------|------------------|----------|
+| **Цель** | Классификация (pathogenic/benign) | Обнаружение нового | ✅ Discovery |
+| **Конкуренция** | VEP, SpliceAI, CADD, AlphaGenome | Нет аналогов | ✅ Новая категория |
+| **Метрика успеха** | AUC, accuracy, F1 | Novel findings, hypotheses | ✅ 27 pearls, 641 VUS candidates |
+| **Ценность** | "Лучше предсказывает" | "Видит невидимое" | ✅ Structural blind spot |
+| **Бизнес-модель** | Commodity ML | Unique capability | ✅ B2B pharma, in silico CRISPR |
+
+**Стратегический императив:**
+- ❌ НЕ позиционировать как "ещё один variant predictor"
+- ✅ Позиционировать как "structural mechanism discovery platform"
+
+---
+
 ## Focus and prioritization
 
-- **Primary focus**: ARCHCODE as a publication-ready loop extrusion simulator and, longer term, as a platform for in silico experiments (e.g. ARCHCODE Pharma).
-- **Resource allocation**: Prioritize scientific publication and B2B positioning (e.g. pharma in silico screening) over generic “research tool” only. Other projects (e.g. GeoScan, DeepTrust) can be deprioritized or delegated to align with this focus.
+- **Primary focus**: ARCHCODE as a **discovery engine** for structural variant mechanisms — not a prediction tool competing with ML.
+- **Resource allocation**: Prioritize scientific publication (bioRxiv) and B2B positioning (pharma in silico screening) over generic "research tool" only.
 - **No code impact**: These are product/portfolio choices; the repository remains a single product (ARCHCODE).
 
 ---
 
 ## Future differentiators (roadmap)
 
-- **In silico CRISPR**: Virtual deletion/inversion of genomic regions to predict loop and TAD changes. Commercial angle: B2B SaaS for pharma (test editing before wet lab). Pricing reference: comparable to molecular modeling platforms (e.g. Schrödinger).
-- **Positioning**: “Affordable in silico screening for gene therapy” — target smaller biotechs that cannot run large-scale CRISPR screens in vivo.
+- **In silico CRISPR**: Virtual deletion/inversion of genomic regions to **discover** loop and TAD mechanisms. Commercial angle: B2B SaaS for pharma (test editing before wet lab). Pricing reference: comparable to molecular modeling platforms (e.g. Schrödinger).
+- **Positioning**: "Affordable in silico screening for gene therapy" — target smaller biotechs that cannot run large-scale CRISPR screens in vivo.
 - **Exit**: Long-term options include acquisition by biotech (e.g. BioNTech, Moderna) or standalone growth; timeline 5–7 years.
 
 ---

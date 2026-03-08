@@ -1,8 +1,15 @@
 # VALIDATION_EXECUTION_2026-03-06
 
+Top-level canonical index (primary governance source):
+- `results/validation_canonical_index_2026-03-06.json`
+- `docs/internal/LEGACY_CLAIM_HYGIENE_2026-03-06.md` (legacy narrative handling rules)
+
 ## Task
 
 Task 3: Weak CTCF Paradox (isolated weak-site ablation with stability check across seeds)
+
+Primary claim source (canonicalized):
+- `results/task3_canonical_status_2026-03-06.json`
 
 ## Implemented
 
@@ -61,4 +68,3 @@ Task 3: Weak CTCF Paradox (isolated weak-site ablation with stability check acro
 ## Verdict
 
 `READY` for Task 3 protocol status update at model-validation level (`SUPPORTED_IN_MODEL`), with explicit external-validation disclaimer.
-

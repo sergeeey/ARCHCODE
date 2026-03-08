@@ -1,0 +1,96 @@
+{
+  "hypothesis": "Variants closer to enhancer show lower LSSIM (stronger structural effect).",
+  "loci": [
+    {
+      "locus": "BRCA1",
+      "n": 10682,
+      "n_enhancers": 9,
+      "spearman_rho": -0.039956,
+      "spearman_p": 3.6e-05
+    },
+    {
+      "locus": "CFTR",
+      "n": 3349,
+      "n_enhancers": 6,
+      "spearman_rho": 0.004332,
+      "spearman_p": 0.802125
+    },
+    {
+      "locus": "GATA1",
+      "n": 183,
+      "n_enhancers": 15,
+      "spearman_rho": 0.13981,
+      "spearman_p": 0.059075
+    },
+    {
+      "locus": "GJB2",
+      "n": 469,
+      "n_enhancers": 4,
+      "spearman_rho": 0.312333,
+      "spearman_p": 0.0
+    },
+    {
+      "locus": "HBA1",
+      "n": 111,
+      "n_enhancers": 15,
+      "spearman_rho": 0.094239,
+      "spearman_p": 0.325202
+    },
+    {
+      "locus": "HBB",
+      "n": 1103,
+      "n_enhancers": 5,
+      "spearman_rho": 0.412429,
+      "spearman_p": 0.0
+    },
+    {
+      "locus": "HBB",
+      "n": 1103,
+      "n_enhancers": 5,
+      "spearman_rho": -0.392761,
+      "spearman_p": 0.0
+    },
+    {
+      "locus": "LDLR",
+      "n": 3284,
+      "n_enhancers": 10,
+      "spearman_rho": 0.364033,
+      "spearman_p": 0.0
+    },
+    {
+      "locus": "MLH1",
+      "n": 4060,
+      "n_enhancers": 8,
+      "spearman_rho": 0.00724,
+      "spearman_p": 0.644664
+    },
+    {
+      "locus": "PTEN",
+      "n": 1496,
+      "n_enhancers": 7,
+      "spearman_rho": 0.344912,
+      "spearman_p": 0.0
+    },
+    {
+      "locus": "SCN5A",
+      "n": 2488,
+      "n_enhancers": 3,
+      "spearman_rho": -0.093643,
+      "spearman_p": 3e-06
+    },
+    {
+      "locus": "TERT",
+      "n": 2089,
+      "n_enhancers": 5,
+      "spearman_rho": 0.3914,
+      "spearman_p": 0.0
+    },
+    {
+      "locus": "TP53",
+      "n": 2794,
+      "n_enhancers": 9,
+      "spearman_rho": 0.35293,
+      "spearman_p": 0.0
+    }
+  ]
+}

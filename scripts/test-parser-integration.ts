@@ -7,7 +7,7 @@
  * Uses Kramer kinetics: α=0.92, γ=0.80, k_base=0.002
  */
 
-import { AlphaGenomeService } from "../src/services/AlphaGenomeService";
+import { AlphaGenomeService } from "../src/services/AlphaGenomeNodeService";
 
 const PARSER_PATH = "D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs";
 
@@ -149,3 +149,4 @@ async function main() {
 }
 
 main().catch(console.error);
+

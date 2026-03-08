@@ -1,8 +1,28 @@
 # VALIDATION_PROTOCOL
 
-Date: 2026-03-05  
-Project: ARCHCODE  
+Date: 2026-03-06
+Project: ARCHCODE
 Mode: Zero-Hallucination Validation
+
+## 0) Strategic Positioning (CRITICAL)
+
+### ARCHCODE is a Discovery Engine, NOT a Prediction Tool
+
+This distinction governs all validation claims below:
+
+| Aspect | Prediction Tool (❌ WRONG) | Discovery Engine (✅ CORRECT) |
+|--------|---------------------------|-------------------------------|
+| **Primary claim** | "AUC = 0.977, better than VEP" | "Discovered 27 pearl variants invisible to VEP" |
+| **Validation** | Hold-out test set accuracy | Orthogonal evidence (9 methods) |
+| **Limitation** | "Needs more training data" | "Requires experimental validation" |
+| **Success metric** | Accuracy, F1, precision/recall | Novel findings, testable hypotheses |
+
+**Implication for this protocol:**
+- AUC/accuracy metrics are **secondary** (characterization, not primary claim)
+- **Primary claims** must be discovery-focused (pearl variants, structural blind spot, mechanistic insight)
+- Validation requires **orthogonal evidence**, not just hold-out test sets
+
+See: `docs/DISCOVERY_ENGINE_POSITIONING.md` for full strategic rationale.
 
 ## 1) Purpose
 

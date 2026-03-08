@@ -1,0 +1,57 @@
+{
+  "generated_at_utc": "2026-03-06T00:00:00Z",
+  "task": "Task3_Weak_CTCF_Canonical_Status",
+  "source_of_truth": [
+    "results/task3_ctcf_summary_2026-03-06.json",
+    "results/task3_weak_ctcf_isolated_2026-03-06_seed0.json",
+    "results/task3_weak_ctcf_isolated_2026-03-06_seed10000.json"
+  ],
+  "historical_artifacts": [
+    {
+      "path": "results/task3_ctcf_summary_2026-03-05.json",
+      "status": "historical_snapshot",
+      "note": "Represents earlier PARTIAL_SUPPORT state before weak_probe isolation runs."
+    },
+    {
+      "path": "results/task3_weak_ctcf_isolated_2026-03-05.json",
+      "status": "historical_snapshot",
+      "note": "Inconclusive run with NO_GO_NO_WEAK_EVENTS under prior setup."
+    }
+  ],
+  "claim_level": {
+    "weak_ctcf_no_effect_in_model": "SUPPORTED_IN_MODEL",
+    "ctcf_kd_kinetics_alignment": "SUPPORTED",
+    "external_biological_validation_of_weak_ctcf_effect": "UNVERIFIED",
+    "clinical_or_causal_claim_from_task3_only": "UNVERIFIED"
+  },
+  "evidence_summary": {
+    "seed0": {
+      "weak_encounter": 237,
+      "weak_readthrough_rate_baseline": 0.15611814345991562,
+      "weak_readthrough_rate_perturbed": 0.15611814345991562,
+      "delta_vs_baseline": 0.0,
+      "verdict": "SUPPORTED_IN_MODEL"
+    },
+    "seed10000": {
+      "weak_encounter": 224,
+      "weak_readthrough_rate_baseline": 0.10714285714285714,
+      "weak_readthrough_rate_perturbed": 0.10714285714285714,
+      "delta_vs_baseline": 0.0,
+      "verdict": "SUPPORTED_IN_MODEL"
+    },
+    "stability": {
+      "both_runs_have_weak_events": true,
+      "delta_difference_abs": 0.0
+    }
+  },
+  "allowed_conclusions": [
+    "Weak-site isolated ablation is supported at model-validation level.",
+    "Task 3 supports in-model CTCF barrier behavior statements only."
+  ],
+  "blocked_conclusions": [
+    "External biological causality for weak-CTCF effects from Task 3 alone.",
+    "Clinical utility claims from Task 3 without orthogonal validation."
+  ],
+  "verdict": "SUPPORTED_IN_MODEL",
+  "note": "Canonical Task3 status. Use this file as primary source for claim-level decisions."
+}

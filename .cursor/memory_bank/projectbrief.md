@@ -1,16 +1,16 @@
 # ARCHCODE Project Brief
 
-**Version:** 1.0
-**Last Updated:** 2026-02-05
-**Status:** Production-Ready, Hi-C Validation Phase
+**Version:** 1.1
+**Last Updated:** 2026-03-07
+**Status:** Publication-ready (v2.14); canonical claim governance active.
 
 ---
 
 ## 🎯 Elevator Pitch (30 seconds)
 
-**ARCHCODE** simulates 3D chromatin loop extrusion using biophysical models of cohesin motors and CTCF blocking. The simulator validates against experimental Hi-C contact maps (Rao et al. 2014) with Pearson r ≥ 0.7 threshold, demonstrating that simple physical rules can reproduce genome architecture.
+**ARCHCODE** — discovery engine для структурной интерпретации вариантов: симулирует loop extrusion (cohesin + CTCF), сравнивает с Hi-C и выявляет «слепые пятна» sequence-based предикторов (pearl variants). Позиционирование: Discovery Engine, не Prediction Tool (см. docs/DISCOVERY_ENGINE_POSITIONING.md).
 
-**Unique Value:** Falsification-First approach to AI-assisted scientific work (CLAUDE.md protocol).
+**Unique Value:** Falsification-First (CLAUDE.md), Zero-Hallucination (AGENTS.md), канонические источники для публикационных claims: `results/validation_canonical_index_2026-03-06.json`, `results/publication_claim_matrix_2026-03-06.json`.
 
 ---
 
@@ -31,8 +31,8 @@
 ### Impact
 
 - **Educational:** Interactive 3D browser-based visualization
-- **Research:** Parameter sweep for cohesin kinetics optimization
-- **Clinical:** Future extension to disease variants (IVS-II-1 splice mutation)
+- **Research:** Multi-locus atlases (HBB, BRCA1, CFTR, …), VUS candidates, orthogonal validation (VEP, SpliceAI, CADD, MaveDB, Hi-C)
+- **Clinical:** Только в рамках канонических claims (без клинической реклассификации без ортогональной валидации)
 
 ---
 
@@ -70,7 +70,13 @@ src/
 
 ## 🔬 Validation Strategy
 
-### Primary Target
+### Правила и governance
+
+- **CLAUDE.md** — научная целостность (NO phantom refs, NO invisible synthetic, NO "fitted" без кода).
+- **AGENTS.md** — Plan → APPROVE → Execute; Implemented vs Verified; zero hallucinations.
+- **Публикационные claims** — сверять с `results/publication_claim_matrix_2026-03-06.json` и `results/validation_canonical_index_2026-03-06.json`. Legacy-тексты: `docs/internal/LEGACY_CLAIM_HYGIENE_2026-03-06.md`.
+
+### Primary Target (исторически)
 
 **Experimental Hi-C (Rao et al. 2014)**
 

@@ -1,6 +1,17 @@
 {
   "variant_report_id": "VUS-ARCHCODE-2026-001-VCV026",
   "report_date": "2026-02-03",
+  "canonical_governance": {
+    "status": "legacy_non_canonical_for_claims",
+    "claim_scope": "hypothesis_generating_only",
+    "clinical_reclassification": "BLOCKED_UNVERIFIED",
+    "source_of_truth": [
+      "results/task2_canonical_status_2026-03-06.json",
+      "results/publication_claim_matrix_2026-03-06.json",
+      "results/validation_canonical_index_2026-03-06.json"
+    ],
+    "note": "This legacy report must not be used as standalone clinical or causal-proof evidence."
+  },
   "priority_flag": "⭐ HIGH VALIDATION PRIORITY (Mechanistic Validation)",
   "variant_identity": {
     "clinvar_id": "VCV000000026",

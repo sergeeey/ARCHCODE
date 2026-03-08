@@ -1,0 +1,39 @@
+{
+  "generated_at_utc": "2026-03-06T00:00:00Z",
+  "task": "Task4_Tissue_Specific_3D_Pathogenicity_Canonical_Status",
+  "source_of_truth": [
+    "results/task4_epigenome_crossval_2026-03-06.json",
+    "docs/internal/VALIDATION_EXECUTION_2026-03-06_TASK4.md"
+  ],
+  "historical_artifacts": [
+    {
+      "path": "results/task4_epigenome_crossval_2026-03-05.json",
+      "status": "historical_snapshot",
+      "note": "Earlier task snapshot; canonical claim-level follows 2026-03-06 run."
+    }
+  ],
+  "claim_level": {
+    "input_feature_alignment_ctcf": "SUPPORTED",
+    "input_feature_alignment_h3k27ac": "SUPPORTED",
+    "causal_biological_inference": "UNVERIFIED",
+    "clinical_prediction_impact": "UNVERIFIED"
+  },
+  "evidence_summary": {
+    "successful_loci": 8,
+    "ctcf_mean_recall": 1.0,
+    "ctcf_mean_f1": 0.6937,
+    "h3k27ac_mean_recall": 0.8468,
+    "h3k27ac_mean_f1": 0.3865,
+    "task4_go_nogo_status": "GO"
+  },
+  "allowed_conclusions": [
+    "Task4 supports context-aware input-feature alignment claims.",
+    "Task4 may be used as supporting evidence for tissue-context consistency in model inputs."
+  ],
+  "blocked_conclusions": [
+    "Task4 alone proves causal disease mechanisms.",
+    "Task4 alone proves clinical predictive utility."
+  ],
+  "verdict": "SUPPORTED_WITH_LIMITS",
+  "note": "Canonical Task4 status. Use this file as primary source for claim-level decisions."
+}

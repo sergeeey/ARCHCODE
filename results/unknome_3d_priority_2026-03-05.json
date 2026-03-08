@@ -1,0 +1,118 @@
+{
+  "analysis": "Unknome 3D-guided priority (prototype)",
+  "date": "2026-03-05",
+  "claim_level": "EXPLORATORY",
+  "provenance": "ARCHCODE in-silico perturbation; config/unknome_genes_subset.json",
+  "parameters": {
+    "effect_strength": 0.05,
+    "sample_bins": 30,
+    "local_ssim_window": 50,
+    "seed": 12345
+  },
+  "genes": [
+    {
+      "symbol": "BCL11A",
+      "locus_id": "bcl11a_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9669,
+      "vulnerability_score": 0.0331,
+      "fraction_below_095": 0
+    },
+    {
+      "symbol": "HBA1",
+      "locus_id": "hba1_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9726,
+      "vulnerability_score": 0.0274,
+      "fraction_below_095": 0.1667
+    },
+    {
+      "symbol": "TERT",
+      "locus_id": "tert_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9745,
+      "vulnerability_score": 0.0255,
+      "fraction_below_095": 0.0667
+    },
+    {
+      "symbol": "PTEN",
+      "locus_id": "pten_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9745,
+      "vulnerability_score": 0.0255,
+      "fraction_below_095": 0.1
+    },
+    {
+      "symbol": "GATA1",
+      "locus_id": "gata1_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9749,
+      "vulnerability_score": 0.0251,
+      "fraction_below_095": 0.1667
+    },
+    {
+      "symbol": "LDLR",
+      "locus_id": "ldlr_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9756,
+      "vulnerability_score": 0.0244,
+      "fraction_below_095": 0.1
+    },
+    {
+      "symbol": "BRCA1",
+      "locus_id": "brca1_400kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9758,
+      "vulnerability_score": 0.0242,
+      "fraction_below_095": 0.0667
+    },
+    {
+      "symbol": "CFTR",
+      "locus_id": "cftr_317kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.976,
+      "vulnerability_score": 0.024,
+      "fraction_below_095": 0.0667
+    },
+    {
+      "symbol": "TP53",
+      "locus_id": "tp53_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9763,
+      "vulnerability_score": 0.0237,
+      "fraction_below_095": 0.0667
+    },
+    {
+      "symbol": "GJB2",
+      "locus_id": "gjb2_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9775,
+      "vulnerability_score": 0.0225,
+      "fraction_below_095": 0
+    },
+    {
+      "symbol": "MLH1",
+      "locus_id": "mlh1_300kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9778,
+      "vulnerability_score": 0.0222,
+      "fraction_below_095": 0.0667
+    },
+    {
+      "symbol": "HBB",
+      "locus_id": "hbb_95kb_subTAD",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.979,
+      "vulnerability_score": 0.021,
+      "fraction_below_095": 0.1
+    },
+    {
+      "symbol": "SCN5A",
+      "locus_id": "scn5a_400kb",
+      "n_bins_sampled": 30,
+      "mean_lssim": 0.9809,
+      "vulnerability_score": 0.0191,
+      "fraction_below_095": 0
+    }
+  ]
+}

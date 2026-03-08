@@ -1,5 +1,27 @@
 # ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Enhancer-Proximal Structural Pathogenicity Across Nine Genomic Loci
 
+## Canonical Claim Governance (2026-03-06)
+
+This manuscript draft is subordinated to the canonical validation governance artifacts:
+
+- `results/publication_claim_matrix_2026-03-06.json`
+- `results/validation_canonical_index_2026-03-06.json`
+
+Binding interpretation rules for publication-facing statements:
+
+1. `Task1` Pearson > 0.5 success is not established in the current canonical run; benchmark
+   interpretation remains limited/exploratory.
+2. `Task2` does not prove a new pathogenic class; "Loop That Stayed" remains unresolved/
+   `UNVERIFIED` as a pathogenicity claim.
+3. `Task3` weak-CTCF result is `SUPPORTED_IN_MODEL` only; no external biological validation
+   claim is allowed.
+4. `Task4` supports feature/input alignment only; no causal tissue-mechanism claim is allowed.
+5. `Task5` supports hypothesis-generating computational stratification only; clinical
+   reclassification is `NO_GO/UNVERIFIED`.
+
+Where legacy text in this draft is stronger than these rules, the canonical artifacts above
+take precedence.
+
 **Sergey V. Boyko**¹
 
 ¹Independent Researcher, Almaty, Kazakhstan
@@ -151,21 +173,22 @@ canonical splice motifs, leaving a structural blind spot for variants that disru
 topology without altering coding sequence. We developed ARCHCODE, an analytical loop extrusion
 simulator, and applied it to 30,318 clinically classified variants across nine loci: HBB (1,103),
 CFTR (3,349), TP53 (2,794), BRCA1 (10,682), MLH1 (4,060), LDLR (3,284), SCN5A (2,488),
-TERT (2,089), and GJB2 (469). ARCHCODE correctly stratifies variants by
-functional class and identifies 27 "pearl" candidates on HBB — variants invisible to VEP —
-where structural simulation predicts regulatory disruption. Enhancer proximity analysis across
-all nine loci reveals that ARCHCODE discrimination concentrates at enhancer-proximal positions
-(≤1 kb, Δ LSSIM = 0.039, 7× average), establishing the mechanistic basis of the structural
-signal. A tissue-specificity gradient from matched (HBB, Δ = 0.111) through expressed
+TERT (2,089), and GJB2 (469). Current evidence supports ARCHCODE as a computational,
+hypothesis-generating structural layer rather than a clinical decision system. Under canonical
+claim governance, HBB "pearl" outputs are treated as follow-up candidates, not proof of a new
+pathogenic class or direct reclassification evidence. Enhancer proximity analysis across
+all nine loci indicates that ARCHCODE discrimination concentrates at enhancer-proximal positions
+(≤1 kb, Δ LSSIM = 0.039, 7× average), supporting a context-dependent structural signal.
+A tissue-specificity gradient from matched (HBB, Δ = 0.111) through expressed
 (TERT, Δ = 0.019) to mismatched (SCN5A/GJB2, Δ ≤ 0.006) negative controls defines the
-domain of applicability. Local SSIM (LSSIM) resolves
+domain of applicability in-model. Local SSIM (LSSIM) resolves
 matrix-size dilution, expanding SSIM dynamic range from 0.98–1.00 to 0.75–1.00 and enabling
-verdict assignment across all matrix sizes. Within-category testing confirms ARCHCODE as
+verdict assignment across all matrix sizes in the current pipeline. Within-category testing confirms ARCHCODE as
 primarily a category-level structural classifier (CFTR/TP53 p > 0.29; BRCA1/MLH1/LDLR show
 statistical significance at ΔAUC < 0.02 — a power effect, not meaningful prediction). K562
 Hi-C correlation ranges from r = 0.29 (TP53) to r = 0.59 (HBB 95kb, MLH1) using K562 data;
 HepG2 Hi-C validation for LDLR (r = 0.32) extends the framework to tissue-specific chromatin.
-This work establishes a framework for orthogonal structural scoring as a complement to existing
+This work defines a reproducible framework for orthogonal structural scoring as a complement to existing
 sequence-based tools in variant interpretation pipelines.
 
 **Word Count:** ~110 words
@@ -175,13 +198,13 @@ sequence-based tools in variant interpretation pipelines.
 ## Main Findings (for graphical abstract)
 
 1. **30,318 real ClinVar variants across 9 loci** (HBB 1,103 + CFTR 3,349 + TP53 2,794 + BRCA1 10,682 + MLH1 4,060 + LDLR 3,284 + SCN5A 2,488 + TERT 2,089 + GJB2 469) analyzed
-2. **45.6% (161/353) HBB structurally pathogenic** by ARCHCODE; loss-of-function classes show 86–100% concordance
-3. **27 "pearl" variants** identified on HBB: VEP-blind (VEP < 0.30), ARCHCODE-detected (LSSIM < 0.95)
+2. **HBB structural scoring shows category-linked separation** in-model (legacy 30 kb run: 45.6% under SSIM thresholding); interpret as computational evidence only
+3. **HBB pearl candidates are hypothesis-generating only** (VEP < 0.30 and structural disruption threshold), not clinical proof
 4. **ROC AUC = 0.977** (unified pipeline); reflects category-distribution differences, not independent prediction
-5. **Local SSIM (LSSIM)** resolves matrix-size dilution: dynamic range 0.75–1.00 (vs 0.98–1.00 global); verdicts now work on all matrix sizes
+5. **Local SSIM (LSSIM)** resolves matrix-size dilution: dynamic range 0.75–1.00 (vs 0.98–1.00 global); supports cross-locus comparability in-model
 6. **Within-category: primarily null** (CFTR/TP53 p > 0.29); BRCA1/MLH1/LDLR statistically significant at ΔAUC < 0.02 (power effect, not meaningful prediction); **position-only control: AUC = 0.551** (confirms category-distribution effect)
 7. **Multi-locus Hi-C validation:** MLH1 r = 0.59, HBB r = 0.53–0.59, BRCA1 r = 0.50–0.53, LDLR r = 0.32 (HepG2), TP53 r = 0.28–0.29 (K562 + MCF7 + HepG2)
-8. **Enhancer proximity drives discrimination:** ≤1 kb Δ LSSIM = 0.039 (7× average); pearls cluster at median 831 bp from enhancers
+8. **Enhancer proximity is associated with stronger structural discrimination:** ≤1 kb Δ LSSIM = 0.039 (7× average); pearls cluster at median 831 bp from enhancers
 9. **Tissue-specificity gradient:** matched (HBB Δ=0.111) → expressed (TERT Δ=0.019) → partial → mismatch (GJB2: null)
 10. **Per-locus threshold calibration:** HBB 0.977 (92.9% sens) to BRCA1 0.965 (0.9%); GJB2 = no threshold works
 
@@ -919,9 +942,9 @@ score < 0.30 (indicating VEP classifies it as low-impact or benign) AND SSIM < 0
 (Table 2). These represent cases where sequence-based prediction is blind but the structural
 model detects disruption.
 
-The 20 pearl variants fall into three groups by molecular context:
+The 27 pearl variants (20 in the 30 kb window; 27 in the 95 kb window) fall into three groups by molecular context in the 30 kb window:
 
-**Group 1 — Promoter variants (15 of 20 pearls).** Fifteen variants map to positions
+**Group 1 — Promoter variants (15 of 20 pearls in 30 kb window).** Fifteen variants map to positions
 5,227,099–5,227,172 on chr11, within the HBB proximal promoter region (SSIM range
 0.927–0.930; VEP score 0.20 for all). VEP annotates these as
 _upstream_gene_variant_, a consequence term associated with low predicted impact in
@@ -2141,8 +2164,9 @@ likely improve the sequence-based baseline, potentially reclassifying some curre
 available in ClinVar records to validate computational predictions against clinical reality.
 
 **6. Pearl variants not experimentally validated.** The 27 pearl variants (20 in 30kb window,
-27 in 95kb window) are computational candidates. None have been tested by RT-PCR, Capture
-Hi-C, or functional assay in this study.
+27 in 95kb window) are computational candidates only. They require experimental validation
+(RT-PCR, Capture Hi-C, or functional assay) before any reclassification; none have been
+validated in this study.
 
 **7. Within-category positional signal: primarily null, power-driven on large cohorts.**
 Testing across nine loci with LSSIM: HBB (p = 1.0), CFTR (p = 0.79), and TP53 (p = 0.29)
@@ -2169,7 +2193,12 @@ correlation (r = 0.28–0.59) validates wild-type contact map fidelity, not vari
 structural disruption. No variant-level Hi-C perturbation data exists to validate SSIM
 as a variant classifier directly.
 
-**10. Resolution-dependent DL variant sensitivity: null at 2048 bp, detectable at 1 bp.**
+**10a. AlphaGenome overlap is auxiliary, not validation.** AlphaGenome RNA-seq/ATAC-seq
+signal at pearl positions supports the structural blind spot narrative but is not a
+replacement for experimental validation (AlphaGenome trained on 4DN Hi-C; use for
+prioritization only).
+
+**10b. Resolution-dependent DL variant sensitivity: null at 2048 bp, detectable at 1 bp.**
 Variant-level mutagenesis was performed with both AlphaGenome (`predict_variant()` API) and
 Akita (Fudenberg et al. 2020; local ref/alt mutagenesis) on 23 pearl variants from the HBB
 95kb atlas. For **contact maps** (2048 bp resolution): AlphaGenome ΔSSIM (7.5 × 10⁻⁵ to

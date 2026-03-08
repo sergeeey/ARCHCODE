@@ -157,13 +157,8 @@ hypothesis-generating layer in variant interpretation workflows.
   statistically significant but ΔAUC negligible (power effect at
   n=4,060)
 
-#strong[Keywords:] β-thalassemia, HBB, chromatin loops, loop extrusion,
-cohesin, SSIM, structural pathogenicity predictor, VEP, regulatory
-variants, promoter variants, pearl variants, variant interpretation,
-mean-field simulation, CFTR, TP53, BRCA1, MLH1, LDLR, Lynch syndrome,
-familial hypercholesterolemia, multi-locus validation, Bayesian
-optimization, Optuna, ENCODE Hi-C, HepG2, classify\_hgvs, Local SSIM,
-matrix-size dilution, threshold recalibration
+#strong[Keywords:] β-thalassemia, HBB, chromatin loop extrusion, cohesin,
+LSSIM, structural pathogenicity, VEP, pearl variants, ClinVar, ARCHCODE
 
 #horizontalrule
 

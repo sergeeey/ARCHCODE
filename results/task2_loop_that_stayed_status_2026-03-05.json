@@ -1,0 +1,19 @@
+{
+  "generated_at_utc": "2026-03-05T18:10:15.1404634Z",
+  "task": "Task2_Loop_That_Stayed",
+  "old_artifact": "results/vus_batch_analysis_loop_that_stayed.json",
+  "new_artifact": "results/vus_validation_report.json",
+  "old_pattern_name": "The Loop That Stayed",
+  "old_variants": 3,
+  "new_variants": 5,
+  "old_proposed_classification_counts": {
+    "label": "Likely Pathogenic",
+    "count": 3
+  },
+  "new_archcode_verdict_counts": {
+    "label": "BENIGN",
+    "count": 5
+  },
+  "consistency_check": "CONTRADICTION_DETECTED",
+  "note": "Legacy Loop That Stayed artifact proposes LP for 3 variants, while fresh pipeline run outputs BENIGN for all 5 priority VUS in mock-mode comparison."
+}

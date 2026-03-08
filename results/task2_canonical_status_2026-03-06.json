@@ -1,0 +1,33 @@
+{
+  "generated_at_utc": "2026-03-06T00:00:00Z",
+  "task": "Task2_Loop_That_Stayed_Canonical_Status",
+  "source_of_truth": [
+    "results/task2_reconciliation_2026-03-05.json",
+    "results/task2_loop_that_stayed_status_2026-03-05.json",
+    "results/vus_validation_report.json"
+  ],
+  "legacy_artifacts": [
+    {
+      "path": "results/vus_batch_analysis_loop_that_stayed.json",
+      "status": "deprecated_for_claims",
+      "reason": "Contradicts fresh pipeline outputs and must not be used as publication-grade evidence."
+    }
+  ],
+  "claim_level": {
+    "loop_that_stayed_as_pathogenic_class": "UNVERIFIED",
+    "discordance_between_structure_and_sequence_predictors": "SUPPORTED",
+    "post_transcriptional_mechanism_statement": "EXPLORATORY",
+    "clinical_reclassification_of_vus": "UNVERIFIED"
+  },
+  "allowed_conclusions": [
+    "Current Task2 evidence supports model-discordance observations only.",
+    "Current Task2 evidence does not support VUS clinical reclassification claims.",
+    "Mechanistic causality requires orthogonal experimental validation."
+  ],
+  "blocked_conclusions": [
+    "VUS -> Likely Pathogenic based on Task2 computational artifacts only.",
+    "Proven clinical utility of Loop That Stayed mechanism.",
+    "Publication-grade mechanistic causality without orthogonal validation."
+  ],
+  "verdict": "NEEDS_FIXES"
+}

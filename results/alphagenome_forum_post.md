@@ -1,28 +1,31 @@
+
 # AlphaGenome + ARCHCODE Convergent Validation of HBB VUS Variants
 
-## Summary
+> **Canonical status (2026-03-06):** Legacy exploratory note. Claim-safe interpretation is
+> governed by `results/publication_claim_matrix_2026-03-06.json` and
+> `results/validation_canonical_index_2026-03-06.json`. This file is non-clinical and
+> hypothesis-generating only.
 
+## Summary
 We performed high-throughput 3D chromatin simulation of 5 mysterious VUS variants
 from ClinVar (Mystery Score ≥ 45) using ARCHCODE's physics-based loop extrusion model with
 Kramer kinetics (α=0.92, γ=0.8).
 
 ## Key Findings
 
-| Variant         | Category    | ARCHCODE | AlphaGenome       | Evidence |
-| --------------- | ----------- | -------- | ----------------- | -------- |
-| VCV000015151.60 | 3_prime_UTR | BENIGN   | Likely Pathogenic | MODERATE |
-| VCV000439152.5  | 3_prime_UTR | BENIGN   | Likely Pathogenic | MODERATE |
-| VCV000619855.11 | splice_site | BENIGN   | Likely Pathogenic | MODERATE |
-| VCV000015171.31 | 3_prime_UTR | BENIGN   | Likely Pathogenic | MODERATE |
-| VCV000015316.16 | 3_prime_UTR | BENIGN   | Likely Pathogenic | MODERATE |
+| Variant | Category | ARCHCODE | AlphaGenome | Evidence |
+|---------|----------|----------|-------------|----------|
+| VCV000015151.60 | 3_prime_UTR | BENIGN | Likely Pathogenic | MODERATE |
+| VCV000439152.5 | 3_prime_UTR | BENIGN | Likely Pathogenic | MODERATE |
+| VCV000619855.11 | splice_site | BENIGN | Likely Pathogenic | MODERATE |
+| VCV000015171.31 | 3_prime_UTR | BENIGN | Likely Pathogenic | MODERATE |
+| VCV000015316.16 | 3_prime_UTR | BENIGN | Likely Pathogenic | MODERATE |
 
 ## Mechanism Insights
 
 ### 3' UTR Variants (4/5)
-
-These variants show **NO chromatin structural disruption** in ARCHCODE simulation.
-This strongly suggests their pathogenic mechanism is **POST-TRANSCRIPTIONAL**:
-
+These variants show **no strong chromatin structural disruption** in ARCHCODE simulation.
+This is consistent with a **post-transcriptional mechanism hypothesis**:
 - mRNA stability changes
 - miRNA binding site disruption
 - Polyadenylation signal alteration
@@ -32,14 +35,12 @@ This strongly suggests their pathogenic mechanism is **POST-TRANSCRIPTIONAL**:
 NOT Hi-C or chromatin capture methods.
 
 ### Splice Site Variants (1/5)
-
-Splice site variants show minimal 3D structure impact, indicating pathogenicity through
-**splicing defects** rather than chromatin reorganization.
+Splice site variants show minimal 3D structure impact, consistent with a possible
+**splicing-defect hypothesis** rather than chromatin reorganization.
 
 **Recommendation**: RT-PCR and RNA-seq to detect aberrant splice products.
 
 ## Variant-Specific Interpretations
-
 - **VCV000015151.60**: MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015151.60 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.
 - **VCV000439152.5**: MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000439152.5 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.
 - **VCV000619855.11**: MECHANISM INSIGHT: Splice site variant VCV000619855.11 shows minimal 3D impact. AlphaGenome predicts pathogenicity likely through splicing defects, not structural changes. Recommend: RNA-seq validation to confirm aberrant splicing.
@@ -47,28 +48,24 @@ Splice site variants show minimal 3D structure impact, indicating pathogenicity 
 - **VCV000015316.16**: MECHANISM INSIGHT: ARCHCODE (BENIGN) shows NO 3D structure disruption, but AlphaGenome predicts pathogenicity. This suggests VCV000015316.16 acts through mRNA stability, miRNA binding, or translation efficiency - NOT chromatin loop disruption. Pathogenicity mechanism: POST-TRANSCRIPTIONAL.
 
 ## Convergent Evidence Cases
-
 None identified in this batch - variants act through non-structural mechanisms.
 
 ## Methods
-
 - **ARCHCODE**: Physics-based 3D loop extrusion with FountainLoader (Mediator-driven loading)
 - **Kramer kinetics**: unloadProb = k_base × (1 - α × occupancy^γ), estimated from literature ranges (Gerlich et al., 2006; Hansen et al., 2017)
 - **AlphaGenome**: Transformer-based contact map and expression prediction (Nature 2026)
 
 ## Scientific Conclusion
-
 No variants showed strong convergent evidence. Further experimental validation recommended.
 
 The discordance between ARCHCODE (structural) and AlphaGenome (expression-based) predictions
-provides mechanistic insight: **these variants are likely pathogenic through post-transcriptional
-mechanisms, NOT through chromatin loop disruption.**
+supports a mechanistic hypothesis: these variants may act through post-transcriptional
+mechanisms rather than chromatin loop disruption.
 
 This demonstrates the value of orthogonal computational approaches - ARCHCODE's "BENIGN" verdict
 for 3D structure does NOT mean the variant is benign overall, but rather identifies the
 pathogenic mechanism as non-structural.
 
 ---
-
-_Generated by ARCHCODE v1.1.0 | Kramer kinetics (α=0.92, γ=0.80) reported with literature-based estimates (Gerlich et al., 2006; Hansen et al., 2017)_
-_ClinVar source: query:14 | Mystery Score threshold: ≥45_
+*Generated by ARCHCODE v1.1.0 | exploratory computational output, not clinical evidence*
+*ClinVar source: query:14 | Mystery Score threshold: ≥45*

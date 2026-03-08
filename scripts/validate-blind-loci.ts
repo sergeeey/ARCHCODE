@@ -8,7 +8,7 @@
  * - chr11: HBB/Beta-globin (classic model)
  * - chr17: TP53/BRCA1 region (tumor suppressors)
  *
- * Uses Kramer kinetics with fitted parameters: α=0.92, γ=0.80
+ * Uses Kramer kinetics with manually calibrated parameters: α=0.92, γ=0.80
  *
  * @author Sergey V. Boyko
  */
@@ -38,7 +38,7 @@ if (fs.existsSync(envPath)) {
 import {
   AlphaGenomeService,
   GenomeInterval,
-} from "../src/services/AlphaGenomeService";
+} from "../src/services/AlphaGenomeNodeService";
 import { MultiCohesinEngine } from "../src/engines/MultiCohesinEngine";
 import { createCTCFSite } from "../src/domain/models/genome";
 import { FountainLoader } from "../src/simulation/SpatialLoadingModule";
@@ -559,3 +559,4 @@ main().catch((err) => {
   console.error("Fatal error:", err);
   process.exit(1);
 });
+

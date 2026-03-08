@@ -39,10 +39,16 @@ RUN mkdir -p /app/data/inputs/med1 \
     && mkdir -p /app/data/inputs/histone \
     && mkdir -p /app/results
 
+# Runtime hardening: run as non-root user.
+RUN groupadd -r archcode && useradd -r -g archcode -d /app archcode \
+    && chown -R archcode:archcode /app
+
 # Set environment variables
 ENV NODE_ENV=production
 ENV MED1_BW=/app/data/inputs/med1/MED1_GM12878_Rep1.bw
 ENV H3K27AC_BW=/app/data/inputs/histone/H3K27ac_GM12878.bw
+
+USER archcode
 
 # Default command: run all validations
 CMD ["npx", "tsx", "scripts/run-all-validations.ts"]

@@ -1,10 +1,10 @@
 /**
  * AlphaGenome validation adapter.
  * Legacy client API is preserved for compatibility, but prediction routing
- * is unified through AlphaGenomeService.
+ * is unified through a browser-safe service.
  */
 
-import { AlphaGenomeService } from "../services/AlphaGenomeService";
+import { AlphaGenomeBrowserService } from "../services/AlphaGenomeBrowserService";
 
 export interface AlphaGenomeConfig {
   apiKey: string;
@@ -69,7 +69,7 @@ export interface ValidationResult {
 export class AlphaGenomeClient {
   private apiKey: string;
   private baseUrl: string;
-  private service: AlphaGenomeService;
+  private service: AlphaGenomeBrowserService;
   private mode: "mock" | "real" | "strict-real";
 
   constructor(config: AlphaGenomeConfig) {
@@ -80,7 +80,7 @@ export class AlphaGenomeClient {
       throw new Error("strict-real mode requires API key");
     }
 
-    this.service = new AlphaGenomeService({
+    this.service = new AlphaGenomeBrowserService({
       apiKey: this.apiKey,
       mode: this.mode,
     });

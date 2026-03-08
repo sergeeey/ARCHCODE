@@ -1,5 +1,11 @@
 # ARCHCODE Results Manifest
 
+> **Canonical status (2026-03-06):** This manifest includes mixed-generation artifacts.
+> Publication-safe interpretation must follow:
+> `results/publication_claim_matrix_2026-03-06.json` and
+> `results/validation_canonical_index_2026-03-06.json`.
+> Legacy entries in this manifest are traceability records, not standalone claim evidence.
+
 **Generated:** 2026-03-04
 **Repository:** https://github.com/sergeeey/ARCHCODE
 **Manuscript:** ARCHCODE v2.6 (arXiv q-bio.GN submission)

@@ -1,5 +1,23 @@
 # Results
 
+## Canonical Claim Status (2026-03-06)
+
+This document is a legacy narrative draft and must be interpreted under the canonical
+governance artifacts:
+
+- `results/publication_claim_matrix_2026-03-06.json`
+- `results/validation_canonical_index_2026-03-06.json`
+
+Normative publication status:
+
+- `Task1`: `ALLOWED_WITH_CAVEAT` (limited structural signal; no Pearson > 0.5 success claim)
+- `Task2`: observational model-discordance only; pathogenic class proof is `UNVERIFIED`
+- `Task3`: `SUPPORTED_IN_MODEL` only; no external biology claim
+- `Task4`: feature-alignment support only; no causal biology claim
+- `Task5`: hypothesis-generating stratification only; clinical reclassification is `NO_GO/UNVERIFIED`
+
+Any stronger wording elsewhere in this file is superseded by the canonical artifacts above.
+
 ## ClinVar HBB variant dataset
 
 We downloaded 431 HBB variant records from ClinVar via NCBI E-utilities (esearch + esummary
@@ -118,7 +136,7 @@ cryptic splice effects cannot be excluded. The SpliceAI Lookup API was unavailab
 study (see Methods). "VEP-blind" should therefore be read as "low VEP consequence impact,"
 not as universally invisible to all sequence-based predictors.
 
-The 20 pearl variants fall into three groups by molecular context:
+The 27 pearl variants (20 in the 30 kb window) fall into three groups by molecular context:
 
 **Group 1 — Promoter variants (15 of 20 pearls).** Fifteen variants map to positions
 5,227,099–5,227,172 on chr11, within the HBB proximal promoter region (SSIM range
@@ -162,6 +180,14 @@ pearl variants are provided in Supplementary Table S1.
 | Missense at 5226613       | 3      | 5,226,613             | 0.949     | 0.20     | coding_sequence_variant (complex indel)     |
 | LoF (frameshift + splice) | 2      | 5,226,796 / 5,226,971 | 0.896     | 0.18     | frameshift / splice_acceptor                |
 | **Total**                 | **20** | —                     | **0.928** | **0.20** | —                                           |
+
+---
+
+## In Silico Functional Validation (Virtual CRISPR)
+
+To test whether pearl variants lie in positions where simulated loss of function reduces enhancer–promoter contact, we ran a **Virtual CRISPR (V-CRISPR)** experiment: for each of three representative promoter pearls (top-3 by priority in the validation shortlist), we applied an in silico knockout by reducing MED1 occupancy to 5% in the variant bin (95% reduction) and recomputed the contact matrix. We then measured the change in promoter–LCR contact frequency (HBB promoter ↔ LCR HS2, HS3) and the local SSIM (LSSIM) between wild-type and knockout matrices.
+
+For all three variants (VCV000869288 c.-79A>C, VCV000869290 c.-80T>C, VCV000393701 c.-138C>A), the virtual knockout produced a **~17% drop** in mean promoter–LCR contact and LSSIM ≈ 0.81 (50×50 window), indicating that the model predicts substantial structural disruption when these positions are functionally ablated. These results are in silico predictions only; wet-lab validation (e.g. CRISPR knockout or reporter assays) remains required to confirm that these positions are critical for LCR–promoter contact in vivo. Full metrics and parameters are in **Supplementary Table (TABLE_VCRISPR_TOP3.md)** and `results/virtual_crispr_pearls.json`.
 
 ---
 
@@ -245,21 +271,19 @@ rate among confirmed benign variants in the current dataset.
 
 ## Summary
 
-ARCHCODE simulation of 353 real ClinVar HBB variants demonstrates: (1) mean SSIM values
-rank variant categories in the biologically expected order from nonsense (most disruptive)
-to synonymous (least disruptive); (2) overall discordance with VEP is 36.8%, predominantly
-VEP-only (128 variants), reflecting VEP's sensitivity to protein-level mechanisms that lie
-outside ARCHCODE's scope; (3) 20 pearl variants with VEP score < 0.30 and SSIM < 0.95
-suggest candidate cases for structural-level re-evaluation, with the strongest biological
-signal in promoter-region variants where the LCR–HBB enhancer–promoter contact model
-detects disruption not captured by VEP consequence annotation; (4) ARCHCODE shows zero
-sensitivity to missense variants, its most important limitation for clinical variant
-classification.
+Under the canonical 2026-03-06 validation governance, this results set should be treated as
+computational and hypothesis-generating. The defensible conclusions are limited to:
 
-All reported SSIM values and VEP scores are derived from computational models and have not
-been validated against experimental Hi-C data, RNA-seq, or patient phenotype data for the
-HBB locus. Experimental validation is required before any variant reclassification should
-be considered.
+1. ARCHCODE and sequence-based predictors can show observational discordance on selected HBB
+   variants, consistent with different modeling assumptions.
+2. Structural scoring outputs can be used to prioritize follow-up hypotheses, not to assert
+   pathogenic class proof or clinical reclassification.
+3. Missense/protein-level mechanisms remain a known blind spot for the current structural
+   model and require orthogonal sequence/protein evidence.
+
+No claim in this file should be interpreted as clinical-grade evidence. Any deployment,
+reclassification, or mechanistic proof statement requires independent experimental validation
+and must follow the canonical claim matrix.
 
 ---
 

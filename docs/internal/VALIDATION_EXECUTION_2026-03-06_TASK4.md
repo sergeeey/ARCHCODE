@@ -4,6 +4,9 @@
 
 Task 4: Tissue-Specific 3D Pathogenicity (context-aware epigenome cross-validation)
 
+Primary claim source (canonicalized):
+- `results/task4_canonical_status_2026-03-06.json`
+
 ## Implemented
 
 - Updated script:
@@ -61,4 +64,3 @@ Task 4: Tissue-Specific 3D Pathogenicity (context-aware epigenome cross-validati
 ## Verdict
 
 `READY` for Task 4 at protocol level (context-aware `SUPPORTED` input-alignment claims, with causal/clinical claims explicitly blocked).
-

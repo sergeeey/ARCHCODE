@@ -17,7 +17,7 @@ import * as path from "path";
 import {
   AlphaGenomeService,
   GenomeInterval,
-} from "../src/services/AlphaGenomeService";
+} from "../src/services/AlphaGenomeNodeService";
 import { SeededRandom } from "../src/utils/random";
 import { KRAMER_KINETICS } from "../src/domain/constants/biophysics";
 
@@ -1043,3 +1043,4 @@ async function main() {
 }
 
 main().catch(console.error);
+

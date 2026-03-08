@@ -1,0 +1,24 @@
+{
+  "disclaimer": "Exploratory; n=1 per condition; do not use for strong manuscript claims.",
+  "filter": {
+    "motif": ">0",
+    "annotated": "==0",
+    "unique_reads": ">= 6"
+  },
+  "region": "chr11:5220000-5230000",
+  "raw_counts": {
+    "WT": 9,
+    "B6": 9,
+    "A2": 10
+  },
+  "depth_hbb_reads": {
+    "WT": 424685,
+    "B6": 736251,
+    "A2": 1278373
+  },
+  "normalized_per_million": {
+    "WT": 21.192177731730578,
+    "B6": 12.224092055562574,
+    "A2": 7.822443058481366
+  }
+}

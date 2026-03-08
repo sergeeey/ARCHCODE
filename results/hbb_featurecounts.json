@@ -1,0 +1,30 @@
+{
+  "gene": "HBB (ENSG00000244734)",
+  "source": "Galaxy EU featureCounts on STAR BAMs (hg38, Ensembl GTF)",
+  "data_source": "GSE160420 (Himadewi et al. 2021, eLife)",
+  "samples": {
+    "WT_SRR12935486": {
+      "hbb_raw": 675913,
+      "library_size": 33384001,
+      "hbb_cpm": 20246.61,
+      "relative_to_wt": 1.0,
+      "pct_change_vs_wt": 0.0
+    },
+    "B6_SRR12935488": {
+      "hbb_raw": 998171,
+      "library_size": 26220241,
+      "hbb_cpm": 38068.72,
+      "relative_to_wt": 1.8803,
+      "pct_change_vs_wt": 88.0
+    },
+    "A2_SRR12935490": {
+      "hbb_raw": 1667647,
+      "library_size": 32057363,
+      "hbb_cpm": 52020.72,
+      "relative_to_wt": 2.5694,
+      "pct_change_vs_wt": 156.9
+    }
+  },
+  "interpretation": "Exploratory; n=1 per condition. CPM = counts per million. Library size = total assigned reads.",
+  "caveat": "No biological replicates. Statistical significance cannot be assessed."
+}

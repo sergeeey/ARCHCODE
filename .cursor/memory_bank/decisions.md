@@ -4,6 +4,8 @@
 **Format:** Y-statement (Alistair Cockburn)
 **Status:** Living document
 
+**Полный лог решений (ADR-013 … ADR-022):** см. `.claude/memory/decisions.md` — канонизация, per-locus thresholds, MaveDB, cross-species, enhancer proximity, SpliceAI/MPRA null, и др.
+
 ---
 
 ## ADR Template

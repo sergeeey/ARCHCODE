@@ -1,19 +1,56 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-05 (session 35: MaveDB cross-validation + expression/MI analysis)
+**Last Updated:** 2026-03-08 (bioRxiv v3 biology-first submission + Zenodo v2.16)
 **Branch:** main
-**Last Commit:** 18e8bea — `fix: PhyloP mean 2.39→2.37 + Significance Statement update + integrity check passed`
-**GitHub:** https://github.com/sergeeey/ARCHCODE
-**bioRxiv ID:** BIORXIV/2026/708672 — REJECTED ("not complete research with new data")
-**Zenodo DOI:** 10.5281/zenodo.18867051 (v2.8) / 10.5281/zenodo.18867448 (v2.9, latest)
-**arXiv:** endorsement requested from Dr. Guang Shi (DIMES, polymer chromatin modeling), code B9P837
-**Status:** v2.13 — MaveDB cross-validation (9 orthogonal methods, 32,201 variants). Zenodo v2.10 uploaded (DOI TBD).
+**Last Commit:** 5cf0d98 — `fix: PR Gate blockers — per-locus thresholds + monotonicity test + caveats`
+**Git Tag:** v2.14-experimental ("Research Use Only — Wet Lab Validation Required")
+**GitHub:** https://github.com/sergeeey/ARCHCODE (unpushed — network blocked)
+**Zenodo DOI:** v2.16 — DOI закреплён
+**bioRxiv:** два независимых timestamp (submitted 2026-03-08); old ID BIORXIV/2026/708672 REJECTED
+**arXiv:** ждём endorsement от Brackley/Michieletto (ранее: Dr. Guang Shi, code B9P837)
+**Status:** v2.16 — SUBMITTED. bioRxiv biology-first version (52 pages). arXiv version ready (55 pages).
 
 ---
 
 ## Текущий статус проекта
 
-**Фаза:** v2.13 — MaveDB cross-validation (9 orthogonal methods, 32,201 variants, Figure 17)
+**Фаза:** v2.14 — PUBLICATION READY. **Канонические источники истины для claims:** `results/validation_canonical_index_2026-03-06.json`, `results/publication_claim_matrix_2026-03-06.json`. Legacy-нарративы: `docs/internal/LEGACY_CLAIM_HYGIENE_2026-03-06.md`.
+
+### 2026-03-06 / 2026-03-07: Canonical Governance + Cold-Eye Audit + Post-Audit Fixes
+
+1. **Канонизация валидации** — единый индекс Task1–Task5, матрица допущенных/запрещённых формулировок (C01–C08), legacy-файлы помечены non-canonical.
+2. **Cold-Eye Audit** — по ТЗ `docs/COLD_EYE_AUDIT_TZ.md`; отчёт `docs/COLD_EYE_AUDIT_REPORT.md`. Скрытых моков нет; LSSIM из расчёта; тесты 63/63. Task3 weak_halved weakEncounter=0 — риск (геометрия/выборка).
+3. **Post-audit fixes (2026-03-07):** цитирование в blind spot benchmark (без placeholder DOI); маппинг ключей в `build_blind_spot_benchmark.py`; «fitted» → «manually calibrated» в AlphaGenomeService.ts и validate-blind-loci.ts; ChromoGen → Schuette et al. 2025, Science Advances.
+4. **Task1 1Mb:** гипотеза Pearson > 0.5 отклонена; статус EXPLORATORY.
+5. **Task3:** SUPPORTED_IN_MODEL (weak_probe); внешняя валидация UNVERIFIED.
+6. **RNA-seq:** анализ выполнен; после нормализации по глубине гипотеза Loop That Stayed не поддержана; в manuscript только как Limitations, без фиктивных p-values.
+
+### Session 37: Publication Package + Integrity Check + Discovery Memo
+
+1. **Publication package** — `C:\Users\serge\Desktop\arxiv 0403\` (63 files, 14 MB)
+   - 2 PDFs (EN + RU), 8 Typst sources, 36 figures, 10 data JSONs, 4 supplementary
+   - Cover letter, Research Square checklist, arXiv endorsement email, Zenodo metadata
+2. **Integrity check** — 49/51 PASS, 0 MISMATCH, 2 UNVERIFIABLE (enhancer proximity numbers from fig8 pipeline)
+3. **FigJam diagrams** — 4 created: Pipeline (GA), 9 Methods Blind, Tissue Gradient, VUS Pathway
+4. **Discovery Readiness Memo** — 15 pearls shortlisted (8 positions), wet-lab protocol:
+   - HUDEP-2 + Capture Hi-C + RT-qPCR + CRISPR base editing
+   - 5 priority positions: c.-79A>C, c.-80T>C, c.-138C>A, c.249G>C, c.50dup
+   - Success/failure criteria defined for each experiment
+5. **Pearl validation shortlist** — `results/pearl_validation_shortlist.json`
+6. **Sensitivity analysis** — threshold stable (core pearls at 0.90-0.95), annotation robust (TSS-fixed)
+7. **Zenodo v2.14 metadata** — prepared for browser upload (network blocked)
+8. **Git push blocked** — TLS handshake reset, needs VPN
+
+### Session 36: VUS Reclassification Candidates
+
+1. **ClinVar VUS download** — 30,952 VUS across 13 loci via NCBI E-utilities (batched per-locus)
+2. **Position-based LSSIM lookup** — matched VUS to existing atlas positions, no new simulations
+3. **760 candidates** (LSSIM < 0.95), **641 pearl-like** after excluding nonsense/frameshift
+4. **Tissue-specificity confirmed**: HBB 22.3% candidate rate; SCN5A/GJB2/HBA1/GATA1/BCL11A = 0
+5. **Figure 18** — `figures/fig18_vus_reclassification.pdf/png` (dual panel: VUS counts + pearl-like)
+6. **Per-locus candidate CSVs** — HBB (327), MLH1 (122), BRCA1 (81), TERT (79), PTEN (73), CFTR (54), TP53 (13), LDLR (11)
+7. **Manuscript v2.14** — new Results section (EN+RU), Main Findings + Data Transparency updated
+8. Desktop: `ARCHCODE_v2.14_EN.pdf` / `_RU.pdf`
 
 ### Session 35: MaveDB Cross-Validation + Expression/MI Analysis
 
@@ -170,5 +207,13 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+
+- [2026-03-05 18:43] `5cf0d98`: fix: PR Gate blockers — per-locus thresholds + monotonicity test + caveats
+
+- [2026-03-05 18:17] `bf39ad8`: docs: update README + submission metadata to v2.14 (63,153 variants, 641 VUS candidates)
+
+- [2026-03-05 17:15] `a94c881`: feat: v2.14 — VUS reclassification candidates (30,952 VUS, 760 candidates, 641 pearl-like across 13 loci)
+
+- [2026-03-05 15:51] `2596e99`: docs: Data Transparency Declaration — add MaveDB, expression, MI, mouse, new loci rows
 
 - [2026-03-05 15:48] `c2510b6`: feat: v2.13 — MaveDB cross-validation + genome-wide scaling (13 loci, 32,201 variants, 9 orthogonal methods)

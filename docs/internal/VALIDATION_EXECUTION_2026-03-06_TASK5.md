@@ -4,6 +4,9 @@
 
 Task 5: VUS Stratification (reproducible summary with explicit rules, provenance, and anti-overclaim gates)
 
+Primary claim source (canonicalized):
+- `results/task5_canonical_status_2026-03-06.json`
+
 ## Implemented
 
 - Added reproducible builder:
@@ -55,4 +58,3 @@ Task 5: VUS Stratification (reproducible summary with explicit rules, provenance
 ## Verdict
 
 `READY` for Task 5 at validation-protocol level (reproducible computational stratification summary with strict anti-overclaim boundaries).
-

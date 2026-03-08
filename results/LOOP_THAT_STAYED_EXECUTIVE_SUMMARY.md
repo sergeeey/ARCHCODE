@@ -2,6 +2,11 @@
 
 ## AI-Discovered Loop-Constrained Pathogenic Splice Variants in HBB
 
+> **Canonical status (2026-03-06):** This is a legacy discovery summary. For claim-safe usage,
+> follow `results/task2_canonical_status_2026-03-06.json` and
+> `results/publication_claim_matrix_2026-03-06.json`. "Loop That Stayed" remains an unresolved
+> hypothesis (`UNVERIFIED`) as a pathogenic-class claim and is not clinical evidence.
+
 **Analysis Date:** 2026-02-03
 **Analyst:** VUS Analyzer Agent
 **Status:** Discovery Phase Complete → Validation Phase Pending
@@ -10,14 +15,14 @@
 
 ## 🔬 Discovery Overview
 
-Systematic analysis of 367 HBB variants revealed a novel class of 3 splice_region variants (0.82% of cohort) that show:
+Systematic analysis of 367 HBB variants suggested a candidate pattern in 3 splice_region variants (0.82% of cohort) that show:
 
 - ✅ **Preserved chromatin loop architecture** (SSIM 0.545-0.551)
 - ✅ **Disrupted splice regulation** (predicted 10-35% aberrant splicing)
 - ✅ **Systematic AI blind spot** (AlphaGenome scores ~0.454-0.456, all classified VUS)
 - ✅ **Strong ARCHCODE evidence** (all classified LIKELY_PATHOGENIC)
 
-This pattern challenges the dogma that **loop preservation is protective** and reveals a paradoxical mechanism where **stable loops TRAP splice defects**.
+This pattern motivates further testing of a paradoxical hypothesis where stable loops may coincide with splice defects in-model.
 
 ---
 
@@ -331,7 +336,10 @@ This analysis demonstrates:
 
 **Data Availability:**
 
-- Full analysis: `D:\ДНК\results\vus_batch_analysis_loop_that_stayed.json`
+- Canonical Task 2 claim status (primary): `D:\ДНК\results\task2_canonical_status_2026-03-06.json`
+- Reconciliation log: `D:\ДНК\results\task2_reconciliation_2026-03-05.json`
+- Contradiction status snapshot: `D:\ДНК\results\task2_loop_that_stayed_status_2026-03-05.json`
+- Legacy full analysis (traceability only): `D:\ДНК\results\vus_batch_analysis_loop_that_stayed.json` (`deprecated_for_claims`)
 - Individual reports: `D:\ДНК\results\individual_reports\VCV*.json`
 - Comparative table: `D:\ДНК\results\loop_that_stayed_comparative_table.md`
 
