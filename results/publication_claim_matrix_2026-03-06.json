@@ -1,0 +1,119 @@
+{
+  "generated_at_utc": "2026-03-06T00:00:00Z",
+  "scope": "Publication claim governance mapped to canonical validation artifacts",
+  "primary_governance_source": "results/validation_canonical_index_2026-03-06.json",
+  "claims": [
+    {
+      "id": "C01",
+      "claim": "Validation stack is reproducible with explicit claim tiers and provenance boundaries.",
+      "status": "ALLOWED",
+      "evidence": [
+        "D:/ДНК/results/validation_canonical_index_2026-03-06.json"
+      ],
+      "required_wording": "Use wording equivalent to reproducible computational validation with explicit claim-level governance.",
+      "forbidden_wording": "Do not imply full experimental reproducibility across external labs without independent reruns."
+    },
+    {
+      "id": "C02",
+      "claim": "Task1 1Mb setup confirms strong Pearson agreement (>0.5) with Hi-C.",
+      "status": "BLOCKED",
+      "evidence": [
+        "D:/ДНК/results/task1_alphagenome_benchmark_brca1mb_1mb_2026-03-06.json",
+        "D:/ДНК/results/task1_akita_benchmark_brca1mb_1mb_2026-03-06.json",
+        "D:/ДНК/docs/internal/VALIDATION_EXECUTION_2026-03-06_TASK1_1MB.md"
+      ],
+      "required_wording": "State that Pearson > 0.5 hypothesis is rejected in current setup; keep benchmark interpretation exploratory.",
+      "forbidden_wording": "Any statement that Pearson target was achieved in Task1."
+    },
+    {
+      "id": "C03",
+      "claim": "Task1 provides limited structural signal via LSSIM under current setup.",
+      "status": "ALLOWED_WITH_CAVEAT",
+      "evidence": [
+        "D:/ДНК/results/validation_canonical_index_2026-03-06.json",
+        "D:/ДНК/results/task1_alphagenome_benchmark_brca1mb_1mb_2026-03-06.json"
+      ],
+      "required_wording": "Use 'supported with limits' and mention setup constraints.",
+      "forbidden_wording": "Do not claim publication-grade benchmark superiority."
+    },
+    {
+      "id": "C04",
+      "claim": "Loop That Stayed is proven as a pathogenic class.",
+      "status": "BLOCKED",
+      "evidence": [
+        "D:/ДНК/results/task2_canonical_status_2026-03-06.json"
+      ],
+      "required_wording": "State UNVERIFIED for pathogenic class status; frame as unresolved hypothesis.",
+      "forbidden_wording": "Any definitive mechanistic or clinical proof statement."
+    },
+    {
+      "id": "C05",
+      "claim": "Task2 supports model-discordance observation between structural and sequence predictors.",
+      "status": "ALLOWED",
+      "evidence": [
+        "D:/ДНК/results/task2_canonical_status_2026-03-06.json"
+      ],
+      "required_wording": "Keep statement at observational model-discordance level.",
+      "forbidden_wording": "Do not escalate to causal disease mechanism or clinical utility."
+    },
+    {
+      "id": "C06",
+      "claim": "Task3 weak-CTCF no-effect finding is supported in-model.",
+      "status": "ALLOWED_WITH_CAVEAT",
+      "evidence": [
+        "D:/ДНК/results/task3_canonical_status_2026-03-06.json"
+      ],
+      "required_wording": "Include explicit 'SUPPORTED_IN_MODEL' and external validation disclaimer.",
+      "forbidden_wording": "Do not present as externally validated biology."
+    },
+    {
+      "id": "C07",
+      "claim": "Task4 proves tissue-causal biological mechanism.",
+      "status": "BLOCKED",
+      "evidence": [
+        "D:/ДНК/results/task4_canonical_status_2026-03-06.json"
+      ],
+      "required_wording": "Restrict to input-feature alignment support.",
+      "forbidden_wording": "Any causal or clinical impact claim from Task4 alone."
+    },
+    {
+      "id": "C08",
+      "claim": "Task4 supports context-aware input alignment (CTCF/H3K27ac).",
+      "status": "ALLOWED",
+      "evidence": [
+        "D:/ДНК/results/task4_canonical_status_2026-03-06.json",
+        "D:/ДНК/results/task4_epigenome_crossval_2026-03-06.json"
+      ],
+      "required_wording": "State as alignment/consistency support only.",
+      "forbidden_wording": "No causal or clinical extrapolation."
+    },
+    {
+      "id": "C09",
+      "claim": "Task5 enables clinical reclassification of VUS.",
+      "status": "BLOCKED",
+      "evidence": [
+        "D:/ДНК/results/task5_canonical_status_2026-03-06.json",
+        "D:/ДНК/results/hbb_vus_validation_report_2026-03-06.json"
+      ],
+      "required_wording": "State clinical reclassification as UNVERIFIED / NO_GO under current criteria.",
+      "forbidden_wording": "Any direct clinical deployment claim based on Task5 metrics."
+    },
+    {
+      "id": "C10",
+      "claim": "Task5 provides reproducible computational stratification for hypothesis generation.",
+      "status": "ALLOWED_WITH_CAVEAT",
+      "evidence": [
+        "D:/ДНК/results/task5_canonical_status_2026-03-06.json",
+        "D:/ДНК/results/task5_vus_stratification_summary_2026-03-06.json"
+      ],
+      "required_wording": "Use 'supported with limits' and 'hypothesis-generating'.",
+      "forbidden_wording": "No clinical utility overclaim."
+    }
+  ],
+  "summary": {
+    "allowed": 3,
+    "allowed_with_caveat": 3,
+    "blocked": 4
+  },
+  "overall_publication_position": "READY_WITH_LIMITS"
+}

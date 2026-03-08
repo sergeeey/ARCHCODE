@@ -1,5 +1,10 @@
 # ARCHCODE: Physics-Based 3D Chromatin Simulation for Clinical Variant Interpretation
 
+> **Canonical status (2026-03-06):** Legacy abstract draft. Publication-safe claims are governed by
+> `results/publication_claim_matrix_2026-03-06.json` and
+> `results/validation_canonical_index_2026-03-06.json`.
+> This file is for historical context only and must not be used as standalone clinical or causal-proof evidence.
+
 ## A Complementary Approach to Machine Learning in Hemoglobinopathy Diagnosis
 
 ---

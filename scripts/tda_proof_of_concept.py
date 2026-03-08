@@ -40,6 +40,7 @@ def load_locus_config(locus_name: str) -> dict:
         "cftr": "config/locus/cftr_317kb.json",
         "tp53": "config/locus/tp53_300kb.json",
         "brca1": "config/locus/brca1_400kb.json",
+        "brca1mb_1mb": "config/locus/brca1mb_1mb.json",
         "mlh1": "config/locus/mlh1_300kb.json",
         "ldlr": "config/locus/ldlr_300kb.json",
         "scn5a": "config/locus/scn5a_400kb.json",

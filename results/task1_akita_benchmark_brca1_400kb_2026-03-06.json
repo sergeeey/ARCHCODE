@@ -1,0 +1,66 @@
+{
+  "locus": "brca1",
+  "locus_id": "brca1_400kb",
+  "window": {
+    "chromosome": "chr17",
+    "start": 42900000,
+    "end": 43300000,
+    "resolution_bp": 1000,
+    "n_bins": 400
+  },
+  "akita": {
+    "framework": "basenji",
+    "model_file": "model_best.h5",
+    "reference": "Fudenberg et al. 2020, Nature Methods",
+    "seq_length": 1048576,
+    "contact_map_resolution": 2048,
+    "contact_map_shape": [
+      448,
+      448
+    ],
+    "cell_type": "GM12878",
+    "target_index": 2,
+    "akita_window_bins": 195,
+    "prediction_time_sec": 127.6
+  },
+  "correlations": {
+    "archcode_vs_akita": {
+      "pearson_r": 0.1537150420709816,
+      "pearson_p": 0.0,
+      "spearman_rho": 0.42631455893938336,
+      "spearman_p": 0.0,
+      "n": 79401
+    },
+    "archcode_vs_hic": {
+      "pearson_r": -0.015324371286988351,
+      "pearson_p": 1.5722496222003395e-05,
+      "spearman_rho": 0.1614716860098068,
+      "spearman_p": 0.0,
+      "n": 79401
+    },
+    "akita_vs_hic": {
+      "pearson_r": -0.07479470892445979,
+      "pearson_p": 7.151961304276332e-99,
+      "spearman_rho": 0.07965019860476572,
+      "spearman_p": 6.610784479618363e-112,
+      "n": 79401
+    }
+  },
+  "local_metrics": {
+    "archcode_vs_akita": {
+      "local_ssim_mean": 0.020511984234821614,
+      "window_size": 50,
+      "n_local_windows": 225
+    },
+    "archcode_vs_hic": {
+      "local_ssim_mean": 0.4676865115145344,
+      "window_size": 50,
+      "n_local_windows": 225
+    },
+    "akita_vs_hic": {
+      "local_ssim_mean": 0.03352985785883853,
+      "window_size": 50,
+      "n_local_windows": 225
+    }
+  }
+}

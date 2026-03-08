@@ -1,0 +1,1594 @@
+{
+  "all_classified": [
+    {
+      "start": 5225658,
+      "end": 5226929,
+      "span": 1271,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "WT",
+      "reads": 50
+    },
+    {
+      "start": 5225663,
+      "end": 5226576,
+      "span": 913,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "WT",
+      "reads": 66
+    },
+    {
+      "start": 5225671,
+      "end": 5226590,
+      "span": 919,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "WT",
+      "reads": 72
+    },
+    {
+      "start": 5225727,
+      "end": 5226576,
+      "span": 849,
+      "type": "canonical",
+      "details": "E1\u2192E2",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 75
+    },
+    {
+      "start": 5225727,
+      "end": 5226711,
+      "span": 984,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "WT",
+      "reads": 59
+    },
+    {
+      "start": 5225753,
+      "end": 5226516,
+      "span": 763,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "WT",
+      "reads": 62
+    },
+    {
+      "start": 5225772,
+      "end": 5226576,
+      "span": 804,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "WT",
+      "reads": 47
+    },
+    {
+      "start": 5225925,
+      "end": 5228120,
+      "span": 2195,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 12
+    },
+    {
+      "start": 5225998,
+      "end": 5226576,
+      "span": 578,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "WT",
+      "reads": 75
+    },
+    {
+      "start": 5226629,
+      "end": 5226679,
+      "span": 50,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "WT",
+      "reads": 38
+    },
+    {
+      "start": 5226629,
+      "end": 5226731,
+      "span": 102,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "WT",
+      "reads": 52
+    },
+    {
+      "start": 5226690,
+      "end": 5230653,
+      "span": 3963,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 13
+    },
+    {
+      "start": 5226706,
+      "end": 5226961,
+      "span": 255,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 12
+    },
+    {
+      "start": 5226718,
+      "end": 5227035,
+      "span": 317,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 36
+    },
+    {
+      "start": 5226718,
+      "end": 5227548,
+      "span": 830,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 14
+    },
+    {
+      "start": 5226772,
+      "end": 5226948,
+      "span": 176,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 48
+    },
+    {
+      "start": 5226800,
+      "end": 5226917,
+      "span": 117,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "WT",
+      "reads": 32
+    },
+    {
+      "start": 5226800,
+      "end": 5226925,
+      "span": 125,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "WT",
+      "reads": 42
+    },
+    {
+      "start": 5226800,
+      "end": 5226929,
+      "span": 129,
+      "type": "canonical",
+      "details": "E2\u2192E3",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 75
+    },
+    {
+      "start": 5226800,
+      "end": 5226945,
+      "span": 145,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 72
+    },
+    {
+      "start": 5226800,
+      "end": 5226967,
+      "span": 167,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 72
+    },
+    {
+      "start": 5226800,
+      "end": 5227200,
+      "span": 400,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 67
+    },
+    {
+      "start": 5226800,
+      "end": 5230653,
+      "span": 3853,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 13
+    },
+    {
+      "start": 5226806,
+      "end": 5226860,
+      "span": 54,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "WT",
+      "reads": 64
+    },
+    {
+      "start": 5226806,
+      "end": 5226937,
+      "span": 131,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 67
+    },
+    {
+      "start": 5226843,
+      "end": 5226929,
+      "span": 86,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 69
+    },
+    {
+      "start": 5226952,
+      "end": 5228120,
+      "span": 1168,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 12
+    },
+    {
+      "start": 5227027,
+      "end": 5230653,
+      "span": 3626,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 13
+    },
+    {
+      "start": 5227040,
+      "end": 5227200,
+      "span": 160,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 67
+    },
+    {
+      "start": 5227040,
+      "end": 5227444,
+      "span": 404,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 61
+    },
+    {
+      "start": 5227040,
+      "end": 5227511,
+      "span": 471,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "WT",
+      "reads": 67
+    },
+    {
+      "start": 5227577,
+      "end": 5227833,
+      "span": 256,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 37
+    },
+    {
+      "start": 5227580,
+      "end": 5227833,
+      "span": 253,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "WT",
+      "reads": 51
+    },
+    {
+      "start": 5225565,
+      "end": 5226576,
+      "span": 1011,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 52
+    },
+    {
+      "start": 5225597,
+      "end": 5226745,
+      "span": 1148,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 37
+    },
+    {
+      "start": 5225607,
+      "end": 5226745,
+      "span": 1138,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 56
+    },
+    {
+      "start": 5225610,
+      "end": 5226657,
+      "span": 1047,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 18
+    },
+    {
+      "start": 5225626,
+      "end": 5226666,
+      "span": 1040,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 45
+    },
+    {
+      "start": 5225658,
+      "end": 5226597,
+      "span": 939,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 51
+    },
+    {
+      "start": 5225658,
+      "end": 5226769,
+      "span": 1111,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 17
+    },
+    {
+      "start": 5225658,
+      "end": 5226929,
+      "span": 1271,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 66
+    },
+    {
+      "start": 5225663,
+      "end": 5226623,
+      "span": 960,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 50
+    },
+    {
+      "start": 5225663,
+      "end": 5226929,
+      "span": 1266,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 67
+    },
+    {
+      "start": 5225663,
+      "end": 5226945,
+      "span": 1282,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 67
+    },
+    {
+      "start": 5225666,
+      "end": 5226627,
+      "span": 961,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 39
+    },
+    {
+      "start": 5225666,
+      "end": 5226637,
+      "span": 971,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 50
+    },
+    {
+      "start": 5225666,
+      "end": 5227005,
+      "span": 1339,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 30
+    },
+    {
+      "start": 5225671,
+      "end": 5226637,
+      "span": 966,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 74
+    },
+    {
+      "start": 5225671,
+      "end": 5226648,
+      "span": 977,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 15
+    },
+    {
+      "start": 5225715,
+      "end": 5226648,
+      "span": 933,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 46
+    },
+    {
+      "start": 5225727,
+      "end": 5226576,
+      "span": 849,
+      "type": "canonical",
+      "details": "E1\u2192E2",
+      "affected_exon": null,
+      "sample": "B6",
+      "reads": 75
+    },
+    {
+      "start": 5225727,
+      "end": 5226623,
+      "span": 896,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 26
+    },
+    {
+      "start": 5225727,
+      "end": 5226729,
+      "span": 1002,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 49
+    },
+    {
+      "start": 5225772,
+      "end": 5226576,
+      "span": 804,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "B6",
+      "reads": 37
+    },
+    {
+      "start": 5225998,
+      "end": 5226576,
+      "span": 578,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "B6",
+      "reads": 75
+    },
+    {
+      "start": 5226439,
+      "end": 5226492,
+      "span": 53,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "B6",
+      "reads": 74
+    },
+    {
+      "start": 5226604,
+      "end": 5226967,
+      "span": 363,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "B6",
+      "reads": 27
+    },
+    {
+      "start": 5226638,
+      "end": 5226679,
+      "span": 41,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "B6",
+      "reads": 61
+    },
+    {
+      "start": 5226649,
+      "end": 5226704,
+      "span": 55,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "B6",
+      "reads": 46
+    },
+    {
+      "start": 5226706,
+      "end": 5226769,
+      "span": 63,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "B6",
+      "reads": 28
+    },
+    {
+      "start": 5226760,
+      "end": 5226789,
+      "span": 29,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "B6",
+      "reads": 12
+    },
+    {
+      "start": 5226772,
+      "end": 5226929,
+      "span": 157,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 55
+    },
+    {
+      "start": 5226800,
+      "end": 5226917,
+      "span": 117,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "B6",
+      "reads": 45
+    },
+    {
+      "start": 5226800,
+      "end": 5226929,
+      "span": 129,
+      "type": "canonical",
+      "details": "E2\u2192E3",
+      "affected_exon": null,
+      "sample": "B6",
+      "reads": 75
+    },
+    {
+      "start": 5226800,
+      "end": 5226945,
+      "span": 145,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 75
+    },
+    {
+      "start": 5226800,
+      "end": 5226967,
+      "span": 167,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 75
+    },
+    {
+      "start": 5226800,
+      "end": 5226977,
+      "span": 177,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 15
+    },
+    {
+      "start": 5226800,
+      "end": 5227200,
+      "span": 400,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "B6",
+      "reads": 69
+    },
+    {
+      "start": 5226806,
+      "end": 5226937,
+      "span": 131,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 71
+    },
+    {
+      "start": 5226843,
+      "end": 5226929,
+      "span": 86,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 51
+    },
+    {
+      "start": 5227040,
+      "end": 5227200,
+      "span": 160,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 72
+    },
+    {
+      "start": 5227040,
+      "end": 5227511,
+      "span": 471,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "B6",
+      "reads": 68
+    },
+    {
+      "start": 5225542,
+      "end": 5225576,
+      "span": 34,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 60
+    },
+    {
+      "start": 5225597,
+      "end": 5226745,
+      "span": 1148,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 54
+    },
+    {
+      "start": 5225607,
+      "end": 5226745,
+      "span": 1138,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 55
+    },
+    {
+      "start": 5225610,
+      "end": 5226657,
+      "span": 1047,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 51
+    },
+    {
+      "start": 5225658,
+      "end": 5225708,
+      "span": 50,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 18
+    },
+    {
+      "start": 5225658,
+      "end": 5226597,
+      "span": 939,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 47
+    },
+    {
+      "start": 5225658,
+      "end": 5226711,
+      "span": 1053,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 73
+    },
+    {
+      "start": 5225658,
+      "end": 5226769,
+      "span": 1111,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 26
+    },
+    {
+      "start": 5225658,
+      "end": 5226929,
+      "span": 1271,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 72
+    },
+    {
+      "start": 5225663,
+      "end": 5226576,
+      "span": 913,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 12
+    },
+    {
+      "start": 5225663,
+      "end": 5226929,
+      "span": 1266,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 45
+    },
+    {
+      "start": 5225663,
+      "end": 5226945,
+      "span": 1282,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 46
+    },
+    {
+      "start": 5225666,
+      "end": 5226613,
+      "span": 947,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 53
+    },
+    {
+      "start": 5225671,
+      "end": 5226590,
+      "span": 919,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 65
+    },
+    {
+      "start": 5225671,
+      "end": 5226613,
+      "span": 942,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 59
+    },
+    {
+      "start": 5225671,
+      "end": 5226637,
+      "span": 966,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 52
+    },
+    {
+      "start": 5225671,
+      "end": 5226648,
+      "span": 977,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 49
+    },
+    {
+      "start": 5225678,
+      "end": 5226769,
+      "span": 1091,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 30
+    },
+    {
+      "start": 5225688,
+      "end": 5226937,
+      "span": 1249,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 33
+    },
+    {
+      "start": 5225715,
+      "end": 5226603,
+      "span": 888,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 20
+    },
+    {
+      "start": 5225727,
+      "end": 5226529,
+      "span": 802,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 69
+    },
+    {
+      "start": 5225727,
+      "end": 5226576,
+      "span": 849,
+      "type": "canonical",
+      "details": "E1\u2192E2",
+      "affected_exon": null,
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5225727,
+      "end": 5226729,
+      "span": 1002,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 14
+    },
+    {
+      "start": 5225727,
+      "end": 5226967,
+      "span": 1240,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5225747,
+      "end": 5226583,
+      "span": 836,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "affected_exon": "5225613-5225726",
+      "sample": "A2",
+      "reads": 18
+    },
+    {
+      "start": 5225998,
+      "end": 5226576,
+      "span": 578,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5226439,
+      "end": 5226492,
+      "span": 53,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "A2",
+      "reads": 71
+    },
+    {
+      "start": 5226613,
+      "end": 5226937,
+      "span": 324,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "A2",
+      "reads": 36
+    },
+    {
+      "start": 5226629,
+      "end": 5226662,
+      "span": 33,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 52
+    },
+    {
+      "start": 5226629,
+      "end": 5226679,
+      "span": 50,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 25
+    },
+    {
+      "start": 5226638,
+      "end": 5226757,
+      "span": 119,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 44
+    },
+    {
+      "start": 5226674,
+      "end": 5226711,
+      "span": 37,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 29
+    },
+    {
+      "start": 5226674,
+      "end": 5226929,
+      "span": 255,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226076-5226576)",
+      "affected_exon": "5226076-5226576",
+      "sample": "A2",
+      "reads": 71
+    },
+    {
+      "start": 5226694,
+      "end": 5226917,
+      "span": 223,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5226694,
+      "end": 5226967,
+      "span": 273,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 63
+    },
+    {
+      "start": 5226706,
+      "end": 5226729,
+      "span": 23,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 23
+    },
+    {
+      "start": 5226712,
+      "end": 5226769,
+      "span": 57,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 30
+    },
+    {
+      "start": 5226712,
+      "end": 5226945,
+      "span": 233,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 67
+    },
+    {
+      "start": 5226760,
+      "end": 5226952,
+      "span": 192,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 55
+    },
+    {
+      "start": 5226772,
+      "end": 5226948,
+      "span": 176,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 57
+    },
+    {
+      "start": 5226800,
+      "end": 5226917,
+      "span": 117,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 57
+    },
+    {
+      "start": 5226800,
+      "end": 5226925,
+      "span": 125,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "affected_exon": "Intron 2",
+      "sample": "A2",
+      "reads": 71
+    },
+    {
+      "start": 5226800,
+      "end": 5226929,
+      "span": 129,
+      "type": "canonical",
+      "details": "E2\u2192E3",
+      "affected_exon": null,
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5226800,
+      "end": 5226945,
+      "span": 145,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5226800,
+      "end": 5226952,
+      "span": 152,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 62
+    },
+    {
+      "start": 5226800,
+      "end": 5226967,
+      "span": 167,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5226800,
+      "end": 5227200,
+      "span": 400,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "A2",
+      "reads": 72
+    },
+    {
+      "start": 5226800,
+      "end": 5227511,
+      "span": 711,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "A2",
+      "reads": 52
+    },
+    {
+      "start": 5226806,
+      "end": 5226937,
+      "span": 131,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 75
+    },
+    {
+      "start": 5226835,
+      "end": 5226937,
+      "span": 102,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 45
+    },
+    {
+      "start": 5226843,
+      "end": 5226929,
+      "span": 86,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 59
+    },
+    {
+      "start": 5226968,
+      "end": 5226988,
+      "span": 20,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 38
+    },
+    {
+      "start": 5227027,
+      "end": 5227200,
+      "span": 173,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 24
+    },
+    {
+      "start": 5227040,
+      "end": 5227200,
+      "span": 160,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 70
+    },
+    {
+      "start": 5227040,
+      "end": 5227444,
+      "span": 404,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 38
+    },
+    {
+      "start": 5227040,
+      "end": 5227511,
+      "span": 471,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 39
+    },
+    {
+      "start": 5227040,
+      "end": 5227536,
+      "span": 496,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226929-5227071)",
+      "affected_exon": "5226929-5227071",
+      "sample": "A2",
+      "reads": 40
+    },
+    {
+      "start": 5227360,
+      "end": 5227454,
+      "span": 94,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "A2",
+      "reads": 58
+    },
+    {
+      "start": 5227360,
+      "end": 5227513,
+      "span": 153,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "A2",
+      "reads": 52
+    },
+    {
+      "start": 5227580,
+      "end": 5227833,
+      "span": 253,
+      "type": "novel",
+      "details": "Unclassified novel junction",
+      "affected_exon": null,
+      "sample": "A2",
+      "reads": 44
+    }
+  ],
+  "junction_counts": {
+    "A2": {
+      "canonical": 2,
+      "cryptic_3ss": 9,
+      "cryptic_5ss": 35,
+      "intron_retention": 9,
+      "novel": 5
+    },
+    "B6": {
+      "canonical": 2,
+      "cryptic_3ss": 6,
+      "cryptic_5ss": 25,
+      "intron_retention": 5,
+      "novel": 1
+    },
+    "WT": {
+      "canonical": 2,
+      "cryptic_3ss": 6,
+      "cryptic_5ss": 13,
+      "intron_retention": 5,
+      "novel": 7
+    }
+  },
+  "read_counts": {
+    "A2": {
+      "canonical": 150,
+      "cryptic_3ss": 600,
+      "cryptic_5ss": 1631,
+      "intron_retention": 406,
+      "novel": 278
+    },
+    "B6": {
+      "canonical": 150,
+      "cryptic_3ss": 365,
+      "cryptic_5ss": 1185,
+      "intron_retention": 192,
+      "novel": 69
+    },
+    "WT": {
+      "canonical": 150,
+      "cryptic_3ss": 307,
+      "cryptic_5ss": 720,
+      "intron_retention": 228,
+      "novel": 207
+    }
+  },
+  "enriched_b6": [
+    {
+      "start": 5226439,
+      "end": 5226492,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226076-5226576)",
+      "A2": 71,
+      "B6": 74,
+      "WT": 0,
+      "B6_vs_WT": 74,
+      "A2_vs_WT": 71
+    },
+    {
+      "start": 5225671,
+      "end": 5226637,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 52,
+      "B6": 74,
+      "WT": 0,
+      "B6_vs_WT": 74,
+      "A2_vs_WT": 52
+    },
+    {
+      "start": 5225663,
+      "end": 5226929,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 45,
+      "B6": 67,
+      "WT": 0,
+      "B6_vs_WT": 67,
+      "A2_vs_WT": 45
+    },
+    {
+      "start": 5225663,
+      "end": 5226945,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 46,
+      "B6": 67,
+      "WT": 0,
+      "B6_vs_WT": 67,
+      "A2_vs_WT": 46
+    },
+    {
+      "start": 5226638,
+      "end": 5226679,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "A2": 0,
+      "B6": 61,
+      "WT": 0,
+      "B6_vs_WT": 61,
+      "A2_vs_WT": 0
+    },
+    {
+      "start": 5225607,
+      "end": 5226745,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 55,
+      "B6": 56,
+      "WT": 0,
+      "B6_vs_WT": 56,
+      "A2_vs_WT": 55
+    },
+    {
+      "start": 5226772,
+      "end": 5226929,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "A2": 0,
+      "B6": 55,
+      "WT": 0,
+      "B6_vs_WT": 55,
+      "A2_vs_WT": 0
+    },
+    {
+      "start": 5225565,
+      "end": 5226576,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 0,
+      "B6": 52,
+      "WT": 0,
+      "B6_vs_WT": 52,
+      "A2_vs_WT": 0
+    },
+    {
+      "start": 5225658,
+      "end": 5226597,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 47,
+      "B6": 51,
+      "WT": 0,
+      "B6_vs_WT": 51,
+      "A2_vs_WT": 47
+    },
+    {
+      "start": 5225663,
+      "end": 5226623,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 0,
+      "B6": 50,
+      "WT": 0,
+      "B6_vs_WT": 50,
+      "A2_vs_WT": 0
+    }
+  ],
+  "enriched_a2": [
+    {
+      "start": 5226694,
+      "end": 5226917,
+      "type": "intron_retention",
+      "details": "Intron 2 retention",
+      "A2": 75,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 75
+    },
+    {
+      "start": 5225727,
+      "end": 5226967,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 75,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 75
+    },
+    {
+      "start": 5225658,
+      "end": 5226711,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 73,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 73
+    },
+    {
+      "start": 5226674,
+      "end": 5226929,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5226076-5226576)",
+      "A2": 71,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 71
+    },
+    {
+      "start": 5226439,
+      "end": 5226492,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226076-5226576)",
+      "A2": 71,
+      "B6": 74,
+      "WT": 0,
+      "B6_vs_WT": 74,
+      "A2_vs_WT": 71
+    },
+    {
+      "start": 5225727,
+      "end": 5226529,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 69,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 69
+    },
+    {
+      "start": 5226712,
+      "end": 5226945,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "A2": 67,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 67
+    },
+    {
+      "start": 5226694,
+      "end": 5226967,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "A2": 63,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 63
+    },
+    {
+      "start": 5226800,
+      "end": 5226952,
+      "type": "cryptic_3ss",
+      "details": "Cryptic 3'SS near exon (5226929-5227071)",
+      "A2": 62,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 62
+    },
+    {
+      "start": 5225542,
+      "end": 5225576,
+      "type": "cryptic_5ss",
+      "details": "Cryptic 5'SS near exon (5225613-5225726)",
+      "A2": 60,
+      "B6": 0,
+      "WT": 0,
+      "B6_vs_WT": 0,
+      "A2_vs_WT": 60
+    }
+  ]
+}

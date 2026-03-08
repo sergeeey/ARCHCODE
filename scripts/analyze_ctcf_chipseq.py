@@ -74,16 +74,37 @@ def extract_signal_ucsc_tools(bw_file, chrom, start, end):
     import tempfile
 
     try:
-        with tempfile.NamedTemporaryFile(mode='w', suffix='.bed', delete=False) as bed:
-            bed.write(f"{chrom}\t{start}\t{end}\n")
-            bed_path = bed.name
+        with tempfile.NamedTemporaryFile(mode='w', suffix='.bedGraph', delete=False) as out_bg:
+            out_path = out_bg.name
 
-        cmd = f"bigWigToBedGraph {bw_file} {bed_path} /dev/stdout"
-        result = subprocess.run(cmd, shell=True, capture_output=True, text=True)
+        # Security: never use shell=True with dynamic file paths.
+        cmd = [
+            "bigWigToBedGraph",
+            bw_file,
+            out_path,
+            f"-chrom=chr{chrom}",
+            f"-start={start}",
+            f"-end={end}",
+        ]
+        result = subprocess.run(cmd, capture_output=True, text=True)
+
+        # Fallback for files using "11" chromosome naming instead of "chr11".
+        if result.returncode != 0:
+            cmd = [
+                "bigWigToBedGraph",
+                bw_file,
+                out_path,
+                f"-chrom={chrom}",
+                f"-start={start}",
+                f"-end={end}",
+            ]
+            result = subprocess.run(cmd, capture_output=True, text=True)
 
         if result.returncode == 0:
             signal = np.zeros(end - start)
-            for line in result.stdout.strip().split('\n'):
+            with open(out_path, 'r', encoding='utf-8') as fh:
+                content = fh.read().strip()
+            for line in content.split('\n'):
                 if line:
                     parts = line.split('\t')
                     s, e, val = int(parts[1]), int(parts[2]), float(parts[3])
@@ -96,7 +117,8 @@ def extract_signal_ucsc_tools(bw_file, chrom, start, end):
         print(f"ERROR with bigWigToBedGraph: {e}")
         return None
     finally:
-        os.unlink(bed_path)
+        if 'out_path' in locals() and os.path.exists(out_path):
+            os.unlink(out_path)
 
 def get_peak_signal(signal_array, position, locus_start, window=500):
     """Get average signal in window around position"""

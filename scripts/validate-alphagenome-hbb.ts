@@ -37,7 +37,7 @@ if (fs.existsSync(envPath)) {
 import {
   AlphaGenomeService,
   GenomeInterval,
-} from "../src/services/AlphaGenomeService";
+} from "../src/services/AlphaGenomeNodeService";
 import { MultiCohesinEngine } from "../src/engines/MultiCohesinEngine";
 import { createCTCFSite } from "../src/domain/models/genome";
 import { FountainLoader } from "../src/simulation/SpatialLoadingModule";
@@ -324,3 +324,4 @@ main().catch((err) => {
   console.error("Error:", err);
   process.exit(1);
 });
+

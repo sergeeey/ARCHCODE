@@ -1,0 +1,76 @@
+{
+  "generated_at_utc": "2026-03-06T00:00:00Z",
+  "protocol": "VALIDATION_PROTOCOL.md",
+  "source_of_truth": {
+    "task1": [
+      "results/task1_alphagenome_benchmark_brca1mb_1mb_2026-03-06.json",
+      "results/task1_akita_benchmark_brca1mb_1mb_2026-03-06.json",
+      "docs/internal/VALIDATION_EXECUTION_2026-03-06_TASK1_1MB.md"
+    ],
+    "task2": [
+      "results/task2_canonical_status_2026-03-06.json"
+    ],
+    "task3": [
+      "results/task3_canonical_status_2026-03-06.json"
+    ],
+    "task4": [
+      "results/task4_canonical_status_2026-03-06.json"
+    ],
+    "task5": [
+      "results/task5_canonical_status_2026-03-06.json",
+      "results/hbb_vus_validation_report_2026-03-06.json"
+    ]
+  },
+  "task_status_map": {
+    "task1_ai_blindspot_1mb": {
+      "verdict": "EXPLORATORY",
+      "claim_level": {
+        "pearson_gt_0_5_hypothesis": "REJECTED_IN_CURRENT_SETUP",
+        "lssim_based_structural_signal": "SUPPORTED_WITH_LIMITS"
+      }
+    },
+    "task2_loop_that_stayed": {
+      "verdict": "NEEDS_FIXES",
+      "claim_level": {
+        "loop_that_stayed_as_pathogenic_class": "UNVERIFIED",
+        "model_discordance_observation": "SUPPORTED",
+        "clinical_reclassification": "UNVERIFIED"
+      }
+    },
+    "task3_weak_ctcf": {
+      "verdict": "SUPPORTED_IN_MODEL",
+      "claim_level": {
+        "weak_ctcf_no_effect_in_model": "SUPPORTED_IN_MODEL",
+        "external_biological_validation": "UNVERIFIED"
+      }
+    },
+    "task4_tissue_context": {
+      "verdict": "SUPPORTED_WITH_LIMITS",
+      "claim_level": {
+        "input_feature_alignment": "SUPPORTED",
+        "causal_biological_inference": "UNVERIFIED",
+        "clinical_prediction_impact": "UNVERIFIED"
+      }
+    },
+    "task5_vus_stratification": {
+      "verdict": "SUPPORTED_WITH_LIMITS",
+      "claim_level": {
+        "vus_stratification_signal": "SUPPORTED",
+        "clinical_reclassification": "UNVERIFIED",
+        "causal_mechanism_assignment": "EXPLORATORY"
+      }
+    }
+  },
+  "global_allowed_conclusions": [
+    "The validation stack is reproducible with explicit claim tiers and provenance boundaries.",
+    "Model-internal and input-alignment claims are supported where canonical artifacts state SUPPORTED.",
+    "Exploratory findings may be used for prioritization of follow-up experiments."
+  ],
+  "global_blocked_conclusions": [
+    "Clinical reclassification claims without orthogonal validation.",
+    "Causal biological claims from computational evidence alone.",
+    "Publication-grade mechanistic certainty where canonical status is EXPLORATORY or UNVERIFIED."
+  ],
+  "overall_verdict": "READY_WITH_LIMITS",
+  "note": "Top-level canonical index for Task1-Task5. Use this file as the first reference for claim-governance decisions."
+}

@@ -1,0 +1,36 @@
+{
+  "generated_at_utc": "2026-03-06T00:00:00Z",
+  "task": "Task5_VUS_Stratification_Canonical_Status",
+  "source_of_truth": [
+    "results/task5_vus_stratification_summary_2026-03-06.json",
+    "results/within_category_analysis.json",
+    "docs/internal/VALIDATION_EXECUTION_2026-03-06_TASK5.md"
+  ],
+  "historical_artifacts": [
+    {
+      "path": "results/task5_vus_stratification_summary_2026-03-05.json",
+      "status": "historical_snapshot",
+      "note": "Earlier task snapshot; canonical claim-level follows 2026-03-06 summary."
+    }
+  ],
+  "claim_level": {
+    "vus_stratification_signal": "SUPPORTED",
+    "clinical_reclassification": "UNVERIFIED",
+    "causal_mechanism_assignment": "EXPLORATORY"
+  },
+  "evidence_summary": {
+    "summary_artifact": "results/task5_vus_stratification_summary_2026-03-06.json",
+    "within_category_artifact": "results/within_category_analysis.json",
+    "anti_overclaim_policy": "ENFORCED"
+  },
+  "allowed_conclusions": [
+    "Task5 provides reproducible computational stratification summaries.",
+    "Task5 outputs can guide hypothesis generation and follow-up prioritization."
+  ],
+  "blocked_conclusions": [
+    "Task5 alone supports clinical reclassification.",
+    "Task5 alone proves causal biological mechanism."
+  ],
+  "verdict": "SUPPORTED_WITH_LIMITS",
+  "note": "Canonical Task5 status. Use this file as primary source for claim-level decisions."
+}

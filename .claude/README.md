@@ -15,7 +15,7 @@ This directory contains Claude Code configuration for the ARCHCODE project.
 │   └── validate-blind.md       # Run blind-test validations
 ├── output-styles/         # Communication styles
 │   └── scientific.md      # Scientific/academic style
-├── skills/                # Auto-loaded contextual skills (future)
+├── skills/                # Contextual skills (planner/implementer/reviewer/security-check)
 └── hooks/                 # Shell scripts for hooks (future)
 ```
 
@@ -149,6 +149,18 @@ description: When to use this style
 ```
 
 ## Integration with ARCHCODE Workflow
+
+### Codex process files
+
+- Root `AGENTS.md` defines plan-first + approval gate + implemented/verified reporting.
+- Root `CLAUDE.md` defines scientific integrity (NO phantom refs, NO invisible synthetic, NO "fitted" without code).
+- `docs/CODEX_ZERO_HALLUCINATION_GATES.md` defines evidence and security completion gates.
+- `docs/templates/IMPLEMENTED_VERIFIED_TEMPLATE.md` is the required completion report format.
+
+### Claim governance (publication-facing)
+
+- **Canonical sources of truth:** `results/validation_canonical_index_2026-03-06.json`, `results/publication_claim_matrix_2026-03-06.json`. Все формулировки для manuscript/препринта сверять с матрицей (ALLOWED / BLOCKED / ALLOWED_WITH_CAVEAT).
+- **Legacy narratives:** `docs/internal/LEGACY_CLAIM_HYGIENE_2026-03-06.md` — список файлов, помеченных non-canonical; не использовать для клинических/каузальных claims.
 
 ### Typical Session
 

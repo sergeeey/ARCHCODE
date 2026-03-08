@@ -10,6 +10,10 @@ Execution of `VALIDATION_PROTOCOL.md` and sequential start of 5 strategic tasks:
 4. Tissue-specific context validation
 5. VUS stratification
 
+Update (2026-03-06 canonicalization):
+- Historical Task 3 status in this file is superseded for claim-level decisions by:
+  - `results/task3_canonical_status_2026-03-06.json`
+
 ---
 
 ## Implemented

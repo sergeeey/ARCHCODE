@@ -166,9 +166,12 @@ def main():
 </body>
 </html>"""
 
-    # Write HTML to temp file
-    tmp_html = Path(tempfile.mktemp(suffix='.html'))
-    tmp_html.write_text(html_full, encoding='utf-8')
+    # Security: use NamedTemporaryFile instead of mktemp to avoid race conditions.
+    with tempfile.NamedTemporaryFile(
+        mode="w", suffix=".html", delete=False, encoding="utf-8"
+    ) as tmp:
+        tmp.write(html_full)
+        tmp_html = Path(tmp.name)
 
     print(f"Generating PDF via Chrome headless...")
     result = subprocess.run([

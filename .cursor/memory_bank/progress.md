@@ -1,12 +1,30 @@
 # Progress Tracker
 
-**Project:** ARCHCODE v1.0
-**Last Updated:** 2026-02-05 (Session Complete)
-**Current Phase:** Hi-C Validation (Completed - Results Analysis)
+**Project:** ARCHCODE
+**Last Updated:** 2026-03-07
+**Current Phase:** Canonical governance active; см. `docs/STATUS_DASHBOARD.md` для актуального плана.
 
 ---
 
-## 🎯 Current Sprint: Real Data Validation
+## 🎯 Phase: Canonical Governance & Audit (2026-03-06 — 2026-03-07)
+
+### ✅ Completed
+
+- [x] **Канонизация валидации** — `results/validation_canonical_index_2026-03-06.json`, `results/publication_claim_matrix_2026-03-06.json`, `docs/internal/LEGACY_CLAIM_HYGIENE_2026-03-06.md`
+- [x] **Cold-Eye Audit** — по ТЗ `docs/COLD_EYE_AUDIT_TZ.md`; отчёт `docs/COLD_EYE_AUDIT_REPORT.md` (моки не найдены, LSSIM из расчёта, тесты 63/63)
+- [x] **Post-audit fixes** — цитирование benchmark, маппинг pearls_by_locus, «fitted» → calibrated, ChromoGen citation
+- [x] **Task1 1Mb** — гипотеза Pearson > 0.5 отклонена; EXPLORATORY
+- [x] **Task3 weak-CTCF** — SUPPORTED_IN_MODEL (weak_probe)
+- [x] **Blind Spot Benchmark v1.0** — скрипт и артефакты с заполненными данными
+- [x] **RNA-seq** — FASTQ верифицированы; анализ splice junctions выполнен; после нормализации по глубине гипотеза не поддержана (честный verdict, не включать в manuscript как подтверждение)
+
+### Актуальный бэклог
+
+См. `docs/STATUS_DASHBOARD.md` и `.claude/memory/activeContext.md` (v2.14, publication package, Phase 1–2).
+
+---
+
+## 🎯 Historical: Real Data Validation (2026-02)
 
 ### ✅ Completed
 
@@ -101,18 +119,18 @@
 
 ### 🔄 In Progress
 
-**None currently** - Awaiting user decision on next steps after normalization.
+**None currently** (исторический раздел).
 
 ---
 
-### ⏭️ Next (Priority Order)
+### ⏭️ Next (Priority Order) — устарело; актуальный план в STATUS_DASHBOARD.md
 
-#### Short-term (This Session)
+#### Short-term (This Session) — superseded
 
-1. [ ] Extract Hi-C for HBB locus
-2. [ ] Compare simulation vs real Hi-C
-3. [ ] Document correlation result
-4. [ ] Update manuscript with finding
+1. [x] ~~Extract Hi-C for HBB locus~~ (выполнено ранее)
+2. [x] ~~Compare simulation vs real Hi-C~~
+3. [x] ~~Document correlation result~~
+4. [ ] Update manuscript with finding (по каноническим формулировкам)
 
 #### Short-term (This Week)
 

@@ -1,0 +1,211 @@
+{
+  "generated_at_utc": "2026-03-05T18:08:28.0425112Z",
+  "task": "Task1_AI_blind_spot",
+  "protocol": "VALIDATION_PROTOCOL.md",
+  "provenance": "artifact_reanalysis_existing_results",
+  "alpha_file_count": 8,
+  "akita_file_count": 7,
+  "loci_union_count": 8,
+  "alpha_mean_abs_pearson_archcode_vs_alphagenome": 0.169969,
+  "akita_mean_abs_pearson_archcode_vs_akita": 0.130194,
+  "alpha_mean_pearson_archcode_vs_hic": 0.072525,
+  "akita_mean_pearson_archcode_vs_hic": 0.072525,
+  "alpha_details": [
+    {
+      "source_file": "alphagenome_benchmark_30kb.json",
+      "locus": "30kb",
+      "archcode_vs_alphagenome_pearson": 0.0987360670087013,
+      "archcode_vs_hic_pearson": 0.13428708128622588,
+      "alphagenome_vs_hic_pearson": -0.0008317380599678868,
+      "n": 1176
+    },
+    {
+      "source_file": "alphagenome_benchmark_95kb.json",
+      "locus": "95kb",
+      "archcode_vs_alphagenome_pearson": 0.05222337643534382,
+      "archcode_vs_hic_pearson": 0.07239077004297373,
+      "alphagenome_vs_hic_pearson": 0.05105283082709621,
+      "n": 12403
+    },
+    {
+      "source_file": "alphagenome_benchmark_brca1.json",
+      "locus": "brca1",
+      "archcode_vs_alphagenome_pearson": 0.2097262394176505,
+      "archcode_vs_hic_pearson": -0.015324371286988372,
+      "alphagenome_vs_hic_pearson": 0.04810237756081683,
+      "n": 79401
+    },
+    {
+      "source_file": "alphagenome_benchmark_cftr.json",
+      "locus": "cftr",
+      "archcode_vs_alphagenome_pearson": 0.07051590625117546,
+      "archcode_vs_hic_pearson": null,
+      "alphagenome_vs_hic_pearson": null,
+      "n": 49770
+    },
+    {
+      "source_file": "alphagenome_benchmark_ldlr.json",
+      "locus": "ldlr",
+      "archcode_vs_alphagenome_pearson": 0.2929507798437953,
+      "archcode_vs_hic_pearson": 0.08683029774777185,
+      "alphagenome_vs_hic_pearson": 0.13420295533193302,
+      "n": 44551
+    },
+    {
+      "source_file": "alphagenome_benchmark_mlh1.json",
+      "locus": "mlh1",
+      "archcode_vs_alphagenome_pearson": 0.282761599780727,
+      "archcode_vs_hic_pearson": 0.105570417305581,
+      "alphagenome_vs_hic_pearson": 0.1833445178995519,
+      "n": 44551
+    },
+    {
+      "source_file": "alphagenome_benchmark_scn5a.json",
+      "locus": "scn5a",
+      "archcode_vs_alphagenome_pearson": -0.08264311379111694,
+      "archcode_vs_hic_pearson": null,
+      "alphagenome_vs_hic_pearson": null,
+      "n": 79401
+    },
+    {
+      "source_file": "alphagenome_benchmark_tp53.json",
+      "locus": "tp53",
+      "archcode_vs_alphagenome_pearson": 0.27019272063823796,
+      "archcode_vs_hic_pearson": 0.05139522841805123,
+      "alphagenome_vs_hic_pearson": 0.08444459378234634,
+      "n": 44551
+    }
+  ],
+  "akita_details": [
+    {
+      "source_file": "akita_benchmark_30kb.json",
+      "locus": "30kb",
+      "archcode_vs_akita_pearson": 0.05605146786737125,
+      "archcode_vs_hic_pearson": 0.13428708128622588,
+      "akita_vs_hic_pearson": -0.008864164343822173,
+      "n": 1176
+    },
+    {
+      "source_file": "akita_benchmark_95kb.json",
+      "locus": "95kb",
+      "archcode_vs_akita_pearson": -0.1258750812235941,
+      "archcode_vs_hic_pearson": 0.07239077004297373,
+      "akita_vs_hic_pearson": -0.04985198771312986,
+      "n": 12403
+    },
+    {
+      "source_file": "akita_benchmark_brca1.json",
+      "locus": "brca1",
+      "archcode_vs_akita_pearson": 0.15371506571440524,
+      "archcode_vs_hic_pearson": -0.015324371286988372,
+      "akita_vs_hic_pearson": -0.07479471605525599,
+      "n": 79401
+    },
+    {
+      "source_file": "akita_benchmark_cftr.json",
+      "locus": "cftr",
+      "archcode_vs_akita_pearson": 0.2717138686613936,
+      "archcode_vs_hic_pearson": null,
+      "akita_vs_hic_pearson": null,
+      "n": 49770
+    },
+    {
+      "source_file": "akita_benchmark_ldlr.json",
+      "locus": "ldlr",
+      "archcode_vs_akita_pearson": 0.17677102618552593,
+      "archcode_vs_hic_pearson": 0.08683029774777185,
+      "akita_vs_hic_pearson": -0.01967845794592496,
+      "n": 44551
+    },
+    {
+      "source_file": "akita_benchmark_mlh1.json",
+      "locus": "mlh1",
+      "archcode_vs_akita_pearson": 0.12019187414719976,
+      "archcode_vs_hic_pearson": 0.105570417305581,
+      "akita_vs_hic_pearson": -0.09144673578434104,
+      "n": 44551
+    },
+    {
+      "source_file": "akita_benchmark_tp53.json",
+      "locus": "tp53",
+      "archcode_vs_akita_pearson": -0.007037647676665171,
+      "archcode_vs_hic_pearson": 0.05139522841805123,
+      "akita_vs_hic_pearson": -0.041707594467820325,
+      "n": 44551
+    }
+  ],
+  "by_locus": [
+    {
+      "locus": "30kb",
+      "archcode_vs_alphagenome_pearson": 0.0987360670087013,
+      "archcode_vs_akita_pearson": 0.05605146786737125,
+      "archcode_vs_hic_pearson_alpha": 0.13428708128622588,
+      "archcode_vs_hic_pearson_akita": 0.13428708128622588,
+      "alphagenome_vs_hic_pearson": -0.0008317380599678868,
+      "akita_vs_hic_pearson": -0.008864164343822173
+    },
+    {
+      "locus": "95kb",
+      "archcode_vs_alphagenome_pearson": 0.05222337643534382,
+      "archcode_vs_akita_pearson": -0.1258750812235941,
+      "archcode_vs_hic_pearson_alpha": 0.07239077004297373,
+      "archcode_vs_hic_pearson_akita": 0.07239077004297373,
+      "alphagenome_vs_hic_pearson": 0.05105283082709621,
+      "akita_vs_hic_pearson": -0.04985198771312986
+    },
+    {
+      "locus": "brca1",
+      "archcode_vs_alphagenome_pearson": 0.2097262394176505,
+      "archcode_vs_akita_pearson": 0.15371506571440524,
+      "archcode_vs_hic_pearson_alpha": -0.015324371286988372,
+      "archcode_vs_hic_pearson_akita": -0.015324371286988372,
+      "alphagenome_vs_hic_pearson": 0.04810237756081683,
+      "akita_vs_hic_pearson": -0.07479471605525599
+    },
+    {
+      "locus": "cftr",
+      "archcode_vs_alphagenome_pearson": 0.07051590625117546,
+      "archcode_vs_akita_pearson": 0.2717138686613936,
+      "archcode_vs_hic_pearson_alpha": null,
+      "archcode_vs_hic_pearson_akita": null,
+      "alphagenome_vs_hic_pearson": null,
+      "akita_vs_hic_pearson": null
+    },
+    {
+      "locus": "ldlr",
+      "archcode_vs_alphagenome_pearson": 0.2929507798437953,
+      "archcode_vs_akita_pearson": 0.17677102618552593,
+      "archcode_vs_hic_pearson_alpha": 0.08683029774777185,
+      "archcode_vs_hic_pearson_akita": 0.08683029774777185,
+      "alphagenome_vs_hic_pearson": 0.13420295533193302,
+      "akita_vs_hic_pearson": -0.01967845794592496
+    },
+    {
+      "locus": "mlh1",
+      "archcode_vs_alphagenome_pearson": 0.282761599780727,
+      "archcode_vs_akita_pearson": 0.12019187414719976,
+      "archcode_vs_hic_pearson_alpha": 0.105570417305581,
+      "archcode_vs_hic_pearson_akita": 0.105570417305581,
+      "alphagenome_vs_hic_pearson": 0.1833445178995519,
+      "akita_vs_hic_pearson": -0.09144673578434104
+    },
+    {
+      "locus": "scn5a",
+      "archcode_vs_alphagenome_pearson": -0.08264311379111694,
+      "archcode_vs_akita_pearson": null,
+      "archcode_vs_hic_pearson_alpha": null,
+      "archcode_vs_hic_pearson_akita": null,
+      "alphagenome_vs_hic_pearson": null,
+      "akita_vs_hic_pearson": null
+    },
+    {
+      "locus": "tp53",
+      "archcode_vs_alphagenome_pearson": 0.27019272063823796,
+      "archcode_vs_akita_pearson": -0.007037647676665171,
+      "archcode_vs_hic_pearson_alpha": 0.05139522841805123,
+      "archcode_vs_hic_pearson_akita": 0.05139522841805123,
+      "alphagenome_vs_hic_pearson": 0.08444459378234634,
+      "akita_vs_hic_pearson": -0.041707594467820325
+    }
+  ]
+}

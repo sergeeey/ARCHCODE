@@ -1,0 +1,113 @@
+{
+  "version": "1.0",
+  "generated_at": "2026-03-07T17:12:55.990131Z",
+  "thresholds": {
+    "vep_max": 0.3,
+    "lssim_max": 0.95,
+    "cadd_ambiguous_min": 10,
+    "cadd_ambiguous_max": 20
+  },
+  "quadrant_counts": {
+    "Q1_BOTH_DETECT": 15,
+    "Q2_ARCHCODE_ONLY": 274,
+    "Q3_VEP_ONLY": 753,
+    "Q4_NEITHER": 61
+  },
+  "total_variants": 353,
+  "total_pearls": 15,
+  "pearls_by_locus": {
+    "hbb": [
+      {
+        "clinvar_id": "VCV002664746",
+        "hgvs_c": "c.279C>G",
+        "lssim": "0.9166",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000811500",
+        "hgvs_c": "c.279C>A",
+        "lssim": "0.9173",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000015208",
+        "hgvs_c": "c.279C>R",
+        "lssim": "0.9492",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000618675",
+        "hgvs_c": "c.249G>C",
+        "lssim": "0.9159",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV002024192",
+        "hgvs_c": "NM_000518.5(HBB):c.93-33_96delinsACTGTCCCTTGGGCTGTTTTCCTACCCTCAGATTA",
+        "lssim": "0.9004",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000869358",
+        "hgvs_c": "c.50dup",
+        "lssim": "0.8915",
+        "vep_score": "0.15"
+      },
+      {
+        "clinvar_id": "VCV000811787",
+        "hgvs_c": "c.51C>T",
+        "lssim": "0.9378",
+        "vep_score": "0.15"
+      },
+      {
+        "clinvar_id": "VCV000869288",
+        "hgvs_c": "NM_000518.5(HBB):c.-79A>C",
+        "lssim": "0.9361",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000015469",
+        "hgvs_c": "NC_000011.10:g.5227100T>C",
+        "lssim": "0.9386",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000869290",
+        "hgvs_c": "NM_000518.5(HBB):c.-80T>C",
+        "lssim": "0.938",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000869289",
+        "hgvs_c": "NC_000011.10:g.5227101A>C",
+        "lssim": "0.9445",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000015467",
+        "hgvs_c": "NC_000011.10:g.5227101A>T",
+        "lssim": "0.9445",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000015466",
+        "hgvs_c": "NM_000518.5(HBB):c.-81A>G",
+        "lssim": "0.9361",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000393701",
+        "hgvs_c": "NM_000518.5(HBB):c.-138C>A",
+        "lssim": "0.9423",
+        "vep_score": "0.2"
+      },
+      {
+        "clinvar_id": "VCV000015460",
+        "hgvs_c": "NC_000011.10:g.5227159G>A",
+        "lssim": "0.9452",
+        "vep_score": "0.2"
+      }
+    ]
+  },
+  "blind_spot_detection_rate": 0.7677053824362606
+}

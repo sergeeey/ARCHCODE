@@ -1,0 +1,63 @@
+{
+  "experiment": "Virtual CRISPR (V-CRISPR) — top-3 HBB pearls",
+  "generated_at_utc": "2026-03-05T19:57:23.895Z",
+  "parameters": {
+    "locus": "95kb",
+    "locus_id": "hbb_95kb_subTAD",
+    "window": {
+      "chromosome": "chr11",
+      "start": 5200000,
+      "end": 5295000,
+      "resolution_bp": 600,
+      "n_bins": 159
+    },
+    "ko_effect_strength": 0.05,
+    "seed": 42,
+    "promoter_bin": 43,
+    "promoter_position": 5226268,
+    "lcr_bins": [
+      134,
+      141
+    ],
+    "lcr_positions": [
+      5280700,
+      5284800
+    ]
+  },
+  "results": [
+    {
+      "position": 5227100,
+      "hgvs_c": "c.-79A>C",
+      "clinvar_id": "VCV000869288",
+      "category": "promoter",
+      "variant_bin": 45,
+      "contact_wt": 0.005641705694339433,
+      "contact_ko": 0.0046626288433694995,
+      "contact_drop_pct": 17.354270215695287,
+      "lssim": 0.8086482490654557
+    },
+    {
+      "position": 5227101,
+      "hgvs_c": "c.-80T>C",
+      "clinvar_id": "VCV000869290",
+      "category": "promoter",
+      "variant_bin": 45,
+      "contact_wt": 0.005641705694339433,
+      "contact_ko": 0.0046626288433694995,
+      "contact_drop_pct": 17.354270215695287,
+      "lssim": 0.8086482490654557
+    },
+    {
+      "position": 5227159,
+      "hgvs_c": "c.-138C>A",
+      "clinvar_id": "VCV000393701",
+      "category": "promoter",
+      "variant_bin": 45,
+      "contact_wt": 0.005641705694339433,
+      "contact_ko": 0.0046626288433694995,
+      "contact_drop_pct": 17.354270215695287,
+      "lssim": 0.8086482490654557
+    }
+  ],
+  "note": "In silico prediction. Wet-lab validation remains required (CLAUDE.md)."
+}

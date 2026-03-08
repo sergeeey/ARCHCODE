@@ -1714,13 +1714,13 @@ except Exception as e:
 
   /**
    * Run ARCHCODE simulation with Kramer kinetics
-   * Uses fitted parameters: α=0.92, γ=0.80, k_base=0.002
+   * Uses parameters MANUALLY CALIBRATED to literature ranges (not fitted to experimental data).
    */
   private async runKramerSimulation(
     interval: GenomeInterval,
     epigenetics: EpigeneticFeatures,
   ): Promise<IntegratedAnalysisResult["simulation"]> {
-    // Kramer kinetics parameters (fitted from FRAP data)
+    // Kramer kinetics parameters (manually calibrated to literature ranges)
     const kramerParams = {
       alpha: 0.92,
       gamma: 0.8,

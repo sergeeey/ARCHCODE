@@ -5,6 +5,13 @@
 **Date:** 2026-02-03
 **Status:** Discovery Complete, Validation Pending
 
+> **Canonical status (2026-03-06):** This index contains legacy exploration artifacts.
+> Publication-safe interpretation is governed by:
+> `results/task2_canonical_status_2026-03-06.json`,
+> `results/validation_canonical_index_2026-03-06.json`,
+> `results/publication_claim_matrix_2026-03-06.json`.
+> No direct clinical reclassification or causal-proof claim is allowed from this index.
+
 ---
 
 ## 📁 File Structure
@@ -14,7 +21,10 @@ D:\ДНК\results\
 │
 ├── 📊 LOOP_THAT_STAYED_EXECUTIVE_SUMMARY.md       (START HERE - 10 min read)
 ├── 📋 loop_that_stayed_comparative_table.md        (Detailed comparison - 15 min read)
-├── 📦 vus_batch_analysis_loop_that_stayed.json    (Complete structured analysis)
+├── ✅ task2_canonical_status_2026-03-06.json      (Primary claim-safe status)
+├── 📦 task2_reconciliation_2026-03-05.json        (Reconciliation log)
+├── 📦 task2_loop_that_stayed_status_2026-03-05.json (Contradiction status)
+├── 📦 vus_batch_analysis_loop_that_stayed.json    (Legacy, deprecated_for_claims)
 │
 └── individual_reports/
     ├── 🧬 VCV000000302_analysis.json  (16 KB - Medium priority)
@@ -31,10 +41,10 @@ D:\ДНК\results\
 **Read:** Executive Summary → "Discovery Overview" section
 **Key Finding:** 3 splice_region VUS are likely pathogenic due to loop-preserved splice defects
 
-### For Clinical Decision-Making
+### For Hypothesis Triage (Non-Clinical)
 
 **Read:** Executive Summary → "Clinical Implications" section
-**Action:** Reclassify all three as Likely Pathogenic, order hemoglobin electrophoresis
+**Action:** Treat as follow-up candidates for orthogonal experimental validation; do not reclassify from these artifacts alone
 
 ### For Experimental Design
 
@@ -61,7 +71,10 @@ D:\ДНК\results\
 | ------------------------------------------ | ----- | -------------------------------------------------------- | ----------------------------------------- |
 | `LOOP_THAT_STAYED_EXECUTIVE_SUMMARY.md`    | 18 KB | High-level overview, clinical implications, next steps   | First read, stakeholder briefing          |
 | `loop_that_stayed_comparative_table.md`    | 45 KB | Side-by-side comparison, SSIM analysis, validation plans | Detailed analysis, experimental design    |
-| `vus_batch_analysis_loop_that_stayed.json` | 28 KB | Structured JSON with all data                            | Programmatic access, database integration |
+| `task2_canonical_status_2026-03-06.json`   | ~2 KB | Canonical claim-level status (single source of truth)   | Publication-safe claim boundaries         |
+| `task2_reconciliation_2026-03-05.json`     | ~3 KB | Legacy vs fresh artifact reconciliation                  | Audit trail and claim gating              |
+| `task2_loop_that_stayed_status_2026-03-05.json` | ~1 KB | Contradiction detection snapshot                         | Fast health/status check                  |
+| `vus_batch_analysis_loop_that_stayed.json` | 28 KB | Legacy structured analysis (deprecated_for_claims)       | Historical traceability only              |
 
 ### Individual Variant Reports
 

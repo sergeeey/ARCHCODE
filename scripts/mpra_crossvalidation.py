@@ -166,6 +166,9 @@ if matched_df is not None and len(matched_df) > 0:
                        'Pearl', 'LSSIM', 'MPRA_score', 'MPRA_pval']].to_string(index=False))
 
 # Position-level match (mean MPRA score per position)
+position_pearson_r, position_pearson_p = None, None
+position_spearman_rho, position_spearman_p = None, None
+position_n = 0
 if len(atlas_pos_match) > 0:
     print(f"\nPOSITION-LEVEL MATCH: n = {len(atlas_pos_match)}")
     # For SNVs only
@@ -176,6 +179,9 @@ if len(atlas_pos_match) > 0:
     if len(snv_match) > 2:
         r2, p2 = stats.pearsonr(snv_match['ARCHCODE_LSSIM'], snv_match['mpra_mean_score'])
         rho2, rho2_p = stats.spearmanr(snv_match['ARCHCODE_LSSIM'], snv_match['mpra_mean_score'])
+        position_pearson_r, position_pearson_p = r2, p2
+        position_spearman_rho, position_spearman_p = rho2, rho2_p
+        position_n = len(snv_match)
         print(f"  Pearson r = {r2:.4f}, p = {p2:.2e}")
         print(f"  Spearman rho = {rho2:.4f}, p = {rho2_p:.2e}")
         print(f"  Pearl: {(snv_match['Pearl'] == True).sum()}")
@@ -183,6 +189,21 @@ if len(atlas_pos_match) > 0:
 
         snv_match.to_csv(RESULTS / "mpra_archcode_position_match.csv", index=False)
         print(f"  Saved to results/mpra_archcode_position_match.csv")
+
+# ── 6b. Position-aggregated: one row per position (min LSSIM vs mean MPRA) ──
+position_aggregated_spearman_rho = None
+position_aggregated_spearman_p = None
+position_aggregated_n = 0
+min_lssim_per_pos = atlas_ovlp.groupby("Position_GRCh38")["ARCHCODE_LSSIM"].min().reset_index()
+min_lssim_per_pos.columns = ["genomic_pos", "min_lssim"]
+agg_pos = pos_mpra.merge(min_lssim_per_pos, on="genomic_pos", how="inner")
+if len(agg_pos) > 2:
+    rho_agg, p_agg = stats.spearmanr(agg_pos["mpra_mean_score"], agg_pos["min_lssim"])
+    position_aggregated_spearman_rho = float(rho_agg)
+    position_aggregated_spearman_p = float(p_agg)
+    position_aggregated_n = int(len(agg_pos))
+    print(f"\nPOSITION-AGGREGATED (one row per position, min LSSIM): n = {position_aggregated_n}")
+    print(f"  Spearman rho = {rho_agg:.4f}, p = {p_agg:.2e}")
 
 # ── 7. Full MPRA landscape: ARCHCODE LSSIM for ALL MPRA positions ──
 # For every position in the MPRA construct, calculate mean ARCHCODE LSSIM
@@ -239,6 +260,37 @@ if len(pearl_mpra) > 0:
     summary["mpra_pearl_vs_nonpearl_U"] = float(u_stat)
     summary["mpra_pearl_vs_nonpearl_p"] = float(u_p)
 
+if position_pearson_r is not None:
+    summary["position_pearson_r"] = float(position_pearson_r)
+    summary["position_pearson_p"] = float(position_pearson_p)
+    summary["position_spearman_rho"] = float(position_spearman_rho)
+    summary["position_spearman_p"] = float(position_spearman_p)
+    summary["position_n"] = int(position_n)
+
+if position_aggregated_spearman_rho is not None:
+    summary["position_aggregated_spearman_rho"] = position_aggregated_spearman_rho
+    summary["position_aggregated_spearman_p"] = position_aggregated_spearman_p
+    summary["position_aggregated_n"] = position_aggregated_n
+
 with open(RESULTS / "mpra_crossvalidation_summary.json", "w") as f:
     json.dump(summary, f, indent=2)
 print(f"\nSaved summary to results/mpra_crossvalidation_summary.json")
+
+# ── 9. Scatter plot (LSSIM vs MPRA) for Fig ─────────────────────────
+try:
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    if matched_df is not None and len(matched_df) > 0:
+        fig, ax = plt.subplots()
+        ax.scatter(matched_df["LSSIM"], matched_df["MPRA_score"], alpha=0.7)
+        ax.set_xlabel("ARCHCODE LSSIM")
+        ax.set_ylabel("MPRA functional score")
+        rho_val = summary.get("allele_spearman_rho", 0)
+        p_val = summary.get("allele_spearman_p", 1.0)
+        ax.set_title(f"Kircher et al. 2019 HBB promoter chr11:5,227,022-5,227,208 (n={len(matched_df)}); Spearman rho={rho_val:.3f}, p={p_val:.2e}")
+        fig.savefig(RESULTS / "mpra_archcode_scatter.png", dpi=150)
+        plt.close()
+        print(f"Saved scatter to results/mpra_archcode_scatter.png")
+except Exception as e:
+    print(f"Scatter plot skipped: {e}")

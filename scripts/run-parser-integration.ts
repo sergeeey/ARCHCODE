@@ -17,7 +17,7 @@ import * as path from "path";
 import {
   AlphaGenomeService,
   GenomeInterval,
-} from "../src/services/AlphaGenomeService";
+} from "../src/services/AlphaGenomeNodeService";
 
 const DEFAULT_PARSER_PATH = "D:/ПАРСИНГ НАУЧНЫХ НОВОСТЕЙ/data/inputs";
 const OUTPUT_DIR = path.join(process.cwd(), "results");
@@ -195,3 +195,4 @@ async function main() {
 }
 
 main().catch(console.error);
+

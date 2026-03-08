@@ -1,0 +1,179 @@
+{
+  "generated_at_utc": "2026-03-07T18:52:21.538951+00:00",
+  "hypothesis": "Pearl-like VUS enrichment by locus and by consequence (Category)",
+  "sources": {
+    "vus_summary": "D:\\\u0414\u041d\u041a\\results\\vus_reclassification_summary.json",
+    "atlases": "results/*_Unified_Atlas_*.csv (canonical)"
+  },
+  "locus_enrichment": {
+    "locus_table": [
+      {
+        "locus": "HBB",
+        "pearl_like": 255,
+        "not_pearl_like": 1210
+      },
+      {
+        "locus": "BRCA1",
+        "pearl_like": 71,
+        "not_pearl_like": 7581
+      },
+      {
+        "locus": "TP53",
+        "pearl_like": 13,
+        "not_pearl_like": 2197
+      },
+      {
+        "locus": "CFTR",
+        "pearl_like": 44,
+        "not_pearl_like": 3454
+      },
+      {
+        "locus": "MLH1",
+        "pearl_like": 111,
+        "not_pearl_like": 3473
+      },
+      {
+        "locus": "LDLR",
+        "pearl_like": 9,
+        "not_pearl_like": 2149
+      },
+      {
+        "locus": "SCN5A",
+        "pearl_like": 0,
+        "not_pearl_like": 4396
+      },
+      {
+        "locus": "TERT",
+        "pearl_like": 76,
+        "not_pearl_like": 2105
+      },
+      {
+        "locus": "GJB2",
+        "pearl_like": 0,
+        "not_pearl_like": 575
+      },
+      {
+        "locus": "HBA1",
+        "pearl_like": 0,
+        "not_pearl_like": 206
+      },
+      {
+        "locus": "GATA1",
+        "pearl_like": 0,
+        "not_pearl_like": 248
+      },
+      {
+        "locus": "BCL11A",
+        "pearl_like": 0,
+        "not_pearl_like": 250
+      },
+      {
+        "locus": "PTEN",
+        "pearl_like": 62,
+        "not_pearl_like": 2467
+      }
+    ],
+    "global_chi2": {
+      "chi2": 1974.458344,
+      "p_value": 0.0,
+      "df": 12
+    },
+    "fisher_locus_vs_rest": [
+      {
+        "locus": "HBB",
+        "odds_ratio": 15.8882,
+        "p_value": 0.0
+      },
+      {
+        "locus": "BRCA1",
+        "odds_ratio": 0.3735,
+        "p_value": 0.0
+      },
+      {
+        "locus": "TP53",
+        "odds_ratio": 0.2649,
+        "p_value": 0.0
+      },
+      {
+        "locus": "CFTR",
+        "odds_ratio": 0.5731,
+        "p_value": 0.000189
+      },
+      {
+        "locus": "MLH1",
+        "odds_ratio": 1.6184,
+        "p_value": 1.5e-05
+      },
+      {
+        "locus": "LDLR",
+        "odds_ratio": 0.1866,
+        "p_value": 0.0
+      },
+      {
+        "locus": "SCN5A",
+        "odds_ratio": 0.0,
+        "p_value": 0.0
+      },
+      {
+        "locus": "TERT",
+        "odds_ratio": 1.8024,
+        "p_value": 1.1e-05
+      },
+      {
+        "locus": "GJB2",
+        "odds_ratio": 0.0,
+        "p_value": 1e-05
+      },
+      {
+        "locus": "HBA1",
+        "odds_ratio": 0.0,
+        "p_value": 0.02436
+      },
+      {
+        "locus": "GATA1",
+        "odds_ratio": 0.0,
+        "p_value": 0.011338
+      },
+      {
+        "locus": "BCL11A",
+        "odds_ratio": 0.0,
+        "p_value": 0.011487
+      },
+      {
+        "locus": "PTEN",
+        "odds_ratio": 1.2086,
+        "p_value": 0.165817
+      }
+    ]
+  },
+  "consequence_enrichment": {
+    "category_table": [
+      {
+        "category": "frameshift",
+        "pearl_like": 1,
+        "not_pearl_like": 57
+      },
+      {
+        "category": "missense",
+        "pearl_like": 13,
+        "not_pearl_like": 93
+      },
+      {
+        "category": "other",
+        "pearl_like": 33,
+        "not_pearl_like": 53
+      },
+      {
+        "category": "splice_region",
+        "pearl_like": 2,
+        "not_pearl_like": 16
+      }
+    ],
+    "contingency_chi2": {
+      "chi2": 37.064147,
+      "p_value": 0.0,
+      "df": 3
+    }
+  },
+  "interpretation": "Exploratory. Use for Limitations/Exploratory only; no strong claims without validation."
+}

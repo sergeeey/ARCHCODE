@@ -4,6 +4,9 @@
 
 HBB-focused strict VUS validation with predeclared Go/No-Go criteria and portable artifact generation.
 
+Top-level canonical index (primary governance source):
+- `results/validation_canonical_index_2026-03-06.json`
+
 ## Implemented
 
 - Updated portability in:

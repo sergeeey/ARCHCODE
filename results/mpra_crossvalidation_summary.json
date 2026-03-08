@@ -30,5 +30,13 @@
   "mpra_pearl_mean": -0.015454545454545455,
   "mpra_nonpearl_mean": -0.021420454545454548,
   "mpra_pearl_vs_nonpearl_U": 8818.5,
-  "mpra_pearl_vs_nonpearl_p": 0.9065544356476916
+  "mpra_pearl_vs_nonpearl_p": 0.9065544356476916,
+  "position_pearson_r": -0.01907168564818358,
+  "position_pearson_p": 0.9203203917724362,
+  "position_spearman_rho": -0.186101163831692,
+  "position_spearman_p": 0.3247996751740869,
+  "position_n": 30,
+  "position_aggregated_spearman_rho": -0.19811677488140428,
+  "position_aggregated_spearman_p": 0.4024226382496811,
+  "position_aggregated_n": 20
 }

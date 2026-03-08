@@ -1,8 +1,14 @@
 # The Loop That Stayed: Comparative Analysis Table
 
+> **Canonical status (2026-03-06):** Legacy exploratory table. For publication-safe claims use
+> `results/task2_canonical_status_2026-03-06.json`,
+> `results/validation_canonical_index_2026-03-06.json`, and
+> `results/publication_claim_matrix_2026-03-06.json`.
+> This file must not be used as standalone clinical or causal-proof evidence.
+
 **Analysis Date:** 2026-02-03
 **Pattern:** HBB Splice Region Variants with Preserved Loop Architecture
-**Clinical Significance:** ARCHCODE detects pathogenicity invisible to sequence-based AI
+**Scope:** in-silico comparative exploration of model discordance patterns
 
 ---
 

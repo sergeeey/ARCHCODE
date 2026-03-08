@@ -4,11 +4,23 @@
   "analyst": "VUS Analyzer Agent",
   "analysis_type": "BATCH_COMPARATIVE",
   "pattern_name": "Loop That Stayed - HBB Splice Region Discordance",
+  "canonical_governance": {
+    "status": "deprecated_for_claims",
+    "claim_scope": "legacy_exploration_only",
+    "clinical_reclassification": "BLOCKED_UNVERIFIED",
+    "blocked_by_canonical": "results/task2_canonical_status_2026-03-06.json",
+    "source_of_truth": [
+      "results/task2_canonical_status_2026-03-06.json",
+      "results/publication_claim_matrix_2026-03-06.json",
+      "results/validation_canonical_index_2026-03-06.json"
+    ],
+    "note": "Do not use this artifact for publication-grade clinical, causal, or reclassification claims."
+  },
 
   "executive_summary": {
     "finding": "Three splice_region variants (VCV000000302, VCV000000327, VCV000000026) show remarkably consistent SSIM values (0.545-0.551) and AlphaGenome scores (~0.454-0.456), all classified as LIKELY_PATHOGENIC by ARCHCODE but VUS by AlphaGenome.",
     "mechanism": "These variants preserve chromatin loop integrity (SSIM >0.54) while potentially disrupting splice regulatory elements, creating a blind spot for sequence-based predictors that don't account for 3D context.",
-    "clinical_significance": "ARCHCODE's structural evidence suggests these VUS should be reclassified as Likely Pathogenic, with experimental validation focusing on splice disruption in native chromatin context.",
+    "clinical_significance": "Computational signal is hypothesis-generating only; no VUS reclassification claim is supported without orthogonal validation.",
     "discovery_method": "Systematic comparison of 367 HBB variants revealed this cluster as the strongest discordance pattern in splice_region category."
   },
 

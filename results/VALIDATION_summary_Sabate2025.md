@@ -1,5 +1,10 @@
 # Blind-Test Validation: Gerlich et al. 2006
 
+> **Canonical status (2026-03-06):** Legacy validation summary. Interpret under
+> `results/validation_canonical_index_2026-03-06.json` and
+> `results/publication_claim_matrix_2026-03-06.json`.
+> This file is non-clinical and does not authorize standalone causal or reclassification claims.
+
 ## Parameters
 
 - **Residence time (calibrated):** 16.66 min → UNLOADING_PROBABILITY = 1/1000

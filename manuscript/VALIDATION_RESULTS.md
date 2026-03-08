@@ -185,13 +185,13 @@ Future validation should use:
 
 How does r=0.16 compare to other 3D genome models?
 
-| Model                     | Method               | Benchmark           | Correlation | Reference                 |
-| ------------------------- | -------------------- | ------------------- | ----------- | ------------------------- |
-| **ARCHCODE (this study)** | Physics-based LEF    | HBB locus (50 kb)   | r=0.16 (ns) | —                         |
-| **Akita**                 | Deep learning CNN    | Genome-wide test    | r=0.59      | Fudenberg et al. 2020     |
-| **Orca**                  | Graph neural network | Chr21 (48 Mb)       | r=0.71      | Zhou et al. 2022          |
-| **ChromoGen**             | Diffusion model      | Multi-locus average | r=0.68      | ChromoGen Consortium 2025 |
-| **Polymer MD**            | Molecular dynamics   | Single TAD          | r=0.45-0.62 | Qi & Zhang 2021           |
+| Model                     | Method               | Benchmark           | Correlation | Reference                              |
+| ------------------------- | -------------------- | ------------------- | ----------- | -------------------------------------- |
+| **ARCHCODE (this study)** | Physics-based LEF    | HBB locus (50 kb)   | r=0.16 (ns) | —                                      |
+| **Akita**                 | Deep learning CNN    | Genome-wide test    | r=0.59      | Fudenberg et al. 2020                  |
+| **Orca**                  | Graph neural network | Chr21 (48 Mb)       | r=0.71      | Zhou et al. 2022                       |
+| **ChromoGen**             | Diffusion model      | Multi-locus average | r=0.68      | Schuette et al. 2025, Science Advances |
+| **Polymer MD**            | Molecular dynamics   | Single TAD          | r=0.45-0.62 | Qi & Zhang 2021                        |
 
 **Context:** Our r=0.16 is substantially lower than state-of-the-art ML models (r=0.59-0.71) but within range of physics-based polymer simulations on single loci (r=0.45-0.62). The difference may reflect:
 

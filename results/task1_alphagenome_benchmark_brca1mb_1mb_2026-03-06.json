@@ -1,0 +1,64 @@
+{
+  "locus": "brca1mb_1mb",
+  "locus_id": "brca1mb_1mb",
+  "window": {
+    "chromosome": "chr17",
+    "start": 42600000,
+    "end": 43600000,
+    "resolution_bp": 1000,
+    "n_bins": 1000
+  },
+  "alphagenome": {
+    "sdk_version": "0.6.0",
+    "sequence_length": 1048576,
+    "contact_map_resolution": 2048,
+    "contact_map_shape": [
+      512,
+      512
+    ],
+    "cell_line": "GM12878",
+    "track_name": "4dn:4DNFIXP4QG5B",
+    "assay": "in situ Hi-C",
+    "ontology_curie": "EFO:0002784"
+  },
+  "correlations": {
+    "archcode_vs_alphagenome": {
+      "pearson_r": -0.13480714018858184,
+      "pearson_p": 0.0,
+      "spearman_rho": -0.15674410302222588,
+      "spearman_p": 0.0,
+      "n": 498501
+    },
+    "archcode_vs_hic": {
+      "pearson_r": -0.009958661896463212,
+      "pearson_p": 2.044267893659941e-12,
+      "spearman_rho": 0.1356880954216082,
+      "spearman_p": 0.0,
+      "n": 498501
+    },
+    "alphagenome_vs_hic": {
+      "pearson_r": 0.05934171230811123,
+      "pearson_p": 0.0,
+      "spearman_rho": 0.2700879496417027,
+      "spearman_p": 0.0,
+      "n": 498501
+    }
+  },
+  "local_metrics": {
+    "archcode_vs_alphagenome": {
+      "local_ssim_mean": 0.06098435114467531,
+      "window_size": 50,
+      "n_local_windows": 1521
+    },
+    "archcode_vs_hic": {
+      "local_ssim_mean": 0.7339749292053905,
+      "window_size": 50,
+      "n_local_windows": 1521
+    },
+    "alphagenome_vs_hic": {
+      "local_ssim_mean": 0.05911282296139187,
+      "window_size": 50,
+      "n_local_windows": 1521
+    }
+  }
+}

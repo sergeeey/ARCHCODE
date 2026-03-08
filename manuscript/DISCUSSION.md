@@ -5,6 +5,11 @@
 > `FULL_MANUSCRIPT.md` (lines 807–951), which uses analytically calibrated thresholds
 > (PATHOGENIC < 0.85, LP 0.85–0.92, VUS 0.92–0.96, LB 0.96–0.99, B ≥ 0.99).
 > Pearl SSIM range: 0.89–0.95. **Use FULL_MANUSCRIPT.md as the authoritative version.**
+>
+> **Canonical governance (2026-03-06):** publication-facing interpretation is bound by
+> `results/publication_claim_matrix_2026-03-06.json` and
+> `results/validation_canonical_index_2026-03-06.json`. This file is legacy narrative context
+> only and must not be used for clinical, causal, or reclassification claims.
 
 ## Revisiting the Paradox: When Chromatin Stability Becomes a Molecular Cage
 
@@ -106,7 +111,7 @@ functionally critical. This proposal requires experimental validation before cli
 
 ## Computational Evidence and the Path to Clinical Translation
 
-The computational signature of "The Loop That Stayed" — particularly for the 20 pearl variants
+The computational signature of "The Loop That Stayed" — particularly for the 27 pearl variants
 identified in our 353-variant HBB dataset — has potential clinical implications, contingent on
 experimental validation. The dominant pearl class, **promoter variants**, currently lacks structural
 pathogenicity assessment in most variant interpretation workflows. If ARCHCODE's predictions are
@@ -154,7 +159,7 @@ turnaround constraints — though clinical utility depends on experimental valid
 Our findings constitute a **computational discovery requiring experimental falsification**, not a
 clinical diagnostic claim. We formulate testable predictions with explicit kill-criteria:
 
-**Null hypothesis (H0):** The 20 pearl variants identified by ARCHCODE do _not_ exhibit functional
+**Null hypothesis (H0):** The 27 pearl variants identified by ARCHCODE do _not_ exhibit functional
 regulatory disruption in erythroid cells; SSIM clustering in the Goldilocks zone is a statistical
 artifact of the simulation model unrelated to actual regulatory function.
 
@@ -264,4 +269,4 @@ _Word count: ~1,800 words_
 _Last updated: 2026-02-28_
 _Status: Computational discovery paper — experimental validation required for all functional claims_
 _Data integrity: AlphaGenome references removed; fake ClinVar IDs removed; statistics updated to
-n=353, 161 pathogenic (45.6%), 20 pearl variants, discordance 130/353 (36.8%)_
+n=353, 161 pathogenic (45.6%), 27 pearl variants, discordance 130/353 (36.8%)_

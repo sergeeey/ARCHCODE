@@ -39,9 +39,21 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 
 ## What is ARCHCODE?
 
-ARCHCODE is an analytical mean-field loop extrusion simulator that predicts **structural pathogenicity** of genomic variants. It builds wild-type and mutant 3D chromatin contact maps using Kramer-rate cohesin kinetics, then compares them via Structural Similarity Index (SSIM) to quantify how much a variant disrupts local chromosome architecture.
+**ARCHCODE is a Discovery Engine, not a Prediction Tool.**
 
-Unlike sequence-based predictors (VEP, SpliceAI, CADD), ARCHCODE detects variants that **disrupt enhancer-promoter loops, CTCF boundaries, and cohesin loading sites** — structural mechanisms invisible to sequence-level annotation. Applied to **32,201 classified ClinVar variants across 13 loci** plus **30,952 VUS** (63,153 total), it discovered **27 "pearl" variants** on HBB and identified **641 pearl-like VUS reclassification candidates** across 8 tissue-matched loci — converging evidence for a genuine structural blind spot validated by 9 orthogonal methods.
+ARCHCODE is an analytical mean-field loop extrusion simulator that **discovers structural mechanisms** of genomic variants. It builds wild-type and mutant 3D chromatin contact maps using Kramer-rate cohesin kinetics, then compares them via Structural Similarity Index (SSIM) to **reveal** how a variant disrupts local chromosome architecture.
+
+Unlike sequence-based predictors (VEP, SpliceAI, CADD) that **classify** variants, ARCHCODE **discovers** variants that act through structural mechanisms invisible to sequence-level annotation:
+- **Enhancer-promoter loop disruption**
+- **CTCF boundary erosion**
+- **Cohesin loading site alteration**
+
+**Key discoveries** from applying ARCHCODE to **63,153 variants across 13 loci**:
+- **27 "pearl" variants** on HBB — VEP-blind, SpliceAI-blind, CADD-ambiguous, but ARCHCODE-detected
+- **641 pearl-like VUS candidates** for reclassification across 8 tissue-matched loci
+- **Structural blind spot** validated by 9 orthogonal methods (VEP, SpliceAI, CADD, MPRA, gnomAD, conservation, AlphaGenome RNA/ATAC, Hi-C, cross-species)
+
+**Not competing with ML predictors** — ARCHCODE creates a new category: **structural mechanism discovery**.
 
 Nine independent lines of evidence confirm the blind spot: VEP (&lt;0.30 for all 27), SpliceAI (0.00 for all 20 SNVs), CADD v1.7 (median 15.7 — ambiguous), MPRA Kircher 2019 (no signal), MaveDB SGE/DMS (orthogonal, r ≈ 0), gnomAD v4 (85% absent), cross-species conservation (r = 0.82), genome-wide scaling (13 loci), yet ARCHCODE LSSIM &lt; 0.92 for all 27.
 
@@ -327,6 +339,8 @@ ARCHCODE/
 - **HBB-centric pearls** — all 27 pearl variants are on HBB; generalization of the pearl-detection paradigm to other loci requires matched regulatory annotations
 - **MPRA episomal context** — the Kircher 2019 null (r = &minus;0.21) is mechanistically expected but does not rule out alternative non-structural explanations for pearl pathogenicity
 - **AlphaGenome training overlap** — AlphaGenome was trained on 4DN Hi-C including K562; validation against AlphaGenome tracks is not fully independent
+- **Pearl candidates require experimental validation** — the 27 pearl variants and 641 pearl-like VUS candidates are computational findings only; no clinical reclassification without RT-PCR, Capture Hi-C, or functional assay
+- **AlphaGenome as auxiliary only** — AlphaGenome RNA/ATAC signal supports structural blind spot narrative but is not a replacement for experimental validation (same training domain; use for prioritization only)
 
 ## Scientific Integrity
 
@@ -338,6 +352,12 @@ This project follows a strict **[Scientific Integrity Protocol](./CLAUDE.md)** g
 - Transparent parameter provenance (MEASURED / CALIBRATED / ASSUMED)
 
 This protocol was developed after a self-audit identified risks of AI-generated hallucinations in scientific code. See [CLAUDE.md](./CLAUDE.md) for the full protocol.
+
+For Codex-assisted tasks, use:
+
+- [AGENTS.md](./AGENTS.md) for plan-first execution and approval gate
+- [Codex Zero-Hallucination Gates](./docs/CODEX_ZERO_HALLUCINATION_GATES.md)
+- [Implemented vs Verified report template](./docs/templates/IMPLEMENTED_VERIFIED_TEMPLATE.md)
 
 ## Preprint
 

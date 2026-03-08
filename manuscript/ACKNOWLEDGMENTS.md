@@ -10,7 +10,11 @@ All data supporting the findings of this study are openly available:
 
 - **ARCHCODE simulator source code (v1.1.0):** https://github.com/sergeeey/ARCHCODE
 - **Full variant analysis dataset (366 HBB variants):** `HBB_Clinical_Atlas.csv`, available at https://github.com/sergeeey/ARCHCODE/tree/main/results
-- **"Loop That Stayed" detailed analysis:** `vus_batch_analysis_loop_that_stayed.json` (same repository)
+- **Task 2 canonical status and reconciliation artifacts:**
+  - `results/task2_canonical_status_2026-03-06.json` (primary claim source)
+  - `results/task2_reconciliation_2026-03-05.json`
+  - `results/task2_loop_that_stayed_status_2026-03-05.json`
+  - Legacy `results/vus_batch_analysis_loop_that_stayed.json` is retained for traceability only (`deprecated_for_claims`)
 - **Contact matrices** for wild-type and mutant simulations (NumPy `.npy` format): available from the corresponding author upon reasonable request
 - **ClinVar variant annotations** were obtained from the NCBI ClinVar database (2026-02-01 release): https://www.ncbi.nlm.nih.gov/clinvar/
 

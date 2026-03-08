@@ -33,6 +33,7 @@ ALIASES: dict[str, str] = {
     "gata1": "gata1_300kb.json",
     "bcl11a": "bcl11a_300kb.json",
     "pten": "pten_300kb.json",
+    "brca1mb_1mb": "brca1mb_1mb.json",
 }
 
 
