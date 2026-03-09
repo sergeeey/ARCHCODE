@@ -95,7 +95,7 @@ Three canonical cases from the published literature independently validate the t
 
 **Groschel et al. 2014 (Class C — mixed).** The inv(3)(q21q26) rearrangement in acute myeloid leukemia repositions a GATA2 enhancer near the MECOM (EVI1) oncogene, causing simultaneous MECOM activation via enhancer hijacking (architecture change) and GATA2 haploinsufficiency from enhancer loss (activity change). Neither mechanism alone is sufficient for leukemogenesis — both the 3D contact rewiring and the activity loss must co-occur. This demonstrates that some pathogenic events are genuinely mixed-class, operating simultaneously through both mechanistic axes. ARCHCODE would detect the architecture component (new MECOM contacts) but would miss the activity component (GATA2 expression loss), requiring an orthogonal expression readout for complete characterization.
 
-These three cases span limb malformations, polydactyly, and leukemia — distinct disease categories, distinct molecular mechanisms, and distinct experimental validations — yet each maps cleanly to one of the taxonomy's classes. The Hnisz et al. 2016 demonstration that insulated neighborhood disruption activates proto-oncogenes in T-ALL provides further independent support for Class B, establishing that CTCF boundary deletions alone are sufficient for oncogene activation through 3D contact rewiring (see also the external casebook, Section 3.6 [CHECK: cross-reference to Section 3]).
+These three cases span limb malformations, polydactyly, and leukemia — distinct disease categories, distinct molecular mechanisms, and distinct experimental validations — yet each maps cleanly to one of the taxonomy's classes. The Hnisz et al. 2016 demonstration that insulated neighborhood disruption activates proto-oncogenes in T-ALL provides further independent support for Class B, establishing that CTCF boundary deletions alone are sufficient for oncogene activation through 3D contact rewiring (see also Section 3.2, Class B).
 
 ---
 
@@ -131,7 +131,7 @@ The decision rules for taxonomy assignment (Section 3.6) are not derived from a 
 - VEP = -1 defines coverage gap
 - Tissue_match >= 0.5 is required for Class B assignment
 
-These thresholds were chosen based on distribution analysis of the HBB data and may not be optimal for other loci, other simulation parameters, or other tissue contexts. The EXP-004 threshold robustness analysis [CHECK: reference if completed] showed that the Q2b count is sensitive to the LSSIM threshold — shifting from 0.95 to 0.94 or 0.96 changes the variant count substantially. A principled Bayesian framework for class assignment, incorporating uncertainty in both the structural simulation and the sequence-based scores, would be a significant improvement over the current heuristic approach.
+These thresholds were chosen based on distribution analysis of the HBB data and may not be optimal for other loci, other simulation parameters, or other tissue contexts. The EXP-004 threshold robustness analysis (bootstrap 95% CI: 271–300 disrupted variants at threshold 0.95; perturbation SD = 2.54) showed that the Q2b count is sensitive to the LSSIM threshold — shifting from 0.95 to 0.94 or 0.96 changes the variant count substantially. A principled Bayesian framework for class assignment, incorporating uncertainty in both the structural simulation and the sequence-based scores, would be a significant improvement over the current heuristic approach.
 
 ### 6.7 The central epistemic limitation
 
@@ -141,5 +141,5 @@ What ARCHCODE provides is a prioritization signal: among the thousands of non-co
 
 ---
 
-*Figure 2 reference: schematic of ARCHCODE pipeline with per-class examples (HBB Q2b for Class B, TERT Q2a for Class D, SCN5A null for Class E). [CHECK: figure specification in docs/taxonomy_paper_outline.md]*
+*Figure 2: ARCHCODE pipeline schematic with per-class examples (HBB Q2b for Class B, TERT Q2a for Class D, SCN5A null for Class E). See Section 4 outline specification.*
 
