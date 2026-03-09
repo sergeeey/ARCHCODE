@@ -1,0 +1,55 @@
+ClinVar_ID,Position,Locus,Category,VEP_Consequence,LSSIM,VEP,CADD_Phred,Enhancer_Dist_bp,ClinVar
+VCV000869358,5226971,HBB,frameshift,synonymous_variant,0.7982,0.15,-1.0,703,Pathogenic
+VCV002024192,5226796,HBB,splice_acceptor,coding_sequence_variant,0.8218,0.2,-1.0,528,Likely pathogenic
+VCV003766487,5226598,HBB,missense,coding_sequence_variant,0.9088,0.2,13.3,330,Pathogenic
+VCV000801186,5226598,HBB,missense,coding_sequence_variant,0.9088,0.2,13.4,330,Pathogenic/Likely pathogenic
+VCV000015259,5226598,HBB,missense,coding_sequence_variant,0.9088,0.2,-1.0,330,Pathogenic; other
+VCV000446737,5226643,HBB,missense,coding_sequence_variant,0.9101,0.2,-1.0,375,Pathogenic
+VCV000015319,5226643,HBB,missense,coding_sequence_variant,0.9101,0.2,-1.0,375,Pathogenic; other
+VCV000015208,5226613,HBB,missense,coding_sequence_variant,0.9104,0.2,-1.0,345,Pathogenic
+VCV000869290,5227101,HBB,promoter,5_prime_UTR_variant,0.9143,0.2,18.9,833,Pathogenic
+VCV000869288,5227100,HBB,promoter,5_prime_UTR_variant,0.9143,0.2,19.3,832,Pathogenic
+VCV000801184,5227142,HBB,promoter,5_prime_UTR_variant,0.9144,0.2,15.7,874,Pathogenic/Likely pathogenic
+VCV000015514,5227161,HBB,promoter,5_prime_UTR_variant,0.9146,0.2,16.9,893,Pathogenic/Likely pathogenic
+VCV000393701,5227159,HBB,promoter,5_prime_UTR_variant,0.915,0.2,18.3,891,Pathogenic/Likely pathogenic
+VCV000015471,5227099,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.1,831,Pathogenic/Likely pathogenic
+VCV000036287,5227158,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,16.1,890,Pathogenic/Likely pathogenic
+VCV000036285,5227158,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.6,890,Pathogenic
+VCV000015464,5227158,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.6,890,Pathogenic/Likely pathogenic
+VCV000015470,5227099,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.2,831,Pathogenic
+VCV000015466,5227102,HBB,promoter,5_prime_UTR_variant,0.9173,0.2,19.2,834,Pathogenic
+VCV000015586,5227172,HBB,promoter,5_prime_UTR_variant,0.9177,0.2,13.4,904,Pathogenic
+VCV000015462,5227163,HBB,promoter,5_prime_UTR_variant,0.9185,0.2,15.7,895,Pathogenic/Likely pathogenic
+VCV002506212,5227157,HBB,promoter,5_prime_UTR_variant,0.9186,0.2,12.1,889,Likely pathogenic
+VCV000036284,5227157,HBB,promoter,5_prime_UTR_variant,0.9186,0.2,11.7,889,Pathogenic/Likely pathogenic
+VCV000869309,5226596,HBB,other,other_variant (from_category),0.9395,0.2,-1.0,328,Pathogenic
+VCV000015450,5226924,HBB,splice_region,splice_donor_region_variant,0.9416,0.35,18.3,656,Pathogenic/Likely pathogenic
+VCV000970693,43125267,BRCA1,other,splice_donor_region_variant,0.9419,0.35,,97,Likely benign
+VCV000803424,43125443,BRCA1,other,5_prime_UTR_variant,0.942,0.2,,79,Likely benign
+VCV001083391,43125251,BRCA1,other,5_prime_UTR_variant,0.942,0.2,,113,Likely benign
+VCV001081125,43125255,BRCA1,other,5_prime_UTR_variant,0.9421,0.2,,109,Likely benign
+VCV001156639,43125255,BRCA1,other,5_prime_UTR_variant,0.9421,0.2,,109,Likely benign
+VCV002087470,43125252,BRCA1,other,5_prime_UTR_variant,0.9421,0.2,,112,Likely benign
+VCV000189123,43125170,BRCA1,other,5_prime_UTR_variant,0.9423,0.2,,194,Benign
+VCV000548880,43125214,BRCA1,other,5_prime_UTR_variant,0.9424,0.2,,150,Likely benign
+VCV000392782,43125266,BRCA1,other,splice_donor_5th_base_variant,0.9424,0.4,,98,Likely benign
+VCV003724822,43125262,BRCA1,other,5_prime_UTR_variant,0.9427,0.2,,102,Likely benign
+VCV000803422,43125243,BRCA1,other,5_prime_UTR_variant,0.9429,0.2,,121,Likely benign
+VCV000125464,43125260,BRCA1,other,5_prime_UTR_variant,0.9429,0.2,,104,Benign/Likely benign
+VCV001108085,43125259,BRCA1,other,5_prime_UTR_variant,0.943,0.2,,105,Likely benign
+VCV001146356,43125257,BRCA1,other,5_prime_UTR_variant,0.943,0.2,,107,Likely benign
+VCV001158610,43125257,BRCA1,other,5_prime_UTR_variant,0.943,0.2,,107,Likely benign
+VCV001666620,43125254,BRCA1,other,5_prime_UTR_variant,0.9434,0.2,,110,Likely benign
+VCV001130395,43125146,BRCA1,other,5_prime_UTR_variant,0.9434,0.2,,218,Likely benign
+VCV000382001,43125258,BRCA1,other,5_prime_UTR_variant,0.9434,0.2,,106,Conflicting classifications of pathogenicity
+VCV000758289,43125258,BRCA1,other,5_prime_UTR_variant,0.9434,0.2,,106,Likely benign
+VCV000803421,43125119,BRCA1,other,5_prime_UTR_variant,0.9435,0.2,,245,Benign
+VCV003688243,43125261,BRCA1,other,5_prime_UTR_variant,0.9436,0.2,,103,Likely benign
+VCV000371899,43125216,BRCA1,other,5_prime_UTR_variant,0.9437,0.2,,148,Likely benign
+VCV001106468,43125256,BRCA1,other,5_prime_UTR_variant,0.9438,0.2,,108,Likely benign
+VCV000209578,43125086,BRCA1,other,5_prime_UTR_variant,0.944,0.2,,278,Benign
+VCV000224043,7687108,TP53,other,5_prime_UTR_variant,0.9443,0.15,,382,Likely benign
+VCV000516754,7687368,TP53,other,5_prime_UTR_variant,0.9446,0.15,,122,Likely benign
+VCV000209583,43126360,BRCA1,other,intron_variant,0.9455,0.15,,996,Benign
+VCV000209582,43126099,BRCA1,other,intron_variant,0.9473,0.15,,735,Benign
+VCV004182780,1294357,TERT,missense,missense_variant,0.9488,0.4,-1.0,711,Likely benign

@@ -1,0 +1,5 @@
+Quadrant,N_Total,N_Pathogenic,N_Benign,Precision,Pct_Dataset,Mean_Enhancer_Dist,Top3_Categories
+Q1,270,270,0,1.0,0.89,543.0,"frameshift(98), missense(88), nonsense(53)"
+Q2,261,231,30,0.8851,0.86,620.0,"frameshift(204), other(32), promoter(15)"
+Q3,10385,8666,1681,0.8345,34.25,25138.0,"synonymous(8187), intronic(1670), missense(414)"
+Q4,19402,8021,10669,0.4134,63.99,26749.0,"synonymous(6930), frameshift(5661), intronic(4329)"

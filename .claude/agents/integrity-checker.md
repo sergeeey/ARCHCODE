@@ -129,7 +129,8 @@ RECOMMENDATION:
 | Positional signal | `results/positional_signal_{locus}.json`     | logistic_regression.auc_improvement, .lr_p_value, .interpretation |
 | Hi-C correlation  | `results/hic_correlation_{locus}.json`       | pearson_r or K562.r, MCF7.r                                       |
 | TDA analysis      | `results/tda_proof_of_concept_{locus}.json`  | rank_correlations.ssim_vs_wasserstein_h1.rho                      |
-| Manuscript        | `manuscript/FULL_MANUSCRIPT.md`              | Table 6, inline numbers, references                               |
+| Manuscript (arXiv)  | `manuscript/main.typ` + `manuscript/body_content.typ` | Table 6, inline numbers, references                |
+| Manuscript (bioRxiv)| `manuscript/biorxiv_version/main.typ`                 | Biology-first framing, same data                   |
 
 ## Priority
 
@@ -143,4 +144,4 @@ If multiple issues found, fix in this order:
 
 ---
 
-_Agent created: 2026-03-01 | ARCHCODE v2.3_
+_Agent created: 2026-03-01 | Updated: 2026-03-09 | ARCHCODE v2.16_
