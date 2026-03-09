@@ -1,0 +1,129 @@
+{
+  "experiment": "EXP-005",
+  "title": "ARS (Architecture Risk Score) overlay by taxonomy class",
+  "date": "2026-03-09",
+  "question": "Do architecture-driven variants (Class B) tend to live in more structurally fragile loci?",
+  "status": "INCONCLUSIVE",
+  "data_available": {
+    "fragility_atlases": 2,
+    "total_loci_in_taxonomy": 9,
+    "loci_with_Q2b": 4,
+    "loci_with_both_fragility_and_Q2b": 2
+  },
+  "per_locus_overlay": [
+    {
+      "locus": "HBB",
+      "severe_fragility_zones": 0,
+      "max_delta_ssim_severe": 0.0495,
+      "min_ssim_severe": 0.9505,
+      "taxonomy_class": "B_architecture",
+      "taxonomy_confidence": "HIGH",
+      "n_q2b": 25,
+      "q2b_precision": 1.0,
+      "tissue_match": 1.0,
+      "verdict": "PRIMARY",
+      "fragility_atlas_available": true
+    },
+    {
+      "locus": "BRCA1",
+      "severe_fragility_zones": 6,
+      "max_delta_ssim_severe": 0.0764,
+      "min_ssim_severe": 0.9236,
+      "taxonomy_class": "B_architecture_tentative",
+      "taxonomy_confidence": "LOW",
+      "n_q2b": 26,
+      "q2b_precision": 0.038,
+      "tissue_match": 0.5,
+      "verdict": "EXPLORATORY",
+      "fragility_atlas_available": true
+    },
+    {
+      "locus": "TERT",
+      "severe_fragility_zones": null,
+      "taxonomy_class": "D_coverage_gap",
+      "taxonomy_confidence": "HIGH",
+      "n_q2b": 1,
+      "tissue_match": 0.5,
+      "verdict": "SECONDARY",
+      "fragility_atlas_available": false
+    },
+    {
+      "locus": "TP53",
+      "severe_fragility_zones": null,
+      "taxonomy_class": "B_architecture_tentative",
+      "taxonomy_confidence": "LOW",
+      "n_q2b": 2,
+      "tissue_match": 0.5,
+      "verdict": "EXPLORATORY",
+      "fragility_atlas_available": false
+    },
+    {
+      "locus": "MLH1",
+      "severe_fragility_zones": null,
+      "taxonomy_class": "D_coverage_gap",
+      "n_q2b": 0,
+      "tissue_match": 0.5,
+      "verdict": "NULL_Q2B",
+      "fragility_atlas_available": false
+    },
+    {
+      "locus": "CFTR",
+      "severe_fragility_zones": null,
+      "taxonomy_class": "D_coverage_gap",
+      "n_q2b": 0,
+      "tissue_match": 0.0,
+      "verdict": "NULL_Q2B",
+      "fragility_atlas_available": false
+    },
+    {
+      "locus": "LDLR",
+      "severe_fragility_zones": null,
+      "taxonomy_class": "E_tissue_mismatch_partial",
+      "n_q2b": 0,
+      "tissue_match": 0.0,
+      "verdict": "NULL",
+      "fragility_atlas_available": false
+    },
+    {
+      "locus": "SCN5A",
+      "severe_fragility_zones": null,
+      "taxonomy_class": "E_tissue_mismatch",
+      "n_q2b": 0,
+      "tissue_match": 0.0,
+      "verdict": "NULL",
+      "fragility_atlas_available": false
+    },
+    {
+      "locus": "GJB2",
+      "severe_fragility_zones": null,
+      "taxonomy_class": "E_tissue_mismatch",
+      "n_q2b": 0,
+      "tissue_match": 0.0,
+      "verdict": "NULL",
+      "fragility_atlas_available": false
+    }
+  ],
+  "cross_locus_delta_lssim": {
+    "note": "delta_LSSIM from cross_locus_atlas_comparison.json used as fragility proxy",
+    "hbb_excluded": "HBB uses 95kb subTAD window, not comparable to 300kb windows",
+    "rank_correlation_feasible": false,
+    "reason": "5/8 loci have N_Q2b=0 (tied ranks); N=3 informative points insufficient"
+  },
+  "key_finding": {
+    "direction": "inverse_or_null",
+    "description": "BRCA1 has higher baseline fragility (6 severe zones, min SSIM=0.9236) but weaker Class B evidence (precision=3.8%). HBB has zero severe fragility zones but strongest Class B evidence (precision=100%). Pattern suggests baseline fragility does NOT predict Class B enrichment.",
+    "confounders": [
+      "tissue_match (HBB=1.0 vs BRCA1=0.5)",
+      "window_size (95kb vs 400kb)",
+      "sample_size (N=2 loci with both fragility + Q2b data)"
+    ]
+  },
+  "statistical_test": {
+    "test": "Spearman rank correlation (attempted)",
+    "result": "NOT_COMPUTABLE",
+    "reason": "Too many tied ranks (5/8 loci at Q2b=0) and N=2 informative fragility comparisons"
+  },
+  "conclusion": "Insufficient data to determine whether baseline fragility predicts Class B enrichment. The two available loci suggest an inverse relationship, but tissue-match confounding and N=2 prevent causal inference.",
+  "recommendation": "Generate fragility atlases for TERT, TP53, and ideally all 9 loci to enable proper cross-locus comparison. Use tissue-matched models where possible.",
+  "manuscript_impact": "Not suitable for main text claim. Could be mentioned as exploratory observation in supplement with explicit N=2 caveat."
+}
