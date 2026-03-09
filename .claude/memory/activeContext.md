@@ -231,6 +231,7 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+- [2026-03-09 13:17] `da4a9cc`: feat: freeze v4 submission-ready package — external validations + integrity fixes
 - [2026-03-09 11:55] `642b149`: feat: discordance analysis — ARCHCODE vs VEP/CADD 2x2 matrix + Q2a/Q2b split
 
 - [2026-03-09 11:15] `2776906`: feat: v4 bioRxiv resubmission — prioritization framework framing + Tier system

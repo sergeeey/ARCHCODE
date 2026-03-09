@@ -1,0 +1,7 @@
+Config,N_total,N_Q2b,Mean_Q2b_dist,Mean_Q3_dist,MW_p,Enrichment_fold
+All 9 loci,30318,54,434.0,25138.0,2.51e-31,57.9
+HBB only,1103,25,695.0,539.0,1.00e+00,0.8
+TERT only,2089,1,711.0,19936.0,N/A,28.0
+Exclude HBB,29215,29,209.0,25317.0,1.76e-19,120.9
+Tissue-matched only (≥0.5),20728,54,434.0,25515.0,4.37e-31,58.8
+Null controls only (0.0),9590,0,,,N/A,

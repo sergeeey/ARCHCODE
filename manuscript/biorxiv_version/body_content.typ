@@ -1678,7 +1678,39 @@ necessary but not sufficient.
 The practical value is in the conjunction: variants flagged by ARCHCODE
 but invisible to VEP/CADD/SpliceAI become the highest-priority candidates
 for experimental follow-up via Capture Hi-C and RT-PCR. The 25 HBB Q2b
-variants represent exactly this class.
+variants represent exactly this class (@fig:q2b-central).
+
+#figure(
+  image("../../figures/fig_q2b_central.png", width: 100%),
+  caption: [True structural blind spots (Q2b) summary. (A) Q2b variants cluster significantly closer to enhancers than Q3 sequence-channel variants (p = 2.5 × 10#super[−31]); 100% of Q2b fall within 1 kb vs 9.1% of Q3. (B) Q2b counts by locus mirror tissue-match gradient: HBB (matched, red) dominates, null controls produce zero Q2b. (C) Threshold sensitivity: HBB Q2b core (23--26 variants) is stable across LSSIM thresholds 0.92--0.96.]
+) <fig:q2b-central>
+
+To further quantify the enhancer enrichment, we computed Fisher exact odds ratios at discrete distance thresholds (@tab:is-not). Within 500 bp, 61.1% of Q2b variants reside near enhancers versus 6.5% of Q3 variants (OR = 22.5, p = 2.1 × 10#super[−25]). Within 1 kb, Q2b coverage reaches 100% while Q3 remains at 9.1%. This enrichment is robust to LSSIM threshold perturbation: the core HBB Q2b set (23--26 variants) and the within-1 kb fraction remain stable across thresholds 0.92--0.96. Excluding HBB entirely, the remaining 29 Q2b variants still show 121-fold enrichment (p = 1.8 × 10#super[−19]).
+
+#strong[What ARCHCODE does and does not do.] To prevent misinterpretation of ARCHCODE's scope, we summarize its design boundaries:
+
+#figure(
+  align(center)[#table(
+    columns: (50%, 50%),
+    align: (left, left),
+    table.header(
+      [*ARCHCODE does*], [*ARCHCODE does not*],
+    ),
+    table.hline(),
+    [Prioritize enhancer-proximal structural candidates for experimental follow-up],
+    [Provide independent pathogenicity prediction],
+    [Identify tissue-dependent structural disruption where sequence tools are blind],
+    [Replace VEP, CADD, SpliceAI, or other sequence-based annotations],
+    [Rank variants by structural disruption magnitude (LSSIM) within tissue-matched loci],
+    [Classify VUS as pathogenic or benign without experimental validation],
+    [Perform best at tissue-matched loci with rich enhancer landscapes (e.g., HBB in K562)],
+    [Generalize to tissue-mismatched loci (e.g., cardiac SCN5A in erythroid K562)],
+    [Generate testable hypotheses for Capture Hi-C and RT-PCR experiments],
+    [Serve as a standalone clinical diagnostic tool],
+  )]
+  , kind: table
+  , caption: [Operational scope of ARCHCODE. The tool functions as a structural prioritization engine complementary to sequence-based variant annotation, not as a replacement or independent classifier.]
+) <tab:is-not>
 
 *External dataset cross-referencing.* We queried three public functional
 genomics datasets to assess whether Q2b positions overlap experimentally
@@ -1690,7 +1722,7 @@ enhancer-dense architecture of the HBB locus rather than Q2b-specific
 enrichment. (2) Promoter Capture Hi-C in primary erythroblasts (Javierre
 et al., 2016; E-MTAB-2323) reveals that all 25 Q2b variants fall within
 the HBB promoter bait fragment (chr11:5,243,047--5,250,845, hg19
-HindIII), which participates in 12 significant erythroblast interactions
+HindIII), which participates in 25 significant erythroblast interactions
 (CHiCAGO score up to 10.5), including 5 contacts with the LCR
 (HS1--HS4, CHiCAGO 5.4--8.2). This provides orthogonal experimental
 evidence that Q2b variants occupy a structurally active chromatin domain

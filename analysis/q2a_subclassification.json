@@ -1,0 +1,45 @@
+{
+  "total_q2a": 207,
+  "gap_types": [
+    {
+      "Gap_Type": "noncoding_frameshift",
+      "N": 203,
+      "N_Pathogenic": 203,
+      "Mean_LSSIM": 0.8716334975369457,
+      "Mean_Enhancer_Dist": 676.2019704433498
+    },
+    {
+      "Gap_Type": "annotation_missing",
+      "N": 4,
+      "N_Pathogenic": 2,
+      "Mean_LSSIM": 0.944925,
+      "Mean_Enhancer_Dist": 245.25
+    }
+  ],
+  "per_locus": {
+    "BRCA1": {
+      "annotation_missing": 1,
+      "noncoding_frameshift": 52
+    },
+    "CFTR": {
+      "annotation_missing": 1,
+      "noncoding_frameshift": 35
+    },
+    "LDLR": {
+      "annotation_missing": 0,
+      "noncoding_frameshift": 10
+    },
+    "MLH1": {
+      "annotation_missing": 0,
+      "noncoding_frameshift": 72
+    },
+    "TERT": {
+      "annotation_missing": 0,
+      "noncoding_frameshift": 34
+    },
+    "TP53": {
+      "annotation_missing": 2,
+      "noncoding_frameshift": 0
+    }
+  }
+}
