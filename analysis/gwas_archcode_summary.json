@@ -1,0 +1,24 @@
+{
+  "total_gwas_snps": 384,
+  "matched_in_atlas": 240,
+  "needs_simulation": 144,
+  "interpretation_breakdown": {
+    "structural_disruption": 10,
+    "coding_sequence_level": 0,
+    "structural_unlikely": 202,
+    "ambiguous": 28
+  },
+  "gwas_hits_overlapping_pearls": 4,
+  "by_locus": {
+    "BRCA1": 55,
+    "CFTR": 12,
+    "GJB2": 3,
+    "HBB": 41,
+    "LDLR": 52,
+    "MLH1": 9,
+    "SCN5A": 70,
+    "TERT": 100,
+    "TP53": 42
+  },
+  "key_finding": "10/384 intergenic GWAS hits have ARCHCODE LSSIM < 0.95, suggesting structural mechanism for GWAS signal."
+}

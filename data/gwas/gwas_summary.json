@@ -1,0 +1,31 @@
+{
+  "total_associations": 384,
+  "in_archcode_windows": 384,
+  "intergenic_total": 384,
+  "intergenic_in_archcode": 384,
+  "by_locus": {
+    "HBB": 41,
+    "BRCA1": 55,
+    "TP53": 42,
+    "TERT": 100,
+    "MLH1": 9,
+    "CFTR": 12,
+    "SCN5A": 70,
+    "GJB2": 3,
+    "LDLR": 52
+  },
+  "by_trait": {
+    "GWAS hit in HBB locus": 41,
+    "GWAS hit in BRCA1 locus": 55,
+    "GWAS hit in TP53 locus": 42,
+    "GWAS hit in TERT locus": 100,
+    "GWAS hit in MLH1 locus": 9,
+    "GWAS hit in CFTR locus": 12,
+    "GWAS hit in SCN5A locus": 70,
+    "GWAS hit in GJB2 locus": 3,
+    "GWAS hit in LDLR locus": 52
+  },
+  "data_source": "EBI GWAS Catalog REST API v2",
+  "genome_build": "GRCh38",
+  "p_value_threshold": "5e-8 (GWAS-significant, as returned by Catalog)"
+}

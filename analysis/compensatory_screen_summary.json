@@ -1,0 +1,360 @@
+{
+  "analysis": "ARCHCODE In Silico CRISPR Compensatory Screen — HBB",
+  "version": "v1.0",
+  "date": "2026-03-09",
+  "locus": "HBB",
+  "window": "5210000-5305000",
+  "resolution_bp": 600,
+  "n_bins": 159,
+  "n_pearl_variants": 10,
+  "n_targets_screened": 18,
+  "n_ctcf_targets": 10,
+  "n_enhancer_targets": 8,
+  "total_simulations": 190,
+  "pearl_variants": [
+    {
+      "name": "c.-79A>C",
+      "position": 5226774,
+      "category": "promoter",
+      "effect": 0.3
+    },
+    {
+      "name": "c.-80T>C",
+      "position": 5226775,
+      "category": "promoter",
+      "effect": 0.3
+    },
+    {
+      "name": "c.-138C>A",
+      "position": 5226857,
+      "category": "promoter",
+      "effect": 0.3
+    },
+    {
+      "name": "c.20A>T",
+      "position": 5226933,
+      "category": "missense",
+      "effect": 0.3
+    },
+    {
+      "name": "c.50dup",
+      "position": 5227002,
+      "category": "frameshift",
+      "effect": 0.1
+    },
+    {
+      "name": "c.93-1G>A",
+      "position": 5227055,
+      "category": "splice",
+      "effect": 0.2
+    },
+    {
+      "name": "c.118C>T",
+      "position": 5227166,
+      "category": "missense",
+      "effect": 0.5
+    },
+    {
+      "name": "IVS-II-1",
+      "position": 5226796,
+      "category": "splice",
+      "effect": 0.2
+    },
+    {
+      "name": "c.249G>C",
+      "position": 5225600,
+      "category": "missense",
+      "effect": 0.5
+    },
+    {
+      "name": "c.315+1G>A",
+      "position": 5225300,
+      "category": "splice",
+      "effect": 0.2
+    }
+  ],
+  "top_therapeutic_targets": [
+    {
+      "target_element": "CTCF_5212k",
+      "target_type": "CTCF",
+      "target_position": 5212000,
+      "mean_recovery": -0.000225,
+      "mean_recovery_pct": -1.07,
+      "max_recovery": -0.000182,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5303k_boundary",
+      "target_type": "CTCF",
+      "target_position": 5302700,
+      "mean_recovery": -0.000235,
+      "mean_recovery_pct": -1.14,
+      "max_recovery": -0.000167,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5291k",
+      "target_type": "CTCF",
+      "target_position": 5291200,
+      "mean_recovery": -0.000484,
+      "mean_recovery_pct": -2.55,
+      "max_recovery": -0.000185,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5218k",
+      "target_type": "CTCF",
+      "target_position": 5218000,
+      "mean_recovery": -0.000834,
+      "mean_recovery_pct": -3.93,
+      "max_recovery": -0.000698,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5236k",
+      "target_type": "CTCF",
+      "target_position": 5236000,
+      "mean_recovery": -0.001057,
+      "mean_recovery_pct": -5.01,
+      "max_recovery": -0.000854,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5224k",
+      "target_type": "CTCF",
+      "target_position": 5224000,
+      "mean_recovery": -0.001771,
+      "mean_recovery_pct": -8.48,
+      "max_recovery": -0.001387,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5258k",
+      "target_type": "CTCF",
+      "target_position": 5257994,
+      "mean_recovery": -0.001858,
+      "mean_recovery_pct": -8.9,
+      "max_recovery": -0.001436,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5228k_proximal",
+      "target_type": "CTCF",
+      "target_position": 5228000,
+      "mean_recovery": -0.003982,
+      "mean_recovery_pct": -20.22,
+      "max_recovery": -0.002128,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5232k",
+      "target_type": "CTCF",
+      "target_position": 5232000,
+      "mean_recovery": -0.004787,
+      "mean_recovery_pct": -21.92,
+      "max_recovery": -0.004497,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5248k_HS3",
+      "target_type": "CTCF",
+      "target_position": 5248029,
+      "mean_recovery": -0.005761,
+      "mean_recovery_pct": -26.48,
+      "max_recovery": -0.005354,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    }
+  ],
+  "all_targets_ranked": [
+    {
+      "target_element": "CTCF_5212k",
+      "target_type": "CTCF",
+      "target_position": 5212000,
+      "mean_recovery": -0.000225,
+      "mean_recovery_pct": -1.07,
+      "max_recovery": -0.000182,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5303k_boundary",
+      "target_type": "CTCF",
+      "target_position": 5302700,
+      "mean_recovery": -0.000235,
+      "mean_recovery_pct": -1.14,
+      "max_recovery": -0.000167,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5291k",
+      "target_type": "CTCF",
+      "target_position": 5291200,
+      "mean_recovery": -0.000484,
+      "mean_recovery_pct": -2.55,
+      "max_recovery": -0.000185,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5218k",
+      "target_type": "CTCF",
+      "target_position": 5218000,
+      "mean_recovery": -0.000834,
+      "mean_recovery_pct": -3.93,
+      "max_recovery": -0.000698,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5236k",
+      "target_type": "CTCF",
+      "target_position": 5236000,
+      "mean_recovery": -0.001057,
+      "mean_recovery_pct": -5.01,
+      "max_recovery": -0.000854,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5224k",
+      "target_type": "CTCF",
+      "target_position": 5224000,
+      "mean_recovery": -0.001771,
+      "mean_recovery_pct": -8.48,
+      "max_recovery": -0.001387,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5258k",
+      "target_type": "CTCF",
+      "target_position": 5257994,
+      "mean_recovery": -0.001858,
+      "mean_recovery_pct": -8.9,
+      "max_recovery": -0.001436,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5228k_proximal",
+      "target_type": "CTCF",
+      "target_position": 5228000,
+      "mean_recovery": -0.003982,
+      "mean_recovery_pct": -20.22,
+      "max_recovery": -0.002128,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5232k",
+      "target_type": "CTCF",
+      "target_position": 5232000,
+      "mean_recovery": -0.004787,
+      "mean_recovery_pct": -21.92,
+      "max_recovery": -0.004497,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "CTCF_5248k_HS3",
+      "target_type": "CTCF",
+      "target_position": 5248029,
+      "mean_recovery": -0.005761,
+      "mean_recovery_pct": -26.48,
+      "max_recovery": -0.005354,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "downstream_enhancer",
+      "target_type": "Enhancer",
+      "target_position": 5220000,
+      "mean_recovery": -0.013789,
+      "mean_recovery_pct": -61.3,
+      "max_recovery": -0.01298,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "HS4_region",
+      "target_type": "Enhancer",
+      "target_position": 5255870,
+      "mean_recovery": -0.014129,
+      "mean_recovery_pct": -62.78,
+      "max_recovery": -0.013267,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "HS3_region",
+      "target_type": "Enhancer",
+      "target_position": 5248029,
+      "mean_recovery": -0.018823,
+      "mean_recovery_pct": -83.46,
+      "max_recovery": -0.017549,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "LCR_HS3_proximal",
+      "target_type": "Enhancer",
+      "target_position": 5233000,
+      "mean_recovery": -0.022484,
+      "mean_recovery_pct": -100.12,
+      "max_recovery": -0.021285,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "HS2_core",
+      "target_type": "Enhancer",
+      "target_position": 5246696,
+      "mean_recovery": -0.023028,
+      "mean_recovery_pct": -102.27,
+      "max_recovery": -0.021601,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "LCR_HS2_proximal",
+      "target_type": "Enhancer",
+      "target_position": 5230000,
+      "mean_recovery": -0.026974,
+      "mean_recovery_pct": -120.1,
+      "max_recovery": -0.025495,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "3prime_HS1",
+      "target_type": "Enhancer",
+      "target_position": 5225500,
+      "mean_recovery": -0.032118,
+      "mean_recovery_pct": -147.23,
+      "max_recovery": -0.028112,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    },
+    {
+      "target_element": "HBB_promoter_enh",
+      "target_type": "Enhancer",
+      "target_position": 5227000,
+      "mean_recovery": -0.043898,
+      "mean_recovery_pct": -207.51,
+      "max_recovery": -0.031932,
+      "n_compensatory": 0,
+      "compensatory_variants": []
+    }
+  ]
+}

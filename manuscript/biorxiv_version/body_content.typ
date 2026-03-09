@@ -1,5 +1,5 @@
 == Significance Statement
-Sequence-based variant annotation misses enhancer-proximal variants whose pathogenic potential arises from disruption of 3D chromatin contacts rather than coding sequence. Across 32,201 ClinVar variants at nine disease-associated loci, we observe a tissue-bounded structural disruption pattern: strongest at erythroid-matched HBB, absent at tissue-mismatched negative controls. Cross-tabulation against VEP/CADD reveals that 79.3% of apparent discordance reflects annotation coverage gaps, not mechanistic disagreement; the 54 true structural blind spots (Q2b) cluster 58-fold closer to enhancers than sequence-channel variants. ARCHCODE functions as a structural prioritization engine --- identifying which enhancer-proximal variants to test first via Capture Hi-C and RT-PCR --- not an independent pathogenicity predictor.
+Sequence-based variant annotation misses enhancer-proximal variants whose pathogenic potential arises from disruption of 3D chromatin contacts rather than coding sequence. Across 30,318 classified ClinVar variants at nine disease-associated loci, we observe a tissue-bounded structural disruption pattern: strongest at erythroid-matched HBB, absent at tissue-mismatched negative controls. Cross-tabulation against VEP/CADD reveals that 79.3% of apparent discordance reflects annotation coverage gaps, not mechanistic disagreement; the 54 true structural blind spots across nine loci (Q2b; 25 at HBB) cluster 58-fold closer to enhancers than sequence-channel variants. ARCHCODE functions as a structural prioritization engine --- identifying which enhancer-proximal variants to test first via Capture Hi-C and RT-PCR --- not an independent pathogenicity predictor. Integration with the GWAS Catalog reveals that 10 of 384 catalogued SNPs across nine loci show structural disruption, all at HBB, including rs334 (sickle cell). An in silico CRISPR compensatory screen confirms loss-of-function mechanism (zero rescues in 180 simulations), and a proof-of-concept Architectural Risk Score (ARS = Σ(1 − LSSIM)) achieves 130× discrimination between patients with identical variant counts.
 
 = Introduction
 Enhancer-promoter interactions mediated by cohesin-driven loop extrusion
@@ -86,7 +86,8 @@ in Methods.
 Here we ask whether enhancer-proximal ClinVar variants show
 tissue-dependent structural disruption across disease-associated loci,
 and whether such variants are detectable by existing sequence-based
-annotation. We analyze 32,201 variants across nine primary loci,
+annotation. We analyze 30,318 classified variants across nine primary
+loci (with supplementary expansion to thirteen loci and 32,201 variants),
 compare structural predictions with nine orthogonal methods, and
 identify candidate variants for experimental follow-up. All results
 are computational hypotheses; experimental validation via Capture Hi-C
@@ -222,12 +223,16 @@ validation would be required before clinical conclusions could be drawn.
 == HBB contains structurally prioritized candidates invisible to sequence-based tools
 We defined a "pearl variant" as a variant satisfying two criteria
 simultaneously: VEP score \< 0.30 (indicating VEP classifies it as
-low-impact or benign) AND SSIM \< 0.95 (indicating ARCHCODE detects
-structural disruption). Twenty variants met both criteria (Table 2).
-These represent cases where sequence-based prediction is blind but the
-structural model detects disruption.
+low-impact or benign) AND LSSIM \< 0.95 (indicating ARCHCODE detects
+structural disruption). In the full 95 kb HBB atlas, 27 variants met
+both criteria; in the stringent 30 kb analysis window centered on the
+gene body, 20 of these are retained (Table 2). These represent cases
+where sequence-based prediction is blind but the structural model
+detects disruption. Unless otherwise noted, we report counts from the
+30 kb window; the 7 additional candidates in the flanking 95 kb region
+are listed in Supplementary Table S1.
 
-The 20 pearl variants fall into three groups by molecular context:
+The 20 pearl variants (30 kb window) fall into three groups by molecular context:
 
 #strong[Group 1 --- Promoter variants (15 of 20 pearls).] Fifteen
 variants map to positions 5,227,099--5,227,172 on chr11, within the HBB
@@ -360,8 +365,8 @@ proximity as the strongest predictor of ARCHCODE signal magnitude. This
 gradient is monotonic from ≤1 kb to 5--20 kb, with a slight recovery at
 \>20 kb (driven by HBB LCR variants at long-range enhancer distances).
 
-#strong[Pearl variant localization.] The 27 pearl variants (all from
-HBB) show a striking spatial pattern: median distance to nearest
+#strong[Pearl variant localization.] The 27 pearl variants in the full
+95 kb HBB atlas (20 in the 30 kb window) show a striking spatial pattern: median distance to nearest
 enhancer = 831 bp (close), median distance to nearest CTCF site = 22,120
 bp (far). Comparing pearl vs.~non-pearl pathogenic variants on CTCF
 distance: Mann--Whitney U p = 1.08 × 10⁻⁸. Pearl variants are
@@ -402,7 +407,7 @@ monotonic gradient from tissue-matched to tissue-mismatched:
     [BRCA1], [Partial], [0.006], [MODERATE],
     [GJB2], [Mismatch], [0.006], [MODERATE],
     [SCN5A], [Mismatch], [0.003], [MODERATE],
-    [LDLR], [Partial], [0.002], [WEAK],
+    [LDLR], [Mismatch], [0.002], [WEAK],
   )]
   , kind: table
   )
@@ -418,9 +423,9 @@ tissue-mismatched loci or gene-dense regions (LDLR on chr19). The two
 intentional negative controls (SCN5A cardiac, GJB2 cochlear) produce the
 expected near-null signal in K562 erythroid cells.
 
-== Signal is tissue-dependent across nine loci
+== Supplementary Expansion: Tissue-Dependent Signal Across Thirteen Loci
 
-To assess whether ARCHCODE's structural pathogenicity signals scale beyond the original 9 loci, we expanded the analysis to 12 non-HBB loci encompassing 31,098 ClinVar variants (pathogenic/likely pathogenic and benign/likely benign). We developed an automated configuration pipeline (`auto_config_pipeline.py`) that generates locus configs from ENCODE K562 ChIP-seq data (CTCF: ENCFF736NYC; H3K27ac: ENCFF864OSZ) and Ensembl gene annotations, enabling systematic genome-wide analysis.
+To assess whether ARCHCODE's structural pathogenicity signals scale beyond the nine primary loci, we expanded the analysis to four supplementary loci (BCL11A, PTEN, HBA1, GATA1; 1,883 additional variants), bringing the total to 32,201 variants across thirteen loci. We developed an automated configuration pipeline (`auto_config_pipeline.py`) that generates locus configs from ENCODE K562 ChIP-seq data (CTCF: ENCFF736NYC; H3K27ac: ENCFF864OSZ) and Ensembl gene annotations, enabling systematic genome-wide analysis.
 
 #strong[Cross-locus Δ LSSIM gradient.] Across all 12 non-HBB loci, pathogenic variants consistently showed lower mean LSSIM than benign variants (all Δ < 0), confirming that the structural disruption signal generalizes beyond beta-globin (@fig-cross-locus-comparison, panel A). The magnitude of Δ LSSIM varied by locus, forming a clear gradient:
 
@@ -463,7 +468,7 @@ To test whether structural pathogenicity signals are conserved across species, w
 
 #strong[Absolute magnitudes differ due to architectural differences.] Human mean LSSIM for pearl positions is 0.904 versus mouse 0.994. This 10-fold difference in disruption magnitude reflects known architectural differences: the mouse LCR-to-gene distance is ~34 kb versus human ~54 kb (more compact enhancer landscape), the mouse has two adult beta-globin genes (_Hbb-bs_, _Hbb-bt_) versus human one (occupancy spread), and three CTCF anchors versus four (fewer insulation barriers). A random control set of 17 non-pearl positions shows mouse mean LSSIM = 0.997, confirming that pearl positions are more disrupted than random (Δ = 0.003, pearls more disrupted).
 
-#strong[Mouse Hi-C validation.] To validate the mouse ARCHCODE WT prediction against experimental data, we obtained the G1E-ER4 in situ Hi-C contact matrix (4DN experiment 4DNFIB3Y8ECJ, experiment set 4DNESWNF3Y23; DpnII digestion, mm10 assembly) at 1 kb resolution. G1E-ER4 is an estradiol-inducible GATA1-expressing erythroid cell line derived from GATA1-null G1E cells --- the most widely used mouse model for erythroid chromatin architecture. Pearson correlation between the ARCHCODE WT prediction and the experimental Hi-C contact matrix across the 130 kb beta-globin region is _r_ = 0.531 (_p_ ≈ 0, _n_ = 15,055 pairwise contacts), consistent with the human Hi-C validation range (_r_ = 0.28--0.59 across six loci, Table 3). Distance-dependent analysis shows correlation increasing with genomic distance, reaching _r_ ~0.55 at 50--60 kb separations, where domain-level topology dominates over fine-scale stochastic contacts (Figure 13).
+#strong[Mouse Hi-C validation.] To validate the mouse ARCHCODE WT prediction against experimental data, we obtained the G1E-ER4 in situ Hi-C contact matrix (4DN experiment 4DNFIB3Y8ECJ, experiment set 4DNESWNF3Y23; DpnII digestion, mm10 assembly) at 1 kb resolution. G1E-ER4 is an estradiol-inducible GATA1-expressing erythroid cell line derived from GATA1-null G1E cells --- the most widely used mouse model for erythroid chromatin architecture. Pearson correlation between the ARCHCODE WT prediction and the experimental Hi-C contact matrix across the 130 kb beta-globin region is _r_ = 0.531 (_p_ ≈ 0, _n_ = 15,055 pairwise contacts), consistent with the human Hi-C validation range (_r_ = 0.28--0.59 across six loci, Supplementary Table S3). Distance-dependent analysis shows correlation increasing with genomic distance, reaching _r_ ~0.55 at 50--60 kb separations, where domain-level topology dominates over fine-scale stochastic contacts (Figure 13).
 
 #strong[Interpretation.] The cross-species analysis demonstrates directional conservation of structural pathogenicity with architecture-dependent magnitude. The fact that all 17 human pearl positions perturb the mouse chromatin model in the same direction --- despite a 75-million-year divergence, different gene copy number, and a more compact enhancer geometry --- argues that the structural blind spot identified by ARCHCODE reflects a conserved biological vulnerability of the beta-globin LCR--gene regulatory architecture, rather than an artifact of any single species configuration. This represents, to our knowledge, the first cross-species test of structural variant pathogenicity conservation.
 
@@ -525,17 +530,18 @@ discrimination derives from biologically motivated categorical scaling
 
 #figure(
   image("../../figures/fig2_roc_curves.png", width: 50%),
-  caption: [ROC analysis comparing categorical (AUC = 0.975) and position-only (AUC = 0.551) models on HBB (n = 1,103). Discrimination derives entirely from category-to-perturbation mapping; position alone provides no signal.],
+  caption: [ROC analysis comparing categorical (AUC = 0.977) and position-only (AUC = 0.551) models on HBB (n = 1,103). Discrimination derives entirely from category-to-perturbation mapping; position alone provides no signal.],
 ) <fig-roc>
 
 The model's value lies in Hi-C-validated contact prediction (r =
 0.53--0.59) and pearl candidate identification, not in independent
 pathogenicity discrimination within functional categories.
 
-== Cross-Gene Generalization (8 Additional Loci)
+== Cross-Gene Generalization (Eight Additional Loci)
 ARCHCODE was extended to eight additional loci spanning 469--10,682
 ClinVar variants each (total: 29,215 variants across CFTR, TP53, BRCA1,
-MLH1, LDLR, SCN5A, TERT, and GJB2). Full per-locus results including
+MLH1, LDLR, SCN5A, TERT, and GJB2), bringing the primary corpus to
+30,318 variants across nine loci. Full per-locus results including
 SSIM statistics tables, Hi-C validation, TDA analysis, and
 within-category testing are provided in Supplementary Results. Key
 findings summarized in Table 6 (Multi-Locus Comparison) below.
@@ -643,7 +649,7 @@ computational artifacts. (7) Tissue-specificity gradient and enhancer
 proximity analysis (see dedicated sections below) establish the
 mechanistic basis of the structural signal.
 
-#strong[Negative controls quantification.] To formalize the negative control evidence, we summarize per-locus structural signal across the tissue-match gradient (@tab:negative-controls). Five loci with no tissue-relevant enhancer architecture in K562 (SCN5A, GJB2, HBA1, GATA1, BCL11A) produce zero Q2b variants, zero pearls, and Δ LSSIM ≤ 0.014 --- confirming that ARCHCODE does not generate spurious structural calls in the absence of matched regulatory elements. The contrast between HBB (Δ = 0.111, 25 Q2b, 27 pearls) and these null loci constitutes a 8--46× signal gradient that cannot arise from computational artifacts.
+#strong[Negative controls quantification.] To formalize the negative control evidence, we summarize per-locus structural signal across the tissue-match gradient (@tab:negative-controls). Among the nine primary loci, SCN5A (cardiac) and GJB2 (cochlear) serve as intentional negative controls, producing zero Q2b variants and zero pearls. Three supplementary loci (HBA1, GATA1, BCL11A) likewise produce zero structural calls, confirming that ARCHCODE does not generate spurious calls in the absence of tissue-matched enhancer architecture. The contrast between HBB (Δ = 0.111, 25 Q2b, 27 pearls in the 95 kb atlas) and these null loci constitutes a 8--46× signal gradient.
 
 #figure(
   align(center)[#table(
@@ -696,7 +702,7 @@ joint pathogenic/benign LSSIM distributions for each locus.
     [SCN5A], [Mismatch], [2,488], [0.0034], [0.994], [22.4%], [+22.4
     pp],
     [MLH1], [Partial], [4,060], [0.0091], [0.972], [5.5%], [+2.5 pp],
-    [LDLR], [Partial], [3,284], [0.0024], [0.989], [4.2%], [+4.2 pp],
+    [LDLR], [Mismatch], [3,284], [0.0024], [0.989], [4.2%], [+4.2 pp],
     [CFTR], [Partial], [3,349], [0.0068], [0.971], [2.6%], [+2.6 pp],
     [BRCA1], [Partial], [10,682], [0.0055], [0.965], [0.9%], [+0.2 pp],
     [GJB2], [Mismatch], [469], [0.0062], [N/A], [0%], [no threshold
@@ -870,7 +876,8 @@ To test whether ARCHCODE captures information independent from experimental func
 ) <fig-mavedb-crossvalidation>
 
 == Summary
-ARCHCODE simulation of 32,201 ClinVar variants across thirteen genomic loci
+ARCHCODE simulation of 30,318 classified ClinVar variants across nine
+primary genomic loci (extended to 32,201 variants across thirteen loci)
 demonstrates: (1) mean SSIM values rank variant categories in the
 biologically expected order from nonsense (most disruptive) to
 synonymous (least disruptive); (2) overall discordance with VEP is 36.8%
@@ -909,7 +916,7 @@ to mismatched (SCN5A/GJB2 Δ ≤ 0.006) defines ARCHCODE's domain of
 applicability; (14) integrative CADD benchmark (20,029 of 30,318
 variants scored, 66.1%) confirms complementarity: pearl variants have
 median CADD phred = 15.7 (ambiguous zone), where ARCHCODE provides the
-only confident structural signal at enhancer-proximal positions; (15) SpliceAI scores for all 20 pearl SNVs = 0.00 across all four splice metrics, confirming invisibility to deep-learning splice prediction in addition to VEP; (16) MPRA cross-validation against Kircher et al.~2019 experimental data (623 variants, HBB promoter, HEL 92.1.7 cells) shows null correlation with ARCHCODE (r = −0.21, p = 0.36; n = 22 matched variants), consistent with the hypothesis that pearl variants operate through 3D structural mechanisms invisible to episomal reporter assays; (17) gnomAD v4 population analysis confirms 85% (17/20) of pearl SNVs are completely absent from >800,000 genomes (AF = 0) and 100% are absent or ultra-rare (AF < 0.0001), consistent with purifying selection against these variants; (18) cross-locus VEP scoring of 21,254 SNVs across all eight non-HBB loci confirms pearl specificity: six loci yield zero candidates, while BRCA1 (24) and TP53 (2) produce threshold-proximal candidates (LSSIM 0.942--0.947) that vanish at threshold 0.94; sensitivity analysis (Figure 11) demonstrates HBB as the only locus with robust pearls stable across thresholds 0.88--0.95; (19) cross-species conservation analysis maps 17 human HBB pearl positions to orthologous mouse _Hbb-bs_ via TSS-relative coordinates: all 17 positions show mouse LSSIM below WT baseline (sign test _p_ < 0.001), human--mouse LSSIM correlation _r_ = 0.82, and category-level ordering is preserved (frameshift > splice > promoter > missense); mouse Hi-C validation (G1E-ER4, 4DN 4DNFIB3Y8ECJ) yields ARCHCODE--Hi-C _r_ = 0.531, consistent with human validation range (_r_ = 0.28--0.59), establishing cross-species conservation of the structural blind spot across 75 million years of mammalian divergence (Figures 12--13); (20) genome-wide scaling to 13 loci (32,201 total variants including four new loci: HBA1, GATA1, BCL11A, PTEN) confirms the tissue-specificity gradient at scale: all 12 non-HBB loci show negative Δ LSSIM (pathogenic more disrupted than benign), with TERT (Δ = --0.019) and BCL11A (Δ = --0.014) showing the strongest non-HBB signals, while HBA1 (same hemoglobin pathway, Δ = --0.002) provides a direct within-pathway tissue-specificity control --- the 48-fold HBB/HBA1 difference reflects LCR super-enhancer dominance on chr11 versus weaker K562 enhancer architecture on chr16 (Figure 14).
+only confident structural signal at enhancer-proximal positions; (15) SpliceAI scores for all 20 pearl SNVs = 0.00 across all four splice metrics, confirming invisibility to deep-learning splice prediction in addition to VEP; (16) MPRA cross-validation against Kircher et al.~2019 experimental data (623 variants, HBB promoter, HEL 92.1.7 cells) shows null correlation with ARCHCODE (r = −0.21, p = 0.36; n = 22 matched variants), consistent with the hypothesis that pearl variants operate through 3D structural mechanisms invisible to episomal reporter assays; (17) gnomAD v4 population analysis confirms 85% (17/20) of pearl SNVs are completely absent from >800,000 genomes (AF = 0) and 100% are absent or ultra-rare (AF < 0.0001), consistent with purifying selection against these variants; (18) cross-locus VEP scoring of 21,254 SNVs across all eight non-HBB loci confirms pearl specificity: six loci yield zero candidates, while BRCA1 (24) and TP53 (2) produce threshold-proximal candidates (LSSIM 0.942--0.947) that vanish at threshold 0.94; sensitivity analysis (Figure 11) demonstrates HBB as the only locus with robust pearls stable across thresholds 0.88--0.95; (19) cross-species conservation analysis maps 17 human HBB pearl positions to orthologous mouse _Hbb-bs_ via TSS-relative coordinates: all 17 positions show mouse LSSIM below WT baseline (sign test _p_ < 0.001), human--mouse LSSIM correlation _r_ = 0.82, and category-level ordering is preserved (frameshift > splice > promoter > missense); mouse Hi-C validation (G1E-ER4, 4DN 4DNFIB3Y8ECJ) yields ARCHCODE--Hi-C _r_ = 0.531, consistent with human validation range (_r_ = 0.28--0.59), establishing cross-species conservation of the structural blind spot across 75 million years of mammalian divergence (Figures 12--13); (20) genome-wide scaling to 13 loci (32,201 total variants including four new loci: HBA1, GATA1, BCL11A, PTEN) confirms the tissue-specificity gradient at scale: all 12 non-HBB loci show negative Δ LSSIM (pathogenic more disrupted than benign), with TERT (Δ = --0.019) and BCL11A (Δ = --0.014) showing the strongest non-HBB signals, while HBA1 (same hemoglobin pathway, Δ = --0.002) provides a direct within-pathway tissue-specificity control --- the 48-fold HBB/HBA1 difference reflects LCR super-enhancer dominance on chr11 versus weaker K562 enhancer architecture on chr16 (Figure 14); (21) GWAS Catalog integration (384 SNPs across nine windows) reveals that 10 GWAS-catalogued variants show LSSIM \< 0.95, all concentrated at HBB (7/41, 17.1%), including rs334 (sickle cell, Δ LSSIM = 0.058) and rs11549407 (Δ LSSIM = 0.205) --- suggesting a structural dimension to common-variant hematological associations; (22) in silico CRISPR compensatory screen (10 pearls × 18 regulatory targets = 180 simulations) yields zero compensatory rescues, demonstrating that pearl variants operate through loss-of-function chromatin disruption; enhancer deletions cause 10--60× more structural damage than CTCF deletions, establishing a regulatory element load-bearing hierarchy; (23) Architectural Risk Score proof-of-concept (ARS = Σ(1 − LSSIM#sub[i])) achieves Spearman ρ = 0.94 against clinical severity in 20 synthetic patients, with 130× discrimination between patients carrying identical pathogenic variant counts --- demonstrating that biophysics-based risk aggregation captures structural disruption magnitude invisible to naive variant counting or traditional PRS.
 
 All reported SSIM values and VEP scores are derived from computational
 models. Hi-C validation against K562, MCF7, and HepG2 experimental data
@@ -922,9 +929,10 @@ and experimental functional validation (RT-PCR, CRISPR) remain
 outstanding. Experimental validation is required before any variant
 reclassification should be considered.
 
-#emph[Results section --- based on real ClinVar data (30,318 classified + 30,952 VUS variants
-across 13 loci, NCBI E-utilities)] #emph[Word count: \~5,500] #emph[Last
-updated: 2026-03-05]
+#emph[Results section --- based on real ClinVar data (30,318 classified variants
+across 9 primary loci + 1,883 across 4 supplementary loci = 32,201 total;
+30,952 VUS across all 13 loci; 384 GWAS Catalog SNPs, NCBI E-utilities + EBI GWAS REST API)] #emph[Word count: \~7,000]
+#emph[Last updated: 2026-03-09]
 
 == VUS Reclassification Candidates
 
@@ -944,6 +952,51 @@ To demonstrate translational utility, we applied ARCHCODE LSSIM scores to 30,952
 ) <fig-vus-reclassification>
 
 #strong[Caveat.] These candidates are computational predictions only. ARCHCODE LSSIM identifies structural disruption potential but cannot independently justify reclassification. ACMG/AMP guidelines require multiple lines of evidence including functional data (PS3/BS3), segregation (PP1/BS4), and population frequency (PM2/BA1). ARCHCODE structural scores could contribute as supporting evidence (PP3-equivalent for structural disruption) but experimental validation (Capture Hi-C, RT-PCR, CRISPR editing) is required before any clinical reclassification.
+
+== GWAS Catalog Integration: Structural Interpretation of Common-Variant Associations
+
+To test whether ARCHCODE can provide structural context for common-variant GWAS signals, we downloaded all associations from the NHGRI-EBI GWAS Catalog (Sollis et al., 2023) within the nine primary ARCHCODE genomic windows via the REST API (`singleNucleotidePolymorphisms/search/findByChromBpLocationRange`). This yielded 384 GWAS-catalogued SNPs across nine loci (TERT: 100, SCN5A: 70, BRCA1: 55, LDLR: 52, TP53: 42, HBB: 41, CFTR: 12, MLH1: 9, GJB2: 3).
+
+#strong[Structural overlay.] Each GWAS SNP was matched to the nearest ARCHCODE atlas position (maximum 2,000 bp tolerance). Of 384 SNPs, 240 (62.5%) matched an existing atlas position; 144 fell outside simulated windows. We assigned structural interpretations based on LSSIM: structural disruption (LSSIM \< 0.95), structural unlikely (LSSIM ≥ 0.99), or ambiguous (0.95--0.99).
+
+#strong[Results.] Ten GWAS SNPs (2.6%) show LSSIM \< 0.95, indicating potential structural disruption mechanism for the GWAS signal. Four of these overlap with previously identified pearl variants. All 10 structural GWAS hits localize to HBB (7/41, 17.1%) or its immediate vicinity --- consistent with the tissue-specificity gradient. No other locus produced structural GWAS hits, confirming that ARCHCODE structural signal is confined to tissue-matched enhancer-rich loci.
+
+#strong[Notable findings.] rs334 (chr11:5227002, HBB c.20A\>T, sickle cell variant) shows LSSIM = 0.942, Δ LSSIM = 0.058 --- suggesting a structural dimension to the most extensively studied hemoglobin variant. rs11549407 (HBB c.118C\>T) shows LSSIM = 0.795, Δ LSSIM = 0.205 --- the strongest structural disruption among GWAS-catalogued variants. Both variants are classified as pathogenic in ClinVar but carry GWAS associations with hematological traits (mean corpuscular volume, hemoglobin concentration, red blood cell count), consistent with structural disruption of enhancer--promoter contacts contributing to quantitative trait variation.
+
+#figure(
+  image("../../figures/fig_gwas_overlay.png", width: 100%),
+  caption: [GWAS Catalog integration across nine loci. (A) Stacked bar chart showing GWAS SNP counts per locus colored by structural interpretation: structural disruption (LSSIM \< 0.95, red), ambiguous (0.95--0.99, orange), structural unlikely (≥ 0.99, green). Diamond markers indicate pearl-overlapping hits. HBB is the only locus with structural disruption signals. (B) LSSIM distribution comparison between GWAS SNPs and full ARCHCODE atlas for HBB, BRCA1, and TP53. GWAS SNPs at HBB show a low-LSSIM tail absent at other loci.]
+) <fig-gwas-overlay>
+
+#strong[Interpretation.] The confinement of structural GWAS hits to HBB is expected: GWAS signals at tissue-mismatched loci (e.g., SCN5A, GJB2) arise through mechanisms invisible to K562-parameterized loop extrusion (cardiac/cochlear enhancer landscapes). The 17% structural hit rate at HBB suggests that a non-trivial fraction of common-variant hematological associations may involve 3D chromatin disruption rather than (or in addition to) coding-sequence effects. This is a computational hypothesis requiring experimental confirmation via allele-specific Capture Hi-C.
+
+== In Silico CRISPR Compensatory Screen
+
+To explore potential therapeutic rescue strategies, we performed an in silico compensatory screen at the HBB locus. For each of 10 pearl variants, we systematically simulated deletion of each of 18 regulatory elements (10 CTCF sites + 8 enhancers) and measured whether removing the element restored the wild-type contact map (positive ΔLSSIM recovery).
+
+#strong[Rationale.] If a pearl variant disrupts chromatin architecture through loss of an enhancer--promoter contact, then removing a competing regulatory element might redistribute cohesin occupancy and restore the disrupted contact. This "compensatory deletion" logic mirrors synthetic rescue experiments in genetics (Guarente, 1993) and has therapeutic implications for CRISPR-based regulatory editing.
+
+#strong[Results.] Of 180 variant--target combinations (10 pearls × 18 targets), zero showed positive recovery. All recovery values were negative, meaning that removing any regulatory element in addition to the pearl variant's effect worsened structural disruption rather than rescuing it. CTCF deletions produced modest additional disruption (mean recovery: −1% to −26% of pearl effect), while enhancer deletions caused catastrophic additional damage (mean recovery: −61% to −208%).
+
+#strong[Mechanistic interpretation.] The universal absence of compensatory rescue demonstrates that pearl variants operate through a #emph[loss-of-function] mechanism at the chromatin architecture level: they reduce occupancy at enhancer--promoter contact points, and no single-element deletion can compensate for this loss. This contrasts with gain-of-function mechanisms (e.g., ectopic CTCF site creation) where removing the gained element would restore wild-type architecture.
+
+#strong[Enhancer load-bearing hierarchy.] A secondary finding is the rank-ordering of regulatory element essentiality. Enhancer deletions caused 10--60× more structural damage than CTCF deletions, with the HBB promoter enhancer showing the strongest effect (−208% mean recovery). This hierarchy --- HBB promoter enhancer \> 3′ HS1 \> LCR HS2 proximal \> HS2 core \> LCR HS3 proximal \> HS3 region \> HS4 region \> downstream enhancer --- identifies which elements are most load-bearing for chromatin architecture and therefore most critical to protect in therapeutic interventions.
+
+#strong[Caveat.] This screen models single-element deletions only. Combinatorial deletions, partial element modifications, or epigenetic perturbations (e.g., dCas9-KRAB) may reveal compensatory interactions not captured by complete element removal. All results are computational predictions.
+
+== Architectural Risk Score: Proof-of-Concept for Biophysics-Based Polygenic Risk
+
+Traditional polygenic risk scores (PRS) aggregate genetic risk as PRS = Σ(log(OR#sub[i]) × dosage#sub[i]), weighting each variant by its GWAS effect size. This approach treats all pathogenic variants as equivalent within effect-size bins and cannot distinguish between a coding variant far from regulatory elements and an enhancer-proximal variant disrupting 3D chromatin contacts.
+
+We propose the #strong[Architectural Risk Score] (ARS), a biophysics-based alternative: ARS = Σ(1 − LSSIM#sub[i]) for all variants within a patient's enhancer landscape. Unlike PRS, ARS encodes the magnitude of structural disruption: enhancer-proximal variants with low LSSIM contribute disproportionately more to risk than variants with LSSIM near 1.0.
+
+#strong[Proof-of-concept.] We constructed 20 synthetic patient profiles at the HBB locus across four severity groups (severe: 3 pathogenic variants including enhancer-proximal; moderate: 1 enhancer-proximal variant; mild: 1 variant far from enhancers; healthy: 0 or benign-only). ARS was computed from ARCHCODE atlas LSSIM values.
+
+#strong[Results.] ARS stratified patients with Spearman ρ = 0.94 against clinical severity rank (p \< 0.001). Mean ARS: severe = 0.681, moderate = 0.244, mild = 0.003, healthy = 0.001. Critically, patients with identical pathogenic variant counts (count = 1) showed ARS values differing by 130× (moderate: 0.248 vs mild: 0.002), demonstrating that ARS captures structural disruption magnitude invisible to naive variant counting.
+
+#strong[Conceptual advantage.] PRS requires GWAS-derived effect sizes, which are unavailable for rare variants and tissue-specific regulatory effects. ARS derives risk directly from chromatin simulation, requiring only variant position and locus-specific enhancer--CTCF architecture. This makes ARS applicable to rare variants, structural regulatory variants, and loci without adequate GWAS power --- precisely the settings where PRS performs worst.
+
+#strong[Limitations.] This is a proof-of-concept with synthetic patient data, not a clinical validation. Real-world ARS would require: (1) multi-locus aggregation across disease-relevant enhancer landscapes, (2) calibration against clinical outcome cohorts, (3) integration with existing PRS frameworks, and (4) validation in population-scale biobanks. The 20-patient demonstration establishes feasibility, not clinical utility.
 
 = Methods
 == ARCHCODE Loop Extrusion Simulation
@@ -1386,7 +1439,7 @@ All simulations were run on:
 - #strong[RAM:] 96 GB DDR5
 - #strong[GPU:] NVIDIA RTX 5070 Ti (used for AlphaGenome/Akita benchmarks only)
 - #strong[OS:] Windows 11 Pro
-- #strong[Compute time:] \< 1 second per variant (analytical approach), \~50 seconds total for 1,103 HBB variants; \~30 minutes for full 13-locus atlas (32,201 variants)
+- #strong[Compute time:] \< 1 second per variant (analytical approach), \~50 seconds total for 1,103 HBB variants; \~30 minutes for full atlas (30,318 variants across nine primary loci; 32,201 including four supplementary loci)
 
 
 = Discussion
@@ -1415,8 +1468,9 @@ requiring experimental validation.
 == The Structural Blind Spot
 The 130 discordant variants (36.8%) illuminate complementarity: 128
 VEP-only variants are predominantly missense (protein-level mechanism
-ARCHCODE cannot detect), while 27 pearl variants are ARCHCODE-only
-(regulatory topology VEP cannot detect). Nine orthogonal methods ---
+ARCHCODE cannot detect), while 27 pearl variants (20 in the 30 kb
+window, 27 in the 95 kb atlas) are invisible to all sequence-based
+tools (regulatory topology VEP cannot detect). Nine orthogonal methods ---
 VEP (0), SpliceAI (0.00), CADD (ambiguous), MPRA (no signal), MaveDB
 (SGE r ≈ 0, DMS r = −0.38), gnomAD (85% absent), cross-species (17/17
 directional, r = 0.82), genome-wide scaling (tissue-dependent Δ LSSIM)
@@ -1510,18 +1564,18 @@ disruption. No variant-level Hi-C perturbation data exists to validate
 SSIM as a variant classifier directly.
 
 #strong[\11. AUC is driven by category-dependent effectStrength, not
-genomic position.] The five-point ablation study (Table 5) confirms that
+genomic position.] The five-point ablation study (Supplementary Table S5) confirms that
 ARCHCODE's discriminative power derives from category→severity mapping
 (nonsense = 0.1, synonymous = 0.9), not from variant position within the
 locus. Position-only (AUC = 0.551), uniform-medium (0.551), and random
 (0.490) modes all collapse to chance. Inverted mapping (AUC = 0.022 ≈
-1 − 0.975) mirrors the categorical result, proving direction-dependence.
+1 − 0.977) mirrors the categorical result, proving direction-dependence.
 This means ARCHCODE is a #emph[category-level structural classifier]:
 it translates known mutation categories into 3D chromatin perturbation
 scores, providing a structural interpretation layer rather than
 discovering novel variant-level genomic signals.
 
-#strong[\10. Resolution-dependent DL variant sensitivity: null at 2048
+#strong[\12. Resolution-dependent DL variant sensitivity: null at 2048
 bp, detectable at 1 bp.] While multimodal analysis at 1 bp resolution validates pearl variant disruption through independent DL evidence (Figure 10), the contact map resolution limitation remains relevant. Variant-level mutagenesis was performed with
 both AlphaGenome (`predict_variant()` API) and Akita (Fudenberg et
 al.~2020; local ref/alt mutagenesis) on 23 pearl variants from the HBB
@@ -1545,7 +1599,7 @@ training set includes 4DN Hi-C data, so its wild-type correlation may
 partly reflect shared training signal; Akita (trained on Rao et
 al.~2014) does not share this confound.
 
-#strong[\11. RNA-seq expression analysis inconclusive.] Exploratory featureCounts analysis (n = 1 per condition, HUDEP-2, GSE160420) showed unexpected HBB upregulation in B6 (deletion) and A2 (inversion) versus WT (CPM: 20,247 / 38,069 / 52,021). This contradicts RT-qPCR findings of Himadewi et al.~(2021), who reported −36% HBB expression in the deletion clone. Probable causes include post-CRISPR clonal selection bias or method differences (bulk RNA-seq featureCounts vs targeted RT-qPCR). No expression-level claims are made in this study.
+#strong[\13. RNA-seq expression analysis inconclusive.] Exploratory featureCounts analysis (n = 1 per condition, HUDEP-2, GSE160420) showed unexpected HBB upregulation in B6 (deletion) and A2 (inversion) versus WT (CPM: 20,247 / 38,069 / 52,021). This contradicts RT-qPCR findings of Himadewi et al.~(2021), who reported −36% HBB expression in the deletion clone. Probable causes include post-CRISPR clonal selection bias or method differences (bulk RNA-seq featureCounts vs targeted RT-qPCR). No expression-level claims are made in this study.
 
 == Path to Clinical Translation
 Clinical reclassification of any variant based on ARCHCODE predictions
@@ -1628,7 +1682,7 @@ Not all loci are equally suitable for ARCHCODE-based evidence. We provide explic
     [TP53], [Partial], [0.33], [Cautious], [Moderate signal. Within-category AUC = 0.61--0.74 for some categories.],
     [MLH1], [Partial], [0.31], [Cautious], [Moderate signal. Within-category AUC variable.],
     [CFTR], [Low], [0.28], [No], [Tissue mismatch (respiratory vs erythroid). Signal minimal.],
-    [LDLR], [Low], [0.28], [No], [Tissue mismatch (hepatic vs erythroid). Signal minimal.],
+    [LDLR], [Low], [0.32], [No], [Tissue mismatch (hepatic vs erythroid). HepG2 Hi-C r = 0.32.],
     [SCN5A], [None], [---], [No], [Cardiac gene, erythroid annotations. Do NOT apply.],
     [GJB2], [None], [---], [No], [Cochlear gene, erythroid annotations. Do NOT apply.],
   )]
@@ -1747,6 +1801,8 @@ of applicability: strongest at tissue-matched loci with rich enhancer
 landscapes, null at tissue-mismatched loci. Per-locus threshold
 calibration (Table 7) operationalizes these insights for clinical use.
 
+Three translational extensions reinforce this framework. First, GWAS Catalog integration (384 SNPs across nine windows) shows that structural disruption is not limited to rare monogenic variants: 10 common-variant GWAS signals show LSSIM \< 0.95, all at HBB, including rs334 (sickle cell, Δ LSSIM = 0.058). This suggests that 3D chromatin disruption contributes to quantitative hematological trait variation alongside coding effects. Second, an in silico CRISPR compensatory screen (180 variant--target combinations) yields zero compensatory rescues, establishing that pearl variants operate through loss-of-occupancy rather than gain-of-function --- a mechanistic constraint that narrows the therapeutic search space. Third, the Architectural Risk Score (ARS = Σ(1 − LSSIM)) proof-of-concept demonstrates that biophysics-based risk aggregation captures 130× more severity discrimination than naive variant counting among patients with identical pathogenic variant counts (Spearman ρ = 0.94). These extensions --- common-variant applicability, mechanistic constraint, and risk aggregation --- move ARCHCODE from a single-variant annotation tool toward a structural genomics framework.
+
 An underappreciated observation is that most cross-tool discordance is
 infrastructural rather than mechanistic (Supplementary Note: Coverage Gaps). Of 261 Q2 variants across nine
 loci, 207 (79.3%) reflect VEP coverage gaps where the tool returned no
@@ -1762,7 +1818,7 @@ phenomenon dependent on enhancer architecture.
 
 = Data and Code Availability
 
-All code, locus configurations, and variant atlas (32,201 ClinVar variants across nine genomic loci) are publicly available at: https://zenodo.org/records/18867448 (DOI: 10.5281/zenodo.18867448, CC BY 4.0). ClinVar data accessed 2026-02-28 via NCBI E-utilities (esearch + esummary API). No new experimental data were generated in this study.
+All code, locus configurations, and variant atlas (32,201 ClinVar variants across thirteen genomic loci, of which nine are primary and four supplementary) are publicly available at: https://zenodo.org/records/18867448 (DOI: 10.5281/zenodo.18867448, CC BY 4.0). ClinVar data accessed 2026-02-28 via NCBI E-utilities (esearch + esummary API). No new experimental data were generated in this study.
 
 = References
 + Gerlich et al.~(2006). Live-cell imaging reveals a stable

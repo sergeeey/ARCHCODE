@@ -1,0 +1,87 @@
+{
+  "generated_at": "2026-03-09T11:43:30.612Z",
+  "total_patients": 20,
+  "groups": {
+    "severe": {
+      "n": 5,
+      "ars_mean": 0.6811,
+      "ars_min": 0.6244,
+      "ars_max": 0.7343,
+      "count_mean": 3
+    },
+    "moderate": {
+      "n": 5,
+      "ars_mean": 0.2444,
+      "ars_min": 0.2411,
+      "ars_max": 0.2479,
+      "count_mean": 1
+    },
+    "mild": {
+      "n": 5,
+      "ars_mean": 0.0033,
+      "ars_min": 0.0019,
+      "ars_max": 0.007,
+      "count_mean": 1
+    },
+    "healthy": {
+      "n": 5,
+      "ars_mean": 0.001,
+      "ars_min": 0,
+      "ars_max": 0.0017,
+      "count_mean": 0
+    }
+  },
+  "spearman_rho": 0.9429,
+  "spearman_p_approx": "p < 0.001 (estimated)",
+  "kruskal_wallis_note": "Formal KW test recommended in Python: scipy.stats.kruskal(*[group_ars for each severity])",
+  "key_demonstration": {
+    "description": "Patients with identical count-score (N pathogenic variants) but different ARS — demonstrating structural discrimination",
+    "examples": [
+      {
+        "patient_a": "M1",
+        "patient_b": "L1",
+        "same_count": 1,
+        "ars_a": 0.2479,
+        "ars_b": 0.0019,
+        "delta_ars": 0.246
+      },
+      {
+        "patient_a": "M1",
+        "patient_b": "L2",
+        "same_count": 1,
+        "ars_a": 0.2479,
+        "ars_b": 0.0019,
+        "delta_ars": 0.246
+      },
+      {
+        "patient_a": "M1",
+        "patient_b": "L3",
+        "same_count": 1,
+        "ars_a": 0.2479,
+        "ars_b": 0.002,
+        "delta_ars": 0.2459
+      },
+      {
+        "patient_a": "M1",
+        "patient_b": "L4",
+        "same_count": 1,
+        "ars_a": 0.2479,
+        "ars_b": 0.0036,
+        "delta_ars": 0.2443
+      },
+      {
+        "patient_a": "M2",
+        "patient_b": "L1",
+        "same_count": 1,
+        "ars_a": 0.2462,
+        "ars_b": 0.0019,
+        "delta_ars": 0.2443
+      }
+    ]
+  },
+  "ars_vs_prs_conceptual": {
+    "prs_formula": "PRS = Σ(log(OR_i) × dosage_i)",
+    "ars_formula": "ARS = Σ(1 - LSSIM_i) for all variants in enhancer landscape",
+    "advantage": "ARS encodes structural disruption magnitude: enhancer-proximal variants with low LSSIM contribute more to risk than coding variants far from regulatory elements — invisible to naive variant counting"
+  }
+}
