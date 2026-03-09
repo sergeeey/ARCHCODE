@@ -1,0 +1,181 @@
+Locus,Tissue,Tissue_Match,Enhancer_Boost,CTCF_Retention,Effective_CTCF_Blocking,SSIM_Variant,Delta_SSIM,Variant_Name
+HBB,K562 (erythroid),matched,1,1,0.85,0.9294,0.0706,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1,0.75,0.638,0.9285,0.0715,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1,0.5,0.425,0.9276,0.0724,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1,0.25,0.213,0.9265,0.0735,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.25,1,0.85,0.9308,0.0692,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.25,0.75,0.638,0.9301,0.0699,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.25,0.5,0.425,0.9295,0.0705,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.25,0.25,0.213,0.9287,0.0713,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.5,1,0.85,0.9224,0.0776,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.5,0.75,0.638,0.9218,0.0782,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.5,0.5,0.425,0.9212,0.0788,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.5,0.25,0.213,0.9207,0.0793,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.75,1,0.85,0.9229,0.0771,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.75,0.75,0.638,0.9223,0.0777,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.75,0.5,0.425,0.9218,0.0782,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,1.75,0.25,0.213,0.9213,0.0787,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,2,1,0.85,0.9275,0.0725,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,2,0.75,0.638,0.9269,0.0731,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,2,0.5,0.425,0.9263,0.0737,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,2,0.25,0.213,0.9258,0.0742,VCV002024192_splice_acceptor
+BRCA1,MCF7 (breast),partial,1,1,0.85,0.9969,0.0031,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1,0.75,0.638,0.9969,0.0031,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1,0.5,0.425,0.9968,0.0032,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1,0.25,0.213,0.9968,0.0032,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.25,1,0.85,0.9973,0.0027,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.25,0.75,0.638,0.9973,0.0027,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.25,0.5,0.425,0.9973,0.0027,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.25,0.25,0.213,0.9972,0.0028,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.5,1,0.85,0.9975,0.0025,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.5,0.75,0.638,0.9975,0.0025,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.5,0.5,0.425,0.9974,0.0026,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.5,0.25,0.213,0.9974,0.0026,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.75,1,0.85,0.9977,0.0023,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.75,0.75,0.638,0.9976,0.0024,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.75,0.5,0.425,0.9976,0.0024,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,1.75,0.25,0.213,0.9976,0.0024,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,2,1,0.85,0.9978,0.0022,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,2,0.75,0.638,0.9978,0.0022,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,2,0.5,0.425,0.9977,0.0023,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,2,0.25,0.213,0.9977,0.0023,nonsense_BRCA1
+TP53,K562,partial,1,1,0.85,0.9941,0.0059,R175H_hotspot
+TP53,K562,partial,1,0.75,0.638,0.9937,0.0063,R175H_hotspot
+TP53,K562,partial,1,0.5,0.425,0.9932,0.0068,R175H_hotspot
+TP53,K562,partial,1,0.25,0.213,0.9926,0.0074,R175H_hotspot
+TP53,K562,partial,1.25,1,0.85,0.9951,0.0049,R175H_hotspot
+TP53,K562,partial,1.25,0.75,0.638,0.9948,0.0052,R175H_hotspot
+TP53,K562,partial,1.25,0.5,0.425,0.9944,0.0056,R175H_hotspot
+TP53,K562,partial,1.25,0.25,0.213,0.9939,0.0061,R175H_hotspot
+TP53,K562,partial,1.5,1,0.85,0.9957,0.0043,R175H_hotspot
+TP53,K562,partial,1.5,0.75,0.638,0.9954,0.0046,R175H_hotspot
+TP53,K562,partial,1.5,0.5,0.425,0.995,0.005,R175H_hotspot
+TP53,K562,partial,1.5,0.25,0.213,0.9946,0.0054,R175H_hotspot
+TP53,K562,partial,1.75,1,0.85,0.9961,0.0039,R175H_hotspot
+TP53,K562,partial,1.75,0.75,0.638,0.9958,0.0042,R175H_hotspot
+TP53,K562,partial,1.75,0.5,0.425,0.9955,0.0045,R175H_hotspot
+TP53,K562,partial,1.75,0.25,0.213,0.995,0.005,R175H_hotspot
+TP53,K562,partial,2,1,0.85,0.9963,0.0037,R175H_hotspot
+TP53,K562,partial,2,0.75,0.638,0.996,0.004,R175H_hotspot
+TP53,K562,partial,2,0.5,0.425,0.9957,0.0043,R175H_hotspot
+TP53,K562,partial,2,0.25,0.213,0.9953,0.0047,R175H_hotspot
+TERT,K562,matched,1,1,0.85,0.9374,0.0626,C228T_promoter
+TERT,K562,matched,1,0.75,0.638,0.9363,0.0637,C228T_promoter
+TERT,K562,matched,1,0.5,0.425,0.9352,0.0648,C228T_promoter
+TERT,K562,matched,1,0.25,0.213,0.9341,0.0659,C228T_promoter
+TERT,K562,matched,1.25,1,0.85,0.9544,0.0456,C228T_promoter
+TERT,K562,matched,1.25,0.75,0.638,0.9537,0.0463,C228T_promoter
+TERT,K562,matched,1.25,0.5,0.425,0.9529,0.0471,C228T_promoter
+TERT,K562,matched,1.25,0.25,0.213,0.9522,0.0478,C228T_promoter
+TERT,K562,matched,1.5,1,0.85,0.9625,0.0375,C228T_promoter
+TERT,K562,matched,1.5,0.75,0.638,0.9621,0.0379,C228T_promoter
+TERT,K562,matched,1.5,0.5,0.425,0.9616,0.0384,C228T_promoter
+TERT,K562,matched,1.5,0.25,0.213,0.9611,0.0389,C228T_promoter
+TERT,K562,matched,1.75,1,0.85,0.9648,0.0352,C228T_promoter
+TERT,K562,matched,1.75,0.75,0.638,0.9646,0.0354,C228T_promoter
+TERT,K562,matched,1.75,0.5,0.425,0.9643,0.0357,C228T_promoter
+TERT,K562,matched,1.75,0.25,0.213,0.964,0.036,C228T_promoter
+TERT,K562,matched,2,1,0.85,0.962,0.038,C228T_promoter
+TERT,K562,matched,2,0.75,0.638,0.9618,0.0382,C228T_promoter
+TERT,K562,matched,2,0.5,0.425,0.9616,0.0384,C228T_promoter
+TERT,K562,matched,2,0.25,0.213,0.9614,0.0386,C228T_promoter
+MLH1,K562,partial,1,1,0.85,0.8847,0.1153,promoter_variant
+MLH1,K562,partial,1,0.75,0.638,0.8832,0.1168,promoter_variant
+MLH1,K562,partial,1,0.5,0.425,0.8818,0.1182,promoter_variant
+MLH1,K562,partial,1,0.25,0.213,0.8804,0.1196,promoter_variant
+MLH1,K562,partial,1.25,1,0.85,0.8981,0.1019,promoter_variant
+MLH1,K562,partial,1.25,0.75,0.638,0.8966,0.1034,promoter_variant
+MLH1,K562,partial,1.25,0.5,0.425,0.8952,0.1048,promoter_variant
+MLH1,K562,partial,1.25,0.25,0.213,0.8937,0.1063,promoter_variant
+MLH1,K562,partial,1.5,1,0.85,0.9228,0.0772,promoter_variant
+MLH1,K562,partial,1.5,0.75,0.638,0.9217,0.0783,promoter_variant
+MLH1,K562,partial,1.5,0.5,0.425,0.9206,0.0794,promoter_variant
+MLH1,K562,partial,1.5,0.25,0.213,0.9195,0.0805,promoter_variant
+MLH1,K562,partial,1.75,1,0.85,0.943,0.057,promoter_variant
+MLH1,K562,partial,1.75,0.75,0.638,0.9424,0.0576,promoter_variant
+MLH1,K562,partial,1.75,0.5,0.425,0.9418,0.0582,promoter_variant
+MLH1,K562,partial,1.75,0.25,0.213,0.9412,0.0588,promoter_variant
+MLH1,K562,partial,2,1,0.85,0.946,0.054,promoter_variant
+MLH1,K562,partial,2,0.75,0.638,0.9455,0.0545,promoter_variant
+MLH1,K562,partial,2,0.5,0.425,0.9451,0.0549,promoter_variant
+MLH1,K562,partial,2,0.25,0.213,0.9446,0.0554,promoter_variant
+CFTR,K562,mismatch,1,1,0.85,0.8739,0.1261,F508del_region
+CFTR,K562,mismatch,1,0.75,0.638,0.8705,0.1295,F508del_region
+CFTR,K562,mismatch,1,0.5,0.425,0.8671,0.1329,F508del_region
+CFTR,K562,mismatch,1,0.25,0.213,0.8634,0.1366,F508del_region
+CFTR,K562,mismatch,1.25,1,0.85,0.8803,0.1197,F508del_region
+CFTR,K562,mismatch,1.25,0.75,0.638,0.8767,0.1233,F508del_region
+CFTR,K562,mismatch,1.25,0.5,0.425,0.8727,0.1273,F508del_region
+CFTR,K562,mismatch,1.25,0.25,0.213,0.8685,0.1315,F508del_region
+CFTR,K562,mismatch,1.5,1,0.85,0.9181,0.0819,F508del_region
+CFTR,K562,mismatch,1.5,0.75,0.638,0.9155,0.0845,F508del_region
+CFTR,K562,mismatch,1.5,0.5,0.425,0.9128,0.0872,F508del_region
+CFTR,K562,mismatch,1.5,0.25,0.213,0.9097,0.0903,F508del_region
+CFTR,K562,mismatch,1.75,1,0.85,0.9505,0.0495,F508del_region
+CFTR,K562,mismatch,1.75,0.75,0.638,0.9493,0.0507,F508del_region
+CFTR,K562,mismatch,1.75,0.5,0.425,0.9479,0.0521,F508del_region
+CFTR,K562,mismatch,1.75,0.25,0.213,0.9464,0.0536,F508del_region
+CFTR,K562,mismatch,2,1,0.85,0.966,0.034,F508del_region
+CFTR,K562,mismatch,2,0.75,0.638,0.9655,0.0345,F508del_region
+CFTR,K562,mismatch,2,0.5,0.425,0.965,0.035,F508del_region
+CFTR,K562,mismatch,2,0.25,0.213,0.9644,0.0356,F508del_region
+SCN5A,K562,mismatch,1,1,0.85,0.7871,0.2129,promoter_variant
+SCN5A,K562,mismatch,1,0.75,0.638,0.784,0.216,promoter_variant
+SCN5A,K562,mismatch,1,0.5,0.425,0.781,0.219,promoter_variant
+SCN5A,K562,mismatch,1,0.25,0.213,0.7781,0.2219,promoter_variant
+SCN5A,K562,mismatch,1.25,1,0.85,0.7879,0.2121,promoter_variant
+SCN5A,K562,mismatch,1.25,0.75,0.638,0.7841,0.2159,promoter_variant
+SCN5A,K562,mismatch,1.25,0.5,0.425,0.7803,0.2197,promoter_variant
+SCN5A,K562,mismatch,1.25,0.25,0.213,0.7767,0.2233,promoter_variant
+SCN5A,K562,mismatch,1.5,1,0.85,0.8136,0.1864,promoter_variant
+SCN5A,K562,mismatch,1.5,0.75,0.638,0.8097,0.1903,promoter_variant
+SCN5A,K562,mismatch,1.5,0.5,0.425,0.8058,0.1942,promoter_variant
+SCN5A,K562,mismatch,1.5,0.25,0.213,0.802,0.198,promoter_variant
+SCN5A,K562,mismatch,1.75,1,0.85,0.8728,0.1272,promoter_variant
+SCN5A,K562,mismatch,1.75,0.75,0.638,0.87,0.13,promoter_variant
+SCN5A,K562,mismatch,1.75,0.5,0.425,0.8671,0.1329,promoter_variant
+SCN5A,K562,mismatch,1.75,0.25,0.213,0.8643,0.1357,promoter_variant
+SCN5A,K562,mismatch,2,1,0.85,0.9134,0.0866,promoter_variant
+SCN5A,K562,mismatch,2,0.75,0.638,0.9115,0.0885,promoter_variant
+SCN5A,K562,mismatch,2,0.5,0.425,0.9096,0.0904,promoter_variant
+SCN5A,K562,mismatch,2,0.25,0.213,0.9077,0.0923,promoter_variant
+GJB2,K562,mismatch,1,1,0.85,0.8169,0.1831,35delG_region
+GJB2,K562,mismatch,1,0.75,0.638,0.8148,0.1852,35delG_region
+GJB2,K562,mismatch,1,0.5,0.425,0.8125,0.1875,35delG_region
+GJB2,K562,mismatch,1,0.25,0.213,0.8102,0.1898,35delG_region
+GJB2,K562,mismatch,1.25,1,0.85,0.832,0.168,35delG_region
+GJB2,K562,mismatch,1.25,0.75,0.638,0.8298,0.1702,35delG_region
+GJB2,K562,mismatch,1.25,0.5,0.425,0.8276,0.1724,35delG_region
+GJB2,K562,mismatch,1.25,0.25,0.213,0.8253,0.1747,35delG_region
+GJB2,K562,mismatch,1.5,1,0.85,0.8433,0.1567,35delG_region
+GJB2,K562,mismatch,1.5,0.75,0.638,0.8411,0.1589,35delG_region
+GJB2,K562,mismatch,1.5,0.5,0.425,0.8389,0.1611,35delG_region
+GJB2,K562,mismatch,1.5,0.25,0.213,0.8366,0.1634,35delG_region
+GJB2,K562,mismatch,1.75,1,0.85,0.8492,0.1508,35delG_region
+GJB2,K562,mismatch,1.75,0.75,0.638,0.847,0.153,35delG_region
+GJB2,K562,mismatch,1.75,0.5,0.425,0.8447,0.1553,35delG_region
+GJB2,K562,mismatch,1.75,0.25,0.213,0.8424,0.1576,35delG_region
+GJB2,K562,mismatch,2,1,0.85,0.8542,0.1458,35delG_region
+GJB2,K562,mismatch,2,0.75,0.638,0.8519,0.1481,35delG_region
+GJB2,K562,mismatch,2,0.5,0.425,0.8496,0.1504,35delG_region
+GJB2,K562,mismatch,2,0.25,0.213,0.8472,0.1528,35delG_region
+LDLR,K562,partial,1,1,0.85,0.9098,0.0902,promoter_variant
+LDLR,K562,partial,1,0.75,0.638,0.9088,0.0912,promoter_variant
+LDLR,K562,partial,1,0.5,0.425,0.9077,0.0923,promoter_variant
+LDLR,K562,partial,1,0.25,0.213,0.9067,0.0933,promoter_variant
+LDLR,K562,partial,1.25,1,0.85,0.9139,0.0861,promoter_variant
+LDLR,K562,partial,1.25,0.75,0.638,0.9128,0.0872,promoter_variant
+LDLR,K562,partial,1.25,0.5,0.425,0.9118,0.0882,promoter_variant
+LDLR,K562,partial,1.25,0.25,0.213,0.9108,0.0892,promoter_variant
+LDLR,K562,partial,1.5,1,0.85,0.9259,0.0741,promoter_variant
+LDLR,K562,partial,1.5,0.75,0.638,0.9251,0.0749,promoter_variant
+LDLR,K562,partial,1.5,0.5,0.425,0.9242,0.0758,promoter_variant
+LDLR,K562,partial,1.5,0.25,0.213,0.9234,0.0766,promoter_variant
+LDLR,K562,partial,1.75,1,0.85,0.9296,0.0704,promoter_variant
+LDLR,K562,partial,1.75,0.75,0.638,0.929,0.071,promoter_variant
+LDLR,K562,partial,1.75,0.5,0.425,0.9283,0.0717,promoter_variant
+LDLR,K562,partial,1.75,0.25,0.213,0.9277,0.0723,promoter_variant
+LDLR,K562,partial,2,1,0.85,0.9208,0.0792,promoter_variant
+LDLR,K562,partial,2,0.75,0.638,0.9202,0.0798,promoter_variant
+LDLR,K562,partial,2,0.5,0.425,0.9195,0.0805,promoter_variant
+LDLR,K562,partial,2,0.25,0.213,0.9189,0.0811,promoter_variant

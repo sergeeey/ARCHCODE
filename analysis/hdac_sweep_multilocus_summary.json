@@ -1,0 +1,164 @@
+{
+  "analysis": "ARCHCODE Multi-Locus HDAC Inhibitor 2D Sweep",
+  "version": "v1.0",
+  "date": "2026-03-09",
+  "parameters": {
+    "enhancer_boost_levels": [
+      1,
+      1.25,
+      1.5,
+      1.75,
+      2
+    ],
+    "ctcf_retention_levels": [
+      1,
+      0.75,
+      0.5,
+      0.25
+    ],
+    "base_ctcf_blocking": 0.85,
+    "calibration": "MANUALLY CALIBRATED — plausible ranges, not fitted to experimental dose-response"
+  },
+  "n_loci": 9,
+  "n_conditions_per_locus": 20,
+  "total_simulations": 180,
+  "per_locus": {
+    "HBB": {
+      "tissue_match": "matched",
+      "baseline_delta": 0.0706,
+      "enhancer_only_delta": 0.0725,
+      "enhancer_only_change_pct": 3,
+      "ctcf_only_delta": 0.0735,
+      "ctcf_only_change_pct": 4,
+      "combined_max_delta": 0.0742,
+      "combined_max_change_pct": 5,
+      "dominant_axis": "balanced"
+    },
+    "BRCA1": {
+      "tissue_match": "partial",
+      "baseline_delta": 0.0031,
+      "enhancer_only_delta": 0.0022,
+      "enhancer_only_change_pct": -29,
+      "ctcf_only_delta": 0.0032,
+      "ctcf_only_change_pct": 3,
+      "combined_max_delta": 0.0023,
+      "combined_max_change_pct": -26,
+      "dominant_axis": "enhancer"
+    },
+    "TP53": {
+      "tissue_match": "partial",
+      "baseline_delta": 0.0059,
+      "enhancer_only_delta": 0.0037,
+      "enhancer_only_change_pct": -37,
+      "ctcf_only_delta": 0.0074,
+      "ctcf_only_change_pct": 25,
+      "combined_max_delta": 0.0047,
+      "combined_max_change_pct": -20,
+      "dominant_axis": "balanced"
+    },
+    "TERT": {
+      "tissue_match": "matched",
+      "baseline_delta": 0.0626,
+      "enhancer_only_delta": 0.038,
+      "enhancer_only_change_pct": -39,
+      "ctcf_only_delta": 0.0659,
+      "ctcf_only_change_pct": 5,
+      "combined_max_delta": 0.0386,
+      "combined_max_change_pct": -38,
+      "dominant_axis": "enhancer"
+    },
+    "MLH1": {
+      "tissue_match": "partial",
+      "baseline_delta": 0.1153,
+      "enhancer_only_delta": 0.054,
+      "enhancer_only_change_pct": -53,
+      "ctcf_only_delta": 0.1196,
+      "ctcf_only_change_pct": 4,
+      "combined_max_delta": 0.0554,
+      "combined_max_change_pct": -52,
+      "dominant_axis": "enhancer"
+    },
+    "CFTR": {
+      "tissue_match": "mismatch",
+      "baseline_delta": 0.1261,
+      "enhancer_only_delta": 0.034,
+      "enhancer_only_change_pct": -73,
+      "ctcf_only_delta": 0.1366,
+      "ctcf_only_change_pct": 8,
+      "combined_max_delta": 0.0356,
+      "combined_max_change_pct": -72,
+      "dominant_axis": "enhancer"
+    },
+    "SCN5A": {
+      "tissue_match": "mismatch",
+      "baseline_delta": 0.2129,
+      "enhancer_only_delta": 0.0866,
+      "enhancer_only_change_pct": -59,
+      "ctcf_only_delta": 0.2219,
+      "ctcf_only_change_pct": 4,
+      "combined_max_delta": 0.0923,
+      "combined_max_change_pct": -57,
+      "dominant_axis": "enhancer"
+    },
+    "GJB2": {
+      "tissue_match": "mismatch",
+      "baseline_delta": 0.1831,
+      "enhancer_only_delta": 0.1458,
+      "enhancer_only_change_pct": -20,
+      "ctcf_only_delta": 0.1898,
+      "ctcf_only_change_pct": 4,
+      "combined_max_delta": 0.1528,
+      "combined_max_change_pct": -17,
+      "dominant_axis": "enhancer"
+    },
+    "LDLR": {
+      "tissue_match": "partial",
+      "baseline_delta": 0.0902,
+      "enhancer_only_delta": 0.0792,
+      "enhancer_only_change_pct": -12,
+      "ctcf_only_delta": 0.0933,
+      "ctcf_only_change_pct": 3,
+      "combined_max_delta": 0.0811,
+      "combined_max_change_pct": -10,
+      "dominant_axis": "enhancer"
+    }
+  },
+  "bet_comparison": {
+    "HBB": {
+      "bet_full_delta": 0.0171,
+      "bet_loss_pct": 76
+    },
+    "BRCA1": {
+      "bet_full_delta": 0.0095,
+      "bet_loss_pct": -206
+    },
+    "TP53": {
+      "bet_full_delta": 0.0244,
+      "bet_loss_pct": -314
+    },
+    "TERT": {
+      "bet_full_delta": 0.0048,
+      "bet_loss_pct": 92
+    },
+    "MLH1": {
+      "bet_full_delta": 0.0086,
+      "bet_loss_pct": 93
+    },
+    "CFTR": {
+      "bet_full_delta": 0.004,
+      "bet_loss_pct": 97
+    },
+    "SCN5A": {
+      "bet_full_delta": 0.0049,
+      "bet_loss_pct": 98
+    },
+    "GJB2": {
+      "bet_full_delta": 0.0334,
+      "bet_loss_pct": 82
+    },
+    "LDLR": {
+      "bet_full_delta": 0.0087,
+      "bet_loss_pct": 90
+    }
+  }
+}
