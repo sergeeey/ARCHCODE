@@ -1,0 +1,230 @@
+{
+  "data_source": "ENCODE_rE2G_ENCSR627ANP_ENCFF976OKL",
+  "file_description": "Thresholded element-gene links, ENCODE-rE2G, K562 DNase-seq",
+  "reference": "Nasser et al. 2021, Nature 593; ENCODE rE2G (Engreitz lab, Stanford)",
+  "genome_assembly": "GRCh38",
+  "n_hbb_enhancer_regions": 20,
+  "n_locus_enhancer_regions": 134,
+  "hbb_enhancer_test": {
+    "n_q2b_total": 25,
+    "n_q2b_in_enhancer": 17,
+    "frac_q2b": 0.68,
+    "n_q3_total": 75,
+    "n_q3_in_enhancer": 46,
+    "frac_q3": 0.6133,
+    "fisher_odds_ratio": 1.3397,
+    "fisher_p_value": 0.3636689,
+    "contingency_table": [
+      [
+        17,
+        8
+      ],
+      [
+        46,
+        29
+      ]
+    ]
+  },
+  "broad_locus_test": {
+    "n_q2b_in_enhancer": 17,
+    "frac_q2b": 0.68,
+    "n_q3_in_enhancer": 46,
+    "frac_q3": 0.6133,
+    "fisher_odds_ratio": 1.3397,
+    "fisher_p_value": 0.3636689,
+    "contingency_table": [
+      [
+        17,
+        8
+      ],
+      [
+        46,
+        29
+      ]
+    ]
+  },
+  "mean_re2g_q2b_overlaps": 1.0,
+  "mean_re2g_q3_overlaps": 0.9561,
+  "enhancer_regions": [
+    {
+      "name": "chr11:5196025-5196525",
+      "start": 5196025,
+      "end": 5196525,
+      "class": "intergenic",
+      "abc_score_feature": 0.014535,
+      "re2g_score": 0.475145,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5204765-5205265",
+      "start": 5204765,
+      "end": 5205265,
+      "class": "intergenic",
+      "abc_score_feature": 0.037239,
+      "re2g_score": 0.869387,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5206806-5207306",
+      "start": 5206806,
+      "end": 5207306,
+      "class": "intergenic",
+      "abc_score_feature": 0.004211,
+      "re2g_score": 0.259049,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5210313-5211052",
+      "start": 5210313,
+      "end": 5211052,
+      "class": "intergenic",
+      "abc_score_feature": 0.004596,
+      "re2g_score": 0.213876,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5224463-5224963",
+      "start": 5224463,
+      "end": 5224963,
+      "class": "intergenic",
+      "abc_score_feature": 0.100169,
+      "re2g_score": 0.973092,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5225458-5225958",
+      "start": 5225458,
+      "end": 5225958,
+      "class": "genic",
+      "abc_score_feature": 0.072655,
+      "re2g_score": 0.945394,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5226821-5227321",
+      "start": 5226821,
+      "end": 5227321,
+      "class": "promoter",
+      "abc_score_feature": 1.0,
+      "re2g_score": 1.0,
+      "is_self_promoter": true
+    },
+    {
+      "name": "chr11:5227666-5228166",
+      "start": 5227666,
+      "end": 5228166,
+      "class": "intergenic",
+      "abc_score_feature": 0.017227,
+      "re2g_score": 0.6239,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5232085-5232585",
+      "start": 5232085,
+      "end": 5232585,
+      "class": "intergenic",
+      "abc_score_feature": 0.017008,
+      "re2g_score": 0.428239,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5236164-5236664",
+      "start": 5236164,
+      "end": 5236664,
+      "class": "intergenic",
+      "abc_score_feature": 0.010363,
+      "re2g_score": 0.239783,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5241963-5242463",
+      "start": 5241963,
+      "end": 5242463,
+      "class": "intergenic",
+      "abc_score_feature": 0.010682,
+      "re2g_score": 0.308469,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5242907-5243407",
+      "start": 5242907,
+      "end": 5243407,
+      "class": "intergenic",
+      "abc_score_feature": 0.037278,
+      "re2g_score": 0.706617,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5243414-5243914",
+      "start": 5243414,
+      "end": 5243914,
+      "class": "intergenic",
+      "abc_score_feature": 0.039469,
+      "re2g_score": 0.74849,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5247045-5247950",
+      "start": 5247045,
+      "end": 5247950,
+      "class": "intergenic",
+      "abc_score_feature": 0.029853,
+      "re2g_score": 0.590927,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5251821-5252954",
+      "start": 5251821,
+      "end": 5252954,
+      "class": "intergenic",
+      "abc_score_feature": 0.019848,
+      "re2g_score": 0.378902,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5258494-5258994",
+      "start": 5258494,
+      "end": 5258994,
+      "class": "intergenic",
+      "abc_score_feature": 0.021482,
+      "re2g_score": 0.342436,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5275417-5276244",
+      "start": 5275417,
+      "end": 5276244,
+      "class": "intergenic",
+      "abc_score_feature": 0.030612,
+      "re2g_score": 0.507092,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5280515-5281015",
+      "start": 5280515,
+      "end": 5281015,
+      "class": "intergenic",
+      "abc_score_feature": 0.061908,
+      "re2g_score": 0.824553,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5284552-5285052",
+      "start": 5284552,
+      "end": 5285052,
+      "class": "intergenic",
+      "abc_score_feature": 0.023277,
+      "re2g_score": 0.421845,
+      "is_self_promoter": false
+    },
+    {
+      "name": "chr11:5288019-5288817",
+      "start": 5288019,
+      "end": 5288817,
+      "class": "intergenic",
+      "abc_score_feature": 0.020736,
+      "re2g_score": 0.362936,
+      "is_self_promoter": false
+    }
+  ]
+}

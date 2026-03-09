@@ -1,20 +1,44 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-08 (bioRxiv v3 biology-first submission + Zenodo v2.16)
-**Branch:** main
-**Last Commit:** 5cf0d98 — `fix: PR Gate blockers — per-locus thresholds + monotonicity test + caveats`
+**Last Updated:** 2026-03-09 (30-day plan complete through Day 30)
+**Branch:** feature/v4-prioritization-framework
+**Last Commit:** 642b149 — `feat: discordance analysis — ARCHCODE vs VEP/CADD 2x2 matrix + Q2a/Q2b split`
 **Git Tag:** v2.14-experimental ("Research Use Only — Wet Lab Validation Required")
-**GitHub:** https://github.com/sergeeey/ARCHCODE (unpushed — network blocked)
+**GitHub:** https://github.com/sergeeey/ARCHCODE — pushed to remote
 **Zenodo DOI:** v2.16 — DOI закреплён
-**bioRxiv:** два независимых timestamp (submitted 2026-03-08); old ID BIORXIV/2026/708672 REJECTED
-**arXiv:** ждём endorsement от Brackley/Michieletto (ранее: Dr. Guang Shi, code B9P837)
-**Status:** v2.16 — SUBMITTED. bioRxiv biology-first version (52 pages). arXiv version ready (55 pages).
+**bioRxiv:** BIORXIV/2026/710343 — pending resubmit (v3 rejected or parser issue); old ID 708672 REJECTED
+**arXiv:** ждём endorsement от Brackley/Michieletto (code B9P837)
+**Status:** v4 Day 30 complete. All network-independent + external validation tasks done. Ready for commit.
 
 ---
 
 ## Текущий статус проекта
 
 **Фаза:** v2.14 — PUBLICATION READY. **Канонические источники истины для claims:** `results/validation_canonical_index_2026-03-06.json`, `results/publication_claim_matrix_2026-03-06.json`. Legacy-нарративы: `docs/internal/LEGACY_CLAIM_HYGIENE_2026-03-06.md`.
+
+### 2026-03-09: 30-Day Plan Execution (Day 1–30 complete)
+
+**Deliverables completed:**
+1. TERT validation — `analysis/TERT_validation.csv` (35 Q2, p=2.03e-15, 97% Q2a)
+2. Discordance taxonomy figure — `figures/fig_discordance_taxonomy.pdf` (3 panels)
+3. Q2b candidate cards — `docs/Q2b_candidate_cards.md` (7 HBB variants)
+4. Per-locus verdict — `analysis/per_locus_verdict.csv` (9 loci: PRIMARY→NULL)
+5. Coverage gap note — `manuscript/sections/coverage_gap_note.typ` + integrated in supplement
+6. Discussion: 3 theses (A/B/C) in `body_content.typ:1619-1656`
+7. Abstract updated with Q2a/Q2b decomposition
+8. Significance Statement v2 with Thesis C
+9. Negative controls table in Results (`@tab:negative-controls`)
+10. REPRODUCE.md + requirements-analysis.txt + checksums.sha256 (38 files)
+11. Lab collaboration letter — `docs/lab_collaboration_letter.md` (6 target labs)
+12. **External validations (network restored):**
+    - ABC/rE2G overlay: 68% Q2b overlap, Fisher p=0.36 NS → `analysis/abc_q2b_summary.json`
+    - PCHi-C erythroblast: 25/46 significant, CHiCAGO up to 10.5 → `analysis/pchic_q2b_overlap.json`
+    - CRISPRi K562: 0 Q2b overlaps in 65 tested elements → `analysis/crispri_q2b_overlap.json`
+13. External validations integrated into Discussion paragraph
+14. Integrity check: 9/9 key claims PASS against source data
+15. Manuscript + supplement compile clean, PDF on desktop
+
+**Key finding from external validations:** Q2b variants remain experimentally unvalidated across all three public datasets → reinforces their status as highest-priority candidates for targeted experiments.
 
 ### 2026-03-06 / 2026-03-07: Canonical Governance + Cold-Eye Audit + Post-Audit Fixes
 
@@ -207,6 +231,9 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+- [2026-03-09 11:55] `642b149`: feat: discordance analysis — ARCHCODE vs VEP/CADD 2x2 matrix + Q2a/Q2b split
+
+- [2026-03-09 11:15] `2776906`: feat: v4 bioRxiv resubmission — prioritization framework framing + Tier system
 
 - [2026-03-08 14:03] `799ae1f`: feat: v2.16 — bioRxiv biology-first manuscript + arXiv compressed version
 
