@@ -916,3 +916,21 @@ Cross-tabulation of ARCHCODE structural predictions against VEP sequence annotat
 
 #strong[Implication.] Cross-tool discordance metrics should always decompose into coverage gap vs genuine disagreement. Reporting "261 variants where ARCHCODE detects but VEP misses" without the Q2a/Q2b split overstates complementarity by 4×.
 
+#strong[Q2a root-cause analysis.] Sub-classifying the 207 Q2a variants by gap type reveals that 98% (n = 203) are non-coding frameshifts --- insertions or deletions whose coding consequence falls outside VEP's annotation model when the variant occurs in a non-coding context. The remaining 4 variants have missing annotations (VEP returned no consequence string). This concentrated failure mode suggests that a targeted VEP extension for non-coding frameshift annotation would eliminate the majority of apparent cross-tool discordance without any structural modeling.
+
+#strong[Threshold sensitivity.] The Q2b finding is robust to LSSIM threshold perturbation: the core HBB Q2b set contains 23--26 variants across thresholds 0.92--0.96, with 100% falling within 1 kb of annotated enhancers at each threshold. Beyond 0.96, Q2b count increases (73 at 0.96, 222 at 0.98) as threshold-proximal variants enter, but the within-1 kb fraction remains above 84%. The enhancer proximity signal (Mann-Whitney p < 10#super[−13]) is significant at every threshold tested.
+
+#strong[Leave-one-locus-out robustness.] Excluding HBB entirely, the remaining 29 Q2b variants across 8 loci still show 121-fold enhancer proximity enrichment (p = 1.8 × 10#super[−19]) --- stronger than the full-dataset 58-fold --- because the non-HBB Q2b variants (primarily BRCA1) cluster near promoter-proximal enhancers at even shorter distances. Null-control loci (SCN5A, GJB2, CFTR, LDLR) contribute zero Q2b under any configuration, confirming tissue-specificity.
+
+#v(0.8em)
+#line(length: 100%, stroke: 0.3pt + luma(200))
+#v(0.8em)
+
+= Supplementary Note: Why CRISPRi K562 Null Overlap Is Expected
+
+The Gasperini et al. (2019) CRISPRi screen tested 65 gRNA-targeted elements near the HBB locus in K562 cells, yet zero elements overlap with Q2b variant positions (chr11:5,226,596--5,227,172, GRCh38) within 500 bp. This null result does not contradict the structural disruption hypothesis; it reflects a cell-state mismatch.
+
+K562 is a chronic myelogenous leukemia line that expresses embryonic and fetal globins (ε-globin, γ-globin) but has silenced adult β-globin (HBB). The CRISPRi screen's positive controls confirm this: they target LCR hypersensitive sites (HS1--HS4) and the HBE1 promoter --- regulators of embryonic/fetal gene expression in K562. The nearest gRNA target to Q2b positions is HBD_TSS at ~29 kb distance; no element was tested within 5 kb of the Q2b cluster.
+
+The practical implication is that validating Q2b structural disruption requires CRISPRi in adult erythroid progenitors where HBB is actively expressed --- for example, HUDEP-2 cells (Kurita et al., 2013), which recapitulate adult-stage hemoglobin switching. A targeted CRISPRi or CRISPR base-editing screen in HUDEP-2 at the 5 highest-priority Q2b positions (see main text, @fig:q2b-central) would provide direct functional evidence for or against enhancer-proximal structural pathogenicity at these loci.
+

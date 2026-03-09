@@ -19,7 +19,7 @@
 - **TERT validation:** 35 Q2 variants, 23-fold enhancer enrichment, p = 2×10⁻¹⁵, 97% Q2a
 - **External validations:**
   - ABC/rE2G overlay: 68% Q2b overlap, Fisher p = 0.36 NS
-  - PCHi-C erythroblast: 25 Q2b in HBB promoter bait, 12 significant interactions, max CHiCAGO = 10.5
+  - PCHi-C erythroblast: 25 Q2b in HBB promoter bait, 25 significant interactions, max CHiCAGO = 10.5
   - CRISPRi K562: 0/65 overlap with Q2b (HBB silenced in K562)
 
 ### Manuscript Changes

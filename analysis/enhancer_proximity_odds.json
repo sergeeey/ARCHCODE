@@ -1,0 +1,42 @@
+{
+  "500bp": {
+    "Q2b_within": 33,
+    "Q2b_total": 54,
+    "Q2b_fraction": 0.611,
+    "Q3_within": 679,
+    "Q3_total": 10385,
+    "Q3_fraction": 0.065,
+    "odds_ratio": 22.46,
+    "fisher_p": "2.14e-25"
+  },
+  "1000bp": {
+    "Q2b_within": 54,
+    "Q2b_total": 54,
+    "Q2b_fraction": 1.0,
+    "Q3_within": 945,
+    "Q3_total": 10385,
+    "Q3_fraction": 0.091,
+    "odds_ratio": Infinity,
+    "fisher_p": "2.48e-56"
+  },
+  "2000bp": {
+    "Q2b_within": 54,
+    "Q2b_total": 54,
+    "Q2b_fraction": 1.0,
+    "Q3_within": 1343,
+    "Q3_total": 10385,
+    "Q3_fraction": 0.129,
+    "odds_ratio": Infinity,
+    "fisher_p": "2.77e-48"
+  },
+  "5000bp": {
+    "Q2b_within": 54,
+    "Q2b_total": 54,
+    "Q2b_fraction": 1.0,
+    "Q3_within": 2010,
+    "Q3_total": 10385,
+    "Q3_fraction": 0.194,
+    "odds_ratio": Infinity,
+    "fisher_p": "5.53e-39"
+  }
+}
