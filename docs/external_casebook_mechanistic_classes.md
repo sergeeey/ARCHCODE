@@ -70,7 +70,7 @@ Point mutations in the ZRS (Zone of Polarizing Activity Regulatory Sequence), a 
 
 **Reference:** Gröschel S, Sanders MA, Hoogenboezem R, et al. "A Single Oncogenic Enhancer Rearrangement Causes Concomitant EVI1 and GATA2 Deregulation in Leukemia." *Cell*. 2014;157(2):369-381. [KNOWN]
 **PMID:** 24703711
-**DOI:** 10.1016/j.cell.2014.02.023
+**DOI:** 10.1016/j.cell.2014.02.019
 
 **Summary:**
 The inv(3)(q21q26) / t(3;3)(q21;q26) rearrangement in acute myeloid leukemia repositions a GATA2 enhancer near the MECOM (EVI1) oncogene. This causes: (1) ectopic MECOM activation via enhancer hijacking (architecture change), and (2) GATA2 haploinsufficiency from enhancer loss (activity change). Both events are required for leukemogenesis.
@@ -242,7 +242,7 @@ All eight papers cited above are landmark publications in chromatin biology / ge
 - Hnisz 2016 (PMID 26940867) — [VERIFIED]
 - Lettice 2003 (PMID 12837695) — [VERIFIED]
 - Tewhey 2016 (PMID 27259153) — [VERIFIED]
-- Gröschel 2014 (PMID 24703711) — [KNOWN, not re-checked]
+- Gröschel 2014 (PMID 24703711) — [VERIFIED, DOI corrected from .023 to .019]
 - Northcott 2014 (PMID 25043047) — [VERIFIED]
 - Vaz-Drago 2017 (PMID 28497172) — [VERIFIED]
 - Wang 2012 (PMID 22955980) — [KNOWN, not re-checked]
