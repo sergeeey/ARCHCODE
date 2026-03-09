@@ -1,20 +1,61 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-09 (branch split: v4 core vs follow-up)
-**Branch:** feature/v4-prioritization-framework (core paper)
+**Last Updated:** 2026-03-09
+**Branch:** feature/mechanistic-taxonomy (NEW — taxonomy paper track)
+**Core Branch:** feature/v4-prioritization-framework (core paper, frozen)
 **Follow-up Branch:** feature/follow-up-structural-framework (second paper material)
-**Last Commit (v4):** b2a26d7 — `feat: EXP-003 tissue-mismatch controls + EXP-004 threshold robustness (P0)`
-**Last Commit (follow-up):** 1a0a7cf — `feat: HDAC inhibitor pharmacological landscape integrated into manuscript`
 **Git Tag:** v4.0-submission-ready + v2.14-experimental (both pushed)
-**GitHub:** https://github.com/sergeeey/ARCHCODE — needs push (both branches)
+**GitHub:** https://github.com/sergeeey/ARCHCODE — needs push (all branches)
 **Zenodo DOI:** v2.16 — DOI закреплён
 **bioRxiv:** BIORXIV/2026/710343 — pending resubmit
 **arXiv:** ждём endorsement от Brackley/Michieletto (code B9P837)
-**Status:** v4.1 core ready. Follow-up branch has 4 framework extensions.
+**Status:** Taxonomy track Phase 1-3 complete. Core paper frozen.
 
 ### Branch Architecture (2026-03-09)
-- **v4 core** (`feature/v4-prioritization-framework` @ `b2a26d7`): variant prioritization paper — fragility atlases, BET sweep, discordance taxonomy, external validations, P0 experiments (EXP-001–004 completed)
-- **Follow-up** (`feature/follow-up-structural-framework` @ `1a0a7cf`): structural genomics framework — GWAS overlay (384 SNP, rs334), CRISPR compensatory screen (0/180 rescues), ARS proof-of-concept (ρ=0.94), HDAC 2D sweep (HBB +5% anomaly), manuscript v4.3 with 24 Summary items
+- **Taxonomy** (`feature/mechanistic-taxonomy`): "Regulatory pathogenicity is mechanistically heterogeneous" — 5 classes (A-E), assignment table, 3 figures, paper outline, external casebook
+- **v4 core** (`feature/v4-prioritization-framework` @ `e9435f9`): variant prioritization paper — frozen, submission-ready
+- **Follow-up** (`feature/follow-up-structural-framework` @ `1a0a7cf`): structural genomics framework — GWAS, CRISPR, ARS, HDAC
+
+### 2026-03-09: Mechanistic Taxonomy Track — Phase 1-3 Complete
+
+**New track:** "Regulatory Pathogenicity Is Mechanistically Heterogeneous"
+**Goal:** Position paper / framework showing regulatory pathogenicity has 5 distinct mechanistic classes
+
+**Deliverables created (Phase 1-3):**
+
+1. **Taxonomy formalization** — `docs/regulatory_pathogenicity_taxonomy.md`
+   - 5 classes: A (activity-driven), B (architecture-driven), C (mixed), D (coverage gap), E (tissue-mismatch artifact)
+   - Definitions, signatures, decision rules, ARCHCODE positioning
+
+2. **Case assignment** — `analysis/taxonomy_assignment_table.csv` + `analysis/taxonomy_assignment_summary.md`
+   - 21 ARCHCODE cases classified: 1 Class A, 8 Class B, 1 Class C, 5 Class D, 4 Class E
+   - HBB Q2b = canonical Class B (25 variants, HIGH confidence)
+   - Coverage gap (Class D) = 79.3% of Q2 variants (207/261)
+
+3. **Tool-mechanism matrix** — `docs/tool_mechanism_matrix.md`
+   - 8 tools × 5 classes with detailed blind spot analysis
+   - Key insight: VEP/CADD/MPRA all BLIND to Class B (architecture-driven)
+
+4. **Figure specs + generated figures** — `docs/taxonomy_figure_specs.md`
+   - Fig 1: Taxonomy map (2D activity vs architecture) — `figures/taxonomy/fig_taxonomy_map.pdf`
+   - Fig 2: ARCHCODE examples by class (5-panel) — `figures/taxonomy/fig_archcode_examples.pdf`
+   - Fig 3: Tool-mechanism heatmap — `figures/taxonomy/fig_tool_matrix.pdf`
+
+5. **External casebook** — `docs/external_casebook_mechanistic_classes.md`
+   - 5 canonical cases: Lupiáñez 2015 (Class B), Lettice 2003 (Class A), Gröschel 2014 (Class C), Vaz-Drago 2017 (Class D), Wang 2012 (Class E)
+
+6. **Paper outline** — `docs/taxonomy_paper_outline.md`
+   - Title: "Regulatory Pathogenicity Is Mechanistically Heterogeneous: A Taxonomy of Activity-, Architecture-, and Coverage-Driven Blind Spots"
+   - 9 sections, abstract skeleton, target journals (Nature Genetics Perspective / AJHG)
+   - Main claim: "Single-axis scoring is the wrong abstraction; mechanistic decomposition is the right abstraction"
+
+7. **Figure generation script** — `scripts/plot_taxonomy_figures.py`
+
+**What's next (Phase 4-5):**
+- Verify all external reference DOIs
+- Write manuscript draft
+- Collaborator/talk summary slide
+- ARS overlay by taxonomy class (optional but strong)
 
 ---
 
@@ -237,6 +278,7 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+- [2026-03-09 20:28] `e9435f9`: feat: EXP-006 contact metric robustness + EXP-008 Gasperini CRISPRi benchmark (P1)
 - [2026-03-09 20:16] `b2a26d7`: feat: EXP-003 tissue-mismatch controls + EXP-004 threshold robustness (P0)
 - [2026-03-09 20:06] `2f91172`: feat: EXP-001 ablation study + EXP-002 leave-one-locus-out (P0 experiments)
 - [2026-03-09 20:01] `99d75bc`: docs: ARCHCODE next-step research plan — 5 planning documents
