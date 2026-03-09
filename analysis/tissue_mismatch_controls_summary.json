@@ -1,0 +1,103 @@
+{
+  "experiment": "EXP-003",
+  "description": "Tissue-mismatch negative controls: ARCHCODE proxy score with wrong-tissue enhancers",
+  "n_loci": 3,
+  "loci": [
+    "HBB",
+    "LDLR",
+    "TP53"
+  ],
+  "sigma_bp": 5000.0,
+  "matched_real_lssim": {
+    "HBB": {
+      "mean_plp": 0.9135410764872521,
+      "mean_blb": 0.9962044000000001,
+      "delta": 0.08266332351274797,
+      "p_value": 1.7379357892371827e-145,
+      "n_plp": 353,
+      "n_blb": 750
+    },
+    "LDLR": {
+      "mean_plp": 0.9969451187335093,
+      "mean_blb": 0.9993548514851487,
+      "delta": 0.0024097327516393596,
+      "p_value": 1.4688438634109642e-17,
+      "n_plp": 2274,
+      "n_blb": 1010
+    },
+    "TP53": {
+      "mean_plp": 0.9896196960486324,
+      "mean_blb": 0.9985521322889468,
+      "delta": 0.008932436240314368,
+      "p_value": 3.930815185823075e-52,
+      "n_plp": 1645,
+      "n_blb": 1149
+    }
+  },
+  "proxy_results": {
+    "HBB|HBB": {
+      "condition": "MATCHED",
+      "delta": 0.003565556774019707,
+      "p_value": 4.662465851561939e-72,
+      "n_plp": 353,
+      "n_blb": 750
+    },
+    "HBB|LDLR": {
+      "condition": "MISMATCH",
+      "delta": 5.0448659607748225e-06,
+      "p_value": 5.0875756984018674e-18,
+      "n_plp": 353,
+      "n_blb": 750
+    },
+    "HBB|TP53": {
+      "condition": "MISMATCH",
+      "delta": -0.011678003596203967,
+      "p_value": 4.285734485014862e-24,
+      "n_plp": 353,
+      "n_blb": 750
+    },
+    "LDLR|HBB": {
+      "condition": "MISMATCH",
+      "delta": -0.0003786993814959268,
+      "p_value": 1.0688003493732214e-14,
+      "n_plp": 2274,
+      "n_blb": 1010
+    },
+    "LDLR|LDLR": {
+      "condition": "MATCHED",
+      "delta": 0.07497129584581753,
+      "p_value": 6.328729072524666e-06,
+      "n_plp": 2274,
+      "n_blb": 1010
+    },
+    "LDLR|TP53": {
+      "condition": "MISMATCH",
+      "delta": -0.0011234462219328876,
+      "p_value": 2.0209342233223145e-12,
+      "n_plp": 2274,
+      "n_blb": 1010
+    },
+    "TP53|HBB": {
+      "condition": "MISMATCH",
+      "delta": 6.032125371960322e-13,
+      "p_value": 0.4463912429218251,
+      "n_plp": 1645,
+      "n_blb": 1149
+    },
+    "TP53|LDLR": {
+      "condition": "MISMATCH",
+      "delta": 0.0005469723574725277,
+      "p_value": 0.44650508081667484,
+      "n_plp": 1645,
+      "n_blb": 1149
+    },
+    "TP53|TP53": {
+      "condition": "MATCHED",
+      "delta": -0.011009866846503291,
+      "p_value": 0.4462774215508123,
+      "n_plp": 1645,
+      "n_blb": 1149
+    }
+  },
+  "interpretation": "Diagonal (matched) cells should show positive delta (benign variants have higher proximity score than pathogenic). Off-diagonal (mismatch) cells should show delta near zero — confirming that the signal is tissue-specific, not positional artifact."
+}
