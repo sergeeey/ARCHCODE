@@ -1,0 +1,153 @@
+{
+  "experiment": "EXP-006: Contact Metric Robustness",
+  "n_loci": 9,
+  "n_variants": 29568,
+  "metrics_compared": [
+    "SSIM",
+    "LSSIM",
+    "DeltaInsulation",
+    "LoopIntegrity"
+  ],
+  "combined_auc": {
+    "SSIM": 0.6902,
+    "LSSIM": 0.6454,
+    "DeltaInsulation": 0.6473,
+    "LoopIntegrity": 0.5
+  },
+  "per_locus_auc": {
+    "BRCA1": {
+      "SSIM": 0.691,
+      "LSSIM": 0.6246,
+      "DeltaInsulation": 0.6252,
+      "LoopIntegrity": 0.5
+    },
+    "CFTR": {
+      "SSIM": 0.6645,
+      "LSSIM": 0.6409,
+      "DeltaInsulation": 0.639,
+      "LoopIntegrity": 0.5
+    },
+    "GJB2": {
+      "SSIM": 0.8712,
+      "LSSIM": 0.8529,
+      "DeltaInsulation": 0.8586,
+      "LoopIntegrity": 0.5
+    },
+    "HBB": {
+      "SSIM": null,
+      "LSSIM": null,
+      "DeltaInsulation": null,
+      "LoopIntegrity": null
+    },
+    "LDLR": {
+      "SSIM": 0.6466,
+      "LSSIM": 0.5916,
+      "DeltaInsulation": 0.6013,
+      "LoopIntegrity": 0.5
+    },
+    "MLH1": {
+      "SSIM": 0.7057,
+      "LSSIM": 0.6854,
+      "DeltaInsulation": 0.7266,
+      "LoopIntegrity": 0.5
+    },
+    "SCN5A": {
+      "SSIM": 0.6182,
+      "LSSIM": 0.5892,
+      "DeltaInsulation": 0.5752,
+      "LoopIntegrity": 0.5
+    },
+    "TERT": {
+      "SSIM": 0.8436,
+      "LSSIM": 0.8405,
+      "DeltaInsulation": 0.8429,
+      "LoopIntegrity": 0.5
+    },
+    "TP53": {
+      "SSIM": 0.6691,
+      "LSSIM": 0.6676,
+      "DeltaInsulation": 0.6563,
+      "LoopIntegrity": 0.5
+    }
+  },
+  "sensitivity_at_99spec": {
+    "SSIM": 0.0716,
+    "LSSIM": 0.061,
+    "DeltaInsulation": 0.0734,
+    "LoopIntegrity": 0.0001
+  },
+  "mean_comparison": {
+    "SSIM": {
+      "plp_mean": 0.997752,
+      "blb_mean": 0.999915,
+      "delta": -0.002162
+    },
+    "LSSIM": {
+      "plp_mean": 0.99067,
+      "blb_mean": 0.998665,
+      "delta": -0.007995
+    },
+    "DeltaInsulation": {
+      "plp_mean": 0.012078,
+      "blb_mean": 0.004138,
+      "delta": 0.00794
+    },
+    "LoopIntegrity": {
+      "plp_mean": 0.0,
+      "blb_mean": 0.0,
+      "delta": 0.0
+    }
+  },
+  "spearman_correlation": {
+    "SSIM": {
+      "SSIM": 1.0,
+      "LSSIM": 0.8627,
+      "DeltaInsulation": -0.8432,
+      "LoopIntegrity": -0.0103
+    },
+    "LSSIM": {
+      "SSIM": 0.8627,
+      "LSSIM": 1.0,
+      "DeltaInsulation": -0.9341,
+      "LoopIntegrity": -0.0041
+    },
+    "DeltaInsulation": {
+      "SSIM": -0.8432,
+      "LSSIM": -0.9341,
+      "DeltaInsulation": 1.0,
+      "LoopIntegrity": 0.0052
+    },
+    "LoopIntegrity": {
+      "SSIM": -0.0103,
+      "LSSIM": -0.0041,
+      "DeltaInsulation": 0.0052,
+      "LoopIntegrity": 1.0
+    }
+  },
+  "jaccard_concordance_hbb": {
+    "SSIM": {
+      "SSIM": 1.0,
+      "LSSIM": 1.0,
+      "DeltaInsulation": 1.0,
+      "LoopIntegrity": 1.0
+    },
+    "LSSIM": {
+      "SSIM": 1.0,
+      "LSSIM": 1.0,
+      "DeltaInsulation": 1.0,
+      "LoopIntegrity": 1.0
+    },
+    "DeltaInsulation": {
+      "SSIM": 1.0,
+      "LSSIM": 1.0,
+      "DeltaInsulation": 1.0,
+      "LoopIntegrity": 1.0
+    },
+    "LoopIntegrity": {
+      "SSIM": 1.0,
+      "LSSIM": 1.0,
+      "DeltaInsulation": 1.0,
+      "LoopIntegrity": 1.0
+    }
+  }
+}
