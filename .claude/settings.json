@@ -1,11 +1,6 @@
 {
   "permissions": {
     "allow": [
-      "Edit",
-      "Write",
-      "Read",
-      "Glob",
-      "Grep",
       "Bash(git:*)",
       "Bash(npm:*)",
       "Bash(npx:*)",
@@ -25,16 +20,6 @@
             "type": "command",
             "command": "npm run typecheck",
             "timeout": 15
-          }
-        ]
-      },
-      {
-        "matcher": "Write|Edit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "prettier --write \"$TOOL_INPUT_FILE\" --ignore-unknown",
-            "timeout": 5
           }
         ]
       }
