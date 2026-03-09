@@ -1,14 +1,20 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-09 (30-day plan complete through Day 30)
-**Branch:** feature/v4-prioritization-framework
-**Last Commit:** 642b149 — `feat: discordance analysis — ARCHCODE vs VEP/CADD 2x2 matrix + Q2a/Q2b split`
-**Git Tag:** v2.14-experimental ("Research Use Only — Wet Lab Validation Required")
-**GitHub:** https://github.com/sergeeey/ARCHCODE — pushed to remote
+**Last Updated:** 2026-03-09 (branch split: v4 core vs follow-up)
+**Branch:** feature/v4-prioritization-framework (core paper)
+**Follow-up Branch:** feature/follow-up-structural-framework (second paper material)
+**Last Commit (v4):** b2a26d7 — `feat: EXP-003 tissue-mismatch controls + EXP-004 threshold robustness (P0)`
+**Last Commit (follow-up):** 1a0a7cf — `feat: HDAC inhibitor pharmacological landscape integrated into manuscript`
+**Git Tag:** v4.0-submission-ready + v2.14-experimental (both pushed)
+**GitHub:** https://github.com/sergeeey/ARCHCODE — needs push (both branches)
 **Zenodo DOI:** v2.16 — DOI закреплён
-**bioRxiv:** BIORXIV/2026/710343 — pending resubmit (v3 rejected or parser issue); old ID 708672 REJECTED
+**bioRxiv:** BIORXIV/2026/710343 — pending resubmit
 **arXiv:** ждём endorsement от Brackley/Michieletto (code B9P837)
-**Status:** v4 Day 30 complete. All network-independent + external validation tasks done. Ready for commit.
+**Status:** v4.1 core ready. Follow-up branch has 4 framework extensions.
+
+### Branch Architecture (2026-03-09)
+- **v4 core** (`feature/v4-prioritization-framework` @ `b2a26d7`): variant prioritization paper — fragility atlases, BET sweep, discordance taxonomy, external validations, P0 experiments (EXP-001–004 completed)
+- **Follow-up** (`feature/follow-up-structural-framework` @ `1a0a7cf`): structural genomics framework — GWAS overlay (384 SNP, rs334), CRISPR compensatory screen (0/180 rescues), ARS proof-of-concept (ρ=0.94), HDAC 2D sweep (HBB +5% anomaly), manuscript v4.3 with 24 Summary items
 
 ---
 
@@ -231,6 +237,9 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+- [2026-03-09 20:16] `b2a26d7`: feat: EXP-003 tissue-mismatch controls + EXP-004 threshold robustness (P0)
+- [2026-03-09 20:06] `2f91172`: feat: EXP-001 ablation study + EXP-002 leave-one-locus-out (P0 experiments)
+- [2026-03-09 20:01] `99d75bc`: docs: ARCHCODE next-step research plan — 5 planning documents
 - [2026-03-09 13:17] `da4a9cc`: feat: freeze v4 submission-ready package — external validations + integrity fixes
 - [2026-03-09 11:55] `642b149`: feat: discordance analysis — ARCHCODE vs VEP/CADD 2x2 matrix + Q2a/Q2b split
 
