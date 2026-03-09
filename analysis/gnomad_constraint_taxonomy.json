@@ -1,0 +1,116 @@
+{
+  "analysis": "gnomAD_constraint_vs_taxonomy_class",
+  "date": "2026-03-09",
+  "source": "gnomAD v4 GraphQL API [VERIFIED]",
+  "n_genes": 9,
+  "correlations": {
+    "LOEUF_vs_Q2b": {
+      "spearman_rho": -0.055,
+      "p": 0.8887
+    },
+    "LOEUF_vs_ClassB_rate": {
+      "spearman_rho": 0.0,
+      "p": 1.0
+    },
+    "pLI_vs_Q2b": {
+      "spearman_rho": 0.0,
+      "p": 1.0
+    },
+    "tissue_vs_Q2b": {
+      "spearman_rho": 0.939,
+      "p": 0.0002
+    }
+  },
+  "constraint_by_gene": {
+    "HBB": {
+      "LOEUF": 1.964,
+      "pLI": 7.42e-10,
+      "Q2b": 25,
+      "class_B_rate": 0.02267,
+      "tissue_match": 1.0,
+      "constraint_category": "unconstrained"
+    },
+    "BRCA1": {
+      "LOEUF": 0.885,
+      "pLI": 1.55e-34,
+      "Q2b": 26,
+      "class_B_rate": 0.0036,
+      "tissue_match": 0.5,
+      "constraint_category": "unconstrained"
+    },
+    "TP53": {
+      "LOEUF": 0.449,
+      "pLI": 0.998,
+      "Q2b": 2,
+      "class_B_rate": 0.00101,
+      "tissue_match": 0.5,
+      "constraint_category": "constrained"
+    },
+    "TERT": {
+      "LOEUF": 0.593,
+      "pLI": 0.002,
+      "Q2b": 1,
+      "class_B_rate": 0.00048,
+      "tissue_match": 0.5,
+      "constraint_category": "constrained"
+    },
+    "MLH1": {
+      "LOEUF": 0.639,
+      "pLI": 0.001,
+      "Q2b": 0,
+      "class_B_rate": 0.0,
+      "tissue_match": 0.0,
+      "constraint_category": "unconstrained"
+    },
+    "CFTR": {
+      "LOEUF": 1.152,
+      "pLI": 2.38e-39,
+      "Q2b": 0,
+      "class_B_rate": 0.0,
+      "tissue_match": 0.0,
+      "constraint_category": "unconstrained"
+    },
+    "SCN5A": {
+      "LOEUF": 0.372,
+      "pLI": 1.0,
+      "Q2b": 0,
+      "class_B_rate": 0.0,
+      "tissue_match": 0.0,
+      "constraint_category": "constrained"
+    },
+    "GJB2": {
+      "LOEUF": 1.965,
+      "pLI": 3.6e-15,
+      "Q2b": 0,
+      "class_B_rate": 0.0,
+      "tissue_match": 0.0,
+      "constraint_category": "unconstrained"
+    },
+    "LDLR": {
+      "LOEUF": 1.091,
+      "pLI": 1.25e-30,
+      "Q2b": 0,
+      "class_B_rate": 0.0,
+      "tissue_match": 0.0,
+      "constraint_category": "unconstrained"
+    }
+  },
+  "summary": {
+    "constrained_genes": [
+      "TP53",
+      "TERT",
+      "SCN5A"
+    ],
+    "constrained_Q2b_total": 3,
+    "unconstrained_genes": [
+      "HBB",
+      "BRCA1",
+      "MLH1",
+      "CFTR",
+      "GJB2",
+      "LDLR"
+    ],
+    "unconstrained_Q2b_total": 51
+  },
+  "interpretation": "Gene constraint (LOEUF) does NOT predict Class B enrichment (rho=-0.055, p=0.89). Tissue match is the dominant predictor (rho=0.939, p=0.0002). Unconstrained genes (HBB LOEUF=1.96, GJB2 LOEUF=1.97) harbor 94% of Q2b variants (51/54), but this is driven by tissue match, not constraint. Within matched loci only (N=4), there is a non-significant positive trend (rho=0.60, p=0.40) — underpowered. Conclusion: tissue context dominates over evolutionary constraint for architecture-driven pathogenicity detection. Constraint is NOT a useful predictor for Class B in current data."
+}
