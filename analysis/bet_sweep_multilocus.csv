@@ -1,0 +1,46 @@
+Locus,Tissue,Tissue_Match,BET_Inhibition_Pct,Enhancer_Scale,SSIM_Variant,Delta_SSIM,Variant_Name
+HBB,K562 (erythroid),matched,0,1,0.9294,0.0706,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,25,0.75,0.9324,0.0676,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,50,0.5,0.9385,0.0615,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,75,0.25,0.9523,0.0477,VCV002024192_splice_acceptor
+HBB,K562 (erythroid),matched,100,0,0.9829,0.0171,VCV002024192_splice_acceptor
+BRCA1,MCF7 (breast),partial,0,1,0.9969,0.0031,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,25,0.75,0.996,0.004,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,50,0.5,0.9946,0.0054,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,75,0.25,0.9926,0.0074,nonsense_BRCA1
+BRCA1,MCF7 (breast),partial,100,0,0.9905,0.0095,nonsense_BRCA1
+TP53,K562,partial,0,1,0.9941,0.0059,R175H_hotspot
+TP53,K562,partial,25,0.75,0.9921,0.0079,R175H_hotspot
+TP53,K562,partial,50,0.5,0.989,0.011,R175H_hotspot
+TP53,K562,partial,75,0.25,0.9837,0.0163,R175H_hotspot
+TP53,K562,partial,100,0,0.9756,0.0244,R175H_hotspot
+TERT,K562,matched,0,1,0.9374,0.0626,C228T_promoter
+TERT,K562,matched,25,0.75,0.9446,0.0554,C228T_promoter
+TERT,K562,matched,50,0.5,0.9586,0.0414,C228T_promoter
+TERT,K562,matched,75,0.25,0.9824,0.0176,C228T_promoter
+TERT,K562,matched,100,0,0.9952,0.0048,C228T_promoter
+MLH1,K562,partial,0,1,0.8847,0.1153,promoter_variant
+MLH1,K562,partial,25,0.75,0.8935,0.1065,promoter_variant
+MLH1,K562,partial,50,0.5,0.9135,0.0865,promoter_variant
+MLH1,K562,partial,75,0.25,0.9545,0.0455,promoter_variant
+MLH1,K562,partial,100,0,0.9914,0.0086,promoter_variant
+CFTR,K562,mismatch,0,1,0.8739,0.1261,F508del_region
+CFTR,K562,mismatch,25,0.75,0.8718,0.1282,F508del_region
+CFTR,K562,mismatch,50,0.5,0.8812,0.1188,F508del_region
+CFTR,K562,mismatch,75,0.25,0.9178,0.0822,F508del_region
+CFTR,K562,mismatch,100,0,0.996,0.004,F508del_region
+SCN5A,K562,mismatch,0,1,0.7871,0.2129,promoter_variant
+SCN5A,K562,mismatch,25,0.75,0.7963,0.2037,promoter_variant
+SCN5A,K562,mismatch,50,0.5,0.8257,0.1743,promoter_variant
+SCN5A,K562,mismatch,75,0.25,0.8966,0.1034,promoter_variant
+SCN5A,K562,mismatch,100,0,0.9951,0.0049,promoter_variant
+GJB2,K562,mismatch,0,1,0.8169,0.1831,35delG_region
+GJB2,K562,mismatch,25,0.75,0.7983,0.2017,35delG_region
+GJB2,K562,mismatch,50,0.5,0.7747,0.2253,35delG_region
+GJB2,K562,mismatch,75,0.25,0.7847,0.2153,35delG_region
+GJB2,K562,mismatch,100,0,0.9666,0.0334,35delG_region
+LDLR,K562,partial,0,1,0.9098,0.0902,promoter_variant
+LDLR,K562,partial,25,0.75,0.9198,0.0802,promoter_variant
+LDLR,K562,partial,50,0.5,0.9383,0.0617,promoter_variant
+LDLR,K562,partial,75,0.25,0.9699,0.0301,promoter_variant
+LDLR,K562,partial,100,0,0.9913,0.0087,promoter_variant
