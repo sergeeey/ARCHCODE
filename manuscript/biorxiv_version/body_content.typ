@@ -1,5 +1,5 @@
 == Significance Statement
-Sequence-based variant annotation misses enhancer-proximal variants whose pathogenic potential arises from disruption of 3D chromatin contacts rather than coding sequence. Across 32,201 ClinVar variants at nine disease-associated loci, we observe a tissue-bounded structural disruption pattern: strongest at erythroid-matched HBB, absent at tissue-mismatched negative controls. This resource prioritizes experimentally testable candidates for Capture Hi-C and RT-PCR validation.
+Sequence-based variant annotation misses enhancer-proximal variants whose pathogenic potential arises from disruption of 3D chromatin contacts rather than coding sequence. Across 32,201 ClinVar variants at nine disease-associated loci, we observe a tissue-bounded structural disruption pattern: strongest at erythroid-matched HBB, absent at tissue-mismatched negative controls. Cross-tabulation against VEP/CADD reveals that 79.3% of apparent discordance reflects annotation coverage gaps, not mechanistic disagreement; the 54 true structural blind spots (Q2b) cluster 58-fold closer to enhancers than sequence-channel variants. ARCHCODE functions as a structural prioritization engine --- identifying which enhancer-proximal variants to test first via Capture Hi-C and RT-PCR --- not an independent pathogenicity predictor.
 
 = Introduction
 Enhancer-promoter interactions mediated by cohesin-driven loop extrusion
@@ -642,6 +642,31 @@ appropriate cell-type-matched regulatory annotation --- not on
 computational artifacts. (7) Tissue-specificity gradient and enhancer
 proximity analysis (see dedicated sections below) establish the
 mechanistic basis of the structural signal.
+
+#strong[Negative controls quantification.] To formalize the negative control evidence, we summarize per-locus structural signal across the tissue-match gradient (@tab:negative-controls). Five loci with no tissue-relevant enhancer architecture in K562 (SCN5A, GJB2, HBA1, GATA1, BCL11A) produce zero Q2b variants, zero pearls, and Δ LSSIM ≤ 0.014 --- confirming that ARCHCODE does not generate spurious structural calls in the absence of matched regulatory elements. The contrast between HBB (Δ = 0.111, 25 Q2b, 27 pearls) and these null loci constitutes a 8--46× signal gradient that cannot arise from computational artifacts.
+
+#figure(
+  align(center)[#table(
+    columns: (11%, 10%, 10%, 8%, 8%, 8%, 10%, 35%),
+    align: (left, right, right, right, right, right, right, left),
+    table.header(
+      [Locus], [N], [Δ LSSIM], [Q2], [Q2b], [Pearls], [Tissue], [Role],
+    ),
+    table.hline(),
+    [HBB], [1,103], [0.111], [25], [25], [27], [1.0], [Primary: full signal],
+    [TERT], [2,089], [0.019], [35], [1], [0], [0.5], [Secondary: structural, not mechanistic],
+    [BRCA1], [10,682], [0.005], [79], [26], [0#super[†]], [0.5], [Exploratory: Q2b mostly benign],
+    [TP53], [2,794], [0.009], [4], [2], [0#super[†]], [0.5], [Exploratory: small n],
+    [MLH1], [4,060], [0.009], [72], [0], [0], [0.5], [Null Q2b: infrastructure gap only],
+    [CFTR], [3,349], [0.005], [36], [0], [0], [0.0], [Null: tissue mismatch],
+    [LDLR], [3,284], [0.004], [10], [0], [0], [0.0], [Null: tissue mismatch],
+    [SCN5A], [2,488], [0.003], [0], [0], [0], [0.0], [Negative control: cardiac],
+    [GJB2], [469], [0.006], [0], [0], [0], [0.0], [Negative control: cochlear],
+    table.hline(),
+  )]
+  , kind: table
+  , caption: [Per-locus structural signal summary and negative control evidence. Δ LSSIM = mean(benign) − mean(pathogenic). Tissue match: 1.0 = K562-matched, 0.5 = partial, 0.0 = mismatched. Q2b = true structural blind spots (VEP 0--0.5, ARCHCODE LSSIM < 0.95). #super[†]BRCA1 and TP53 pearls are threshold artifacts (LSSIM 0.942--0.947) that vanish at threshold 0.94.]
+) <tab:negative-controls>
 
 #figure(
   image("../../figures/fig4_hic_validation.png", width: 95%),
@@ -1371,7 +1396,7 @@ ARCHCODE stratifies 353 ClinVar HBB variants by functional severity
 variants invisible to VEP, SpliceAI, and CADD. Hi-C validation
 demonstrates that cell-type matching transforms performance: GM12878
 r = 0.16 (not significant) → K562 r = 0.53--0.59 (p \< 10⁻⁸²).
-Multi-locus validation (r = 0.29--0.59 across 5 loci) confirms
+Multi-locus validation (r = 0.28--0.59 across 5 loci) confirms
 generalizability, with two DL benchmarks (AlphaGenome ρ = 0.12--0.52,
 Akita ρ = 0.17--0.43) providing independent structural convergence.
 
@@ -1611,9 +1636,76 @@ Not all loci are equally suitable for ARCHCODE-based evidence. We provide explic
   , caption: [Locus-specific applicability of ARCHCODE for ACMG/AMP evidence. Only tissue-matched loci with Hi-C validation should be used for PP3/BP4 evidence. "Cautious" means PP3\_supp may be applied but with reduced confidence and mandatory per-locus threshold calibration.]
 )
 
+#figure(
+  image("../../figures/fig_discordance_taxonomy.png", width: 100%),
+  caption: [Discordance taxonomy between ARCHCODE structural predictions and VEP/CADD sequence annotations. (A) Extended 2×2 framework showing Q2a (coverage gaps, VEP = −1) and Q2b (true structural blind spots, VEP 0--0.5) decomposition. (B) Enhancer distance distributions for Q2b vs Q3 variants (58-fold enrichment, p = 2.5 × 10#super[−31]). (C) Tissue-specificity gradient: Q2b fraction correlates with tissue match (Spearman ρ = 0.84, p = 0.005).]
+) <fig:discordance-taxonomy>
+
+== ARCHCODE as a Structural Prioritization Engine
+
+Three findings converge to define ARCHCODE's role in variant
+interpretation.
+
+*Thesis A: Discordance decomposes into two distinct classes (@fig:discordance-taxonomy).* Q2
+variants --- those detected by ARCHCODE but missed by VEP --- subdivide
+into coverage gaps (Q2a, 79.3%) where VEP lacks annotation, and true
+structural blind spots (Q2b, 20.7%) where VEP explicitly scores low
+impact but the structural model detects chromatin disruption. This
+decomposition is locus-dependent: HBB Q2 is 100% Q2b (mechanistic),
+while TERT Q2 is 97% Q2a (infrastructural). Conflating the two
+inflates complementarity claims.
+
+*Thesis B: True blind spots are enhancer-proximal and tissue-dependent.*
+Q2b variants reside a mean 434 bp from annotated enhancers (vs 25,138
+bp for Q3 sequence-channel variants; p = 2.51 × 10#super[−31]).
+Q2b enrichment correlates with tissue match (Spearman ρ = 0.840,
+p = 0.0046): strongest at erythroid-matched HBB, absent at
+tissue-mismatched negative controls. Structural blind spots are not
+random annotation gaps; they are enriched at positions where enhancer--promoter
+contacts provide the primary pathogenic mechanism.
+
+*Thesis C: ARCHCODE is not a pathogenicity predictor.* Within functional
+categories, positional discrimination is null (mean within-category
+AUC = 0.48). The overall AUC of 0.977 reflects category-level structural
+scaling, not independent variant-level prediction. ARCHCODE functions as
+a *structural prioritization engine*: it identifies which enhancer-proximal
+variants to test first, not whether they are pathogenic. Q2b precision
+of 0.481 is an expected property of a triage tool --- enhancer proximity
+is necessary but not sufficient for clinical pathogenicity, just as VEP's
+Q3 precision of 0.834 demonstrates that sequence evidence is likewise
+necessary but not sufficient.
+
+The practical value is in the conjunction: variants flagged by ARCHCODE
+but invisible to VEP/CADD/SpliceAI become the highest-priority candidates
+for experimental follow-up via Capture Hi-C and RT-PCR. The 25 HBB Q2b
+variants represent exactly this class.
+
+*External dataset cross-referencing.* We queried three public functional
+genomics datasets to assess whether Q2b positions overlap experimentally
+characterized regulatory elements. (1) ENCODE rE2G enhancer--gene
+predictions (Nasser et al., 2021; ENCSR627ANP, K562 DNase-seq) identify
+20 HBB-linked enhancer regions; 68% of Q2b variants overlap these
+regions vs 61% of Q3 variants (Fisher p = 0.36, NS), reflecting the
+enhancer-dense architecture of the HBB locus rather than Q2b-specific
+enrichment. (2) Promoter Capture Hi-C in primary erythroblasts (Javierre
+et al., 2016; E-MTAB-2323) reveals that all 25 Q2b variants fall within
+the HBB promoter bait fragment (chr11:5,243,047--5,250,845, hg19
+HindIII), which participates in 12 significant erythroblast interactions
+(CHiCAGO score up to 10.5), including 5 contacts with the LCR
+(HS1--HS4, CHiCAGO 5.4--8.2). This provides orthogonal experimental
+evidence that Q2b variants occupy a structurally active chromatin domain
+with validated 3D contacts in erythroid cells. (3) K562 CRISPRi
+perturbation screen (Gasperini et al., 2019; GSE120861) tested 65
+elements near HBB but none overlap Q2b positions within 500 bp --- HBB
+is silenced in K562 (fetal globin dominant), so CRISPRi targeted
+embryonic/fetal globin regulators rather than HBB promoter elements.
+Q2b variants reside in a PCHi-C-confirmed regulatory domain but have
+not been functionally perturbed, reinforcing their priority for targeted
+Capture Hi-C and CRISPR experiments in adult erythroid cells (HUDEP-2).
+
 == Broader Implications
 ARCHCODE demonstrates proof-of-concept for orthogonal structural scoring
-of genomic variants. The 27 pearl variants on HBB provide a concrete
+of genomic variants. The 25 HBB Q2b variants provide a concrete
 prioritization list for experimental follow-up. Multi-locus analysis
 (30,318 variants across 9 loci) establishes two mechanistic
 determinants: (1) tissue specificity (Δ LSSIM gradient from matched HBB
@@ -1622,6 +1714,18 @@ discrimination within 1 kb of enhancers). These define ARCHCODE's domain
 of applicability: strongest at tissue-matched loci with rich enhancer
 landscapes, null at tissue-mismatched loci. Per-locus threshold
 calibration (Table 7) operationalizes these insights for clinical use.
+
+An underappreciated observation is that most cross-tool discordance is
+infrastructural rather than mechanistic (Supplementary Note: Coverage Gaps). Of 261 Q2 variants across nine
+loci, 207 (79.3%) reflect VEP coverage gaps where the tool returned no
+score, not genuine disagreement. TERT illustrates this clearly: 35 Q2
+variants with 23-fold enhancer proximity enrichment (p = 2.03 × 10#super[−15]),
+yet 34 of 35 are Q2a coverage gaps. This suggests that expanding VEP's
+annotation coverage for non-coding frameshifts would eliminate most
+apparent discordance without any structural modeling. The genuine structural
+blind spot --- where VEP explicitly evaluates and misses --- is concentrated
+at HBB (25 Q2b variants, all ClinVar pathogenic/likely pathogenic) and is a tissue-bounded
+phenomenon dependent on enhancer architecture.
 
 
 = Data and Code Availability

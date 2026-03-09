@@ -1,0 +1,41 @@
+{
+  "source": "Javierre et al. 2016 Cell, E-MTAB-2323",
+  "data_url": "https://osf.io/download/63hh4/",
+  "file": "PCHiC_peak_matrix_cutoff5.txt.gz",
+  "analysis_date": "2026-03-09",
+  "total_hbb_interactions": 46,
+  "erythroblast_significant": 25,
+  "max_ery_chicago_score": 10.512727489975,
+  "bait_fragments": [
+    {
+      "name": "CoTC_ribozyme;HBB",
+      "chr": "chr11",
+      "start": 5243047,
+      "end": 5250845
+    },
+    {
+      "name": "CTD-2643I7.1;HBBP1;HBD",
+      "chr": "chr11",
+      "start": 5250846,
+      "end": 5268365
+    }
+  ],
+  "q2b_overlap": {
+    "q2b_range": "chr11:5226596-5227172",
+    "falls_in_bait": false,
+    "falls_in_oe": false,
+    "interpretation": "Q2b variants are in HBB promoter (upstream of bait), not captured as interaction endpoints. PCHi-C confirms the HBB-LCR enhancer-promoter loop exists in erythroblasts (CHiCAGO up to 10.5) but does not directly validate Q2b disruption."
+  },
+  "lcr_interactions": {
+    "n_lcr_total": 10,
+    "n_lcr_ery_significant": 8,
+    "max_lcr_ery_score": 10.512727489975,
+    "interpretation": "Strong erythroblast-specific HBB-LCR contacts confirmed (CHiCAGO>5), consistent with ARCHCODE model predicting LCR-proximal enhancer-promoter loops."
+  },
+  "tissue_specificity": {
+    "ery_mean_score": 4.73062101891151,
+    "ncd4_mean_score": 1.4768259916028543,
+    "neu_mean_score": 2.3633187722649365,
+    "interpretation": "Erythroblast CHiCAGO scores consistently highest across HBB interactions, confirming tissue-specific chromatin architecture."
+  }
+}

@@ -9,19 +9,32 @@ local contact disruption --- strongest in erythroid-matched HBB
 (Δ = 0.019), and absent in tissue-mismatched negative controls
 SCN5A and GJB2 (Δ ≤ 0.006).
 
-In HBB, this approach identified 27 enhancer-proximal candidates
-(95 kb atlas; 20 at stringent 30 kb threshold) absent from nine
-orthogonal annotations including SpliceAI, MPRA, and gnomAD v4.
+Cross-tabulation against VEP/CADD sequence annotations reveals that
+apparent discordance decomposes into coverage gaps (Q2a, 79.3% of
+discordant variants) where VEP lacks annotation, and true structural
+blind spots (Q2b, 20.7%) where VEP explicitly scores low impact but
+the structural model detects disruption. Q2b variants cluster 58-fold
+closer to enhancers than sequence-channel variants
+(434 bp vs 25,138 bp; p = 2.5 × 10#super[−31]) and show
+tissue-dependent enrichment (Spearman ρ = 0.84, p = 0.005).
+
+In HBB, 25 Q2b variants --- all ClinVar pathogenic/likely pathogenic --- are absent from
+nine orthogonal annotations including SpliceAI, MPRA, and gnomAD v4.
+TERT independently replicates the enhancer-proximity signal (23-fold
+enrichment, p = 2 × 10#super[−15]) but through coverage gaps (97% Q2a),
+not mechanistic disagreement.
 
 Predicted contact maps showed locus-dependent agreement with
-experimental Hi-C (r = 0.29--0.59, K562 and tissue-matched
-cell lines).
+experimental Hi-C (r = 0.28--0.59) and cross-species conservation
+(human--mouse r = 0.82, 17/17 directional).
 
-Contact disruption was quantified using Local SSIM on analytical
-mean-field loop extrusion contact maps comparing wild-type and
-variant-specific chromatin occupancy profiles.
-
-ARCHCODE functions as a structural prioritization framework, not an independent pathogenicity predictor. Within functional categories, positional discrimination is minimal (position-only AUC = 0.551); the overall AUC of 0.977 reflects category-level structural scaling rather than independent variant-level prediction. All candidate variants require experimental validation via Capture Hi-C and RT-PCR before any clinical interpretation. The primary utility is identifying enhancer-proximal structural hypotheses invisible to sequence-based tools.
+ARCHCODE functions as a structural prioritization engine, not an
+independent pathogenicity predictor. Within functional categories,
+positional discrimination is null (mean within-category AUC = 0.48);
+the overall AUC of 0.977 reflects category-level structural scaling.
+The primary utility is identifying which enhancer-proximal variants
+to test first via Capture Hi-C and RT-PCR --- a complementary axis
+invisible to sequence-based tools.
 
 #strong[Keywords:] chromatin architecture, enhancer-promoter regulation,
 noncoding variants, ClinVar, tissue specificity, 3D genome,
