@@ -1,0 +1,136 @@
+{
+  "locus": "BRCA1",
+  "chromosome": "chr17",
+  "window": "42900000-43300000",
+  "resolution": 1000,
+  "n_bins": 400,
+  "n_positions_scanned": 200,
+  "scan_step": 2,
+  "effect_levels": {
+    "severe": 0.1,
+    "strong": 0.3,
+    "moderate": 0.5,
+    "weak": 0.8
+  },
+  "top10_fragile": [
+    {
+      "position": 43126000,
+      "ssim": 0.9236,
+      "delta_ssim": 0.0764,
+      "enhancer_dist": 636,
+      "ctcf_dist": 1434,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 43170000,
+      "ssim": 0.9282,
+      "delta_ssim": 0.0718,
+      "enhancer_dist": 700,
+      "ctcf_dist": 1272,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 42928000,
+      "ssim": 0.9419,
+      "delta_ssim": 0.0581,
+      "enhancer_dist": 1000,
+      "ctcf_dist": 1437,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 42930000,
+      "ssim": 0.9447,
+      "delta_ssim": 0.0553,
+      "enhancer_dist": 1000,
+      "ctcf_dist": 563,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 43124000,
+      "ssim": 0.9469,
+      "delta_ssim": 0.0531,
+      "enhancer_dist": 1364,
+      "ctcf_dist": 566,
+      "in_brca1_gene": true
+    },
+    {
+      "position": 43172000,
+      "ssim": 0.9495,
+      "delta_ssim": 0.0505,
+      "enhancer_dist": 1300,
+      "ctcf_dist": 342,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 43024000,
+      "ssim": 0.9546,
+      "delta_ssim": 0.0454,
+      "enhancer_dist": 600,
+      "ctcf_dist": 579,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 42982000,
+      "ssim": 0.9568,
+      "delta_ssim": 0.0432,
+      "enhancer_dist": 500,
+      "ctcf_dist": 1062,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 43022000,
+      "ssim": 0.9643,
+      "delta_ssim": 0.0357,
+      "enhancer_dist": 500,
+      "ctcf_dist": 2579,
+      "in_brca1_gene": false
+    },
+    {
+      "position": 43006000,
+      "ssim": 0.9674,
+      "delta_ssim": 0.0326,
+      "enhancer_dist": 1000,
+      "ctcf_dist": 741,
+      "in_brca1_gene": false
+    }
+  ],
+  "enhancer_proximity_enrichment": {
+    "near_enhancer_mean_delta": 0.0302,
+    "far_enhancer_mean_delta": 0.0072,
+    "ratio": 4.2
+  },
+  "summary_by_level": [
+    {
+      "level": "severe",
+      "strength": 0.1,
+      "mean_ssim": 0.9897,
+      "min_ssim": 0.9236,
+      "fragile_count": 6,
+      "fragile_near_enhancer": 6
+    },
+    {
+      "level": "strong",
+      "strength": 0.3,
+      "mean_ssim": 0.9939,
+      "min_ssim": 0.9531,
+      "fragile_count": 0,
+      "fragile_near_enhancer": 0
+    },
+    {
+      "level": "moderate",
+      "strength": 0.5,
+      "mean_ssim": 0.9974,
+      "min_ssim": 0.9805,
+      "fragile_count": 0,
+      "fragile_near_enhancer": 0
+    },
+    {
+      "level": "weak",
+      "strength": 0.8,
+      "mean_ssim": 0.9996,
+      "min_ssim": 0.9971,
+      "fragile_count": 0,
+      "fragile_near_enhancer": 0
+    }
+  ]
+}

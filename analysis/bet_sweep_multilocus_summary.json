@@ -1,0 +1,56 @@
+{
+  "HBB": {
+    "tissue_match": "matched",
+    "baseline_delta": 0.0706,
+    "full_bet_delta": 0.0171,
+    "loss_pct": 76
+  },
+  "BRCA1": {
+    "tissue_match": "partial",
+    "baseline_delta": 0.0031,
+    "full_bet_delta": 0.0095,
+    "loss_pct": -206
+  },
+  "TP53": {
+    "tissue_match": "partial",
+    "baseline_delta": 0.0059,
+    "full_bet_delta": 0.0244,
+    "loss_pct": -314
+  },
+  "TERT": {
+    "tissue_match": "matched",
+    "baseline_delta": 0.0626,
+    "full_bet_delta": 0.0048,
+    "loss_pct": 92
+  },
+  "MLH1": {
+    "tissue_match": "partial",
+    "baseline_delta": 0.1153,
+    "full_bet_delta": 0.0086,
+    "loss_pct": 93
+  },
+  "CFTR": {
+    "tissue_match": "mismatch",
+    "baseline_delta": 0.1261,
+    "full_bet_delta": 0.004,
+    "loss_pct": 97
+  },
+  "SCN5A": {
+    "tissue_match": "mismatch",
+    "baseline_delta": 0.2129,
+    "full_bet_delta": 0.0049,
+    "loss_pct": 98
+  },
+  "GJB2": {
+    "tissue_match": "mismatch",
+    "baseline_delta": 0.1831,
+    "full_bet_delta": 0.0334,
+    "loss_pct": 82
+  },
+  "LDLR": {
+    "tissue_match": "partial",
+    "baseline_delta": 0.0902,
+    "full_bet_delta": 0.0087,
+    "loss_pct": 90
+  }
+}
