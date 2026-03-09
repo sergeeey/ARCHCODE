@@ -1,0 +1,15 @@
+{
+  "source": "4DNFI18UHVRO.mcool",
+  "resolution_bp": 1000,
+  "region": "chr17:42600000-43600000",
+  "normalization": "KR_balance_true",
+  "shape": [
+    1000,
+    1000
+  ],
+  "non_zero": 198269,
+  "sparsity": 0.801731,
+  "min": 0.0,
+  "max": 2.1770019960232645,
+  "mean_nonzero": 0.002473323753538037
+}

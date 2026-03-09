@@ -4,7 +4,7 @@
 #import "template.typ": biorxiv-template
 
 #show: biorxiv-template.with(
-  title: [Enhancer-Proximal ClinVar Variants Show Tissue-Dependent Structural Disruption Across Nine Genomic Loci],
+  title: [A Tissue-Dependent Structural Prioritization Framework for Enhancer-Proximal ClinVar Variants Across Nine Genomic Loci],
   authors: (
     (
       name: "Sergey V. Boyko",

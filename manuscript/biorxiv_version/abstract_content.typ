@@ -21,9 +21,7 @@ Contact disruption was quantified using Local SSIM on analytical
 mean-field loop extrusion contact maps comparing wild-type and
 variant-specific chromatin occupancy profiles.
 
-These results constitute computational hypotheses for experimental
-follow-up; validation via Capture Hi-C and RT-PCR is required
-before clinical interpretation.
+ARCHCODE functions as a structural prioritization framework, not an independent pathogenicity predictor. Within functional categories, positional discrimination is minimal (position-only AUC = 0.551); the overall AUC of 0.977 reflects category-level structural scaling rather than independent variant-level prediction. All candidate variants require experimental validation via Capture Hi-C and RT-PCR before any clinical interpretation. The primary utility is identifying enhancer-proximal structural hypotheses invisible to sequence-based tools.
 
 #strong[Keywords:] chromatin architecture, enhancer-promoter regulation,
 noncoding variants, ClinVar, tissue specificity, 3D genome,

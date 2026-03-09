@@ -208,6 +208,8 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 
 ## Auto-commit log
 
+- [2026-03-08 14:03] `799ae1f`: feat: v2.16 — bioRxiv biology-first manuscript + arXiv compressed version
+
 - [2026-03-05 18:43] `5cf0d98`: fix: PR Gate blockers — per-locus thresholds + monotonicity test + caveats
 
 - [2026-03-05 18:17] `bf39ad8`: docs: update README + submission metadata to v2.14 (63,153 variants, 641 VUS candidates)

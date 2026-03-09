@@ -275,24 +275,26 @@ provided in Supplementary Table S1.
 
 #figure(
   align(center)[#table(
-    columns: (9%, 12%, 10%, 13%, 7%, 5%, 19%, 25%),
-    align: (auto,auto,auto,auto,auto,auto,auto,auto,),
-    table.header([ClinVar\_ID], [HGVS\_c], [Category], [ClinVar\_Signif.], [SSIM], [VEP], [VEP\_Consequence], [Mechanism],),
+    columns: (8%, 11%, 9%, 11%, 7%, 5%, 17%, 22%, 10%),
+    align: (auto,auto,auto,auto,auto,auto,auto,auto,auto,),
+    table.header([ClinVar\_ID], [HGVS\_c], [Category], [ClinVar\_Signif.], [SSIM], [VEP], [VEP\_Consequence], [Mechanism], [Tier],),
     table.hline(),
     [VCV000869358], [c.50dup], [frameshift], [Pathogenic], [0.8915], [0.15], [synonymous\_variant], [LoF,
-    VEP misannotated],
+    VEP misannotated], [Tier 2],
     [VCV002024192], [c.93-33\_96delins…], [splice\_acceptor], [Likely
     pathogenic], [0.9004], [0.20], [coding\_sequence\_variant], [Complex
-    indel, VEP underscored],
+    indel, VEP underscored], [Tier 2],
     [VCV000015471], [c.-78A\>G], [promoter], [Pathogenic/LP], [0.9276], [0.20], [5\_prime\_UTR\_variant], [Promoter--enhancer
-    loop disruption],
+    loop disruption], [Tier 1],
     [VCV000015470], [c.-78A\>C], [promoter], [Pathogenic], [0.9276], [0.20], [5\_prime\_UTR\_variant], [Promoter--enhancer
-    loop disruption],
+    loop disruption], [Tier 1],
     [VCV000036284], [c.-136C\>T], [promoter], [Pathogenic/LP], [0.9277], [0.20], [5\_prime\_UTR\_variant], [Promoter--enhancer
-    loop disruption],
+    loop disruption], [Tier 1],
   )]
   , kind: table
   )
+
+#emph[Tier 1 (Mechanistic): enhancer-proximal variants with phyloP > 2.0 and tissue-matched locus; high-confidence prioritization candidates. Tier 2 (Exploratory): near-threshold or annotation-artifact cases; require independent experimental confirmation before interpretation.]
 
 #emph[Full list of 20 pearls sorted by SSIM: Supplementary Table S1
 (manuscript/TABLE\_S1\_PEARLS.md).]
@@ -306,19 +308,19 @@ provided in Supplementary Table S1.
 
 #figure(
   align(center)[#table(
-    columns: (23.15%, 5.56%, 19.44%, 8.33%, 7.41%, 36.11%),
-    align: (auto,auto,auto,auto,auto,auto,),
+    columns: (20%, 5%, 17%, 7%, 7%, 31%, 13%),
+    align: (auto,auto,auto,auto,auto,auto,auto,),
     table.header([Group], [n], [Positions (chr11)], [Mean SSIM], [Mean
-      VEP], [Molecular context],),
+      VEP], [Molecular context], [Tier],),
     table.hline(),
     [Promoter], [15], [5,227,099--5,227,172], [0.928], [0.20], [5\_prime\_UTR\_variant
-    (HBB promoter)],
+    (HBB promoter)], [Tier 1],
     [Missense at
     5226613], [3], [5,226,613], [0.949], [0.20], [coding\_sequence\_variant
-    (complex indel)],
+    (complex indel)], [Tier 2],
     [LoF (frameshift + splice)], [2], [5,226,796 /
-    5,226,971], [0.896], [0.18], [frameshift / splice\_acceptor],
-    [#strong[Total]], [#strong[20]], [---], [#strong[0.928]], [#strong[0.20]], [---],
+    5,226,971], [0.896], [0.18], [frameshift / splice\_acceptor], [Tier 2],
+    [#strong[Total]], [#strong[20]], [---], [#strong[0.928]], [#strong[0.20]], [---], [---],
   )]
   , kind: table
   )
@@ -1621,6 +1623,10 @@ of applicability: strongest at tissue-matched loci with rich enhancer
 landscapes, null at tissue-mismatched loci. Per-locus threshold
 calibration (Table 7) operationalizes these insights for clinical use.
 
+
+= Data and Code Availability
+
+All code, locus configurations, and variant atlas (32,201 ClinVar variants across nine genomic loci) are publicly available at: https://zenodo.org/records/18867448 (DOI: 10.5281/zenodo.18867448, CC BY 4.0). ClinVar data accessed 2026-02-28 via NCBI E-utilities (esearch + esummary API). No new experimental data were generated in this study.
 
 = References
 + Gerlich et al.~(2006). Live-cell imaging reveals a stable
