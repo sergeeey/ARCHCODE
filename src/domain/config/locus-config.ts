@@ -99,6 +99,7 @@ const ALIASES: Record<string, string> = {
   tp53: "tp53_300kb.json",
   brca1: "brca1_400kb.json",
   mlh1: "mlh1_300kb.json",
+  mlh1_hct116: "mlh1_hct116_300kb.json",
   ldlr: "ldlr_300kb.json",
   scn5a: "scn5a_400kb.json",
   scn5a_cardiac: "scn5a_cardiac_250kb.json",
