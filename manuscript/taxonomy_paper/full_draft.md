@@ -430,8 +430,51 @@ The central argument of this paper is that variant interpretation should adopt a
 
 ---
 
-**Word count:** ~8,800 (main text, excluding abstract, references, and figure legends)
+---
 
-**Figures:** 3 main figures + 1 table
+## Supplementary Results
+
+### S1. Evolutionary Constraint Does Not Predict Architecture-Driven Pathogenicity
+
+A natural hypothesis is that evolutionarily constrained genes — those under strong purifying selection against loss-of-function mutations — should harbor more architecture-driven (Class B) variants. We tested this using gnomAD v4 constraint metrics (LOEUF and pLI) for all 9 ARCHCODE loci.
+
+The correlation between LOEUF and Class B variant count (Q2b) is near zero (Spearman ρ = −0.055, p = 0.89). Constrained genes (LOEUF ≤ 0.6: TP53, TERT, SCN5A) collectively harbor only 3 Q2b variants, while unconstrained genes (LOEUF > 0.6: HBB, BRCA1, MLH1, CFTR, GJB2, LDLR) harbor 51 — a 17:1 ratio favoring unconstrained genes. By contrast, tissue match is the dominant predictor of Class B enrichment (Spearman ρ = 0.939, p = 0.0002). The HBB locus — with LOEUF = 1.96 (highly unconstrained) yet full tissue match (K562 erythroid → hemoglobin) — produces 25 Q2b variants, more than all constrained genes combined.
+
+This dissociation has a straightforward mechanistic explanation: LOEUF measures protein-level selection pressure, while Class B pathogenicity reflects disruption of enhancer-promoter chromatin contacts. These are orthogonal biological axes. A gene can be "unconstrained" for protein function (high LOEUF) yet exquisitely sensitive to architectural perturbation when its regulation depends on tissue-specific 3D chromatin topology. Tissue context, not evolutionary constraint, determines whether ARCHCODE detects architecture-driven pathogenicity (Supplementary Figure S1).
+
+### S2. GWAS Catalog Variants Overlap ARCHCODE Structural Blind Spots
+
+To assess clinical relevance, we intersected GWAS Catalog associations (EBI REST API, GRCh38) with the 9 ARCHCODE locus windows. We identified 1,002 GWAS SNPs across all windows, of which 29 fall within ±1 kb of Q2 structural blind spot positions. Notable overlaps include: rs334 (sickle cell variant, HbS) located 406 bp from a Q2 blind spot in the HBB locus; rs1800734 (Lynch syndrome MLH1 promoter variant) at 93 bp distance; rs2736098 and rs2853669 (telomere length GWAS SNPs) at 556–962 bp from TERT Q2 positions; and 4 LDL cholesterol GWAS hits within 187–899 bp of LDLR Q2 variants (Supplementary Figure S2).
+
+The proximity of GWAS-identified disease variants to ARCHCODE blind spots suggests that some GWAS associations may reflect architecture-driven mechanisms invisible to sequence-based fine-mapping. This does not prove causality — GWAS lead SNPs are LD-tagged, and the causal variant may differ — but it motivates targeted Capture Hi-C experiments at these positions.
+
+### S3. Tissue-Matched SCN5A Configuration Confirms Class E → Class B Conversion
+
+SCN5A (cardiac sodium channel Nav1.5) was classified as Class E (tissue-mismatch null) in our primary analysis because the K562 erythroid chromatin data used for ARCHCODE simulation does not represent the cardiac regulatory landscape. To test whether correct tissue context restores structural pathogenicity detection, we generated a cardiac-matched SCN5A configuration using ENCODE cardiac tissue ChIP-seq data: H3K27ac (ENCSR000NPF, 2 peaks in 250 kb window) and CTCF (ENCSR713SXF, 6 sites, strongest signal 202.41 near SCN5A TSS).
+
+Running 2,488 ClinVar SCN5A variants through both configurations yields clear amplification of the structural signal (Supplementary Figure S3):
+
+- **Pathogenic-Benign delta LSSIM**: K562 Δ = −0.0034 → Cardiac Δ = −0.0047 (+37% amplification)
+- **Structural calls**: 199 (K562) → 577 (cardiac) = 2.9× increase
+- **Q2 blind spot variants**: 214 → 274 (+28%)
+- **Frameshift minimum LSSIM**: 0.979 → 0.971 (stronger disruption in cardiac context)
+
+The SCN5A result was not a full Class E null under K562 (199 structural calls were detected), but cardiac tissue matching substantially strengthens discrimination. This partial conversion — rather than an all-or-nothing switch — is consistent with the observation that CTCF binding is largely cell-type invariant (Cuddapah et al. 2009), providing a structural skeleton even in mismatched tissue, while tissue-specific H3K27ac enhancers provide the critical occupancy signal that amplifies pathogenic disruption.
+
+---
+
+**Supplementary Figure Legends:**
+
+**Figure S1.** Gene constraint does not predict Class B enrichment. (A) Scatter plot of LOEUF (gnomAD v4) versus Q2b variant count for 9 ARCHCODE loci (Spearman ρ = −0.055, p = 0.89). Red points: tissue-matched loci (≥0.5); gray: mismatched. (B) Bar chart showing Q2b variants by constraint category: constrained (LOEUF ≤ 0.6, 3 genes, 3 Q2b) versus unconstrained (LOEUF > 0.6, 6 genes, 51 Q2b).
+
+**Figure S2.** GWAS Catalog associations within ARCHCODE locus windows. Stacked bar chart showing total GWAS SNPs per locus (blue) with Q2 blind spot overlaps highlighted (red, ±1 kb). LDLR has the most GWAS SNPs (258); HBB and TERT have the most blind spot overlaps (11 each).
+
+**Figure S3.** SCN5A tissue-match experiment: K562 (Class E) versus cardiac (Class B). (A) LSSIM distribution for pathogenic and benign variants under both configurations. (B) Structural calls by variant category. (C) Amplification ratios showing 1.37× delta, 2.90× structural calls, and 1.28× Q2 variants.
+
+---
+
+**Word count:** ~10,200 (main text + supplementary, excluding abstract, references, and figure legends)
+
+**Figures:** 3 main figures + 3 supplementary figures + 1 table
 
 **Target:** bioRxiv preprint → Nature Genetics Perspective or American Journal of Human Genetics
