@@ -9,11 +9,56 @@
 **Zenodo DOI:** v2.16 — DOI закреплён
 **bioRxiv:** BIORXIV/2026/710343 — pending resubmit
 **arXiv:** ждём endorsement от Brackley/Michieletto (code B9P837)
-**Status:** Taxonomy track PHASE 7 — P0+P1 reviewer fixes applied. Effect sizes, model clarification, config script. PDF v3 on desktop.
-**Last Commit:** `41b713c` — P1 reviewer response (effect sizes + model clarification + config assembly script)
+**Status:** Taxonomy track PHASE 12 — 5-locus tissue-match panel complete. Integrity audit PASSED (21/21 claims). Ready for TERT SK-N-SH or submission.
+**Last Commit:** `10d11a7` — CFTR A549 tissue-match reverse effect
 
 ### Branch Architecture (2026-03-10)
-- **Taxonomy** (`feature/mechanistic-taxonomy` @ `41b713c`): 29 commits, Phase 1-7 complete + P0/P1 reviewer response
+- **Taxonomy** (`feature/mechanistic-taxonomy` @ `10d11a7`): 41 commits, Phase 1-12 complete
+
+### 2026-03-10: Phase 12 — Tissue-Match Panel + Integrity Audit
+
+13. **MLH1 HCT116 tissue-match** (`86b2d81`)
+    - 7 H3K27ac peaks (ENCFF899XEF) + 7 CTCF sites (ENCFF463FGL)
+    - Mean delta shift modest (1.07×), but LSSIM<0.95 tail doubles: 72→144 (2.0×)
+    - New pattern: tail amplification distinct from SCN5A/LDLR mean shift
+
+14. **CFTR A549 tissue-match** (`10d11a7`)
+    - 9 H3K27ac peaks (ENCFF548GIF) + 2 CTCF sites (ENCFF535MZG)
+    - REVERSE effect: 0.60× amplification, K562 baseline overparameterized
+    - Three outcome modes established: positive (SCN5A 1.37×, LDLR 1.43×), null (BRCA1 0.99×), reverse (CFTR 0.60×)
+
+15. **Integrity audit by Qwen Code** — 21/21 numerical claims MATCH, 6/6 ENCODE accessions verified, 0 red flags
+    - Report: `docs/INTEGRITY_AUDIT_REPORT_2026-03-10.md`
+    - Previous issues (Sabaté 2025, AlphaGenome mock, α/γ, Gröschel DOI) all confirmed fixed
+
+### 2026-03-10: Phase 10-11 — Evidence Hierarchy + Discovery Ranking
+
+8. **HUDEP-2 Hi-C at Q2b** (`08fac40`)
+   - WT HUDEP-2 Capture Hi-C (GSM4873116, Chouery & Shukla 2022)
+   - Q2b bin: 1.76× long-range enrichment, p=0.0016 (Mann-Whitney)
+   - Honest caveat: WT-only, not allele-specific proof
+   - Files: `data/hudep2_wt_hic_hbb_95kb.npy`, `analysis/hudep2_q2b_contacts.json`
+
+9. **Cross-locus MPRA overlay** (`a82008d`)
+   - Kircher 2019 × ARCHCODE: HBB (15 Q2b, p=0.41 = blind), TERT (0 Q2b), LDLR (0 Q2b)
+   - Confirms: architecture-driven variants systematically outside promoter MPRA coverage
+   - Files: `analysis/kircher_mpra_crosslocus_overlay.json`, `figures/taxonomy/fig_mpra_crosslocus_overlay.pdf`
+
+10. **Claim ladder** (`c51f0b3`)
+    - 8 claims: 4 Demonstrated, 1 Supported, 3 Hypothesized
+    - Explicit downgrade rules for each claim
+    - Table S4c in manuscript body_content.typ
+
+11. **15-locus discovery ranking** (`6c2d3ea`)
+    - Composite scoring: 5 axes (expert + data + signal + tissue + struct)
+    - Top 6: HBB (21.1), BRCA1 (13.6), TERT (13.4), SCN5A (13.0), MLH1 (12.9), LDLR (12.7)
+    - Files: `scripts/discovery_locus_ranking.py`, `analysis/discovery_locus_ranking.json`
+    - Supplementary Table S5 in manuscript
+
+12. **ENCODE tissue data survey** (`b29d3e8`)
+    - 12 loci surveyed: 8 fully available, 3 partial/proxy, 1 not available (GJB2)
+    - Priority for new configs: MLH1 (HCT116) → CFTR (A549) → TERT (SK-N-SH)
+    - File: `analysis/encode_tissue_data_availability.json`
 - **v4 core** (`feature/v4-prioritization-framework` @ `e9435f9`): variant prioritization paper — frozen, submission-ready
 - **Follow-up** (`feature/follow-up-structural-framework` @ `1a0a7cf`): structural genomics framework — GWAS, CRISPR, ARS, HDAC
 
@@ -352,6 +397,15 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+- [2026-03-10 15:15] `10d11a7`: feat: CFTR A549 tissue-match — reverse effect (0.60×) reveals baseline overparameterization
+- [2026-03-10 15:08] `ba1e224`: docs: update manuscript with MLH1 HCT116 results — 4 loci in tissue-match table
+- [2026-03-10 15:05] `86b2d81`: feat: MLH1 HCT116 tissue-match experiment — tail amplification 2.0× at LSSIM<0.95
+- [2026-03-10 14:49] `b29d3e8`: docs: ENCODE tissue data availability report — 12 loci surveyed (8 fully available)
+- [2026-03-10 14:28] `6c2d3ea`: feat: 15-locus discovery ranking — composite scoring + Supplementary Table S5
+- [2026-03-10 14:16] `c51f0b3`: feat: claim ladder with explicit evidence tiers and downgrade rules
+- [2026-03-10 14:10] `a82008d`: feat: cross-locus MPRA overlay — Kircher 2019 × ARCHCODE (3 loci)
+- [2026-03-10 13:37] `08fac40`: feat: HUDEP-2 Capture Hi-C contact extraction at Q2b positions
+- [2026-03-10 13:17] `9f23ea0`: feat: strengthen positions — tissue-match amplification, MPRA control, falsifiability
 - [2026-03-10 12:07] `41b713c`: feat: P1 reviewer response — effect sizes, model clarification, config assembly script
 - [2026-03-10 11:08] `59f22c4`: fix: P0 reviewer response — NMI correction, tissue_match algorithm, circularity defense
 - [2026-03-10 10:58] `ea669cb`: feat: permutation test (p<0.0001) + review response plan + paper-critic agent
