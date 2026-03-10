@@ -1333,9 +1333,9 @@ largely cell-type invariant (Cuddapah et al. 2009), providing a structural skele
 mismatched tissue, while tissue-specific H3K27ac enhancers provide the critical occupancy signal
 that amplifies pathogenic disruption.
 
-== Systematic Tissue-Match Amplification Across Five Loci <supplementary-s4a>
+== Systematic Tissue-Match Amplification Across Six Loci <supplementary-s4a>
 
-To test whether tissue-match amplification generalizes, we created tissue-matched configurations for five loci using cell-type-specific ENCODE ChIP-seq data and compared each against K562 baseline configurations. For LDLR and BRCA1, the K562-only configs replaced tissue-specific H3K27ac peaks with K562 peaks (ENCFF864OSZ), keeping CTCF sites identical. For MLH1, HCT116 colorectal data provided tissue-matched context (H3K27ac: ENCFF899XEF; CTCF: ENCFF463FGL). For CFTR, A549 lung adenocarcinoma data provided tissue-matched context (H3K27ac: ENCFF548GIF, ENCSR000AUI vehicle control; CTCF: ENCFF535MZG) (Supplementary Figure S7):
+To test whether tissue-match amplification generalizes, we created tissue-matched configurations for six loci using cell-type-specific ENCODE ChIP-seq data and compared each against K562 baseline configurations. For LDLR and BRCA1, the K562-only configs replaced tissue-specific H3K27ac peaks with K562 peaks (ENCFF864OSZ), keeping CTCF sites identical. For MLH1, HCT116 colorectal data provided tissue-matched context (H3K27ac: ENCFF899XEF; CTCF: ENCFF463FGL). For CFTR, A549 lung adenocarcinoma data provided tissue-matched context (H3K27ac: ENCFF548GIF, ENCSR000AUI vehicle control; CTCF: ENCFF535MZG). For TERT, SK-N-SH neuroblastoma data provided a neural proxy (H3K27ac: ENCFF138VUT, ENCSR564IGJ; CTCF: ENCFF244QKO, ENCSR541AMF) (Supplementary Figure S7):
 
 #scientific-table(
   columns: (auto, auto, auto, auto, auto),
@@ -1345,15 +1345,18 @@ To test whether tissue-match amplification generalizes, we created tissue-matche
   [MLH1], [−0.00977], [−0.00912], [*1.07× (mean)*], [Tail amplification: LSSIM\<0.95 count doubles (72→144, 2.0×)],
   [BRCA1], [−0.00554], [−0.00558], [*0.99×*], [No amplification: K562 peaks co-localize with MCF7],
   [CFTR], [−0.00406], [−0.00678], [*0.60×*], [Reverse effect: K562 baseline used literature enhancers; A549 real peaks are sparser],
+  [TERT], [−0.00726], [−0.01882], [*0.39×*], [Strong reverse: SK-N-SH has 2 H3K27ac peaks vs K562 5; no TERT TSS enhancer],
 )
 
 Three of five tissue-matched loci show positive amplification, but with distinct patterns. SCN5A and LDLR exhibit _mean shift_ amplification (37--43% increase in mean delta P--B), while MLH1 shows _tail amplification_: the mean delta increases only modestly (1.07×), but the number of variants with LSSIM \< 0.95 doubles from 72 to 144 (2.0×).
 
 The BRCA1 null result (0.99×) is mechanistically informative: K562 H3K27ac peaks co-localize with MCF7 peaks at all major sites, meaning "tissue mismatch" at BRCA1 is minimal --- consistent with BRCA1 being broadly expressed.
 
-The CFTR reverse result (0.60×) is equally informative: the K562 baseline for CFTR used _literature-based_ enhancer annotations (Gosalia 2020, Ott 2009) because CFTR is silent in K562, while the A549 config used real ChIP-seq peaks. A549 shows only 9 H3K27ac peaks (concentrated in introns 11--14) and 2 CTCF sites, versus 6 literature enhancers and 6 CTCF sites in the K562 config. The K562 baseline was effectively _overparameterized_ relative to the actual A549 regulatory landscape, inflating the apparent disruption signal. This demonstrates that tissue-match amplification depends not just on enhancer divergence from K562, but on the _density and distribution_ of real enhancers in the target tissue.
+The CFTR reverse result (0.60×) is equally informative: the K562 baseline for CFTR used _literature-based_ enhancer annotations (Gosalia 2020, Ott 2009) because CFTR is silent in K562, while the A549 config used real ChIP-seq peaks. A549 shows only 9 H3K27ac peaks (concentrated in introns 11--14) and 2 CTCF sites, versus 6 literature enhancers and 6 CTCF sites in the K562 config. The K562 baseline was effectively _overparameterized_ relative to the actual A549 regulatory landscape, inflating the apparent disruption signal.
 
-The five-locus panel reveals three distinct outcomes: positive amplification (SCN5A, LDLR, MLH1), null (BRCA1), and reverse (CFTR). This heterogeneity strengthens the tissue-match hypothesis by showing that the effect is biologically specific rather than a universal bias.
+The TERT result (0.39×) is the strongest reverse effect: SK-N-SH neuroblastoma shows only 2 H3K27ac peaks (both at CLPTM1L, ~50kb downstream) versus K562's 5 peaks, and critically _no enhancer at the TERT TSS_. The LSSIM\<0.95 count drops from 48 to 0. This is consistent with TERT reactivation in neural tumors occurring via promoter mutations (C228T/C250T creating de novo ETS binding sites) rather than enhancer-driven activation --- a mechanism invisible to enhancer-based structural models.
+
+The six-locus panel reveals four distinct outcomes: _positive amplification_ (SCN5A, LDLR), _tail amplification_ (MLH1), _null_ (BRCA1), and _reverse_ (CFTR, TERT). This heterogeneity strengthens the tissue-match hypothesis by showing that the effect is enhancer-density-dependent rather than a universal bias.
 
 == Testable Predictions for Future Tissue-Matched Studies <supplementary-s4b>
 
@@ -1442,10 +1445,10 @@ To demonstrate falsifiability, we list explicit predictions for tissue-matched A
   caption: [*Tissue-match amplification across five loci.*
   (A) Pathogenic--benign LSSIM separation (|Δ|) for tissue-matched (green) vs K562-only (red)
   configurations. SCN5A and LDLR show 37--43% mean amplification; MLH1 shows 7% mean but 2.0× tail
-  amplification; BRCA1 shows null (0.99×); CFTR shows reverse effect (0.60×).
-  (B) Structural call counts at LSSIM\<0.95 threshold: MLH1 doubles (72→144); CFTR drops (36→13).
-  (C) Three outcome modes: _positive_ (SCN5A, LDLR, MLH1), _null_ (BRCA1), _reverse_ (CFTR).
-  The CFTR reverse reflects K562 baseline overparameterization with literature enhancers vs sparser A549 real peaks.],
+  amplification; BRCA1 shows null (0.99×); CFTR shows reverse effect (0.60×); TERT shows strong reverse (0.39×).
+  (B) Structural call counts at LSSIM\<0.95 threshold: MLH1 doubles (72→144); CFTR drops (36→13); TERT drops (48→0).
+  (C) Four outcome modes: _positive_ (SCN5A, LDLR), _tail_ (MLH1), _null_ (BRCA1), _reverse_ (CFTR, TERT).
+  TERT reverse reflects absence of TSS enhancer in SK-N-SH --- TERT reactivation in neural tumors is promoter-mutation-driven, not enhancer-driven.],
 ) <fig:tissue-match-amplification>
 
 #figure(
