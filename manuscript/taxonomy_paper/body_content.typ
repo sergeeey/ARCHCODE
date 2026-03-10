@@ -880,6 +880,8 @@ uninformative.
 
 *Current data limitation:* The Kircher et al. (2019) MPRA dataset covers only 186 bp of the HBB 5$prime$ UTR/promoter. Of 75 Q3 variants in the full 95 kb atlas, only 1 falls within this window (vs 10 Q2b), making the positive control test statistically underpowered (Supplementary Figure S6). A tiling MPRA or lentiMPRA covering the full HBB locus would be required to execute this falsification test with adequate power.
 
+*Cross-locus MPRA overlay:* We extended this analysis to TERT (258 bp promoter) and LDLR (317 bp promoter) using the same Kircher et al. dataset. At HBB, Q2b MPRA scores are indistinguishable from Q4 benign (mean −0.233 vs −0.172, Mann--Whitney p = 0.41; @fig:mpra-crosslocus). At TERT and LDLR, zero Q2b variants fall within the MPRA windows --- all matched variants are Q4 benign. This cross-locus pattern confirms that architecture-driven variants are systematically invisible to promoter-scale MPRA assays, consistent with the taxonomy prediction that Class B pathogenicity operates through 3D chromatin structure rather than local regulatory activity.
+
 // =============================================================================
 // 8. PRODUCT AND FRAMEWORK IMPLICATIONS
 // =============================================================================
@@ -1390,3 +1392,15 @@ To demonstrate falsifiability, we list explicit predictions for tissue-matched A
   21 Q2b variants in a single bin; differential analysis between individual positions
   requires higher-resolution data.],
 ) <fig:hudep2-q2b>
+
+#figure(
+  image("../../figures/taxonomy/fig_mpra_crosslocus_overlay.png", width: 100%),
+  caption: [*Cross-locus MPRA × ARCHCODE overlay (Kircher et al. 2019).*
+  Scatter plots of MPRA score (log₂ RNA/DNA) vs ARCHCODE LSSIM for variants matched
+  by position and allele across three loci. (Left) HBB: 15 Q2b and 15 Q4 variants;
+  MPRA scores are indistinguishable (p = 0.41). (Center) TERT: 10 matched variants,
+  all Q4 --- zero Q2b in the 258 bp MPRA window. (Right) LDLR: 25 matched variants,
+  all Q4 --- zero Q2b in the 317 bp window. Architecture-driven variants fall outside
+  promoter-scale MPRA coverage, confirming Class B invisibility to activity-based assays.
+  Data source: OSF doi:10.17605/OSF.IO/75B2M.],
+) <fig:mpra-crosslocus>
