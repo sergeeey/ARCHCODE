@@ -1020,6 +1020,67 @@ in a given tissue. The taxonomy proposed here provides that interpretive layer: 
 should be evaluated primarily on activity-track predictions; Class B variants on contact-track
 predictions; Class C on both.
 
+== Claim ladder: evidence levels and downgrade rules
+
+To make the evidentiary status of each claim explicit, we classify all major assertions into three tiers: *Demonstrated* (quantitative evidence from this study), *Supported* (consistent with data but not independently proven), and *Hypothesized* (plausible framework awaiting validation). Each tier includes a downgrade rule: the condition under which the claim would move to a weaker tier or be abandoned.
+
+#figure(
+  kind: table,
+  caption: [*Claim ladder: evidence tiers and downgrade rules.* Each major claim is assigned an evidence tier with explicit conditions for downgrade. D = Demonstrated, S = Supported, H = Hypothesized.],
+  scientific-table(
+    columns: (auto, auto, 1fr, 1fr),
+    [*Claim*], [*Tier*], [*Evidence*], [*Downgrade if...*],
+
+    [Regulatory pathogenicity is mechanistically heterogeneous (≥5 classes)],
+    [D],
+    [30,318 variants × 9 loci show distinct tool-response profiles per class; 8 canonical literature cases],
+    [A single-axis model achieves equivalent classification accuracy without class decomposition],
+
+    [Sequence-based tools (VEP, CADD) are blind to Class B],
+    [D],
+    [NMI ≤ 0.03 at 8/9 tissue-mismatched loci; 0 of 25 Q2b detected by VEP/CADD],
+    [Sequence model predicts Q2b LSSIM values with r > 0.5],
+
+    [MPRA returns null for architecture-driven variants],
+    [D],
+    [HBB Q2b vs Q4: p = 0.41 (Kircher 2019); cross-locus: 0 Q2b in TERT/LDLR MPRA windows],
+    [Tiling MPRA across full HBB locus shows Q2b MPRA ≠ 0 (p < 0.05)],
+
+    [Tissue match amplifies architecture-driven detection],
+    [D],
+    [SCN5A +37%, LDLR +43% amplification; BRCA1 null (informative: K562 ≈ MCF7 at BRCA1)],
+    [≥3 additional tissue-matched configs show no amplification (ratio ≤ 1.05)],
+
+    [Q2b variants disrupt enhancer--promoter contacts],
+    [S],
+    [434 bp mean enhancer distance (58× closer than Q3); HUDEP-2 Hi-C: 1.76× long-range enrichment (p = 0.0016)],
+    [Allele-specific Hi-C on Q2b shows no contact change vs WT],
+
+    [25 HBB Q2b are genuinely pathogenic via structural mechanism],
+    [H],
+    [Computational: LSSIM < 0.95, enhancer-proximal, VEP-blind. No experimental confirmation],
+    [Capture Hi-C + RT-qPCR in HUDEP-2 show no expression change at Q2b positions],
+
+    [Class B exists beyond HBB (generalizable)],
+    [H],
+    [29 candidates at 3 partially matched loci; tissue-match amplification at 2 independent loci],
+    [Tissue-matched configs at LDLR/SCN5A/CFTR all fail to increase Class B counts above K562],
+
+    [Taxonomy should replace single-axis scoring in clinical practice],
+    [H],
+    [Conceptual argument + blind-spot quantification. No clinical validation],
+    [Prospective study shows single-axis scoring achieves equivalent diagnostic yield],
+  ),
+) <tab:claim-ladder>
+
+Three principles govern the ladder:
+
++ *Demonstrated* requires quantitative reproducible evidence within this study. Computationally demonstrated claims can be independently verified from the deposited data and code.
++ *Supported* requires evidence consistent with the claim from multiple independent sources, but lacking definitive proof (e.g., WT Hi-C shows enrichment but not allele-specific disruption).
++ *Hypothesized* requires a plausible mechanism and preliminary data, but the claim rests on extrapolation from a small number of observations (e.g., N = 1 locus for confident Class B).
+
+The downgrade rules are falsifiable: each specifies a concrete experimental or computational outcome that would weaken or invalidate the corresponding claim. We commit to these criteria prospectively.
+
 == What this paper does not claim
 
 To prevent overinterpretation, we explicitly state four limitations that bound our conclusions:
