@@ -629,6 +629,7 @@ async function main() {
     LOCUS_ARG === "mlh1" ||
     LOCUS_ARG === "ldlr" ||
     LOCUS_ARG === "scn5a" ||
+    LOCUS_ARG === "scn5a_cardiac" ||
     LOCUS_ARG === "tert" ||
     LOCUS_ARG === "gjb2" ||
     LOCUS_ARG === "hba1" ||
@@ -638,7 +639,9 @@ async function main() {
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
-    const csvFile = `data/${LOCUS_ARG}_variants.csv`;
+    // Map tissue-specific aliases to base locus for variant CSV lookup
+    const csvLocus = LOCUS_ARG === "scn5a_cardiac" ? "scn5a" : LOCUS_ARG;
+    const csvFile = `data/${csvLocus}_variants.csv`;
     console.log(`Loading variants from ${csvFile}...`);
     const genericVariants = loadGenericVariants(csvFile);
     allVariants = genericVariants.map((v) => ({
@@ -866,9 +869,11 @@ async function main() {
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
   // Output naming: use gene name matching locus arg, fallback to first gene or arg
+  // For tissue-specific aliases (scn5a_cardiac), match base gene name
+  const geneMatchArg = LOCUS_ARG === "scn5a_cardiac" ? "scn5a" : LOCUS_ARG;
   const geneName = isGenericLocus
     ? (LOCUS_CONFIG.features.genes.find(
-        (g) => g.name.toLowerCase() === LOCUS_ARG.toLowerCase(),
+        (g) => g.name.toLowerCase() === geneMatchArg.toLowerCase(),
       )?.name ??
       LOCUS_CONFIG.features.genes[0]?.name ??
       LOCUS_ARG.toUpperCase())
