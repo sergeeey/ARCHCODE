@@ -1,0 +1,176 @@
+{
+  "id": "tert_skn_sh_300kb",
+  "name": "TERT 300kb SK-N-SH tissue-matched (ENCODE H3K27ac + CTCF)",
+  "description": "300kb window spanning the TERT inter-TAD boundary region on chr5p15.33. SK-N-SH (neuroblastoma) as neural proxy for TERT-driven cancers (glioma, melanoma). H3K27ac from ENCODE SK-N-SH (ENCFF138VUT, ENCSR564IGJ). CTCF from ENCODE SK-N-SH (ENCFF244QKO, ENCSR541AMF). KEY DIVERGENCE: only 2 H3K27ac peaks (both at CLPTM1L, none at TERT TSS) vs K562 5 peaks. CTCF 5 sites (subset of K562 10). TERT promoter hotspot mutations create de novo ETS binding sites — mechanism is promoter-mutation-driven, not enhancer-driven.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr5",
+    "start": 1150000,
+    "end": 1450000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 1345443,
+        "occupancy": 0.8,
+        "name": "CLPTM1L_H3K27ac_strong",
+        "source": "ENCODE_SKNS_H3K27ac",
+        "encode_accession": "ENCFF138VUT",
+        "note": "Strongest H3K27ac peak in window: chr5:1345184-1345701 (signal=7.36, -log10q=31.81). At CLPTM1L 3' end. Co-localizes with K562 strongest peak (signal=16.44). MANUALLY CALIBRATED occupancy=0.8 reflecting dominant enhancer activity"
+      },
+      {
+        "position": 1328822,
+        "occupancy": 0.4,
+        "name": "CLPTM1L_upstream_H3K27ac",
+        "source": "ENCODE_SKNS_H3K27ac",
+        "encode_accession": "ENCFF138VUT",
+        "note": "Weak H3K27ac peak: chr5:1328381-1329262 (signal=2.94, -log10q=4.68). In CLPTM1L gene body. Not present in K562 data at this position. MANUALLY CALIBRATED occupancy=0.4 reflecting weak activity"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 1174615,
+        "orientation": "unknown",
+        "signal": 822.7,
+        "name": "TERLR1_CTCF_strongest",
+        "source": "ENCODE_SKNS_CTCF",
+        "encode_accession": "ENCFF244QKO",
+        "note": "Strongest CTCF in window: chr5:1174350-1174879 (signal=822.70). Co-localizes with K562 strongest CTCF (signal=186.14). Left TAD boundary anchor. 4.4× stronger in SK-N-SH than K562"
+      },
+      {
+        "position": 1168127,
+        "orientation": "unknown",
+        "signal": 456.12,
+        "name": "upstream_TERLR1_CTCF",
+        "source": "ENCODE_SKNS_CTCF",
+        "encode_accession": "ENCFF244QKO",
+        "note": "Strong CTCF: chr5:1167644-1168609 (signal=456.12). Co-localizes with K562 CTCF cluster. Part of left TAD boundary. 2.7× stronger in SK-N-SH than K562 (169.36)"
+      },
+      {
+        "position": 1209123,
+        "orientation": "unknown",
+        "signal": 253.42,
+        "name": "SLC6A19_CTCF",
+        "source": "ENCODE_SKNS_CTCF",
+        "encode_accession": "ENCFF244QKO",
+        "note": "Strong CTCF: chr5:1208896-1209350 (signal=253.42). Co-localizes with K562 SLC6A19 CTCF (signal=127.70). 2× stronger in SK-N-SH"
+      },
+      {
+        "position": 1204894,
+        "orientation": "unknown",
+        "signal": 69.96,
+        "name": "TERLR1_SLC6A19_intergenic_CTCF",
+        "source": "ENCODE_SKNS_CTCF",
+        "encode_accession": "ENCFF244QKO",
+        "note": "Moderate CTCF: chr5:1204662-1205126 (signal=69.96). Co-localizes with K562 intergenic CTCF (signal=84.68). Similar strength"
+      },
+      {
+        "position": 1380487,
+        "orientation": "unknown",
+        "signal": 478.79,
+        "name": "LINC01511_CTCF",
+        "source": "ENCODE_SKNS_CTCF",
+        "encode_accession": "ENCFF244QKO",
+        "note": "Strong CTCF: chr5:1380216-1380758 (signal=478.79). Co-localizes with K562 LINC01511 CTCF (signal=69.42). 6.9× stronger in SK-N-SH. Near right TAD boundary"
+      }
+    ],
+    "genes": [
+      {
+        "name": "TERLR1",
+        "start": 1173095,
+        "end": 1178605,
+        "strand": "-"
+      },
+      {
+        "name": "LOC124900189",
+        "start": 1173095,
+        "end": 1182183,
+        "strand": "-"
+      },
+      {
+        "name": "SLC6A19",
+        "start": 1201594,
+        "end": 1225111,
+        "strand": "+"
+      },
+      {
+        "name": "SLC6A18",
+        "start": 1225380,
+        "end": 1246189,
+        "strand": "+"
+      },
+      {
+        "name": "TERT",
+        "start": 1253166,
+        "end": 1295068,
+        "strand": "-"
+      },
+      {
+        "name": "MIR4457",
+        "start": 1309309,
+        "end": 1309377,
+        "strand": "-"
+      },
+      {
+        "name": "CLPTM1L",
+        "start": 1317751,
+        "end": 1339179,
+        "strand": "-"
+      },
+      {
+        "name": "LINC01511",
+        "start": 1363581,
+        "end": 1380073,
+        "strand": "-"
+      },
+      {
+        "name": "SLC6A3",
+        "start": 1392793,
+        "end": 1445440,
+        "strand": "-"
+      }
+    ]
+  },
+  "tissue_match_comparison": {
+    "baseline": "K562 (ENCFF864OSZ H3K27ac, ENCFF736NYC CTCF)",
+    "tissue_matched": "SK-N-SH neuroblastoma (ENCFF138VUT H3K27ac, ENCFF244QKO CTCF)",
+    "enhancer_divergence": {
+      "k562_only": ["TERT_TSS_promoter (1295068)", "SLC6A19_promoter (1200709)", "LOC124900189 (1185916)", "CLPTM1L_intron (1344398)"],
+      "skns_only": ["CLPTM1L_upstream (1328822)"],
+      "shared": ["CLPTM1L_strong (~1345500)"],
+      "summary": "4 K562-only, 1 SKNS-only, 1 shared. Dramatic enhancer loss (5→2). No TERT TSS enhancer in SK-N-SH — consistent with promoter-mutation-driven reactivation."
+    },
+    "ctcf_divergence": {
+      "k562_only": ["SLC6A18 (1235579)", "SLC6A18_3prime (1245206)", "SLC6A3_1 (1408725)", "SLC6A3_2 (1437679)", "upstream_TERLR1_2 (1167861)"],
+      "skns_only": [],
+      "shared": ["TERLR1_strongest (~1174600)", "upstream_TERLR1 (~1168100)", "SLC6A19 (~1209100)", "intergenic (~1204900)", "LINC01511 (~1380500)"],
+      "summary": "5 K562-only, 0 SKNS-only, 5 shared. SK-N-SH CTCF is strict subset of K562. TAD boundary anchors preserved (stronger), intra-TAD insulators lost."
+    },
+    "hypothesis": "Fewer enhancers → weaker structural discrimination. But CTCF boundary anchors STRONGER → TAD structure may be more rigid. Net effect unclear — could go either way."
+  },
+  "data_sources": {
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR564IGJ",
+      "file": "ENCFF138VUT",
+      "type": "IDR thresholded peaks",
+      "cell_line": "SK-N-SH",
+      "assembly": "GRCh38",
+      "peaks_in_window": 2,
+      "total_peaks": 69317,
+      "url": "https://www.encodeproject.org/experiments/ENCSR564IGJ/"
+    },
+    "ctcf_chipseq": {
+      "experiment": "ENCSR541AMF",
+      "file": "ENCFF244QKO",
+      "type": "IDR thresholded peaks",
+      "cell_line": "SK-N-SH",
+      "assembly": "GRCh38",
+      "peaks_in_window": 5,
+      "total_peaks": 57649,
+      "url": "https://www.encodeproject.org/experiments/ENCSR541AMF/"
+    }
+  },
+  "thresholds": null
+}

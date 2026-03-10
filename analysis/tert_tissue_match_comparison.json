@@ -1,0 +1,33 @@
+{
+  "analysis": "tert_tissue_match_comparison",
+  "date": "2026-03-10",
+  "baseline": {
+    "cell_type": "K562",
+    "config": "tert_300kb.json",
+    "n_variants": 2089,
+    "path_mean_lssim": 0.979752,
+    "ben_mean_lssim": 0.99857,
+    "delta_pb": -0.018818,
+    "lssim_below_095": 48,
+    "mannwhitney_p": 4.6216047842589965e-107
+  },
+  "tissue_matched": {
+    "cell_type": "SK-N-SH (neuroblastoma)",
+    "config": "tert_skn_sh_300kb.json",
+    "n_variants": 2089,
+    "path_mean_lssim": 0.992007,
+    "ben_mean_lssim": 0.999269,
+    "delta_pb": -0.007262,
+    "lssim_below_095": 0,
+    "mannwhitney_p": 2.174120666606743e-157
+  },
+  "comparison": {
+    "delta_ratio": 0.386,
+    "tail_ratio": 0.0,
+    "interpretation": "REVERSE effect (tissue-match weakens signal \u2014 fewer enhancers)"
+  },
+  "encode_accessions": {
+    "h3k27ac": "ENCFF138VUT (ENCSR564IGJ)",
+    "ctcf": "ENCFF244QKO (ENCSR541AMF)"
+  }
+}

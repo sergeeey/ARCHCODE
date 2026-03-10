@@ -639,7 +639,8 @@ async function main() {
     LOCUS_ARG === "bcl11a" ||
     LOCUS_ARG === "pten" ||
     LOCUS_ARG === "mlh1_hct116" ||
-    LOCUS_ARG === "cftr_a549"; // extend as needed
+    LOCUS_ARG === "cftr_a549" ||
+    LOCUS_ARG === "tert_skn_sh"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
@@ -649,6 +650,7 @@ async function main() {
       : LOCUS_ARG === "brca1_k562" ? "brca1"
       : LOCUS_ARG === "mlh1_hct116" ? "mlh1"
       : LOCUS_ARG === "cftr_a549" ? "cftr"
+      : LOCUS_ARG === "tert_skn_sh" ? "tert"
       : LOCUS_ARG;
     const csvFile = `data/${csvLocus}_variants.csv`;
     console.log(`Loading variants from ${csvFile}...`);
@@ -884,6 +886,7 @@ async function main() {
     : LOCUS_ARG === "brca1_k562" ? "brca1"
     : LOCUS_ARG === "mlh1_hct116" ? "mlh1"
     : LOCUS_ARG === "cftr_a549" ? "cftr"
+    : LOCUS_ARG === "tert_skn_sh" ? "tert"
     : LOCUS_ARG;
   const geneName = isGenericLocus
     ? (LOCUS_CONFIG.features.genes.find(
