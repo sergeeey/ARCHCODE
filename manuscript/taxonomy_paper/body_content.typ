@@ -1465,3 +1465,34 @@ To demonstrate falsifiability, we list explicit predictions for tissue-matched A
   promoter-scale MPRA coverage, confirming Class B invisibility to activity-based assays.
   Data source: OSF doi:10.17605/OSF.IO/75B2M.],
 ) <fig:mpra-crosslocus>
+
+== Supplementary Table S5: Discovery Locus Ranking <supplementary-s5>
+
+To guide future experimental and computational work, we rank 15 genomic loci by their potential for architecture-driven discovery. The ranking integrates four axes: (1) ARCHCODE signal strength (Δ LSSIM pathogenic--benign), (2) ClinVar variant density, (3) tissue-matched epigenomic data availability, and (4) expert assessment of Class B discovery potential based on regulatory architecture complexity and enhancer landscape divergence from K562.
+
+#figure(
+  kind: table,
+  caption: [*Discovery locus ranking.* 15 loci ranked by composite score across signal strength, data availability, tissue match, and discovery potential. Tier: D = Demonstrated, S = Supported, H = Hypothesized, NA = Not actionable.],
+  scientific-table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, 1fr),
+    [*\#*], [*Locus*], [*Score*], [*Tier*], [*Δ LSSIM*], [*Struct*], [*TM*], [*Next step*],
+
+    [1], [HBB], [21.1], [D], [0.111], [281], [1.0], [Allele-specific Capture Hi-C on top 5 Q2b],
+    [2], [BRCA1], [13.6], [S], [0.006], [79], [0.0], [MCF7 Hi-C cross-validation],
+    [3], [TERT], [13.4], [S], [0.019], [48], [0.5], [GBM-specific H3K27ac config],
+    [4], [SCN5A], [13.0], [S], [0.005], [0], [0.0], [iPSC-CM config for Class B candidates],
+    [5], [MLH1], [12.9], [H], [0.009], [72], [0.0], [HCT116 tissue-matched config],
+    [6], [LDLR], [12.7], [S], [0.002], [10], [0.0], [HepG2 Hi-C contact cross-validation],
+    [7], [CFTR], [10.5], [H], [0.007], [36], [0.0], [A549 lung config + amplification test],
+    [8], [BCL11A], [9.5], [H], [0.014], [0], [0.8], [+58 enhancer analysis + HUDEP-2 Hi-C],
+    [9], [PTEN], [8.9], [H], [0.010], [48], [0.3], [LNCaP prostate-specific config],
+    [10], [SHH], [8.0], [H], [---], [0], [0.0], [Atlas generation + Lupianez cross-validation],
+    [11], [TP53], [7.9], [H], [0.009], [5], [0.5], [Low priority (ubiquitous expression)],
+    [12], [KCNQ1], [7.0], [H], [---], [0], [0.0], [ClinVar download + cardiac config],
+    [13], [GATA1], [4.5], [H], [0.004], [0], [0.8], [Low priority (small N)],
+    [14], [HBA1], [4.3], [S], [0.002], [0], [0.8], [LCR architecture comparison with HBB],
+    [15], [GJB2], [2.1], [NA], [0.006], [0], [0.0], [Not actionable (no cochlear ENCODE)],
+  ),
+) <tab:discovery-ranking>
+
+The top 6 loci (HBB through LDLR) represent the most actionable targets: they have existing ARCHCODE atlases, tissue-matched or partially matched configurations, and concrete next steps that can be executed computationally or with targeted experiments. The bottom tier (GATA1, HBA1, GJB2) provides informative negative controls or boundary cases that constrain the applicability domain of architecture-driven analysis.
