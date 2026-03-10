@@ -581,7 +581,12 @@ routing of the enhancer's output to its target promoter.
 The experimental validation path for HBB Q2b is well-defined: Capture Hi-C in HUDEP-2 erythroid
 progenitor cells, comparing allele-specific contact frequencies at the top 5 Q2b positions. MPRA
 for the same variants is predicted to return null results, confirming the absence of
-activity-driven effects and strengthening the architecture-driven assignment.
+activity-driven effects and strengthening the architecture-driven assignment. As preliminary
+supporting evidence, we extracted wild-type HUDEP-2 Capture Hi-C contacts (GSM4873116, 5 kb
+resolution) across the 95 kb HBB window. The Q2b bin shows 1.76× long-range contact enrichment
+over background (Mann--Whitney p = 0.0016; @fig:hudep2-q2b), consistent with Q2b variants
+occupying a structurally important chromatin region. However, this is WT-only data; allele-specific
+Hi-C on Q2b variants is required to confirm contact disruption.
 
 == TERT Q2a: coverage gap with architecture signal
 
@@ -1372,3 +1377,16 @@ To demonstrate falsifiability, we list explicit predictions for tissue-matched A
   signal). (C) Amplification ratios: SCN5A 1.37×, LDLR 1.43×, BRCA1 0.99×. The BRCA1 null
   result reflects K562/MCF7 enhancer co-localization rather than absence of tissue-match effect.],
 ) <fig:tissue-match-amplification>
+
+#figure(
+  image("../../figures/taxonomy/fig_hudep2_q2b_contacts.png", width: 100%),
+  caption: [*HUDEP-2 Capture Hi-C contact frequencies at Q2b variant positions.*
+  (A) Contact matrix (WT HUDEP-2, 5 kb resolution, hg19) across the 95 kb HBB window.
+  Cyan: Q2b/HBB gene bin; green: LCR (HS2--HS4). (B) Contact profile of the Q2b bin
+  showing interactions with all other bins. (C) Long-range contact enrichment (>40 kb):
+  Q2b bin shows 1.76× enrichment over background (Mann--Whitney p = 0.0016), consistent
+  with ARCHCODE prediction that Q2b variants occupy structurally important chromatin.
+  Source: GSM4873116 (Chouery & Shukla 2022). Limitation: 5 kb resolution places all
+  21 Q2b variants in a single bin; differential analysis between individual positions
+  requires higher-resolution data.],
+) <fig:hudep2-q2b>

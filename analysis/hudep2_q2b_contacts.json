@@ -1,0 +1,52 @@
+{
+  "analysis": "hudep2_q2b_contact_extraction",
+  "description": "HUDEP-2 WT Capture Hi-C contact frequencies at Q2b variant positions",
+  "source": {
+    "dataset": "GSM4873116 (WT-HUDEP2 Capture Hi-C)",
+    "reference": "Chouery & Shukla 2022, PMID:35486097",
+    "assembly": "hg19",
+    "resolution": "5kb",
+    "intermediate_file": "data/temp_hudep2_wt.cool"
+  },
+  "window": {
+    "hg19": "chr11:5221230-5316230",
+    "grch38_equivalent": "chr11:5200000-5295000",
+    "size_kb": 95,
+    "bins": 20,
+    "offset_grch38_to_hg19": 21230
+  },
+  "q2b_analysis": {
+    "n_variants": 21,
+    "n_unique_positions": 21,
+    "q2b_bin": 5,
+    "q2b_bin_hg19": "5246230-5251230",
+    "note": "All 21 Q2b variants fall in a single 5kb bin (HBB gene body)"
+  },
+  "results": {
+    "q2b_bin_total_contacts": 924,
+    "background_mean_contacts": 954.7,
+    "q2b_to_lcr_contacts": {
+      "HS2_HS3_bin16": 30,
+      "HS4_bin17": 34,
+      "mean": 31.3,
+      "distance_expected": 29.7,
+      "enrichment_ratio": 1.05
+    },
+    "long_range_enrichment": {
+      "q2b_mean_lr": 38.5,
+      "background_mean_lr": 21.9,
+      "mann_whitney_p": 0.0016,
+      "interpretation": "Q2b bin shows significant long-range contact enrichment (1.76x background)"
+    }
+  },
+  "interpretation": "Q2b bin (HBB gene) shows statistically significant enrichment of long-range contacts (p=0.0016, 1.76x background), consistent with ARCHCODE prediction that Q2b variants disrupt structurally important chromatin regions. However, specific Q2b-to-LCR contacts are at distance-expected levels (ratio 1.05), suggesting the enrichment is distributed across multiple regulatory partners, not exclusively LCR.",
+  "limitations": [
+    "5kb resolution too coarse for single-variant analysis (all Q2b in one bin)",
+    "Capture Hi-C has bait-specific biases",
+    "WT-only (no mutant Hi-C to show contact loss at Q2b)",
+    "hg19 assembly — coordinate liftover introduces ~100bp uncertainty"
+  ],
+  "figures": [
+    "figures/taxonomy/fig_hudep2_q2b_contacts.pdf"
+  ]
+}
