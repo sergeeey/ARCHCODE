@@ -1445,7 +1445,7 @@ To demonstrate falsifiability, we list explicit predictions for tissue-matched A
 
 #figure(
   image("../../figures/taxonomy/fig_tissue_match_amplification.png", width: 100%),
-  caption: [*Tissue-match amplification across five loci.*
+  caption: [*Tissue-match amplification across seven loci.*
   (A) Pathogenic--benign LSSIM separation (|Δ|) for tissue-matched (green) vs K562-only (red)
   configurations across seven loci. SCN5A and LDLR show 37--43% mean amplification; MLH1 shows 7% mean but 2.0× tail
   amplification; BRCA1 shows null (0.99×); CFTR (0.60×), TERT (0.39×), and TP53 (0.18×) show reverse effects.
