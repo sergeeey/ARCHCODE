@@ -1,0 +1,125 @@
+{
+  "metadata": {
+    "script": "scripts/permutation_threshold_test.py",
+    "atlas": "HBB_Unified_Atlas_95kb.csv",
+    "n_total": 1103,
+    "n_pathogenic": 353,
+    "n_benign": 750,
+    "rng_seed": 42,
+    "lcr_hs2_position": 5258933,
+    "vep_blind_cutoff": 0.5
+  },
+  "observed_q2b": 31,
+  "permutation_n": 10000,
+  "permutation_mean_q2b": 9.857,
+  "permutation_std_q2b": 2.5550637956810394,
+  "permutation_p_value": 0.0,
+  "permutation_p_value_str": "<0.0001",
+  "threshold_sweep": [
+    {
+      "threshold": 0.88,
+      "observed": 2,
+      "null_mean": 0.634,
+      "p_value": 0.101
+    },
+    {
+      "threshold": 0.89,
+      "observed": 2,
+      "null_mean": 0.6428,
+      "p_value": 0.1019
+    },
+    {
+      "threshold": 0.9,
+      "observed": 2,
+      "null_mean": 0.6349,
+      "p_value": 0.1007
+    },
+    {
+      "threshold": 0.91,
+      "observed": 5,
+      "null_mean": 1.5882,
+      "p_value": 0.0031
+    },
+    {
+      "threshold": 0.92,
+      "observed": 26,
+      "null_mean": 8.3085,
+      "p_value": 0.0
+    },
+    {
+      "threshold": 0.93,
+      "observed": 26,
+      "null_mean": 8.3541,
+      "p_value": 0.0
+    },
+    {
+      "threshold": 0.94,
+      "observed": 27,
+      "null_mean": 8.6462,
+      "p_value": 0.0
+    },
+    {
+      "threshold": 0.95,
+      "observed": 31,
+      "null_mean": 9.9411,
+      "p_value": 0.0
+    },
+    {
+      "threshold": 0.96,
+      "observed": 32,
+      "null_mean": 10.2613,
+      "p_value": 0.0
+    },
+    {
+      "threshold": 0.97,
+      "observed": 42,
+      "null_mean": 15.389,
+      "p_value": 0.0
+    },
+    {
+      "threshold": 0.98,
+      "observed": 44,
+      "null_mean": 16.6857,
+      "p_value": 0.0
+    }
+  ],
+  "nmi_bootstrap": {
+    "archcode_vep": {
+      "mean": 0.49562990087220327,
+      "ci_low": 0.43267749926696086,
+      "ci_high": 0.5601136851879435,
+      "std": 0.031420108103058
+    },
+    "archcode_cadd": {
+      "mean": 0.2447028006614947,
+      "ci_low": 0.18869685403863487,
+      "ci_high": 0.29766216593551714,
+      "std": 0.027928133095443175
+    }
+  },
+  "effect_sizes": {
+    "cohens_d_lssim": -2.138963832953767,
+    "cohens_d_lssim_ci": {
+      "low": -2.3109184064685118,
+      "high": -2.008544907242228
+    },
+    "cohens_d_enhancer_distance": -1.6299283644088147,
+    "cohens_d_enhancer_distance_ci": {
+      "low": -1.940087895346037,
+      "high": -1.374349021263887
+    },
+    "odds_ratio_enhancer_proximity": 34.04761904761905,
+    "fisher_p_enhancer_proximity": 1.0,
+    "contingency_2x2": [
+      [
+        0,
+        31
+      ],
+      [
+        0,
+        1072
+      ]
+    ],
+    "proximal_cutoff_bp": 500
+  }
+}
