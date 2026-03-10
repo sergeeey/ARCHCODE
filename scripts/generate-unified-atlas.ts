@@ -630,6 +630,8 @@ async function main() {
     LOCUS_ARG === "ldlr" ||
     LOCUS_ARG === "scn5a" ||
     LOCUS_ARG === "scn5a_cardiac" ||
+    LOCUS_ARG === "ldlr_k562" ||
+    LOCUS_ARG === "brca1_k562" ||
     LOCUS_ARG === "tert" ||
     LOCUS_ARG === "gjb2" ||
     LOCUS_ARG === "hba1" ||
@@ -640,7 +642,10 @@ async function main() {
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
     // Map tissue-specific aliases to base locus for variant CSV lookup
-    const csvLocus = LOCUS_ARG === "scn5a_cardiac" ? "scn5a" : LOCUS_ARG;
+    const csvLocus = LOCUS_ARG === "scn5a_cardiac" ? "scn5a"
+      : LOCUS_ARG === "ldlr_k562" ? "ldlr"
+      : LOCUS_ARG === "brca1_k562" ? "brca1"
+      : LOCUS_ARG;
     const csvFile = `data/${csvLocus}_variants.csv`;
     console.log(`Loading variants from ${csvFile}...`);
     const genericVariants = loadGenericVariants(csvFile);
@@ -870,7 +875,10 @@ async function main() {
 
   // Output naming: use gene name matching locus arg, fallback to first gene or arg
   // For tissue-specific aliases (scn5a_cardiac), match base gene name
-  const geneMatchArg = LOCUS_ARG === "scn5a_cardiac" ? "scn5a" : LOCUS_ARG;
+  const geneMatchArg = LOCUS_ARG === "scn5a_cardiac" ? "scn5a"
+    : LOCUS_ARG === "ldlr_k562" ? "ldlr"
+    : LOCUS_ARG === "brca1_k562" ? "brca1"
+    : LOCUS_ARG;
   const geneName = isGenericLocus
     ? (LOCUS_CONFIG.features.genes.find(
         (g) => g.name.toLowerCase() === geneMatchArg.toLowerCase(),

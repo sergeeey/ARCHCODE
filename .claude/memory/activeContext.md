@@ -9,11 +9,11 @@
 **Zenodo DOI:** v2.16 — DOI закреплён
 **bioRxiv:** BIORXIV/2026/710343 — pending resubmit
 **arXiv:** ждём endorsement от Brackley/Michieletto (code B9P837)
-**Status:** Taxonomy track PHASE 7 — P0 reviewer fixes applied. NMI corrected, circularity defense added. Ready for final review.
-**Last Commit:** `59f22c4` — P0 reviewer response (NMI correction + tissue_match + circularity + disclaimer)
+**Status:** Taxonomy track PHASE 7 — P0+P1 reviewer fixes applied. Effect sizes, model clarification, config script. PDF v3 on desktop.
+**Last Commit:** `41b713c` — P1 reviewer response (effect sizes + model clarification + config assembly script)
 
 ### Branch Architecture (2026-03-10)
-- **Taxonomy** (`feature/mechanistic-taxonomy` @ `59f22c4`): 28 commits, Phase 1-7 complete + reviewer response
+- **Taxonomy** (`feature/mechanistic-taxonomy` @ `41b713c`): 29 commits, Phase 1-7 complete + P0/P1 reviewer response
 - **v4 core** (`feature/v4-prioritization-framework` @ `e9435f9`): variant prioritization paper — frozen, submission-ready
 - **Follow-up** (`feature/follow-up-structural-framework` @ `1a0a7cf`): structural genomics framework — GWAS, CRISPR, ARS, HDAC
 
@@ -352,6 +352,7 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+- [2026-03-10 12:07] `41b713c`: feat: P1 reviewer response — effect sizes, model clarification, config assembly script
 - [2026-03-10 11:08] `59f22c4`: fix: P0 reviewer response — NMI correction, tissue_match algorithm, circularity defense
 - [2026-03-10 10:58] `ea669cb`: feat: permutation test (p<0.0001) + review response plan + paper-critic agent
 - [2026-03-10 10:23] `2807384`: feat: taxonomy paper Typst conversion + cross-locus summary figure (Figure 4)

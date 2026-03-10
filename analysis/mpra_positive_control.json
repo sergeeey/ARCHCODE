@@ -1,0 +1,90 @@
+{
+  "mpra_source": "Kircher et al. 2019, Nat Commun 10:3583 (MaveDB: urn:mavedb:00000018-a-1)",
+  "mpra_region": "chr11:5,227,022-5,227,208 (HBB 5'UTR/promoter, HEL erythroid cells)",
+  "atlas_total_variants": 1103,
+  "atlas_in_mpra_region": 30,
+  "quadrant_stats": [
+    {
+      "quadrant": "Q1",
+      "n": 0,
+      "mean": null,
+      "median": null,
+      "std": null,
+      "scores": []
+    },
+    {
+      "quadrant": "Q2b",
+      "n": 10,
+      "mean": -0.018999999999999996,
+      "median": -0.015,
+      "std": 0.07324995259763352,
+      "scores": [
+        0.03,
+        -0.15,
+        -0.09,
+        0.07,
+        0.06,
+        -0.07,
+        0.0,
+        -0.06,
+        0.05,
+        -0.03
+      ]
+    },
+    {
+      "quadrant": "Q3",
+      "n": 1,
+      "mean": -0.13,
+      "median": -0.13,
+      "std": 0.0,
+      "scores": [
+        -0.13
+      ]
+    },
+    {
+      "quadrant": "Q4",
+      "n": 11,
+      "mean": -0.034545454545454546,
+      "median": -0.02,
+      "std": 0.09374045405945465,
+      "scores": [
+        -0.1,
+        -0.02,
+        -0.05,
+        -0.09,
+        0.04,
+        0.16,
+        0.03,
+        -0.01,
+        -0.15,
+        -0.02,
+        -0.17
+      ]
+    }
+  ],
+  "primary_test_q3_vs_q2b": {
+    "group_a": "Q3",
+    "group_b": "Q2b",
+    "n_a": 1,
+    "n_b": 10,
+    "u_statistic": null,
+    "p_value": null,
+    "effect_size_r": null,
+    "interpretation": "INSUFFICIENT DATA: Q3 N=1, Q2b N=10. Тест не проводился.",
+    "powered": false
+  },
+  "secondary_test_q1_vs_q4": {
+    "group_a": "Q1",
+    "group_b": "Q4",
+    "n_a": 0,
+    "n_b": 11,
+    "u_statistic": null,
+    "p_value": null,
+    "effect_size_r": null,
+    "interpretation": "INSUFFICIENT DATA: Q1 N=0, Q4 N=11. Тест не проводился.",
+    "powered": false
+  },
+  "conclusion": "Тест Q3 vs Q2b не проводился: Q3 N=1 (недостаточно данных). MPRA Kircher 2019 не охватывает регионы с высоким VEP-скором вне 5'UTR. Фальсифицирующий тест требует расширенных MPRA-данных.",
+  "data_limitation": "Kircher 2019 MPRA охватывает только 186 bp (5'UTR/промотор HBB). Из 1103 вариантов атласа только 30 попадают в регион. Q3 представлен N=1 вариантами, Q2b — N=10. Тест при Q3 N=1 статистически не мощный — необходимы MPRA-данные для полного 95 kb региона или более широкого энхансерного скана.",
+  "falsifiability_verdict": "INCONCLUSIVE: Недостаточно Q3-вариантов в MPRA-регионе. Необходим MPRA с полным 95 kb охватом HBB локуса."
+}

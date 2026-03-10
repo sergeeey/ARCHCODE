@@ -499,7 +499,7 @@ of Q3 (activity-driven) variants at the same locus. The pathogenic--benign LSSIM
 yields Cohen's d = −2.14, a very large effect by conventional criteria. The tissue match score for HBB in the K562
 erythroid model is 1.0 --- HBB is the primary erythroid gene, and K562 is an erythroid
 progenitor line --- providing the strongest possible tissue context for architecture-driven
-detection.
+detection. We note that HBB is the sole locus with high-confidence Class B variants; the 29 candidates at partially matched loci (BRCA1, TP53, TERT) are threshold-proximal and unvalidated. The tissue-match amplification effect is independently confirmed at SCN5A (cardiac config: +37% delta, 2.9$times$ structural calls vs K562; Supplementary Figure S3), but the HBB demonstration remains fundamentally N = 1 for confident Class B. Generalization requires tissue-matched chromatin data for each locus of interest.
 
 Two independent null results confirm the architecture-driven interpretation. First, MPRA --- the
 gold-standard assay for regulatory element activity --- would be expected to return null results
@@ -871,6 +871,10 @@ evidence for architecture-driven classification. This "null as evidence" logic i
 standard interpretation of MPRA screens, where null results are typically discarded as
 uninformative.
 
+*Falsification criterion:* The architecture-driven classification would be weakened if MPRA scores at Q2b positions were significantly non-zero (Mann--Whitney p < 0.05 vs Q4 benign baseline), as this would indicate activity-driven signal where none is predicted. Conversely, a positive control is required: MPRA should detect Class A (Q3) variants --- those scored pathogenic by VEP but structurally neutral by ARCHCODE --- at rates significantly above Q2b. If MPRA fails to discriminate Q3 from Q2b, the mechanistic orthogonality argument is undermined.
+
+*Current data limitation:* The Kircher et al. (2019) MPRA dataset covers only 186 bp of the HBB 5$prime$ UTR/promoter. Of 75 Q3 variants in the full 95 kb atlas, only 1 falls within this window (vs 10 Q2b), making the positive control test statistically underpowered (Supplementary Figure S6). A tiling MPRA or lentiMPRA covering the full HBB locus would be required to execute this falsification test with adequate power.
+
 // =============================================================================
 // 8. PRODUCT AND FRAMEWORK IMPLICATIONS
 // =============================================================================
@@ -1008,6 +1012,18 @@ change still requires a framework to determine which output is most relevant for
 in a given tissue. The taxonomy proposed here provides that interpretive layer: Class A variants
 should be evaluated primarily on activity-track predictions; Class B variants on contact-track
 predictions; Class C on both.
+
+== What this paper does not claim
+
+To prevent overinterpretation, we explicitly state four limitations that bound our conclusions:
+
++ *Not a universal predictor.* ARCHCODE detects architecture-driven pathogenicity only when tissue-matched chromatin data are available. The canonical Class B demonstration comes from a single locus (HBB) with ideal tissue match (K562 erythroid). Generalization requires tissue-matched configurations for each locus of interest --- which do not yet exist for most of the genome.
+
++ *Not experimentally validated.* The 54 Class B variants are computationally identified structural disruptions, not experimentally confirmed pathogenic variants. Allele-specific Capture Hi-C in tissue-matched cells (e.g., HUDEP-2 for HBB) is required to confirm that these variants actually disrupt enhancer--promoter contacts _in vivo_.
+
++ *Not a clinical diagnostic tool.* Taxonomy assignments (Classes A--E) are research classifications for hypothesis generation. They should not be used for clinical variant reclassification, diagnostic reporting, or treatment decisions without independent experimental validation.
+
++ *Not a replacement for sequence-based tools.* VEP and CADD remain essential for coding, splice-site, and activity-driven regulatory variants (Class A). ARCHCODE adds a complementary axis --- it does not subsume existing tools.
 
 == The path forward
 
@@ -1249,6 +1265,39 @@ largely cell-type invariant (Cuddapah et al. 2009), providing a structural skele
 mismatched tissue, while tissue-specific H3K27ac enhancers provide the critical occupancy signal
 that amplifies pathogenic disruption.
 
+== Systematic Tissue-Match Amplification Across Three Loci <supplementary-s4a>
+
+To test whether tissue-match amplification generalizes beyond SCN5A, we created K562-only (erythroid, mismatched) configurations for LDLR and BRCA1 by replacing tissue-specific H3K27ac peaks with K562 peaks (ENCFF864OSZ), keeping CTCF sites identical (cell-type invariant). We then ran the full variant set through both matched and K562-only configurations (Supplementary Figure S7):
+
+#scientific-table(
+  columns: (auto, auto, auto, auto, auto),
+  [*Locus*], [*Tissue-matched Δ*], [*K562-only Δ*], [*Amplification*], [*Interpretation*],
+  [SCN5A], [−0.00471], [−0.00343], [*1.37×*], [Cardiac H3K27ac amplifies signal],
+  [LDLR], [−0.00241], [−0.00169], [*1.43×*], [HepG2 H3K27ac amplifies signal],
+  [BRCA1], [−0.00554], [−0.00558], [*0.99×*], [No amplification: K562 peaks co-localize with MCF7],
+)
+
+Two of three loci (SCN5A, LDLR) show 37--43% amplification of pathogenic--benign separation when tissue-matched enhancer data replace K562 defaults. The BRCA1 null result is mechanistically informative: K562 H3K27ac peaks in the BRCA1 window co-localize with MCF7 peaks at all major sites (cross-validation noted in config provenance), meaning "tissue mismatch" at BRCA1 is minimal --- K562 erythroid chromatin already represents the BRCA1 enhancer landscape adequately. This is consistent with BRCA1 being broadly expressed across many cell types, unlike SCN5A (cardiac-specific) or LDLR (hepatocyte-specific via SREBP regulation).
+
+The pattern supports a refined tissue-match hypothesis: amplification occurs when the target tissue has a substantially different enhancer landscape from K562, not universally.
+
+== Testable Predictions for Future Tissue-Matched Studies <supplementary-s4b>
+
+To demonstrate falsifiability, we list explicit predictions for tissue-matched ARCHCODE runs at loci not yet tested with correct tissue context. These predictions are pre-registered here; outcomes inconsistent with predictions would weaken the taxonomy framework.
+
+#scientific-table(
+  columns: (auto, auto, auto, auto),
+  [*Locus*], [*Predicted tissue*], [*Expected Class B?*], [*Rationale*],
+  [LDLR], [Hepatocyte (HepG2)], [Low--moderate], [LDLR regulation is SREBP-driven; enhancer--promoter contacts are relatively short-range. Existing HepG2 config shows delta = −0.0025 (weak)],
+  [SCN5A], [iPSC-cardiomyocyte], [Moderate--high], [Cardiac bulk tissue gave +37% amplification; iPSC-CM with denser H3K27ac peaks should further increase signal],
+  [TP53], [Matched tissue TBD], [Low], [TP53 is broadly expressed; tissue-specific enhancer architecture is less pronounced],
+  [GJB2], [Inner ear / cochlear], [Unknown], [No ENCODE data for cochlear tissue; prediction impossible without chromatin data],
+  [CFTR], [Lung epithelium], [Low--moderate], [CFTR has well-characterized proximal enhancers; architecture-driven effects may be secondary to activity-driven],
+  [TERT], [Stem cell / cancer], [Moderate], [TERT promoter mutations are well-studied Class A; distal enhancer contacts (e.g., MYC super-enhancer) could harbor Class B],
+)
+
+*Falsification:* If tissue-matched configurations at LDLR, SCN5A (iPSC-CM), and CFTR all fail to increase Class B variant counts above the K562 baseline, the tissue-match hypothesis would be weakened and the HBB result would more likely reflect a locus-specific rather than general phenomenon.
+
 // =============================================================================
 // SUPPLEMENTARY FIGURE LEGENDS
 // =============================================================================
@@ -1303,3 +1352,23 @@ that amplifies pathogenic disruption.
   Class B (architecture-driven); all sequence-based tools (VEP, CADD, MPRA, CRISPRi) are
   blind to this class.],
 ) <fig:crosslocus-summary>
+
+#figure(
+  image("../../figures/taxonomy/fig_mpra_positive_control.png", width: 100%),
+  caption: [*MPRA positive control test: Q3 (activity-driven) vs Q2b (architecture-driven).*
+  Box plots of MPRA scores (Kircher et al. 2019, 186 bp HBB promoter) by variant quadrant.
+  Q2b (architecture-driven, N = 10) shows mean MPRA score −0.019 (near null). Q3
+  (activity-driven, N = 1) has MPRA score −0.13. The test is inconclusive due to insufficient
+  Q3 representation in the 186 bp MPRA window (1 of 75 atlas Q3 variants). A tiling MPRA
+  covering the full 95 kb HBB locus is required for adequate statistical power.],
+) <fig:mpra-positive-control>
+
+#figure(
+  image("../../figures/taxonomy/fig_tissue_match_amplification.png", width: 100%),
+  caption: [*Tissue-match amplification across three loci.*
+  (A) Pathogenic--benign LSSIM separation (|Δ|) for tissue-matched (green) vs K562-only (red)
+  configurations. SCN5A and LDLR show 37--43% amplification; BRCA1 shows no change (0.99×).
+  (B) Structural call counts are similar between configurations at these loci (weak absolute
+  signal). (C) Amplification ratios: SCN5A 1.37×, LDLR 1.43×, BRCA1 0.99×. The BRCA1 null
+  result reflects K562/MCF7 enhancer co-localization rather than absence of tissue-match effect.],
+) <fig:tissue-match-amplification>
