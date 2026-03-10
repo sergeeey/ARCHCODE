@@ -1,20 +1,66 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-09
-**Branch:** feature/mechanistic-taxonomy (NEW — taxonomy paper track)
+**Last Updated:** 2026-03-10
+**Branch:** feature/mechanistic-taxonomy (taxonomy paper track)
 **Core Branch:** feature/v4-prioritization-framework (core paper, frozen)
 **Follow-up Branch:** feature/follow-up-structural-framework (second paper material)
 **Git Tag:** v4.0-submission-ready + v2.14-experimental (both pushed)
-**GitHub:** https://github.com/sergeeey/ARCHCODE — needs push (all branches)
+**GitHub:** https://github.com/sergeeey/ARCHCODE — pushed (all branches up to date)
 **Zenodo DOI:** v2.16 — DOI закреплён
 **bioRxiv:** BIORXIV/2026/710343 — pending resubmit
 **arXiv:** ждём endorsement от Brackley/Michieletto (code B9P837)
-**Status:** Taxonomy track Phase 1-3 complete. Core paper frozen.
+**Status:** Taxonomy track PHASE 7 — P0 reviewer fixes applied. NMI corrected, circularity defense added. Ready for final review.
+**Last Commit:** `59f22c4` — P0 reviewer response (NMI correction + tissue_match + circularity + disclaimer)
 
-### Branch Architecture (2026-03-09)
-- **Taxonomy** (`feature/mechanistic-taxonomy`): "Regulatory pathogenicity is mechanistically heterogeneous" — 5 classes (A-E), assignment table, 3 figures, paper outline, external casebook
+### Branch Architecture (2026-03-10)
+- **Taxonomy** (`feature/mechanistic-taxonomy` @ `59f22c4`): 28 commits, Phase 1-7 complete + reviewer response
 - **v4 core** (`feature/v4-prioritization-framework` @ `e9435f9`): variant prioritization paper — frozen, submission-ready
 - **Follow-up** (`feature/follow-up-structural-framework` @ `1a0a7cf`): structural genomics framework — GWAS, CRISPR, ARS, HDAC
+
+### 2026-03-10: Phase 7 — Typst Manuscript + Cross-Locus Figure
+
+6. **Typst conversion** (`2807384`)
+   - `manuscript/taxonomy_paper/main.typ` → entry point (taxonomy-template)
+   - `manuscript/taxonomy_paper/template.typ` → wrapper over base (bioRxiv Genomics, 2026-03-10)
+   - `manuscript/taxonomy_paper/abstract_content.typ` → abstract + keywords
+   - `manuscript/taxonomy_paper/body_content.typ` → 1250 lines, full 9-section manuscript
+   - `manuscript/taxonomy_paper/main.pdf` → compiled, 1.4 MB
+   - Desktop: `C:\Users\serge\Desktop\ARCHCODE_taxonomy_paper_v1.pdf`
+
+7. **Cross-locus summary figure** (`2807384`)
+   - 4-panel: Δ LSSIM bars, structural calls, tissue-match scatter, tool blind-spot matrix
+   - `scripts/plot_taxonomy_crosslocus_summary.py`
+   - `figures/taxonomy/fig_crosslocus_summary.pdf/png`
+
+### 2026-03-10: Phase 6 — Supplementary Analyses
+
+**Three low-hanging fruits completed:**
+
+1. **gnomAD constraint × taxonomy** (`39d13d6`)
+   - LOEUF vs Q2b: rho=-0.055, p=0.89 (NO correlation)
+   - Tissue match vs Q2b: rho=0.939, p=0.0002 (DOMINANT predictor)
+   - Key insight: evolutionary constraint is irrelevant for Class B detection
+   - Files: `scripts/gnomad_constraint_taxonomy.py`, `analysis/gnomad_constraint_taxonomy.json`, `figures/taxonomy/fig_gnomad_constraint.pdf`
+
+2. **GWAS Catalog overlay** (`4cea40a`)
+   - 1,002 GWAS SNPs across 9 ARCHCODE windows (REST API, cached)
+   - 29 GWAS-Q2 overlaps (±1kb): HBB=11, TERT=11, LDLR=4, BRCA1/TP53/MLH1=1 each
+   - rs334 (sickle cell) 406bp from Q2; rs1800734 (Lynch) 93bp from Q2
+   - Files: `scripts/gwas_catalog_overlay.py`, `analysis/gwas_archcode_overlay.json`, `figures/taxonomy/fig_gwas_overlay.pdf`
+
+3. **SCN5A cardiac tissue-matched config** (`4cea40a`)
+   - ENCODE cardiac H3K27ac (ENCSR000NPF, 2 peaks) + CTCF (ENCSR713SXF, 6 sites)
+   - Config: `config/locus/scn5a_cardiac_250kb.json` (250kb, 250 bins)
+   - Hypothesis: Class E → Class B conversion with tissue-matched data
+   - RESULT: Class E→B conversion CONFIRMED (delta P-B +37%, struct calls 2.9x)
+
+5. **SCN5A cardiac ARCHCODE run** (`10a02b9`)
+   - 2,488 variants through cardiac config → `results/SCN5A_Unified_Atlas_250kb.csv`
+   - K562: delta=-0.0034, 199 struct calls | Cardiac: delta=-0.0047, 577 struct calls
+   - 37% signal amplification, 2.9x more structural calls
+   - Files: `analysis/scn5a_cardiac_comparison.json`
+
+4. **ENCODE cardiac peaks downloaded** — `data/cardiac/` (H3K27ac 86K peaks, CTCF 42K peaks)
 
 ### 2026-03-09: Mechanistic Taxonomy Track — Phase 1-3 Complete
 
@@ -42,12 +88,40 @@
    - Fig 3: Tool-mechanism heatmap — `figures/taxonomy/fig_tool_matrix.pdf`
 
 5. **External casebook** — `docs/external_casebook_mechanistic_classes.md`
-   - 5 canonical cases: Lupiáñez 2015 (Class B), Lettice 2003 (Class A), Gröschel 2014 (Class C), Vaz-Drago 2017 (Class D), Wang 2012 (Class E)
+   - 8 canonical cases: Lupiáñez 2015, Hnisz 2016 (Class B), Lettice 2003, Tewhey 2016 (Class A), Gröschel 2014, Northcott 2014 (Class C), Vaz-Drago 2017 (Class D), Wang 2012 (Class E)
+   - All 8 DOIs verified (Gröschel corrected: .023 → .019)
 
 6. **Paper outline** — `docs/taxonomy_paper_outline.md`
    - Title: "Regulatory Pathogenicity Is Mechanistically Heterogeneous: A Taxonomy of Activity-, Architecture-, and Coverage-Driven Blind Spots"
    - 9 sections, abstract skeleton, target journals (Nature Genetics Perspective / AJHG)
    - Main claim: "Single-axis scoring is the wrong abstraction; mechanistic decomposition is the right abstraction"
+
+**Additional deliverables (Phase 4 — background agents):**
+
+8. **Abstract + significance statement** — `docs/taxonomy_paper_draft_abstract.md`
+   - ~310 words, all numbers from real data, structured (Background/Results/Conclusions)
+   - Significance statement ~120 words for non-specialists
+
+9. **Auto-assignment pipeline** — `scripts/taxonomy_assignment_pipeline.py`
+   - Classifies 261 Q2 variants: 54 Class B, 118 Class D, 89 Class D+B overlap
+   - Output: `analysis/taxonomy_auto_assignment.csv` + `_summary.json`
+   - Classes A/C not assignable without per-variant MPRA (honest gap)
+
+10. **ARS-taxonomy overlay** — `analysis/ars_taxonomy_overlay.md` + `_summary.json`
+    - EXP-005: INCONCLUSIVE (N=2 fragility atlases)
+    - Inverse trend: HBB rigid + strong Class B; BRCA1 fragile + weak Class B
+    - Tissue match dominates over baseline fragility
+    - Supplement-only observation, not main-text claim
+
+11. **Related work literature** — `docs/taxonomy_related_work.md`
+    - 10 verified papers (2023-2026), organized in 3 pillars
+    - Key: Cheng 2024 (closest existing taxonomy, lacks 3D), Sreenivasan 2025 NatRevGen, Avsec 2026 AlphaGenome
+    - All DOIs verified
+
+**What's next (Phase 5):**
+- Write full manuscript draft (3-4 weeks)
+- Collaborator/talk summary slide
+- Decide: standalone preprint or section in follow-up paper
 
 7. **Figure generation script** — `scripts/plot_taxonomy_figures.py`
 
@@ -278,6 +352,28 @@ python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root
 ```
 
 ## Auto-commit log
+- [2026-03-10 11:08] `59f22c4`: fix: P0 reviewer response — NMI correction, tissue_match algorithm, circularity defense
+- [2026-03-10 10:58] `ea669cb`: feat: permutation test (p<0.0001) + review response plan + paper-critic agent
+- [2026-03-10 10:23] `2807384`: feat: taxonomy paper Typst conversion + cross-locus summary figure (Figure 4)
+- [2026-03-10 09:36] `ffa3edd`: feat: SCN5A K562 vs cardiac comparison figure (Supplementary Figure S3)
+- [2026-03-10 09:35] `673ba1d`: docs: add 3 supplementary sections — gnomAD constraint, GWAS overlay, SCN5A cardiac
+- [2026-03-10 09:32] `10a02b9`: feat: SCN5A cardiac tissue-match experiment — Class E→B conversion confirmed
+- [2026-03-10 09:26] `4cea40a`: feat: GWAS Catalog overlay + SCN5A cardiac tissue-matched config
+- [2026-03-09 23:20] `39d13d6`: feat: gnomAD constraint × taxonomy — tissue match dominates over evolutionary constraint
+- [2026-03-09 22:23] `c96c9f1`: feat: full manuscript draft assembled — 9 sections, 23 references, 3 figure legends
+- [2026-03-09 22:10] `924173d`: docs: resolve all 6 [CHECK] markers — 3 text fixes, 3 editorial OK
+- [2026-03-09 22:05] `f30a71a`: feat: manuscript sections 4-6 — ARCHCODE engine, case studies, contrarian
+- [2026-03-09 22:04] `53cdeff`: feat: manuscript sections 1-3 — intro, tool conflation, taxonomy
+- [2026-03-09 22:04] `27ce32d`: feat: collaborator talk slide — 3-panel taxonomy summary figure
+- [2026-03-09 22:03] `9d991be`: feat: manuscript sections 7-9 — experiments, product, discussion
+- [2026-03-09 22:03] `f914270`: docs: HBB top-5 archetypal Class B variants (E3 deliverable)
+- [2026-03-09 21:55] `1116189`: docs: related work — 10 verified papers for taxonomy paper intro/discussion
+- [2026-03-09 21:49] `0a9dce8`: analysis: ARS-taxonomy overlay — inconclusive (N=2 fragility atlases)
+- [2026-03-09 21:49] `cf04e98`: feat: taxonomy auto-assignment pipeline — 261 variants classified
+- [2026-03-09 21:49] `b5db6ce`: docs: taxonomy paper abstract + significance statement draft
+- [2026-03-09 21:48] `3856451`: fix: correct Gröschel 2014 DOI (.023 → .019) — verified via CrossRef
+- [2026-03-09 21:43] `25086ff`: docs: expand external casebook with 3 verified references (8 total)
+- [2026-03-09 21:42] `3297113`: feat: mechanistic taxonomy framework — 5 classes of regulatory pathogenicity
 - [2026-03-09 20:28] `e9435f9`: feat: EXP-006 contact metric robustness + EXP-008 Gasperini CRISPRi benchmark (P1)
 - [2026-03-09 20:16] `b2a26d7`: feat: EXP-003 tissue-mismatch controls + EXP-004 threshold robustness (P0)
 - [2026-03-09 20:06] `2f91172`: feat: EXP-001 ablation study + EXP-002 leave-one-locus-out (P0 experiments)
