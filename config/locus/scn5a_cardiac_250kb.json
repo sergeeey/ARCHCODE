@@ -1,0 +1,172 @@
+{
+  "id": "scn5a_cardiac_250kb",
+  "name": "SCN5A 250kb TAD (ENCODE cardiac CTCF + cardiac H3K27ac)",
+  "description": "250kb window spanning the SCN5A cardiac sodium channel locus on chr3p22.2. CTCF sites from ENCODE cardiac tissue ChIP-seq (ENCFF130TVA, ENCSR713SXF), IDR narrowPeak, GRCh38. H3K27ac enhancer peaks from ENCODE cardiac tissue (ENCFF287NJM, ENCSR000NPF). PURPOSE: tissue-matched replacement for scn5a_400kb.json which used K562 (erythroid) data (Class E: tissue-mismatch null). HYPOTHESIS: with cardiac-matched chromatin data SCN5A should convert from Class E to Class B (architecture-driven). SCN5A (NM_198056.3) is on the MINUS strand; TSS is at 38649687 (txEnd in + convention). SCN10A, a neighboring sodium channel gene, lies downstream and extends beyond this 250kb window. IMPORTANT: sparse H3K27ac landscape (only 2 peaks in window) is EXPECTED for bulk cardiac tissue — SCN5A regulatory elements are likely more visible in iPSC-CM or single-cell ATAC. The two peaks detected (upstream distal and SCN10A-proximal) represent robustly active enhancers in bulk tissue. CTCF landscape in cardiac closely mirrors K562 pattern (consistent with cell-type invariance, Cuddapah 2009, PMID:19030024) but signals differ — cardiac strongest CTCF is near SCN5A TSS (202.41 vs K562 306.80 at same position).",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr3",
+    "start": 38500000,
+    "end": 38750000,
+    "resolution_bp": 1000,
+    "n_bins": 250
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 38500892,
+        "occupancy": 0.35,
+        "name": "SCN5A_upstream_distal_H3K27ac",
+        "source": "ENCODE_cardiac_H3K27ac",
+        "encode_accession": "ENCFF287NJM",
+        "note": "Cardiac H3K27ac peak (Peak_110097, 38500616-38501169, signal=2.67). ~149kb upstream of SCN5A TSS (minus strand). Weak signal consistent with bulk cardiac tissue — active enhancers here may be restricted to specific cardiac cell populations. MANUALLY CALIBRATED occupancy: signal=2.67, weaker of the two cardiac peaks → 0.35"
+      },
+      {
+        "position": 38725905,
+        "occupancy": 0.3,
+        "name": "SCN10A_proximal_H3K27ac",
+        "source": "ENCODE_cardiac_H3K27ac",
+        "encode_accession": "ENCFF287NJM",
+        "note": "Cardiac H3K27ac peak (Peak_143440, 38725575-38726235, signal=1.85). Within SCN10A gene body (~29kb downstream of SCN10A txStart at 38696806). May function as SCN10A intrinsic enhancer or shared SCN5A/SCN10A regulatory element — the two genes share a regulatory domain. Weakest H3K27ac in window, signal=1.85 → occupancy 0.30. MANUALLY CALIBRATED"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 38651386,
+        "orientation": "unknown",
+        "signal": 202.41,
+        "occupancy": 0.9,
+        "name": "SCN5A_TSS_CTCF_cardiac",
+        "source": "ENCODE_cardiac_CTCF",
+        "encode_accession": "ENCFF130TVA",
+        "note": "STRONGEST cardiac CTCF in window. Signal=202.41 (38651218-38651554). ~1.7kb downstream of SCN5A TSS (38649687, minus strand). Corresponds to SCN5A_TSS_CTCF_2 in K562 config (K562 signal=306.80 at same position — cardiac signal lower but structurally homologous). Candidate promoter-associated insulator for SCN5A. OCCUPANCY: 202.41/202.41 * 0.9 = 0.90. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 38521575,
+        "orientation": "unknown",
+        "signal": 140.53,
+        "occupancy": 0.62,
+        "name": "EXOG_intragenic_CTCF_cardiac",
+        "source": "ENCODE_cardiac_CTCF",
+        "encode_accession": "ENCFF130TVA",
+        "note": "Second strongest cardiac CTCF in window. Signal=140.53 (38521450-38521700). Within EXOG gene body. Corresponds to EXOG_intragenic_CTCF in K562 config (K562 signal=165.90 at 38521471-38521668 — same site, cardiac signal slightly lower). Sub-TAD boundary candidate separating EXOG from SCN5A domains. OCCUPANCY: 140.53/202.41 * 0.9 = 0.62. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 38628152,
+        "orientation": "unknown",
+        "signal": 105.25,
+        "occupancy": 0.47,
+        "name": "SCN5A_promoter_proximal_CTCF_cardiac",
+        "source": "ENCODE_cardiac_CTCF",
+        "encode_accession": "ENCFF130TVA",
+        "note": "Third strongest cardiac CTCF. Signal=105.25 (38628038-38628267). ~21.6kb from SCN5A TSS (minus strand). Corresponds to SCN5A_promoter_proximal_CTCF in K562 (K562 signal=178.31 — cardiac signal 41% weaker, possibly reflecting lower CTCF occupancy in cardiomyocytes at this position). Promoter-proximal regulatory element. OCCUPANCY: 105.25/202.41 * 0.9 = 0.47. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 38738816,
+        "orientation": "unknown",
+        "signal": 86.35,
+        "occupancy": 0.38,
+        "name": "SCN10A_intragenic_CTCF_cardiac",
+        "source": "ENCODE_cardiac_CTCF",
+        "encode_accession": "ENCFF130TVA",
+        "note": "Fourth strongest cardiac CTCF. Signal=86.35 (38738720-38738912). Within SCN10A gene body. Corresponds to SCN10A_intragenic_CTCF in K562 (K562 signal=107.00). Consistent position across cell types confirms structural role. Near 3-prime boundary of 250kb window. OCCUPANCY: 86.35/202.41 * 0.9 = 0.38. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 38655906,
+        "orientation": "unknown",
+        "signal": 53.38,
+        "occupancy": 0.24,
+        "name": "SCN5A_downstream_CTCF_1_cardiac",
+        "source": "ENCODE_cardiac_CTCF",
+        "encode_accession": "ENCFF130TVA",
+        "note": "Fifth ranked cardiac CTCF. Signal=53.38 (38655833-38655980). ~6.2kb downstream of SCN5A TSS. Corresponds to SCN5A_downstream_CTCF_1 in K562 (K562 signal=56.17 at 38655758-38656028 — nearly identical signal, high confidence site). OCCUPANCY: 53.38/202.41 * 0.9 = 0.24. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 38662794,
+        "orientation": "unknown",
+        "signal": 38.97,
+        "occupancy": 0.17,
+        "name": "SCN5A_downstream_CTCF_2_cardiac",
+        "source": "ENCODE_cardiac_CTCF",
+        "encode_accession": "ENCFF130TVA",
+        "note": "Sixth ranked cardiac CTCF (last included; signal threshold >30). Signal=38.97 (38662612-38662976). ~13.1kb downstream of SCN5A TSS. Corresponds to SCN5A_downstream_CTCF_2 in K562 (K562 signal=59.22 — cardiac 34% weaker). OCCUPANCY: 38.97/202.41 * 0.9 = 0.17. MANUALLY CALIBRATED. Sites ranked 7-10 (signals 31.59, 31.17, 30.97, 18.59) excluded per top-6 cutoff"
+      }
+    ],
+    "tad_boundaries": [],
+    "genes": [
+      {
+        "name": "EXOG",
+        "start": 38496339,
+        "end": 38526303,
+        "strand": "+",
+        "note": "Mitochondrial endo/exonuclease. Partially overlaps window left edge (txStart 38496339 < window start 38500000 by ~4kb but gene body is within window)"
+      },
+      {
+        "name": "SCN5A",
+        "start": 38548061,
+        "end": 38649687,
+        "strand": "-",
+        "note": "Cardiac voltage-gated sodium channel Nav1.5. MINUS strand, TSS at 38649687. Primary gene of interest. 101.6kb gene body fully within 250kb window"
+      },
+      {
+        "name": "SCN10A",
+        "start": 38696806,
+        "end": 38816217,
+        "strand": "-",
+        "note": "Peripheral sodium channel Nav1.8, neighboring gene. MINUS strand. Only first ~53kb of gene body falls within 250kb window (txEnd 38816217 > window end 38750000)"
+      }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq_cardiac": {
+      "experiment": "ENCSR713SXF",
+      "file": "ENCFF130TVA",
+      "type": "IDR thresholded narrowPeak",
+      "tissue": "cardiac_tissue",
+      "assembly": "GRCh38",
+      "peaks_in_window": 10,
+      "peaks_included": 6,
+      "peaks_excluded": 4,
+      "exclusion_criterion": "ranked 7-10 by signal; signals 31.59, 31.17, 30.97, 18.59",
+      "url": "https://www.encodeproject.org/experiments/ENCSR713SXF/",
+      "note": "Cardiac tissue CTCF ChIP-seq from ENCODE. 10 peaks detected in chr3:38500000-38750000. Top 6 included (signal range 38.97-202.41). CTCF landscape broadly consistent with K562 — same positions emerge as dominant sites (confirms cell-type invariance per Cuddapah 2009). Cardiac-specific differences: strongest cardiac CTCF (202.41) is weaker than K562 equivalent (306.80), consistent with variable CTCF occupancy across cell types."
+    },
+    "h3k27ac_chipseq_cardiac": {
+      "experiment": "ENCSR000NPF",
+      "file": "ENCFF287NJM",
+      "type": "IDR thresholded narrowPeak",
+      "tissue": "cardiac_tissue",
+      "assembly": "GRCh38",
+      "peaks_in_window": 2,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000NPF/",
+      "note": "Cardiac tissue H3K27ac ChIP-seq from ENCODE. Only 2 peaks in chr3:38500000-38750000 (vs 4 peaks in K562 in the 400kb window). Sparse H3K27ac landscape is EXPECTED for bulk cardiac tissue — SCN5A regulatory elements are likely active only in specific cardiac subtypes (Purkinje cells, ventricular cardiomyocytes) that are diluted in bulk. iPSC-CM H3K27ac (not used here) would provide higher sensitivity for cardiac-specific enhancers. Both detected peaks have weak signal (2.67 and 1.85) consistent with partial cell-type representation in bulk cardiac."
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeqCurated",
+      "note": "Gene coordinates represent union of all curated transcript isoforms. SCN5A coordinates based on NM_198056.3 (major cardiac isoform). EXOG and SCN10A partially overlap window boundaries."
+    }
+  },
+  "thresholds": {
+    "ssim_pathogenic": 0.9641,
+    "ssim_likely_pathogenic": 0.9841,
+    "ssim_vus": 0.9941,
+    "ssim_likely_benign": 0.999,
+    "note": "Copied from scn5a_400kb.json (calibrated at FPR <= 1%, tissue=mismatch). REQUIRES RECALIBRATION: these thresholds were derived from the K562 tissue-mismatch configuration and are NOT valid for cardiac-matched data. Expected shift: cardiac CTCF produces a different structural baseline. Full recalibration needed after first ARCHCODE run with this config. Recalibration priority: HIGH (key experiment for Class E → Class B conversion hypothesis)."
+  },
+  "_thresholds_note": "MANDATORY RECALIBRATION BEFORE USE IN PUBLICATION. Thresholds copied from K562 config as structural placeholder only. 250-bin matrix (vs 400-bin K562 config) will produce different SSIM baseline. Run ARCHCODE with known cardiac pathogenic SCN5A variants (e.g., ClinVar pathogenic: p.R1193Q, p.E1784K) to establish empirical thresholds. Matrix-size change (250 vs 400 bins) is a second confound — do not compare SSIM values directly between this and scn5a_400kb.json.",
+  "experiment_context": {
+    "hypothesis": "SCN5A converts from Class E (tissue-mismatch null, K562) to Class B (architecture-driven) when cardiac-matched chromatin data is used",
+    "taxonomy_class_expected_k562": "E",
+    "taxonomy_class_predicted_cardiac": "B",
+    "rationale": "K562 H3K27ac severely underrepresents cardiac-specific SCN5A enhancers. With cardiac CTCF (strongest site at TSS, 202.41) and cardiac H3K27ac, the ARCHCODE model should detect structural perturbations for ClinVar pathogenic SCN5A variants that were invisible in K562",
+    "comparison_config": "scn5a_400kb.json",
+    "known_limitations": [
+      "Bulk cardiac tissue H3K27ac is sparse — only 2 peaks in window; iPSC-CM data would be more sensitive",
+      "250kb window excludes ACVR2B locus (present in 400kb config) — ACVR2B is not cardiac-relevant, omission is intentional",
+      "CTCF sites ranked 7-10 (signals 18.59-31.59) excluded — may include biologically relevant weak sites",
+      "Thresholds require full recalibration before publication",
+      "SCN10A is truncated at window edge (38750000); full SCN10A regulatory domain not captured"
+    ]
+  }
+}
