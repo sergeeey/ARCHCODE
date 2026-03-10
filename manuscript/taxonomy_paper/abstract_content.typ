@@ -28,7 +28,11 @@ structural blind spots, of which 79.3% reflect tool absence (Class D) and 20.7% 
 mechanistic orthogonality (Class B). Tissue-mismatch analysis (EXP-003) demonstrates that
 architecture-driven signal collapses by 700-fold in mismatched tissue (matched delta = 0.00357
 vs. mismatch delta = $5.04 times 10^(-6)$), establishing tissue context as a necessary condition
-for Class B detection. Eight canonical cases from the literature --- including TAD boundary
+for Class B detection. A seven-locus tissue-match panel using ENCODE ChIP-seq data reveals four
+distinct outcome modes: positive amplification (SCN5A 1.37×, LDLR 1.43×), tail amplification
+(MLH1 2.0×), null (BRCA1 0.99×), and reverse effect (CFTR 0.60×, TERT 0.39×, TP53 0.18×), with
+reverse cases decomposing into overparameterization, enhancer loss, and enhancer dilution
+sub-mechanisms. Eight canonical cases from the literature --- including TAD boundary
 disruption (Lupiáñez et al. 2015), insulated neighborhood disruption (Hnisz et al. 2016), and
 enhancer hijacking (Gröschel et al. 2014) --- independently validate the taxonomy across limb
 malformations, leukemia, and medulloblastoma.
