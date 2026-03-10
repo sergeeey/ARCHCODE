@@ -1,0 +1,333 @@
+{
+  "id": "ldlr_k562_300kb",
+  "name": "LDLR 300kb TAD — K562 H3K27ac baseline (tissue-mismatch control)",
+  "description": "K562-only baseline config for LDLR locus. Created for tissue-mismatch comparison (EXP-003): replaces HepG2 H3K27ac enhancers (ENCFF012ADZ, ENCSR000AMO) with K562 H3K27ac peaks (ENCFF864OSZ, ENCSR000AKP). CTCF sites retained from original HepG2 config (cell-type invariant, Cuddapah 2009 PMID:19030024). K562 is chronic myelogenous leukemia — NOT the tissue-matched cell line for LDLR (hepatocytes/HepG2). Hypothesis: ARCHCODE signal for P/LP variants should be weaker with mismatched K562 enhancers vs matched HepG2 enhancers. window=chr19:10940000-11240000, 300 bins @ 1kb resolution.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr19",
+    "start": 10940000,
+    "end": 11240000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 11089154,
+        "occupancy": 0.95,
+        "name": "LDLR_K562_H3K27ac_peak_1",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11088378-11090399, signal=36.39). Peak center at 11089154. MANUALLY CALIBRATED occupancy — rank 1/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11085645,
+        "occupancy": 0.93,
+        "name": "LDLR_K562_H3K27ac_peak_2",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11085134-11086436, signal=35.46). Peak center at 11085645. MANUALLY CALIBRATED occupancy — rank 2/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11091743,
+        "occupancy": 0.9,
+        "name": "LDLR_K562_H3K27ac_peak_3",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11090467-11093088, signal=34.31). Peak center at 11091743. MANUALLY CALIBRATED occupancy — rank 3/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11155626,
+        "occupancy": 0.84,
+        "name": "LDLR_K562_H3K27ac_peak_4",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11154163-11155921, signal=31.55). Peak center at 11155626. MANUALLY CALIBRATED occupancy — rank 4/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 10960395,
+        "occupancy": 0.79,
+        "name": "LDLR_K562_H3K27ac_peak_5",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:10959681-10960811, signal=29.43). Peak center at 10960395. MANUALLY CALIBRATED occupancy — rank 5/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 10961565,
+        "occupancy": 0.76,
+        "name": "LDLR_K562_H3K27ac_peak_6",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:10960918-10962610, signal=28.13). Peak center at 10961565. MANUALLY CALIBRATED occupancy — rank 6/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11093901,
+        "occupancy": 0.72,
+        "name": "LDLR_K562_H3K27ac_peak_7",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11093133-11094171, signal=26.53). Peak center at 11093901. MANUALLY CALIBRATED occupancy — rank 7/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11094759,
+        "occupancy": 0.66,
+        "name": "LDLR_K562_H3K27ac_peak_8",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11094311-11096859, signal=23.89). Peak center at 11094759. MANUALLY CALIBRATED occupancy — rank 8/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11197388,
+        "occupancy": 0.48,
+        "name": "LDLR_K562_H3K27ac_peak_9",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11197097-11197601, signal=16.07). Peak center at 11197388. MANUALLY CALIBRATED occupancy — rank 9/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11198119,
+        "occupancy": 0.43,
+        "name": "LDLR_K562_H3K27ac_peak_10",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11197950-11198369, signal=14.20). Peak center at 11198119. MANUALLY CALIBRATED occupancy — rank 10/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11156225,
+        "occupancy": 0.38,
+        "name": "LDLR_K562_H3K27ac_peak_11",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11156010-11156784, signal=12.15). Peak center at 11156225. MANUALLY CALIBRATED occupancy — rank 11/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11143459,
+        "occupancy": 0.34,
+        "name": "LDLR_K562_H3K27ac_peak_12",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11142763-11143723, signal=10.09). Peak center at 11143459. MANUALLY CALIBRATED occupancy — rank 12/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 10973331,
+        "occupancy": 0.29,
+        "name": "LDLR_K562_H3K27ac_peak_13",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:10973105-10973423, signal=8.03). Peak center at 10973331. MANUALLY CALIBRATED occupancy — rank 13/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 11197735,
+        "occupancy": 0.28,
+        "name": "LDLR_K562_H3K27ac_peak_14",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:11197639-11197869, signal=7.77). Peak center at 11197735. MANUALLY CALIBRATED occupancy — rank 14/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      },
+      {
+        "position": 10962902,
+        "occupancy": 0.27,
+        "name": "LDLR_K562_H3K27ac_peak_15",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "K562 H3K27ac peak (ENCFF864OSZ, chr19:10962798-10963123, signal=7.30). Peak center at 10962902. MANUALLY CALIBRATED occupancy — rank 15/15 by signal within window. K562 tissue-match baseline for tissue-mismatch comparison (EXP-003). NOT the tissue-matched enhancer source for this locus."
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 10942194,
+        "orientation": "unknown",
+        "signal": 118.49,
+        "name": "upstream_boundary_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "STRONGEST HepG2 CTCF in window (10942085-10942329, score=1000, signal=118.49). K562 co-localization confirmed (signal=145.09). Candidate 5-prime TAD/sub-TAD boundary. ~147kb upstream of LDLR TSS. Cell-type invariant binding"
+      },
+      {
+        "position": 11011894,
+        "orientation": "unknown",
+        "signal": 17.21,
+        "name": "SMARCA4_LDLR_intergenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Weak CTCF in intergenic region between SMARCA4 and LDLR (11011739-11012049, score=774, signal=17.21). HepG2-enriched — no strong K562 co-localization"
+      },
+      {
+        "position": 11036090,
+        "orientation": "unknown",
+        "signal": 107.02,
+        "name": "SMARCA4_intragenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF within SMARCA4 gene body (11035980-11036215, score=1000, signal=107.02). K562 co-localization confirmed (signal=153.61). Potential intragenic insulator or sub-domain boundary. Cell-type invariant"
+      },
+      {
+        "position": 11085703,
+        "orientation": "unknown",
+        "signal": 33.18,
+        "name": "LDLR_upstream_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Moderate CTCF ~4kb upstream of LDLR TSS (11085548-11085858, score=1000, signal=33.18). HepG2-enriched — no K562 peak at exact position. May function as liver-specific regulatory element"
+      },
+      {
+        "position": 11126284,
+        "orientation": "unknown",
+        "signal": 70.0,
+        "name": "LDLR_intragenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF within LDLR gene body (11126187-11126365, score=1000, signal=70.00). K562 co-localization confirmed (signal=104.19). Intragenic insulator — may define sub-domain within LDLR. Cell-type invariant"
+      },
+      {
+        "position": 11131142,
+        "orientation": "unknown",
+        "signal": 114.49,
+        "name": "LDLR_3prime_boundary_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Very strong CTCF near LDLR 3-prime end (11131011-11131272, score=1000, signal=114.49). K562 co-localization confirmed (signal=185.46). Co-localizes with H3K27ac (signal=27.46). Key insulator between LDLR and downstream genes. Cell-type invariant"
+      },
+      {
+        "position": 11137854,
+        "orientation": "unknown",
+        "signal": 63.25,
+        "name": "LDLR_SPC24_intergenic_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF between LDLR and SPC24 (11137757-11137916, score=1000, signal=63.25). K562 co-localization confirmed (signal=115.37). ~4kb downstream of LDLR 3-prime end, ~8kb upstream of SPC24. Cell-type invariant"
+      },
+      {
+        "position": 11142179,
+        "orientation": "unknown",
+        "signal": 21.98,
+        "name": "SPC24_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Moderate CTCF at SPC24 locus (11142024-11142334, score=990, signal=21.98). Co-localizes with H3K27ac dual-peak (signals 13.31 + 55.31). No strong K562 co-localization at this exact position"
+      },
+      {
+        "position": 11204034,
+        "orientation": "unknown",
+        "signal": 50.92,
+        "name": "DOCK6_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF at DOCK6 locus (11203948-11204111, score=1000, signal=50.92). K562 co-localization confirmed and MUCH stronger (K562 signal=213.76 — strongest K562 CTCF in window). Cell-type differential: K562 4x stronger than HepG2"
+      },
+      {
+        "position": 11227282,
+        "orientation": "unknown",
+        "signal": 64.54,
+        "name": "downstream_boundary_CTCF",
+        "source": "ENCODE_HepG2_CTCF",
+        "encode_accession": "ENCFF205OKL",
+        "note": "Strong CTCF near 3-prime window edge (11227183-11227357, score=1000, signal=64.54). K562 co-localization confirmed (signal=91.16). Candidate 3-prime TAD/sub-TAD boundary. ~93kb downstream of LDLR 3-prime end. Cell-type invariant"
+      }
+    ],
+    "genes": [
+      {
+        "name": "SMARCA4",
+        "start": 10961032,
+        "end": 11062273,
+        "strand": "+"
+      },
+      {
+        "name": "LDLR",
+        "start": 11089362,
+        "end": 11133820,
+        "strand": "+"
+      },
+      {
+        "name": "SPC24",
+        "start": 11145492,
+        "end": 11155782,
+        "strand": "-"
+      },
+      {
+        "name": "KANK2",
+        "start": 11164269,
+        "end": 11197865,
+        "strand": "-"
+      },
+      {
+        "name": "DOCK6",
+        "start": 11199294,
+        "end": 11240000,
+        "strand": "-"
+      }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq_hepg2": {
+      "experiment": "ENCSR000AMA",
+      "file": "ENCFF205OKL",
+      "type": "ENCODE4 IDR thresholded narrowPeak",
+      "cell_line": "HepG2",
+      "assembly": "GRCh38",
+      "peaks_in_window": 10,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AMA/",
+      "note": "HepG2 is hepatocyte carcinoma cell line. CTCF binding is largely cell-type invariant (Cuddapah 2009 PMID:19030024). ENCODE4 pipeline v1.5.1 with updated alignment and filtering. 46,196 total peaks genome-wide"
+    },
+    "ctcf_chipseq_k562": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 18,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/",
+      "note": "K562 CTCF used for cross-validation. 7/10 HepG2 CTCF peaks co-localize with K562, confirming cell-type invariance. DOCK6 site shows 4x higher K562 signal (213.76 vs 50.92), suggesting cell-type-specific regulatory function"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR000AMO",
+      "file": "ENCFF012ADZ",
+      "type": "replicated peaks (overlap-based concordance)",
+      "cell_line": "HepG2",
+      "assembly": "GRCh38",
+      "peaks_in_window": 28,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AMO/",
+      "note": "HepG2 H3K27ac marks active enhancers and promoters in hepatocytes. ENCODE does NOT apply IDR to histone marks — replicated peaks use overlap-based concordance between biological replicates, which is the standard approach for broad histone marks. LDLR promoter shows strongest H3K27ac in window (signal=111.34, 6.3kb broad), consistent with high LDLR expression in hepatocytes under SREBP regulation. 48,298 total peaks genome-wide"
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API + NCBI Gene",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeq",
+      "note": "LDLR coordinates from NM_000527.5 (NCBI Gene ID: 3949). SMARCA4 from NCBI Gene ID: 6597. DOCK6 3-prime end truncated at window boundary (full gene: 11199294-11262524). ANGPTL8 (11239618-11241943) excluded from gene list as mostly outside window, but its enhancer is captured in H3K27ac features"
+    },
+    "ldlr_biology": {
+      "studies": [
+        {
+          "finding": "LDLR is the primary receptor for LDL cholesterol clearance. Germline loss-of-function variants cause Familial Hypercholesterolemia (FH), affecting ~1:250 individuals worldwide. LDLR expression is regulated by SREBP-2 via SRE (sterol regulatory element) in the promoter",
+          "source": "OMIM:143890"
+        },
+        {
+          "authors": "Cuddapah et al.",
+          "year": 2009,
+          "journal": "Genome Research",
+          "pmid": "19030024",
+          "finding": "CTCF binding sites are largely invariant across cell types"
+        }
+      ]
+    },
+    "h3k27ac_chipseq_k562_primary": {
+      "experiment": "ENCSR000AKP",
+      "file": "ENCFF864OSZ",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 25,
+      "tissue_matched_peaks_for_reference": 10,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/",
+      "note": "K562 H3K27ac used as PRIMARY enhancer source for tissue-mismatch baseline config. K562 is chronic myelogenous leukemia — NOT the tissue-matched cell line for this locus. tissue_matched_peaks_in_window=10, k562_peaks_in_window=25. MANUALLY CALIBRATED occupancy values."
+    }
+  },
+  "thresholds": {
+    "ssim_pathogenic": 0.9588,
+    "ssim_likely_pathogenic": 0.9788,
+    "ssim_vus": 0.9888,
+    "ssim_likely_benign": 0.999,
+    "note": "Calibrated at FPR ≤ 1% (opt_threshold=0.9888, sensitivity=4.2%, tissue=partial)"
+  },
+  "_thresholds_note": "Not calibrated for 300x300 matrix. Requires empirical calibration after first LDLR ARCHCODE run. SSIM thresholds from HBB 30kb config will be diluted at this resolution."
+}

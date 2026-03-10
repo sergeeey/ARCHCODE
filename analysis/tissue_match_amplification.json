@@ -1,0 +1,114 @@
+{
+  "analysis": "tissue_match_amplification",
+  "description": "Systematic comparison of tissue-matched vs K562-only ARCHCODE results",
+  "comparisons": [
+    {
+      "locus": "HBB",
+      "tissue_matched": "K562 (erythroid = matched)",
+      "k562_only": "N/A (K562 IS tissue-matched)",
+      "matched_metrics": {
+        "n_total": 1103,
+        "n_path": 353,
+        "n_ben": 750,
+        "mean_lssim_path": 0.882221,
+        "mean_lssim_ben": 0.993121,
+        "delta_pb": -0.1109,
+        "structural_calls": 281,
+        "q2_variants": 281
+      },
+      "k562_metrics": null,
+      "amplification": null,
+      "note": "Reference locus. K562 erythroid is the correct tissue for HBB."
+    },
+    {
+      "locus": "SCN5A",
+      "tissue_matched": "Cardiac (ENCSR000NPF + ENCSR713SXF)",
+      "k562_only": "K562 (erythroid, mismatched)",
+      "matched_metrics": {
+        "n_total": 2488,
+        "n_path": 928,
+        "n_ben": 1560,
+        "mean_lssim_path": 0.99463,
+        "mean_lssim_ben": 0.999335,
+        "delta_pb": -0.004706,
+        "structural_calls": 0,
+        "q2_variants": 0
+      },
+      "k562_metrics": {
+        "n_total": 2488,
+        "n_path": 928,
+        "n_ben": 1560,
+        "mean_lssim_path": 0.996025,
+        "mean_lssim_ben": 0.999456,
+        "delta_pb": -0.003432,
+        "structural_calls": 0,
+        "q2_variants": 0
+      },
+      "amplification": {
+        "delta_ratio": 1.37,
+        "struct_ratio": null
+      },
+      "note": "Class E→B partial conversion confirmed."
+    },
+    {
+      "locus": "LDLR",
+      "tissue_matched": "HepG2 (liver, ENCFF012ADZ + ENCFF205OKL)",
+      "k562_only": "K562 (erythroid, mismatched)",
+      "matched_metrics": {
+        "n_total": 3284,
+        "n_path": 2274,
+        "n_ben": 1010,
+        "mean_lssim_path": 0.996945,
+        "mean_lssim_ben": 0.999355,
+        "delta_pb": -0.00241,
+        "structural_calls": 10,
+        "q2_variants": 10
+      },
+      "k562_metrics": {
+        "n_total": 3284,
+        "n_path": 2274,
+        "n_ben": 1010,
+        "mean_lssim_path": 0.997884,
+        "mean_lssim_ben": 0.99957,
+        "delta_pb": -0.001687,
+        "structural_calls": 10,
+        "q2_variants": 10
+      },
+      "amplification": {
+        "delta_ratio": 1.43,
+        "struct_ratio": 1.0
+      },
+      "note": "LDLR is primarily expressed in hepatocytes (SREBP regulation)."
+    },
+    {
+      "locus": "BRCA1",
+      "tissue_matched": "MCF7 (breast, ENCFF340KSH + ENCFF163JHE)",
+      "k562_only": "K562 (erythroid, mismatched)",
+      "matched_metrics": {
+        "n_total": 10682,
+        "n_path": 7062,
+        "n_ben": 3620,
+        "mean_lssim_path": 0.99292,
+        "mean_lssim_ben": 0.998458,
+        "delta_pb": -0.005538,
+        "structural_calls": 53,
+        "q2_variants": 79
+      },
+      "k562_metrics": {
+        "n_total": 10682,
+        "n_path": 7062,
+        "n_ben": 3620,
+        "mean_lssim_path": 0.993041,
+        "mean_lssim_ben": 0.99862,
+        "delta_pb": -0.00558,
+        "structural_calls": 52,
+        "q2_variants": 54
+      },
+      "amplification": {
+        "delta_ratio": 0.99,
+        "struct_ratio": 1.02
+      },
+      "note": "BRCA1 is expressed in breast tissue; MCF7 is breast cancer cell line."
+    }
+  ]
+}
