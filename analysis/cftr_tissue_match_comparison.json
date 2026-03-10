@@ -1,0 +1,28 @@
+{
+  "analysis": "cftr_tissue_match_comparison",
+  "description": "CFTR K562 vs A549 tissue-match amplification",
+  "date": "2026-03-10",
+  "k562_config": "cftr_317kb",
+  "a549_config": "cftr_a549_317kb",
+  "total_variants": 3349,
+  "k562": {
+    "delta_pb": -0.006776,
+    "path_mean_lssim": 0.991976,
+    "ben_mean_lssim": 0.998752,
+    "lssim_lt_095": 36,
+    "lssim_lt_097": 59,
+    "mannwhitney_p": 1.9507350918646435e-47
+  },
+  "a549": {
+    "delta_pb": -0.004056,
+    "path_mean_lssim": 0.99524,
+    "ben_mean_lssim": 0.999295,
+    "lssim_lt_095": 13,
+    "lssim_lt_097": 32,
+    "mannwhitney_p": 2.1702578438373718e-47
+  },
+  "amplification": {
+    "delta_ratio": 0.599,
+    "struct_calls_095_ratio": 0.36
+  }
+}
