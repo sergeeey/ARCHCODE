@@ -1,0 +1,263 @@
+{
+  "analysis": "encode_tissue_data_availability",
+  "description": "ENCODE H3K27ac & CTCF ChIP-seq availability for ARCHCODE tissue-matched configs",
+  "date": "2026-03-10",
+  "source": "ENCODE Portal REST API (encodeproject.org)",
+  "summary": {
+    "fully_available": 8,
+    "proxy_partial": 3,
+    "not_available": 1,
+    "total_surveyed": 12
+  },
+  "loci": [
+    {
+      "locus": "SCN5A",
+      "disease": "Brugada syndrome, long QT",
+      "cell_type": "Cardiac muscle cell (from RUES2 ESC)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "experiment": "ENCSR000NPF",
+        "peak_file": "ENCFF518VCX",
+        "lab": "Bernstein (Broad)"
+      },
+      "ctcf": {
+        "experiment": "ENCSR713SXF",
+        "peak_file": "ENCFF130TVA",
+        "peaks": 42144,
+        "lab": "Bernstein (Broad)"
+      },
+      "notes": "Derived from RUES2 ESCs, not iPSCs. Closest cardiac match in ENCODE.",
+      "config_exists": true,
+      "config_file": "config/locus/scn5a_cardiac_250kb.json"
+    },
+    {
+      "locus": "CFTR",
+      "disease": "Cystic fibrosis",
+      "cell_type": "A549 (lung epithelial, vehicle control)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "experiment": "ENCSR000AUI",
+        "peak_file": "ENCFF548GIF",
+        "lab": "Bernstein (Broad)",
+        "caveat": "Vehicle control (0.02% EtOH 1h), not strictly untreated"
+      },
+      "ctcf": {
+        "experiment": "ENCSR000DNA",
+        "peak_file": null,
+        "lab": "Stamatoyannopoulos (UW)",
+        "caveat": "Check experiment page for peak file ID"
+      },
+      "notes": "Most A549 datasets are dexamethasone time-course. Vehicle control is best untreated proxy.",
+      "config_exists": false
+    },
+    {
+      "locus": "MLH1",
+      "disease": "Lynch syndrome (colorectal cancer)",
+      "cell_type": "HCT116 (colorectal)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "experiment": "ENCSR661KMA",
+        "peak_file": "ENCFF899XEF",
+        "peaks": 43277,
+        "lab": "Bernstein (Broad)"
+      },
+      "ctcf": {
+        "experiment": "ENCSR240PRQ",
+        "peak_file": "ENCFF463FGL",
+        "peaks": 59890,
+        "lab": "Bernstein (Broad)"
+      },
+      "notes": "Both marks, high quality, unmodified HCT116.",
+      "config_exists": false
+    },
+    {
+      "locus": "TP53",
+      "disease": "Li-Fraumeni, multiple cancers",
+      "cell_type": "IMR-90 (fetal lung fibroblast)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "experiment": "ENCSR002YRE",
+        "peak_file": "ENCFF805GNH",
+        "peaks": 117608,
+        "lab": "Bing Ren (UCSD)"
+      },
+      "ctcf": {
+        "experiment": "ENCSR000EFI",
+        "peak_file": "ENCFF670ULH",
+        "peaks": 45432,
+        "lab": "Snyder (Stanford)"
+      },
+      "notes": "IMR-90 is standard fibroblast line. Ubiquitous expression limits tissue-match lever.",
+      "config_exists": false
+    },
+    {
+      "locus": "LDLR",
+      "disease": "Familial hypercholesterolemia",
+      "cell_type": "HepG2 (liver)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "experiment": "ENCSR000AKP_HepG2",
+        "peak_file": "ENCFF012ADZ",
+        "lab": "Bernstein (Broad)"
+      },
+      "ctcf": {
+        "experiment": "ENCSR000AKO_HepG2",
+        "peak_file": "ENCFF205OKL",
+        "lab": "Bernstein (Broad)"
+      },
+      "notes": "Already downloaded and used in tissue-match amplification experiment.",
+      "config_exists": true,
+      "config_file": "config/locus/ldlr_hepg2_300kb.json"
+    },
+    {
+      "locus": "BRCA1",
+      "disease": "Breast/ovarian cancer",
+      "cell_type": "MCF7 (breast)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "peak_file": "ENCFF340KSH",
+        "lab": "Bernstein (Broad)"
+      },
+      "ctcf": {
+        "peak_file": "ENCFF163JHE",
+        "lab": "Bernstein (Broad)"
+      },
+      "notes": "Already downloaded. Tissue-match null: K562 ~ MCF7 for BRCA1 locus.",
+      "config_exists": true,
+      "config_file": "config/locus/brca1_mcf7_400kb.json"
+    },
+    {
+      "locus": "HBA1/GATA1/BCL11A",
+      "disease": "Alpha-thalassemia / Diamond-Blackfan / HbF regulation",
+      "cell_type": "K562 (erythroid)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "experiment": "ENCSR000AKP",
+        "peak_file": "ENCFF544LXB",
+        "peaks": 51343,
+        "lab": "Bernstein (Broad)"
+      },
+      "ctcf": {
+        "experiment": "ENCSR000AKO",
+        "peak_file": "ENCFF769AUF",
+        "peaks": 51759,
+        "lab": "Multiple labs"
+      },
+      "notes": "K562 is the baseline config cell type. Already tissue-matched for erythroid loci.",
+      "config_exists": true
+    },
+    {
+      "locus": "FOXE1",
+      "disease": "Thyroid dysgenesis",
+      "cell_type": "Thyroid gland tissue (primary)",
+      "status": "AVAILABLE",
+      "h3k27ac": {
+        "experiment": "ENCSR500YBS",
+        "peak_file": "ENCFF138WNV",
+        "lab": "Bernstein (Broad)",
+        "donors": 4
+      },
+      "ctcf": {
+        "experiment": "ENCSR331OGX",
+        "peak_file": "ENCFF947KIQ",
+        "lab": "Bernstein (Broad)",
+        "donors": 5
+      },
+      "notes": "Primary tissue, multiple donors for cross-validation. New locus not in current atlas.",
+      "config_exists": false
+    },
+    {
+      "locus": "TERT",
+      "disease": "Glioma, melanoma, bladder cancer",
+      "cell_type": "SK-N-SH (neuroblastoma, neural proxy)",
+      "status": "PROXY_ONLY",
+      "h3k27ac": {
+        "experiment": "ENCSR564IGJ",
+        "peak_file": "ENCFF138VUT",
+        "lab": "Bernstein (Broad)"
+      },
+      "ctcf": {
+        "experiment": "ENCSR541AMF",
+        "peak_file": "ENCFF244QKO",
+        "lab": "Bernstein (Broad)"
+      },
+      "notes": "No melanocyte or GBM data in ENCODE. SK-N-SH is best neural proxy (TERT promoter mutations common in neural tumors).",
+      "config_exists": false,
+      "caveat": "Proxy cell type, not exact tissue match"
+    },
+    {
+      "locus": "KCNJ11/ABCC8",
+      "disease": "Neonatal diabetes, hyperinsulinism",
+      "cell_type": "Pancreas tissue / beta cell",
+      "status": "PARTIAL",
+      "h3k27ac": {
+        "experiment": "ENCSR868ZOR",
+        "peak_file": "ENCFF610VHP",
+        "lab": "Bernstein (Broad)",
+        "caveat": "Whole pancreas tissue, not isolated beta cells"
+      },
+      "ctcf": {
+        "experiment": "ENCSR458PYQ",
+        "peak_file": "ENCFF190FKP",
+        "peaks": 78290,
+        "lab": "Bernstein (Broad)",
+        "caveat": "True beta cell (in vitro differentiated)"
+      },
+      "notes": "CTCF from real beta cells. H3K27ac from whole pancreas only. Check Roadmap/IHEC for islet H3K27ac.",
+      "config_exists": false
+    },
+    {
+      "locus": "SOD1/SMN1",
+      "disease": "ALS / Spinal muscular atrophy",
+      "cell_type": "Motor neuron (iPSC-derived) / SK-N-SH (proxy)",
+      "status": "PARTIAL",
+      "h3k27ac": {
+        "experiment": "ENCSR425FUS",
+        "peak_file": "ENCFF518ICW",
+        "peaks": 69652,
+        "lab": "Snyder (Stanford)",
+        "caveat": "iPSC-derived motor neuron from ALS donor"
+      },
+      "ctcf": {
+        "experiment": "ENCSR541AMF",
+        "peak_file": "ENCFF244QKO",
+        "lab": "Bernstein (Broad)",
+        "caveat": "SK-N-SH proxy, not motor neuron CTCF"
+      },
+      "notes": "H3K27ac from real motor neurons (multiple ALS donors). CTCF only from neural proxy.",
+      "config_exists": false
+    },
+    {
+      "locus": "GJB2",
+      "disease": "Hereditary deafness",
+      "cell_type": "Cochlear (inner ear)",
+      "status": "NOT_AVAILABLE",
+      "h3k27ac": null,
+      "ctcf": null,
+      "notes": "No cochlear, inner ear, or auditory cell ChIP-seq in ENCODE. Known data gap. Consider skin keratinocyte as epithelial proxy.",
+      "config_exists": false
+    }
+  ],
+  "priority_for_new_configs": [
+    {
+      "rank": 1,
+      "locus": "MLH1",
+      "why": "3rd highest delta, 72 struct calls, HCT116 data high quality, expected high enhancer divergence from K562"
+    },
+    {
+      "rank": 2,
+      "locus": "CFTR",
+      "why": "36 struct calls, known complex regulation, A549 available, lung highly divergent from K562"
+    },
+    {
+      "rank": 3,
+      "locus": "TERT",
+      "why": "Highest delta after HBB, 48 struct calls, SK-N-SH neural proxy (not ideal but testable)"
+    },
+    {
+      "rank": 4,
+      "locus": "TP53",
+      "why": "Low priority — ubiquitous expression limits tissue lever. IMR-90 available but amplification unlikely."
+    }
+  ]
+}
