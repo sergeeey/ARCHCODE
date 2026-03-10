@@ -1,0 +1,33 @@
+{
+  "analysis": "tp53_tissue_match_comparison",
+  "date": "2026-03-10",
+  "baseline": {
+    "cell_type": "K562",
+    "config": "tp53_300kb.json",
+    "n_variants": 2794,
+    "path_mean_lssim": 0.98962,
+    "ben_mean_lssim": 0.998552,
+    "delta_pb": -0.008932,
+    "lssim_below_095": 5,
+    "mannwhitney_p": 1.9654075929115376e-52
+  },
+  "tissue_matched": {
+    "cell_type": "IMR-90 (fetal lung fibroblast)",
+    "config": "tp53_imr90_300kb.json",
+    "n_variants": 2794,
+    "path_mean_lssim": 0.99778,
+    "ben_mean_lssim": 0.999362,
+    "delta_pb": -0.001581,
+    "lssim_below_095": 5,
+    "mannwhitney_p": 1.7568946816845006e-24
+  },
+  "comparison": {
+    "delta_ratio": 0.177,
+    "tail_ratio": 1.0,
+    "interpretation": "REVERSE effect"
+  },
+  "encode_accessions": {
+    "h3k27ac": "ENCFF805GNH (ENCSR002YRE)",
+    "ctcf": "ENCFF670ULH (ENCSR000EFI)"
+  }
+}

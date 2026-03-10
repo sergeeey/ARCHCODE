@@ -1,0 +1,310 @@
+{
+  "id": "tp53_imr90_300kb",
+  "name": "TP53 300kb IMR-90 tissue-matched (ENCODE H3K27ac + CTCF)",
+  "description": "300kb window spanning the TP53 TAD on chr17p13.1. IMR-90 fetal lung fibroblast as tissue-matched context (TP53 is ubiquitously expressed, IMR-90 has intact p53 pathway). H3K27ac from ENCODE IMR-90 (ENCFF805GNH, ENCSR002YRE, Bing Ren UCSD). CTCF from ENCODE IMR-90 (ENCFF670ULH, ENCSR000EFI, Snyder Stanford). KEY FINDING: IMR-90 has 41 H3K27ac peaks in window vs K562 9 — dramatically richer enhancer landscape. 4 novel peaks (SHBG, 3× DNAH2) absent in K562. All K562 peaks preserved. 15 CTCF sites (vs K562 13), 2 novel.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr17",
+    "start": 7550000,
+    "end": 7850000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 7627366,
+        "occupancy": 0.9,
+        "name": "SHBG_TNFSF13_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "Strongest H3K27ac in window: chr17:7626919-7627813 (signal=18.83, -log10q=130.0). At SHBG/TNFSF13 region. NOT present in K562. MANUALLY CALIBRATED occupancy=0.9"
+      },
+      {
+        "position": 7748338,
+        "occupancy": 0.9,
+        "name": "DNAH2_H3K27ac_1",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "Strong H3K27ac: chr17:7747859-7748817 (signal=18.56, -log10q=65.0). In DNAH2 gene body. NOT present in K562. MANUALLY CALIBRATED occupancy=0.9"
+      },
+      {
+        "position": 7843180,
+        "occupancy": 0.85,
+        "name": "KDM6B_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "Strong H3K27ac: chr17:7842331-7844028 (signal=17.75, -log10q=142.4). At KDM6B. Co-localizes with K562 peak (signal=45.47)"
+      },
+      {
+        "position": 7573302,
+        "occupancy": 0.8,
+        "name": "EIF4A1_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "Strong H3K27ac: chr17:7572834-7573770 (signal=16.35, -log10q=120.3). At EIF4A1 promoter. Co-localizes with K562 (signal=38.63)"
+      },
+      {
+        "position": 7687012,
+        "occupancy": 0.8,
+        "name": "TP53_WRAP53_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "Strong H3K27ac: chr17:7686179-7687845 (signal=16.12, -log10q=135.4). TP53/WRAP53 bidirectional promoter. Co-localizes with K562 (signal=70.08)"
+      },
+      {
+        "position": 7750219,
+        "occupancy": 0.7,
+        "name": "DNAH2_H3K27ac_2",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "H3K27ac: chr17:7749851-7750586 (signal=15.06, -log10q=43.4). DNAH2 region. NOT in K562"
+      },
+      {
+        "position": 7751268,
+        "occupancy": 0.7,
+        "name": "DNAH2_H3K27ac_3",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "H3K27ac: chr17:7751122-7751414 (signal=14.49, -log10q=37.0). DNAH2 region. NOT in K562"
+      },
+      {
+        "position": 7583823,
+        "occupancy": 0.7,
+        "name": "MPDU1_SOX15_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "H3K27ac: chr17:7582928-7584718 (signal=13.83, -log10q=184.6). MPDU1/SOX15 cluster. Co-localizes with K562 (signal=85.29)"
+      },
+      {
+        "position": 7836720,
+        "occupancy": 0.6,
+        "name": "KDM6B_upstream_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "H3K27ac: chr17:7835798-7837641 (signal=11.88, -log10q=105.4). KDM6B upstream. Near K562 peaks"
+      },
+      {
+        "position": 7685852,
+        "occupancy": 0.55,
+        "name": "TP53_upstream_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "H3K27ac: chr17:7685633-7686071 (signal=11.19, -log10q=74.9). Just upstream of TP53 TSS"
+      },
+      {
+        "position": 7572220,
+        "occupancy": 0.5,
+        "name": "EIF4A1_upstream_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "H3K27ac: chr17:7571970-7572470 (signal=10.68, -log10q=96.6). Upstream of EIF4A1. Near K562 peak"
+      },
+      {
+        "position": 7561509,
+        "occupancy": 0.5,
+        "name": "SENP3_H3K27ac",
+        "source": "ENCODE_IMR90_H3K27ac",
+        "encode_accession": "ENCFF805GNH",
+        "note": "H3K27ac: chr17:7561234-7561784 (signal=10.36, -log10q=47.5). At SENP3 region, near TAD boundary"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 7688203,
+        "orientation": "unknown",
+        "signal": 416.42,
+        "name": "TP53_WRAP53_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Strongest CTCF: chr17:7688066-7688339 (signal=416.42). Co-localizes with K562 (132.79). 3.1× stronger in IMR-90"
+      },
+      {
+        "position": 7743751,
+        "orientation": "unknown",
+        "signal": 411.87,
+        "name": "DNAH2_internal_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Strong CTCF: chr17:7743620-7743882 (signal=411.87). Co-localizes with K562 (111.26). 3.7× stronger"
+      },
+      {
+        "position": 7561145,
+        "orientation": "unknown",
+        "signal": 304.08,
+        "name": "SENP3_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Strong CTCF: chr17:7561025-7561265 (signal=304.08). Co-localizes with K562 (131.0). 2.3× stronger"
+      },
+      {
+        "position": 7615023,
+        "orientation": "unknown",
+        "signal": 261.91,
+        "name": "SHBG_FXR2_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Strong CTCF: chr17:7614909-7615137 (signal=261.91). Co-localizes with K562 (89.55). 2.9× stronger"
+      },
+      {
+        "position": 7822888,
+        "orientation": "unknown",
+        "signal": 247.51,
+        "name": "DNAH2_3prime_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Strong CTCF: chr17:7822779-7822996 (signal=247.51). Co-localizes with K562 (69.92). 3.5× stronger"
+      },
+      {
+        "position": 7589469,
+        "orientation": "unknown",
+        "signal": 221.57,
+        "name": "SOX15_FXR2_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Strong CTCF: chr17:7589366-7589572 (signal=221.57). Near K562 SOX15_FXR2 (7586899, signal=108.84) but ~2.5kb away"
+      },
+      {
+        "position": 7835010,
+        "orientation": "unknown",
+        "signal": 220.94,
+        "name": "KDM6B_upstream_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Strong CTCF: chr17:7834905-7835115 (signal=220.94). Co-localizes with K562 (114.77). 1.9× stronger"
+      },
+      {
+        "position": 7634535,
+        "orientation": "unknown",
+        "signal": 171.17,
+        "name": "SHBG_downstream_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Moderate CTCF: chr17:7634441-7634629 (signal=171.17). Co-localizes with K562 (97.61)"
+      },
+      {
+        "position": 7632632,
+        "orientation": "unknown",
+        "signal": 156.52,
+        "name": "SHBG_internal_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Moderate CTCF: chr17:7632543-7632720 (signal=156.52). Co-localizes with K562 (76.85)"
+      },
+      {
+        "position": 7782451,
+        "orientation": "unknown",
+        "signal": 155.83,
+        "name": "DNAH2_mid_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Moderate CTCF: chr17:7782371-7782531 (signal=155.83). NOT in K562 — novel IMR-90 CTCF site in DNAH2 gene body"
+      },
+      {
+        "position": 7717408,
+        "orientation": "unknown",
+        "signal": 126.27,
+        "name": "DNAH2_promoter_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Moderate CTCF: chr17:7717323-7717492 (signal=126.27). Co-localizes with K562 (71.85)"
+      },
+      {
+        "position": 7560568,
+        "orientation": "unknown",
+        "signal": 116.21,
+        "name": "SENP3_CTCF_2",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Moderate CTCF: chr17:7560494-7560641 (signal=116.21). Co-localizes with K562 (106.36)"
+      },
+      {
+        "position": 7673433,
+        "orientation": "unknown",
+        "signal": 59.38,
+        "name": "TP53_intron_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Moderate CTCF: chr17:7673311-7673555 (signal=59.38). Co-localizes with K562 (37.40)"
+      },
+      {
+        "position": 7841721,
+        "orientation": "unknown",
+        "signal": 52.15,
+        "name": "KDM6B_adjacent_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Moderate CTCF: chr17:7841599-7841843 (signal=52.15). NOT in K562 — novel IMR-90 CTCF near KDM6B"
+      },
+      {
+        "position": 7587554,
+        "orientation": "unknown",
+        "signal": 38.44,
+        "name": "SOX15_CTCF",
+        "source": "ENCODE_IMR90_CTCF",
+        "encode_accession": "ENCFF670ULH",
+        "note": "Weak CTCF: chr17:7587432-7587676 (signal=38.44). Near K562 SOX15_FXR2 insulator region"
+      }
+    ],
+    "genes": [
+      { "name": "SENP3", "start": 7556041, "end": 7561437, "strand": "+" },
+      { "name": "EIF4A1", "start": 7572926, "end": 7578814, "strand": "-" },
+      { "name": "CD68", "start": 7578524, "end": 7581367, "strand": "-" },
+      { "name": "MPDU1", "start": 7581632, "end": 7588362, "strand": "+" },
+      { "name": "SOX15", "start": 7584277, "end": 7585562, "strand": "-" },
+      { "name": "FXR2", "start": 7590016, "end": 7614483, "strand": "+" },
+      { "name": "SHBG", "start": 7614369, "end": 7632895, "strand": "+" },
+      { "name": "ATP1B2", "start": 7640666, "end": 7653281, "strand": "+" },
+      { "name": "TP53", "start": 7669608, "end": 7687490, "strand": "-" },
+      { "name": "WRAP53", "start": 7687547, "end": 7706773, "strand": "+" },
+      { "name": "EFNB3", "start": 7707019, "end": 7714816, "strand": "+" },
+      { "name": "DNAH2", "start": 7717299, "end": 7827654, "strand": "-" },
+      { "name": "KDM6B", "start": 7827723, "end": 7849923, "strand": "-" }
+    ]
+  },
+  "tissue_match_comparison": {
+    "baseline": "K562 (ENCFF864OSZ H3K27ac, ENCFF736NYC CTCF)",
+    "tissue_matched": "IMR-90 fetal lung fibroblast (ENCFF805GNH H3K27ac, ENCFF670ULH CTCF)",
+    "enhancer_divergence": {
+      "k562_count": 9,
+      "imr90_count": 12,
+      "imr90_only": ["SHBG_TNFSF13 (7627366)", "DNAH2_1 (7748338)", "DNAH2_2 (7750219)", "DNAH2_3 (7751268)"],
+      "k562_only": ["TP53_P2_internal (7674000, literature)"],
+      "shared": ["TP53_WRAP53", "MPDU1_SOX15", "EIF4A1", "KDM6B", "KDM6B_upstream"],
+      "summary": "IMR-90 has 12 enhancers vs K562 9. 4 novel peaks (SHBG, 3× DNAH2). All major K562 peaks preserved but with different signals. IMR-90 has richer enhancer landscape consistent with ubiquitous TP53 expression."
+    },
+    "ctcf_divergence": {
+      "k562_count": 13,
+      "imr90_count": 15,
+      "imr90_only": ["DNAH2_mid (7782451)", "KDM6B_adjacent (7841721)"],
+      "shared_count": 13,
+      "summary": "15 vs 13 CTCF sites. All K562 sites preserved (most 2-4× stronger). 2 novel IMR-90 sites."
+    },
+    "hypothesis": "More enhancers + stronger CTCF → could show positive amplification despite TP53 being ubiquitously expressed. Or null if K562 already captures sufficient TP53 regulatory landscape."
+  },
+  "data_sources": {
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR002YRE",
+      "file": "ENCFF805GNH",
+      "type": "Pseudoreplicated peaks",
+      "cell_line": "IMR-90",
+      "assembly": "GRCh38",
+      "peaks_in_window": 41,
+      "total_peaks": 117608,
+      "lab": "Bing Ren (UCSD)",
+      "url": "https://www.encodeproject.org/experiments/ENCSR002YRE/"
+    },
+    "ctcf_chipseq": {
+      "experiment": "ENCSR000EFI",
+      "file": "ENCFF670ULH",
+      "type": "IDR thresholded peaks",
+      "cell_line": "IMR-90",
+      "assembly": "GRCh38",
+      "peaks_in_window": 15,
+      "total_peaks": 36516,
+      "lab": "Snyder (Stanford)",
+      "url": "https://www.encodeproject.org/experiments/ENCSR000EFI/"
+    }
+  },
+  "thresholds": null
+}
