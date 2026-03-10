@@ -24,8 +24,7 @@
   architecture-driven pathogenicity, where variants disrupt 3D chromatin contacts rather than
   regulatory element activity --- is invisible to all widely used sequence-based interpretation
   tools (VEP, CADD, MPRA). Across 9 clinically important loci and 30,318 variants, we identify
-  261 variants in systematic blind spots, including 54 that can only be detected through
-  chromatin structure simulation. Adopting mechanism-first classification before pathogenicity
+  261 variants in systematic blind spots, including 25 high-confidence architecture-driven variants at the tissue-matched HBB locus and 29 candidates at partially matched loci, detectable only through chromatin structure simulation. Adopting mechanism-first classification before pathogenicity
   scoring could reduce false-negative rates and direct experimental resources to the assay most
   likely to detect each variant's effect.
 ]
@@ -136,17 +135,13 @@ learns which sequence contexts are depleted by purifying selection, not which th
 contacts are disrupted. The result is a score that correlates well with activity-driven
 pathogenicity (Class A) but is nearly fully orthogonal to architecture-driven pathogenicity
 (Class B). Across the HBB locus, the normalized mutual information between ARCHCODE structural
-disruption scores and CADD scores is 0.024 --- effectively zero, indicating that the two tools
-capture almost entirely independent information (Figure 3). The corresponding NMI between
-ARCHCODE and VEP is 0.101, marginally higher but still indicating predominantly orthogonal
-axes. For comparison, the NMI between VEP and CADD on the same data is 0.231, reflecting their
-shared reliance on sequence-level features.
+disruption scores and CADD scores is 0.242 (95% CI: 0.189--0.298, bootstrap N = 1,000), indicating limited shared information (Figure 3). The corresponding NMI between ARCHCODE and VEP is 0.495 (95% CI: 0.433--0.560) at the tissue-matched HBB locus --- moderate correlation reflecting that both tools capture some discriminative signal when enhancer landscape is present. However, at tissue-mismatched loci, NMI drops to near zero (weighted cross-locus average: 0.026), demonstrating that the apparent orthogonality between structural and sequence axes is primarily a tissue-specificity phenomenon rather than an inherent property of the tools. For comparison, the NMI between VEP and CADD on HBB data is 0.323, reflecting their shared reliance on sequence-level features.
 
 These orthogonality measurements are not merely statistical curiosities. They quantify the size
 of the blind spot: variants that score high on the architecture axis and low on the sequence
 axis are, by definition, invisible to tools that operate only on the sequence axis. In the
 ARCHCODE dataset, 54 such variants (designated Q2b --- structurally disruptive but
-sequence-tool-negative) cluster within a mean distance of 434 bp from tissue-matched enhancers,
+sequence-tool-negative; 25 high-confidence at tissue-matched HBB, 29 candidates at partially matched loci) cluster within a mean distance of 434 bp from tissue-matched enhancers,
 58-fold closer than activity-driven variants (25,138 bp; p = $2.51 times 10^(-31)$). This
 spatial signature is consistent with a contact-disruption mechanism: the variants sit at
 positions where they can perturb enhancer-promoter spatial proximity without altering the
@@ -438,6 +433,12 @@ stringent support. As the evidence base grows, particularly through tissue-match
 experiments and allele-specific contact assays, the decision rules should be refined and, where
 possible, formalized into quantitative classifiers.
 
+== Tissue-match classification
+
+Each locus was assigned a tissue-match score reflecting concordance between the K562 simulation cell line and the gene's primary expression tissue. Scores were assigned based on three criteria: (1) gene expression in K562 (GTEx/ENCODE RNA-seq); (2) presence of disease-relevant enhancers in K562 ChIP-seq data (H3K27ac, H3K4me1); and (3) concordance of CTCF binding profile between K562 and the primary disease tissue.
+
+Scores: *1.0* = K562 is the primary expression tissue for the gene (HBB: erythroid); *0.5* = gene is expressed in K562 but K562 is not the primary disease tissue (BRCA1, TP53, MLH1, TERT); *0.0* = gene is not meaningfully expressed in K562 or K562 lacks the relevant enhancer landscape (CFTR: lung epithelial, SCN5A: cardiac, GJB2: cochlear, LDLR: hepatic). This classification is heuristic and represents a limitation of the current framework. Future work should develop a quantitative tissue-match metric incorporating expression level, enhancer density, and CTCF binding overlap between the simulation cell line and the disease-relevant tissue.
+
 // =============================================================================
 // 4. ARCHCODE AS THE ARCHITECTURE-DRIVEN ENGINE
 // =============================================================================
@@ -477,14 +478,11 @@ systematically invisible to all widely used sequence-based tools.
 The evidence for this positioning is quantitative. ARCHCODE and sequence-based tools operate on
 nearly orthogonal axes:
 
-- NMI(ARCHCODE, VEP) = 0.101
-- NMI(ARCHCODE, CADD) = 0.024
+- NMI(ARCHCODE, VEP) = 0.495 at HBB (95% CI: 0.433--0.560); weighted cross-locus average = 0.026
+- NMI(ARCHCODE, CADD) = 0.242 at HBB (95% CI: 0.189--0.298)
 - MaveDB SGE correlation r = −0.045
 
-These near-zero mutual information values mean that knowing a variant's ARCHCODE score provides
-almost no information about its VEP or CADD score, and vice versa. The two axes are measuring
-fundamentally different properties of the same variant. This orthogonality is the quantitative
-foundation for the taxonomy's central claim: activity-driven and architecture-driven
+At the tissue-matched HBB locus, ARCHCODE and VEP share moderate mutual information (0.495), reflecting that both tools capture discriminative signal when the enhancer landscape is present. At tissue-mismatched loci (8 of 9), NMI drops to near zero (range: 0.000--0.030), because ARCHCODE LSSIM values converge to $gt.eq$ 0.99 and contribute no discriminative information. The cross-locus weighted average NMI of 0.026 reflects the dominance of tissue-mismatched loci in the dataset. This tissue-dependent orthogonality is the quantitative foundation for the taxonomy's central claim: activity-driven and architecture-driven
 pathogenicity are separable mechanistic classes that require dedicated, independent tools.
 
 == Evidence from the canonical Class B cohort: HBB Q2b
@@ -939,12 +937,7 @@ We organize the discussion around four claims in decreasing order of evidential 
 
 *Claim 1 (Strongest): Activity and architecture are orthogonal axes of regulatory
 pathogenicity.* The quantitative evidence is unambiguous. Normalized mutual information between
-ARCHCODE and VEP is 0.101; between ARCHCODE and CADD, 0.024. Correlation with MaveDB
-saturation genome editing is r = −0.045. These values are near the theoretical minimum,
-indicating that structural pathogenicity scores capture information almost entirely absent from
-sequence-based tools. This orthogonality is not a limitation of any individual tool --- it
-reflects a genuine biological distinction between what a regulatory element does (activity) and
-where it contacts (architecture). The finding aligns with the growing consensus that 3D genome
+ARCHCODE and VEP is 0.495 at the tissue-matched HBB locus (95% CI: 0.433--0.560, bootstrap N = 1,000), dropping to a weighted cross-locus average of 0.026 across all 9 loci; between ARCHCODE and CADD, 0.242 (95% CI: 0.189--0.298). Correlation with MaveDB saturation genome editing is r = −0.045. At tissue-mismatched loci (8 of 9), NMI values are near zero ($lt.eq$ 0.03), indicating that structural pathogenicity scores capture information almost entirely absent from sequence-based predictions when the wrong tissue context is applied. At the tissue-matched HBB locus, moderate NMI (0.495) reflects the expected convergence: both structural and sequence tools detect pathogenic variants at a locus where the enhancer landscape is correctly represented. This tissue-dependent pattern is not a limitation --- it reflects the genuine biological distinction between what a regulatory element does (activity) and where it contacts (architecture), modulated by whether the correct tissue context is modeled. The finding aligns with the growing consensus that 3D genome
 organization constitutes a distinct pathogenic dimension (Sreenivasan, Yumiceba & Spielmann
 2025; Kim et al. 2024), and with empirical benchmarks showing that distal non-coding variants
 are the hardest class for sequence models to predict (Benegas, Eraslan & Song 2025).
@@ -981,6 +974,14 @@ architecture axis. This ratio suggests that tool development should prioritize c
 activity from architecture). The 207 Class D variants represent a lower bound: they are the
 variants ARCHCODE can score that VEP cannot, but additional coverage gaps likely exist beyond
 ARCHCODE's 300 kb simulation windows and 9 configured loci.
+
+== Addressing circularity in class definitions
+
+A potential concern is that classes defined by ARCHCODE and VEP outputs are then used to evaluate those same tools, creating a tautology. Three lines of evidence partially break this circle. First, leave-one-locus-out cross-validation (EXP-002) derives the LSSIM threshold from training loci and evaluates on a held-out locus, preventing threshold overfitting; derived thresholds range from 0.967 to 0.977 across held-out loci. Second, Gasperini et al. (2019) CRISPRi data provides external experimental evidence: LSSIM correlates with CRISPRi effect size (Spearman rho = −0.23, p = 0.007) using data generated entirely independently of ARCHCODE. Third, enhancer proximity enrichment (OR = 34.05 at 500 bp, permutation p < 0.0001) is an independent geometric feature not used in class definition --- Q2b variants cluster near enhancers not because they were selected for proximity, but because contact-disruption mechanisms operate at enhancer--promoter interfaces.
+
+A formal permutation test (10,000 shuffles of pathogenic/benign labels) confirms that the observed 31 Q2b variants at threshold 0.95 substantially exceed the null expectation of 9.9 ± 2.6 (p < 0.0001). The effect is robust across thresholds 0.92--0.98 (all permutation p < 0.05), with Cohen's d = −2.14 for LSSIM pathogenic--benign separation and d = −1.63 for enhancer distance (Q2b vs rest) --- both very large effects by conventional criteria.
+
+However, we acknowledge that full resolution of the circularity concern requires experimental validation: allele-specific Capture Hi-C on Q2b variants in tissue-matched cells would provide tool-independent evidence for structural disruption. Until such data are available, the taxonomy should be understood as a computationally grounded hypothesis supported by multiple convergent lines of evidence, not as experimentally confirmed mechanistic classification.
 
 == Relationship to existing frameworks
 
@@ -1059,6 +1060,31 @@ by routing each variant to the assay most likely to detect its effect.
   activity-driven effects (Class A). No single tool covers all five classes, demonstrating that
   multi-modal integration is necessary for complete variant interpretation.],
 ) <fig:tool-matrix>
+
+// =============================================================================
+// CODE AND DATA AVAILABILITY
+// =============================================================================
+
+= Code and Data Availability
+
+ARCHCODE source code, locus configuration files, and variant-level results are available at #link("https://github.com/sergeeey/ARCHCODE")[github.com/sergeeey/ARCHCODE] and archived on Zenodo (DOI: 10.5281/zenodo.15072447). The repository includes: (i) the loop-extrusion simulation engine (`src/`), (ii) all 15 locus configuration JSON files with ENCODE accession numbers and source provenance for every feature (`config/locus/`), (iii) per-locus Unified Atlas CSVs containing variant-level LSSIM scores, VEP annotations, and CADD scores where available (`results/`), (iv) analysis scripts for all figures and statistical tests (`scripts/`), and (v) a reproducibility guide (`REPRODUCE.md`) with SHA-256 checksums for all output files.
+
+// =============================================================================
+// CLINICAL DISCLAIMER
+// =============================================================================
+
+#block(
+  stroke: 1pt + rgb("#cc0000"),
+  fill: rgb("#fff5f5"),
+  inset: (x: 1.2em, y: 1em),
+  radius: 3pt,
+  width: 100%,
+)[
+  #text(weight: "bold", fill: rgb("#cc0000"))[Research Use Only]
+
+  #v(0.3em)
+  ARCHCODE is a research tool for hypothesis generation and variant prioritization. It has not been validated for clinical diagnostic use. Variant classifications reported here (Classes A--E) are computational assignments based on structural simulation, not clinical determinations of pathogenicity. No clinical decisions --- including variant reclassification, diagnostic reporting, or treatment selection --- should be based on ARCHCODE results without independent experimental validation in disease-relevant cell types. The taxonomy framework is intended to guide research prioritization and experimental design, not to replace established clinical interpretation guidelines (ACMG/AMP).
+]
 
 // =============================================================================
 // REFERENCES

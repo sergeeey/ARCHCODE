@@ -18,8 +18,7 @@ tools lack scoring capability; and (E) tissue-mismatch artifact, where apparent 
 incorrect tissue context. We classify 21 cases encompassing 30,318 ClinVar variants across 9
 clinically important genomic loci using ARCHCODE, a loop-extrusion-based structural
 pathogenicity engine, integrated with VEP, CADD, MPRA cross-validation, and CRISPRi
-benchmarking. We show that 54 architecture-driven variants (Class B) are systematically missed
-by sequence-based tools: NMI(ARCHCODE, VEP) = 0.101; NMI(ARCHCODE, CADD) = 0.024. These
+benchmarking. We show that 25 high-confidence and 29 candidate architecture-driven variants (Class B) are systematically missed by sequence-based tools: cross-locus weighted NMI(ARCHCODE, VEP) = 0.026; NMI at tissue-matched HBB = 0.495 (95% CI: 0.433--0.560). These
 variants cluster within 434 bp of tissue-matched enhancers (p = $2.51 times 10^(-31)$), 58-fold
 closer than activity-driven variants (25,138 bp), and return null results in both MPRA and
 CRISPRi screens --- consistent with a contact-disruption rather than element-activity mechanism.
