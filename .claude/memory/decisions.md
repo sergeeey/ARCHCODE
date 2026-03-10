@@ -402,3 +402,26 @@
 - This is the FIRST cross-species test of structural pathogenicity conservation
 
 **Файлы:** `config/locus/mouse_hbb_130kb.json`, `scripts/cross_species_comparison.ts`, `scripts/plot_cross_species.py`, `results/cross_species_hbb_comparison.json`, `figures/fig12_cross_species.pdf`
+
+## ADR-023: NMI values corrected — orthogonality is tissue-dependent (2026-03-10)
+
+**Context:** Manuscript claimed NMI(ARCHCODE, VEP) = 0.101, NMI(ARCHCODE, CADD) = 0.024 as evidence for "near orthogonality." Bootstrap permutation test produced 0.496 and 0.245. Investigation revealed the 0.101 was from an outdated calculation. Per-locus CSV (`nmi_per_locus.csv`) confirms HBB = 0.4945.
+
+**Решение:** Correct all NMI values in manuscript. Reframe orthogonality as tissue-dependent.
+
+**Правильные числа:**
+- HBB: NMI(ARCH, VEP) = 0.4945, NMI(ARCH, CADD) = 0.2423
+- Cross-locus weighted average: NMI(ARCH, VEP) = 0.026
+- 8/9 loci: NMI ≤ 0.03 (truly orthogonal due to tissue mismatch)
+
+**Обоснование:** At tissue-matched HBB, both tools capture signal → moderate NMI. At mismatched loci, ARCHCODE LSSIM ≥ 0.99 → no discriminative info → NMI ≈ 0. This STRENGTHENS the tissue-specificity argument: orthogonality is a property of tissue mismatch, not inherent tool design.
+
+**Файлы:** `analysis/nmi_per_locus.csv`, `analysis/permutation_threshold_test.json`, `manuscript/taxonomy_paper/body_content.typ`, `manuscript/taxonomy_paper/abstract_content.typ`
+
+## ADR-024: Paper-critic agent created for pre-submission review (2026-03-10)
+
+**Context:** External review identified real weaknesses (N=1 HBB, threshold sensitivity, circularity). User workflow: sends research to external LLM for review → brings criticisms back → needs evidence-based responses without hallucination.
+
+**Решение:** Created `.claude/agents/paper-critic.md` — devil's advocate agent with 3 modes (pre-submission, respond to review, claim audit). Agent reads actual data files before evaluating claims.
+
+**Обоснование:** Catches discrepancies before external reviewers do. Grounded in real data (no hallucination). Produces prioritized action plans with effort estimates.

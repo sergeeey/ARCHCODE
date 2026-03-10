@@ -451,8 +451,9 @@ ARCHCODE is a physics-based structural pathogenicity engine that models enhancer
 contact disruption through polymer simulation of loop extrusion. For each variant, the pipeline
 (i) constructs a one-dimensional chromatin fiber annotated with CTCF binding sites and
 tissue-matched enhancer positions derived from ENCODE/Roadmap data; (ii) simulates
-cohesin-mediated loop extrusion using an OpenMM-based polymer model at single-nucleosome
-resolution; (iii) computes a simulated contact matrix for both the reference and variant
+cohesin-mediated loop extrusion using an analytical mean-field polymer model at single-nucleosome
+resolution (not molecular dynamics; parameters are manually calibrated to published FRAP residence
+times and Hi-C contact frequencies --- see Gerlich et al. 2006, Davidson et al. 2019); (iii) computes a simulated contact matrix for both the reference and variant
 alleles; and (iv) quantifies structural disruption using the Locus-Specific Structural
 Similarity Index Metric (LSSIM), a normalized similarity score between the two contact matrices.
 An LSSIM value of 1.0 indicates no structural change; values below a threshold of 0.95 are
@@ -491,8 +492,11 @@ The strongest evidence for architecture-driven pathogenicity comes from the HBB 
 1,103 HBB variants, 25 fall in the Q2b class --- variants that are structurally disruptive
 (LSSIM < 0.95) but undetected by sequence-based tools (VEP score 0--0.5). These 25 variants
 cluster within a mean distance of 434 bp from tissue-matched enhancers (p = $2.51 times
-10^(-31)$ by Mann-Whitney U test), 58-fold closer than the 25,138 bp mean enhancer distance of
-Q3 (activity-driven) variants at the same locus. The tissue match score for HBB in the K562
+10^(-31)$ by Mann-Whitney U test; Cohen's d = −1.63 for enhancer distance, odds ratio = 34.05 for
+proximity $lt.eq$ 500 bp; permutation test: observed 31 Q2b vs null expectation 9.9 ± 2.6,
+p < 0.0001; Supplementary Figure S4), 58-fold closer than the 25,138 bp mean enhancer distance
+of Q3 (activity-driven) variants at the same locus. The pathogenic--benign LSSIM separation
+yields Cohen's d = −2.14, a very large effect by conventional criteria. The tissue match score for HBB in the K562
 erythroid model is 1.0 --- HBB is the primary erythroid gene, and K562 is an erythroid
 progenitor line --- providing the strongest possible tissue context for architecture-driven
 detection.
@@ -977,7 +981,7 @@ ARCHCODE's 300 kb simulation windows and 9 configured loci.
 
 == Addressing circularity in class definitions
 
-A potential concern is that classes defined by ARCHCODE and VEP outputs are then used to evaluate those same tools, creating a tautology. Three lines of evidence partially break this circle. First, leave-one-locus-out cross-validation (EXP-002) derives the LSSIM threshold from training loci and evaluates on a held-out locus, preventing threshold overfitting; derived thresholds range from 0.967 to 0.977 across held-out loci. Second, Gasperini et al. (2019) CRISPRi data provides external experimental evidence: LSSIM correlates with CRISPRi effect size (Spearman rho = −0.23, p = 0.007) using data generated entirely independently of ARCHCODE. Third, enhancer proximity enrichment (OR = 34.05 at 500 bp, permutation p < 0.0001) is an independent geometric feature not used in class definition --- Q2b variants cluster near enhancers not because they were selected for proximity, but because contact-disruption mechanisms operate at enhancer--promoter interfaces.
+A potential concern is that classes defined by ARCHCODE and VEP outputs are then used to evaluate those same tools, creating a tautology. Three lines of evidence partially break this circle. First, leave-one-locus-out cross-validation (EXP-002) derives the LSSIM threshold from training loci and evaluates on a held-out locus, preventing threshold overfitting; derived thresholds range from 0.967 to 0.977 across held-out loci. Second, Gasperini et al. (2019) CRISPRi data provides external experimental evidence: LSSIM correlates with CRISPRi effect size (Spearman rho = −0.23, p = 0.007) using data generated entirely independently of ARCHCODE. Third, enhancer proximity enrichment (odds ratio =34.05 at 500 bp, permutation p < 0.0001) is an independent geometric feature not used in class definition --- Q2b variants cluster near enhancers not because they were selected for proximity, but because contact-disruption mechanisms operate at enhancer--promoter interfaces.
 
 A formal permutation test (10,000 shuffles of pathogenic/benign labels) confirms that the observed 31 Q2b variants at threshold 0.95 substantially exceed the null expectation of 9.9 ± 2.6 (p < 0.0001). The effect is robust across thresholds 0.92--0.98 (all permutation p < 0.05), with Cohen's d = −2.14 for LSSIM pathogenic--benign separation and d = −1.63 for enhancer distance (Q2b vs rest) --- both very large effects by conventional criteria.
 
@@ -1043,7 +1047,7 @@ by routing each variant to the assay most likely to detect its effect.
   caption: [*ARCHCODE evidence for each mechanistic class.* (A) Activity-driven: HBB Q3 variants
   scored pathogenic by VEP but structurally neutral by ARCHCODE (mean enhancer distance
   25,138 bp). (B) Architecture-driven: HBB Q2b variants scored benign by VEP but showing
-  significant structural disruption (LSSIM < 0.95, enhancer proximity 434 bp,
+  significant structural disruption (LSSIM $lt$ 0.95, enhancer proximity 434 bp,
   p = $2.51 times 10^(-31)$). (C) Mixed: HBB Q1 concordant pathogenic variants detected by both
   tools. (D) Coverage gap: TERT Q2a variants unscored by VEP; ARCHCODE achieves AUC = 0.8405
   (vs nearest-gene 0.4893). (E) Tissue-mismatch artifact: EXP-003 shows structural signal
@@ -1274,3 +1278,28 @@ that amplifies pathogenic disruption.
   (B) Structural calls by variant category. (C) Amplification ratios showing 1.37× delta,
   2.90× structural calls, and 1.28× Q2 variants.],
 ) <fig:scn5a-cardiac>
+
+#figure(
+  image("../../figures/taxonomy/fig_permutation_test.png", width: 100%),
+  caption: [*Permutation validation of LSSIM threshold and effect sizes.*
+  (A) Null distribution from 10,000 permutations of pathogenic/benign labels at threshold 0.95:
+  observed 31 Q2b variants (red dashed line) versus null mean 9.9 ± 2.6 (p < 0.0001).
+  (B) Threshold sweep (0.88--0.98): permutation p-value remains below 0.05 across the range
+  0.92--0.98, confirming robustness. (C) Bootstrap NMI distributions (N = 1,000 resamples):
+  NMI(ARCHCODE, VEP) = 0.496 (0.433--0.560); NMI(ARCHCODE, CADD) = 0.245 (0.189--0.298).
+  (D) Effect size forest plot: Cohen's d = −2.14 for LSSIM pathogenic--benign separation,
+  d = −1.63 for enhancer distance (Q2b vs rest), log₂(odds ratio) = 5.09 for enhancer
+  proximity ≤ 500 bp.],
+) <fig:permutation-test>
+
+#figure(
+  image("../../figures/taxonomy/fig_crosslocus_summary.png", width: 100%),
+  caption: [*Cross-locus summary of ARCHCODE taxonomy framework.*
+  (A) |Δ LSSIM| (pathogenic minus benign) by locus, colored by taxonomy class assignment.
+  TERT shows the largest absolute delta; HBB shows the strongest Class B signal.
+  (B) Structural call counts per locus (log scale). HBB dominates with 962 calls.
+  (C) Tissue match score versus structural calls: HBB (tissue match = 1.0) is the clear
+  outlier with Spearman ρ = 0.63. (D) Tool blind-spot matrix: only ARCHCODE detects
+  Class B (architecture-driven); all sequence-based tools (VEP, CADD, MPRA, CRISPRi) are
+  blind to this class.],
+) <fig:crosslocus-summary>
