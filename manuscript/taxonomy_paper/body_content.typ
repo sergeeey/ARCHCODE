@@ -573,10 +573,13 @@ the canonical erythroid gene regulated by the LCR.
 The proposed pathogenic mechanism is contact disruption rather than element activity change.
 Each Q2b variant is positioned within or immediately adjacent to the enhancer--promoter contact
 zone. The ARCHCODE simulation shows that these variants alter the loop extrusion landscape such
-that the LCR--HBB contact probability decreases, reducing transcriptional output. Importantly,
-this mechanism is invisible to sequence-based tools because the variant does not disrupt a
-transcription factor binding motif or alter enhancer activity --- it disrupts the physical
-routing of the enhancer's output to its target promoter.
+that the LCR--HBB contact probability decreases, reducing transcriptional output. The
+transcriptional consequence of such contact reduction is expected to be nonlinear: Zuin et al.
+showed that transcription follows a sigmoidal function of enhancer--promoter contact probability,
+with a ~3-fold contact drop at TAD boundaries sufficient to suppress transcription to promoter-only
+levels (Zuin et al., _Nature_ 2022). Importantly, this mechanism is invisible to sequence-based tools because the
+variant does not disrupt a transcription factor binding motif or alter enhancer activity --- it
+disrupts the physical routing of the enhancer's output to its target promoter.
 
 The experimental validation path for HBB Q2b is well-defined: Capture Hi-C in HUDEP-2 erythroid
 progenitor cells, comparing allele-specific contact frequencies at the top 5 Q2b positions. MPRA
@@ -771,6 +774,32 @@ shifting from 0.95 to 0.94 or 0.96 changes the variant count substantially. A pr
 Bayesian framework for class assignment, incorporating uncertainty in both the structural
 simulation and the sequence-based scores, would be a significant improvement over the current
 heuristic approach.
+
+== Structural topology does not equal expression consequence
+
+A fundamental limitation of LSSIM as a metric is that it quantifies disruption of chromatin
+topology, not disruption of transcriptional output. These two quantities can dissociate. Brown
+et al. demonstrated that the alpha-globin self-interacting domain persists in erythroid cells
+even after deletion of both major enhancers (MCS-R1 and MCS-R2) --- a manipulation that reduces
+nascent alpha-globin transcription by 90% (Brown et al., _Nat Commun_ 2018). The domain boundary, as measured by
+Capture-C and FISH, remains structurally intact despite near-complete loss of internal
+enhancer--promoter interactions. This implies that a variant can preserve structural topology
+while severely impairing regulatory function, and conversely, that ARCHCODE's detection of
+structural disruption does not guarantee a corresponding transcriptional phenotype. LSSIM < 0.95
+is a signal that the loop extrusion landscape has changed --- it is not a direct readout of gene
+expression change.
+
+This dissociation is further contextualized by the nonlinear relationship between enhancer--promoter
+contact probability and transcriptional output. Zuin et al. showed, using hundreds of engineered
+cell lines with a synthetic enhancer positioned at varying genomic distances, that transcription
+does not respond linearly to contact probability: the relationship follows a sigmoidal (Hill
+function) dependency, with contact probabilities dropping from ~1.0 within the TAD to ~0.05
+near boundaries and a further ~3-fold drop across boundaries before transcription falls to
+promoter-only levels (Zuin et al., _Nature_ 2022). This nonlinearity provides mechanistic grounding for our
+threshold-based classification --- variants that reduce contact probability beyond a critical
+inflection point may have disproportionately large transcriptional consequences --- but it also
+means that small LSSIM changes cannot be mapped to proportional expression changes without
+knowledge of where on the sigmoid curve the locus operates under baseline conditions.
 
 == The central epistemic limitation
 
@@ -1186,6 +1215,10 @@ ARCHCODE source code, locus configuration files, and variant-level results are a
     Variant Prediction in Human Genetics. _bioRxiv_. 2025.
     doi:10.1101/2025.02.11.637758
 
+  + Brown JM, Roberts NA, Graham B, et al. A tissue-specific self-interacting chromatin domain
+    forms independently of enhancer-promoter interactions. _Nature Communications_.
+    2018;9:3849. doi:10.1038/s41467-018-06248-4
+
   + Chakraborty S, Kopitchinski N, Zuo Z, et al. Enhancer-promoter interactions can bypass
     CTCF-mediated boundaries and contribute to phenotypic robustness. _Nature Genetics_.
     2023;55(2):280--290. doi:10.1038/s41588-022-01295-6
@@ -1263,6 +1296,10 @@ ARCHCODE source code, locus configuration files, and variant-level results are a
   + Wang X, Li F, Zhang Y, et al. Deep learning approaches for non-coding genetic variant
     effect prediction: current progress and future prospects. _Briefings in Bioinformatics_.
     2024;25(5):bbae446. doi:10.1093/bib/bbae446
+
+  + Zuin J, Roth G, Zhan Y, et al. Nonlinear control of transcription through
+    enhancer--promoter interactions. _Nature_. 2022;604(7905):571--577.
+    doi:10.1038/s41586-022-04570-y
 ]
 
 // =============================================================================
