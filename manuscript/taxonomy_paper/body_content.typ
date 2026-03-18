@@ -26,7 +26,7 @@
   tools (VEP, CADD, MPRA). Across 9 clinically important loci and 30,318 variants, we identify
   261 variants in systematic blind spots, including 25 high-confidence architecture-driven variants at the tissue-matched HBB locus and 29 candidates at partially matched loci, detectable only through chromatin structure simulation. Adopting mechanism-first classification before pathogenicity
   scoring could reduce false-negative rates and direct experimental resources to the assay most
-  likely to detect each variant's effect.
+  likely to detect each variant's effect. Even AlphaMissense, Google DeepMind's protein-structure-based pathogenicity classifier, covers only 23% of variants in our atlas and scores only 3 of 41 architecture-driven candidates.
 ]
 
 // =============================================================================
@@ -997,7 +997,7 @@ additional support: architecture-driven signal correlates with tissue match at r
 delta = $5.04 times 10^(-6)$). However, we cannot confirm that these variants are pathogenic
 through architecture without experimental validation. What we can state is that they are
 structurally disruptive, tissue-specific, and systematically undetected by all widely used
-interpretation tools.
+interpretation tools. This blindness extends beyond sequence-based scoring to protein-structure prediction: AlphaMissense (Cheng et al. 2023), which classifies missense pathogenicity using AlphaFold-derived structural features, covers only 23.0% of variants in our 9-locus atlas (6,961 of 30,318) and provides scores for only 3 of 41 pearl variants (7.3%). The remaining 75.3% of variants --- non-coding, intronic, and regulatory --- fall entirely outside AlphaMissense's scope, and the correlation between AlphaMissense scores and ARCHCODE LSSIM is near zero at tissue-mismatched loci (median Spearman $rho$ = 0.086, NS). Even at tissue-matched loci where both tools detect signal, the correlation is negative ($rho$ = $minus$0.50 at HBB, $rho$ = $minus$0.52 at TP53), indicating that the two tools measure fundamentally different pathogenic axes: protein structural damage versus chromatin contact disruption.
 
 *Claim 3 (Moderate): A five-class taxonomy provides actionable organization of blind spots.*
 The taxonomy --- activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch
@@ -1226,6 +1226,9 @@ ARCHCODE source code, locus configuration files, and variant-level results are a
   + Cheng YHH, Bohaczuk SC, Stergachis AB. Functional categorization of gene regulatory
     variants that cause Mendelian conditions. _Human Genetics_. 2024;143(4):559--605.
     doi:10.1007/s00439-023-02639-w
+
+  + Cheng J, Novati G, Pan J, et al. Accurate proteome-wide missense variant effect prediction
+    with AlphaMissense. _Science_. 2023;381(6664):eadg7492. doi:10.1126/science.adg7492
 
   + Chin IM, Gardell ZA, Corces MR. Decoding polygenic diseases: Advances in noncoding variant
     prioritization and validation. _Trends in Cell Biology_. 2024;34(6):465--483.

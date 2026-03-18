@@ -1,0 +1,196 @@
+{
+  "HBB": {
+    "locus": "HBB",
+    "total_variants": 1103,
+    "snv_count": 912,
+    "missense_count": 144,
+    "am_scored_count": 112,
+    "non_coding_count": 959,
+    "spearman_r": -0.5047,
+    "spearman_p": 0.0,
+    "n_corr": 112,
+    "am_class_distribution": {
+      "likely_pathogenic": 86,
+      "likely_benign": 18,
+      "ambiguous": 8
+    },
+    "pearl_count": 15,
+    "pearl_missense": 3,
+    "pearl_with_am": 3,
+    "pearl_am_scores": [
+      0.9968,
+      0.9968,
+      0.9516
+    ],
+    "am_coverage_pct": 10.2,
+    "non_coding_pct": 86.9
+  },
+  "MLH1": {
+    "locus": "MLH1",
+    "total_variants": 4060,
+    "snv_count": 2580,
+    "missense_count": 704,
+    "am_scored_count": 540,
+    "non_coding_count": 3356,
+    "spearman_r": -0.1264,
+    "spearman_p": 0.003255,
+    "n_corr": 540,
+    "am_class_distribution": {
+      "likely_pathogenic": 301,
+      "likely_benign": 210,
+      "ambiguous": 29
+    },
+    "pearl_count": 0,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 13.3,
+    "non_coding_pct": 82.7
+  },
+  "CFTR": {
+    "locus": "CFTR",
+    "total_variants": 3349,
+    "snv_count": 2594,
+    "missense_count": 572,
+    "am_scored_count": 504,
+    "non_coding_count": 2777,
+    "spearman_r": 0.038,
+    "spearman_p": 0.394751,
+    "n_corr": 504,
+    "am_class_distribution": {
+      "likely_pathogenic": 341,
+      "likely_benign": 110,
+      "ambiguous": 53
+    },
+    "pearl_count": 0,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 15.0,
+    "non_coding_pct": 82.9
+  },
+  "TP53": {
+    "locus": "TP53",
+    "total_variants": 2794,
+    "snv_count": 1978,
+    "missense_count": 870,
+    "am_scored_count": 817,
+    "non_coding_count": 1924,
+    "spearman_r": -0.5202,
+    "spearman_p": 0.0,
+    "n_corr": 817,
+    "am_class_distribution": {
+      "likely_pathogenic": 439,
+      "likely_benign": 343,
+      "ambiguous": 35
+    },
+    "pearl_count": 2,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 29.2,
+    "non_coding_pct": 68.9
+  },
+  "BRCA1": {
+    "locus": "BRCA1",
+    "total_variants": 10682,
+    "snv_count": 7219,
+    "missense_count": 3271,
+    "am_scored_count": 3220,
+    "non_coding_count": 7411,
+    "spearman_r": 0.1343,
+    "spearman_p": 0.0,
+    "n_corr": 3220,
+    "am_class_distribution": {
+      "likely_benign": 2748,
+      "likely_pathogenic": 346,
+      "ambiguous": 126
+    },
+    "pearl_count": 24,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 30.1,
+    "non_coding_pct": 69.4
+  },
+  "LDLR": {
+    "locus": "LDLR",
+    "total_variants": 3284,
+    "snv_count": 2345,
+    "missense_count": 1034,
+    "am_scored_count": 969,
+    "non_coding_count": 2250,
+    "spearman_r": 0.0946,
+    "spearman_p": 0.003206,
+    "n_corr": 969,
+    "am_class_distribution": {
+      "likely_pathogenic": 701,
+      "likely_benign": 186,
+      "ambiguous": 82
+    },
+    "pearl_count": 0,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 29.5,
+    "non_coding_pct": 68.5
+  },
+  "SCN5A": {
+    "locus": "SCN5A",
+    "total_variants": 2488,
+    "snv_count": 2202,
+    "missense_count": 398,
+    "am_scored_count": 364,
+    "non_coding_count": 2090,
+    "spearman_r": -0.0213,
+    "spearman_p": 0.68506,
+    "n_corr": 364,
+    "am_class_distribution": {
+      "likely_pathogenic": 194,
+      "likely_benign": 147,
+      "ambiguous": 23
+    },
+    "pearl_count": 0,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 14.6,
+    "non_coding_pct": 84.0
+  },
+  "TERT": {
+    "locus": "TERT",
+    "total_variants": 2089,
+    "snv_count": 1957,
+    "missense_count": 307,
+    "am_scored_count": 251,
+    "non_coding_count": 1782,
+    "spearman_r": 0.0857,
+    "spearman_p": 0.175825,
+    "n_corr": 251,
+    "am_class_distribution": {
+      "likely_benign": 201,
+      "likely_pathogenic": 40,
+      "ambiguous": 10
+    },
+    "pearl_count": 0,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 12.0,
+    "non_coding_pct": 85.3
+  },
+  "GJB2": {
+    "locus": "GJB2",
+    "total_variants": 469,
+    "snv_count": 379,
+    "missense_count": 184,
+    "am_scored_count": 184,
+    "non_coding_count": 285,
+    "spearman_r": 0.2674,
+    "spearman_p": 0.000243,
+    "n_corr": 184,
+    "am_class_distribution": {
+      "likely_pathogenic": 134,
+      "likely_benign": 31,
+      "ambiguous": 19
+    },
+    "pearl_count": 0,
+    "pearl_missense": 0,
+    "pearl_with_am": 0,
+    "am_coverage_pct": 39.2,
+    "non_coding_pct": 60.8
+  }
+}
