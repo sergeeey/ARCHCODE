@@ -22,16 +22,16 @@
 
 ![Figure 1: SSIM distribution across variant categories](figures/fig1_ssim_violin.png)
 
-_LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (nonsense, frameshift) cluster below 0.85; benign classes (intronic, synonymous) near 1.0. Red diamonds = 27 pearl variants._
+_LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (nonsense, frameshift) cluster below 0.85; benign classes (intronic, synonymous) near 1.0. Red diamonds = 25 high-confidence Class B variants._
 
 ---
 
 <table>
 <tr>
-<td align="center"><b>63,153</b><br><sub>variants analyzed, 13 loci</sub></td>
+<td align="center"><b>30,318</b><br><sub>ClinVar variants, 9 primary loci</sub></td>
 <td align="center"><b>AUC 0.977</b><br><sub>HBB ROC performance</sub></td>
-<td align="center"><b>27 pearls</b><br><sub>VEP-invisible HBB finds</sub></td>
-<td align="center"><b>641 VUS</b><br><sub>pearl-like candidates</sub></td>
+<td align="center"><b>54 Class B</b><br><sub>architecture-driven variants</sub></td>
+<td align="center"><b>10 methods</b><br><sub>orthogonal blind-spot confirmation</sub></td>
 </tr>
 </table>
 
@@ -48,20 +48,20 @@ Unlike sequence-based predictors (VEP, SpliceAI, CADD) that **classify** variant
 - **CTCF boundary erosion**
 - **Cohesin loading site alteration**
 
-**Key discoveries** from applying ARCHCODE to **63,153 variants across 13 loci**:
-- **27 "pearl" variants** on HBB — VEP-blind, SpliceAI-blind, CADD-ambiguous, but ARCHCODE-detected
-- **641 pearl-like VUS candidates** for reclassification across 8 tissue-matched loci
-- **Structural blind spot** validated by 9 orthogonal methods (VEP, SpliceAI, CADD, MPRA, gnomAD, conservation, AlphaGenome RNA/ATAC, Hi-C, cross-species)
+**Key discoveries** from applying ARCHCODE to **30,318 ClinVar variants across 9 primary loci**:
+- **54 architecture-driven (Class B) variants** — invisible to VEP, SpliceAI, CADD, MPRA, AlphaMissense
+- **5-class taxonomy** of regulatory pathogenicity (activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch)
+- **Structural blind spot** validated by 10 orthogonal methods (VEP, SpliceAI, CADD, MPRA, CRISPRi, gnomAD, MaveDB SGE/DMS, PCHi-C, AlphaMissense)
 
 **Not competing with ML predictors** — ARCHCODE creates a new category: **structural mechanism discovery**.
 
-Nine independent lines of evidence confirm the blind spot: VEP (&lt;0.30 for all 27), SpliceAI (0.00 for all 20 SNVs), CADD v1.7 (median 15.7 — ambiguous), MPRA Kircher 2019 (no signal), MaveDB SGE/DMS (orthogonal, r ≈ 0), gnomAD v4 (85% absent), cross-species conservation (r = 0.82), genome-wide scaling (13 loci), yet ARCHCODE LSSIM &lt; 0.92 for all 27.
+Ten independent lines of evidence confirm the blind spot: VEP (&lt;0.30 for all Q2b), SpliceAI (0.00 for all SNVs), CADD v1.7 (median 15.7 — ambiguous), MPRA Kircher 2019 (no signal), CRISPRi Gasperini 2019 (0 Q2b overlaps), MaveDB SGE/DMS (orthogonal, r ≈ 0), gnomAD v4 (85% absent), PCHi-C erythroblast (1.76× enrichment at Q2b), AlphaMissense (covers only 23% of atlas, 3/41 pearls scored) — yet ARCHCODE LSSIM &lt; 0.95 for all 54 Class B variants.
 
 ## Pipeline Architecture
 
 ```
 +----------------------------------------------------------------------+
-|                       ARCHCODE Pipeline v2.8                         |
+|                       ARCHCODE Pipeline v2.16                        |
 +----------------------------------------------------------------------+
 |                                                                      |
 |  ClinVar API --> 30,318 variants across 9 loci                       |
@@ -136,7 +136,7 @@ Analysis of **30,318 real ClinVar variants across 9 genomic loci** using the uni
 
 ![SSIM vs VEP scatter — pearl quadrant](figures/fig3_pearl_quadrant.pdf)
 
-_353 real ClinVar HBB variants. Red = 27 pearl variants (VEP-blind, ARCHCODE-detected). Pearl zone: VEP &lt; 0.30 AND LSSIM &lt; 0.95._
+_353 real ClinVar HBB variants. Red = 25 high-confidence Class B variants (VEP-blind, ARCHCODE-detected). Pearl zone: VEP &lt; 0.30 AND LSSIM &lt; 0.95._
 
 ### Figure 2: ROC Curves
 
@@ -285,7 +285,7 @@ ARCHCODE/
 +-- manuscript/                        # Publication (arXiv q-bio.GN pending)
 |   +-- body_content.typ               #   Main manuscript body (Typst)
 |   +-- main_ru.typ                    #   Russian-language version
-|   +-- TABLE_S1_PEARLS.md             #   All 27 pearl variants (supplementary)
+|   +-- TABLE_S1_PEARLS.md             #   All 54 Class B variants (supplementary)
 +-- figures/                           # Publication figures (PDF + PNG)
 |   +-- fig1_ssim_violin.*             #   LSSIM distribution by category
 |   +-- fig2_roc_curves.*              #   ROC curve (HBB AUC 0.977)
@@ -336,10 +336,10 @@ ARCHCODE/
 - **Hi-C validation** — ENCODE Hi-C r = 0.28&ndash;0.59 across loci (significant, p &lt; 10<sup>&minus;82</sup>); pilot HUDEP2 Capture Hi-C r = 0.16 (not significant, small sample)
 - **Parameters manually calibrated** — &alpha; = 0.92, &gamma; = 0.80 from literature ranges (Gerlich 2006, Davidson 2019), not fitted to data
 - **No missense sensitivity** — ARCHCODE models chromatin topology, not protein folding; missense variants are detected only indirectly via CADD-derived effect strength
-- **HBB-centric pearls** — all 27 pearl variants are on HBB; generalization of the pearl-detection paradigm to other loci requires matched regulatory annotations
+- **Tissue-dependent detection** — 25 high-confidence Class B variants are on HBB (full tissue match); 29 candidates at partially matched loci (SCN5A, LDLR, MLH1). Generalization requires tissue-matched configurations for each locus
 - **MPRA episomal context** — the Kircher 2019 null (r = &minus;0.21) is mechanistically expected but does not rule out alternative non-structural explanations for pearl pathogenicity
 - **AlphaGenome training overlap** — AlphaGenome was trained on 4DN Hi-C including K562; validation against AlphaGenome tracks is not fully independent
-- **Pearl candidates require experimental validation** — the 27 pearl variants and 641 pearl-like VUS candidates are computational findings only; no clinical reclassification without RT-PCR, Capture Hi-C, or functional assay
+- **Experimental validation required** — the 54 Class B variants are computational findings only; no clinical reclassification without allele-specific Capture Hi-C, RT-qPCR, or functional assay in tissue-matched cells
 - **AlphaGenome as auxiliary only** — AlphaGenome RNA/ATAC signal supports structural blind spot narrative but is not a replacement for experimental validation (same training domain; use for prioritization only)
 
 ## Scientific Integrity
