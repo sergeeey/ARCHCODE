@@ -532,6 +532,8 @@ high-accuracy classifier in the conventional sense. Rather, its value lies in de
 specific class of variants (Class B) that achieves AUC = 0.0 in all sequence-based tools --- a
 class where any signal above chance represents genuine complementary information.
 
+A complementary ML ablation study using gradient-boosted classifiers on 31 engineered features confirms this result from a different angle: for pearl detection (identifying the 27 ClinVar-benign variants with structural disruption), structural features contribute 64% of total importance, while VEP alone catches 0 of 27 pearls. This dominance is tissue-specific --- at the mismatched BRCA1 locus, structural importance collapses to 0.6% (Supplementary Section S6; @tab:ml-ablation).
+
 == Leave-one-locus-out: generalization across loci
 
 To test whether the architecture-driven signal generalizes beyond HBB, we performed
@@ -1549,3 +1551,34 @@ To guide future experimental and computational work, we rank 15 genomic loci by 
 ) <tab:discovery-ranking>
 
 The top 6 loci (HBB through LDLR) represent the most actionable targets: they have existing ARCHCODE atlases, tissue-matched or partially matched configurations, and concrete next steps that can be executed computationally or with targeted experiments. The bottom tier (GATA1, HBA1, GJB2) provides informative negative controls or boundary cases that constrain the applicability domain of architecture-driven analysis.
+
+== ML Ablation Study: Structural Features Are Essential for Architecture-Driven Variant Detection <supplementary-s6>
+
+To quantify whether 3D structural features provide information beyond sequence-based predictors for detecting architecture-driven (Class B) variants, we trained gradient-boosted classifiers on 1,103 HBB variants (27 pearls vs. 1,076 non-pearls) using 5-fold stratified cross-validation with systematic feature ablation.
+
+*Feature engineering.* Each variant was represented by 31 features across four groups: structural (SSIM, LSSIM, $Delta$Insulation, LoopIntegrity, and derived ratios; 7 features), sequence-based (VEP, SIFT, CADD; 3 features), distance (to LCR, nearest enhancer, nearest CTCF, TSS; 9 features), and variant category (one-hot encoded; 10 features).
+
+*Pearl detection is the correct evaluation task.* The conventional pathogenic-vs-benign classification yields AUROC $approx$ 0.99 for all feature subsets due to strong category-driven separation --- a ceiling effect that obscures differences between scoring approaches. Pearl detection (identifying the 27 ClinVar-benign variants with LSSIM < 0.95) is the clinically relevant task: these are variants that sequence-based tools classify as benign but that show structural disruption under chromatin simulation.
+
+*Results (Table S6).* Structural features contribute 64% of total feature importance for pearl detection (delta\_lssim: 30%, lssim: 23%, delta\_insulation: 11%). VEP contributes 36% but cannot detect pearls alone: 0 of 27 pearls have VEP $gt.eq$ 0.5, 0 have SIFT $gt.eq$ 0.5, and only 15 of 27 (56%) have CADD $gt.eq$ 15.
+
+#figure(
+  kind: table,
+  caption: [*ML ablation for pearl detection.* 5-fold stratified CV, GradientBoosting classifier. Structural features dominate pearl detection but are dispensable at tissue-mismatched loci, confirming tissue-specificity.],
+  scientific-table(
+    columns: (auto, auto, auto, auto, auto, auto),
+    [*Feature set*], [*HBB AUROC*], [*HBB AUPRC*], [*BRCA1 AUROC*], [*BRCA1 AUPRC*], [*Interpretation*],
+
+    [All features], [0.987], [0.961], [1.000], [0.954], [Ceiling at both loci],
+    [Structural only], [0.958], [0.899], [0.840], [0.806], [Strong at HBB, weak at BRCA1],
+    [Sequence only], [0.961], [0.678], [0.985], [0.133], [High AUROC but low AUPRC],
+    [No structural], [0.989], [0.756], [0.978], [0.904], [Distance compensates at BRCA1],
+    [No sequence], [0.949], [0.904], [0.920], [0.852], [Structure sufficient at HBB],
+  ),
+) <tab:ml-ablation>
+
+*Cross-locus negative control.* At BRCA1 --- a tissue-mismatched locus where the 24 pearls are threshold artifacts (LSSIM 0.942--0.947, common polymorphisms with AF 40--50%) --- structural feature importance collapses to 0.6% (vs. 64% at HBB). The dominant predictor at BRCA1 is distance-to-nearest-enhancer (99% importance), not 3D structure. This confirms that architecture-driven detection is a tissue-specific phenomenon: structural features are informative only when the simulation uses tissue-matched epigenomic input, consistent with the tissue-specificity principle of the taxonomy (Section 3.4).
+
+*Pearl profile.* Architecture-driven variants at HBB are characterized by: (1) 2.3$times$ higher $Delta$LSSIM than non-pearls, (2) 56% located in the promoter region (vs. 0% for non-pearls), (3) 55% located outside the HBB gene body, and (4) VEP scores uniformly $lt.eq$ 0.20 ("Low Impact"). This profile --- high structural disruption, low sequence impact, promoter-proximal --- defines the Class B signature that sequence-based tools systematically miss.
+
+Supplementary Figures S7 and S8 show the full pearl detection analysis (4-panel: feature set ablation, feature importance, LSSIM distribution, recall\@K curves) and the cross-locus comparison (structural vs. sequence importance, AUROC by configuration, LSSIM separation) respectively.
