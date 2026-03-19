@@ -1,0 +1,225 @@
+{
+  "HBB": {
+    "locus": "HBB",
+    "n_variants": 1103,
+    "n_pearls": 27,
+    "skipped": false,
+    "all_features": {
+      "AUROC": 0.9846,
+      "AUPRC": 0.9612
+    },
+    "structural_only": {
+      "AUROC": 0.9318,
+      "AUPRC": 0.8953
+    },
+    "sequence_only": {
+      "AUROC": 0.9614,
+      "AUPRC": 0.6781
+    },
+    "no_structural": {
+      "AUROC": 0.9925,
+      "AUPRC": 0.7564
+    },
+    "no_sequence": {
+      "AUROC": 0.9307,
+      "AUPRC": 0.9044
+    },
+    "structural_total_importance": 0.6443,
+    "sequence_total_importance": 0.3553,
+    "feature_importance": [
+      {
+        "feature": "vep_score",
+        "importance": 0.3553
+      },
+      {
+        "feature": "delta_lssim",
+        "importance": 0.2963
+      },
+      {
+        "feature": "lssim",
+        "importance": 0.2325
+      },
+      {
+        "feature": "delta_insulation",
+        "importance": 0.1124
+      },
+      {
+        "feature": "struct_disruption_ratio",
+        "importance": 0.0026
+      },
+      {
+        "feature": "ssim",
+        "importance": 0.0005
+      },
+      {
+        "feature": "dist_to_nearest_enhancer",
+        "importance": 0.0002
+      },
+      {
+        "feature": "delta_ssim",
+        "importance": 0.0001
+      },
+      {
+        "feature": "log_dist_ctcf",
+        "importance": 0.0001
+      },
+      {
+        "feature": "dist_to_nearest_ctcf",
+        "importance": 0.0001
+      }
+    ],
+    "pearl_lssim_mean": 0.907,
+    "non_pearl_lssim_mean": 0.9589,
+    "lssim_separation": 0.0519,
+    "pearls_caught_by_vep": 0
+  },
+  "BRCA1": {
+    "locus": "BRCA1",
+    "n_variants": 10682,
+    "n_pearls": 24,
+    "skipped": false,
+    "all_features": {
+      "AUROC": 0.9999,
+      "AUPRC": 0.9542
+    },
+    "structural_only": {
+      "AUROC": 0.8399,
+      "AUPRC": 0.8056
+    },
+    "sequence_only": {
+      "AUROC": 0.9846,
+      "AUPRC": 0.1334
+    },
+    "no_structural": {
+      "AUROC": 0.9781,
+      "AUPRC": 0.9035
+    },
+    "no_sequence": {
+      "AUROC": 0.9199,
+      "AUPRC": 0.8516
+    },
+    "structural_total_importance": 0.0063,
+    "sequence_total_importance": 0.0005,
+    "feature_importance": [
+      {
+        "feature": "log_dist_enhancer",
+        "importance": 0.5498
+      },
+      {
+        "feature": "dist_to_nearest_enhancer",
+        "importance": 0.4424
+      },
+      {
+        "feature": "ssim",
+        "importance": 0.0017
+      },
+      {
+        "feature": "delta_lssim",
+        "importance": 0.0015
+      },
+      {
+        "feature": "lssim",
+        "importance": 0.0012
+      },
+      {
+        "feature": "delta_insulation",
+        "importance": 0.0011
+      },
+      {
+        "feature": "delta_ssim",
+        "importance": 0.0007
+      },
+      {
+        "feature": "log_dist_ctcf",
+        "importance": 0.0005
+      },
+      {
+        "feature": "vep_score",
+        "importance": 0.0005
+      },
+      {
+        "feature": "dist_to_nearest_ctcf",
+        "importance": 0.0005
+      }
+    ],
+    "pearl_lssim_mean": 0.9432,
+    "non_pearl_lssim_mean": 0.9949,
+    "lssim_separation": 0.0517,
+    "pearls_caught_by_vep": 0
+  },
+  "TP53": {
+    "locus": "TP53",
+    "n_variants": 2794,
+    "n_pearls": 2,
+    "skipped": false,
+    "all_features": {
+      "AUROC": 0.9995,
+      "AUPRC": 0.6667
+    },
+    "structural_only": {
+      "AUROC": 0.9995,
+      "AUPRC": 0.6667
+    },
+    "sequence_only": {
+      "AUROC": 0.9142,
+      "AUPRC": 0.0042
+    },
+    "no_structural": {
+      "AUROC": 0.6794,
+      "AUPRC": 0.0017
+    },
+    "no_sequence": {
+      "AUROC": 0.9995,
+      "AUPRC": 0.6667
+    },
+    "structural_total_importance": 0.9992,
+    "sequence_total_importance": 0.0,
+    "feature_importance": [
+      {
+        "feature": "delta_insulation",
+        "importance": 0.7666
+      },
+      {
+        "feature": "delta_lssim",
+        "importance": 0.1867
+      },
+      {
+        "feature": "lssim",
+        "importance": 0.0241
+      },
+      {
+        "feature": "ssim",
+        "importance": 0.0216
+      },
+      {
+        "feature": "log_dist_ctcf",
+        "importance": 0.0004
+      },
+      {
+        "feature": "delta_ssim",
+        "importance": 0.0002
+      },
+      {
+        "feature": "dist_to_nearest_ctcf",
+        "importance": 0.0001
+      },
+      {
+        "feature": "dist_to_nearest_enhancer",
+        "importance": 0.0001
+      },
+      {
+        "feature": "log_dist_enhancer",
+        "importance": 0.0001
+      },
+      {
+        "feature": "vep_score",
+        "importance": 0.0
+      }
+    ],
+    "pearl_lssim_mean": 0.9444,
+    "non_pearl_lssim_mean": 0.9933,
+    "lssim_separation": 0.0489,
+    "pearls_caught_by_vep": 0
+  },
+  "tissue_specificity_verdict": "CONFIRMED: structural features dominate at tissue-matched HBB (0.64) but not at mismatched BRCA1 (0.01)"
+}

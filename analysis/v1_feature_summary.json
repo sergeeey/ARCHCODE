@@ -1,0 +1,173 @@
+{
+  "total_variants": 1103,
+  "pathogenic": 353,
+  "benign": 750,
+  "pearls": 27,
+  "features_added": [
+    "dist_to_lcr",
+    "dist_to_nearest_enhancer",
+    "dist_to_nearest_ctcf",
+    "dist_to_tss",
+    "in_hbb_gene",
+    "log_dist_lcr",
+    "log_dist_enhancer",
+    "log_dist_ctcf",
+    "log_dist_tss",
+    "delta_ssim",
+    "delta_lssim",
+    "struct_disruption_ratio",
+    "cat_missense",
+    "cat_nonsense",
+    "cat_splice",
+    "cat_frameshift",
+    "cat_synonymous",
+    "cat_3_prime_UTR",
+    "cat_5_prime_UTR",
+    "cat_promoter",
+    "cat_other",
+    "cat_non_coding"
+  ],
+  "category_distribution": {
+    "other": 19,
+    "3_prime_UTR": 14,
+    "missense": 125,
+    "nonsense": 40,
+    "synonymous": 86,
+    "frameshift": 99,
+    "splice_donor": 22,
+    "splice_region": 9,
+    "intronic": 667,
+    "splice_acceptor": 3,
+    "5_prime_UTR": 4,
+    "promoter": 15
+  },
+  "feature_statistics": {
+    "ssim": {
+      "min": 0.9611,
+      "max": 0.9998,
+      "mean": 0.993156,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "lssim": {
+      "min": 0.7537,
+      "max": 0.9992,
+      "mean": 0.957629,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "delta_ssim": {
+      "min": 0.0002,
+      "max": 0.0389,
+      "mean": 0.006844,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "delta_lssim": {
+      "min": 0.0008,
+      "max": 0.2463,
+      "mean": 0.042371,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "delta_insulation": {
+      "min": 0.0054,
+      "max": 0.0768,
+      "mean": 0.02558,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "loop_integrity": {
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "struct_disruption_ratio": {
+      "min": 3.9998,
+      "max": 6.7336,
+      "mean": 5.620935,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "vep_score": {
+      "min": 0.05,
+      "max": 0.95,
+      "mean": 0.340775,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "sift_score": {
+      "min": 0.0,
+      "max": 1.0,
+      "mean": 0.048146,
+      "n_valid": 151,
+      "n_missing": 952
+    },
+    "cadd_phred": {
+      "min": 0.0,
+      "max": 45.0,
+      "mean": 7.418172,
+      "n_valid": 908,
+      "n_missing": 195
+    },
+    "dist_to_lcr": {
+      "min": 48238,
+      "max": 50346,
+      "mean": 49420.555757,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "dist_to_nearest_enhancer": {
+      "min": 0,
+      "max": 1294,
+      "mean": 380.555757,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "dist_to_nearest_ctcf": {
+      "min": 20475,
+      "max": 22583,
+      "mean": 21400.444243,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "dist_to_tss": {
+      "min": 0,
+      "max": 1294,
+      "mean": 380.555757,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "log_dist_lcr": {
+      "min": 4.6834,
+      "max": 4.702,
+      "mean": 4.693901,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "log_dist_enhancer": {
+      "min": 0.0,
+      "max": 3.1123,
+      "mean": 2.431524,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "log_dist_ctcf": {
+      "min": 4.3112,
+      "max": 4.3538,
+      "mean": 4.330354,
+      "n_valid": 1103,
+      "n_missing": 0
+    },
+    "log_dist_tss": {
+      "min": 0.0,
+      "max": 3.1123,
+      "mean": 2.431524,
+      "n_valid": 1103,
+      "n_missing": 0
+    }
+  },
+  "total_features": 31
+}
