@@ -123,6 +123,7 @@ const ALIASES: Record<string, string> = {
   bcl11a_erythroid: "bcl11a_erythroid_95kb.json",
   bcl11a_mutagenesis: "bcl11a_erythroid_95kb.json",
   scn5a_cardiac_mut: "scn5a_cardiac_250kb.json",
+  hba1_focused: "hba1_90kb_focused.json",
   bcl11a_gwas: "bcl11a_erythroid_95kb.json",
   bcl11a_uniform: "bcl11a_uniform_control.json",
 };
