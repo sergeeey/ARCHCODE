@@ -1,0 +1,61 @@
+{
+  "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
+  "date": "2026-03-24T04:57:06.219Z",
+  "locus_config_id": "foxp3_treg_60kb_hires",
+  "locus_config_path": "D:\\ДНК\\config\\locus\\foxp3_treg_60kb_hires.json",
+  "provenance": {
+    "ctcf_sources": [
+      "GEO_GSM9161596_Tconv_CTCF"
+    ],
+    "enhancer_sources": [
+      "GEO_GSM9177365_Treg_H3K27ac"
+    ],
+    "thresholds_calibrated": false
+  },
+  "fix_description": "All 486 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
+  "data_sources": {
+    "variants": "NCBI ClinVar (data/foxp3_mutagenesis_variants.csv)",
+    "structural_predictor": "ARCHCODE loop extrusion (Kramer kinetics)"
+  },
+  "parameters": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "k_base": 0.002,
+    "resolution_bp": 200,
+    "simulation_window": "chrX:49235000-49295000",
+    "n_bins": 300
+  },
+  "statistics": {
+    "total_variants": 486,
+    "pathogenic_variants": 405,
+    "benign_variants": 81,
+    "archcode_structural_pathogenic": 0,
+    "pearls": 0,
+    "mean_ssim_all": 0.9994,
+    "mean_ssim_pathogenic": 0.9993,
+    "mean_ssim_benign": 0.9998,
+    "mean_lssim_all": 0.9929,
+    "mean_lssim_pathogenic": 0.9924,
+    "mean_lssim_benign": 0.9952,
+    "local_ssim_window": 50
+  },
+  "category_breakdown": {
+    "other": {
+      "total": 486,
+      "pathogenic_count": 405,
+      "benign_count": 81,
+      "mean_ssim_all": 0.9994,
+      "mean_ssim_pathogenic": 0.9993,
+      "mean_ssim_benign": 0.9998,
+      "mean_lssim_all": 0.9929,
+      "mean_lssim_pathogenic": 0.9924,
+      "mean_lssim_benign": 0.9952
+    }
+  },
+  "pipeline_integrity": {
+    "single_engine": true,
+    "label_blind_simulation": true,
+    "effect_strength_source": "CATEGORICAL (category-only, label-blind)",
+    "effect_mode": "categorical"
+  }
+}

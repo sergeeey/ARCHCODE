@@ -38,6 +38,7 @@ ALIASES: dict[str, str] = {
     "foxp3_treg": "foxp3_treg_300kb.json",
     "foxp3_treg_60kb": "foxp3_treg_60kb.json",
     "foxp3_treg_60kb_hires": "foxp3_treg_60kb_hires.json",
+    "foxp3_mutagenesis": "foxp3_treg_60kb_hires.json",
 }
 
 
