@@ -643,7 +643,9 @@ async function main() {
     LOCUS_ARG === "tert_skn_sh" ||
     LOCUS_ARG === "tp53_imr90" ||
     LOCUS_ARG === "foxp3" ||
-    LOCUS_ARG === "foxp3_treg"; // extend as needed
+    LOCUS_ARG === "foxp3_treg" ||
+    LOCUS_ARG === "foxp3_treg_60kb" ||
+    LOCUS_ARG === "foxp3_treg_60kb_hires"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
@@ -656,6 +658,8 @@ async function main() {
       : LOCUS_ARG === "tert_skn_sh" ? "tert"
       : LOCUS_ARG === "tp53_imr90" ? "tp53"
       : LOCUS_ARG === "foxp3_treg" ? "foxp3"
+      : LOCUS_ARG === "foxp3_treg_60kb" ? "foxp3"
+      : LOCUS_ARG === "foxp3_treg_60kb_hires" ? "foxp3"
       : LOCUS_ARG;
     const csvFile = `data/${csvLocus}_variants.csv`;
     console.log(`Loading variants from ${csvFile}...`);
