@@ -41,7 +41,7 @@ uid,accession,title,chrom,pos_start,pos_end,pos_relative,clinical_significance,g
 3252183,VCV003252183,NM_022893.4(BCL11A):c.539C>T (p.Thr180Ile),chr2,60462373,60462373,109880,Uncertain significance,BCL11A,"criteria provided, single submitter"
 3069151,VCV003069151,NM_022893.4(BCL11A):c.1230C>A (p.Cys410Ter),chr2,60461682,60461682,109189,Likely pathogenic,BCL11A,"criteria provided, single submitter"
 3033311,VCV003033311,NM_022893.4(BCL11A):c.488-1G>C,chr2,60462425,60462425,109932,Likely pathogenic,BCL11A,no assertion criteria provided
-3024309,VCV003024309,NM_022893.4(BCL11A):c.1417G>T (p.Glu473Ter),chr2,60461495,60461495,109002,Pathogenic,BCL11A,"criteria provided, single submitter"
+3024309,VCV003024309,NM_022893.4(BCL11A):c.1417G>T (p.Glu473Ter),chr2,60461495,60461495,109002,Pathogenic,BCL11A,"criteria provided, multiple submitters, no conflicts"
 2682233,VCV002682233,NM_022893.4(BCL11A):c.488-1G>A,chr2,60462425,60462425,109932,Pathogenic/Likely pathogenic,BCL11A,"criteria provided, multiple submitters, no conflicts"
 2662857,VCV002662857,NM_022893.4(BCL11A):c.2294C>T (p.Thr765Met),chr2,60460618,60460618,108125,Uncertain significance,BCL11A,"criteria provided, single submitter"
 2582060,VCV002582060,NM_022893.4(BCL11A):c.2441C>T (p.Thr814Ile),chr2,60460471,60460471,107978,Uncertain significance,BCL11A,"criteria provided, single submitter"

@@ -1,0 +1,113 @@
+{
+  "id": "bcl11a_erythroid_95kb",
+  "name": "BCL11A 95kb erythroid (K562 CTCF + literature enhancers, Casgevy validation)",
+  "description": "Focused 95kb window spanning BCL11A intron 2 erythroid enhancer complex (DHS +55/+58/+62). Resolution 600bp, 159 bins — matches HBB 95kb sub-TAD (27 pearls). CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC). Enhancers from literature: Bauer et al. Science 2013, Canver et al. Nature 2015. DHS +58 is the Casgevy (exagamglogene autotemcel) CRISPR target — GATA1 binding site disruption to reactivate fetal hemoglobin.",
+  "genome_assembly": "GRCh38",
+  "organism": "Homo sapiens",
+  "cell_type": "K562 (erythroid)",
+  "target_gene": "BCL11A",
+  "window": {
+    "chromosome": "chr2",
+    "start": 60455000,
+    "end": 60555000,
+    "resolution_bp": 600,
+    "n_bins": 167
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 60554000,
+        "occupancy": 0.85,
+        "name": "BCL11A_promoter",
+        "source": "NCBI_RefSeq_TSS",
+        "note": "BCL11A transcription start site (minus strand, ENST00000335712)"
+      },
+      {
+        "position": 60498362,
+        "occupancy": 0.7,
+        "name": "DHS_h55_erythroid",
+        "source": "LITERATURE_Bauer2013_Canver2015",
+        "note": "Erythroid DHS +55 (chr2:60498101-60498623, 522bp). Bauer et al. Science 2013, DOI:10.1126/science.1242088."
+      },
+      {
+        "position": 60495193,
+        "occupancy": 0.95,
+        "name": "DHS_h58_erythroid_CASGEVY_TARGET",
+        "source": "LITERATURE_Bauer2013_Canver2015_FDA",
+        "note": "Erythroid DHS +58 functional core (chr2:60495079-60495307, 228bp). Casgevy sgRNA target at chr2:60495263-60495283 (GATA1 motif). Canver et al. Nature 2015, Frangoul et al. NEJM 2021."
+      },
+      {
+        "position": 60491066,
+        "occupancy": 0.6,
+        "name": "DHS_h62_erythroid",
+        "source": "LITERATURE_Bauer2013_Canver2015",
+        "note": "Erythroid DHS +62 (chr2:60490852-60491280, 428bp). Weakest of three DHS. Bauer et al. Science 2013."
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 60458835,
+        "orientation": "forward",
+        "signal": 455,
+        "name": "CTCF_K562_ENCFF736NYC_1",
+        "source": "ENCODE_K562_CTCF",
+        "note": "ENCODE K562 CTCF optimal IDR peak"
+      },
+      {
+        "position": 60480978,
+        "orientation": "forward",
+        "signal": 238,
+        "name": "CTCF_K562_ENCFF736NYC_2",
+        "source": "ENCODE_K562_CTCF",
+        "note": "ENCODE K562 CTCF optimal IDR peak"
+      },
+      {
+        "position": 60531050,
+        "orientation": "forward",
+        "signal": 334,
+        "name": "CTCF_K562_ENCFF736NYC_3",
+        "source": "ENCODE_K562_CTCF",
+        "note": "ENCODE K562 CTCF optimal IDR peak"
+      },
+      {
+        "position": 60540832,
+        "orientation": "forward",
+        "signal": 190,
+        "name": "CTCF_K562_ENCFF736NYC_4",
+        "source": "ENCODE_K562_CTCF",
+        "note": "ENCODE K562 CTCF optimal IDR peak"
+      }
+    ],
+    "genes": [
+      {
+        "name": "BCL11A",
+        "start": 60450520,
+        "end": 60554467,
+        "strand": "-"
+      }
+    ]
+  },
+  "thresholds": null,
+  "_data_sources": {
+    "ctcf": {
+      "encode_accession": "ENCFF736NYC",
+      "cell_type": "K562",
+      "peak_type": "optimal IDR thresholded peaks"
+    },
+    "enhancers": {
+      "source": "Literature",
+      "references": [
+        "Bauer et al., Science 342:253-257, 2013. DOI:10.1126/science.1242088",
+        "Canver et al., Nature 527:192-197, 2015. DOI:10.1038/nature15521",
+        "FDA Casgevy approval, 2023. Application 761163"
+      ]
+    },
+    "_casgevy_target": {
+      "feature": "DHS_h58_erythroid_CASGEVY_TARGET",
+      "estimated_center_hg38": 60496467,
+      "mechanism": "GATA1 motif disruption → BCL11A downregulation → HbF reactivation",
+      "drug": "exagamglogene autotemcel (Casgevy), Vertex/CRISPR Therapeutics",
+      "fda_approval": "2023-12-08"
+    }
+  }
+}
