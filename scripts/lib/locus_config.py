@@ -34,6 +34,8 @@ ALIASES: dict[str, str] = {
     "bcl11a": "bcl11a_300kb.json",
     "pten": "pten_300kb.json",
     "brca1mb_1mb": "brca1mb_1mb.json",
+    "foxp3": "foxp3_300kb.json",
+    "foxp3_treg": "foxp3_treg_300kb.json",
 }
 
 
@@ -45,8 +47,7 @@ def resolve_locus_path(arg: str) -> Path:
     if not full_path.exists():
         available = ", ".join(ALIASES.keys())
         raise FileNotFoundError(
-            f"Locus config not found: {full_path}\n"
-            f"Available aliases: {available}"
+            f"Locus config not found: {full_path}\nAvailable aliases: {available}"
         )
     return full_path
 
