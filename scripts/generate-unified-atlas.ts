@@ -929,8 +929,10 @@ async function main() {
     : "HBB";
   const windowKb = `${Math.round((SIM_END - SIM_START) / 1000)}kb`;
   const modeSuffix = EFFECT_MODE === "categorical" ? "" : `_${EFFECT_MODE.toUpperCase().replace("-", "_")}`;
+  // WHY: Use LOCUS_ARG (config ID) in filename to prevent overwrites
+  // when multiple configs share the same first gene (e.g., bcl11a_erythroid vs bcl11a_del_ctcf3)
   const csvFilename = isGenericLocus
-    ? `${geneName}_Unified_Atlas_${windowKb}${modeSuffix}.csv`
+    ? `${geneName}_Unified_Atlas_${LOCUS_ARG}${modeSuffix}.csv`
     : LOCUS_ARG === "30kb"
       ? `HBB_Unified_Atlas${modeSuffix}.csv`
       : `HBB_Unified_Atlas_${LOCUS_ARG}${modeSuffix}.csv`;
@@ -1031,8 +1033,9 @@ async function main() {
   }
 
   // Write summary JSON
+  // WHY: Use LOCUS_ARG in summary filename to match CSV naming and prevent overwrites
   const summarySuffix = isGenericLocus
-    ? `_${geneName}_${windowKb}`
+    ? `_${LOCUS_ARG}`
     : LOCUS_ARG === "30kb"
       ? ""
       : `_${LOCUS_ARG}`;

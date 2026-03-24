@@ -1,0 +1,61 @@
+{
+  "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
+  "date": "2026-03-24T12:35:17.109Z",
+  "locus_config_id": "hba1_90kb_focused",
+  "locus_config_path": "D:\\ДНК\\config\\locus\\hba1_90kb_focused.json",
+  "provenance": {
+    "ctcf_sources": [
+      "ENCODE_K562_CTCF"
+    ],
+    "enhancer_sources": [
+      "ENCODE_K562_H3K27ac"
+    ],
+    "thresholds_calibrated": false
+  },
+  "fix_description": "All 372 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
+  "data_sources": {
+    "variants": "NCBI ClinVar (data/hba1_mutagenesis_variants.csv)",
+    "structural_predictor": "ARCHCODE loop extrusion (Kramer kinetics)"
+  },
+  "parameters": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "k_base": 0.002,
+    "resolution_bp": 600,
+    "simulation_window": "chr16:110000-200000",
+    "n_bins": 150
+  },
+  "statistics": {
+    "total_variants": 372,
+    "pathogenic_variants": 212,
+    "benign_variants": 160,
+    "archcode_structural_pathogenic": 0,
+    "pearls": 0,
+    "mean_ssim_all": 0.9966,
+    "mean_ssim_pathogenic": 0.9946,
+    "mean_ssim_benign": 0.9992,
+    "mean_lssim_all": 0.9867,
+    "mean_lssim_pathogenic": 0.9794,
+    "mean_lssim_benign": 0.9965,
+    "local_ssim_window": 50
+  },
+  "category_breakdown": {
+    "other": {
+      "total": 372,
+      "pathogenic_count": 212,
+      "benign_count": 160,
+      "mean_ssim_all": 0.9966,
+      "mean_ssim_pathogenic": 0.9946,
+      "mean_ssim_benign": 0.9992,
+      "mean_lssim_all": 0.9867,
+      "mean_lssim_pathogenic": 0.9794,
+      "mean_lssim_benign": 0.9965
+    }
+  },
+  "pipeline_integrity": {
+    "single_engine": true,
+    "label_blind_simulation": true,
+    "effect_strength_source": "CATEGORICAL (category-only, label-blind)",
+    "effect_mode": "categorical"
+  }
+}
