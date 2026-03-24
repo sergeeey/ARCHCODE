@@ -35,7 +35,7 @@ reverse cases decomposing into overparameterization, enhancer loss, and enhancer
 sub-mechanisms. Eight canonical cases from the literature --- including TAD boundary
 disruption (Lupiáñez et al. 2015), insulated neighborhood disruption (Hnisz et al. 2016), and
 enhancer hijacking (Gröschel et al. 2014) --- independently validate the taxonomy across limb
-malformations, leukemia, and medulloblastoma.
+malformations, leukemia, and medulloblastoma. In silico saturation mutagenesis at the FOXP3 locus, using Treg-matched ChIP-seq data (Umhoefer et al. 2026), identifies two enhancer hotspots (chrX:49,276,056 and chrX:49,270,088; LSSIM = 0.936 and 0.946) where single-nucleotide substitutions are predicted to disrupt enhancer--promoter contacts, with the second hotspot disrupting an EGR2 binding site identified by independent experimental data as part of the FOXP3 transcriptional circuit --- extending ARCHCODE from retrospective reclassification to predictive structural vulnerability mapping for IPEX-like syndromes.
 
 *Conclusions.*
 Single-axis scoring is an inadequate abstraction for regulatory variant interpretation.
