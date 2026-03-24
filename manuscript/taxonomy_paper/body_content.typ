@@ -650,6 +650,56 @@ they are qualitatively wrong. Second, it establishes tissue matching as a necess
 for Class B detection. Any future ARCHCODE deployment at a new locus must first verify tissue
 match before interpreting structural signals, or risk generating Class E artifacts.
 
+== FOXP3: predictive structural vulnerability mapping in immunology
+
+The FOXP3 locus (chrX:49,250,436--49,264,800) encodes the master transcriptional regulator of
+regulatory T cells (Treg). Loss-of-function mutations cause IPEX syndrome (Immune dysregulation,
+Polyendocrinopathy, Enteropathy, X-linked), while a subset of patients present with IPEX-like
+symptoms without coding FOXP3 mutations --- a diagnostic blind spot that may harbor
+architecture-driven regulatory variants.
+
+We configured ARCHCODE at FOXP3 using tissue-matched ChIP-seq data from Umhoefer et al.
+(_Immunity_ 2026): H3K27ac peaks from human resting Treg cells (GSE286472) and CTCF peaks from
+human resting conventional T cells (GSE305063). Of 236 ClinVar variants at the FOXP3 locus, all
+reside within the gene body (exonic/intronic coding regions); zero variants map to the enhancer
+landscape downstream of FOXP3 (chrX:49,268,000--49,280,000). Accordingly, ARCHCODE returns zero
+pearls at any resolution (300 kb at 1,000 bp; 60 kb at 200 bp), confirming that coding variants
+do not disrupt enhancer--promoter contact topology.
+
+This null result motivated an in silico saturation mutagenesis across the 60 kb regulatory
+window: 486 synthetic single-nucleotide substitutions were placed at 50 bp intervals throughout
+all seven H3K27ac peaks, two CTCF sites, and background intergenic positions. All synthetic
+variants received identical effectStrength (category = "other", effectStrength = 0.5), isolating
+the positional contribution to structural sensitivity. Eight synthetic positions achieve LSSIM
+< 0.95 --- all within the two strongest Treg-specific H3K27ac peaks, and none at CTCF sites or
+background positions:
+
+- *Hotspot 1* (chrX:49,276,006--49,276,156): LSSIM = 0.936, within the strongest Treg H3K27ac
+  peak (signal = 2,294, top 10.5% of chrX). Smooth bell-curve gradient confirmed
+  across a 4 kb neighborhood. The position overlaps an ancient MIR element (mammalian
+  interspersed repeat, ~130 Myr), consistent with exaptation of MIR-derived sequences as
+  functional enhancers.
+- *Hotspot 2* (chrX:49,270,038--49,270,188): LSSIM = 0.946, within the second Treg H3K27ac
+  peak (signal = 1,965, top 11.9% of chrX). A C $arrow.r$ T substitution at this
+  position disrupts an EGR2 (Krox20) binding site and weakens a YY1 motif (JASPAR MA0095.2,
+  perfect match $arrow.r$ 1 mismatch). EGR2 is specifically identified by Umhoefer et al. as
+  part of the FOXP3 transcriptional circuit in Treg cells, providing an independent mechanistic
+  link between the predicted structural disruption and FOXP3 regulation.
+
+The FOXP3 analysis demonstrates three points relevant to the taxonomy. First, the absence of
+non-coding regulatory variants in ClinVar for a clinically important gene highlights a systematic
+gap in current diagnostic sequencing: enhancer regions of FOXP3 are routinely not sequenced in
+IPEX-like patients. Second, in silico mutagenesis extends ARCHCODE from retrospective
+reclassification (identifying pearls among existing ClinVar variants) to predictive vulnerability
+mapping (identifying genomic positions where mutations _would_ disrupt chromatin architecture).
+Third, the convergence of structural prediction (LSSIM < 0.95) with transcription factor motif
+disruption (EGR2) at Hotspot 2 provides orthogonal support for the biological relevance of
+ARCHCODE's structural sensitivity map --- the predicted hotspot coincides with a functionally
+important regulatory element identified by an independent experimental approach.
+
+All synthetic variants are clearly labeled (SYNTHETIC\_ prefix) and should not be interpreted as
+observed clinical variants.
+
 == External cases: independent validation from the literature
 
 Three canonical cases from the published literature independently validate the taxonomy's core
@@ -1138,7 +1188,15 @@ of this heterogeneity into actionable categories. Its validation will come not f
 benchmarks alone but from the experiments it directs: Capture Hi-C in HUDEP-2 for HBB Q2b,
 matched-tissue ARCHCODE for SCN5A and GJB2, dual-readout assays for mixed-class candidates.
 The framework succeeds if it accelerates the experimental characterization of regulatory variants
-by routing each variant to the assay most likely to detect its effect.
+by routing each variant to the assay most likely to detect its effect. The FOXP3 in silico
+mutagenesis demonstrates a further extension: when clinical databases lack non-coding variants
+for a gene of interest, ARCHCODE can proactively map structural vulnerability across the
+regulatory landscape, generating testable predictions for targeted sequencing. At FOXP3, two
+Treg-specific enhancer hotspots were identified where single-nucleotide substitutions are
+predicted to disrupt enhancer--promoter contacts --- positions that current diagnostic panels do
+not cover. If confirmed experimentally, such predictive structural maps could guide panel design
+for unsolved cases of IPEX-like syndromes and analogous conditions where regulatory variants are
+suspected but unsequenced.
 
 // =============================================================================
 // FIGURE LEGENDS
