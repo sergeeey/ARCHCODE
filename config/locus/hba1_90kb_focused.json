@@ -1,0 +1,168 @@
+{
+  "id": "hba1_90kb_focused",
+  "name": "HBA1 90kb focused (K562 H3K27ac + CTCF, alpha-globin HS-40 region)",
+  "description": "Focused 90kb window spanning alpha-globin HS-40 enhancer region through HBA2/HBA1 genes (chr16:110000-200000, GRCh38). Resolution 600bp, 150 bins \u2014 matches HBB 95kb sub-TAD. K562 CTCF (ENCFF736NYC) and H3K27ac (ENCFF864OSZ) from ENCODE.",
+  "genome_assembly": "GRCh38",
+  "organism": "Homo sapiens",
+  "cell_type": "K562 (erythroid)",
+  "target_gene": "HBA1",
+  "window": {
+    "chromosome": "chr16",
+    "start": 110000,
+    "end": 200000,
+    "resolution_bp": 600,
+    "n_bins": 150
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 113935,
+        "occupancy": 0.95,
+        "name": "H3K27ac_Peak_2336",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at 112003-114932, signal=40.1"
+      },
+      {
+        "position": 142859,
+        "occupancy": 0.77,
+        "name": "H3K27ac_Peak_4460",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at 142241-145390, signal=31.5"
+      },
+      {
+        "position": 138895,
+        "occupancy": 0.68,
+        "name": "H3K27ac_Peak_7664",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at 138657-139240, signal=27.4"
+      },
+      {
+        "position": 181137,
+        "occupancy": 0.58,
+        "name": "H3K27ac_Peak_10592",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at 180617-181475, signal=22.5"
+      },
+      {
+        "position": 137390,
+        "occupancy": 0.54,
+        "name": "H3K27ac_Peak_9887",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at 137168-138316, signal=20.9"
+      },
+      {
+        "position": 120468,
+        "occupancy": 0.49,
+        "name": "H3K27ac_Peak_10204",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at 118710-121451, signal=18.2"
+      },
+      {
+        "position": 136313,
+        "occupancy": 0.48,
+        "name": "H3K27ac_Peak_12596",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak at 135847-136871, signal=17.9"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 181586,
+        "orientation": "+",
+        "signal": 236.5,
+        "name": "CTCF_3_.",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Peak at 181468-181714, signal=236.5, narrowPeak"
+      },
+      {
+        "position": 117934,
+        "orientation": "-",
+        "signal": 109.9,
+        "name": "CTCF_4_.",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Peak at 117926-118023, signal=109.9, narrowPeak"
+      },
+      {
+        "position": 180385,
+        "orientation": "-",
+        "signal": 40.1,
+        "name": "CTCF_8_.",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Peak at 180250-180520, signal=40.1, narrowPeak"
+      },
+      {
+        "position": 188861,
+        "orientation": "+",
+        "signal": 35.5,
+        "name": "CTCF_9_.",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Peak at 188726-188996, signal=35.5, narrowPeak"
+      },
+      {
+        "position": 180730,
+        "orientation": "-",
+        "signal": 23.8,
+        "name": "CTCF_10_.",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Peak at 180595-180865, signal=23.8, narrowPeak"
+      }
+    ],
+    "genes": [
+      {
+        "name": "NPRL3",
+        "start": 83205,
+        "end": 138716,
+        "strand": "-"
+      },
+      {
+        "name": "HBZ",
+        "start": 142728,
+        "end": 154503,
+        "strand": "+"
+      },
+      {
+        "name": "HBM",
+        "start": 153892,
+        "end": 166764,
+        "strand": "+"
+      },
+      {
+        "name": "HBA2",
+        "start": 172876,
+        "end": 173710,
+        "strand": "+"
+      },
+      {
+        "name": "HBA1",
+        "start": 176680,
+        "end": 177522,
+        "strand": "+"
+      },
+      {
+        "name": "HBQ1",
+        "start": 180459,
+        "end": 181179,
+        "strand": "+"
+      },
+      {
+        "name": "LUC7L",
+        "start": 188961,
+        "end": 229463,
+        "strand": "-"
+      }
+    ]
+  },
+  "thresholds": null
+}
