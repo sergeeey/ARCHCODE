@@ -1,0 +1,63 @@
+{
+  "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
+  "date": "2026-03-24T07:19:27.158Z",
+  "locus_config_id": "bcl11a_uniform_control",
+  "locus_config_path": "D:\\ДНК\\config\\locus\\bcl11a_uniform_control.json",
+  "provenance": {
+    "ctcf_sources": [
+      "ENCODE_K562_CTCF"
+    ],
+    "enhancer_sources": [
+      "NCBI_RefSeq_TSS",
+      "LITERATURE_Bauer2013_Canver2015",
+      "LITERATURE_Bauer2013_Canver2015_FDA"
+    ],
+    "thresholds_calibrated": false
+  },
+  "fix_description": "All 314 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
+  "data_sources": {
+    "variants": "NCBI ClinVar (data/bcl11a_uniform_variants.csv)",
+    "structural_predictor": "ARCHCODE loop extrusion (Kramer kinetics)"
+  },
+  "parameters": {
+    "alpha": 0.92,
+    "gamma": 0.8,
+    "k_base": 0.002,
+    "resolution_bp": 600,
+    "simulation_window": "chr2:60455000-60555000",
+    "n_bins": 167
+  },
+  "statistics": {
+    "total_variants": 314,
+    "pathogenic_variants": 126,
+    "benign_variants": 188,
+    "archcode_structural_pathogenic": 0,
+    "pearls": 0,
+    "mean_ssim_all": 0.9978,
+    "mean_ssim_pathogenic": 0.9959,
+    "mean_ssim_benign": 0.9991,
+    "mean_lssim_all": 0.9897,
+    "mean_lssim_pathogenic": 0.9816,
+    "mean_lssim_benign": 0.9951,
+    "local_ssim_window": 50
+  },
+  "category_breakdown": {
+    "other": {
+      "total": 314,
+      "pathogenic_count": 126,
+      "benign_count": 188,
+      "mean_ssim_all": 0.9978,
+      "mean_ssim_pathogenic": 0.9959,
+      "mean_ssim_benign": 0.9991,
+      "mean_lssim_all": 0.9897,
+      "mean_lssim_pathogenic": 0.9816,
+      "mean_lssim_benign": 0.9951
+    }
+  },
+  "pipeline_integrity": {
+    "single_engine": true,
+    "label_blind_simulation": true,
+    "effect_strength_source": "CATEGORICAL (category-only, label-blind)",
+    "effect_mode": "categorical"
+  }
+}
