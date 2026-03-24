@@ -115,6 +115,8 @@ const ALIASES: Record<string, string> = {
   gata1: "gata1_300kb.json",
   bcl11a: "bcl11a_300kb.json",
   pten: "pten_300kb.json",
+  foxp3: "foxp3_300kb.json",
+  foxp3_treg: "foxp3_treg_300kb.json",
 };
 
 /**
