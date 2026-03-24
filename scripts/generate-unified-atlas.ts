@@ -652,7 +652,8 @@ async function main() {
     LOCUS_ARG === "bcl11a_uniform" ||
     LOCUS_ARG === "bcl11a_gwas" ||
     LOCUS_ARG === "scn5a_cardiac_mut" ||
-    LOCUS_ARG === "hba1_focused"; // extend as needed
+    LOCUS_ARG === "hba1_focused" ||
+    LOCUS_ARG === "hba1_mutagenesis"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
@@ -674,6 +675,7 @@ async function main() {
       : LOCUS_ARG === "bcl11a_gwas" ? "bcl11a_gwas"
       : LOCUS_ARG === "scn5a_cardiac_mut" ? "scn5a_cardiac_mutagenesis"
       : LOCUS_ARG === "hba1_focused" ? "hba1"
+      : LOCUS_ARG === "hba1_mutagenesis" ? "hba1_mutagenesis"
       : LOCUS_ARG;
     const csvFile = `data/${csvLocus}_variants.csv`;
     console.log(`Loading variants from ${csvFile}...`);
