@@ -122,6 +122,7 @@ const ALIASES: Record<string, string> = {
   foxp3_mutagenesis: "foxp3_treg_60kb_hires.json",
   bcl11a_erythroid: "bcl11a_erythroid_95kb.json",
   bcl11a_mutagenesis: "bcl11a_erythroid_95kb.json",
+  bcl11a_gwas: "bcl11a_erythroid_95kb.json",
   bcl11a_uniform: "bcl11a_uniform_control.json",
 };
 

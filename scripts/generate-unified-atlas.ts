@@ -649,7 +649,8 @@ async function main() {
     LOCUS_ARG === "foxp3_mutagenesis" ||
     LOCUS_ARG === "bcl11a_erythroid" ||
     LOCUS_ARG === "bcl11a_mutagenesis" ||
-    LOCUS_ARG === "bcl11a_uniform"; // extend as needed
+    LOCUS_ARG === "bcl11a_uniform" ||
+    LOCUS_ARG === "bcl11a_gwas"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
@@ -668,6 +669,7 @@ async function main() {
       : LOCUS_ARG === "bcl11a_erythroid" ? "bcl11a"
       : LOCUS_ARG === "bcl11a_mutagenesis" ? "bcl11a_mutagenesis"
       : LOCUS_ARG === "bcl11a_uniform" ? "bcl11a_mutagenesis"
+      : LOCUS_ARG === "bcl11a_gwas" ? "bcl11a_gwas"
       : LOCUS_ARG;
     const csvFile = `data/${csvLocus}_variants.csv`;
     console.log(`Loading variants from ${csvFile}...`);
