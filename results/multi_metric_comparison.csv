@@ -1,0 +1,19 @@
+Locus,Cell_Type,Window_kb,Total_Variants,Pathogenic,Benign,Pearls,Mean_LSSIM,Structural_Pathogenic,Calibrated,Notes
+HBB,K562,95,1103,353,750,27,0.9576,254,true,Primary validation locus
+BRCA1,K562/MCF7,400,10682,7062,3620,0,0.9949,52,true,Largest dataset
+MLH1,K562,300,4060,2425,1635,0,0.9927,72,false,Lynch syndrome
+LDLR,HepG2,300,3284,2274,1010,0,0.9984,32,true,Liver-specific CTCF
+CFTR,A549,317,3349,1756,1593,0,0.9972,11,true,Lung-specific
+SCN5A,Cardiac,250,2488,928,1560,0,0.9976,200,true,+34% tissue-match amplification
+SCN5A,Generic,400,2488,928,1560,0,0.9982,0,false,No structural signal without tissue data
+TP53,IMR90,300,2794,1645,1149,0,0.9984,0,false,Compact locus — limited structural variation
+TERT,SK-N-SH,300,2089,431,1658,0,0.9978,0,false,Compact locus
+TRANK1,HCT116,300,4060,2425,1635,0,0.9921,105,true,Psychiatric locus
+PTEN,Generic,300,1496,703,793,0,0.9937,9,false,Tumor suppressor
+GJB2,Generic,300,469,314,155,0,0.9936,0,false,Hearing loss — compact gene
+GATA1,Generic,300,183,52,131,0,0.9977,0,false,Hematopoietic TF
+BCL11A,Erythroid,100,314,126,188,0,0.9890,0,true,Casgevy target — DHS+58 validated
+FOXP3,Treg,300,236,71,165,0,0.9985,0,true,Nobel 2025 — 8 synthetic pearls via mutagenesis
+HBA1,Generic,300,111,67,44,0,0.9962,0,false,Alpha-thalassemia
+NPRL3,Generic,90,372,212,160,0,0.9867,0,false,HBA1 focused window
+EXOG,Cardiac,250,364,120,244,0,0.9916,47,true,SCN5A mutagenesis region
