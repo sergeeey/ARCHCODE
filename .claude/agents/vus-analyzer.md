@@ -120,24 +120,6 @@ Based on variant category:
 - **intronic**: Usually minimal (SSIM > 0.8)
 - **UTR**: Post-transcriptional, not structural (SSIM > 0.85)
 
-### Step 5: AlphaGenome Comparison (if available)
-
-Check if AlphaGenome prediction exists:
-
-```bash
-grep "VCV000000302" results/HBB_Clinical_Atlas.csv
-```
-
-If found, compare:
-
-- **ARCHCODE (structural)**: SSIM-based verdict
-- **AlphaGenome (expression)**: Score-based verdict
-
-**Discordance interpretation:**
-
-- ARCHCODE pathogenic, AlphaGenome benign → **Structural-only pathogenicity** (enhancer-proximity disruption)
-- ARCHCODE benign, AlphaGenome pathogenic → **Post-transcriptional mechanism** (expression-only)
-
 ## Output Format
 
 Return structured JSON:
@@ -153,12 +135,7 @@ Return structured JSON:
     "verdict": "LIKELY_PATHOGENIC",
     "mechanism": "Splice region disrupts CTCF binding, reducing loop stability"
   },
-  "alphagenome": {
-    "score": 0.454,
-    "verdict": "VUS"
-  },
-  "discordance": true,
-  "interpretation": "ARCHCODE detects structural pathogenicity that AlphaGenome missed. Variant disrupts 3D chromatin loops without affecting transcript levels directly. Classic 'Loop That Stayed' case.",
+  "interpretation": "ARCHCODE detects structural pathogenicity invisible to sequence-based tools. Variant disrupts 3D chromatin loops.",
   "confidence": "HIGH"
 }
 ```
