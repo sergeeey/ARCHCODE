@@ -4,7 +4,7 @@
 
 ### Architecture-Constrained Decoder
 
-**Physics-based 3D chromatin loop extrusion simulator for variant pathogenicity prediction**
+**Physics-based 3D chromatin loop extrusion simulator for structural mechanism discovery**
 
 [Paper](#preprint) &nbsp;&middot;&nbsp; [Quick Start](#quick-start) &nbsp;&middot;&nbsp; [Results](#key-results) &nbsp;&middot;&nbsp; [Validation](#validation) &nbsp;&middot;&nbsp; [Docker](#docker) &nbsp;&middot;&nbsp; [Citation](#citation)
 
@@ -28,11 +28,13 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 <table>
 <tr>
 <td align="center"><b>30,318</b><br><sub>ClinVar variants, 9 primary loci</sub></td>
-<td align="center"><b>AUC 0.977</b><br><sub>HBB ROC performance</sub></td>
-<td align="center"><b>54 Class B</b><br><sub>architecture-driven variants</sub></td>
-<td align="center"><b>10 methods</b><br><sub>orthogonal blind-spot confirmation</sub></td>
+<td align="center"><b>27 pearls</b><br><sub>HBB-specific, invisible to VEP/SpliceAI/MPRA</sub></td>
+<td align="center"><b>Hi-C r = 0.53&ndash;0.59</b><br><sub>K562 contact map validation</sub></td>
+<td align="center"><b>0 training data</b><br><sub>analytical physics, not ML</sub></td>
 </tr>
 </table>
+
+> **Scope:** All pearl discoveries and external validations (AlphaGenome, MPRA, Hi-C) are from **HBB** (hemoglobin beta). Cross-locus results (8 additional loci) are exploratory and await tissue-matched validation. See [Limitations](#limitations).
 
 ---
 
@@ -48,19 +50,19 @@ Unlike sequence-based predictors (VEP, SpliceAI, CADD) that **classify** variant
 - **Cohesin loading site alteration**
 
 **Key discoveries** from applying ARCHCODE to **30,318 ClinVar variants across 9 primary loci**:
-- **54 architecture-driven (Class B) variants** — invisible to VEP, SpliceAI, CADD, MPRA, AlphaMissense
+- **27 "pearl" variants at HBB** — pathogenic by 3D structure but undetected by VEP (< 0.30), SpliceAI (0.00), and MPRA (p = 0.91 vs benign)
 - **5-class taxonomy** of regulatory pathogenicity (activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch)
-- **Structural blind spot** validated by 10 orthogonal methods (VEP, SpliceAI, CADD, MPRA, CRISPRi, gnomAD, MaveDB SGE/DMS, PCHi-C, AlphaMissense)
+- **29 additional Class B candidates** at 8 non-HBB loci — exploratory, pending tissue-matched validation
 
 **Not competing with ML predictors** — ARCHCODE creates a new category: **structural mechanism discovery**.
 
-Ten independent lines of evidence confirm the blind spot: VEP (&lt;0.30 for all Q2b), SpliceAI (0.00 for all SNVs), CADD v1.7 (median 15.7 — ambiguous), MPRA Kircher 2019 (no signal), CRISPRi Gasperini 2019 (0 Q2b overlaps), MaveDB SGE/DMS (orthogonal, r ≈ 0), gnomAD v4 (85% absent), PCHi-C erythroblast (1.76× enrichment at Q2b), AlphaMissense (covers only 23% of atlas, 3/41 pearls scored) — yet ARCHCODE LSSIM &lt; 0.95 for all 54 Class B variants.
+Five tools independently fail to detect pearl variants: VEP (&lt;0.30 for all), SpliceAI (0.00 for all SNVs), CADD v1.7 (median 15.7 — ambiguous zone), MPRA Kircher 2019 (p = 0.91 vs benign), and AlphaMissense (covers only 23% of atlas). This absence of signal is consistent with a structural mechanism invisible to sequence-level annotation, though absence of detection is not proof of a blind spot — experimental validation is required.
 
 ## Pipeline Architecture
 
 ```
 +----------------------------------------------------------------------+
-|                       ARCHCODE Pipeline v2.16                        |
+|                       ARCHCODE Pipeline v2.17                        |
 +----------------------------------------------------------------------+
 |                                                                      |
 |  ClinVar API --> 30,318 variants across 9 loci                       |
@@ -122,13 +124,13 @@ See [docker-compose.yml](./docker-compose.yml) for persistent data volume config
 
 Analysis of **30,318 real ClinVar variants across 9 genomic loci** using the unified ARCHCODE + Ensembl VEP v113 pipeline:
 
-- **ROC AUC = 0.977** on HBB — Youden optimum at LSSIM &lt; 0.994 (Sensitivity 0.966, Specificity 0.988)
-- **27 "pearl" variants** — pathogenic by 3D chromatin structure but invisible to VEP, SpliceAI, and MPRA
+- **ROC AUC = 0.977** on HBB — Youden optimum at LSSIM &lt; 0.994 (Sensitivity 0.966, Specificity 0.988). **Caveat:** ablation shows this is primarily category-driven (position-only AUC = 0.551); the metric characterizes the variant catalog, not structural prediction power
+- **27 "pearl" variants (HBB only)** — pathogenic by 3D chromatin structure but invisible to VEP, SpliceAI, and MPRA
 - **Tissue-specificity gradient** — matched loci (HBB &Delta; = 0.111) &rarr; expressed (TERT &Delta; = 0.019) &rarr; mismatch (SCN5A/GJB2 &Delta; &le; 0.006); defines ARCHCODE's domain of applicability
 - **Enhancer proximity drives discrimination** — variants within &le;1 kb of H3K27ac peaks show 7&times; greater LSSIM separation (&Delta; = 0.039 vs genome-wide average &Delta; = 0.006); pearl variants cluster at median 831 bp from enhancers (Mann-Whitney p = 1.08 &times; 10<sup>&minus;8</sup> vs non-pearl pathogenic)
 - **Per-locus threshold calibration** — optimal threshold varies from LSSIM &lt; 0.977 (HBB, sens 92.9%, spec 99.1%) to LSSIM &lt; 0.968 (TERT, sens 22.7%); SCN5A and GJB2 serve as deliberate negative controls (cell-type mismatch &rarr; no threshold works)
 - **Hi-C validation** — Pearson r = 0.28&ndash;0.59 across 8 locus&times;cell-type combinations (all p &lt; 10<sup>&minus;82</sup>); best at MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562)
-- **CADD complementarity** — pearl CADD median = 15.7 (ambiguous zone); 54 ARCHCODE-only variants vs 5,773 CADD-only confirms orthogonal detection modes
+- **CADD complementarity** — pearl CADD median = 15.7 (ambiguous zone); 27 HBB pearls + 29 cross-locus candidates vs 5,773 CADD-only suggests orthogonal detection modes (HBB confirmed; cross-locus exploratory)
 - **Evolutionary conservation** — pearl positions 3.3&times; more conserved than flanking background (phyloP 2.39 vs 0.73; permutation p = 0.0, n = 10,000); all fall within GERP constrained elements (scores 8.4&ndash;81.3)
 
 ### Figure 3: Pearl Quadrant (ARCHCODE vs VEP)
@@ -200,7 +202,7 @@ _Pearson r (ARCHCODE vs Hi-C) across 8 locus&times;cell-type combinations. All p
 | **Akita**    | Deep learning CNN    | 0.59                | ~4,000 Hi-C maps | ~145 s (GPU) | Fudenberg et al. 2020 |
 | **Orca**     | Graph neural network | 0.71                | Multi-scale Hi-C | N/A          | Zhou et al. 2022      |
 
-Best ARCHCODE loci: MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562). ARCHCODE achieves Akita-level correlation on top loci with zero training data, interpretable physics, and 100&times; speed advantage. Parameters (&alpha;, &gamma;, k<sub>base</sub>) map directly to measurable biophysical quantities (cohesin residence time, processivity, loading rate).
+Best ARCHCODE loci: MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562). **Note:** Akita/Orca are benchmarked genome-wide across thousands of loci; ARCHCODE is tested on 8 locus&times;cell combinations (r = 0.28&ndash;0.59). Top ARCHCODE loci approach Akita's reported average, but this is not a like-for-like comparison. ARCHCODE's advantage is zero training data and interpretable physics; its disadvantage is narrow validation scope. Parameters (&alpha;, &gamma;, k<sub>base</sub>) map directly to measurable biophysical quantities (cohesin residence time, processivity, loading rate).
 
 ### Structural Blind Spot (5 Methods Converge)
 
@@ -214,7 +216,7 @@ Pearl variants (n = 27, all HBB) were evaluated against five independent predict
 | MPRA (Kircher 2019) | mean &minus;0.015      | No (p = 0.91) | Promoter-intrinsic transcription    |
 | **ARCHCODE LSSIM**  | **&lt; 0.92 (all 27)** | **Yes**       | **3D enhancer-promoter contact**    |
 
-Only ARCHCODE detects these variants, confirming they operate through enhancer-promoter contact disruption — a structural mechanism invisible to both rule-based (VEP) and neural-network-based (SpliceAI) sequence predictors, as well as episomal functional assays (MPRA).
+Only ARCHCODE detects these variants, suggesting they may operate through enhancer-promoter contact disruption — a structural mechanism invisible to both rule-based (VEP) and neural-network-based (SpliceAI) sequence predictors, as well as episomal functional assays (MPRA). Experimental confirmation (allele-specific Capture Hi-C or RT-qPCR in erythroid cells) is required to validate this hypothesis.
 
 ### SpliceAI: Complete Null for All Pearl SNVs
 
@@ -234,7 +236,7 @@ Three-way comparison using **real** AlphaGenome API (DeepMind, no mock data) for
 | Pathogenic (non-pearl) | 13 | &minus;0.67% | 7.8 &times; 10<sup>&minus;5</sup> |
 | Benign (ClinVar) | 20 | &minus;0.10% | 4 &times; 10<sup>&minus;6</sup> |
 
-Cohen d = &minus;2.1 (Pearl vs Benign). Pearl variants show **5.5&times; more CAGE disruption** than pathogenic non-pearls and **190&times; more** than benign controls.
+Cohen d = &minus;2.1 (Pearl vs Benign). Pearl variants show **5.5&times; more CAGE disruption** than pathogenic non-pearls and **190&times; more** than benign controls. **Statistical caveat:** p-values assume independent observations, but 11/12 pearls cluster in a 73bp region (effective independent n &asymp; 2&ndash;3). Effect sizes are robust; formal significance should be interpreted cautiously.
 
 **ISM (In-Silico Saturation Mutagenesis)** of the 90bp promoter region confirms ARCHCODE pearl positions (chr11:5,227,099&ndash;102) coincide with the **peak CAGE sensitivity** (&minus;43%), while flanking positions average &plusmn;1.2%.
 
