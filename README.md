@@ -81,8 +81,8 @@ Ten independent lines of evidence confirm the blind spot: VEP (&lt;0.30 for all 
 |           v                           v                             |
 |  +---------------------------------------------------+              |
 |  |               Quadrant Analysis (HBB)             |              |
-|  |  Q1: Both detect (199)   Q2: ARCHCODE only (27)   |              |
-|  |  Q3: VEP only   (127)   Q4: Neither      (750)   |              |
+|  |  Q1: Both detect (199)   Q2: ARCHCODE only (20)   |              |
+|  |  Q3: VEP only   (136)   Q4: Neither      (748)   |              |
 |  +---------------------------------------------------+              |
 |           |                                                         |
 |           v                                                         |
@@ -144,7 +144,7 @@ _353 real ClinVar HBB variants. Red = 25 high-confidence Class B variants (VEP-b
 _HBB ROC. AUC = 0.977. Youden threshold LSSIM &lt; 0.994._
 
 <details>
-<summary><b>Table: Top 5 Pearl Variants (of 27 total, all HBB)</b></summary>
+<summary><b>Table: Top 5 Pearl Variants (of 20 in HBB, 14 unique positions, 1 promoter hotspot)</b></summary>
 
 | ClinVar ID   | HGVS_c              | Category        | Significance      | LSSIM  | VEP  | SpliceAI | Mechanism                         |
 | :----------- | :------------------ | :-------------- | :---------------- | :----- | :--- | :------- | :-------------------------------- |
@@ -220,24 +220,27 @@ Only ARCHCODE detects these variants, confirming they operate through enhancer-p
 
 SpliceAI scores were obtained via the Ensembl VEP REST API with SpliceAI plugin for all 20 pearl single-nucleotide variants. Every variant scored **0.00** across all four splice metrics (donor gain, donor loss, acceptor gain, acceptor loss). This extends the structural blind spot beyond VEP consequence annotation: pearl variants are invisible not only to rule-based classifiers but also to the highest-resolution deep-learning splice predictor currently available.
 
-### MPRA: Kircher et al. 2019 — Mechanistically Informative Null
+### MPRA: Kircher et al. 2019 — Wet-Lab Validation
 
-Cross-validation against the Kircher et al. 2019 MPRA dataset (MaveDB: urn:mavedb:00000018-a-1; 623 variants across the HBB promoter region, assayed in HEL 92.1.7 erythroid cells) yields null correlation between ARCHCODE LSSIM and MPRA functional scores (r = &minus;0.21, p = 0.36; n = 22 allele-matched variants). This null is mechanistically expected: MPRA measures promoter-intrinsic transcriptional activity in an episomal context, stripped of the 3D chromatin architecture through which pearl variants are predicted to act.
+Cross-validation against the Kircher et al. 2019 MPRA dataset (MaveDB: urn:mavedb:00000018-a-1; 623 variants across the HBB promoter region, assayed in HEL 92.1.7 erythroid cells). Pearl positions show significantly reduced promoter activity: mean MPRA score &minus;0.186 vs non-pearl &minus;0.013 (Mann-Whitney p = 0.0001, Cohen d = &minus;1.16, n = 11 pearl positions vs 176 non-pearl). Within-pearl LSSIM vs MPRA correlation is weak (r = &minus;0.21, n = 11) — expected given the narrow 73bp cluster where all positions have similar SSIM values.
 
-### AlphaGenome Multimodal Validation
+### AlphaGenome Real API Validation (SDK v0.6.0)
 
-AlphaGenome RNA-seq and ATAC-seq tracks were used to assess whether ARCHCODE pearl variants produce independent regulatory signals at 1 bp resolution:
+Three-way comparison using **real** AlphaGenome API (DeepMind, no mock data) for CAGE promoter activity predictions:
 
-| Modality     | Metric                     | Pearl (n = 23) | Benign (n = 23) | p-value                           |
-| :----------- | :------------------------- | :------------- | :-------------- | :-------------------------------- |
-| **RNA-seq**  | Signal concentration ratio | 16.97          | 6.09            | 4.8 &times; 10<sup>&minus;5</sup> |
-| **RNA-seq**  | &Delta; at variant bin     | 0.381          | 0.109           | 0.0014                            |
-| **ATAC-seq** | Signal concentration ratio | 11.15          | 6.39            | 0.0026                            |
-| **ATAC-seq** | &Delta; at variant bin     | 0.268          | 0.098           | 0.029                             |
+| Group | n | Mean CAGE &Delta; | p-value vs Pearl |
+| :---- | :- | :---------------- | :--------------- |
+| **Pearl** | 12 | **&minus;19.0%** | &mdash; |
+| Pathogenic (non-pearl) | 13 | &minus;0.67% | 7.8 &times; 10<sup>&minus;5</sup> |
+| Benign (ClinVar) | 20 | &minus;0.10% | 4 &times; 10<sup>&minus;6</sup> |
 
-Pearl variants show **2.8&times; higher RNA-seq signal concentration** and **2.7&times; higher ATAC-seq &Delta;** at the variant position compared to benign controls (all p &lt; 0.05). The three-locus tissue gradient (HBB: 10/10 significant tests; BRCA1: 1/10; SCN5A: 0/10) mirrors ARCHCODE's tissue-specificity gradient, indicating biological specificity rather than simulation artifact.
+Cohen d = &minus;2.1 (Pearl vs Benign). Pearl variants show **5.5&times; more CAGE disruption** than pathogenic non-pearls and **190&times; more** than benign controls.
 
-**Caveat:** AlphaGenome's training data includes 4DN Hi-C from K562; partial overlap with our validation cell line cannot be excluded. The convergence of two mechanistically orthogonal approaches — analytical loop extrusion (ARCHCODE) and sequence-to-epigenome deep learning (AlphaGenome) — nonetheless strengthens the case for genuine regulatory disruption.
+**ISM (In-Silico Saturation Mutagenesis)** of the 90bp promoter region confirms ARCHCODE pearl positions (chr11:5,227,099&ndash;102) coincide with the **peak CAGE sensitivity** (&minus;43%), while flanking positions average &plusmn;1.2%.
+
+**MPRA wet-lab validation** (Kircher et al. 2019, HEL 92.1.7 erythroid cells): pearl positions show mean MPRA score &minus;0.186 vs non-pearl &minus;0.013 (Mann-Whitney p = 0.0001, Cohen d = &minus;1.16).
+
+**Caveat:** 11/12 tested pearl positions lie within a 73bp promoter cluster (chr11:5,227,099&ndash;5,227,172). This represents 1 regulatory hotspot, not 12 independent discoveries. AlphaGenome training data includes 4DN Hi-C from K562; partial overlap with validation cell line cannot be excluded.
 
 ### Ablation Analysis
 
@@ -281,10 +284,10 @@ _Enhancer proximity drives ARCHCODE structural discrimination. Variants within &
 
 ```
 ARCHCODE/
-+-- manuscript/                        # Publication (arXiv q-bio.GN pending)
++-- manuscript/                        # Publication (Research Square preprint)
 |   +-- body_content.typ               #   Main manuscript body (Typst)
 |   +-- main_ru.typ                    #   Russian-language version
-|   +-- TABLE_S1_PEARLS.md             #   All 54 Class B variants (supplementary)
+|   +-- TABLE_S1_PEARLS.md             #   All 20 pearl variants (supplementary)
 +-- figures/                           # Publication figures (PDF + PNG)
 |   +-- fig1_ssim_violin.*             #   LSSIM distribution by category
 |   +-- fig2_roc_curves.*              #   ROC curve (HBB AUC 0.977)
@@ -295,7 +298,7 @@ ARCHCODE/
 |   +-- fig7_ablation_barplot.*        #   Ablation analysis
 |   +-- fig8_enhancer_proximity.*      #   Enhancer proximity discrimination
 |   +-- fig9_tissue_heatmap.*          #   Tissue-specificity heatmap
-|   +-- fig10_alphagenome_validation.* #   AlphaGenome multimodal validation
+|   +-- fig_taxonomy/                  #   Taxonomy-specific figures
 +-- results/
 |   +-- HBB_Unified_Atlas.csv          #   1,103 HBB variants (unified pipeline)
 |   +-- integrative_benchmark.csv      #   30,318 variant CADD concordance
