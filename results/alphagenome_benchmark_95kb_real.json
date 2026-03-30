@@ -1,0 +1,20 @@
+{
+  "experiment": "95kb Window Benchmark (ARCHCODE vs AlphaGenome vs Hi-C)",
+  "date": "2026-03-30T14:12:29.812283+00:00",
+  "data_source": "REAL AlphaGenome API",
+  "interval": "chr11:5200000-5295000",
+  "ag_matrix_shape": [
+    64,
+    64
+  ],
+  "selected_cell_line": "0",
+  "correlations": {
+    "archcode_vs_alphagenome": {
+      "pearson_r": -0.1713693643678056,
+      "pearson_p": 2.4421014568006246e-14,
+      "spearman_rho": -0.19042587086732476,
+      "spearman_p": 2.1051900074396965e-17,
+      "n_valid": 1953
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "experiment": "CTCF Binding Validation (AlphaGenome CHIP_TF)",
+  "data_source": "REAL AlphaGenome API",
+  "cell_line": "K562",
+  "resolution_bp": 128,
+  "n_ctcf_tracks_total": 153,
+  "n_peaks_k562": 6,
+  "peaks_hg38": [
+    {
+      "pos": 5204748,
+      "in_hbb": true
+    },
+    {
+      "pos": 5204876,
+      "in_hbb": true
+    },
+    {
+      "pos": 5205004,
+      "in_hbb": true
+    },
+    {
+      "pos": 5291276,
+      "in_hbb": false,
+      "note": "TAD boundary"
+    },
+    {
+      "pos": 5291404,
+      "in_hbb": false,
+      "note": "TAD boundary"
+    },
+    {
+      "pos": 5291532,
+      "in_hbb": false,
+      "note": "TAD boundary"
+    }
+  ],
+  "signal_stats": {
+    "mean": 121.26,
+    "max": 3968.0,
+    "min": 1.42
+  },
+  "key_finding": "AlphaGenome predicts 3 CTCF peaks within HBB region and 3 at TAD boundary \u2014 consistent with known HBB locus architecture."
+}

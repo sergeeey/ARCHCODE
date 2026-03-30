@@ -10,7 +10,6 @@
 
 ---
 
-[![arXiv](https://img.shields.io/badge/arXiv-q--bio.GN-B31B1B)](https://arxiv.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Three.js](https://img.shields.io/badge/Three.js-r181-000000?logo=threedotjs&logoColor=white)](https://threejs.org/)
@@ -361,9 +360,9 @@ For Codex-assisted tasks, use:
 
 ## Preprint
 
-Manuscript prepared for submission to **arXiv** (q-bio.GN). Preprint pending — citation will be updated upon assignment.
+Available on **Research Square**: [DOI: 10.21203/rs.3.rs-9090074/v1](https://doi.org/10.21203/rs.3.rs-9090074/v1)
 
-> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors — Evidence from 30,318 ClinVar Variants across Nine Genomic Loci. _arXiv_ q-bio.GN (preprint pending).
+> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors — Evidence from 30,318 ClinVar Variants across Nine Genomic Loci. Research Square (preprint).
 
 ## Citation
 
@@ -374,7 +373,7 @@ Manuscript prepared for submission to **arXiv** (q-bio.GN). Preprint pending —
              Evidence from 30,318 ClinVar Variants across Nine Genomic Loci},
   author  = {Boyko, Sergey V.},
   year    = {2026},
-  note    = {arXiv preprint q-bio.GN (pending)},
+  note    = {Research Square preprint, DOI: 10.21203/rs.3.rs-9090074/v1},
   url     = {https://github.com/sergeeey/ARCHCODE}
 }
 ```
