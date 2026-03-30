@@ -5,7 +5,7 @@ SpliceAI Predictions for HBB Variants via Broad Institute Lookup API
 Uses the public SpliceAI Lookup API (no local installation needed).
 API: https://spliceailookup-api.broadinstitute.org/
 
-Replaces mock AlphaGenome scores with real splice impact predictions.
+Adds real splice impact predictions to HBB variant atlas.
 
 Thresholds from Jaganathan et al. 2019 (Cell):
   DOI: 10.1016/j.cell.2018.12.015
@@ -52,8 +52,9 @@ def interpret_score(score: float) -> str:
         return "Low Impact"
 
 
-def query_spliceai_api(chrom: str, pos: int, ref: str, alt: str,
-                       genome: str = "hg38", distance: int = 500) -> dict | None:
+def query_spliceai_api(
+    chrom: str, pos: int, ref: str, alt: str, genome: str = "hg38", distance: int = 500
+) -> dict | None:
     """
     Query SpliceAI Lookup API for a single variant.
 
@@ -125,8 +126,9 @@ def parse_spliceai_response(data: dict) -> dict:
     }
 
 
-def run_spliceai_api_predictions(variants_file: str, output_file: str,
-                                  cache_file: str | None = None) -> pd.DataFrame:
+def run_spliceai_api_predictions(
+    variants_file: str, output_file: str, cache_file: str | None = None
+) -> pd.DataFrame:
     """
     Run SpliceAI predictions via Broad Institute API.
 
@@ -187,27 +189,33 @@ def run_spliceai_api_predictions(variants_file: str, output_file: str,
             # Rate limiting
             time.sleep(REQUEST_DELAY)
 
-        results.append({
-            "clinvar_id": clinvar_id,
-            "chr": chrom,
-            "position": pos,
-            "ref": ref,
-            "alt": alt,
-            "spliceai_max_delta": scores["max_delta"],
-            "acceptor_gain": scores["acceptor_gain"],
-            "acceptor_loss": scores["acceptor_loss"],
-            "donor_gain": scores["donor_gain"],
-            "donor_loss": scores["donor_loss"],
-            "gene": scores.get("gene", ""),
-            "interpretation": interpret_score(scores["max_delta"]) if not np.isnan(scores["max_delta"]) else "ERROR",
-        })
+        results.append(
+            {
+                "clinvar_id": clinvar_id,
+                "chr": chrom,
+                "position": pos,
+                "ref": ref,
+                "alt": alt,
+                "spliceai_max_delta": scores["max_delta"],
+                "acceptor_gain": scores["acceptor_gain"],
+                "acceptor_loss": scores["acceptor_loss"],
+                "donor_gain": scores["donor_gain"],
+                "donor_loss": scores["donor_loss"],
+                "gene": scores.get("gene", ""),
+                "interpretation": interpret_score(scores["max_delta"])
+                if not np.isnan(scores["max_delta"])
+                else "ERROR",
+            }
+        )
 
         # Progress
         done = idx + 1
         if done % 10 == 0 or done == total:
             remaining = (total - done) * REQUEST_DELAY / 60
-            print(f"  [{done}/{total}] {done*100/total:.0f}% complete "
-                  f"(~{remaining:.1f} min remaining, {errors} errors, {cached_hits} cached)")
+            print(
+                f"  [{done}/{total}] {done * 100 / total:.0f}% complete "
+                f"(~{remaining:.1f} min remaining, {errors} errors, {cached_hits} cached)"
+            )
 
         # Save cache every 50 variants
         if done % 50 == 0:
@@ -225,9 +233,9 @@ def run_spliceai_api_predictions(variants_file: str, output_file: str,
 
     # Summary statistics
     valid = results_df["spliceai_max_delta"].notna()
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print(f"SpliceAI Predictions Complete")
-    print(f"{'='*60}")
+    print(f"{'=' * 60}")
     print(f"Total variants:     {len(results_df)}")
     print(f"Valid predictions:   {valid.sum()}")
     print(f"Errors:             {errors}")
@@ -252,12 +260,24 @@ def main():
     parser = argparse.ArgumentParser(
         description="Run SpliceAI predictions on HBB variants via Broad Institute API"
     )
-    parser.add_argument("--variants", type=str, required=True,
-                        help="Input CSV with columns: clinvar_id, chr, position, ref, alt")
-    parser.add_argument("--output", type=str, default="data/hbb_spliceai_results.csv",
-                        help="Output CSV file (default: data/hbb_spliceai_results.csv)")
-    parser.add_argument("--cache", type=str, default=None,
-                        help="Cache file for API results (auto-generated if not set)")
+    parser.add_argument(
+        "--variants",
+        type=str,
+        required=True,
+        help="Input CSV with columns: clinvar_id, chr, position, ref, alt",
+    )
+    parser.add_argument(
+        "--output",
+        type=str,
+        default="data/hbb_spliceai_results.csv",
+        help="Output CSV file (default: data/hbb_spliceai_results.csv)",
+    )
+    parser.add_argument(
+        "--cache",
+        type=str,
+        default=None,
+        help="Cache file for API results (auto-generated if not set)",
+    )
 
     args = parser.parse_args()
 
