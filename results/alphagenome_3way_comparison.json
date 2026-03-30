@@ -1,0 +1,71 @@
+{
+  "experiment": "3-WAY: Pearl vs Pathogenic-non-pearl vs Benign (CORRECTED)",
+  "data_source": "REAL AlphaGenome API",
+  "design": {
+    "pearls": "ARCHCODE-identified: VEP-blind + structural disruption",
+    "pathogenic_controls": "ClinVar pathogenic, NOT identified as pearls by ARCHCODE",
+    "benign_controls": "ClinVar benign/likely benign HBB variants"
+  },
+  "n": {
+    "pearl": 12,
+    "pathogenic": 13,
+    "benign": 20
+  },
+  "mean_cage_pct": {
+    "pearl": -19.041666666666668,
+    "pathogenic": -0.6692307692307692,
+    "benign": -0.10279594427102838
+  },
+  "cluster_warning": "11/12 pearl positions in 73bp promoter cluster (chr11:5227099-5227172). Effective n for independent events = 2-3.",
+  "pearl_raw": [
+    -0.4,
+    -35.6,
+    -40.5,
+    -33.7,
+    -26.3,
+    -8.5,
+    -13.8,
+    -21.4,
+    -21.2,
+    -18.4,
+    -4.3,
+    -4.4
+  ],
+  "pathogenic_raw": [
+    1.5,
+    0.6,
+    -0.9,
+    -1.0,
+    -2.3,
+    -0.5,
+    -1.5,
+    -1.3,
+    -2.2,
+    -0.3,
+    -0.2,
+    -0.1,
+    -0.5
+  ],
+  "benign_raw": [
+    -0.7428278480362318,
+    0.2633233385263312,
+    -0.0025788089691092743,
+    -0.2057581639860352,
+    0.750264055391932,
+    -1.0817449300749602,
+    1.1484937437201737,
+    -0.5259923523888586,
+    -0.8995809436719695,
+    -0.18063209689596754,
+    0.1662215584178405,
+    0.375844086888929,
+    0.11569999643496237,
+    -2.012510217430099,
+    0.36408933675212346,
+    -0.19780619483651318,
+    -0.02133098404000537,
+    0.05169164844050382,
+    0.2980641292057048,
+    0.2811517611306807
+  ]
+}
