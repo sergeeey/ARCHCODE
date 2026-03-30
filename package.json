@@ -33,7 +33,6 @@
     "test:gold": "vitest run src/__tests__/regression/gold-standard.test.ts",
     "test:watch": "vitest",
     "test:regression": "vitest run src/__tests__/regression/",
-    "validate:hbb": "node scripts/quick-validate.js",
     "validate:hic": "npx tsx scripts/validate-hic.ts",
     "validate:hic:download": "npx tsx scripts/validate-hic.ts --download",
     "validate:hic:list": "npx tsx scripts/validate-hic.ts --list",
