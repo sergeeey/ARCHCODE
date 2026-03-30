@@ -37,9 +37,6 @@ Provide a repeatable scoring and evidence map for release readiness.
 - `security-gates.yml` enforces:
   - lint/build/unit tests
   - coverage gate at `60/55/60/60`
-  - gold-standard mock smoke (`ALPHAGENOME_TEST_MODE=mock`)
+  - gold-standard regression tests (physics engine, no external API dependency)
   - dependency, python, and secret scans
-- On `push` to `main`, strict-real is enforced:
-  - fails if `ALPHAGENOME_API_KEY` is missing
-  - runs `test:gold` with `ALPHAGENOME_TEST_MODE=strict-real`
-- Nightly strict-real remains as orthogonal monitoring workflow.
+- AlphaGenome mock system was removed (2026-03-30). Validation uses real API via `scripts/alphagenome_real_experiments.py`.

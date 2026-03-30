@@ -1568,7 +1568,7 @@ The seven-locus panel reveals four distinct outcome modes: _positive amplificati
 
 == Testable Predictions for Future Tissue-Matched Studies <supplementary-s4b>
 
-To demonstrate falsifiability, we list explicit predictions for tissue-matched ARCHCODE runs at loci not yet tested with correct tissue context. These predictions are pre-registered here; outcomes inconsistent with predictions would weaken the taxonomy framework.
+To demonstrate falsifiability, we list explicit predictions for tissue-matched ARCHCODE runs at loci not yet tested with correct tissue context. These predictions are stated prospectively in this manuscript; outcomes inconsistent with predictions would weaken the taxonomy framework. Note: these are prospective hypotheses, not formally pre-registered predictions (no external registry was used).
 
 #scientific-table(
   columns: (auto, auto, auto, auto),
