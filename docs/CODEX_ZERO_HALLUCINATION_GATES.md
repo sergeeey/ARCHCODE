@@ -22,7 +22,7 @@ Run from repo root:
 
 ```bash
 rg -n "APPROVE|PROCEED|Implemented|Verified|UNVERIFIED" AGENTS.md docs .claude
-rg -n "sk-|AKIA|AIza|xoxb-|ghp_|BEGIN PRIVATE KEY|password\\s*=|token\\s*=" -S .
+# Secret scan: run scripts/secret_scan.py (excludes doc examples)
 ```
 
 For JS/TS changes:

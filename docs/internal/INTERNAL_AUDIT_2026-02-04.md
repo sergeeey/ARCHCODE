@@ -62,7 +62,7 @@ wc -l results/HBB_Clinical_Atlas.csv
 - ❌ `frap_lifetime_med1plus.csv` - NOT FOUND
 - ❌ `frap_recovery_curves.csv` - NOT FOUND
 - ❌ Raw FRAP measurements - NONE
-- ❌ Sabaté et al. Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9) - 404 ERROR
+- ❌ Sabaté et al. Nature Genetics 2025 (DOI: 10.1038/s41588-025-02406-9) - 404 at audit time (2026-02-04). NOTE [checked 2026-03-30]: This DOI now resolves to Avsec et al. Nature 2026. The original "Sabaté 2025" citation was still phantom — correct author is Avsec, correct year is 2026, and it is about AlphaGenome not cohesin dynamics.
 
 ### Code Evidence
 
