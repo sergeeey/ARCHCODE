@@ -222,7 +222,7 @@ SpliceAI scores were obtained via the Ensembl VEP REST API with SpliceAI plugin 
 
 ### MPRA: Kircher et al. 2019 — Wet-Lab Validation
 
-Cross-validation against the Kircher et al. 2019 MPRA dataset (MaveDB: urn:mavedb:00000018-a-1; 623 variants across the HBB promoter region, assayed in HEL 92.1.7 erythroid cells). Pearl positions show significantly reduced promoter activity: mean MPRA score &minus;0.186 vs non-pearl &minus;0.013 (Mann-Whitney p = 0.0001, Cohen d = &minus;1.16, n = 11 pearl positions vs 176 non-pearl). Within-pearl LSSIM vs MPRA correlation is weak (r = &minus;0.21, n = 11) — expected given the narrow 73bp cluster where all positions have similar SSIM values.
+Cross-validation against the Kircher et al. 2019 MPRA dataset (MaveDB: urn:mavedb:00000018-a-1; 623 variants across the HBB promoter region, assayed in HEL 92.1.7 erythroid cells) yields a null global relationship: allele-level ARCHCODE vs MPRA correlation is weak and non-significant (Pearson r = &minus;0.21, p = 0.36; 22 allele-specific matches), and pearl vs non-pearl positions are indistinguishable by MPRA score (Mann-Whitney p = 0.91). This is mechanistically consistent with MPRA's episomal promoter context, which does not capture 3D enhancer-promoter contact disruption.
 
 ### AlphaGenome Real API Validation (SDK v0.6.0)
 
@@ -238,7 +238,7 @@ Cohen d = &minus;2.1 (Pearl vs Benign). Pearl variants show **5.5&times; more CA
 
 **ISM (In-Silico Saturation Mutagenesis)** of the 90bp promoter region confirms ARCHCODE pearl positions (chr11:5,227,099&ndash;102) coincide with the **peak CAGE sensitivity** (&minus;43%), while flanking positions average &plusmn;1.2%.
 
-**MPRA wet-lab validation** (Kircher et al. 2019, HEL 92.1.7 erythroid cells): pearl positions show mean MPRA score &minus;0.186 vs non-pearl &minus;0.013 (Mann-Whitney p = 0.0001, Cohen d = &minus;1.16).
+**MPRA cross-validation remains null at the score level** (Kircher et al. 2019, HEL 92.1.7 erythroid cells): the independent support in this section comes from real AlphaGenome CAGE/ISM outputs, not from a standalone positive MPRA hit.
 
 **Caveat:** 11/12 tested pearl positions lie within a 73bp promoter cluster (chr11:5,227,099&ndash;5,227,172). This represents 1 regulatory hotspot, not 12 independent discoveries. AlphaGenome training data includes 4DN Hi-C from K562; partial overlap with validation cell line cannot be excluded.
 
