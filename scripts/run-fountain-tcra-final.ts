@@ -1,12 +1,13 @@
 /**
- * H2: Blind Validation #2 — TCRα Locus (T-Cell Receptor Alpha)
+ * H2: Post-hoc Validation #2 — TCRα Locus (T-Cell Receptor Alpha)
  *
  * FINAL VERSION with SE Zone Enrichment Score calculation.
  *
  * TCRα (chr14:22,000,000-23,600,000) undergoes V(D)J recombination.
  * Contains the Eα enhancer that serves as a cohesin loading hotspot.
  *
- * This is a BLIND TEST: model was calibrated on MYC, now validated on TCRα.
+ * NOTE: Model calibrated on MYC, validated on TCRα. Parameters and results
+ * committed simultaneously — this is post-hoc validation, not formally blinded.
  */
 
 import path from "path";
@@ -255,7 +256,7 @@ async function main() {
 
   console.log("");
   console.log("█".repeat(70));
-  console.log("  TCRα LOCUS BLIND VALIDATION #2 — FINAL");
+  console.log("  TCRα LOCUS POST-HOC VALIDATION #2 — FINAL");
   console.log("█".repeat(70));
   console.log("");
   console.log(`Locus:      TCRα (T-Cell Receptor Alpha)`);
@@ -397,7 +398,7 @@ async function main() {
   // Save results
   const report = {
     validation: {
-      name: "TCRα Locus Blind Validation #2 (FINAL)",
+      name: "TCRα Locus Post-hoc Validation #2 (FINAL)",
       hypothesis: "H2: Mediator-driven cohesin loading (FountainLoader)",
       date: new Date().toISOString(),
       status: verdict,
@@ -453,7 +454,7 @@ async function main() {
         `SE Zone enrichment ${seEnrichmentOptimal.toFixed(2)}x vs ${seEnrichmentBaseline.toFixed(2)}x baseline`,
       ],
       conclusion: passed
-        ? "FountainLoader demonstrates significant SE zone enrichment on TCRα locus. Blind validation PASSED."
+        ? "FountainLoader demonstrates significant SE zone enrichment on TCRα locus. Post-hoc validation passed."
         : "Validation criteria not met.",
     },
   };

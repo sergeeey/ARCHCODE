@@ -1,6 +1,6 @@
 {
   "validation": {
-    "name": "TCRα Locus Blind Validation #2 (FINAL)",
+    "name": "TCRα Locus Validation #2 (FINAL)",
     "hypothesis": "H2: Mediator-driven cohesin loading (FountainLoader)",
     "date": "2026-02-03T07:22:03.183Z",
     "status": "PASS"
@@ -101,6 +101,6 @@
       "448 cells show differential contact probability",
       "SE Zone enrichment 5.19x vs 5.46x baseline"
     ],
-    "conclusion": "FountainLoader demonstrates significant SE zone enrichment on TCRα locus. Blind validation PASSED."
+    "conclusion": "FountainLoader demonstrates significant SE zone enrichment on TCRα locus. Post-hoc validation passed (parameters and results committed simultaneously; not formally blinded)."
   }
 }
