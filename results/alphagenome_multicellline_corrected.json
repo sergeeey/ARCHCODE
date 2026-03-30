@@ -1,0 +1,88 @@
+{
+  "experiment": "Multi-Cell-Line Contact Maps \u2014 CORRECTED (exp + O/E normalization)",
+  "data_source": "REAL AlphaGenome API (SDK v0.6.0)",
+  "interval": "chr11:5181964-5313036 (131072bp)",
+  "normalization": "exp() from log-scale + distance O/E normalization",
+  "bug_fix": "Previous negative correlations were due to comparing log-scale (AlphaGenome) vs linear-scale (ARCHCODE)",
+  "n_cell_lines": 28,
+  "correlation_range": {
+    "min_r": 0.266,
+    "max_r": 0.408,
+    "mean_r": 0.375
+  },
+  "cell_lines": [
+    {
+      "name": "H1-hESC",
+      "assay": "Micro-C",
+      "r": 0.403,
+      "rho": 0.459
+    },
+    {
+      "name": "HFFc6",
+      "assay": "Micro-C",
+      "r": 0.364,
+      "rho": 0.406
+    },
+    {
+      "name": "HCT116",
+      "assay": "in situ Hi-C",
+      "r": 0.378,
+      "rho": 0.44
+    },
+    {
+      "name": "IMR-90",
+      "assay": "in situ Hi-C",
+      "r": 0.329,
+      "rho": 0.379
+    },
+    {
+      "name": "GM12878",
+      "assay": "in situ Hi-C",
+      "r": 0.383,
+      "rho": 0.444
+    },
+    {
+      "name": "CyT49",
+      "assay": "in situ Hi-C",
+      "r": 0.394,
+      "rho": 0.451
+    },
+    {
+      "name": "H9",
+      "assay": "in situ Hi-C",
+      "r": 0.387,
+      "rho": 0.446
+    },
+    {
+      "name": "KBM-7",
+      "assay": "in situ Hi-C",
+      "r": 0.371,
+      "rho": 0.429
+    },
+    {
+      "name": "HeLa-S3",
+      "assay": "in situ Hi-C",
+      "r": 0.365,
+      "rho": 0.417
+    },
+    {
+      "name": "HepG2",
+      "assay": "in situ Hi-C",
+      "r": 0.372,
+      "rho": 0.438
+    },
+    {
+      "name": "skin fibroblast",
+      "assay": "Dilution Hi-C",
+      "r": 0.343,
+      "rho": 0.408
+    },
+    {
+      "name": "GM25256",
+      "assay": "in situ Hi-C",
+      "r": 0.382,
+      "rho": 0.447
+    }
+  ],
+  "key_finding": "ARCHCODE analytical model correlates positively (r=0.27-0.41) with AlphaGenome DL predictions across ALL 28 cell lines after proper normalization."
+}
