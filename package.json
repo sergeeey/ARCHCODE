@@ -36,6 +36,7 @@
     "validate:hic": "npx tsx scripts/validate-hic.ts",
     "validate:hic:download": "npx tsx scripts/validate-hic.ts --download",
     "validate:hic:list": "npx tsx scripts/validate-hic.ts --list",
+    "validate:results-contracts": "python scripts/validate_results_contracts.py",
     "validate:nature2025": "npx tsx scripts/validate-nature-2025.ts --locus=HBB --runs=1000",
     "validate:sox2": "npx tsx scripts/validate-nature-2025.ts --locus=SOX2 --runs=100",
     "validate:ctcf-kd": "npx tsx scripts/validate-nature-2025.ts --locus=HBB_CTCFKD --runs=100",

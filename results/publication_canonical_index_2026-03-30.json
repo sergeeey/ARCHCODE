@@ -1,0 +1,55 @@
+{
+  "generated_at_utc": "2026-03-30T00:00:00Z",
+  "scope": "Release-facing canonical evidence index promoted after the 2026-03-30 integrity hardening sweep",
+  "release_surface": [
+    "README.md",
+    "results/README_results.md",
+    "manuscript/body_content.typ"
+  ],
+  "governance": {
+    "legacy_claim_governance": [
+      "results/publication_claim_matrix_2026-03-06.json",
+      "results/validation_canonical_index_2026-03-06.json"
+    ],
+    "results_contract_doc": "docs/RESULTS_CONTRACT.md",
+    "validator": "scripts/validate_results_contracts.py"
+  },
+  "source_of_truth": {
+    "atlas_scale": [
+      "results/integrative_benchmark_summary.json",
+      "results/per_locus_thresholds_summary.json"
+    ],
+    "hbb_roc": [
+      "results/roc_unified.json"
+    ],
+    "archcode_vs_cadd": [
+      "results/integrative_benchmark_summary.json"
+    ],
+    "per_locus_thresholds": [
+      "results/per_locus_thresholds_summary.json"
+    ],
+    "hic_validation": [
+      "results/hic_correlation_k562.json",
+      "results/hic_correlation_k562_95kb.json",
+      "results/hic_correlation_brca1.json",
+      "results/hic_correlation_mlh1.json",
+      "results/hic_correlation_tp53.json",
+      "results/hic_correlation_ldlr.json"
+    ],
+    "alphagenome_real_api": [
+      "results/alphagenome_3way_comparison.json",
+      "results/alphagenome_ism_promoter.json"
+    ],
+    "mpra_crossvalidation": [
+      "results/mpra_crossvalidation_summary.json"
+    ],
+    "ablation": [
+      "results/ablation_effectstrength.json"
+    ],
+    "conservation": [
+      "results/conservation_pearl_analysis.json",
+      "results/gnomad_pearl_af_summary.json"
+    ]
+  },
+  "note": "Use this file as the first entry point for release-facing numeric claims promoted after the 2026-03-30 integrity sweep."
+}
