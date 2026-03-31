@@ -1,10 +1,10 @@
 {
-  "title": "ARCHCODE: Architecture-Constrained Decoder reveals structural blind spots in variant pathogenicity prediction across 13 genomic loci",
+  "title": "Regulatory Pathogenicity Is Mechanistically Heterogeneous: A Taxonomy of Activity-, Architecture-, and Coverage-Driven Blind Spots",
   "authors": [
     {
-      "name": "Sergey V. Boiko",
+      "name": "Sergey V. Boyko",
       "affiliation": "Independent Researcher, Almaty, Kazakhstan",
-      "orcid": ""
+      "orcid": "0009-0009-2178-5701"
     }
   ],
   "abstract_word_count": "see manuscript",
@@ -18,29 +18,24 @@
     "beta-globin",
     "enhancer-promoter contacts",
     "3D genome",
-    "variant interpretation"
+    "variant interpretation",
+    "regulatory taxonomy"
   ],
-  "version": "v2.14",
+  "version": "v2.17",
   "figures": 18,
-  "variants_classified": 32201,
-  "vus_scored": 30952,
-  "vus_candidates": 760,
-  "vus_pearl_like": 641,
-  "total_variants_analyzed": 63153,
-  "loci": 13,
-  "orthogonal_methods": 9,
+  "variants_classified": 30318,
+  "loci": 9,
+  "class_b_variants": 54,
+  "class_b_breakdown": "25 HBB Q2b + 26 BRCA1 + 2 TP53 + 1 TERT",
+  "orthogonal_methods": 5,
   "data_availability": {
     "github": "https://github.com/sergeeey/ARCHCODE",
-    "zenodo_v2.9": "https://doi.org/10.5281/zenodo.18867448"
+    "zenodo": "https://zenodo.org/records/18908214",
+    "research_square": "https://doi.org/10.21203/rs.3.rs-9090074/v1"
   },
   "preprint_platforms": {
-    "bioRxiv": "REJECTED (2026-02, \"not complete research with new data\")",
+    "research_square": "LIVE — DOI: 10.21203/rs.3.rs-9090074/v1 (posted 2026-03-12)",
     "arXiv": "PENDING endorsement (q-bio.GN, code B9P837)",
-    "research_square": "READY TO SUBMIT — no endorsement required",
-    "osf_preprints": "BACKUP — if Research Square delayed"
-  },
-  "submission_files": {
-    "manuscript_en": "C:/Users/serge/Desktop/ARCHCODE_v2.14_EN.pdf",
-    "manuscript_ru": "C:/Users/serge/Desktop/ARCHCODE_v2.14_RU.pdf"
+    "bioRxiv": "REJECTED (no institutional affiliation)"
   }
 }
