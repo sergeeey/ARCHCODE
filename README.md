@@ -28,7 +28,7 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 <table>
 <tr>
 <td align="center"><b>30,318</b><br><sub>ClinVar variants, 9 primary loci</sub></td>
-<td align="center"><b>27 pearls</b><br><sub>HBB-specific, invisible to VEP/SpliceAI/MPRA</sub></td>
+<td align="center"><b>25 Class B</b><br><sub>HBB architecture-driven, invisible to VEP/SpliceAI/MPRA</sub></td>
 <td align="center"><b>Hi-C r = 0.53&ndash;0.59</b><br><sub>K562 contact map validation</sub></td>
 <td align="center"><b>0 training data</b><br><sub>analytical physics, not ML</sub></td>
 </tr>
@@ -50,7 +50,7 @@ Unlike sequence-based predictors (VEP, SpliceAI, CADD) that **classify** variant
 - **Cohesin loading site alteration**
 
 **Key discoveries** from applying ARCHCODE to **30,318 ClinVar variants across 9 primary loci**:
-- **27 "pearl" variants at HBB** — pathogenic by 3D structure but undetected by VEP (< 0.30), SpliceAI (0.00), and MPRA (p = 0.91 vs benign)
+- **25 high-confidence Class B variants at HBB** (also called "pearls"; 27 total including 2 from broader ML definition, 20 of which are SNVs) — pathogenic by 3D structure but undetected by VEP (< 0.30), SpliceAI (0.00), and MPRA (p = 0.91 vs benign)
 - **5-class taxonomy** of regulatory pathogenicity (activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch)
 - **29 additional Class B candidates** at 8 non-HBB loci — exploratory, pending tissue-matched validation
 
@@ -125,12 +125,12 @@ See [docker-compose.yml](./docker-compose.yml) for persistent data volume config
 Analysis of **30,318 real ClinVar variants across 9 genomic loci** using the unified ARCHCODE + Ensembl VEP v113 pipeline:
 
 - **ROC AUC = 0.977** on HBB — Youden optimum at LSSIM &lt; 0.994 (Sensitivity 0.966, Specificity 0.988). **Caveat:** ablation shows this is primarily category-driven (position-only AUC = 0.551); the metric characterizes the variant catalog, not structural prediction power
-- **27 "pearl" variants (HBB only)** — pathogenic by 3D chromatin structure but invisible to VEP, SpliceAI, and MPRA
+- **25 high-confidence Class B variants (HBB only)** — pathogenic by 3D chromatin structure but invisible to VEP, SpliceAI, and MPRA
 - **Tissue-specificity gradient** — matched loci (HBB &Delta; = 0.111) &rarr; expressed (TERT &Delta; = 0.019) &rarr; mismatch (SCN5A/GJB2 &Delta; &le; 0.006); defines ARCHCODE's domain of applicability
-- **Enhancer proximity drives discrimination** — variants within &le;1 kb of H3K27ac peaks show 7&times; greater LSSIM separation (&Delta; = 0.039 vs genome-wide average &Delta; = 0.006); pearl variants cluster at median 831 bp from enhancers (Mann-Whitney p = 1.08 &times; 10<sup>&minus;8</sup> vs non-pearl pathogenic)
+- **Enhancer proximity drives discrimination** — Class B variants cluster within mean 434 bp of tissue-matched enhancers, 58-fold closer than Class A variants (p = 2.51 &times; 10<sup>&minus;31</sup>). Within HBB specifically, variants &le;1 kb from H3K27ac peaks show 7&times; greater LSSIM separation (&Delta; = 0.039 vs genome-wide &Delta; = 0.006)
 - **Per-locus threshold calibration** — optimal threshold varies from LSSIM &lt; 0.977 (HBB, sens 92.9%, spec 99.1%) to LSSIM &lt; 0.968 (TERT, sens 22.7%); SCN5A and GJB2 serve as deliberate negative controls (cell-type mismatch &rarr; no threshold works)
 - **Hi-C validation** — Pearson r = 0.28&ndash;0.59 across 8 locus&times;cell-type combinations (all p &lt; 10<sup>&minus;82</sup>); best at MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562)
-- **CADD complementarity** — pearl CADD median = 15.7 (ambiguous zone); 27 HBB pearls + 29 cross-locus candidates vs 5,773 CADD-only suggests orthogonal detection modes (HBB confirmed; cross-locus exploratory)
+- **CADD complementarity** — pearl CADD median = 15.7 (ambiguous zone); 25 HBB Class B + 29 cross-locus candidates = 54 total vs 5,773 CADD-only suggests orthogonal detection modes (HBB confirmed; cross-locus exploratory)
 - **Evolutionary conservation** — pearl positions 3.3&times; more conserved than flanking background (phyloP 2.39 vs 0.73; permutation p = 0.0, n = 10,000); all fall within GERP constrained elements (scores 8.4&ndash;81.3)
 
 ### Figure 3: Pearl Quadrant (ARCHCODE vs VEP)
@@ -146,7 +146,7 @@ _353 real ClinVar HBB variants. Red = 25 high-confidence Class B variants (VEP-b
 _HBB ROC. AUC = 0.977. Youden threshold LSSIM &lt; 0.994._
 
 <details>
-<summary><b>Table: Top 5 Pearl Variants (of 20 in HBB, 14 unique positions, 1 promoter hotspot)</b></summary>
+<summary><b>Table: Top 5 Class B Variants (of 25 Q2b in HBB; 20 are SNVs, 14 unique positions, 1 promoter hotspot)</b></summary>
 
 | ClinVar ID   | HGVS_c              | Category        | Significance      | LSSIM  | VEP  | SpliceAI | Mechanism                         |
 | :----------- | :------------------ | :-------------- | :---------------- | :----- | :--- | :------- | :-------------------------------- |
@@ -166,7 +166,7 @@ ARCHCODE was applied to **9 clinically significant loci** across 30,318 ClinVar 
 
 | Locus     | Disease               | Chr | Variants | Pathogenic | Benign | Tissue match | &Delta;LSSIM | Pearls |
 | :-------- | :-------------------- | :-- | :------- | :--------- | :----- | :----------- | :----------- | :----- |
-| **HBB**   | &beta;-thalassemia    | 11  | 1,103    | 353        | 750    | Matched      | 0.111        | 27     |
+| **HBB**   | &beta;-thalassemia    | 11  | 1,103    | 353        | 750    | Matched      | 0.111        | 25     |
 | **BRCA1** | Breast/ovarian cancer | 17  | 10,682   | 7,062      | 3,620  | Partial      | 0.006        | 0      |
 | **CFTR**  | Cystic fibrosis       | 7   | 3,349    | 1,756      | 1,593  | Partial      | 0.007        | 0      |
 | **TP53**  | Li-Fraumeni syndrome  | 17  | 2,794    | 1,645      | 1,149  | Partial      | 0.009        | 0      |
@@ -206,7 +206,7 @@ Best ARCHCODE loci: MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562). **
 
 ### Structural Blind Spot (5 Methods Converge)
 
-Pearl variants (n = 27, all HBB) were evaluated against five independent predictors:
+Class B variants (n = 25 Q2b, all HBB; 20 are SNVs) were evaluated against five independent predictors:
 
 | Predictor           | Pearl score            | Detection?    | Mechanism tested                    |
 | :------------------ | :--------------------- | :------------ | :---------------------------------- |
@@ -254,7 +254,7 @@ _Ablation of effect strength encoding. Removing the effect-strength term from LS
 
 ![Figure 8: Enhancer proximity](figures/fig8_enhancer_proximity.pdf)
 
-_Enhancer proximity drives ARCHCODE structural discrimination. Variants within &le;1 kb of H3K27ac peaks show 7&times; greater LSSIM separation (&Delta; = 0.039) than the genome-wide average (&Delta; = 0.006). Pearl variants cluster at median 831 bp from enhancers (Mann-Whitney p = 1.08 &times; 10<sup>&minus;8</sup> vs non-pearl pathogenic)._
+_Enhancer proximity drives ARCHCODE structural discrimination. Class B variants cluster within mean 434 bp of tissue-matched enhancers (58-fold closer than Class A, p = 2.51 &times; 10<sup>&minus;31</sup>). Within HBB, variants &le;1 kb from H3K27ac peaks show 7&times; greater LSSIM separation (&Delta; = 0.039 vs genome-wide &Delta; = 0.006)._
 
 ## Tech Stack
 
@@ -340,7 +340,7 @@ ARCHCODE/
 - **Hi-C validation** — ENCODE Hi-C r = 0.28&ndash;0.59 across loci (significant, p &lt; 10<sup>&minus;82</sup>); pilot HUDEP2 Capture Hi-C r = 0.16 (not significant, small sample)
 - **Parameters manually calibrated** — &alpha; = 0.92, &gamma; = 0.80 from literature ranges (Gerlich 2006, Davidson 2019), not fitted to data
 - **No missense sensitivity** — ARCHCODE models chromatin topology, not protein folding; missense variants are detected only indirectly via CADD-derived effect strength
-- **Tissue-dependent detection** — 25 high-confidence Class B variants are on HBB (full tissue match); 29 candidates at partially matched loci (SCN5A, LDLR, MLH1). Generalization requires tissue-matched configurations for each locus
+- **Tissue-dependent detection** — 25 high-confidence Class B variants are on HBB (full tissue match); 29 candidates at partially matched loci (BRCA1 26, TP53 2, TERT 1). Generalization requires tissue-matched configurations for each locus
 - **MPRA episomal context** — the Kircher 2019 null (r = &minus;0.21) is mechanistically expected but does not rule out alternative non-structural explanations for pearl pathogenicity
 - **AlphaGenome training overlap** — AlphaGenome was trained on 4DN Hi-C including K562; validation against AlphaGenome tracks is not fully independent
 - **Experimental validation required** — the 54 Class B variants are computational findings only; no clinical reclassification without allele-specific Capture Hi-C, RT-qPCR, or functional assay in tissue-matched cells
@@ -391,6 +391,6 @@ MIT License — See [LICENSE](./LICENSE)
 
 <div align="center">
 
-**ARCHCODE v2.8** &nbsp;&middot;&nbsp; Updated 2026-03-04 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; [sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)
+**ARCHCODE v2.17** &nbsp;&middot;&nbsp; Updated 2026-03-31 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; [sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)
 
 </div>
