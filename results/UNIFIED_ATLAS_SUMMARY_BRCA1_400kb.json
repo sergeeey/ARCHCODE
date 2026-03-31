@@ -1,16 +1,21 @@
 {
   "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
-  "date": "2026-03-01T13:52:45.122Z",
-  "locus_config_id": "brca1_400kb",
-  "locus_config_path": "D:\\ДНК\\config\\locus\\brca1_400kb.json",
+  "date": "2026-03-10T08:15:24.972Z",
+  "locus_config_id": "brca1_k562_400kb",
+  "locus_config_path": "D:\\ДНК\\config\\locus\\brca1_k562_400kb.json",
   "provenance": {
-    "ctcf_sources": ["ENCODE_K562_CTCF", "ENCODE_MCF7_CTCF"],
-    "enhancer_sources": ["ENCODE_MCF7_H3K27ac", "ENCODE_K562_H3K27ac"],
-    "thresholds_calibrated": false
+    "ctcf_sources": [
+      "ENCODE_K562_CTCF",
+      "ENCODE_MCF7_CTCF"
+    ],
+    "enhancer_sources": [
+      "ENCODE_K562_H3K27ac"
+    ],
+    "thresholds_calibrated": true
   },
   "fix_description": "All 10682 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
   "data_sources": {
-    "variants": "NCBI ClinVar (data/brca1_variants.csv)",
+    "variants": "NCBI ClinVar (data/brca1_k562_variants.csv)",
     "structural_predictor": "ARCHCODE loop extrusion (Kramer kinetics)"
   },
   "parameters": {
@@ -27,12 +32,12 @@
     "benign_variants": 3620,
     "archcode_structural_pathogenic": 52,
     "pearls": 0,
-    "mean_ssim_all": 0.9998,
+    "mean_ssim_all": 0.9999,
     "mean_ssim_pathogenic": 0.9998,
     "mean_ssim_benign": 0.9999,
-    "mean_lssim_all": 0.9948,
-    "mean_lssim_pathogenic": 0.9929,
-    "mean_lssim_benign": 0.9985,
+    "mean_lssim_all": 0.9949,
+    "mean_lssim_pathogenic": 0.993,
+    "mean_lssim_benign": 0.9986,
     "local_ssim_window": 50
   },
   "category_breakdown": {
@@ -40,12 +45,12 @@
       "total": 221,
       "pathogenic_count": 149,
       "benign_count": 72,
-      "mean_ssim_all": 0.9993,
+      "mean_ssim_all": 0.9994,
       "mean_ssim_pathogenic": 0.9998,
-      "mean_ssim_benign": 0.9982,
-      "mean_lssim_all": 0.9848,
-      "mean_lssim_pathogenic": 0.9942,
-      "mean_lssim_benign": 0.9654
+      "mean_ssim_benign": 0.9985,
+      "mean_lssim_all": 0.9876,
+      "mean_lssim_pathogenic": 0.9947,
+      "mean_lssim_benign": 0.9731
     },
     "3_prime_UTR": {
       "total": 48,
@@ -54,9 +59,9 @@
       "mean_ssim_all": 1,
       "mean_ssim_pathogenic": 1,
       "mean_ssim_benign": 1,
-      "mean_lssim_all": 0.9993,
-      "mean_lssim_pathogenic": 0.9993,
-      "mean_lssim_benign": 0.9993
+      "mean_lssim_all": 0.9992,
+      "mean_lssim_pathogenic": 0.9992,
+      "mean_lssim_benign": 0.9992
     },
     "splice_region": {
       "total": 363,
@@ -65,20 +70,20 @@
       "mean_ssim_all": 0.9999,
       "mean_ssim_pathogenic": 0.9999,
       "mean_ssim_benign": 0.9999,
-      "mean_lssim_all": 0.9955,
-      "mean_lssim_pathogenic": 0.9953,
-      "mean_lssim_benign": 0.9957
+      "mean_lssim_all": 0.9954,
+      "mean_lssim_pathogenic": 0.9952,
+      "mean_lssim_benign": 0.9956
     },
     "inframe_deletion": {
       "total": 37,
       "pathogenic_count": 33,
       "benign_count": 4,
       "mean_ssim_all": 0.9998,
-      "mean_ssim_pathogenic": 0.9997,
+      "mean_ssim_pathogenic": 0.9998,
       "mean_ssim_benign": 0.9999,
-      "mean_lssim_all": 0.9931,
-      "mean_lssim_pathogenic": 0.9928,
-      "mean_lssim_benign": 0.9959
+      "mean_lssim_all": 0.994,
+      "mean_lssim_pathogenic": 0.9938,
+      "mean_lssim_benign": 0.9957
     },
     "synonymous": {
       "total": 5520,
@@ -98,8 +103,8 @@
       "mean_ssim_all": 0.9995,
       "mean_ssim_pathogenic": 0.9995,
       "mean_ssim_benign": null,
-      "mean_lssim_all": 0.9834,
-      "mean_lssim_pathogenic": 0.9834,
+      "mean_lssim_all": 0.9836,
+      "mean_lssim_pathogenic": 0.9836,
       "mean_lssim_benign": null
     },
     "inframe_indel": {
@@ -110,8 +115,8 @@
       "mean_ssim_pathogenic": 0.9999,
       "mean_ssim_benign": 0.9999,
       "mean_lssim_all": 0.9951,
-      "mean_lssim_pathogenic": 0.9951,
-      "mean_lssim_benign": 0.9951
+      "mean_lssim_pathogenic": 0.9952,
+      "mean_lssim_benign": 0.995
     },
     "intronic": {
       "total": 1584,
@@ -120,8 +125,8 @@
       "mean_ssim_all": 1,
       "mean_ssim_pathogenic": 1,
       "mean_ssim_benign": 1,
-      "mean_lssim_all": 0.9994,
-      "mean_lssim_pathogenic": 0.9992,
+      "mean_lssim_all": 0.9993,
+      "mean_lssim_pathogenic": 0.9993,
       "mean_lssim_benign": 0.9994
     },
     "splice_donor": {
@@ -131,25 +136,26 @@
       "mean_ssim_all": 0.9997,
       "mean_ssim_pathogenic": 0.9997,
       "mean_ssim_benign": null,
-      "mean_lssim_all": 0.9881,
-      "mean_lssim_pathogenic": 0.9881,
+      "mean_lssim_all": 0.9875,
+      "mean_lssim_pathogenic": 0.9875,
       "mean_lssim_benign": null
     },
     "5_prime_UTR": {
       "total": 46,
       "pathogenic_count": 8,
       "benign_count": 38,
-      "mean_ssim_all": 0.9985,
-      "mean_ssim_pathogenic": 0.9985,
-      "mean_ssim_benign": 0.9985,
-      "mean_lssim_all": 0.973,
-      "mean_lssim_pathogenic": 0.9718,
-      "mean_lssim_benign": 0.9733
+      "mean_ssim_all": 0.9986,
+      "mean_ssim_pathogenic": 0.9988,
+      "mean_ssim_benign": 0.9986,
+      "mean_lssim_all": 0.976,
+      "mean_lssim_pathogenic": 0.979,
+      "mean_lssim_benign": 0.9754
     }
   },
   "pipeline_integrity": {
     "single_engine": true,
     "label_blind_simulation": true,
-    "effect_strength_source": "getEffectStrength(category) — category only"
+    "effect_strength_source": "CATEGORICAL (category-only, label-blind)",
+    "effect_mode": "categorical"
   }
 }

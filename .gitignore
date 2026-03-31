@@ -61,6 +61,20 @@ tmp_*.py
 # Claude Code local settings
 CLAUDE.local.md
 .claude/settings.local.json
+.claude/scheduled_tasks.lock
+.scope-fence.md
+
+# Internal working documents (not for public repo)
+docs/internal/
+docs/ARCHCODE_project_report.*
+figures/report/
+prompts/
+
+# Temp compilation artifacts
+docs/_chunk.*
+docs/_test_report.*
+manuscript/**/_test.*
+manuscript/**/_main_test.*
 
 # Results and data (may be large)
 results/*.tar
@@ -90,6 +104,8 @@ data/reference/*_pairs.txt.gz
 
 # ENCODE bulk data (reproducible via accession)
 data/encode/*.tsv
+data/cardiac/*.gz
+data/kircher_mpra/*.gz
 
 # Python egg-info
 *.egg-info/

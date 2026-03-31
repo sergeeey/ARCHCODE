@@ -1,8 +1,8 @@
 {
   "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
-  "date": "2026-03-24T07:19:27.158Z",
-  "locus_config_id": "bcl11a_uniform_control",
-  "locus_config_path": "D:\\ДНК\\config\\locus\\bcl11a_uniform_control.json",
+  "date": "2026-03-24T10:14:25.711Z",
+  "locus_config_id": "bcl11a_del_ctcf3_4",
+  "locus_config_path": "D:\\ДНК\\config\\locus\\bcl11a_del_ctcf3_4.json",
   "provenance": {
     "ctcf_sources": [
       "ENCODE_K562_CTCF"
@@ -16,7 +16,7 @@
   },
   "fix_description": "All 314 variants processed through identical TypeScript engine. getEffectStrength() sees only category, never ClinVar label. Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
   "data_sources": {
-    "variants": "NCBI ClinVar (data/bcl11a_uniform_variants.csv)",
+    "variants": "NCBI ClinVar (data/bcl11a_del_ctcf3_4_variants.csv)",
     "structural_predictor": "ARCHCODE loop extrusion (Kramer kinetics)"
   },
   "parameters": {
@@ -33,12 +33,12 @@
     "benign_variants": 188,
     "archcode_structural_pathogenic": 0,
     "pearls": 0,
-    "mean_ssim_all": 0.9978,
-    "mean_ssim_pathogenic": 0.9959,
+    "mean_ssim_all": 0.9977,
+    "mean_ssim_pathogenic": 0.9956,
     "mean_ssim_benign": 0.9991,
-    "mean_lssim_all": 0.9897,
-    "mean_lssim_pathogenic": 0.9816,
-    "mean_lssim_benign": 0.9951,
+    "mean_lssim_all": 0.989,
+    "mean_lssim_pathogenic": 0.9795,
+    "mean_lssim_benign": 0.9953,
     "local_ssim_window": 50
   },
   "category_breakdown": {
@@ -46,12 +46,12 @@
       "total": 314,
       "pathogenic_count": 126,
       "benign_count": 188,
-      "mean_ssim_all": 0.9978,
-      "mean_ssim_pathogenic": 0.9959,
+      "mean_ssim_all": 0.9977,
+      "mean_ssim_pathogenic": 0.9956,
       "mean_ssim_benign": 0.9991,
-      "mean_lssim_all": 0.9897,
-      "mean_lssim_pathogenic": 0.9816,
-      "mean_lssim_benign": 0.9951
+      "mean_lssim_all": 0.989,
+      "mean_lssim_pathogenic": 0.9795,
+      "mean_lssim_benign": 0.9953
     }
   },
   "pipeline_integrity": {

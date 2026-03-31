@@ -1,16 +1,16 @@
-# Cover Letter — bioRxiv Submission
+# Cover Letter — Preprint Submission
 
 **Manuscript:** "Regulatory Pathogenicity Is Mechanistically Heterogeneous: A Taxonomy of Activity-, Architecture-, and Coverage-Driven Blind Spots"
 
 **Author:** Sergey V. Boyko, Independent Researcher, Almaty, Kazakhstan
 
-**Subject Area:** Genomics
+**Subject Area:** Genomics / Computational Biology
 
-**Date:** March 10, 2026
+**Date:** March 11, 2026
 
 ---
 
-Dear bioRxiv editors,
+Dear Editors,
 
 We submit for consideration as a new preprint a framework paper proposing that regulatory variant pathogenicity decomposes into five mechanistically distinct classes, each requiring different computational and experimental approaches.
 
@@ -30,7 +30,7 @@ We submit for consideration as a new preprint a framework paper proposing that r
 
 **Conflicts of interest:** None.
 
-**Related preprints:** A companion data paper describing the ARCHCODE computational engine has been submitted separately (BIORXIV/2026/710343).
+**Related work:** A companion data paper describing the ARCHCODE computational engine is archived at Zenodo (https://zenodo.org/records/18867448).
 
 Sincerely,
 Sergey V. Boyko

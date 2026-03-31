@@ -203,10 +203,11 @@ def plot_panel_b(ax: plt.Axes, k562: pd.DataFrame, cardiac: pd.DataFrame) -> Non
     Structural call = ARCHCODE_Verdict != 'BENIGN' AND != 'LIKELY_BENIGN'.
     """
 
-    # ПОЧЕМУ такой фильтр: BENIGN и LIKELY_BENIGN — не структурные вызовы;
-    # VUS, LIKELY_PATHOGENIC — структурные (неопределённые/патогенные).
+    # ПОЧЕМУ только BENIGN исключается: у K562 все 199 structural calls имеют
+    # verdict=LIKELY_BENIGN (не BENIGN), у Cardiac дополнительно есть
+    # LIKELY_PATHOGENIC и VUS. "Структурный вызов" = любой вердикт кроме BENIGN.
     def struct_mask(df: pd.DataFrame) -> pd.Series:
-        return ~df["ARCHCODE_Verdict"].isin(["BENIGN", "LIKELY_BENIGN"])
+        return df["ARCHCODE_Verdict"] != "BENIGN"
 
     k562_struct = k562[struct_mask(k562)]
     cardiac_struct = cardiac[struct_mask(cardiac)]
