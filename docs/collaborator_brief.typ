@@ -8,7 +8,7 @@
 #align(center)[
   #text(size: 16pt, weight: "bold")[ARCHCODE: Structural Prioritization\ of Enhancer-Proximal Variants]
   #v(0.3em)
-  #text(size: 9pt, fill: luma(100))[One-Page Collaborator Brief · March 2026 · bioRxiv BIORXIV/2026/710343]
+  #text(size: 9pt, fill: luma(100))[One-Page Collaborator Brief · April 2026 · Research Square rs-9090074]
 ]
 
 #v(0.6em)

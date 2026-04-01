@@ -1,6 +1,6 @@
 # ARCHCODE: Structural Prioritization of Enhancer-Proximal Variants
 
-**One-Page Collaborator Brief | March 2026**
+**One-Page Collaborator Brief | April 2026**
 
 ---
 
@@ -10,7 +10,7 @@ Sequence-based variant tools (VEP, CADD, SpliceAI) cannot detect pathogenic mech
 
 ## What ARCHCODE Found
 
-We analyzed **32,201 ClinVar variants** across 9 disease-associated loci using a polymer physics simulation of cohesin-mediated loop extrusion. Cross-tabulation against VEP/CADD revealed:
+We analyzed **31,929 ClinVar variants** across 18 disease-associated loci using a polymer physics simulation of cohesin-mediated loop extrusion. Cross-tabulation against VEP/CADD revealed:
 
 - **54 "true blind spot" variants (Q2b):** VEP scored them as low-impact, but ARCHCODE detects significant chromatin disruption
 - **100% of Q2b variants** fall within 1 kb of annotated enhancers (vs 9% of sequence-flagged variants)
@@ -49,7 +49,7 @@ A targeted validation in **HUDEP-2 cells** (adult erythroid progenitors):
 
 ## Resources
 
-- **Preprint:** bioRxiv BIORXIV/2026/710343
+- **Preprint:** Research Square DOI: 10.21203/rs.3.rs-9090074/v1
 - **Code + data:** https://zenodo.org/records/18867448 (CC BY 4.0)
 - **Full reproducibility guide:** `REPRODUCE.md` in repository
 - **Contact:** [your email]

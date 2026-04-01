@@ -1,6 +1,6 @@
 # Contributing to ARCHCODE
 
-Thank you for your interest in ARCHCODE. This project is an active research tool submitted as a bioRxiv preprint, and we welcome contributions that improve its scientific rigor, extend its capabilities, or fix bugs.
+Thank you for your interest in ARCHCODE. This project is an active research tool with a preprint on Research Square (DOI: 10.21203/rs.3.rs-9090074/v1), and we welcome contributions that improve its scientific rigor, extend its capabilities, or fix bugs.
 
 ## Scientific Integrity Protocol
 
