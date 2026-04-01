@@ -57,6 +57,12 @@ ORCID: 0009-0009-2178-5701
 
 | Recipient | Sent | Response | Result |
 |-----------|------|----------|--------|
-| Fudenberg | | | |
-| Goloborodko | | | |
-| Nora (follow-up Apr 7) | | | |
+| Fudenberg (USC) | 2026-04-01 19:01 | | |
+| Goloborodko (IMBA) | 2026-04-01 19:01 | | |
+| Giorgetti (FMI Basel) | 2026-04-01 19:07 | | |
+| Hansen (MIT/Broad) | 2026-04-01 19:07 | | |
+| Mirny (MIT) | 2026-04-01 19:07 | | |
+| Nora (UCSF, follow-up) | plan: Apr 7 | | |
+| Ioannidis (Berkeley) | reserve: Apr 10 | | |
+| Michieletto (Edinburgh) | reserve: Apr 10 | | |
+| Brackley (Edinburgh) | reserve: Apr 14 | | |
