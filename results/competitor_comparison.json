@@ -1,0 +1,40 @@
+{
+  "locus": "HBB",
+  "n_pearls": 15,
+  "description": "Pearl detection sensitivity by tool",
+  "key_finding": "Standard tools miss all or most Pearl variants",
+  "comparison": {
+    "VEP_Score": {
+      "pearl_detected": 0,
+      "pearl_total": 15,
+      "pearl_sensitivity": 0.0,
+      "pathogenic_detected": 287,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 81.3
+    },
+    "SIFT": {
+      "pearl_detected": 15,
+      "pearl_total": 15,
+      "pearl_sensitivity": 100.0,
+      "pathogenic_detected": 347,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 98.3
+    },
+    "CADD": {
+      "pearl_detected": 12,
+      "pearl_total": 15,
+      "pearl_sensitivity": 80.0,
+      "pathogenic_detected": 183,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 51.8
+    },
+    "ARCHCODE_LSSIM": {
+      "pearl_detected": 15,
+      "pearl_total": 15,
+      "pearl_sensitivity": 100.0,
+      "pathogenic_detected": 317,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 89.8
+    }
+  }
+}
