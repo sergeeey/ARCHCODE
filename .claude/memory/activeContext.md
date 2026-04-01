@@ -96,6 +96,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - V1 roadmap: see memory/v1_module_roadmap.md
 
 ## Auto-commit log
+- [2026-04-01 19:52] `7f0ae91`: docs: update session context + endorser tracking (5 emails sent)
 - [2026-04-01 18:52] `2d64a72`: docs: align submission status + add endorsement packet
 - [2026-04-01 14:48] `330f64e`: feat(validation): AlphaGenome CAGE batch on 7 loci — honest mixed result
 - [2026-04-01 14:22] `75e5908`: feat(stats): add statistical strengthening + cross-locus Pearl scan + competitor comparison
