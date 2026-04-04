@@ -1,28 +1,32 @@
 # ARCHCODE — Endorsement Packet
 
+**Canon Tier:** Public Canonical  
+**Release-facing:** Yes  
+**Version:** v2.17
+
 **For arXiv q-bio.GN endorsers and potential collaborators**
 
 ---
 
 ## What ARCHCODE does
 
-ARCHCODE is a physics-based 3D chromatin loop extrusion simulator that identifies ClinVar variants disrupting chromatin architecture — variants invisible to sequence-based tools (VEP, SpliceAI, CADD).
+ARCHCODE is a physics-based 3D chromatin loop extrusion simulator for structural mechanism discovery at regulatory loci.
 
 It is a **structural mechanism discovery engine**, not a clinical pathogenicity predictor.
 
 ## Three key results
 
-1. **20 "Pearl" variants in HBB** — disrupt loop structure but classified benign/VUS by all standard tools. AlphaGenome CAGE validation: p = 4 x 10^-6, Cohen d = -2.1.
+1. **25 high-confidence Class B variants at HBB** — the current public core result. A broader technical HBB definition includes 27 pearls, but the public layer uses the stricter 25-variant core.
 
-2. **Cross-locus signal in 8/8 loci** — statistically significant after Benjamini-Hochberg FDR correction (27,830 variants). Largest effect: HBB d = 4.17, TERT d = 1.35, GJB2 d = 1.27.
+2. **Orthogonal HBB evidence supports a structural hotspot interpretation** — Hi-C benchmarking reaches r = 0.53-0.59, MPRA remains null at the score level, and real AlphaGenome CAGE predictions show substantially larger disruption at the HBB pearl hotspot than in pathogenic non-pearls or benign controls.
 
-3. **323 Pearl candidates across 15 loci** (30,770 variants) — benign-classified variants with structural disruption at the level of known pathogenic variants.
+3. **29 candidate Class B variants at partially matched non-HBB loci** — useful for technical follow-up, but still exploratory rather than promoted to the confirmed public core.
 
 ## Three key limitations
 
-1. **No wet-lab validation yet.** Pearl variants are computational predictions, not confirmed pathogenic. CRISPR/Hi-C on 2-3 candidates would be decisive.
+1. **No wet-lab validation yet.** Class B variants are computationally identified structural disruptions, not experimentally confirmed pathogenic variants.
 
-2. **Deep analysis concentrated on HBB.** Other loci have atlas-level data but not the same depth of orthogonal validation.
+2. **Deep analysis is concentrated on HBB.** Non-HBB loci currently belong to the exploratory/technical layer and require tissue-matched follow-up before promotion to the public core.
 
 3. **Simulator uses manually calibrated parameters** (not fitted to experimental data). Mean-field approximation of loop extrusion.
 
@@ -48,4 +52,4 @@ Ronin Institute affiliation pending (application submitted March 2026).
 
 ---
 
-*ARCHCODE identifies which variants to investigate first — not whether they are pathogenic. The project prioritizes transparency over perfection.*
+*ARCHCODE prioritizes structural mechanism discovery and follow-up prioritization. It does not claim clinical pathogenicity prediction or cross-locus validation beyond the HBB-confirmed core.*

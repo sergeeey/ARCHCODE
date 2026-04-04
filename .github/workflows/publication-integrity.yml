@@ -34,6 +34,9 @@ jobs:
       - name: Results contract integrity
         run: python scripts/validate_results_contracts.py
 
+      - name: Project canon integrity
+        run: python scripts/validate_project_canon.py
+
       - name: Red-flag gate
         run: python check_redflags.py
 

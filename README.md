@@ -1,3 +1,4 @@
+<!-- CANON_TIER: PUBLIC_CANONICAL -->
 <div align="center">
 
 # ARCHCODE
@@ -35,6 +36,8 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 </table>
 
 > **Scope:** All pearl discoveries and external validations (AlphaGenome, MPRA, Hi-C) are from **HBB** (hemoglobin beta). Cross-locus results (8 additional loci) are exploratory and await tissue-matched validation. See [Limitations](#limitations).
+>
+> **Canon:** This README is the public canonical layer. Technical full-scope and legacy routing are defined in [PROJECT_CANON.md](./PROJECT_CANON.md).
 
 ---
 
@@ -50,13 +53,13 @@ Unlike sequence-based predictors (VEP, SpliceAI, CADD) that **classify** variant
 - **Cohesin loading site alteration**
 
 **Key discoveries** from applying ARCHCODE to **30,318 ClinVar variants across 9 primary loci**:
-- **25 high-confidence Class B variants at HBB** (also called "pearls"; 27 total including 2 from broader ML definition, 20 of which are SNVs) — pathogenic by 3D structure but undetected by VEP (< 0.30), SpliceAI (0.00), and MPRA (p = 0.91 vs benign)
+- **25 high-confidence Class B variants at HBB** — the public canonical HBB core. A broader technical HBB definition includes 27 pearls, of which 20 are SNVs; see [PROJECT_CANON.md](./PROJECT_CANON.md) for layer rules
 - **5-class taxonomy** of regulatory pathogenicity (activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch)
 - **29 additional Class B candidates** at 8 non-HBB loci — exploratory, pending tissue-matched validation
 
 **Not competing with ML predictors** — ARCHCODE creates a new category: **structural mechanism discovery**.
 
-Five tools independently fail to detect pearl variants: VEP (&lt;0.30 for all), SpliceAI (0.00 for all SNVs), CADD v1.7 (median 15.7 — ambiguous zone), MPRA Kircher 2019 (p = 0.91 vs benign), and AlphaMissense (covers only 23% of atlas). This absence of signal is consistent with a structural mechanism invisible to sequence-level annotation, though absence of detection is not proof of a blind spot — experimental validation is required.
+Current first-pass tools do not cleanly isolate the HBB structural class: VEP scores remain &lt;0.30 for the high-confidence HBB core, SpliceAI is 0.00 for pearl SNVs, MPRA is null at the score level (p = 0.91 vs benign), CADD is ambiguous rather than class-separating (median 15.7), and AlphaMissense covers only 23% of the atlas. These signals are partial or orthogonal rather than a standalone structural explanation, so experimental validation remains required.
 
 ## Pipeline Architecture
 
@@ -83,7 +86,7 @@ Five tools independently fail to detect pearl variants: VEP (&lt;0.30 for all), 
 |           v                           v                             |
 |  +---------------------------------------------------+              |
 |  |               Quadrant Analysis (HBB)             |              |
-|  |  Q1: Both detect (199)   Q2: ARCHCODE only (20)   |              |
+|  |  Q1: Both detect (199)   Q2b: HBB core (25)       |              |
 |  |  Q3: VEP only   (136)   Q4: Neither      (748)   |              |
 |  +---------------------------------------------------+              |
 |           |                                                         |
@@ -343,7 +346,7 @@ ARCHCODE/
 - **Tissue-dependent detection** — 25 high-confidence Class B variants are on HBB (full tissue match); 29 candidates at partially matched loci (BRCA1 26, TP53 2, TERT 1). Generalization requires tissue-matched configurations for each locus
 - **MPRA episomal context** — the Kircher 2019 null (r = &minus;0.21) is mechanistically expected but does not rule out alternative non-structural explanations for pearl pathogenicity
 - **AlphaGenome training overlap** — AlphaGenome was trained on 4DN Hi-C including K562; validation against AlphaGenome tracks is not fully independent
-- **Experimental validation required** — the 54 Class B variants are computational findings only; no clinical reclassification without allele-specific Capture Hi-C, RT-qPCR, or functional assay in tissue-matched cells
+- **Experimental validation required** — the 25 confirmed HBB Class B variants and 29 exploratory non-HBB candidates are computational findings only; no clinical reclassification without allele-specific Capture Hi-C, RT-qPCR, or functional assay in tissue-matched cells
 - **AlphaGenome as auxiliary only** — AlphaGenome RNA/ATAC signal supports structural blind spot narrative but is not a replacement for experimental validation (same training domain; use for prioritization only)
 
 ## Scientific Integrity

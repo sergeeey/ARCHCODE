@@ -1,3 +1,7 @@
+> LEGACY / HISTORICAL / NOT CURRENT CANONICAL SURFACE
+>
+> This comparison is preserved for provenance only. Current release truth is defined by `PROJECT_CANON.md`.
+
 # Сравнение: ARCHCODE_v2.15_EN.pdf и текущее состояние репозитория
 
 Источники: препринт `ARCHCODE_v2.15_EN.pdf` (arXiv q-bio.GN 2026-03-04); репозиторий (README, package.json, manuscript/RESULTS.md, скрипты, конфиги). Дата сравнения: 2026-03-06.

@@ -1,4 +1,8 @@
 {
+  "canon_tier": "technical_full_scope",
+  "status": "technical_current",
+  "release_facing": false,
+  "scope_note": "Cross-locus statistical strengthening file retained for technical interpretation. Statistical significance here does not by itself promote non-HBB findings into the public canonical layer.",
   "method": "Bootstrap CI (10K resamples) + Mann-Whitney U + Cohen d + BH FDR correction",
   "n_loci": 8,
   "n_bootstrap": 10000,

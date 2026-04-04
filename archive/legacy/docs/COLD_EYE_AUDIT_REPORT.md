@@ -1,3 +1,7 @@
+> LEGACY / HISTORICAL / NOT CURRENT CANONICAL SURFACE
+>
+> This cold-eye audit targets an older README/public surface and is preserved for provenance only.
+
 # Cold-Eye Audit Report — ARCHCODE (README v2.8)
 
 **Дата:** 2026-03-06  
