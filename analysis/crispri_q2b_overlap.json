@@ -1,0 +1,79 @@
+{
+  "source": "Gasperini et al. 2019 CRISPRi x ARCHCODE Q2b",
+  "analysis_date": "2026-03-09",
+  "q2b_hbb_variants": 25,
+  "q2b_position_range": "chr11:5226596-5227172",
+  "crispri_sites_in_region": 65,
+  "crispri_window_bp": 500,
+  "overlapping_variants": [],
+  "interpretation": "ZERO overlap between Q2b HBB variants and Gasperini 2019 CRISPRi elements. Although 415 enhancer-gene pairs were tested in the broader HBB region (chr11:5.15-5.35Mb), the nearest gRNA target to Q2b positions is HBD_TSS at ~29kb distance. No element was tested within 5kb of the Q2b variant cluster (chr11:5,226,596-5,227,172). This is because HBB is silenced in K562 cells -- the screen used K562 which expresses embryonic/fetal globins (epsilon, gamma) but not adult beta-globin. The positive controls in the dataset confirm this: they target LCR hypersensitive sites (HS1-HS4) and HBE1 promoter, not HBB. CONCLUSION: Q2b variants in the HBB promoter/coding region represent a genuine gap in experimental CRISPRi validation. Validating these would require CRISPRi in adult erythroid progenitors (e.g., HUDEP-2 cells), not K562.",
+  "nearest_crispri_sites": [
+    {
+      "gRNA_group": "HBD_TSS",
+      "site_type": "TSS",
+      "position": "chr11:5255877-5255878",
+      "distance_to_q2b_center_bp": 28993
+    },
+    {
+      "gRNA_group": "HBD_TSS",
+      "site_type": "selfTSS",
+      "position": "chr11:5255877-5255878",
+      "distance_to_q2b_center_bp": 28993
+    },
+    {
+      "gRNA_group": "pos_control_HBE1_tss_Klann_mosaic",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    },
+    {
+      "gRNA_group": "pos_control_HS2_Klann_mosaic",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    },
+    {
+      "gRNA_group": "pos_control_Klannchr1_HBG1_HBG1_tss_both",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    },
+    {
+      "gRNA_group": "pos_control_Klannchr1_HS3",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    },
+    {
+      "gRNA_group": "pos_control_Klannchr1_HS4",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    },
+    {
+      "gRNA_group": "pos_control_Klannchr_HS1",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    },
+    {
+      "gRNA_group": "pos_control_KlannHS2g_HS2_A",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    },
+    {
+      "gRNA_group": "pos_control_KlannHS2g_HS2_B",
+      "site_type": "positive_ctrl",
+      "position": "chr11:5291385-5291386",
+      "distance_to_q2b_center_bp": 64501
+    }
+  ],
+  "gap_analysis": {
+    "nearest_site": "HBD_TSS",
+    "nearest_distance_bp": 28993,
+    "sites_within_5kb": 0,
+    "sites_within_50kb": 2,
+    "note": "The nearest CRISPRi target site to Q2b variants is HBD_TSS at ~29kb away. No gRNA was targeted within 5kb of the Q2b variant cluster (chr11:5,226,596-5,227,172). This region contains HBB promoter and coding variants. The Gasperini 2019 screen included HBD_TSS but NOT HBB_TSS, consistent with HBB being silenced in K562 cells. The positive controls (HS1-HS4, HBE1_tss) target the LCR and embryonic globin, confirming the screen focused on K562-expressed genes."
+  }
+}

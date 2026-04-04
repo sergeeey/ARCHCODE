@@ -1,0 +1,22 @@
+{
+  "project": "ARCHCODE (D:/\u0414\u041d\u041a)",
+  "dataset": "HBB_Unified_Atlas.csv",
+  "n_variants": 1103,
+  "n_pathogenic": 353,
+  "n_benign": 750,
+  "features_analyzed": [
+    "ARCHCODE_SSIM",
+    "ARCHCODE_LSSIM",
+    "ARCHCODE_DeltaInsulation",
+    "ARCHCODE_LoopIntegrity",
+    "VEP_Score",
+    "SIFT_Score",
+    "CADD_Phred"
+  ],
+  "benign_syndrome": 0.0012,
+  "pathogenic_syndrome": 0.1614,
+  "separation": 0.1602,
+  "benign_class": "clean",
+  "pathogenic_class": "structural_anomaly",
+  "review_required": true
+}

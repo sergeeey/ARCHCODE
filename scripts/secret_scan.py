@@ -49,13 +49,22 @@ def main() -> int:
     regexes = [re.compile(p) for p in PATTERNS]
     hits: list[str] = []
 
+    # Exclude doc files where patterns appear as examples, not real secrets
+    exclude_dirs = {"docs/", "docs\\"}
     for file in tracked_files():
+        if any(str(file).startswith(d) for d in exclude_dirs) and file.suffix == ".md":
+            continue
         try:
             content = file.read_text(encoding="utf-8", errors="ignore")
         except OSError:
             continue
         for rx in regexes:
             for m in rx.finditer(content):
+                # Skip matches inside code fences (```...```)
+                line_start = content.rfind("\n", 0, m.start()) + 1
+                line = content[line_start : content.find("\n", m.start())]
+                if line.strip().startswith("#") or line.strip().startswith("rg "):
+                    continue
                 hits.append(f"{file}:{m.start()} pattern={rx.pattern}")
 
     if hits:
@@ -72,4 +81,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
-

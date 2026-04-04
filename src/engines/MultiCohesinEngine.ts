@@ -1,6 +1,6 @@
 /**
  * Multi-Cohesin Loop Extrusion Engine
- * Multiple cohesins for ensemble simulation (better AlphaGenome correlation)
+ * Multiple cohesins for ensemble simulation
  */
 
 import {
@@ -637,12 +637,7 @@ export class MultiCohesinEngine {
   }
 
   /**
-   * Finalize contact matrix to match AlphaGenome TAD structure.
-   *
-   * AlphaGenome for HBB shows:
-   * 1. Contacts INCREASE with distance (inverted from raw Hi-C)
-   * 2. Strong peak at loop anchor positions
-   * 3. Dense matrix (99.9% non-zero)
+   * Finalize contact matrix with TAD structure.
    *
    * This creates a TAD-like structure where:
    * - Within-TAD contacts are higher than between-TAD
@@ -668,12 +663,12 @@ export class MultiCohesinEngine {
     const maxSignal = Math.max(loopSignal, 1);
 
     // Build TAD structure: contacts increase towards TAD center/anchors
-    // Tuned to match AlphaGenome's specific HBB locus pattern
+    // Tuned for HBB locus TAD pattern
     for (let i = 0; i < nBins; i++) {
       for (let j = i; j < nBins; j++) {
         const distance = j - i;
 
-        // Base: distance-based increase (like AlphaGenome)
+        // Base: distance-based increase
         // Contacts increase with distance, peaking at TAD-spanning distance
         const maxDist = loopRightBin - loopLeftBin;
         const distanceFactor = Math.min(distance / maxDist, 1);

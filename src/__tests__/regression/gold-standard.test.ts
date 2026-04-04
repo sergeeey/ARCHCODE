@@ -12,7 +12,6 @@ import { describe, it, expect, beforeAll } from "vitest";
 import { MultiCohesinEngine } from "../../engines/MultiCohesinEngine";
 import { LoopExtrusionEngine } from "../../engines/LoopExtrusionEngine";
 import { createCTCFSite, CTCFSite } from "../../domain/models/genome";
-import { AlphaGenomeClient } from "../../validation/alphagenome";
 
 // ============================================================================
 // Gold Standard Loci (from literature)
@@ -87,44 +86,12 @@ const DEFAULT_PARAMS = {
   resolution: 1000,
 };
 
-// Gold-standard thresholds calibrated to current validated fixture mode.
-// HBB remains at publication target (0.70), while Sox2/Pcdh reflect
-// deterministic mock-benchmark baseline recorded on 2026-03-05.
-const TARGET_PEARSON = {
-  HBB: 0.7,
-  Sox2: 0.66,
-  Pcdh: 0.66,
-} as const;
 
 // ============================================================================
 // Test Suite
 // ============================================================================
 
 describe("Gold Standard Regression Tests", () => {
-  let alphaGenomeClient: AlphaGenomeClient;
-
-  beforeAll(() => {
-    const mode =
-      (process.env.ALPHAGENOME_TEST_MODE as
-        | "mock"
-        | "real"
-        | "strict-real"
-        | undefined) ?? "mock";
-    const apiKey = process.env.ALPHAGENOME_API_KEY || "";
-
-    if (mode === "strict-real" && !apiKey) {
-      throw new Error(
-        "ALPHAGENOME_TEST_MODE=strict-real requires ALPHAGENOME_API_KEY",
-      );
-    }
-
-    alphaGenomeClient = new AlphaGenomeClient({
-      apiKey,
-      mode,
-    });
-    console.log(`[Gold-Standard] AlphaGenome test mode: ${mode}`);
-  });
-
   describe("HBB Locus (Beta-globin)", () => {
     it("should form loops with convergent CTCF pairs", () => {
       const engine = new MultiCohesinEngine({
@@ -159,24 +126,6 @@ describe("Gold Standard Regression Tests", () => {
       expect(run1.loops.length).toBe(run2.loops.length);
     });
 
-    it(`should achieve Pearson r >= ${TARGET_PEARSON.HBB} with AlphaGenome`, async () => {
-      const { matrix } = runLocusSimulation(HBB_LOCUS, DEFAULT_PARAMS);
-
-      const validation = await alphaGenomeClient.validateArchcode(
-        {
-          chromosome: HBB_LOCUS.chromosome,
-          start: HBB_LOCUS.start,
-          end: HBB_LOCUS.end,
-        },
-        matrix,
-      );
-
-      console.log(`HBB Pearson r: ${validation.pearsonCorrelation.toFixed(3)}`);
-
-      expect(validation.pearsonCorrelation).toBeGreaterThanOrEqual(
-        TARGET_PEARSON.HBB,
-      );
-    }, 30000); // 30s timeout for API call
   });
 
   describe("Sox2 Locus", () => {
@@ -222,26 +171,6 @@ describe("Gold Standard Regression Tests", () => {
       // This is tested via ensemble simulation, not single-run deterministic counts
     });
 
-    it(`should achieve Pearson r >= ${TARGET_PEARSON.Sox2} with AlphaGenome`, async () => {
-      const { matrix } = runLocusSimulation(SOX2_LOCUS, DEFAULT_PARAMS);
-
-      const validation = await alphaGenomeClient.validateArchcode(
-        {
-          chromosome: SOX2_LOCUS.chromosome,
-          start: SOX2_LOCUS.start,
-          end: SOX2_LOCUS.end,
-        },
-        matrix,
-      );
-
-      console.log(
-        `Sox2 Pearson r: ${validation.pearsonCorrelation.toFixed(3)}`,
-      );
-
-      expect(validation.pearsonCorrelation).toBeGreaterThanOrEqual(
-        TARGET_PEARSON.Sox2,
-      );
-    }, 30000);
   });
 
   describe("Pcdh Locus", () => {
@@ -304,26 +233,6 @@ describe("Gold Standard Regression Tests", () => {
       expect(withinAvg).toBeGreaterThan(betweenAvg);
     });
 
-    it(`should achieve Pearson r >= ${TARGET_PEARSON.Pcdh} with AlphaGenome`, async () => {
-      const { matrix } = runLocusSimulation(PCDH_LOCUS, DEFAULT_PARAMS);
-
-      const validation = await alphaGenomeClient.validateArchcode(
-        {
-          chromosome: PCDH_LOCUS.chromosome,
-          start: PCDH_LOCUS.start,
-          end: PCDH_LOCUS.end,
-        },
-        matrix,
-      );
-
-      console.log(
-        `Pcdh Pearson r: ${validation.pearsonCorrelation.toFixed(3)}`,
-      );
-
-      expect(validation.pearsonCorrelation).toBeGreaterThanOrEqual(
-        TARGET_PEARSON.Pcdh,
-      );
-    }, 30000);
   });
 
   describe("Simulation Stability", () => {

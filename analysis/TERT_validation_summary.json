@@ -1,0 +1,14 @@
+{
+  "locus": "TERT",
+  "n_total": 2089,
+  "n_q1": 13,
+  "n_q2": 35,
+  "n_q3": 416,
+  "n_q4": 1625,
+  "q2_precision": 0.9714,
+  "q2_mean_enhancer_dist": 864.0,
+  "q3_mean_enhancer_dist": 19966.0,
+  "p_mannwhitney_q2_lt_q3": 2.033e-15,
+  "n_pearls": 35,
+  "verdict": "GO \u2014 TERT = SECONDARY LOCUS"
+}

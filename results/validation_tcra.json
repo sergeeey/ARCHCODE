@@ -112,7 +112,7 @@
       "Max enrichment 9.2e-5 exceeds threshold (1e-6)",
       "NonZero cells doubled (221 → 451)"
     ],
-    "conclusion": "FountainLoader demonstrates significant spatial signal effect on TCRα locus. The Mediator-driven loading hypothesis is supported by blind validation."
+    "conclusion": "FountainLoader demonstrates significant spatial signal effect on TCRα locus. The Mediator-driven loading hypothesis is supported by post-hoc validation (parameters and results committed simultaneously; not formally blinded)."
   },
   "data_files": {
     "beta0_ensemble": "results/ensemble_tcra_beta0.json",

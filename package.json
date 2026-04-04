@@ -2,7 +2,7 @@
   "name": "archcode",
   "private": true,
   "version": "2.0.0",
-  "description": "Physics-based 3D chromatin loop extrusion simulator for variant pathogenicity prediction",
+  "description": "Physics-based 3D chromatin loop extrusion simulator for structural mechanism discovery",
   "type": "module",
   "repository": {
     "type": "git",
@@ -33,18 +33,15 @@
     "test:gold": "vitest run src/__tests__/regression/gold-standard.test.ts",
     "test:watch": "vitest",
     "test:regression": "vitest run src/__tests__/regression/",
-    "validate:hbb": "node scripts/quick-validate.js",
     "validate:hic": "npx tsx scripts/validate-hic.ts",
     "validate:hic:download": "npx tsx scripts/validate-hic.ts --download",
     "validate:hic:list": "npx tsx scripts/validate-hic.ts --list",
+    "validate:results-contracts": "python scripts/validate_results_contracts.py",
+    "validate:project-canon": "python scripts/validate_project_canon.py",
     "validate:nature2025": "npx tsx scripts/validate-nature-2025.ts --locus=HBB --runs=1000",
     "validate:sox2": "npx tsx scripts/validate-nature-2025.ts --locus=SOX2 --runs=100",
     "validate:ctcf-kd": "npx tsx scripts/validate-nature-2025.ts --locus=HBB_CTCFKD --runs=100",
-    "fountain:myc": "npx tsx scripts/run-fountain-myc.ts",
-    "alphagenome:hbb": "npx tsx scripts/validate-alphagenome-hbb.ts",
-    "alphagenome:validate": "npx tsx scripts/validate-alphagenome-hbb.ts",
-    "alphagenome:setup": "pip install alphagenome && python src/services/alphagenome_wrapper.py check",
-    "alphagenome:check": "python src/services/alphagenome_wrapper.py check"
+    "fountain:myc": "npx tsx scripts/run-fountain-myc.ts"
   },
   "dependencies": {
     "@react-three/drei": "^9.88.0",

@@ -114,29 +114,11 @@ npx tsx tmp_analyze_variant.ts
 Based on variant category:
 
 - **splice_donor/acceptor**: Strong loop disruption expected (SSIM < 0.6)
-- **splice_region**: Moderate disruption (SSIM 0.5-0.7) — "The Loop That Stayed" candidates
+- **splice_region**: Moderate disruption (SSIM 0.5-0.7) — enhancer-proximity candidates
 - **missense**: Variable impact depending on position (0.4-0.9)
 - **promoter**: Affects loading sites, not loops (SSIM 0.5-0.8)
 - **intronic**: Usually minimal (SSIM > 0.8)
 - **UTR**: Post-transcriptional, not structural (SSIM > 0.85)
-
-### Step 5: AlphaGenome Comparison (if available)
-
-Check if AlphaGenome prediction exists:
-
-```bash
-grep "VCV000000302" results/HBB_Clinical_Atlas.csv
-```
-
-If found, compare:
-
-- **ARCHCODE (structural)**: SSIM-based verdict
-- **AlphaGenome (expression)**: Score-based verdict
-
-**Discordance interpretation:**
-
-- ARCHCODE pathogenic, AlphaGenome benign → **"The Loop That Stayed"** (structural-only pathogenicity)
-- ARCHCODE benign, AlphaGenome pathogenic → **Post-transcriptional mechanism** (expression-only)
 
 ## Output Format
 
@@ -153,12 +135,7 @@ Return structured JSON:
     "verdict": "LIKELY_PATHOGENIC",
     "mechanism": "Splice region disrupts CTCF binding, reducing loop stability"
   },
-  "alphagenome": {
-    "score": 0.454,
-    "verdict": "VUS"
-  },
-  "discordance": true,
-  "interpretation": "ARCHCODE detects structural pathogenicity that AlphaGenome missed. Variant disrupts 3D chromatin loops without affecting transcript levels directly. Classic 'Loop That Stayed' case.",
+  "interpretation": "ARCHCODE detects structural pathogenicity invisible to sequence-based tools. Variant disrupts 3D chromatin loops.",
   "confidence": "HIGH"
 }
 ```
@@ -198,11 +175,11 @@ You:
 3. Run simulation (or use cached data if available)
 4. Calculate SSIM
 5. Return structured JSON
-6. Add interpretation about "The Loop That Stayed" mechanism
+6. Add interpretation about enhancer-proximity disruption mechanism
 
 ## Scientific Context
 
-**ARCHCODE** uses Kramer kinetics (α=0.92, γ=0.80) for cohesin unloading:
+**ARCHCODE** uses Kramer kinetics (α=0.92, γ=0.80, MANUALLY CALIBRATED) for cohesin unloading:
 
 ```
 unloadingProb = k_base × (1 - α × occupancy^γ)
@@ -212,10 +189,11 @@ Validated on:
 
 - HBB locus (Sabaté et al. 2024 (bioRxiv))
 - Blind tests: IGH, TCRα, SOX2, MYC (all PASS)
-- Power-law exponent: α = -0.964 (error 3.6%)
+- 13 loci, 63,153 variants total
+- Hi-C correlation: r = 0.28–0.59 across loci
 
-**Goal:** Complement AlphaGenome's expression predictions with structural insights.
+**Goal:** Structural pathogenicity prioritization — tissue-dependent enhancer-proximity framework.
 
 ---
 
-_Agent created: 2026-02-03 | ARCHCODE v1.1.0_
+_Agent created: 2026-02-03 | Updated: 2026-03-09 | ARCHCODE v2.16_

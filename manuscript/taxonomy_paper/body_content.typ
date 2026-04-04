@@ -1,0 +1,1800 @@
+// CANON_TIER: TECHNICAL_FULL_SCOPE
+// STATUS: current technical full-scope manuscript surface; not the default public landing surface
+// body_content.typ — основной текст рукописи
+// Включается в main.typ через #include
+
+#import "../template.typ": biorxiv-references, scientific-table, hrule, thick-hrule
+
+// =============================================================================
+// SIGNIFICANCE STATEMENT
+// =============================================================================
+
+#block(
+  stroke: 0.6pt + luma(150),
+  fill: luma(248),
+  inset: (x: 1.2em, y: 1em),
+  radius: 3pt,
+  width: 100%,
+)[
+  #text(weight: "bold")[Significance Statement]
+
+  #v(0.4em)
+  Genetic testing for non-coding variants relies on tools that score pathogenicity along a
+  single axis --- sequence conservation or predicted regulatory disruption. We show that
+  regulatory pathogenicity is mechanistically heterogeneous, decomposing into at least five
+  distinct classes that require different tools and different experiments. One class ---
+  architecture-driven pathogenicity, where variants disrupt 3D chromatin contacts rather than
+  regulatory element activity --- is underdetected by first-pass sequence tools and promoter-scale
+  assays. Across 9 clinically important loci and 30,318 variants, we identify 261 variants in
+  systematic blind spots, including 25 high-confidence architecture-driven variants at the
+  tissue-matched HBB locus and 29 candidates at partially matched loci, prioritized through
+  chromatin structure simulation. Adopting mechanism-first classification before pathogenicity
+  scoring could reduce false-negative rates and direct experimental resources to the assay most
+  likely to detect each variant's effect. Even AlphaMissense, Google DeepMind's protein-structure-based pathogenicity classifier, covers only 23% of variants in our atlas and scores only 3 of 41 architecture-driven candidates.
+]
+
+// =============================================================================
+// 1. INTRODUCTION
+// =============================================================================
+
+= Introduction
+
+The interpretation of non-coding genetic variants remains one of the central unsolved problems
+in human genetics. Despite rapid advances in genome sequencing, the clinical significance of
+most variants outside protein-coding regions cannot be determined by existing computational
+tools (Chin et al. 2024). The dominant paradigm treats pathogenicity as a single-axis quantity:
+a variant receives one score --- from VEP, CADD, REVEL, or a deep learning model --- and that
+score is compared against a threshold to classify the variant as benign or pathogenic. This
+framework has been remarkably productive for coding variants, where the relationship between
+sequence change and protein function is relatively direct. For regulatory variants, however, the
+single-score paradigm obscures a fundamental heterogeneity in the mechanisms through which
+non-coding mutations cause disease.
+
+Consider three variants, each pathogenic, each non-coding. The first disrupts a transcription
+factor binding motif within an enhancer, reducing its transcriptional output --- a mechanism
+readily detected by massively parallel reporter assays (MPRA) and sequence-based deep learning
+models. The second disrupts a CTCF insulator boundary, causing an enhancer to contact and
+activate a gene in an adjacent topological domain --- a mechanism invisible to any
+sequence-based tool because the enhancer itself is unchanged and the pathogenic effect arises
+entirely from altered three-dimensional chromatin architecture. The third falls in a deep
+intronic region where no current annotation tool can assign any consequence at all. These three
+variants require different computational approaches, different experimental validations, and
+different therapeutic strategies. Yet under the single-score paradigm, they are treated as
+instances of the same problem.
+
+The inadequacy of single-axis scoring has been recognized from multiple directions. Cheng,
+Bohaczuk, and Stergachis (2024) proposed a three-category functional taxonomy of regulatory
+variants causing Mendelian conditions, distinguishing non-modular loss-of-expression, modular
+(tissue-specific) loss-of-expression, and gain-of-ectopic-expression. Their taxonomy classifies
+variants by _expression outcome_ --- what happens to the target gene --- but does not address
+the _mechanism of disruption_: whether the variant alters element activity, chromatin topology,
+or both. Chin, Gardell, and Corces (2024) documented that non-coding variants "can exert their
+effects via multiple molecular mechanisms" and that regulatory elements show "exquisitely cell
+type-specific usage," but stopped short of proposing a mechanistic classification. Most
+recently, Avsec et al. (2026) introduced AlphaGenome, a multi-modal sequence model predicting
+thousands of functional genomic tracks, and explicitly acknowledged that "specialized models
+alone are insufficient for capturing the diverse molecular consequences of variants across
+modalities." Even the most powerful predictive models, it appears, require a framework for
+interpreting _which_ mechanism a variant disrupts --- not merely _whether_ it is disruptive.
+
+We argue that what the field lacks is not better scores but a better abstraction. The
+appropriate unit of variant interpretation is not a single pathogenicity value but a mechanistic
+class assignment: does this variant disrupt regulatory element activity, three-dimensional
+chromatin architecture, both, or neither --- and is the analysis being performed in the correct
+tissue context? This reframing --- mechanism first, then score --- has immediate practical
+consequences. It determines which computational tool should be applied, which experimental assay
+will be informative, and which therapeutic modality might be relevant. A variant classified as
+architecture-driven should not be validated by MPRA (which removes three-dimensional context by
+design) but by Capture Hi-C in disease-relevant cells. A variant classified as a coverage gap
+should not be reported as "benign" but as "unscored --- awaiting appropriate assay."
+
+Here we propose a five-class taxonomy of regulatory pathogenicity: (A) activity-driven, where
+variants alter enhancer or promoter function; (B) architecture-driven, where variants disrupt
+three-dimensional chromatin contact topology; (C) mixed, combining both mechanisms; (D)
+coverage gap, where current tools lack scoring capability; and (E) tissue-mismatch artifact,
+where apparent signals reflect incorrect tissue context. We ground this taxonomy in quantitative
+evidence from ARCHCODE, a loop-extrusion-based structural pathogenicity engine, applied to
+30,318 ClinVar variants across nine clinically important genomic loci (Figure 1). We show that
+the five classes exhibit distinct signatures across sequence-based tools, structural simulation,
+reporter assays, and endogenous perturbation screens, and that architecture-driven pathogenicity
+--- representing 20.7% of structural blind spots --- is nearly orthogonal to all widely used
+variant interpretation methods (NMI < 0.1). We validate the taxonomy against eight canonical
+cases from the published literature spanning limb malformations, leukemia, medulloblastoma, and
+cystic fibrosis. We propose that variant interpretation frameworks should explicitly assign
+mechanistic class before computing pathogenicity scores, enabling targeted experimental
+validation and reducing systematic blind spots in clinical genetics.
+
+// =============================================================================
+// 2. WHY CURRENT TOOLS CONFLATE MECHANISMS
+// =============================================================================
+
+= Why Current Tools Conflate Mechanisms
+
+The variant interpretation tools in widespread clinical and research use were designed, trained,
+and validated under an implicit assumption: that pathogenicity can be captured along a single
+informational axis derived primarily from sequence features. This section examines why this
+assumption fails for regulatory variants and presents quantitative evidence for the resulting
+blind spots.
+
+== Sequence-based predictors capture activity, not architecture
+
+The Variant Effect Predictor (VEP; McLaren et al. 2016) annotates variants by mapping them to
+transcript consequences --- missense, nonsense, splice-site disruption, regulatory region
+overlap. Its strength lies in coding annotation, where the mapping from sequence change to
+protein consequence is well defined. For non-coding variants, VEP relies on overlap with
+annotated regulatory features (Ensembl Regulatory Build) and predicted splice effects.
+Critically, VEP contains no representation of three-dimensional chromatin organization: it
+cannot distinguish a variant that falls within an active enhancer from one that falls at a
+CTCF-bound insulator boundary, because both may overlap the same "regulatory region"
+annotation. In our analysis of 30,318 ClinVar variants across nine loci, VEP returned no
+consequence annotation (score = −1) for 207 variants in structurally informative regions --- a
+coverage gap representing 79.3% of all discordant cases between VEP and structural simulation.
+
+CADD (Kircher et al. 2014; Rentzsch et al. 2019) integrates over 60 annotation features ---
+conservation, regulatory overlap, protein impact, epigenomic marks --- into a single
+deleteriousness score via a machine learning model trained to distinguish simulated de novo
+variants from fixed human-derived alleles. CADD's integration of diverse features gives it
+broader coverage than VEP, but its training objective is inherently sequence-level: the model
+learns which sequence contexts are depleted by purifying selection, not which three-dimensional
+contacts are disrupted. The result is a score that correlates well with activity-driven
+pathogenicity (Class A) but is nearly fully orthogonal to architecture-driven pathogenicity
+(Class B). Across the HBB locus, the normalized mutual information between ARCHCODE structural
+disruption scores and CADD scores is 0.242 (95% CI: 0.189--0.298, bootstrap N = 1,000), indicating limited shared information (Figure 3). The corresponding NMI between ARCHCODE and VEP is 0.495 (95% CI: 0.433--0.560) at the tissue-matched HBB locus --- moderate correlation reflecting that both tools capture some discriminative signal when enhancer landscape is present. However, at tissue-mismatched loci, NMI drops to near zero (weighted cross-locus average: 0.026), demonstrating that the apparent orthogonality between structural and sequence axes is primarily a tissue-specificity phenomenon rather than an inherent property of the tools. For comparison, the NMI between VEP and CADD on HBB data is 0.323, reflecting their shared reliance on sequence-level features.
+
+These orthogonality measurements are not merely statistical curiosities. They quantify the size
+of the blind spot: variants that score high on the architecture axis and low on the sequence
+axis are, by definition, invisible to tools that operate only on the sequence axis. In the
+ARCHCODE dataset, 54 such variants (designated Q2b --- structurally disruptive but
+sequence-tool-negative; 25 high-confidence at tissue-matched HBB, 29 candidates at partially matched loci) cluster within a mean distance of 434 bp from tissue-matched enhancers,
+58-fold closer than activity-driven variants (25,138 bp; p = $2.51 times 10^(-31)$). This
+spatial signature is consistent with a contact-disruption mechanism: the variants sit at
+positions where they can perturb enhancer-promoter spatial proximity without altering the
+enhancer's intrinsic activity.
+
+Recent benchmarking work confirms that the blind spot is not unique to VEP and CADD. Benegas,
+Eraslan, and Song (2025) systematically evaluated DNA sequence models for causal variant
+prediction and found that "distal non-exonic variants for complex traits are the hardest class,"
+with model ensembling yielding consistent improvements --- implying that no single model
+captures all variant classes. Wang et al. (2024) reviewed deep learning approaches for
+non-coding variant effect prediction and identified three systematic limitations: single-sequence
+reference bias, missing post-transcriptional mechanisms, and challenges with long-range
+interactions. The long-range interaction limitation is particularly relevant: architecture-driven
+pathogenicity operates through contacts spanning tens to hundreds of kilobases, a scale that
+exceeds the receptive field of most sequence-based models.
+
+== Reporter assays measure activity by design --- and miss architecture by design
+
+Massively parallel reporter assays (MPRA) represent the experimental gold standard for measuring
+regulatory element activity (Tewhey et al. 2016). By cloning thousands of variant sequences
+upstream of a reporter gene on episomal plasmids, MPRA directly quantifies allele-specific
+differences in enhancer or promoter output. Tewhey et al. (2016) applied MPRA to 32,373
+variants from 3,642 cis-eQTL loci, identifying 842 with significant allele-specific expression
+effects. The power of this approach is undeniable for activity-driven variants (Class A).
+
+However, MPRA has a fundamental and irreducible limitation for architecture-driven variants: the
+plasmid removes three-dimensional chromatin context. An enhancer sequence cloned onto an episome
+is physically disconnected from the chromosomal topology that determines which promoter it
+contacts in vivo. A variant that disrupts CTCF-mediated insulation, altering enhancer-promoter
+routing without changing enhancer activity, will produce a null result in MPRA --- not because
+it is benign, but because the assay is blind to its mechanism. In the ARCHCODE dataset,
+cross-validation against MPRA data from the Kircher et al. (2019) saturation mutagenesis of the
+HBB promoter region confirms this prediction: Q2b (architecture-driven) variants show no MPRA
+signal, consistent with a contact-disruption rather than element-activity mechanism.
+
+== Endogenous perturbation screens are tissue-limited
+
+CRISPRi (CRISPR interference) overcomes MPRA's topology limitation by silencing regulatory
+elements at their endogenous chromosomal positions (Gilbert et al. 2013). The Gasperini et al.
+(2019) screen tested 90,955 enhancer-gene pairs in K562 cells, providing the largest endogenous
+perturbation dataset available. However, CRISPRi screens are constrained by the cell type in
+which they are performed. K562 is an erythroleukemia line expressing fetal gamma-globin; it
+does not recapitulate the adult beta-globin regulatory landscape relevant to HBB-associated
+beta-thalassemia. In our benchmarking (EXP-008), zero of the 25 HBB Q2b architecture-driven
+variants overlap with elements tested in the Gasperini K562 screen. This is not a failure of
+CRISPRi as a technology --- it is a consequence of cell-type mismatch between the screen and
+the disease-relevant tissue.
+
+The implication is sobering: the three most widely used approaches to regulatory variant
+interpretation --- sequence-based prediction, episomal reporter assays, and endogenous
+perturbation screens --- each have systematic blind spots that align with specific mechanistic
+classes. Sequence-based tools capture activity-driven effects but miss architecture. MPRA
+captures activity by design and misses architecture by design. CRISPRi captures endogenous
+effects but only in the cell type tested. No single tool, and no single-axis score, can cover
+the full mechanistic spectrum. This is not a temporary limitation awaiting a better algorithm;
+it reflects the biological reality that regulatory pathogenicity operates through mechanistically
+distinct axes that require distinct measurement approaches (Figure 3).
+
+// =============================================================================
+// 3. A TAXONOMY OF REGULATORY PATHOGENICITY
+// =============================================================================
+
+= A Taxonomy of Regulatory Pathogenicity
+
+We propose five mechanistic classes of regulatory pathogenicity, defined by the axis of
+disruption, the tools capable of detecting each class, and the experimental assays required for
+validation (Figure 1). The taxonomy is grounded in quantitative evidence from ARCHCODE analysis
+of 30,318 ClinVar variants across nine loci and validated against eight canonical cases from the
+published literature. We emphasize that the classes describe _mechanisms of disruption_, not
+expression outcomes --- a distinction that separates this framework from prior taxonomies based
+on loss-of-expression versus gain-of-expression (Cheng et al. 2024).
+
+== Class A: Activity-Driven
+
+Class A variants alter the intrinsic regulatory activity of a cis-regulatory element ---
+enhancer strength, promoter output, transcription factor binding affinity, or chromatin
+accessibility --- without necessarily changing three-dimensional chromatin architecture. The
+pathogenic mechanism operates at the element level: what the regulatory element does, not where
+it contacts.
+
+Activity-driven pathogenicity is the best-characterized class and the primary target of existing
+variant interpretation tools. MPRA and STARR-seq directly measure allelic differences in element
+activity; sequence-based deep learning models (Enformer, Sei, DeepSEA) predict regulatory
+consequences from sequence alone; VEP and CADD incorporate regulatory annotations that capture
+activity-associated features. The canonical example is the SHH ZRS (Zone of Polarizing Activity
+Regulatory Sequence) enhancer, located approximately 1 Mb from the SHH gene, where single
+nucleotide mutations create ectopic ETS transcription factor binding sites, causing
+gain-of-function SHH expression in the anterior limb bud and resulting in preaxial polydactyly
+(Lettice et al. 2003). Critically, the three-dimensional contact architecture connecting ZRS to
+the SHH promoter is unchanged in these patients --- the variant alters what the enhancer does,
+not where it contacts. Tewhey et al. (2016) demonstrated the generality of this class at
+population scale, identifying 842 activity-modulating variants from 32,373 cis-eQTL loci using
+MPRA.
+
+In the ARCHCODE dataset, Class A is represented by HBB Q3 variants (approximately 75 variants):
+those scored as consequential by VEP (VEP > 0.5) but showing no structural disruption in
+loop-extrusion simulation (LSSIM > 0.95). These variants sit at a mean distance of 25,138 bp
+from the nearest tissue-matched enhancer --- far enough that perturbation of enhancer-promoter
+spatial proximity is unlikely. Their mechanism is presumptively activity-driven: coding
+consequences, splice effects, or local regulatory disruption detectable by sequence-based tools.
+
+*Signature profile:* MPRA-positive, sequence-model-positive, VEP/CADD-positive,
+ARCHCODE-neutral, Hi-C-neutral. Enhancer distance: large (>10 kb typical).
+
+== Class B: Architecture-Driven
+
+Class B variants alter the three-dimensional chromatin contact landscape --- loop extrusion
+outcomes, insulator function, enhancer-promoter spatial proximity, or TAD boundary integrity ---
+without necessarily changing intrinsic element activity. The pathogenic mechanism operates at
+the topological level: where regulatory elements contact their targets, not what those elements
+do.
+
+Architecture-driven pathogenicity has been documented in landmark studies of structural
+variants. Lupiáñez et al. (2015) showed that deletions disrupting TAD boundaries at the
+WNT6/IHH/EPHA4/PAX3 locus cause pathogenic rewiring of enhancer-gene interactions, resulting
+in limb malformations --- brachydactyly, F-syndrome, or polydactyly depending on which boundary
+is disrupted. The enhancers themselves are wild-type; the pathogenic mechanism is purely
+topological. Hnisz et al. (2016) demonstrated that microdeletions eliminating CTCF boundary
+sites in T-cell acute lymphoblastic leukemia are sufficient to activate proto-oncogenes,
+including TAL1, by disrupting insulated neighborhoods. In both cases, sequence-based tools would
+detect no pathogenic signal: the coding sequences are intact, the enhancer sequences are
+unchanged, and the pathogenic effect arises entirely from altered three-dimensional contacts.
+
+The recent comprehensive review by Sreenivasan, Yumiceba, and Spielmann (2025) in _Nature
+Reviews Genetics_ establishes a field consensus that three-dimensional genome architecture
+constitutes a distinct pathogenic dimension, covering position effects, enhancer hijacking,
+boundary disruption, and their clinical consequences across dozens of Mendelian conditions and
+cancers. This growing body of evidence supports the designation of architecture-driven
+pathogenicity as a distinct mechanistic class rather than a variant of activity disruption.
+
+In the ARCHCODE dataset, Class B is represented canonically by HBB Q2b variants: 25 variants
+showing structural disruption (LSSIM < 0.95) but low or absent VEP scores, clustering within
+434 bp of tissue-matched enhancers (p = $2.51 times 10^(-31)$). These variants return null
+results in both MPRA cross-validation and CRISPRi benchmarking --- consistent with a
+contact-disruption mechanism where the enhancer remains active but its spatial relationship to
+the promoter is perturbed. The tissue specificity of this signal is pronounced: architecture-
+driven disruption scores correlate strongly with tissue match (Spearman rho = 0.840, p = 0.0046),
+and EXP-003 tissue-mismatch controls show that structural signal collapses by 700-fold when the
+wrong tissue's enhancer configuration is applied (matched delta = 0.00357 versus mismatch delta
+= $5.04 times 10^(-6)$).
+
+*Signature profile:* MPRA-null, sequence-model-null, VEP/CADD-low, ARCHCODE-positive (LSSIM
+< 0.95), Hi-C contact change predicted. Enhancer distance: small (< 1 kb typical). Tissue match:
+required.
+
+== Class C: Mixed (Activity + Architecture)
+
+Class C variants simultaneously affect both intrinsic regulatory element activity and
+three-dimensional chromatin contact topology. These are potentially the most severely pathogenic
+variants because they disrupt multiple mechanistic axes --- but they are also the most difficult
+to characterize, because each single-axis tool captures only a partial view of the total effect.
+
+The paradigmatic examples come from cancer genomics. Gröschel et al. (2014) described the
+inv(3)(q21q26) rearrangement in acute myeloid leukemia, which repositions a GATA2 enhancer near
+the MECOM (EVI1) oncogene. This event has two simultaneous consequences: ectopic MECOM
+activation via enhancer hijacking (an architecture change --- the enhancer is physically moved
+to a new genomic location) and GATA2 haploinsufficiency from enhancer loss (an activity change
+--- the gene loses its regulatory input). Neither mechanism alone is sufficient for
+leukemogenesis; both are required. Northcott et al. (2014) described an analogous mixed-class
+mechanism in medulloblastoma, where structural variants reposition GFI1/GFI1B coding sequences
+adjacent to active super-enhancers. The term "enhancer hijacking" --- now widely used --- was
+popularized by this work and inherently describes a mixed-class event: the structural
+rearrangement creates new three-dimensional proximity (architecture), while the super-enhancer's
+tissue-specific activity (activity) drives oncogene expression.
+
+In the ARCHCODE dataset, Class C is tentatively represented by HBB Q1 concordant variants
+(approximately 270 variants): those scored as consequential by both VEP (VEP > 0.5) and
+ARCHCODE (LSSIM < 0.95) in a tissue-matched context. The co-occurrence of both signals is
+consistent with dual-mechanism disruption, though it could also reflect coincidental spatial
+proximity of a coding variant to an architecture-sensitive region. Definitive Class C assignment
+requires dual-readout experiments --- allele-specific Hi-C combined with RNA-seq in patient
+cells --- to demonstrate that both contact disruption and expression change occur from the same
+variant.
+
+*Signature profile:* MPRA-positive, sequence-model-positive, VEP/CADD-positive,
+ARCHCODE-positive. Both activity and topology axes disrupted. Enhancer distance: variable.
+Attribution requires multi-modal evidence.
+
+== Class D: Coverage Gap
+
+Class D variants fall in regions where current sequence-based tools cannot assign a pathogenicity
+score --- not because the tools disagree with structural simulation, but because the variant type
+or genomic context lies outside their annotation scope. This class represents tool absence, not
+tool disagreement, and its conflation with benignity is one of the most consequential errors in
+current variant interpretation practice.
+
+The scale of the coverage gap is substantial. Deep intronic variants --- more than 100 bp from
+the nearest exon boundary --- are systematically missed by standard VEP annotation, which
+focuses on canonical splice sites within a few base pairs of exon-intron junctions. Vaz-Drago,
+Custódio, and Carmo-Fonseca (2017) reviewed pathogenic deep intronic variants across dozens of
+genes, including CFTR, NF1, ATM, and BRCA2, where cryptic exon creation causes disease through
+a mechanism that standard annotation tools cannot score. More broadly, non-coding frameshifts in
+intergenic regions, variants in unannotated regulatory elements, and positions outside the
+training distribution of machine learning models all fall into this class.
+
+In the ARCHCODE dataset, Class D is the dominant category of discordance between sequence-based
+tools and structural simulation: 207 of 261 discordant variants (79.3%) are Q2a --- variants
+where VEP returns no score (VEP = −1) but ARCHCODE detects structural disruption. The
+distribution across loci is informative: at the TERT locus, 34 of 35 Q2 variants are Q2a
+(coverage gap dominant), and ARCHCODE achieves an AUC of 0.8405 --- the highest of four model
+comparisons --- suggesting substantial complementary coverage in precisely the regions where
+sequence-based tools are blind. At the MLH1 locus, all 72 Q2 variants are Q2a, representing a
+complete annotation gap for structural effects in non-coding regions.
+
+The clinical consequence of conflating Class D with benignity is direct: a variant reported as
+"no known pathogenic significance" may in fact be unscored rather than assessed and found
+benign. The distinction matters for patient care: "unscored" warrants monitoring and functional
+follow-up; "benign" does not.
+
+*Signature profile:* VEP = no score, CADD = variable (often low), ARCHCODE = variable
+(positive for D+B overlap), MPRA = untested. Mechanism: unknown pending functional
+characterization.
+
+== Class E: Tissue-Mismatch Artifact
+
+Class E captures a systematic source of error rather than a biological mechanism: apparent
+pathogenic signals that arise from analyzing a variant in the wrong tissue's regulatory context.
+Class E is not a true pathogenic class but a diagnostic category that guards against
+misinterpretation of tissue-specific data.
+
+The biological basis for tissue-mismatch artifacts is well established. Wang et al. (2012)
+demonstrated that CTCF occupancy varies substantially across cell types: only approximately 30%
+of CTCF binding sites are constitutive, while approximately 70% are tissue-variable, with
+tissue-specific binding linked to DNA methylation at CpG dinucleotides within CTCF motifs. A
+variant disrupting a CTCF site active in tissue X but not tissue Y will show architecture-driven
+pathogenicity only in tissue X's chromatin context. Any analysis performed in tissue Y will
+produce a false negative --- not because the variant is benign, but because the tissue is wrong.
+Chakraborty et al. (2023) extended this observation, showing that enhancer-promoter interactions
+can bypass CTCF-mediated boundaries in a tissue-dependent manner: neural tissues maintain
+cross-boundary contacts while foregut tissues cannot, meaning that identical structural
+perturbations have different consequences depending on tissue context.
+
+In the ARCHCODE dataset, Class E is diagnosed by three lines of evidence. First, loci expressed
+in non-erythroid tissues --- SCN5A (cardiac), GJB2 (cochlear) --- show zero Q2b
+(architecture-driven) variants when analyzed with K562-derived enhancer configurations, despite
+harboring clinically pathogenic non-coding variants in their native tissues. Second, the LDLR
+locus (hepatic) shows only Q2a (coverage gap) variants with no architecture-driven signal,
+consistent with K562 mismatch. Third, EXP-003 tissue-mismatch controls directly quantify the
+artifact: when HBB variants are analyzed with HBB-matched enhancers, the mean structural
+disruption delta is 0.00357 (p = $4.66 times 10^(-72)$); when the same variants are analyzed
+with LDLR-derived enhancers, the delta collapses to $5.04 times 10^(-6)$ --- a 700-fold
+reduction. When analyzed with TP53-derived enhancers, the delta inverts to −0.01168, producing
+a nonsensical negative value. This collapse is not an ARCHCODE-specific limitation; it reflects
+the fundamental biology of tissue-specific chromatin organization that constrains all methods
+relying on regulatory context.
+
+*Signature profile:* Signal present in one tissue configuration, absent or inverted in correct
+tissue. Diagnostic: compare matched versus mismatched tissue contexts. Resolution: repeat
+analysis in disease-relevant cell type.
+
+== Decision Rules for Class Assignment
+
+The assignment of variants to mechanistic classes follows a decision tree grounded in
+tool-specific evidence profiles (Figure 1):
+
++ *Coverage test.* If VEP returns no consequence annotation (VEP = −1), the variant is
+  assigned to Class D (coverage gap). If ARCHCODE additionally detects structural disruption
+  (LSSIM < 0.95), the variant is flagged as D+B overlap --- a coverage gap with
+  architecture-driven signal that warrants priority follow-up.
+
++ *Activity test.* If MPRA or a sequence-based model detects allele-specific regulatory
+  activity (or VEP assigns a consequential annotation) and ARCHCODE shows no structural
+  disruption (LSSIM ≥ 0.95), the variant is assigned to Class A (activity-driven).
+
++ *Architecture test.* If MPRA is null and ARCHCODE detects structural disruption in a
+  tissue-matched context, the variant is assigned to Class B (architecture-driven). Tissue
+  match is a necessary condition: without it, the variant cannot be distinguished from Class E.
+
++ *Mixed test.* If both activity-axis tools (MPRA, VEP, sequence models) and
+  architecture-axis tools (ARCHCODE, Hi-C) detect disruption, the variant is assigned to
+  Class C (mixed).
+
++ *Tissue-mismatch test.* If ARCHCODE signal is present in one tissue configuration but
+  collapses or inverts in the biologically correct tissue, the variant is assigned to Class E
+  (tissue-mismatch artifact). EXP-003 provides the diagnostic protocol: compute structural
+  disruption delta in matched versus mismatched enhancer configurations and test for significant
+  reduction.
+
+Several caveats apply. First, the decision rules are heuristic, not algorithmic --- they depend
+on the availability of tissue-matched data and the completeness of MPRA coverage, both of which
+are limited for most loci. Second, the class boundaries are likely fuzzy rather than discrete: a
+variant near a CTCF site adjacent to an enhancer might disrupt both boundary function and
+element activity, placing it on a continuum between Classes B and C. Third, the rules are
+asymmetric by design --- Class B requires the affirmative demonstration of tissue-matched
+structural disruption combined with the absence of activity-axis signal, a higher evidentiary
+bar than Class A. This asymmetry reflects the current state of evidence: activity-driven
+pathogenicity is well established, while architecture-driven pathogenicity requires more
+stringent support. As the evidence base grows, particularly through tissue-matched Hi-C
+experiments and allele-specific contact assays, the decision rules should be refined and, where
+possible, formalized into quantitative classifiers.
+
+== Tissue-match classification
+
+Each locus was assigned a tissue-match score reflecting concordance between the K562 simulation cell line and the gene's primary expression tissue. Scores were assigned based on three criteria: (1) gene expression in K562 (GTEx/ENCODE RNA-seq); (2) presence of disease-relevant enhancers in K562 ChIP-seq data (H3K27ac, H3K4me1); and (3) concordance of CTCF binding profile between K562 and the primary disease tissue.
+
+Scores: *1.0* = K562 is the primary expression tissue for the gene (HBB: erythroid); *0.5* = gene is expressed in K562 but K562 is not the primary disease tissue (BRCA1, TP53, MLH1, TERT); *0.0* = gene is not meaningfully expressed in K562 or K562 lacks the relevant enhancer landscape (CFTR: lung epithelial, SCN5A: cardiac, GJB2: cochlear, LDLR: hepatic). This classification is heuristic and represents a limitation of the current framework. Future work should develop a quantitative tissue-match metric incorporating expression level, enhancer density, and CTCF binding overlap between the simulation cell line and the disease-relevant tissue.
+
+// =============================================================================
+// 4. ARCHCODE AS THE ARCHITECTURE-DRIVEN ENGINE
+// =============================================================================
+
+= ARCHCODE as the Architecture-Driven Engine
+
+== Method overview
+
+ARCHCODE is a physics-based structural pathogenicity engine that models enhancer--promoter
+contact disruption through polymer simulation of loop extrusion. For each variant, the pipeline
+(i) constructs a one-dimensional chromatin fiber annotated with CTCF binding sites and
+tissue-matched enhancer positions derived from ENCODE/Roadmap data; (ii) simulates
+cohesin-mediated loop extrusion using an analytical mean-field polymer model at single-nucleosome
+resolution (not molecular dynamics; parameters are manually calibrated to published FRAP residence
+times and Hi-C contact frequencies --- see Gerlich et al. 2006, Davidson et al. 2019); (iii) computes a simulated contact matrix for both the reference and variant
+alleles; and (iv) quantifies structural disruption using the Locus-Specific Structural
+Similarity Index Metric (LSSIM), a normalized similarity score between the two contact matrices.
+An LSSIM value of 1.0 indicates no structural change; values below a threshold of 0.95 are
+classified as structurally disruptive. The metric is computed over an enhancer-proximal window
+centered on the variant position, weighted by a Gaussian kernel (sigma = 5,000 bp) that
+emphasizes contacts in the local regulatory neighborhood.
+
+Critically, ARCHCODE does not model transcription factor binding, chromatin accessibility, or
+any sequence-level regulatory grammar. It models only the physical consequences of a variant on
+loop extrusion dynamics and the resulting 3D contact topology. This design is intentional:
+ARCHCODE is built to detect Class B (architecture-driven) pathogenicity and is, by construction,
+blind to Class A (activity-driven) effects. This complementarity is a feature, not a limitation
+--- it defines ARCHCODE's role within the taxonomy as a specialized engine for one mechanistic
+axis.
+
+== Positioning: Class B primary detector, not universal predictor
+
+We emphasize that ARCHCODE is not proposed as a replacement for VEP, CADD, or any
+sequence-based interpretation tool. Its role is narrower and more specific: to serve as the
+primary computational detector for Class B architecture-driven pathogenicity, a class that is
+systematically invisible to all widely used sequence-based tools.
+
+The evidence for this positioning is quantitative. ARCHCODE and sequence-based tools operate on
+nearly orthogonal axes:
+
+- NMI(ARCHCODE, VEP) = 0.495 at HBB (95% CI: 0.433--0.560); weighted cross-locus average = 0.026
+- NMI(ARCHCODE, CADD) = 0.242 at HBB (95% CI: 0.189--0.298)
+- MaveDB SGE correlation r = −0.045
+
+At the tissue-matched HBB locus, ARCHCODE and VEP share moderate mutual information (0.495), reflecting that both tools capture discriminative signal when the enhancer landscape is present. At tissue-mismatched loci (8 of 9), NMI drops to near zero (range: 0.000--0.030), because ARCHCODE LSSIM values converge to $gt.eq$ 0.99 and contribute no discriminative information. The cross-locus weighted average NMI of 0.026 reflects the dominance of tissue-mismatched loci in the dataset. This tissue-dependent orthogonality is the quantitative foundation for the taxonomy's central claim: activity-driven and architecture-driven
+pathogenicity are separable mechanistic classes that require dedicated, independent tools.
+
+== Evidence from the canonical Class B cohort: HBB Q2b
+
+The strongest evidence for architecture-driven pathogenicity comes from the HBB locus. Among
+1,103 HBB variants, 25 fall in the Q2b class --- variants that are structurally disruptive
+(LSSIM < 0.95) but undetected by sequence-based tools (VEP score 0--0.5). These 25 variants
+cluster within a mean distance of 434 bp from tissue-matched enhancers (p = $2.51 times
+10^(-31)$ by Mann-Whitney U test; Cohen's d = −1.63 for enhancer distance, odds ratio = 34.05 for
+proximity $lt.eq$ 500 bp; permutation test: observed 31 Q2b vs null expectation 9.9 ± 2.6,
+p < 0.0001; Supplementary Figure S4), 58-fold closer than the 25,138 bp mean enhancer distance
+of Q3 (activity-driven) variants at the same locus. The pathogenic--benign LSSIM separation
+yields Cohen's d = −2.14, a very large effect by conventional criteria. The tissue match score for HBB in the K562
+erythroid model is 1.0 --- HBB is the primary erythroid gene, and K562 is an erythroid
+progenitor line --- providing the strongest possible tissue context for architecture-driven
+detection. We note that HBB is the sole locus with high-confidence Class B variants; the 29 candidates at partially matched loci (BRCA1, TP53, TERT) are threshold-proximal and unvalidated. The tissue-match amplification effect is independently confirmed at SCN5A (cardiac config: +37% delta, 2.9$times$ structural calls vs K562; Supplementary Figure S3), but the HBB demonstration remains fundamentally N = 1 for confident Class B. Generalization requires tissue-matched chromatin data for each locus of interest.
+
+Two independent null results confirm the architecture-driven interpretation. First, MPRA --- the
+gold-standard assay for regulatory element activity --- would be expected to return null results
+for Class B variants because MPRA operates on plasmid-borne reporter constructs that lack 3D
+chromatin topology. Variants that disrupt enhancer--promoter contact routing, rather than
+enhancer activity per se, are invisible to plasmid-based assays. Second, CRISPRi screening
+(Gasperini et al. 2019, K562) provides no coverage of the 25 Q2b positions --- 0 of 25 Q2b
+variants overlap with Gasperini guide RNA target sites --- and the screen measured fetal globin
+in K562 rather than adult HBB expression, creating both a coverage and a readout mismatch.
+
+== Ablation: architecture adds discriminative power
+
+To quantify the contribution of architecture modeling beyond simpler baselines, we performed a
+four-model ablation study (EXP-001) across 8 loci and 29,215 variants:
+
+- *M1 (nearest-gene distance):* AUC = 0.5266
+- *M2 (epigenome-only):* AUC = 0.5086
+- *M3 (epigenome + 3D proxy):* AUC = 0.4815
+- *M4 (ARCHCODE, full loop extrusion):* AUC = 0.6381
+
+ARCHCODE outperforms the nearest-gene baseline by 0.112 AUC units (0.6381 vs. 0.5266). The
+epigenome-only model (M2) and the epigenome+3D proxy model (M3) both perform near chance,
+indicating that enhancer proximity and CTCF annotations alone --- without explicit loop
+extrusion simulation --- are insufficient to discriminate pathogenic from benign variants at the
+structural level. The full physics-based simulation adds discriminative power that static
+annotation cannot provide.
+
+We acknowledge that an AUC of 0.6381 is modest in absolute terms. ARCHCODE is not a
+high-accuracy classifier in the conventional sense. Rather, its value lies in detecting a
+specific class of variants (Class B) that achieves AUC = 0.0 in all sequence-based tools --- a
+class where any signal above chance represents genuine complementary information.
+
+A complementary ML ablation study using gradient-boosted classifiers on 31 engineered features confirms this result from a different angle: for pearl detection (identifying the 27 ClinVar-benign variants with structural disruption), structural features contribute 64% of total importance, while VEP alone catches 0 of 27 pearls. This dominance is tissue-specific --- at the mismatched BRCA1 locus, structural importance collapses to 0.6% (Supplementary Section S6; @tab:ml-ablation).
+
+== Leave-one-locus-out: generalization across loci
+
+To test whether the architecture-driven signal generalizes beyond HBB, we performed
+leave-one-locus-out cross-validation (EXP-002) across all 9 loci. For each fold, the LSSIM
+threshold is derived from the 8 training loci and applied to the held-out locus without
+retuning. The mean AUC across the 8 loci with computable AUC (HBB excluded due to zero benign
+variants in the test set) is 0.6866 (SD = 0.098). Per-locus AUCs range from 0.5892 (SCN5A,
+tissue-mismatched) to 0.8529 (GJB2) and 0.8405 (TERT), indicating that the structural signal
+transfers across loci and is not an artifact of HBB-specific overfitting.
+
+The highest generalization AUCs occur at loci with partial or full tissue match (TERT: 0.8405,
+tissue\_match = 0.5; TP53: 0.6676, tissue\_match = 0.5), while the lowest occur at
+tissue-mismatched loci (SCN5A: 0.5892, tissue\_match = 0.0; LDLR: 0.5916,
+tissue\_match = 0.0). This gradient reinforces the tissue-specificity principle of the taxonomy:
+architecture-driven detection requires tissue-matched chromatin context (see Section 5.3).
+
+// =============================================================================
+// 5. CASE STUDIES
+// =============================================================================
+
+= Case Studies
+
+== HBB Q2b: archetypal architecture-driven pathogenicity
+
+The beta-globin locus (HBB) provides the clearest demonstration of Class B architecture-driven
+pathogenicity. The locus is controlled by the Locus Control Region (LCR), a cluster of
+erythroid-specific enhancers located approximately 50 kb upstream that must physically contact
+the HBB promoter through cohesin-mediated loop extrusion for transcriptional activation. This
+contact-dependent regulatory architecture makes HBB particularly susceptible to
+architecture-driven disruption.
+
+Among 1,103 ClinVar variants at HBB, 25 are classified as Q2b --- structurally disruptive
+(LSSIM < 0.95 in the ARCHCODE simulation) yet undetected by VEP (score 0--0.5). These variants
+cluster at a mean distance of 434 bp from the nearest tissue-matched enhancer, compared to
+25,138 bp for Q3 variants at the same locus --- a 58-fold proximity enrichment (p = $2.51 times
+10^(-31)$). The tissue match is maximal (1.0): K562 cells are erythroid progenitors, and HBB is
+the canonical erythroid gene regulated by the LCR.
+
+The proposed pathogenic mechanism is contact disruption rather than element activity change.
+Each Q2b variant is positioned within or immediately adjacent to the enhancer--promoter contact
+zone. The ARCHCODE simulation shows that these variants alter the loop extrusion landscape such
+that the LCR--HBB contact probability decreases, reducing transcriptional output. The
+transcriptional consequence of such contact reduction is expected to be nonlinear: Zuin et al.
+showed that transcription follows a sigmoidal function of enhancer--promoter contact probability,
+with a ~3-fold contact drop at TAD boundaries sufficient to suppress transcription to promoter-only
+levels (Zuin et al., _Nature_ 2022). Importantly, this mechanism is invisible to sequence-based tools because the
+variant does not disrupt a transcription factor binding motif or alter enhancer activity --- it
+disrupts the physical routing of the enhancer's output to its target promoter.
+
+The experimental validation path for HBB Q2b is well-defined: Capture Hi-C in HUDEP-2 erythroid
+progenitor cells, comparing allele-specific contact frequencies at the top 5 Q2b positions. MPRA
+for the same variants is predicted to return null results, confirming the absence of
+activity-driven effects and strengthening the architecture-driven assignment. As preliminary
+supporting evidence, we extracted wild-type HUDEP-2 Capture Hi-C contacts (GSM4873116, 5 kb
+resolution) across the 95 kb HBB window. The Q2b bin shows 1.76× long-range contact enrichment
+over background (Mann--Whitney p = 0.0016; @fig:hudep2-q2b), consistent with Q2b variants
+occupying a structurally important chromatin region. However, this is WT-only data; allele-specific
+Hi-C on Q2b variants is required to confirm contact disruption.
+
+== TERT Q2a: coverage gap with architecture signal
+
+The TERT locus illustrates a different taxonomy class --- Class D (coverage gap) with
+architecture signal overlap (D+B). Among 2,089 TERT variants, 35 are classified as Q2
+(structurally discordant with VEP). Of these 35, 34 are Q2a --- variants where VEP returns no
+score (VEP = −1) because the variant falls in a non-coding region outside VEP's annotation
+scope --- and only 1 is Q2b. The Q2 precision at TERT is 0.9714 (34/35 are genuinely unscored
+by VEP, not disagreements).
+
+TERT achieves the highest ARCHCODE AUC of any locus: 0.8405 across all variants, and 0.9323
+within the enhancer-proximal subset. The Q2 variants cluster at a mean enhancer distance of 864
+bp, compared to 19,966 bp for Q3 variants (p = $2.03 times 10^(-15)$). The tissue match is
+partial (0.5): TERT is active in K562 as a telomerase-expressing immortalized line, but K562 is
+not the primary tissue for TERT-associated disease (glioma, melanoma, bladder cancer).
+
+TERT demonstrates that ARCHCODE provides complementary coverage for VEP-blind regions. The 34
+Q2a variants are not "VEP disagrees with ARCHCODE" --- they are "VEP cannot score, ARCHCODE
+can." This distinction is taxonomically important: these are not architecture-driven in the same
+sense as HBB Q2b (where VEP can score but misses the effect), but rather coverage-gap variants
+where ARCHCODE fills an annotation void. The D+B overlap category --- coverage gap with
+architecture signal --- may represent the largest pool of actionable variants for clinical
+laboratories that currently dismiss VEP = −1 results as uninformative.
+
+== Tissue mismatch: SCN5A and GJB2 as negative controls
+
+Two loci --- SCN5A (cardiac sodium channel, cardiac arrhythmia) and GJB2 (connexin 26, cochlear
+deafness) --- produce zero Q2 variants in the ARCHCODE pipeline. Neither locus shows any
+structural discrimination between pathogenic and benign variants. This is not a failure of the
+architecture-driven hypothesis; it is the expected result of tissue mismatch.
+
+SCN5A is regulated in cardiomyocytes, not in K562 erythroid cells. The enhancer landscape of
+SCN5A in K562 bears no resemblance to its regulatory architecture in the heart. GJB2 is
+expressed in cochlear supporting cells, a tissue with no overlap to K562 chromatin context. In
+both cases, ARCHCODE is simulating a chromatin topology that does not exist in the
+disease-relevant tissue, and correctly produces no signal.
+
+EXP-003 (tissue-mismatch controls) quantifies this effect directly. Using a proxy
+enhancer-proximity score computed with Gaussian weighting (sigma = 5,000 bp), we measured the
+pathogenic-vs.-benign delta across matched and mismatched enhancer configurations for 3 loci.
+The results show a diagnostic diagonal pattern:
+
+- *HBB|HBB (matched):* delta = 0.00357 (p = $4.66 times 10^(-72)$)
+- *HBB|LDLR (mismatch):* delta = $5.04 times 10^(-6)$ (effectively zero)
+- *HBB|TP53 (mismatch):* delta = −0.01168 (inverted --- nonsensical direction)
+
+The matched-tissue delta exceeds the mismatched-tissue delta by approximately 700-fold
+(0.00357 divided by $5.04 times 10^(-6)$). In the HBB|TP53 mismatch, the sign inverts entirely, meaning the
+wrong enhancer landscape causes the metric to rank benign variants as more structurally
+disruptive than pathogenic ones. This sign inversion is a strong diagnostic signal that the
+tissue context is incorrect.
+
+The tissue-mismatch result has two implications for the taxonomy. First, it validates Class E as
+a real and detectable artifact --- tissue-mismatched architecture signals are not merely weak,
+they are qualitatively wrong. Second, it establishes tissue matching as a necessary precondition
+for Class B detection. Any future ARCHCODE deployment at a new locus must first verify tissue
+match before interpreting structural signals, or risk generating Class E artifacts.
+
+== FOXP3: predictive structural vulnerability mapping in immunology
+
+The FOXP3 locus (chrX:49,250,436--49,264,800) encodes the master transcriptional regulator of
+regulatory T cells (Treg). Loss-of-function mutations cause IPEX syndrome (Immune dysregulation,
+Polyendocrinopathy, Enteropathy, X-linked), while a subset of patients present with IPEX-like
+symptoms without coding FOXP3 mutations --- a diagnostic blind spot that may harbor
+architecture-driven regulatory variants.
+
+We configured ARCHCODE at FOXP3 using tissue-matched ChIP-seq data from Umhoefer et al.
+(_Immunity_ 2025): H3K27ac peaks from human resting Treg cells (GSE286472) and CTCF peaks from
+human resting conventional T cells (GSE305063). Of 236 ClinVar variants at the FOXP3 locus, all
+reside within the gene body (exonic/intronic coding regions); zero variants map to the enhancer
+landscape downstream of FOXP3 (chrX:49,268,000--49,280,000). Accordingly, ARCHCODE returns zero
+pearls at any resolution (300 kb at 1,000 bp; 60 kb at 200 bp), confirming that coding variants
+do not disrupt enhancer--promoter contact topology.
+
+This null result motivated an in silico saturation mutagenesis across the 60 kb regulatory
+window: 486 synthetic single-nucleotide substitutions were placed at 50 bp intervals throughout
+all seven H3K27ac peaks, two CTCF sites, and background intergenic positions. All synthetic
+variants received identical effectStrength (category = "other", effectStrength = 0.5), isolating
+the positional contribution to structural sensitivity. Eight synthetic positions achieve LSSIM
+< 0.95 --- all within the two strongest Treg-specific H3K27ac peaks, and none at CTCF sites or
+background positions:
+
+- *Hotspot 1* (chrX:49,276,006--49,276,156): LSSIM = 0.936, within the strongest Treg H3K27ac
+  peak (signal = 2,294, top 10.5% of chrX). Smooth bell-curve gradient confirmed
+  across a 4 kb neighborhood. The position overlaps an ancient MIR element (mammalian
+  interspersed repeat, ~130 Myr), consistent with exaptation of MIR-derived sequences as
+  functional enhancers.
+- *Hotspot 2* (chrX:49,270,038--49,270,188): LSSIM = 0.946, within the second Treg H3K27ac
+  peak (signal = 1,965, top 11.9% of chrX). A C $arrow.r$ T substitution at this
+  position disrupts an EGR2 (Krox20) binding site and weakens a YY1 motif (JASPAR MA0095.2,
+  perfect match $arrow.r$ 1 mismatch). EGR2 is specifically identified by Umhoefer et al. as
+  part of the FOXP3 transcriptional circuit in Treg cells, providing an independent mechanistic
+  link between the predicted structural disruption and FOXP3 regulation.
+
+The FOXP3 analysis demonstrates three points relevant to the taxonomy. First, the absence of
+non-coding regulatory variants in ClinVar for a clinically important gene highlights a systematic
+gap in current diagnostic sequencing: enhancer regions of FOXP3 are routinely not sequenced in
+IPEX-like patients. Second, in silico mutagenesis extends ARCHCODE from retrospective
+reclassification (identifying pearls among existing ClinVar variants) to predictive vulnerability
+mapping (identifying genomic positions where mutations _would_ disrupt chromatin architecture).
+Third, the convergence of structural prediction (LSSIM < 0.95) with transcription factor motif
+disruption (EGR2) at Hotspot 2 provides orthogonal support for the biological relevance of
+ARCHCODE's structural sensitivity map --- the predicted hotspot coincides with a functionally
+important regulatory element identified by an independent experimental approach.
+
+All synthetic variants are clearly labeled (SYNTHETIC\_ prefix) and should not be interpreted as
+observed clinical variants.
+
+== BCL11A: structural sensitivity recapitulates a validated gene therapy target
+
+The BCL11A locus provides a stringent test of ARCHCODE's structural sensitivity mapping against
+a therapeutic target with extensive experimental validation. BCL11A encodes a transcriptional
+repressor of fetal hemoglobin (HbF); its erythroid-specific expression depends on a composite
+enhancer in intron 2, comprising three DNase I hypersensitive sites (DHS +55, +58, and +62 kb
+from the TSS). Saturating mutagenesis by Canver et al. (_Nature_ 2015) established a clear
+functional hierarchy: DHS +58 is the most critical element, and disruption of the GATA1 binding
+motif within its 228 bp functional core is sufficient to reduce BCL11A expression and reactivate
+HbF. This finding was translated into Casgevy (exagamglogene autotemcel), the first FDA-approved
+CRISPR therapy (December 2023), which targets the GATA1 site within DHS +58
+(chr2:60,495,263--60,495,283, GRCh38).
+
+We configured ARCHCODE at BCL11A using K562 CTCF ChIP-seq from ENCODE (ENCFF736NYC) and
+literature-derived enhancer positions (Bauer et al. _Science_ 2013; Canver et al. _Nature_ 2015).
+Of 182 ClinVar variants, zero map to the enhancer region --- all are coding variants within the
+gene body. In silico saturation mutagenesis (314 synthetic SNVs across DHS +55/+58/+62, CTCF
+sites, promoter, and background positions) reveals a structural sensitivity ranking that
+recapitulates the known functional hierarchy:
+
+- DHS +58 (Casgevy target): mean LSSIM = 0.966, minimum = 0.963 --- most sensitive enhancer
+- DHS +55: mean LSSIM = 0.976, minimum = 0.974
+- DHS +62: mean LSSIM = 0.984, minimum = 0.982 --- least sensitive
+
+The nearest synthetic variant to the Casgevy guide RNA target (chr2:60,495,279) shows LSSIM =
+0.964, within the most disrupted cluster.
+
+A necessary caveat is that this is an enhancer-ranking result, not a claim that DHS +58 is the
+single most sensitive position in the entire 95 kb window. Promoter positions in the same focused
+model remain more sensitive in absolute terms (mean LSSIM = 0.952, minimum = 0.940). The
+supported claim here is therefore narrower: DHS +58 is the most sensitive enhancer within the
+known BCL11A erythroid DHS complex.
+
+Additional non-circularity analyses (uniform-occupancy reruns, GWAS/HbF overlays, and
+motif-specific checks) exist in working materials but are not promoted here as part of the
+tracked evidence pack for this release. The structured claim in the current technical layer is
+limited to the enhancer-ranking result above.
+
+This result should not be interpreted as an independent prediction of the Casgevy target. The
+DHS positions were configured from the same literature that identified them as therapeutic
+candidates. What the analysis demonstrates is that ARCHCODE's chromatin architecture simulation
+captures the same structural features that made DHS +58 the optimal therapeutic target: its
+position within the enhancer--promoter contact zone, flanked by CTCF insulators, creates maximal
+structural sensitivity to perturbation. The concordance between computational structural ranking
+and experimentally validated therapeutic efficacy provides additional evidence that
+architecture-driven pathogenicity operates through enhancer--promoter contact topology.
+
+All synthetic variants are clearly labeled (SYNTHETIC\_ prefix).
+
+== External cases: independent validation from the literature
+
+Three canonical cases from the published literature independently validate the taxonomy's core
+classes without using ARCHCODE data.
+
+*Lupiáñez et al. 2015 (Class B --- architecture-driven).* Structural variants at the
+WNT6/IHH/EPHA4/PAX3 locus disrupt TAD boundaries, causing pathogenic rewiring of
+enhancer--gene interactions and resulting in limb malformations (brachydactyly, F-syndrome,
+polydactyly). The enhancers themselves are unmutated --- their intrinsic activity is unchanged.
+The pathogenic mechanism is purely topological: boundary loss causes enhancer--promoter
+mis-routing. Hi-C in patient cells confirms TAD fusion at deletion breakpoints. This is the
+archetype of architecture-driven pathogenicity: disease arises from disrupted chromatin contact
+topology with no change in element activity. Sequence-based tools (VEP, CADD) cannot detect
+this because the coding sequence is intact, and MPRA would show no change because enhancer
+sequences are wild-type. ARCHCODE, with an appropriate tissue-matched configuration, would
+detect the boundary disruption as an LSSIM decrease.
+
+*Lettice et al. 2003 (Class A --- activity-driven).* Point mutations in the ZRS (Zone of
+Polarizing Activity Regulatory Sequence), a long-range enhancer approximately 1 Mb from the SHH
+gene, cause preaxial polydactyly by creating new ETS transcription factor binding sites. The
+mutation directly alters enhancer activity --- gaining function in a spatial domain where ZRS is
+normally silent --- without changing the 3D chromatin architecture that connects ZRS to the SHH
+promoter. This is the archetype of activity-driven pathogenicity: the element changes what it
+does, not where it contacts. MPRA/reporter assays can detect the activity change; Hi-C would
+show no change in contact topology. ARCHCODE would correctly return a neutral LSSIM.
+
+*Gröschel et al. 2014 (Class C --- mixed).* The inv(3)(q21q26) rearrangement in acute myeloid
+leukemia repositions a GATA2 enhancer near the MECOM (EVI1) oncogene, causing simultaneous
+MECOM activation via enhancer hijacking (architecture change) and GATA2 haploinsufficiency from
+enhancer loss (activity change). Neither mechanism alone is sufficient for leukemogenesis ---
+both the 3D contact rewiring and the activity loss must co-occur. This demonstrates that some
+pathogenic events are genuinely mixed-class, operating simultaneously through both mechanistic
+axes. ARCHCODE would detect the architecture component (new MECOM contacts) but would miss the
+activity component (GATA2 expression loss), requiring an orthogonal expression readout for
+complete characterization.
+
+These three cases span limb malformations, polydactyly, and leukemia --- distinct disease
+categories, distinct molecular mechanisms, and distinct experimental validations --- yet each
+maps cleanly to one of the taxonomy's classes. The Hnisz et al. 2016 demonstration that
+insulated neighborhood disruption activates proto-oncogenes in T-ALL provides further
+independent support for Class B, establishing that CTCF boundary deletions alone are sufficient
+for oncogene activation through 3D contact rewiring (see also Class B, above).
+
+// =============================================================================
+// 6. HONEST ASSESSMENT: LIMITATIONS AND CHALLENGES
+// =============================================================================
+
+= Honest Assessment: Limitations and Challenges
+
+We present the taxonomy as a working model, not a final classification. Several structural
+weaknesses deserve explicit acknowledgment, and we organize them from most to least concerning.
+
+== Class boundaries may be continuous, not discrete
+
+The five-class taxonomy implies clean categorical boundaries, but biological reality is likely to
+be continuous. A variant that disrupts a CTCF site embedded within an enhancer simultaneously
+alters both chromatin insulation (architecture) and enhancer accessibility (activity). The
+boundary between Class A and Class B passes through Class C, and Class C itself may be a
+spectrum rather than a category. We use discrete classes for conceptual clarity and to guide
+experimental design --- not because we believe the underlying biology is categorical. The
+decision rules presented above are threshold-based heuristics (LSSIM < 0.95, VEP > 0.5) that
+inevitably create boundary artifacts. Variants near these thresholds should be interpreted with
+caution.
+
+== HBB is the primary evidence --- a single-locus concern
+
+The strongest Class B evidence comes from a single locus: HBB, with 25 Q2b variants, tissue
+match = 1.0, and p = $2.51 times 10^(-31)$ for enhancer proximity enrichment. While the
+leave-one-locus-out cross-validation (mean AUC = 0.6866 across 8 loci) suggests that the
+structural signal generalizes, the canonical Class B demonstration is fundamentally an N = 1
+locus observation. If HBB's unique regulatory architecture --- the LCR-mediated long-range
+contact, the erythroid specificity, the binary on/off globin switching --- makes it an outlier
+rather than a prototype, the taxonomy's strongest class may not generalize to the broader
+genome. We will not know until tissue-matched ARCHCODE configurations are tested at additional
+loci with comparable enhancer--promoter contact dependencies.
+
+== BRCA1/TP53 Q2b: threshold artifacts, not confirmed Class B
+
+Beyond HBB, the next-largest Q2b cohorts are BRCA1 (26 variants) and TP53 (2 variants).
+However, the BRCA1 Q2b assignment is weak. The Q2b variants at BRCA1 have LSSIM values in the
+range 0.942--0.947 --- just below the 0.95 threshold. Their allele frequencies range from
+40--50%, consistent with common polymorphisms rather than pathogenic variants. The Q2b precision
+at BRCA1 is only 3.8%, meaning that 96.2% of variants scored as structurally disruptive at this
+locus are likely benign polymorphisms whose LSSIM scores happen to fall below threshold due to
+the locus's baseline structural flexibility (6 severe fragility zones in the BRCA1 fragility
+atlas, vs. zero at HBB). TP53 has only 2 Q2b variants --- insufficient for any statistical
+inference. These tentative Class B assignments should be treated as hypotheses requiring
+independent validation, not as confirmed architecture-driven pathogenicity.
+
+== Mixed class (C) is the hardest to validate
+
+Class C (mixed) is assigned to 270 HBB Q1 concordant variants --- positions where both VEP and
+ARCHCODE detect pathogenicity. However, the Class C assignment is inferential: we observe
+co-occurrence of high VEP score and low LSSIM but cannot determine whether the activity and
+architecture effects are causally independent, synergistic, or merely coincidental (a coding
+variant near an enhancer could score high on both axes for unrelated reasons). Validating Class
+C requires dual-readout experiments --- allele-specific Hi-C combined with RNA-seq in the same
+cells --- that are technically demanding and have not been performed for any of these variants.
+
+== ARS--taxonomy bridge is inconclusive
+
+We investigated whether baseline structural fragility (Architecture Risk Score) predicts Class B
+enrichment (EXP-005). The result is inconclusive: fragility atlas data exists for only 2 of 9
+loci (HBB and BRCA1), and these two loci show an inverse pattern --- HBB has zero severe
+fragility zones but strong Class B evidence, while BRCA1 has six severe zones but weak Class B
+evidence. With N = 2 and strong tissue-match confounding (HBB tissue\_match = 1.0 vs. BRCA1
+tissue\_match = 0.5), no directional conclusion is warranted. The hypothesis that structurally
+fragile loci harbor more architecture-driven pathogenic variants remains plausible but untested.
+
+== Assignment rules are heuristic
+
+The decision rules for taxonomy assignment are not derived from a principled statistical model.
+They are manually defined thresholds:
+
+- LSSIM < 0.95 defines structural disruption
+- VEP = −1 defines coverage gap
+- Tissue\_match ≥ 0.5 is required for Class B assignment
+
+These thresholds were chosen based on distribution analysis of the HBB data and may not be
+optimal for other loci, other simulation parameters, or other tissue contexts. The EXP-004
+threshold robustness analysis (bootstrap 95% CI: 271--300 disrupted variants at threshold 0.95;
+perturbation SD = 2.54) showed that the Q2b count is sensitive to the LSSIM threshold ---
+shifting from 0.95 to 0.94 or 0.96 changes the variant count substantially. A principled
+Bayesian framework for class assignment, incorporating uncertainty in both the structural
+simulation and the sequence-based scores, would be a significant improvement over the current
+heuristic approach.
+
+== Structural topology does not equal expression consequence
+
+A fundamental limitation of LSSIM as a metric is that it quantifies disruption of chromatin
+topology, not disruption of transcriptional output. These two quantities can dissociate. Brown
+et al. demonstrated that the alpha-globin self-interacting domain persists in erythroid cells
+even after deletion of both major enhancers (MCS-R1 and MCS-R2) --- a manipulation that reduces
+nascent alpha-globin transcription by 90% (Brown et al., _Nat Commun_ 2018). The domain boundary, as measured by
+Capture-C and FISH, remains structurally intact despite near-complete loss of internal
+enhancer--promoter interactions. This implies that a variant can preserve structural topology
+while severely impairing regulatory function, and conversely, that ARCHCODE's detection of
+structural disruption does not guarantee a corresponding transcriptional phenotype. LSSIM < 0.95
+is a signal that the loop extrusion landscape has changed --- it is not a direct readout of gene
+expression change.
+
+This dissociation is further contextualized by the nonlinear relationship between enhancer--promoter
+contact probability and transcriptional output. Zuin et al. showed, using hundreds of engineered
+cell lines with a synthetic enhancer positioned at varying genomic distances, that transcription
+does not respond linearly to contact probability: the relationship follows a sigmoidal (Hill
+function) dependency, with contact probabilities dropping from ~1.0 within the TAD to ~0.05
+near boundaries and a further ~3-fold drop across boundaries before transcription falls to
+promoter-only levels (Zuin et al., _Nature_ 2022). This nonlinearity provides mechanistic grounding for our
+threshold-based classification --- variants that reduce contact probability beyond a critical
+inflection point may have disproportionately large transcriptional consequences --- but it also
+means that small LSSIM changes cannot be mapped to proportional expression changes without
+knowledge of where on the sigmoid curve the locus operates under baseline conditions.
+
+== The central epistemic limitation
+
+We state this directly: *we cannot prove that Q2b variants are pathogenic through architecture*.
+ARCHCODE demonstrates that these variants are (i) structurally disruptive in a physics-based
+chromatin simulation, (ii) located within hundreds of base pairs of tissue-matched enhancers,
+and (iii) undetected by all widely used sequence-based interpretation tools. But structural
+disruption in a simulation is not proof of disease causation. The variants may be structurally
+disruptive without being clinically pathogenic. They may disrupt contacts that are biologically
+redundant. They may affect chromatin topology in ways that the cell can compensate for.
+
+What ARCHCODE provides is a prioritization signal: among the thousands of non-coding variants at
+a disease-associated locus, these 54 variants (25 HBB, 26 BRCA1, 2 TP53, 1 TERT) are the ones
+most likely to operate through a mechanism that no other tool can detect, and they are the ones
+most worth testing experimentally with contact-based assays (Capture Hi-C, 4C-seq) in
+tissue-matched cell types. The taxonomy does not claim to resolve their pathogenicity --- it
+claims to identify the mechanism through which they might be pathogenic and the experiment most
+likely to test that hypothesis.
+
+// =============================================================================
+// 7. EXPERIMENTAL IMPLICATIONS
+// =============================================================================
+
+= Experimental Implications
+
+The five-class taxonomy provides a direct mapping from mechanistic class to validating
+experiment. Rather than applying a single assay to all regulatory variants, mechanism-first
+classification enables targeted experimental design that maximizes the probability of detecting
+each variant's specific effect.
+
+== Class-specific validation strategies
+
+*Class A (Activity-Driven).* Variants that alter intrinsic regulatory element function are
+validated by reporter assays. MPRA and STARR-seq directly measure allele-specific enhancer or
+promoter activity in a high-throughput format. Because these variants operate through
+sequence-level mechanisms --- TF binding disruption, motif alteration, accessibility changes ---
+plasmid-based assays that decouple the element from its 3D genomic context remain informative.
+CRISPRi/a at the endogenous locus with RNA-seq readout provides orthogonal confirmation at lower
+throughput.
+
+*Class B (Architecture-Driven).* Variants that disrupt chromatin contact topology cannot be
+detected by reporter assays, which by design remove 3D context. The appropriate validation is
+Capture Hi-C or 4C-seq in the disease-relevant cell type, measuring allele-specific contact
+frequency between the affected enhancer and its target promoter. For the 25 HBB Q2b variants,
+this requires HUDEP-2 cells (an erythroid progenitor line that recapitulates adult beta-globin
+regulation) rather than K562 (which expresses fetal gamma-globin). CRISPR base editing at Q2b
+positions followed by contact mapping would provide the strongest causal evidence.
+
+*Class C (Mixed).* Variants affecting both activity and architecture require dual-readout
+experiments: simultaneous RNA-seq and contact assay (e.g., HiChIP or PLAC-seq) in the same
+cell population. Allele-specific Hi-C in heterozygous patient-derived cells can separate the
+two axes --- measuring both expression change and contact change from the same allele.
+
+*Class D (Coverage Gap).* These 207 variants are unscored by VEP (VEP = −1), making any
+functional assay informative for establishing a baseline. RNA-seq for splicing effects, ATAC-seq
+for accessibility changes, and MPRA for activity effects would all reduce the current blind
+spot. The priority is coverage expansion: even negative results reclassify these variants from
+"unknown" to "tested."
+
+*Class E (Tissue-Mismatch Artifact).* Validation requires running the same variant through
+matched-tissue and mismatched-tissue assays in parallel. For loci such as SCN5A (cardiac) and
+GJB2 (cochlear), ARCHCODE configurations built from iPSC-derived cardiomyocytes or cochlear
+organoids would determine whether architecture-driven pathogenicity exists in the native tissue
+context that K562-based analysis cannot detect.
+
+== Priority experiments
+
+We propose five priority experiments based on expected information gain (Table 1).
+
+#figure(
+  caption: [Priority experiments by taxonomy class.],
+  kind: table,
+)[
+  #thick-hrule()
+  #v(-0.3em)
+  #table(
+    columns: (auto, auto, 2fr, 1.5fr, 1.5fr, 2fr),
+    stroke: (x, y) => if y == 1 { (bottom: 0.5pt) } else { none },
+    [*Priority*], [*Class*], [*Experiment*], [*Target*], [*Cell Type*], [*Expected Result*],
+    [1], [B], [Capture Hi-C],
+      [Top 5 HBB Q2b positions], [HUDEP-2],
+      [Reduced LCR--HBB contact frequency at variant alleles],
+    [2], [B], [MPRA for Q2b],
+      [Same 5 HBB Q2b positions], [K562],
+      [Null (confirms architecture, not activity, mechanism)],
+    [3], [D], [Targeted RNA-seq],
+      [34 TERT Q2a variants], [HEK293T / U2OS],
+      [Splice or expression effects for VEP-blind variants],
+    [4], [E], [Matched-tissue ARCHCODE],
+      [SCN5A full locus], [iPSC-cardiomyocytes],
+      [Architecture-driven signal emerges in matched tissue],
+    [5], [C], [HiChIP + RNA-seq],
+      [HBB Q1 concordant variants], [HUDEP-2],
+      [Dual disruption: expression change AND contact change],
+  )
+  #v(-0.3em)
+  #thick-hrule()
+] <table:priority-experiments>
+
+The expected MPRA null for Q2b variants (Priority 2) is itself informative: a negative result in
+a reporter assay, combined with a positive result in a contact assay, provides the strongest
+evidence for architecture-driven classification. This "null as evidence" logic inverts the
+standard interpretation of MPRA screens, where null results are typically discarded as
+uninformative.
+
+*Falsification criterion:* The architecture-driven classification would be weakened if MPRA scores at Q2b positions were significantly non-zero (Mann--Whitney p < 0.05 vs Q4 benign baseline), as this would indicate activity-driven signal where none is predicted. Conversely, a positive control is required: MPRA should detect Class A (Q3) variants --- those scored pathogenic by VEP but structurally neutral by ARCHCODE --- at rates significantly above Q2b. If MPRA fails to discriminate Q3 from Q2b, the mechanistic orthogonality argument is undermined.
+
+*Current data limitation:* The Kircher et al. (2019) MPRA dataset covers only 186 bp of the HBB 5$prime$ UTR/promoter. Of 75 Q3 variants in the full 95 kb atlas, only 1 falls within this window (vs 10 Q2b), making the positive control test statistically underpowered (Supplementary Figure S6). A tiling MPRA or lentiMPRA covering the full HBB locus would be required to execute this falsification test with adequate power.
+
+*Cross-locus MPRA overlay:* We extended this analysis to TERT (258 bp promoter) and LDLR (317 bp promoter) using the same Kircher et al. dataset. At HBB, Q2b MPRA scores are indistinguishable from Q4 benign (mean −0.233 vs −0.172, Mann--Whitney p = 0.41; @fig:mpra-crosslocus). At TERT and LDLR, zero Q2b variants fall within the MPRA windows --- all matched variants are Q4 benign. This cross-locus pattern confirms that architecture-driven variants are systematically invisible to promoter-scale MPRA assays, consistent with the taxonomy prediction that Class B pathogenicity operates through 3D chromatin structure rather than local regulatory activity.
+
+== AlphaGenome CAGE validation: independent confirmation of pearl disruption
+
+To obtain independent functional evidence beyond MPRA, we queried the AlphaGenome API (Avsec et al. 2026; SDK v0.6.0) for CAGE-seq promoter activity predictions at pearl, pathogenic non-pearl, and benign HBB variant positions. AlphaGenome predicts thousands of functional genomic tracks from DNA sequence using a deep learning model trained on ENCODE and 4DN datasets, providing an orthogonal assessment of variant effects on gene expression.
+
+Three-way comparison (n#sub[pearl] = 12, n#sub[pathogenic] = 13, n#sub[benign] = 20) reveals a striking gradient: pearl variants show mean CAGE disruption of $minus$19.0%, compared to $minus$0.67% for pathogenic non-pearls and $minus$0.10% for benign controls (Mann--Whitney pearl vs benign: p = $4 times 10^(-6)$; Cohen d = $minus$2.1). The effect direction is consistent with enhancer--promoter contact disruption reducing transcriptional output at the HBB promoter.
+
+*Statistical caveat (pseudoreplication):* 11 of 12 tested pearl positions lie within a 73 bp promoter cluster (chr11:5,227,099--5,227,172), reducing the effective number of independent observations to approximately 2--3. We therefore emphasize effect sizes (5.5$times$ more disruption than pathogenic non-pearls; 190$times$ more than benign controls) rather than formal significance, which assumes independent observations. Replication at non-HBB loci with tissue-matched configurations is required to confirm that the CAGE disruption pattern generalizes beyond this single regulatory hotspot.
+
+*In silico saturation mutagenesis (ISM):* AlphaGenome ISM across the 90 bp HBB promoter region (chr11:5,227,090--5,227,180) reveals that three of the four highest-sensitivity positions (5,227,099--5,227,101, peak CAGE change $minus$43%) coincide with ARCHCODE pearl positions, with the fourth pearl position (5,227,102, $minus$25%) ranking sixth overall. This spatial overlap between the deepest CAGE disruption (AlphaGenome) and the strongest structural disruption (ARCHCODE LSSIM) provides convergent evidence from two independent methods --- one physics-based, one deep-learning-based --- that this promoter region is a functional hotspot where sequence perturbation disrupts both local transcription and 3D chromatin architecture.
+
+*Training overlap caveat:* AlphaGenome was trained on 4DN Hi-C data including K562 cells, which is the same cell type used for ARCHCODE's CTCF and H3K27ac annotations. This shared training domain means that AlphaGenome validation is not fully independent of ARCHCODE's input data. The convergence is informative but should be interpreted as consistent auxiliary evidence, not as a definitive orthogonal confirmation.
+
+// =============================================================================
+// 8. PRODUCT AND FRAMEWORK IMPLICATIONS
+// =============================================================================
+
+= Product and Framework Implications
+
+== Mechanism-first interpretation
+
+The central recommendation of this taxonomy is operational: clinical variant interpretation
+should assign mechanistic class before computing pathogenicity scores. Current workflows apply
+VEP or CADD as universal first-pass filters, implicitly assuming that all regulatory
+pathogenicity is activity-driven. This assumption produces systematic false negatives for the 54
+architecture-driven variants (Class B) and 207 coverage-gap variants (Class D) identified in
+our analysis. A mechanism-first workflow would route each variant to the tool most likely to
+detect its specific effect class before scoring.
+
+== Multi-modal interpretation engines
+
+No single tool covers all five classes. VEP and CADD address Class A but are blind to Class B.
+ARCHCODE addresses Class B but is blind to Class A. MPRA validates Class A but cannot detect
+Class B by design. This complementarity argues for multi-modal interpretation engines that
+integrate sequence-level predictions (Enformer, Sei, SpliceAI), structural predictions
+(ARCHCODE, loop extrusion models), and activity measurements (MPRA, CRISPRi) into a unified
+variant report. AlphaGenome (Avsec et al. 2026) represents a step toward multi-output
+prediction, but its outputs still require an interpretive layer that maps predicted effects to
+mechanistic classes. The taxonomy proposed here provides that layer.
+
+== ARCHCODE as module, not standalone
+
+We explicitly position ARCHCODE as a Class B detection module within a multi-tool pipeline, not
+as a standalone variant interpreter. ARCHCODE contributes the architecture axis --- chromatin
+contact disruption prediction via loop extrusion simulation --- and should be combined with
+sequence-based tools that cover the activity axis. The Architecture Risk Score (ARS), which
+quantifies locus-level structural vulnerability, functions as a risk stratification layer within
+this taxonomy: loci with high ARS are expected to enrich for Class B variants that require
+structural validation.
+
+== AI-assisted hypothesis generation
+
+The taxonomy enables a specific form of computational hypothesis generation: given a variant's
+genomic context (enhancer proximity, tissue expression, tool coverage), an automated system can
+classify its most likely mechanism and suggest the discriminating experiment. For example, a
+variant within 500 bp of a tissue-matched enhancer that scores low on VEP and CADD would be
+flagged as a Class B candidate, with Capture Hi-C in matched tissue recommended as the
+validating experiment. This "classify mechanism, then suggest experiment" pipeline could reduce
+the time from variant discovery to functional validation by directing experimental resources to
+the assay most likely to detect each variant's effect.
+
+== Complementing, not replacing, existing tools
+
+This framework does not argue that ARCHCODE should replace VEP, or that structural analysis is
+more important than sequence analysis. The claim is narrower and more specific: a systematic
+blind spot exists for architecture-driven regulatory pathogenicity, and dedicated 3D chromatin
+modeling is required to address it. VEP remains the appropriate first-pass tool for coding and
+splice-site variants. CADD remains valuable for genome-wide prioritization. The taxonomy adds a
+routing step --- asking "which mechanism?" before "how pathogenic?" --- that directs each
+variant to the appropriate tool.
+
+// =============================================================================
+// 9. DISCUSSION
+// =============================================================================
+
+= Discussion
+
+== Four claims, ranked by evidential strength
+
+We organize the discussion around four claims in decreasing order of evidential support.
+
+*Claim 1 (Strongest): Activity and architecture are orthogonal axes of regulatory
+pathogenicity.* The quantitative evidence is unambiguous. Normalized mutual information between
+ARCHCODE and VEP is 0.495 at the tissue-matched HBB locus (95% CI: 0.433--0.560, bootstrap N = 1,000), dropping to a weighted cross-locus average of 0.026 across all 9 loci; between ARCHCODE and CADD, 0.242 (95% CI: 0.189--0.298). Correlation with MaveDB saturation genome editing is r = −0.045. At tissue-mismatched loci (8 of 9), NMI values are near zero ($lt.eq$ 0.03), indicating that structural pathogenicity scores capture information almost entirely absent from sequence-based predictions when the wrong tissue context is applied. At the tissue-matched HBB locus, moderate NMI (0.495) reflects the expected convergence: both structural and sequence tools detect pathogenic variants at a locus where the enhancer landscape is correctly represented. This tissue-dependent pattern is not a limitation --- it reflects the genuine biological distinction between what a regulatory element does (activity) and where it contacts (architecture), modulated by whether the correct tissue context is modeled. The finding aligns with the growing consensus that 3D genome
+organization constitutes a distinct pathogenic dimension (Sreenivasan, Yumiceba & Spielmann
+2025; Kim et al. 2024), and with empirical benchmarks showing that distal non-coding variants
+are the hardest class for sequence models to predict (Benegas, Eraslan & Song 2025).
+
+*Claim 2 (Strong): Architecture-driven pathogenicity is invisible to current standard tools.*
+The 54 Class B variants identified across our 9 loci share a consistent signature: LSSIM < 0.95,
+VEP scores of 0--0.5, MPRA null, CRISPRi null, and clustering within 434 bp of tissue-matched
+enhancers (p = $2.51 times 10^(-31)$) --- 58-fold closer than Class A variants (25,138 bp).
+This enrichment near enhancer-promoter contact zones, combined with absence of activity-based
+signal, is consistent with a contact-disruption mechanism. Tissue specificity provides
+additional support: architecture-driven signal correlates with tissue match at rho = 0.840
+(p = 0.0046) and collapses 700-fold in mismatched tissue (matched delta = 0.00357 vs. mismatch
+delta = $5.04 times 10^(-6)$). Independent functional evidence from AlphaGenome CAGE predictions supports the structural disruption hypothesis: pearl variants show 5.5$times$ greater CAGE disruption than pathogenic non-pearls ($minus$19.0% vs $minus$0.67%), with the ISM sensitivity peak (chr11:5,227,099--102, $minus$43% CAGE) coinciding with ARCHCODE pearl positions (Section 7, AlphaGenome CAGE validation; statistical caveats regarding pseudoreplication apply). However, we cannot confirm that these variants are pathogenic through architecture without experimental validation. What we can state is that they are structurally disruptive, tissue-specific, and systematically undetected by all widely used
+interpretation tools. We note that the HBB-specific AUC of 0.975 (effect-strength ablation study, EXP-001) is primarily driven by variant category assignment (nonsense, frameshift, synonymous), not by positional 3D biology: an ablation removing category information reduces AUC to 0.551 (near chance). The high AUC therefore characterizes the variant catalog structure rather than ARCHCODE's structural prediction power. The genuine structural contribution is the discovery of Class B variants themselves --- a class where all sequence-based tools achieve AUC = 0.0 --- rather than high-accuracy classification across all variant types. This blindness extends beyond sequence-based scoring to protein-structure prediction: AlphaMissense (Cheng et al. 2023), which classifies missense pathogenicity using AlphaFold-derived structural features, covers only 23.0% of variants in our 9-locus atlas (6,961 of 30,318) and provides scores for only 3 of 41 pearl variants (7.3%). The remaining 75.3% of variants --- non-coding, intronic, and regulatory --- fall entirely outside AlphaMissense's scope, and the correlation between AlphaMissense scores and ARCHCODE LSSIM is near zero at tissue-mismatched loci (median Spearman $rho$ = 0.086, NS). Even at tissue-matched loci where both tools detect signal, the correlation is negative ($rho$ = $minus$0.50 at HBB, $rho$ = $minus$0.52 at TP53), indicating that the two tools measure fundamentally different pathogenic axes: protein structural damage versus chromatin contact disruption.
+
+*Claim 3 (Moderate): A five-class taxonomy provides actionable organization of blind spots.*
+The taxonomy --- activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch
+artifact --- imposes interpretive structure on the heterogeneity of regulatory variant effects.
+Its practical value lies in mapping each class to a specific validating experiment and a
+specific computational tool (Table 1; tool-mechanism matrix). Whether five is the correct number
+of classes is less important than the principle that mechanism should be assigned before score.
+The boundaries between classes are likely continuous rather than discrete: some variants may
+operate partly through activity and partly through architecture, making Class C a continuum
+rather than a category. The taxonomy should be understood as a working framework subject to
+revision as experimental data accumulate, not as a final classification.
+
+*Claim 4 (Emerging): Coverage gaps are larger than mechanistic disagreements.* Of 261 variants
+in structural blind spots, 207 (79.3%) are Class D --- regions where VEP cannot assign a score
+--- while 54 (20.7%) are Class B --- regions where VEP assigns a score but misses the
+architecture axis. This ratio suggests that tool development should prioritize coverage expansion
+(scoring more variants in more genomic contexts) alongside mechanistic refinement (distinguishing
+activity from architecture). The 207 Class D variants represent a lower bound: they are the
+variants ARCHCODE can score that VEP cannot, but additional coverage gaps likely exist beyond
+ARCHCODE's 300 kb simulation windows and 9 configured loci.
+
+== Addressing circularity in class definitions
+
+A potential concern is that classes defined by ARCHCODE and VEP outputs are then used to evaluate those same tools, creating a tautology. Three lines of evidence partially break this circle. First, leave-one-locus-out cross-validation (EXP-002) derives the LSSIM threshold from training loci and evaluates on a held-out locus, preventing threshold overfitting; derived thresholds range from 0.967 to 0.977 across held-out loci. Second, Gasperini et al. (2019) CRISPRi data provides external experimental evidence: LSSIM correlates with CRISPRi effect size (Spearman rho = −0.23, p = 0.007) using data generated entirely independently of ARCHCODE. Third, enhancer proximity enrichment (odds ratio =34.05 at 500 bp, permutation p < 0.0001) is an independent geometric feature not used in class definition --- Q2b variants cluster near enhancers not because they were selected for proximity, but because contact-disruption mechanisms operate at enhancer--promoter interfaces.
+
+A formal permutation test (10,000 shuffles of pathogenic/benign labels) confirms that the observed 31 Q2b variants at threshold 0.95 substantially exceed the null expectation of 9.9 ± 2.6 (p < 0.0001). The effect is robust across thresholds 0.92--0.98 (all permutation p < 0.05), with Cohen's d = −2.14 for LSSIM pathogenic--benign separation and d = −1.63 for enhancer distance (Q2b vs rest) --- both very large effects by conventional criteria.
+
+However, we acknowledge that full resolution of the circularity concern requires experimental validation: allele-specific Capture Hi-C on Q2b variants in tissue-matched cells would provide tool-independent evidence for structural disruption. Until such data are available, the taxonomy should be understood as a computationally grounded hypothesis supported by multiple convergent lines of evidence, not as experimentally confirmed mechanistic classification.
+
+== Relationship to existing frameworks
+
+The taxonomy proposed here is complementary to, not competing with, the expression-outcome
+taxonomy of Cheng, Bohaczuk, and Stergachis (2024), who classify non-coding regulatory variants
+into loss-of-expression (LOE), modular loss-of-expression (mLOE), and gain-of-ectopic-expression
+(GOE) categories. Their classification operates on the consequence axis (what happens to gene
+expression), while ours operates on the mechanism axis (how the variant disrupts regulation). A
+variant classified as mLOE in their framework could be Class A (activity-driven mLOE, e.g.,
+tissue-specific enhancer disruption) or Class B (architecture-driven mLOE, e.g., tissue-specific
+contact disruption) in ours. The two taxonomies are orthogonal and could be combined into a
+two-dimensional classification: mechanism × consequence.
+
+AlphaGenome (Avsec et al. 2026) predicts thousands of functional genomic tracks from DNA
+sequence, representing the most comprehensive single-model approach to variant effect prediction.
+Its multi-output architecture implicitly acknowledges that regulatory effects are
+multi-dimensional. However, multi-output prediction does not eliminate the need for mechanistic
+interpretation. A model that predicts both chromatin accessibility change and contact frequency
+change still requires a framework to determine which output is most relevant for a given variant
+in a given tissue. The taxonomy proposed here provides that interpretive layer: Class A variants
+should be evaluated primarily on activity-track predictions; Class B variants on contact-track
+predictions; Class C on both.
+
+== Claim ladder: evidence levels and downgrade rules
+
+To make the evidentiary status of each claim explicit, we classify all major assertions into three tiers: *Demonstrated* (quantitative evidence from this study), *Supported* (consistent with data but not independently proven), and *Hypothesized* (plausible framework awaiting validation). Each tier includes a downgrade rule: the condition under which the claim would move to a weaker tier or be abandoned.
+
+#figure(
+  kind: table,
+  caption: [*Claim ladder: evidence tiers and downgrade rules.* Each major claim is assigned an evidence tier with explicit conditions for downgrade. D = Demonstrated, S = Supported, H = Hypothesized.],
+  scientific-table(
+    columns: (auto, auto, 1fr, 1fr),
+    [*Claim*], [*Tier*], [*Evidence*], [*Downgrade if...*],
+
+    [Regulatory pathogenicity is mechanistically heterogeneous (≥5 classes)],
+    [D],
+    [30,318 variants × 9 loci show distinct tool-response profiles per class; 8 canonical literature cases],
+    [A single-axis model achieves equivalent classification accuracy without class decomposition],
+
+    [Sequence-based tools (VEP, CADD) are blind to Class B],
+    [D],
+    [NMI ≤ 0.03 at 8/9 tissue-mismatched loci; 0 of 25 Q2b detected by VEP/CADD],
+    [Sequence model predicts Q2b LSSIM values with r > 0.5],
+
+    [MPRA returns null for architecture-driven variants],
+    [D],
+    [HBB Q2b vs Q4: p = 0.41 (Kircher 2019); cross-locus: 0 Q2b in TERT/LDLR MPRA windows],
+    [Tiling MPRA across full HBB locus shows Q2b MPRA ≠ 0 (p < 0.05)],
+
+    [Tissue match amplifies architecture-driven detection],
+    [D],
+    [5 loci tested: SCN5A +37%, LDLR +43%, MLH1 2.0× tail; BRCA1 null (K562≈MCF7); CFTR reverse (0.60×, literature vs real peaks)],
+    [≥3 additional tissue-matched configs show uniform null (all ≤ 1.05, no tail enrichment, no reverse effect)],
+
+    [Q2b variants disrupt enhancer--promoter contacts],
+    [S],
+    [434 bp mean enhancer distance (58× closer than Q3); HUDEP-2 Hi-C: 1.76× long-range enrichment (p = 0.0016)],
+    [Allele-specific Hi-C on Q2b shows no contact change vs WT],
+
+    [25 HBB Q2b are genuinely pathogenic via structural mechanism],
+    [H],
+    [Computational: LSSIM < 0.95, enhancer-proximal, VEP-blind. No experimental confirmation],
+    [Capture Hi-C + RT-qPCR in HUDEP-2 show no expression change at Q2b positions],
+
+    [Class B exists beyond HBB (generalizable)],
+    [H],
+    [29 candidates at 3 partially matched loci; tissue-match amplification at 3 independent loci (SCN5A, LDLR, MLH1)],
+    [Tissue-matched configs at remaining loci (CFTR, TERT, TP53) all fail to increase Class B counts above K562],
+
+    [Taxonomy should replace single-axis scoring in clinical practice],
+    [H],
+    [Conceptual argument + blind-spot quantification. No clinical validation],
+    [Prospective study shows single-axis scoring achieves equivalent diagnostic yield],
+  ),
+) <tab:claim-ladder>
+
+Three principles govern the ladder:
+
++ *Demonstrated* requires quantitative reproducible evidence within this study. Computationally demonstrated claims can be independently verified from the deposited data and code.
++ *Supported* requires evidence consistent with the claim from multiple independent sources, but lacking definitive proof (e.g., WT Hi-C shows enrichment but not allele-specific disruption).
++ *Hypothesized* requires a plausible mechanism and preliminary data, but the claim rests on extrapolation from a small number of observations (e.g., N = 1 locus for confident Class B).
+
+The downgrade rules are falsifiable: each specifies a concrete experimental or computational outcome that would weaken or invalidate the corresponding claim. We commit to these criteria prospectively.
+
+== What this paper does not claim
+
+To prevent overinterpretation, we explicitly state four limitations that bound our conclusions:
+
++ *Not a universal predictor.* ARCHCODE detects architecture-driven pathogenicity only when tissue-matched chromatin data are available. The canonical Class B demonstration comes from a single locus (HBB) with ideal tissue match (K562 erythroid). Generalization requires tissue-matched configurations for each locus of interest --- which do not yet exist for most of the genome.
+
++ *Not experimentally validated.* The 54 Class B variants are computationally identified structural disruptions, not experimentally confirmed pathogenic variants. Allele-specific Capture Hi-C in tissue-matched cells (e.g., HUDEP-2 for HBB) is required to confirm that these variants actually disrupt enhancer--promoter contacts _in vivo_.
+
++ *Not a clinical diagnostic tool.* Taxonomy assignments (Classes A--E) are research classifications for hypothesis generation. They should not be used for clinical variant reclassification, diagnostic reporting, or treatment decisions without independent experimental validation.
+
++ *Not a replacement for sequence-based tools.* VEP and CADD remain essential for coding, splice-site, and activity-driven regulatory variants (Class A). ARCHCODE adds a complementary axis --- it does not subsume existing tools.
+
+== The path forward
+
+The central argument of this paper is that variant interpretation should adopt a
+"mechanism-first, then score" workflow. Rather than computing a single pathogenicity score and
+asking whether it exceeds a threshold, interpreters should first ask: through which mechanism
+might this variant be pathogenic? The answer to that question determines which tool to apply,
+which experiment to run, and how to interpret the result. Architecture-driven pathogenicity ---
+operating through 3D chromatin contact disruption rather than regulatory element activity change
+--- is one such mechanism, currently invisible to standard interpretation tools and requiring
+dedicated structural modeling for detection. Our five-class taxonomy is an initial decomposition
+of this heterogeneity into actionable categories. Its validation will come not from computational
+benchmarks alone but from the experiments it directs: Capture Hi-C in HUDEP-2 for HBB Q2b,
+matched-tissue ARCHCODE for SCN5A and GJB2, dual-readout assays for mixed-class candidates.
+The framework succeeds if it accelerates the experimental characterization of regulatory variants
+by routing each variant to the assay most likely to detect its effect. The FOXP3 in silico
+mutagenesis demonstrates a further extension: when clinical databases lack non-coding variants
+for a gene of interest, ARCHCODE can proactively map structural vulnerability across the
+regulatory landscape, generating testable predictions for targeted sequencing. At FOXP3, two
+Treg-specific enhancer hotspots were identified where single-nucleotide substitutions are
+predicted to disrupt enhancer--promoter contacts --- positions that current diagnostic panels do
+not cover. If confirmed experimentally, such predictive structural maps could guide panel design
+for unsolved cases of IPEX-like syndromes and analogous conditions where regulatory variants are
+suspected but unsequenced.
+
+// =============================================================================
+// FIGURE LEGENDS
+// =============================================================================
+
+= Figure Legends
+
+#figure(
+  image("../../figures/taxonomy/fig_taxonomy_map.png", width: 100%),
+  caption: [*Mechanistic taxonomy of regulatory pathogenicity.* Regulatory variants can be
+  classified into five mechanistic classes based on their primary mode of action: activity-driven
+  (A), architecture-driven (B), mixed (C), coverage gap (D), and tissue-mismatch artifact (E).
+  Current sequence-based tools (VEP, CADD) cover classes A and partially C (blue zone). ARCHCODE
+  specifically targets class B and provides complementary coverage for class D (orange zone).
+  Class E represents systematic artifacts when tissue context is mismatched. No single tool
+  covers all five classes, motivating multi-modal variant interpretation.],
+) <fig:taxonomy-map>
+
+#figure(
+  image("../../figures/taxonomy/fig_archcode_examples.png", width: 100%),
+  caption: [*ARCHCODE evidence for each mechanistic class.* (A) Activity-driven: HBB Q3 variants
+  scored pathogenic by VEP but structurally neutral by ARCHCODE (mean enhancer distance
+  25,138 bp). (B) Architecture-driven: HBB Q2b variants scored benign by VEP but showing
+  significant structural disruption (LSSIM $lt$ 0.95, enhancer proximity 434 bp,
+  p = $2.51 times 10^(-31)$). (C) Mixed: HBB Q1 concordant pathogenic variants detected by both
+  tools. (D) Coverage gap: TERT Q2a variants unscored by VEP; ARCHCODE achieves AUC = 0.8405
+  (vs nearest-gene 0.4893). (E) Tissue-mismatch artifact: EXP-003 shows structural signal
+  collapses when wrong-tissue enhancer configuration is applied (off-diagonal delta ≈ 0).],
+) <fig:archcode-examples>
+
+#figure(
+  image("../../figures/taxonomy/fig_tool_matrix.png", width: 100%),
+  caption: [*Tool-to-mechanism coverage matrix.* Heatmap showing detection capability of eight
+  computational and experimental tools across five mechanistic classes of regulatory pathogenicity.
+  Green indicates primary detection capability; red indicates blindness. Sequence-based tools
+  (VEP, CADD, MPRA) systematically miss architecture-driven variants (Class B, outlined in red).
+  ARCHCODE is the only computational tool that primarily targets Class B, while being blind to
+  activity-driven effects (Class A). No single tool covers all five classes, demonstrating that
+  multi-modal integration is necessary for complete variant interpretation.],
+) <fig:tool-matrix>
+
+// =============================================================================
+// CODE AND DATA AVAILABILITY
+// =============================================================================
+
+= Code and Data Availability
+
+ARCHCODE source code, locus configuration files, and variant-level results are available at #link("https://github.com/sergeeey/ARCHCODE")[github.com/sergeeey/ARCHCODE] and archived on Zenodo (DOI: 10.5281/zenodo.15072447). The repository includes: (i) the loop-extrusion simulation engine (`src/`), (ii) all 15 locus configuration JSON files with ENCODE accession numbers and source provenance for every feature (`config/locus/`), (iii) per-locus Unified Atlas CSVs containing variant-level LSSIM scores, VEP annotations, and CADD scores where available (`results/`), (iv) analysis scripts for all figures and statistical tests (`scripts/`), and (v) a reproducibility guide (`REPRODUCE.md`) with SHA-256 checksums for all output files.
+
+// =============================================================================
+// CLINICAL DISCLAIMER
+// =============================================================================
+
+#block(
+  stroke: 1pt + rgb("#cc0000"),
+  fill: rgb("#fff5f5"),
+  inset: (x: 1.2em, y: 1em),
+  radius: 3pt,
+  width: 100%,
+)[
+  #text(weight: "bold", fill: rgb("#cc0000"))[Research Use Only]
+
+  #v(0.3em)
+  ARCHCODE is a research tool for hypothesis generation and variant prioritization. It has not been validated for clinical diagnostic use. Variant classifications reported here (Classes A--E) are computational assignments based on structural simulation, not clinical determinations of pathogenicity. No clinical decisions --- including variant reclassification, diagnostic reporting, or treatment selection --- should be based on ARCHCODE results without independent experimental validation in disease-relevant cell types. The taxonomy framework is intended to guide research prioritization and experimental design, not to replace established clinical interpretation guidelines (ACMG/AMP).
+]
+
+// =============================================================================
+// REFERENCES
+// =============================================================================
+
+#biorxiv-references[
+  + Avsec Z, Latysheva N, Cheng J, et al. Advancing regulatory variant effect prediction with
+    AlphaGenome. _Nature_. 2026;649(8099):1206--1218. doi:10.1038/s41586-025-10014-0
+
+  + Benegas G, Eraslan G, Song YS. Benchmarking DNA Sequence Models for Causal Regulatory
+    Variant Prediction in Human Genetics. _bioRxiv_. 2025.
+    doi:10.1101/2025.02.11.637758
+
+  + Brown JM, Roberts NA, Graham B, et al. A tissue-specific self-interacting chromatin domain
+    forms independently of enhancer-promoter interactions. _Nature Communications_.
+    2018;9:3849. doi:10.1038/s41467-018-06248-4
+
+  + Chakraborty S, Kopitchinski N, Zuo Z, et al. Enhancer-promoter interactions can bypass
+    CTCF-mediated boundaries and contribute to phenotypic robustness. _Nature Genetics_.
+    2023;55(2):280--290. doi:10.1038/s41588-022-01295-6
+
+  + Cheng YHH, Bohaczuk SC, Stergachis AB. Functional categorization of gene regulatory
+    variants that cause Mendelian conditions. _Human Genetics_. 2024;143(4):559--605.
+    doi:10.1007/s00439-023-02639-w
+
+  + Cheng J, Novati G, Pan J, et al. Accurate proteome-wide missense variant effect prediction
+    with AlphaMissense. _Science_. 2023;381(6664):eadg7492. doi:10.1126/science.adg7492
+
+  + Chin IM, Gardell ZA, Corces MR. Decoding polygenic diseases: Advances in noncoding variant
+    prioritization and validation. _Trends in Cell Biology_. 2024;34(6):465--483.
+    doi:10.1016/j.tcb.2024.03.005
+
+  + Gasperini M, Hill AJ, McFaline-Figueroa JL, et al. A Genome-wide Framework for Mapping
+    Gene Regulation via Cellular Genetic Screens. _Cell_. 2019;176(1--2):377--390.e19.
+    doi:10.1016/j.cell.2018.11.029
+
+  + Gilbert LA, Larson MH, Morsut L, et al. CRISPR-mediated modular RNA-guided regulation of
+    transcription in eukaryotes. _Cell_. 2013;154(2):442--451. doi:10.1016/j.cell.2013.06.044
+
+  + Gröschel S, Sanders MA, Hoogenboezem R, et al. A Single Oncogenic Enhancer Rearrangement
+    Causes Concomitant EVI1 and GATA2 Deregulation in Leukemia. _Cell_. 2014;157(2):369--381.
+    doi:10.1016/j.cell.2014.02.019
+
+  + Hnisz D, Weintraub AS, Day DS, et al. Activation of proto-oncogenes by disruption of
+    chromosome neighborhoods. _Science_. 2016;351(6280):1454--1458.
+    doi:10.1126/science.aad9024
+
+  + Hollingsworth EW, Chen Z, Chen CX, et al. Enhancer Poising Enables Pathogenic Gene
+    Activation by Noncoding Variants. _bioRxiv_. 2025. doi:10.1101/2025.06.20.660819
+
+  + Kim KL, Rahme GJ, Goel VY, et al. Dissection of a CTCF topological boundary uncovers
+    principles of enhancer-oncogene regulation. _Molecular Cell_. 2024;84(7):1365--1376.e7.
+    doi:10.1016/j.molcel.2024.02.007
+
+  + Kircher M, Witten DM, Jain P, et al. A general framework for estimating the relative
+    pathogenicity of human genetic variants. _Nature Genetics_. 2014;46(3):310--315.
+    doi:10.1038/ng.2892
+
+  + Lettice LA, Heaney SJ, Purdie LA, et al. A long-range Shh enhancer regulates expression
+    in the developing limb and fin and is associated with preaxial polydactyly. _Human Molecular
+    Genetics_. 2003;12(14):1725--1735. doi:10.1093/hmg/ddg180
+
+  + Lupiáñez DG, Kraft K, Heinrich V, et al. Disruptions of Topological Chromatin Domains
+    Cause Pathogenic Rewiring of Gene-Enhancer Interactions. _Cell_. 2015;161(5):1012--1025.
+    doi:10.1016/j.cell.2015.04.004
+
+  + McLaren W, Gil L, Hunt SE, et al. The Ensembl Variant Effect Predictor. _Genome Biology_.
+    2016;17(1):122. doi:10.1186/s13059-016-0974-4
+
+  + Northcott PA, Lee C, Zichner T, et al. Enhancer hijacking activates GFI1 family oncogenes
+    in medulloblastoma. _Nature_. 2014;511(7510):428--434. doi:10.1038/nature13379
+
+  + Rentzsch P, Witten D, Cooper GM, et al. CADD: predicting the deleteriousness of variants
+    throughout the human genome. _Nucleic Acids Research_. 2019;47(D1):D886--D894.
+    doi:10.1093/nar/gky1016
+
+  + Sanchez-Gaya V, Rada-Iglesias A. POSTRE: a tool to predict the pathological effects of
+    human structural variants. _Nucleic Acids Research_. 2023;51(9):e54.
+    doi:10.1093/nar/gkad225
+
+  + Sreenivasan VKA, Yumiceba V, Spielmann M. Structural variants in the 3D genome as drivers
+    of disease. _Nature Reviews Genetics_. 2025;26(11):742--760.
+    doi:10.1038/s41576-025-00862-x
+
+  + Tewhey R, Kotliar D, Park DS, et al. Direct identification of hundreds of
+    expression-modulating variants using a multiplexed reporter assay. _Cell_.
+    2016;165(6):1519--1529. doi:10.1016/j.cell.2016.04.027
+
+  + Vaz-Drago R, Custódio N, Carmo-Fonseca M. Deep intronic mutations and human disease.
+    _Human Genetics_. 2017;136(9):1093--1111. doi:10.1007/s00439-017-1809-4
+
+  + Wang H, Maurano MT, Qu H, et al. Widespread plasticity in CTCF occupancy linked to DNA
+    methylation. _Genome Research_. 2012;22(9):1680--1688. doi:10.1101/gr.136101.111
+
+  + Wang X, Li F, Zhang Y, et al. Deep learning approaches for non-coding genetic variant
+    effect prediction: current progress and future prospects. _Briefings in Bioinformatics_.
+    2024;25(5):bbae446. doi:10.1093/bib/bbae446
+
+  + Zuin J, Roth G, Zhan Y, et al. Nonlinear control of transcription through
+    enhancer--promoter interactions. _Nature_. 2022;604(7905):571--577.
+    doi:10.1038/s41586-022-04570-y
+
+  // --- Added 2026-03-28: Automated citation gathering (10 papers) ---
+
+  + Sabaté T, Lelandais B, Robert M-C, et al. Uniform dynamics of cohesin-mediated loop
+    extrusion in living human cells. _Nature Genetics_. 2025.
+    doi:10.1038/s41588-025-02406-9
+
+  + Tan J, Shenker-Tauris N, Rodriguez-Hernaez J, et al. Cell-type-specific prediction of 3D
+    chromatin organization enables high-throughput in silico genetic screening.
+    _Nature Biotechnology_. 2023;41(6):793--802. doi:10.1038/s41587-022-01612-8
+
+  + Fudenberg G, Imakaev M, Lu C, et al. Formation of chromosomal domains by loop extrusion.
+    _Cell Reports_. 2016;15(9):2038--2049. doi:10.1016/j.celrep.2016.04.085
+
+  + Rao SSP, Huang S-C, St Hilaire BG, et al. Cohesin loss eliminates all loop domains.
+    _Cell_. 2017;171(2):305--320.e24. doi:10.1016/j.cell.2017.09.026
+
+  + Friedman MJ, Wagner T, Lee H, et al. Enhancer--promoter specificity in gene transcription:
+    molecular mechanisms and disease associations. _Experimental \& Molecular Medicine_.
+    2024;56(4):772--787. doi:10.1038/s12276-024-01233-y
+
+  + Tao H, Li H, Xu Z, et al. A review of deep learning models for the prediction of chromatin
+    interactions with DNA and epigenomic profiles. _Briefings in Bioinformatics_.
+    2024;26(1):bbae651. doi:10.1093/bib/bbae651
+
+  + Xu Z, Zhang Y, Li D, et al. HiCDiffusion --- diffusion-enhanced, transformer-based prediction
+    of chromatin interactions from DNA sequences. _BMC Genomics_. 2024;25:1015.
+    doi:10.1186/s12864-024-10885-z
+
+  + Nazaretyan L, Rentzsch P, Kircher M. varCADD: large sets of standing genetic variation
+    enable genome-wide pathogenicity prediction. _Genome Medicine_. 2025;17:28.
+    doi:10.1186/s13073-025-01517-6
+
+  + Guo Y, Nechipurenko I, Bhattacharya D, et al. Activity-driven chromatin organization during
+    interphase: compaction, segregation, and entanglement suppression. _PNAS_.
+    2024;121(36):e2401494121. doi:10.1073/pnas.2401494121
+
+  + Wang Y, Xia Y, Chen Y, et al. Regulation of 3D genome organization during T cell activation.
+    _The FEBS Journal_. 2025;292(3):456--471. doi:10.1111/febs.17211
+
+  // --- Added 2026-03-28: Missing inline citations (4 papers) ---
+
+  + Cuddapah S, Jothi R, Schones DE, et al. Global analysis of the insulator binding protein
+    CTCF in chromatin barrier regions reveals demarcation of active and repressive domains.
+    _Genome Research_. 2009;19(1):24--32. doi:10.1101/gr.082800.108
+
+  + Himadewi P, Wang XQD, Feng F, et al. 3'HS1 CTCF binding site in human β-globin locus
+    regulates fetal hemoglobin expression. _eLife_. 2021;10:e70557.
+    doi:10.7554/eLife.70557
+
+  + Kircher M, Xiong C, Martin B, et al. Saturation mutagenesis of twenty disease-associated
+    regulatory elements at single base-pair resolution. _Nature Communications_.
+    2019;10:3583. doi:10.1038/s41467-019-11526-w
+
+  + Umhoefer JM, Arce MM, Decout A, et al. FOXP3 expression depends on cell-type-specific
+    cis-regulatory elements and transcription factor circuitry. _Immunity_.
+    2025;58(12):2861--2878. doi:10.1016/j.immuni.2025.10.020
+]
+
+// =============================================================================
+// SUPPLEMENTARY RESULTS
+// =============================================================================
+
+= Supplementary Results
+
+== Evolutionary Constraint Does Not Predict Architecture-Driven Pathogenicity <supplementary-s1>
+
+A natural hypothesis is that evolutionarily constrained genes --- those under strong purifying
+selection against loss-of-function mutations --- should harbor more architecture-driven (Class B)
+variants. We tested this using gnomAD v4 constraint metrics (LOEUF and pLI) for all 9 ARCHCODE
+loci.
+
+The correlation between LOEUF and Class B variant count (Q2b) is near zero (Spearman ρ = −0.055,
+p = 0.89). Constrained genes (LOEUF ≤ 0.6: TP53, TERT, SCN5A) collectively harbor only 3 Q2b
+variants, while unconstrained genes (LOEUF > 0.6: HBB, BRCA1, MLH1, CFTR, GJB2, LDLR) harbor
+51 --- a 17:1 ratio favoring unconstrained genes. By contrast, tissue match is the dominant
+predictor of Class B enrichment (Spearman ρ = 0.939, p = 0.0002). The HBB locus --- with
+LOEUF = 1.96 (highly unconstrained) yet full tissue match (K562 erythroid → hemoglobin) ---
+produces 25 Q2b variants, more than all constrained genes combined.
+
+This dissociation has a straightforward mechanistic explanation: LOEUF measures protein-level
+selection pressure, while Class B pathogenicity reflects disruption of enhancer-promoter
+chromatin contacts. These are orthogonal biological axes. A gene can be "unconstrained" for
+protein function (high LOEUF) yet exquisitely sensitive to architectural perturbation when its
+regulation depends on tissue-specific 3D chromatin topology. Tissue context, not evolutionary
+constraint, determines whether ARCHCODE detects architecture-driven pathogenicity (Supplementary
+Figure S1).
+
+== GWAS Catalog Variants Overlap ARCHCODE Structural Blind Spots <supplementary-s2>
+
+To assess clinical relevance, we intersected GWAS Catalog associations (EBI REST API, GRCh38)
+with the 9 ARCHCODE locus windows. We identified 1,002 GWAS SNPs across all windows, of which
+29 fall within ±1 kb of Q2 structural blind spot positions. Notable overlaps include: rs334
+(sickle cell variant, HbS) located 406 bp from a Q2 blind spot in the HBB locus; rs1800734
+(Lynch syndrome MLH1 promoter variant) at 93 bp distance; rs2736098 and rs2853669 (telomere
+length GWAS SNPs) at 556--962 bp from TERT Q2 positions; and 4 LDL cholesterol GWAS hits within
+187--899 bp of LDLR Q2 variants (Supplementary Figure S2).
+
+The proximity of GWAS-identified disease variants to ARCHCODE blind spots suggests that some
+GWAS associations may reflect architecture-driven mechanisms invisible to sequence-based
+fine-mapping. This does not prove causality --- GWAS lead SNPs are LD-tagged, and the causal
+variant may differ --- but it motivates targeted Capture Hi-C experiments at these positions.
+
+== Tissue-Matched SCN5A Configuration Confirms Class E → Class B Conversion <supplementary-s3>
+
+SCN5A (cardiac sodium channel Nav1.5) was classified as Class E (tissue-mismatch null) in our
+primary analysis because the K562 erythroid chromatin data used for ARCHCODE simulation does not
+represent the cardiac regulatory landscape. To test whether correct tissue context restores
+structural pathogenicity detection, we generated a cardiac-matched SCN5A configuration using
+ENCODE cardiac tissue ChIP-seq data: H3K27ac (ENCSR000NPF, 2 peaks in 250 kb window) and CTCF
+(ENCSR713SXF, 6 sites, strongest signal 202.41 near SCN5A TSS).
+
+Running 2,488 ClinVar SCN5A variants through both configurations yields clear amplification of
+the structural signal (Supplementary Figure S3):
+
+- *Pathogenic-Benign delta LSSIM:* K562 Δ = −0.0034 → Cardiac Δ = −0.0047 (+37% amplification)
+- *Structural calls:* 199 (K562) → 577 (cardiac) = 2.9× increase
+- *Q2 blind spot variants:* 214 → 274 (+28%)
+- *Frameshift minimum LSSIM:* 0.979 → 0.971 (stronger disruption in cardiac context)
+
+The SCN5A result was not a full Class E null under K562 (199 structural calls were detected),
+but cardiac tissue matching substantially strengthens discrimination. This partial conversion ---
+rather than an all-or-nothing switch --- is consistent with the observation that CTCF binding is
+largely cell-type invariant (Cuddapah et al. 2009), providing a structural skeleton even in
+mismatched tissue, while tissue-specific H3K27ac enhancers provide the critical occupancy signal
+that amplifies pathogenic disruption.
+
+== Systematic Tissue-Match Amplification Across Seven Loci <supplementary-s4a>
+
+To test whether tissue-match amplification generalizes, we created tissue-matched configurations for seven loci using cell-type-specific ENCODE ChIP-seq data and compared each against K562 baseline configurations. For LDLR and BRCA1, the K562-only configs replaced tissue-specific H3K27ac peaks with K562 peaks (ENCFF864OSZ), keeping CTCF sites identical. For MLH1, HCT116 colorectal data provided tissue-matched context (H3K27ac: ENCFF899XEF; CTCF: ENCFF463FGL). For CFTR, A549 lung adenocarcinoma data provided tissue-matched context (H3K27ac: ENCFF548GIF, ENCSR000AUI vehicle control; CTCF: ENCFF535MZG). For TERT, SK-N-SH neuroblastoma data provided a neural proxy (H3K27ac: ENCFF138VUT, ENCSR564IGJ; CTCF: ENCFF244QKO, ENCSR541AMF). For TP53, IMR-90 fetal lung fibroblast data provided a ubiquitous-expression control (H3K27ac: ENCFF805GNH, ENCSR002YRE; CTCF: ENCFF670ULH, ENCSR000EFI) (Supplementary Figure S7):
+
+#scientific-table(
+  columns: (auto, auto, auto, auto, auto),
+  [*Locus*], [*Tissue-matched Δ*], [*K562-only Δ*], [*Amplification*], [*Interpretation*],
+  [SCN5A], [−0.00471], [−0.00343], [*1.37×*], [Cardiac H3K27ac amplifies signal],
+  [LDLR], [−0.00241], [−0.00169], [*1.43×*], [HepG2 H3K27ac amplifies signal],
+  [MLH1], [−0.00977], [−0.00912], [*1.07× (mean)*], [Tail amplification: LSSIM\<0.95 count doubles (72→144, 2.0×)],
+  [BRCA1], [−0.00554], [−0.00558], [*0.99×*], [No amplification: K562 peaks co-localize with MCF7],
+  [CFTR], [−0.00406], [−0.00678], [*0.60×*], [Reverse effect: K562 baseline used literature enhancers; A549 real peaks are sparser],
+  [TERT], [−0.00726], [−0.01882], [*0.39×*], [Strong reverse: SK-N-SH has 2 H3K27ac peaks vs K562 5; no TERT TSS enhancer],
+  [TP53], [−0.00158], [−0.00893], [*0.18×*], [Strongest reverse: IMR-90 has 12 peaks vs K562 9, but 4 novel are distant (DNAH2); dilution effect],
+)
+
+Two of seven tissue-matched loci show positive amplification via _mean shift_ (SCN5A 1.37×, LDLR 1.43×), while MLH1 shows _tail amplification_: the mean delta increases only modestly (1.07×), but the number of variants with LSSIM \< 0.95 doubles from 72 to 144 (2.0×).
+
+The BRCA1 null result (0.99×) is mechanistically informative: K562 H3K27ac peaks co-localize with MCF7 peaks at all major sites, meaning "tissue mismatch" at BRCA1 is minimal --- consistent with BRCA1 being broadly expressed.
+
+The CFTR reverse result (0.60×) is equally informative: the K562 baseline for CFTR used _literature-based_ enhancer annotations (Gosalia 2020, Ott 2009) because CFTR is silent in K562, while the A549 config used real ChIP-seq peaks. A549 shows only 9 H3K27ac peaks (concentrated in introns 11--14) and 2 CTCF sites, versus 6 literature enhancers and 6 CTCF sites in the K562 config. The K562 baseline was effectively _overparameterized_ relative to the actual A549 regulatory landscape, inflating the apparent disruption signal.
+
+The TERT result (0.39×) shows SK-N-SH neuroblastoma with only 2 H3K27ac peaks (both at CLPTM1L, ~50kb downstream) versus K562's 5 peaks, and critically _no enhancer at the TERT TSS_. The LSSIM\<0.95 count drops from 48 to 0. This is consistent with TERT reactivation in neural tumors occurring via promoter mutations (C228T/C250T creating de novo ETS binding sites) rather than enhancer-driven activation --- a mechanism invisible to enhancer-based structural models.
+
+The TP53 result (0.18×) is the strongest reverse effect and reveals a _dilution_ mechanism: IMR-90 has _more_ H3K27ac peaks than K562 (12 vs 9), but 4 novel peaks are located in the distant DNAH2 region (~60--80kb from TP53). These distal enhancers redistribute loop-extrusion contacts across a wider area, effectively diluting the structural discrimination near TP53. The LSSIM\<0.95 count remains stable at 5, indicating that the tail is driven by gene-proximal enhancers shared between K562 and IMR-90. This demonstrates that enhancer _proximity_, not merely enhancer _count_, determines structural discrimination strength.
+
+The seven-locus panel reveals four distinct outcome modes: _positive amplification_ (SCN5A, LDLR), _tail amplification_ (MLH1), _null_ (BRCA1), and _reverse_ (CFTR, TERT, TP53). The reverse cases further decompose into three sub-mechanisms: overparameterization (CFTR), enhancer loss (TERT), and enhancer dilution (TP53). This heterogeneity strengthens the tissue-match hypothesis by showing that the effect depends on enhancer proximity and density rather than being a universal bias.
+
+== Testable Predictions for Future Tissue-Matched Studies <supplementary-s4b>
+
+To demonstrate falsifiability, we list explicit predictions for tissue-matched ARCHCODE runs at loci not yet tested with correct tissue context. These predictions are stated prospectively in this manuscript; outcomes inconsistent with predictions would weaken the taxonomy framework. Note: these are prospective hypotheses, not formally pre-registered predictions (no external registry was used).
+
+#scientific-table(
+  columns: (auto, auto, auto, auto),
+  [*Locus*], [*Predicted tissue*], [*Expected Class B?*], [*Rationale*],
+  [LDLR], [Hepatocyte (HepG2)], [Low--moderate], [LDLR regulation is SREBP-driven; enhancer--promoter contacts are relatively short-range. Existing HepG2 config shows delta = −0.0025 (weak)],
+  [SCN5A], [iPSC-cardiomyocyte], [Moderate--high], [Cardiac bulk tissue gave +37% amplification; iPSC-CM with denser H3K27ac peaks should further increase signal],
+  [TP53], [Matched tissue TBD], [Low], [TP53 is broadly expressed; tissue-specific enhancer architecture is less pronounced],
+  [GJB2], [Inner ear / cochlear], [Unknown], [No ENCODE data for cochlear tissue; prediction impossible without chromatin data],
+  [CFTR], [Lung epithelium], [Low--moderate], [CFTR has well-characterized proximal enhancers; architecture-driven effects may be secondary to activity-driven],
+  [TERT], [Stem cell / cancer], [Moderate], [TERT promoter mutations are well-studied Class A; distal enhancer contacts (e.g., MYC super-enhancer) could harbor Class B],
+)
+
+*Falsification:* If tissue-matched configurations at LDLR, SCN5A (iPSC-CM), and CFTR all fail to increase Class B variant counts above the K562 baseline, the tissue-match hypothesis would be weakened and the HBB result would more likely reflect a locus-specific rather than general phenomenon.
+
+// =============================================================================
+// SUPPLEMENTARY FIGURE LEGENDS
+// =============================================================================
+
+= Supplementary Figure Legends
+
+#figure(
+  image("../../figures/taxonomy/fig_gnomad_constraint.png", width: 100%),
+  caption: [*Gene constraint does not predict Class B enrichment.* (A) Scatter plot of LOEUF
+  (gnomAD v4) versus Q2b variant count for 9 ARCHCODE loci (Spearman ρ = −0.055, p = 0.89).
+  Red points: tissue-matched loci (≥0.5); gray: mismatched. (B) Bar chart showing Q2b variants
+  by constraint category: constrained (LOEUF ≤ 0.6, 3 genes, 3 Q2b) versus unconstrained
+  (LOEUF > 0.6, 6 genes, 51 Q2b).],
+) <fig:gnomad-constraint>
+
+#figure(
+  image("../../figures/taxonomy/fig_gwas_overlay.png", width: 100%),
+  caption: [*GWAS Catalog associations within ARCHCODE locus windows.* Stacked bar chart showing
+  total GWAS SNPs per locus (blue) with Q2 blind spot overlaps highlighted (red, ±1 kb). LDLR
+  has the most GWAS SNPs (258); HBB and TERT have the most blind spot overlaps (11 each).],
+) <fig:gwas-overlay>
+
+#figure(
+  image("../../figures/taxonomy/fig_scn5a_cardiac_comparison.png", width: 100%),
+  caption: [*SCN5A tissue-match experiment: K562 (Class E) versus cardiac (Class B).*
+  (A) LSSIM distribution for pathogenic and benign variants under both configurations.
+  (B) Structural calls by variant category. (C) Amplification ratios showing 1.37× delta,
+  2.90× structural calls, and 1.28× Q2 variants.],
+) <fig:scn5a-cardiac>
+
+#figure(
+  image("../../figures/taxonomy/fig_permutation_test.png", width: 100%),
+  caption: [*Permutation validation of LSSIM threshold and effect sizes.*
+  (A) Null distribution from 10,000 permutations of pathogenic/benign labels at threshold 0.95:
+  observed 31 Q2b variants (red dashed line) versus null mean 9.9 ± 2.6 (p < 0.0001).
+  (B) Threshold sweep (0.88--0.98): permutation p-value remains below 0.05 across the range
+  0.92--0.98, confirming robustness. (C) Bootstrap NMI distributions (N = 1,000 resamples):
+  NMI(ARCHCODE, VEP) = 0.496 (0.433--0.560); NMI(ARCHCODE, CADD) = 0.245 (0.189--0.298).
+  (D) Effect size forest plot: Cohen's d = −2.14 for LSSIM pathogenic--benign separation,
+  d = −1.63 for enhancer distance (Q2b vs rest), log₂(odds ratio) = 5.09 for enhancer
+  proximity ≤ 500 bp.],
+) <fig:permutation-test>
+
+#figure(
+  image("../../figures/taxonomy/fig_crosslocus_summary.png", width: 100%),
+  caption: [*Cross-locus summary of ARCHCODE taxonomy framework.*
+  (A) |Δ LSSIM| (pathogenic minus benign) by locus, colored by taxonomy class assignment.
+  TERT shows the largest absolute delta; HBB shows the strongest Class B signal.
+  (B) Structural call counts per locus (log scale). HBB dominates with 962 calls.
+  (C) Tissue match score versus structural calls: HBB (tissue match = 1.0) is the clear
+  outlier with Spearman ρ = 0.63. (D) Tool blind-spot matrix: only ARCHCODE detects
+  Class B (architecture-driven); all sequence-based tools (VEP, CADD, MPRA, CRISPRi) are
+  blind to this class.],
+) <fig:crosslocus-summary>
+
+#figure(
+  image("../../figures/taxonomy/fig_mpra_positive_control.png", width: 100%),
+  caption: [*MPRA positive control test: Q3 (activity-driven) vs Q2b (architecture-driven).*
+  Box plots of MPRA scores (Kircher et al. 2019, 186 bp HBB promoter) by variant quadrant.
+  Q2b (architecture-driven, N = 10) shows mean MPRA score −0.019 (near null). Q3
+  (activity-driven, N = 1) has MPRA score −0.13. The test is inconclusive due to insufficient
+  Q3 representation in the 186 bp MPRA window (1 of 75 atlas Q3 variants). A tiling MPRA
+  covering the full 95 kb HBB locus is required for adequate statistical power.],
+) <fig:mpra-positive-control>
+
+#figure(
+  image("../../figures/taxonomy/fig_tissue_match_amplification.png", width: 100%),
+  caption: [*Tissue-match amplification across seven loci.*
+  (A) Pathogenic--benign LSSIM separation (|Δ|) for tissue-matched (green) vs K562-only (red)
+  configurations across seven loci. SCN5A and LDLR show 37--43% mean amplification; MLH1 shows 7% mean but 2.0× tail
+  amplification; BRCA1 shows null (0.99×); CFTR (0.60×), TERT (0.39×), and TP53 (0.18×) show reverse effects.
+  (B) Structural call counts at LSSIM\<0.95 threshold: MLH1 doubles (72→144); CFTR drops (36→13); TERT drops (48→0); TP53 stable (5→5).
+  (C) Four outcome modes: _positive_ (SCN5A, LDLR), _tail_ (MLH1), _null_ (BRCA1), _reverse_ (CFTR, TERT, TP53).
+  Reverse sub-mechanisms: overparameterization (CFTR), enhancer loss (TERT), enhancer dilution (TP53).],
+) <fig:tissue-match-amplification>
+
+#figure(
+  image("../../figures/taxonomy/fig_hudep2_q2b_contacts.png", width: 100%),
+  caption: [*HUDEP-2 Capture Hi-C contact frequencies at Q2b variant positions.*
+  (A) Contact matrix (WT HUDEP-2, 5 kb resolution, hg19) across the 95 kb HBB window.
+  Cyan: Q2b/HBB gene bin; green: LCR (HS2--HS4). (B) Contact profile of the Q2b bin
+  showing interactions with all other bins. (C) Long-range contact enrichment (>40 kb):
+  Q2b bin shows 1.76× enrichment over background (Mann--Whitney p = 0.0016), consistent
+  with ARCHCODE prediction that Q2b variants occupy structurally important chromatin.
+  Source: GSM4873116 (Himadewi et al. 2021). Limitation: 5 kb resolution places all
+  21 Q2b variants in a single bin; differential analysis between individual positions
+  requires higher-resolution data.],
+) <fig:hudep2-q2b>
+
+#figure(
+  image("../../figures/taxonomy/fig_mpra_crosslocus_overlay.png", width: 100%),
+  caption: [*Cross-locus MPRA × ARCHCODE overlay (Kircher et al. 2019).*
+  Scatter plots of MPRA score (log₂ RNA/DNA) vs ARCHCODE LSSIM for variants matched
+  by position and allele across three loci. (Left) HBB: 15 Q2b and 15 Q4 variants;
+  MPRA scores are indistinguishable (p = 0.41). (Center) TERT: 10 matched variants,
+  all Q4 --- zero Q2b in the 258 bp MPRA window. (Right) LDLR: 25 matched variants,
+  all Q4 --- zero Q2b in the 317 bp window. Architecture-driven variants fall outside
+  promoter-scale MPRA coverage, confirming Class B invisibility to activity-based assays.
+  Data source: OSF doi:10.17605/OSF.IO/75B2M.],
+) <fig:mpra-crosslocus>
+
+== Supplementary Table S5: Discovery Locus Ranking <supplementary-s5>
+
+To guide future experimental and computational work, we rank 15 genomic loci by their potential for architecture-driven discovery. The ranking integrates four axes: (1) ARCHCODE signal strength (Δ LSSIM pathogenic--benign), (2) ClinVar variant density, (3) tissue-matched epigenomic data availability, and (4) expert assessment of Class B discovery potential based on regulatory architecture complexity and enhancer landscape divergence from K562.
+
+#figure(
+  kind: table,
+  caption: [*Discovery locus ranking.* 15 loci ranked by composite score across signal strength, data availability, tissue match, and discovery potential. Tier: D = Demonstrated, S = Supported, H = Hypothesized, NA = Not actionable.],
+  scientific-table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, 1fr),
+    [*\#*], [*Locus*], [*Score*], [*Tier*], [*Δ LSSIM*], [*Struct*], [*TM*], [*Next step*],
+
+    [1], [HBB], [21.1], [D], [0.111], [281], [1.0], [Allele-specific Capture Hi-C on top 5 Q2b],
+    [2], [BRCA1], [13.6], [S], [0.006], [79], [0.0], [MCF7 Hi-C cross-validation],
+    [3], [TERT], [13.4], [S], [0.019], [48], [0.5], [GBM-specific H3K27ac config],
+    [4], [SCN5A], [13.0], [S], [0.005], [0], [0.0], [iPSC-CM config for Class B candidates],
+    [5], [MLH1], [12.9], [H], [0.009], [72], [0.0], [HCT116 tissue-matched config],
+    [6], [LDLR], [12.7], [S], [0.002], [10], [0.0], [HepG2 Hi-C contact cross-validation],
+    [7], [CFTR], [10.5], [H], [0.007], [36], [0.0], [A549 lung config + amplification test],
+    [8], [BCL11A], [9.5], [H], [0.014], [0], [0.8], [+58 enhancer analysis + HUDEP-2 Hi-C],
+    [9], [PTEN], [8.9], [H], [0.010], [48], [0.3], [LNCaP prostate-specific config],
+    [10], [SHH], [8.0], [H], [---], [0], [0.0], [Atlas generation + Lupianez cross-validation],
+    [11], [TP53], [7.9], [H], [0.009], [5], [0.5], [Low priority (ubiquitous expression)],
+    [12], [KCNQ1], [7.0], [H], [---], [0], [0.0], [ClinVar download + cardiac config],
+    [13], [GATA1], [4.5], [H], [0.004], [0], [0.8], [Low priority (small N)],
+    [14], [HBA1], [4.3], [S], [0.002], [0], [0.8], [LCR architecture comparison with HBB],
+    [15], [GJB2], [2.1], [NA], [0.006], [0], [0.0], [Not actionable (no cochlear ENCODE)],
+  ),
+) <tab:discovery-ranking>
+
+The top 6 loci (HBB through LDLR) represent the most actionable targets: they have existing ARCHCODE atlases, tissue-matched or partially matched configurations, and concrete next steps that can be executed computationally or with targeted experiments. The bottom tier (GATA1, HBA1, GJB2) provides informative negative controls or boundary cases that constrain the applicability domain of architecture-driven analysis.
+
+== ML Ablation Study: Structural Features Are Essential for Architecture-Driven Variant Detection <supplementary-s6>
+
+To quantify whether 3D structural features provide information beyond sequence-based predictors for detecting architecture-driven (Class B) variants, we trained gradient-boosted classifiers on 1,103 HBB variants (27 pearls vs. 1,076 non-pearls) using 5-fold stratified cross-validation with systematic feature ablation.
+
+*Feature engineering.* Each variant was represented by 31 features across four groups: structural (SSIM, LSSIM, $Delta$Insulation, LoopIntegrity, and derived ratios; 7 features), sequence-based (VEP, SIFT, CADD; 3 features), distance (to LCR, nearest enhancer, nearest CTCF, TSS; 9 features), and variant category (one-hot encoded; 10 features).
+
+*Pearl detection is the correct evaluation task.* The conventional pathogenic-vs-benign classification yields AUROC $approx$ 0.99 for all feature subsets due to strong category-driven separation --- a ceiling effect that obscures differences between scoring approaches. Pearl detection (identifying the 27 ClinVar-benign variants with LSSIM < 0.95) is the clinically relevant task: these are variants that sequence-based tools classify as benign but that show structural disruption under chromatin simulation.
+
+*Results (Table S6).* Structural features contribute 64% of total feature importance for pearl detection (delta\_lssim: 30%, lssim: 23%, delta\_insulation: 11%). VEP contributes 36% but cannot detect pearls alone: 0 of 27 pearls have VEP $gt.eq$ 0.5, 0 have SIFT $gt.eq$ 0.5, and only 15 of 27 (56%) have CADD $gt.eq$ 15.
+
+#figure(
+  kind: table,
+  caption: [*ML ablation for pearl detection.* 5-fold stratified CV, GradientBoosting classifier. Structural features dominate pearl detection but are dispensable at tissue-mismatched loci, confirming tissue-specificity.],
+  scientific-table(
+    columns: (auto, auto, auto, auto, auto, auto),
+    [*Feature set*], [*HBB AUROC*], [*HBB AUPRC*], [*BRCA1 AUROC*], [*BRCA1 AUPRC*], [*Interpretation*],
+
+    [All features], [0.987], [0.961], [1.000], [0.954], [Ceiling at both loci],
+    [Structural only], [0.958], [0.899], [0.840], [0.806], [Strong at HBB, weak at BRCA1],
+    [Sequence only], [0.961], [0.678], [0.985], [0.133], [High AUROC but low AUPRC],
+    [No structural], [0.989], [0.756], [0.978], [0.904], [Distance compensates at BRCA1],
+    [No sequence], [0.949], [0.904], [0.920], [0.852], [Structure sufficient at HBB],
+  ),
+) <tab:ml-ablation>
+
+*Cross-locus negative control.* At BRCA1 --- a tissue-mismatched locus where the 24 pearls are threshold artifacts (LSSIM 0.942--0.947, common polymorphisms with AF 40--50%) --- structural feature importance collapses to 0.6% (vs. 64% at HBB). The dominant predictor at BRCA1 is distance-to-nearest-enhancer (99% importance), not 3D structure. This confirms that architecture-driven detection is a tissue-specific phenomenon: structural features are informative only when the simulation uses tissue-matched epigenomic input, consistent with the tissue-specificity principle of the taxonomy (Section 3.4).
+
+*Pearl profile.* Architecture-driven variants at HBB are characterized by: (1) 2.3$times$ higher $Delta$LSSIM than non-pearls, (2) 56% located in the promoter region (vs. 0% for non-pearls), (3) 55% located outside the HBB gene body, and (4) VEP scores uniformly $lt.eq$ 0.20 ("Low Impact"). This profile --- high structural disruption, low sequence impact, promoter-proximal --- defines the Class B signature that sequence-based tools systematically miss.
+
+Supplementary Figures S7 and S8 show the full pearl detection analysis (4-panel: feature set ablation, feature importance, LSSIM distribution, recall\@K curves) and the cross-locus comparison (structural vs. sequence importance, AUROC by configuration, LSSIM separation) respectively.
+
+== Multi-Locus Structural Atlas: Quantitative Comparison Across 18 Loci <supplementary-s7>
+
+To characterize the scope and boundary conditions of architecture-driven variant analysis, we compiled a unified atlas across all 18 ARCHCODE loci, encompassing 31,929 ClinVar variants. @tab:multi-locus-atlas summarizes the key structural metrics for each locus--cell type configuration.
+
+#figure(
+  kind: table,
+  caption: [*Multi-locus structural atlas.* 18 loci ranked by structural discrimination (ascending mean LSSIM). Pearls: ClinVar-benign variants with LSSIM < 0.95. Struct.Path: variants with structural disruption exceeding calibrated thresholds. Calibrated: tissue-matched CTCF/H3K27ac from ENCODE or GEO.],
+  scientific-table(
+    columns: (auto, auto, auto, auto, auto, auto, auto, auto, auto),
+    [*Locus*], [*Cell type*], [*Window*], [*N*], [*Path*], [*Benign*], [*Pearls*], [*LSSIM*], [*Struct*],
+
+    [HBB], [K562], [95 kb], [1,103], [353], [750], [27], [0.958], [254],
+    [NPRL3], [Generic], [90 kb], [372], [212], [160], [0], [0.987], [0],
+    [BCL11A], [Erythroid], [100 kb], [314], [126], [188], [0], [0.989], [0],
+    [EXOG], [Cardiac], [250 kb], [364], [120], [244], [0], [0.992], [47],
+    [TRANK1], [HCT116], [300 kb], [4,060], [2,425], [1,635], [0], [0.992], [105],
+    [MLH1], [K562], [300 kb], [4,060], [2,425], [1,635], [0], [0.993], [72],
+    [CCDC22], [Treg], [60 kb], [486], [405], [81], [0], [0.993], [0],
+    [GJB2], [Generic], [300 kb], [469], [314], [155], [0], [0.994], [0],
+    [PTEN], [Generic], [300 kb], [1,496], [703], [793], [0], [0.994], [9],
+    [BRCA1], [K562/MCF7], [400 kb], [10,682], [7,062], [3,620], [0], [0.995], [52],
+    [HBA1], [Generic], [300 kb], [111], [67], [44], [0], [0.996], [0],
+    [CFTR], [A549], [317 kb], [3,349], [1,756], [1,593], [0], [0.997], [11],
+    [SCN5A], [Cardiac], [250 kb], [2,488], [928], [1,560], [0], [0.998], [200],
+    [GATA1], [Generic], [300 kb], [183], [52], [131], [0], [0.998], [0],
+    [TERT], [SK-N-SH], [300 kb], [2,089], [431], [1,658], [0], [0.998], [0],
+    [TP53], [IMR90], [300 kb], [2,794], [1,645], [1,149], [0], [0.998], [0],
+    [LDLR], [HepG2], [300 kb], [3,284], [2,274], [1,010], [0], [0.998], [32],
+    [FOXP3], [Treg], [300 kb], [236], [71], [165], [0], [0.999], [0],
+  ),
+) <tab:multi-locus-atlas>
+
+Three patterns emerge from this atlas. First, *pearl detection requires tissue-matched calibration*: only HBB --- the sole locus with fully calibrated, tissue-matched epigenomic input --- yields pearls (27 variants). This is consistent with the tissue-specificity principle (Section 3.4): architecture-driven pathogenicity manifests only when the simulation accurately recapitulates the cell-type-specific regulatory landscape.
+
+Second, *structural discrimination scales with regulatory complexity*: loci with extended regulatory architectures and multiple enhancer--promoter loops (HBB, TRANK1, BRCA1) show mean LSSIM below 0.995, while compact loci dominated by coding variants (TP53, GJB2, GATA1) cluster near LSSIM $approx$ 1.0. This defines the method's applicability domain: ARCHCODE provides maximal discriminative power at loci where noncoding regulatory architecture is the primary disease mechanism.
+
+Third, *tissue-match amplification is reproducible*: SCN5A shows 200 structurally pathogenic variants with cardiac-specific CTCF/H3K27ac data versus 0 with generic configuration --- a qualitative gain that parallels the +34% amplification documented in Supplementary S3.

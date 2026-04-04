@@ -1,0 +1,125 @@
+{
+  "canon_tier": "technical_full_scope",
+  "status": "technical_current",
+  "release_facing": false,
+  "scope_note": "Cross-locus statistical strengthening file retained for technical interpretation. Statistical significance here does not by itself promote non-HBB findings into the public canonical layer.",
+  "method": "Bootstrap CI (10K resamples) + Mann-Whitney U + Cohen d + BH FDR correction",
+  "n_loci": 8,
+  "n_bootstrap": 10000,
+  "total_variants": 27830,
+  "all_significant_after_FDR": true,
+  "results": {
+    "HBB": {
+      "n_path": 353,
+      "n_ben": 750,
+      "diff": 0.082663,
+      "CI": [
+        0.079026,
+        0.086246
+      ],
+      "p_raw": 1.74e-145,
+      "p_BH": 1.39e-144,
+      "d": 4.172,
+      "r": 0.957,
+      "sig": true
+    },
+    "BRCA1": {
+      "n_path": 7062,
+      "n_ben": 3620,
+      "diff": 0.005538,
+      "CI": [
+        0.005189,
+        0.005894
+      ],
+      "p_raw": 1.2e-106,
+      "p_BH": 3.21e-106,
+      "d": 0.528,
+      "r": 0.249,
+      "sig": true
+    },
+    "CFTR": {
+      "n_path": 1756,
+      "n_ben": 1593,
+      "diff": 0.006776,
+      "CI": [
+        0.005784,
+        0.007802
+      ],
+      "p_raw": 3.9e-47,
+      "p_BH": 5.2e-47,
+      "d": 0.432,
+      "r": 0.282,
+      "sig": true
+    },
+    "TP53": {
+      "n_path": 1645,
+      "n_ben": 1149,
+      "diff": 0.008932,
+      "CI": [
+        0.008235,
+        0.009624
+      ],
+      "p_raw": 3.93e-52,
+      "p_BH": 6.29e-52,
+      "d": 0.846,
+      "r": 0.335,
+      "sig": true
+    },
+    "MLH1": {
+      "n_path": 2425,
+      "n_ben": 1635,
+      "diff": 0.009115,
+      "CI": [
+        0.008047,
+        0.010217
+      ],
+      "p_raw": 1.35e-90,
+      "p_BH": 2.69e-90,
+      "d": 0.445,
+      "r": 0.371,
+      "sig": true
+    },
+    "LDLR": {
+      "n_path": 2274,
+      "n_ben": 1010,
+      "diff": 0.00241,
+      "CI": [
+        0.00204,
+        0.002802
+      ],
+      "p_raw": 1.47e-17,
+      "p_BH": 1.47e-17,
+      "d": 0.332,
+      "r": 0.183,
+      "sig": true
+    },
+    "GJB2": {
+      "n_path": 314,
+      "n_ben": 155,
+      "diff": 0.006241,
+      "CI": [
+        0.005251,
+        0.007171
+      ],
+      "p_raw": 1.09e-35,
+      "p_BH": 1.24e-35,
+      "d": 1.273,
+      "r": 0.706,
+      "sig": true
+    },
+    "TERT": {
+      "n_path": 431,
+      "n_ben": 1658,
+      "diff": 0.018818,
+      "CI": [
+        0.01604,
+        0.021735
+      ],
+      "p_raw": 9.24e-107,
+      "p_BH": 3.7e-106,
+      "d": 1.354,
+      "r": 0.681,
+      "sig": true
+    }
+  }
+}

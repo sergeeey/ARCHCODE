@@ -19,7 +19,6 @@ import {
   ContactMatrixViewer,
   PSCurveViewer,
 } from "../components/ui/ContactMatrixViewer";
-import { AlphaGenomeValidator } from "../components/ui/AlphaGenomeValidator";
 import { DebugOverlay } from "../components/ui/DebugOverlay";
 import { LoopDashboard } from "../components/dashboard/LoopDashboard";
 import { Button } from "../components/ui/Button";
@@ -50,8 +49,7 @@ type SidebarTab =
   | "params"
   | "data"
   | "matrix"
-  | "alphagenome"
-  | "legend"
+| "legend"
   | "experiment";
 
 export function Simulator() {
@@ -66,9 +64,6 @@ export function Simulator() {
   const [isRunning, setIsRunning] = useState(false);
   const [resolution, setResolution] = useState(1000);
   const [velocity, setVelocity] = useState(1000);
-  const [alphaGenomeApiKey, setAlphaGenomeApiKey] = useState(
-    import.meta.env.VITE_ALPHAGENOME_API_KEY || "",
-  );
   const [stepCount, setStepCount] = useState(0);
   const [pulseLoops, setPulseLoops] = useState<Loop[]>([]);
   const prevLoopsLengthRef = useRef(0);
@@ -611,11 +606,6 @@ export function Simulator() {
                   { id: "params" as const, label: "Params", Icon: Settings },
                   { id: "data" as const, label: "Data", Icon: Database },
                   { id: "matrix" as const, label: "Matrix", Icon: LayoutGrid },
-                  {
-                    id: "alphagenome" as const,
-                    label: "AlphaGenome",
-                    Icon: Dna,
-                  },
                   { id: "legend" as const, label: "Legend", Icon: List },
                   {
                     id: "experiment" as const,
@@ -705,22 +695,6 @@ export function Simulator() {
                   <>
                     {matrix && <ContactMatrixViewer matrix={matrix} />}
                     {psCurve && <PSCurveViewer psCurve={psCurve} fit={fit} />}
-                  </>
-                )}
-                {sidebarTab === "alphagenome" && (
-                  <>
-                    <AlphaGenomeValidator
-                      engine={engine}
-                      apiKey={alphaGenomeApiKey || undefined}
-                    />
-                    <Panel title="AlphaGenome API Key">
-                      <Input
-                        type="password"
-                        value={alphaGenomeApiKey}
-                        onChange={(e) => setAlphaGenomeApiKey(e.target.value)}
-                        placeholder="Enter API key..."
-                      />
-                    </Panel>
                   </>
                 )}
                 {sidebarTab === "legend" && (

@@ -1,0 +1,237 @@
+{
+  "id": "mlh1_hct116_300kb",
+  "name": "MLH1 300kb TAD (ENCODE HCT116 CTCF + H3K27ac)",
+  "description": "300kb window spanning the MLH1 locus on chr3p21.3. MLH1 (MutL Homolog 1) is a key DNA mismatch repair gene; germline pathogenic variants cause Lynch syndrome (HNPCC). TISSUE-MATCHED CONFIG: HCT116 colorectal carcinoma (MLH1-deficient, MSI-high). H3K27ac from ENCODE HCT116 (ENCFF899XEF, ENCSR661KMA, IDR optimal narrowPeak, GRCh38). CTCF from ENCODE HCT116 (ENCFF463FGL, ENCSR240PRQ, IDR optimal narrowPeak, GRCh38). Purpose: compare tissue-matched vs K562 baseline to quantify enhancer divergence effect on Class B detection.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr3",
+    "start": 36900000,
+    "end": 37200000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 36991735,
+        "occupancy": 0.30,
+        "name": "MLH1_upstream_weak_H3K27ac",
+        "source": "ENCODE_HCT116_H3K27ac",
+        "encode_accession": "ENCFF899XEF",
+        "note": "Weak H3K27ac peak upstream of MLH1 promoter (Peak_44578, 36991579-36991890, signal=3.17). Absent in K562. MANUALLY CALIBRATED occupancy from signal ratio"
+      },
+      {
+        "position": 36993419,
+        "occupancy": 0.95,
+        "name": "MLH1_EPM2AIP1_bidirectional_promoter",
+        "source": "ENCODE_HCT116_H3K27ac",
+        "encode_accession": "ENCFF899XEF",
+        "note": "STRONGEST H3K27ac in window (Peak_3482, 36992114-36994724, signal=27.97, score=1000, 2.6kb wide). Spans EPM2AIP1/MLH1 bidirectional CpG island promoter. Ironic: HCT116 is MLH1-deficient by promoter methylation, yet H3K27ac is present (reflects unmethylated allele or partial expression). MANUALLY CALIBRATED occupancy — highest signal in window"
+      },
+      {
+        "position": 36996517,
+        "occupancy": 0.25,
+        "name": "MLH1_exon1_weak_H3K27ac",
+        "source": "ENCODE_HCT116_H3K27ac",
+        "encode_accession": "ENCFF899XEF",
+        "note": "Weak H3K27ac peak near MLH1 exon 1 (Peak_44684, 36996341-36996693, signal=3.65). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 37054590,
+        "occupancy": 0.55,
+        "name": "LRRFIP2_promoter_H3K27ac",
+        "source": "ENCODE_HCT116_H3K27ac",
+        "encode_accession": "ENCFF899XEF",
+        "note": "H3K27ac peak at LRRFIP2 promoter region (Peak_13506, 37053818-37055362, signal=10.23, 1.5kb wide). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 37176319,
+        "occupancy": 0.85,
+        "name": "LRRFIP2_3prime_strong_H3K27ac",
+        "source": "ENCODE_HCT116_H3K27ac",
+        "encode_accession": "ENCFF899XEF",
+        "note": "Strong H3K27ac peak at LRRFIP2 3-prime / TAD boundary (Peak_7053, 37175120-37177517, signal=22.61, score=1000, 2.4kb wide). Co-localizes with CTCF (signal=27.23). Candidate TAD boundary element. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 37183670,
+        "occupancy": 0.65,
+        "name": "Downstream_H3K27ac",
+        "source": "ENCODE_HCT116_H3K27ac",
+        "encode_accession": "ENCFF899XEF",
+        "note": "Moderate H3K27ac peak downstream of LRRFIP2 (Peak_11352, 37182901-37184439, signal=13.75). Outside MLH1 TAD. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 37197809,
+        "occupancy": 0.45,
+        "name": "Far_downstream_H3K27ac",
+        "source": "ENCODE_HCT116_H3K27ac",
+        "encode_accession": "ENCFF899XEF",
+        "note": "Moderate H3K27ac peak near window 3-prime boundary (Peak_19632, 37197328-37198290, signal=6.71). MANUALLY CALIBRATED occupancy"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 36904851,
+        "orientation": "unknown",
+        "signal": 67.46,
+        "name": "TRANK1_intron_CTCF",
+        "source": "ENCODE_HCT116_CTCF",
+        "encode_accession": "ENCFF463FGL",
+        "note": "Strong CTCF in TRANK1 intron (36904764-36904937, score=1000). Co-localizes with K562 CTCF (36904723-36904993, signal=84.15). Conserved across cell types. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 36923578,
+        "orientation": "unknown",
+        "signal": 20.14,
+        "name": "TRANK1_intron_CTCF_2",
+        "source": "ENCODE_HCT116_CTCF",
+        "encode_accession": "ENCFF463FGL",
+        "note": "Moderate CTCF in TRANK1 intron (36923368-36923788, score=592). Co-localizes with K562 CTCF at 36923654 (signal=15.59). MANUALLY CALIBRATED"
+      },
+      {
+        "position": 36957277,
+        "orientation": "unknown",
+        "signal": 52.18,
+        "name": "Intergenic_CTCF_1",
+        "source": "ENCODE_HCT116_CTCF",
+        "encode_accession": "ENCFF463FGL",
+        "note": "Strong CTCF in intergenic region (36957067-36957487, score=1000). Co-localizes with K562 CTCF tandem pair site 1 (36957110-36957380, signal=68.85). MANUALLY CALIBRATED"
+      },
+      {
+        "position": 36958899,
+        "orientation": "unknown",
+        "signal": 330.14,
+        "name": "Intergenic_boundary_CTCF",
+        "source": "ENCODE_HCT116_CTCF",
+        "encode_accession": "ENCFF463FGL",
+        "note": "STRONGEST CTCF in window (36958731-36959066, score=1000, signal=330.14). Co-localizes with K562 strongest CTCF (signal=178.74) — 1.85x STRONGER in HCT116. Key insulator/boundary element upstream of MLH1. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 36992901,
+        "orientation": "unknown",
+        "signal": 21.17,
+        "name": "MLH1_promoter_CTCF",
+        "source": "ENCODE_HCT116_CTCF",
+        "encode_accession": "ENCFF463FGL",
+        "note": "Moderate CTCF at MLH1 promoter region (36992691-36993111, score=576). Co-localizes with bidirectional promoter H3K27ac. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 37024291,
+        "orientation": "unknown",
+        "signal": 68.90,
+        "name": "MLH1_intron12_CTCF",
+        "source": "ENCODE_HCT116_CTCF",
+        "encode_accession": "ENCFF463FGL",
+        "note": "Strong CTCF in MLH1 gene body (37024081-37024501, score=1000). Co-localizes with K562 CTCF (signal=26.6) — 2.6x STRONGER in HCT116. Intragenic insulator or sub-domain boundary. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 37175843,
+        "orientation": "unknown",
+        "signal": 27.23,
+        "name": "LRRFIP2_boundary_CTCF",
+        "source": "ENCODE_HCT116_CTCF",
+        "encode_accession": "ENCFF463FGL",
+        "note": "Moderate CTCF at LRRFIP2 / TAD boundary (37175633-37176053, score=627). Co-localizes with strong H3K27ac (signal=22.61). K562 CTCF at same position: signal=48.79 — WEAKER in HCT116. MANUALLY CALIBRATED"
+      }
+    ],
+    "tad_boundaries": [
+      {
+        "position_start": 36958676,
+        "position_end": 37178676,
+        "name": "MLH1_primary_TAD",
+        "source": "Rao_2014_K562_Arrowhead_LIFTOVER",
+        "geo_accession": "GSE63525",
+        "note": "Primary TAD containing MLH1 (~220kb). Reused from K562 config — TAD boundaries are largely cell-type invariant. CTCF anchors at 36958899 (HCT116 signal=330.14) and 37175843 (signal=27.23) confirm TAD persistence."
+      }
+    ],
+    "genes": [
+      {
+        "name": "TRANK1",
+        "start": 36826818,
+        "end": 36945054,
+        "strand": "-"
+      },
+      {
+        "name": "EPM2AIP1",
+        "start": 36985042,
+        "end": 36993131,
+        "strand": "-"
+      },
+      {
+        "name": "MLH1",
+        "start": 36993466,
+        "end": 37050846,
+        "strand": "+"
+      },
+      {
+        "name": "LRRFIP2",
+        "start": 37052625,
+        "end": 37176360,
+        "strand": "-"
+      }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq": {
+      "experiment": "ENCSR240PRQ",
+      "file": "ENCFF463FGL",
+      "type": "IDR optimal narrowPeak",
+      "cell_line": "HCT116",
+      "assembly": "GRCh38",
+      "peaks_genome_wide": 59890,
+      "peaks_in_window": 7,
+      "url": "https://www.encodeproject.org/experiments/ENCSR240PRQ/"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR661KMA",
+      "file": "ENCFF899XEF",
+      "type": "IDR optimal narrowPeak",
+      "cell_line": "HCT116",
+      "assembly": "GRCh38",
+      "peaks_genome_wide": 43277,
+      "peaks_in_window": 7,
+      "url": "https://www.encodeproject.org/experiments/ENCSR661KMA/"
+    },
+    "tad_domains": {
+      "study": "Rao et al. 2014",
+      "pmid": "25497547",
+      "geo": "GSE63525",
+      "file": "GSE63525_K562_Arrowhead_domainlist.txt",
+      "assembly_original": "hg19",
+      "liftover_method": "linear offset -41324bp (APPROXIMATE — reused from K562 config)",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63525"
+    },
+    "gene_annotations": {
+      "source": "NCBI RefSeq via UCSC API",
+      "assembly": "GRCh38",
+      "track": "ncbiRefSeq"
+    }
+  },
+  "tissue_match_comparison": {
+    "baseline_config": "mlh1_300kb",
+    "baseline_cell_line": "K562",
+    "matched_cell_line": "HCT116",
+    "enhancer_divergence": {
+      "k562_enhancers": 8,
+      "hct116_enhancers": 7,
+      "shared_positions": ["MLH1_promoter (~36993 kb)", "LRRFIP2_boundary (~37176 kb)"],
+      "k562_only": ["TRANK1 intron peaks (36908, 36912, 36924, 36942 kb)", "Intergenic boundary super-enhancer (36958 kb)", "Intergenic enhancer (36970 kb)"],
+      "hct116_only": ["MLH1_upstream_weak (36992 kb)", "MLH1_exon1_weak (36997 kb)", "LRRFIP2_promoter (37055 kb)", "Downstream (37184, 37198 kb)"],
+      "summary": "SUBSTANTIAL enhancer divergence. K562 has upstream TRANK1 enhancers absent in HCT116. HCT116 has downstream LRRFIP2 enhancers absent in K562. Only MLH1 promoter and LRRFIP2 boundary are shared. HIGH AMPLIFICATION EXPECTED based on SCN5A/LDLR precedent."
+    },
+    "ctcf_divergence": {
+      "k562_ctcf": 7,
+      "hct116_ctcf": 7,
+      "shared_positions": 6,
+      "note": "6/7 CTCF sites co-localize between K562 and HCT116. K562 has TRANK1 CTCF_1 (36902861) absent in HCT116. HCT116 has MLH1 promoter CTCF (36992901) absent in K562. Signal strengths differ: boundary CTCF 1.85x stronger in HCT116, intragenic CTCF 2.6x stronger. CTCF largely cell-type invariant as expected."
+    }
+  },
+  "thresholds": {
+    "ssim_pathogenic": 0.912,
+    "ssim_likely_pathogenic": 0.942,
+    "ssim_vus": 0.972,
+    "ssim_likely_benign": 0.992,
+    "note": "Copied from K562 config. NOT recalibrated for HCT116. Thresholds may shift with tissue-matched enhancers."
+  },
+  "_config_note": "TISSUE-MATCHED CONFIG for MLH1/HCT116 comparison experiment. Created 2026-03-10. Compare results with mlh1_300kb.json (K562 baseline) to quantify tissue-match amplification effect."
+}

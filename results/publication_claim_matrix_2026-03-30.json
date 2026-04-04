@@ -1,0 +1,210 @@
+{
+  "generated_at_utc": "2026-03-30T00:00:00Z",
+  "scope": "Promoted README/publication claims with direct structured evidence after the 2026-03-30 integrity sweep",
+  "governance_source": "results/publication_canonical_index_2026-03-30.json",
+  "claims": [
+    {
+      "id": "P01",
+      "surface": "README hero cards / dataset scale",
+      "claim_text": "ARCHCODE primary atlas covers 30,318 ClinVar variants across 9 primary loci.",
+      "status": "SUPPORTED",
+      "evidence": [
+        "results/integrative_benchmark_summary.json",
+        "results/per_locus_thresholds_summary.json"
+      ],
+      "evidence_values": {
+        "total_variants": 30318,
+        "primary_loci": 9
+      },
+      "required_wording": "Use '30,318 variants across 9 primary loci' or a rounded equivalent tied to the primary atlas.",
+      "caveats": [
+        "This claim excludes later exploratory scaling to 13 loci."
+      ]
+    },
+    {
+      "id": "P02",
+      "surface": "README key results / ROC figure",
+      "claim_text": "HBB ROC performance is AUC 0.977 with Youden threshold near LSSIM 0.994, sensitivity 0.966, specificity 0.988.",
+      "status": "SUPPORTED",
+      "evidence": [
+        "results/roc_unified.json"
+      ],
+      "evidence_values": {
+        "auc": 0.9766,
+        "youden_threshold": 0.9943,
+        "sensitivity": 0.966,
+        "specificity": 0.988
+      },
+      "required_wording": "Round only at display time; keep the underlying source values anchored to roc_unified.json.",
+      "caveats": [
+        "This is an HBB-specific discriminative result, not a universal cross-locus threshold."
+      ]
+    },
+    {
+      "id": "P03",
+      "surface": "README hero cards / CADD complementarity narrative",
+      "claim_text": "The atlas contains 27 HBB pearls and 54 ARCHCODE-only Class B variants; pearl CADD median is 15.7 while CADD-only calls dominate numerically.",
+      "status": "SUPPORTED",
+      "evidence": [
+        "results/integrative_benchmark_summary.json"
+      ],
+      "evidence_values": {
+        "total_pearls": 27,
+        "archcode_only": 54,
+        "cadd_only": 5773,
+        "pearl_cadd_median": 15.7
+      },
+      "required_wording": "Keep this framed as orthogonal/complementary detection, not clinical reclassification.",
+      "caveats": [
+        "Pearls are confined to HBB in the 9-locus primary atlas."
+      ]
+    },
+    {
+      "id": "P04",
+      "surface": "README multi-locus validation table / tissue gradient wording",
+      "claim_text": "The per-locus signal follows a tissue-specificity gradient, strongest in HBB and weaker in expressed or mismatched loci.",
+      "status": "SUPPORTED_WITH_CAVEAT",
+      "evidence": [
+        "results/per_locus_thresholds_summary.json"
+      ],
+      "evidence_values": {
+        "hbb_delta_lssim": 0.1109,
+        "tert_delta_lssim": 0.0188,
+        "scn5a_delta_lssim": 0.0034,
+        "gjb2_delta_lssim": 0.0062
+      },
+      "required_wording": "Use this as a domain-of-applicability statement, not as proof of causal biology.",
+      "caveats": [
+        "Most non-HBB loci show small effect sizes even when statistically stable."
+      ]
+    },
+    {
+      "id": "P05",
+      "surface": "README Hi-C validation section",
+      "claim_text": "ARCHCODE vs Hi-C Pearson correlation spans roughly 0.28-0.59 across structured locus-by-cell-type summaries, with best results at MLH1 and HBB 95 kb.",
+      "status": "SUPPORTED_WITH_CAVEAT",
+      "evidence": [
+        "results/hic_correlation_k562.json",
+        "results/hic_correlation_k562_95kb.json",
+        "results/hic_correlation_brca1.json",
+        "results/hic_correlation_mlh1.json",
+        "results/hic_correlation_tp53.json",
+        "results/hic_correlation_ldlr.json"
+      ],
+      "evidence_values": {
+        "pearson_r_min": 0.2755,
+        "pearson_r_max": 0.5886,
+        "mlh1_k562_r": 0.5886,
+        "hbb_95kb_r": 0.5876,
+        "brca1_k562_r": 0.5304
+      },
+      "required_wording": "Present as locus- and cell-context-dependent benchmarking, not blanket superiority over learned models.",
+      "caveats": [
+        "Comparison pools multiple loci and cell types rather than a single standardized benchmark.",
+        "The README display range is rounded from structured per-locus summaries."
+      ]
+    },
+    {
+      "id": "P06",
+      "surface": "README AlphaGenome real API section",
+      "claim_text": "Real AlphaGenome API runs show much larger mean CAGE disruption for pearls than for pathogenic non-pearls or benign controls.",
+      "status": "SUPPORTED_WITH_CAVEAT",
+      "evidence": [
+        "results/alphagenome_3way_comparison.json"
+      ],
+      "evidence_values": {
+        "n_pearl": 12,
+        "n_pathogenic": 13,
+        "n_benign": 20,
+        "pearl_mean_cage_pct": -19.0417,
+        "pathogenic_mean_cage_pct": -0.6692,
+        "benign_mean_cage_pct": -0.1028
+      },
+      "required_wording": "State that the evidence comes from real AlphaGenome API outputs and include the promoter-cluster caveat.",
+      "caveats": [
+        "11/12 pearl positions fall within one 73 bp promoter cluster; effective independence is lower than raw n."
+      ]
+    },
+    {
+      "id": "P07",
+      "surface": "README AlphaGenome ISM sentence",
+      "claim_text": "AlphaGenome ISM places the strongest negative CAGE sensitivity at pearl promoter position chr11:5227099, around -43%.",
+      "status": "SUPPORTED_WITH_CAVEAT",
+      "evidence": [
+        "results/alphagenome_ism_promoter.json"
+      ],
+      "evidence_values": {
+        "peak_position": 5227099,
+        "peak_cage_pct": -42.7318
+      },
+      "required_wording": "Keep the ISM claim tied to local promoter sensitivity, not independent clinical validation.",
+      "caveats": [
+        "The strongest ISM signal is confined to the same promoter hotspot emphasized in the three-way AlphaGenome comparison."
+      ]
+    },
+    {
+      "id": "P08",
+      "surface": "README MPRA section",
+      "claim_text": "Kircher 2019 MPRA cross-validation is globally null for ARCHCODE pearls at the score level, consistent with an episomal assay missing 3D chromatin context.",
+      "status": "SUPPORTED",
+      "evidence": [
+        "results/mpra_crossvalidation_summary.json"
+      ],
+      "evidence_values": {
+        "allele_specific_matches": 22,
+        "allele_pearson_r": -0.205,
+        "allele_pearson_p": 0.36,
+        "position_pearson_r": -0.0191,
+        "pearl_vs_nonpearl_p": 0.9066
+      },
+      "required_wording": "Describe this as null or weak cross-validation, not as positive wet-lab confirmation.",
+      "caveats": [
+        "This governs the current structured MPRA artifact. If a stronger position-level MPRA result is promoted later, it must be backed by a new structured artifact first."
+      ]
+    },
+    {
+      "id": "P09",
+      "surface": "README ablation section / anti-hallucination methodology",
+      "claim_text": "Ablation shows that categorical effect-strength encoding drives HBB discrimination, while position-only and random modes collapse toward chance.",
+      "status": "SUPPORTED",
+      "evidence": [
+        "results/ablation_effectstrength.json"
+      ],
+      "evidence_values": {
+        "categorical_auc": 0.975,
+        "position_only_auc": 0.551,
+        "random_auc": 0.49
+      },
+      "required_wording": "Use this as a falsification-oriented negative-control result, not as evidence of independent positional prediction.",
+      "caveats": [
+        "The current ablation supports a category-distribution explanation for HBB AUC and should be disclosed whenever the ROC claim is discussed."
+      ]
+    },
+    {
+      "id": "P10",
+      "surface": "README conservation / gnomAD statements",
+      "claim_text": "Pearl positions are more conserved than flanking background and are mostly absent or ultra-rare in gnomAD.",
+      "status": "SUPPORTED_WITH_CAVEAT",
+      "evidence": [
+        "results/conservation_pearl_analysis.json",
+        "results/gnomad_pearl_af_summary.json"
+      ],
+      "evidence_values": {
+        "phyloP_fold_enrichment": 3.2885,
+        "pearl_phyloP_mean": 2.394,
+        "background_phyloP_mean": 0.728,
+        "gnomad_pct_absent": 85.0,
+        "gnomad_pct_absent_or_ultra_rare": 100.0
+      },
+      "required_wording": "Keep this descriptive: consistent with purifying selection, not by itself proof of pathogenicity.",
+      "caveats": [
+        "The HBB locus has a floor effect in gnomAD because benign variants are also often absent."
+      ]
+    }
+  ],
+  "summary": {
+    "total_claims": 10,
+    "supported": 5,
+    "supported_with_caveat": 5
+  }
+}

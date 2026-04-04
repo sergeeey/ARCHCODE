@@ -1,0 +1,70 @@
+{
+  "analysis": "kircher_mpra_crosslocus_overlay",
+  "source": "Kircher et al. 2019 Nat Commun (PMID 31395865)",
+  "data_source": "OSF doi:10.17605/OSF.IO/75B2M (GRCh38 variants)",
+  "loci": {
+    "HBB": {
+      "n_atlas": 1103,
+      "n_mpra": 623,
+      "n_matched": 30,
+      "mpra_window_bp": 186,
+      "mpra_window": "5227022-5227208",
+      "quadrant_counts": {
+        "Q1": 0,
+        "Q2b": 15,
+        "Q3": 0,
+        "Q4": 15
+      },
+      "quadrant_mpra_means": {
+        "Q1": null,
+        "Q2b": -0.2327,
+        "Q3": null,
+        "Q4": -0.172
+      }
+    },
+    "TERT": {
+      "n_atlas": 2089,
+      "n_mpra": 975,
+      "n_matched": 10,
+      "mpra_window_bp": 258,
+      "mpra_window": "1294989-1295247",
+      "quadrant_counts": {
+        "Q1": 0,
+        "Q2b": 0,
+        "Q3": 0,
+        "Q4": 10
+      },
+      "quadrant_mpra_means": {
+        "Q1": null,
+        "Q2b": null,
+        "Q3": null,
+        "Q4": 0.363
+      }
+    },
+    "LDLR": {
+      "n_atlas": 3284,
+      "n_mpra": 1083,
+      "n_matched": 25,
+      "mpra_window_bp": 317,
+      "mpra_window": "11089231-11089548",
+      "quadrant_counts": {
+        "Q1": 0,
+        "Q2b": 0,
+        "Q3": 0,
+        "Q4": 25
+      },
+      "quadrant_mpra_means": {
+        "Q1": null,
+        "Q2b": null,
+        "Q3": null,
+        "Q4": -0.7132
+      }
+    }
+  },
+  "interpretation": {
+    "HBB": "Q2b MPRA scores indistinguishable from Q4 benign (p=0.41). MPRA blind to architecture-driven variants.",
+    "TERT": "No Q2b variants in 258bp MPRA window. All 10 matched variants are Q4 benign.",
+    "LDLR": "No Q2b variants in 317bp MPRA window. All 25 matched variants are Q4 benign.",
+    "overall": "Cross-locus MPRA overlay confirms: architecture-driven (Q2b) variants are systematically invisible to promoter-scale MPRA assays. This is consistent with the taxonomy prediction that Class B pathogenicity operates through 3D chromatin structure, not local regulatory activity."
+  }
+}

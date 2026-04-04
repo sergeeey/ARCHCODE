@@ -67,11 +67,11 @@ export function Landing() {
               className="text-base font-semibold mb-2"
               style={{ color: "var(--accent-success)" }}
             >
-              Validation (optional AlphaGenome)
+              Validation (Hi-C correlation)
             </h3>
             <p style={{ color: "var(--text-muted)" }}>
               Compare contact matrices and P(s) curves. Target: experimental
-              Hi-C; optional AlphaGenome API (mock in v1.0).
+              Hi-C experimental data for validation.
             </p>
           </div>
           <div

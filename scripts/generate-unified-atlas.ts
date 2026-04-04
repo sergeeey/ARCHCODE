@@ -629,16 +629,61 @@ async function main() {
     LOCUS_ARG === "mlh1" ||
     LOCUS_ARG === "ldlr" ||
     LOCUS_ARG === "scn5a" ||
+    LOCUS_ARG === "scn5a_cardiac" ||
+    LOCUS_ARG === "ldlr_k562" ||
+    LOCUS_ARG === "brca1_k562" ||
     LOCUS_ARG === "tert" ||
     LOCUS_ARG === "gjb2" ||
     LOCUS_ARG === "hba1" ||
     LOCUS_ARG === "gata1" ||
     LOCUS_ARG === "bcl11a" ||
-    LOCUS_ARG === "pten"; // extend as needed
+    LOCUS_ARG === "pten" ||
+    LOCUS_ARG === "mlh1_hct116" ||
+    LOCUS_ARG === "cftr_a549" ||
+    LOCUS_ARG === "tert_skn_sh" ||
+    LOCUS_ARG === "tp53_imr90" ||
+    LOCUS_ARG === "foxp3" ||
+    LOCUS_ARG === "foxp3_treg" ||
+    LOCUS_ARG === "foxp3_treg_60kb" ||
+    LOCUS_ARG === "foxp3_treg_60kb_hires" ||
+    LOCUS_ARG === "foxp3_mutagenesis" ||
+    LOCUS_ARG === "bcl11a_erythroid" ||
+    LOCUS_ARG === "bcl11a_mutagenesis" ||
+    LOCUS_ARG === "bcl11a_uniform" ||
+    LOCUS_ARG === "bcl11a_gwas" ||
+    LOCUS_ARG === "scn5a_cardiac_mut" ||
+    LOCUS_ARG === "hba1_focused" ||
+    LOCUS_ARG === "hba1_mutagenesis" ||
+    LOCUS_ARG === "bcl11a_del_ctcf3" ||
+    LOCUS_ARG === "bcl11a_del_ctcf4" ||
+    LOCUS_ARG === "bcl11a_del_ctcf3_4"; // extend as needed
 
   if (isGenericLocus) {
     // CFTR (and future loci): single CSV with both P/LP and B/LB
-    const csvFile = `data/${LOCUS_ARG}_variants.csv`;
+    // Map tissue-specific aliases to base locus for variant CSV lookup
+    const csvLocus = LOCUS_ARG === "scn5a_cardiac" ? "scn5a"
+      : LOCUS_ARG === "ldlr_k562" ? "ldlr"
+      : LOCUS_ARG === "brca1_k562" ? "brca1"
+      : LOCUS_ARG === "mlh1_hct116" ? "mlh1"
+      : LOCUS_ARG === "cftr_a549" ? "cftr"
+      : LOCUS_ARG === "tert_skn_sh" ? "tert"
+      : LOCUS_ARG === "tp53_imr90" ? "tp53"
+      : LOCUS_ARG === "foxp3_treg" ? "foxp3"
+      : LOCUS_ARG === "foxp3_treg_60kb" ? "foxp3"
+      : LOCUS_ARG === "foxp3_treg_60kb_hires" ? "foxp3"
+      : LOCUS_ARG === "foxp3_mutagenesis" ? "foxp3_mutagenesis"
+      : LOCUS_ARG === "bcl11a_erythroid" ? "bcl11a"
+      : LOCUS_ARG === "bcl11a_mutagenesis" ? "bcl11a_mutagenesis"
+      : LOCUS_ARG === "bcl11a_uniform" ? "bcl11a_mutagenesis"
+      : LOCUS_ARG === "bcl11a_gwas" ? "bcl11a_gwas"
+      : LOCUS_ARG === "scn5a_cardiac_mut" ? "scn5a_cardiac_mutagenesis"
+      : LOCUS_ARG === "hba1_focused" ? "hba1"
+      : LOCUS_ARG === "hba1_mutagenesis" ? "hba1_mutagenesis"
+      : LOCUS_ARG === "bcl11a_del_ctcf3" ? "bcl11a_mutagenesis"
+      : LOCUS_ARG === "bcl11a_del_ctcf4" ? "bcl11a_mutagenesis"
+      : LOCUS_ARG === "bcl11a_del_ctcf3_4" ? "bcl11a_mutagenesis"
+      : LOCUS_ARG;
+    const csvFile = `data/${csvLocus}_variants.csv`;
     console.log(`Loading variants from ${csvFile}...`);
     const genericVariants = loadGenericVariants(csvFile);
     allVariants = genericVariants.map((v) => ({
@@ -866,17 +911,28 @@ async function main() {
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
   // Output naming: use gene name matching locus arg, fallback to first gene or arg
+  // For tissue-specific aliases (scn5a_cardiac), match base gene name
+  const geneMatchArg = LOCUS_ARG === "scn5a_cardiac" ? "scn5a"
+    : LOCUS_ARG === "ldlr_k562" ? "ldlr"
+    : LOCUS_ARG === "brca1_k562" ? "brca1"
+    : LOCUS_ARG === "mlh1_hct116" ? "mlh1"
+    : LOCUS_ARG === "cftr_a549" ? "cftr"
+    : LOCUS_ARG === "tert_skn_sh" ? "tert"
+    : LOCUS_ARG === "tp53_imr90" ? "tp53"
+    : LOCUS_ARG;
   const geneName = isGenericLocus
     ? (LOCUS_CONFIG.features.genes.find(
-        (g) => g.name.toLowerCase() === LOCUS_ARG.toLowerCase(),
+        (g) => g.name.toLowerCase() === geneMatchArg.toLowerCase(),
       )?.name ??
       LOCUS_CONFIG.features.genes[0]?.name ??
       LOCUS_ARG.toUpperCase())
     : "HBB";
   const windowKb = `${Math.round((SIM_END - SIM_START) / 1000)}kb`;
   const modeSuffix = EFFECT_MODE === "categorical" ? "" : `_${EFFECT_MODE.toUpperCase().replace("-", "_")}`;
+  // WHY: Use LOCUS_ARG (config ID) in filename to prevent overwrites
+  // when multiple configs share the same first gene (e.g., bcl11a_erythroid vs bcl11a_del_ctcf3)
   const csvFilename = isGenericLocus
-    ? `${geneName}_Unified_Atlas_${windowKb}${modeSuffix}.csv`
+    ? `${geneName}_Unified_Atlas_${LOCUS_ARG}${modeSuffix}.csv`
     : LOCUS_ARG === "30kb"
       ? `HBB_Unified_Atlas${modeSuffix}.csv`
       : `HBB_Unified_Atlas_${LOCUS_ARG}${modeSuffix}.csv`;
@@ -977,8 +1033,9 @@ async function main() {
   }
 
   // Write summary JSON
+  // WHY: Use LOCUS_ARG in summary filename to match CSV naming and prevent overwrites
   const summarySuffix = isGenericLocus
-    ? `_${geneName}_${windowKb}`
+    ? `_${LOCUS_ARG}`
     : LOCUS_ARG === "30kb"
       ? ""
       : `_${LOCUS_ARG}`;

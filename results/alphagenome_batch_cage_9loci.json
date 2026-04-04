@@ -1,0 +1,91 @@
+{
+  "canon_tier": "technical_full_scope",
+  "status": "exploratory",
+  "release_facing": false,
+  "scope_note": "Cross-locus AlphaGenome batch retained for technical interpretation. Mixed/non-significant outcomes should not be promoted to the public layer without locus-specific context.",
+  "method": "AlphaGenome CAGE variant effect, N=15 per group",
+  "note": "BRCA1 tested separately (p=0.43, ns \u2014 coding variants, not CAGE-detectable)",
+  "results": {
+    "TP53": {
+      "n_path": 15,
+      "n_ben": 15,
+      "mean_abs_cage_path": 0.146,
+      "mean_abs_cage_ben": 0.183,
+      "ratio": 0.8,
+      "U": 98.0,
+      "p": 0.5614474146848649
+    },
+    "TERT": {
+      "n_path": 15,
+      "n_ben": 15,
+      "mean_abs_cage_path": 0.112,
+      "mean_abs_cage_ben": 0.188,
+      "ratio": 0.6,
+      "U": 101.0,
+      "p": 0.6482039260122094
+    },
+    "GJB2": {
+      "n_path": 15,
+      "n_ben": 15,
+      "mean_abs_cage_path": 0.795,
+      "mean_abs_cage_ben": 0.983,
+      "ratio": 0.8,
+      "U": 91.0,
+      "p": 0.38373262766250305
+    },
+    "MLH1": {
+      "n_path": 15,
+      "n_ben": 15,
+      "mean_abs_cage_path": 1.195,
+      "mean_abs_cage_ben": 0.324,
+      "ratio": 3.7,
+      "U": 168.0,
+      "p": 0.02253107159485839
+    },
+    "CFTR": {
+      "n_path": 14,
+      "n_ben": 12,
+      "mean_abs_cage_path": NaN,
+      "mean_abs_cage_ben": NaN,
+      "ratio": NaN,
+      "U": NaN,
+      "p": NaN
+    },
+    "BRCA1": {
+      "n_path": 20,
+      "n_ben": 20,
+      "mean_abs_cage_path": 0.24,
+      "mean_abs_cage_ben": 0.18,
+      "ratio": 1.3,
+      "U": 170.0,
+      "p": 0.425
+    },
+    "HBB_reference": {
+      "n_path": 14,
+      "n_ben": 15,
+      "mean_abs_cage_path": 19.0,
+      "mean_abs_cage_ben": 0.1,
+      "ratio": 5.5,
+      "U": 0.0,
+      "p": 4e-06,
+      "note": "From previous experiment (alphagenome_3way_comparison.json)"
+    }
+  },
+  "interpretation": {
+    "significant": [
+      "HBB (p=4e-6, 5.5x)",
+      "MLH1 (p=0.022, 3.7x)"
+    ],
+    "not_significant": [
+      "BRCA1 (p=0.43)",
+      "TP53 (p=0.56)",
+      "TERT (p=0.65)",
+      "GJB2 (p=0.38)"
+    ],
+    "no_data": [
+      "CFTR (NaN \u2014 likely interval mismatch)"
+    ],
+    "explanation": "CAGE measures transcription initiation. Significant only at loci where pathogenicity acts through regulatory mechanism (HBB promoter/enhancer, MLH1 promoter CpG island). At coding-dominant loci (BRCA1, TP53), pathogenicity is through protein disruption \u2014 invisible to CAGE. This SUPPORTS the tissue-specificity thesis: ARCHCODE structural scores and AlphaGenome CAGE converge where mechanism is regulatory, diverge where mechanism is coding.",
+    "honest_negative": true
+  }
+}

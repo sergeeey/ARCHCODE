@@ -16,6 +16,7 @@ import warnings
 from pathlib import Path
 
 import matplotlib
+
 matplotlib.use("Agg")
 
 import matplotlib.pyplot as plt
@@ -44,39 +45,50 @@ FIGURES.mkdir(parents=True, exist_ok=True)
 
 # ── Style ──────────────────────────────────────────────────────────────
 # Publication-quality defaults (Nature/Cell style)
-plt.rcParams.update({
-    "font.family": "sans-serif",
-    "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
-    "font.size": 8,
-    "axes.labelsize": 9,
-    "axes.titlesize": 10,
-    "xtick.labelsize": 7,
-    "ytick.labelsize": 7,
-    "legend.fontsize": 7,
-    "figure.dpi": 300,
-    "savefig.dpi": 300,
-    "savefig.bbox": "tight",
-    "savefig.pad_inches": 0.05,
-    "axes.linewidth": 0.6,
-    "xtick.major.width": 0.5,
-    "ytick.major.width": 0.5,
-    "lines.linewidth": 1.0,
-    "pdf.fonttype": 42,  # TrueType for editability
-    "ps.fonttype": 42,
-})
+plt.rcParams.update(
+    {
+        "font.family": "sans-serif",
+        "font.sans-serif": ["Arial", "Helvetica", "DejaVu Sans"],
+        "font.size": 8,
+        "axes.labelsize": 9,
+        "axes.titlesize": 10,
+        "xtick.labelsize": 7,
+        "ytick.labelsize": 7,
+        "legend.fontsize": 7,
+        "figure.dpi": 300,
+        "savefig.dpi": 300,
+        "savefig.bbox": "tight",
+        "savefig.pad_inches": 0.05,
+        "axes.linewidth": 0.6,
+        "xtick.major.width": 0.5,
+        "ytick.major.width": 0.5,
+        "lines.linewidth": 1.0,
+        "pdf.fonttype": 42,  # TrueType for editability
+        "ps.fonttype": 42,
+    }
+)
 
 # Color palette
-C_PATH = "#C0392B"   # pathogenic red
-C_BEN = "#2980B9"    # benign blue
+C_PATH = "#C0392B"  # pathogenic red
+C_BEN = "#2980B9"  # benign blue
 C_PEARL = "#E74C3C"  # pearl highlight
-C_GRAY = "#95A5A6"   # neutral gray
-C_DARK = "#2C3E50"   # text dark
+C_GRAY = "#95A5A6"  # neutral gray
+C_DARK = "#2C3E50"  # text dark
 
 # Category sort order (by mean LSSIM, most disrupted first)
 CAT_ORDER = [
-    "nonsense", "frameshift", "splice_acceptor", "splice_donor",
-    "splice_region", "promoter", "missense", "5_prime_UTR",
-    "other", "3_prime_UTR", "intronic", "synonymous",
+    "nonsense",
+    "frameshift",
+    "splice_acceptor",
+    "splice_donor",
+    "splice_region",
+    "promoter",
+    "missense",
+    "5_prime_UTR",
+    "other",
+    "3_prime_UTR",
+    "intronic",
+    "synonymous",
 ]
 
 MM_TO_INCH = 1 / 25.4  # conversion factor
@@ -108,18 +120,33 @@ def figure1_ssim_violin():
 
     # Violin plot split by Label
     sns.violinplot(
-        data=df_plot, x="Category", y="ARCHCODE_LSSIM", hue="Label",
-        split=True, inner=None, linewidth=0.5, saturation=0.8,
+        data=df_plot,
+        x="Category",
+        y="ARCHCODE_LSSIM",
+        hue="Label",
+        split=True,
+        inner=None,
+        linewidth=0.5,
+        saturation=0.8,
         palette={"Pathogenic": C_PATH, "Benign": C_BEN},
-        ax=ax, density_norm="width", cut=0,
+        ax=ax,
+        density_norm="width",
+        cut=0,
     )
 
     # Strip plot for individual points
     sns.stripplot(
-        data=df_plot, x="Category", y="ARCHCODE_LSSIM", hue="Label",
-        dodge=True, size=1.5, alpha=0.4, jitter=0.15,
+        data=df_plot,
+        x="Category",
+        y="ARCHCODE_LSSIM",
+        hue="Label",
+        dodge=True,
+        size=1.5,
+        alpha=0.4,
+        jitter=0.15,
         palette={"Pathogenic": C_PATH, "Benign": C_BEN},
-        ax=ax, legend=False,
+        ax=ax,
+        legend=False,
     )
 
     # Pearl overlay (diamonds)
@@ -129,40 +156,86 @@ def figure1_ssim_violin():
             cat_idx = cats_present.index(cat_name)
             cat_pearls = pearls[pearls["Category"] == cat_name]
             ax.scatter(
-                [cat_idx] * len(cat_pearls), cat_pearls["ARCHCODE_LSSIM"],
-                marker="D", s=25, c=C_PEARL, edgecolors="black",
-                linewidths=0.5, zorder=10, label="_nolegend_",
+                [cat_idx] * len(cat_pearls),
+                cat_pearls["ARCHCODE_LSSIM"],
+                marker="D",
+                s=25,
+                c=C_PEARL,
+                edgecolors="black",
+                linewidths=0.5,
+                zorder=10,
+                label="_nolegend_",
             )
 
     # Threshold lines
     ax.axhline(y=0.85, color=C_PATH, linewidth=0.6, linestyle="--", alpha=0.5)
     ax.axhline(y=0.95, color=C_GRAY, linewidth=0.6, linestyle=":", alpha=0.5)
-    ax.text(len(cats_present) - 0.5, 0.847, "PATHOGENIC", fontsize=5.5,
-            color=C_PATH, alpha=0.7, ha="right", va="top")
-    ax.text(len(cats_present) - 0.5, 0.953, "VUS/LB", fontsize=5.5,
-            color=C_GRAY, alpha=0.7, ha="right", va="bottom")
+    ax.text(
+        len(cats_present) - 0.5,
+        0.847,
+        "PATHOGENIC",
+        fontsize=5.5,
+        color=C_PATH,
+        alpha=0.7,
+        ha="right",
+        va="top",
+    )
+    ax.text(
+        len(cats_present) - 0.5,
+        0.953,
+        "VUS/LB",
+        fontsize=5.5,
+        color=C_GRAY,
+        alpha=0.7,
+        ha="right",
+        va="bottom",
+    )
 
     # Category counts
     for i, cat in enumerate(cats_present):
         n = len(df_plot[df_plot["Category"] == cat])
-        ax.text(i, ax.get_ylim()[0] + 0.005, f"n={n}", fontsize=5.5,
-                ha="center", va="bottom", color=C_DARK, alpha=0.6)
+        ax.text(
+            i,
+            ax.get_ylim()[0] + 0.005,
+            f"n={n}",
+            fontsize=5.5,
+            ha="center",
+            va="bottom",
+            color=C_DARK,
+            alpha=0.6,
+        )
 
     ax.set_xlabel("")
     ax.set_ylabel("ARCHCODE LSSIM")
-    ax.set_title("Figure 1. LSSIM Distribution Across Variant Categories (HBB, n=1,103)",
-                 fontweight="bold", pad=8)
+    ax.set_title(
+        "Figure 1. LSSIM Distribution Across Variant Categories (HBB, n=1,103)",
+        fontweight="bold",
+        pad=8,
+    )
     ax.set_xticklabels([c.replace("_", "\n") for c in cats_present], rotation=0)
 
     # Legend
     handles, labels = ax.get_legend_handles_labels()
     # Add pearl marker to legend
     from matplotlib.lines import Line2D
-    pearl_handle = Line2D([0], [0], marker="D", color="w", markerfacecolor=C_PEARL,
-                          markeredgecolor="black", markersize=5, label="Pearl variant")
-    ax.legend(handles=handles[:2] + [pearl_handle],
-              labels=["Pathogenic", "Benign", "Pearl variant"],
-              loc="lower left", framealpha=0.9, edgecolor="#D1D5DB")
+
+    pearl_handle = Line2D(
+        [0],
+        [0],
+        marker="D",
+        color="w",
+        markerfacecolor=C_PEARL,
+        markeredgecolor="black",
+        markersize=5,
+        label="Pearl variant",
+    )
+    ax.legend(
+        handles=handles[:2] + [pearl_handle],
+        labels=["Pathogenic", "Benign", "Pearl variant"],
+        loc="lower left",
+        framealpha=0.9,
+        edgecolor="#D1D5DB",
+    )
 
     ax.set_ylim(0.70, 1.005)
     ax.grid(axis="y", alpha=0.15, linewidth=0.3)
@@ -198,27 +271,46 @@ def figure2_roc_curves():
     fig, ax = plt.subplots(figsize=(89 * MM_TO_INCH, 89 * MM_TO_INCH))
 
     # ROC curves
-    ax.plot(fpr_cat, tpr_cat, color=C_BEN, linewidth=1.5,
-            label=f"Categorical model (AUC = {auc_cat:.3f})")
-    ax.plot(fpr_pos, tpr_pos, color=C_GRAY, linewidth=1.2, linestyle="--",
-            label=f"Position-only control (AUC = {auc_pos:.3f})")
+    ax.plot(
+        fpr_cat,
+        tpr_cat,
+        color=C_BEN,
+        linewidth=1.5,
+        label=f"Categorical model (AUC = {auc_cat:.3f})",
+    )
+    ax.plot(
+        fpr_pos,
+        tpr_pos,
+        color=C_GRAY,
+        linewidth=1.2,
+        linestyle="--",
+        label=f"Position-only control (AUC = {auc_pos:.3f})",
+    )
     ax.plot([0, 1], [0, 1], color="#BDC3C7", linewidth=0.6, linestyle=":")
 
     # Youden optimal point
-    ax.scatter(fpr_cat[opt_idx], tpr_cat[opt_idx], s=40, color=C_PATH,
-               zorder=5, marker="o", edgecolors="black", linewidths=0.5)
+    ax.scatter(
+        fpr_cat[opt_idx],
+        tpr_cat[opt_idx],
+        s=40,
+        color=C_PATH,
+        zorder=5,
+        marker="o",
+        edgecolors="black",
+        linewidths=0.5,
+    )
     ax.annotate(
-        f"Youden optimal\nSens={tpr_cat[opt_idx]:.3f}\nSpec={1-fpr_cat[opt_idx]:.3f}",
+        f"Youden optimal\nSens={tpr_cat[opt_idx]:.3f}\nSpec={1 - fpr_cat[opt_idx]:.3f}",
         xy=(fpr_cat[opt_idx], tpr_cat[opt_idx]),
         xytext=(fpr_cat[opt_idx] + 0.15, tpr_cat[opt_idx] - 0.15),
-        fontsize=6, color=C_DARK,
+        fontsize=6,
+        color=C_DARK,
         arrowprops=dict(arrowstyle="->", color=C_DARK, lw=0.6),
     )
 
     ax.set_xlabel("False Positive Rate (1 − Specificity)")
     ax.set_ylabel("True Positive Rate (Sensitivity)")
-    ax.set_title("Figure 2. ROC: Categorical vs Position-Only",
-                 fontweight="bold", pad=8)
+    ax.set_title("Figure 2. ROC: Categorical vs Position-Only", fontweight="bold", pad=8)
     ax.legend(loc="lower right", framealpha=0.9, edgecolor="#D1D5DB")
     ax.set_xlim(-0.02, 1.02)
     ax.set_ylim(-0.02, 1.02)
@@ -236,8 +328,8 @@ def figure2_roc_curves():
     ax_inset = fig.add_axes([0.22, 0.35, 0.35, 0.30])
     x = np.arange(len(within_cats))
     w = 0.35
-    ax_inset.bar(x - w/2, cat_aucs, w, color=C_BEN, alpha=0.8, label="Categorical")
-    ax_inset.bar(x + w/2, pos_aucs, w, color=C_GRAY, alpha=0.8, label="Position-only")
+    ax_inset.bar(x - w / 2, cat_aucs, w, color=C_BEN, alpha=0.8, label="Categorical")
+    ax_inset.bar(x + w / 2, pos_aucs, w, color=C_GRAY, alpha=0.8, label="Position-only")
     ax_inset.axhline(y=0.5, color="#BDC3C7", linewidth=0.5, linestyle=":")
     ax_inset.set_xticks(x)
     ax_inset.set_xticklabels([c.replace("_", "\n") for c in within_cats], fontsize=5)
@@ -267,19 +359,41 @@ def figure3_pearl_quadrant():
     xlim = (0.70, 1.005)
     ylim = (-0.02, 1.02)
     # Q1: VEP high, LSSIM high (concordant benign) — light green
-    ax.axvspan(LSSIM_THRESH, xlim[1], ymin=(VEP_THRESH - ylim[0])/(ylim[1]-ylim[0]),
-               ymax=1.0, alpha=0.04, color="#27AE60")
+    ax.axvspan(
+        LSSIM_THRESH,
+        xlim[1],
+        ymin=(VEP_THRESH - ylim[0]) / (ylim[1] - ylim[0]),
+        ymax=1.0,
+        alpha=0.04,
+        color="#27AE60",
+    )
     # Q2: VEP high, LSSIM low (VEP-only pathogenic) — light blue
-    ax.axvspan(xlim[0], LSSIM_THRESH, ymin=(VEP_THRESH - ylim[0])/(ylim[1]-ylim[0]),
-               ymax=1.0, alpha=0.04, color="#2980B9")
+    ax.axvspan(
+        xlim[0],
+        LSSIM_THRESH,
+        ymin=(VEP_THRESH - ylim[0]) / (ylim[1] - ylim[0]),
+        ymax=1.0,
+        alpha=0.04,
+        color="#2980B9",
+    )
     # Q3: VEP low, LSSIM low (concordant pathogenic) — light red
-    ax.axvspan(xlim[0], LSSIM_THRESH, ymin=0,
-               ymax=(VEP_THRESH - ylim[0])/(ylim[1]-ylim[0]),
-               alpha=0.04, color="#E74C3C")
+    ax.axvspan(
+        xlim[0],
+        LSSIM_THRESH,
+        ymin=0,
+        ymax=(VEP_THRESH - ylim[0]) / (ylim[1] - ylim[0]),
+        alpha=0.04,
+        color="#E74C3C",
+    )
     # Q4: VEP low, LSSIM high — PEARL ZONE — gold
-    ax.axvspan(LSSIM_THRESH, xlim[1], ymin=0,
-               ymax=(VEP_THRESH - ylim[0])/(ylim[1]-ylim[0]),
-               alpha=0.06, color="#F39C12")
+    ax.axvspan(
+        LSSIM_THRESH,
+        xlim[1],
+        ymin=0,
+        ymax=(VEP_THRESH - ylim[0]) / (ylim[1] - ylim[0]),
+        alpha=0.06,
+        color="#F39C12",
+    )
 
     # Threshold lines
     ax.axvline(x=LSSIM_THRESH, color=C_GRAY, linewidth=0.7, linestyle="--", alpha=0.6)
@@ -287,27 +401,50 @@ def figure3_pearl_quadrant():
 
     # Category colors
     cat_colors = {
-        "nonsense": "#2563EB", "frameshift": "#7C3AED", "splice_donor": "#0891B2",
-        "splice_acceptor": "#0891B2", "missense": "#6B7280", "splice_region": "#059669",
-        "promoter": "#D97706", "3_prime_UTR": "#9CA3AF", "5_prime_UTR": "#9CA3AF",
-        "intronic": "#D1D5DB", "synonymous": "#E5E7EB", "other": "#9CA3AF",
+        "nonsense": "#2563EB",
+        "frameshift": "#7C3AED",
+        "splice_donor": "#0891B2",
+        "splice_acceptor": "#0891B2",
+        "missense": "#6B7280",
+        "splice_region": "#059669",
+        "promoter": "#D97706",
+        "3_prime_UTR": "#9CA3AF",
+        "5_prime_UTR": "#9CA3AF",
+        "intronic": "#D1D5DB",
+        "synonymous": "#E5E7EB",
+        "other": "#9CA3AF",
     }
 
     # Non-pearl variants
     non_pearls = df[df["Pearl"] != True]
     for cat in non_pearls["Category"].unique():
         sub = non_pearls[non_pearls["Category"] == cat]
-        ax.scatter(sub["ARCHCODE_LSSIM"], sub["VEP_Score"],
-                   s=12, alpha=0.5, c=cat_colors.get(cat, "#9CA3AF"),
-                   edgecolors="white", linewidths=0.2, zorder=2,
-                   label=cat.replace("_", " "))
+        ax.scatter(
+            sub["ARCHCODE_LSSIM"],
+            sub["VEP_Score"],
+            s=12,
+            alpha=0.5,
+            c=cat_colors.get(cat, "#9CA3AF"),
+            edgecolors="white",
+            linewidths=0.2,
+            zorder=2,
+            label=cat.replace("_", " "),
+        )
 
     # Pearl variants — stars with red edge
     pearls = df[df["Pearl"] == True]
     if len(pearls) > 0:
-        ax.scatter(pearls["ARCHCODE_LSSIM"], pearls["VEP_Score"],
-                   s=50, marker="*", c=C_PEARL, edgecolors="#991B1B",
-                   linewidths=0.5, zorder=10, label=f"Pearl (n={len(pearls)})")
+        ax.scatter(
+            pearls["ARCHCODE_LSSIM"],
+            pearls["VEP_Score"],
+            s=50,
+            marker="*",
+            c=C_PEARL,
+            edgecolors="#991B1B",
+            linewidths=0.5,
+            zorder=10,
+            label=f"Pearl (n={len(pearls)})",
+        )
 
     # Quadrant counts
     q1 = len(df[(df["VEP_Score"] >= VEP_THRESH) & (df["ARCHCODE_LSSIM"] >= LSSIM_THRESH)])
@@ -324,17 +461,25 @@ def figure3_pearl_quadrant():
 
     ax.set_xlabel("ARCHCODE LSSIM")
     ax.set_ylabel("VEP Score")
-    ax.set_title("Figure 3. Pearl Variant Identification (HBB)",
-                 fontweight="bold", pad=8)
+    ax.set_title("Figure 3. Pearl Variant Identification (HBB)", fontweight="bold", pad=8)
     ax.set_xlim(*xlim)
     ax.set_ylim(*ylim)
     ax.grid(alpha=0.12, linewidth=0.3)
 
     # Compact legend
     handles, labels = ax.get_legend_handles_labels()
-    ax.legend(handles, labels, loc="upper left", fontsize=5, ncol=2,
-              framealpha=0.9, edgecolor="#D1D5DB", columnspacing=0.8,
-              handletextpad=0.3, borderpad=0.4)
+    ax.legend(
+        handles,
+        labels,
+        loc="upper left",
+        fontsize=5,
+        ncol=2,
+        framealpha=0.9,
+        edgecolor="#D1D5DB",
+        columnspacing=0.8,
+        handletextpad=0.3,
+        borderpad=0.4,
+    )
 
     fig.tight_layout()
     save_fig(fig, "fig3_pearl_quadrant")
@@ -352,62 +497,94 @@ def figure4_hic_validation():
     # HBB 30kb
     with open(RESULTS / "hic_correlation_k562.json") as f:
         d = json.load(f)
-        hic_data.append({
-            "locus": "HBB\n30 kb", "r": d["primary_result"]["pearson_r"],
-            "n": d["primary_result"]["n_valid"], "cell": "K562",
-        })
+        hic_data.append(
+            {
+                "locus": "HBB\n30 kb",
+                "r": d["primary_result"]["pearson_r"],
+                "n": d["primary_result"]["n_valid"],
+                "cell": "K562",
+            }
+        )
 
     # HBB 95kb
     with open(RESULTS / "hic_correlation_k562_95kb.json") as f:
         d = json.load(f)
-        hic_data.append({
-            "locus": "HBB\n95 kb", "r": d["primary_result"]["pearson_r"],
-            "n": d["primary_result"]["n_valid"], "cell": "K562",
-        })
+        hic_data.append(
+            {
+                "locus": "HBB\n95 kb",
+                "r": d["primary_result"]["pearson_r"],
+                "n": d["primary_result"]["n_valid"],
+                "cell": "K562",
+            }
+        )
 
     # BRCA1 K562
     with open(RESULTS / "hic_correlation_brca1.json") as f:
         d = json.load(f)
-        hic_data.append({
-            "locus": "BRCA1\nK562", "r": d["K562"]["r"],
-            "n": d["K562"]["n_pairs"], "cell": "K562",
-        })
+        hic_data.append(
+            {
+                "locus": "BRCA1\nK562",
+                "r": d["K562"]["r"],
+                "n": d["K562"]["n_pairs"],
+                "cell": "K562",
+            }
+        )
 
     # BRCA1 MCF7
-    hic_data.append({
-        "locus": "BRCA1\nMCF7", "r": d["MCF7"]["r"],
-        "n": d["MCF7"]["n_pairs"], "cell": "MCF7",
-    })
+    hic_data.append(
+        {
+            "locus": "BRCA1\nMCF7",
+            "r": d["MCF7"]["r"],
+            "n": d["MCF7"]["n_pairs"],
+            "cell": "MCF7",
+        }
+    )
 
     # MLH1
     with open(RESULTS / "hic_correlation_mlh1.json") as f:
         d = json.load(f)
-        hic_data.append({
-            "locus": "MLH1", "r": d["pearson_r"],
-            "n": d["n_valid_pairs"], "cell": "K562",
-        })
+        hic_data.append(
+            {
+                "locus": "MLH1",
+                "r": d["pearson_r"],
+                "n": d["n_valid_pairs"],
+                "cell": "K562",
+            }
+        )
 
     # LDLR
     with open(RESULTS / "hic_correlation_ldlr.json") as f:
         d = json.load(f)
-        hic_data.append({
-            "locus": "LDLR", "r": d["pearson_r"],
-            "n": d["n_valid_pairs"], "cell": "HepG2",
-        })
+        hic_data.append(
+            {
+                "locus": "LDLR",
+                "r": d["pearson_r"],
+                "n": d["n_valid_pairs"],
+                "cell": "HepG2",
+            }
+        )
 
     # TP53 K562
     with open(RESULTS / "hic_correlation_tp53.json") as f:
         d = json.load(f)
-        hic_data.append({
-            "locus": "TP53\nK562", "r": d["K562"]["r"],
-            "n": d["K562"]["n_pairs"], "cell": "K562",
-        })
+        hic_data.append(
+            {
+                "locus": "TP53\nK562",
+                "r": d["K562"]["r"],
+                "n": d["K562"]["n_pairs"],
+                "cell": "K562",
+            }
+        )
 
     # TP53 MCF7
-    hic_data.append({
-        "locus": "TP53\nMCF7", "r": d["MCF7"]["r"],
-        "n": d["MCF7"]["n_pairs"], "cell": "MCF7",
-    })
+    hic_data.append(
+        {
+            "locus": "TP53\nMCF7",
+            "r": d["MCF7"]["r"],
+            "n": d["MCF7"]["n_pairs"],
+            "cell": "MCF7",
+        }
+    )
 
     df_hic = pd.DataFrame(hic_data)
     df_hic = df_hic.sort_values("r", ascending=False).reset_index(drop=True)
@@ -418,37 +595,68 @@ def figure4_hic_validation():
     fig, ax = plt.subplots(figsize=(184 * MM_TO_INCH, 80 * MM_TO_INCH))
 
     bars = ax.bar(
-        range(len(df_hic)), df_hic["r"],
+        range(len(df_hic)),
+        df_hic["r"],
         color=[cell_colors[c] for c in df_hic["cell"]],
-        edgecolor="white", linewidth=0.5, width=0.7,
+        edgecolor="white",
+        linewidth=0.5,
+        width=0.7,
     )
 
     # Annotations: r value + n pairs
     for i, row in df_hic.iterrows():
-        ax.text(i, row["r"] + 0.015, f"r={row['r']:.2f}",
-                ha="center", va="bottom", fontsize=6.5, fontweight="bold")
-        ax.text(i, row["r"] / 2, f"n={row['n']:,}",
-                ha="center", va="center", fontsize=5.5, color="white",
-                fontweight="bold", alpha=0.9)
+        ax.text(
+            i,
+            row["r"] + 0.015,
+            f"r={row['r']:.2f}",
+            ha="center",
+            va="bottom",
+            fontsize=6.5,
+            fontweight="bold",
+        )
+        ax.text(
+            i,
+            row["r"] / 2,
+            f"n={row['n']:,}",
+            ha="center",
+            va="center",
+            fontsize=5.5,
+            color="white",
+            fontweight="bold",
+            alpha=0.9,
+        )
 
     ax.set_xticks(range(len(df_hic)))
     ax.set_xticklabels(df_hic["locus"], fontsize=7)
     ax.set_ylabel("Pearson r (ARCHCODE vs Hi-C)")
-    ax.set_title("Figure 4. Hi-C Validation Across Loci and Cell Types",
-                 fontweight="bold", pad=8)
+    ax.set_title("Figure 4. Hi-C Validation Across Loci and Cell Types", fontweight="bold", pad=8)
     ax.set_ylim(0, 0.72)
     ax.axhline(y=0, color="black", linewidth=0.5)
     ax.grid(axis="y", alpha=0.15, linewidth=0.3)
 
     # Legend for cell types
     from matplotlib.patches import Patch
+
     legend_handles = [Patch(facecolor=v, label=k) for k, v in cell_colors.items()]
-    ax.legend(handles=legend_handles, loc="upper right", framealpha=0.9,
-              edgecolor="#D1D5DB", title="Cell type", title_fontsize=7)
+    ax.legend(
+        handles=legend_handles,
+        loc="upper right",
+        framealpha=0.9,
+        edgecolor="#D1D5DB",
+        title="Cell type",
+        title_fontsize=7,
+    )
 
     # p-value note
-    ax.text(0.01, 0.97, "All p < 1e-82 (Pearson)", transform=ax.transAxes,
-            fontsize=6, color=C_GRAY, va="top")
+    ax.text(
+        0.01,
+        0.97,
+        "All p < 1e-82 (Pearson)",
+        transform=ax.transAxes,
+        fontsize=6,
+        color=C_GRAY,
+        va="top",
+    )
 
     fig.tight_layout()
     save_fig(fig, "fig4_hic_validation")
@@ -461,13 +669,13 @@ def figure5_multilocus_summary():
     print("\n[Fig 5] Multi-Locus Summary...")
 
     loci_info = [
-        ("HBB",   "UNIFIED_ATLAS_SUMMARY_95kb.json",           "alphagenome_benchmark_95kb.json",   "hic_correlation_k562_95kb.json"),
-        ("CFTR",  "UNIFIED_ATLAS_SUMMARY_CFTR_317kb.json",     "alphagenome_benchmark_cftr.json",   None),
-        ("TP53",  "UNIFIED_ATLAS_SUMMARY_TP53_300kb.json",     "alphagenome_benchmark_tp53.json",   "hic_correlation_tp53.json"),
-        ("BRCA1", "UNIFIED_ATLAS_SUMMARY_BRCA1_400kb.json",    "alphagenome_benchmark_brca1.json",  "hic_correlation_brca1.json"),
-        ("MLH1",  "UNIFIED_ATLAS_SUMMARY_MLH1_300kb.json",     "alphagenome_benchmark_mlh1.json",   "hic_correlation_mlh1.json"),
-        ("LDLR",  "UNIFIED_ATLAS_SUMMARY_LDLR_300kb.json",     "alphagenome_benchmark_ldlr.json",   "hic_correlation_ldlr.json"),
-        ("SCN5A", "UNIFIED_ATLAS_SUMMARY_SCN5A_400kb.json",    "alphagenome_benchmark_scn5a.json",  None),
+        ("HBB", "UNIFIED_ATLAS_SUMMARY_95kb.json", None, "hic_correlation_k562_95kb.json"),
+        ("CFTR", "UNIFIED_ATLAS_SUMMARY_CFTR_317kb.json", None, None),
+        ("TP53", "UNIFIED_ATLAS_SUMMARY_TP53_300kb.json", None, "hic_correlation_tp53.json"),
+        ("BRCA1", "UNIFIED_ATLAS_SUMMARY_BRCA1_400kb.json", None, "hic_correlation_brca1.json"),
+        ("MLH1", "UNIFIED_ATLAS_SUMMARY_MLH1_300kb.json", None, "hic_correlation_mlh1.json"),
+        ("LDLR", "UNIFIED_ATLAS_SUMMARY_LDLR_300kb.json", None, "hic_correlation_ldlr.json"),
+        ("SCN5A", "UNIFIED_ATLAS_SUMMARY_SCN5A_400kb.json", None, None),
     ]
 
     rows = []
@@ -485,7 +693,11 @@ def figure5_multilocus_summary():
             mean_lssim_path = np.nan
         if mean_lssim_ben is None:
             mean_lssim_ben = np.nan
-        delta_lssim = mean_lssim_ben - mean_lssim_path if not (np.isnan(mean_lssim_path) or np.isnan(mean_lssim_ben)) else 0
+        delta_lssim = (
+            mean_lssim_ben - mean_lssim_path
+            if not (np.isnan(mean_lssim_path) or np.isnan(mean_lssim_ben))
+            else 0
+        )
         pearls = st.get("pearls", 0)
 
         # AG rho (Spearman, O/E — archcode_vs_alphagenome)
@@ -503,14 +715,16 @@ def figure5_multilocus_summary():
             elif "pearson_r" in hic_d:
                 hic_r = hic_d["pearson_r"]
 
-        rows.append({
-            "Gene": gene,
-            "n": n_variants,
-            "ΔLSSIM\n(B−P)": delta_lssim,
-            "Hi-C r": hic_r,
-            "AG ρ": ag_rho,
-            "Pearls": pearls,
-        })
+        rows.append(
+            {
+                "Gene": gene,
+                "n": n_variants,
+                "ΔLSSIM\n(B−P)": delta_lssim,
+                "Hi-C r": hic_r,
+                "AG ρ": ag_rho,
+                "Pearls": pearls,
+            }
+        )
 
     df = pd.DataFrame(rows)
 
@@ -518,8 +732,14 @@ def figure5_multilocus_summary():
     ax.axis("off")
 
     # Create table
-    col_labels = ["Gene", "ClinVar\nvariants", "ΔLSSIM\n(Ben−Path)", "Hi-C\nPearson r",
-                  "AG\nSpearman ρ", "Pearl\nvariants"]
+    col_labels = [
+        "Gene",
+        "ClinVar\nvariants",
+        "ΔLSSIM\n(Ben−Path)",
+        "Hi-C\nPearson r",
+        "AG\nSpearman ρ",
+        "Pearl\nvariants",
+    ]
 
     delta_col = "ΔLSSIM\n(B−P)"
     cell_text = []
@@ -533,14 +753,16 @@ def figure5_multilocus_summary():
         delta_val = f"{delta_r:.4f}" if delta_r != 0 else "—"
         n_val = row["n"]
 
-        cell_text.append([
-            row["Gene"],
-            f"{n_val:,}",
-            delta_val,
-            hic_val,
-            ag_val,
-            str(row["Pearls"]),
-        ])
+        cell_text.append(
+            [
+                row["Gene"],
+                f"{n_val:,}",
+                delta_val,
+                hic_val,
+                ag_val,
+                str(row["Pearls"]),
+            ]
+        )
 
         # Color coding for ΔLSSIM
         d = delta_r
@@ -565,10 +787,12 @@ def figure5_multilocus_summary():
         cell_colors_grid.append(["white", "white", delta_c, hic_c, "white", "white"])
 
     table = ax.table(
-        cellText=cell_text, colLabels=col_labels,
+        cellText=cell_text,
+        colLabels=col_labels,
         cellColours=cell_colors_grid,
         colColours=["#D6EAF8"] * len(col_labels),
-        loc="center", cellLoc="center",
+        loc="center",
+        cellLoc="center",
     )
     table.auto_set_font_size(False)
     table.set_fontsize(8)
@@ -591,15 +815,26 @@ def figure5_multilocus_summary():
                 table[i + 1, j].set_text_props(color="#95A5A6")
                 table[i + 1, j].set_facecolor("#F8F9F9")
 
-    ax.set_title("Figure 5. Multi-Locus Summary: ARCHCODE Validation Across 7 Genomic Loci",
-                 fontweight="bold", pad=15, fontsize=10)
+    ax.set_title(
+        "Figure 5. Multi-Locus Summary: ARCHCODE Validation Across 7 Genomic Loci",
+        fontweight="bold",
+        pad=15,
+        fontsize=10,
+    )
 
     # Footnotes
-    ax.text(0.5, -0.05,
-            "Green cells: Hi-C r ≥ 0.50; Yellow: r ≥ 0.30; Red background: ΔLSSIM > 0.05.\n"
-            "SCN5A = negative control (K562 cell-type mismatch). AG = AlphaGenome SDK v0.6.0.\n"
-            "ΔLSSIM = mean benign LSSIM − mean pathogenic LSSIM (higher = better separation).",
-            transform=ax.transAxes, fontsize=6, color=C_GRAY, ha="center", va="top")
+    ax.text(
+        0.5,
+        -0.05,
+        "Green cells: Hi-C r ≥ 0.50; Yellow: r ≥ 0.30; Red background: ΔLSSIM > 0.05.\n"
+        "SCN5A = negative control (K562 cell-type mismatch). AG = AlphaGenome SDK v0.6.0.\n"
+        "ΔLSSIM = mean benign LSSIM − mean pathogenic LSSIM (higher = better separation).",
+        transform=ax.transAxes,
+        fontsize=6,
+        color=C_GRAY,
+        ha="center",
+        va="top",
+    )
 
     fig.tight_layout()
     save_fig(fig, "fig5_multilocus_summary")
@@ -627,8 +862,7 @@ def figure6_contact_maps():
     enhancers = cfg["features"]["enhancers"]
     ctcf_sites = cfg["features"]["ctcf_sites"]
 
-    def make_contact_matrix(enhancers_list, ctcf_list, mutation_bin=None,
-                            effect_strength=0.0):
+    def make_contact_matrix(enhancers_list, ctcf_list, mutation_bin=None, effect_strength=0.0):
         """Analytical contact matrix: C(i,j) = decay × sqrt(occ_i×occ_j) × ctcf_perm."""
         # Build occupancy landscape
         occ = np.ones(n_bins) * 0.3  # baseline occupancy
@@ -690,8 +924,9 @@ def figure6_contact_maps():
     # Mutant: nonsense at codon 39 (HBB:c.118C>T, most common β⁰)
     # Position ~5227118 → bin (5227118 - 5210000) / 600 ≈ 28
     mutation_bin = int((5227118 - start) / res)
-    mat_mut = make_contact_matrix(enhancers, ctcf_sites,
-                                  mutation_bin=mutation_bin, effect_strength=0.8)
+    mat_mut = make_contact_matrix(
+        enhancers, ctcf_sites, mutation_bin=mutation_bin, effect_strength=0.8
+    )
 
     # Differential
     mat_diff = mat_wt - mat_mut
@@ -699,7 +934,7 @@ def figure6_contact_maps():
     fig, axes = plt.subplots(1, 3, figsize=(184 * MM_TO_INCH, 65 * MM_TO_INCH))
 
     # Genomic coordinate labels (in kb)
-    extent = [start/1e3, end/1e3, end/1e3, start/1e3]
+    extent = [start / 1e3, end / 1e3, end / 1e3, start / 1e3]
 
     # Panel A: WT
     im_wt = axes[0].imshow(mat_wt, cmap="Reds", vmin=0, vmax=1, extent=extent, aspect="equal")
@@ -713,8 +948,9 @@ def figure6_contact_maps():
     vmax_diff = max(abs(mat_diff.min()), abs(mat_diff.max()))
     if vmax_diff == 0:
         vmax_diff = 0.01
-    im_diff = axes[2].imshow(mat_diff, cmap="RdBu_r", vmin=-vmax_diff, vmax=vmax_diff,
-                             extent=extent, aspect="equal")
+    im_diff = axes[2].imshow(
+        mat_diff, cmap="RdBu_r", vmin=-vmax_diff, vmax=vmax_diff, extent=extent, aspect="equal"
+    )
     axes[2].set_title("C. Differential (WT − Mut)", fontweight="bold", fontsize=8)
 
     # Shared formatting
@@ -732,8 +968,12 @@ def figure6_contact_maps():
     fig.colorbar(im_mut, ax=axes[1], fraction=0.046, pad=0.04, label="Contact\nprobability")
     fig.colorbar(im_diff, ax=axes[2], fraction=0.046, pad=0.04, label="ΔContact")
 
-    fig.suptitle("Figure 6. ARCHCODE Predicted Contact Maps — HBB 30 kb (50×50, 600 bp resolution)",
-                 fontweight="bold", fontsize=9, y=1.02)
+    fig.suptitle(
+        "Figure 6. ARCHCODE Predicted Contact Maps — HBB 30 kb (50×50, 600 bp resolution)",
+        fontweight="bold",
+        fontsize=9,
+        y=1.02,
+    )
     fig.tight_layout()
     save_fig(fig, "fig6_contact_maps")
 
@@ -763,26 +1003,31 @@ def figure7_ablation_barplot():
 
     fig, ax = plt.subplots(figsize=(89 * MM_TO_INCH, 75 * MM_TO_INCH))
 
-    bars = ax.bar(range(len(names)), aucs, color=colors, edgecolor="white",
-                  linewidth=0.5, width=0.65)
+    bars = ax.bar(
+        range(len(names)), aucs, color=colors, edgecolor="white", linewidth=0.5, width=0.65
+    )
 
     # AUC labels above bars
     for i, (bar, auc_val) in enumerate(zip(bars, aucs)):
-        ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.02,
-                f"{auc_val:.3f}", ha="center", va="bottom", fontsize=7,
-                fontweight="bold")
+        ax.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.02,
+            f"{auc_val:.3f}",
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+        )
 
     # Chance line
     ax.axhline(y=0.5, color="#BDC3C7", linewidth=0.8, linestyle="--", alpha=0.7)
-    ax.text(len(names) - 0.5, 0.515, "chance", fontsize=6, color="#BDC3C7",
-            ha="right", va="bottom")
+    ax.text(len(names) - 0.5, 0.515, "chance", fontsize=6, color="#BDC3C7", ha="right", va="bottom")
 
     ax.set_xticks(range(len(names)))
     ax.set_xticklabels([n.replace("-", "\n") for n in names], fontsize=7)
     ax.set_ylabel("AUC")
     ax.set_ylim(0, 1.08)
-    ax.set_title("effectStrength Ablation (HBB, n=1,103)",
-                 fontweight="bold", pad=8)
+    ax.set_title("effectStrength Ablation (HBB, n=1,103)", fontweight="bold", pad=8)
     ax.grid(axis="y", alpha=0.15, linewidth=0.3)
 
     fig.tight_layout()
@@ -803,18 +1048,26 @@ def figure8_enhancer_proximity():
     # Green gradient: dark near → light far
     greens = ["#1B7A3D", "#27AE60", "#82E0AA", "#ABEBC6"]
 
-    bars_a = ax1.bar(range(len(bins)), deltas, color=greens, edgecolor="white",
-                     linewidth=0.5, width=0.65)
+    bars_a = ax1.bar(
+        range(len(bins)), deltas, color=greens, edgecolor="white", linewidth=0.5, width=0.65
+    )
     for i, (bar, d) in enumerate(zip(bars_a, deltas)):
-        ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.001,
-                 f"{d:.3f}", ha="center", va="bottom", fontsize=7,
-                 fontweight="bold")
+        ax1.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.001,
+            f"{d:.3f}",
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+        )
 
     ax1.set_xticks(range(len(bins)))
     ax1.set_xticklabels(bins, fontsize=7)
     ax1.set_ylabel("Δ LSSIM (Benign − Pathogenic)")
-    ax1.set_title("A. Structural discrimination\nby enhancer distance",
-                  fontweight="bold", fontsize=9)
+    ax1.set_title(
+        "A. Structural discrimination\nby enhancer distance", fontweight="bold", fontsize=9
+    )
     ax1.set_ylim(0, 0.048)
     ax1.grid(axis="y", alpha=0.15, linewidth=0.3)
 
@@ -827,27 +1080,35 @@ def figure8_enhancer_proximity():
     nonpearl_dists = np.random.lognormal(mean=np.log(8000), sigma=0.8, size=200)
     nonpearl_dists = np.clip(nonpearl_dists, 100, 80000)
 
-    bp = ax2.boxplot([pearl_dists, nonpearl_dists],
-                     labels=["Pearl\n(n=27)", "Non-pearl\npathogenic"],
-                     patch_artist=True, widths=0.5,
-                     medianprops=dict(color="black", linewidth=1.2),
-                     flierprops=dict(markersize=3, alpha=0.5))
+    bp = ax2.boxplot(
+        [pearl_dists, nonpearl_dists],
+        labels=["Pearl\n(n=27)", "Non-pearl\npathogenic"],
+        patch_artist=True,
+        widths=0.5,
+        medianprops=dict(color="black", linewidth=1.2),
+        flierprops=dict(markersize=3, alpha=0.5),
+    )
     bp["boxes"][0].set_facecolor(C_PEARL)
     bp["boxes"][0].set_alpha(0.7)
     bp["boxes"][1].set_facecolor(C_GRAY)
     bp["boxes"][1].set_alpha(0.7)
 
     ax2.set_ylabel("Distance to nearest enhancer (bp)")
-    ax2.set_title("B. Pearl variants cluster\nnear enhancers",
-                  fontweight="bold", fontsize=9)
+    ax2.set_title("B. Pearl variants cluster\nnear enhancers", fontweight="bold", fontsize=9)
     ax2.set_yscale("log")
     ax2.grid(axis="y", alpha=0.15, linewidth=0.3)
 
     # Annotation: p-value
-    ax2.text(1.5, ax2.get_ylim()[1] * 0.5, "p = 1.08e-8\n(Mann-Whitney)",
-             fontsize=7, ha="center", va="top", color=C_DARK,
-             bbox=dict(boxstyle="round,pad=0.3", facecolor="white",
-                       edgecolor=C_GRAY, alpha=0.9))
+    ax2.text(
+        1.5,
+        ax2.get_ylim()[1] * 0.5,
+        "p = 1.08e-8\n(Mann-Whitney)",
+        fontsize=7,
+        ha="center",
+        va="top",
+        color=C_DARK,
+        bbox=dict(boxstyle="round,pad=0.3", facecolor="white", edgecolor=C_GRAY, alpha=0.9),
+    )
 
     fig.tight_layout()
     save_fig(fig, "fig8_enhancer_proximity")
@@ -899,22 +1160,24 @@ def figure9_tissue_heatmap():
                 txt = f"{val:.3f}" if val > 0 else "N/A"
             else:
                 txt = f"{val:.1%}" if val > 0 else "0%"
-            ax.text(j, i, txt, ha="center", va="center", fontsize=7,
-                    fontweight="bold", color="black")
+            ax.text(
+                j, i, txt, ha="center", va="center", fontsize=7, fontweight="bold", color="black"
+            )
 
     # Tissue annotation column
     for i, tissue in enumerate(tissues):
-        ax.text(3.3, i, tissue, ha="left", va="center", fontsize=7,
-                fontstyle="italic", color=C_DARK)
-    ax.text(3.3, -0.7, "Tissue", ha="left", va="center", fontsize=8,
-            fontweight="bold", color=C_DARK)
+        ax.text(
+            3.3, i, tissue, ha="left", va="center", fontsize=7, fontstyle="italic", color=C_DARK
+        )
+    ax.text(
+        3.3, -0.7, "Tissue", ha="left", va="center", fontsize=8, fontweight="bold", color=C_DARK
+    )
 
     ax.set_xticks(range(3))
     ax.set_xticklabels(col_labels, fontsize=8, fontweight="bold")
     ax.set_yticks(range(len(loci)))
     ax.set_yticklabels(loci, fontsize=8, fontweight="bold")
-    ax.set_title("Per-Locus Threshold Analysis (9 loci, FPR ≤ 1%)",
-                 fontweight="bold", pad=12)
+    ax.set_title("Per-Locus Threshold Analysis (9 loci, FPR ≤ 1%)", fontweight="bold", pad=12)
 
     ax.set_xlim(-0.5, 2.5)
 
@@ -940,30 +1203,69 @@ def figure10_alphagenome_validation():
     x = np.arange(len(modalities))
     w = 0.32
 
-    bars_p = ax1.bar(x - w/2, pearl_vals, w, color=C_PEARL, edgecolor="white",
-                     linewidth=0.5, label="Pearl (n=23)")
-    bars_b = ax1.bar(x + w/2, benign_vals, w, color=C_GRAY, edgecolor="white",
-                     linewidth=0.5, label="Benign (n=23)")
+    bars_p = ax1.bar(
+        x - w / 2,
+        pearl_vals,
+        w,
+        color=C_PEARL,
+        edgecolor="white",
+        linewidth=0.5,
+        label="Pearl (n=23)",
+    )
+    bars_b = ax1.bar(
+        x + w / 2,
+        benign_vals,
+        w,
+        color=C_GRAY,
+        edgecolor="white",
+        linewidth=0.5,
+        label="Benign (n=23)",
+    )
 
     # Value labels
     for bar in bars_p:
-        ax1.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.3,
-                 f"{bar.get_height():.1f}×", ha="center", va="bottom",
-                 fontsize=7, fontweight="bold", color=C_PEARL)
+        ax1.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.3,
+            f"{bar.get_height():.1f}×",
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+            color=C_PEARL,
+        )
     for bar in bars_b:
-        ax1.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.3,
-                 f"{bar.get_height():.1f}×", ha="center", va="bottom",
-                 fontsize=7, fontweight="bold", color="#7F8C8D")
+        ax1.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.3,
+            f"{bar.get_height():.1f}×",
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+            color="#7F8C8D",
+        )
 
     # Significance stars
     sig_labels = ["****", "**"]  # p<0.0001, p<0.01
     for i, (sl, pv) in enumerate(zip(sig_labels, p_vals)):
         y_max = max(pearl_vals[i], benign_vals[i]) + 1.5
-        ax1.plot([x[i] - w/2, x[i] - w/2, x[i] + w/2, x[i] + w/2],
-                 [y_max - 0.3, y_max, y_max, y_max - 0.3],
-                 lw=0.8, color=C_DARK)
-        ax1.text(x[i], y_max + 0.2, sl, ha="center", va="bottom",
-                 fontsize=8, fontweight="bold", color=C_DARK)
+        ax1.plot(
+            [x[i] - w / 2, x[i] - w / 2, x[i] + w / 2, x[i] + w / 2],
+            [y_max - 0.3, y_max, y_max, y_max - 0.3],
+            lw=0.8,
+            color=C_DARK,
+        )
+        ax1.text(
+            x[i],
+            y_max + 0.2,
+            sl,
+            ha="center",
+            va="bottom",
+            fontsize=8,
+            fontweight="bold",
+            color=C_DARK,
+        )
 
     # Uniform baseline
     ax1.axhline(y=1.0, color="#BDC3C7", linewidth=0.8, linestyle="--", alpha=0.7)
@@ -984,27 +1286,56 @@ def figure10_alphagenome_validation():
     sig_tests = ["10/10***", "1/10", "0/10"]
 
     x2 = np.arange(len(loci))
-    bars_p2 = ax2.bar(x2 - w/2, path_vals, w, color=C_PEARL, edgecolor="white",
-                      linewidth=0.5, label="Pathogenic")
-    bars_b2 = ax2.bar(x2 + w/2, ben_vals, w, color=C_GRAY, edgecolor="white",
-                      linewidth=0.5, label="Benign")
+    bars_p2 = ax2.bar(
+        x2 - w / 2,
+        path_vals,
+        w,
+        color=C_PEARL,
+        edgecolor="white",
+        linewidth=0.5,
+        label="Pathogenic",
+    )
+    bars_b2 = ax2.bar(
+        x2 + w / 2, ben_vals, w, color=C_GRAY, edgecolor="white", linewidth=0.5, label="Benign"
+    )
 
     # Value labels
     for bar in bars_p2:
-        ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.3,
-                 f"{bar.get_height():.1f}×", ha="center", va="bottom",
-                 fontsize=7, fontweight="bold", color=C_PEARL)
+        ax2.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.3,
+            f"{bar.get_height():.1f}×",
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+            color=C_PEARL,
+        )
     for bar in bars_b2:
-        ax2.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 0.3,
-                 f"{bar.get_height():.1f}×", ha="center", va="bottom",
-                 fontsize=7, fontweight="bold", color="#7F8C8D")
+        ax2.text(
+            bar.get_x() + bar.get_width() / 2,
+            bar.get_height() + 0.3,
+            f"{bar.get_height():.1f}×",
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+            color="#7F8C8D",
+        )
 
     # Significance test labels above bars
     for i, st in enumerate(sig_tests):
         y_top = max(path_vals[i], ben_vals[i]) + 2.0
-        ax2.text(x2[i], y_top, st, ha="center", va="bottom",
-                 fontsize=7, fontweight="bold",
-                 color=C_PATH if "***" in st else C_GRAY)
+        ax2.text(
+            x2[i],
+            y_top,
+            st,
+            ha="center",
+            va="bottom",
+            fontsize=7,
+            fontweight="bold",
+            color=C_PATH if "***" in st else C_GRAY,
+        )
 
     ax2.axhline(y=1.0, color="#BDC3C7", linewidth=0.8, linestyle="--", alpha=0.7)
 
@@ -1037,7 +1368,7 @@ def main():
     figure7_ablation_barplot()
     figure8_enhancer_proximity()
     figure9_tissue_heatmap()
-    figure10_alphagenome_validation()
+    # figure10 removed (AlphaGenome mock data eliminated)
 
     print("\n" + "=" * 60)
     generated = list(FIGURES.glob("fig*_*.p*"))

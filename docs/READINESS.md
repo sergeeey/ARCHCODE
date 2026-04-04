@@ -1,45 +1,56 @@
 # Readiness Assessment (ARCHCODE)
 
+**Canon Tier:** Public Canonical  
+**Release-facing:** Yes  
+**Last Updated:** 2026-04-04  
+**Public Research Release:** v2.17  
+**Internal Package Version:** 2.0.0
+
 ## Goal
 
-Provide a repeatable scoring and evidence map for release readiness.
+Provide an evidence-backed release-readiness score for the current public ARCHCODE surface.
 
-## Scoring rubric (0-10)
+This score is about **release confidence**, not proof that the scientific interpretation is complete.
 
-- 9–10: Production-ready Enterprise
-- 7–8: Solid Startup / Growth
-- 5–6: Works with risks
-- 3–4: Tech debt dominates
-- 1–2: Critical state
+## Scoring Rubric
 
-## Evidence checklist
+Each dimension is scored `0-10`, then averaged.
 
-- [ ] Score semantics documented
-- [ ] Anti-inversion test present
-- [ ] Golden set defined and stable
-- [ ] Acceptance cases defined
-- [ ] Failure modes mapped to detection
-- [ ] Regression tests for bug fixes
+| Dimension | Score | Rationale |
+|-----------|-------|-----------|
+| Code and engine | 8.0 | Core engine is tested and stable; unit and regression tests are green. |
+| Data and provenance | 7.0 | Public core data are real and provenance-labeled, but technical/full-scope assets remain broader than the public layer. |
+| Scientific integrity | 9.0 | Manuscript verification, results contracts, red-flag scans, and explicit caveats are in place. |
+| Evidence strength | 6.0 | HBB evidence is strong; broader biological generalization remains exploratory. |
+| Reproducibility | 7.0 | Build/test/integrity gates exist and tracked artifacts are reproducible. |
+| Manuscript and public coherence | 5.0 | Canonical Core work is reducing drift, but technical/full-scope surfaces still need discipline. |
+| Multi-locus maturity | 3.0 | HBB is the only confirmed public core case; non-HBB findings are not promoted as validated. |
+| Publication path | 5.0 | Research Square is live; arXiv remains pending endorsement and bioRxiv was rejected. |
+| Infrastructure and gating | 8.0 | Security, publication-integrity, and results-contract gates are implemented. |
+| Platform potential | 6.0 | Expansion paths exist, but should follow after Canonical Core stabilization. |
 
-## Current status (fill per release)
+**Current Score:** **6.4 / 10**
 
-**Score:** \_\_/10
+## Evidence Links
 
-**Evidence links:**
+- `PROJECT_CANON.md`
+- `docs/VALIDATION.md`
+- `docs/FAILURE_MODES.md`
+- `docs/PR_GATE.md`
+- `docs/RESULTS_CONTRACT.md`
+- `results/publication_claim_matrix_2026-03-30.json`
+- `.github/workflows/publication-integrity.yml`
+- `.github/workflows/security-gates.yml`
 
-- `D:\ДНК\docs\VALIDATION.md`
-- `D:\ДНК\docs\INVARIANTS.md`
-- `D:\ДНК\docs\FAILURE_MODES.md`
-- `D:\ДНК\docs\PR_GATE.md`
+## Current Caveats
 
-## CI gates (2026-03-06 baseline)
+- Public canonical claims are intentionally narrower than the full technical repo scope.
+- HBB is the confirmed public core case; non-HBB Class B findings remain exploratory.
+- No wet-lab confirmation has yet converted the computational HBB structural class into experimentally proven pathogenicity.
+- Broader technical layers remain useful, but they are not the default release identity.
 
-- `security-gates.yml` enforces:
-  - lint/build/unit tests
-  - coverage gate at `60/55/60/60`
-  - gold-standard mock smoke (`ALPHAGENOME_TEST_MODE=mock`)
-  - dependency, python, and secret scans
-- On `push` to `main`, strict-real is enforced:
-  - fails if `ALPHAGENOME_API_KEY` is missing
-  - runs `test:gold` with `ALPHAGENOME_TEST_MODE=strict-real`
-- Nightly strict-real remains as orthogonal monitoring workflow.
+## Verdict
+
+`WORKS WITH RISKS`
+
+ARCHCODE is credible as a release-facing discovery engine with strong integrity infrastructure and a defendable HBB core. It is not yet a mature cross-locus validation platform or a clinical predictor.

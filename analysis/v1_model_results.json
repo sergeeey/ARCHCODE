@@ -1,0 +1,131 @@
+{
+  "all_features": {
+    "LogReg": {
+      "AUROC": 0.9917,
+      "AUPRC": 0.9889
+    },
+    "RandomForest": {
+      "AUROC": 0.993,
+      "AUPRC": 0.99
+    },
+    "GradientBoosting": {
+      "AUROC": 0.9898,
+      "AUPRC": 0.9879
+    },
+    "feature_importance_top10": [
+      {
+        "feature": "delta_insulation",
+        "importance": 0.9144
+      },
+      {
+        "feature": "vep_score",
+        "importance": 0.0246
+      },
+      {
+        "feature": "cadd_phred",
+        "importance": 0.0209
+      },
+      {
+        "feature": "dist_to_nearest_ctcf",
+        "importance": 0.0082
+      },
+      {
+        "feature": "log_dist_ctcf",
+        "importance": 0.0061
+      },
+      {
+        "feature": "struct_disruption_ratio",
+        "importance": 0.0059
+      },
+      {
+        "feature": "dist_to_tss",
+        "importance": 0.0045
+      },
+      {
+        "feature": "dist_to_nearest_enhancer",
+        "importance": 0.0035
+      },
+      {
+        "feature": "dist_to_lcr",
+        "importance": 0.0033
+      },
+      {
+        "feature": "log_dist_tss",
+        "importance": 0.0031
+      }
+    ]
+  },
+  "structural_only": {
+    "LogReg": {
+      "AUROC": 0.9833,
+      "AUPRC": 0.9834
+    },
+    "RandomForest": {
+      "AUROC": 0.9828,
+      "AUPRC": 0.9814
+    },
+    "GradientBoosting": {
+      "AUROC": 0.981,
+      "AUPRC": 0.9823
+    }
+  },
+  "sequence_only": {
+    "LogReg": {
+      "AUROC": 0.9561,
+      "AUPRC": 0.9491
+    },
+    "RandomForest": {
+      "AUROC": 0.9804,
+      "AUPRC": 0.9602
+    },
+    "GradientBoosting": {
+      "AUROC": 0.9843,
+      "AUPRC": 0.9652
+    }
+  },
+  "no_structural": {
+    "LogReg": {
+      "AUROC": 0.9916,
+      "AUPRC": 0.989
+    },
+    "RandomForest": {
+      "AUROC": 0.9932,
+      "AUPRC": 0.9904
+    },
+    "GradientBoosting": {
+      "AUROC": 0.9877,
+      "AUPRC": 0.9878
+    }
+  },
+  "no_sequence": {
+    "LogReg": {
+      "AUROC": 0.9923,
+      "AUPRC": 0.9891
+    },
+    "RandomForest": {
+      "AUROC": 0.9917,
+      "AUPRC": 0.9882
+    },
+    "GradientBoosting": {
+      "AUROC": 0.9907,
+      "AUPRC": 0.9873
+    }
+  },
+  "structural_plus_distance": {
+    "LogReg": {
+      "AUROC": 0.9931,
+      "AUPRC": 0.9905
+    },
+    "RandomForest": {
+      "AUROC": 0.9915,
+      "AUPRC": 0.9878
+    },
+    "GradientBoosting": {
+      "AUROC": 0.992,
+      "AUPRC": 0.9883
+    }
+  },
+  "ablation_verdict": "NOT CONFIRMED: 3D structure does not add predictive power over sequence",
+  "ablation_delta_structural": 0.0021,
+  "ablation_delta_sequence": -0.0009
+}

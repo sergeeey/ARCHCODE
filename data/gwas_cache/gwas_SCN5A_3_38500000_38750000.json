@@ -1,0 +1,947 @@
+[
+  {
+    "chr_id": "3",
+    "chr_pos": 38651954,
+    "rsid": "rs571037730",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38635089,
+    "rsid": "rs572474770",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38596503,
+    "rsid": "rs6599220",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38665861,
+    "rsid": "rs13061927",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38715075,
+    "rsid": "rs11924846",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38645878,
+    "rsid": "rs7373492",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38647751,
+    "rsid": "rs41310232",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38517724,
+    "rsid": "rs17037804",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38540700,
+    "rsid": "rs6762565",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38655062,
+    "rsid": "rs6782237",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38725184,
+    "rsid": "rs6795970",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38592852,
+    "rsid": "rs7373862",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38596219,
+    "rsid": "rs6599219",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38596711,
+    "rsid": "rs3935184",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38730434,
+    "rsid": "rs6790396",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38513557,
+    "rsid": "rs11273215",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38547672,
+    "rsid": "rs11129795",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38518258,
+    "rsid": "rs2051211",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38541080,
+    "rsid": "rs6767797",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38559746,
+    "rsid": "rs13059004",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38584218,
+    "rsid": "rs7374004",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38604508,
+    "rsid": "rs13084981",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38673809,
+    "rsid": "rs6599234",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38613787,
+    "rsid": "rs45620037",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38744318,
+    "rsid": "rs6599251",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38502858,
+    "rsid": "rs6809352",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38606571,
+    "rsid": "rs6599222",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38612533,
+    "rsid": "rs7430191",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38553482,
+    "rsid": "rs7638909",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38565977,
+    "rsid": "rs62241190",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38592199,
+    "rsid": "rs9824157",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38527485,
+    "rsid": "rs571378589",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38592651,
+    "rsid": "rs7374540",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38616217,
+    "rsid": "rs7433206",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38676744,
+    "rsid": "rs66493370",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38680054,
+    "rsid": "rs73060416",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38535871,
+    "rsid": "rs10865879",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38579746,
+    "rsid": "rs41312411",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38618461,
+    "rsid": "rs55824920",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38723291,
+    "rsid": "rs4076737",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38557546,
+    "rsid": "rs6793245",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38558321,
+    "rsid": "rs11720166",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38646312,
+    "rsid": "rs9841329",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38732314,
+    "rsid": "rs9809798",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38743466,
+    "rsid": "rs7433723",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38557465,
+    "rsid": "rs6804918",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38594664,
+    "rsid": "rs3924120",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38668437,
+    "rsid": "rs7621270",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38737049,
+    "rsid": "rs11711941",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38561578,
+    "rsid": "rs62241188",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38658269,
+    "rsid": "rs6599232",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38711444,
+    "rsid": "rs6783110",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38624332,
+    "rsid": "rs7638275",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38633221,
+    "rsid": "rs6599230",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38725269,
+    "rsid": "rs73062575",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38749683,
+    "rsid": "rs60349808",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38552452,
+    "rsid": "rs7373779",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38560065,
+    "rsid": "rs6799868",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38561286,
+    "rsid": "rs141685422",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38616408,
+    "rsid": "rs11710077",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38534374,
+    "rsid": "rs12497866",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38681726,
+    "rsid": "rs7633988",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38708969,
+    "rsid": "rs112718371",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38556067,
+    "rsid": "rs7645178",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38574042,
+    "rsid": "rs58454174",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38626765,
+    "rsid": "rs9818148",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38729148,
+    "rsid": "rs7433306",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38589940,
+    "rsid": "rs73070977",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38642975,
+    "rsid": "rs6768664",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38646249,
+    "rsid": "rs55742514",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38678444,
+    "rsid": "rs9851724",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38742538,
+    "rsid": "rs6599250",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38550198,
+    "rsid": "rs7429945",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38630069,
+    "rsid": "rs45567533",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38643344,
+    "rsid": "rs7427574",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38736063,
+    "rsid": "rs10428132",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38587170,
+    "rsid": "rs7432532",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38642906,
+    "rsid": "rs6773331",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38533000,
+    "rsid": "rs6792762",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38641527,
+    "rsid": "rs34760424",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38657775,
+    "rsid": "rs76521806",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38578951,
+    "rsid": "rs4073103",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38509634,
+    "rsid": "rs62241772",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38551902,
+    "rsid": "rs12053903",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38591580,
+    "rsid": "rs7374289",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38505235,
+    "rsid": "rs9838792",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38510759,
+    "rsid": "rs7630012",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38614542,
+    "rsid": "rs6797133",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38668824,
+    "rsid": "rs7373065",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38733341,
+    "rsid": "rs6800541",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38737127,
+    "rsid": "rs7428232",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38558965,
+    "rsid": "rs9845438",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38564241,
+    "rsid": "rs7374138",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38582852,
+    "rsid": "rs3922843",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38629983,
+    "rsid": "rs73056438",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38582762,
+    "rsid": "rs3922844",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38592432,
+    "rsid": "rs11708996",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38639903,
+    "rsid": "rs6763048",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38645735,
+    "rsid": "rs9856387",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38713156,
+    "rsid": "rs6775197",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38512474,
+    "rsid": "rs2186457",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38533477,
+    "rsid": "rs6810361",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38550915,
+    "rsid": "rs1805126",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38678410,
+    "rsid": "rs9851710",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  },
+  {
+    "chr_id": "3",
+    "chr_pos": 38725824,
+    "rsid": "rs6801957",
+    "traits": [],
+    "risk_allele": "",
+    "p_value": "",
+    "mapped_gene": ""
+  }
+]

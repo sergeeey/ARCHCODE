@@ -34,7 +34,7 @@ uid,accession,title,chrom,pos_start,pos_end,pos_relative,clinical_significance,g
 439103,VCV000439103,NM_000558.5(HBA1):c.43T>C (p.Trp15Arg),chr16,176759,176759,149658,Pathogenic/Likely pathogenic,LOC106804613,"criteria provided, multiple submitters, no conflicts"
 439095,VCV000439095,NM_000558.5(HBA1):c.207C>G (p.Asn69Lys),chr16,177040,177040,149939,Likely benign,HBA1,"criteria provided, multiple submitters, no conflicts"
 375748,VCV000375748,NM_000558.5(HBA1):c.207C>A (p.Asn69Lys),chr16,177040,177040,149939,not provided,HBA1,no classification provided
-15876,VCV000015876,NM_000558.3(HBA1):c.310C>T (p.His104Tyr),chr16,177292,177292,150191,Uncertain significance,HBA1,"criteria provided, multiple submitters, no conflicts"
+15876,VCV000015876,NM_000558.3(HBA1):c.310C>T (p.His104Tyr),chr16,177292,177292,150191,Uncertain significance,LOC106804613,"criteria provided, multiple submitters, no conflicts"
 15865,VCV000015865,NM_000558.3(HBA1):c.389T>C (p.Leu130Pro),chr16,177371,177371,150270,Likely pathogenic,HBA1,"criteria provided, multiple submitters, no conflicts"
 15856,VCV000015856,NM_000558.5(HBA1):c.421T>C (p.Tyr141His),chr16,177403,177403,150302,Pathogenic; other,LOC106804613,no assertion criteria provided
 15849,VCV000015849,NM_000558.3(HBA1):c.179G>A (p.Gly60Asp),chr16,177012,177012,149911,Pathogenic,HBA1,"criteria provided, multiple submitters, no conflicts"
@@ -121,11 +121,11 @@ uid,accession,title,chrom,pos_start,pos_end,pos_relative,clinical_significance,g
 619845,VCV000619845,NM_000558.5(HBA1):c.55G>A (p.Gly19Ser),chr16,176771,176771,149670,Uncertain significance,LOC106804613,"criteria provided, single submitter"
 619840,VCV000619840,NM_000558.5(HBA1):c.178G>A (p.Gly60Ser),chr16,177011,177011,149910,Uncertain significance,HBA1,"criteria provided, multiple submitters, no conflicts"
 618156,VCV000618156,NM_000558.4(HBA1):c.-52C>T,chr16,176665,176665,149564,Likely benign,HBA1,"criteria provided, multiple submitters, no conflicts"
-618154,VCV000618154,NM_000558.4(HBA1):c.-41C>G,chr16,176676,176676,149575,Likely benign,LOC106804613,"criteria provided, single submitter"
+618154,VCV000618154,NM_000558.4(HBA1):c.-41C>G,chr16,176676,176676,149575,Likely benign,HBA1,"criteria provided, single submitter"
 439768,VCV000439768,NM_000558.5(HBA1):c.300+55G>T,chr16,177188,177188,150087,Benign,HBA1,"criteria provided, multiple submitters, no conflicts"
 439106,VCV000439106,NM_000558.5(HBA1):c.95+39C>T,chr16,176850,176850,149749,Benign,HBA1,"criteria provided, multiple submitters, no conflicts"
-439105,VCV000439105,NM_000558.3(HBA1):c.-80C>A,chr16,176637,176637,149536,Uncertain significance,LOC106804613,"criteria provided, single submitter"
-439104,VCV000439104,NM_000558.3(HBA1):c.-77C>G,chr16,176640,176640,149539,Uncertain significance,HBA1,"criteria provided, single submitter"
+439105,VCV000439105,NM_000558.3(HBA1):c.-80C>A,chr16,176637,176637,149536,Uncertain significance,HBA1,"criteria provided, single submitter"
+439104,VCV000439104,NM_000558.3(HBA1):c.-77C>G,chr16,176640,176640,149539,Uncertain significance,LOC106804613,"criteria provided, single submitter"
 439102,VCV000439102,NM_000558.5(HBA1):c.-42C>T,chr16,176675,176675,149574,Benign/Likely benign,HBA1,"criteria provided, multiple submitters, no conflicts"
 439101,VCV000439101,NM_000558.5(HBA1):c.396T>C (p.Ser132=),chr16,177378,177378,150277,Likely benign,HBA1,"criteria provided, multiple submitters, no conflicts"
 439099,VCV000439099,NM_000558.5(HBA1):c.332C>T (p.Ala111Val),chr16,177314,177314,150213,Uncertain significance,HBA1,"criteria provided, single submitter"

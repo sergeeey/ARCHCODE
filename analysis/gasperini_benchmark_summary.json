@@ -1,0 +1,54 @@
+{
+  "experiment": "EXP-008: Gasperini CRISPRi Gold Standard Benchmark",
+  "gasperini_total_pairs": 90955,
+  "gasperini_enhancer_pairs": 84595,
+  "total_mapped": 132,
+  "per_locus": {
+    "BRCA1": {
+      "n_mapped": 102,
+      "n_significant": 0,
+      "mean_lssim_sig": null,
+      "mean_lssim_nonsig": 0.9969,
+      "unique_genes": 34
+    },
+    "CFTR": {
+      "n_mapped": 0
+    },
+    "GJB2": {
+      "n_mapped": 0
+    },
+    "HBB": {
+      "n_mapped": 0
+    },
+    "LDLR": {
+      "n_mapped": 0
+    },
+    "MLH1": {
+      "n_mapped": 30,
+      "n_significant": 0,
+      "mean_lssim_sig": null,
+      "mean_lssim_nonsig": 0.99782,
+      "unique_genes": 6
+    },
+    "SCN5A": {
+      "n_mapped": 0
+    },
+    "TERT": {
+      "n_mapped": 0
+    },
+    "TP53": {
+      "n_mapped": 0
+    }
+  },
+  "lssim_vs_beta_spearman": {
+    "rho": -0.2324,
+    "p": 0.007320955136209424
+  },
+  "lssim_vs_foldchange_spearman": {
+    "rho": -0.2324,
+    "p": 0.007320955136209424
+  },
+  "mann_whitney_sig_vs_nonsig": {
+    "p": null
+  }
+}

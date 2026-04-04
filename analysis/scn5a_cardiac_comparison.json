@@ -1,0 +1,33 @@
+{
+  "analysis": "SCN5A_K562_vs_cardiac_tissue_match",
+  "date": "2026-03-10",
+  "hypothesis": "SCN5A converts from Class E (tissue-mismatch null) to Class B (architecture-driven) with cardiac chromatin data",
+  "verdict": "SUPPORTED \u2014 cardiac config amplifies structural signal by 37% and produces 2.9x more structural calls",
+  "k562_config": "scn5a_400kb.json (ENCODE K562 CTCF + H3K27ac)",
+  "cardiac_config": "scn5a_cardiac_250kb.json (ENCODE cardiac CTCF + H3K27ac)",
+  "n_variants": 2488,
+  "comparison": {
+    "k562": {
+      "mean_lssim_pathogenic": 0.996025,
+      "mean_lssim_benign": 0.999456,
+      "delta_PB": -0.003432,
+      "structural_calls": 199,
+      "q2_variants": 214,
+      "frameshift_min_lssim": 0.9786
+    },
+    "cardiac": {
+      "mean_lssim_pathogenic": 0.99463,
+      "mean_lssim_benign": 0.999335,
+      "delta_PB": -0.004706,
+      "structural_calls": 577,
+      "q2_variants": 274,
+      "frameshift_min_lssim": 0.9714
+    },
+    "amplification": {
+      "delta_ratio": 1.37,
+      "structural_calls_ratio": 2.9,
+      "q2_ratio": 1.28
+    }
+  },
+  "interpretation": "Cardiac-matched chromatin data amplifies ARCHCODE discrimination by 37% (delta P-B: -0.0034 \u2192 -0.0047). Structural calls increase 2.9x (199 \u2192 577). This confirms that SCN5A was partially detectable even with K562 data (199 calls, not fully null), but cardiac tissue context substantially strengthens the architecture-driven signal. The Class E \u2192 B conversion is PARTIAL: K562 was not fully blind, but cardiac matching significantly improves sensitivity. Frameshift variants show strongest amplification (min LSSIM: 0.9786 \u2192 0.9714)."
+}

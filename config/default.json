@@ -6,7 +6,7 @@
   "_important": {
     "note": "These are MODEL PARAMETERS, not physical constants",
     "calibration": "Calibrated against Hi-C contact maps (Rao et al. 2014) for GM12878",
-    "validation": "Pearson r >= 0.7 vs experimental Hi-C (not AlphaGenome - currently mock)",
+    "validation": "Pearson r >= 0.7 vs experimental Hi-C",
     "timeMapping": "Steps are discrete events. Biological time mapping is approximate.",
     "units": "Residence time is measured in STEPS for simulation, seconds are approximate"
   },
@@ -82,7 +82,7 @@
 
   "validation": {
     "targetPearson": 0.7,
-    "targetPearsonNote": "vs experimental Hi-C (not AlphaGenome mock)",
+    "targetPearsonNote": "vs experimental Hi-C",
     "validatedLoci": ["HBB", "Sox2", "Pcdh"],
     "metrics": ["pearson", "spearman", "rmse"]
   },
@@ -90,7 +90,6 @@
   "_limitations": {
     "time": "Steps are dimensionless discrete events; biological time is approximate mapping",
     "stochasticity": "Unloading is memoryless (exponential), real cohesin may have non-exponential kinetics",
-    "blocking": "CTCF efficiency is ensemble average; single-molecule behavior may differ",
-    "alphaGenome": "Validation uses mock data, not real AlphaGenome API"
+    "blocking": "CTCF efficiency is ensemble average; single-molecule behavior may differ"
   }
 }

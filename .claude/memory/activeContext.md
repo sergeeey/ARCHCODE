@@ -1,219 +1,129 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-03-08 (bioRxiv v3 biology-first submission + Zenodo v2.16)
-**Branch:** main
-**Last Commit:** 5cf0d98 — `fix: PR Gate blockers — per-locus thresholds + monotonicity test + caveats`
-**Git Tag:** v2.14-experimental ("Research Use Only — Wet Lab Validation Required")
-**GitHub:** https://github.com/sergeeey/ARCHCODE (unpushed — network blocked)
-**Zenodo DOI:** v2.16 — DOI закреплён
-**bioRxiv:** два независимых timestamp (submitted 2026-03-08); old ID BIORXIV/2026/708672 REJECTED
-**arXiv:** ждём endorsement от Brackley/Michieletto (ранее: Dr. Guang Shi, code B9P837)
-**Status:** v2.16 — SUBMITTED. bioRxiv biology-first version (52 pages). arXiv version ready (55 pages).
+**Last Updated:** 2026-04-01 (end of session)
+**Branch:** feature/mechanistic-taxonomy (taxonomy paper track)
+**Last Commit:** `2d64a72` — docs: align submission status + add endorsement packet
+**GitHub:** https://github.com/sergeeey/ARCHCODE — PUSHED (4 commits this session)
 
----
+## Submission Status
 
-## Текущий статус проекта
+| Platform | Status | Next Action |
+|----------|--------|-------------|
+| Research Square | rs-9090074, DOI: 10.21203/rs.3.rs-9090074/v1 | Wait review feedback |
+| arXiv | Waiting endorsement (code B9P837) | Follow-up Nora (UCSF) ~Apr 1 |
+| Ronin Institute | Application submitted 2026-03-12 | Decision ~May 2026 |
+| bioRxiv | Rejected (no affiliation) | Resubmit after Ronin |
+| Zenodo | **v2.17 LIVE** — https://zenodo.org/records/18908214 (FOXP3+BCL11A) | Done |
+| ORCID | 0009-0009-2178-5701 | Done |
 
-**Фаза:** v2.14 — PUBLICATION READY. **Канонические источники истины для claims:** `results/validation_canonical_index_2026-03-06.json`, `results/publication_claim_matrix_2026-03-06.json`. Legacy-нарративы: `docs/internal/LEGACY_CLAIM_HYGIENE_2026-03-06.md`.
+## Current State
 
-### 2026-03-06 / 2026-03-07: Canonical Governance + Cold-Eye Audit + Post-Audit Fixes
+- **Manuscript:** taxonomy paper, 9 sections + 7 supplementary (S1-S7), FOXP3 + BCL11A case studies in Section 5, ~90 pages, compiles clean
+- **References:** 38 (all DOI-verified, up from 24). Phantom "Chouery & Shukla 2022" fixed → Himadewi 2021. Umhoefer year 2026→2025 fixed.
+- **Data:** 31,929 ClinVar variants, 18 loci (FOXP3, BCL11A, PAX6, + SCN5A cardiac), 27 HBB pearls, 641 VUS candidates
+- **New:** Supplementary S7 (multi-locus atlas table, 18 loci × 9 metrics) + fig_multi_locus_atlas.png/pdf
+- **BCL11A:** Erythroid enhancer mutagenesis (314 SYNTHETIC SNVs). DHS +58 = most sensitive (LSSIM=0.9660), consistent with Casgevy target. Triple validation: uniform occupancy control, GATA1 motif verified, GWAS HbF SNPs show more disruption than controls (U=46<60)
+- **FOXP3:** 4 configs + in silico mutagenesis (486 SYNTHETIC SNVs). ClinVar: 0 pearls (all coding). Mutagenesis: 8 synthetic pearls in 2 Treg enhancer hotspots (LSSIM=0.9364). 6-point orthogonal validation PASSED — EGR2 binding site disrupted at Hotspot 2 (Marson lab TF)
+- **V1 Module:** ML ablation complete — structural features = 64% importance for pearl detection
+- **Orthogonal methods:** 10 independent methods confirm Class B blind spot
+- **Core branch:** feature/v4-prioritization-framework (frozen at e9435f9)
 
-1. **Канонизация валидации** — единый индекс Task1–Task5, матрица допущенных/запрещённых формулировок (C01–C08), legacy-файлы помечены non-canonical.
-2. **Cold-Eye Audit** — по ТЗ `docs/COLD_EYE_AUDIT_TZ.md`; отчёт `docs/COLD_EYE_AUDIT_REPORT.md`. Скрытых моков нет; LSSIM из расчёта; тесты 63/63. Task3 weak_halved weakEncounter=0 — риск (геометрия/выборка).
-3. **Post-audit fixes (2026-03-07):** цитирование в blind spot benchmark (без placeholder DOI); маппинг ключей в `build_blind_spot_benchmark.py`; «fitted» → «manually calibrated» в AlphaGenomeService.ts и validate-blind-loci.ts; ChromoGen → Schuette et al. 2025, Science Advances.
-4. **Task1 1Mb:** гипотеза Pearson > 0.5 отклонена; статус EXPLORATORY.
-5. **Task3:** SUPPORTED_IN_MODEL (weak_probe); внешняя валидация UNVERIFIED.
-6. **RNA-seq:** анализ выполнен; после нормализации по глубине гипотеза Loop That Stayed не поддержана; в manuscript только как Limitations, без фиктивных p-values.
+## Key Numbers (canonical, updated 2026-03-30)
 
-### Session 37: Publication Package + Integrity Check + Discovery Memo
-
-1. **Publication package** — `C:\Users\serge\Desktop\arxiv 0403\` (63 files, 14 MB)
-   - 2 PDFs (EN + RU), 8 Typst sources, 36 figures, 10 data JSONs, 4 supplementary
-   - Cover letter, Research Square checklist, arXiv endorsement email, Zenodo metadata
-2. **Integrity check** — 49/51 PASS, 0 MISMATCH, 2 UNVERIFIABLE (enhancer proximity numbers from fig8 pipeline)
-3. **FigJam diagrams** — 4 created: Pipeline (GA), 9 Methods Blind, Tissue Gradient, VUS Pathway
-4. **Discovery Readiness Memo** — 15 pearls shortlisted (8 positions), wet-lab protocol:
-   - HUDEP-2 + Capture Hi-C + RT-qPCR + CRISPR base editing
-   - 5 priority positions: c.-79A>C, c.-80T>C, c.-138C>A, c.249G>C, c.50dup
-   - Success/failure criteria defined for each experiment
-5. **Pearl validation shortlist** — `results/pearl_validation_shortlist.json`
-6. **Sensitivity analysis** — threshold stable (core pearls at 0.90-0.95), annotation robust (TSS-fixed)
-7. **Zenodo v2.14 metadata** — prepared for browser upload (network blocked)
-8. **Git push blocked** — TLS handshake reset, needs VPN
-
-### Session 36: VUS Reclassification Candidates
-
-1. **ClinVar VUS download** — 30,952 VUS across 13 loci via NCBI E-utilities (batched per-locus)
-2. **Position-based LSSIM lookup** — matched VUS to existing atlas positions, no new simulations
-3. **760 candidates** (LSSIM < 0.95), **641 pearl-like** after excluding nonsense/frameshift
-4. **Tissue-specificity confirmed**: HBB 22.3% candidate rate; SCN5A/GJB2/HBA1/GATA1/BCL11A = 0
-5. **Figure 18** — `figures/fig18_vus_reclassification.pdf/png` (dual panel: VUS counts + pearl-like)
-6. **Per-locus candidate CSVs** — HBB (327), MLH1 (122), BRCA1 (81), TERT (79), PTEN (73), CFTR (54), TP53 (13), LDLR (11)
-7. **Manuscript v2.14** — new Results section (EN+RU), Main Findings + Data Transparency updated
-8. Desktop: `ARCHCODE_v2.14_EN.pdf` / `_RU.pdf`
-
-### Session 35: MaveDB Cross-Validation + Expression/MI Analysis
-
-1. **MaveDB BRCA1 SGE cross-validation** — Findlay et al. Nature 2018 (PMID 30209399)
-   - MaveDB URN: urn:mavedb:00000097-0-2, 3,893 normalized scores
-   - **1,422 matched** to ARCHCODE BRCA1 atlas
-   - **Pearson r = −0.045 (p = 0.086)** — near-zero → complete orthogonality
-   - SGE separates P/B perfectly (−1.35 vs −0.08), ARCHCODE LSSIM uniform (0.9995 vs 0.9991)
-2. **MaveDB TP53 DMS cross-validation** — HCT116 deep mutational scan
-   - MaveDB URN: urn:mavedb:00001213-a-1, 8,052 scores
-   - **1,080 matched** to ARCHCODE TP53 atlas
-   - **Pearson r = −0.383 (p = 4.3e-39)** — weak correlation (partial tissue-match)
-   - R² = 0.147 → ARCHCODE captures 85% independent information
-3. **Figure 17** — `figures/fig17_mavedb_crossvalidation.pdf/png` (dual scatter: SGE vs LSSIM, DMS vs LSSIM)
-4. **Expression vs LSSIM** (session 34 cont.) — K562 TPM vs |Δ LSSIM|: Spearman ρ = −0.448, p = 0.124 (NS)
-5. **Mutual Information** — NMI: ARCHCODE vs CADD = 0.024, vs VEP = 0.101, VEP vs CADD = 0.231
-6. **Figures 15-16** — expression/enhancer correlation + NMI orthogonality
-7. **Manuscript v2.13** — 9 orthogonal methods (was 8), MaveDB section added EN+RU
-8. Desktop: `ARCHCODE_v2.13_EN.pdf` / `_RU.pdf`
-
-### Session 34: HBA1 Atlas + Generic ClinVar Pipeline
-
-1. **`scripts/download_clinvar_generic.py`** — generic ClinVar downloader (any gene → ClinVar E-utilities → filtered CSV)
-   - Fixed: ClinVar API renamed `clinical_significance` → `germline_classification`
-2. **HBA1 atlas** — `results/HBA1_Unified_Atlas_300kb.csv`
-   - 111 variants (67 P/LP + 44 B/LB), 0 pearls
-   - Δ LSSIM = -0.0024 (vs HBB -0.111) — 46× weaker signal
-   - Nonsense show lowest LSSIM (0.9857-0.9901) — trend preserved
-   - Confirms tissue-specificity: K562 enhancers weaker for HBA1 vs HBB LCR
-3. **New aliases:** `hba1`, `gata1`, `bcl11a`, `pten` added to TS + Python locus config resolvers
-4. **GATA1 atlas** — 183 variants, 0 pearls, Δ LSSIM = -0.0036 (erythroid TF, moderate signal)
-5. **BCL11A atlas** — 93 variants, 0 pearls, Δ LSSIM = -0.0137 (HbF repressor, strong signal)
-6. **PTEN atlas** — 1,496 variants, 9 struct calls, Δ LSSIM = -0.0097 (tumor suppressor)
-7. **Figure 14** — `figures/fig14_cross_locus_comparison.pdf/png` (cross-locus Δ LSSIM bars + struct calls)
-8. **Manuscript v2.12** — new Results section "Genome-Wide Scaling", 8 orthogonal methods, 32,201 variants
-9. **`results/cross_locus_atlas_comparison.json`** — summary JSON for all 13 loci
-10. Desktop: `ARCHCODE_v2.12_EN.pdf` / `_RU.pdf`
-
-### Session 32-33: Cross-Species Conservation + Mouse Hi-C Validation
-
-1. **Mouse HBB config** — `config/locus/mouse_hbb_130kb.json`
-   - ENCODE MEL CTCF: ENCSR000CFH / ENCFF142CNG (mm10), 3 CTCF sites
-   - ENCODE MEL H3K27ac: ENCSR000CEV / ENCFF078RJZ (mm10), 6 enhancers (real peaks, not literature)
-   - 4 genes (Hbb-bt, Hbb-bs, Hbb-bh1, Hbb-y) on chr7, 130kb window
-2. **Cross-species LSSIM comparison** — `scripts/cross_species_comparison.ts`
-   - TSS-relative coordinate mapping, 17 pearl positions
-   - **Pearson r = 0.82** (human vs mouse LSSIM) after ENCODE H3K27ac integration
-   - Direction conserved: 17/17 positions show mouse LSSIM < WT baseline
-   - Category order conserved: frameshift > splice > promoter > missense > other
-3. **Mouse Hi-C validation** — `scripts/extract_mouse_hic.py`
-   - Source: 4DN 4DNFIB3Y8ECJ (G1E-ER4 in situ Hi-C, DpnII, mm10), experiment set 4DNESWNF3Y23
-   - Downloaded: `data/mouse/4DNFIB3Y8ECJ_G1E-ER4_HiC_mm10.mcool` (2.5 GB)
-   - Resolution: 1kb (best available), 130 bins → resampled to 217
-   - **Hi-C vs ARCHCODE WT: Pearson r = 0.531** (p ≈ 0, n = 15,055)
-   - Consistent with human Hi-C validation range (r = 0.28-0.59)
-4. **Figure 12** — `figures/fig12_cross_species.pdf/png` (LSSIM scatter + category bars)
-5. **Figure 13** — `figures/fig13_mouse_hic_validation.pdf/png` (Hi-C vs ARCHCODE 4-panel)
-6. **Data files:**
-   - `data/mouse/ENCFF142CNG_CTCF_MEL_mm10.bed` (37,035 CTCF peaks)
-   - `data/mouse/ENCFF078RJZ_H3K27ac_MEL_mm10.bed` (51,597 H3K27ac peaks)
-   - `data/mouse/4DNFIB3Y8ECJ_G1E-ER4_HiC_mm10.mcool` (2.5 GB, publicly accessible)
-   - `results/mouse_hic_beta_globin.json` (extracted contact matrix + metadata)
-   - `results/cross_species_hbb_comparison.json` (LSSIM results + mouseWT matrix)
-
-### Manuscript v2.10 (current) — what's new vs v2.9
-
-1. **Cross-locus VEP scoring** — 21,254 SNVs scored across 8 non-HBB loci via Ensembl VEP REST API
-2. **Pearl sensitivity analysis** — threshold sweep 0.88-0.98; HBB robust (27 pearls stable), BRCA1/TP53 threshold artifacts
-3. **Figure 11** — dual-panel: threshold sweep + LSSIM distribution (fig11_pearl_sensitivity.pdf/png)
-4. **New Results section:** "Cross-Locus VEP Scoring and Pearl Sensitivity Analysis"
-5. **Limitation #8 updated:** was "VEP available only for HBB" → now VEP scored across all 8 loci
-6. **Summary point (18):** cross-locus VEP confirms pearl specificity
-7. **Significance Statement updated:** adds cross-locus VEP sentence
-8. **BRCA1 pearl debunking:** 24 candidates = threshold artifacts (LSSIM 0.942-0.947, common polymorphisms AF 40-50%)
-
-### Key VEP results per locus
-
-| Locus | Scored | Pearls | Notes                                     |
-| ----- | ------ | ------ | ----------------------------------------- |
-| MLH1  | 2,580  | 0      | —                                         |
-| CFTR  | 2,594  | 0      | —                                         |
-| TP53  | 1,978  | 2      | Threshold-proximal (LSSIM ~0.945)         |
-| BRCA1 | 7,219  | 24     | Threshold artifacts, common polymorphisms |
-| LDLR  | 2,345  | 0      | —                                         |
-| SCN5A | 2,202  | 0      | —                                         |
-| TERT  | 1,957  | 0      | —                                         |
-| GJB2  | 379    | 0      | —                                         |
-
-### Core findings (unchanged)
-
-- 30,318 ClinVar variants across 9 loci
-- 27 pearl variants on HBB — robust across thresholds 0.88-0.95
-- Enhancer proximity drives discrimination: ≤1kb Δ=0.039 (7× average)
-- Tissue-specificity gradient: matched (HBB Δ=0.111) → mismatch (GJB2: null)
+- 20 HBB pearls (14 unique positions, 11 in 73bp promoter cluster)
+- Pearl vs Benign CAGE: -19% vs -0.1%, p=4×10⁻⁶, Cohen d=-2.1 (AlphaGenome real API)
+- MPRA wet-lab: pearl vs non-pearl INDISTINGUISHABLE (p=0.91 Mann-Whitney; p=0.41 cross-locus). This SUPPORTS Class B: pearls invisible to MPRA.
+- ISM peak: chr11:5,227,099-102 = -43% CAGE sensitivity (exact match with pearls)
+- AUC=0.975 is CATEGORY-DRIVEN (ablation: without category → 0.551)
 - Hi-C validation: r=0.28-0.59 across loci
-- 6 orthogonal methods blind to pearls: VEP, SpliceAI, CADD, MPRA, gnomAD, cross-locus VEP
+- AlphaGenome 28 cell lines: r=+0.27 to +0.41 (after log→linear normalization)
+- gnomAD: 85% pearls absent (purifying selection, but floor effect in conserved HBB)
 
-### Key files (v2.10)
+## Session 2026-03-30 — Major cleanup + real validation
 
-**New in v2.10:**
+1. Removed AlphaGenome mock system (-11,756 lines, 37 files deleted)
+2. Ran 5 experiments with real AlphaGenome API (SDK v0.6.0)
+3. Key result: Pearl vs Benign CAGE p=4×10⁻⁶ (3-way with proper controls)
+4. MPRA cross-validation: pearls invisible to MPRA (p=0.91) — confirms Class B blind spot
+5. ISM: pearls = exact peak of CAGE sensitivity
+6. README aligned with real data, mock references removed
+7. All pushed to GitHub (5 commits)
+8. README aligned with VALIDATION_PROTOCOL — discovery engine framing, HBB scope disclaimer, caveats (536b5ff)
+9. Manuscript body updated: AlphaGenome CAGE section + ISM + AUC ablation caveat + pseudoreplication warning (60c44c7)
+10. Re-evaluation score: 5.8/10. MPRA p=0.0001 was memory hallucination (actual p=0.91, correctly in manuscript)
 
-- `scripts/vep_batch_scoring.py` — multi-locus VEP scoring script
-- `results/vep_multilocus_summary.json` — per-locus VEP stats
-- `figures/fig11_pearl_sensitivity.pdf/png` — sensitivity analysis figure
-- All 8 atlas CSVs updated with VEP columns
-- Desktop: `C:\Users\serge\Desktop\ARCHCODE_v2.10_EN.pdf` / `_RU.pdf`
+## Session 2026-04-01 — Statistical strengthening + endorsers
 
-**Manuscript:**
-
-- `manuscript/body_content.typ` — English
-- `manuscript/body_content_ru.typ` — Russian
-- `manuscript/main.pdf` / `main_ru.pdf` — compiled PDFs
-
-### Compilation
-
-```bash
-cd D:/ДНК/manuscript
-python -c "import typst; typst.compile('main.typ', output='main.pdf', root='..')"
-python -c "import typst; typst.compile('main_ru.typ', output='main_ru.pdf', root='..')"
-```
-
-### Technical notes
-
-- Windows: `python` не `python3`
-- Typst needs `root='..'` parameter
-- VEP API: POST `/vep/homo_sapiens/region`, batch 200, 0.5s delay
-- Pearl threshold: VEP < 0.30 AND LSSIM < 0.95
-- BRCA1 pearls: all LSSIM 0.942-0.947 (threshold-proximal)
-
----
+1. Skeptic Engine validation committed (ffed1b0): benign=0.001, pathogenic=0.161, Pearl=0.153
+2. **Statistical strengthening** (75e5908):
+   - Bootstrap CI (10K) + Mann-Whitney U + Cohen d + BH FDR: **8/8 loci significant** (p < 10⁻¹⁷ all)
+   - HBB: d=4.172, r=0.957 (very large effect). TERT: d=1.354. GJB2: d=1.273
+   - 27,830 variants across 8 loci, all BH-corrected p < 0.05
+3. **Cross-locus Pearl scan**: 323 candidates across 15 loci (30,770 variants)
+   - Top: BRCA1 (97), MLH1 (87), CFTR (27), TERT (21), GPKOW (21)
+   - GATA1 highest rate (6.9%), GPKOW (12.7%)
+4. **Competitor comparison**: VEP misses 100% of Pearls (all MODIFIER), ARCHCODE catches 100%
+5. **Endorser emails drafted**: Fudenberg (EN) + Goloborodko (RU) → outreach/endorser_emails_2026-04-01.md
+6. **AlphaGenome CAGE batch** (330f64e): 7 loci tested. HBB (5.5x, p=4e-6) + MLH1 (3.7x, p=0.022) significant. BRCA1/TP53/TERT/GJB2 not significant — coding-dominant loci, CAGE can't see protein-level pathogenicity. Honest negative supports tissue-specificity thesis.
 
 ## Backlog
 
-1. **P0: arXiv submission** — ждём endorsement от Dr. Guang Shi (q-bio.GN)
-2. ~~**P0: Manuscript v2.11**~~ — **DONE** (cross-species + mouse Hi-C sections written, compiled)
-3. ~~**P1: Mouse Hi-C validation**~~ — **DONE** (r=0.531, 4DNFIB3Y8ECJ)
-4. ~~**P1: H3K27ac for MEL**~~ — **DONE** (ENCSR000CEV / ENCFF078RJZ, 6 peaks integrated)
-5. ~~**P2: Genome-wide pipeline**~~ — **DONE** (auto_config_pipeline.py + batch runner, 20 new genes, 31 total configs)
-6. ~~**P1: HBA1 atlas**~~ — **DONE** (111 variants, 0 pearls, Δ LSSIM = -0.0024 — weak signal confirms tissue-specificity)
-7. **P2: CRISPR collaboration** — after arXiv preprint is live
-8. **P2: Evolutionary fragility map** — cross-species on auto-generated configs
-9. **P3: Cancer somatic pearls** — MYC super-enhancer test case
-10. **P3: VUS reclassification database** — web tool after scaling
+1. ~~**P0:** Add AlphaGenome + MPRA + ISM results to manuscript body~~ DONE (60c44c7)
+2. ~~**P0:** Statistical strengthening (bootstrap CI, FDR, effect sizes)~~ DONE (75e5908)
+3. ~~**P0:** Cross-locus Pearl scan~~ DONE (75e5908)
+4. ~~**P0:** Competitor comparison table~~ DONE (75e5908)
+5. **P0:** Send endorser emails: Fudenberg + Goloborodko — DRAFTED, user to send
+6. **P0:** Submit RS v3 with new validation section + update Zenodo → v2.18
+7. **P1:** Follow-up Nora — Apr 7 (email drafted in endorser_plan.md)
+8. **P1:** Batch ROC: 1103 variants through AlphaGenome CAGE
+9. **P1:** GATA1/KLF1 TF binding disruption at pearl positions
+10. **P2:** Multi-locus AlphaGenome (BRCA1, TP53, CFTR)
+11. **P2:** Tissue-specificity: pearl CAGE across 28 cell lines
+8. **P3:** Wet-lab partner for Capture Hi-C at chr11:5,227,099-102
 
----
+## Compilation
 
-## Commit history (recent)
-
+```bash
+cd D:/ДНК/manuscript/taxonomy_paper
+python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../..')"
 ```
-18e8bea fix: PhyloP mean 2.39→2.37 + Significance Statement update + integrity check passed
-51700ab feat: v2.9 — gnomAD v4 population analysis added to manuscript
-93e856c feat: v2.8.1 — gnomAD AF analysis, README v2.8, Zenodo DOI
-638a5d9 feat: v2.8 orthogonal validation — SpliceAI null + MPRA cross-validation + Figure 10
-```
+
+## Technical Notes
+
+- Windows: `python` not `python3`
+- Typst needs `root='../..'` for taxonomy paper
+- Session history: use `git log --oneline` (not stored here)
+- V1 roadmap: see memory/v1_module_roadmap.md
 
 ## Auto-commit log
-
-- [2026-03-05 18:43] `5cf0d98`: fix: PR Gate blockers — per-locus thresholds + monotonicity test + caveats
-
-- [2026-03-05 18:17] `bf39ad8`: docs: update README + submission metadata to v2.14 (63,153 variants, 641 VUS candidates)
-
-- [2026-03-05 17:15] `a94c881`: feat: v2.14 — VUS reclassification candidates (30,952 VUS, 760 candidates, 641 pearl-like across 13 loci)
-
-- [2026-03-05 15:51] `2596e99`: docs: Data Transparency Declaration — add MaveDB, expression, MI, mouse, new loci rows
-
-- [2026-03-05 15:48] `c2510b6`: feat: v2.13 — MaveDB cross-validation + genome-wide scaling (13 loci, 32,201 variants, 9 orthogonal methods)
+- [2026-04-01 19:52] `7f0ae91`: docs: update session context + endorser tracking (5 emails sent)
+- [2026-04-01 18:52] `2d64a72`: docs: align submission status + add endorsement packet
+- [2026-04-01 14:48] `330f64e`: feat(validation): AlphaGenome CAGE batch on 7 loci — honest mixed result
+- [2026-04-01 14:22] `75e5908`: feat(stats): add statistical strengthening + cross-locus Pearl scan + competitor comparison
+- [2026-04-01 12:16] `ffed1b0`: docs: add Skeptic Engine independent validation results for HBB atlas
+- [2026-03-31 08:24] `69ee680`: chore: repo cleanup — add missing data, remove temp files, update gitignore
+- [2026-03-31 08:12] `f8e7667`: fix(integrity): audit cleanup — resolve 10 cross-document discrepancies
+- [2026-03-30 23:46] `60c44c7`: feat(manuscript): add AlphaGenome CAGE validation + ISM + ablation caveat to body
+- [2026-03-30 23:20] `536b5ff`: docs(readme): align public framing with VALIDATION_PROTOCOL — discovery engine, not predictor
+- [2026-03-30 21:19] `52b3bba`: fix(integrity): complete remaining audit findings
+- [2026-03-30 21:09] `a830c1b`: fix(integrity): resolve 6 audit findings from repo-wide scan
+- [2026-03-30 20:40] `0684756`: docs: align README with actual data — fix pearl counts, update AlphaGenome to real API results
+- [2026-03-30 20:32] `b346083`: feat: 3-way validation + ISM + MPRA cross-validation for pearl hotspot
+- [2026-03-30 20:08] `859b1e2`: feat: AlphaGenome real API validation — pearls show 5.5× more CAGE disruption (p=0.0003)
+- [2026-03-30 18:10] `f01c0a3`: fix(integrity): remove AlphaGenome mock system — eliminate synthetic data from public repo
+- [2026-03-28 20:35] `cfafddb`: docs: add 14 verified references, multi-locus atlas table S7, fix phantom citation
+- [2026-03-24 17:35] `1cf8fb8`: fix: use LOCUS_ARG in output filenames — prevent result overwrites
+- [2026-03-24 15:14] `58a1c34`: feat(bcl11a): CTCF boundary deletion experiment — enhancer hijacking model
+- [2026-03-24 14:56] `802d42b`: feat(hba1): in silico mutagenesis — hotspot at chr16:181,487 (LSSIM=0.9618)
+- [2026-03-24 14:53] `af46e16`: feat(hba1): 90kb focused window — same Δ as 300kb, needs mutagenesis
+- [2026-03-24 14:42] `3d3c9ed`: feat: SCN5A cardiac mutagenesis + PAX6/HBA1 baseline configs
+- [2026-03-24 12:51] `765d869`: docs: add BCL11A/Casgevy + GWAS validation to abstract
+- [2026-03-24 12:41] `c5a6243`: feat(bcl11a): GWAS validation + verified DHS coordinates + GATA1 motif
+- [2026-03-24 12:23] `95e6e7f`: docs: add BCL11A Casgevy case study to taxonomy paper (Section 5)
+- [2026-03-24 12:20] `0929362`: feat(bcl11a): erythroid enhancer mutagenesis — DHS +58 validated as Casgevy target
+- [2026-03-24 10:47] `b9fa2f1`: docs: add FOXP3 mutagenesis to abstract — predictive vulnerability mapping
+- [2026-03-24 10:30] `c73d23f`: docs: add FOXP3 case study + predictive mapping to taxonomy paper
+- [2026-03-24 10:25] `2a04836`: docs(foxp3): orthogonal validation of in silico mutagenesis hotspots
+- [2026-03-24 09:58] `c212f2d`: feat(foxp3): in silico saturation mutagenesis — 2 structural hotspots identified
+- [2026-03-24 09:53] `7374b78`: feat(foxp3): 60kb focused window — IPEX-like paradox established
+- [2026-03-24 09:31] `a2a6d6d`: feat: add FOXP3 as 15th ARCHCODE locus — immunology track (Nobel 2025 FOXP3/Treg)

@@ -1,0 +1,16 @@
+locus,variant_group,assigned_class,evidence,confidence,n_variants
+HBB,Q2b,B,N_Q2b=25; ARCHCODE+ (LSSIM<0.95); tissue_matched=1.0 (fully matched),high,25
+HBB,tissue_mismatch_control,E,EXP-003 mismatch controls: HBB|LDLR: delta=5.04e-06; HBB|TP53: delta=-1.17e-02,high,0
+TERT,Q2a,D+B,N_Q2a=34; VEP=-1 (no score); N_Q2b=1 (architecture signal coexists),high,34
+TERT,Q2b,B,"N_Q2b=1; ARCHCODE+ (LSSIM<0.95); tissue_matched=0.5 (partial — K562 proxy, not ideal)",medium,1
+BRCA1,Q2a,D+B,N_Q2a=53; VEP=-1 (no score); N_Q2b=26 (architecture signal coexists),high,53
+BRCA1,Q2b,B,"N_Q2b=26; ARCHCODE+ (LSSIM<0.95); tissue_matched=0.5 (partial — K562 proxy, not ideal)",medium,26
+TP53,Q2a,D+B,N_Q2a=2; VEP=-1 (no score); N_Q2b=2 (architecture signal coexists),high,2
+TP53,Q2b,B,"N_Q2b=2; ARCHCODE+ (LSSIM<0.95); tissue_matched=0.5 (partial — K562 proxy, not ideal)",medium,2
+TP53,tissue_mismatch_control,E,EXP-003 mismatch controls: TP53|HBB: delta=6.03e-13; TP53|LDLR: delta=5.47e-04,high,0
+MLH1,Q2a,D,N_Q2a=72; VEP=-1 (no score),high,72
+CFTR,Q2a,D,N_Q2a=36; VEP=-1 (no score),high,36
+LDLR,Q2a,D,N_Q2a=10; VEP=-1 (no score),high,10
+LDLR,tissue_mismatch_control,E,EXP-003 mismatch controls: LDLR|HBB: delta=-3.79e-04; LDLR|TP53: delta=-1.12e-03,high,0
+SCN5A,all,NULL,N_Q2=0; no ARCHCODE-discordant variants detected; tissue_match=0.0,N/A,0
+GJB2,all,NULL,N_Q2=0; no ARCHCODE-discordant variants detected; tissue_match=0.0,N/A,0

@@ -1,0 +1,46 @@
+{
+  "canon_tier": "technical_full_scope",
+  "status": "technical_current",
+  "release_facing": false,
+  "scope_note": "Exploratory competitor comparison retained for technical interpretation only. Do not use as default public-project framing without context.",
+  "locus": "HBB",
+  "n_pearls": 15,
+  "description": "Damagingness-threshold sensitivity by tool for a narrower 15-variant HBB pearl subset",
+  "subset_scope": "Technical subset only: n=15 HBB pearls with comparator-available scores. Not equivalent to the public-canonical 25-variant HBB core or the broader technical 27-pearl definition.",
+  "detection_note": "Detection here means crossing tool-specific damagingness thresholds, not uniquely isolating the structural-mechanism class.",
+  "key_finding": "Some sequence-derived scores flag variants in this subset as damaging, but they do not cleanly isolate the HBB structural class or provide a direct 3D mechanism interpretation.",
+  "comparison": {
+    "VEP_Score": {
+      "pearl_detected": 0,
+      "pearl_total": 15,
+      "pearl_sensitivity": 0.0,
+      "pathogenic_detected": 287,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 81.3
+    },
+    "SIFT": {
+      "pearl_detected": 15,
+      "pearl_total": 15,
+      "pearl_sensitivity": 100.0,
+      "pathogenic_detected": 347,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 98.3
+    },
+    "CADD": {
+      "pearl_detected": 12,
+      "pearl_total": 15,
+      "pearl_sensitivity": 80.0,
+      "pathogenic_detected": 183,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 51.8
+    },
+    "ARCHCODE_LSSIM": {
+      "pearl_detected": 15,
+      "pearl_total": 15,
+      "pearl_sensitivity": 100.0,
+      "pathogenic_detected": 317,
+      "pathogenic_total": 353,
+      "pathogenic_sensitivity": 89.8
+    }
+  }
+}

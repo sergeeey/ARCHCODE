@@ -8,7 +8,7 @@ Generates publication-quality contact matrix comparison:
 
 Variant: VCV000000327 @ chr11:5,225,695 (splice_region)
 - ARCHCODE SSIM: 0.547 → LIKELY_PATHOGENIC (HIGHEST PRIORITY)
-- AlphaGenome: 0.456 → VUS (missed by ML)
+- VEP: LOW impact (missed by sequence-based tools)
 - Mechanism: Splice enhancer cluster disruption
 
 Physics: Kramer kinetics α=0.92, γ=0.80, k_base=0.002
@@ -27,19 +27,19 @@ import os
 # Brand Colors
 # ============================================================================
 
-DARK_BG = '#0F172A'
-ORANGE_ACCENT = '#FF6B35'
-TEXT_COLOR = '#E2E8F0'
-GRID_COLOR = '#334155'
+DARK_BG = "#0F172A"
+ORANGE_ACCENT = "#FF6B35"
+TEXT_COLOR = "#E2E8F0"
+GRID_COLOR = "#334155"
 
 # ============================================================================
 # Kramer Kinetics Parameters
 # ============================================================================
 
 KRAMER = {
-    'alpha': 0.92,
-    'gamma': 0.80,
-    'k_base': 0.002,
+    "alpha": 0.92,
+    "gamma": 0.80,
+    "k_base": 0.002,
 }
 
 # ============================================================================
@@ -47,26 +47,27 @@ KRAMER = {
 # ============================================================================
 
 HBB_LOCUS = {
-    'chrom': 'chr11',
-    'start': 5200000,
-    'end': 5400000,
+    "chrom": "chr11",
+    "start": 5200000,
+    "end": 5400000,
 }
 
 VARIANT_VCV327 = {
-    'clinvar_id': 'VCV000000327',
-    'position': 5225695,
-    'category': 'splice_region',
-    'archcode_ssim': 0.547,
-    'alphagenome_score': 0.456,
+    "clinvar_id": "VCV000000327",
+    "position": 5225695,
+    "category": "splice_region",
+    "archcode_ssim": 0.547,
+    "vep_score": 0.15,
 }
 
 RESOLUTION = 5000  # 5kb bins
-N_BINS = (HBB_LOCUS['end'] - HBB_LOCUS['start']) // RESOLUTION
+N_BINS = (HBB_LOCUS["end"] - HBB_LOCUS["start"]) // RESOLUTION
 
 
 # ============================================================================
 # Seeded Random (Reproducible)
 # ============================================================================
+
 
 class SeededRandom:
     def __init__(self, seed: int):
@@ -81,11 +82,9 @@ class SeededRandom:
 # Contact Matrix Simulation with Kramer Kinetics
 # ============================================================================
 
+
 def simulate_contact_matrix(
-    n_bins: int,
-    variant_bin: int = None,
-    effect_strength: float = 1.0,
-    seed: int = 2026
+    n_bins: int, variant_bin: int = None, effect_strength: float = 1.0, seed: int = 2026
 ) -> np.ndarray:
     """
     Simulate Hi-C/Micro-C contact matrix using loop extrusion with Kramer kinetics.
@@ -102,9 +101,9 @@ def simulate_contact_matrix(
     np.random.seed(seed)
     matrix = np.zeros((n_bins, n_bins))
 
-    alpha = KRAMER['alpha']
-    gamma = KRAMER['gamma']
-    k_base = KRAMER['k_base']
+    alpha = KRAMER["alpha"]
+    gamma = KRAMER["gamma"]
+    k_base = KRAMER["k_base"]
 
     # Generate MED1 occupancy profile (enhancer regions)
     med1_occupancy = np.zeros(n_bins)
@@ -153,7 +152,7 @@ def simulate_contact_matrix(
 
             # Kramer unloading probability
             avg_occ = (med1_occupancy[left_leg] + med1_occupancy[right_leg]) / 2
-            unload_prob = k_base * (1 - alpha * (avg_occ ** gamma))
+            unload_prob = k_base * (1 - alpha * (avg_occ**gamma))
 
             if np.random.random() < unload_prob:
                 active = False
@@ -187,7 +186,7 @@ def simulate_contact_matrix(
         for j in range(n_bins):
             distance = abs(i - j)
             if distance > 0:
-                matrix[i, j] *= (1.0 / (1 + distance * 0.1))
+                matrix[i, j] *= 1.0 / (1 + distance * 0.1)
 
     return matrix
 
@@ -196,16 +195,17 @@ def simulate_contact_matrix(
 # Visualization
 # ============================================================================
 
+
 def create_custom_inferno():
     """Create custom colormap: black -> orange (#FF6B35)"""
-    colors = [DARK_BG, '#1E293B', '#374151', '#92400E', '#D97706', ORANGE_ACCENT]
-    return mcolors.LinearSegmentedColormap.from_list('custom_inferno', colors, N=256)
+    colors = [DARK_BG, "#1E293B", "#374151", "#92400E", "#D97706", ORANGE_ACCENT]
+    return mcolors.LinearSegmentedColormap.from_list("custom_inferno", colors, N=256)
 
 
 def create_custom_diverging():
     """Create custom diverging colormap for differential: blue -> white -> red"""
-    colors = ['#1E40AF', '#3B82F6', '#93C5FD', '#FFFFFF', '#FCA5A5', '#EF4444', '#991B1B']
-    return mcolors.LinearSegmentedColormap.from_list('custom_diverging', colors, N=256)
+    colors = ["#1E40AF", "#3B82F6", "#93C5FD", "#FFFFFF", "#FCA5A5", "#EF4444", "#991B1B"]
+    return mcolors.LinearSegmentedColormap.from_list("custom_diverging", colors, N=256)
 
 
 def render_figure():
@@ -214,13 +214,15 @@ def render_figure():
     print("=" * 70)
     print("ARCHCODE Matrix Visualization: 'The Loop That Stayed'")
     print("=" * 70)
-    print(f"Variant: {VARIANT_VCV327['clinvar_id']} @ {HBB_LOCUS['chrom']}:{VARIANT_VCV327['position']:,}")
+    print(
+        f"Variant: {VARIANT_VCV327['clinvar_id']} @ {HBB_LOCUS['chrom']}:{VARIANT_VCV327['position']:,}"
+    )
     print(f"Category: {VARIANT_VCV327['category']}")
     print(f"Kramer kinetics: α={KRAMER['alpha']}, γ={KRAMER['gamma']}, k_base={KRAMER['k_base']}")
     print()
 
     # Calculate variant bin
-    variant_bin = (VARIANT_VCV327['position'] - HBB_LOCUS['start']) // RESOLUTION
+    variant_bin = (VARIANT_VCV327["position"] - HBB_LOCUS["start"]) // RESOLUTION
     print(f"Variant bin: {variant_bin} (of {N_BINS} total)")
 
     # Simulate matrices
@@ -228,7 +230,9 @@ def render_figure():
     wt_matrix = simulate_contact_matrix(N_BINS, variant_bin=None, seed=2026)
 
     print("Simulating Mutant (VCV302) matrix...")
-    mut_matrix = simulate_contact_matrix(N_BINS, variant_bin=variant_bin, effect_strength=0.2, seed=2026)
+    mut_matrix = simulate_contact_matrix(
+        N_BINS, variant_bin=variant_bin, effect_strength=0.2, seed=2026
+    )
 
     # Calculate differential
     diff_matrix = wt_matrix - mut_matrix
@@ -256,82 +260,116 @@ def render_figure():
     # Axes styling
     def style_axis(ax, title):
         ax.set_facecolor(DARK_BG)
-        ax.set_title(title, color=TEXT_COLOR, fontsize=14, fontweight='bold', pad=10)
+        ax.set_title(title, color=TEXT_COLOR, fontsize=14, fontweight="bold", pad=10)
         ax.tick_params(colors=TEXT_COLOR, labelsize=8)
         for spine in ax.spines.values():
             spine.set_color(GRID_COLOR)
 
         # Axis labels (genomic position)
-        tick_positions = [0, N_BINS//4, N_BINS//2, 3*N_BINS//4, N_BINS-1]
+        tick_positions = [0, N_BINS // 4, N_BINS // 2, 3 * N_BINS // 4, N_BINS - 1]
         tick_labels = [f"{(HBB_LOCUS['start'] + p * RESOLUTION) / 1e6:.2f}" for p in tick_positions]
         ax.set_xticks(tick_positions)
         ax.set_xticklabels(tick_labels)
         ax.set_yticks(tick_positions)
         ax.set_yticklabels(tick_labels)
-        ax.set_xlabel('Position (Mb)', color=TEXT_COLOR, fontsize=10)
-        ax.set_ylabel('Position (Mb)', color=TEXT_COLOR, fontsize=10)
+        ax.set_xlabel("Position (Mb)", color=TEXT_COLOR, fontsize=10)
+        ax.set_ylabel("Position (Mb)", color=TEXT_COLOR, fontsize=10)
 
     # Plot WT matrix
     ax1 = fig.add_subplot(gs[0])
-    im1 = ax1.imshow(wt_matrix, cmap=cmap_contact, vmin=0, vmax=1, origin='upper', aspect='equal')
-    style_axis(ax1, 'Wild-Type (Healthy HBB)')
+    im1 = ax1.imshow(wt_matrix, cmap=cmap_contact, vmin=0, vmax=1, origin="upper", aspect="equal")
+    style_axis(ax1, "Wild-Type (Healthy HBB)")
 
     # Mark CTCF sites
     ctcf_bins = [5, 10, 15, 20, 25, 30, 35]
     for b in ctcf_bins:
-        ax1.axhline(y=b, color=ORANGE_ACCENT, alpha=0.3, linewidth=0.5, linestyle='--')
-        ax1.axvline(x=b, color=ORANGE_ACCENT, alpha=0.3, linewidth=0.5, linestyle='--')
+        ax1.axhline(y=b, color=ORANGE_ACCENT, alpha=0.3, linewidth=0.5, linestyle="--")
+        ax1.axvline(x=b, color=ORANGE_ACCENT, alpha=0.3, linewidth=0.5, linestyle="--")
 
     # Plot Mutant matrix
     ax2 = fig.add_subplot(gs[1])
-    im2 = ax2.imshow(mut_matrix, cmap=cmap_contact, vmin=0, vmax=1, origin='upper', aspect='equal')
-    style_axis(ax2, f'Mutant ({VARIANT_VCV327["clinvar_id"]})')
+    im2 = ax2.imshow(mut_matrix, cmap=cmap_contact, vmin=0, vmax=1, origin="upper", aspect="equal")
+    style_axis(ax2, f"Mutant ({VARIANT_VCV327['clinvar_id']})")
 
     # Mark variant position
-    ax2.axhline(y=variant_bin, color='#EF4444', alpha=0.8, linewidth=2, linestyle='-')
-    ax2.axvline(x=variant_bin, color='#EF4444', alpha=0.8, linewidth=2, linestyle='-')
-    ax2.plot(variant_bin, variant_bin, 'o', color='#EF4444', markersize=8, markeredgecolor='white', markeredgewidth=1)
+    ax2.axhline(y=variant_bin, color="#EF4444", alpha=0.8, linewidth=2, linestyle="-")
+    ax2.axvline(x=variant_bin, color="#EF4444", alpha=0.8, linewidth=2, linestyle="-")
+    ax2.plot(
+        variant_bin,
+        variant_bin,
+        "o",
+        color="#EF4444",
+        markersize=8,
+        markeredgecolor="white",
+        markeredgewidth=1,
+    )
 
     # Plot Differential
     ax3 = fig.add_subplot(gs[2])
     vmax_diff = max(0.3, diff_max)
-    im3 = ax3.imshow(diff_matrix, cmap=cmap_diff, vmin=-vmax_diff, vmax=vmax_diff, origin='upper', aspect='equal')
-    style_axis(ax3, 'Differential (WT − Mutant)')
+    im3 = ax3.imshow(
+        diff_matrix, cmap=cmap_diff, vmin=-vmax_diff, vmax=vmax_diff, origin="upper", aspect="equal"
+    )
+    style_axis(ax3, "Differential (WT − Mutant)")
 
     # Mark areas of loop loss
-    ax3.axhline(y=variant_bin, color='#EF4444', alpha=0.8, linewidth=2, linestyle='-')
-    ax3.axvline(x=variant_bin, color='#EF4444', alpha=0.8, linewidth=2, linestyle='-')
+    ax3.axhline(y=variant_bin, color="#EF4444", alpha=0.8, linewidth=2, linestyle="-")
+    ax3.axvline(x=variant_bin, color="#EF4444", alpha=0.8, linewidth=2, linestyle="-")
 
     # Colorbar for differential
     cax = fig.add_subplot(gs[3])
     cbar = plt.colorbar(im3, cax=cax)
     cbar.ax.tick_params(colors=TEXT_COLOR, labelsize=8)
-    cbar.set_label('ΔContact', color=TEXT_COLOR, fontsize=10)
+    cbar.set_label("ΔContact", color=TEXT_COLOR, fontsize=10)
     cbar.ax.yaxis.set_tick_params(color=TEXT_COLOR)
     cbar.outline.set_edgecolor(GRID_COLOR)
 
     # Add annotation
-    fig.text(0.5, 0.02,
-             f'"The Loop That Stayed" — ARCHCODE detects structural pathogenicity (SSIM={VARIANT_VCV327["archcode_ssim"]:.3f}) '
-             f'that AlphaGenome missed (score={VARIANT_VCV327["alphagenome_score"]:.3f})',
-             ha='center', va='bottom', color=TEXT_COLOR, fontsize=11, style='italic')
+    fig.text(
+        0.5,
+        0.02,
+        f'"The Loop That Stayed" — ARCHCODE detects structural pathogenicity (SSIM={VARIANT_VCV327["archcode_ssim"]:.3f}) '
+        f"invisible to sequence-based tools (VEP={VARIANT_VCV327['vep_score']:.3f})",
+        ha="center",
+        va="bottom",
+        color=TEXT_COLOR,
+        fontsize=11,
+        style="italic",
+    )
 
     # Add Kramer kinetics annotation
-    fig.text(0.02, 0.98,
-             f'Kramer kinetics: α={KRAMER["alpha"]}, γ={KRAMER["gamma"]}',
-             ha='left', va='top', color=GRID_COLOR, fontsize=9)
+    fig.text(
+        0.02,
+        0.98,
+        f"Kramer kinetics: α={KRAMER['alpha']}, γ={KRAMER['gamma']}",
+        ha="left",
+        va="top",
+        color=GRID_COLOR,
+        fontsize=9,
+    )
 
     # Title
-    fig.suptitle('ARCHCODE: Physics-Based Detection of Splice-Region Pathogenicity',
-                 color=TEXT_COLOR, fontsize=16, fontweight='bold', y=0.98)
+    fig.suptitle(
+        "ARCHCODE: Physics-Based Detection of Splice-Region Pathogenicity",
+        color=TEXT_COLOR,
+        fontsize=16,
+        fontweight="bold",
+        y=0.98,
+    )
 
     # Save
-    output_dir = 'results/figures'
+    output_dir = "results/figures"
     os.makedirs(output_dir, exist_ok=True)
-    output_path = os.path.join(output_dir, 'FIG_1_DISCORDANCE_VCV327.png')
+    output_path = os.path.join(output_dir, "FIG_1_DISCORDANCE_VCV327.png")
 
-    plt.savefig(output_path, dpi=300, facecolor=DARK_BG, edgecolor='none',
-                bbox_inches='tight', pad_inches=0.3)
+    plt.savefig(
+        output_path,
+        dpi=300,
+        facecolor=DARK_BG,
+        edgecolor="none",
+        bbox_inches="tight",
+        pad_inches=0.3,
+    )
     plt.close()
 
     print(f"\n✓ Figure saved: {output_path}")
@@ -345,6 +383,6 @@ def render_figure():
 # Main
 # ============================================================================
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     output = render_figure()
     print("\nDone!")

@@ -1,0 +1,163 @@
+{
+  "id": "cftr_a549_317kb",
+  "name": "CFTR 317kb TAD (ENCODE A549 CTCF + H3K27ac)",
+  "description": "317kb window spanning the CFTR TAD on chr7. TISSUE-MATCHED CONFIG: A549 lung adenocarcinoma (CFTR-relevant lung epithelial). H3K27ac from ENCODE A549 vehicle control (ENCFF548GIF, ENCSR000AUI, IDR optimal narrowPeak, GRCh38). CTCF from ENCODE A549 (ENCFF535MZG, experiment TBD, GRCh38). Purpose: compare tissue-matched vs K562 baseline to quantify enhancer divergence effect on Class B detection in lung epithelial context.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr7",
+    "start": 117400000,
+    "end": 117717000,
+    "resolution_bp": 1000,
+    "n_bins": 317
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 117582599,
+        "occupancy": 0.95,
+        "name": "CFTR_intron11_strong_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "STRONGEST H3K27ac in window (Peak_14605, 117581657-117583540, signal=13.51, score=648, 1.9kb). Within CFTR intron 11. Co-localizes with literature DHS. MANUALLY CALIBRATED occupancy — highest signal in window"
+      },
+      {
+        "position": 117580034,
+        "occupancy": 0.30,
+        "name": "CFTR_intron11_upstream_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Weak H3K27ac upstream of intron 11 peak (Peak_53273, 117580583-117581484, signal=3.17). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 117587980,
+        "occupancy": 0.55,
+        "name": "CFTR_intron12_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Moderate H3K27ac in CFTR intron (Peak_26510, 117587686-117588273, signal=6.86). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 117588940,
+        "occupancy": 0.50,
+        "name": "CFTR_intron12_secondary_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Moderate H3K27ac 1kb downstream of intron 12 peak (Peak_30320, 117588541-117589338, signal=5.71). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 117605062,
+        "occupancy": 0.40,
+        "name": "CFTR_intron14_weak_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Weak H3K27ac (Peak_47629, 117604891-117605232, signal=4.04). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 117605614,
+        "occupancy": 0.48,
+        "name": "CFTR_intron14_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Moderate H3K27ac (Peak_32002, 117605417-117605810, signal=5.67). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 117606172,
+        "occupancy": 0.50,
+        "name": "CFTR_intron14_strong_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Moderate H3K27ac cluster (Peak_33932, 117605918-117606425, signal=5.80). Three peaks within 2kb — active enhancer region. MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 117683203,
+        "occupancy": 0.45,
+        "name": "CFTR_3prime_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Moderate H3K27ac downstream of CFTR (Peak_36180, 117682527-117683879, signal=5.08, 1.4kb). MANUALLY CALIBRATED occupancy"
+      },
+      {
+        "position": 117715710,
+        "occupancy": 0.35,
+        "name": "TAD_boundary_H3K27ac",
+        "source": "ENCODE_A549_H3K27ac",
+        "encode_accession": "ENCFF548GIF",
+        "note": "Weak H3K27ac near 3-prime TAD boundary (Peak_42791, 117715530-117715890, signal=4.01). Co-localizes with strong CTCF. MANUALLY CALIBRATED occupancy"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 117481191,
+        "orientation": "unknown",
+        "signal": 60.27,
+        "name": "CFTR_promoter_CTCF",
+        "source": "ENCODE_A549_CTCF",
+        "encode_accession": "ENCFF535MZG",
+        "note": "Moderate CTCF near CFTR TSS (117481083-117481299, score=1000). Not present in K562 CTCF at this exact position. MANUALLY CALIBRATED"
+      },
+      {
+        "position": 117715987,
+        "orientation": "unknown",
+        "signal": 194.81,
+        "name": "3prime_TAD_boundary_CTCF",
+        "source": "ENCODE_A549_CTCF",
+        "encode_accession": "ENCFF535MZG",
+        "note": "STRONGEST CTCF in window (117715918-117716056, score=1000, signal=194.81). Co-localizes with K562 CTCF 3' TAD boundary (signal=110.67). 1.76x stronger in A549. MANUALLY CALIBRATED"
+      }
+    ],
+    "genes": [
+      {
+        "name": "CFTR",
+        "start": 117480025,
+        "end": 117668665,
+        "strand": "+"
+      }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq": {
+      "experiment": "ENCSR000DNA_or_similar",
+      "file": "ENCFF535MZG",
+      "type": "IDR optimal narrowPeak",
+      "cell_line": "A549",
+      "assembly": "GRCh38",
+      "peaks_genome_wide": 43844,
+      "peaks_in_window": 2,
+      "url": "https://www.encodeproject.org/files/ENCFF535MZG/"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR000AUI",
+      "file": "ENCFF548GIF",
+      "type": "IDR optimal narrowPeak",
+      "cell_line": "A549",
+      "treatment": "0.02% EtOH 1h (vehicle control)",
+      "assembly": "GRCh38",
+      "peaks_genome_wide": 49390,
+      "peaks_in_window": 9,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AUI/"
+    }
+  },
+  "tissue_match_comparison": {
+    "baseline_config": "cftr_317kb",
+    "baseline_cell_line": "K562",
+    "matched_cell_line": "A549",
+    "enhancer_divergence": {
+      "k562_enhancers": "6 (literature-based, CFTR silent in K562)",
+      "a549_enhancers": 9,
+      "note": "K562 baseline used LITERATURE enhancers (CFTR silent in K562, no K562 H3K27ac peaks). A549 has real ChIP-seq peaks — mostly in CFTR introns 11-14. COMPLETE enhancer divergence expected: K562=literature vs A549=real ChIP-seq."
+    },
+    "ctcf_divergence": {
+      "k562_ctcf": 6,
+      "a549_ctcf": 2,
+      "note": "Only 2 CTCF sites in A549 window (vs 6 in K562). The 3' TAD boundary is shared (1.76x stronger in A549). A549 adds promoter-proximal CTCF absent in K562."
+    }
+  },
+  "thresholds": {
+    "ssim_pathogenic": 0.9105,
+    "ssim_likely_pathogenic": 0.9405,
+    "ssim_vus": 0.9705,
+    "ssim_likely_benign": 0.9905,
+    "note": "Copied from K562 config. NOT recalibrated for A549."
+  },
+  "_config_note": "TISSUE-MATCHED CONFIG for CFTR/A549 comparison experiment. Created 2026-03-10. A549 is lung adenocarcinoma — relevant tissue for CFTR (cystic fibrosis = lung epithelial disease). Note: A549 H3K27ac is vehicle control (EtOH), not strictly untreated."
+}
