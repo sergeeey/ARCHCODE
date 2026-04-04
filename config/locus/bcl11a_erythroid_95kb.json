@@ -1,7 +1,7 @@
 {
   "id": "bcl11a_erythroid_95kb",
   "name": "BCL11A 95kb erythroid (K562 CTCF + literature enhancers, Casgevy validation)",
-  "description": "Focused 95kb window spanning BCL11A intron 2 erythroid enhancer complex (DHS +55/+58/+62). Resolution 600bp, 159 bins — matches HBB 95kb sub-TAD (27 pearls). CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC). Enhancers from literature: Bauer et al. Science 2013, Canver et al. Nature 2015. DHS +58 is the Casgevy (exagamglogene autotemcel) CRISPR target — GATA1 binding site disruption to reactivate fetal hemoglobin.",
+  "description": "Focused 95kb window spanning BCL11A intron 2 erythroid enhancer complex (DHS +55/+58/+62). Resolution 600bp, 167 bins — matches HBB 95kb sub-TAD scale. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC). Enhancers from literature: Bauer et al. Science 2013, Canver et al. Nature 2015. DHS +58 is the Casgevy (exagamglogene autotemcel) CRISPR target — GATA1 binding site disruption to reactivate fetal hemoglobin.",
   "genome_assembly": "GRCh38",
   "organism": "Homo sapiens",
   "cell_type": "K562 (erythroid)",
@@ -104,7 +104,12 @@
     },
     "_casgevy_target": {
       "feature": "DHS_h58_erythroid_CASGEVY_TARGET",
-      "estimated_center_hg38": 60496467,
+      "target_interval_hg38": {
+        "start": 60495263,
+        "end": 60495283
+      },
+      "estimated_center_hg38": 60495273,
+      "reference_probe_hg38": 60495279,
       "mechanism": "GATA1 motif disruption → BCL11A downregulation → HbF reactivation",
       "drug": "exagamglogene autotemcel (Casgevy), Vertex/CRISPR Therapeutics",
       "fda_approval": "2023-12-08"

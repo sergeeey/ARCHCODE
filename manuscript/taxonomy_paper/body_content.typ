@@ -724,22 +724,23 @@ gene body. In silico saturation mutagenesis (314 synthetic SNVs across DHS +55/+
 sites, promoter, and background positions) reveals a structural sensitivity ranking that
 recapitulates the known functional hierarchy:
 
-- DHS +58 (Casgevy target): mean LSSIM = 0.966, minimum = 0.963 --- most sensitive
+- DHS +58 (Casgevy target): mean LSSIM = 0.966, minimum = 0.963 --- most sensitive enhancer
 - DHS +55: mean LSSIM = 0.976, minimum = 0.974
 - DHS +62: mean LSSIM = 0.984, minimum = 0.982 --- least sensitive
 
 The nearest synthetic variant to the Casgevy guide RNA target (chr2:60,495,279) shows LSSIM =
 0.964, within the most disrupted cluster.
 
-A critical control addresses potential circularity: because occupancy values were assigned from
-literature knowledge (DHS +58 = 0.95, +55 = 0.70, +62 = 0.60), the ranking could trivially
-reflect input parameterization rather than architectural sensitivity. We repeated the mutagenesis
-with uniform occupancy (0.70 for all three DHS), removing any prior weighting. The ranking is
-preserved: DHS +58 (mean LSSIM = 0.976) > +55 (0.976) > +62 (0.978). The effect is attenuated
-(delta between DHS sites decreases from 0.018 to 0.002) but the ordinal ranking is maintained,
-indicating that the structural sensitivity hierarchy is position-driven --- determined by
-enhancer--promoter distance and CTCF barrier geometry --- rather than solely by the assigned
-occupancy values.
+A necessary caveat is that this is an enhancer-ranking result, not a claim that DHS +58 is the
+single most sensitive position in the entire 95 kb window. Promoter positions in the same focused
+model remain more sensitive in absolute terms (mean LSSIM = 0.952, minimum = 0.940). The
+supported claim here is therefore narrower: DHS +58 is the most sensitive enhancer within the
+known BCL11A erythroid DHS complex.
+
+Additional non-circularity analyses (uniform-occupancy reruns, GWAS/HbF overlays, and
+motif-specific checks) exist in working materials but are not promoted here as part of the
+tracked evidence pack for this release. The structured claim in the current technical layer is
+limited to the enhancer-ranking result above.
 
 This result should not be interpreted as an independent prediction of the Casgevy target. The
 DHS positions were configured from the same literature that identified them as therapeutic

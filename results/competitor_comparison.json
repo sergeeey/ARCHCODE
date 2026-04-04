@@ -5,8 +5,10 @@
   "scope_note": "Exploratory competitor comparison retained for technical interpretation only. Do not use as default public-project framing without context.",
   "locus": "HBB",
   "n_pearls": 15,
-  "description": "Pearl detection sensitivity by tool",
-  "key_finding": "Standard tools miss all or most Pearl variants",
+  "description": "Damagingness-threshold sensitivity by tool for a narrower 15-variant HBB pearl subset",
+  "subset_scope": "Technical subset only: n=15 HBB pearls with comparator-available scores. Not equivalent to the public-canonical 25-variant HBB core or the broader technical 27-pearl definition.",
+  "detection_note": "Detection here means crossing tool-specific damagingness thresholds, not uniquely isolating the structural-mechanism class.",
+  "key_finding": "Some sequence-derived scores flag variants in this subset as damaging, but they do not cleanly isolate the HBB structural class or provide a direct 3D mechanism interpretation.",
   "comparison": {
     "VEP_Score": {
       "pearl_detected": 0,
