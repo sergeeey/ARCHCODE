@@ -1,0 +1,57 @@
+{
+  "canon_tier": "technical_full_scope",
+  "status": "technical_current",
+  "release_facing": false,
+  "scope_note": "BCL11A/Casgevy translational bridge candidate. Not part of the public canonical layer.",
+  "generated_at": "2026-04-04",
+  "positioning": "enhancer-ranking bridge, not clinical prediction",
+  "source_artifacts": [
+    "config/locus/bcl11a_300kb.json",
+    "config/locus/bcl11a_erythroid_95kb.json",
+    "results/UNIFIED_ATLAS_SUMMARY_BCL11A_300kb.json",
+    "results/UNIFIED_ATLAS_SUMMARY_bcl11a_erythroid.json",
+    "results/UNIFIED_ATLAS_SUMMARY_bcl11a_mutagenesis.json",
+    "results/BCL11A_Unified_Atlas_bcl11a_mutagenesis.csv",
+    "scripts/bcl11a_in_silico_mutagenesis.py"
+  ],
+  "real_clinvar_context": {
+    "broad_bcl11a_300kb_total_variants": 93,
+    "focused_bcl11a_erythroid_total_variants": 182,
+    "focused_bcl11a_erythroid_pathogenic_variants": 44,
+    "focused_bcl11a_erythroid_benign_variants": 138,
+    "focused_bcl11a_erythroid_structural_pathogenic_calls": 0,
+    "focused_bcl11a_erythroid_pearls": 0,
+    "focused_bcl11a_erythroid_mean_lssim_pathogenic": 0.9923,
+    "focused_bcl11a_erythroid_mean_lssim_benign": 0.9948,
+    "interpretation": "Current real ClinVar coverage does not validate enhancer-space Class B calls at BCL11A."
+  },
+  "synthetic_mutagenesis_context": {
+    "total_synthetic_variants": 314,
+    "dhs_h58_casgevy_mean_lssim": 0.966,
+    "dhs_h58_casgevy_min_lssim": 0.9632,
+    "dhs_h55_mean_lssim": 0.9784,
+    "dhs_h55_min_lssim": 0.9764,
+    "dhs_h62_mean_lssim": 0.984,
+    "dhs_h62_min_lssim": 0.9818,
+    "promoter_mean_lssim": 0.9518,
+    "promoter_min_lssim": 0.94,
+    "background_mean_lssim": 0.9954,
+    "casgevy_nearest_position_hg38": 60495279,
+    "casgevy_nearest_variant_lssim": 0.9639
+  },
+  "bridge_claim": {
+    "supported": "Within the known erythroid enhancer complex, DHS +58 is the most structurally sensitive enhancer and aligns with the Casgevy target region.",
+    "not_supported": "DHS +58 is not the single most sensitive position across the entire focused window; promoter positions are more sensitive in absolute LSSIM terms."
+  },
+  "non_claims": [
+    "Not an independent discovery of the Casgevy target",
+    "Not a public-canonical second Class B locus",
+    "Not a CRISPR guide-design model",
+    "Not sufficient for clinical interpretation without additional orthogonal validation"
+  ],
+  "excluded_until_structured": [
+    "uniform occupancy control",
+    "GWAS/HbF comparison",
+    "GATA1 motif-specific analysis"
+  ]
+}
