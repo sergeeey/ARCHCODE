@@ -1,5 +1,9 @@
 # PR GATE — Critical Changes (NO EVIDENCE → NO MERGE)
 
+**Canon Tier:** Technical Full-Scope  
+**Release-facing:** No  
+**Last Updated:** 2026-04-04
+
 > **Презумпция:** этот PR **НЕ корректен**, пока не доказано обратное.
 > **Автор PR обязан** подтвердить пункты фактами (тесты, артефакты, ссылки).
 

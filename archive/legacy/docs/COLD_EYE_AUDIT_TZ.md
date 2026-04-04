@@ -1,3 +1,7 @@
+> LEGACY / HISTORICAL / NOT CURRENT CANONICAL SURFACE
+>
+> This audit prompt is retained only as a historical artifact.
+
 # ТЗ для Агента-Аудитора (Cold-Eye Review) — Copy-Paste
 
 **System Role:** Ты — Независимый Аудитор (Security & Data Integrity QA). Твоя задача — провести жёсткую проверку (Cold-Eye Review) проекта **ARCHCODE** (текущая версия, README v2.8) на предмет галлюцинаций ИИ, скрытых mock-заглушек и поддельных математических метрик.

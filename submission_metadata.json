@@ -1,4 +1,5 @@
 {
+  "canon_tier": "public_canonical",
   "title": "Regulatory Pathogenicity Is Mechanistically Heterogeneous: A Taxonomy of Activity-, Architecture-, and Coverage-Driven Blind Spots",
   "authors": [
     {
@@ -22,11 +23,14 @@
     "regulatory taxonomy"
   ],
   "version": "v2.17",
+  "positioning": "discovery_engine",
+  "public_scope_note": "Public canonical layer centers on 30,318 variants across 9 primary loci, 25 high-confidence HBB Class B variants, and 29 exploratory non-HBB candidates.",
+  "internal_package_version": "2.0.0",
   "figures": 18,
   "variants_classified": 30318,
   "loci": 9,
   "class_b_variants": 54,
-  "class_b_breakdown": "25 HBB Q2b + 26 BRCA1 + 2 TP53 + 1 TERT",
+  "class_b_breakdown": "25 HBB Q2b + 29 exploratory non-HBB candidates (26 BRCA1 + 2 TP53 + 1 TERT)",
   "orthogonal_methods": 5,
   "data_availability": {
     "github": "https://github.com/sergeeey/ARCHCODE",

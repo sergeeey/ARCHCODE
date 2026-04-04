@@ -1,5 +1,9 @@
 # ARCHCODE Validation Contract
 
+**Canon Tier:** Technical Full-Scope  
+**Release-facing:** No  
+**Last Updated:** 2026-04-04
+
 This contract defines minimum integrity and validation rules for simulation outputs.
 
 ## Gate 0: Scientific Integrity

@@ -1,4 +1,8 @@
 {
+  "canon_tier": "technical_full_scope",
+  "status": "exploratory",
+  "release_facing": false,
+  "scope_note": "Cross-locus AlphaGenome batch retained for technical interpretation. Mixed/non-significant outcomes should not be promoted to the public layer without locus-specific context.",
   "method": "AlphaGenome CAGE variant effect, N=15 per group",
   "note": "BRCA1 tested separately (p=0.43, ns \u2014 coding variants, not CAGE-detectable)",
   "results": {

@@ -1,3 +1,5 @@
+// CANON_TIER: TECHNICAL_FULL_SCOPE
+// STATUS: current technical full-scope manuscript surface; not the default public landing surface
 // body_content.typ — основной текст рукописи
 // Включается в main.typ через #include
 
@@ -22,9 +24,11 @@
   regulatory pathogenicity is mechanistically heterogeneous, decomposing into at least five
   distinct classes that require different tools and different experiments. One class ---
   architecture-driven pathogenicity, where variants disrupt 3D chromatin contacts rather than
-  regulatory element activity --- is invisible to all widely used sequence-based interpretation
-  tools (VEP, CADD, MPRA). Across 9 clinically important loci and 30,318 variants, we identify
-  261 variants in systematic blind spots, including 25 high-confidence architecture-driven variants at the tissue-matched HBB locus and 29 candidates at partially matched loci, detectable only through chromatin structure simulation. Adopting mechanism-first classification before pathogenicity
+  regulatory element activity --- is underdetected by first-pass sequence tools and promoter-scale
+  assays. Across 9 clinically important loci and 30,318 variants, we identify 261 variants in
+  systematic blind spots, including 25 high-confidence architecture-driven variants at the
+  tissue-matched HBB locus and 29 candidates at partially matched loci, prioritized through
+  chromatin structure simulation. Adopting mechanism-first classification before pathogenicity
   scoring could reduce false-negative rates and direct experimental resources to the assay most
   likely to detect each variant's effect. Even AlphaMissense, Google DeepMind's protein-structure-based pathogenicity classifier, covers only 23% of variants in our atlas and scores only 3 of 41 architecture-driven candidates.
 ]

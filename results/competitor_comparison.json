@@ -1,4 +1,8 @@
 {
+  "canon_tier": "technical_full_scope",
+  "status": "technical_current",
+  "release_facing": false,
+  "scope_note": "Exploratory competitor comparison retained for technical interpretation only. Do not use as default public-project framing without context.",
   "locus": "HBB",
   "n_pearls": 15,
   "description": "Pearl detection sensitivity by tool",

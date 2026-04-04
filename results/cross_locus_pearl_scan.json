@@ -1,4 +1,8 @@
 {
+  "canon_tier": "technical_full_scope",
+  "status": "exploratory",
+  "release_facing": false,
+  "scope_note": "Threshold-based cross-locus scan retained for exploratory technical use only. Candidate counts here are not equivalent to confirmed public-canonical Class B findings.",
   "method": "Pearl = benign variant with LSSIM below pathogenic 25th percentile",
   "n_loci": 15,
   "total_pearl_candidates": 323,
