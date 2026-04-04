@@ -213,13 +213,13 @@ Class B variants (n = 25 Q2b, all HBB; 20 are SNVs) were evaluated against five 
 
 | Predictor           | Pearl score            | Detection?    | Mechanism tested                    |
 | :------------------ | :--------------------- | :------------ | :---------------------------------- |
-| VEP/SIFT            | &lt; 0.30 (all 20)     | No            | Protein sequence + canonical splice |
+| VEP                 | &lt; 0.30 (all 20)     | No            | Protein consequence + canonical splice |
 | SpliceAI            | 0.00 (all 20 SNVs)     | No            | Deep-learning splice disruption     |
 | CADD v1.7           | median 15.7            | Ambiguous     | Sequence conservation + annotations |
 | MPRA (Kircher 2019) | mean &minus;0.015      | No (p = 0.91) | Promoter-intrinsic transcription    |
 | **ARCHCODE LSSIM**  | **&lt; 0.92 (all 27)** | **Yes**       | **3D enhancer-promoter contact**    |
 
-Only ARCHCODE detects these variants, suggesting they may operate through enhancer-promoter contact disruption — a structural mechanism invisible to both rule-based (VEP) and neural-network-based (SpliceAI) sequence predictors, as well as episomal functional assays (MPRA). Experimental confirmation (allele-specific Capture Hi-C or RT-qPCR in erythroid cells) is required to validate this hypothesis.
+ARCHCODE provides the only direct structural-disruption signal across the full set, suggesting these variants may operate through enhancer-promoter contact disruption — a mechanism not isolated cleanly by current sequence and promoter-assay readouts. Technical comparator overlays on narrower pearl subsets can still show partial SIFT/CADD sensitivity, but those damagingness flags do not by themselves recover a 3D structural interpretation. Experimental confirmation (allele-specific Capture Hi-C or RT-qPCR in erythroid cells) is required to validate this hypothesis.
 
 ### SpliceAI: Complete Null for All Pearl SNVs
 

@@ -53,6 +53,7 @@ PUBLIC_BANNED_PATTERNS = [
     r"641 pearl-like",
     r'20 "Pearl"',
     r"Five tools independently fail",
+    r"Only ARCHCODE detects these variants",
 ]
 
 
@@ -150,6 +151,54 @@ def check_technical_json_metadata(issues: list[str]) -> None:
         if not scope_note:
             fail(f"{rel_path} must include a scope_note", issues)
 
+    competitor = json.loads((ROOT / "results/competitor_comparison.json").read_text(encoding="utf-8"))
+    if not str(competitor.get("subset_scope", "")).strip():
+        fail("results/competitor_comparison.json must define subset_scope", issues)
+    if not str(competitor.get("detection_note", "")).strip():
+        fail("results/competitor_comparison.json must define detection_note", issues)
+
+
+def check_semantic_alignment(issues: list[str]) -> None:
+    readme = read_text(Path("README.md"))
+    if "| VEP/SIFT" in readme:
+        fail("README.md must not collapse VEP and SIFT into a single no-detection row", issues)
+
+    body = read_text(Path("manuscript/taxonomy_paper/body_content.typ"))
+    if "most sensitive enhancer" not in body:
+        fail("BCL11A manuscript section must scope the DHS +58 claim to enhancer-level sensitivity", issues)
+    if "Promoter positions in the same focused" not in body:
+        fail("BCL11A manuscript section must include the promoter sensitivity caveat", issues)
+    if "with uniform occupancy (0.70 for all three DHS)" in body:
+        fail("BCL11A manuscript section must not promote the uniform-occupancy rerun without structured evidence", issues)
+
+    bridge = read_text(Path("docs/BCL11A_CASGEVY_BRIDGE.md"))
+    if "most sensitive enhancer" not in bridge:
+        fail("docs/BCL11A_CASGEVY_BRIDGE.md must state the enhancer-scoped claim", issues)
+    if "promoter remains more sensitive" not in bridge:
+        fail("docs/BCL11A_CASGEVY_BRIDGE.md must retain the promoter caveat", issues)
+
+
+def check_flagship_config_consistency(issues: list[str]) -> None:
+    rel_path = Path("config/locus/bcl11a_erythroid_95kb.json")
+    data = json.loads((ROOT / rel_path).read_text(encoding="utf-8"))
+    description = str(data.get("description", ""))
+    n_bins = data.get("window", {}).get("n_bins")
+    if f"{n_bins} bins" not in description:
+        fail("config/locus/bcl11a_erythroid_95kb.json description must match window.n_bins", issues)
+
+    target = data.get("_data_sources", {}).get("_casgevy_target", {})
+    interval = target.get("target_interval_hg38")
+    midpoint = target.get("estimated_center_hg38")
+    probe = target.get("reference_probe_hg38")
+    if not isinstance(interval, dict) or "start" not in interval or "end" not in interval:
+        fail("config/locus/bcl11a_erythroid_95kb.json must define _casgevy_target.target_interval_hg38", issues)
+        return
+    expected_midpoint = (int(interval["start"]) + int(interval["end"])) // 2
+    if midpoint != expected_midpoint:
+        fail("config/locus/bcl11a_erythroid_95kb.json estimated_center_hg38 must equal the interval midpoint", issues)
+    if probe is None or not (int(interval["start"]) <= int(probe) <= int(interval["end"])):
+        fail("config/locus/bcl11a_erythroid_95kb.json reference_probe_hg38 must lie within the target interval", issues)
+
 
 def check_validation_contract_links(issues: list[str]) -> None:
     validation = ROOT / "docs/VALIDATION.md"
@@ -205,6 +254,8 @@ def main() -> int:
     check_submission_metadata(issues)
     check_public_surface_text(issues)
     check_technical_json_metadata(issues)
+    check_semantic_alignment(issues)
+    check_flagship_config_consistency(issues)
     check_validation_contract_links(issues)
     check_legacy_routes(issues)
 
