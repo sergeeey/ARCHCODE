@@ -18,6 +18,7 @@ PUBLIC_MARKERS = {
 
 TECHNICAL_MARKERS = {
     Path("docs/DISCOVERY_ENGINE_POSITIONING.md"): "**Canon Tier:** Technical Full-Scope",
+    Path("docs/BCL11A_CASGEVY_BRIDGE.md"): "**Canon Tier:** Technical Full-Scope",
     Path("docs/VALIDATION.md"): "**Canon Tier:** Technical Full-Scope",
     Path("docs/VALIDATION_PROTOCOL.md"): "**Canon Tier:** Technical Full-Scope",
     Path("docs/FAILURE_MODES.md"): "**Canon Tier:** Technical Full-Scope",
@@ -26,6 +27,7 @@ TECHNICAL_MARKERS = {
 }
 
 TECHNICAL_JSON_FILES = [
+    Path("results/bcl11a_casgevy_bridge_summary.json"),
     Path("results/competitor_comparison.json"),
     Path("results/statistical_strengthening.json"),
     Path("results/cross_locus_pearl_scan.json"),

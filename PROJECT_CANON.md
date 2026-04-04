@@ -78,11 +78,13 @@ Rules:
 
 Active surfaces:
 - `docs/DISCOVERY_ENGINE_POSITIONING.md`
+- `docs/BCL11A_CASGEVY_BRIDGE.md`
 - `docs/VALIDATION.md`
 - `docs/VALIDATION_PROTOCOL.md`
 - `docs/FAILURE_MODES.md`
 - `docs/PR_GATE.md`
 - `manuscript/taxonomy_paper/body_content.typ`
+- `results/bcl11a_casgevy_bridge_summary.json`
 - `results/competitor_comparison.json`
 - `results/statistical_strengthening.json`
 - `results/cross_locus_pearl_scan.json`
