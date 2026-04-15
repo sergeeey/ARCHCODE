@@ -1,0 +1,28 @@
+{
+  "test_name": "CTCF Permutation (CORRECTED)",
+  "n_permutations": 50,
+  "n_variants": 1103,
+  "n_unique_positions": 811,
+  "real_auc": 0.9570840415486309,
+  "shuffled_auc": {
+    "mean": 0.9571320868744099,
+    "std": 2.7971714678255124e-05,
+    "median": 0.9571218130311615,
+    "min": 0.9570840415486309,
+    "max": 0.9571860245514636
+  },
+  "frac_above_real": 0.98,
+  "frac_above_095": 1.0,
+  "frac_above_090": 1.0,
+  "t_test": {
+    "t": 12.023477442165548,
+    "p": 3.146065158522233e-16
+  },
+  "lssim_separation": {
+    "real_delta": 0.06758007931720922,
+    "shuffled_delta": 0.06714395463645173
+  },
+  "total_time_seconds": 9.913036584854126,
+  "verdict": "FAIL \ud83d\udd34",
+  "verdict_detail": "Median shuffled AUC = 0.9571 \u2265 0.95. Random CTCF arrangements discriminate as well as real CTCF. The pearl signal is a GEOMETRY ARTIFACT."
+}

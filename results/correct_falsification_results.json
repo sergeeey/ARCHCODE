@@ -1,0 +1,62 @@
+{
+  "t1": {
+    "real_auc": 0.9765,
+    "shuf_mean": 0.9765,
+    "shuf_std": 0.0001,
+    "delta": 0.0,
+    "corr": 0.9985,
+    "verdict": "EXPECTED -- AUC preserved (d=0.0000). Category-driven."
+  },
+  "t2": {
+    "cat": {
+      "auc": 0.9797
+    },
+    "dist": {
+      "auc": 0.8396
+    },
+    "cat_dist": {
+      "auc": 0.99
+    },
+    "rf": {
+      "auc": 0.9921
+    },
+    "archcode": {
+      "auc": 1.0
+    },
+    "verdict": "FAIL -- simple=0.9921>=0.95",
+    "best": 0.9921
+  },
+  "t3": {
+    "n_pearls": 20,
+    "a": {
+      "auc": 0.8772,
+      "n_p": 59,
+      "n_b": 709,
+      "p_med": 147,
+      "b_med": 507,
+      "mw_p": 0.0,
+      "verdict": "FAIL"
+    },
+    "b": {
+      "pearl": [
+        "frameshift",
+        "promoter",
+        "splice_acceptor",
+        "missense"
+      ],
+      "benign": [
+        "other",
+        "synonymous",
+        "3_prime_UTR",
+        "5_prime_UTR",
+        "intronic"
+      ],
+      "shared": [],
+      "verdict": "FAIL"
+    },
+    "c": {
+      "verdict": "NO_SHARED"
+    }
+  },
+  "overall": "REJECT"
+}

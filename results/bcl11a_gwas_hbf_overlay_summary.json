@@ -1,0 +1,31 @@
+{
+  "canon_tier": "technical_full_scope",
+  "status": "planned_scaffold",
+  "release_facing": false,
+  "scope_note": "Planned BCL11A GWAS/HbF overlay artifact. Scaffold only; not evidence yet.",
+  "artifact_stage": "scaffold",
+  "created_at": "2026-04-04",
+  "objective": "Overlay curated HbF-associated BCL11A variants against the focused structural sensitivity map.",
+  "source_of_truth_candidates": [
+    "data/bcl11a_gwas_variants.csv",
+    "config/locus/bcl11a_erythroid_95kb.json",
+    "results/BCL11A_Unified_Atlas_bcl11a_mutagenesis.csv",
+    "results/bcl11a_casgevy_bridge_summary.json"
+  ],
+  "planned_fields": {
+    "input_dataset": null,
+    "inclusion_rule": null,
+    "gwas_variant_count": null,
+    "matched_variant_count": null,
+    "control_variant_count": null,
+    "test_used": null,
+    "effect_size": null,
+    "p_value": null,
+    "interpretation": null
+  },
+  "non_claims": [
+    "Not a clinical association analysis",
+    "Not a substitute for direct perturbation validation",
+    "Not complete until generated from a tracked overlay workflow"
+  ]
+}

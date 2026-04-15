@@ -32,13 +32,13 @@ of which 79.3% reflect tool absence (Class D) and 20.7% reflect mechanistic orth
 outside matched context, establishing tissue specificity as a necessary condition for confident
 Class B interpretation.
 
+*Limitations.*
+Overall AUC (0.977 on HBB) is primarily category-driven: a trivial category-to-score mapping achieves 0.98 without simulation, and within-category AUC is near chance (median 0.52). Matched-control testing of Class B VUS against benign variants of the same category and locus shows no significant difference (p = 0.996). ARCHCODE does not provide discriminative utility for variant-level pathogenicity prediction beyond what consequence category and genomic position already capture.
+
 *Conclusions.*
 Single-axis scoring is an inadequate abstraction for regulatory variant interpretation.
 Mechanistic decomposition reveals that architecture-driven pathogenicity --- representing 20.7%
-of structural blind spots --- requires dedicated 3D chromatin modeling that no current
-sequence-based tool provides. We propose that variant interpretation frameworks should explicitly
-assign mechanistic class before scoring, enabling targeted experimental validation and reducing
-systematic blind spots in clinical genetics.
+of structural blind spots --- requires dedicated 3D chromatin modeling, but the current ARCHCODE implementation does not reliably discriminate architecture-driven variants from benign controls after matching for category and position. The taxonomy remains valuable as a conceptual framework for directing experimental validation to the appropriate assay, but its utility as a computational triage tool requires further development with tissue-matched data and category-independent scoring.
 
 #v(0.6em)
 *Keywords:* regulatory variant interpretation; chromatin architecture; loop extrusion; variant

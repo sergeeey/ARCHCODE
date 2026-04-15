@@ -1,0 +1,238 @@
+{
+  "test_name": "CTCF Permutation Negative Control",
+  "n_permutations": 100,
+  "n_pearls": 20,
+  "locus": "chr11:5200000-5250000",
+  "real_ctcf_sites": [
+    5202000,
+    5210000,
+    5220000,
+    5228000,
+    5235000,
+    5245000
+  ],
+  "pearl_positions": [
+    5226613,
+    5226613,
+    5226613,
+    5226796,
+    5226971,
+    5227099,
+    5227099,
+    5227100,
+    5227101,
+    5227102,
+    5227142,
+    5227157,
+    5227157,
+    5227158,
+    5227158,
+    5227158,
+    5227159,
+    5227161,
+    5227163,
+    5227172
+  ],
+  "pearl_real_lssim": [
+    0.9492,
+    0.9492,
+    0.9492,
+    0.9004,
+    0.8915,
+    0.9276,
+    0.9276,
+    0.929,
+    0.9282,
+    0.9287,
+    0.9279,
+    0.9277,
+    0.9277,
+    0.9289,
+    0.9289,
+    0.9289,
+    0.9297,
+    0.9292,
+    0.929,
+    0.9284
+  ],
+  "overall_stats": {
+    "shuffled_mean": 0.8474133064988535,
+    "shuffled_std": 0.04571007977974904,
+    "shuffled_min": 0.777635123735783,
+    "shuffled_max": 0.9550371298059402,
+    "frac_below_095": 0.98,
+    "frac_below_092": 0.9275,
+    "ks_stat": 0.84,
+    "ks_pvalue": 4.570294144973898e-16,
+    "mw_pvalue": 1.8735404945243214e-11
+  },
+  "per_pearl": [
+    {
+      "position": 5226613,
+      "real_lssim": 0.9492,
+      "shuffled_mean": 0.8489727803953413,
+      "shuffled_std": 0.04603282547538202,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.92
+    },
+    {
+      "position": 5226613,
+      "real_lssim": 0.9492,
+      "shuffled_mean": 0.8489727803953413,
+      "shuffled_std": 0.04603282547538202,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.92
+    },
+    {
+      "position": 5226613,
+      "real_lssim": 0.9492,
+      "shuffled_mean": 0.8489727803953413,
+      "shuffled_std": 0.04603282547538202,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.92
+    },
+    {
+      "position": 5226796,
+      "real_lssim": 0.9004,
+      "shuffled_mean": 0.8486474783998891,
+      "shuffled_std": 0.04611298401070821,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.92
+    },
+    {
+      "position": 5226971,
+      "real_lssim": 0.8915,
+      "shuffled_mean": 0.8477959048268882,
+      "shuffled_std": 0.04594644892908841,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.92
+    },
+    {
+      "position": 5227099,
+      "real_lssim": 0.9276,
+      "shuffled_mean": 0.84712866773193,
+      "shuffled_std": 0.04561478911094293,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227099,
+      "real_lssim": 0.9276,
+      "shuffled_mean": 0.84712866773193,
+      "shuffled_std": 0.04561478911094293,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227100,
+      "real_lssim": 0.929,
+      "shuffled_mean": 0.84712866773193,
+      "shuffled_std": 0.04561478911094293,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227101,
+      "real_lssim": 0.9282,
+      "shuffled_mean": 0.84712866773193,
+      "shuffled_std": 0.04561478911094293,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227102,
+      "real_lssim": 0.9287,
+      "shuffled_mean": 0.84712866773193,
+      "shuffled_std": 0.04561478911094293,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227142,
+      "real_lssim": 0.9279,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227157,
+      "real_lssim": 0.9277,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227157,
+      "real_lssim": 0.9277,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227158,
+      "real_lssim": 0.9289,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227158,
+      "real_lssim": 0.9289,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227158,
+      "real_lssim": 0.9289,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227159,
+      "real_lssim": 0.9297,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227161,
+      "real_lssim": 0.9292,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227163,
+      "real_lssim": 0.929,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    },
+    {
+      "position": 5227172,
+      "real_lssim": 0.9284,
+      "shuffled_mean": 0.8469261066904621,
+      "shuffled_std": 0.04558332177781781,
+      "frac_below_095": 0.98,
+      "frac_below_092": 0.93
+    }
+  ],
+  "verdict": "FAIL \ud83d\udd34",
+  "verdict_detail": "FAIL \u2014 92.8% of shuffled CTCF configurations produce LSSIM < 0.92 for pearl variants. This suggests the pearl signal is primarily a GEOMETRY ARTIFACT, not biologically specific to real CTCF architecture. The LSSIM metric responds to any random arrangement of barriers, not the real ones.",
+  "kill_criteria": {
+    "frac_below_092": 0.9275,
+    "threshold": 0.5,
+    "result": "FAIL"
+  }
+}

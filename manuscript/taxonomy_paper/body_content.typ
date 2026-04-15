@@ -880,6 +880,14 @@ Bayesian framework for class assignment, incorporating uncertainty in both the s
 simulation and the sequence-based scores, would be a significant improvement over the current
 heuristic approach.
 
+== Overall AUC is category-driven, not within-category prediction
+
+The HBB overall AUC of 0.977 is primarily a consequence of the category-to-effect-strength mapping, not independent structural prediction. When category information is removed (position-only control, uniform effect strength for all variants), AUC drops to 0.551 --- near chance. A trivial baseline that maps VEP consequence category directly to a score achieves AUC 0.98 without any 3D simulation. Within-category AUC, tested across 25 category-locus combinations, has a median of 0.52. Only TP53 splice_region variants show a surviving within-category signal (AUC = 0.69, Cohen d = -0.78, FDR-corrected). The overall AUC therefore reflects the composition of variant categories in the dataset --- pathogenic variants are predominantly coding (nonsense, frameshift) while benign variants are predominantly non-coding (intronic, synonymous) --- rather than ARCHCODE's ability to discriminate pathogenic from benign variants within the same functional class. This confound is shared by any tool that conditions perturbation strength on variant category and should be considered a systematic limitation of the ARCHCODE scoring framework.
+
+== Class B does not survive matched-control testing
+
+When Class B VUS variants (n = 27 across BRCA1, CFTR, LDLR, MLH1) are compared to benign variants matched by VEP consequence category and locus, LSSIM distributions are indistinguishable (0/6 per-locus tests significant; pooled Mann-Whitney p = 0.996, Cohen d = -0.52). The 17 5'UTR and 10 "other" Class B variants cluster in promoter-proximal regions where both VUS and benign variants show similar LSSIM because both are near enhancers by definition. This indicates that the Class B VUS signal is a category-by-position artifact rather than evidence of structural discrimination. Class D (49 VUS where VEP returns no annotation) remains as residual coverage, but this represents "any signal when VEP is empty" rather than demonstrated structural insight. We retain the Class B taxonomy as a conceptual framework for mechanistic classification but do not claim that ARCHCODE provides discriminative utility for VUS triage beyond what consequence category and genomic position already provide.
+
 == Structural topology does not equal expression consequence
 
 A fundamental limitation of LSSIM as a metric is that it quantifies disruption of chromatin

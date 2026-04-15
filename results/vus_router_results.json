@@ -1,0 +1,131 @@
+{
+  "date": "2026-04-15",
+  "total_variants": 28857,
+  "total_vus": 5103,
+  "coverage_pct": 80.9,
+  "class_counts": {
+    "A_activity": 4013,
+    "Unclassified": 977,
+    "D_coverage_gap": 49,
+    "C_mixed": 37,
+    "B_architecture": 27
+  },
+  "n_class_b": 27,
+  "n_class_d": 49,
+  "within_category_results": [
+    {
+      "category": "other",
+      "n_arch_high": 103,
+      "n_arch_low": 29,
+      "median_high": 0.9614,
+      "median_low": 0.9987,
+      "U": 1.0,
+      "p": 1.1871753703854924e-16,
+      "significant": true
+    },
+    {
+      "category": "splice_region",
+      "n_arch_high": 8,
+      "n_arch_low": 29,
+      "median_high": 0.942,
+      "median_low": 0.9958,
+      "U": 6.0,
+      "p": 2.598283620732455e-05,
+      "significant": true
+    },
+    {
+      "category": "intronic",
+      "n_arch_high": 4,
+      "n_arch_low": 4559,
+      "median_high": 0.9928,
+      "median_low": 0.9993,
+      "U": 744.0,
+      "p": 0.000696297084691026,
+      "significant": true
+    },
+    {
+      "category": "5_prime_UTR",
+      "n_arch_high": 86,
+      "n_arch_low": 35,
+      "median_high": 0.9778,
+      "median_low": 0.9727,
+      "U": 1311.0,
+      "p": 0.13428969335455126,
+      "significant": false
+    }
+  ],
+  "non_tautological_results": [
+    {
+      "category": "3_prime_UTR",
+      "n_vus": 14,
+      "n_benign": 112,
+      "median_vus": 0.99925,
+      "median_benign": 0.9992,
+      "U": 793.0,
+      "p": 0.9468883472120915,
+      "significant": false
+    },
+    {
+      "category": "intronic",
+      "n_vus": 333,
+      "n_benign": 4073,
+      "median_vus": 0.9993,
+      "median_benign": 0.9993,
+      "U": 759512.5,
+      "p": 0.00024791490817776206,
+      "significant": true
+    },
+    {
+      "category": "synonymous",
+      "n_vus": 284,
+      "n_benign": 5276,
+      "median_vus": 0.9998,
+      "median_benign": 0.9998,
+      "U": 796695.0,
+      "p": 0.05315073513814194,
+      "significant": false
+    },
+    {
+      "category": "5_prime_UTR",
+      "n_vus": 30,
+      "n_benign": 77,
+      "median_vus": 0.97375,
+      "median_benign": 0.9727,
+      "U": 1289.5,
+      "p": 0.3526023399491548,
+      "significant": false
+    },
+    {
+      "category": "other",
+      "n_vus": 10,
+      "n_benign": 107,
+      "median_vus": 0.9653,
+      "median_benign": 0.9649,
+      "U": 568.5,
+      "p": 0.7476145155143177,
+      "significant": false
+    },
+    {
+      "category": "splice_region",
+      "n_vus": 4,
+      "n_benign": 25,
+      "median_vus": 0.9955499999999999,
+      "median_benign": 0.9959,
+      "U": 41.0,
+      "p": 0.5898065228826611,
+      "significant": false
+    }
+  ],
+  "verdict": "PASS",
+  "matched_control_test": {
+    "description": "Class B VUS vs benign controls matched by category x locus",
+    "n_class_b": 27,
+    "n_matched_benign": 132,
+    "per_locus_significant": 0,
+    "per_locus_total": 6,
+    "pooled_p": 0.996,
+    "pooled_cohen_d": -0.52,
+    "pooled_verdict": "FAIL — Class B VUS indistinguishable from matched benign. Signal = category x position artifact."
+  },
+  "final_verdict": "FAIL — Router Class B does not survive matched-control test. Class D (49 VUS where VEP=NULL) remains as residual utility but is a weak claim."
+}
