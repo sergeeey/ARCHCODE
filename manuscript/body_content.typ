@@ -1,13 +1,13 @@
 == Significance Statement
-Sequence-based predictors cannot detect variants that disrupt 3D chromatin topology without altering protein sequence. ARCHCODE applies analytical loop extrusion simulation to 32,201 ClinVar variants across 13 loci, identifying 27 "pearl" candidates on HBB --- structurally disruptive yet invisible to nine orthogonal methods. Tissue-specificity controls (SCN5A, GJB2) confirm that signal requires cell-type-matched regulatory annotation. ARCHCODE is a complementary, hypothesis-generating framework; experimental validation is required before clinical use.
+Sequence-based predictors cannot detect variants that disrupt 3D chromatin topology without altering protein sequence. ARCHCODE applies analytical loop extrusion simulation to 30,318 ClinVar variants across 9 loci, identifying 25 high-confidence "pearl" candidates on HBB --- structurally disruptive yet invisible to nine orthogonal methods. However, overall AUC (0.977) is category-driven (trivial baseline achieves 0.98), and Class B VUS do not survive matched-control testing (p=0.996). ARCHCODE is a hypothesis-generating taxonomy framework, not a pathogenicity predictor; experimental validation is required before clinical use.
 
 == Key Results
-+ #strong[32,201 ClinVar variants across 13 loci] analyzed; loss-of-function
++ #strong[30,318 ClinVar variants across 9 loci] analyzed; loss-of-function
   classes show 86--100% structural pathogenic concordance
-+ #strong[27 "pearl" variants on HBB:] VEP-blind, CADD-ambiguous, yet
++ #strong[25 high-confidence "pearl" variants on HBB:] VEP-blind, CADD-ambiguous, yet
   structurally disruptive (LSSIM \< 0.92) --- invisible to 9 orthogonal
-  methods (VEP, SpliceAI, CADD, MPRA, MaveDB, gnomAD, cross-species,
-  genome-wide scaling, AlphaGenome)
+  methods. *Caveat:* overall AUC is category-driven (trivial baseline 0.98);
+  Class B VUS do not survive matched-control testing (p=0.996)
 + #strong[Hi-C validation:] r = 0.53--0.59 (K562), r = 0.531 (mouse
   G1E-ER4), r = 0.28--0.53 across 5 loci; AUC = 0.977 (category-level)
 + #strong[Enhancer proximity drives signal:] ≤1 kb Δ LSSIM = 0.039
@@ -18,8 +18,9 @@ Sequence-based predictors cannot detect variants that disrupt 3D chromatin topol
   conserved in mouse (r = 0.82)
 + #strong[MaveDB cross-validation:] BRCA1 SGE r ≈ 0, TP53 DMS r = −0.38
   --- confirms ARCHCODE orthogonality to functional assays
-+ #strong[641 VUS reclassification candidates] from 30,952 VUS across 13
-  loci; HBB leads at 22.3% candidate rate
++ #strong[76 VUS receive ARCHCODE-only interpretation] (27 Class B + 49 Class D)
+  from 5,103 VUS across 8 loci; however, Class B does not survive matched-control
+  testing --- signal is category-by-position artifact
 
 == Data Transparency Declaration
 All data sources are classified as REAL (external databases), COMPUTATIONAL

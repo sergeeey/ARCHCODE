@@ -1,0 +1,26 @@
+{
+  "test": "TP53 splice_region deep dive",
+  "n_variants": 139,
+  "n_pathogenic": 73,
+  "n_benign": 66,
+  "original_auc": 0.6906392694063926,
+  "original_cohens_d": -0.7804670586958673,
+  "mann_whitney_p": 7.997548155122604e-05,
+  "permutation_p": 0.0002,
+  "permutation_n": 10000,
+  "fdr_bh_q": 0.00125,
+  "fdr_survives": true,
+  "cv_auc_mean": 0.688432757718472,
+  "cv_auc_std": 0.03172416546628319,
+  "outliers": {
+    "pathogenic": 15,
+    "benign": 0
+  },
+  "baselines": {
+    "lr_auc": 0.4520547945205479,
+    "rf_auc": 0.8252386882523868,
+    "position_only_auc": 0.43088418430884184
+  },
+  "checks": {
+    "Original signal reproduced": true,
+    "Permutation p < 0.05": 

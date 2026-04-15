@@ -1,0 +1,30 @@
+{
+  "canon_tier": "technical_full_scope",
+  "status": "planned_scaffold",
+  "release_facing": false,
+  "scope_note": "Planned BCL11A uniform-occupancy control artifact. Scaffold only; not evidence yet.",
+  "artifact_stage": "scaffold",
+  "created_at": "2026-04-04",
+  "objective": "Test whether enhancer-ranking at BCL11A persists when DHS occupancies are equalized.",
+  "source_of_truth_candidates": [
+    "config/locus/bcl11a_uniform_control.json",
+    "scripts/bcl11a_in_silico_mutagenesis.py",
+    "results/BCL11A_Unified_Atlas_bcl11a_mutagenesis.csv",
+    "results/UNIFIED_ATLAS_SUMMARY_bcl11a_mutagenesis.json"
+  ],
+  "planned_fields": {
+    "input_config": null,
+    "comparison_against": "results/bcl11a_casgevy_bridge_summary.json",
+    "total_variants": null,
+    "dhs_h58_mean_lssim": null,
+    "dhs_h55_mean_lssim": null,
+    "dhs_h62_mean_lssim": null,
+    "ranking_preserved": null,
+    "effect_attenuation_note": null
+  },
+  "non_claims": [
+    "Not evidence of independent Casgevy target discovery",
+    "Not public-canonical promotion evidence",
+    "Not complete until generated from a tracked run"
+  ]
+}

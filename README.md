@@ -3,39 +3,33 @@
 
 # ARCHCODE
 
-### Architecture-Constrained Decoder
+### Analytical 3D Chromatin Structural Perturbation Framework
 
-**Physics-based 3D chromatin loop extrusion simulator for structural mechanism discovery**
+**Fast analytical loop extrusion simulator + falsification-first validation suite for honest evaluation of 3D-genome variant models**
 
-[Paper](#preprint) &nbsp;&middot;&nbsp; [Quick Start](#quick-start) &nbsp;&middot;&nbsp; [Results](#key-results) &nbsp;&middot;&nbsp; [Validation](#validation) &nbsp;&middot;&nbsp; [Docker](#docker) &nbsp;&middot;&nbsp; [Citation](#citation)
+[Paper](#preprint) &nbsp;&middot;&nbsp; [Quick Start](#quick-start) &nbsp;&middot;&nbsp; [Validation Suite](#validation-suite) &nbsp;&middot;&nbsp; [Results](#key-results) &nbsp;&middot;&nbsp; [Docker](#docker) &nbsp;&middot;&nbsp; [Citation](#citation)
 
 ---
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Three.js](https://img.shields.io/badge/Three.js-r181-000000?logo=threedotjs&logoColor=white)](https://threejs.org/)
+[![Vitest](https://img.shields.io/badge/Vitest-44/44-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![Validation Suite](https://img.shields.io/badge/Validation-30%20tests-orange)](./validation_suite/)
 [![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)](./Dockerfile)
-[![Vitest](https://img.shields.io/badge/Vitest-tested-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 
 </div>
 
-![Figure 1: SSIM distribution across variant categories](figures/fig1_ssim_violin.png)
-
-_LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (nonsense, frameshift) cluster below 0.85; benign classes (intronic, synonymous) near 1.0. Red diamonds = 25 high-confidence Class B variants._
-
----
-
 <table>
 <tr>
-<td align="center"><b>30,318</b><br><sub>ClinVar variants, 9 primary loci</sub></td>
-<td align="center"><b>25 Class B</b><br><sub>HBB architecture-driven, invisible to VEP/SpliceAI/MPRA</sub></td>
-<td align="center"><b>Hi-C r = 0.53&ndash;0.59</b><br><sub>K562 contact map validation</sub></td>
-<td align="center"><b>0 training data</b><br><sub>analytical physics, not ML</sub></td>
+<td align="center"><b>30,318</b><br><sub>ClinVar variants, 9 loci</sub></td>
+<td align="center"><b>30 tests</b><br><sub>6-module validation suite</sub></td>
+<td align="center"><b>9/30 PASS</b><br><sub>9/30 WARNING</sub></td>
+<td align="center"><b>&lt;30s</b><br><sub>full suite runtime</sub></td>
 </tr>
 </table>
 
-> **Scope:** All pearl discoveries and external validations (AlphaGenome, MPRA, Hi-C) are from **HBB** (hemoglobin beta). Cross-locus results (8 additional loci) are exploratory and await tissue-matched validation. See [Limitations](#limitations).
+> **Falsification result (2026-04):** AUC 0.977 is a **category artifact** — `category → score` alone gives AUC 0.98, position-only gives 0.55. Within-category AUC ≈ 0.50 (chance). Simple baselines match SSIM on 8/9 loci. Cross-locus transfer fails. **ARCHCODE is not a pathogenicity predictor.** See [What Survived](#what-survived) for the router that does work.
 >
 > **Canon:** This README is the public canonical layer. Technical full-scope and legacy routing are defined in [PROJECT_CANON.md](./PROJECT_CANON.md).
 
@@ -43,23 +37,38 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 
 ## What is ARCHCODE?
 
-**ARCHCODE is a Discovery Engine, not a Prediction Tool.**
+ARCHCODE is a **fast analytical mean-field loop extrusion simulator** that computes structural perturbation scores (SSIM) for genetic variants by comparing wild-type and mutant 3D chromatin contact maps. It was designed to test whether physics-based chromatin simulation adds discriminative value beyond simple spatial and categorical features for variant interpretation.
 
-ARCHCODE is an analytical mean-field loop extrusion simulator that **discovers structural mechanisms** of genomic variants. It builds wild-type and mutant 3D chromatin contact maps using Kramer-rate cohesin kinetics, then compares them via Structural Similarity Index (SSIM) to **reveal** how a variant disrupts local chromosome architecture.
+**What we found:** Broad structural pathogenicity claims do not survive systematic stress-testing. The category→effect_strength mapping drives most of the signal. Simple baselines (distance to enhancer + severity) match or beat the structural model on 8/9 loci. Cross-locus threshold transfer fails entirely. Within-category signal survives only in TP53 splice_region variants (AUC=0.69, FDR-corrected).
 
-Unlike sequence-based predictors (VEP, SpliceAI, CADD) that **classify** variants, ARCHCODE **discovers** variants that act through structural mechanisms invisible to sequence-level annotation:
-- **Enhancer-promoter loop disruption**
-- **CTCF boundary erosion**
-- **Cohesin loading site alteration**
+**What remains valuable:**
+- **ARCHCODE engine** — sub-second analytical structural perturbation scoring, open source
+- **Validation suite** — 30 automated tests across 9 loci, the first falsification-first benchmark for 3D-genome models
+- **HBB pearl variants** — 27 candidates for experimental prioritization (not independent pathogenicity discoveries)
+- **TP53 splice_region** — one genuine within-category signal island worth further study
 
-**Key discoveries** from applying ARCHCODE to **30,318 ClinVar variants across 9 primary loci**:
-- **25 high-confidence Class B variants at HBB** — the public canonical HBB core. A broader technical HBB definition includes 27 pearls, of which 20 are SNVs; see [PROJECT_CANON.md](./PROJECT_CANON.md) for layer rules
-- **5-class taxonomy** of regulatory pathogenicity (activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch)
-- **29 additional Class B candidates** at 8 non-HBB loci — exploratory, pending tissue-matched validation
+**Not a pathogenicity predictor.** ARCHCODE does not compete with VEP, SpliceAI, or CADD. It is a structural interpretation layer with clearly documented boundaries of applicability.
 
-**Not competing with ML predictors** — ARCHCODE creates a new category: **structural mechanism discovery**.
+### What Survived
 
-Current first-pass tools do not cleanly isolate the HBB structural class: VEP scores remain &lt;0.30 for the high-confidence HBB core, SpliceAI is 0.00 for pearl SNVs, MPRA is null at the score level (p = 0.91 vs benign), CADD is ambiguous rather than class-separating (median 15.7), and AlphaMissense covers only 23% of the atlas. These signals are partial or orthogonal rather than a standalone structural explanation, so experimental validation remains required.
+After systematic falsification (within-category AUC ≈ 0.50, simple baselines match SSIM on 8/9 loci, cross-locus transfer fails), **the surviving utility** is mechanistic triage of VUS:
+
+**VUS Decision Router** (5,103 VUS across 8 loci, rules frozen before analysis):
+
+| | ARCHCODE structural signal | ARCHCODE no signal |
+|---|---|---|
+| **VEP HIGH** | 37 — Class C (both detect) | 4,013 — Class A (VEP sufficient) |
+| **VEP LOW** | **27 — Class B (BLIND SPOT)** | 648 — Unclassified |
+| **VEP NULL** | 49 — Class D (coverage gap) | 329 — Unclassified |
+
+- **76 VUS** (1.5%) receive a mechanistic interpretation only from ARCHCODE (Class B + D)
+- **27 Class B variants** — VEP blind (MODIFIER), ARCHCODE detects structural disruption (BRCA1: 10, CFTR: 8, LDLR: 7, MLH1: 2)
+- **Matched-control kill test: FAIL.** Class B VUS are indistinguishable from benign variants of the same category in the same locus (0/6 tests significant, pooled p=0.996). Class B signal = category × position artifact, not structural discrimination.
+- **Class D** (49 VUS where VEP cannot score at all) remains as residual utility — ARCHCODE provides the only structural read. But this is a weak claim: "something when VEP is empty" ≠ "better than VEP".
+
+![VUS Decision Router](results/fig_vus_router.png)
+
+_Full results: [vus_router_results.json](results/vus_router_results.json). Rules frozen before analysis: [vus_router_rules.md](scripts/vus_router_rules.md). Gold subset: [vus_router_gold_76.csv](results/vus_router_gold_76.csv)._
 
 ## Pipeline Architecture
 
@@ -125,16 +134,20 @@ See [docker-compose.yml](./docker-compose.yml) for persistent data volume config
 
 ## Key Results
 
-Analysis of **30,318 real ClinVar variants across 9 genomic loci** using the unified ARCHCODE + Ensembl VEP v113 pipeline:
+Analysis of **30,318 ClinVar variants across 9 genomic loci** through ARCHCODE + a 6-module falsification validation suite:
 
-- **ROC AUC = 0.977** on HBB — Youden optimum at LSSIM &lt; 0.994 (Sensitivity 0.966, Specificity 0.988). **Caveat:** ablation shows this is primarily category-driven (position-only AUC = 0.551); the metric characterizes the variant catalog, not structural prediction power
-- **25 high-confidence Class B variants (HBB only)** — pathogenic by 3D chromatin structure but invisible to VEP, SpliceAI, and MPRA
-- **Tissue-specificity gradient** — matched loci (HBB &Delta; = 0.111) &rarr; expressed (TERT &Delta; = 0.019) &rarr; mismatch (SCN5A/GJB2 &Delta; &le; 0.006); defines ARCHCODE's domain of applicability
-- **Enhancer proximity drives discrimination** — Class B variants cluster within mean 434 bp of tissue-matched enhancers, 58-fold closer than Class A variants (p = 2.51 &times; 10<sup>&minus;31</sup>). Within HBB specifically, variants &le;1 kb from H3K27ac peaks show 7&times; greater LSSIM separation (&Delta; = 0.039 vs genome-wide &Delta; = 0.006)
-- **Per-locus threshold calibration** — optimal threshold varies from LSSIM &lt; 0.977 (HBB, sens 92.9%, spec 99.1%) to LSSIM &lt; 0.968 (TERT, sens 22.7%); SCN5A and GJB2 serve as deliberate negative controls (cell-type mismatch &rarr; no threshold works)
-- **Hi-C validation** — Pearson r = 0.28&ndash;0.59 across 8 locus&times;cell-type combinations (all p &lt; 10<sup>&minus;82</sup>); best at MLH1 r = 0.59, HBB 95 kb r = 0.59, BRCA1 r = 0.53 (K562)
-- **CADD complementarity** — pearl CADD median = 15.7 (ambiguous zone); 25 HBB Class B + 29 cross-locus candidates = 54 total vs 5,773 CADD-only suggests orthogonal detection modes (HBB confirmed; cross-locus exploratory)
-- **Evolutionary conservation** — pearl positions 3.3&times; more conserved than flanking background (phyloP 2.39 vs 0.73; permutation p = 0.0, n = 10,000); all fall within GERP constrained elements (scores 8.4&ndash;81.3)
+### What the model achieves
+- **AUC = 0.977** on HBB (n=1,103) — but ablation shows this is category-driven (position-only AUC = 0.551); the model characterizes the variant catalog, not structural prediction power
+- **25 high-confidence HBB "pearl" variants** (Q2b set) — VEP-blind (VEP < 0.30) yet structurally disruptive (LSSIM < 0.95). Candidates for experimental prioritization, not independent pathogenicity discoveries. Note: 27 in broader technical definition
+- **TP53 splice_region: AUC = 0.69, d = -0.78** — the only within-category signal surviving FDR correction across 25 tests (4/4 categories significant)
+- **Hi-C correlation:** r = 0.28–0.59 across 8 locus×cell-type combinations
+
+### What the validation suite reveals
+- **CTCF shuffle:** On HBB, shuffled architectures produce identical AUC (0.979 vs 0.979) — signal is geometry-driven, not CTCF-specific
+- **Simple baselines:** RF on distance + severity beats SSIM on 8/9 loci. On GJB2, severity alone = 0.957
+- **Within-category:** Median AUC = 0.52 across 25 tests (near-chance). Only TP53 survives
+- **Cross-locus transfer:** HBB threshold → 0% sensitivity on all other loci
+- **Ablation:** Inverted effect strengths → anti-predictive (AUC = 0.35). Category mapping drives the signal, not physics
 
 ### Figure 3: Pearl Quadrant (ARCHCODE vs VEP)
 
@@ -394,6 +407,6 @@ MIT License — See [LICENSE](./LICENSE)
 
 <div align="center">
 
-**ARCHCODE v2.17** &nbsp;&middot;&nbsp; Updated 2026-03-31 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; [sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)
+**ARCHCODE v2.18** &nbsp;&middot;&nbsp; Updated 2026-04-15 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; [sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)
 
 </div>

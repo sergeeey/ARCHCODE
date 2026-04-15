@@ -1,0 +1,37 @@
+{
+  "test_name": "Simple Baseline (CORRECTED \u2014 no CADD)",
+  "dataset": "HBB Combined Atlas",
+  "n_variants": 1103,
+  "n_pathogenic": 353,
+  "n_benign": 750,
+  "archcode_reference_auc": 0.977,
+  "models": {
+    "lr_distance_severity_position": {
+      "auc": 0.9848347497639283,
+      "verdict": "FAIL"
+    },
+    "rf_distance_severity_position": {
+      "auc": 0.9876392823418318,
+      "verdict": "FAIL"
+    },
+    "simple_near_enhancer": {
+      "auc": 0.7426666666666666
+    },
+    "vep_score": {
+      "auc_full": 0.035784702549575095,
+      "auc_pearl": 0.9139639639639641
+    }
+  },
+  "pearl_test": {
+    "n_pearls": 20,
+    "lr_auc": 0.8677927927927928
+  },
+  "pearl_spatial": {
+    "pearl_mean_dist_enhancer": 174.0,
+    "non_pearl_mean_dist_enhancer": 200.98498498498498,
+    "mw_pvalue": 0.3497060154400683,
+    "ks_pvalue": 0.004955562215347202
+  },
+  "verdict": "FAIL \ud83d\udd34",
+  "verdict_detail": "Random Forest with only distance + severity + position achieves AUC = 0.9876 \u2265 0.95. This rivals ARCHCODE's 0.977 without any physics. The complex simulation is NOT needed for discrimination. Simple spatial features capture most of the signal."
+}

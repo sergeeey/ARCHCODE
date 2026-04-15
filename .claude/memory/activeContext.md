@@ -1,9 +1,80 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-04-01 (end of session)
+**Last Updated:** 2026-04-15
 **Branch:** feature/mechanistic-taxonomy (taxonomy paper track)
-**Last Commit:** `2d64a72` — docs: align submission status + add endorsement packet
-**GitHub:** https://github.com/sergeeey/ARCHCODE — PUSHED (4 commits this session)
+**Last Commit:** `40969aa` — docs: add 17 lessons learned
+**GitHub:** https://github.com/sergeeey/ARCHCODE
+
+## Session 2026-04-15 — VUS Router + External Audit + README rewrite
+
+### VUS Decision Router (Н1) — COMPLETED
+- **5,103 VUS** across 8 loci classified through 2×2 VEP × ARCHCODE matrix
+- Rules frozen BEFORE analysis in `scripts/vus_router_rules.md`
+- **27 Class B** (VEP blind, ARCHCODE sees): BRCA1=10, CFTR=8, LDLR=7, MLH1=2
+- **49 Class D** (VEP NULL, ARCHCODE sees): coverage gap
+- **76 total** (1.5%) get interpretation ONLY from ARCHCODE
+- Class B categories: 17 × 5'UTR, 10 × "other"
+- Within-category kill test: **1/6 significant** (intronic p=0.00025) — WEAK PASS
+- **MATCHED-CONTROL TEST: FAIL** — Class B VUS indistinguishable from matched benign (0/6, pooled p=0.996, d=-0.52)
+- Class B = category × position artifact. Signal dies after matching by category × locus
+- Class D (49 VUS, VEP=NULL) = residual utility but weak claim
+- Verdict: **Router Н1 downgraded to conceptual taxonomy**. ARCHCODE does not add discriminative utility beyond category × position
+
+### Next Pivot: Region-Level Sensitivity Map (decided, not started)
+- **New question:** Does ARCHCODE sensitivity map correlate with real regulatory architecture better than simple baselines?
+- **Kill baseline (frozen):** H3K27ac signal intensity × distance-to-TSS (2 features, 0 physics)
+- **Truth data:** CRISPRi/CRE maps (FOXP3 Nature 2025, Gasperini 2019)
+- **Unit of analysis:** region (1kb bins), not individual variants
+- **Kill criterion:** If ARCHCODE top-k regions don't beat the 2-feature baseline → model adds nothing even for region-level
+- BCL11A/Casgevy was essentially this test (passed anecdotally) — need formal benchmark
+- **Status:** NEXT SESSION. Not started.
+- Files: `scripts/vus_decision_router.py`, `results/vus_router_results.json`, `results/fig_vus_router.png/pdf`
+
+### FOXP3 Patient Search (О2) — NULL RESULT
+- 0 patients found with mutations in predicted hotspots
+- 0 publications with non-coding FOXP3 enhancer mutations
+- Key finding: Nature 2025 CRISPR screen found CREs at FOXP3 locus — need coordinates overlap check
+- RED FLAG: EGR2 NOT in CRISPR screen's trans-factor list (GATA3, STAT5, IRF4, ETS1 were)
+- Verdict: FOXP3 = supporting subplot, not main evidence
+
+### External Audit (from Qwen/external LLM)
+- Rated project 6.5/10 overall
+- Governance/honesty: 8.5/10 (strong)
+- Narrative consistency: 4/10 (README predictor vs internal discovery engine)
+- Key recommendation: canonicalize claim layer, falsification on display, VUS benchmark
+- Our response: README rewritten, falsification box added, router figure added
+
+### README Rewrite
+- Falsification result moved to top (replacing old "honest framing" box)
+- "What Survived" section added with router table + figure
+- Version bumped to v2.18
+- Broken `#what-survived` anchor fixed
+
+## Session 2026-04-14/15 — InfoMpemba paper + endorser audit
+
+### InfoMpemba Paper (NEW)
+- Paper compiled: 6 pages REVTeX PRE, 4 figures, 14 refs (all DOI-verified)
+- Location: E:\Метрологический эффект Мпемба\paper\preprint.tex
+- Desktop: Mpemba_preprint_v1.pdf + mpemba_arxiv_submission.tar.gz
+- Kramers accuracy corrected: 94% was wrong, actual = 89% (verified from data)
+- Summer et al. ref completed: PRX 16, 011065 (2026)
+- Gmail drafts: Raz (priority), Bechhoefer, Goold — for cond-mat.stat-mech endorsement
+- TODO: user to attach PDF to Raz draft and send, then submit to Research Square
+
+### ARCHCODE Endorser Audit
+- Goloborodko: DECLINED (not enough arXiv history), recommended Paulsen + Polovnikov
+- Fudenberg: BOUNCED x2 (wrong email). Correct: fudenber@usc.edu. New draft ready
+- Giorgetti, Hansen: NO REPLY 14 days. Follow-up drafts ready
+- Mirny: NO REPLY 13 days (sent twice)
+- Nora: ALIVE, replied twice ("still traveling"). Follow-up ~Apr 21
+- NEW leads: Paulsen (Oslo), Polovnikov (Skoltech) — drafts ready (Goloborodko referral)
+
+### Last30Days Literature Scan
+- 5 domains scanned, 24+ papers analyzed
+- ARCHCODE gap NARROWING (Chiron3D competitor)
+- BenfordFlow gap OPEN, Financial Mpemba gap OPEN
+- AI-REPS gap CLOSED (kill)
+- Saved: .claude/memory/knowledge/last30days_scan_2026-04-14.md
 
 ## Submission Status
 
@@ -96,6 +167,8 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - V1 roadmap: see memory/v1_module_roadmap.md
 
 ## Auto-commit log
+- [2026-04-12 14:48] `40969aa`: docs: add 17 lessons learned from ARCHCODE postmortem (Oct 2025 — Apr 2026)
+- [2026-04-01 20:21] `2d0043c`: docs: end-of-session context update — 5 endorser emails sent, Nora follow-up ready
 - [2026-04-01 19:52] `7f0ae91`: docs: update session context + endorser tracking (5 emails sent)
 - [2026-04-01 18:52] `2d64a72`: docs: align submission status + add endorsement packet
 - [2026-04-01 14:48] `330f64e`: feat(validation): AlphaGenome CAGE batch on 7 loci — honest mixed result
