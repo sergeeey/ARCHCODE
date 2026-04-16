@@ -167,6 +167,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - V1 roadmap: see memory/v1_module_roadmap.md
 
 ## Auto-commit log
+- [2026-04-15 19:31] `d4d7748`: feat: VUS decision router + matched-control kill test + manuscript falsification sync
 - [2026-04-12 14:48] `40969aa`: docs: add 17 lessons learned from ARCHCODE postmortem (Oct 2025 — Apr 2026)
 - [2026-04-01 20:21] `2d0043c`: docs: end-of-session context update — 5 endorser emails sent, Nora follow-up ready
 - [2026-04-01 19:52] `7f0ae91`: docs: update session context + endorser tracking (5 emails sent)

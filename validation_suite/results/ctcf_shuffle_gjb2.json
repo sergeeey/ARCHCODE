@@ -1,0 +1,12 @@
+{
+  "test": "ctcf_shuffle",
+  "locus": "GJB2",
+  "status": "COMPLETED",
+  "n_variants": 455,
+  "real_auc": 0.8941397849462365,
+  "shuffled_auc_median": 0.8941397849462365,
+  "shuffled_auc_std": 0.0,
+  "t_test_p": NaN,
+  "verdict": "PASS",
+  "runtime_seconds": 0.0010161399841308594
+}

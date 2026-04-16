@@ -14,10 +14,12 @@
     "chromatin",
     "loop-extrusion",
     "cohesin",
-    "variant-pathogenicity",
     "3d-genome",
+    "structural-perturbation",
     "SSIM",
     "ClinVar",
+    "variant-interpretation",
+    "VUS",
     "bioinformatics"
   ],
   "scripts": {

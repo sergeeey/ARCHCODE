@@ -1,0 +1,69 @@
+{
+  "test": "within_category",
+  "locus": "TERT",
+  "status": "COMPLETED",
+  "n_variants": 2089,
+  "overall_auc": 0.843577088097084,
+  "n_categories_tested": 5,
+  "n_significant": 1,
+  "n_surviving_fdr": 1,
+  "median_within_cat_auc": 0.4779411764705882,
+  "category_results": [
+    {
+      "category": "other",
+      "n_pathogenic": 13,
+      "n_benign": 11,
+      "auc": 0.15384615384615383,
+      "cohens_d": 1.4961939860890479,
+      "perm_p": 0.003,
+      "significant": true,
+      "bh_q": 0.015,
+      "survives_fdr": true
+    },
+    {
+      "category": "synonymous",
+      "n_pathogenic": 51,
+      "n_benign": 1143,
+      "auc": 0.49832741495548355,
+      "cohens_d": 0.0072917223888280605,
+      "perm_p": 1.0,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    },
+    {
+      "category": "missense",
+      "n_pathogenic": 218,
+      "n_benign": 31,
+      "auc": 0.4549422906185262,
+      "cohens_d": 0.14529295177209486,
+      "perm_p": 0.402,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    },
+    {
+      "category": "splice_region",
+      "n_pathogenic": 8,
+      "n_benign": 68,
+      "auc": 0.4779411764705882,
+      "cohens_d": 0.45199413714989556,
+      "perm_p": 0.895,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    },
+    {
+      "category": "intronic",
+      "n_pathogenic": 45,
+      "n_benign": 394,
+      "auc": 0.5051889452904681,
+      "cohens_d": -0.04509327771799297,
+      "perm_p": 0.926,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    }
+  ],
+  "verdict": "FAIL"
+}

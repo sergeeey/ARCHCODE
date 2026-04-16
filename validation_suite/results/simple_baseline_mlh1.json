@@ -1,0 +1,12 @@
+{
+  "test": "simple_baseline",
+  "locus": "MLH1",
+  "status": "COMPLETED",
+  "n_variants": 4060,
+  "ssim_auc": 0.7057019452063432,
+  "lr_auc": 0.718889120085753,
+  "rf_auc": 0.8166780793845959,
+  "severity_auc": 0.7001948359027712,
+  "delta_vs_best_baseline": -0.1109761341782527,
+  "verdict": "WARNING"
+}

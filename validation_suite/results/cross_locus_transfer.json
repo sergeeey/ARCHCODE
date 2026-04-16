@@ -1,0 +1,102 @@
+{
+  "test": "cross_locus_transfer",
+  "hbb_threshold": 0.95,
+  "hbb_sensitivity": null,
+  "hbb_specificity": null,
+  "diagonal_aucs": {
+    "BRCA1": 0.6910417947743037,
+    "TP53": 0.6690699723031261,
+    "CFTR": 0.6645281820950714,
+    "MLH1": 0.7057019452063432,
+    "LDLR": 0.6465535933540584,
+    "SCN5A": 0.5841038765473032,
+    "TERT": 0.843577088097084,
+    "GJB2": 0.8712451201972468
+  },
+  "transfer_results": [
+    {
+      "locus": "BRCA1",
+      "diagonal_auc": 0.6910417947743037,
+      "transferred_auc": 0.6910417947743037,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.33888784871746863,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    },
+    {
+      "locus": "TP53",
+      "diagonal_auc": 0.6690699723031261,
+      "transferred_auc": 0.6690699723031261,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.4112383679312813,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    },
+    {
+      "locus": "CFTR",
+      "diagonal_auc": 0.6645281820950714,
+      "transferred_auc": 0.6645281820950714,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.47566437742609735,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    },
+    {
+      "locus": "MLH1",
+      "diagonal_auc": 0.7057019452063432,
+      "transferred_auc": 0.7057019452063432,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.4027093596059113,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    },
+    {
+      "locus": "LDLR",
+      "diagonal_auc": 0.6465535933540584,
+      "transferred_auc": 0.6465535933540584,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.30755176613885504,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    },
+    {
+      "locus": "SCN5A",
+      "diagonal_auc": 0.5841038765473032,
+      "transferred_auc": 0.5841038765473032,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.6270096463022508,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    },
+    {
+      "locus": "TERT",
+      "diagonal_auc": 0.843577088097084,
+      "transferred_auc": 0.843577088097084,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.7936811871708952,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    },
+    {
+      "locus": "GJB2",
+      "diagonal_auc": 0.8712451201972468,
+      "transferred_auc": 0.8712451201972468,
+      "auc_delta": 0.0,
+      "accuracy_at_hbb_threshold": 0.3304904051172708,
+      "sensitivity_at_hbb_threshold": 0.0,
+      "specificity_at_hbb_threshold": 1.0
+    }
+  ],
+  "locus_thresholds": {
+    "BRCA1": 0.95,
+    "TP53": 0.95,
+    "CFTR": 0.95,
+    "MLH1": 0.95,
+    "LDLR": 0.95,
+    "SCN5A": 0.95,
+    "TERT": 0.95,
+    "GJB2": 0.95
+  },
+  "verdict": "PASS",
+  "verdict_detail": "Max AUC drop = 0.000. Model transfers well across loci."
+}

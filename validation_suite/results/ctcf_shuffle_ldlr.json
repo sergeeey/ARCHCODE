@@ -1,0 +1,12 @@
+{
+  "test": "ctcf_shuffle",
+  "locus": "LDLR",
+  "status": "COMPLETED",
+  "n_variants": 3284,
+  "real_auc": 0.6465535933540584,
+  "shuffled_auc_median": 0.6465535933540584,
+  "shuffled_auc_std": 0.0,
+  "t_test_p": NaN,
+  "verdict": "PASS",
+  "runtime_seconds": 0.002593994140625
+}
