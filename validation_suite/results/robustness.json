@@ -1,0 +1,83 @@
+{
+  "test": "robustness",
+  "seed_stability": {
+    "n_seeds": 10,
+    "auc_mean": 1.0,
+    "auc_std": 0.0,
+    "auc_cv": 0.0,
+    "verdict": "PASS"
+  },
+  "tissue_mismatch": {
+    "matched_mean_auc": null,
+    "mismatched_mean_auc": null,
+    "delta": null,
+    "verdict": "SKIPPED",
+    "per_locus": [
+      {
+        "locus": "BRCA1",
+        "tissue": "breast",
+        "matched": false,
+        "cell_type": "MCF7",
+        "auc": 0.6910417947743037,
+        "n_variants": 10682
+      },
+      {
+        "locus": "TP53",
+        "tissue": "fibroblast",
+        "matched": false,
+        "cell_type": "IMR90",
+        "auc": 0.6690699723031261,
+        "n_variants": 2794
+      },
+      {
+        "locus": "CFTR",
+        "tissue": "lung",
+        "matched": false,
+        "cell_type": "A549",
+        "auc": 0.6645281820950714,
+        "n_variants": 3349
+      },
+      {
+        "locus": "MLH1",
+        "tissue": "colon",
+        "matched": false,
+        "cell_type": "HCT116",
+        "auc": 0.7057019452063432,
+        "n_variants": 4060
+      },
+      {
+        "locus": "LDLR",
+        "tissue": "liver",
+        "matched": false,
+        "cell_type": "K562",
+        "auc": 0.6465535933540584,
+        "n_variants": 3284
+      },
+      {
+        "locus": "SCN5A",
+        "tissue": "cardiac",
+        "matched": false,
+        "cell_type": "K562",
+        "auc": 0.5841038765473032,
+        "n_variants": 2488
+      },
+      {
+        "locus": "TERT",
+        "tissue": "stem_cell",
+        "matched": false,
+        "cell_type": "SK-N-SH",
+        "auc": 0.843577088097084,
+        "n_variants": 2089
+      },
+      {
+        "locus": "GJB2",
+        "tissue": "cochlear",
+        "matched": false,
+        "cell_type": "K562",
+        "auc": 0.8712451201972468,
+        "n_variants": 469
+      }
+    ]
+  },
+  "verdict": "WARNING"
+}

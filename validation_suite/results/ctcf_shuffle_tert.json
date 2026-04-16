@@ -1,0 +1,12 @@
+{
+  "test": "ctcf_shuffle",
+  "locus": "TERT",
+  "status": "COMPLETED",
+  "n_variants": 2078,
+  "real_auc": 0.8540464661034413,
+  "shuffled_auc_median": 0.8540464661034413,
+  "shuffled_auc_std": 0.0,
+  "t_test_p": NaN,
+  "verdict": "PASS",
+  "runtime_seconds": 0.0019953250885009766
+}

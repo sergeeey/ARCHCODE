@@ -1,0 +1,91 @@
+{
+  "test": "within_category",
+  "locus": "BRCA1",
+  "status": "COMPLETED",
+  "n_variants": 10682,
+  "overall_auc": 0.6910417947743037,
+  "n_categories_tested": 7,
+  "n_significant": 2,
+  "n_surviving_fdr": 2,
+  "median_within_cat_auc": 0.5,
+  "category_results": [
+    {
+      "category": "other",
+      "n_pathogenic": 149,
+      "n_benign": 72,
+      "auc": 0.14890939597315433,
+      "cohens_d": 1.8792882582603343,
+      "perm_p": 0.0,
+      "significant": true,
+      "bh_q": 0.0,
+      "survives_fdr": true
+    },
+    {
+      "category": "3_prime_UTR",
+      "n_pathogenic": 5,
+      "n_benign": 43,
+      "auc": 0.5,
+      "cohens_d": 0.0,
+      "perm_p": 1.0,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    },
+    {
+      "category": "splice_region",
+      "n_pathogenic": 169,
+      "n_benign": 194,
+      "auc": 0.49643140364789845,
+      "cohens_d": -0.03408678911676003,
+      "perm_p": 0.691,
+      "significant": false,
+      "bh_q": 0.9673999999999999,
+      "survives_fdr": false
+    },
+    {
+      "category": "synonymous",
+      "n_pathogenic": 3494,
+      "n_benign": 2026,
+      "auc": 0.4988824446477419,
+      "cohens_d": 0.017215322013054327,
+      "perm_p": 0.597,
+      "significant": false,
+      "bh_q": 0.9673999999999999,
+      "survives_fdr": false
+    },
+    {
+      "category": "inframe_indel",
+      "n_pathogenic": 51,
+      "n_benign": 5,
+      "auc": 0.5098039215686274,
+      "cohens_d": -0.19802950859575016,
+      "perm_p": 1.0,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    },
+    {
+      "category": "intronic",
+      "n_pathogenic": 346,
+      "n_benign": 1238,
+      "auc": 0.512834190891518,
+      "cohens_d": -0.19864336610370356,
+      "perm_p": 0.0,
+      "significant": true,
+      "bh_q": 0.0,
+      "survives_fdr": true
+    },
+    {
+      "category": "5_prime_UTR",
+      "n_pathogenic": 8,
+      "n_benign": 38,
+      "auc": 0.6118421052631579,
+      "cohens_d": -0.20399392524081564,
+      "perm_p": 0.339,
+      "significant": false,
+      "bh_q": 0.791,
+      "survives_fdr": false
+    }
+  ],
+  "verdict": "FAIL"
+}

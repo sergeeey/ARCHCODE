@@ -1,0 +1,12 @@
+{
+  "test": "simple_baseline",
+  "locus": "BRCA1",
+  "status": "COMPLETED",
+  "n_variants": 10682,
+  "ssim_auc": 0.6910417947743037,
+  "lr_auc": 0.7246255149731424,
+  "rf_auc": 0.8257766060981582,
+  "severity_auc": 0.6272067371708513,
+  "delta_vs_best_baseline": -0.13473481132385445,
+  "verdict": "WARNING"
+}

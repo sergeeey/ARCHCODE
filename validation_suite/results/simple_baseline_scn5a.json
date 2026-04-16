@@ -1,0 +1,12 @@
+{
+  "test": "simple_baseline",
+  "locus": "SCN5A",
+  "status": "COMPLETED",
+  "n_variants": 2488,
+  "ssim_auc": 0.5841038765473032,
+  "lr_auc": 0.5998431973916888,
+  "rf_auc": 0.6783560593501327,
+  "severity_auc": 0.5839601983863837,
+  "delta_vs_best_baseline": -0.09425218280282943,
+  "verdict": "WARNING"
+}

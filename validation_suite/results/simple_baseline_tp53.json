@@ -1,0 +1,12 @@
+{
+  "test": "simple_baseline",
+  "locus": "TP53",
+  "status": "COMPLETED",
+  "n_variants": 2794,
+  "ssim_auc": 0.6690699723031261,
+  "lr_auc": 0.7322984701908095,
+  "rf_auc": 0.8452792305189395,
+  "severity_auc": 0.6201375055883138,
+  "delta_vs_best_baseline": -0.17620925821581335,
+  "verdict": "WARNING"
+}

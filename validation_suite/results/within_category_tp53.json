@@ -1,0 +1,58 @@
+{
+  "test": "within_category",
+  "locus": "TP53",
+  "status": "COMPLETED",
+  "n_variants": 2794,
+  "overall_auc": 0.6690699723031261,
+  "n_categories_tested": 4,
+  "n_significant": 4,
+  "n_surviving_fdr": 4,
+  "median_within_cat_auc": 0.6368021031871467,
+  "category_results": [
+    {
+      "category": "other",
+      "n_pathogenic": 19,
+      "n_benign": 34,
+      "auc": 0.7469040247678018,
+      "cohens_d": -0.5905720988705392,
+      "perm_p": 0.004,
+      "significant": true,
+      "bh_q": 0.005333333333333333,
+      "survives_fdr": true
+    },
+    {
+      "category": "synonymous",
+      "n_pathogenic": 786,
+      "n_benign": 613,
+      "auc": 0.5829649369679006,
+      "cohens_d": -0.3333070767041825,
+      "perm_p": 0.0,
+      "significant": true,
+      "bh_q": 0.0,
+      "survives_fdr": true
+    },
+    {
+      "category": "intronic",
+      "n_pathogenic": 122,
+      "n_benign": 406,
+      "auc": 0.5606779455705402,
+      "cohens_d": -0.20931556479463806,
+      "perm_p": 0.027,
+      "significant": true,
+      "bh_q": 0.027,
+      "survives_fdr": true
+    },
+    {
+      "category": "splice_region",
+      "n_pathogenic": 73,
+      "n_benign": 66,
+      "auc": 0.6906392694063926,
+      "cohens_d": -0.7758350908259726,
+      "perm_p": 0.0,
+      "significant": true,
+      "bh_q": 0.0,
+      "survives_fdr": true
+    }
+  ],
+  "verdict": "PASS"
+}

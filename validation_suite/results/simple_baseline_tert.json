@@ -1,0 +1,12 @@
+{
+  "test": "simple_baseline",
+  "locus": "TERT",
+  "status": "COMPLETED",
+  "n_variants": 2089,
+  "ssim_auc": 0.843577088097084,
+  "lr_auc": 0.8718314352964883,
+  "rf_auc": 0.8931007363580642,
+  "severity_auc": 0.8733462730094403,
+  "delta_vs_best_baseline": -0.04952364826098021,
+  "verdict": "WARNING"
+}

@@ -1,0 +1,12 @@
+{
+  "test": "simple_baseline",
+  "locus": "CFTR",
+  "status": "COMPLETED",
+  "n_variants": 3349,
+  "ssim_auc": 0.6645281820950714,
+  "lr_auc": 0.6216162110143038,
+  "rf_auc": 0.7314330420532884,
+  "severity_auc": 0.621372762670396,
+  "delta_vs_best_baseline": -0.06690485995821704,
+  "verdict": "WARNING"
+}

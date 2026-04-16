@@ -1,0 +1,60 @@
+{
+  "hypothesis": "H-01: P(s) critical exponent shift",
+  "preregistered": "2026-04-15",
+  "n_variants": 1103,
+  "overall": {
+    "p_value": 1.6997623507686346e-147,
+    "cohen_d": -2.544519285276648
+  },
+  "within_category": [
+    {
+      "category": "intronic",
+      "n_path": 9,
+      "n_ben": 658,
+      "p_value": 0.8910685435941608,
+      "cohen_d": 0.06316331426786506,
+      "significant": false
+    },
+    {
+      "category": "other",
+      "n_path": 12,
+      "n_ben": 7,
+      "p_value": 1.0,
+      "cohen_d": -0.3584179007546384,
+      "significant": false
+    },
+    {
+      "category": "synonymous",
+      "n_path": 3,
+      "n_ben": 83,
+      "p_value": 0.5831764356192373,
+      "cohen_d": -0.6505215224193511,
+      "significant": false
+    }
+  ],
+  "within_category_significant": 0,
+  "within_category_total": 3,
+  "baseline_dist_to_ctcf": [
+    {
+      "category": "intronic",
+      "p_value": 0.17182915358061623,
+      "cohen_d": -0.3143403703302881,
+      "significant": false
+    },
+    {
+      "category": "other",
+      "p_value": 0.42183087442734335,
+      "cohen_d": -0.01975981914222773,
+      "significant": false
+    },
+    {
+      "category": "synonymous",
+      "p_value": 0.040584374585488095,
+      "cohen_d": 1.342566610196237,
+      "significant": true
+    }
+  ],
+  "baseline_significant": 1,
+  "baseline_total": 3,
+  "verdict": "FAIL -- delta-gamma does not discriminate within any category. H-01 killed."
+}

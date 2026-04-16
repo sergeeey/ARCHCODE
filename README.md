@@ -13,7 +13,7 @@
 
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.2-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=black)](https://react.dev/)
-[![Vitest](https://img.shields.io/badge/Vitest-44/44-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
+[![Vitest](https://img.shields.io/badge/Vitest-49/49-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
 [![Validation Suite](https://img.shields.io/badge/Validation-30%20tests-orange)](./validation_suite/)
 [![Docker](https://img.shields.io/badge/Docker-ready-2496ED?logo=docker&logoColor=white)](./Dockerfile)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
@@ -39,7 +39,9 @@
 
 ARCHCODE is a **fast analytical mean-field loop extrusion simulator** that computes structural perturbation scores (SSIM) for genetic variants by comparing wild-type and mutant 3D chromatin contact maps. It was designed to test whether physics-based chromatin simulation adds discriminative value beyond simple spatial and categorical features for variant interpretation.
 
-**What we found:** Broad structural pathogenicity claims do not survive systematic stress-testing. The category→effect_strength mapping drives most of the signal. Simple baselines (distance to enhancer + severity) match or beat the structural model on 8/9 loci. Cross-locus threshold transfer fails entirely. Within-category signal survives only in TP53 splice_region variants (AUC=0.69, FDR-corrected).
+**Public research release:** **ARCHCODE v2.17** — **Discovery Engine, not a Prediction Tool** — focused on **structural mechanism discovery** (not a clinical pathogenicity predictor). The canonical classified core is **25 high-confidence Class B variants at HBB**; exploratory scope includes **29 additional Class B candidates** at partially matched loci. Where documentation refers to 27 HBB pearls, that follows the **broader technical HBB definition includes 27 pearls** (expanded Q2b technical count).
+
+**What we found:** Broad structural pathogenicity claims do not survive systematic stress-testing. The category→effect_strength mapping drives most of the signal. Simple baselines (distance to enhancer + severity) match or beat the structural model on 8/9 loci. Cross-locus threshold transfer fails entirely. Within-category discrimination is near chance for most loci in the portfolio; **TP53** is the main exception (multiple categories pass FDR in the validation-suite artifact; splice_region is the headline case, AUC≈0.69 — see [docs/HYPOTHESIS_INVENTORY_EVIDENCE.md](./docs/HYPOTHESIS_INVENTORY_EVIDENCE.md) for JSON sources and RF baselines).
 
 **What remains valuable:**
 - **ARCHCODE engine** — sub-second analytical structural perturbation scoring, open source
@@ -407,6 +409,6 @@ MIT License — See [LICENSE](./LICENSE)
 
 <div align="center">
 
-**ARCHCODE v2.18** &nbsp;&middot;&nbsp; Updated 2026-04-15 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; [sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)
+**ARCHCODE v2.17** &nbsp;&middot;&nbsp; Updated 2026-04-15 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; [sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)
 
 </div>

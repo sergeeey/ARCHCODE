@@ -1,0 +1,47 @@
+{
+  "test": "within_category",
+  "locus": "GJB2",
+  "status": "COMPLETED",
+  "n_variants": 469,
+  "overall_auc": 0.8712451201972468,
+  "n_categories_tested": 3,
+  "n_significant": 1,
+  "n_surviving_fdr": 1,
+  "median_within_cat_auc": 0.4552380952380952,
+  "category_results": [
+    {
+      "category": "other",
+      "n_pathogenic": 23,
+      "n_benign": 13,
+      "auc": 0.11371237458193979,
+      "cohens_d": 1.4680894892772696,
+      "perm_p": 0.0,
+      "significant": true,
+      "bh_q": 0.0,
+      "survives_fdr": true
+    },
+    {
+      "category": "synonymous",
+      "n_pathogenic": 5,
+      "n_benign": 118,
+      "auc": 0.5,
+      "cohens_d": 0.0,
+      "perm_p": 1.0,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    },
+    {
+      "category": "missense",
+      "n_pathogenic": 175,
+      "n_benign": 9,
+      "auc": 0.4552380952380952,
+      "cohens_d": 0.19874081699284998,
+      "perm_p": 0.748,
+      "significant": false,
+      "bh_q": 1.0,
+      "survives_fdr": false
+    }
+  ],
+  "verdict": "FAIL"
+}

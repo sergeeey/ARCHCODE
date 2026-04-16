@@ -1,0 +1,12 @@
+{
+  "test": "simple_baseline",
+  "locus": "GJB2",
+  "status": "COMPLETED",
+  "n_variants": 469,
+  "ssim_auc": 0.8712451201972468,
+  "lr_auc": 0.9586603657283748,
+  "rf_auc": 0.9475138689130882,
+  "severity_auc": 0.9574173001849187,
+  "delta_vs_best_baseline": -0.087415245531128,
+  "verdict": "FAIL"
+}

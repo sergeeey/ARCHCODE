@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARCHCODE Validation Suite Report</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+               background: #f8f9fa; color: #212529; line-height: 1.6; padding: 2rem; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        h1 { color: #1a1a2e; margin-bottom: 0.5rem; }
+        h2 { color: #16213e; margin: 2rem 0 1rem; border-bottom: 2px solid #0f3460; padding-bottom: 0.5rem; }
+        h3 { color: #1a1a2e; margin: 1.5rem 0 0.5rem; }
+        .subtitle { color: #6c757d; font-size: 1.1rem; margin-bottom: 2rem; }
+        .card { background: white; border-radius: 8px; padding: 1.5rem; margin-bottom: 1rem; 
+                 box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+        .stat { background: white; border-radius: 8px; padding: 1.5rem; text-align: center; 
+                 box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .stat-number { font-size: 2.5rem; font-weight: 700; }
+        .stat-label { color: #6c757d; font-size: 0.9rem; }
+        .verdict-PASS { color: #28a745; }
+        .verdict-WARNING { color: #ffc107; }
+        .verdict-FAIL { color: #dc3545; }
+        .verdict-SKIPPED { color: #6c757d; }
+        table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+        th { background: #1a1a2e; color: white; padding: 0.75rem; text-align: left; }
+        td { padding: 0.75rem; border-bottom: 1px solid #dee2e6; }
+        tr:hover { background: #f8f9fa; }
+        .badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 4px; 
+                  font-size: 0.85rem; font-weight: 500; }
+        .badge-PASS { background: #d4edda; color: #155724; }
+        .badge-WARNING { background: #fff3cd; color: #856404; }
+        .badge-FAIL { background: #f8d7da; color: #721c24; }
+        .badge-SKIPPED { background: #e2e3e5; color: #383d41; }
+        .conclusion { background: #fff3cd; border-left: 4px solid #ffc107; padding: 1.5rem; margin: 2rem 0; }
+        .conclusion h3 { color: #856404; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧬 ARCHCODE Validation Suite Report</h1>
+        <p class="subtitle">Falsification Framework for 3D-Genome Models — Generated 2026-04-07 11:09</p>
+        
+        <div class="summary-grid">
+            <div class="stat">
+                <div class="stat-number">27</div>
+                <div class="stat-label">Tests Run</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number verdict-PASS">9</div>
+                <div class="stat-label">PASS</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number verdict-WARNING">7</div>
+                <div class="stat-label">WARNING</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number verdict-FAIL">9</div>
+                <div class="stat-label">FAIL</div>
+            </div>
+        </div>
+        
+        <h2>Results by Test</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Test</th>
+                    <th>Locus</th>
+                    <th>Status</th>
+                    <th>Verdict</th>
+                    <th>Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>HBB</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Shuffled AUC=0.979</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>BRCA1</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.691</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>TP53</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.669</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>CFTR</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.665</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>MLH1</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.706</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>LDLR</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.647</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>SCN5A</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.584</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>TERT</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.854</td>
+                </tr>
+                <tr>
+                    <td><strong>ctcf_shuffle</strong></td>
+                    <td>GJB2</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Shuffled AUC=0.894</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>HBB</td>
+                    <td>SKIPPED</td>
+                    <td><span class="badge badge-N/A">N/A</span></td>
+                    <td>no_label_col</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>BRCA1</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-WARNING">WARNING</span></td>
+                    <td>SSIM=0.691, LR=0.725, RF=0.826, Severity=0.627</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>TP53</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-WARNING">WARNING</span></td>
+                    <td>SSIM=0.669, LR=0.732, RF=0.845, Severity=0.620</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>CFTR</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-WARNING">WARNING</span></td>
+                    <td>SSIM=0.665, LR=0.622, RF=0.731, Severity=0.621</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>MLH1</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-WARNING">WARNING</span></td>
+                    <td>SSIM=0.706, LR=0.719, RF=0.817, Severity=0.700</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>LDLR</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-WARNING">WARNING</span></td>
+                    <td>SSIM=0.647, LR=0.699, RF=0.795, Severity=0.610</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>SCN5A</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-WARNING">WARNING</span></td>
+                    <td>SSIM=0.584, LR=0.600, RF=0.678, Severity=0.584</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>TERT</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-WARNING">WARNING</span></td>
+                    <td>SSIM=0.844, LR=0.872, RF=0.893, Severity=0.873</td>
+                </tr>
+                <tr>
+                    <td><strong>simple_baseline</strong></td>
+                    <td>GJB2</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>SSIM=0.871, LR=0.959, RF=0.948, Severity=0.957</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>HBB</td>
+                    <td>SKIPPED</td>
+                    <td><span class="badge badge-N/A">N/A</span></td>
+                    <td>no_label_col</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>BRCA1</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Med within-cat AUC=0.500, 2/7 cats sig.</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>TP53</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-PASS">PASS</span></td>
+                    <td>Med within-cat AUC=0.637, 4/4 cats sig.</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>CFTR</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Med within-cat AUC=0.490, 1/5 cats sig.</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>MLH1</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Med within-cat AUC=0.501, 2/6 cats sig.</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>LDLR</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Med within-cat AUC=0.477, 2/4 cats sig.</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>SCN5A</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Med within-cat AUC=0.500, 0/5 cats sig.</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>TERT</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Med within-cat AUC=0.478, 1/5 cats sig.</td>
+                </tr>
+                <tr>
+                    <td><strong>within_category</strong></td>
+                    <td>GJB2</td>
+                    <td>COMPLETED</td>
+                    <td><span class="badge badge-FAIL">FAIL</span></td>
+                    <td>Med within-cat AUC=0.455, 1/3 cats sig.</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Detailed Results</h2>
+        <div class="card">
+            <h3>ctcf_shuffle — HBB</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 1103,
+  "real_auc": 0.9785514636449479,
+  "shuffled_auc_median": 0.9785514636449479,
+  "shuffled_auc_std": 1.1102230246251565e-16,
+  "t_test_p": 6.6337304402195365e-09,
+  "runtime_seconds": 0.002534627914428711
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — BRCA1</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 10682,
+  "real_auc": 0.6910417947743037,
+  "shuffled_auc_median": 0.6910417947743037,
+  "shuffled_auc_std": 1.1102230246251565e-16,
+  "t_test_p": 6.6337304402195365e-09,
+  "runtime_seconds": 0.0047757625579833984
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — TP53</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 2794,
+  "real_auc": 0.6690699723031261,
+  "shuffled_auc_median": 0.6690699723031261,
+  "shuffled_auc_std": 1.1102230246251565e-16,
+  "t_test_p": 6.6337304402195365e-09,
+  "runtime_seconds": 0.004148721694946289
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — CFTR</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 3349,
+  "real_auc": 0.6645281820950714,
+  "shuffled_auc_median": 0.6645281820950714,
+  "shuffled_auc_std": 1.1102230246251565e-16,
+  "t_test_p": 6.6337304402195365e-09,
+  "runtime_seconds": 0.0015947818756103516
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — MLH1</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 4060,
+  "real_auc": 0.7057019452063432,
+  "shuffled_auc_median": 0.7057019452063432,
+  "shuffled_auc_std": 0.0,
+  "t_test_p": NaN,
+  "runtime_seconds": 0.0020766258239746094
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — LDLR</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 3284,
+  "real_auc": 0.6465535933540584,
+  "shuffled_auc_median": 0.6465535933540584,
+  "shuffled_auc_std": 0.0,
+  "t_test_p": NaN,
+  "runtime_seconds": 0.002593994140625
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — SCN5A</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 2488,
+  "real_auc": 0.5841038765473032,
+  "shuffled_auc_median": 0.5841038765473032,
+  "shuffled_auc_std": 1.1102230246251565e-16,
+  "t_test_p": 6.6337304402195365e-09,
+  "runtime_seconds": 0.0040323734283447266
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — TERT</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 2078,
+  "real_auc": 0.8540464661034413,
+  "shuffled_auc_median": 0.8540464661034413,
+  "shuffled_auc_std": 0.0,
+  "t_test_p": NaN,
+  "runtime_seconds": 0.0019953250885009766
+}</pre>
+        </div>
+        <div class="card">
+            <h3>ctcf_shuffle — GJB2</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 455,
+  "real_auc": 0.8941397849462365,
+  "shuffled_auc_median": 0.8941397849462365,
+  "shuffled_auc_std": 0.0,
+  "t_test_p": NaN,
+  "runtime_seconds": 0.0010161399841308594
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — BRCA1</h3>
+            <p>Verdict: <span class="badge badge-WARNING">WARNING</span></p>
+            <pre>{
+  "n_variants": 10682,
+  "ssim_auc": 0.6910417947743037,
+  "lr_auc": 0.7246255149731424,
+  "rf_auc": 0.8257766060981582,
+  "severity_auc": 0.6272067371708513,
+  "delta_vs_best_baseline": -0.13473481132385445
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — TP53</h3>
+            <p>Verdict: <span class="badge badge-WARNING">WARNING</span></p>
+            <pre>{
+  "n_variants": 2794,
+  "ssim_auc": 0.6690699723031261,
+  "lr_auc": 0.7322984701908095,
+  "rf_auc": 0.8452792305189395,
+  "severity_auc": 0.6201375055883138,
+  "delta_vs_best_baseline": -0.17620925821581335
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — CFTR</h3>
+            <p>Verdict: <span class="badge badge-WARNING">WARNING</span></p>
+            <pre>{
+  "n_variants": 3349,
+  "ssim_auc": 0.6645281820950714,
+  "lr_auc": 0.6216162110143038,
+  "rf_auc": 0.7314330420532884,
+  "severity_auc": 0.621372762670396,
+  "delta_vs_best_baseline": -0.06690485995821704
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — MLH1</h3>
+            <p>Verdict: <span class="badge badge-WARNING">WARNING</span></p>
+            <pre>{
+  "n_variants": 4060,
+  "ssim_auc": 0.7057019452063432,
+  "lr_auc": 0.718889120085753,
+  "rf_auc": 0.8166780793845959,
+  "severity_auc": 0.7001948359027712,
+  "delta_vs_best_baseline": -0.1109761341782527
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — LDLR</h3>
+            <p>Verdict: <span class="badge badge-WARNING">WARNING</span></p>
+            <pre>{
+  "n_variants": 3284,
+  "ssim_auc": 0.6465535933540584,
+  "lr_auc": 0.6990754286510446,
+  "rf_auc": 0.7950815068314221,
+  "severity_auc": 0.6100647004014386,
+  "delta_vs_best_baseline": -0.14852791347736372
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — SCN5A</h3>
+            <p>Verdict: <span class="badge badge-WARNING">WARNING</span></p>
+            <pre>{
+  "n_variants": 2488,
+  "ssim_auc": 0.5841038765473032,
+  "lr_auc": 0.5998431973916888,
+  "rf_auc": 0.6783560593501327,
+  "severity_auc": 0.5839601983863837,
+  "delta_vs_best_baseline": -0.09425218280282943
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — TERT</h3>
+            <p>Verdict: <span class="badge badge-WARNING">WARNING</span></p>
+            <pre>{
+  "n_variants": 2089,
+  "ssim_auc": 0.843577088097084,
+  "lr_auc": 0.8718314352964883,
+  "rf_auc": 0.8931007363580642,
+  "severity_auc": 0.8733462730094403,
+  "delta_vs_best_baseline": -0.04952364826098021
+}</pre>
+        </div>
+        <div class="card">
+            <h3>simple_baseline — GJB2</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 469,
+  "ssim_auc": 0.8712451201972468,
+  "lr_auc": 0.9586603657283748,
+  "rf_auc": 0.9475138689130882,
+  "severity_auc": 0.9574173001849187,
+  "delta_vs_best_baseline": -0.087415245531128
+}</pre>
+        </div>
+        <div class="card">
+            <h3>within_category — BRCA1</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 10682,
+  "overall_auc": 0.6910417947743037,
+  "n_categories_tested": 7,
+  "n_significant": 2,
+  "n_surviving_fdr": 2,
+  "median_within_cat_auc": 0.5
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>149/72</td>
+                        <td>0.149</td>
+                        <td>+1.879</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>3_prime_UTR</td>
+                        <td>5/43</td>
+                        <td>0.500</td>
+                        <td>+0.000</td>
+                        <td>1.0000</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>splice_region</td>
+                        <td>169/194</td>
+                        <td>0.496</td>
+                        <td>-0.034</td>
+                        <td>0.6910</td>
+                        <td>0.9674</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>3494/2026</td>
+                        <td>0.499</td>
+                        <td>+0.017</td>
+                        <td>0.5970</td>
+                        <td>0.9674</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>inframe_indel</td>
+                        <td>51/5</td>
+                        <td>0.510</td>
+                        <td>-0.198</td>
+                        <td>1.0000</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>intronic</td>
+                        <td>346/1238</td>
+                        <td>0.513</td>
+                        <td>-0.199</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>5_prime_UTR</td>
+                        <td>8/38</td>
+                        <td>0.612</td>
+                        <td>-0.204</td>
+                        <td>0.3390</td>
+                        <td>0.7910</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>within_category — TP53</h3>
+            <p>Verdict: <span class="badge badge-PASS">PASS</span></p>
+            <pre>{
+  "n_variants": 2794,
+  "overall_auc": 0.6690699723031261,
+  "n_categories_tested": 4,
+  "n_significant": 4,
+  "n_surviving_fdr": 4,
+  "median_within_cat_auc": 0.6368021031871467
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>19/34</td>
+                        <td>0.747</td>
+                        <td>-0.591</td>
+                        <td>0.0040</td>
+                        <td>0.0053</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>786/613</td>
+                        <td>0.583</td>
+                        <td>-0.333</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>intronic</td>
+                        <td>122/406</td>
+                        <td>0.561</td>
+                        <td>-0.209</td>
+                        <td>0.0270</td>
+                        <td>0.0270</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>splice_region</td>
+                        <td>73/66</td>
+                        <td>0.691</td>
+                        <td>-0.776</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>within_category — CFTR</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 3349,
+  "overall_auc": 0.6645281820950714,
+  "n_categories_tested": 5,
+  "n_significant": 1,
+  "n_surviving_fdr": 1,
+  "median_within_cat_auc": 0.4895895436826416
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>32/22</td>
+                        <td>0.392</td>
+                        <td>+0.566</td>
+                        <td>0.1150</td>
+                        <td>0.1917</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>5_prime_UTR</td>
+                        <td>6/13</td>
+                        <td>0.269</td>
+                        <td>+1.132</td>
+                        <td>0.1130</td>
+                        <td>0.1917</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>854/945</td>
+                        <td>0.529</td>
+                        <td>-0.190</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>intronic</td>
+                        <td>245/534</td>
+                        <td>0.490</td>
+                        <td>+0.046</td>
+                        <td>0.2910</td>
+                        <td>0.3637</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>splice_region</td>
+                        <td>75/74</td>
+                        <td>0.505</td>
+                        <td>+0.191</td>
+                        <td>0.9990</td>
+                        <td>0.9990</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>within_category — MLH1</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 4060,
+  "overall_auc": 0.7057019452063432,
+  "n_categories_tested": 6,
+  "n_significant": 2,
+  "n_surviving_fdr": 2,
+  "median_within_cat_auc": 0.5010542929292929
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>59/46</td>
+                        <td>0.698</td>
+                        <td>-0.004</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>5_prime_UTR</td>
+                        <td>11/15</td>
+                        <td>0.476</td>
+                        <td>-0.342</td>
+                        <td>0.8430</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>800/792</td>
+                        <td>0.502</td>
+                        <td>-0.016</td>
+                        <td>0.7730</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>splice_region</td>
+                        <td>154/132</td>
+                        <td>0.341</td>
+                        <td>+0.696</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>intronic</td>
+                        <td>316/639</td>
+                        <td>0.514</td>
+                        <td>-0.045</td>
+                        <td>0.1850</td>
+                        <td>0.3700</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3_prime_UTR</td>
+                        <td>5/8</td>
+                        <td>0.500</td>
+                        <td>+0.000</td>
+                        <td>1.0000</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>within_category — LDLR</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 3284,
+  "overall_auc": 0.6465535933540584,
+  "n_categories_tested": 4,
+  "n_significant": 2,
+  "n_surviving_fdr": 2,
+  "median_within_cat_auc": 0.47694298863989393
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>71/5</td>
+                        <td>0.037</td>
+                        <td>+2.849</td>
+                        <td>0.0010</td>
+                        <td>0.0020</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>1164/583</td>
+                        <td>0.479</td>
+                        <td>+0.175</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>splice_region</td>
+                        <td>69/24</td>
+                        <td>0.488</td>
+                        <td>-0.045</td>
+                        <td>0.8510</td>
+                        <td>0.8510</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>intronic</td>
+                        <td>184/343</td>
+                        <td>0.475</td>
+                        <td>+0.203</td>
+                        <td>0.1450</td>
+                        <td>0.1933</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>within_category — SCN5A</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 2488,
+  "overall_auc": 0.5841038765473032,
+  "n_categories_tested": 5,
+  "n_significant": 0,
+  "n_surviving_fdr": 0,
+  "median_within_cat_auc": 0.5
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>9/12</td>
+                        <td>0.583</td>
+                        <td>-0.289</td>
+                        <td>0.5170</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>3_prime_UTR</td>
+                        <td>9/14</td>
+                        <td>0.413</td>
+                        <td>+0.429</td>
+                        <td>0.6380</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>563/1094</td>
+                        <td>0.500</td>
+                        <td>+0.000</td>
+                        <td>1.0000</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>intronic</td>
+                        <td>114/406</td>
+                        <td>0.500</td>
+                        <td>+0.000</td>
+                        <td>1.0000</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>splice_region</td>
+                        <td>14/31</td>
+                        <td>0.387</td>
+                        <td>-0.070</td>
+                        <td>0.2180</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>within_category — TERT</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 2089,
+  "overall_auc": 0.843577088097084,
+  "n_categories_tested": 5,
+  "n_significant": 1,
+  "n_surviving_fdr": 1,
+  "median_within_cat_auc": 0.4779411764705882
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>13/11</td>
+                        <td>0.154</td>
+                        <td>+1.496</td>
+                        <td>0.0030</td>
+                        <td>0.0150</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>51/1143</td>
+                        <td>0.498</td>
+                        <td>+0.007</td>
+                        <td>1.0000</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>missense</td>
+                        <td>218/31</td>
+                        <td>0.455</td>
+                        <td>+0.145</td>
+                        <td>0.4020</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>splice_region</td>
+                        <td>8/68</td>
+                        <td>0.478</td>
+                        <td>+0.452</td>
+                        <td>0.8950</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>intronic</td>
+                        <td>45/394</td>
+                        <td>0.505</td>
+                        <td>-0.045</td>
+                        <td>0.9260</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h3>within_category — GJB2</h3>
+            <p>Verdict: <span class="badge badge-FAIL">FAIL</span></p>
+            <pre>{
+  "n_variants": 469,
+  "overall_auc": 0.8712451201972468,
+  "n_categories_tested": 3,
+  "n_significant": 1,
+  "n_surviving_fdr": 1,
+  "median_within_cat_auc": 0.4552380952380952
+}</pre>
+            <table>
+                <thead><tr><th>Category</th><th>N(P/B)</th><th>AUC</th><th>Cohen's d</th><th>p-value</th><th>BH q-value</th><th>FDR</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>other</td>
+                        <td>23/13</td>
+                        <td>0.114</td>
+                        <td>+1.468</td>
+                        <td>0.0000</td>
+                        <td>0.0000</td>
+                        <td>✅</td>
+                    </tr>
+                    <tr>
+                        <td>synonymous</td>
+                        <td>5/118</td>
+                        <td>0.500</td>
+                        <td>+0.000</td>
+                        <td>1.0000</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>missense</td>
+                        <td>175/9</td>
+                        <td>0.455</td>
+                        <td>+0.199</td>
+                        <td>0.7480</td>
+                        <td>1.0000</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="conclusion">
+            <h3>⚠️ Interpretation Guide</h3>
+            <ul>
+                <li><strong>PASS</strong> — ARCHCODE adds genuine value beyond simple baselines</li>
+                <li><strong>WARNING</strong> — Signal exists but is fragile or marginal</li>
+                <li><strong>FAIL</strong> — Simple baselines match or beat ARCHCODE; physics not justified for this task</li>
+                <li><strong>SKIPPED</strong> — Insufficient data or configuration</li>
+            </ul>
+        </div>
+        
+        <footer style="margin-top: 3rem; padding-top: 1rem; border-top: 1px solid #dee2e6; color: #6c757d; font-size: 0.9rem;">
+            <p>ARCHCODE Validation Suite v1.0 | Generated automatically from test results</p>
+        </footer>
+    </div>
+</body>
+</html>

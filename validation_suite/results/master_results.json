@@ -1,0 +1,765 @@
+{
+  "suite": "ARCHCODE Validation Suite",
+  "version": "1.0",
+  "date": "2026-04-07T10:07:37.708902",
+  "runtime_seconds": 25.943315029144287,
+  "results": [
+    {
+      "test": "ctcf_shuffle",
+      "locus": "HBB",
+      "status": "COMPLETED",
+      "n_variants": 1103,
+      "real_auc": 0.9785514636449479,
+      "shuffled_auc_median": 0.9785514636449479,
+      "shuffled_auc_std": 1.1102230246251565e-16,
+      "t_test_p": 6.6337304402195365e-09,
+      "verdict": "FAIL",
+      "runtime_seconds": 0.002534627914428711
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "BRCA1",
+      "status": "COMPLETED",
+      "n_variants": 10682,
+      "real_auc": 0.6910417947743037,
+      "shuffled_auc_median": 0.6910417947743037,
+      "shuffled_auc_std": 1.1102230246251565e-16,
+      "t_test_p": 6.6337304402195365e-09,
+      "verdict": "PASS",
+      "runtime_seconds": 0.0047757625579833984
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "TP53",
+      "status": "COMPLETED",
+      "n_variants": 2794,
+      "real_auc": 0.6690699723031261,
+      "shuffled_auc_median": 0.6690699723031261,
+      "shuffled_auc_std": 1.1102230246251565e-16,
+      "t_test_p": 6.6337304402195365e-09,
+      "verdict": "PASS",
+      "runtime_seconds": 0.004148721694946289
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "CFTR",
+      "status": "COMPLETED",
+      "n_variants": 3349,
+      "real_auc": 0.6645281820950714,
+      "shuffled_auc_median": 0.6645281820950714,
+      "shuffled_auc_std": 1.1102230246251565e-16,
+      "t_test_p": 6.6337304402195365e-09,
+      "verdict": "PASS",
+      "runtime_seconds": 0.0015947818756103516
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "MLH1",
+      "status": "COMPLETED",
+      "n_variants": 4060,
+      "real_auc": 0.7057019452063432,
+      "shuffled_auc_median": 0.7057019452063432,
+      "shuffled_auc_std": 0.0,
+      "t_test_p": NaN,
+      "verdict": "PASS",
+      "runtime_seconds": 0.0020766258239746094
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "LDLR",
+      "status": "COMPLETED",
+      "n_variants": 3284,
+      "real_auc": 0.6465535933540584,
+      "shuffled_auc_median": 0.6465535933540584,
+      "shuffled_auc_std": 0.0,
+      "t_test_p": NaN,
+      "verdict": "PASS",
+      "runtime_seconds": 0.002593994140625
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "SCN5A",
+      "status": "COMPLETED",
+      "n_variants": 2488,
+      "real_auc": 0.5841038765473032,
+      "shuffled_auc_median": 0.5841038765473032,
+      "shuffled_auc_std": 1.1102230246251565e-16,
+      "t_test_p": 6.6337304402195365e-09,
+      "verdict": "PASS",
+      "runtime_seconds": 0.0040323734283447266
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "TERT",
+      "status": "COMPLETED",
+      "n_variants": 2078,
+      "real_auc": 0.8540464661034413,
+      "shuffled_auc_median": 0.8540464661034413,
+      "shuffled_auc_std": 0.0,
+      "t_test_p": NaN,
+      "verdict": "PASS",
+      "runtime_seconds": 0.0019953250885009766
+    },
+    {
+      "test": "ctcf_shuffle",
+      "locus": "GJB2",
+      "status": "COMPLETED",
+      "n_variants": 455,
+      "real_auc": 0.8941397849462365,
+      "shuffled_auc_median": 0.8941397849462365,
+      "shuffled_auc_std": 0.0,
+      "t_test_p": NaN,
+      "verdict": "PASS",
+      "runtime_seconds": 0.0010161399841308594
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "HBB",
+      "status": "SKIPPED",
+      "reason": "no_label_col"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "BRCA1",
+      "status": "COMPLETED",
+      "n_variants": 10682,
+      "ssim_auc": 0.6910417947743037,
+      "lr_auc": 0.7246255149731424,
+      "rf_auc": 0.8257766060981582,
+      "severity_auc": 0.6272067371708513,
+      "delta_vs_best_baseline": -0.13473481132385445,
+      "verdict": "WARNING"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "TP53",
+      "status": "COMPLETED",
+      "n_variants": 2794,
+      "ssim_auc": 0.6690699723031261,
+      "lr_auc": 0.7322984701908095,
+      "rf_auc": 0.8452792305189395,
+      "severity_auc": 0.6201375055883138,
+      "delta_vs_best_baseline": -0.17620925821581335,
+      "verdict": "WARNING"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "CFTR",
+      "status": "COMPLETED",
+      "n_variants": 3349,
+      "ssim_auc": 0.6645281820950714,
+      "lr_auc": 0.6216162110143038,
+      "rf_auc": 0.7314330420532884,
+      "severity_auc": 0.621372762670396,
+      "delta_vs_best_baseline": -0.06690485995821704,
+      "verdict": "WARNING"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "MLH1",
+      "status": "COMPLETED",
+      "n_variants": 4060,
+      "ssim_auc": 0.7057019452063432,
+      "lr_auc": 0.718889120085753,
+      "rf_auc": 0.8166780793845959,
+      "severity_auc": 0.7001948359027712,
+      "delta_vs_best_baseline": -0.1109761341782527,
+      "verdict": "WARNING"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "LDLR",
+      "status": "COMPLETED",
+      "n_variants": 3284,
+      "ssim_auc": 0.6465535933540584,
+      "lr_auc": 0.6990754286510446,
+      "rf_auc": 0.7950815068314221,
+      "severity_auc": 0.6100647004014386,
+      "delta_vs_best_baseline": -0.14852791347736372,
+      "verdict": "WARNING"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "SCN5A",
+      "status": "COMPLETED",
+      "n_variants": 2488,
+      "ssim_auc": 0.5841038765473032,
+      "lr_auc": 0.5998431973916888,
+      "rf_auc": 0.6783560593501327,
+      "severity_auc": 0.5839601983863837,
+      "delta_vs_best_baseline": -0.09425218280282943,
+      "verdict": "WARNING"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "TERT",
+      "status": "COMPLETED",
+      "n_variants": 2089,
+      "ssim_auc": 0.843577088097084,
+      "lr_auc": 0.8718314352964883,
+      "rf_auc": 0.8931007363580642,
+      "severity_auc": 0.8733462730094403,
+      "delta_vs_best_baseline": -0.04952364826098021,
+      "verdict": "WARNING"
+    },
+    {
+      "test": "simple_baseline",
+      "locus": "GJB2",
+      "status": "COMPLETED",
+      "n_variants": 469,
+      "ssim_auc": 0.8712451201972468,
+      "lr_auc": 0.9586603657283748,
+      "rf_auc": 0.9475138689130882,
+      "severity_auc": 0.9574173001849187,
+      "delta_vs_best_baseline": -0.087415245531128,
+      "verdict": "FAIL"
+    },
+    {
+      "test": "within_category",
+      "locus": "HBB",
+      "status": "SKIPPED",
+      "reason": "no_label_col"
+    },
+    {
+      "test": "within_category",
+      "locus": "BRCA1",
+      "status": "COMPLETED",
+      "n_variants": 10682,
+      "overall_auc": 0.6910417947743037,
+      "n_categories_tested": 7,
+      "n_significant": 2,
+      "n_surviving_fdr": 2,
+      "median_within_cat_auc": 0.5,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 149,
+          "n_benign": 72,
+          "auc": 0.14890939597315433,
+          "cohens_d": 1.8792882582603343,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "3_prime_UTR",
+          "n_pathogenic": 5,
+          "n_benign": 43,
+          "auc": 0.5,
+          "cohens_d": 0.0,
+          "perm_p": 1.0,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "splice_region",
+          "n_pathogenic": 169,
+          "n_benign": 194,
+          "auc": 0.49643140364789845,
+          "cohens_d": -0.03408678911676003,
+          "perm_p": 0.691,
+          "significant": false,
+          "bh_q": 0.9673999999999999,
+          "survives_fdr": false
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 3494,
+          "n_benign": 2026,
+          "auc": 0.4988824446477419,
+          "cohens_d": 0.017215322013054327,
+          "perm_p": 0.597,
+          "significant": false,
+          "bh_q": 0.9673999999999999,
+          "survives_fdr": false
+        },
+        {
+          "category": "inframe_indel",
+          "n_pathogenic": 51,
+          "n_benign": 5,
+          "auc": 0.5098039215686274,
+          "cohens_d": -0.19802950859575016,
+          "perm_p": 1.0,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "intronic",
+          "n_pathogenic": 346,
+          "n_benign": 1238,
+          "auc": 0.512834190891518,
+          "cohens_d": -0.19864336610370356,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "5_prime_UTR",
+          "n_pathogenic": 8,
+          "n_benign": 38,
+          "auc": 0.6118421052631579,
+          "cohens_d": -0.20399392524081564,
+          "perm_p": 0.339,
+          "significant": false,
+          "bh_q": 0.791,
+          "survives_fdr": false
+        }
+      ],
+      "verdict": "FAIL"
+    },
+    {
+      "test": "within_category",
+      "locus": "TP53",
+      "status": "COMPLETED",
+      "n_variants": 2794,
+      "overall_auc": 0.6690699723031261,
+      "n_categories_tested": 4,
+      "n_significant": 4,
+      "n_surviving_fdr": 4,
+      "median_within_cat_auc": 0.6368021031871467,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 19,
+          "n_benign": 34,
+          "auc": 0.7469040247678018,
+          "cohens_d": -0.5905720988705392,
+          "perm_p": 0.004,
+          "significant": true,
+          "bh_q": 0.005333333333333333,
+          "survives_fdr": true
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 786,
+          "n_benign": 613,
+          "auc": 0.5829649369679006,
+          "cohens_d": -0.3333070767041825,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "intronic",
+          "n_pathogenic": 122,
+          "n_benign": 406,
+          "auc": 0.5606779455705402,
+          "cohens_d": -0.20931556479463806,
+          "perm_p": 0.027,
+          "significant": true,
+          "bh_q": 0.027,
+          "survives_fdr": true
+        },
+        {
+          "category": "splice_region",
+          "n_pathogenic": 73,
+          "n_benign": 66,
+          "auc": 0.6906392694063926,
+          "cohens_d": -0.7758350908259726,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        }
+      ],
+      "verdict": "PASS"
+    },
+    {
+      "test": "within_category",
+      "locus": "CFTR",
+      "status": "COMPLETED",
+      "n_variants": 3349,
+      "overall_auc": 0.6645281820950714,
+      "n_categories_tested": 5,
+      "n_significant": 1,
+      "n_surviving_fdr": 1,
+      "median_within_cat_auc": 0.4895895436826416,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 32,
+          "n_benign": 22,
+          "auc": 0.39204545454545453,
+          "cohens_d": 0.5659948786002506,
+          "perm_p": 0.115,
+          "significant": false,
+          "bh_q": 0.19166666666666668,
+          "survives_fdr": false
+        },
+        {
+          "category": "5_prime_UTR",
+          "n_pathogenic": 6,
+          "n_benign": 13,
+          "auc": 0.2692307692307692,
+          "cohens_d": 1.1319168309019954,
+          "perm_p": 0.113,
+          "significant": false,
+          "bh_q": 0.19166666666666668,
+          "survives_fdr": false
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 854,
+          "n_benign": 945,
+          "auc": 0.5292517006802722,
+          "cohens_d": -0.18953954817990867,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "intronic",
+          "n_pathogenic": 245,
+          "n_benign": 534,
+          "auc": 0.4895895436826416,
+          "cohens_d": 0.04621967646213923,
+          "perm_p": 0.291,
+          "significant": false,
+          "bh_q": 0.36374999999999996,
+          "survives_fdr": false
+        },
+        {
+          "category": "splice_region",
+          "n_pathogenic": 75,
+          "n_benign": 74,
+          "auc": 0.5045045045045046,
+          "cohens_d": 0.19078204571281945,
+          "perm_p": 0.999,
+          "significant": false,
+          "bh_q": 0.999,
+          "survives_fdr": false
+        }
+      ],
+      "verdict": "FAIL"
+    },
+    {
+      "test": "within_category",
+      "locus": "MLH1",
+      "status": "COMPLETED",
+      "n_variants": 4060,
+      "overall_auc": 0.7057019452063432,
+      "n_categories_tested": 6,
+      "n_significant": 2,
+      "n_surviving_fdr": 2,
+      "median_within_cat_auc": 0.5010542929292929,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 59,
+          "n_benign": 46,
+          "auc": 0.6976787030213707,
+          "cohens_d": -0.0038793017315306945,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "5_prime_UTR",
+          "n_pathogenic": 11,
+          "n_benign": 15,
+          "auc": 0.47575757575757577,
+          "cohens_d": -0.3420549034007665,
+          "perm_p": 0.843,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 800,
+          "n_benign": 792,
+          "auc": 0.5021085858585859,
+          "cohens_d": -0.01550083375963794,
+          "perm_p": 0.773,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "splice_region",
+          "n_pathogenic": 154,
+          "n_benign": 132,
+          "auc": 0.34113046044864226,
+          "cohens_d": 0.6959406599182658,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "intronic",
+          "n_pathogenic": 316,
+          "n_benign": 639,
+          "auc": 0.5135966997484201,
+          "cohens_d": -0.044855268094135134,
+          "perm_p": 0.185,
+          "significant": false,
+          "bh_q": 0.36999999999999994,
+          "survives_fdr": false
+        },
+        {
+          "category": "3_prime_UTR",
+          "n_pathogenic": 5,
+          "n_benign": 8,
+          "auc": 0.5,
+          "cohens_d": 0.0,
+          "perm_p": 1.0,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        }
+      ],
+      "verdict": "FAIL"
+    },
+    {
+      "test": "within_category",
+      "locus": "LDLR",
+      "status": "COMPLETED",
+      "n_variants": 3284,
+      "overall_auc": 0.6465535933540584,
+      "n_categories_tested": 4,
+      "n_significant": 2,
+      "n_surviving_fdr": 2,
+      "median_within_cat_auc": 0.47694298863989393,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 71,
+          "n_benign": 5,
+          "auc": 0.036619718309859155,
+          "cohens_d": 2.8488154275808273,
+          "perm_p": 0.001,
+          "significant": true,
+          "bh_q": 0.002,
+          "survives_fdr": true
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 1164,
+          "n_benign": 583,
+          "auc": 0.47859601657500905,
+          "cohens_d": 0.17499029164625288,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "splice_region",
+          "n_pathogenic": 69,
+          "n_benign": 24,
+          "auc": 0.4879227053140096,
+          "cohens_d": -0.044791381653664496,
+          "perm_p": 0.851,
+          "significant": false,
+          "bh_q": 0.851,
+          "survives_fdr": false
+        },
+        {
+          "category": "intronic",
+          "n_pathogenic": 184,
+          "n_benign": 343,
+          "auc": 0.4752899607047788,
+          "cohens_d": 0.20257298813100555,
+          "perm_p": 0.145,
+          "significant": false,
+          "bh_q": 0.19333333333333333,
+          "survives_fdr": false
+        }
+      ],
+      "verdict": "FAIL"
+    },
+    {
+      "test": "within_category",
+      "locus": "SCN5A",
+      "status": "COMPLETED",
+      "n_variants": 2488,
+      "overall_auc": 0.5841038765473032,
+      "n_categories_tested": 5,
+      "n_significant": 0,
+      "n_surviving_fdr": 0,
+      "median_within_cat_auc": 0.5,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 9,
+          "n_benign": 12,
+          "auc": 0.5833333333333333,
+          "cohens_d": -0.2894068851586999,
+          "perm_p": 0.517,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "3_prime_UTR",
+          "n_pathogenic": 9,
+          "n_benign": 14,
+          "auc": 0.41269841269841273,
+          "cohens_d": 0.42926397118366927,
+          "perm_p": 0.638,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 563,
+          "n_benign": 1094,
+          "auc": 0.5,
+          "cohens_d": 0.0,
+          "perm_p": 1.0,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "intronic",
+          "n_pathogenic": 114,
+          "n_benign": 406,
+          "auc": 0.5,
+          "cohens_d": 0.0,
+          "perm_p": 1.0,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "splice_region",
+          "n_pathogenic": 14,
+          "n_benign": 31,
+          "auc": 0.3870967741935484,
+          "cohens_d": -0.07040196039792786,
+          "perm_p": 0.218,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        }
+      ],
+      "verdict": "FAIL"
+    },
+    {
+      "test": "within_category",
+      "locus": "TERT",
+      "status": "COMPLETED",
+      "n_variants": 2089,
+      "overall_auc": 0.843577088097084,
+      "n_categories_tested": 5,
+      "n_significant": 1,
+      "n_surviving_fdr": 1,
+      "median_within_cat_auc": 0.4779411764705882,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 13,
+          "n_benign": 11,
+          "auc": 0.15384615384615383,
+          "cohens_d": 1.4961939860890479,
+          "perm_p": 0.003,
+          "significant": true,
+          "bh_q": 0.015,
+          "survives_fdr": true
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 51,
+          "n_benign": 1143,
+          "auc": 0.49832741495548355,
+          "cohens_d": 0.0072917223888280605,
+          "perm_p": 1.0,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "missense",
+          "n_pathogenic": 218,
+          "n_benign": 31,
+          "auc": 0.4549422906185262,
+          "cohens_d": 0.14529295177209486,
+          "perm_p": 0.402,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "splice_region",
+          "n_pathogenic": 8,
+          "n_benign": 68,
+          "auc": 0.4779411764705882,
+          "cohens_d": 0.45199413714989556,
+          "perm_p": 0.895,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "intronic",
+          "n_pathogenic": 45,
+          "n_benign": 394,
+          "auc": 0.5051889452904681,
+          "cohens_d": -0.04509327771799297,
+          "perm_p": 0.926,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        }
+      ],
+      "verdict": "FAIL"
+    },
+    {
+      "test": "within_category",
+      "locus": "GJB2",
+      "status": "COMPLETED",
+      "n_variants": 469,
+      "overall_auc": 0.8712451201972468,
+      "n_categories_tested": 3,
+      "n_significant": 1,
+      "n_surviving_fdr": 1,
+      "median_within_cat_auc": 0.4552380952380952,
+      "category_results": [
+        {
+          "category": "other",
+          "n_pathogenic": 23,
+          "n_benign": 13,
+          "auc": 0.11371237458193979,
+          "cohens_d": 1.4680894892772696,
+          "perm_p": 0.0,
+          "significant": true,
+          "bh_q": 0.0,
+          "survives_fdr": true
+        },
+        {
+          "category": "synonymous",
+          "n_pathogenic": 5,
+          "n_benign": 118,
+          "auc": 0.5,
+          "cohens_d": 0.0,
+          "perm_p": 1.0,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        },
+        {
+          "category": "missense",
+          "n_pathogenic": 175,
+          "n_benign": 9,
+          "auc": 0.4552380952380952,
+          "cohens_d": 0.19874081699284998,
+          "perm_p": 0.748,
+          "significant": false,
+          "bh_q": 1.0,
+          "survives_fdr": false
+        }
+      ],
+      "verdict": "FAIL"
+    }
+  ]
+}
