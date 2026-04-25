@@ -26,14 +26,52 @@ def parse_maf(maf_path: Path) -> pd.DataFrame:
     Returns:
         DataFrame with columns: sample_id, n_mutations
     """
-    # TODO: Implement MAF parsing
-    # MAF format: tab-separated, columns include:
-    # - Hugo_Symbol (gene name)
-    # - Tumor_Sample_Barcode (sample ID)
-    # - Variant_Classification (missense, nonsense, etc.)
-    # - Variant_Type (SNP, INS, DEL)
+    print(f"  Reading MAF file: {maf_path.name}")
 
-    raise NotImplementedError("MAF parsing not yet implemented")
+    # MAF files may be gzipped
+    if maf_path.suffix == ".gz":
+        import gzip
+
+        opener = gzip.open
+    else:
+        opener = open
+
+    # Skip comment lines (start with #)
+    with opener(maf_path, "rt") as f:
+        lines = [line for line in f if not line.startswith("#")]
+
+    # Parse as TSV
+    from io import StringIO
+
+    maf_df = pd.read_csv(StringIO("".join(lines)), sep="\t", low_memory=False)
+
+    print(f"  Loaded {len(maf_df):,} mutations")
+
+    # Filter to somatic mutations only (exclude Silent)
+    if "Variant_Classification" in maf_df.columns:
+        before = len(maf_df)
+        maf_df = maf_df[maf_df["Variant_Classification"] != "Silent"]
+        print(f"  Filtered out {before - len(maf_df):,} silent mutations")
+
+    # Count mutations per sample
+    sample_col = "Tumor_Sample_Barcode"
+    if sample_col not in maf_df.columns:
+        # Try alternative column names
+        alt_cols = [c for c in maf_df.columns if "sample" in c.lower() or "barcode" in c.lower()]
+        if alt_cols:
+            sample_col = alt_cols[0]
+            print(f"  Using sample column: {sample_col}")
+        else:
+            raise ValueError(
+                f"Cannot find sample ID column in MAF. Columns: {list(maf_df.columns)}"
+            )
+
+    mutation_counts = maf_df[sample_col].value_counts().reset_index()
+    mutation_counts.columns = ["sample_id", "n_mutations"]
+
+    print(f"  Found {len(mutation_counts)} unique samples")
+
+    return mutation_counts
 
 
 def calculate_mutation_rate(maf_df: pd.DataFrame, coverage_mb: float = 30.0) -> pd.DataFrame:
@@ -41,16 +79,23 @@ def calculate_mutation_rate(maf_df: pd.DataFrame, coverage_mb: float = 30.0) -> 
     Calculate mutations per megabase.
 
     Args:
-        maf_df: Parsed MAF data
+        maf_df: Parsed MAF data (with columns: sample_id, n_mutations)
         coverage_mb: Sequencing coverage in megabases (default: 30 Mb for exome)
 
     Returns:
         DataFrame with columns: sample_id, mutations_per_mb
     """
-    # TODO: Implement mutation rate calculation
-    # Formula: mutations_per_mb = n_mutations / coverage_mb
+    print(f"  Calculating mutation rates (coverage: {coverage_mb} Mb)...")
 
-    raise NotImplementedError("Mutation rate calculation not yet implemented")
+    maf_df["mutations_per_mb"] = maf_df["n_mutations"] / coverage_mb
+
+    print(f"  Mean: {maf_df['mutations_per_mb'].mean():.2f} mut/Mb")
+    print(f"  Median: {maf_df['mutations_per_mb'].median():.2f} mut/Mb")
+    print(
+        f"  Range: {maf_df['mutations_per_mb'].min():.2f} - {maf_df['mutations_per_mb'].max():.2f}"
+    )
+
+    return maf_df[["sample_id", "mutations_per_mb"]]
 
 
 def main():

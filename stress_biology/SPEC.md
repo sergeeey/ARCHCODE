@@ -1,7 +1,8 @@
 # SPEC — Stress Biology & Mutagenesis
 
-**Version:** 1.0  
+**Version:** 2.0 (Post-Recon Update)  
 **Created:** 2026-04-25  
+**Updated:** 2026-04-25 (after /last30days reconnaissance)  
 **Status:** Draft  
 **Branch:** `feature/stress-biology-atp-mutagenesis`
 
@@ -9,9 +10,41 @@
 
 ## Цель проекта
 
-Проверить гипотезу: **клеточный стресс (дефицит ATP) → повышенная частота мутаций**.
+Проверить гипотезу: **ATP availability определяет частоту соматических мутаций через эффективность DNA repair**.
 
 **Мотивация:** Bilinsky (2025) показала, что состояние клетки (R vs Q) определяет радиочувствительность через доступность ATP в ядре. Мы проверяем, применим ли тот же механизм к **эндогенному мутагенезу** (не радиация, а ошибки репликации).
+
+---
+
+## Literature Context (from Reconnaissance)
+
+**Что уже известно:**
+
+1. **Proliferation → mutation rate correlation** — ДОКАЗАНА (Nature Cancer, PNAS)
+   - Быстро делящиеся клетки накапливают мутации быстрее
+   - Proliferation необходима для mutation (quiescent cells don't mutate)
+   
+2. **ATP dynamics в cell cycle** — ИЗВЕСТНЫ (Nature Communications)
+   - ATP падает на **50% во время митоза**
+   - Клетки удваивают ATP pool каждый цикл
+
+3. **Stress-induced mutagenesis** — ИЗВЕСТЕН в бактериях (PLOS Biology)
+   - E. coli SOS response → error-prone repair → больше мутаций
+   - Механизм в человеческих клетках **другой** (нет SOS response)
+
+4. **Bilinsky 2025 framework** — ПОДТВЕРЖДЁН (Biomath Journal)
+   - Статья реально опубликована: "A simple new alternative to the linear-quadratic model"
+   - State R/Q для radiosensitivity
+
+**ЧТО НЕ ИЗВЕСТНО (наш gap):**
+
+- **Прямая связь ATP levels → mutation rate** в human cells не изучена
+- Bilinsky framework применялся только к **radiation damage**, не к **replication errors**
+- Механизм: ATP → repair efficiency → mutation rate остаётся гипотезой
+
+**What Makes This Novel:**
+
+Мы первые тестируем **ATP-repair-mutagenesis axis** в человеческих клетках с использованием TCGA meta-analysis + Bilinsky framework.
 
 ---
 
@@ -57,15 +90,66 @@
 
 ### H3: ATP levels vs mutation rate (computational proxy)
 
-**Утверждение:** Прокси-маркеры метаболизма (OXPHOS gene expression, glycolysis markers) коррелируют с mutation rate.
+**Утверждение:** Прокси-маркеры метаболизма коррелируют с mutation rate.
+
+**ATP proxy (expanded):**
+- OXPHOS genes: COX1-8, ATP5A-F, NDUFB1-3 (Complex I)
+- **NEW:** Mitochondrial stress markers: PINK1, PARKIN, LONP1 (mitophagy)
+- **NEW:** Glycolysis markers: HK2, PKM2, LDHA (shift to glycolysis = stress)
 
 **Данные:**
 - RNA-seq data + somatic mutations (TCGA, ICGC)
-- ATP proxy: average expression of OXPHOS genes (COX1-8, ATP5A-F)
 
 **Метрика:** Spearman r (ATP proxy vs mutation rate)
 
-**Kill criterion:** r < 0.2
+**Prediction direction:** NEGATIVE correlation (high ATP → fewer mutations)
+
+**Kill criterion:** r > -0.2 (weak or wrong direction)
+
+---
+
+### H4: Bacterial Control (Positive Control for Stress Mutagenesis)
+
+**Утверждение:** E. coli SOS response (stress → mutagenesis) служит positive control — если mechanism работает в бактериях, но не в human cells, это сам по себе interesting result.
+
+**Данные:**
+- Published E. coli mutation rates under stress (SOS response literature)
+- Human TCGA data
+
+**Comparison:**
+- Bacterial: stress → SOS → error-prone pol (Pol IV, Pol V) → 10-100× mutation rate
+- Human: stress → ??? → mutation rate change (unknown)
+
+**Hypothesis:**
+- If human correlation is NULL, but bacterial is strong → mechanism is bacteria-specific (SOS response)
+- If both show correlation → universal stress-mutagenesis axis
+
+**Kill criterion:** N/A (это control, не primary hypothesis)
+
+---
+
+### H5: Flipped Hypothesis (High ATP → Better Repair)
+
+**Утверждение:** HIGH ATP availability → better DNA repair → FEWER mutations.
+
+**Why flip the hypothesis:**
+1. Positive formulation easier to test
+2. More actionable (can propose ATP-boosting interventions)
+3. Aligns with Bilinsky framework (state R = high ATP = resistant)
+
+**Prediction:**
+- Cells with high OXPHOS expression → lower mutation rate
+- Cells with mitochondrial dysfunction → higher mutation rate
+
+**Mechanism:**
+- High ATP → ATP-dependent repair enzymes work efficiently (e.g., DNA ligases, helicases)
+- Low ATP → repair stalls → errors accumulate
+
+**Метрика:** Same as H3, but framed positively
+
+**Kill criterion:** Same as H3 (r > -0.2)
+
+**NOTE:** H5 is the SAME test as H3, just different framing for interpretation and future interventions.
 
 ---
 
@@ -80,18 +164,43 @@
 2. ICGC — международная когорта рака
 3. Literature mining — doubling time для разных тканей (PubMed API)
 
-**Pipeline:**
+**Pipeline (Updated with Recon Findings):**
+
 ```bash
-1. Download TCGA mutation data (MAF files)
-2. Extract mutation rates per sample (mutations / Mb)
-3. Match with tissue type
-4. Extract doubling time from literature
-5. Correlation analysis (Spearman, bootstrapped CI)
+# TCGA Mutation Calling (Ensemble Method from Cell Systems 2018)
+1. Download TCGA MAF files (GDC API)
+2. Apply ENSEMBLE mutation calling (7 algorithms):
+   - MuTect2, VarScan2, SomaticSniper, MuSE, Pindel, Strelka2, GATK
+   - Score variants by algorithm agreement
+   - Filter artifacts (sequencing errors, germline contamination)
+3. Extract mutation rates per sample (mutations / Mb)
+
+# RNA-seq Mutation Discovery (Nature Comms 2024 method)
+4. Download RNA-seq data (same samples)
+5. Apply IMAPR pipeline (RNA-based somatic mutations)
+6. Identify 105K+ novel mutations not in DNA-seq
+7. Combine DNA + RNA mutation calls
+
+# Doubling Time Extraction
+8. PubMed API mining (tissue-specific doubling times)
+9. Match with TCGA samples by tissue type
+
+# Correlation Analysis
+10. Spearman correlation (doubling time vs mutation rate)
+11. Bootstrap 95% CI (10K iterations)
+12. Bonferroni correction for multiple tissues
+
+# CRITICAL: Confounding Control (ARCHCODE Lesson)
+13. Within-tissue correlation (same tissue, different proliferation)
+14. Baseline comparison: tissue type alone (no proliferation info)
+15. If baseline AUC > 0.7 → confounded (like ARCHCODE!)
 ```
 
 **Output:**
 - `results/h0_correlation.png` — scatter plot
 - `results/h0_stats.json` — r, p-value, 95% CI
+- `results/h0_confounding_check.json` — within-tissue results
+- `results/h0_baseline_comparison.png` — tissue type alone
 
 **Timeline:** 3 месяца
 
@@ -243,6 +352,7 @@ Month 6: Submit + seek wet-lab collaborator
 |------|------------|--------|------------|
 | Data unavailable | 20% | High | Pre-check TCGA API access |
 | Correlation weak (r < 0.3) | 60% | Medium | Expected — это negative result, publishable |
+| **Confounding by tissue type** | 60% | **High** | Within-tissue correlation, baseline comparison (ARCHCODE lesson: "category drives signal") |
 | No wet-lab collaborator | 70% | Low | Computational paper still valuable |
 | Bilinsky not interested | 40% | Low | Ищем других RIIS Fellows in cell biology |
 

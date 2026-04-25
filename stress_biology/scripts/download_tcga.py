@@ -25,14 +25,91 @@ def download_tcga_maf(tissue_type: str, output_path: Path) -> None:
     Returns:
         None. Saves CSV with columns: sample_id, tissue, mutations_per_mb
     """
-    # TODO: Implement TCGA API access
-    # 1. Setup GDC API client (https://gdc.cancer.gov/access-data/gdc-data-transfer-tool)
-    # 2. Query for MAF files by tissue type
-    # 3. Download and parse MAF files
-    # 4. Calculate mutation rate (mutations / sequencing coverage in Mb)
-    # 5. Save to CSV
+    import requests
+    import json
 
-    raise NotImplementedError("TCGA download not yet implemented")
+    # GDC API endpoints
+    FILES_ENDPOINT = "https://api.gdc.cancer.gov/files"
+    DATA_ENDPOINT = "https://api.gdc.cancer.gov/data"
+
+    # Query for MAF files for this tissue type
+    filters = {
+        "op": "and",
+        "content": [
+            {
+                "op": "in",
+                "content": {"field": "cases.project.project_id", "value": [f"TCGA-{tissue_type}"]},
+            },
+            {
+                "op": "in",
+                "content": {"field": "files.data_type", "value": ["Masked Somatic Mutation"]},
+            },
+            {"op": "in", "content": {"field": "files.data_format", "value": ["MAF"]}},
+        ],
+    }
+
+    params = {
+        "filters": json.dumps(filters),
+        "fields": "file_id,file_name,file_size",
+        "format": "JSON",
+        "size": "100",  # Limit to first 100 files for testing
+    }
+
+    print(f"Querying GDC API for {tissue_type} MAF files...")
+    response = requests.get(FILES_ENDPOINT, params=params)
+
+    if response.status_code != 200:
+        raise RuntimeError(f"GDC API error: {response.status_code} - {response.text}")
+
+    data = response.json()
+    hits = data["data"]["hits"]
+
+    if not hits:
+        raise ValueError(f"No MAF files found for tissue type {tissue_type}")
+
+    print(f"Found {len(hits)} MAF files. Downloading first file as test...")
+
+    # Download first MAF file
+    file_id = hits[0]["file_id"]
+    file_name = hits[0]["file_name"]
+    file_size = hits[0]["file_size"]
+
+    print(f"  File: {file_name} ({file_size / 1024 / 1024:.1f} MB)")
+
+    download_response = requests.get(f"{DATA_ENDPOINT}/{file_id}", stream=True)
+
+    if download_response.status_code != 200:
+        raise RuntimeError(f"Download error: {download_response.status_code}")
+
+    # Save to data/raw/
+    raw_dir = output_path.parent.parent / "raw"
+    raw_dir.mkdir(parents=True, exist_ok=True)
+
+    maf_path = raw_dir / file_name
+
+    with open(maf_path, "wb") as f:
+        for chunk in download_response.iter_content(chunk_size=8192):
+            f.write(chunk)
+
+    print(f"  Saved to {maf_path}")
+
+    # Parse and extract mutation rates
+    import subprocess
+
+    print("Extracting mutation rates...")
+    subprocess.run(
+        [
+            "python",
+            str(Path(__file__).parent / "extract_mutation_rates.py"),
+            "--maf",
+            str(maf_path),
+            "--output",
+            str(output_path),
+        ],
+        check=True,
+    )
+
+    print(f"✓ Complete. Mutation rates saved to {output_path}")
 
 
 def main():

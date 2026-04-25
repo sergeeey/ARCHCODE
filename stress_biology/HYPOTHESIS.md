@@ -111,6 +111,59 @@ ATP_proxy = mean([
 
 ---
 
+### H4: Bacterial Control (Positive Control)
+
+**Statement:**
+
+> E. coli SOS response shows 10-100× mutation rate increase under stress (positive control).
+
+**Purpose:**
+
+- If bacterial stress → mutagenesis is STRONG, but human is NULL:  
+  → Mechanism is bacteria-specific (SOS pathway)
+- If BOTH show correlation:  
+  → Universal stress-mutagenesis axis exists
+
+**Data:**
+
+| Organism | Normal mutation rate | Stress mutation rate | Fold change |
+|----------|---------------------|---------------------|-------------|
+| E. coli | ~10⁻⁹ mut/bp/gen | ~10⁻⁷ mut/bp/gen (SOS) | 100× |
+| Human (TCGA) | 1-3 mut/Mb | 5-10 mut/Mb (predicted) | 3× |
+
+**Kill criterion:** N/A (this is a control, not a primary hypothesis)
+
+---
+
+### H5: Flipped Hypothesis (High ATP → Better Repair)
+
+**Statement:**
+
+> High OXPHOS expression negatively correlates with mutation rate (positive formulation of H3).
+
+**Mechanism:**
+
+- High ATP → ATP-dependent repair enzymes work efficiently
+- DNA ligases, helicases, polymerases all require ATP
+- Low ATP → repair stalls → errors persist
+
+**Actionable interventions (if H5 passes):**
+
+1. Pyruvate supplementation (boosts mitochondrial ATP)
+2. Creatine supplementation (ATP buffer)
+3. CoQ10 (electron transport chain support)
+
+**Predicted effect:** 20-50% reduction in mutation rate
+
+**Clinical relevance:**
+
+- Cancer prevention: high-ATP state may reduce mutation accumulation
+- Aging: ATP decline → more mutations → cancer risk
+
+**Kill criterion:** Same as H3 (r > -0.2)
+
+---
+
 ## Null Hypotheses (what we're trying to kill)
 
 ### NULL-1: Confounding by tissue type
