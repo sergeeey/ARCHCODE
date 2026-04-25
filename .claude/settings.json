@@ -23,16 +23,6 @@
           }
         ]
       }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "prompt",
-            "prompt": "Update CLAUDE.md with session summary if significant changes were made"
-          }
-        ]
-      }
     ]
   }
 }
