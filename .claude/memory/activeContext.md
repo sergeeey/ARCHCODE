@@ -6,57 +6,36 @@
 ---
 
 ## Session 2026-04-25 — Stress Biology Project Launch
+[summarized] ### New Project: ATP-Driven Mutagenesis
 
-### New Project: ATP-Driven Mutagenesis
-**Branch:** `feature/stress-biology-atp-mutagenesis`  
-**Commit:** `40a9e78` — feat: Month 1 Week 1 preliminary results (n=5, r=-0.5)  
-**Status:** ⚠️ EARLY WARNING — hypothesis may be inverted
+**Month 1 FINAL Results (n=89):**
+- **HYPOTHESIS REJECTED:** Doubling time hypothesis FAILED at larger sample
+- Progression: n=5 (r=-0.5) → n=49 (r=+0.36) → n=89 (r=-0.17)
+- n=49 "success" was SPURIOUS — sampling bias + COAD MSI-high contamination
+- **Killer tissues:** PRAD (120h) → 0.86 mut/Mb, THCA (72h) → 0.31 mut/Mb
+- **Pattern:** Longest doubling times → LOWEST mutation rates (OPPOSITE of prediction)
+- Without COAD (n=79): r=-0.052, p=0.649 (NULL, COAD not sole problem)
+- **Month 2 checkpoint: FAILED** (r=-0.17 < 0.1 requirement)
+- **Month 3 checkpoint: FAILED** (r < 0.3 requirement)
 
-**Hypothesis:** ATP availability determines somatic mutation rate through DNA repair efficiency  
-**Inspiration:** Bilinsky 2025 (radiosensitivity R/Q states) applied to endogenous mutagenesis
+**Confounding test (n=49):**
+- Tissue type alone: r=0.119, p=0.414 (NOT significant)
+- Doubling time: r=0.364 (3× stronger than tissue)
+- Within-tissue variance HIGH (COAD CV=176%)
+- Verdict at n=49: NOT CONFOUNDED (effect appeared real)
+- Verdict at n=89: Effect was SPURIOUS (disappeared with more data)
 
-**What was done:**
-1. ✅ Project structure created (SPEC.md, HYPOTHESIS.md, ROADMAP.md, README.md)
-2. ✅ Reconnaissance (/last30days) validated gap: proliferation→mutation known, ATP mechanism novel
-3. ✅ All scripts implemented (not stubs):
-   - `download_tcga.py` — TCGA GDC API (23,568 MAF files accessible, no auth)
-   - `extract_mutation_rates.py` — MAF parsing, mutations/Mb calculation
-   - `literature_mining.py` — PubMed + manual curation (Sender 2016)
-   - `atp_proxy.py` — OXPHOS/mitochondrial stress/glycolysis markers
-   - `correlation_analysis.R` — Spearman + bootstrap (stub, ready for Month 3)
-4. ✅ HYPOTHESIS.md frozen (pre-registration against p-hacking)
-5. ✅ TCGA API tested — works without token
-6. ✅ QUICKSTART.md written for autonomous work
+**Decision (Week 2):**
+- **KILL PROJECT** — hypothesis rejected by data
+- Option A (recommended): Publish negative result
+- Option C (pivot): Test H3 (ATP proxy) directly, skip doubling time
+- Bilinsky contact: POSTPONED (need stronger evidence first)
 
-**Next steps (user will do independently):**
-- Month 1: Download TCGA data for 5 tissue types
-- Month 2: H1 testing (tissue-specific rates)
-- Month 3: H0 checkpoint (r < 0.3 → KILL, r > 0.4 → proceed)
-- Contact Bilinsky AFTER Month 3 results (NOT before)
-
-**Kill criteria:**
-- Month 2: r < 0.1 → immediate KILL
-- Month 3: r < 0.3 or p > 0.05 → KILL, publish negative result
-- Confounding: if tissue-only baseline AUC > 0.7 → confounded (ARCHCODE lesson)
-
-**ARCHCODE lessons applied:**
-- Matched controls (within-tissue correlation)
-- Baseline comparison (tissue type alone)
-- Pre-registration (frozen predictions before data)
-- Confounding risk documented upfront
-
-**Month 1 Week 1 Results (PRELIMINARY, n=5):**
-- Downloaded: COAD, BRCA, LUAD, GBM, LAML (1 sample each)
-- H0 test: **Spearman r = -0.500, p = 0.391** (NOT SIGNIFICANT)
-- Direction: ✗ WRONG (predicted r > 0.4, actual r < 0)
-- Interpretation: Longer doubling time → FEWER mutations (opposite of hypothesis)
-- COAD outlier: 34.9 mut/Mb (3-6× higher than typical)
-- Pre-registration saved us: cannot p-hack out of wrong direction
-- **Next:** Download n=100+ samples, re-test. If r < 0 persists → pivot or kill
-
-**Critical decision point:**
-- If n=100 still shows r < 0 → hypothesis INVERTED or NULL
-- Options: (A) kill H0, test H0-inverted, (B) pivot to H3 (ATP proxy), (C) publish negative result
+**Lessons learned:**
+1. Small samples mislead (n=49 insufficient, n=89 required)
+2. Pre-registration prevented p-hacking and retraction
+3. ARCHCODE confounding lesson applied correctly at n=49
+4. Tissue heterogeneity > proliferation rate for mutation accumulation
 
 ---
 
@@ -67,8 +46,9 @@
 **GitHub:** https://github.com/sergeeey/ARCHCODE
 **Status:** PROJECT CLOSED — negative result. All variant-level and region-level claims killed.
 
+
 ## Session 2026-04-16 — Final Hypothesis Kills + Project Closure
-[summarized] ### H-01 P(s) Exponent Shift — KILLED
+[summarized] [summarized] ### H-01 P(s) Exponent Shift — KILLED
 
 ### Pearl Claim — UNTESTABLE
 - 11/12 AlphaGenome pearls in 73bp cluster (effective n=2-3, pseudo-replications)
@@ -91,7 +71,7 @@
 - `d4d7748`: VUS decision router + matched-control kill test + manuscript falsification sync
 
 ## Session 2026-04-15 — VUS Router + External Audit + README rewrite
-[summarized] ### VUS Decision Router (Н1) — COMPLETED
+[summarized] [summarized] ### VUS Decision Router (Н1) — COMPLETED
 
 ### FOXP3 Patient Search (О2) — NULL RESULT
 - 0 patients found with mutations in predicted hotspots
@@ -114,7 +94,7 @@
 - Broken `#what-survived` anchor fixed
 
 ## Session 2026-04-14/15 — InfoMpemba paper + endorser audit
-[summarized] ### InfoMpemba Paper (NEW)
+[summarized] [summarized] ### InfoMpemba Paper (NEW)
 - Desktop: Mpemba_preprint_v1.pdf + mpemba_arxiv_submission.tar.gz
 - Kramers accuracy corrected: 94% was wrong, actual = 89% (verified from data)
 - Summer et al. ref completed: PRX 16, 011065 (2026)
@@ -148,6 +128,7 @@
 | ORCID | 0009-0009-2178-5701 | Done |
 
 
+
 ## Current State
 
 - **Manuscript:** taxonomy paper, 9 sections + 7 supplementary (S1-S7), FOXP3 + BCL11A case studies in Section 5, ~90 pages, compiles clean
@@ -161,6 +142,7 @@
 - **Core branch:** feature/v4-prioritization-framework (frozen at e9435f9)
 
 
+
 ## Key Numbers (canonical, updated 2026-03-30)
 
 - 20 HBB pearls (14 unique positions, 11 in 73bp promoter cluster)
@@ -171,6 +153,7 @@
 - Hi-C validation: r=0.28-0.59 across loci
 - AlphaGenome 28 cell lines: r=+0.27 to +0.41 (after log→linear normalization)
 - gnomAD: 85% pearls absent (purifying selection, but floor effect in conserved HBB)
+
 
 
 ## Session 2026-03-30 — Major cleanup + real validation
@@ -187,6 +170,7 @@
 10. Re-evaluation score: 5.8/10. MPRA p=0.0001 was memory hallucination (actual p=0.91, correctly in manuscript)
 
 
+
 ## Session 2026-04-01 — Statistical strengthening + endorsers
 
 1. Skeptic Engine validation committed (ffed1b0): benign=0.001, pathogenic=0.161, Pearl=0.153
@@ -200,6 +184,7 @@
 4. **Competitor comparison**: VEP misses 100% of Pearls (all MODIFIER), ARCHCODE catches 100%
 5. **Endorser emails drafted**: Fudenberg (EN) + Goloborodko (RU) → outreach/endorser_emails_2026-04-01.md
 6. **AlphaGenome CAGE batch** (330f64e): 7 loci tested. HBB (5.5x, p=4e-6) + MLH1 (3.7x, p=0.022) significant. BRCA1/TP53/TERT/GJB2 not significant — coding-dominant loci, CAGE can't see protein-level pathogenicity. Honest negative supports tissue-specificity thesis.
+
 
 
 ## Backlog
@@ -218,12 +203,14 @@
 8. **P3:** Wet-lab partner for Capture Hi-C at chr11:5,227,099-102
 
 
+
 ## Compilation
 
 ```bash
 cd D:/ДНК/manuscript/taxonomy_paper
 python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../..')"
 ```
+
 
 
 ## Technical Notes
@@ -234,10 +221,9 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - V1 roadmap: see memory/v1_module_roadmap.md
 
 
+
 ## Auto-commit log
-- [2026-04-25 10:32] `40a9e78`: feat: Month 1 Week 1 preliminary results (n=5, r=-0.5)
-- [2026-04-25 10:20] `9242aa0`: feat(stress-biology): implement Month 1 data collection pipeline
-[summarized] - [2026-04-25 09:56] `8b374bc`: feat: stress biology pivot — ATP-driven mutagenesis project structure
+[summarized] - [2026-04-25 10:43] `2032f63`: feat: confounding test PASS (doubling time 3× stronger than tissue type)
 - [2026-03-30 20:40] `0684756`: docs: align README with actual data — fix pearl counts, update AlphaGenome to real API results
 - [2026-03-30 20:32] `b346083`: feat: 3-way validation + ISM + MPRA cross-validation for pearl hotspot
 - [2026-03-30 20:08] `859b1e2`: feat: AlphaGenome real API validation — pearls show 5.5× more CAGE disruption (p=0.0003)
