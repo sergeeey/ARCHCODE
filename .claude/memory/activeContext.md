@@ -9,8 +9,8 @@
 
 ### New Project: ATP-Driven Mutagenesis
 **Branch:** `feature/stress-biology-atp-mutagenesis`  
-**Commit:** `9242aa0` — feat(stress-biology): implement Month 1 data collection pipeline  
-**Status:** Ready for Month 1 data collection
+**Commit:** `40a9e78` — feat: Month 1 Week 1 preliminary results (n=5, r=-0.5)  
+**Status:** ⚠️ EARLY WARNING — hypothesis may be inverted
 
 **Hypothesis:** ATP availability determines somatic mutation rate through DNA repair efficiency  
 **Inspiration:** Bilinsky 2025 (radiosensitivity R/Q states) applied to endogenous mutagenesis
@@ -44,6 +44,19 @@
 - Baseline comparison (tissue type alone)
 - Pre-registration (frozen predictions before data)
 - Confounding risk documented upfront
+
+**Month 1 Week 1 Results (PRELIMINARY, n=5):**
+- Downloaded: COAD, BRCA, LUAD, GBM, LAML (1 sample each)
+- H0 test: **Spearman r = -0.500, p = 0.391** (NOT SIGNIFICANT)
+- Direction: ✗ WRONG (predicted r > 0.4, actual r < 0)
+- Interpretation: Longer doubling time → FEWER mutations (opposite of hypothesis)
+- COAD outlier: 34.9 mut/Mb (3-6× higher than typical)
+- Pre-registration saved us: cannot p-hack out of wrong direction
+- **Next:** Download n=100+ samples, re-test. If r < 0 persists → pivot or kill
+
+**Critical decision point:**
+- If n=100 still shows r < 0 → hypothesis INVERTED or NULL
+- Options: (A) kill H0, test H0-inverted, (B) pivot to H3 (ATP proxy), (C) publish negative result
 
 ---
 
@@ -222,6 +235,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 
 
 ## Auto-commit log
+- [2026-04-25 10:32] `40a9e78`: feat: Month 1 Week 1 preliminary results (n=5, r=-0.5)
 - [2026-04-25 10:20] `9242aa0`: feat(stress-biology): implement Month 1 data collection pipeline
 [summarized] - [2026-04-25 09:56] `8b374bc`: feat: stress biology pivot — ATP-driven mutagenesis project structure
 - [2026-03-30 20:40] `0684756`: docs: align README with actual data — fix pearl counts, update AlphaGenome to real API results
