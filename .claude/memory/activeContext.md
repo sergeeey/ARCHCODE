@@ -1,34 +1,84 @@
-# Active Context — ARCHCODE
+# Active Context — Multi-Project
 
-**Last Updated:** 2026-04-15
-**Branch:** feature/mechanistic-taxonomy (taxonomy paper track)
-**Last Commit:** `40969aa` — docs: add 17 lessons learned
+**Last Updated:** 2026-04-25
+**Active Projects:** ARCHCODE (closed), Stress Biology (new, Month 0)
+
+---
+
+## Session 2026-04-25 — Stress Biology Project Launch
+
+### New Project: ATP-Driven Mutagenesis
+**Branch:** `feature/stress-biology-atp-mutagenesis`  
+**Commit:** `9242aa0` — feat(stress-biology): implement Month 1 data collection pipeline  
+**Status:** Ready for Month 1 data collection
+
+**Hypothesis:** ATP availability determines somatic mutation rate through DNA repair efficiency  
+**Inspiration:** Bilinsky 2025 (radiosensitivity R/Q states) applied to endogenous mutagenesis
+
+**What was done:**
+1. ✅ Project structure created (SPEC.md, HYPOTHESIS.md, ROADMAP.md, README.md)
+2. ✅ Reconnaissance (/last30days) validated gap: proliferation→mutation known, ATP mechanism novel
+3. ✅ All scripts implemented (not stubs):
+   - `download_tcga.py` — TCGA GDC API (23,568 MAF files accessible, no auth)
+   - `extract_mutation_rates.py` — MAF parsing, mutations/Mb calculation
+   - `literature_mining.py` — PubMed + manual curation (Sender 2016)
+   - `atp_proxy.py` — OXPHOS/mitochondrial stress/glycolysis markers
+   - `correlation_analysis.R` — Spearman + bootstrap (stub, ready for Month 3)
+4. ✅ HYPOTHESIS.md frozen (pre-registration against p-hacking)
+5. ✅ TCGA API tested — works without token
+6. ✅ QUICKSTART.md written for autonomous work
+
+**Next steps (user will do independently):**
+- Month 1: Download TCGA data for 5 tissue types
+- Month 2: H1 testing (tissue-specific rates)
+- Month 3: H0 checkpoint (r < 0.3 → KILL, r > 0.4 → proceed)
+- Contact Bilinsky AFTER Month 3 results (NOT before)
+
+**Kill criteria:**
+- Month 2: r < 0.1 → immediate KILL
+- Month 3: r < 0.3 or p > 0.05 → KILL, publish negative result
+- Confounding: if tissue-only baseline AUC > 0.7 → confounded (ARCHCODE lesson)
+
+**ARCHCODE lessons applied:**
+- Matched controls (within-tissue correlation)
+- Baseline comparison (tissue type alone)
+- Pre-registration (frozen predictions before data)
+- Confounding risk documented upfront
+
+---
+
+## ARCHCODE Status
+
+**Branch:** feature/mechanistic-taxonomy
+**Last Commit:** `e311d70` — docs: project closure — H-01/H-14 killed, pearl untestable, final audit
 **GitHub:** https://github.com/sergeeey/ARCHCODE
+**Status:** PROJECT CLOSED — negative result. All variant-level and region-level claims killed.
+
+## Session 2026-04-16 — Final Hypothesis Kills + Project Closure
+[summarized] ### H-01 P(s) Exponent Shift — KILLED
+
+### Pearl Claim — UNTESTABLE
+- 11/12 AlphaGenome pearls in 73bp cluster (effective n=2-3, pseudo-replications)
+- Comparison unmatched: promoter pearls vs intronic benign
+- 0 benign promoter variants exist in HBB — matched-control impossible
+- p=4e-6 = "promoter variants disrupt CAGE more than intronic" — trivially true
+
+### TP53 splice_region — loses to baseline
+- AUC=0.69, but RF baseline=0.825 (clean loss)
+- Category-control: inverted AUC=0.351
+
+### Project Decision: CLOSE
+- All 6 hypotheses killed (AUC, Router, H-01, H-14, Pearl, Cross-locus)
+- Surviving value: validation suite, falsification methodology, taxonomy, 17 lessons
+- Plan: update RS preprint + Zenodo, consider negative result paper
+- Bridge to Nobel Premia Boiko: falsification skills transferred
+
+### Commits
+- `e311d70`: project closure — H-01/H-14 killed, pearl untestable, final audit (58 files)
+- `d4d7748`: VUS decision router + matched-control kill test + manuscript falsification sync
 
 ## Session 2026-04-15 — VUS Router + External Audit + README rewrite
-
-### VUS Decision Router (Н1) — COMPLETED
-- **5,103 VUS** across 8 loci classified through 2×2 VEP × ARCHCODE matrix
-- Rules frozen BEFORE analysis in `scripts/vus_router_rules.md`
-- **27 Class B** (VEP blind, ARCHCODE sees): BRCA1=10, CFTR=8, LDLR=7, MLH1=2
-- **49 Class D** (VEP NULL, ARCHCODE sees): coverage gap
-- **76 total** (1.5%) get interpretation ONLY from ARCHCODE
-- Class B categories: 17 × 5'UTR, 10 × "other"
-- Within-category kill test: **1/6 significant** (intronic p=0.00025) — WEAK PASS
-- **MATCHED-CONTROL TEST: FAIL** — Class B VUS indistinguishable from matched benign (0/6, pooled p=0.996, d=-0.52)
-- Class B = category × position artifact. Signal dies after matching by category × locus
-- Class D (49 VUS, VEP=NULL) = residual utility but weak claim
-- Verdict: **Router Н1 downgraded to conceptual taxonomy**. ARCHCODE does not add discriminative utility beyond category × position
-
-### Next Pivot: Region-Level Sensitivity Map (decided, not started)
-- **New question:** Does ARCHCODE sensitivity map correlate with real regulatory architecture better than simple baselines?
-- **Kill baseline (frozen):** H3K27ac signal intensity × distance-to-TSS (2 features, 0 physics)
-- **Truth data:** CRISPRi/CRE maps (FOXP3 Nature 2025, Gasperini 2019)
-- **Unit of analysis:** region (1kb bins), not individual variants
-- **Kill criterion:** If ARCHCODE top-k regions don't beat the 2-feature baseline → model adds nothing even for region-level
-- BCL11A/Casgevy was essentially this test (passed anecdotally) — need formal benchmark
-- **Status:** NEXT SESSION. Not started.
-- Files: `scripts/vus_decision_router.py`, `results/vus_router_results.json`, `results/fig_vus_router.png/pdf`
+[summarized] ### VUS Decision Router (Н1) — COMPLETED
 
 ### FOXP3 Patient Search (О2) — NULL RESULT
 - 0 patients found with mutations in predicted hotspots
@@ -51,10 +101,7 @@
 - Broken `#what-survived` anchor fixed
 
 ## Session 2026-04-14/15 — InfoMpemba paper + endorser audit
-
-### InfoMpemba Paper (NEW)
-- Paper compiled: 6 pages REVTeX PRE, 4 figures, 14 refs (all DOI-verified)
-- Location: E:\Метрологический эффект Мпемба\paper\preprint.tex
+[summarized] ### InfoMpemba Paper (NEW)
 - Desktop: Mpemba_preprint_v1.pdf + mpemba_arxiv_submission.tar.gz
 - Kramers accuracy corrected: 94% was wrong, actual = 89% (verified from data)
 - Summer et al. ref completed: PRX 16, 011065 (2026)
@@ -87,6 +134,7 @@
 | Zenodo | **v2.17 LIVE** — https://zenodo.org/records/18908214 (FOXP3+BCL11A) | Done |
 | ORCID | 0009-0009-2178-5701 | Done |
 
+
 ## Current State
 
 - **Manuscript:** taxonomy paper, 9 sections + 7 supplementary (S1-S7), FOXP3 + BCL11A case studies in Section 5, ~90 pages, compiles clean
@@ -99,6 +147,7 @@
 - **Orthogonal methods:** 10 independent methods confirm Class B blind spot
 - **Core branch:** feature/v4-prioritization-framework (frozen at e9435f9)
 
+
 ## Key Numbers (canonical, updated 2026-03-30)
 
 - 20 HBB pearls (14 unique positions, 11 in 73bp promoter cluster)
@@ -109,6 +158,7 @@
 - Hi-C validation: r=0.28-0.59 across loci
 - AlphaGenome 28 cell lines: r=+0.27 to +0.41 (after log→linear normalization)
 - gnomAD: 85% pearls absent (purifying selection, but floor effect in conserved HBB)
+
 
 ## Session 2026-03-30 — Major cleanup + real validation
 
@@ -123,6 +173,7 @@
 9. Manuscript body updated: AlphaGenome CAGE section + ISM + AUC ablation caveat + pseudoreplication warning (60c44c7)
 10. Re-evaluation score: 5.8/10. MPRA p=0.0001 was memory hallucination (actual p=0.91, correctly in manuscript)
 
+
 ## Session 2026-04-01 — Statistical strengthening + endorsers
 
 1. Skeptic Engine validation committed (ffed1b0): benign=0.001, pathogenic=0.161, Pearl=0.153
@@ -136,6 +187,7 @@
 4. **Competitor comparison**: VEP misses 100% of Pearls (all MODIFIER), ARCHCODE catches 100%
 5. **Endorser emails drafted**: Fudenberg (EN) + Goloborodko (RU) → outreach/endorser_emails_2026-04-01.md
 6. **AlphaGenome CAGE batch** (330f64e): 7 loci tested. HBB (5.5x, p=4e-6) + MLH1 (3.7x, p=0.022) significant. BRCA1/TP53/TERT/GJB2 not significant — coding-dominant loci, CAGE can't see protein-level pathogenicity. Honest negative supports tissue-specificity thesis.
+
 
 ## Backlog
 
@@ -152,12 +204,14 @@
 11. **P2:** Tissue-specificity: pearl CAGE across 28 cell lines
 8. **P3:** Wet-lab partner for Capture Hi-C at chr11:5,227,099-102
 
+
 ## Compilation
 
 ```bash
 cd D:/ДНК/manuscript/taxonomy_paper
 python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../..')"
 ```
+
 
 ## Technical Notes
 
@@ -166,21 +220,10 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - Session history: use `git log --oneline` (not stored here)
 - V1 roadmap: see memory/v1_module_roadmap.md
 
+
 ## Auto-commit log
-- [2026-04-15 19:31] `d4d7748`: feat: VUS decision router + matched-control kill test + manuscript falsification sync
-- [2026-04-12 14:48] `40969aa`: docs: add 17 lessons learned from ARCHCODE postmortem (Oct 2025 — Apr 2026)
-- [2026-04-01 20:21] `2d0043c`: docs: end-of-session context update — 5 endorser emails sent, Nora follow-up ready
-- [2026-04-01 19:52] `7f0ae91`: docs: update session context + endorser tracking (5 emails sent)
-- [2026-04-01 18:52] `2d64a72`: docs: align submission status + add endorsement packet
-- [2026-04-01 14:48] `330f64e`: feat(validation): AlphaGenome CAGE batch on 7 loci — honest mixed result
-- [2026-04-01 14:22] `75e5908`: feat(stats): add statistical strengthening + cross-locus Pearl scan + competitor comparison
-- [2026-04-01 12:16] `ffed1b0`: docs: add Skeptic Engine independent validation results for HBB atlas
-- [2026-03-31 08:24] `69ee680`: chore: repo cleanup — add missing data, remove temp files, update gitignore
-- [2026-03-31 08:12] `f8e7667`: fix(integrity): audit cleanup — resolve 10 cross-document discrepancies
-- [2026-03-30 23:46] `60c44c7`: feat(manuscript): add AlphaGenome CAGE validation + ISM + ablation caveat to body
-- [2026-03-30 23:20] `536b5ff`: docs(readme): align public framing with VALIDATION_PROTOCOL — discovery engine, not predictor
-- [2026-03-30 21:19] `52b3bba`: fix(integrity): complete remaining audit findings
-- [2026-03-30 21:09] `a830c1b`: fix(integrity): resolve 6 audit findings from repo-wide scan
+- [2026-04-25 10:20] `9242aa0`: feat(stress-biology): implement Month 1 data collection pipeline
+[summarized] - [2026-04-25 09:56] `8b374bc`: feat: stress biology pivot — ATP-driven mutagenesis project structure
 - [2026-03-30 20:40] `0684756`: docs: align README with actual data — fix pearl counts, update AlphaGenome to real API results
 - [2026-03-30 20:32] `b346083`: feat: 3-way validation + ISM + MPRA cross-validation for pearl hotspot
 - [2026-03-30 20:08] `859b1e2`: feat: AlphaGenome real API validation — pearls show 5.5× more CAGE disruption (p=0.0003)
