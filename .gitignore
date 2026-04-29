@@ -123,3 +123,16 @@ data/reference_sequences/
 
 # Downloaded DNA samples (local only)
 ДНК Образцы СКАЧЕННЫЙ/
+
+# gnomAD genomic data (large VCF files)
+*.vcf.bgz
+*.vcf.bgz.tbi
+data/gnomad*.vcf*
+
+# Learning materials and side projects (not part of ARCHCODE)
+Lessons/
+Projects/
+
+# Contact matrices (can be large, regenerable)
+results/contact_matrices/*.npy
+results/contact_matrices/*.pkl

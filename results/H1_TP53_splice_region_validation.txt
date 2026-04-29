@@ -1,0 +1,16 @@
+======================================================================
+H1 Cross-Locus Validation: TP53
+Category: splice_region
+======================================================================
+
+Sample sizes: Pathogenic=73, Benign=66
+
+SFI Statistics:
+  Path: Mean=0.5149, SD=0.3505
+  Ben:  Mean=0.4051, SD=0.4363
+
+Mann-Whitney: U=3030.5, p=0.004404
+Cohen's d: 0.2790 (small)
+ROC AUC: 0.6290
+
+VERDICT: PASS

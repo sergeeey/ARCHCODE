@@ -1,0 +1,23 @@
+======================================================================
+H1 VALIDATION: Spectral Fragility Matched-Control Test
+======================================================================
+
+Hypothesis: HBB pearls show elevated SFI vs benign controls
+
+Sample sizes:
+  Pearls: 20
+  Benign: 25
+
+SFI Statistics:
+  Pearls:  Mean=0.3222, SD=0.2007
+  Benign:  Mean=0.1171, SD=0.0950
+
+Mann-Whitney U test: U=413.0, p=0.000102
+Cohen's d: 1.3573 (large)
+T-test: t=4.5244, p=0.000024
+
+Success criteria:
+  [PASS] Mann-Whitney p < 0.05
+  [PASS] Cohen's d > 0.5
+
+VERDICT: PASS
