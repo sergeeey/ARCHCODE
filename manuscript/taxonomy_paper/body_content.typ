@@ -1438,8 +1438,8 @@ ARCHCODE source code, locus configuration files, and variant-level results are a
   // --- Added 2026-03-28: Automated citation gathering (10 papers) ---
 
   + Sabaté T, Lelandais B, Robert M-C, et al. Uniform dynamics of cohesin-mediated loop
-    extrusion in living human cells. _Nature Genetics_. 2025.
-    doi:10.1038/s41588-025-02406-9
+    extrusion in living human cells. _bioRxiv_. 2024.
+    doi:10.1101/2024.08.09.605990
 
   + Tan J, Shenker-Tauris N, Rodriguez-Hernaez J, et al. Cell-type-specific prediction of 3D
     chromatin organization enables high-throughput in silico genetic screening.
