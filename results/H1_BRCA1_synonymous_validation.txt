@@ -1,0 +1,16 @@
+======================================================================
+H1 Cross-Locus Validation: BRCA1
+Category: synonymous
+======================================================================
+
+Sample sizes: Pathogenic=3433, Benign=1989
+
+SFI Statistics:
+  Path: Mean=0.0059, SD=0.0353
+  Ben:  Mean=0.0075, SD=0.0413
+
+Mann-Whitney: U=3694265.5, p=0.000000
+Cohen's d: -0.0435 (negligible)
+ROC AUC: 0.5410
+
+VERDICT: FAIL
