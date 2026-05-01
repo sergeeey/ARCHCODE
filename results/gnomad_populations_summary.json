@@ -1,0 +1,20 @@
+{
+  "analysis": "gnomAD_population_stratification_PyPop_extension",
+  "locus": "HBB (chr11)",
+  "dataset": "gnomAD_v4",
+  "total_pearls_queried": 12,
+  "cross_population_analysis": {
+    "strong_evidence_n": 5,
+    "weak_evidence_n": 7,
+    "false_pearls_n": 0,
+    "strong_evidence_pct": 41.7,
+    "max_af_per_population": {
+      "AFR": 0.0001207029741212,
+      "AMR": 5.764353239566521e-05,
+      "EAS": 0.0004643540016388,
+      "EUR": 0.0,
+      "SAS": 0.0004154549231408
+    }
+  },
+  "interpretation": "41.7% of pearls show cross-population consistency (absent in all 5 major genetic ancestry groups), supporting universal structural constraint. 0 variants present at ≥1% AF in at least one population, flagged as potential false pearls (population-specific benign)."
+}
