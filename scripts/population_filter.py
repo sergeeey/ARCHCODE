@@ -79,6 +79,16 @@ def parse_args():
     parser.add_argument(
         "--dry-run", action="store_true", help="Preview cohort without querying gnomAD"
     )
+    parser.add_argument(
+        "--allow-indels",
+        action="store_true",
+        help="Allow indels (deletions/insertions) — may fail if not supported by gnomAD query",
+    )
+    parser.add_argument(
+        "--skip-common",
+        action="store_true",
+        help="Skip variants likely benign based on ClinVar significance (Benign/Likely_benign)",
+    )
 
     return parser.parse_args()
 
@@ -368,11 +378,33 @@ def main():
         print(f"Expected runtime: ~{len(cohort) * args.rate_limit / 60:.1f} minutes")
         return
 
-    # Filter to simple SNVs
-    snv_mask = cohort.apply(lambda r: is_simple_snv(str(r["Ref"]), str(r["Alt"])), axis=1)
-    cohort_snv = cohort[snv_mask].copy()
-    print(f"\nQueryable SNVs: {len(cohort_snv)}")
-    print(f"Non-queryable (indels): {len(cohort) - len(cohort_snv)}")
+    # Filter to simple SNVs (unless --allow-indels)
+    if args.allow_indels:
+        cohort_snv = cohort.copy()
+        print(f"\nQueryable variants (SNVs + indels): {len(cohort_snv)}")
+    else:
+        snv_mask = cohort.apply(lambda r: is_simple_snv(str(r["Ref"]), str(r["Alt"])), axis=1)
+        cohort_snv = cohort[snv_mask].copy()
+        print(f"\nQueryable SNVs: {len(cohort_snv)}")
+        print(f"Non-queryable (indels): {len(cohort) - len(cohort_snv)}")
+        if len(cohort_snv) == 0:
+            print("\n⚠️  All variants filtered out (indels only).")
+            print("   Try: add --allow-indels flag (WARNING: may fail on gnomAD query)")
+            return
+
+    # Skip common variants (Benign/Likely_benign from ClinVar)
+    if args.skip_common and "ClinVar_Significance" in cohort_snv.columns:
+        before = len(cohort_snv)
+        common_keywords = ["Benign", "Likely_benign", "benign"]
+        cohort_snv = cohort_snv[
+            ~cohort_snv["ClinVar_Significance"].str.contains(
+                "|".join(common_keywords), case=False, na=False
+            )
+        ]
+        print(f"Filtered out {before - len(cohort_snv)} common variants (Benign/Likely_benign)")
+        if len(cohort_snv) == 0:
+            print("\n⚠️  All variants filtered out (all were Benign).")
+            return
 
     print(f"\n{'='*80}")
     print(f"Starting gnomAD queries (rate limit: {args.rate_limit}s/request)")

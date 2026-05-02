@@ -1,0 +1,26 @@
+{
+  "analysis": "gnomAD_population_stratification",
+  "locus": "BRCA1 (chr17)",
+  "atlas_file": "results\\BRCA1_Unified_Atlas_brca1.csv",
+  "cohort_filter": {
+    "column": "ARCHCODE_LSSIM",
+    "operator": "less_than",
+    "value": "0.95",
+    "matched_variants": 79
+  },
+  "dataset": "gnomAD_v4",
+  "total_queried": 16,
+  "cross_population_analysis": {
+    "strong_evidence_n": 6,
+    "weak_evidence_n": 6,
+    "false_pearls_n": 4,
+    "strong_evidence_pct": 37.5,
+    "max_af_per_population": {
+      "AFR": 0.8182559087204564,
+      "AMR": 0.42781427291728874,
+      "EAS": 0.38711072664359863,
+      "EUR": 0.0,
+      "SAS": 0.5377828054298642
+    }
+  }
+}
