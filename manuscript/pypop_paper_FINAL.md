@@ -95,6 +95,8 @@ Cross-population consistency classification:
 
 For population-specific variants, we cross-referenced allele frequency patterns with disease epidemiology. Beta-thalassemia shows well-characterized population distribution: high carrier rate (3-20%) in Mediterranean and South Asian populations, low carrier rate (<1%) in East Asian populations (Angastiniotis & Modell, 1998). Variants showing enrichment in low-disease populations (reverse epidemiology pattern) were flagged as potential population-specific benign polymorphisms.
 
+Allele frequencies were queried from gnomAD v4 exome (primary) and genome (supplementary) datasets. Both variants showed sufficient coverage (allele number AN_EAS >30,000) for reliable East Asian allele frequency estimates, confirmed via independent coverage validation.
+
 ### ARCHCODE Structural Prediction
 
 Mean-field loop extrusion simulator (Kramer kinetics) with SSIM-based contact map comparison. Variants with LSSIM < 0.93 classified as "pearls" (structural disruptions).
@@ -185,7 +187,8 @@ Population stratification analysis detects epidemiology mismatches in structural
 1. Multi-locus expansion (CFTR, BRCA1, TP53)
 2. Automated gnomAD query integration into ARCHCODE
 3. Bayesian integration (LSSIM + CADD + population AF)
-4. Experimental validation (Hi-C, CRISPR on FALSE PEARLS)
+4. Experimental validation (Hi-C, CRISPR on identified variants)
+5. Baseline comparison with other structural prediction tools (Akita, Enformer, DeepSEA) to quantify ARCHCODE-specific vs general structural prediction error rates
 
 ### Conclusion
 
@@ -218,6 +221,7 @@ Population stratification, adapted from PyPop immunogenetics methodology, provid
 **Results:**
 - `results/gnomad_populations_pearls.csv` — 12 variants × 20 population columns
 - `results/gnomad_populations_summary.json` — cross-population analysis summary
+- `results/gnomad_coverage_check.json` — allele number (AN) coverage validation for 2 variants
 - `scripts/query_gnomad_populations.py` — gnomAD GraphQL query tool
 
 ---

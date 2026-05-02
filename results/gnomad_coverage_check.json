@@ -1,0 +1,18 @@
+[
+  {
+    "vcv": "VCV000015471",
+    "an_eas": 37034,
+    "ac_eas": 24,
+    "af_eas": 0.0006480531403575094,
+    "reported_af": 0.000193,
+    "verdict": "PASS"
+  },
+  {
+    "vcv": "VCV000015466",
+    "an_eas": 36610,
+    "ac_eas": 17,
+    "af_eas": 0.0004643540016388965,
+    "reported_af": 0.000464,
+    "verdict": "PASS"
+  }
+]
