@@ -18,13 +18,13 @@
 
 **Background:** Structural variant prediction tools detect 3D chromatin disruptions in regulatory regions that sequence-based pathogenicity predictors (VEP, CADD) classify as low impact. However, validating structural predictions without functional data remains challenging. Population genetics offers an alternative validation strategy: truly pathogenic variants should be under purifying selection and thus rare across all populations, while population-specific presence suggests benign variation.
 
-**Methods:** We adapted the PyPop population stratification framework (Lancaster et al., 2024) to validate 12 HBB promoter region variants identified by ARCHCODE structural prediction. We queried gnomAD v4 (807,162 individuals) for population-specific allele frequencies across 5 genetic ancestry groups (AFR, AMR, EAS, EUR, SAS) and cross-referenced results with beta-thalassemia epidemiology. Variants with population-specific presence inconsistent with disease prevalence were classified as false positives using ACMG BS1 criteria (allele frequency greater than expected for disorder).
+**Methods:** We adapted the PyPop population stratification framework (Lancaster et al., 2024) to validate 12 HBB promoter region variants identified by ARCHCODE structural prediction. We queried gnomAD v4 (807,162 individuals) for population-specific allele frequencies across 5 genetic ancestry groups (AFR, AMR, EAS, EUR, SAS) and cross-referenced results with beta-thalassemia epidemiology. Variants with population-specific presence inconsistent with disease prevalence were flagged as potential false positives.
 
-**Results:** Among 7 variants with gnomAD data, 41.7% (5/12) showed universal constraint (absent in all populations), and 58.3% (7/12) showed population-specific presence. Two variants (16.7%) were East Asian-specific (AF_EAS = 0.000193-0.000464) despite beta-thalassemia being rare in East Asian populations (carrier rate <1%). These false positives had allele frequencies 19-46× higher than expected for pathogenic variants (ACMG BS1). VEP correctly classified both as MODIFIER impact, demonstrating orthogonality between sequence-based and structural predictions.
+**Results:** Among 7 variants with gnomAD data, 41.7% (5/12) showed universal constraint (absent in all populations), and 58.3% (7/12) showed population-specific presence. Two variants showed East Asian-specific enrichment (AF_EAS = 0.000193-0.000464, popmax = eas) despite beta-thalassemia being rare in East Asian populations (carrier rate <1%), suggesting population-specific benign polymorphisms misclassified as pathogenic by structural prediction. VEP correctly classified both as MODIFIER impact, demonstrating complementarity between sequence-based and structural approaches.
 
-**Conclusion:** Population stratification detects false positives in structural variant prediction invisible to sequence-based tools. The 16.7% false positive rate in HBB promoter predictions underscores the necessity of integrating population genetics into regulatory variant interpretation workflows for accurate clinical classification.
+**Conclusion:** Population stratification detects epidemiology mismatches in structural variant predictions invisible to sequence-based tools. Integrating cross-population allele frequency analysis with disease epidemiology provides a validation framework for regulatory variant interpretation, particularly when functional data is unavailable. Larger multi-locus studies are needed to quantify false positive rates across structural prediction tools.
 
-**Keywords:** population genetics, structural variants, PyPop, beta-thalassemia, regulatory variants, HBB, gnomAD, false positive rate
+**Keywords:** population genetics, structural variants, PyPop, beta-thalassemia, regulatory variants, HBB, gnomAD, variant validation
 
 ---
 
@@ -43,11 +43,11 @@ The PyPop framework, originally developed for HLA immunogenetics (Lancaster et a
 In this study, we applied PyPop population stratification to 12 HBB promoter region variants identified by ARCHCODE structural prediction. We queried gnomAD v4 (807,162 individuals) for population-specific allele frequencies across 5 major genetic ancestry groups and cross-referenced results with beta-thalassemia epidemiology. Our objectives were:
 
 1. **Validate ARCHCODE structural predictions** using cross-population allele frequency consistency
-2. **Identify false positives** via disease epidemiology concordance (ACMG BS1 criteria)
-3. **Estimate false positive rate** for structural variant prediction in regulatory regions
+2. **Identify potential false positives** via disease epidemiology concordance
+3. **Demonstrate population stratification** as a validation framework for structural predictions
 4. **Compare with sequence-based tools** (VEP, CADD) to assess complementarity
 
-We demonstrate that **16.7% (2/12) of ARCHCODE HBB promoter predictions are false positives** — East Asian-specific benign polymorphisms that sequence-based tools correctly classify as low impact but structural tools misclassify as pathogenic. This false positive rate is invisible without population stratification analysis, highlighting the necessity of integrating population genetics into structural variant interpretation workflows.
+We demonstrate that population stratification detects epidemiology mismatches invisible to sequence-based tools. Two HBB promoter variants show East Asian-specific enrichment despite beta-thalassemia being rare in this population, suggesting population-specific benign polymorphisms misclassified as pathogenic by structural prediction. This approach provides a scalable validation strategy when functional data is unavailable, though larger multi-locus studies are needed to quantify error rates systematically.
 
 ---
 
@@ -89,11 +89,11 @@ Cross-population consistency classification:
 - **STRONG evidence:** Absent in ALL 5 populations (universal constraint)
 - **WEAK evidence:** Present in 1-2 populations (requires epidemiology check)
 
-**Statistical tests:** Fisher exact (STRONG vs WEAK), permutation test (population-specificity), bootstrap 95% CI (false positive rate).
+**Statistical tests:** Fisher exact test (STRONG vs WEAK evidence, two-tailed, α=0.05), permutation test (population-specificity vs random distribution, 10,000 iterations).
 
 ### Epidemiology Concordance Check
 
-For population-specific variants, we applied ACMG BS1 criteria (allele frequency greater than expected for disorder). Expected pathogenic AF in East Asian for beta-thalassemia: <0.00001 (carrier rate <1%). Observed AF > 10× expected → FLAG as false positive.
+For population-specific variants, we cross-referenced allele frequency patterns with disease epidemiology. Beta-thalassemia shows well-characterized population distribution: high carrier rate (3-20%) in Mediterranean and South Asian populations, low carrier rate (<1%) in East Asian populations (Angastiniotis & Modell, 1998). Variants showing enrichment in low-disease populations (reverse epidemiology pattern) were flagged as potential population-specific benign polymorphisms.
 
 ### ARCHCODE Structural Prediction
 
@@ -127,26 +127,21 @@ Fisher exact test: p = 0.048 (borderline significant).
 - AMR: 0.000058
 - **EUR: 0.0** (no variants observed)
 
-### FALSE PEARLS Identification
+### Population-Specific Variants with Epidemiology Mismatch
 
 **Variant 1: chr11:5227099 T>C (VCV000015471)**
-- AF_EAS: 0.000193 (EAS-specific)
-- Expected AF: <0.00001
-- Ratio: 19.3× higher
-- **Verdict:** FALSE PEARL
+- AF_EAS: 0.000193 (East Asian-specific, absent in other populations)
+- AF in high-prevalence populations: AFR=0, EUR=0, SAS=0
+- **Interpretation:** Population-specific presence inconsistent with beta-thal epidemiology
 
 **Variant 2: chr11:5227102 T>C (VCV000015466)**
 - **AF_EAS: 0.000464** (HIGHEST in dataset, popmax = eas)
-- Expected AF: <0.00001
-- Ratio: **46.4× higher**
-- **Verdict:** FALSE PEARL (CONFIRMED)
+- AF in high-prevalence populations: AFR=0, EUR=0, SAS=0.000058
+- **Interpretation:** East Asian enrichment contradicts disease rarity in this population
 
-**Epidemiology mismatch:** Beta-thalassemia NOT enriched in East Asian (<1% carrier rate vs 3-20% Mediterranean/South Asian).
+**Epidemiology mismatch:** Beta-thalassemia carrier rate <1% in East Asian vs 3-20% in Mediterranean/South Asian populations. Both variants show reverse enrichment pattern (high AF in low-disease population), suggesting population-specific benign polymorphisms rather than pathogenic mutations.
 
-### False Positive Rate
-
-**Point estimate:** 2/12 = **16.7%**  
-**Bootstrap 95% CI:** [4.7%, 42.8%]
+### Comparison with Sequence-Based Tools
 
 ### VEP/CADD Comparison
 
@@ -162,28 +157,28 @@ Fisher exact test: p = 0.048 (borderline significant).
 
 ### Principal Findings
 
-Population stratification analysis detects false positives in structural variant prediction invisible to sequence-based tools. The 16.7% false positive rate in HBB promoter predictions demonstrates that cross-population consistency serves as functional validation — truly pathogenic variants under purifying selection should be rare across ALL populations.
+Population stratification analysis detects epidemiology mismatches in structural variant predictions invisible to sequence-based tools. Among 12 HBB promoter variants, we identified 2 showing East Asian-specific enrichment despite beta-thalassemia being rare in this population — a reverse epidemiology pattern consistent with population-specific benign polymorphisms misclassified as pathogenic. This demonstrates that cross-population consistency can serve as functional validation when experimental data is unavailable.
 
 ### Comparison with Existing Approaches
 
 - **Sequence-based tools:** Detect coding/splicing pathogenicity, miss regulatory disruption
-- **Structural tools:** Detect chromatin disruption, high false positive rate (16.7%)
-- **Population stratification:** Validates structural predictions via disease epidemiology
+- **Structural tools:** Detect chromatin disruption, but lack validation framework for regulatory variants
+- **Population stratification:** Validates structural predictions via disease epidemiology concordance
 
-**Integration of all three maximizes accuracy.**
+**Integration of all three approaches maximizes accuracy:** sequence annotation filters obvious low-impact variants, structural prediction identifies candidates for investigation, and population genetics validates or refutes pathogenicity claims.
 
 ### Limitations
 
-1. Small sample (12 variants, single locus) — multi-locus validation needed
-2. gnomAD coverage (5/12 not found) — extremely rare variants unvalidatable
-3. Requires well-characterized disease epidemiology (Mendelian disorders)
-4. Population stratification assumptions (admixture, migration confounders)
+1. **Small sample (12 variants, single locus)** — precludes precise false positive rate quantification; multi-locus validation (n≥50) needed
+2. **gnomAD coverage (5/12 not found)** — extremely rare variants (<1 in 100,000) unvalidatable via population databases
+3. **Requires well-characterized disease epidemiology** — applicable to Mendelian disorders with established prevalence patterns, not complex traits
+4. **Population stratification assumptions** — admixture, migration, and genetic drift may confound interpretation
 
 ### Clinical Implications
 
-- Population-aware VUS interpretation (BS1 application for population-disease mismatch)
-- Structural prediction with caution (requires orthogonal validation)
-- ClinVar submissions should include population stratification data
+- **Population-aware VUS interpretation:** Variants enriched in populations where disease is rare warrant skepticism of pathogenic classification
+- **Structural prediction with caution:** Regulatory variant predictions require orthogonal validation (functional assays, family segregation, or population genetics)
+- **ClinVar submissions:** Should include population stratification data to aid evidence-based reclassification
 
 ### Future Directions
 
@@ -194,7 +189,7 @@ Population stratification analysis detects false positives in structural variant
 
 ### Conclusion
 
-Population stratification, adapted from PyPop immunogenetics methodology, provides scalable validation for structural variant predictions. The 16.7% false positive rate underscores the necessity of multi-modal variant interpretation — integrating sequence annotation, structural modeling, and population genetics — for accurate clinical classification.
+Population stratification, adapted from PyPop immunogenetics methodology, provides a scalable validation framework for structural variant predictions in regulatory regions. By leveraging disease epidemiology and cross-population allele frequency consistency, this approach detects misclassifications invisible to sequence-based pathogenicity tools. The identification of 2 HBB promoter variants with reverse epidemiology patterns demonstrates proof-of-concept for this methodology. Larger multi-locus studies are needed to systematically quantify error rates and establish population genetics as a standard component of regulatory variant interpretation workflows.
 
 ---
 
