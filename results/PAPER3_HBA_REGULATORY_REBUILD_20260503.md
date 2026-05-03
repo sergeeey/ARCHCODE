@@ -26,14 +26,18 @@ This is a gate artifact, not a manuscript result.
 |results\PAPER3_HBA1_MANGO_QUERYABLE_ATLAS_20260503.md|True|0|0|0|0|not_tabular|
 |results\PAPER3_HBA1_MANGO_SCREEN_20260503.md|True|0|0|0|0|not_tabular|
 |results\PAPER3_HBA1_MANGO_VARIANT_OVERLAP_20260503.csv|True|804|0|0|0|missing Position_GRCh38,Ref,Alt,HGVS_c,Category,Source,ARCHCODE_LSSIM|
+|results\PAPER3_HBA_COHORT_DECISION_20260503.md|True|0|0|0|0|not_tabular|
+|results\PAPER3_HBA_FULL_QUERYABLE_ATLAS_20260503.csv|True|111|108|23|0|candidate_space_available|
+|results\PAPER3_HBA_FULL_QUERYABLE_ATLAS_20260503.md|True|0|0|0|0|not_tabular|
 |results\PAPER3_HBA_POSITION_CONTROLS_20260503.csv|True|0|0|0|0|not_queryable_ref_alt|
-|results\PAPER3_HBA_REGULATORY_CANDIDATES_20260503.csv|True|9|9|9|0|candidate_space_available|
+|results\PAPER3_HBA_REGULATORY_CANDIDATES_20260503.csv|True|23|23|23|0|candidate_space_available|
 |results\PAPER3_HBA_REGULATORY_REBUILD_20260503.md|True|0|0|0|0|not_tabular|
 |results\UNIFIED_ATLAS_SUMMARY_HBA1_300kb.json|True|0|0|0|0|json_no_locus_features|
 |results\UNIFIED_ATLAS_SUMMARY_hba1_focused.json|True|0|0|0|0|json_no_locus_features|
 |results\UNIFIED_ATLAS_SUMMARY_hba1_mutagenesis.json|True|0|0|0|0|json_no_locus_features|
 |scripts\paper3_hba1_recover_alleles.py|True|0|0|0|0|script|
 |scripts\paper3_hba1_screen.py|True|0|0|0|0|script|
+|scripts\paper3_hba_full_recover_alleles.py|True|0|0|0|0|script|
 |scripts\paper3_hba_regulatory_rebuild.py|True|0|0|0|0|script|
 
 ## Config Feature Audit
@@ -49,11 +53,13 @@ This is a gate artifact, not a manuscript result.
 
 ## Rebuild Inputs
 
-- Primary queryable source atlas: `results\PAPER3_HBA1_MANGO_QUERYABLE_ATLAS_20260503.csv`
-- HBA2-specific source rows found locally: `0`
-- Queryable non-synthetic source rows: `66`
-- Queryable regulatory-subclass source rows: `9`
-- Whole-locus bottom-5% LSSIM threshold: `0.994425`
+- Primary queryable source atlas: `results\PAPER3_HBA_FULL_QUERYABLE_ATLAS_20260503.csv`
+- HBA2-position rows in selected atlas: `5`
+- Queryable HBA2-position rows in selected atlas: `4`
+- HBA2-named local source table found: `0`
+- Queryable non-synthetic source rows: `108`
+- Queryable regulatory-subclass source rows: `23`
+- Whole-locus bottom-5% LSSIM threshold: `0.994335`
 - Regulatory-subset exploratory bottom-5% threshold: `0.9964`
 
 ## Whole-Locus Bottom-5% Rows
@@ -62,17 +68,19 @@ This is a gate artifact, not a manuscript result.
 |---|---:|---|---|---|---|---|---:|
 | VCV004533035 | 177331 | G | T | c.349G>T | nonsense | coding_nonsense | 0.9857 |
 | VCV003579879 | 177017 | A | T | c.184A>T | nonsense | coding_nonsense | 0.9867 |
+| VCV000015624 | 173598 | T | C | c.427T>C | nonsense | coding_nonsense | 0.9869 |
+| VCV003075902 | 176760 | G | A | c.44G>A | nonsense | coding_nonsense | 0.9878 |
+| VCV000811820 | 176761 | G | A | c.45G>A | nonsense | coding_nonsense | 0.9901 |
 | VCV003766985 | 177400 | A | G | c.418A>G | missense | coding_missense | 0.9943 |
-| VCV002428618 | 177379 | G | A | c.397G>A | missense | coding_missense | 0.9944 |
 
 ## Candidate Gate
 
 | Gate | n | Interpretation |
 |---|---:|---|
-| regulatory candidate space | 9 | Queryable non-synthetic regulatory-subclass rows exist. |
+| regulatory candidate space | 23 | Queryable non-synthetic regulatory-subclass rows exist. |
 | primary low-LSSIM regulatory candidates | 0 | Requires regulatory subclass and whole-locus bottom 5% LSSIM. |
 | secondary regulatory LSSIM < 0.99 | 0 | Boundary-only gate; not primary. |
-| exploratory regulatory-subset bottom 5% | 2 | Not used for the primary Paper 3 gate because it changes the denominator post hoc. |
+| exploratory regulatory-subset bottom 5% | 4 | Not used for the primary Paper 3 gate because it changes the denominator post hoc. |
 | selected position controls | 0 | Controls are selected only after primary candidates exist. |
 
 ## Dry-Run Commands

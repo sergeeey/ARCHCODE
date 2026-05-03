@@ -25,7 +25,9 @@ DATA = ROOT / "data"
 CONFIG = ROOT / "config" / "locus"
 SCRIPTS = ROOT / "scripts"
 
-SOURCE_ATLAS = RESULTS / "PAPER3_HBA1_MANGO_QUERYABLE_ATLAS_20260503.csv"
+FULL_SOURCE_ATLAS = RESULTS / "PAPER3_HBA_FULL_QUERYABLE_ATLAS_20260503.csv"
+MANGO_SOURCE_ATLAS = RESULTS / "PAPER3_HBA1_MANGO_QUERYABLE_ATLAS_20260503.csv"
+SOURCE_ATLAS = FULL_SOURCE_ATLAS if FULL_SOURCE_ATLAS.exists() else MANGO_SOURCE_ATLAS
 CONFIGS = [
     CONFIG / "hba1_90kb_focused.json",
     CONFIG / "hba1_300kb.json",
@@ -469,13 +471,21 @@ def main() -> None:
     for key in ["promoter", "enhancer", "CRE", "DHS", "CTCF", "TAD"]:
         report.append(f"| {key} | {str(config_summary[key])} |")
 
+    hba2_position_rows = 0
+    hba2_position_queryable_rows = 0
+    if "nearest_gene" in usable.columns:
+        hba2_position_rows = int((df["nearest_gene"] == "HBA2").sum())
+        hba2_position_queryable_rows = int((usable["nearest_gene"] == "HBA2").sum())
+
     report.extend(
         [
             "",
             "## Rebuild Inputs",
             "",
             f"- Primary queryable source atlas: `{SOURCE_ATLAS.relative_to(ROOT)}`",
-            "- HBA2-specific source rows found locally: `0`",
+            f"- HBA2-position rows in selected atlas: `{hba2_position_rows}`",
+            f"- Queryable HBA2-position rows in selected atlas: `{hba2_position_queryable_rows}`",
+            "- HBA2-named local source table found: `0`",
             f"- Queryable non-synthetic source rows: `{len(usable)}`",
             f"- Queryable regulatory-subclass source rows: `{len(candidate_space)}`",
             f"- Whole-locus bottom-5% LSSIM threshold: `{locus_q05:.6g}`",

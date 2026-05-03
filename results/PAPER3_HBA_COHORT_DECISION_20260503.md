@@ -7,15 +7,15 @@ This is a gate report, not a manuscript result.
 ## Executive Verdict
 
 - Can HBA1/HBA2 serve as second regulatory-positive locus? **NOT YET**
-- Why: local HBA data contains queryable regulatory-subclass rows, but the primary low-LSSIM gate has `0` regulatory candidates under the whole-locus bottom-5% rule.
-- Main blocker: the HBA low-LSSIM tail is coding/nonsense/missense, not regulatory; HBA2-specific local source rows were not found.
+- Why: the full local HBA atlas can be made queryable, but the primary low-LSSIM gate has `0` regulatory candidates under the whole-locus bottom-5% rule.
+- Main blocker: the HBA low-LSSIM tail is coding/nonsense/missense, not regulatory; HBA2-position rows exist in the full atlas, but no HBA2-named local source table was found and no HBA2-position row enters the primary regulatory gate.
 - Next required action: rebuild or import a real noncoding HBA/HBA2 regulatory source cohort with Ref/Alt and frozen position controls before any live population query.
 
 ## Candidate vs Controls
 
 | Group | n | successful | not_observed | query_failed | interpretation |
 |---|---:|---:|---:|---:|---|
-| HBA primary low-LSSIM regulatory candidates | 0 | 0 | 0 | 0 | Dry-run gate blocked: `population_filter.py` reported `0/9` matched variants and raised `ValueError`. |
+| HBA primary low-LSSIM regulatory candidates | 0 | 0 | 0 | 0 | Dry-run gate blocked: `population_filter.py` reported `0/23` matched variants and raised `ValueError`. |
 | HBA selected position controls | 0 | 0 | 0 | 0 | No controls can be selected because the primary candidate cohort is empty; control dry-run exposed the zero-row input state. |
 
 ## Dry-Run Evidence
@@ -23,11 +23,16 @@ This is a gate report, not a manuscript result.
 Rebuild command:
 
 ```powershell
+python scripts\paper3_hba_full_recover_alleles.py
 python scripts\paper3_hba_regulatory_rebuild.py
 ```
 
 Outcome:
 
+- Wrote `results\PAPER3_HBA_FULL_QUERYABLE_ATLAS_20260503.csv`
+- Wrote `results\PAPER3_HBA_FULL_QUERYABLE_ATLAS_20260503.md`
+- Queryable SNVs recovered: `108`
+- Queryable HBA2-position SNVs: `4`
 - Wrote `results\PAPER3_HBA_REGULATORY_CANDIDATES_20260503.csv`
 - Wrote `results\PAPER3_HBA_POSITION_CONTROLS_20260503.csv`
 - Wrote `results\PAPER3_HBA_REGULATORY_REBUILD_20260503.md`
@@ -42,9 +47,9 @@ python scripts\population_filter.py --atlas results\PAPER3_HBA_REGULATORY_CANDID
 
 Outcome:
 
-- Total variants in atlas: `9`
+- Total variants in atlas: `23`
 - Cohort filter: `primary_low_lssim_candidate equals True`
-- Result: `0/9 variants (0.0%)`
+- Result: `0/23 variants (0.0%)`
 - Exit: `ValueError: Cohort filter produced 0 variants`
 
 Control dry-run command:
@@ -61,7 +66,7 @@ Outcome:
 
 ## Allowed Claim
 
-Under the conservative local-source gate, HBA currently has queryable regulatory-subclass rows but no primary low-LSSIM regulatory cohort; HBA should remain a rebuild target rather than a second regulatory-positive locus.
+Under the conservative local-source gate, the full HBA atlas has queryable regulatory-subclass rows but no primary low-LSSIM regulatory cohort; HBA should remain a rebuild target rather than a second regulatory-positive locus.
 
 ## Not Allowed
 
