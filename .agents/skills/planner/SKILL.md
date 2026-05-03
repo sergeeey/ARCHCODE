@@ -1,3 +1,8 @@
+---
+name: planner
+description: Use this skill to plan project work, decompose tasks, define risks, and produce execution checklists.
+---
+
 # Skill: planner
 
 Use when:

@@ -1,3 +1,8 @@
+---
+name: implementer
+description: Use this skill to make targeted code or document changes after a plan is approved.
+---
+
 # Skill: implementer
 
 Use when:
