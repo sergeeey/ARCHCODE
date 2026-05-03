@@ -1,0 +1,12 @@
+ClinVar_ID,Position_GRCh38,Ref,Alt,HGVS_c,ClinVar_Significance,atlas_category,mechanism_subclass,ARCHCODE_LSSIM,nearest_config_feature,distance_to_nearest_feature_bp,include_primary_paper3,exclusion_reason
+VCV000985925,60553215,G,A,NM_022893.4(BCL11A):c.55+1G>A,Likely pathogenic,other,splice_region_or_intronic,0.9785,BCL11A_promoter,785,True,
+VCV000973119,60553215,G,T,NM_022893.4(BCL11A):c.55+1G>T,Likely pathogenic,other,splice_region_or_intronic,0.9785,BCL11A_promoter,785,True,
+VCV000987093,60553216,C,T,NM_022893.4(BCL11A):c.55C>T (p.Pro19Ser),Likely pathogenic,other,coding_missense_or_synonymous,0.9791,BCL11A_promoter,784,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV004515098,60553218,C,T,NM_022893.4(BCL11A):c.53C>T (p.Ser18Leu),,other,coding_missense_or_synonymous,0.9782,BCL11A_promoter,782,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV001698144,60553228,C,G,NM_022893.4(BCL11A):c.43C>G (p.Arg15Gly),Uncertain significance,other,coding_missense_or_synonymous,0.9787,BCL11A_promoter,772,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV003372531,60553243,C,T,NM_022893.4(BCL11A):c.28C>T (p.Gln10Ter),Pathogenic,other,coding_nonsense,0.9791,BCL11A_promoter,757,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV001306769,60553250,C,T,NM_022893.4(BCL11A):c.21C>T (p.Gly7=),Uncertain significance,other,coding_missense_or_synonymous,0.9789,BCL11A_promoter,750,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV000942345,60553266,C,G,NM_022893.4(BCL11A):c.5C>G (p.Ser2Cys),Likely pathogenic,other,coding_missense_or_synonymous,0.9786,BCL11A_promoter,734,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV002126136,60553269,T,A,NM_022893.4(BCL11A):c.2T>A (p.Met1Lys),Pathogenic,other,coding_missense_or_synonymous,0.9787,BCL11A_promoter,731,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV001698869,60553270,A,G,NM_022893.4(BCL11A):c.1A>G (p.Met1Val),Pathogenic/Likely pathogenic,other,coding_missense_or_synonymous,0.9785,BCL11A_promoter,730,False,not a clean regulatory/enhancer subset under local HGVS/config audit
+VCV001698614,60553283,C,T,NM_022893.4(BCL11A):c.-13C>T,Uncertain significance,other,splice_region_or_intronic,0.9789,BCL11A_promoter,717,True,
