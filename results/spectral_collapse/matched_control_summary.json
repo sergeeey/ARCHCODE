@@ -1,0 +1,137 @@
+{
+  "branch": "experiment/spectral-collapse-pilot",
+  "hbb": {
+    "SFI": {
+      "pearls_mean": 0.3222013254396595,
+      "benign_mean": 0.11710520136773737,
+      "pearls_median": 0.28219298311808444,
+      "benign_median": 0.08879278306166458,
+      "mannwhitney_p": 0.00020453214097175136
+    },
+    "spectral_gap_disruption": {
+      "pearls_mean": 0.0005546142123674932,
+      "benign_mean": 0.00011050224023404692,
+      "pearls_median": 0.0004453911399509465,
+      "benign_median": 0.00011132819805049349,
+      "mannwhitney_p": 6.67538766891713e-05
+    },
+    "eigenvalue_shifts_mean": {
+      "pearls_mean": 0.009996608085254224,
+      "benign_mean": 0.0005663918425810585,
+      "pearls_median": 0.010629496162782226,
+      "benign_median": 0.00047521735256643053,
+      "mannwhitney_p": 1.1881109053561745e-08
+    },
+    "eigenvector_angles_mean": {
+      "pearls_mean": 0.4270888780654681,
+      "benign_mean": 0.2399526321743471,
+      "pearls_median": 0.44892266351597354,
+      "benign_median": 0.222236083366156,
+      "mannwhitney_p": 0.0002676021581057674
+    },
+    "transforms": {
+      "baseline": {
+        "pearls_mean_SFI": 0.3222013254396595,
+        "benign_mean_SFI": 0.11710520136773737,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 0.00020453214097175136
+      },
+      "threshold_keep_0.75": {
+        "pearls_mean_SFI": 0.3009621052694188,
+        "benign_mean_SFI": 0.1065474422003199,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 9.772858283377435e-05
+      },
+      "threshold_keep_0.50": {
+        "pearls_mean_SFI": 0.40813546224763025,
+        "benign_mean_SFI": 0.13044390321134355,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 1.0880402969921667e-05
+      },
+      "window_40": {
+        "pearls_mean_SFI": 0.5493310304867737,
+        "benign_mean_SFI": 0.22067998051207594,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 2.966719011573052e-06
+      },
+      "window_30": {
+        "pearls_mean_SFI": 0.6014081581347007,
+        "benign_mean_SFI": 0.21168074799386674,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 2.0069497413132658e-07
+      },
+      "coverage_keep_0.75": {
+        "pearls_mean_SFI": 0.7642484348583036,
+        "benign_mean_SFI": 0.7719457794559789,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 0.6726091804237861
+      },
+      "coverage_keep_0.50": {
+        "pearls_mean_SFI": 1.0024689991633082,
+        "benign_mean_SFI": 0.9130508448754743,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 0.5757390449173081
+      },
+      "degree_preserving_null": {
+        "pearls_mean_SFI": 1.0190390522053672,
+        "benign_mean_SFI": 1.0106595054897625,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 0.9000257225381322
+      },
+      "weight_shuffled_null": {
+        "pearls_mean_SFI": 1.0753833391330399,
+        "benign_mean_SFI": 1.0585914463616968,
+        "pearls_n": 20,
+        "benign_n": 25,
+        "mannwhitney_p": 0.08881163592817248
+      }
+    }
+  },
+  "negative_comparisons": {
+    "BRCA1": {
+      "locus": "BRCA1",
+      "rows": 10492,
+      "mean_SFI": 0.021269120468406396,
+      "median_SFI": 4.6548252420740975e-05,
+      "control_category": "synonymous",
+      "control_rows": 5422,
+      "control_mean_SFI": 0.006514469674398899,
+      "control_median_SFI": 2.867897300101168e-05,
+      "signal_rows": 5070,
+      "signal_mean_SFI": 0.037048157274147744,
+      "signal_median_SFI": 0.0005191039579574,
+      "mannwhitney_p": 0.0
+    },
+    "TP53": {
+      "locus": "TP53",
+      "rows": 2794,
+      "mean_SFI": 0.1949994141304301,
+      "median_SFI": 0.1010618751467467,
+      "control_category": "synonymous",
+      "control_rows": 1399,
+      "control_mean_SFI": 0.1397399700878832,
+      "control_median_SFI": 0.0785813026884583,
+      "signal_rows": 1395,
+      "signal_mean_SFI": 0.250417308191737,
+      "signal_median_SFI": 0.1768094793989336,
+      "mannwhitney_p": 1.4143921270675468e-81
+    }
+  },
+  "decision": {
+    "continue": false,
+    "reason": "HBB survives baseline and threshold/window perturbations, but coverage/downsampling controls erase the separation, so the spectral-collapse interpretation remains unresolved."
+  },
+  "files": {
+    "results_csv": "results\\spectral_collapse\\matched_control_results.csv",
+    "summary_json": "results\\spectral_collapse\\matched_control_summary.json",
+    "report_md": "results\\spectral_collapse\\MATCHED_CONTROL_REPORT.md"
+  }
+}
