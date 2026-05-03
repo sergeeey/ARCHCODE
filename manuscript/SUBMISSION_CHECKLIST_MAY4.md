@@ -12,39 +12,34 @@
 
 ---
 
-## Final Edits Needed (30 min)
+## Final Submission Gate
 
-### 1. Add Methods note on data sources
-**Location:** Methods > Epidemiology Concordance Check  
-**Add after line "Beta-thalassemia shows well-characterized population distribution...":**
+### Completed in current manuscript
 
-```
-Allele frequencies were queried from gnomAD v4 exome (primary) and genome (supplementary) datasets. VCV000015466 (chr11:5227102 T>C) was queried from exome (AN_EAS=36,610), VCV000015471 (chr11:5227099 T>C) from genome (AN_EAS=37,034). Both datasets showed sufficient coverage (AN >30K) for reliable East Asian allele frequency estimates.
-```
+1. **Methods note on data sources** — present in `manuscript/pypop_paper_FINAL.md`
+2. **Future Directions baseline comparison** — present in `manuscript/pypop_paper_FINAL.md`
+3. **Data Availability coverage check** — present in `manuscript/pypop_paper_FINAL.md`
 
-### 2. Add Future Directions — baseline comparison
-**Location:** Discussion > Future Directions  
-**Add as #5:**
+### Remaining external step
 
-```
-5. Baseline comparison with other structural prediction tools (Akita, Enformer, DeepSEA) to quantify ARCHCODE-specific vs general structural prediction false positive rates
-```
+The only remaining submission step is the manual Human Mutation portal check:
 
-### 3. Update Data Availability — coverage check results
-**Location:** Data Availability section  
-**Add:**
+- verify author
+- verify article type
+- verify affiliation wording
+- verify title
+- upload the current `manuscript/taxonomy_paper/main.pdf`
+- retain the current cover letter framing
 
-```
-- `results/gnomad_coverage_check.json` — allele number (AN) coverage validation for 2 variants
-```
+If the portal metadata matches the canonical manuscript package, the submission package is ready.
 
 ---
 
 ## Human Mutation Submission Requirements
 
 **Journal:** Human Mutation  
-**Article type:** Short Report (3000-5000 words)  
-**Current word count:** 1,979 words ✅ (within range)
+**Article type:** Brief Report  
+**Current word count:** 3,239 words ✅ (within range)
 
 **Required materials:**
 1. **Manuscript** — pypop_paper_FINAL.md (convert to .docx)
@@ -59,14 +54,14 @@ Allele frequencies were queried from gnomAD v4 exome (primary) and genome (suppl
 ```
 Dear Editor,
 
-I am submitting a Short Report entitled "Population Stratification Detects Misclassified Pathogenic Variants in HBB Locus" for consideration in Human Mutation.
+I am submitting a Brief Report entitled "Population Stratification Identifies Epidemiology-Discordant Variants in the HBB Locus: A Validation Framework for Structural Predictions" for consideration in Human Mutation.
 
-Structural variant prediction tools increasingly detect 3D chromatin disruptions in regulatory regions, but validating these predictions without functional data remains challenging. We demonstrate that population genetics, specifically cross-population allele frequency analysis, provides an orthogonal validation strategy. By adapting the PyPop population stratification framework (originally developed for HLA immunogenetics) to rare pathogenic variants, we identified two HBB promoter variants showing East Asian-specific enrichment despite beta-thalassemia being rare in this population—a reverse epidemiology pattern consistent with population-specific benign polymorphisms misclassified as pathogenic by structural prediction.
+Structural variant prediction tools increasingly detect 3D chromatin disruptions in regulatory regions, but validating these predictions without functional data remains challenging. We demonstrate that population genetics, specifically cross-population allele frequency analysis, provides an orthogonal validation strategy. By adapting the PyPop population stratification framework (originally developed for HLA immunogenetics) to rare pathogenic variants, we identified two HBB promoter variants showing East Asian-specific enrichment despite beta-thalassemia being rare in this population—a reverse epidemiology pattern consistent with population-specific benign polymorphisms and potential overclassification by structural prediction.
 
 This proof-of-concept study (n=12 variants) demonstrates that integrating disease epidemiology with cross-population allele frequency consistency can detect misclassifications invisible to sequence-based pathogenicity tools. Our approach addresses a critical gap in regulatory variant interpretation, where experimental validation (Hi-C, CRISPR) is impractical for large-scale screening.
 
 Key findings:
-- 41.7% (5/12) variants showed universal constraint (absent in all populations)
+- 5 (41.7%) variants not observed in gnomAD v4 queried datasets
 - 2 variants showed reverse epidemiology pattern (East Asian enrichment, disease rare in East Asia)
 - Allele frequency coverage validation confirmed reliable estimates (AN >30K)
 - Sequence-based tools (VEP) correctly classified both as MODIFIER, demonstrating complementarity
@@ -77,17 +72,17 @@ The manuscript has not been submitted elsewhere and all authors have approved th
 
 Sincerely,
 Sergey Boyko
-Ronin Institute for Independent Scholarship 2.0
+Independent Researcher; Ronin Institute for Independent Scholarship 2.0 (affiliation pending confirmation)
 ```
 
 ---
 
 ## Submission Timeline
 
-**May 2 (today, 23:30):** Final edits (3 items above, 30 min)  
+**May 2 (today, 23:30):** Final edits completed locally  
 **May 3 (morning):** Convert to .docx, format figures (2 hours)  
-**May 3 (afternoon):** Submit via Human Mutation portal (1 hour)  
-**May 4 deadline:** ✅ ACHIEVED
+**May 3 (afternoon):** Manual Human Mutation portal check / upload  
+**May 4 deadline:** Local package aligned
 
 ---
 
@@ -110,7 +105,7 @@ Ronin Institute for Independent Scholarship 2.0
 
 ---
 
-**Status:** READY TO EXECUTE  
-**Bottleneck:** None — all verification passed  
-**Risk:** Low — qualitative claim, skeptic-validated  
-**Confidence:** HIGH (8/10)
+**Status:** READY FOR PORTAL CHECK  
+**Bottleneck:** External submission metadata confirmation  
+**Risk:** Low for the local package; portal metadata still needs manual verification  
+**Confidence:** HIGH for the canonical bundle, pending portal confirmation
