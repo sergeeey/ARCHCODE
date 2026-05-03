@@ -2,13 +2,13 @@
 
 **Canon Tier:** Public Canonical — Reframed
 **Release-facing:** Yes
-**Last Updated:** 2026-04-06
+**Last Updated:** 2026-05-03
 
 ## Current Release Identity
 
 | Field | Current |
 |-------|---------|
-| Public research release | `v2.18` (reframed) |
+| Public research release | `v2.17` (public canonical) |
 | Internal package version | `2.0.0` |
 | Positioning | **Analytical structural perturbation framework + falsification-first validation suite** |
 | Scope | `30,318` ClinVar variants across `9` loci; `30` validation tests |
@@ -54,10 +54,10 @@
 
 | Surface | Status |
 |---------|--------|
-| Research Square | Live — DOI `10.21203/rs.3.rs-9090074/v1` (v2.17, old framing) |
+| Research Square | Live — DOI `10.21203/rs.3.rs-9090074/v1` (v2.17 public release; legacy v1 framing retained in archive) |
 | arXiv | Pending endorsement (B9P837) |
 | bioRxiv | Rejected |
-| **Next** | Submit reframed v2.18 to Research Square + arXiv |
+| **Next** | Keep public surfaces aligned to v2.17 canonical framing; prepare any future update only after version reconciliation |
 
 ## Active Caveats
 
@@ -79,6 +79,6 @@
 
 ## Immediate Next Milestone
 
-1. Submit reframed manuscript (v2.18) to Research Square
-2. Update arXiv submission with new framing
+1. Keep Research Square and local public surfaces aligned to v2.17 canonical framing
+2. Update arXiv submission only if version labels and public narrative are reconciled
 3. Publish validation suite as standalone tool
