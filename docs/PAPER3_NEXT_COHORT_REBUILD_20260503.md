@@ -2,48 +2,54 @@
 
 Date: 2026-05-03
 
-## Decision
+## Current Decision
 
-The next Paper 3 step is to rebuild a clean regulatory candidate cohort rather than expand the current mixed-mechanism screen.
+Paper 3 remains in feasibility and cohort-gate mode. The next useful work is a source-clean regulatory cohort rebuild, not manuscript writing and not broad expansion to many loci.
 
-## What the current search showed
+## Locus Status
 
-- BCL11A is a useful cautionary pilot, but it does not separate from position-matched controls.
-- CFTR behaves as a boundary / negative locus, not a second positive locus.
-- LDLR is a frozen candidate/control pair, but it is still a design-level screen rather than a clean second regulatory-positive locus.
-- HBB remains the anchor and should not be used as independent second-locus evidence.
+| Locus | Current status | Gate implication |
+|---|---|---|
+| HBB | Paper 2 proof-of-concept anchor | Do not count as independent second-locus evidence. |
+| BCL11A | Not usable as the second clean positive locus now: full bottom-5% cohort is mixed coding/splice, source audit retained only 3 promoter-proximal candidates, and position controls showed the same not-observed pattern. | Keep as cautionary pilot with source/category and position-confound limits. |
+| CFTR | Boundary/negative case: low-LSSIM regulatory candidates did not behave like a clean regulatory-constraint example against controls. | Use only as mechanism-boundary evidence, not as a positive locus. |
+| HBA1/HBA2 | **NOT YET**: local HBA queryable source has 9 regulatory-subclass rows, but 0 primary low-LSSIM regulatory candidates and 0 selected position controls under the whole-locus bottom-5% rule. No HBA2-specific local source rows were found. | Stop live gnomAD for current HBA gate; rebuild source cohort first. |
 
-## Best next rebuild target
+## Exact HBA Blocker
 
-**HBA1/HBA2**
+The local HBA low-LSSIM tail is coding/nonsense/missense. Queryable regulatory-subclass rows exist, but they sit outside the whole-locus bottom 5% and outside the secondary `LSSIM < 0.99` boundary.
 
-Why:
+Evidence:
 
-- the downloaded local data contains real erythroid regulatory evidence;
-- HBA1 MANGO-overlap rows are now queryable after allele recovery;
-- HBA1 is the closest current path to a second locus that is biologically regulatory and not just a control-like boundary locus;
-- the remaining blocker is the regulatory subclass, not the availability of any local signal at all.
+- `results/PAPER3_HBA_REGULATORY_REBUILD_20260503.md`
+- `results/PAPER3_HBA_REGULATORY_CANDIDATES_20260503.csv`
+- `results/PAPER3_HBA_POSITION_CONTROLS_20260503.csv`
+- `results/PAPER3_HBA_COHORT_DECISION_20260503.md`
 
-## Current blocker
+## Current Best Next Locus Or Design
 
-The current HBA1 build is still not clean regulatory-only:
+Best next design: rebuild HBA/HBA2 with a real noncoding regulatory source set before considering another live population screen.
 
-- the low-LSSIM candidates are currently annotated as coding / nonsense / missense in the local table;
-- this means the cohort is usable as pilot evidence, but not as a manuscript-grade second positive regulatory locus yet.
+Minimum requirements:
 
-## Required rebuild
+- HBA2 or alpha-globin regulatory source rows with `Position_GRCh38`, `Ref`, `Alt`, `HGVS` or equivalent local source evidence.
+- Clear subclass labels: promoter, 5_prime_UTR, intronic, splice_region, enhancer-like, and coding separated.
+- Non-synthetic source audit.
+- Primary low-LSSIM denominator frozen before live gnomAD.
+- Position-matched controls selected before live gnomAD.
 
-1. Recover or import noncoding HBA2 / HBA regulatory variants inside the MANGO anchors.
-2. Keep candidate and control strata separate.
-3. Freeze a position-matched control set before any live gnomAD query.
-4. Run dry-run first, then live query only if the cohort remains non-empty after source audit.
+If HBA/HBA2 source rebuild cannot produce non-empty candidates and controls, the next design should import a different known regulatory locus with queryable noncoding SNVs and enough local controls. Do not reuse BCL11A or CFTR as positive evidence under the current artifacts.
 
-## Stop rules
+## Next 30 Minutes
 
-- Do not pool HBA1 with BCL11A, CFTR, or LDLR into one multi-locus claim.
-- Do not write a Paper 3 manuscript claim until one second locus survives a position-matched control check.
-- Do not expand to more loci before the HBA rebuild is complete.
+1. Decide whether to keep HBA as the immediate rebuild target or switch to a new imported regulatory locus.
+2. If staying with HBA, locate or create a source-audited HBA2/noncoding HBA input table with explicit Ref/Alt provenance.
+3. Add a zero-row guard to `population_filter.py` only if future gates need graceful dry-run behavior for empty selected-control files.
 
-## Output expectation
+## Next 7 Days
 
-The next useful artifact is a clean HBA1/HBA2 candidate-control rebuild note, not a manuscript section.
+1. Build a source-audited HBA/HBA2 noncoding regulatory table from accepted local or documented external source files.
+2. Recover and sanity-check Ref/Alt against GRCh38 before gnomAD.
+3. Freeze primary candidates and position controls before live query.
+4. Run strict dry-run first; run live gnomAD only if candidates and controls are non-empty, <=20 rows each, and coordinate sanity checks pass.
+5. Keep Paper 3 claims limited to cohort-gate evidence until a second locus separates from position controls.
