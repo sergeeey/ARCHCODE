@@ -1,0 +1,9 @@
+ClinVar_ID,Position_GRCh38,Ref,Alt,HGVS_c,HGVS_p,Category,ClinVar_Significance,Source,Label,ARCHCODE_LSSIM,mechanism_subclass,kircher_exact_match,kircher_value,kircher_p_value,Tags,DNA,RNA,is_queryable_snv_rechecked,is_synthetic_or_demo,is_regulatory_subclass,tert_locus_bottom5_threshold,tert_low_lssim_candidate
+VCV002932179,1294664,C,G,c.222G>C,p.V74=,splice_region,Likely benign,ClinVar_Benign,Benign,0.9681,splice_region,False,,,,,,True,False,True,0.978,True
+VCV001570434,1294664,C,T,c.222G>A,p.V74=,splice_region,Likely benign,ClinVar_Benign,Benign,0.9681,splice_region,False,,,,,,True,False,True,0.978,True
+VCV000242210,1295046,T,G,NM_198253.3(TERT):c.-57A>C,,5_prime_UTR,Conflicting classifications of pathogenicity,ClinVar_Pathogenic,Pathogenic,0.9734,promoter_or_5_prime_UTR,True,0.65,2.05944476218643e-13,97.0,4147.0,6397.0,True,False,True,0.978,True
+VCV001299388,1295113,G,A,NM_198253.3(TERT):c.-124C>T,,5_prime_UTR,Conflicting classifications of pathogenicity,ClinVar_Pathogenic,Pathogenic,0.9741,promoter_or_5_prime_UTR,True,2.0,0.0,464.0,30420.0,115807.0,True,False,True,0.978,True
+VCV002443072,1295135,G,A,NM_198253.3(TERT):c.-146C>T,,5_prime_UTR,Pathogenic,ClinVar_Pathogenic,Pathogenic,0.9734,promoter_or_5_prime_UTR,True,1.42,5.13753614580974e-194,293.0,19640.0,55012.0,True,False,True,0.978,True
+VCV003765386,1295154,G,C,NM_198253.3(TERT):c.-165C>G,,5_prime_UTR,Likely benign,ClinVar_Benign,Benign,0.9743,promoter_or_5_prime_UTR,True,-0.26,0.0054607196264208,78.0,5462.0,4880.0,True,False,True,0.978,True
+VCV002575426,1295163,C,G,NM_198253.3(TERT):c.-174G>C,,5_prime_UTR,Likely benign,ClinVar_Benign,Benign,0.9726,promoter_or_5_prime_UTR,True,-0.16,0.110461837744779,68.0,4851.0,4920.0,True,False,True,0.978,True
+VCV001212208,1295207,G,C,NM_198253.2(TERT):c.-218C>G,,5_prime_UTR,Benign/Likely benign,ClinVar_Benign,Benign,0.9737,promoter_or_5_prime_UTR,True,-0.03,0.592420147666853,208.0,9576.0,10883.0,True,False,True,0.978,True

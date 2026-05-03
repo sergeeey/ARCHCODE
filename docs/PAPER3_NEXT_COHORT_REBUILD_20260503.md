@@ -29,7 +29,17 @@ Evidence:
 
 ## Current Best Next Locus Or Design
 
-Best next design: rebuild HBA/HBA2 with a real noncoding regulatory source set before considering another live population screen.
+Best local next-locus dry-run target: **TERT**, with a strict caveat.
+
+Evidence:
+
+- `results/PAPER3_NEXT_LOCUS_SCOUT_20260503.md`
+- `results/PAPER3_TERT_REGULATORY_SCREEN_20260503.md`
+- `results/PAPER3_TERT_COHORT_DECISION_20260503.md`
+
+TERT has a non-empty low-LSSIM regulatory candidate cohort and non-empty controls in local dry-run, but it is not cleared for live gnomAD until promoter/5_prime_UTR source semantics and position-control limitations are audited.
+
+Best rebuild design if TERT fails source audit: rebuild HBA/HBA2 with a real noncoding regulatory source set before considering another live population screen.
 
 Minimum requirements:
 
@@ -39,18 +49,19 @@ Minimum requirements:
 - Primary low-LSSIM denominator frozen before live gnomAD.
 - Position-matched controls selected before live gnomAD.
 
-If HBA/HBA2 source rebuild cannot produce non-empty candidates and controls, the next design should import a different known regulatory locus with queryable noncoding SNVs and enough local controls. Do not reuse BCL11A or CFTR as positive evidence under the current artifacts.
+If HBA/HBA2 source rebuild cannot produce non-empty candidates and controls and TERT source semantics do not survive audit, the next design should import a different known regulatory locus with queryable noncoding SNVs and enough local controls. Do not reuse BCL11A or CFTR as positive evidence under the current artifacts.
 
 ## Next 30 Minutes
 
-1. Decide whether to keep HBA as the immediate rebuild target or switch to a new imported regulatory locus.
-2. If staying with HBA, locate or create a source-audited HBA2/noncoding HBA input table with explicit Ref/Alt provenance.
-3. Add a zero-row guard to `population_filter.py` only if future gates need graceful dry-run behavior for empty selected-control files.
+1. Audit the 8 TERT candidates and 8 controls for germline/somatic/source semantics.
+2. Decide whether TERT controls are acceptable or need a stricter position/mechanism rematch.
+3. Keep HBA/HBA2 as a source-rebuild fallback if TERT fails audit.
 
 ## Next 7 Days
 
-1. Build a source-audited HBA/HBA2 noncoding regulatory table from accepted local or documented external source files.
-2. Recover and sanity-check Ref/Alt against GRCh38 before gnomAD.
-3. Freeze primary candidates and position controls before live query.
-4. Run strict dry-run first; run live gnomAD only if candidates and controls are non-empty, <=20 rows each, and coordinate sanity checks pass.
-5. Keep Paper 3 claims limited to cohort-gate evidence until a second locus separates from position controls.
+1. Complete TERT source semantics audit and either approve a strict small live gate or stop TERT as source-ambiguous.
+2. If TERT stops, build a source-audited HBA/HBA2 noncoding regulatory table from accepted local or documented external source files.
+3. Recover and sanity-check Ref/Alt against GRCh38 before gnomAD.
+4. Freeze primary candidates and position controls before live query.
+5. Run strict dry-run first; run live gnomAD only if candidates and controls are non-empty, <=20 rows each, and coordinate sanity checks pass.
+6. Keep Paper 3 claims limited to cohort-gate evidence until a second locus separates from position controls.
