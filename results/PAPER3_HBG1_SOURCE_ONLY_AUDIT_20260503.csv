@@ -1,0 +1,2 @@
+source_file,source_exists,rows,queryable_snvs,positions,positive_effect_rows,negative_effect_rows,has_archcode_atlas,has_locus_config,decision
+data\kircher_HBG1_GRCh38.tsv,True,907,822,274,4,94,False,False,IMPORT_ARCHCODE_ATLAS
