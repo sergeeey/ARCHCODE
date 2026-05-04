@@ -16,8 +16,8 @@ Paper 3 remains in feasibility and cohort-gate mode. The next useful work is a s
 | HBA1/HBA2 | **NOT YET**: full local HBA source recovery produced 108 queryable SNVs and 23 regulatory-subclass rows, but 0 primary low-LSSIM regulatory candidates and 0 selected position controls under the whole-locus bottom-5% rule. HBA2-position rows exist, but no HBA2-named local source table was found. | Stop live gnomAD for current HBA gate; rebuild source cohort first. |
 | TERT | **REBUILD_OR_SWITCH**: source-semantics audit retained useful promoter/5_prime_UTR Kircher overlap, but strict source rebuild produced 0 clean live-gate candidates and 0 controls. Candidate-like promoter rows remain mixed germline/somatic/cancer-context rows. | Do not run live gnomAD on current TERT set; either perform bounded source-resolution import or switch locus. |
 | GATA1 | **STOP_LOCAL_POSITIVE_GATE / REBUILD_REF_ALT_ONLY**: HGVS allele recovery produces 182 queryable SNVs, but current local rows have 0 promoter/enhancer-like queryable rows and 0 primary regulatory candidates; bottom-5 recovered rows are coding missense/nonsense. | Do not run live gnomAD on current GATA1 set; only revisit with a true regulatory source import. |
-| LDLR | **REBUILD_CONTROLS_BEFORE_DRY_RUN**: local atlas has 8 P/LP promoter/5_prime_UTR exact-Kircher candidate rows, but 0 strict same-mechanism benign non-bottom controls. The 3 benign promoter exact-Kircher rows are also low-LSSIM, so they do not solve the position-control gate. | Do not use prior LDLR live artifacts as positive evidence; rebuild controls before any new dry-run/live gate. |
-| HBG1 | **IMPORT_ARCHCODE_ATLAS**: local Kircher source has 907 rows and 822 queryable SNVs, but no local ARCHCODE atlas/config gate. | Promising source-only import target; cannot enter Paper 3 population gate until atlas/config and controls exist. |
+| LDLR | **STOP_LDLR_AS_CLEAN_POSITIVE_GATE**: bounded control rebuild found 0 accepted strict controls. Same-window promoter/5_prime_UTR benign exact-Kircher rows exist, but all are also low-LSSIM; same-window non-bottom rows are coding/synonymous and fail mechanism matching. | Do not use prior LDLR live artifacts as positive evidence; move to HBG1 atlas/config import or another complete regulatory source import. |
+| HBG1 | **IMPORT_ARCHCODE_ATLAS_BEFORE_DRY_RUN**: local Kircher source has 907 rows, 822 queryable SNVs, 79 source-only MPRA-effect candidate rows, and 127 source-only near-zero controls inside the existing HBB 95kb sub-TAD config. It still has no HBG1 ARCHCODE_LSSIM atlas for these source variants. | Best current import target, but cannot enter Paper 3 population gate until ARCHCODE atlas/LSSIM values and frozen candidate/control columns exist. |
 
 ## Exact HBA Blocker
 
@@ -49,14 +49,14 @@ Best immediate design: switch to a **new or re-imported documented regulatory lo
 
 Local GATA1 is no longer the best next live-gate target because the source inventory recovered queryable alleles but no promoter/enhancer-like regulatory candidates.
 
-Local LDLR is source-rich and biologically cleaner than TERT, but the current strict gate is blocked by controls. HBG1 has a strong source-only MPRA table, but no local ARCHCODE atlas/config.
+Local LDLR is source-rich and biologically cleaner than TERT, but the strict control-rebuild gate is now closed: accepted controls remain 0. HBG1 has the best current source-import profile: non-empty MPRA candidate/control source pools inside an existing beta-globin sub-TAD config, but no generated HBG1 ARCHCODE atlas.
 
 Possible next designs:
 
 1. Import a true GATA1 regulatory source set, then rerun the same source/cohort gate.
 2. Rebuild TERT only if external source-resolution can separate germline regulatory rows from somatic/cancer-only rows.
-3. Rebuild LDLR controls using a pre-specified same-window non-bottom control design; stop LDLR if controls remain 0.
-4. Import HBG1 ARCHCODE atlas/config from the existing Kircher source table, then run the same source/cohort gate.
+3. Generate or import HBG1 ARCHCODE atlas/LSSIM values for the existing Kircher source table inside `hbb_95kb_subTAD`, then run the same source/cohort gate.
+4. If HBG1 import is not feasible, import another documented regulatory locus with both candidate and control source rows.
 
 Minimum requirements:
 
@@ -67,12 +67,12 @@ Minimum requirements:
 - Primary low-LSSIM denominator frozen before live gnomAD.
 - Position-matched controls selected before live gnomAD.
 
-If TERT source-resolution, HBA/HBA2 source rebuild, local GATA1 source rows, and strict LDLR controls cannot produce non-empty candidates and controls, the next design should import a different known regulatory locus with queryable noncoding SNVs and enough local controls. Do not reuse BCL11A, CFTR, old LDLR live artifacts, or current local GATA1/TERT artifacts as positive evidence.
+If TERT source-resolution, HBA/HBA2 source rebuild, local GATA1 source rows, and strict LDLR controls cannot produce non-empty candidates and controls, the next design should import a different known regulatory locus with queryable noncoding SNVs and enough local controls. Do not reuse BCL11A, CFTR, old LDLR live artifacts, or current local GATA1/TERT/LDLR artifacts as positive evidence.
 
 ## Next 30 Minutes
 
-1. Decide whether to spend one bounded pass on LDLR control rebuild or move directly to HBG1 atlas/config import.
-2. For LDLR, predefine whether relaxed controls are allowed; if strict same-mechanism non-bottom controls remain 0, stop LDLR as a clean positive gate.
+1. Build the HBG1 ARCHCODE atlas for the 907 Kircher rows using the existing HBB 95kb sub-TAD config, or identify the exact missing runner/API needed to do it.
+2. Freeze HBG1 candidates/controls only after `ARCHCODE_LSSIM` exists for the source rows.
 3. Do not run live gnomAD until a non-empty strict candidate/control set passes dry-run.
 
 ## Next 7 Days
