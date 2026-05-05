@@ -37,6 +37,15 @@ RESULTS_DIR = Path("D:/ДНК/results")
 GNOMAD_API = "https://gnomad.broadinstitute.org/api"
 
 
+class CohortGateBlocked(ValueError):
+    """Controlled cohort-gate failure before gnomAD query."""
+
+    def __init__(self, message: str, reason: str, matched_variants: int = 0):
+        super().__init__(message)
+        self.reason = reason
+        self.matched_variants = matched_variants
+
+
 def parse_args():
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
@@ -89,6 +98,14 @@ def parse_args():
         action="store_true",
         help="Skip variants likely benign based on ClinVar significance (Benign/Likely_benign)",
     )
+    parser.add_argument(
+        "--treat-not-found-as-absent",
+        action="store_true",
+        help=(
+            "Treat gnomAD 'Variant not found' GraphQL errors as not observed. "
+            "Use only after coordinate/build sanity checks."
+        ),
+    )
 
     return parser.parse_args()
 
@@ -131,19 +148,101 @@ def apply_cohort_filter(df: pd.DataFrame, args) -> pd.DataFrame:
     filtered = df[mask].copy()
 
     print(f"Cohort filter: {args.cohort_column} {args.cohort_op} {value}")
+    if len(df) == 0:
+        print("Result: 0/0 variants (NA%)")
+        raise CohortGateBlocked(
+            f"Cohort gate blocked: input atlas contains 0 rows.\n"
+            f"Check: {args.atlas}",
+            reason="input_atlas_zero_rows",
+            matched_variants=0,
+        )
+
     print(f"Result: {len(filtered)}/{len(df)} variants ({100*len(filtered)/len(df):.1f}%)")
 
     if len(filtered) == 0:
-        raise ValueError(
-            f"Cohort filter produced 0 variants.\n"
-            f"Check: {args.cohort_column} {args.cohort_op} {args.cohort_value}"
+        raise CohortGateBlocked(
+            f"Cohort gate blocked: filter produced 0 variants.\n"
+            f"Check: {args.cohort_column} {args.cohort_op} {args.cohort_value}",
+            reason="cohort_filter_zero_rows",
+            matched_variants=0,
         )
 
     return filtered
 
 
+def write_blocked_gate_summary(
+    args,
+    df: pd.DataFrame,
+    error: CohortGateBlocked,
+    mode: str,
+) -> tuple[Path, Path]:
+    """Write deterministic artifacts for a blocked cohort gate."""
+    out_csv = RESULTS_DIR / f"{args.out}.csv"
+    out_json = RESULTS_DIR / f"{args.out}.json"
+
+    # Preserve the atlas schema where possible so downstream tooling can read
+    # an empty result table without special-casing missing files.
+    df.head(0).to_csv(out_csv, index=False)
+
+    summary = {
+        "analysis": "gnomAD_population_stratification",
+        "mode": mode,
+        "status": "COHORT_GATE_BLOCKED",
+        "exit_code": 2,
+        "locus": f"{args.locus_name} (chr{args.chrom})",
+        "atlas_file": str(args.atlas),
+        "total_variants_in_atlas": int(len(df)),
+        "cohort_filter": {
+            "column": args.cohort_column,
+            "operator": args.cohort_op,
+            "value": args.cohort_value,
+            "matched_variants": int(error.matched_variants),
+        },
+        "blocker": {
+            "reason": error.reason,
+            "message": str(error),
+        },
+        "dataset": "gnomAD_v4",
+        "query_status": {
+            "successful_gnomad_rows": 0,
+            "query_failed_rows": 0,
+            "source_counts": {},
+        },
+        "live_query_allowed": False,
+        "interpretation_note": (
+            "No gnomAD query was run because the cohort gate was empty. "
+            "This is a controlled gate failure, not population evidence."
+        ),
+    }
+    with open(out_json, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
+    return out_csv, out_json
+
+
+def absent_result(source: str) -> dict:
+    """Return a normalized not-observed result."""
+    return {
+        "af": 0.0,
+        "ac": 0,
+        "an": 0,
+        "af_afr": 0.0,
+        "af_amr": 0.0,
+        "af_eas": 0.0,
+        "af_eur": 0.0,
+        "af_sas": 0.0,
+        "popmax": None,
+        "faf95_popmax": None,
+        "source": source,
+    }
+
+
 def query_gnomad_with_populations(
-    chrom: str, pos: int, ref: str, alt: str, rate_limit: float
+    chrom: str,
+    pos: int,
+    ref: str,
+    alt: str,
+    rate_limit: float,
+    treat_not_found_as_absent: bool = False,
 ) -> dict | None:
     """Query gnomAD v4 GraphQL API with population stratification."""
     variant_id = f"{chrom}-{pos}-{ref}-{alt}"
@@ -238,43 +337,22 @@ def query_gnomad_with_populations(
     try:
         data = resp.json()
         if "errors" in data:
-            print(f"  gnomAD errors: {data['errors'][0].get('message', '')[:100]}")
+            message = data["errors"][0].get("message", "")
+            print(f"  gnomAD errors: {message[:100]}")
+            if treat_not_found_as_absent and "Variant not found" in message:
+                return absent_result("gnomAD_v4_not_observed_graphql")
             return None
 
         variant_data = data.get("data", {}).get("variant")
         if variant_data is None:
-            return {
-                "af": 0.0,
-                "ac": 0,
-                "an": 0,
-                "af_afr": 0.0,
-                "af_amr": 0.0,
-                "af_eas": 0.0,
-                "af_eur": 0.0,
-                "af_sas": 0.0,
-                "popmax": None,
-                "faf95_popmax": None,
-                "source": "gnomAD_v4_absent",
-            }
+            return absent_result("gnomAD_v4_absent")
 
         genome = variant_data.get("genome")
         exome = variant_data.get("exome")
 
         dataset = genome if genome and genome.get("an", 0) > 0 else exome
         if not dataset or dataset.get("an", 0) == 0:
-            return {
-                "af": 0.0,
-                "ac": 0,
-                "an": 0,
-                "af_afr": 0.0,
-                "af_amr": 0.0,
-                "af_eas": 0.0,
-                "af_eur": 0.0,
-                "af_sas": 0.0,
-                "popmax": None,
-                "faf95_popmax": None,
-                "source": "gnomAD_v4_absent",
-            }
+            return absent_result("gnomAD_v4_absent")
 
         faf95_data = dataset.get("faf95", {})
         result = {
@@ -316,7 +394,7 @@ def query_gnomad_with_populations(
 
 def is_simple_snv(ref: str, alt: str) -> bool:
     """Check if variant is a simple SNV."""
-    return len(ref) == 1 and len(alt) == 1 and ref in "ACGT" and alt in "ACGT"
+    return len(ref) == 1 and len(alt) == 1 and ref in "ACGT" and alt in "ACGT" and ref != alt
 
 
 def analyze_cross_population_consistency(df: pd.DataFrame) -> dict:
@@ -362,7 +440,16 @@ def main():
     print(f"Total variants in atlas: {len(df)}")
 
     # Apply cohort filter
-    cohort = apply_cohort_filter(df, args)
+    try:
+        cohort = apply_cohort_filter(df, args)
+    except CohortGateBlocked as exc:
+        mode = "dry_run_blocked" if args.dry_run else "live_blocked_before_query"
+        out_csv, out_json = write_blocked_gate_summary(args, df, exc, mode)
+        print("\nCOHORT GATE BLOCKED")
+        print(str(exc))
+        print(f"Saved empty result table: {out_csv}")
+        print(f"Saved blocked-gate summary: {out_json}")
+        raise SystemExit(2)
 
     # Dry run mode — preview only
     if args.dry_run:
@@ -422,7 +509,14 @@ def main():
 
         print(f"[{len(results)+1}/{len(cohort_snv)}] {cid}: chr{args.chrom}:{pos} {ref}>{alt}")
 
-        result = query_gnomad_with_populations(args.chrom, pos, ref, alt, args.rate_limit)
+        result = query_gnomad_with_populations(
+            args.chrom,
+            pos,
+            ref,
+            alt,
+            args.rate_limit,
+            treat_not_found_as_absent=args.treat_not_found_as_absent,
+        )
 
         if result is None:
             print(f"  FAILED: no data")
@@ -498,6 +592,32 @@ def main():
     # Analysis
     successful = results_df[results_df["gnomAD_source"].str.contains("gnomAD_v4", na=False)]
 
+    query_status = {
+        "successful_gnomad_rows": int(len(successful)),
+        "query_failed_rows": int((results_df["gnomAD_source"] == "QUERY_FAILED").sum()),
+        "source_counts": results_df["gnomAD_source"].value_counts(dropna=False).to_dict(),
+    }
+
+    summary = {
+        "analysis": "gnomAD_population_stratification",
+        "locus": f"{args.locus_name} (chr{args.chrom})",
+        "atlas_file": str(args.atlas),
+        "cohort_filter": {
+            "column": args.cohort_column,
+            "operator": args.cohort_op,
+            "value": args.cohort_value,
+            "matched_variants": len(cohort),
+        },
+        "dataset": "gnomAD_v4",
+        "total_rows_written": len(results_df),
+        "query_status": query_status,
+        "interpretation_note": (
+            "QUERY_FAILED rows are technical failures, not evidence of absence. "
+            "Rows marked gnomAD_v4_absent or gnomAD_v4_not_observed_graphql are "
+            "not-observed query results and still require coordinate/build sanity checks."
+        ),
+    }
+
     if len(successful) > 0:
         print(f"\n{'='*80}")
         print("CROSS-POPULATION CONSTRAINT ANALYSIS")
@@ -516,27 +636,14 @@ def main():
         for pop, max_af in cross_pop["max_af_per_population"].items():
             print(f"  {pop}: {max_af:.6g}")
 
-        # Save summary
-        summary = {
-            "analysis": "gnomAD_population_stratification",
-            "locus": f"{args.locus_name} (chr{args.chrom})",
-            "atlas_file": str(args.atlas),
-            "cohort_filter": {
-                "column": args.cohort_column,
-                "operator": args.cohort_op,
-                "value": args.cohort_value,
-                "matched_variants": len(cohort),
-            },
-            "dataset": "gnomAD_v4",
-            "total_queried": len(successful),
-            "cross_population_analysis": cross_pop,
-        }
+        summary["total_queried"] = len(successful)
+        summary["cross_population_analysis"] = cross_pop
 
-        out_json = RESULTS_DIR / f"{args.out}.json"
-        with open(out_json, "w", encoding="utf-8") as f:
-            json.dump(summary, f, indent=2, ensure_ascii=False)
+    out_json = RESULTS_DIR / f"{args.out}.json"
+    with open(out_json, "w", encoding="utf-8") as f:
+        json.dump(summary, f, indent=2, ensure_ascii=False)
 
-        print(f"\nSaved summary: {out_json}")
+    print(f"\nSaved summary: {out_json}")
 
     print("\nDone.")
 
