@@ -106,7 +106,7 @@ interface GenericVariant {
   hgvs_p: string;
   category: string;
   clinical_significance: string;
-  label: "Pathogenic" | "Benign";
+  label: string;
 }
 
 function loadGenericVariants(csvPath: string): GenericVariant[] {
@@ -128,7 +128,13 @@ function loadGenericVariants(csvPath: string): GenericVariant[] {
     headers.forEach((h, idx) => (row[h] = values[idx]));
 
     const label = row.label;
-    if (label !== "Pathogenic" && label !== "Benign") continue;
+    const allowedLabels = new Set([
+      "Pathogenic",
+      "Benign",
+      "MPRA_Effect",
+      "MPRA_NearZero",
+    ]);
+    if (!allowedLabels.has(label)) continue;
 
     variants.push({
       vcv_id: row.clinvar_id,
@@ -617,7 +623,7 @@ async function main() {
   // Variant loading — HBB vs CFTR (and future loci)
   // ============================================================================
 
-  type TaggedVariant = RealVariant & { label: "Pathogenic" | "Benign" };
+  type TaggedVariant = RealVariant & { label: string };
   let allVariants: TaggedVariant[];
   let vepMap: Map<string, VepResult>;
   let hasVep: boolean;
@@ -634,6 +640,7 @@ async function main() {
     LOCUS_ARG === "brca1_k562" ||
     LOCUS_ARG === "tert" ||
     LOCUS_ARG === "gjb2" ||
+    LOCUS_ARG === "hbg1" ||
     LOCUS_ARG === "hba1" ||
     LOCUS_ARG === "gata1" ||
     LOCUS_ARG === "bcl11a" ||
@@ -700,12 +707,12 @@ async function main() {
     vepMap = new Map(); // No VEP for CFTR — not needed for within-category test
     hasVep = false;
 
-    const pathCount = allVariants.filter(
-      (v) => v.label === "Pathogenic",
-    ).length;
-    const benCount = allVariants.filter((v) => v.label === "Benign").length;
-    console.log(`  Pathogenic/LP: ${pathCount}`);
-    console.log(`  Benign/LB:     ${benCount}`);
+    const primaryLabel = LOCUS_ARG === "hbg1" ? "MPRA_Effect" : "Pathogenic";
+    const controlLabel = LOCUS_ARG === "hbg1" ? "MPRA_NearZero" : "Benign";
+    const pathCount = allVariants.filter((v) => v.label === primaryLabel).length;
+    const benCount = allVariants.filter((v) => v.label === controlLabel).length;
+    console.log(`  ${primaryLabel}: ${pathCount}`);
+    console.log(`  ${controlLabel}: ${benCount}`);
     console.log(`  Total:         ${allVariants.length}`);
     console.log("  VEP: skipped (not required for within-category analysis)");
   } else {
@@ -882,8 +889,9 @@ async function main() {
         Discordance: discordance,
         Mechanism_Insight: insight,
         Label: variant.label,
-        Source:
-          variant.label === "Pathogenic"
+        Source: LOCUS_ARG === "hbg1"
+          ? `Kircher_HBG1_${variant.label}`
+          : variant.label === "Pathogenic"
             ? "ClinVar_Pathogenic"
             : "ClinVar_Benign",
         CADD_Phred: vep?.cadd_phred !== null && vep?.cadd_phred !== undefined
@@ -963,8 +971,10 @@ async function main() {
   console.log(`CSV saved: ${csvPath}`);
 
   // ======== Statistics ========
-  const pathogenicResults = results.filter((r) => r.Label === "Pathogenic");
-  const benignResults = results.filter((r) => r.Label === "Benign");
+  const primaryLabel = LOCUS_ARG === "hbg1" ? "MPRA_Effect" : "Pathogenic";
+  const controlLabel = LOCUS_ARG === "hbg1" ? "MPRA_NearZero" : "Benign";
+  const pathogenicResults = results.filter((r) => r.Label === primaryLabel);
+  const benignResults = results.filter((r) => r.Label === controlLabel);
   const pearls = results.filter((r) => r.Pearl);
   const archcodePathogenic = results.filter(
     (r) =>
@@ -977,8 +987,8 @@ async function main() {
   const categoryBreakdown: Record<string, any> = {};
   for (const cat of categories) {
     const catAll = results.filter((r) => r.Category === cat);
-    const catPath = catAll.filter((r) => r.Label === "Pathogenic");
-    const catBenign = catAll.filter((r) => r.Label === "Benign");
+    const catPath = catAll.filter((r) => r.Label === primaryLabel);
+    const catBenign = catAll.filter((r) => r.Label === controlLabel);
     categoryBreakdown[cat] = {
       total: catAll.length,
       pathogenic_count: catPath.length,
@@ -1065,7 +1075,9 @@ async function main() {
       "Eliminates pipeline discrepancy that caused AUC=1.000 artifact in v1.0.",
     data_sources: isGenericLocus
       ? {
-          variants: `NCBI ClinVar (data/${LOCUS_ARG}_variants.csv)`,
+          variants: LOCUS_ARG === "hbg1"
+            ? "Kircher HBG1 MPRA source rows (generated compatibility input: data/hbg1_variants.csv)"
+            : `NCBI ClinVar (data/${LOCUS_ARG}_variants.csv)`,
           structural_predictor: "ARCHCODE loop extrusion (Kramer kinetics)",
         }
       : {
@@ -1123,6 +1135,16 @@ async function main() {
         ).toFixed(4),
       ),
       local_ssim_window: LOCAL_SSIM_WINDOW,
+      label_semantics: LOCUS_ARG === "hbg1"
+        ? {
+            primary_label: "MPRA_Effect",
+            control_label: "MPRA_NearZero",
+            note: "HBG1 labels are source-effect classes from Kircher MPRA rows, not ClinVar disease labels.",
+          }
+        : {
+            primary_label: "Pathogenic",
+            control_label: "Benign",
+          },
     },
     category_breakdown: categoryBreakdown,
     pipeline_integrity: {
@@ -1147,10 +1169,10 @@ async function main() {
   console.log("=".repeat(70));
   console.log(`Total variants:          ${results.length}`);
   console.log(
-    `  Pathogenic:            ${pathogenicResults.length}  (mean SSIM=${summary.statistics.mean_ssim_pathogenic}, LSSIM=${summary.statistics.mean_lssim_pathogenic})`,
+    `  ${primaryLabel}:        ${pathogenicResults.length}  (mean SSIM=${summary.statistics.mean_ssim_pathogenic}, LSSIM=${summary.statistics.mean_lssim_pathogenic})`,
   );
   console.log(
-    `  Benign:                ${benignResults.length}  (mean SSIM=${summary.statistics.mean_ssim_benign}, LSSIM=${summary.statistics.mean_lssim_benign})`,
+    `  ${controlLabel}:        ${benignResults.length}  (mean SSIM=${summary.statistics.mean_ssim_benign}, LSSIM=${summary.statistics.mean_lssim_benign})`,
   );
   console.log(
     `ARCHCODE struct. path.:  ${archcodePathogenic.length} (verdict based on LSSIM)`,
@@ -1164,7 +1186,7 @@ async function main() {
   );
 
   console.log(
-    "\nCategory breakdown (Pathogenic mean SSIM vs Benign mean SSIM):",
+    `\nCategory breakdown (${primaryLabel} mean SSIM vs ${controlLabel} mean SSIM):`,
   );
   for (const [cat, info] of Object.entries(categoryBreakdown)) {
     const ci = info as any;
@@ -1179,7 +1201,7 @@ async function main() {
         ? (ci.mean_ssim_pathogenic - ci.mean_ssim_benign).toFixed(4)
         : "N/A";
     console.log(
-      `  ${cat.padEnd(20)} Path=${pathStr}  Ben=${benStr}  Δ=${delta}  (n=${ci.total})`,
+      `  ${cat.padEnd(20)} ${primaryLabel}=${pathStr}  ${controlLabel}=${benStr}  Δ=${delta}  (n=${ci.total})`,
     );
   }
 
@@ -1190,10 +1212,10 @@ async function main() {
 
   // Check intronic specifically (was the main artifact in v1.0)
   const intronicPath = results.filter(
-    (r) => r.Category === "intronic" && r.Label === "Pathogenic",
+    (r) => r.Category === "intronic" && r.Label === primaryLabel,
   );
   const intronicBenign = results.filter(
-    (r) => r.Category === "intronic" && r.Label === "Benign",
+    (r) => r.Category === "intronic" && r.Label === controlLabel,
   );
   if (intronicPath.length > 0 && intronicBenign.length > 0) {
     const avgPath =
@@ -1204,7 +1226,7 @@ async function main() {
       intronicBenign.length;
     const delta = Math.abs(avgPath - avgBenign);
     console.log(
-      `Intronic: Path SSIM=${avgPath.toFixed(4)}, Benign SSIM=${avgBenign.toFixed(4)}, Δ=${delta.toFixed(4)}`,
+      `Intronic: ${primaryLabel} SSIM=${avgPath.toFixed(4)}, ${controlLabel} SSIM=${avgBenign.toFixed(4)}, Δ=${delta.toFixed(4)}`,
     );
     console.log(
       `  v1.0 had: Path=0.995, Benign=1.000 (Δ=0.005 → 10x pipeline artifact)`,
@@ -1225,7 +1247,7 @@ async function main() {
 
   // Verify counts
   console.log(
-    `\nVariant count check: ${pathogenicResults.length} Path + ${benignResults.length} Ben = ${results.length} total`,
+    `\nVariant count check: ${pathogenicResults.length} ${primaryLabel} + ${benignResults.length} ${controlLabel} = ${results.length} total`,
   );
   const expectedTotal = pathogenicResults.length + benignResults.length;
   console.log(

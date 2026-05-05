@@ -1,0 +1,27 @@
+{
+  "analysis": "gnomAD_population_stratification",
+  "mode": "dry_run_blocked",
+  "status": "COHORT_GATE_BLOCKED",
+  "exit_code": 2,
+  "locus": "HBG1_archcode_candidates (chr11)",
+  "atlas_file": "results\\PAPER3_HBG1_ARCHCODE_CANDIDATES_20260503.csv",
+  "total_variants_in_atlas": 0,
+  "cohort_filter": {
+    "column": "hbg1_archcode_candidate",
+    "operator": "equals",
+    "value": "true",
+    "matched_variants": 0
+  },
+  "blocker": {
+    "reason": "input_atlas_zero_rows",
+    "message": "Cohort gate blocked: input atlas contains 0 rows.\nCheck: results\\PAPER3_HBG1_ARCHCODE_CANDIDATES_20260503.csv"
+  },
+  "dataset": "gnomAD_v4",
+  "query_status": {
+    "successful_gnomad_rows": 0,
+    "query_failed_rows": 0,
+    "source_counts": {}
+  },
+  "live_query_allowed": false,
+  "interpretation_note": "No gnomAD query was run because the cohort gate was empty. This is a controlled gate failure, not population evidence."
+}
