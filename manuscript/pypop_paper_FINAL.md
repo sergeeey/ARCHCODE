@@ -1,8 +1,8 @@
 # Population Stratification Identifies Epidemiology-Discordant Variants in the HBB Locus: A Validation Framework for Structural Predictions
 
 **Authors:** Sergey Boyko  
-**Affiliation:** Independent Researcher; Ronin Institute for Independent Scholarship 2.0 (affiliation pending confirmation, decision expected May 2026)  
-**Correspondence:** sergeikuch80@gmail.com  
+**Affiliation:** Ronin Institute for Independent Scholarship 2.0  
+**Correspondence:** sergey.boyko@ronininstitute.org  
 **ORCID:** 0009-0009-2178-5701
 
 **Running title:** Population Validation of HBB Structural Variants
