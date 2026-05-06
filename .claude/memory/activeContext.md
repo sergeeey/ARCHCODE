@@ -344,6 +344,7 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
+- [2026-05-06 15:18] `06d9473`: chore: remove duplicate .bak files (3 files)
 - [2026-05-06 15:17] `e59fc6d`: docs(memory): update activeContext (Session 2026-05-06) + clean goals.md
 - [2026-05-06 15:17] `d051f93`: chore: project reorganization — consolidate 3-day multi-stream work
 - [2026-05-03 02:16] `2e7fd52`: feat(A1-pilot): LSSIM mechanism-specific limitation discovered
