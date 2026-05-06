@@ -1,26 +1,34 @@
 # Active Context — Multi-Project
 
-**Last Updated:** 2026-05-03 (A1 Pilot + Mechanism Discovery)
-**Active Projects:** ARCHCODE (PyPop Paper 2 submitted, A1 pivot required), Stress Biology (KILLED)
+**Last Updated:** 2026-05-06 (System Recovery + Paper 2 Verification)
+**Active Projects:** ARCHCODE (PyPop Paper 2 status unclear, Spectral validation complete), Paper 3 (strategic decision needed)
 
 ---
 
-## Session 2026-05-06 — Project Reorganization + Multi-Stream Convergence ✅
+## Session 2026-05-06 Part 2 — System Recovery + Paper 2 Verification ✅
 
-**Context:** 137 uncommitted files, 31 commits since last activeContext update (2026-05-03). Three parallel work streams converged: Paper 2 submission status unclear, Paper 3 extensive multi-locus search (31 commits), Spectral validation complete but uncommitted. Project reorganization required.
+**Context:** PC overheated and rebooted mid-session (3:30 PM). Root cause identified: 82GB JSON contact matrices generation + 16 Claude processes. System recovered, data verified, cleanup committed.
 
-**Paper 2 (PyPop HBB Population Stratification) — STATUS UNCLEAR:**
+**Thermal Overload Diagnosis:**
+- **82GB JSON files:** 29,158 contact matrices (3.4MB each) generated during Spectral validation
+- **16 Claude processes:** 4 hung CLI processes (v2.1.121 + 3×v2.1.128) + Desktop App (10 processes)
+- **CPU load:** sustained 125W → 180W thermal limit → shutdown
+- **Resolution:** Deleted 82GB JSON (finalized results in CSV 2.5MB), closed 4 hung processes, commit a71ed04
+
+**Paper 2 (PyPop HBB) — ✅ DOCX VERIFIED READY:**
 - **Deadline:** May 4, 2026 — **MISSED** (2 days overdue)
-- **Submission status:** UNKNOWN (user to confirm if submitted or not)
-- **ClinVar submission (SUB16160621):** ❌ REJECTED (May 5 email)
-  - Reason: ClinGen Hemoglobinopathy Expert Panel already established
-  - Referral: https://www.clinicalgenome.org/affiliation/50052/
-  - Reframed as validation path (Expert Panel review > independent submission)
-- **Blocking issues (3):**
-  1. AF value inconsistency: VCV000015471 shows 0.000193 (exome) vs 0.000648 (genome) — manuscript uses both without clear source selection
-  2. Math error: "8 showed + 4 had" should be "7 showed + 5 observed only in minor populations"
-  3. Fisher test underpowered: n=12, power ~30%, should remove and use descriptive statistics
-- **Action required:** If NOT submitted → fix 3 issues (2 hours) + submit. If submitted → await reviews.
+- **Submission status:** ❌ UNKNOWN (user to confirm if submitted)
+- **DOCX status:** ✅ ALL ISSUES FIXED (pypop_paper_HumanMutation_SUBMIT_CLEAN.docx, May 3)
+  - VCV000015471: 0.000648 (genome) ✓ correct
+  - VCV000015466: 0.000464 (exome) ✓ correct
+  - Fisher test: ✓ removed (was underpowered)
+  - Math: 7+5=12 ✓ correct (not 8+4)
+- **Version conflict detected:** Sectional .md files (abstract.md, results.md) still have old data (0.000193, 19×) from May 1, but DOCX is correct (May 3)
+- **Action required:** User confirm submission status → if NOT submitted, upload DOCX immediately (already correct)
+
+**ClinVar submission (SUB16160621):** ❌ REJECTED (May 5)
+- Reason: ClinGen Hemoglobinopathy Expert Panel established
+- Reframed: validation path (EP review > independent submission)
 
 **Paper 3 (Multi-Locus Regulatory Search) — 31 COMMITS, NO CLEAN LOCUS FOUND:**
 - **Mechanism-Specific Limitation (critical discovery):**
@@ -69,13 +77,14 @@
 - Modified (19): activeContext.md (+571), spectral_sprint_log.md (+129), pypop_paper_FINAL.md (+69), goals.md (+52), skills (5), Obsidian docs (6), HBB_Unified_Atlas.csv (reshuffled)
 - Untracked (118): AUDIT_*.md (9), SUBMISSION_*.md (3), PAPER3_*.md (20+), results/*.csv (50+), contact_matrices/ (NEW)
 
-**Next Actions (prioritized):**
-1. **Verify Paper 2 submission status** — if NOT submitted, fix 3 issues + submit today
-2. **Commit spectral validation** — H1-H4 complete, ready to commit
-3. **Make Paper 3 strategic decision** — choose A/B/C, stop open-ended search
-4. **Consolidate audit files** — resolve contradictory statuses (READY 8.2/10 vs NOT READY 5/10)
-5. **Verify Ronin approval** — email @ronininstitute.org используется, check if approved
-6. **Commit Paper 3 artifacts** — 31 commits worth of multi-locus research
+**Next Actions (updated after Session Part 2):**
+1. ✅ **Cleanup committed** — a71ed04: removed 82GB JSON, closed hung processes
+2. ✅ **Paper 2 DOCX verified** — all issues already fixed (May 3), READY for submission
+3. ❓ **Verify Paper 2 submission status** — USER ACTION: confirm if submitted to Human Mutation or not
+4. **Commit spectral validation** — H1-H4 complete, CSV results ready (sfi_brca1_all.csv 2.0MB, sfi_tp53_all.csv 524KB)
+5. **Paper 3 strategic decision** — choose A (HBB-only, 1 week) / B (continue search, 4 weeks) / C (mechanistic pivot, 2 weeks)
+6. **Verify Ronin approval** — expected May 10, email already used May 1 (contradiction?)
+7. **Optional: Sync sectional .md files** — abstract.md, results.md have stale data (low priority, DOCX is correct)
 
 ---
 
@@ -344,6 +353,7 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
+- [2026-05-06 16:15] `a71ed04`: chore: remove 82GB intermediate contact matrices (JSON → CSV extracted)
 - [2026-05-06 15:18] `c64f537`: chore: sync activeContext auto-commit logs
 - [2026-05-06 15:18] `06d9473`: chore: remove duplicate .bak files (3 files)
 - [2026-05-06 15:17] `e59fc6d`: docs(memory): update activeContext (Session 2026-05-06) + clean goals.md
