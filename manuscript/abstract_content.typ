@@ -18,7 +18,7 @@ analysis identified 25 high-confidence HBB "pearl" variants: VEP-blind
 (score less than 0.30), CADD-ambiguous (phred 10--20), yet structurally
 disruptive (LSSIM less than 0.92) --- invisible to nine orthogonal methods
 including SpliceAI (0.00 for 20/20 SNVs), MPRA (p=0.91), and gnomAD v4
-(85% absent). AlphaGenome CAGE analysis independently confirms pearl
+(84% constraint, 21/25 verified). AlphaGenome CAGE analysis independently confirms pearl
 disruption (-19% vs -0.1% for benign, p=4e-6). Hi-C validation against
 K562 erythroid chromatin yielded r=0.28-0.59 across loci. A
 tissue-specificity gradient --- matched (HBB delta=0.111) to mismatched

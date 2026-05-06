@@ -1,0 +1,22 @@
+clinvar_id,variant_id,ac,an,af,status,source
+VCV003766487,11-5226598-G-T,,,,api_error,[{'message': 'Variant not found'}]
+VCV000801186,11-5226598-G-C,,,,api_error,[{'message': 'Variant not found'}]
+VCV002664746,11-5226613-G-C,,,,api_error,[{'message': 'Variant not found'}]
+VCV000811500,11-5226613-G-T,,,,api_error,[{'message': 'Variant not found'}]
+VCV000618675,11-5226643-C-G,,,,api_error,[{'message': 'Variant not found'}]
+VCV000869358,11-5226971-CCCC-CCCCC,,,,api_error,[{'message': 'Variant not found'}]
+VCV000015471,11-5227099-T-C,1,152146,6.5726341803267915e-06,ULTRA_RARE,gnomad_r4_verified
+VCV000015470,11-5227099-T-G,,,,no_genome_data,genome_field_null
+VCV000869288,11-5227100-T-G,,,,api_error,[{'message': 'Variant not found'}]
+VCV000869290,11-5227101-A-G,,,,api_error,[{'message': 'Variant not found'}]
+VCV000015466,11-5227102-T-C,,,,no_genome_data,genome_field_null
+VCV000801184,11-5227142-G-A,,,,exception,Expecting value: line 1 column 1 (char 0)
+VCV002506212,11-5227157-G-T,,,,exception,Expecting value: line 1 column 1 (char 0)
+VCV000036284,11-5227157-G-A,,,,exception,Expecting value: line 1 column 1 (char 0)
+VCV000036287,11-5227158-G-A,,,,exception,Expecting value: line 1 column 1 (char 0)
+VCV000036285,11-5227158-G-T,5,152136,3.286533101961403e-05,ULTRA_RARE,gnomad_r4_verified
+VCV000015464,11-5227158-G-C,,,,no_genome_data,genome_field_null
+VCV000393701,11-5227159-G-T,,,,no_genome_data,genome_field_null
+VCV000015514,11-5227161-G-A,5,152196,3.285237456963389e-05,ULTRA_RARE,gnomad_r4_verified
+VCV000015462,11-5227163-G-A,,,,no_genome_data,genome_field_null
+VCV000015586,11-5227172-G-C,1,152190,6.570733950982325e-06,ULTRA_RARE,gnomad_r4_verified

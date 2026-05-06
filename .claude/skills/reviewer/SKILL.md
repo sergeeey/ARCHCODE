@@ -1,3 +1,8 @@
+---
+name: reviewer
+description: Use this skill to review changes, detect inconsistencies, and identify blockers.
+---
+
 # Skill: reviewer
 
 Use when:

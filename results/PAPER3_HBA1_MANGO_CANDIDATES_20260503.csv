@@ -1,0 +1,5 @@
+ClinVar_ID,Position,Ref,Alt,Category,LSSIM,gnomAD_AF,gnomAD_AC,gnomAD_AN,AF_AFR,AF_AMR,AF_EAS,AF_EUR,AF_SAS,AF_FIN,AF_ASJ,AF_MID,popmax,faf95_popmax,gnomAD_source
+VCV003579879,177017,A,T,nonsense,0.9867,0.0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV004533035,177331,G,T,nonsense,0.9857,0.0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV002428618,177379,G,A,missense,0.9944,6.842463232023823e-07,1,1461462,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_exome
+VCV003766985,177400,A,G,missense,0.9943,0.0,0,0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql

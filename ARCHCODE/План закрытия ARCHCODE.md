@@ -6,7 +6,7 @@ tags:
   - negative-result
 date: '2026-04-16'
 type: action-plan
-status: active
+status: revised-2026-05-05
 ---
 # План закрытия ARCHCODE
 
@@ -14,6 +14,21 @@ status: active
 
 Решение принято 16 апреля 2026 после финального аудита (Tracy Reset + код-аудит).
 Все 6 гипотез убиты. Модель = category engine, не physics-based predictor.
+
+## Обновление 2026-05-05: не делать второй Skeptic
+
+После сверки с Obsidian-контекстом и текущим audit-doc pass:
+
+- текущая честная оценка ARCHCODE: **6.5/10**;
+- как broad biological predictor: **2/10**;
+- как generic falsification framework: не главный путь, потому что эта ниша уже занята Skeptic / [[Карточка — Nobel Premia Boiko]];
+- как domain-specific negative result + benchmark для 3D-genome model claims: **7/10**.
+
+Новая формулировка закрытия:
+
+> ARCHCODE закрывается не просто как failed predictor, а как доказательный case study: сильный 3D-genome predictor claim был построен, затем честно сломан baseline, matched-control и within-category тестами. Выживший продукт — specialized 3D-genome validation benchmark и уроки для Skeptic/Nobel Premia.
+
+См. [[ARCHCODE — актуальный контекст 2026-05-05]].
 
 ---
 
@@ -67,9 +82,11 @@ status: active
 - Вариант: честно написать что проект = negative result, endorsement для negative result paper
 - Или: отменить endorsement request
 
-### P2: Negative Result Paper (опционально)
+### P2: Negative Result / Domain Benchmark Paper (опционально)
 
-- Переписать как methods paper: validation suite = центральный продукт
+- Переписать как domain-specific negative result + benchmark paper
+- Не продавать как общий scientific-integrity framework: это роль Skeptic / Nobel Premia Boiko
+- Центральный объект: почему 3D-genome pathogenicity predictor claim collapsed, и какие tests должны проходить похожие модели
 - Target: PLOS ONE, F1000Research, или Bioinformatics Application Note
 - Или: оставить preprint на RS как есть (после обновления)
 

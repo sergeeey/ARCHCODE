@@ -1,0 +1,38 @@
+{
+  "analysis": "gnomAD_population_stratification",
+  "locus": "CFTR_position_controls (chr7)",
+  "atlas_file": "results\\PAPER3_CFTR_POSITION_CONTROLS_20260503.csv",
+  "cohort_filter": {
+    "column": "cftr_position_control_pool",
+    "operator": "equals",
+    "value": "true",
+    "matched_variants": 26
+  },
+  "dataset": "gnomAD_v4",
+  "total_rows_written": 26,
+  "query_status": {
+    "successful_gnomad_rows": 15,
+    "query_failed_rows": 11,
+    "source_counts": {
+      "QUERY_FAILED": 11,
+      "gnomAD_v4_exome": 7,
+      "gnomAD_v4_not_observed_graphql": 7,
+      "gnomAD_v4_genome": 1
+    }
+  },
+  "interpretation_note": "QUERY_FAILED rows are technical failures, not evidence of absence. Rows marked gnomAD_v4_absent or gnomAD_v4_not_observed_graphql are not-observed query results and still require coordinate/build sanity checks.",
+  "total_queried": 15,
+  "cross_population_analysis": {
+    "strong_evidence_n": 12,
+    "weak_evidence_n": 3,
+    "false_pearls_n": 0,
+    "strong_evidence_pct": 80.0,
+    "max_af_per_population": {
+      "AFR": 0.0,
+      "AMR": 0.0,
+      "EAS": 0.0001511411154214318,
+      "EUR": 0.0,
+      "SAS": 3.478260869565217e-05
+    }
+  }
+}

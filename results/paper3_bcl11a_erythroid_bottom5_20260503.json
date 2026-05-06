@@ -1,0 +1,21 @@
+{
+  "analysis": "gnomAD_population_stratification",
+  "locus": "BCL11A_erythroid (chr2)",
+  "atlas_file": "results\\BCL11A_Unified_Atlas_bcl11a_erythroid.csv",
+  "cohort_filter": {
+    "column": "ARCHCODE_LSSIM",
+    "operator": "less_equal",
+    "value": "0.9791",
+    "matched_variants": 11
+  },
+  "dataset": "gnomAD_v4",
+  "total_rows_written": 11,
+  "query_status": {
+    "successful_gnomad_rows": 0,
+    "query_failed_rows": 11,
+    "source_counts": {
+      "QUERY_FAILED": 11
+    }
+  },
+  "interpretation_note": "QUERY_FAILED rows are technical failures, not evidence of absence. Rows marked gnomAD_v4_absent or gnomAD_v4_not_observed_graphql are not-observed query results and still require coordinate/build sanity checks."
+}

@@ -1,0 +1,13 @@
+ClinVar_ID,Position,Ref,Alt,gnomAD_AF,AF_AFR,AF_AMR,AF_EAS,AF_EUR,AF_SAS,AF_ASJ,popmax,error
+VCV000055676,43124017,CAGATGGGACAC,C,,,,,,,,,Variant not found
+VCV000254368,43124022,GGG,G,,,,,,,,,Variant not found
+VCV000827148,43124022,GGG,GG,,,,,,,,,Variant not found
+VCV000055675,43124023,GACA,GACAGACA,,,,,,,,,Variant not found
+VCV000548230,43124024,A,AGACA,,,,,,,,,Variant not found
+VCV000266572,43124025,ACAC,AC,,,,,,,,,Variant not found
+VCV000266569,43124027,C,CC,,,,,,,,,Variant not found
+VCV000055667,43124027,CTCT,CTCTCT,,,,,,,,,Variant not found
+VCV000017662,43124028,CTCT,CT,,,,,,,,,Variant not found
+VCV000055668,43124028,T,TT,,,,,,,,,Variant not found
+VCV000037691,43124030,T,TT,,,,,,,,,Variant not found
+VCV000236275,43124031,AA,AAAA,,,,,,,,,Variant not found

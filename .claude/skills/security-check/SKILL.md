@@ -1,3 +1,8 @@
+---
+name: security-check
+description: Use this skill to check secrets, risky permissions, unsafe commands, and security-sensitive changes.
+---
+
 # Skill: security-check
 
 Use when:

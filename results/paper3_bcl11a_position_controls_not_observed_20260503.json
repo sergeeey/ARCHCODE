@@ -1,0 +1,35 @@
+{
+  "analysis": "gnomAD_population_stratification",
+  "locus": "BCL11A_position_controls (chr2)",
+  "atlas_file": "results\\PAPER3_BCL11A_POSITION_MATCHED_CONTROLS_20260503.csv",
+  "cohort_filter": {
+    "column": "position_control",
+    "operator": "equals",
+    "value": "true",
+    "matched_variants": 6
+  },
+  "dataset": "gnomAD_v4",
+  "total_rows_written": 6,
+  "query_status": {
+    "successful_gnomad_rows": 6,
+    "query_failed_rows": 0,
+    "source_counts": {
+      "gnomAD_v4_not_observed_graphql": 6
+    }
+  },
+  "interpretation_note": "QUERY_FAILED rows are technical failures, not evidence of absence. Rows marked gnomAD_v4_absent or gnomAD_v4_not_observed_graphql are not-observed query results and still require coordinate/build sanity checks.",
+  "total_queried": 6,
+  "cross_population_analysis": {
+    "strong_evidence_n": 6,
+    "weak_evidence_n": 0,
+    "false_pearls_n": 0,
+    "strong_evidence_pct": 100.0,
+    "max_af_per_population": {
+      "AFR": 0.0,
+      "AMR": 0.0,
+      "EAS": 0.0,
+      "EUR": 0.0,
+      "SAS": 0.0
+    }
+  }
+}

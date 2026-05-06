@@ -1,0 +1,57 @@
+================================================================================
+gnomAD Population Stratification Query — PyPop Meta-Analysis Extension
+================================================================================
+
+Total pearl variants: 20
+Queryable SNVs: 17
+Non-queryable (indels/IUPAC): 3
+
+🔄 RESUME MODE: loading previous results from gnomad_populations_pearls.csv
+Found 5 previously failed variants to retry
+🚀 RETRY RUN: querying 5 failed variants
+
+
+[1/5] VCV002664746: chr11:5226613 G>C
+  gnomAD errors: Variant not found
+  FAILED: no data
+
+[2/5] VCV000811500: chr11:5226613 G>T
+  gnomAD errors: Variant not found
+  FAILED: no data
+
+[3/5] VCV000869288: chr11:5227100 T>G
+  gnomAD errors: Variant not found
+  FAILED: no data
+
+[4/5] VCV000869290: chr11:5227101 A>G
+  gnomAD errors: Variant not found
+  FAILED: no data
+
+[5/5] VCV000801184: chr11:5227142 G>A
+  gnomAD errors: Variant not found
+  FAILED: no data
+
+📊 Merged 12 previous + 5 new = 17 total
+
+================================================================================
+Saved: D:\ДНК\results\gnomad_populations_pearls.csv
+================================================================================
+
+================================================================================
+CROSS-POPULATION CONSTRAINT ANALYSIS (PyPop Meta-Analysis)
+================================================================================
+
+Strong evidence (absent in ALL 5 populations): 5 (41.7%)
+Weak evidence (absent in ≥3/5 populations):   7
+False pearls (AF≥1% in any population):        0
+
+Maximum AF observed per population:
+  AFR: 0.000120703
+  AMR: 5.76435e-05
+  EAS: 0.000464354
+  EUR: 0
+  SAS: 0.000415455
+
+Saved summary: D:\ДНК\results\gnomad_populations_summary.json
+
+Done.

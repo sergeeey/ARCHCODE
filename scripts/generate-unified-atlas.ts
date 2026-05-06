@@ -509,6 +509,34 @@ function calculateSSIM(a: number[][], b: number[][]): number {
 // Для матриц ≤50 бинов (HBB 30kb) LSSIM ≡ global SSIM — нет разбавления.
 const LOCAL_SSIM_WINDOW = 50;
 
+/**
+ * Export contact matrices to JSON files for spectral fragility analysis
+ */
+function exportContactMatrices(
+  clinvar_id: string,
+  referenceMatrix: number[][],
+  mutantMatrix: number[][],
+  locusId: string,
+): void {
+  const outputDir = path.join(
+    process.cwd(),
+    "results",
+    "contact_matrices",
+    locusId.toUpperCase(),
+  );
+
+  // Create output directory if it doesn't exist
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
+
+  const wtPath = path.join(outputDir, `${clinvar_id}_wt.json`);
+  const mutPath = path.join(outputDir, `${clinvar_id}_mut.json`);
+
+  fs.writeFileSync(wtPath, JSON.stringify(referenceMatrix, null, 0));
+  fs.writeFileSync(mutPath, JSON.stringify(mutantMatrix, null, 0));
+}
+
 function calculateLocalSSIM(
   reference: number[][],
   mutant: number[][],
@@ -798,6 +826,14 @@ async function main() {
           variant.category,
           variant.position,
         );
+
+      // Export contact matrices for spectral analysis
+      exportContactMatrices(
+        variant.vcv_id,
+        referenceMatrix,
+        mutantMatrix,
+        LOCUS_ARG,
+      );
 
       const ssim = calculateSSIM(referenceMatrix, mutantMatrix);
       const lssim = calculateLocalSSIM(

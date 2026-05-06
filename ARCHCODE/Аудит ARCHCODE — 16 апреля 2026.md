@@ -7,6 +7,7 @@ tags:
 date: '2026-04-16'
 type: audit
 replaces: Аудит ARCHCODE — 15 апреля 2026
+updated: '2026-05-05'
 ---
 # Финальный аудит ARCHCODE — 16 апреля 2026
 
@@ -103,3 +104,20 @@ ARCHCODE — negative result project. Центральная гипотеза (3
 ---
 
 Аудит: Claude Code (Opus 4.6), 16 апреля 2026. Все числа из файлов репозитория.
+
+---
+
+## Addendum 2026-05-05
+
+Текущая оценка после нового audit-doc pass: **6.5/10**.
+
+Ключевое стратегическое уточнение: ARCHCODE не должен становиться вторым общим Skeptic / research-integrity проектом. Эта горизонтальная роль уже находится у [[Карточка — Nobel Premia Boiko]] / Skeptic Engine.
+
+ARCHCODE лучше позиционировать как:
+
+- domain-specific negative result;
+- benchmark suite для проверки 3D-genome / regulatory-variant model claims;
+- case study, из которого выросла Skeptic methodology;
+- учебный материал о category leakage, matched-control и self-falsification.
+
+См. [[ARCHCODE — актуальный контекст 2026-05-05]].

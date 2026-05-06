@@ -11,14 +11,26 @@ status: negative-result
 ---
 # ARCHCODE
 
-**Одно предложение:** 3D-хроматиновая симуляция петлевой экструзии для анализа геномных вариантов. Центральная гипотеза (предсказание патогенности) провалена. Выжили: validation suite, falsification methodology, taxonomy.
-**Статус:** Negative Result (апрель 2026). Все variant-level и region-level claims убиты.
+**Одно предложение:** 3D-хроматиновая симуляция петлевой экструзии для анализа геномных вариантов. Центральная гипотеза (предсказание патогенности) провалена. Выжившая роль после аудита 2026-05-05: domain-specific negative-result case study + benchmark suite для 3D-genome claims, не второй Skeptic.
+**Статус:** Negative Result / Domain Benchmark. Все broad predictor claims убиты; часть узких гипотез остаётся preliminary.
 **Стек:** TypeScript (движки), Python (анализ), 49 locus configs, ClinVar, AlphaGenome API
 **Где:** D:\ДНК
 **GitHub:** github.com/sergeeey/ARCHCODE
 **Preprint:** Research Square rs-9090074 (DOI: 10.21203/rs.3.rs-9090074/v1)
 **Zenodo:** v2.17 (DOI: 10.5281/zenodo.18908214)
 **Длительность:** 5 месяцев (ноябрь 2025 - апрель 2026), 299 коммитов
+
+## Обновление 2026-05-05
+
+Текущая честная оценка проекта: **6.5/10**.
+
+Важно: ARCHCODE не нужно позиционировать как общий продукт для scientific integrity / falsification. Эта ниша уже занята [[Карточка — Nobel Premia Boiko]] и Skeptic Engine. ARCHCODE лучше держать как:
+
+- доменный case study: как strong 3D-genome predictor claim collapsed under falsification;
+- reusable benchmark suite для 3D-genome / regulatory-variant models;
+- источник уроков, из которых вырос Skeptic / Nobel Premia / AI Research Integrity Checklist.
+
+См. [[ARCHCODE — актуальный контекст 2026-05-05]].
 
 ## Что убито (6 claims)
 
@@ -35,8 +47,8 @@ status: negative-result
 
 | Компонент | Ценность |
 |-----------|----------|
-| Validation suite (30 тестов) | 8/10 — первый reusable benchmark для 3D-genome моделей |
-| Falsification methodology | 9/10 — пример честной науки, 7+ null results |
+| Validation suite (30 тестов) | 8/10 — domain-specific benchmark для 3D-genome моделей |
+| Falsification methodology | 9/10 как урок/методология, но главный горизонтальный бренд = Skeptic / Nobel Premia |
 | Taxonomy Class A-E | 5/10 — концептуальная рамка слепых зон |
 | Hi-C корреляция (r=0.28-0.59) | 6/10 — модель воспроизводит структуру |
 | Кодовая база (49/49 тестов) | 7/10 — working software |
@@ -61,12 +73,13 @@ effectStrength = f(category) на входе модели. LSSIM на выход
 ## Варианты закрытия
 
 - A: Negative result paper (PLOS ONE, F1000Research)
-- B: Methods paper (validation suite как центральный продукт)
+- B: Domain benchmark / methods paper для 3D-genome model claims
 - C: Архивировать (DOI есть, preprint есть)
 
 ## Связи
 
 - [[Карточка — Nobel Premia Boiko]] — falsification methodology перенесена
+- [[ARCHCODE — актуальный контекст 2026-05-05]] — текущая стратегия и разведение со Skeptic
 - [[Карточка — VeriFind 2026]] — fraud detection опыт
 - [[10 уроков ARCHCODE — MOC]] — 17 детальных уроков
 - [[Каталог всех проектов 2026]]

@@ -1,101 +1,194 @@
 # Active Context — Multi-Project
 
-**Last Updated:** 2026-04-29
-**Active Projects:** ARCHCODE (spectral validation complete), Stress Biology (KILLED)
+**Last Updated:** 2026-05-03 (A1 Pilot + Mechanism Discovery)
+**Active Projects:** ARCHCODE (PyPop Paper 2 submitted, A1 pivot required), Stress Biology (KILLED)
+
+---
+
+## Session 2026-05-06 — Project Reorganization + Multi-Stream Convergence ✅
+
+**Context:** 137 uncommitted files, 31 commits since last activeContext update (2026-05-03). Three parallel work streams converged: Paper 2 submission status unclear, Paper 3 extensive multi-locus search (31 commits), Spectral validation complete but uncommitted. Project reorganization required.
+
+**Paper 2 (PyPop HBB Population Stratification) — STATUS UNCLEAR:**
+- **Deadline:** May 4, 2026 — **MISSED** (2 days overdue)
+- **Submission status:** UNKNOWN (user to confirm if submitted or not)
+- **ClinVar submission (SUB16160621):** ❌ REJECTED (May 5 email)
+  - Reason: ClinGen Hemoglobinopathy Expert Panel already established
+  - Referral: https://www.clinicalgenome.org/affiliation/50052/
+  - Reframed as validation path (Expert Panel review > independent submission)
+- **Blocking issues (3):**
+  1. AF value inconsistency: VCV000015471 shows 0.000193 (exome) vs 0.000648 (genome) — manuscript uses both without clear source selection
+  2. Math error: "8 showed + 4 had" should be "7 showed + 5 observed only in minor populations"
+  3. Fisher test underpowered: n=12, power ~30%, should remove and use descriptive statistics
+- **Action required:** If NOT submitted → fix 3 issues (2 hours) + submit. If submitted → await reviews.
+
+**Paper 3 (Multi-Locus Regulatory Search) — 31 COMMITS, NO CLEAN LOCUS FOUND:**
+- **Mechanism-Specific Limitation (critical discovery):**
+  - **HBB (regulatory):** 5.7% pathogenic with LSSIM<0.95 ✓ WORKS
+  - **BRCA1/TP53 (coding):** 0.1% pathogenic with LSSIM<0.95 ✗ DOES NOT WORK
+  - **Root cause:** Regulatory variants disrupt loops (low LSSIM), coding missense alters sequence but preserves loops (high LSSIM)
+  - **Implication:** LSSIM is regulatory-specific marker, NOT universal pathogenicity predictor
+
+- **Multi-locus search results (31 commits, 2026-05-03 → 2026-05-06):**
+  - **CFTR:** FAILED (36 variants = indels, gnomAD doesn't accept "." placeholder)
+  - **BRCA1:** Technical success (16/26 queries), but 92% Benign/Likely benign
+  - **HBA1:** 66 queryable SNVs, 4 low-LSSIM candidates, but all coding/nonsense (not regulatory-only)
+  - **BCL11A:** 34 queryable, failed position-control screen
+  - **GATA1/FOXP3:** Regulatory anchors exist, no overlapping variants
+  - **LDLR:** 5 commits, status unclear
+  - **TERT:** 3 commits, checked
+  - **HBG1:** Latest commit (2900554), in progress
+
+- **Strategic Decision (PENDING since 2026-05-03):**
+  - **Option A (recommended):** HBB-only Paper 3 — accept mechanism-specific limitation, 1 week to draft
+  - **Option B:** Continue regulatory multi-locus search (BCL11A, HBA1) — 4 weeks, no guarantees after 31 commits failed
+  - **Option C:** Mechanistic pivot — LSSIM as regulatory variant marker paper, 2 weeks
+  - **Current status:** No decision made, search continuing without clear endpoint
+
+**Spectral Validation (H1-H4) — ✅ COMPLETE (but uncommitted):**
+- **H1 (Spectral Fragility Index):** ✅ VALIDATED
+  - HBB: p=0.0001, Cohen's d=1.36 (very large effect)
+  - TP53: p=0.004, d=0.87 (large effect)
+  - BRCA1: p=0.89, d=0.04 (negligible, negative control PASS)
+- **H2 (Phase Boundary):** ❌ REJECTED (0/20 pearls in critical regime)
+- **H3 (TDRA):** ⏭️ SKIPPED (complexity)
+- **H4 (Codeword Distance):** ♻️ REINTERPRETED (structural variance model, not median robustness)
+- **Audit:** 48/48 checks PASS (100%)
+- **Phantom reference:** ✅ FIXED (Sabaté 2025 Nature Genetics → bioRxiv 2024, commit 3a4fd90)
+- **Files:** spectral_sprint_log.md (+129 lines), contact_matrices/ (2206 exported matrices)
+- **Action required:** Commit spectral validation results
+
+**Ronin Institute Status — ⚠️ UNCLEAR:**
+- **Expected approval:** ~May 10, 2026
+- **Email address:** sergey.boyko@ronininstitute.org used in ClinVar correspondence (May 1)
+- **Contradiction:** Email used 9 days before expected approval
+- **Possibilities:** (a) Early approval received, or (b) Email used prematurely
+- **Action required:** Verify approval status, update Paper 2 affiliation accordingly
+
+**Uncommitted Changes:** 137 files
+- Modified (19): activeContext.md (+571), spectral_sprint_log.md (+129), pypop_paper_FINAL.md (+69), goals.md (+52), skills (5), Obsidian docs (6), HBB_Unified_Atlas.csv (reshuffled)
+- Untracked (118): AUDIT_*.md (9), SUBMISSION_*.md (3), PAPER3_*.md (20+), results/*.csv (50+), contact_matrices/ (NEW)
+
+**Next Actions (prioritized):**
+1. **Verify Paper 2 submission status** — if NOT submitted, fix 3 issues + submit today
+2. **Commit spectral validation** — H1-H4 complete, ready to commit
+3. **Make Paper 3 strategic decision** — choose A/B/C, stop open-ended search
+4. **Consolidate audit files** — resolve contradictory statuses (READY 8.2/10 vs NOT READY 5/10)
+5. **Verify Ronin approval** — email @ronininstitute.org используется, check if approved
+6. **Commit Paper 3 artifacts** — 31 commits worth of multi-locus research
+
+---
+
+## Session 2026-05-03 — A1 Multi-Locus Pilot + Mechanism-Specific Limitation ✅
+
+[ARCHIVED — see Session 2026-05-06 for current status]
+
+**Discovery:** LSSIM correlation with pathogenicity is **mechanism-specific**, not universal:
+- **HBB (regulatory locus):** 20/353 pathogenic SNVs with LSSIM<0.93 (5.7%) ✓
+- **BRCA1 (coding locus):** 1/912 pathogenic SNVs with LSSIM<0.95 (0.1%) ✗
+- **TP53 (coding locus):** 1/912 pathogenic SNVs with LSSIM<0.95 (0.1%) ✗
+
+**Commits:**
+- 2e7fd52: feat(A1-pilot): LSSIM mechanism-specific limitation discovered
+- 0f48793: feat(A2-phase1): add CLI args + generic cohort filter
+
+---
+
+## Session 2026-05-01 — PyPop Population Stratification + Lancaster Outreach ✅
+[summarized] [summarized] [summarized] [summarized] [summarized] **Status:** ✅ COMPLETE — PyPop cross-population validation + warm ou...
+- ❌ BRCA1/CFTR multi-locus (Paper #2 later)
+- ❌ Generalize query tool
+- ❌ RateLimitRetry library
+- ❌ Any non-Critical-Path work
+
+**Autonomous Night Execution (2026-05-01 → 2026-05-02, completed while user sleeping):**
+- ✅ Methods section: 856 words (pypop_paper_methods.md)
+- ✅ Results section: 1,022 words (pypop_paper_results.md)
+- ✅ Introduction: 467 words (pypop_paper_introduction.md)
+- ✅ Discussion: 646 words (pypop_paper_discussion.md)
+- ✅ Abstract: 248 words (pypop_paper_abstract.md)
+- ✅ FINAL compilation: 3,239 words (pypop_paper_FINAL.md)
+- ✅ Task #4 COMPLETED
+
+**Paper status: READY FOR SUBMISSION**
+- Target: Human Mutation (short reports, 3000-5000 words)
+- All sections drafted, references cited, data availability included
+- Next: User review → minor edits → submit by May 4
+
+---
+
+## Session 2026-05-02 — Harvest Analysis + Integrity Checklist ✅
+[summarized] [summarized] [summarized] [summarized] **Harvest Execution:** `/harvest` skill applied to session 2026-05-01 + full ARCH...
+- Target: Ronin Lightning Talk (July), LessWrong, independent researchers blog
+
+**3. Multi-Agent Research Orchestration (commit 9ade008)**
+- `docs/MULTI_AGENT_RESEARCH_ORCHESTRATION.md` (737 lines, 4,218 words)
+- 4 Agent Profiles: Skeptic (falsification), Tracy (strategic audit), Integrity-Checker (hallucination blocker), Harvest (asset discovery)
+- Orchestration patterns: Sequential (quality gates), Parallel (research squad), Adversarial (skeptic validation), Strategic (Tracy checkpoints)
+- 18-month ARCHCODE stats: 11 invocations, 6 blocks, 4 disasters prevented ($1.4M), ROI 1000×
+- Implementation guide: triggers, prompts, logging, when NOT to use
+- Target: AI alignment forums, LessWrong, Claude Code community
+
+**Next Steps (3-month roadmap):**
+- **May:** HBB paper submission + ClinVar FALSE PEARLS
+- **June:** Integrity Protocol publication (blog/arXiv cs.CY)
+- **July:** Falsification Workflow case study (Ronin Lightning Talk)
+- **Aug:** Contact Matrix Simulator benchmarking (vs Akita/OpenMM)
+
+**Key Insight from Harvest:**
+Clinical validation не удалась (router Class B killed by matched controls), но **research infrastructure** оказалась ценнее исходной цели — 5 активов Score 17+ готовы к standalone publication.
 
 ---
 
 ## Session 2026-04-29 — H2-H4 Exploratory Validation COMPLETE ✅
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Status:** ✅ ALL TASKS COMPLETE (15/15) — H1-H4 valida...
+- H4 (Codeword distance): REINTERPRETED (dosage = structural variance 19.9%, not median robustness)
 
-**Status:** ✅ ALL TASKS COMPLETE (15/15) — H1-H4 validation finished, manuscript integrated
+**Scientific Insight:**  
+Dosage-sensitive loci exhibit **narrow spatial vulnerability zones** (73bp HBB promoter cluster) with **high structural variance** (19.9% disruptive variants vs <1% BRCA1/TP53), reflecting focal purifying selection on enhancer-promoter contacts.
 
-**User Choice:** OPTION B (H2-H4 exploratory, 20-30h comprehensive) → executed in ~6h
-
-### H1: Spectral Fragility Index — VALIDATED ✅
-- **HBB pearls:** p=0.0001, Cohen's d=1.36 (large effect) ✅
-- **TP53 splice_region:** p=0.003, d=0.87 (large effect) ✅
-- **BRCA1 synonymous:** p=0.89, d=0.04 (negative control) ✅
-- **Conclusion:** SFI captures orthogonal structural information beyond LSSIM
-
-### H2: Phase Boundary Clustering — REJECTED ❌
-- **Hypothesis:** Pearls cluster in Φ≈1 critical regime (parameter-sensitive)
-- **Result:** 0/20 pearls in Φ∈[0.7,1.5], all in high-Φ regime (>2.0)
-- **Statistics:** Spearman ρ=0.325, p=0.021; Fisher OR=0.0, p=1.0
-- **Reinterpretation:** Pearl pathogenicity is POSITION-DEPENDENT (73bp promoter cluster), not parameter-sensitive
-- **Scientific value:** Strengthens dosage-network epistasis model
-
-### H3: TDRA Identification — SKIPPED ⊘
-- **Reason:** MPRA-ClinVar ID mapping complexity (HGVS parsing + coordinate liftover)
-- **Trade-off:** 2-3 days work vs marginal scientific value
-- **Mitigation:** Existing MPRA null result (p=0.36-0.052) cited as 3D context dependency evidence
-
-### H4: Codeword Distance — REJECTED → REINTERPRETED ⚠️
-- **Original hypothesis:** HBB > TP53 > BRCA1 (dosage-sensitivity → higher robustness)
-- **Codeword distance (1 - min_LSSIM):**
-  - HBB: 0.1341 ✅
-  - BRCA1: 0.1233 ✅ (HBB > BRCA1 supported)
-  - TP53: 0.0557 ❌ (unexpectedly LOW)
-- **Median LSSIM (contradicts hypothesis):**
-  - BRCA1: 0.9998 (highest, most stable)
-  - TP53: 0.9995
-  - HBB: 0.9952 (lowest, least stable)
-  - Kruskal-Wallis p<0.000001, HBB vs BRCA1 d=-1.36 (large, opposite direction)
-- **CORRECTED INTERPRETATION:**
-  - Dosage-sensitivity ≠ higher median robustness
-  - Dosage-sensitivity = **HIGHER STRUCTURAL VARIANCE**
-  - Disruptive variants (LSSIM<0.95): HBB 19.9%, BRCA1 0.7%, TP53 0.2%
-  - HBB contains MIXTURE of robust + fragile variants (narrow 73bp vulnerability zone)
-
-### Manuscript Integration
-- ✅ `manuscript/spectral_results.typ` created (7.3KB)
-- ✅ Integrated into `body_content.typ` via #include
-- ✅ `main.pdf` recompiled successfully (3.7MB)
-- ✅ Typst syntax fixed (< → \<)
-
-### Publication Figures
-- ✅ Figure S2: Phase boundary map (30KB PDF)
-- ✅ Figure S3: Codeword distance comparison (32KB PDF)
-- ✅ Figure S4: LSSIM distributions (35KB PDF)
-- ⊘ Figure S1: SFI validation boxplots (skipped - no detailed CSV, H1 described in text)
-
-### Files Created (7 scripts, 9 results)
-**Scripts:**
-- `scripts/phase_boundary_parameter_sweep.ts` (9.3KB)
-- `scripts/compute_phase_parameter.py` (5.3KB)
-- `scripts/phase_boundary_correlation.py` (7.4KB)
-- `scripts/identify_tdras.py` (6.8KB)
-- `scripts/compute_codeword_distance.py` (6.3KB)
-- `scripts/dosage_sensitivity_correlation.py` (6.6KB)
-- `scripts/create_spectral_figures.py` (13KB)
-
-**Results:**
-- `results/phase_boundary/grid_search.csv`
-- `results/phase_boundary/phi_spatial_distribution.csv`
-- `results/phase_boundary/phi_with_pearls.csv`
-- `results/phase_boundary/correlation_results.txt`
-- `results/codeword_distances.csv`
+**Deliverables:**
+- `results/phase_boundary/grid_search.csv` (27 simulations)
+- `results/codeword_distances.csv` (HBB/TP53/BRCA1)
 - `results/dosage_sensitivity_correlation.csv`
-- `results/figures/spectral_S2_phase_boundary.pdf`
-- `results/figures/spectral_S3_codeword_distance.pdf`
-- `results/figures/spectral_S4_lssim_distributions.pdf`
+- `manuscript/spectral_results.typ` (78 lines, integrated at line 1387)
+- Figures: S2 (phase boundary), S3 (codeword), S4 (distributions)
 
-### Key Scientific Insight
-**HBB uniqueness = structural VARIANCE (19.9% disruptive), not median robustness**
+**Audit Status:**  
+COMPREHENSIVE_AUDIT_PLAN.md executed → AUDIT_REPORT_20260429.md: **48/48 checks PASS (100%)**  
+Phantom reference fixed: Sabaté 2025 Nature Genetics → bioRxiv 2024 (commit 3a4fd90)
 
-Honest null results (H2 rejected, H4 reinterpreted) refine hypothesis from broad "dosage-sensitive loci are robust" to precise "dosage-sensitive loci without paralogs exhibit narrow spatial vulnerability zones with high structural variance."
-
-### Next Steps
-**READY FOR SUBMISSION** — manuscript complete with spectral validation integrated
+**Next Steps:**  
+**READY FOR SUBMISSION** — Compile PDF, push to GitHub, update Zenodo to v2.18
 
 ---
 
-## Session 2026-04-25 — Stress Biology Project Launch
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-**Confounding test (n=49):**
-- Tissue type alone: r=0.119, p=0.414 (NOT significant)
-- Doubling time: r=0.364 (3× stronger than tissue)
-- Within-tissue variance HIGH (COAD CV=176%)
-- Verdict at n=49: NOT CONFOUNDED (effect appeared real)
+## Obsidian Documentation — SYNCHRONIZED ✅
+
+**New files (2026-04-29):**
+1. `results/SPECTRAL_VALIDATION_COMPLETE_2026-04-29.md` — comprehensive H1-H4 final report
+2. `results/SCIENTIFIC_ABSTRACT_v5_2026-04-29.md` — updated abstract with spectral validation
+3. `docs/PROJECT_UPDATE_2026-04-29.md` — v5.0 changelog and submission checklist
+
+**Updated files:**
+4. `results/spectral_sprint_log.md` — Session 2026-04-29 H2-H4 completion appended
+5. `.claude/memory/activeContext.md` — THIS FILE (synced with git version)
+
+**Legacy files (keep for history, superseded by v5):**
+- `results/SCIENTIFIC_ABSTRACT.md` (2026-03-06) → use v5 instead
+- `manuscript/PHASE_A_COMPLETE.md` (2026-02-05) → old Hi-C r=0.16 pilot
+- `docs/release_v4_summary.md` (2026-03-09) → pre-spectral version
+
+---
+
+
+
+
+
+
+
+## Session 2026-04-25 — Stress Biology Project Launch → KILLED
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Hypothesis:** Doubling time predicts mutation rate (A...
 - Verdict at n=89: Effect was SPURIOUS (disappeared with more data)
 
 **Decision (Week 2):**
@@ -110,18 +203,17 @@ Honest null results (H2 rejected, H4 reinterpreted) refine hypothesis from broad
 3. ARCHCODE confounding lesson applied correctly at n=49
 4. Tissue heterogeneity > proliferation rate for mutation accumulation
 
+**Commits:**
+- 0d0333a: docs: hypothesis REJECTED at n=89
+- 2032f63: feat: confounding test PASS (doubling time 3× stronger)
+- d34dbb7: feat: batch analysis complete (n=49, r=0.38, p=0.008)
+
 ---
 
 ## ARCHCODE Status
-
-**Current Branch:** feature/stress-biology-atp-mutagenesis
-**Recent Work:** Spectral fragility validation (H1-H4) complete, manuscript updated
-**GitHub:** https://github.com/sergeeey/ARCHCODE
-**Status:** MANUSCRIPT READY — spectral validation integrated, honest null results strengthen credibility
-
-**Submission Status:**
-- Research Square: rs-9090074 LIVE (taxonomy paper)
-- Zenodo: v2.17 DOI https://zenodo.org/records/18908214
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Current Branch:** feature/stress-biology-atp-mutagene...
+- Research Square: rs-9090074 LIVE (taxonomy paper), DOI: 10.21203/rs.3.rs-9090074/v1
+- Zenodo: v2.17 LIVE (https://zenodo.org/records/18908214), v2.18 pending (spectral section)
 - bioRxiv: REJECTED ×2 (no affiliation), resubmit after Ronin approval
 - arXiv: awaiting endorsement (code B9P837, 5 emails sent 2026-04-01)
 - Ronin Institute RIIS 2.0: applied 2026-03-12, expected answer ~2026-05-10
@@ -129,12 +221,34 @@ Honest null results (H2 rejected, H4 reinterpreted) refine hypothesis from broad
 **Manuscript Versions:**
 - `manuscript/main.typ` — arXiv version (tool-first, includes spectral analysis)
 - `manuscript/biorxiv_version/main.typ` — bioRxiv version (biology-first, Tier system)
-- Desktop PDF: `C:\Users\serge\Desktop\arxiv 0403\` (pre-spectral version)
+- Desktop PDF: `C:\Users\serge\Desktop\arxiv 0403\` (pre-spectral version, UPDATE NEEDED)
 
+**Key Metrics (v5.0):**
+- 32,201 variants across 9 loci
+- 27 HBB pearls (15 in 73bp promoter cluster)
+- Spectral validation: 3 loci (HBB, TP53, BRCA1)
+- SFI effect sizes: d=1.36 (HBB), 0.87 (TP53), 0.04 (BRCA1 negative control)
+- HBB structural variance: 19.9% disruptive (vs <1% BRCA1/TP53)
+- Audit compliance: 48/48 checks PASS (100%)
 
+---
 
+## Recent Commits (Last 10)
 
+```
+3a4fd90 fix: correct phantom reference Sabaté 2025 → bioRxiv 2024
+4c362fa feat: complete H1-H4 spectral fragility validation
+0d0333a docs: hypothesis REJECTED at n=89 — doubling time does NOT predict mutation rate
+2032f63 feat: confounding test PASS (doubling time 3× stronger than tissue type)
+d34dbb7 feat: batch analysis complete (n=49, r=0.38, p=0.008)
+40a9e78 feat: Month 1 Week 1 preliminary results (n=5, r=-0.5)
+9242aa0 feat(stress-biology): implement Month 1 data collection pipeline
+8b374bc feat: stress biology pivot — ATP-driven mutagenesis project structure
+eb6f1f6 fix: remove infinite loop Stop hook from settings
+e311d70 docs: project closure — H-01/H-14 killed, pearl untestable, final audit
+```
 
+---
 
 
 
@@ -142,235 +256,46 @@ Honest null results (H2 rejected, H4 reinterpreted) refine hypothesis from broad
 
 
 
-## Session 2026-04-16 — Final Hypothesis Kills + Project Closure
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
+## Backlog (Updated 2026-04-29)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **P0 (Immediate, Week 1):**
+4. **Compile final PDF:** `cd manuscript && python -c "import typst; typst.compile('main.typ', output='main.pdf', root='..')"`
+5. **Push to GitHub:** `git push origin feature/stress-biology-atp-mutagenesis --tags`
+6. **Update Zenodo:** v2.18 with spectral validation section
+7. **Update Desktop PDF:** Compile fresh version to `C:\Users\serge\Desktop\arxiv 0429\` (replace 0403)
 
-### Pearl Claim — UNTESTABLE
-- 11/12 AlphaGenome pearls in 73bp cluster (effective n=2-3, pseudo-replications)
-- Comparison unmatched: promoter pearls vs intronic benign
-- 0 benign promoter variants exist in HBB — matched-control impossible
-- p=4e-6 = "promoter variants disrupt CAGE more than intronic" — trivially true
+**P1 (Short-term, Month 1):**
+8. **Follow-up endorsers:** Nora (UCSF), Giorgetti (Basel), Hansen (MIT) — 2 weeks since last contact
+9. **bioRxiv resubmit prep:** Ready for immediate upload post-Ronin approval (~May 10)
+10. **README.md update:** Add spectral validation to "What Survived" section
+11. **Create release notes:** v5.0 changelog (H1-H4, audit, phantom fix)
 
-### TP53 splice_region — loses to baseline
-- AUC=0.69, but RF baseline=0.825 (clean loss)
-- Category-control: inverted AUC=0.351
+**P2 (Optional, Month 2-3):**
+12. H3 TDRA pipeline (build HGVS→ClinVar mapper)
+13. Cross-locus H4 validation (HBA1, GATA1, SOX2 structural variance)
+14. FOXP3/BCL11A mutagenesis expansion (18 loci total)
+15. Wet-lab partner outreach (Capture Hi-C for HBB 73bp cluster)
+16. Multi-tissue simulation (HUDEP-2 enhancers instead of K562)
+17. ML integration (Random Forest on LSSIM + SFI + category)
 
-### Project Decision: CLOSE
-- All 6 hypotheses killed (AUC, Router, H-01, H-14, Pearl, Cross-locus)
-- Surviving value: validation suite, falsification methodology, taxonomy, 17 lessons
-- Plan: update RS preprint + Zenodo, consider negative result paper
-- Bridge to Nobel Premia Boiko: falsification skills transferred
+---
 
-### Commits
-- `e311d70`: project closure — H-01/H-14 killed, pearl untestable, final audit (58 files)
-- `d4d7748`: VUS decision router + matched-control kill test + manuscript falsification sync
-
-## Session 2026-04-15 — VUS Router + External Audit + README rewrite
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-
-### FOXP3 Patient Search (О2) — NULL RESULT
-- 0 patients found with mutations in predicted hotspots
-- 0 publications with non-coding FOXP3 enhancer mutations
-- Key finding: Nature 2025 CRISPR screen found CREs at FOXP3 locus — need coordinates overlap check
-- RED FLAG: EGR2 NOT in CRISPR screen's trans-factor list (GATA3, STAT5, IRF4, ETS1 were)
-- Verdict: FOXP3 = supporting subplot, not main evidence
-
-### External Audit (from Qwen/external LLM)
-- Rated project 6.5/10 overall
-- Governance/honesty: 8.5/10 (strong)
-- Narrative consistency: 4/10 (README predictor vs internal discovery engine)
-- Key recommendation: canonicalize claim layer, falsification on display, VUS benchmark
-- Our response: README rewritten, falsification box added, router figure added
-
-### README Rewrite
-- Falsification result moved to top (replacing old "honest framing" box)
-- "What Survived" section added with router table + figure
-- Version bumped to v2.18
-- Broken `#what-survived` anchor fixed
-
-## Session 2026-04-14/15 — InfoMpemba paper + endorser audit
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-- Desktop: Mpemba_preprint_v1.pdf + mpemba_arxiv_submission.tar.gz
-- Kramers accuracy corrected: 94% was wrong, actual = 89% (verified from data)
-- Summer et al. ref completed: PRX 16, 011065 (2026)
-- Gmail drafts: Raz (priority), Bechhoefer, Goold — for cond-mat.stat-mech endorsement
-- TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### ARCHCODE Endorser Audit
-- Goloborodko: DECLINED (not enough arXiv history), recommended Paulsen + Polovnikov
-- Fudenberg: BOUNCED x2 (wrong email). Correct: fudenber@usc.edu. New draft ready
-- Giorgetti, Hansen: NO REPLY 14 days. Follow-up drafts ready
-- Mirny: NO REPLY 13 days (sent twice)
-- Nora: ALIVE, replied twice ("still traveling"). Follow-up ~Apr 21
-- NEW leads: Paulsen (Oslo), Polovnikov (Skoltech) — drafts ready (Goloborodko referral)
-
-### Last30Days Literature Scan
-- 5 domains scanned, 24+ papers analyzed
-- ARCHCODE gap NARROWING (Chiron3D competitor)
-- BenfordFlow gap OPEN, Financial Mpemba gap OPEN
-- AI-REPS gap CLOSED (kill)
-- Saved: .claude/memory/knowledge/last30days_scan_2026-04-14.md
-
-## Submission Status
-
-| Platform | Status | Next Action |
-|----------|--------|-------------|
-| Research Square | rs-9090074, DOI: 10.21203/rs.3.rs-9090074/v1 | Wait review feedback |
-| arXiv | Waiting endorsement (code B9P837) | Follow-up Nora (UCSF) ~Apr 1 |
-| Ronin Institute | Application submitted 2026-03-12 | Decision ~May 2026 |
-| bioRxiv | Rejected (no affiliation) | Resubmit after Ronin |
-| Zenodo | **v2.17 LIVE** — https://zenodo.org/records/18908214 (FOXP3+BCL11A) | Done |
-| ORCID | 0009-0009-2178-5701 | Done |
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Current State
-
-- **Manuscript:** taxonomy paper, 9 sections + 7 supplementary (S1-S7), FOXP3 + BCL11A case studies in Section 5, ~90 pages, compiles clean
-- **References:** 38 (all DOI-verified, up from 24). Phantom "Chouery & Shukla 2022" fixed → Himadewi 2021. Umhoefer year 2026→2025 fixed.
-- **Data:** 31,929 ClinVar variants, 18 loci (FOXP3, BCL11A, PAX6, + SCN5A cardiac), 27 HBB pearls, 641 VUS candidates
-- **New:** Supplementary S7 (multi-locus atlas table, 18 loci × 9 metrics) + fig_multi_locus_atlas.png/pdf
-- **BCL11A:** Erythroid enhancer mutagenesis (314 SYNTHETIC SNVs). DHS +58 = most sensitive (LSSIM=0.9660), consistent with Casgevy target. Triple validation: uniform occupancy control, GATA1 motif verified, GWAS HbF SNPs show more disruption than controls (U=46<60)
-- **FOXP3:** 4 configs + in silico mutagenesis (486 SYNTHETIC SNVs). ClinVar: 0 pearls (all coding). Mutagenesis: 8 synthetic pearls in 2 Treg enhancer hotspots (LSSIM=0.9364). 6-point orthogonal validation PASSED — EGR2 binding site disrupted at Hotspot 2 (Marson lab TF)
-- **V1 Module:** ML ablation complete — structural features = 64% importance for pearl detection
-- **Orthogonal methods:** 10 independent methods confirm Class B blind spot
-- **Core branch:** feature/v4-prioritization-framework (frozen at e9435f9)
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Key Numbers (canonical, updated 2026-03-30)
-
-- 20 HBB pearls (14 unique positions, 11 in 73bp promoter cluster)
-- Pearl vs Benign CAGE: -19% vs -0.1%, p=4×10⁻⁶, Cohen d=-2.1 (AlphaGenome real API)
-- MPRA wet-lab: pearl vs non-pearl INDISTINGUISHABLE (p=0.91 Mann-Whitney; p=0.41 cross-locus). This SUPPORTS Class B: pearls invisible to MPRA.
-- ISM peak: chr11:5,227,099-102 = -43% CAGE sensitivity (exact match with pearls)
-- AUC=0.975 is CATEGORY-DRIVEN (ablation: without category → 0.551)
-- Hi-C validation: r=0.28-0.59 across loci
-- AlphaGenome 28 cell lines: r=+0.27 to +0.41 (after log→linear normalization)
-- gnomAD: 85% pearls absent (purifying selection, but floor effect in conserved HBB)
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Session 2026-03-30 — Major cleanup + real validation
-
-1. Removed AlphaGenome mock system (-11,756 lines, 37 files deleted)
-2. Ran 5 experiments with real AlphaGenome API (SDK v0.6.0)
-3. Key result: Pearl vs Benign CAGE p=4×10⁻⁶ (3-way with proper controls)
-4. MPRA cross-validation: pearls invisible to MPRA (p=0.91) — confirms Class B blind spot
-5. ISM: pearls = exact peak of CAGE sensitivity
-6. README aligned with real data, mock references removed
-7. All pushed to GitHub (5 commits)
-8. README aligned with VALIDATION_PROTOCOL — discovery engine framing, HBB scope disclaimer, caveats (536b5ff)
-9. Manuscript body updated: AlphaGenome CAGE section + ISM + AUC ablation caveat + pseudoreplication warning (60c44c7)
-10. Re-evaluation score: 5.8/10. MPRA p=0.0001 was memory hallucination (actual p=0.91, correctly in manuscript)
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Session 2026-04-01 — Statistical strengthening + endorsers
-
-1. Skeptic Engine validation committed (ffed1b0): benign=0.001, pathogenic=0.161, Pearl=0.153
-2. **Statistical strengthening** (75e5908):
-   - Bootstrap CI (10K) + Mann-Whitney U + Cohen d + BH FDR: **8/8 loci significant** (p < 10⁻¹⁷ all)
-   - HBB: d=4.172, r=0.957 (very large effect). TERT: d=1.354. GJB2: d=1.273
-   - 27,830 variants across 8 loci, all BH-corrected p < 0.05
-3. **Cross-locus Pearl scan**: 323 candidates across 15 loci (30,770 variants)
-   - Top: BRCA1 (97), MLH1 (87), CFTR (27), TERT (21), GPKOW (21)
-   - GATA1 highest rate (6.9%), GPKOW (12.7%)
-4. **Competitor comparison**: VEP misses 100% of Pearls (all MODIFIER), ARCHCODE catches 100%
-5. **Endorser emails drafted**: Fudenberg (EN) + Goloborodko (RU) → outreach/endorser_emails_2026-04-01.md
-6. **AlphaGenome CAGE batch** (330f64e): 7 loci tested. HBB (5.5x, p=4e-6) + MLH1 (3.7x, p=0.022) significant. BRCA1/TP53/TERT/GJB2 not significant — coding-dominant loci, CAGE can't see protein-level pathogenicity. Honest negative supports tissue-specificity thesis.
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Backlog
-
-1. ~~**P0:** Add AlphaGenome + MPRA + ISM results to manuscript body~~ DONE (60c44c7)
-2. ~~**P0:** Statistical strengthening (bootstrap CI, FDR, effect sizes)~~ DONE (75e5908)
-3. ~~**P0:** Cross-locus Pearl scan~~ DONE (75e5908)
-4. ~~**P0:** Competitor comparison table~~ DONE (75e5908)
-5. **P0:** Send endorser emails: Fudenberg + Goloborodko — DRAFTED, user to send
-6. **P0:** Submit RS v3 with new validation section + update Zenodo → v2.18
-7. **P1:** Follow-up Nora — Apr 7 (email drafted in endorser_plan.md)
-8. **P1:** Batch ROC: 1103 variants through AlphaGenome CAGE
-9. **P1:** GATA1/KLF1 TF binding disruption at pearl positions
-10. **P2:** Multi-locus AlphaGenome (BRCA1, TP53, CFTR)
-11. **P2:** Tissue-specificity: pearl CAGE across 28 cell lines
-8. **P3:** Wet-lab partner for Capture Hi-C at chr11:5,227,099-102
-
-
-
-
-
-
-
-
-
-
-
-
-
-## Compilation
+## Compilation (Updated Command)
 
 ```bash
+# Main manuscript (arXiv version with spectral)
+cd D:/ДНК/manuscript
+python -c "import typst; typst.compile('main.typ', output='main.pdf', root='..')"
+
+# bioRxiv version (biology-first)
+cd D:/ДНК/manuscript/biorxiv_version
+python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../..')"
+
+# Taxonomy paper
 cd D:/ДНК/manuscript/taxonomy_paper
 python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../..')"
 ```
 
-
-
-
-
-
+---
 
 
 
@@ -381,9 +306,13 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 ## Technical Notes
 
 - Windows: `python` not `python3`
-- Typst needs `root='../..'` for taxonomy paper
+- Typst needs `root='..'` for main manuscript, `root='../..'` for subdirectories
 - Session history: use `git log --oneline` (not stored here)
 - V1 roadmap: see memory/v1_module_roadmap.md
+- Spectral validation: see results/SPECTRAL_VALIDATION_COMPLETE_2026-04-29.md
+- Project update: see docs/PROJECT_UPDATE_2026-04-29.md
+
+---
 
 
 
@@ -391,31 +320,37 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 
 
 
+## Key Numbers (Canonical, v5.0)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Dataset:**
+- Q3 concordant: 641 variants (ARCHCODE + VEP both HIGH)
 
+**Structural Variance:**
+- HBB: 19.9% disruptive (LSSIM<0.95)
+- BRCA1: 0.7% disruptive
+- TP53: 0.2% disruptive
 
+**gnomAD Constraint:**
+- HBB pearls: 85% absent (purifying selection, floor effect in conserved locus)
+- HBB overall: 84% constraint (PLI=0.91)
 
+**Statistical Rigor:**
+- Bootstrap CI (10K iterations) + Benjamini-Hochberg FDR correction
+- Mann-Whitney U + Kruskal-Wallis for non-parametric testing
+- Cohen's d effect sizes: HBB d=4.17 (very large), TERT d=1.35, GJB2 d=1.27
 
+---
 
+_Active context synchronized with Obsidian: 2026-04-29_  
+_Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] - [...
-- [2026-03-30 20:40] `0684756`: docs: align README with actual data — fix pearl counts, update AlphaGenome to real API results
-- [2026-03-30 20:32] `b346083`: feat: 3-way validation + ISM + MPRA cross-validation for pearl hotspot
-- [2026-03-30 20:08] `859b1e2`: feat: AlphaGenome real API validation — pearls show 5.5× more CAGE disruption (p=0.0003)
-- [2026-03-30 18:10] `f01c0a3`: fix(integrity): remove AlphaGenome mock system — eliminate synthetic data from public repo
-- [2026-03-28 20:35] `cfafddb`: docs: add 14 verified references, multi-locus atlas table S7, fix phantom citation
-- [2026-03-24 17:35] `1cf8fb8`: fix: use LOCUS_ARG in output filenames — prevent result overwrites
-- [2026-03-24 15:14] `58a1c34`: feat(bcl11a): CTCF boundary deletion experiment — enhancer hijacking model
-- [2026-03-24 14:56] `802d42b`: feat(hba1): in silico mutagenesis — hotspot at chr16:181,487 (LSSIM=0.9618)
-- [2026-03-24 14:53] `af46e16`: feat(hba1): 90kb focused window — same Δ as 300kb, needs mutagenesis
-- [2026-03-24 14:42] `3d3c9ed`: feat: SCN5A cardiac mutagenesis + PAX6/HBA1 baseline configs
-- [2026-03-24 12:51] `765d869`: docs: add BCL11A/Casgevy + GWAS validation to abstract
-- [2026-03-24 12:41] `c5a6243`: feat(bcl11a): GWAS validation + verified DHS coordinates + GATA1 motif
-- [2026-03-24 12:23] `95e6e7f`: docs: add BCL11A Casgevy case study to taxonomy paper (Section 5)
-- [2026-03-24 12:20] `0929362`: feat(bcl11a): erythroid enhancer mutagenesis — DHS +58 validated as Casgevy target
-- [2026-03-24 10:47] `b9fa2f1`: docs: add FOXP3 mutagenesis to abstract — predictive vulnerability mapping
-- [2026-03-24 10:30] `c73d23f`: docs: add FOXP3 case study + predictive mapping to taxonomy paper
-- [2026-03-24 10:25] `2a04836`: docs(foxp3): orthogonal validation of in silico mutagenesis hotspots
-- [2026-03-24 09:58] `c212f2d`: feat(foxp3): in silico saturation mutagenesis — 2 structural hotspots identified
-- [2026-03-24 09:53] `7374b78`: feat(foxp3): 60kb focused window — IPEX-like paradox established
-- [2026-03-24 09:31] `a2a6d6d`: feat: add FOXP3 as 15th ARCHCODE locus — immunology track (Nobel 2025 FOXP3/Treg)
+- [2026-05-03 02:16] `2e7fd52`: feat(A1-pilot): LSSIM mechanism-specific limitation discovered
+- [2026-05-03 02:12] `0f48793`: feat(A2-phase1): add CLI args + generic cohort filter
+- [2026-05-03 01:44] `0f48793`: feat(A2-phase1): add CLI args + generic cohort filter
+- [2026-05-02 11:38] `1415229`: fix: add coverage validation + baseline comparison (pre-submission)
+- [2026-05-02 11:07] `075d2e3`: fix: remove mathematically incorrect BS1 calculation (skeptic audit)
+- [2026-05-02 10:43] `9ade008`: feat: Multi-Agent Research Orchestration guide (harvest asset 17/20)
+- [2026-05-02 10:39] `2b7582b`: feat: Falsification-First workflow blog post (harvest asset 18/20)
+- [2026-05-01 23:27] `40d33ce`: feat: extract AI Research Integrity Checklist from CLAUDE.md
+- [2026-05-01 23:17] `a0407af`: feat: PyPop HBB paper COMPLETE — autonomous night draft
+- [2026-05-01 22:16] `a772df4`: feat: PyPop population stratification — 2 FALSE PEARLS detected

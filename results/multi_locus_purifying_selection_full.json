@@ -1,0 +1,44 @@
+{
+  "HBB": {
+    "queryable": 25,
+    "absent": 25,
+    "present": 0,
+    "pct_absent": 100.0
+  },
+  "CFTR": {
+    "queryable": 18,
+    "absent": 11,
+    "present": 7,
+    "pct_absent": 61.1
+  },
+  "BRCA1": {
+    "queryable": 29,
+    "absent": 24,
+    "present": 5,
+    "pct_absent": 82.8
+  },
+  "GPKOW": {
+    "queryable": 20,
+    "absent": 20,
+    "present": 0,
+    "pct_absent": 100.0
+  },
+  "TERT": {
+    "queryable": 20,
+    "absent": 14,
+    "present": 6,
+    "pct_absent": 70.0
+  },
+  "GATA1": {
+    "queryable": 9,
+    "absent": 9,
+    "present": 0,
+    "pct_absent": 100.0
+  },
+  "_overall": {
+    "queryable": 121,
+    "absent": 103,
+    "present": 18,
+    "pct_absent": 85.1
+  }
+}

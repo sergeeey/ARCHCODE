@@ -1,0 +1,36 @@
+{
+  "analysis": "gnomAD_population_stratification",
+  "locus": "HBA1_MANGO_controls (chr16)",
+  "atlas_file": "results\\PAPER3_HBA1_MANGO_CONTROLS_20260503.csv",
+  "cohort_filter": {
+    "column": "hba1_control_pool",
+    "operator": "equals",
+    "value": "true",
+    "matched_variants": 4
+  },
+  "dataset": "gnomAD_v4",
+  "total_rows_written": 4,
+  "query_status": {
+    "successful_gnomad_rows": 4,
+    "query_failed_rows": 0,
+    "source_counts": {
+      "gnomAD_v4_exome": 3,
+      "gnomAD_v4_genome": 1
+    }
+  },
+  "interpretation_note": "QUERY_FAILED rows are technical failures, not evidence of absence. Rows marked gnomAD_v4_absent or gnomAD_v4_not_observed_graphql are not-observed query results and still require coordinate/build sanity checks.",
+  "total_queried": 4,
+  "cross_population_analysis": {
+    "strong_evidence_n": 1,
+    "weak_evidence_n": 3,
+    "false_pearls_n": 0,
+    "strong_evidence_pct": 25.0,
+    "max_af_per_population": {
+      "AFR": 6.167889964843027e-05,
+      "AMR": 2.471088267272907e-05,
+      "EAS": 0.0,
+      "EUR": 0.0,
+      "SAS": 0.00020695364238410596
+    }
+  }
+}

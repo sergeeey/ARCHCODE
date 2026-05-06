@@ -1,0 +1,38 @@
+{
+  "analysis": "gnomAD_population_stratification",
+  "locus": "CFTR_regulatory_candidates (chr7)",
+  "atlas_file": "results\\PAPER3_CFTR_REGULATORY_CANDIDATES_20260503.csv",
+  "cohort_filter": {
+    "column": "cftr_primary_candidate",
+    "operator": "equals",
+    "value": "true",
+    "matched_variants": 26
+  },
+  "dataset": "gnomAD_v4",
+  "total_rows_written": 26,
+  "query_status": {
+    "successful_gnomad_rows": 15,
+    "query_failed_rows": 11,
+    "source_counts": {
+      "QUERY_FAILED": 11,
+      "gnomAD_v4_genome": 8,
+      "gnomAD_v4_exome": 4,
+      "gnomAD_v4_not_observed_graphql": 3
+    }
+  },
+  "interpretation_note": "QUERY_FAILED rows are technical failures, not evidence of absence. Rows marked gnomAD_v4_absent or gnomAD_v4_not_observed_graphql are not-observed query results and still require coordinate/build sanity checks.",
+  "total_queried": 15,
+  "cross_population_analysis": {
+    "strong_evidence_n": 5,
+    "weak_evidence_n": 7,
+    "false_pearls_n": 5,
+    "strong_evidence_pct": 33.3,
+    "max_af_per_population": {
+      "AFR": 0.06738408204535606,
+      "AMR": 0.20891711405001964,
+      "EAS": 0.464383028415726,
+      "EUR": 0.0,
+      "SAS": 0.2931893687707641
+    }
+  }
+}

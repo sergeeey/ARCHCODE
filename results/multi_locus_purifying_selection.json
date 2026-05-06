@@ -1,0 +1,29 @@
+{
+  "loci": {
+    "BRCA1": {
+      "queryable": 29,
+      "absent": 24,
+      "present": 5,
+      "pct_absent": 82.8
+    },
+    "GPKOW": {
+      "queryable": 20,
+      "absent": 20,
+      "present": 0,
+      "pct_absent": 100.0
+    },
+    "TERT": {
+      "queryable": 20,
+      "absent": 14,
+      "present": 6,
+      "pct_absent": 70.0
+    },
+    "GATA1": {
+      "queryable": 9,
+      "absent": 9,
+      "present": 0,
+      "pct_absent": 100.0
+    }
+  },
+  "hbb_comparison": 100.0
+}

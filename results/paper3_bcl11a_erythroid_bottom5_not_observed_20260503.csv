@@ -1,0 +1,12 @@
+ClinVar_ID,Position,Ref,Alt,Category,LSSIM,gnomAD_AF,gnomAD_AC,gnomAD_AN,AF_AFR,AF_AMR,AF_EAS,AF_EUR,AF_SAS,AF_FIN,AF_ASJ,AF_MID,popmax,faf95_popmax,gnomAD_source
+VCV000985925,60553215,G,A,other,0.9785,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV000973119,60553215,G,T,other,0.9785,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV000987093,60553216,C,T,other,0.9791,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV004515098,60553218,C,T,other,0.9782,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV001698144,60553228,C,G,other,0.9787,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV003372531,60553243,C,T,other,0.9791,,,,,,,,,,,,,,QUERY_FAILED
+VCV001306769,60553250,C,T,other,0.9789,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV000942345,60553266,C,G,other,0.9786,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV002126136,60553269,T,A,other,0.9787,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV001698869,60553270,A,G,other,0.9785,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql
+VCV001698614,60553283,C,T,other,0.9789,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,,,gnomAD_v4_not_observed_graphql

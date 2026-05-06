@@ -1,0 +1,69 @@
+======================================================================
+ARCHCODE Unified Atlas Generator — v2.0 Pipeline Fix
+======================================================================
+Locus config:  hbb_30kb_v2 (HBB 30kb window (v2.0 manuscript))
+Window:        chr11:5210000-5240000 (30kb)
+Matrix:        50x50 (600bp resolution)
+Thresholds:    calibrated
+Kramer kinetics: alpha=0.92, gamma=0.8
+
+Loading pathogenic variants (ClinVar JSON)...
+  Loaded 431 pathogenic variants
+Loading pathogenic VEP results...
+  Loaded 353 pathogenic VEP entries
+Loading benign variants (CSV)...
+  Loaded 750 benign variants
+Loading benign VEP results...
+  Loaded 750 benign VEP entries
+  Merged VEP map: 1103 total entries
+
+Total variants: 1181
+  Matched with VEP: 1103
+  Unmatched (skipped): 78
+
+Simulating paired matrices for ALL variants...
+  Matrix size: 50x50 (600bp resolution)
+  Method: Analytical mean-field (Kramer kinetics + CTCF barriers)
+  effectStrength: CATEGORICAL (category-only, label-blind)
+  Progress: 5% (50/1103)  Progress: 9% (100/1103)  Progress: 14% (150/1103)  Progress: 18% (200/1103)  Progress: 23% (250/1103)  Progress: 27% (300/1103)  Progress: 32% (350/1103)  Progress: 36% (400/1103)  Progress: 41% (450/1103)  Progress: 45% (500/1103)  Progress: 50% (550/1103)  Progress: 54% (600/1103)  Progress: 59% (650/1103)  Progress: 63% (700/1103)  Progress: 68% (750/1103)  Progress: 73% (800/1103)  Progress: 77% (850/1103)  Progress: 82% (900/1103)  Progress: 86% (950/1103)  Progress: 91% (1000/1103)  Progress: 95% (1050/1103)  Progress: 100% (1100/1103)  Progress: 100% (1103/1103)
+
+CSV saved: D:\ДНК\results\HBB_Unified_Atlas.csv
+Summary saved: D:\ДНК\results\UNIFIED_ATLAS_SUMMARY.json
+
+======================================================================
+SUMMARY — UNIFIED ATLAS (v2.0 Pipeline Fix + LSSIM)
+======================================================================
+Total variants:          1103
+  Pathogenic:            353  (mean SSIM=0.9267, LSSIM=0.9267)
+  Benign:                750  (mean SSIM=0.9957, LSSIM=0.9957)
+ARCHCODE struct. path.:  161 (verdict based on LSSIM)
+Pearls:                  20
+Local SSIM window:       50×50 bins
+Effect source:           CATEGORICAL
+
+Category breakdown (Pathogenic mean SSIM vs Benign mean SSIM):
+  other                Path=0.9676  Ben=0.9743  Δ=-0.0067  (n=19)
+  3_prime_UTR          Path=0.9942  Ben=0.9942  Δ=0.0000  (n=14)
+  missense             Path=0.9526  Ben=N/A  Δ=N/A  (n=125)
+  nonsense             Path=0.8753  Ben=N/A  Δ=N/A  (n=40)
+  synonymous           Path=0.9989  Ben=0.9989  Δ=0.0000  (n=86)
+  frameshift           Path=0.8919  Ben=N/A  Δ=N/A  (n=99)
+  splice_donor         Path=0.9087  Ben=N/A  Δ=N/A  (n=22)
+  splice_region        Path=0.9641  Ben=N/A  Δ=N/A  (n=9)
+  intronic             Path=0.9957  Ben=0.9955  Δ=0.0002  (n=667)
+  splice_acceptor      Path=0.9019  Ben=N/A  Δ=N/A  (n=3)
+  5_prime_UTR          Path=0.9801  Ben=0.9800  Δ=0.0001  (n=4)
+  promoter             Path=0.9285  Ben=N/A  Δ=N/A  (n=15)
+
+======================================================================
+PIPELINE INTEGRITY CHECKS
+======================================================================
+Intronic: Path SSIM=0.9957, Benign SSIM=0.9955, Δ=0.0002
+  v1.0 had: Path=0.995, Benign=1.000 (Δ=0.005 → 10x pipeline artifact)
+  Expected: Δ ≈ 0 (same effect strength for same category)
+  PASS: Within-category SSIM is label-blind
+
+Mock ClinVar IDs (VCV00000...): 0 PASS
+
+Variant count check: 353 Path + 750 Ben = 1103 total
+  PASS: Sum matches total

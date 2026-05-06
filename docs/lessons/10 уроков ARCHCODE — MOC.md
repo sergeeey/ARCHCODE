@@ -5,13 +5,15 @@ tags:
   - postmortem
   - MOC
 created: '2026-04-12'
-updated: '2026-04-13'
+updated: '2026-05-05'
 project: ARCHCODE
 type: MOC
 ---
 # 18 уроков из ARCHCODE: ошибки и практики за полгода
 
 > Октябрь 2025 — Апрель 2026. Полгода работы над 3D-хроматиновой симуляцией для классификации вариантов. Фальсификация: тривиальный baseline (category к score) AUC=0.98. Физика добавляла около нуля. Ряд практик сработал и переносим в будущие проекты.
+
+Обновление 2026-05-05: ARCHCODE не позиционируется как второй Skeptic. Горизонтальная линия scientific integrity находится в [[Карточка — Nobel Premia Boiko]] / Skeptic Engine. ARCHCODE остаётся доменным negative-result case study и benchmark suite для 3D-genome claims. См. [[ARCHCODE — актуальный контекст 2026-05-05]].
 
 ---
 

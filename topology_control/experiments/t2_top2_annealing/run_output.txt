@@ -1,0 +1,10 @@
+============================================================
+T2: TOP2 Topological Annealing — Toy Model
+============================================================
+Configuration:
+  Rings: 200
+  Steps: 500
+  Seed: 42
+
+[1/3] Running RANDOM (baseline)...
+  Initial complexity: C = 132.50

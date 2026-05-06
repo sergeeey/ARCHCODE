@@ -1,0 +1,36 @@
+{
+  "summary": {
+    "pearls": {
+      "group": "Pearls",
+      "total": 27,
+      "queryable": 25,
+      "absent": 25,
+      "present": 0,
+      "pct_absent": 100.0,
+      "mean_af": "N/A"
+    },
+    "pathogenic_coding": {
+      "group": "Pathogenic_coding",
+      "total": 50,
+      "queryable": 47,
+      "absent": 47,
+      "present": 0,
+      "pct_absent": 100.0,
+      "mean_af": "N/A"
+    },
+    "benign": {
+      "group": "Benign",
+      "total": 50,
+      "queryable": 50,
+      "absent": 43,
+      "present": 7,
+      "pct_absent": 86.0,
+      "mean_af": "6.44e-05"
+    }
+  },
+  "tests": {
+    "fisher_p": "1.00e+00",
+    "odds_ratio": NaN
+  },
+  "conclusion": "NOT_SUPPORTED"
+}

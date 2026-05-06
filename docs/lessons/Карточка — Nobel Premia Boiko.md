@@ -5,6 +5,7 @@ tags:
   - research
   - data-integrity
 created: '2026-04-12'
+updated: '2026-05-05'
 ---
 # Nobel Premia Boiko 2026
 
@@ -22,5 +23,12 @@ created: '2026-04-12'
 ## Связи
 - Data integrity методология -> TERAG data quality monitoring
 - Anomaly detection patterns -> GeoScan (IsolationForest)
+- ARCHCODE -> источник методологии самофальсификации и matched-control thinking; см. [[ARCHCODE — актуальный контекст 2026-05-05]]
+
+## Разведение с ARCHCODE
+
+Nobel Premia Boiko / Skeptic Engine — главный горизонтальный проект для scientific integrity и statistical artifact detection.
+
+ARCHCODE — не конкурент и не второй Skeptic. Это доменный case study: 3D-genome predictor claim был честно разобран, broad claims закрыты, а validation suite остался как specialized benchmark для 3D-genome моделей.
 
 up:: [[Каталог всех проектов 2026]]
