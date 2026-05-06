@@ -344,6 +344,7 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
+- [2026-05-06 15:17] `d051f93`: chore: project reorganization — consolidate 3-day multi-stream work
 - [2026-05-03 02:16] `2e7fd52`: feat(A1-pilot): LSSIM mechanism-specific limitation discovered
 - [2026-05-03 02:12] `0f48793`: feat(A2-phase1): add CLI args + generic cohort filter
 - [2026-05-03 01:44] `0f48793`: feat(A2-phase1): add CLI args + generic cohort filter

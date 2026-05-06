@@ -1,56 +1,33 @@
 # Goals
 
-### Carried from compaction (2026-04-25 10:10)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
+## Current (2026-05-06)
 
-### Carried from compaction (2026-04-25 10:45)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
+### Paper 2 (PyPop HBB)
+- **URGENT:** Verify if submitted on May 4 (deadline passed)
+- If NOT submitted: fix 3 blocking issues + submit ASAP
+  1. AF value: 0.000193 → 0.000648 for VCV000015471
+  2. Math: "8 + 4" → "7 + 5"
+  3. Remove Fisher test (underpowered)
+- ClinVar submission REJECTED → referred to ClinGen Expert Panel
 
-### Carried from compaction (2026-04-26 00:18)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
+### Paper 3 (Multi-Locus)
+- **DECISION NEEDED:** Choose strategic direction (A/B/C)
+  - Option A: HBB-only (accept mechanism-specific limitation) — 1 week
+  - Option B: Continue multi-locus search — 4 weeks, uncertain outcome
+  - Option C: Mechanistic pivot (LSSIM as regulatory marker) — 2 weeks
+- 31 commits multi-locus search completed, no clean regulatory locus found
 
-### Carried from compaction (2026-04-26 01:22)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
+### Spectral Validation
+- H1-H4 validation COMPLETE
+- Ready to commit: spectral_sprint_log.md, contact_matrices/
 
-### Carried from compaction (2026-04-26 10:25)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
+### Ronin Institute
+- Verify approval status (email @ronininstitute.org used May 1, expected approval May 10)
 
-### Carried from compaction (2026-04-28 11:46)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
+---
 
-### Carried from compaction (2026-04-28 16:28)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### Carried from compaction (2026-04-28 21:26)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### Carried from compaction (2026-04-28 23:10)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### Carried from compaction (2026-04-29 06:52)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### Carried from compaction (2026-04-29 07:48)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### Carried from compaction (2026-04-29 08:47)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### Carried from compaction (2026-04-29 09:40)
-- - TODO: user to attach PDF to Raz draft and send, then submit to Research Square
-
-### Carried from compaction (2026-05-01 23:17)
-- - Next: Submit 2 FALSE PEARLS after approval
-- - Next: User review → minor edits → submit by May 4
-
-### Carried from compaction (2026-05-02 11:56)
-- - Next: User review → minor edits → submit by May 4
-
-### Carried from compaction (2026-05-02 12:27)
-- - Next: User review → minor edits → submit by May 4
-
-### Carried from compaction (2026-05-02 23:02)
-- - Next: User review → minor edits → submit by May 4
+## Archive
 
 ### Carried from compaction (2026-05-03 02:12)
-- - Next: User review → minor edits → submit by May 4
+- Paper 2: User review → minor edits → submit by May 4 [DEADLINE PASSED]
+- ClinVar: Submit 2 FALSE PEARLS after approval [REJECTED, referred to ClinGen]
