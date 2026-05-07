@@ -6,69 +6,7 @@
 ---
 
 ## Session 2026-05-06 Part 2 — System Recovery + Paper 2 Verification ✅
-
-**Context:** PC overheated and rebooted mid-session (3:30 PM). Root cause identified: 82GB JSON contact matrices generation + 16 Claude processes. System recovered, data verified, cleanup committed.
-
-**Thermal Overload Diagnosis:**
-- **82GB JSON files:** 29,158 contact matrices (3.4MB each) generated during Spectral validation
-- **16 Claude processes:** 4 hung CLI processes (v2.1.121 + 3×v2.1.128) + Desktop App (10 processes)
-- **CPU load:** sustained 125W → 180W thermal limit → shutdown
-- **Resolution:** Deleted 82GB JSON (finalized results in CSV 2.5MB), closed 4 hung processes, commit a71ed04
-
-**Paper 2 (PyPop HBB) — ✅ READY FOR RESUBMIT:**
-- **Deadline:** May 4, 2026 — **OVERDUE** (3 days as of May 7)
-- **Submission verified:** May 2, 18:00 submitted → May 4, 06:23 **RETURNED TO DRAFT** (Manuscript ID: 3433287)
-  - Return reason: "Further information required regarding identity of institutions" (affiliation issue)
-  - From: Praveen Kumar, humu.office@wiley.com
-- **Root cause:** DOCX contained "(affiliation pending confirmation, decision expected May 2026)"
-  - Wiley could not verify Ronin Institute in ROR database
-- **Resolution (May 6):**
-  - ✅ Verified Ronin approval: April 21, 2026 — OFFICIAL RIIS 2.0 Fellow
-  - ✅ Fixed affiliation: removed "(pending confirmation)", updated email to sergey.boyko@ronininstitute.org
-  - ✅ New file: pypop_paper_HumanMutation_SUBMIT_FINAL.docx (commit ce1636e)
-- **Action required:** Resubmit MS#3433287 via ScholarOne TODAY (priority P0)
-
-**ClinVar submission (SUB16160621):** ❌ REJECTED (May 5)
-- Reason: ClinGen Hemoglobinopathy Expert Panel established
-- Reframed: validation path (EP review > independent submission)
-
-**Paper 3 (Multi-Locus Regulatory Search) — 31 COMMITS, NO CLEAN LOCUS FOUND:**
-- **Mechanism-Specific Limitation (critical discovery):**
-  - **HBB (regulatory):** 5.7% pathogenic with LSSIM<0.95 ✓ WORKS
-  - **BRCA1/TP53 (coding):** 0.1% pathogenic with LSSIM<0.95 ✗ DOES NOT WORK
-  - **Root cause:** Regulatory variants disrupt loops (low LSSIM), coding missense alters sequence but preserves loops (high LSSIM)
-  - **Implication:** LSSIM is regulatory-specific marker, NOT universal pathogenicity predictor
-
-- **Multi-locus search results (31 commits, 2026-05-03 → 2026-05-06):**
-  - **CFTR:** FAILED (36 variants = indels, gnomAD doesn't accept "." placeholder)
-  - **BRCA1:** Technical success (16/26 queries), but 92% Benign/Likely benign
-  - **HBA1:** 66 queryable SNVs, 4 low-LSSIM candidates, but all coding/nonsense (not regulatory-only)
-  - **BCL11A:** 34 queryable, failed position-control screen
-  - **GATA1/FOXP3:** Regulatory anchors exist, no overlapping variants
-  - **LDLR:** 5 commits, status unclear
-  - **TERT:** 3 commits, checked
-  - **HBG1:** Latest commit (2900554), in progress
-
-- **Strategic Decision (PENDING since 2026-05-03):**
-  - **Option A (recommended):** HBB-only Paper 3 — accept mechanism-specific limitation, 1 week to draft
-  - **Option B:** Continue regulatory multi-locus search (BCL11A, HBA1) — 4 weeks, no guarantees after 31 commits failed
-  - **Option C:** Mechanistic pivot — LSSIM as regulatory variant marker paper, 2 weeks
-  - **Current status:** No decision made, search continuing without clear endpoint
-
-**Spectral Validation (H1-H4) — ✅ COMPLETE (but uncommitted):**
-- **H1 (Spectral Fragility Index):** ✅ VALIDATED
-  - HBB: p=0.0001, Cohen's d=1.36 (very large effect)
-  - TP53: p=0.004, d=0.87 (large effect)
-  - BRCA1: p=0.89, d=0.04 (negligible, negative control PASS)
-- **H2 (Phase Boundary):** ❌ REJECTED (0/20 pearls in critical regime)
-- **H3 (TDRA):** ⏭️ SKIPPED (complexity)
-- **H4 (Codeword Distance):** ♻️ REINTERPRETED (structural variance model, not median robustness)
-- **Audit:** 48/48 checks PASS (100%)
-- **Phantom reference:** ✅ FIXED (Sabaté 2025 Nature Genetics → bioRxiv 2024, commit 3a4fd90)
-- **Files:** spectral_sprint_log.md (+129 lines), contact_matrices/ (2206 exported matrices)
-- **Action required:** Commit spectral validation results
-
-**Ronin Institute Status — ⚠️ UNCLEAR:**
+[summarized] **Context:** PC overheated and rebooted mid-session (3:30 PM). Root cause identified: 82GB JSON contact matrices generat...
 - **Expected approval:** ~May 10, 2026
 - **Email address:** sergey.boyko@ronininstitute.org used in ClinVar correspondence (May 1)
 - **Contradiction:** Email used 9 days before expected approval
@@ -84,8 +22,8 @@
 2. ✅ **Paper 2 affiliation fixed** — commit ce1636e (May 6)
 3. ✅ **Ronin approval verified** — April 21, 2026 RIIS 2.0 Fellow confirmed
 4. 🔴 **P0: Resubmit Paper 2** — MS#3433287 via ScholarOne (URGENT, 3 days overdue)
-5. 🟡 **P1: Paper 3 strategic decision** — choose A (HBB-only) / B (continue search) / C (mechanistic pivot)
-6. 🟡 **P1: Commit spectral validation** — sfi_brca1_all.csv (2.0MB), sfi_tp53_all.csv (524KB), 3 PDF figures
+5. ✅ **P1: Paper 3 strategic decision** — Option A selected (HBB-only, mechanism-specific)
+6. ✅ **P1: Commit spectral validation** — commits d051f93 (CSV) + 4c362fa (PDF), May 6
 7. 🟢 **P2: Optional tasks** — ClinGen data correction, sync .md files
 
 ---
@@ -105,8 +43,9 @@
 
 ---
 
+
 ## Session 2026-05-01 — PyPop Population Stratification + Lancaster Outreach ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] **Status:** ✅ COMPLETE — PyPop cross-population validation + warm ou...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Status:** ✅ COMPLETE — PyPop cross-population validat...
 - ❌ BRCA1/CFTR multi-locus (Paper #2 later)
 - ❌ Generalize query tool
 - ❌ RateLimitRetry library
@@ -129,7 +68,7 @@
 ---
 
 ## Session 2026-05-02 — Harvest Analysis + Integrity Checklist ✅
-[summarized] [summarized] [summarized] [summarized] **Harvest Execution:** `/harvest` skill applied to session 2026-05-01 + full ARCH...
+[summarized] [summarized] [summarized] [summarized] [summarized] **Harvest Execution:** `/harvest` skill applied to session 2026-05-0...
 - Target: Ronin Lightning Talk (July), LessWrong, independent researchers blog
 
 **3. Multi-Agent Research Orchestration (commit 9ade008)**
@@ -152,7 +91,7 @@ Clinical validation не удалась (router Class B killed by matched contro
 ---
 
 ## Session 2026-04-29 — H2-H4 Exploratory Validation COMPLETE ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Status:** ✅ ALL TASKS COMPLETE (15/15) — H1-H4 valida...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Status:** ✅ ALL TASKS COMPLETE (15/15) —...
 - H4 (Codeword distance): REINTERPRETED (dosage = structural variance 19.9%, not median robustness)
 
 **Scientific Insight:**  
@@ -198,8 +137,9 @@ Phantom reference fixed: Sabaté 2025 Nature Genetics → bioRxiv 2024 (commit 3
 
 
 
+
 ## Session 2026-04-25 — Stress Biology Project Launch → KILLED
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Hypothesis:** Doubling time predicts mutation rate (A...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Hypothesis:** Doubling time predicts mut...
 - Verdict at n=89: Effect was SPURIOUS (disappeared with more data)
 
 **Decision (Week 2):**
@@ -222,7 +162,7 @@ Phantom reference fixed: Sabaté 2025 Nature Genetics → bioRxiv 2024 (commit 3
 ---
 
 ## ARCHCODE Status
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Current Branch:** feature/stress-biology-atp-mutagene...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Current Branch:** feature/stress-biology...
 - Research Square: rs-9090074 LIVE (taxonomy paper), DOI: 10.21203/rs.3.rs-9090074/v1
 - Zenodo: v2.17 LIVE (https://zenodo.org/records/18908214), v2.18 pending (spectral section)
 - bioRxiv: REJECTED ×2 (no affiliation), resubmit after Ronin approval
@@ -267,8 +207,9 @@ e311d70 docs: project closure — H-01/H-14 killed, pearl untestable, final audi
 
 
 
+
 ## Backlog (Updated 2026-04-29)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **P0 (Immediate, Week 1):**
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **P0 (Immediate, Week 1):**
 4. **Compile final PDF:** `cd manuscript && python -c "import typst; typst.compile('main.typ', output='main.pdf', root='..')"`
 5. **Push to GitHub:** `git push origin feature/stress-biology-atp-mutagenesis --tags`
 6. **Update Zenodo:** v2.18 with spectral validation section
@@ -314,6 +255,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 
 
 
+
 ## Technical Notes
 
 - Windows: `python` not `python3`
@@ -331,8 +273,9 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 
 
 
+
 ## Key Numbers (Canonical, v5.0)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Dataset:**
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Dataset:**
 - Q3 concordant: 641 variants (ARCHCODE + VEP both HIGH)
 
 **Structural Variance:**
@@ -355,6 +298,7 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
+- [2026-05-07 11:36] `6391a11`: docs(memory): May 7 update — Paper 2 ready for resubmit
 - [2026-05-06 18:48] `ce1636e`: fix(paper2): update affiliation — Ronin RIIS 2.0 Fellow confirmed (April 21)
 - [2026-05-06 16:40] `7794f0c`: docs(memory): Session 2026-05-06 Part 2 — thermal recovery + Paper 2 verification
 - [2026-05-06 16:15] `a71ed04`: chore: remove 82GB intermediate contact matrices (JSON → CSV extracted)

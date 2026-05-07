@@ -11,11 +11,13 @@
 - ClinVar submission REJECTED → referred to ClinGen Expert Panel
 
 ### Paper 3 (Multi-Locus)
-- **DECISION NEEDED:** Choose strategic direction (A/B/C)
-  - Option A: HBB-only (accept mechanism-specific limitation) — 1 week
-  - Option B: Continue multi-locus search — 4 weeks, uncertain outcome
-  - Option C: Mechanistic pivot (LSSIM as regulatory marker) — 2 weeks
-- 31 commits multi-locus search completed, no clean regulatory locus found
+- **DECIDED (2026-05-07):** Option A — HBB-only, mechanism-specific framing
+  - Rationale: 31 commits without second regulatory locus → low P(success) for Option B
+  - Paper 2 already 3 days overdue → fast submission priority
+  - N=1 locus with honest framing > overclaim multi-locus without evidence
+  - Peer review feedback will guide if Paper 3 expansion needed
+- ~~Option B: Continue multi-locus search — 4 weeks, uncertain outcome~~
+- ~~Option C: Mechanistic pivot — 2 weeks (not needed, Paper 2 already mechanism-specific)~~
 
 ### Spectral Validation
 - H1-H4 validation COMPLETE
@@ -31,3 +33,6 @@
 ### Carried from compaction (2026-05-03 02:12)
 - Paper 2: User review → minor edits → submit by May 4 [DEADLINE PASSED]
 - ClinVar: Submit 2 FALSE PEARLS after approval [REJECTED, referred to ClinGen]
+
+### Carried from compaction (2026-05-07 11:36)
+- - Next: User review → minor edits → submit by May 4
