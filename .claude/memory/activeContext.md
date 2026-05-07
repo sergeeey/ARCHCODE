@@ -1,7 +1,7 @@
 # Active Context — Multi-Project
 
-**Last Updated:** 2026-05-06 (System Recovery + Paper 2 Verification)
-**Active Projects:** ARCHCODE (PyPop Paper 2 status unclear, Spectral validation complete), Paper 3 (strategic decision needed)
+**Last Updated:** 2026-05-07 (Paper 2 Ready for Resubmit)
+**Active Projects:** ARCHCODE (PyPop Paper 2 resubmit pending, Spectral validation complete), Paper 3 (strategic decision needed)
 
 ---
 
@@ -15,16 +15,18 @@
 - **CPU load:** sustained 125W → 180W thermal limit → shutdown
 - **Resolution:** Deleted 82GB JSON (finalized results in CSV 2.5MB), closed 4 hung processes, commit a71ed04
 
-**Paper 2 (PyPop HBB) — ✅ DOCX VERIFIED READY:**
-- **Deadline:** May 4, 2026 — **MISSED** (2 days overdue)
-- **Submission status:** ❌ UNKNOWN (user to confirm if submitted)
-- **DOCX status:** ✅ ALL ISSUES FIXED (pypop_paper_HumanMutation_SUBMIT_CLEAN.docx, May 3)
-  - VCV000015471: 0.000648 (genome) ✓ correct
-  - VCV000015466: 0.000464 (exome) ✓ correct
-  - Fisher test: ✓ removed (was underpowered)
-  - Math: 7+5=12 ✓ correct (not 8+4)
-- **Version conflict detected:** Sectional .md files (abstract.md, results.md) still have old data (0.000193, 19×) from May 1, but DOCX is correct (May 3)
-- **Action required:** User confirm submission status → if NOT submitted, upload DOCX immediately (already correct)
+**Paper 2 (PyPop HBB) — ✅ READY FOR RESUBMIT:**
+- **Deadline:** May 4, 2026 — **OVERDUE** (3 days as of May 7)
+- **Submission verified:** May 2, 18:00 submitted → May 4, 06:23 **RETURNED TO DRAFT** (Manuscript ID: 3433287)
+  - Return reason: "Further information required regarding identity of institutions" (affiliation issue)
+  - From: Praveen Kumar, humu.office@wiley.com
+- **Root cause:** DOCX contained "(affiliation pending confirmation, decision expected May 2026)"
+  - Wiley could not verify Ronin Institute in ROR database
+- **Resolution (May 6):**
+  - ✅ Verified Ronin approval: April 21, 2026 — OFFICIAL RIIS 2.0 Fellow
+  - ✅ Fixed affiliation: removed "(pending confirmation)", updated email to sergey.boyko@ronininstitute.org
+  - ✅ New file: pypop_paper_HumanMutation_SUBMIT_FINAL.docx (commit ce1636e)
+- **Action required:** Resubmit MS#3433287 via ScholarOne TODAY (priority P0)
 
 **ClinVar submission (SUB16160621):** ❌ REJECTED (May 5)
 - Reason: ClinGen Hemoglobinopathy Expert Panel established
@@ -77,14 +79,14 @@
 - Modified (19): activeContext.md (+571), spectral_sprint_log.md (+129), pypop_paper_FINAL.md (+69), goals.md (+52), skills (5), Obsidian docs (6), HBB_Unified_Atlas.csv (reshuffled)
 - Untracked (118): AUDIT_*.md (9), SUBMISSION_*.md (3), PAPER3_*.md (20+), results/*.csv (50+), contact_matrices/ (NEW)
 
-**Next Actions (updated after Session Part 2):**
-1. ✅ **Cleanup committed** — a71ed04: removed 82GB JSON, closed hung processes
-2. ✅ **Paper 2 DOCX verified** — all issues already fixed (May 3), READY for submission
-3. ❓ **Verify Paper 2 submission status** — USER ACTION: confirm if submitted to Human Mutation or not
-4. **Commit spectral validation** — H1-H4 complete, CSV results ready (sfi_brca1_all.csv 2.0MB, sfi_tp53_all.csv 524KB)
-5. **Paper 3 strategic decision** — choose A (HBB-only, 1 week) / B (continue search, 4 weeks) / C (mechanistic pivot, 2 weeks)
-6. **Verify Ronin approval** — expected May 10, email already used May 1 (contradiction?)
-7. **Optional: Sync sectional .md files** — abstract.md, results.md have stale data (low priority, DOCX is correct)
+**Next Actions (May 7 priorities):**
+1. ✅ **System recovery** — thermal overload diagnosed and resolved (May 6)
+2. ✅ **Paper 2 affiliation fixed** — commit ce1636e (May 6)
+3. ✅ **Ronin approval verified** — April 21, 2026 RIIS 2.0 Fellow confirmed
+4. 🔴 **P0: Resubmit Paper 2** — MS#3433287 via ScholarOne (URGENT, 3 days overdue)
+5. 🟡 **P1: Paper 3 strategic decision** — choose A (HBB-only) / B (continue search) / C (mechanistic pivot)
+6. 🟡 **P1: Commit spectral validation** — sfi_brca1_all.csv (2.0MB), sfi_tp53_all.csv (524KB), 3 PDF figures
+7. 🟢 **P2: Optional tasks** — ClinGen data correction, sync .md files
 
 ---
 
@@ -353,6 +355,8 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
+- [2026-05-06 18:48] `ce1636e`: fix(paper2): update affiliation — Ronin RIIS 2.0 Fellow confirmed (April 21)
+- [2026-05-06 16:40] `7794f0c`: docs(memory): Session 2026-05-06 Part 2 — thermal recovery + Paper 2 verification
 - [2026-05-06 16:15] `a71ed04`: chore: remove 82GB intermediate contact matrices (JSON → CSV extracted)
 - [2026-05-06 15:18] `c64f537`: chore: sync activeContext auto-commit logs
 - [2026-05-06 15:18] `06d9473`: chore: remove duplicate .bak files (3 files)
