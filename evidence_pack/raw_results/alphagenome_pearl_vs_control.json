@@ -1,0 +1,267 @@
+{
+  "experiment": "Pearl vs Control CAGE disruption (AlphaGenome real API)",
+  "n_pearls": 13,
+  "n_controls": 19,
+  "pearl_mean_cage_pct": -18.00471498254629,
+  "control_mean_cage_pct": -3.2430312652507856,
+  "mann_whitney_p": 0.00027694044729743286,
+  "cohen_d": -1.5328770747811524,
+  "results": [
+    {
+      "group": "PEARL",
+      "position": 5226613,
+      "category": "missense",
+      "archcode_ssim": 0.9492,
+      "cage_delta": -0.00010231882333755493,
+      "cage_pct": -0.42286308743615125
+    },
+    {
+      "group": "PEARL",
+      "position": 5226971,
+      "category": "frameshift",
+      "archcode_ssim": 0.8915,
+      "cage_delta": -0.0013631302863359451,
+      "cage_pct": -5.5302114854366895
+    },
+    {
+      "group": "PEARL",
+      "position": 5227099,
+      "category": "promoter",
+      "archcode_ssim": 0.9276,
+      "cage_delta": -0.008611000142991543,
+      "cage_pct": -35.58752913299049
+    },
+    {
+      "group": "PEARL",
+      "position": 5227100,
+      "category": "promoter",
+      "archcode_ssim": 0.929,
+      "cage_delta": -0.00980491004884243,
+      "cage_pct": -40.52171829233169
+    },
+    {
+      "group": "PEARL",
+      "position": 5227101,
+      "category": "promoter",
+      "archcode_ssim": 0.9282,
+      "cage_delta": -0.008144194260239601,
+      "cage_pct": -33.65831444526262
+    },
+    {
+      "group": "PEARL",
+      "position": 5227102,
+      "category": "promoter",
+      "archcode_ssim": 0.9287,
+      "cage_delta": -0.006363688036799431,
+      "cage_pct": -26.299840859622343
+    },
+    {
+      "group": "PEARL",
+      "position": 5227142,
+      "category": "promoter",
+      "archcode_ssim": 0.9279,
+      "cage_delta": -0.0020487457513809204,
+      "cage_pct": -8.467053524868419
+    },
+    {
+      "group": "PEARL",
+      "position": 5227157,
+      "category": "promoter",
+      "archcode_ssim": 0.9277,
+      "cage_delta": -0.0033390726894140244,
+      "cage_pct": -13.799714857560327
+    },
+    {
+      "group": "PEARL",
+      "position": 5227158,
+      "category": "promoter",
+      "archcode_ssim": 0.9289,
+      "cage_delta": -0.00518452376127243,
+      "cage_pct": -21.426592420292945
+    },
+    {
+      "group": "PEARL",
+      "position": 5227159,
+      "category": "promoter",
+      "archcode_ssim": 0.9297,
+      "cage_delta": -0.0051415544003248215,
+      "cage_pct": -21.249008706536582
+    },
+    {
+      "group": "PEARL",
+      "position": 5227161,
+      "category": "promoter",
+      "archcode_ssim": 0.9292,
+      "cage_delta": -0.004446817561984062,
+      "cage_pct": -18.37780129001642
+    },
+    {
+      "group": "PEARL",
+      "position": 5227163,
+      "category": "promoter",
+      "archcode_ssim": 0.929,
+      "cage_delta": -0.0010366849601268768,
+      "cage_pct": -4.284410127466485
+    },
+    {
+      "group": "PEARL",
+      "position": 5227172,
+      "category": "promoter",
+      "archcode_ssim": 0.9284,
+      "cage_delta": -0.001073421910405159,
+      "cage_pct": -4.436236543280641
+    },
+    {
+      "group": "CONTROL",
+      "position": 5225620,
+      "category": "missense",
+      "archcode_ssim": 0.9577,
+      "cage_delta": -0.00022140145301818848,
+      "cage_pct": -0.9150076098632979
+    },
+    {
+      "group": "CONTROL",
+      "position": 5225729,
+      "category": "splice_region",
+      "archcode_ssim": 0.9715,
+      "cage_delta": -0.0019069463014602661,
+      "cage_pct": -7.881024960091253
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226755,
+      "category": "missense",
+      "archcode_ssim": 0.9502,
+      "cage_delta": -0.0001307521015405655,
+      "cage_pct": -0.5403720991181007
+    },
+    {
+      "group": "CONTROL",
+      "position": 5225699,
+      "category": "frameshift",
+      "archcode_ssim": 0.9071,
+      "cage_delta": -0.0019133370369672775,
+      "cage_pct": -7.826699320599332
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226997,
+      "category": "missense",
+      "archcode_ssim": 0.9531,
+      "cage_delta": 6.878189742565155e-05,
+      "cage_pct": 0.28426172776805425
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226970,
+      "category": "nonsense",
+      "archcode_ssim": 0.8741,
+      "cage_delta": -0.000475369393825531,
+      "cage_pct": -1.964605954102436
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226715,
+      "category": "frameshift",
+      "archcode_ssim": 0.8852,
+      "cage_delta": -0.001475650817155838,
+      "cage_pct": -6.086826885780161
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226772,
+      "category": "nonsense",
+      "archcode_ssim": 0.8735,
+      "cage_delta": 8.425116539001465e-05,
+      "cage_pct": 0.3481930963903006
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226761,
+      "category": "frameshift",
+      "archcode_ssim": 0.8857,
+      "cage_delta": -0.0009795557707548141,
+      "cage_pct": -4.057110196233274
+    },
+    {
+      "group": "CONTROL",
+      "position": 5225733,
+      "category": "splice_region",
+      "archcode_ssim": 0.9717,
+      "cage_delta": -0.0006566885858774185,
+      "cage_pct": -2.713961652902264
+    },
+    {
+      "group": "CONTROL",
+      "position": 5225490,
+      "category": "3_prime_UTR",
+      "archcode_ssim": 0.994,
+      "cage_delta": -0.003673626109957695,
+      "cage_pct": -15.182356757738402
+    },
+    {
+      "group": "CONTROL",
+      "position": 5227021,
+      "category": "missense",
+      "archcode_ssim": 0.952,
+      "cage_delta": 0.0010060463100671768,
+      "cage_pct": 4.157786758114609
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226624,
+      "category": "missense",
+      "archcode_ssim": 0.9492,
+      "cage_delta": 0.00013362430036067963,
+      "cage_pct": 0.5522423183132246
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226941,
+      "category": "missense",
+      "archcode_ssim": 0.9517,
+      "cage_delta": 6.714463233947754e-05,
+      "cage_pct": 0.27749524095060035
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226632,
+      "category": "frameshift",
+      "archcode_ssim": 0.8886,
+      "cage_delta": 0.00038451701402664185,
+      "cage_pct": 1.5891313682001258
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226609,
+      "category": "missense",
+      "archcode_ssim": 0.9497,
+      "cage_delta": -0.0003609955310821533,
+      "cage_pct": -1.4919218169705382
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226658,
+      "category": "frameshift",
+      "archcode_ssim": 0.8881,
+      "cage_delta": -0.00038572587072849274,
+      "cage_pct": -1.5941273294566987
+    },
+    {
+      "group": "CONTROL",
+      "position": 5225740,
+      "category": "intronic",
+      "archcode_ssim": 0.9958,
+      "cage_delta": -0.003329196944832802,
+      "cage_pct": -13.758900394413413
+    },
+    {
+      "group": "CONTROL",
+      "position": 5226949,
+      "category": "missense",
+      "archcode_ssim": 0.9529,
+      "cage_delta": -0.0011647772043943405,
+      "cage_pct": -4.813789572232681
+    }
+  ]
+}

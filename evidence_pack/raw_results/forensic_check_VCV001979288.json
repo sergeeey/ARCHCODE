@@ -1,0 +1,101 @@
+{
+  "forensic_check": "VCV001979288",
+  "date": "2026-05-09",
+  "variant": {
+    "clinvar_id": "VCV001979288",
+    "spdi": "NC_000011.10:5225453:A:C",
+    "genomic": "NC_000011.10:g.5225454A>C",
+    "grch38": "chr11:5225454",
+    "gene": "HBB",
+    "ref": "A",
+    "alt": "C",
+    "clinvar_classification": "Likely benign"
+  },
+  "verification_layers": {
+    "layer_1_clinvar_real": {
+      "status": "VERIFIED",
+      "evidence": "ClinVar record exists at NCBI",
+      "source": "https://www.ncbi.nlm.nih.gov/clinvar/variation/VCV001979288/",
+      "position_match": true,
+      "classification_match": true
+    },
+    "layer_2_local_data": {
+      "status": "VERIFIED",
+      "found_in_files": [
+        "data/hbb_benign_variants.csv",
+        "data/hbb_benign_vep_results.csv",
+        "data/hbb_vus_variants.csv",
+        "results/HBB_Combined_Atlas.csv",
+        "results/HBB_Unified_Atlas.csv",
+        "results/integrative_benchmark.csv"
+      ],
+      "label_in_benign_file": "Likely benign",
+      "label_in_vus_file": "VUS",
+      "label_conflict": true,
+      "label_conflict_explanation": "hbb_vus_variants.csv is synthetic test dataset (contains 809 Likely benign + 271 VUS + 142 Pathogenic), not a ClinVar VUS export. VUS label in that file is for VUS classifier training, not ground truth.",
+      "category": "other",
+      "vep_consequence": "non_coding_transcript_exon_variant",
+      "vep_score": 0.1,
+      "vep_impact": "MODIFIER"
+    },
+    "layer_3_archcode_predictions": {
+      "status": "VERIFIED",
+      "source_file": "results/HBB_Unified_Atlas.csv",
+      "hsim": 0.9826,
+      "lssim": 0.9826,
+      "cage_pct": 0.0395,
+      "atac_pct": 0.0,
+      "is_pearl": false,
+      "verdict": "LIKELY_BENIGN",
+      "consensus": "AGREEMENT",
+      "interpretation": "Convergent evidence from structural and sequence analysis.",
+      "cadd": 1.7,
+      "method": "CATEGORICAL",
+      "consistency_check": {
+        "clinvar_vs_archcode": "CONSISTENT",
+        "explanation": "ClinVar=Likely benign, ARCHCODE verdict=LIKELY_BENIGN, LSSIM=0.9826 (minimal structural disruption), CAGE_pct=0.0395 (near zero transcription change). All evidence converges to benign."
+      }
+    },
+    "layer_4_alphagenome_output": {
+      "status": "NOT_TESTED",
+      "found_in_alphagenome_batch": false,
+      "reason": "Variant not included in AlphaGenome batch test (N=32: 13 pearls + 19 controls). VCV001979288 is benign+other category, not selected for pearl/control validation.",
+      "expected": true,
+      "explanation": "AlphaGenome batch focused on pearls (VEP-blind structural variants) and controls (category-matched). VCV001979288 is neither pearl (VEP score 0.1 detects it) nor coding (category=other, not missense/frameshift). Absence from AlphaGenome batch is expected, not data gap."
+    },
+    "layer_5_statistics": {
+      "status": "VERIFIED_EXCLUDED",
+      "included_in_pearls": false,
+      "included_in_controls": false,
+      "included_in_mechanism_specificity": false,
+      "reason": "Not part of AlphaGenome validation cohort (N=32). VCV001979288 exists in Unified Atlas but not in validation subsets.",
+      "check_passed": true,
+      "explanation": "Variant correctly excluded from pearl/control statistics. No mislabeling detected."
+    }
+  },
+  "red_flags_detected": [
+    {
+      "flag": "LABEL_CONFLICT",
+      "severity": "LOW",
+      "description": "VCV001979288 appears in both hbb_benign_variants.csv (Likely benign) and hbb_vus_variants.csv (VUS label)",
+      "resolution": "EXPLAINED",
+      "explanation": "hbb_vus_variants.csv is synthetic test dataset for VUS classifier training. It contains 809 Likely benign variants labeled as 'VUS' for training purposes, not ground truth. Real ClinVar classification is Likely benign (verified). No data integrity issue."
+    }
+  ],
+  "verdict": "VERIFIED_BENIGN_CONTROL_NO_AG_OUTPUT",
+  "summary": {
+    "clinvar_real": true,
+    "position_correct": true,
+    "label_correct": true,
+    "archcode_predictions_correct": true,
+    "alphagenome_output_absent_expected": true,
+    "statistics_exclusion_correct": true,
+    "data_integrity": "PASS"
+  },
+  "conclusion": "VCV001979288 passes full forensic check. Variant is real, correctly labeled, properly classified by ARCHCODE (LIKELY_BENIGN), and appropriately excluded from AlphaGenome validation cohort. One minor label conflict in synthetic VUS training dataset explained and resolved. No evidence of data fabrication or mislabeling.",
+  "next_forensic_targets": [
+    "VCV000065880 (HBB pearl, promoter category) — verify in AlphaGenome pearls group",
+    "VCV000065881 (HBB pearl, promoter category) — verify CAGE delta matches reported -35.6%",
+    "Random benign control from AlphaGenome batch (e.g., position 5226XXX) — verify it's truly benign in ClinVar"
+  ]
+}

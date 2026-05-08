@@ -1,0 +1,137 @@
+{
+  "forensic_check": "VCV000015471",
+  "date": "2026-05-09",
+  "variant": {
+    "clinvar_id": "VCV000015471",
+    "hgvs": "NM_000518.5(HBB):c.-78A>G",
+    "grch38": "chr11:5227099",
+    "gene": "HBB",
+    "ref": "T",
+    "alt": "C",
+    "genomic_ref": "A",
+    "genomic_alt": "G",
+    "note": "Reference strand reversal: T>C (genomic negative strand) = A>G (transcript positive strand)",
+    "clinvar_classification": "Pathogenic/Likely pathogenic"
+  },
+  "verification_layers": {
+    "layer_1_clinvar_real": {
+      "status": "VERIFIED_LOCAL",
+      "evidence": "Found in data/hbb_real_variants.csv",
+      "source": "ClinVar export",
+      "position_match": true,
+      "classification_match": true,
+      "note": "External ClinVar API verification not performed in this check (local source verified)"
+    },
+    "layer_2_local_data": {
+      "status": "VERIFIED",
+      "found_in_files": [
+        "data/hbb_real_variants.csv",
+        "data/hbb_vep_results.csv",
+        "data/hbb_vus_variants.csv",
+        "results/HBB_Unified_Atlas.csv"
+      ],
+      "label_in_real_variants": "Pathogenic/Likely pathogenic",
+      "label_in_vus_file": "VUS",
+      "label_conflict": true,
+      "label_conflict_explanation": "Same as VCV001979288: hbb_vus_variants.csv is synthetic training dataset. VUS label is for classifier training, not ground truth. Real classification is Pathogenic/Likely pathogenic.",
+      "category": "promoter",
+      "vep_consequence": "5_prime_UTR_variant",
+      "vep_score": 0.2,
+      "vep_impact": "MODIFIER",
+      "cadd": 15.06
+    },
+    "layer_3_archcode_predictions": {
+      "status": "VERIFIED",
+      "source_file": "results/HBB_Unified_Atlas.csv",
+      "ssim": 0.9276,
+      "lssim": 0.9276,
+      "is_pearl": true,
+      "verdict": "VUS",
+      "consensus": "AGREEMENT",
+      "interpretation": "PEARL: VEP blind (score=0.20) but ARCHCODE detects structural disruption (LSSIM=0.928).",
+      "consistency_check": {
+        "clinvar_vs_archcode": "PEARL_IDENTIFIED",
+        "explanation": "ClinVar=Pathogenic/Likely pathogenic, VEP=0.2 (blind), ARCHCODE LSSIM=0.9276 (detects disruption). This is a TRUE PEARL: VEP misses pathogenicity, ARCHCODE detects it.",
+        "is_pearl_correct": true
+      }
+    },
+    "layer_4_alphagenome_output": {
+      "status": "VERIFIED",
+      "found_in_alphagenome_batch": true,
+      "group": "PEARL",
+      "position": 5227099,
+      "category": "promoter",
+      "archcode_ssim": 0.9276,
+      "cage_delta": -0.008611000142991543,
+      "cage_pct": -35.58752913299049,
+      "source_file": "results/alphagenome_pearl_vs_control.json",
+      "consistency_check": {
+        "archcode_ssim_match": true,
+        "archcode_ssim_unified_atlas": 0.9276,
+        "archcode_ssim_alphagenome": 0.9276,
+        "delta": 0.0,
+        "explanation": "ARCHCODE SSIM values match exactly between Unified Atlas and AlphaGenome results. No data mismatch."
+      },
+      "cage_interpretation": {
+        "cage_delta": -0.00861,
+        "cage_pct": -35.59,
+        "direction": "DECREASE",
+        "magnitude": "STRONG",
+        "biological_interpretation": "Strong CAGE decrease (-35.6%) consistent with promoter disruption. Pathogenic variant reduces transcription initiation as expected.",
+        "expected": true
+      }
+    },
+    "layer_5_statistics": {
+      "status": "VERIFIED",
+      "included_in_pearls": true,
+      "included_in_controls": false,
+      "pearl_group_n": 13,
+      "pearl_mean_cage_pct": -18.00471498254629,
+      "this_variant_cage_pct": -35.58752913299049,
+      "position_in_distribution": "Above mean (stronger disruption than average pearl)",
+      "check_passed": true,
+      "explanation": "VCV000015471 correctly included in pearls group. CAGE disruption (-35.6%) stronger than group mean (-18.0%), consistent with Pathogenic classification."
+    }
+  },
+  "red_flags_detected": [
+    {
+      "flag": "LABEL_CONFLICT",
+      "severity": "LOW",
+      "description": "VCV000015471 appears in hbb_vus_variants.csv with label VUS, but real classification is Pathogenic/Likely pathogenic",
+      "resolution": "EXPLAINED",
+      "explanation": "Same as VCV001979288: hbb_vus_variants.csv is synthetic training dataset. No data integrity issue."
+    },
+    {
+      "flag": "VERDICT_MISMATCH",
+      "severity": "LOW",
+      "description": "Unified Atlas verdict=VUS but ClinVar=Pathogenic/Likely pathogenic",
+      "resolution": "EXPLAINED",
+      "explanation": "Unified Atlas 'verdict' field is ARCHCODE prediction (VUS = VEP blind, needs manual review), not ClinVar classification. ClinVar label is stored in separate 'Label' field (Pathogenic). This is correct behavior: ARCHCODE flags VEP-blind variants for review, does not override ClinVar classification."
+    }
+  ],
+  "verdict": "VERIFIED_PEARL_WITH_AG_OUTPUT",
+  "summary": {
+    "clinvar_real": true,
+    "position_correct": true,
+    "label_correct": true,
+    "archcode_predictions_correct": true,
+    "is_pearl_correct": true,
+    "alphagenome_output_present": true,
+    "alphagenome_cage_delta_valid": true,
+    "statistics_inclusion_correct": true,
+    "data_integrity": "PASS"
+  },
+  "conclusion": "VCV000015471 passes full forensic check. Variant is real Pathogenic promoter mutation, correctly identified as PEARL by ARCHCODE (VEP blind but structural disruption detected), correctly included in AlphaGenome pearls group with valid CAGE output (-35.6% decrease), and correctly included in pearls statistics. AlphaGenome CAGE delta is biologically plausible (promoter disruption → transcription decrease). No evidence of data fabrication.",
+  "cross_validation": {
+    "archcode_ssim_consistency": "PASS (0.9276 in both Unified Atlas and AlphaGenome)",
+    "category_consistency": "PASS (promoter in all files)",
+    "position_consistency": "PASS (5227099 in all files)",
+    "clinvar_classification_consistency": "PASS (Pathogenic/Likely pathogenic in source files)",
+    "pearl_status_consistency": "PASS (is_pearl=true in Unified Atlas, group=PEARL in AlphaGenome)"
+  },
+  "next_forensic_targets": [
+    "VCV000015470 (same position 5227099, different allele) — verify it's also a pearl or explain why not",
+    "Random CONTROL from AlphaGenome batch (e.g., position 5226XXX) — verify ClinVar classification is Benign",
+    "Re-calculate Mann-Whitney p-value using extracted CAGE deltas"
+  ]
+}
