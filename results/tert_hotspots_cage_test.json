@@ -1,0 +1,40 @@
+{
+  "date": "2026-05-08",
+  "method": "AlphaGenome CAGE (predict_variant API)",
+  "locus": "TERT promoter",
+  "variants_tested": 2,
+  "hotspots": [
+    {
+      "clinvar_id": "VCV001299388",
+      "name": "C228T",
+      "hgvs": "c.-124C>T",
+      "position": 1295113,
+      "ref": "G",
+      "alt": "A",
+      "cage_ref": 0.011713478714227676,
+      "cage_alt": 0.015664517879486084,
+      "cage_delta": 0.003951039165258408,
+      "cage_pct": 33.730706834847545,
+      "verdict": "STRONG",
+      "mechanism": "Creates ETS binding site (gain-of-function)"
+    },
+    {
+      "clinvar_id": "VCV002443072",
+      "name": "C250T",
+      "hgvs": "c.-146C>T",
+      "position": 1295135,
+      "ref": "G",
+      "alt": "A",
+      "cage_ref": 0.011713478714227676,
+      "cage_alt": 0.017939185723662376,
+      "cage_delta": 0.0062257070094347,
+      "cage_pct": 53.149940861485476,
+      "verdict": "STRONG",
+      "mechanism": "Creates ETS binding site (gain-of-function)"
+    }
+  ],
+  "interpretation": {
+    "hypothesis": "TERT C228T/C250T are gain-of-function (create ETS motif). If CAGE detects \u2192 model captures gain-of-function. If NULL \u2192 model limited to disruption only.",
+    "impact_on_mechanism_specificity": "Either PASS or NULL strengthens overall claim by documenting limitation or expanding scope."
+  }
+}

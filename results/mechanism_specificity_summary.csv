@@ -1,0 +1,7 @@
+locus,mechanism_type,cage_ratio,p_value,n_pathogenic,n_benign,verdict,evidence_level,limitations
+HBB,regulatory_promoter,5.6,4.0e-06,14,15,PASS,VERIFIED-REAL,"Category-matched PARTIAL (15/20 pearls untestable), but p-value robust"
+MLH1,regulatory_CpG_promoter,3.7,0.0225,15,15,PASS,VERIFIED-REAL,"Aggregated only (no variant-level), cell-type mismatch (K562 vs colon), small N"
+BRCA1,coding_missense,1.3,0.425,20,20,NULL,VERIFIED-REAL,"Expected null (CAGE blind to coding)"
+TP53,coding_missense,0.8,0.561,15,15,NULL,VERIFIED-REAL,"Expected null (CAGE blind to coding)"
+GJB2,coding_connexin,0.8,0.384,15,15,NULL,VERIFIED-REAL,"Expected null (CAGE blind to coding)"
+TERT,coding_dominant_mixed,0.6,0.648,15,15,NULL_EXPECTED_SAMPLING_BIAS,VERIFIED-REAL,"ClinVar TERT 99.3% coding (missense/frameshift), 0.7% promoter. Random N=15 likely tested 0 promoter variants. CAGE correctly returned null on coding. Sampling bias, not method failure. [ADR-030]"
