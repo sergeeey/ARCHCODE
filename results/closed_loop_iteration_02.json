@@ -1,0 +1,13 @@
+{
+  "iteration": 2,
+  "timestamp": "2026-05-08T17:18:37.539099",
+  "hypothesis": {
+    "description": "Pearls are proximal to MED1/CTCF peaks",
+    "test": "Measure distance to nearest enhancer for all pearls",
+    "expected_result": "Median distance <1kb",
+    "validation_method": "ChIP-seq peak overlap"
+  },
+  "test_result": {
+    "verdict": "NOT_TESTED"
+  }
+}

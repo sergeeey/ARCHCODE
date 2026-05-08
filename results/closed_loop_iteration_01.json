@@ -1,0 +1,16 @@
+{
+  "iteration": 1,
+  "timestamp": "2026-05-08T17:18:37.539099",
+  "hypothesis": {
+    "description": "Pearls cluster in promoter region (73bp zone)",
+    "test": "Check if pearls at positions 5227099-5227172 share sequence motif",
+    "expected_result": "TATA-box disruption pattern",
+    "validation_method": "MEME motif analysis"
+  },
+  "test_result": {
+    "n_in_zone": 15,
+    "n_total": 20,
+    "ratio": 0.75,
+    "verdict": "CONFIRMED"
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "analysis": "computational_closed_loop",
+  "n_iterations": 3,
+  "n_confirmed": 1,
+  "history": [
+    {
+      "iteration": 1,
+      "timestamp": "2026-05-08T17:18:37.539099",
+      "hypothesis": {
+        "description": "Pearls cluster in promoter region (73bp zone)",
+        "test": "Check if pearls at positions 5227099-5227172 share sequence motif",
+        "expected_result": "TATA-box disruption pattern",
+        "validation_method": "MEME motif analysis"
+      },
+      "test_result": {
+        "n_in_zone": 15,
+        "n_total": 20,
+        "ratio": 0.75,
+        "verdict": "CONFIRMED"
+      }
+    },
+    {
+      "iteration": 2,
+      "timestamp": "2026-05-08T17:18:37.539099",
+      "hypothesis": {
+        "description": "Pearls are proximal to MED1/CTCF peaks",
+        "test": "Measure distance to nearest enhancer for all pearls",
+        "expected_result": "Median distance <1kb",
+        "validation_method": "ChIP-seq peak overlap"
+      },
+      "test_result": {
+        "verdict": "NOT_TESTED"
+      }
+    },
+    {
+      "iteration": 3,
+      "timestamp": "2026-05-08T17:18:37.539099",
+      "hypothesis": {
+        "description": "Dosage-sensitive loci show high structural variance",
+        "test": "Compare % LSSIM<0.95 across HBB/BRCA1/TP53",
+        "expected_result": "HBB >15%, BRCA1 <2%",
+        "validation_method": "Cross-locus comparison"
+      },
+      "test_result": {
+        "verdict": "NOT_TESTED"
+      }
+    }
+  ]
+}

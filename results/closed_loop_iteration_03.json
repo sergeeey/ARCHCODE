@@ -1,0 +1,13 @@
+{
+  "iteration": 3,
+  "timestamp": "2026-05-08T17:18:37.539099",
+  "hypothesis": {
+    "description": "Dosage-sensitive loci show high structural variance",
+    "test": "Compare % LSSIM<0.95 across HBB/BRCA1/TP53",
+    "expected_result": "HBB >15%, BRCA1 <2%",
+    "validation_method": "Cross-locus comparison"
+  },
+  "test_result": {
+    "verdict": "NOT_TESTED"
+  }
+}
