@@ -36,3 +36,30 @@
 
 ### Carried from compaction (2026-05-07 11:36)
 - - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 19:12)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 20:07)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 20:08)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 20:53)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 21:31)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 22:43)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 22:43)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-08 23:59)
+- - Next: User review → minor edits → submit by May 4
+
+### Carried from compaction (2026-05-09 02:30)
+- - Next: User review → minor edits → submit by May 4
