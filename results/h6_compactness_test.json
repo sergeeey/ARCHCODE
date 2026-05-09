@@ -1,0 +1,55 @@
+{
+  "experiment": "H6 Compactness Hypothesis Test (Experiment X.1)",
+  "date": "2026-05-09",
+  "hypothesis": "Smaller genes (compact domains) show higher within-category AUC",
+  "data": {
+    "loci": [
+      "BRCA1",
+      "CFTR",
+      "GJB2",
+      "HBB",
+      "LDLR",
+      "MLH1",
+      "SCN5A",
+      "TERT",
+      "TP53"
+    ],
+    "gene_sizes_kb": [
+      126.0,
+      250.0,
+      5.5,
+      1.6,
+      44.0,
+      57.0,
+      102.0,
+      42.0,
+      19.0
+    ],
+    "within_category_auc": [
+      0.4934,
+      0.4654,
+      0.2824,
+      0.6227,
+      0.4119,
+      0.4771,
+      0.5002,
+      0.4646,
+      0.6228
+    ]
+  },
+  "statistics": {
+    "spearman_r": -0.049999999999999996,
+    "spearman_p": 0.8983528043506303,
+    "pearson_r": -0.051139214740798425,
+    "pearson_p": 0.8960468246126495,
+    "log_spearman_r": -0.049999999999999996,
+    "log_spearman_p": 0.8983528043506303
+  },
+  "decision_criteria": {
+    "kill_criterion": "r > -0.3 OR p > 0.05",
+    "support_criterion": "r < -0.5 AND p < 0.05"
+  },
+  "verdict": "H6 KILLED",
+  "interpretation": "No significant negative correlation between gene size and within-category AUC.\n  \u2192 H2 (Category Artifact) dominates completely.\n  \u2192 Compactness does NOT explain residual structural signal.\n  \u2192 Paper framing: Pure falsification (3D models fail; category artifact wins).",
+  "next_action": "PROJECT_FREEZE + pure falsification paper"
+}
