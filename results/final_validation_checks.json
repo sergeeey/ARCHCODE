@@ -1,0 +1,145 @@
+{
+  "check_1": {
+    "check": "CHECK_1_INDEPENDENCE_COLLAPSE",
+    "verdict": "FAIL",
+    "interpretation": "Signal lost after cluster-level collapse.\n  Effective N = 3 (too few)\n  p = 0.178 (not significant)\n  \u2192 Entire result held by one genomic hotspot cluster.",
+    "original_stats": {
+      "n_variants": 13,
+      "pearl_mean_cage_pct": -18.00471498254629,
+      "control_mean_cage_pct": -3.2430312652507856,
+      "mann_whitney_p": 0.00027694044729743286,
+      "cohen_d": -1.5328770747811524
+    },
+    "collapse_stats": {
+      "10": {
+        "window_bp": 10,
+        "n_variants_original": 13,
+        "n_clusters": 5,
+        "effective_n": 5,
+        "cluster_sizes": [
+          1,
+          1,
+          4,
+          1,
+          6
+        ],
+        "n_pearls": 5,
+        "n_controls": 19,
+        "pearl_mean": -15.27368776207318,
+        "control_mean": -3.2430312652507856,
+        "mann_whitney_u": 20.0,
+        "mann_whitney_p": 0.026444569922830796,
+        "cohen_d": -1.4595728010143956,
+        "fold_difference": 4.709694885069835
+      },
+      "25": {
+        "window_bp": 25,
+        "n_variants_original": 13,
+        "n_clusters": 4,
+        "effective_n": 4,
+        "cluster_sizes": [
+          1,
+          1,
+          4,
+          7
+        ],
+        "n_pearls": 4,
+        "n_controls": 19,
+        "pearl_mean": -16.97534632137437,
+        "control_mean": -3.2430312652507856,
+        "mann_whitney_u": 18.0,
+        "mann_whitney_p": 0.05815923207227555,
+        "cohen_d": -1.660196077408897,
+        "fold_difference": 5.234407235991188
+      },
+      "50": {
+        "window_bp": 50,
+        "n_variants_original": 13,
+        "n_clusters": 3,
+        "effective_n": 3,
+        "cluster_sizes": [
+          1,
+          1,
+          11
+        ],
+        "n_pearls": 3,
+        "n_controls": 19,
+        "pearl_mean": -15.491597621734845,
+        "control_mean": -3.2430312652507856,
+        "mann_whitney_u": 18.0,
+        "mann_whitney_p": 0.17792207792207795,
+        "cohen_d": -1.4585996738839833,
+        "fold_difference": 4.776888150209329
+      },
+      "100": {
+        "window_bp": 100,
+        "n_variants_original": 13,
+        "n_clusters": 3,
+        "effective_n": 3,
+        "cluster_sizes": [
+          1,
+          1,
+          11
+        ],
+        "n_pearls": 3,
+        "n_controls": 19,
+        "pearl_mean": -15.491597621734845,
+        "control_mean": -3.2430312652507856,
+        "mann_whitney_u": 18.0,
+        "mann_whitney_p": 0.17792207792207795,
+        "cohen_d": -1.4585996738839833,
+        "fold_difference": 4.776888150209329
+      }
+    }
+  },
+  "check_2": {
+    "check": "CHECK_2_ORTHOGONALITY_MATRIX",
+    "verdict": "FAIL",
+    "interpretation": "Quadrants show no systematic enrichment.\n  Pearl distribution appears random across 2D space.\n  \u2192 No evidence of complementary mechanisms.",
+    "thresholds": {
+      "ssim_threshold": 0.929,
+      "cage_threshold": -4.625013057756661
+    },
+    "quadrant_counts": {
+      "A_dual_high": 9,
+      "B_structural_only": 6,
+      "C_cage_only": 7,
+      "D_dual_low": 10
+    },
+    "enrichment": {
+      "A_dual_high": {
+        "n_total": 9,
+        "n_pearls": 7,
+        "n_controls": 2,
+        "pearl_rate": 0.7777777777777778
+      },
+      "B_structural_only": {
+        "n_total": 6,
+        "n_pearls": 1,
+        "n_controls": 5,
+        "pearl_rate": 0.16666666666666666
+      },
+      "C_cage_only": {
+        "n_total": 7,
+        "n_pearls": 3,
+        "n_controls": 4,
+        "pearl_rate": 0.42857142857142855
+      },
+      "D_dual_low": {
+        "n_total": 10,
+        "n_pearls": 2,
+        "n_controls": 8,
+        "pearl_rate": 0.2
+      }
+    }
+  },
+  "check_3": {
+    "check": "CHECK_3_BLIND_MINI_PANEL",
+    "status": "DEFERRED",
+    "reason": "Waiting for CHECK 1 and CHECK 2 results"
+  },
+  "overall": {
+    "verdict": "ARCHIVE",
+    "recommendation": "Critical checks failed.\n  CHECK 1: FAIL\n  CHECK 2: FAIL\n\nRECOMMENDED ACTION:\n  Archive project as falsification artifact.\n  Do NOT spend more resources on blind panel or wet-lab outreach.\n  Document as honest negative result case study.\n  Move to next priority (PyPop Paper 2, MemGraph, or new project)."
+  }
+}
