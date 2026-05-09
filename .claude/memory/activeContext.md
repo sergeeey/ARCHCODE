@@ -1,12 +1,45 @@
 # Active Context — Multi-Project
 
-**Last Updated:** 2026-05-09 (Forensic Audit COMPLETE ✅ — Data Integrity Verified, 5/5 Layers)
-**Active Projects:** ARCHCODE × AlphaGenome (mechanism specificity 7/7, data integrity verified, score 9.0/10), PyPop Paper 2 (resubmit pending), MemGraph (Days 1-3 complete)
+**Last Updated:** 2026-05-09 (PROJECT_FREEZE ACTIVE ✅ — H6 Killed, Pure Falsification Paper)
+**Active Projects:** ARCHCODE (FROZEN — manuscript phase, 5 weeks), PyPop Paper 2 (resubmit pending), MemGraph (Days 1-3 complete)
+
+---
+
+## Session 2026-05-09 Part 4 — PROJECT_FREEZE ACTIVE ✅ (Experiment X.1 Complete)
+
+**Task:** Experiment X.1 (H6 Compactness hypothesis test) + PROJECT_FREEZE creation
+
+**Result:**
+- ✅ Experiment X.1 complete: **H6 KILLED** (Spearman r=-0.05, p=0.90)
+- ✅ No correlation between gene size and within-category AUC
+- ✅ Compactness does NOT explain residual structural signal
+- ✅ H2 (Category Artifact) dominates completely (confidence 0.85 → 0.95)
+- ✅ PROJECT_FREEZE created: 5-week timeline, pure falsification paper
+
+**Impact:**
+- Paper framing clear: Pure falsification (3D models fail; category artifact wins)
+- Stop rules active: no new loci, claims, or experiments
+- Timeline: May 9 - June 5 (5 weeks to manuscript v1.0)
+- Score: 9.0/10 → 8.5/10 (honest downgrade: no predictor, framework is main value)
+
+**Next:** Week 1 — manuscript outline v0.1 (Introduction + Methods draft, 2000 words)
+
+---
+
+## Session 2026-05-09 Part 3 — p-value Corrections COMPLETE ✅
+
+**Task:** Fix p=4e-6 → p=2.77e-4 across all documentation
+
+**Result:**
+- ✅ 21 files corrected (evidence_pack, docs, results, outreach)
+- ✅ Cohen's d=-2.1 → -1.53 fixed (endorser emails)
+- ✅ Single source of truth verified: alphagenome_pearl_vs_control.json:7
+- ✅ Validation contracts PASSED
 
 ---
 
 ## Session 2026-05-09 Part 2 — Forensic Audit COMPLETE ✅ (5/5 Layers Verified)
-[summarized] **Trigger:** External verification request — проверить честность данных после TERT validation.
+[summarized] [summarized] **Trigger:** External verification request — проверить честность данных после TERT validation.
 - ✅ Control group = coding-pathogenic (mechanism test, NOT benign test) — explained and justified
 
 **Verdict:** ✅ **DATA_INTEGRITY_VERIFIED** — no evidence of fabrication.
@@ -29,7 +62,7 @@
 ---
 
 ## Session 2026-05-09 Part 1 — TERT Hotspots PASS ✅ (7/7 Perfect Pattern)
-[summarized] (empty section)
+[summarized] [summarized] (empty section)
 **Task:** Test TERT C228T/C250T promoter hotspots with AlphaGenome CAGE
 
 **Result:**
@@ -52,7 +85,7 @@
 ---
 
 ## Session 2026-05-08 Part 6 — Outreach Email SENT ✅
-[summarized] [summarized] **Task #1 COMPLETE:** Email sent to Elphège Nora (May 8)
+[summarized] [summarized] [summarized] **Task #1 COMPLETE:** Email sent to Elphège Nora (May 8)
 2. ✅ Category-matched validation (Task #2)
 3. ✅ GATE 1 evaluation → WEAK (Task #3)
 4. ✅ Concordance benchmark (Task #4)
@@ -75,7 +108,7 @@
 ---
 
 ## Session 2026-05-08 Part 3 — GO/NO-GO GATE 1 Result: WEAK (Pivot to ISM) 🔄
-[summarized] [summarized] [summarized] [summarized] [summarized] **GATE 1 Completed:** Category-matched validation executed (Task #3 ...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **GATE 1 Completed:** Category-matched validation execu...
 - Validation: Check ClinVar pathogenic overlap with ISM hotspots (functional, not spatial)
 
 **Baseline Facts (for 14-day plan):**
@@ -98,7 +131,7 @@ Without AlphaGenome API, ARCHCODE = 6 killed hypotheses (within-category AUC, ro
 ---
 
 ## Session 2026-05-08 Part 4 — GO/NO-GO GATE 2 Result: FAIL (Orthogonal Mechanisms) 🔄
-[summarized] [summarized] [summarized] [summarized] [summarized] **GATE 2 Completed:** Concordance benchmark (preemptive, data existe...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **GATE 2 Completed:** Concordance benchmark (preemptive...
 - **ARCHCODE × AlphaGenome concordance: ρ=0.077, p=0.67 [NULL — orthogonal mechanisms]**
 - 73bp cluster: category-matched PARTIAL (ADR-027)
 - Contact maps: null on SNVs (resolution limit)
@@ -121,7 +154,7 @@ Without AlphaGenome API, ARCHCODE = 6 killed hypotheses (within-category AUC, ro
 ---
 
 ## Session 2026-05-08 Part 5 — Day 8-10 Results: ISM + Mechanism BOTH COMPLETE ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] **Day 8-10 Completed:** Both pivot deliverables (Task #6 ✅)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Day 8-10 Completed:** Both pivot deliverables (Task #...
 ```
 Mechanism Specificity:
   Regulatory loci: 1/2 significant (MLH1 works, TERT null)
@@ -144,7 +177,7 @@ ISM Hotspots:
 ---
 
 ## Session 2026-05-08 — ADR-026: 73bp Cluster Validation + Category Leakage ⚠️
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Strict independent validation of hypothesis: ...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Strict independent validation of...
 - ❌ "Enrichment proves mechanism-specific targeting"
 
 **Can claim (with caveats):**
@@ -167,7 +200,7 @@ ISM Hotspots:
 ---
 
 ## Session 2026-05-06 Part 2 — System Recovery + Paper 2 Verification ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **C...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - **Expected approval:** ~May 10, 2026
 - **Email address:** sergey.boyko@ronininstitute.org used in ClinVar correspondence (May 1)
 - **Contradiction:** Email used 9 days before expected approval
@@ -203,6 +236,7 @@ ISM Hotspots:
 - 0f48793: feat(A2-phase1): add CLI args + generic cohort filter
 
 ---
+
 
 
 
@@ -317,6 +351,7 @@ Phantom reference fixed: Sabaté 2025 Nature Genetics → bioRxiv 2024 (commit 3
 
 
 
+
 ## Session 2026-04-25 — Stress Biology Project Launch → KILLED
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - Verdict at n=89: Effect was SPURIOUS (disappeared with more data)
@@ -396,6 +431,7 @@ e311d70 docs: project closure — H-01/H-14 killed, pearl untestable, final audi
 
 
 
+
 ## Backlog (Updated 2026-04-29)
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 4. **Compile final PDF:** `cd manuscript && python -c "import typst; typst.compile('main.typ', output='main.pdf', root='..')"`
@@ -453,6 +489,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 
 
 
+
 ## Technical Notes
 
 - Windows: `python` not `python3`
@@ -463,6 +500,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - Project update: see docs/PROJECT_UPDATE_2026-04-29.md
 
 ---
+
 
 
 
@@ -504,7 +542,9 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
-[summarized] - [2026-05-09 00:45] `4f879f9`: feat(validation): TERT hotspots + forensic audit complete — data integrity verified
+- [2026-05-09 14:39] `1f8cadb`: docs(freeze): PROJECT_FREEZE complete — H2 wins, pure falsification paper
+- [2026-05-09 14:37] `4e1625b`: feat(experiment): Experiment X.1 complete — H6 Compactness hypothesis KILLED
+[summarized] - [2026-05-09 03:31] `f6016ed`: docs(adr): ADR-034 — GENE_MASK_LFC deferred to future work
 - [2026-05-08 17:22] `0d4d8f2`: feat: Computational Closed-Loop (Pathway 3) — autonomous hypothesis iteration
 - [2026-05-07 11:55] `40c5cbd`: docs(memory): Paper 3 decision — Option A (HBB-only)
 - [2026-05-07 11:36] `6391a11`: docs(memory): May 7 update — Paper 2 ready for resubmit
