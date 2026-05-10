@@ -1,15 +1,15 @@
 == Significance Statement
-Sequence-based predictors cannot detect variants that disrupt 3D chromatin topology without altering protein sequence. ARCHCODE applies analytical loop extrusion simulation to 30,318 ClinVar variants across 9 loci, identifying 25 high-confidence "pearl" candidates on HBB --- structurally disruptive yet invisible to nine orthogonal methods. However, overall AUC (0.977) is category-driven (trivial baseline achieves 0.98), and Class B VUS do not survive matched-control testing (p=0.996). ARCHCODE is a hypothesis-generating taxonomy framework, not a pathogenicity predictor; experimental validation is required before clinical use.
+Sequence-based predictors cannot detect variants that disrupt 3D chromatin topology without altering protein sequence. ARCHCODE applies analytical loop extrusion simulation to 32,201 ClinVar variants across 13 loci, identifying 25 high-confidence "pearl" candidates on HBB --- structurally disruptive yet invisible to nine orthogonal methods. However, cross-locus pooled AUC (0.779) is category-driven (within-locus category-only achieves 0.977 on HBB), and Class B VUS do not survive matched-control testing (p=0.996). ARCHCODE is a hypothesis-generating taxonomy framework, not a pathogenicity predictor; experimental validation is required before clinical use.
 
 == Key Results
-+ #strong[30,318 ClinVar variants across 9 loci] analyzed; loss-of-function
++ #strong[32,201 ClinVar variants across 13 loci] analyzed; loss-of-function
   classes show 86--100% structural pathogenic concordance
 + #strong[25 high-confidence "pearl" variants on HBB:] VEP-blind, CADD-ambiguous, yet
   structurally disruptive (LSSIM \< 0.92) --- invisible to 9 orthogonal
-  methods. *Caveat:* overall AUC is category-driven (trivial baseline 0.98);
+  methods. *Caveat:* cross-locus AUC is category-driven (0.779 pooled vs 0.977 HBB-only);
   Class B VUS do not survive matched-control testing (p=0.996)
 + #strong[Hi-C validation:] r = 0.53--0.59 (K562), r = 0.531 (mouse
-  G1E-ER4), r = 0.28--0.53 across 5 loci; AUC = 0.977 (category-level)
+  G1E-ER4), r = 0.28--0.53 across 5 loci; per-locus AUC = 0.977 (HBB category-level)
 + #strong[Enhancer proximity drives signal:] ≤1 kb Δ LSSIM = 0.039
   (7× average); pearls at median 831 bp from enhancers
 + #strong[Tissue-specificity gradient:] matched HBB (Δ=0.111) → mismatch

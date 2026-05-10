@@ -17,3 +17,7 @@
 )
 
 #include "body_content.typ"
+
+#pagebreak()
+
+#include "references.typ"
