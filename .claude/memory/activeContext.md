@@ -1,20 +1,89 @@
 # Active Context — Multi-Project
 
-**Last Updated:** 2026-05-10 (LDSC Pilot COMPLETE ✅, ARCHCODE FROZEN, O2 CLOSED)
-**Active Projects:** ARCHCODE (FROZEN — manuscript phase, 5 weeks), PyPop Paper 2 (resubmit pending), LDSC Pilot (pipeline ready)
+**Last Updated:** 2026-05-10 21:00 (ARCHCODE FINAL CORRECTIONS COMPLETE ✅)
+**Active Projects:** ARCHCODE (READY FOR SUBMISSION Monday AM), PyPop Paper 2 (resubmit pending), LDSC Pilot (pipeline ready)
+
+---
+
+## Session 2026-05-10 Part 6 — ARCHCODE Scientific Integrity Audit COMPLETE ✅
+
+**Task:** Fix P0 critical issues before Monday arXiv submission
+
+**Problem:** User conducted independent scientific audit, found 5 critical issues:
+1. Title overstates findings ("Reveals" → "Falsification-First Framework")
+2. Pearl count inconsistency (20 vs 25 vs 27 in different sections)
+3. Figure 3 caption INVERTED logic ("high LSSIM ≥ 0.95" when pearls are "low LSSIM < 0.95")
+4. ACMG PS3_moderate misclassification (computational model as functional evidence)
+5. Manual calibration vs Bayesian optimization contradiction
+
+**Solution (5 fixes applied):**
+
+1. ✅ **Title changed** (main.typ:7):
+   - Was: "Reveals Enhancer-Proximal Structural Pathogenicity Across Thirteen Genomic Loci"
+   - Now: "A Falsification-First Framework for Evaluating 3D Chromatin Signals in Variant Pathogenicity"
+
+2. ✅ **Pearl count unified to 20** (was 20/25/27):
+   - Significance Statement: 25 → 20
+   - Abstract: 25 → 20, threshold 0.92 → 0.95, gnomAD 21/25 → 19/20
+   - Key Results: 25 → 20
+   - Table (orthogonal validation): "< 0.92 (all 27)" → "< 0.95 (all 20)"
+   - Enhancer proximity: "27 pearls" → "20 pearls" (2 places)
+   - Threshold sensitivity: "27 pearls from 0.88 to 0.95" → "20 pearls at standard threshold"
+   - Genome-wide scaling: "HBB (27 pearls)" → "HBB (20 pearls)"
+   - AlphaGenome: "23 pearl variants" → "20 pearl variants"
+
+3. ✅ **Figure 3 caption CRITICAL FIX** (body_content.typ:824):
+   - Was: "Pearl variants have high LSSIM (≥ 0.95, structurally normal)"
+   - Now: "Pearl variants have low LSSIM (< 0.95, structurally disrupted)"
+   - **Impact:** Without this fix, entire pearl section would contradict its own definition
+
+4. ✅ **ACMG evidence reclassified** (body_content.typ:522-549):
+   - Was: PS3_moderate (Functional studies): 4 points, Total: 7 points (above threshold 6)
+   - Now: PP3_supporting (Computational evidence): 1 point, Total: 3 points (below threshold)
+   - Added: "Important limitation: ARCHCODE is computational, not functional. PS3 requires wet-lab validation."
+   - **Impact:** Honest representation per ACMG/AMP 2015 guidelines
+
+5. ✅ **Parameters clarified** (body_content.typ:123):
+   - Added: "default parameters manually calibrated... All headline biological claims use these default parameters."
+   - Added: "Post-hoc Bayesian optimization on HBB Hi-C data was performed for validation only; optimized parameters are reported separately and not used for cross-locus generalization."
+
+**Bonus fix:**
+6. ✅ **Hi-C p-value caveat** (body_content.typ:1498):
+   - Added: "p-values from matrix cells are descriptive only due to contact non-independence"
+
+**Verification:**
+- ✅ PDF recompiled: 60 pages, 3.70 MB
+- ✅ Title: "A Falsification-First Framework..."
+- ✅ Pearl count: 20 throughout (Significance + Abstract + Key Results + all tables)
+- ✅ Figure 3: "low LSSIM < 0.95" (not "high ≥ 0.95")
+- ✅ ACMG: PP3_supporting (not PS3_moderate)
+- ✅ Parameters: default vs optimized explicitly separated
+
+**Files:**
+- `body_content.typ` — 9 corrections applied
+- `main.pdf` — recompiled with all fixes
+- `CORRECTIONS_FINAL.md` — detailed audit trail created
+- `main_v2.typ`, `abstract_content_v2.typ`, `body_content_v2.typ` — backup versions
+
+**Falsification Check:**
+- Self-audit: 5/7 zamečań корректны (71% accuracy)
+- 2 замечания не подтвердились (gnomAD 21/25, Figure numbering)
+- Все критические issues RESOLVED
+
+**Monday Morning Workflow:**
+1. 08:30 — Visual check via quick_verify.py
+2. 09:00 — Execute PRE_SUBMISSION_CHECKLIST.md (7 steps, 30 min)
+3. 10:30 — arXiv submission (q-bio.GN, CC BY 4.0)
+4. 11:30 — Expected completion
+
+**Time:** ~2 hours (audit + 5 fixes + verification + backup + documentation)
+
+**Status:** ✅ **READY FOR SUBMISSION** — All P0 critical inconsistencies resolved
 
 ---
 
 ## Session 2026-05-10 Part 5 — LDSC Pilot COMPLETE ✅
-
-**Task:** Setup Pan-UKB + LDSC genetic correlation pipeline, test топ-5 hypothesis pairs
-
-**Results (5/5 successful):**
-1. Depression ↔ Rheumatoid Arthritis: rg=0.25, p=0.06 (граничная: воспаление→мозг)
-2. Depression ↔ Type 2 Diabetes: rg=0.16, p=0.23 (не значимо)
-3. Type 1 ↔ Type 2 Diabetes: rg=1.09*, p<1e-15 (очень сильная связь)
-4. Hypertension ↔ Type 2 Diabetes: rg=0.47, p<1e-9 (метаболический синдром ✅)
-5. Migraine ↔ Depression: rg=0.34, p<1e-6 (общая нейробиология ✅)
+[summarized] [summarized] [summarized] [summarized] **Task:** Setup Pan-UKB + LDSC genetic correlation pipeline, test топ-5 hypothesi...
 
 **Key Findings:**
 - ✅ Метаболический синдром генетически подтверждён (Hypertension↔T2D, rg=0.47)
@@ -37,7 +106,7 @@
 ---
 
 ## Session 2026-05-10 Part 4 — O2 FOXP3 Verification CLOSED ✅
-[summarized] **Task:** Close O2 FOXP3 hotspot hypothesis without scope expansion (verification-only, no new experiments)
+[summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Close O2 FOXP3 hotspot hypothesis without scope expansion ...
 **Caveats:**
 - N=1 hotspot only (cannot generalize beyond this position)
 - Mechanism expected (splice donor pathogenicity known)
@@ -60,7 +129,7 @@
 ---
 
 ## Session 2026-05-10 Part 3 — Figures & Tables COMPLETE ✅
-[summarized] [summarized] **Task:** Week 3 — Generate figures (4) + tables (4) for manuscript v2
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 3 — Generate figures (4) + tables (4) fo...
   - Table 2: Locus-specific AUC comparison (9 loci, ΔAUC < 0.01 all)
   - Table 3: AlphaGenome validation (7 loci, 100% mechanism consistency)
   - Table 4: Hypothesis kill summary (6 hypotheses, 5 killed, 1 survived)
@@ -83,7 +152,7 @@
 ---
 
 ## Session 2026-05-10 Part 2 — Manuscript Prose Draft COMPLETE ✅
-[summarized] [summarized] [summarized] **Task:** Week 2 — Prose draft expansion (Introduction + Methods full text, target 3500 words)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 2 — Prose draft expansion (...
   - Section 2.4: Statistical analysis (150w) — bootstrap CI, FDR, reproducibility
   - Section 2.5: AlphaGenome validation (115w) — orthogonality, mechanism-specific
 - ✅ **Total: 3535 words** (target 3500 ✓)
@@ -106,7 +175,7 @@
 ---
 
 ## Session 2026-05-10 Part 1 — Manuscript Outline v0.1 COMPLETE ✅
-[summarized] [summarized] [summarized] **Task:** Week 1 — Manuscript outline v0.1 (Introduction + Methods, 2000 words)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 1 — Manuscript outline v0.1...
 - ✅ Outline v0.1 created: `manuscript/manuscript_v2_falsification_outline.md`
 - ✅ Title: "Systematic Falsification of 3D Chromatin-Based Variant Pathogenicity Prediction"
 - ✅ Abstract: 250 words (pure falsification framing)
@@ -153,6 +222,10 @@
 
 
 
+
+
+
+
 ## Session 2026-05-09 Part 3 — p-value Corrections COMPLETE ✅
 
 **Task:** Fix p=4e-6 → p=2.77e-4 across all documentation
@@ -171,8 +244,12 @@
 
 
 
+
+
+
+
 ## Session 2026-05-09 Part 2 — Forensic Audit COMPLETE ✅ (5/5 Layers Verified)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Trigger:** External verific...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - ✅ Control group = coding-pathogenic (mechanism test, NOT benign test) — explained and justified
 
 **Verdict:** ✅ **DATA_INTEGRITY_VERIFIED** — no evidence of fabrication.
@@ -195,7 +272,7 @@
 ---
 
 ## Session 2026-05-09 Part 1 — TERT Hotspots PASS ✅ (7/7 Perfect Pattern)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] (empty section)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 **Task:** Test TERT C228T/C250T promoter hotspots with AlphaGenome CAGE
 
 **Result:**
@@ -218,7 +295,7 @@
 ---
 
 ## Session 2026-05-08 Part 6 — Outreach Email SENT ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task #1 COMPLE...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 2. ✅ Category-matched validation (Task #2)
 3. ✅ GATE 1 evaluation → WEAK (Task #3)
 4. ✅ Concordance benchmark (Task #4)
@@ -387,6 +464,10 @@ ISM Hotspots:
 
 
 
+
+
+
+
 ## Session 2026-05-01 — PyPop Population Stratification + Lancaster Outreach ✅
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - ❌ BRCA1/CFTR multi-locus (Paper #2 later)
@@ -497,6 +578,10 @@ Phantom reference fixed: Sabaté 2025 Nature Genetics → bioRxiv 2024 (commit 3
 
 
 
+
+
+
+
 ## Session 2026-04-25 — Stress Biology Project Launch → KILLED
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - Verdict at n=89: Effect was SPURIOUS (disappeared with more data)
@@ -559,6 +644,10 @@ e311d70 docs: project closure — H-01/H-14 killed, pearl untestable, final audi
 ```
 
 ---
+
+
+
+
 
 
 
@@ -647,6 +736,10 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 
 
 
+
+
+
+
 ## Technical Notes
 
 - Windows: `python` not `python3`
@@ -657,6 +750,10 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - Project update: see docs/PROJECT_UPDATE_2026-04-29.md
 
 ---
+
+
+
+
 
 
 
@@ -705,7 +802,7 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
-[summarized] [summarized] [summarized] [summarized] [summarized] - [2026-05-09 20:37] `d88daad`: feat(final): ARCHCODE archive verdic...
+[summarized] [summarized] [summarized] - [2026-05-10 17:50] `cbe32e4`: fix(manuscript): dataset reconciliation complete — 13-loci + r...
 - [2026-05-08 17:22] `0d4d8f2`: feat: Computational Closed-Loop (Pathway 3) — autonomous hypothesis iteration
 - [2026-05-07 11:55] `40c5cbd`: docs(memory): Paper 3 decision — Option A (HBB-only)
 - [2026-05-07 11:36] `6391a11`: docs(memory): May 7 update — Paper 2 ready for resubmit
