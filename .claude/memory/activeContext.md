@@ -1,66 +1,74 @@
 # Active Context — Multi-Project
 
-**Last Updated:** 2026-05-10 21:00 (ARCHCODE FINAL CORRECTIONS COMPLETE ✅)
-**Active Projects:** ARCHCODE (READY FOR SUBMISSION Monday AM), PyPop Paper 2 (resubmit pending), LDSC Pilot (pipeline ready)
+**Last Updated:** 2026-05-10 22:15 (Monday Workflow Tools Complete ✅)
+**Active Projects:** ARCHCODE (READY FOR SUBMISSION Monday AM), MVP archcode-mvp (Phase 1.2 + discovery plan complete), PyPop Paper 2 (resubmit pending), LDSC Pilot (pipeline ready)
+
+---
+
+## Session 2026-05-10 Part 7 — MVP Phase 1.2 VEP Integration ✅
+
+**Task:** Implement VEP baseline scorer using Ensembl REST API
+
+**Implementation:**
+- `src/features.py` created (298 lines): VEPScorer class with rate limiting (15 req/sec)
+- Composite VEP score: impact (HIGH=1.0, MODERATE=0.7, LOW=0.4, MODIFIER=0.1) + SIFT (<0.05 → +0.3) + PolyPhen (>0.85 → +0.3)
+- API format corrected: `chrom:start-end:strand/alt` (not `chrom:start:end:strand/ref/alt`)
+- Tested HBB rs334 (Sickle Cell): missense_variant, MODERATE impact, SIFT=0.00 (deleterious) → VEP score 1.0 ✅
+
+**Commits:**
+- 31c4a2d — Phase 1.2 VEP scorer implementation
+- 77f14d6 — VEP API format fix (400 Bad Request resolved)
+
+**Time:** ~30 minutes (features.py creation + API test + format fix)
+
+**Status:** Phase 1.2 baseline extraction COMPLETE. VEP API integration verified with real Ensembl endpoint.
+
+**Customer Discovery Decision:**
+- User chose **Opция B первой** (Tracy recommendation followed)
+- `docs/customer_discovery_plan.md` created: email templates, LinkedIn search strategy, GO/NO-GO criteria
+- Target: 3 biotech R&D contacts (Invitae, Color Genomics, Tempus, Guardant, Fulgent)
+- Timeline: Monday evening (post-arXiv) → 7 days → Sunday GO/NO-GO decision
+- Kill criteria: ≥2 of 3 say "not interested" → STOP MVP, pivot to ARCHCODE traction
+- ROI: 2.75h prevents 120h waste if no demand (43× return)
+
+**Autonomous Work (while user sleeping):**
+- `manuscript/quick_verify.py` created: automated pre-submission check (9 verifications, ~2 min)
+- `manuscript/PRE_SUBMISSION_CHECKLIST.md` created: 7-step manual workflow (30 min, 09:00-09:30)
+- `archcode-mvp/docs/customer_discovery_notes.md` created: call notes template (LinkedIn log + Q1-Q4 + GO/NO-GO)
+- Commits: 4589f54 (submission tools), 2b49153 (discovery notes)
+
+**All Commits (Session 2026-05-10 Part 7, total 7):**
+- 1479fcb — MVP skeleton setup
+- 344d5e7 — Phase 1.1: data_fetcher (Micro-C + ClinVar download)
+- 31c4a2d — Phase 1.2: VEP scorer implementation
+- 77f14d6 — VEP API format fix
+- 6592b2c — Customer discovery plan
+- 4589f54 — Monday submission tools (quick_verify.py + checklist)
+- 2b49153 — Customer discovery notes template
+
+**Monday Morning Execution (Ready):**
+1. **08:30** — Run `python quick_verify.py` (2 min, automated check)
+2. **09:00** — Execute PRE_SUBMISSION_CHECKLIST.md (30 min, 7 steps)
+3. **10:30** — arXiv upload: https://arxiv.org/submit (q-bio.GN, CC BY 4.0)
+4. **11:30** — ✅ A1 COMPLETE
+5. **12:00-15:00** — Customer Discovery (LinkedIn search + 10 outreach)
+
+**Next Steps (Post-Submission):**
+1. **Monday evening:** Execute customer discovery (find 10 profiles, send 5 connection requests)
+2. **Tuesday-Sunday:** 3 calls, document answers in customer_discovery_notes.md
+3. **Sunday evening:** GO/NO-GO decision (≥2 GO signals → Phase 1.3, ≥2 NO-GO → postmortem)
+4. **Monday (next week):** If GO → Phase 1.3 (CADD + topology), if NO-GO → pivot to ARCHCODE traction
+
+**Tracy Check:**
+- A1 priority: ARCHCODE manuscript submission Monday AM (08:30-11:30)
+- B priority: MVP Phase 1.2 (completed, 30-minute timebox respected)
+- Customer Discovery = highest-ROI validation before Phase 2 coding
+- Stop condition: 23:00 deadline reached → STOP, resume Monday post-submission
 
 ---
 
 ## Session 2026-05-10 Part 6 — ARCHCODE Scientific Integrity Audit COMPLETE ✅
-
-**Task:** Fix P0 critical issues before Monday arXiv submission
-
-**Problem:** User conducted independent scientific audit, found 5 critical issues:
-1. Title overstates findings ("Reveals" → "Falsification-First Framework")
-2. Pearl count inconsistency (20 vs 25 vs 27 in different sections)
-3. Figure 3 caption INVERTED logic ("high LSSIM ≥ 0.95" when pearls are "low LSSIM < 0.95")
-4. ACMG PS3_moderate misclassification (computational model as functional evidence)
-5. Manual calibration vs Bayesian optimization contradiction
-
-**Solution (5 fixes applied):**
-
-1. ✅ **Title changed** (main.typ:7):
-   - Was: "Reveals Enhancer-Proximal Structural Pathogenicity Across Thirteen Genomic Loci"
-   - Now: "A Falsification-First Framework for Evaluating 3D Chromatin Signals in Variant Pathogenicity"
-
-2. ✅ **Pearl count unified to 20** (was 20/25/27):
-   - Significance Statement: 25 → 20
-   - Abstract: 25 → 20, threshold 0.92 → 0.95, gnomAD 21/25 → 19/20
-   - Key Results: 25 → 20
-   - Table (orthogonal validation): "< 0.92 (all 27)" → "< 0.95 (all 20)"
-   - Enhancer proximity: "27 pearls" → "20 pearls" (2 places)
-   - Threshold sensitivity: "27 pearls from 0.88 to 0.95" → "20 pearls at standard threshold"
-   - Genome-wide scaling: "HBB (27 pearls)" → "HBB (20 pearls)"
-   - AlphaGenome: "23 pearl variants" → "20 pearl variants"
-
-3. ✅ **Figure 3 caption CRITICAL FIX** (body_content.typ:824):
-   - Was: "Pearl variants have high LSSIM (≥ 0.95, structurally normal)"
-   - Now: "Pearl variants have low LSSIM (< 0.95, structurally disrupted)"
-   - **Impact:** Without this fix, entire pearl section would contradict its own definition
-
-4. ✅ **ACMG evidence reclassified** (body_content.typ:522-549):
-   - Was: PS3_moderate (Functional studies): 4 points, Total: 7 points (above threshold 6)
-   - Now: PP3_supporting (Computational evidence): 1 point, Total: 3 points (below threshold)
-   - Added: "Important limitation: ARCHCODE is computational, not functional. PS3 requires wet-lab validation."
-   - **Impact:** Honest representation per ACMG/AMP 2015 guidelines
-
-5. ✅ **Parameters clarified** (body_content.typ:123):
-   - Added: "default parameters manually calibrated... All headline biological claims use these default parameters."
-   - Added: "Post-hoc Bayesian optimization on HBB Hi-C data was performed for validation only; optimized parameters are reported separately and not used for cross-locus generalization."
-
-**Bonus fix:**
-6. ✅ **Hi-C p-value caveat** (body_content.typ:1498):
-   - Added: "p-values from matrix cells are descriptive only due to contact non-independence"
-
-**Verification:**
-- ✅ PDF recompiled: 60 pages, 3.70 MB
-- ✅ Title: "A Falsification-First Framework..."
-- ✅ Pearl count: 20 throughout (Significance + Abstract + Key Results + all tables)
-- ✅ Figure 3: "low LSSIM < 0.95" (not "high ≥ 0.95")
-- ✅ ACMG: PP3_supporting (not PS3_moderate)
-- ✅ Parameters: default vs optimized explicitly separated
-
-**Files:**
-- `body_content.typ` — 9 corrections applied
+[summarized] **Task:** Fix P0 critical issues before Monday arXiv submission
 - `main.pdf` — recompiled with all fixes
 - `CORRECTIONS_FINAL.md` — detailed audit trail created
 - `main_v2.typ`, `abstract_content_v2.typ`, `body_content_v2.typ` — backup versions
@@ -83,7 +91,7 @@
 ---
 
 ## Session 2026-05-10 Part 5 — LDSC Pilot COMPLETE ✅
-[summarized] [summarized] [summarized] [summarized] **Task:** Setup Pan-UKB + LDSC genetic correlation pipeline, test топ-5 hypothesi...
+[summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Setup Pan-UKB + LDSC genetic correlation pipeline, test то...
 
 **Key Findings:**
 - ✅ Метаболический синдром генетически подтверждён (Hypertension↔T2D, rg=0.47)
@@ -106,7 +114,7 @@
 ---
 
 ## Session 2026-05-10 Part 4 — O2 FOXP3 Verification CLOSED ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Close O2 FOXP3 hotspot hypothesis without scope expansion ...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Close O2 FOXP3 hotspot hypothesis without sco...
 **Caveats:**
 - N=1 hotspot only (cannot generalize beyond this position)
 - Mechanism expected (splice donor pathogenicity known)
@@ -129,7 +137,7 @@
 ---
 
 ## Session 2026-05-10 Part 3 — Figures & Tables COMPLETE ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 3 — Generate figures (4) + tables (4) fo...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 3 — Generate figures (4) + ...
   - Table 2: Locus-specific AUC comparison (9 loci, ΔAUC < 0.01 all)
   - Table 3: AlphaGenome validation (7 loci, 100% mechanism consistency)
   - Table 4: Hypothesis kill summary (6 hypotheses, 5 killed, 1 survived)
@@ -152,7 +160,7 @@
 ---
 
 ## Session 2026-05-10 Part 2 — Manuscript Prose Draft COMPLETE ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 2 — Prose draft expansion (...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 2 — Prose draf...
   - Section 2.4: Statistical analysis (150w) — bootstrap CI, FDR, reproducibility
   - Section 2.5: AlphaGenome validation (115w) — orthogonality, mechanism-specific
 - ✅ **Total: 3535 words** (target 3500 ✓)
@@ -175,7 +183,7 @@
 ---
 
 ## Session 2026-05-10 Part 1 — Manuscript Outline v0.1 COMPLETE ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 1 — Manuscript outline v0.1...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Task:** Week 1 — Manuscript...
 - ✅ Outline v0.1 created: `manuscript/manuscript_v2_falsification_outline.md`
 - ✅ Title: "Systematic Falsification of 3D Chromatin-Based Variant Pathogenicity Prediction"
 - ✅ Abstract: 250 words (pure falsification framing)
@@ -226,6 +234,7 @@
 
 
 
+
 ## Session 2026-05-09 Part 3 — p-value Corrections COMPLETE ✅
 
 **Task:** Fix p=4e-6 → p=2.77e-4 across all documentation
@@ -237,6 +246,7 @@
 - ✅ Validation contracts PASSED
 
 ---
+
 
 
 
@@ -468,6 +478,7 @@ ISM Hotspots:
 
 
 
+
 ## Session 2026-05-01 — PyPop Population Stratification + Lancaster Outreach ✅
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - ❌ BRCA1/CFTR multi-locus (Paper #2 later)
@@ -554,6 +565,7 @@ Phantom reference fixed: Sabaté 2025 Nature Genetics → bioRxiv 2024 (commit 3
 - `docs/release_v4_summary.md` (2026-03-09) → pre-spectral version
 
 ---
+
 
 
 
@@ -672,6 +684,7 @@ e311d70 docs: project closure — H-01/H-14 killed, pearl untestable, final audi
 
 
 
+
 ## Backlog (Updated 2026-04-29)
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 4. **Compile final PDF:** `cd manuscript && python -c "import typst; typst.compile('main.typ', output='main.pdf', root='..')"`
@@ -740,6 +753,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 
 
 
+
 ## Technical Notes
 
 - Windows: `python` not `python3`
@@ -750,6 +764,7 @@ python -c "import typst; typst.compile('main.typ', output='main.pdf', root='../.
 - Project update: see docs/PROJECT_UPDATE_2026-04-29.md
 
 ---
+
 
 
 
@@ -802,7 +817,12 @@ _Active context synchronized with Obsidian: 2026-04-29_
 _Next sync: After Ronin decision (~2026-05-10)_
 
 ## Auto-commit log
-[summarized] [summarized] [summarized] - [2026-05-10 17:50] `cbe32e4`: fix(manuscript): dataset reconciliation complete — 13-loci + r...
+- [2026-05-10 22:16] `2b49153`: docs(discovery): add call notes template for Monday-Sunday validation
+- [2026-05-10 22:16] `4589f54`: feat(submission): add Monday workflow tools — verification script + checklist
+- [2026-05-10 22:03] `6592b2c`: docs(discovery): customer discovery plan before Phase 2
+- [2026-05-10 21:58] `77f14d6`: fix(Phase 1.2): correct VEP API region format
+- [2026-05-10 21:57] `31c4a2d`: feat(Phase 1.2): implement VEP scorer with Ensembl REST API
+[summarized] - [2026-05-10 21:51] `344d5e7`: feat(Phase 1.1): implement data_fetcher — Micro-C + ClinVar download
 - [2026-05-08 17:22] `0d4d8f2`: feat: Computational Closed-Loop (Pathway 3) — autonomous hypothesis iteration
 - [2026-05-07 11:55] `40c5cbd`: docs(memory): Paper 3 decision — Option A (HBB-only)
 - [2026-05-07 11:36] `6391a11`: docs(memory): May 7 update — Paper 2 ready for resubmit
