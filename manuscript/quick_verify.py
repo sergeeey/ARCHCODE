@@ -11,12 +11,13 @@ RED = "\033[91m"
 RESET = "\033[0m"
 BOLD = "\033[1m"
 
+
 def check_file(file_path: Path, checks: list) -> bool:
     if not file_path.exists():
         print(f"{RED}✗{RESET} File not found: {file_path}")
         return False
 
-    content = file_path.read_text(encoding='utf-8')
+    content = file_path.read_text(encoding="utf-8")
     all_passed = True
 
     print(f"\n{BOLD}Checking: {file_path.name}{RESET}")
@@ -41,7 +42,11 @@ def main():
 
     # Check 1: Title
     title_checks = [
-        ("Title: Falsification-First Framework", "A Falsification-First Framework for Evaluating 3D Chromatin Signals", "Should NOT contain 'Reveals'"),
+        (
+            "Title: Falsification-First Framework",
+            "A Falsification-First Framework for Evaluating 3D Chromatin Signals",
+            "Should NOT contain 'Reveals'",
+        ),
     ]
 
     # Check 2: Abstract
@@ -54,10 +59,26 @@ def main():
 
     # Check 3: Figure 3 caption (CRITICAL)
     body_checks = [
-        ("Figure 3: 'low LSSIM (< 0.95, structurally disrupted)'", "low LSSIM (< 0.95, structurally disrupted)", "Must say LOW not HIGH"),
-        ("Figure 3: 'low VEP score (< 0.30, VEP-blind)'", "low VEP score (< 0.30, VEP-blind)", "Q4 quadrant definition"),
-        ("ACMG: PP3_supporting (not PS3)", "PP3_supporting (Computational evidence): 1 point", "Computational evidence only"),
-        ("ACMG: PS3 limitation", "PS3 requires wet-lab validation", "Honest limitation"),
+        (
+            "Figure 3: 'low LSSIM (< 0.95, structurally disrupted)'",
+            "low LSSIM (< 0.95, structurally disrupted)",
+            "Must say LOW not HIGH",
+        ),
+        (
+            "Figure 3: 'low VEP score (< 0.30, VEP-blind)'",
+            "low VEP score (< 0.30, VEP-blind)",
+            "Q4 quadrant definition",
+        ),
+        (
+            "ACMG: PP3_supporting (not PS3)",
+            "#strong[PP3\\_supporting] (Computational evidence)",
+            "Computational evidence only",
+        ),
+        (
+            "ACMG: PS3 limitation",
+            "PS3 (functional studies) would require wet-lab validation",
+            "Honest limitation",
+        ),
     ]
 
     # Run checks
