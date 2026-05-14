@@ -136,7 +136,7 @@ A subset of variants shows MPRA-null but endogenous-positive signal due to 3D co
 
 ### What We Know
 - ✅ HBB MPRA cross-validation: pearls vs non-pearls p=0.91 (INDISTINGUISHABLE)
-- ✅ AlphaGenome CAGE: pearls -19% vs benign -0.1% (p=4×10⁻⁶, in 3D context)
+- ✅ AlphaGenome CAGE: pearls -18% vs controls -3.2% (p=2.77×10⁻⁴, in 3D context)
 - ✅ ISM peak chr11:5,227,099-102 matches pearl cluster (spatial convergence)
 
 ### What We Need

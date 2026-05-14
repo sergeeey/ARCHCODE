@@ -18,6 +18,9 @@ import numpy as np
 from scipy.stats import spearmanr, mannwhitneyu
 from typing import Dict, List, Tuple, Optional
 import warnings
+import matplotlib.pyplot as plt
+import matplotlib.patches as mpatches
+from matplotlib.colors import LinearSegmentedColormap
 
 
 def classify_orthogonality(

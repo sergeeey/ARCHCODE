@@ -1,0 +1,115 @@
+{
+  "metadata": {
+    "hypothesis": "HBB pearl variants enriched in promoter zone chr11:5227099-5227172",
+    "zone": {
+      "chromosome": "chr11",
+      "start": 5227099,
+      "end": 5227172,
+      "size_bp": 74
+    },
+    "data_source": "D:\\ДНК\\results\\HBB_Unified_Atlas.csv",
+    "n_variants_total": 1103,
+    "n_pearls_total": 20
+  },
+  "observed": {
+    "variants_in_zone": 22,
+    "pearls_in_zone": 15,
+    "enrichment_percent": 75.0
+  },
+  "fisher_exact_test": {
+    "contingency_table": {
+      "pearls_in_zone": 15,
+      "pearls_outside_zone": 5,
+      "non_pearls_in_zone": 7,
+      "non_pearls_outside_zone": 1076
+    },
+    "odds_ratio": 461.14285714285717,
+    "p_value": 8.482278948193186e-25
+  },
+  "permutation_test": {
+    "observed_in_zone": 15,
+    "expected_mean": 0.4043,
+    "expected_std": 0.6269302273778159,
+    "p_value": 0.0,
+    "n_permutations": 10000,
+    "seed": 42
+  },
+  "category_matched_permutation": {
+    "observed_in_zone": 15,
+    "expected_mean_category_matched": 0.0,
+    "expected_std_category_matched": 0.0,
+    "p_value": 0.0,
+    "n_permutations": 10000,
+    "seed": 42,
+    "pearl_category_distribution": {
+      "promoter": 15,
+      "missense": 3,
+      "splice_acceptor": 1,
+      "frameshift": 1
+    },
+    "insufficient_categories": {
+      "promoter": {
+        "pearl_count": 15,
+        "available_controls": 0,
+        "action": "SKIPPED (no controls available)"
+      }
+    },
+    "test_validity": "PARTIAL",
+    "warning": "Category-matched test is PARTIAL: 1 categories have insufficient controls. 15/20 pearls skipped. Test valid for remaining 5 pearls only.",
+    "interpretation": "PASS: enrichment is positional (not category artifact)"
+  },
+  "negative_controls": {
+    "random_windows": {
+      "n_windows_tested": 100,
+      "false_positive_rate_p005": 0.07368421052631578,
+      "min_p_value": 7.257982360022936e-22,
+      "median_p_value": 1.0
+    },
+    "shuffled_labels": {
+      "n_shuffles": 100,
+      "false_positive_rate_p005": 0.0,
+      "median_p_value": 1.0
+    }
+  },
+  "category_leakage": {
+    "dominant_pearl_category": "promoter",
+    "dominant_pearl_fraction": 0.75,
+    "zone_fraction_of_dominant": 0.6818181818181818,
+    "outside_fraction_of_dominant": 0.0,
+    "leakage_risk": "HIGH",
+    "zone_category_distribution": {
+      "promoter": 0.6818181818181818,
+      "other": 0.3181818181818182
+    },
+    "pearl_category_distribution": {
+      "promoter": 0.75,
+      "missense": 0.15,
+      "splice_acceptor": 0.05,
+      "frameshift": 0.05
+    }
+  },
+  "seed_sensitivity": {
+    "seeds_tested": [
+      1,
+      7,
+      21,
+      42,
+      100
+    ],
+    "p_values": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "p_value_range": 0.0,
+    "stability": "STABLE",
+    "crosses_threshold": false
+  },
+  "verdict": {
+    "verdict": "WEAK",
+    "confidence": "LOW",
+    "reason": "Category-matched test PARTIAL: Category-matched test is PARTIAL: 1 categories have insufficient controls. 15/20 pearls skipped. Test valid for remaining 5 pearls only.. p-value = 0.0000, but test covers only subset of pearls. Dominant pearl category (promoter) has no non-pearl controls. 73bp promoter cluster enrichment CANNOT be validated via category matching."
+  }
+}

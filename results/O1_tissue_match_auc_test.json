@@ -1,0 +1,21 @@
+{
+  "hypothesis": "O1: Tissue Match \u2192 AUC \u2191",
+  "data_source": "HBB_Unified_Atlas.csv",
+  "n_variants": 1103,
+  "n_pathogenic": 353,
+  "n_benign": 750,
+  "baseline_auc": 0.9366247379454928,
+  "tissue_auc": 0.9794758909853248,
+  "delta_auc": 0.042851153039832,
+  "category_matched_results": [],
+  "mean_delta_matched": null,
+  "tissue_category_correlation": -0.04756316223646492,
+  "kill_criteria": [],
+  "verdict": "HYPOTHESIS SUPPORTED",
+  "confidence": "MEDIUM",
+  "notes": [
+    "Tissue match defined as: promoter/regulatory/UTR = 1, coding = 0",
+    "HBB in K562 (erythroid) = always tissue-matched (synthetic feature for test)",
+    "Category-matched control tests within-category \u0394AUC to avoid H2 artifact"
+  ]
+}

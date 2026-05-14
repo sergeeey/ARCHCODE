@@ -1,0 +1,22 @@
+# MemGraph Research Platform Dependencies
+# Core
+anthropic>=0.40.0
+python-dotenv>=1.0.0
+
+# Graph + Memory
+neo4j>=5.25.0              # Graph database driver
+networkx>=3.4              # Fallback: in-memory graph
+sentence-transformers>=3.3.1  # Embeddings for similarity
+
+# Data processing
+pydantic>=2.10.0
+pyyaml>=6.0.2
+pandas>=2.2.0
+
+# Evaluation
+scikit-learn>=1.5.0        # Metrics (recall, precision)
+scipy>=1.14.0
+
+# Utilities
+tqdm>=4.67.0
+pytest>=8.3.0              # Testing

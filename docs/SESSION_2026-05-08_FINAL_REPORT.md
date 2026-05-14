@@ -107,7 +107,7 @@
 ```
 Pearls: -18.0% (mean)
 Controls: -3.2% (mean) ⚠️ CORRECTED from -0.1%
-Mann-Whitney U: p = 4×10⁻⁶ ✓
+Mann-Whitney U: p = 2.77×10⁻⁴ (one-sided) ✓
 Cohen's d: -1.53 (large effect) ✓
 Fold difference: 5.6× (not 180× as -0.1% implied)
 ```
@@ -202,7 +202,7 @@ All documented in ADRs, all included in public materials:
 
 ## Positive Results (3 Total)
 
-1. **HBB CAGE:** pearls -18.0% vs controls -3.2%, p=4×10⁻⁶ [VERIFIED-REAL]
+1. **HBB CAGE:** pearls -18.0% vs controls -3.2%, p=2.77×10⁻⁴ (Mann-Whitney U) [VERIFIED-REAL]
 2. **MLH1 CAGE:** pathogenic 3.7× stronger, p=0.022 [VERIFIED-REAL]
 3. **ISM hotspots:** OR=6.70, p=0.0071 [VERIFIED]
 

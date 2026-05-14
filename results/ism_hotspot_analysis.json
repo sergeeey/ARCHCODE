@@ -1,0 +1,80 @@
+{
+  "experiment": "AlphaGenome ISM hotspot analysis",
+  "hypothesis": "AlphaGenome ISM-sensitive positions overlap with ClinVar pathogenic variants",
+  "zone": {
+    "chromosome": "chr11",
+    "start": 5227090,
+    "end": 5227179,
+    "size_bp": 90
+  },
+  "summary": {
+    "total_positions": 90,
+    "pearl_positions": 11,
+    "hotspot_threshold_pct": -3.75599797606144,
+    "hotspots_identified": 18
+  },
+  "overlap_analysis": {
+    "contingency_table": {
+      "pearls_in_hotspot": 6,
+      "pearls_not_hotspot": 5,
+      "non_pearls_in_hotspot": 12,
+      "non_pearls_not_hotspot": 67
+    },
+    "threshold_pct": -3.75599797606144,
+    "odds_ratio": 6.7,
+    "p_value": 0.0070957477797936866,
+    "interpretation": "Pearls enrich in ISM hotspots"
+  },
+  "top_hotspots": [
+    {
+      "pos": 5227097,
+      "max_cage_pct": -24.454188272950272,
+      "is_pearl": false
+    },
+    {
+      "pos": 5227098,
+      "max_cage_pct": -28.30826871603308,
+      "is_pearl": false
+    },
+    {
+      "pos": 5227099,
+      "max_cage_pct": -42.73182908869184,
+      "is_pearl": true
+    },
+    {
+      "pos": 5227100,
+      "max_cage_pct": -31.539692715568112,
+      "is_pearl": true
+    },
+    {
+      "pos": 5227101,
+      "max_cage_pct": -39.18704608794766,
+      "is_pearl": true
+    },
+    {
+      "pos": 5227102,
+      "max_cage_pct": -24.587464749689865,
+      "is_pearl": true
+    },
+    {
+      "pos": 5227107,
+      "max_cage_pct": -25.18808937025906,
+      "is_pearl": false
+    },
+    {
+      "pos": 5227120,
+      "max_cage_pct": -13.520819566979148,
+      "is_pearl": false
+    },
+    {
+      "pos": 5227143,
+      "max_cage_pct": -7.304049169486242,
+      "is_pearl": false
+    },
+    {
+      "pos": 5227145,
+      "max_cage_pct": -8.95759833601847,
+      "is_pearl": false
+    }
+  ]
+}

@@ -93,7 +93,7 @@ score = mean(lfc)
 
 ### Blocker #4: Marginal Benefit
 - Current DIFF_MEAN scoring already shows strong signal:
-  - HBB: p=4e-6, Cohen's d=-1.53 (large effect)
+  - HBB: p=2.77e-4, Cohen's d=-1.53 (large effect)
   - TERT hotspots: +33-53% CAGE increase
   - Mechanism specificity: 7/7 loci consistent
 - GENE_MASK_LFC **may** improve signal, but existing results already publication-ready
@@ -127,7 +127,7 @@ and was not used in this study due to hardware constraints.
 **Revisit GENE_MASK_LFC if:**
 
 1. **Hardware access** — H100 GPU available (cloud or institutional)
-2. **Stronger signal needed** — Current p=4e-6 insufficient for publication
+2. **Stronger signal needed** — Current p=2.77e-4 insufficient for publication
 3. **Cross-locus expansion** — Testing ≥5 regulatory loci (justify infrastructure investment)
 4. **Local research package installed** — For other reasons (e.g., custom track predictions)
 
@@ -174,7 +174,7 @@ Verify data requirements before committing to "zero-cost" improvements.
 
 ### Lesson 3: Strong Results Don't Need Optimization
 Current results:
-- p=4e-6 (highly significant)
+- p=2.77e-4 (highly significant)
 - Cohen's d=-1.53 (large effect)
 - 7/7 loci mechanism specificity
 

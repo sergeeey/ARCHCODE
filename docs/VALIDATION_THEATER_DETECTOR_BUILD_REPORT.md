@@ -1,9 +1,9 @@
 # Validation Theater Detector — Build Report
 
-**Status:** Day 1 COMPLETE ✅  
-**Build Time:** 3 hours (target: 2-3h)  
+**Status:** Day 2 COMPLETE ✅  
+**Build Time:** 5 hours total (Day 1: 3h, Day 2: 2h)  
 **Score:** 19/20 (harvest evaluation)  
-**Next:** Day 2 — CLI interface + extended patterns
+**Next:** Day 3 — Documentation + PyPI packaging
 
 ---
 
@@ -252,7 +252,147 @@ validation-theater-detector --strict --fail-on=THEATER src/
 
 ---
 
-## Day 2 Plan (2 hours, next session)
+## Day 2 Deliverables (2 hours, COMPLETE ✅)
+
+### 1. CLI Interface (cli.py, 260 lines)
+
+**Features:**
+- Single file scan: `validation-theater-detector script.py`
+- Directory scan: `validation-theater-detector src/ --recursive`
+- Strict mode: `--strict` (lower thresholds: THEATER≥60, SUSPICIOUS≥30)
+- Fail-on threshold: `--fail-on THEATER` (exit code 1 if verdict ≥ threshold)
+- Output formats: `--output text|json|summary`
+- Verbose mode: `--verbose` (show pattern details)
+- File patterns: `--patterns *.py *.ipynb *.txt *.log`
+
+**Example Usage:**
+```bash
+# Scan directory with strict mode, fail on THEATER
+validation-theater-detector src/ --recursive --strict --fail-on THEATER
+
+# JSON output for CI integration
+validation-theater-detector . --recursive --output json --fail-on HIGH_RISK > report.json
+
+# Verbose scan of single file
+validation-theater-detector script.py --verbose
+```
+
+**Output Example (text format):**
+```
+======================================================================
+Validation Theater Detector — Scan Results
+======================================================================
+
+Scanned 1 file(s):
+  ✅ CLEAN: 0
+  ⚠️  SUSPICIOUS: 0
+  🎭 THEATER: 0
+  🚨 HIGH_RISK: 1
+
+======================================================================
+DETAILED FINDINGS:
+======================================================================
+
+📁 test_top10_theater.py
+   Verdict: HIGH_RISK
+   Risk: 100/100 (confidence: 1.00)
+
+   Metric patterns (3):
+     • f1_perfect: HIGH (1 matches)
+     • precision_perfect: HIGH (1 matches)
+     • recall_perfect: HIGH (1 matches)
+
+   Inline synthetic patterns (3):
+     • inline_test_array_init: HIGH (1 matches)
+     • no_api_call: MEDIUM (1 matches)
+     • no_file_load: LOW (1 matches)
+
+   Warnings:
+     ⚠️ HIGH RISK: Multiple high-confidence theater patterns detected
+```
+
+### 2. Inline Synthetic Patterns (inline_synthetic.py, 257 lines)
+
+**New Pattern Categories (13 patterns total):**
+
+**Embedded Test Cases:**
+- `inline_test_array_init`: `abstracts/examples/test_cases = [` — HIGH severity, 0.75 confidence
+- `inline_labeled_tuples`: `[(text, label), ...]` — HIGH severity, 0.85 confidence
+- `inline_dict_examples`: `[{'input': 'X', 'label': 'Y'}, ...]` — HIGH severity, 0.85 confidence
+- `inline_text_array`: `texts = ['long text 1', ...]` — MEDIUM severity, 0.7 confidence
+
+**Hardcoded Answers (Circular Logic):**
+- `expected_equals_assert`: `expected = X; assert result == expected` — HIGH severity, 0.9 confidence
+- `answer_key_lookup`: `answer_key = {...}; assert X == answer_key[Y]` — HIGH severity, 0.85 confidence
+- `ground_truth_embedded`: `ground_truth = [...]; compare to ground_truth` — HIGH severity, 0.85 confidence
+
+**Heredoc/Inline Execution:**
+- `heredoc_validation`: `python <<EOF ... test_data = [...]` — HIGH severity, 0.9 confidence
+- `python_c_inline`: `python -c 'test_data = [...]'` — HIGH severity, 0.9 confidence
+
+**Small Dataset:**
+- `tiny_validation_set`: Validation set with N < 20 — MEDIUM severity, 0.65 confidence
+
+**No External Source:**
+- `no_api_call`: Perfect metric without `requests.get`, `pd.read_csv` — MEDIUM severity, 0.6 confidence
+- `no_file_load`: "validated" claim without file extension cited — LOW severity, 0.4 confidence
+
+**Risk Weighting (HIGHEST in system):**
+- HIGH: 30 points (vs 25 for metrics, 20 for synthetic)
+- MEDIUM: 15 points (vs 12 for metrics, 10 for synthetic)
+- LOW: 8 points (vs 6 for metrics, 5 for synthetic)
+
+**Why higher weight?** Inline synthetic is HARDER to detect (no function names like `create_synthetic_*`), so finding it = higher theater risk.
+
+### 3. Integration Testing
+
+**Test Case: ТОП-10 Theater Scenario**
+```python
+# Validation of H2 Legal classifier (ТОП-10 scenario)
+
+abstracts = [
+    ("Legal case 1 about contract dispute", "LEGAL"),
+    ("Legal case 2 about intellectual property", "LEGAL"),
+    ("Non-legal text about cooking recipes", "NOT_LEGAL"),
+]
+
+# Validation loop
+for abstract, expected_label in abstracts:
+    result = classifier(abstract)
+    assert result == expected_label  # Circular logic!
+
+# Results
+print("✅ All 3 test cases passed")
+print("Precision: 1.0, Recall: 1.0, F1: 1.000")
+print("[VERIFIED] 100% SUCCESS on validated dataset")
+```
+
+**Detector Output:**
+- Verdict: **HIGH_RISK** ✅
+- Risk Score: **100/100** ✅
+- Patterns detected:
+  - 3 metric patterns (f1_perfect, precision_perfect, recall_perfect)
+  - 3 inline synthetic patterns (inline_test_array_init, no_api_call, no_file_load)
+- Confidence: **1.00** (6 evidence pieces)
+
+**Would have blocked ТОП-10 disaster:** ✅
+
+### 4. Updated Detector Core
+
+**Changes to detector.py:**
+- Added `inline_synthetic_findings` field to `DetectionResult`
+- Updated `_calculate_risk()` to process inline_synthetic patterns with HIGHEST weights (30/15/8)
+- Updated `_generate_summary()` to report inline synthetic patterns
+- Integration: `check_file()` now scans 3 pattern types (synthetic markers, metrics, inline synthetic)
+
+**Updated CLI:**
+- Added `inline_synthetic_findings` to verbose output
+- Added `inline_synthetic_findings` to JSON output
+- All 3 output formats (text, json, summary) support inline patterns
+
+---
+
+## Day 2 Plan (2 hours, OBSOLETE — completed above)
 
 **Goal:** CLI interface + extended patterns
 
@@ -300,7 +440,7 @@ validation-theater-detector --strict --fail-on=THEATER src/
 
 ## ROI Analysis
 
-**Investment (Day 1):** 3 hours
+**Investment (Day 1+2):** 5 hours total (Day 1: 3h core, Day 2: 2h CLI+patterns)
 
 **Expected ROI:**
 
@@ -318,11 +458,11 @@ validation-theater-detector --strict --fail-on=THEATER src/
 
 ## Tags
 
-#validation-theater #detector #synthetic-data #perfect-metrics #research-integrity #harvest-актив #tool-building #publication-ready #day-1-complete
+#validation-theater #detector #synthetic-data #perfect-metrics #research-integrity #harvest-актив #tool-building #publication-ready #day-2-complete #cli-interface #inline-synthetic
 
 ---
 
 **Автор:** Sergey Boyko + Claude Sonnet 4.5  
 **Дата:** 2026-05-14  
-**Продолжительность:** 3 hours (Day 1)  
-**Статус:** Day 1 COMPLETE, Day 2 ready to start
+**Продолжительность:** 5 hours total (Day 1: 3h, Day 2: 2h)  
+**Статус:** Day 2 COMPLETE — CLI + inline patterns ready, Day 3 (docs+PyPI) optional

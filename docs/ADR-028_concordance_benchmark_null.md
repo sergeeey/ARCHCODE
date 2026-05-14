@@ -184,7 +184,7 @@ High variance, but no trend with fragility.
 - Group difference exists: pearls mean fragility = 0.073 vs controls = 0.066
 
 ❌ **"AlphaGenome is wrong"**
-- AlphaGenome detects regulatory disruption (p=4e-6 for HBB pearls vs benign)
+- AlphaGenome detects regulatory disruption (p=2.77e-4 for HBB pearls vs benign)
 - Mechanism specificity confirmed (HBB/MLH1 work, BRCA1/TP53 null)
 
 ❌ **"Methods are useless"**
@@ -260,7 +260,7 @@ High variance, but no trend with fragility.
    - Need broader range of structural fragility to detect correlation
 
 2. **Group difference ≠ rank correlation**
-   - Mann-Whitney p=4e-6 (pearls vs controls) does NOT imply Spearman ρ > 0
+   - Mann-Whitney p=2.77e-4 (pearls vs controls) does NOT imply Spearman ρ > 0
    - Both can be pathogenic without ranking agreement
 
 3. **Orthogonality is NOT failure**
@@ -279,7 +279,7 @@ High variance, but no trend with fragility.
 Pearls: fragility=0.073, CAGE=0.00436
 Controls: fragility=0.066, CAGE=0.00097
 
-Group difference: LARGE (4.5× CAGE, p=4e-6)
+Group difference: LARGE (4.5× CAGE, p=2.77e-4)
 Rank correlation: NULL (ρ=0.077, p=0.67)
 ```
 

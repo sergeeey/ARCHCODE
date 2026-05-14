@@ -16,7 +16,7 @@ AlphaGenome CAGE detects pathogenicity at **regulatory loci** (promoters, enhanc
 MLH1 pathogenic variants should show stronger CAGE disruption than benign, similar to HBB (regulatory).
 
 **Comparison Loci:**
-- ✅ HBB (regulatory): 5.6× stronger, p=4×10⁻⁶ [PASS]
+- ✅ HBB (regulatory): 5.6× stronger, p=2.77×10⁻⁴ [PASS]
 - ⏳ MLH1 (regulatory): THIS TEST
 - ❌ BRCA1 (coding): 1.3×, p=0.43 [NULL, expected]
 - ❌ TP53 (coding): 0.8×, p=0.56 [NULL, expected]

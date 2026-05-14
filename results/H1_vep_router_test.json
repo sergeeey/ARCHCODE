@@ -1,0 +1,374 @@
+{
+  "hypothesis": "H1: ARCHCODE + VEP Router",
+  "data_source": "HBB_Unified_Atlas.csv",
+  "n_variants": 1103,
+  "baseline_archcode": {
+    "precision": 1.0,
+    "recall": 0.45609065155807366,
+    "f1": 0.6264591439688716
+  },
+  "best_config": {
+    "impact_threshold": "HIGH",
+    "score_threshold": 0.3,
+    "archcode": {
+      "precision": 1.0,
+      "recall": 0.45609065155807366,
+      "f1": 0.6264591439688716
+    },
+    "router": {
+      "precision": 1.0,
+      "recall": 0.45042492917847027,
+      "f1": 0.62109375
+    },
+    "routing_stats": {
+      "n_routed_to_archcode": 335,
+      "n_fast_path": 768,
+      "percent_routed": 30.371713508612874,
+      "fast_path_accuracy": 0.9231770833333334,
+      "routed_accuracy": 0.5970149253731343
+    },
+    "delta": {
+      "precision": 0.0,
+      "recall": -0.005665722379603388,
+      "f1": -0.00536539396887159
+    },
+    "config": "HIGH+0.3"
+  },
+  "grid_search_results": [
+    {
+      "impact_threshold": "HIGH",
+      "score_threshold": 0.3,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 335,
+        "n_fast_path": 768,
+        "percent_routed": 30.371713508612874,
+        "fast_path_accuracy": 0.9231770833333334,
+        "routed_accuracy": 0.5970149253731343
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "HIGH+0.3"
+    },
+    {
+      "impact_threshold": "HIGH",
+      "score_threshold": 0.5,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 325,
+        "n_fast_path": 778,
+        "percent_routed": 29.465095194922934,
+        "fast_path_accuracy": 0.9151670951156813,
+        "routed_accuracy": 0.6061538461538462
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "HIGH+0.5"
+    },
+    {
+      "impact_threshold": "HIGH",
+      "score_threshold": 0.7,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.44192634560906513,
+        "f1": 0.6129666011787819
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 300,
+        "n_fast_path": 803,
+        "percent_routed": 27.198549410698096,
+        "fast_path_accuracy": 0.9016189290161893,
+        "routed_accuracy": 0.6066666666666667
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.014164305949008527,
+        "f1": -0.013492542790089712
+      },
+      "config": "HIGH+0.7"
+    },
+    {
+      "impact_threshold": "HIGH",
+      "score_threshold": 0.9,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.4164305949008499,
+        "f1": 0.588
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 247,
+        "n_fast_path": 856,
+        "percent_routed": 22.393472348141433,
+        "fast_path_accuracy": 0.8563084112149533,
+        "routed_accuracy": 0.6639676113360324
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.039660056657223774,
+        "f1": -0.03845914396887162
+      },
+      "config": "HIGH+0.9"
+    },
+    {
+      "impact_threshold": "MODERATE",
+      "score_threshold": 0.3,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 335,
+        "n_fast_path": 768,
+        "percent_routed": 30.371713508612874,
+        "fast_path_accuracy": 0.9231770833333334,
+        "routed_accuracy": 0.5970149253731343
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "MODERATE+0.3"
+    },
+    {
+      "impact_threshold": "MODERATE",
+      "score_threshold": 0.5,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 325,
+        "n_fast_path": 778,
+        "percent_routed": 29.465095194922934,
+        "fast_path_accuracy": 0.9151670951156813,
+        "routed_accuracy": 0.6061538461538462
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "MODERATE+0.5"
+    },
+    {
+      "impact_threshold": "MODERATE",
+      "score_threshold": 0.7,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 305,
+        "n_fast_path": 798,
+        "percent_routed": 27.651858567543066,
+        "fast_path_accuracy": 0.9072681704260651,
+        "routed_accuracy": 0.6065573770491803
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "MODERATE+0.7"
+    },
+    {
+      "impact_threshold": "MODERATE",
+      "score_threshold": 0.9,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 296,
+        "n_fast_path": 807,
+        "percent_routed": 26.835902085222124,
+        "fast_path_accuracy": 0.9083023543990086,
+        "routed_accuracy": 0.5945945945945946
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "MODERATE+0.9"
+    },
+    {
+      "impact_threshold": "LOW",
+      "score_threshold": 0.3,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 342,
+        "n_fast_path": 761,
+        "percent_routed": 31.00634632819583,
+        "fast_path_accuracy": 0.9316688567674113,
+        "routed_accuracy": 0.5847953216374269
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "LOW+0.3"
+    },
+    {
+      "impact_threshold": "LOW",
+      "score_threshold": 0.5,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 339,
+        "n_fast_path": 764,
+        "percent_routed": 30.734360834088847,
+        "fast_path_accuracy": 0.9319371727748691,
+        "routed_accuracy": 0.5811209439528023
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "LOW+0.5"
+    },
+    {
+      "impact_threshold": "LOW",
+      "score_threshold": 0.7,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 327,
+        "n_fast_path": 776,
+        "percent_routed": 29.646418857660922,
+        "fast_path_accuracy": 0.9329896907216495,
+        "routed_accuracy": 0.5657492354740061
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "LOW+0.7"
+    },
+    {
+      "impact_threshold": "LOW",
+      "score_threshold": 0.9,
+      "archcode": {
+        "precision": 1.0,
+        "recall": 0.45609065155807366,
+        "f1": 0.6264591439688716
+      },
+      "router": {
+        "precision": 1.0,
+        "recall": 0.45042492917847027,
+        "f1": 0.62109375
+      },
+      "routing_stats": {
+        "n_routed_to_archcode": 318,
+        "n_fast_path": 785,
+        "percent_routed": 28.830462375339984,
+        "fast_path_accuracy": 0.9337579617834395,
+        "routed_accuracy": 0.5534591194968553
+      },
+      "delta": {
+        "precision": 0.0,
+        "recall": -0.005665722379603388,
+        "f1": -0.00536539396887159
+      },
+      "config": "LOW+0.9"
+    }
+  ],
+  "kill_criteria": [
+    "Router recall 0.4504 \u2264 ARCHCODE recall 0.4561",
+    "Router F1 0.6211 < ARCHCODE F1 0.6265"
+  ],
+  "verdict": "HYPOTHESIS KILLED",
+  "confidence": "HIGH",
+  "notes": [
+    "VEP scores already cached in HBB Atlas (ENCFF* datasets)",
+    "Router: VEP HIGH/MODERATE \u2192 ARCHCODE, else \u2192 benign",
+    "Computational savings from fast path (benign predictions)"
+  ]
+}

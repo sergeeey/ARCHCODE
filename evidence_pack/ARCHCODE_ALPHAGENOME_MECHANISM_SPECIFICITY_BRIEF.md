@@ -119,7 +119,7 @@ Verdict: ❌ NULL (expected)
 | **Regulatory PASS rate** | 3/3 (100%) — HBB, MLH1, TERT-promoter ✅ |
 | **Coding NULL rate** | 4/4 (100%) — BRCA1, TP53, GJB2, TERT-bulk ✅ |
 | **Strongest signal** | TERT-C250T: +53.1% CAGE increase |
-| **Second strongest** | HBB: 5.6× disruption, p=4e-6 |
+| **Second strongest** | HBB: 5.6× disruption, p=2.77e-4 |
 | **Weakest positive** | MLH1: 3.7×, p=0.022 |
 | **Gain-of-function detection** | TERT C228T/C250T: +33.7%, +53.1% ✅ |
 
@@ -290,7 +290,7 @@ C250T (c.-146C>T):  Ref 0.0117 → Alt 0.0179 = +53.1% CAGE increase ✅
 ### What Makes This Strong (9.0)
 - ✅ Perfect mechanism specificity (7/7 loci, 100%)
 - ✅ No unexplained failures
-- ✅ Statistical significance (HBB p=4e-6, MLH1 p=0.022, TERT hotspots +33-53%)
+- ✅ Statistical significance (HBB p=2.77e-4, MLH1 p=0.022, TERT hotspots +33-53%)
 - ✅ Gain-of-function validated (TERT C228T/C250T)
 - ✅ Falsification-first (sampling bias detected and solved)
 - ✅ First AlphaGenome clinical benchmark

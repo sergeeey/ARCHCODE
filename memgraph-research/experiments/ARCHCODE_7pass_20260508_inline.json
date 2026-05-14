@@ -1,0 +1,233 @@
+{
+  "project_map": {
+    "table": "| Компонент | Что есть сейчас | Скрытый потенциал | Главный риск | Как измерить |\n|-----------|-----------------|-------------------|--------------|-------------|\n| **Validation Suite** | 30 automated tests, 9/30 PASS, falsification-first | **First 3D-genome benchmark** — leaderboard для Akita, Orca, foundation models | Falsification killed main claim (AUC 0.977 = artifact) | Citation count, external submissions |\n| **HBB Pearl Variants** | 27 VEP-blind variants, 73bp promoter cluster | **Wet-lab validation target** — RT-qPCR + Capture Hi-C | N=1 locus (HBB only), no cross-locus | Experimental confirmation (allele-specific Hi-C) |\n| **Computational Closed-Loop** | 278 lines, rule-based hypotheses, <5 sec | **Claude API integration** → autonomous discovery | Rule-based ≠ real reasoning | Real Claude API + cross-locus transfer rate ≥30% |\n| **Multi-Locus Dataset** | 30,318 variants × 9 loci | **Golden Set для DNA variant interpretation** | Class B killed by matched controls (p=0.996) | External use (downloads, citations) |\n| **Falsification Results** | 7 honest null results | **Honest science brand** vs validation theater | \"Failed predictor\" narrative | Reframe as \"falsification engine\" |"
+  },
+  "leverage_lenses": [
+    {
+      "lens": "Memory",
+      "idea": "Computational closed-loop сейчас stateless. Добавить episodic memory (iteration history) + semantic memory (73bp cluster = HIGH_CONF после 3× confirmations) → cross-locus hypothesis transfer.",
+      "why_nonobvious": "RAG обычно для documents, не для genomic hypothesis iteration. Memory enables reuse подтверждённых patterns (HBB → BRCA1).",
+      "experiment": "Run 5 iterations HBB → tag patterns → adapt to BRCA1. Measure transfer rate (≥30% target).",
+      "metric": "Transfer rate (# adapted hypotheses / total), quality preservation (≥60% transferred hypotheses score ≥20)"
+    },
+    {
+      "lens": "Evaluation",
+      "idea": "ARCHCODE = единственный публичный benchmark для 3D-genome models с real falsification tests. Превратить в leaderboard (Task 1: Hi-C correlation, Task 2: Within-category AUC, Task 3: Cross-locus transfer).",
+      "why_nonobvious": "3D-genome field не имеет shared benchmark (аналог ImageNet). Все публикуют isolated results.",
+      "experiment": "Create benchmark spec, submit ARCHCODE baseline, outreach к 3 labs (Fudenberg, Zhou, Noble). Target: ≥2 external submissions / 6 months.",
+      "metric": "Adoption (# submissions), reproducibility (≥90% users run successfully), citation (≥5 papers / year)"
+    },
+    {
+      "lens": "Discovery",
+      "idea": "73bp HBB cluster (3× confirmed) = wet-lab validation target. RT-qPCR + Capture Hi-C могут confirm enhancer disruption → первая experimental validation structural blind spot.",
+      "why_nonobvious": "Computational findings обычно остаются computational. Partner с erythroid lab = переход к experimental confirmation.",
+      "experiment": "Partner with lab, prioritize top-5 pearls, run RT-qPCR + allele-specific Capture Hi-C. Target: ≥2/5 validated (40% precision).",
+      "metric": "Validation rate (# experimentally confirmed / tested), effect size (CAGE Δ in wet-lab vs AlphaGenome prediction)"
+    },
+    {
+      "lens": "Reasoning",
+      "idea": "Hypothesis generator сейчас rule-based. Добавить falsification-first filter: generate 10 hypotheses → pre-design 3 falsification tests для каждой → rank by testability → run top-3.",
+      "why_nonobvious": "Обычно generate → test. Предлагается generate → design falsification → rank → then test. Falsification-first на уровне generation.",
+      "experiment": "Generate 10 hypotheses, rank by falsifiability, run top-3. Measure testability rate (≥80% target vs 33% baseline).",
+      "metric": "Testability (# runnable with existing data), novelty (LLM-as-Judge ≥0.7), confirmation rate (20-40%)"
+    },
+    {
+      "lens": "Automation",
+      "idea": "Validation suite сейчас static (30 hand-coded tests). Превратить в self-expanding suite: agent monitors null results → generates regression tests → tracks coverage gaps.",
+      "why_nonobvious": "Test suites обычно static. Self-expanding = agent learns what to falsify next.",
+      "experiment": "Prompt: 'Analyze 30 tests, find coverage gaps, suggest 5 new tests.' Implement top-2. Measure if they reveal new limitations.",
+      "metric": "Suggestion quality (≥60% rated 'valuable'), coverage increase (new mechanisms tested), falsification power (≥1 new null result)"
+    },
+    {
+      "lens": "Scientific",
+      "idea": "ARCHCODE caught own validation theater (AUC 0.977 = artifact). Превратить в general-purpose Validation Theater Detector для genomic ML papers (check: circular AUC, data leakage, matched controls, ablation).",
+      "why_nonobvious": "Most reproducibility tools check code correctness. Предлагается check scientific validity (is claim real or artifact?).",
+      "experiment": "Test on ARCHCODE (known issue: category artifact) + SpliceAI (clean model). Measure: TP rate 100%, FP rate <20%.",
+      "metric": "True positive (flags ARCHCODE issue), false positive (<20% on clean models), novel discoveries (≥1 unreported issue)"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "text": "Research Memory Graph enables cross-locus hypothesis transfer",
+      "why": "Memory позволяет reuse подтверждённых patterns (73bp cluster) на новых loci. Episodic + semantic memory для genomic context.",
+      "test": "HBB confirmed hypothesis → adapt to BRCA1, run 5 iterations, measure transfer rate",
+      "metric": "Transfer rate ≥30% (baseline 0%), quality ≥60% (score ≥20)",
+      "risk": "<risk> HBB-specific bias → false positives на других loci"
+    },
+    {
+      "id": "H2",
+      "text": "Falsification-first hypothesis generator снижает untestable hypotheses",
+      "why": "Pre-filter по testability убирает 'beautiful but unverifiable' ideas. Generate → verify → then test.",
+      "test": "Generate 10, rank by falsifiability, run top-3. Compare vs baseline (rule-based).",
+      "metric": "Testability ≥80% (vs 33%), novelty ≥0.7, confirmation 20-40%",
+      "risk": "<risk> Only 'safe' hypotheses (boring but testable)"
+    },
+    {
+      "id": "H3",
+      "text": "Foundation Model Benchmark станет leaderboard для 3D-genome models",
+      "why": "Нет shared benchmark → первый получит adoption. 5 tasks: Hi-C correlation, within-category AUC, cross-locus transfer, ablation, enhancer proximity.",
+      "test": "Contact 3 labs, publish benchmark spec, baseline submission (ARCHCODE).",
+      "metric": "≥2 external submissions / 6 months, ≥90% reproducibility, ≥5 citations / year",
+      "risk": "<unknown> Community interest, <risk> leaderboard gaming"
+    },
+    {
+      "id": "H4",
+      "text": "73bp HBB cluster = universal promoter vulnerability pattern",
+      "why": "If mechanism = TATA-box disruption → should replicate across loci with TATA-box.",
+      "test": "Find TATA-box loci (BRCA1, TP53), search for promoter clusters.",
+      "metric": "Replication в ≥1 non-HBB locus",
+      "risk": "<hypothesis> HBB-specific, не universal"
+    },
+    {
+      "id": "H5",
+      "text": "Self-expanding validation suite auto-detects coverage gaps",
+      "why": "Agent monitors null results → suggests regression tests. Tracks coverage: 'tested CTCF shuffle, missing: tissue-specificity'.",
+      "test": "Prompt for 5 new tests, human eval, implement top-2, run.",
+      "metric": "≥60% suggestions rated 'valuable', ≥1 new null result discovered",
+      "risk": "<risk> Trivial or impossible tests"
+    },
+    {
+      "id": "H6",
+      "text": "Validation Theater Detector finds artifacts в published models",
+      "why": "ARCHCODE found own artifact → generalize. Check: circular AUC, data leakage, matched controls, ablation.",
+      "test": "Run on ARCHCODE (true positive) + SpliceAI (false positive check).",
+      "metric": "TP rate 100%, FP rate <20%, ≥1 novel finding in external model",
+      "risk": "<risk> False accusations damage reputation"
+    },
+    {
+      "id": "H7",
+      "text": "AlphaGenome ISM fine-tuning improves pearl detection",
+      "why": "AlphaGenome trained genome-wide → fine-tune на HBB → better CAGE predictions.",
+      "test": "Fine-tune on 353 HBB variants, compare CAGE Δ before/after.",
+      "metric": "CAGE Δ improvement ≥20%",
+      "risk": "<risk> Overfitting (N=353 small), no independent validation set"
+    },
+    {
+      "id": "H8",
+      "text": "Cross-species conservation identifies real pearls vs artifacts",
+      "why": "Real structural disruption → conserved across human/mouse/chimp. Artifacts → human-only.",
+      "test": "Align HBB locus across 3 species, check if pearls in conserved regions.",
+      "metric": "Pearl enrichment in conserved regions p<0.05",
+      "risk": "<unknown> Mouse HBB different architecture"
+    },
+    {
+      "id": "H9",
+      "text": "Computational closed-loop + wet-lab partner = autonomous discovery pipeline",
+      "why": "Ginkgo proves concept (36K experiments) → ARCHCODE provides in-silico pre-screen.",
+      "test": "Partner with erythroid lab, closed-loop proposes variants → wet-lab validates top-5.",
+      "metric": "≥2/5 validated (40% precision)",
+      "risk": "<risk> No wet-lab partner, expensive ($50K+)"
+    },
+    {
+      "id": "H10",
+      "text": "Hypothesis Market allocation finds patterns faster than linear search",
+      "why": "Parallel exploration + Bayesian resource allocation = MCTS для biology. 10 hypotheses compete for iterations.",
+      "test": "10 parallel hypotheses, 30 iteration budget, market reallocation based on p(hypothesis | data).",
+      "metric": "Discovery rate 3-5 confirmed / 30 iterations (vs 1 baseline)",
+      "risk": "<hypothesis> Exploit-explore balance, early success overfitting"
+    }
+  ],
+  "deepconf_scores": [
+    {"id": "H1", "novelty": 4, "feasibility": 4, "evidence": 4, "impact": 5, "testability": 4, "safety": 5, "total": 26},
+    {"id": "H2", "novelty": 4, "feasibility": 4, "evidence": 3, "impact": 4, "testability": 4, "safety": 5, "total": 24},
+    {"id": "H3", "novelty": 3, "feasibility": 3, "evidence": 4, "impact": 5, "testability": 4, "safety": 5, "total": 24},
+    {"id": "H4", "novelty": 3, "feasibility": 4, "evidence": 3, "impact": 4, "testability": 5, "safety": 5, "total": 24},
+    {"id": "H5", "novelty": 3, "feasibility": 4, "evidence": 4, "impact": 3, "testability": 4, "safety": 5, "total": 23},
+    {"id": "H6", "novelty": 4, "feasibility": 3, "evidence": 5, "impact": 5, "testability": 3, "safety": 3, "total": 23},
+    {"id": "H7", "novelty": 2, "feasibility": 3, "evidence": 4, "impact": 3, "testability": 3, "safety": 4, "total": 19},
+    {"id": "H8", "novelty": 3, "feasibility": 3, "evidence": 3, "impact": 3, "testability": 4, "safety": 5, "total": 21},
+    {"id": "H9", "novelty": 4, "feasibility": 1, "evidence": 3, "impact": 5, "testability": 2, "safety": 4, "total": 19},
+    {"id": "H10", "novelty": 5, "feasibility": 2, "evidence": 2, "impact": 4, "testability": 3, "safety": 5, "total": 21}
+  ],
+  "top3": ["H1", "H3", "H2"],
+  "top3_proposals": [
+    {
+      "hypothesis": "H1: Research Memory Graph",
+      "formulation": "Persistent knowledge graph storing project analyses, hypothesis outcomes, cross-project patterns улучшает hypothesis quality via transfer learning, reducing redundant exploration by ≥20%.",
+      "known": "[VERIFIED] computational_closed_loop.py exists (278 lines), confirmed 73bp cluster (15/20 pearls), но stateless.",
+      "unknown": "<hypothesis> Can hypotheses transfer across domains? ARCHCODE genomics → TeraG NLP?",
+      "experiment": "1. Run 7-pass на 3 projects (ARCHCODE, ChernoffPy, ContextProof). 2. Extract hypotheses → populate graph. 3. Semantic similarity (sentence-transformers). 4. Transfer test: ARCHCODE → TeraG, retrieve top-3 similar hypotheses. 5. Measure transfer rate.",
+      "dataset": "Existing project folders (ARCHCODE, ChernoffPy, ContextProof)",
+      "baseline": "Stateless prompt: 0% transfer (each project analyzed independently)",
+      "treatment": "MemGraph-enabled prompt: retrieval + adaptation",
+      "metrics": "Transfer rate ≥20%, quality preservation ≥60% (score ≥20), redundancy <10%, outcome prediction AUC ≥0.65",
+      "success": "≥20% transfer + ≥60% quality + AUC ≥0.65",
+      "failure": "<10% transfer OR >50% false transfers",
+      "risks": "<risk> HBB bias → false positives. <hypothesis> BRCA1 architecture ≠ HBB. <risk> Memory bloat (1000s iterations).",
+      "safety": "[CLEARED] Computational only, stores project metadata (no PII, no secrets)"
+    },
+    {
+      "hypothesis": "H3: Foundation Model Benchmark",
+      "formulation": "Shared, falsification-first benchmark для 3D-genome contact prediction и variant interpretation models улучшает reproducibility, выявляет validation theater, ускоряет field-wide progress.",
+      "known": "[VERIFIED] ARCHCODE имеет 30 falsification tests, 30,318 variants, 9 loci, Hi-C validation (r=0.28-0.59).",
+      "unknown": "<unknown> Согласятся ли Akita/Orca authors submit? Есть ли ресурсы для maintenance?",
+      "experiment": "Phase 1 (2 weeks): 1. Create archcode-benchmark repo. 2. Document 5 tasks (Hi-C, within-category, cross-locus, ablation, enhancer). 3. Baseline: ARCHCODE results. 4. Outreach: email 3 labs. Phase 2 (1 month): Add 2 model submissions, create leaderboard.md.",
+      "dataset": "Existing ARCHCODE data (results/HBB_Unified_Atlas.csv, 8 more loci, Hi-C maps)",
+      "baseline": "ARCHCODE v2.17: r=0.28-0.59 (Hi-C), median AUC=0.52 (within-category), 0% cross-locus transfer",
+      "treatment": "External model submissions (Akita, Orca, Nucleotide Transformer, future foundation models)",
+      "metrics": "Adoption (≥2 submissions / 6mo), reproducibility (≥90%), discovery (≥3 novel findings), citation (≥5 / year), community value (≥5 PI endorsements)",
+      "success": "≥2 external submissions + ≥90% reproducibility + ≥1 cited finding",
+      "failure": "Zero submissions после 6 months + <50% users can run",
+      "risks": "<unknown> Community ignores. <risk> Leaderboard gaming (p-hacking). <risk> Maintenance burden. <risk> Benchmark obsolete.",
+      "safety": "[BIOSAFETY CLEARED] Computational only, public data (ClinVar, ENCODE Hi-C), no wet-lab protocols"
+    },
+    {
+      "hypothesis": "H2: Falsification-First Generator",
+      "formulation": "Pre-generating falsification tests для каждой hypothesis перед execution снижает untestable hypotheses с 67% (rule-based baseline) до <20%, увеличивая testability rate до ≥80%.",
+      "known": "[VERIFIED] computational_closed_loop.py uses rule-based hypotheses (3 hardcoded). Iteration 2-3 = NOT_TESTED (67% untestable).",
+      "unknown": "<hypothesis> Может ли Claude generate falsification tests БЕЗ running code? Или нужен data-aware agent?",
+      "experiment": "Prompt: 'Generate 5 hypotheses. For each, design 3 falsification tests (null hypothesis, data availability, baseline comparison).' Rank by testability, implement top-3, run tests, measure confirmation rate.",
+      "dataset": "ARCHCODE project files (HBB_Unified_Atlas.csv, Hi-C maps, VEP scores)",
+      "baseline": "Rule-based: 3 hypotheses, 1 confirmed (33%), 2 untestable (67%)",
+      "treatment": "FalsifyGen: 5 hypotheses, pre-filtered by falsification tests, run top-3",
+      "metrics": "Testability rate ≥80% (vs 33%), novelty score ≥0.7/1.0 (LLM-as-Judge), confirmation rate 20-40%, time to falsification <5 min",
+      "success": "≥80% testable + novelty ≥0.7 + confirmation 20-40%",
+      "failure": "<50% testable OR novelty <0.4 (only trivial hypotheses)",
+      "risks": "<risk> Only 'safe' hypotheses (boring but testable). <unknown> Claude hallucinates tests (suggests unavailable data). <hypothesis> Falsification tests too complex.",
+      "safety": "[BIOSAFETY CLEARED] Computational only"
+    }
+  ],
+  "mvp_architecture": {
+    "hypothesis": "H1: MemGraph",
+    "modules": [
+      "1. Data Acquisition Layer (project_parser.py, file_indexer.py)",
+      "2. DQOps Layer (schema_validator.py, consistency_checker.py)",
+      "3. Semantic Memory (Neo4j/NetworkX graph, embeddings.py)",
+      "4. Episodic Memory (eval_log.jsonl, iteration history)",
+      "5. Hypothesis Generator (seven_pass.py, Claude API)",
+      "6. Critic/Verifier (evidence_audit.py, contradiction_scan.py)",
+      "7. DeepConf Ranker (deepconf_scorer.py, Bayesian weight updates)",
+      "8. Experiment Planner (plan_generator.py, adaptive replanner)",
+      "9. PromptOps Eval Harness (golden_set_loader.py, ab_tester.py)",
+      "10. Report Generator (markdown_generator.py, graph visualizer)"
+    ],
+    "flow": "INPUT (project.yaml) → Acquisition → DQOps → Semantic Memory (graph) → Generator (7-pass + retrieval) → Verifier (evidence audit) → Ranker (DeepConf) → Planner → Report → OUTPUT (analysis.md, graph.db) → FEEDBACK (outcomes update graph → Bayesian scorer improves)"
+  },
+  "plan_14days": [
+    {"day": 1, "goal": "Infrastructure setup", "action": "Install Neo4j, create research_memory.db, scaffold repo", "artifact": "memgraph-research/ repo, Neo4j running", "metric": "Can connect to DB, run Cypher query"},
+    {"day": 2, "goal": "Data acquisition + Graph schema", "action": "Implement project_parser.py, define node/edge types", "artifact": "Parser works, schema.cypher", "metric": "Parse ARCHCODE successfully, create Project + Hypothesis nodes"},
+    {"day": 3, "goal": "7-pass generator", "action": "Port prompt to seven_pass.py, Claude API integration", "artifact": "seven_pass.py (321 lines)", "metric": "Generate 10 hypotheses for ARCHCODE"},
+    {"day": 4, "goal": "Embeddings + similarity", "action": "Integrate sentence-transformers, compute hypothesis embeddings", "artifact": "embeddings.py (caching layer)", "metric": "Cosine similarity >0.7 for similar hypotheses"},
+    {"day": 5, "goal": "Retrieval engine", "action": "Implement retrieval.py (k-NN search in graph)", "artifact": "Retrieves top-3 similar hypotheses", "metric": "ARCHCODE H3 → finds ChernoffPy benchmark hypothesis"},
+    {"day": 6, "goal": "Evidence audit", "action": "Implement evidence_audit.py (grep project files)", "artifact": "evidence_audit.py (150 lines)", "metric": "Verify ≥80% of ARCHCODE <fact> claims"},
+    {"day": 7, "goal": "Bayesian scorer", "action": "Implement bayesian_updater.py (adjust DeepConf weights)", "artifact": "Weight updates stored в graph", "metric": "Score calibration improves (Brier score ↓)"},
+    {"day": 8, "goal": "Report generator", "action": "Implement markdown_generator.py (7-pass output)", "artifact": "archcode_7pass.md", "metric": "Readable report matches current format"},
+    {"day": 9, "goal": "Golden Set creation", "action": "Tag 3 expert hypotheses for ARCHCODE, ChernoffPy, ContextProof", "artifact": "golden_hypotheses.json (9 total)", "metric": "Expert review confirms tags"},
+    {"day": 10, "goal": "Eval harness", "action": "Implement eval_recall_at_3.py, run baseline", "artifact": "Recall@3 measured (baseline: 0.00)", "metric": "Metric computed successfully"},
+    {"day": 11, "goal": "Transfer test", "action": "Run ARCHCODE → retrieve hypotheses → adapt to ChernoffPy", "artifact": "transfer_study.json (results)", "metric": "≥1 hypothesis transferred"},
+    {"day": 12, "goal": "A/B test", "action": "Compare stateless vs MemGraph", "artifact": "ab_test_results.json", "metric": "Measure transfer rate difference"},
+    {"day": 13, "goal": "Documentation", "action": "Write README, record demo video", "artifact": "README.md, demo.mp4 (3 min)", "metric": "External user can reproduce"},
+    {"day": 14, "goal": "Go/No-Go decision", "action": "Measure transfer rate, Recall@3, Brier score", "artifact": "decision.md (GO/PIVOT/KILL)", "metric": "Transfer ≥20% OR valuable alternative found"}
+  ],
+  "metadata": {
+    "project": "ARCHCODE",
+    "domain": "genomics",
+    "timestamp": "2026-05-08T19:50:00",
+    "model": "claude-sonnet-4-5 (inline analysis)",
+    "prompt_tokens": 15000,
+    "completion_tokens": 4200,
+    "cost_estimate_usd": 0.108,
+    "analysis_method": "inline (bypass API key issue)"
+  }
+}

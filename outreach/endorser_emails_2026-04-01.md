@@ -9,7 +9,7 @@ Dear Prof. Fudenberg,
 
 I am writing to ask if you would consider endorsing a paper for arXiv q-bio.GN.
 
-The paper introduces ARCHCODE, a loop-extrusion simulator that identifies ClinVar variants disrupting 3D chromatin architecture — variants invisible to sequence-based tools like VEP and SpliceAI. Your Akita model is cited as a key benchmark: we use AlphaGenome (Akita's successor) for independent CAGE-based validation of our structural predictions (pearl vs benign CAGE disruption: p = 4 x 10^-6, Cohen d = -2.1).
+The paper introduces ARCHCODE, a loop-extrusion simulator that identifies ClinVar variants disrupting 3D chromatin architecture — variants invisible to sequence-based tools like VEP and SpliceAI. Your Akita model is cited as a key benchmark: we use AlphaGenome (Akita's successor) for independent CAGE-based validation of our structural predictions (pearl vs control CAGE disruption: p = 2.77 × 10⁻⁴, Cohen d = -1.53, Mann-Whitney U one-sided).
 
 Key results across 18 genomic loci (31,929 ClinVar variants):
 - 20 "pearl" variants in HBB that disrupt loop structure but are classified benign/VUS by all standard tools
@@ -39,7 +39,7 @@ ORCID: 0009-0009-2178-5701
 
 Основные результаты (18 локусов, 31 929 вариантов ClinVar):
 - 20 "pearl" вариантов в HBB — нарушают структуру петель, но классифицированы как benign/VUS всеми стандартными инструментами
-- Независимая валидация через AlphaGenome CAGE: p = 4 x 10^-6 (pearl vs benign)
+- Независимая валидация через AlphaGenome CAGE: p = 2.77 × 10⁻⁴ (pearl vs control, Mann-Whitney U)
 - BCL11A мутагенез: DHS +58 = наиболее структурно чувствительный элемент (мишень Casgevy)
 - 10 ортогональных методов валидации включая Hi-C корреляцию и gnomAD
 

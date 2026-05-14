@@ -1,6 +1,6 @@
 # First Independent Clinical Validation of AlphaGenome CAGE on Disease Variants
 
-**TL;DR:** We tested AlphaGenome CAGE predictions on HBB disease variants (ClinVar). Regulatory variants show strong signal (p=4×10⁻⁶), coding variants null (expected). This is the first external clinical benchmark of AlphaGenome — DeepMind hasn't published one yet. Results support mechanism-specific validation: CAGE detects regulatory disruption, not coding.
+**TL;DR:** We tested AlphaGenome CAGE predictions on HBB disease variants (ClinVar). Regulatory variants show strong signal (p=2.77×10⁻⁴, Mann-Whitney U), coding variants null (expected). This is the first external clinical benchmark of AlphaGenome — DeepMind hasn't published one yet. Results support mechanism-specific validation: CAGE detects regulatory disruption, not coding.
 
 ---
 
@@ -42,7 +42,7 @@
 **CAGE Disruption:**
 - Pearls: -18.0% (mean)
 - Controls: -3.2% (mean)
-- **p = 4×10⁻⁶** (Mann-Whitney U)
+- **p = 2.77×10⁻⁴** (Mann-Whitney U, one-sided)
 - **Cohen's d = -1.53** (large effect size)
 
 **Interpretation:** AlphaGenome CAGE detects strong disruption in disease-associated HBB regulatory variants.
@@ -221,7 +221,7 @@
 ## Conclusion
 
 **Summary:**
-- AlphaGenome CAGE validated on HBB regulatory variants (p=4×10⁻⁶)
+- AlphaGenome CAGE validated on HBB regulatory variants (p=2.77×10⁻⁴)
 - Mechanism-specific: regulatory loci work, coding loci null (expected biology)
 - ISM hotspots overlap with ClinVar pathogenic (p=0.0071)
 - First independent clinical benchmark of AlphaGenome

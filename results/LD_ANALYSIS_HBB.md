@@ -82,7 +82,7 @@
 ### Original Statistics (INFLATED)
 
 - **n = 15** pearls in cluster
-- **p = 4×10⁻⁶** (AlphaGenome CAGE vs benign)
+- **p = 2.77×10⁻⁴** (AlphaGenome CAGE vs controls, Mann-Whitney U)
 - **Assumed:** 15 independent observations
 
 ### Corrected Statistics (LD-ADJUSTED)
@@ -123,7 +123,7 @@ Our adaptation to **non-coding structural variants** reveals same issue:
 
 ### Pearl detection claim
 
-**Original:** 11/12 AlphaGenome pearls in 73bp cluster → p=4×10⁻⁶
+**Original:** 11/12 AlphaGenome pearls in 73bp cluster → p=2.77×10⁻⁴
 
 **Revised:** 3 LD blocks in 73bp cluster → p=TBD (likely 10⁻²–10⁻³)
 

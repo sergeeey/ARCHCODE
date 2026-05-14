@@ -1,0 +1,45 @@
+{
+  "hypothesis": "O2: FOXP3 Pathogenic Hotspots",
+  "data_source": "clinvar_foxp3_variants.csv",
+  "n_variants": 276,
+  "classification_counts": {
+    "Benign": 165,
+    "VUS": 69,
+    "Pathogenic": 42
+  },
+  "hotspot_summary": {
+    "n_hotspots": 1,
+    "hotspot_positions": [
+      49258295
+    ],
+    "min_variants_threshold": 2,
+    "hotspot_counts": {
+      "49258295": 3
+    }
+  },
+  "enrichment_test": {
+    "contingency_table": {
+      "pathogenic_hotspot": 3,
+      "pathogenic_non_hotspot": 39,
+      "benign_vus_hotspot": 0,
+      "benign_vus_non_hotspot": 234
+    },
+    "fisher_exact_p_two_sided": 0.0033120798592077547,
+    "fisher_exact_p_greater": 0.0033120798592077547,
+    "odds_ratio": 41.55696202531646,
+    "or_95_ci": [
+      2.1058320494315748,
+      820.0944103019788
+    ],
+    "haldane_correction_applied": true,
+    "interpretation": "Pathogenic variants are 41.56\u00d7 more likely to be in hotspots (Fisher's exact p=0.0033, two-sided p=0.0033)"
+  },
+  "kill_criteria": [],
+  "verdict": "HYPOTHESIS SUPPORTED",
+  "confidence": "HIGH",
+  "notes": [
+    "FOXP3 is X-linked \u2192 sex bias in ClinVar ascertainment possible",
+    "Hotspots defined as positions with \u22652 pathogenic variants",
+    "Benign+VUS combined as non-pathogenic control"
+  ]
+}

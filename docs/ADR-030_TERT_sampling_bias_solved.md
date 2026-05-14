@@ -233,7 +233,7 @@ This is remarkable because:
 
 | Locus | Mechanism | CAGE Result | Consistent? |
 |-------|-----------|-------------|-------------|
-| **HBB** | Promoter disruption | ✅ PASS (-18.0% vs -3.2%, p=4e-6) | ✓ |
+| **HBB** | Promoter disruption | ✅ PASS (-18.0% vs -3.2%, p=2.77e-4) | ✓ |
 | **MLH1** | CpG promoter disruption | ✅ PASS (3.7×, p=0.022) | ✓ |
 | **TERT-bulk** | Coding-dominant (99.3%) | ❌ NULL (0.6×, p=0.65) | ✓ (expected on coding) |
 | **TERT-C228T** | Promoter motif creation (gain-of-function) | ✅ PASS (+33.7%) | ✓ |

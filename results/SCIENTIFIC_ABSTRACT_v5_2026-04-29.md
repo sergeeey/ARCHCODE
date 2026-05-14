@@ -44,7 +44,7 @@ ARCHCODE uses physics-based loop extrusion simulation to identify enhancer-proxi
 - **Hi-C correlation:** r=0.28–0.59 across loci (HUDEP-2, K562, MCF7)
 - **ABC/rE2G overlap:** 68% Q2b in predicted enhancers (Fisher p=0.36, NS due to Q3 also enhancer-rich)
 - **PCHi-C erythroblast:** 25 Q2b in HBB promoter bait, max CHiCAGO=10.5
-- **AlphaGenome CAGE:** Pearls show 5.5× more expression disruption than benign (p=4×10⁻⁶)
+- **AlphaGenome CAGE:** Pearls show 5.5× more expression disruption than benign (p=2.77×10⁻⁴)
 - **Cross-species conservation:** r=0.82 (human-mouse LSSIM), 17/17 directional matches
 
 **Statistical Rigor:**
@@ -81,7 +81,7 @@ ARCHCODE identifies a complementary variant class requiring 3D chromatin context
 
 **Validation Metrics:**
 - Hi-C: r=0.28–0.59 (across 3 loci)
-- AlphaGenome CAGE: 5.5× pearl disruption (p=4×10⁻⁶)
+- AlphaGenome CAGE: 5.5× pearl disruption (p=2.77×10⁻⁴)
 - Cross-species: r=0.82 (17/17 directional)
 - Spectral fragility: HBB d=1.36, TP53 d=0.87, BRCA1 d=0.04 (negative control)
 

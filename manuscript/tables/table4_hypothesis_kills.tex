@@ -1,0 +1,16 @@
+\begin{table}
+\caption{Hypothesis kill summary: pre-registered criteria and outcomes}
+\label{tab:hypothesis_kills}
+\begin{tabular}{llllll}
+\toprule
+Hypothesis & Kill_Criterion & Test_Statistic & p_value & Verdict & Kill_Date \\
+\midrule
+H1: Within-category AUC & AUC > 0.55 in ≥3 categories & Missense AUC = 0.568 (post-hoc) & N/A & KILLED & 2026-04-07 \\
+H2: Category artifact & Category AUC < 0.90 OR ΔAUC ≥ 0.02 & Category AUC = 0.982, ΔAUC = 0.001 & N/A & SURVIVED & — \\
+H3: 73bp cluster & Fisher p < 0.05 after category matching & OR = 1.3 (matched) & 0.18 & KILLED & 2026-05-08 \\
+H4: AlphaGenome concordance & Spearman ρ ≥ 0.5 & ρ = 0.077 & 0.67 & KILLED & 2026-05-09 \\
+H5: TDRA router & OR > 1.5 vs matched controls & OR = 1.02 & 0.996 & KILLED & 2026-04-15 \\
+H6: Gene compactness & Spearman ρ > 0.3 across loci & ρ = −0.05 & 0.90 & KILLED & 2026-05-09 \\
+\bottomrule
+\end{tabular}
+\end{table}

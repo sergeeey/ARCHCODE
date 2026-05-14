@@ -1,0 +1,58 @@
+{
+  "hypothesis": "O3: Benford's Law on LSSIM Scores",
+  "data_source": "HBB_Unified_Atlas.csv",
+  "n_variants": 1103,
+  "n_lssim_scores": 1103,
+  "lssim_range": {
+    "min": 0.8659,
+    "max": 0.999,
+    "log_range": 0.062097748582604785
+  },
+  "benford_test": {
+    "label": "HBB LSSIM",
+    "n": 1103,
+    "observed_freq": {
+      "8": 0.1115140525838622,
+      "9": 0.8884859474161378,
+      "1": 0.0,
+      "2": 0.0,
+      "3": 0.0,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 0.0,
+      "7": 0.0
+    },
+    "expected_freq": {
+      "1": 0.3010299956639812,
+      "2": 0.17609125905568124,
+      "3": 0.12493873660829993,
+      "4": 0.09691001300805642,
+      "5": 0.07918124604762482,
+      "6": 0.06694678963061322,
+      "7": 0.05799194697768673,
+      "8": 0.05115252244738129,
+      "9": 0.04575749056067514
+    },
+    "ks_statistic": 0.7777777777777778,
+    "ks_p_value": 0.006293706293706292,
+    "chi2_statistic": 18194.076874431743,
+    "chi2_p_value": 0.0,
+    "digit_counts": {
+      "8": 123,
+      "9": 980
+    }
+  },
+  "shuffle_test": {
+    "original_ks": 0.7777777777777778,
+    "shuffle_mean_ks": 0.777777777777778,
+    "shuffle_std_ks": 2.220446049250313e-16,
+    "z_score": -1.0,
+    "interpretation": "REAL_DEVIATION"
+  },
+  "kill_criteria": [
+    "Log range 0.06 < 2.0 (Benford not applicable)"
+  ],
+  "verdict": "HYPOTHESIS KILLED",
+  "confidence": "HIGH",
+  "interpretation": "Benford's Law does NOT apply to LSSIM scores. LSSIM \u2208 [0.88, 0.99] covers ~0.05 log units (<<2 orders required). First digit distribution is dominated by 9's (boundary effect at max SSIM=1.0). This is expected for bounded similarity metrics and does NOT indicate anomalies."
+}

@@ -30,7 +30,7 @@ replaced_by: Аудит ARCHCODE — 16 апреля 2026
 | Hi-C корреляция r 0.28-0.59 | hic_correlation json (6 файлов) | VERIFIED |
 | SpliceAI 0.00 для всех 20 pearl SNV | spliceai_pearl_variants.csv | VERIFIED |
 | MPRA pearls неотличимы от non-pearl | p 0.91 Mann-Whitney | VERIFIED |
-| AlphaGenome CAGE: pearls -19 pct vs benign -0.1 pct | p 4e-6, real API | VERIFIED |
+| AlphaGenome CAGE: pearls -18 pct vs controls -3.2 pct | p 2.77e-4, real API | VERIFIED |
 | SCN5A и GJB2 тканевой mismatch null | 0 pearls, LSSIM около 1.0 | VERIFIED |
 | 49 тестов TypeScript проходят | vitest 49 из 49 pass | VERIFIED |
 | FOXP3 пациенты в hotspots | 0 найдено | VERIFIED NULL |

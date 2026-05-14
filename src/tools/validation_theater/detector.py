@@ -11,6 +11,7 @@ from dataclasses import dataclass, field
 
 from .patterns import synthetic_markers
 from .patterns import metric_patterns
+from .patterns import inline_synthetic
 
 
 @dataclass
@@ -23,6 +24,7 @@ class DetectionResult:
     risk_score: float  # 0-100
     synthetic_findings: Dict = field(default_factory=dict)
     metric_findings: Dict = field(default_factory=dict)
+    inline_synthetic_findings: Dict = field(default_factory=dict)
     warnings: List[str] = field(default_factory=list)
     summary: str = ""
 
@@ -106,17 +108,20 @@ class ValidationTheaterDetector:
         # Scan patterns
         synthetic_findings = synthetic_markers.scan_code(content)
         metric_findings = metric_patterns.scan_metrics(content)
+        inline_synthetic_findings = inline_synthetic.scan_inline_synthetic(content)
 
         # Calculate risk score
         risk_score, confidence, warnings = self._calculate_risk(
-            synthetic_findings, metric_findings, file_path.name
+            synthetic_findings, metric_findings, inline_synthetic_findings, file_path.name
         )
 
         # Determine verdict
         verdict = self._determine_verdict(risk_score)
 
         # Generate summary
-        summary = self._generate_summary(verdict, risk_score, synthetic_findings, metric_findings)
+        summary = self._generate_summary(
+            verdict, risk_score, synthetic_findings, metric_findings, inline_synthetic_findings
+        )
 
         return DetectionResult(
             file_path=str(file_path),
@@ -125,6 +130,7 @@ class ValidationTheaterDetector:
             risk_score=risk_score,
             synthetic_findings=synthetic_findings,
             metric_findings=metric_findings,
+            inline_synthetic_findings=inline_synthetic_findings,
             warnings=warnings,
             summary=summary,
         )
@@ -167,7 +173,11 @@ class ValidationTheaterDetector:
         return results
 
     def _calculate_risk(
-        self, synthetic_findings: Dict, metric_findings: Dict, filename: str
+        self,
+        synthetic_findings: Dict,
+        metric_findings: Dict,
+        inline_synthetic_findings: Dict,
+        filename: str,
     ) -> Tuple[float, float, List[str]]:
         """
         Calculate risk score and confidence.
@@ -212,6 +222,25 @@ class ValidationTheaterDetector:
             severity_weight = {"HIGH": 25, "MEDIUM": 12, "LOW": 6}
 
             weight = severity_weight.get(pattern_severity, 6)
+            risk_score += weight * avg_confidence
+            evidence_count += 1
+
+        # Inline synthetic patterns contribution (HIGHEST weight — hardest to detect)
+        for pattern_name, info in inline_synthetic_findings.items():
+            pattern_severity = info["severity"]
+            matches = info["matches"]
+
+            # Average confidence across matches
+            avg_confidence = sum(m[2] for m in matches) / len(matches)
+
+            # Skip low-confidence
+            if avg_confidence < self.min_confidence:
+                continue
+
+            # Weight by severity (HIGHER than regular synthetic — inline is sneakier)
+            severity_weight = {"HIGH": 30, "MEDIUM": 15, "LOW": 8}
+
+            weight = severity_weight.get(pattern_severity, 8)
             risk_score += weight * avg_confidence
             evidence_count += 1
 
@@ -260,12 +289,18 @@ class ValidationTheaterDetector:
             return "CLEAN"
 
     def _generate_summary(
-        self, verdict: str, risk_score: float, synthetic_findings: Dict, metric_findings: Dict
+        self,
+        verdict: str,
+        risk_score: float,
+        synthetic_findings: Dict,
+        metric_findings: Dict,
+        inline_synthetic_findings: Dict,
     ) -> str:
         """Generate human-readable summary."""
 
         n_synthetic = len(synthetic_findings)
         n_metrics = len(metric_findings)
+        n_inline = len(inline_synthetic_findings)
 
         if verdict == "CLEAN":
             return f"✅ No significant validation theater patterns detected (risk={risk_score:.0f}/100)"
@@ -284,6 +319,16 @@ class ValidationTheaterDetector:
             summary += f"Suspicious metrics found: {n_metrics}\n"
             high_sev = [
                 name for name, info in metric_findings.items() if info["severity"] == "HIGH"
+            ]
+            if high_sev:
+                summary += f"  High-severity: {', '.join(high_sev[:3])}\n"
+
+        if n_inline > 0:
+            summary += f"Inline synthetic patterns found: {n_inline}\n"
+            high_sev = [
+                name
+                for name, info in inline_synthetic_findings.items()
+                if info["severity"] == "HIGH"
             ]
             if high_sev:
                 summary += f"  High-severity: {', '.join(high_sev[:3])}\n"
