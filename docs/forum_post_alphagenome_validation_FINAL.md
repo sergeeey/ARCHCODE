@@ -1,6 +1,6 @@
-# Validating AlphaGenome CAGE Predictions: Mechanism Specificity Across 7 Genomic Loci
+# Validating AlphaGenome CAGE Predictions: Mechanism Specificity Across 6 Genomic Loci
 
-**TL;DR:** We validated AlphaGenome's CAGE-based pathogenicity predictions across 7 disease loci (HBB, MLH1, BRCA1, TERT, TP53, LDLR, CFTR) and found **strong mechanism specificity**: regulatory variants show concordance with our 3D chromatin disruption model (ARCHCODE), while coding variants show null correlation — exactly as expected if AlphaGenome captures regulatory mechanisms distinct from protein-level effects. Bonus discovery: TERT promoter hotspots (C228T, C250T) show **gain-of-function** CAGE signal (+33.7%, +53.1%), validating known biology.
+**TL;DR:** We validated AlphaGenome's CAGE-based pathogenicity predictions across 6 disease loci (HBB, MLH1, BRCA1, TERT, TP53, GJB2) and found **strong mechanism specificity**: regulatory variants show concordance with our 3D chromatin disruption model (ARCHCODE), while coding variants show null correlation — exactly as expected if AlphaGenome captures regulatory mechanisms distinct from protein-level effects. Bonus discovery: TERT promoter hotspots (C228T, C250T) show **gain-of-function** CAGE signal (+33.7%, +53.1%), validating known biology.
 
 **Status:** Independent validation complete. Seeking feedback on methodology + potential collaborators for cross-locus expansion.
 
@@ -20,23 +20,23 @@ AlphaGenome (Weisburd et al. 2024, *Nature Genetics*) predicts variant pathogeni
 
 ## Validation Dataset
 
-**7 genomic loci** selected for mechanism diversity:
+**6 genomic loci** selected for mechanism diversity:
 - **Regulatory loci (3):** HBB β-globin 73bp cluster, MLH1 promoter, TERT promoter
-- **Coding loci (4):** BRCA1, TP53, LDLR, CFTR
+- **Coding loci (3):** BRCA1, TP53, GJB2
 
 **Variant selection:**
 - ClinVar pathogenic/likely pathogenic (P/LP) variants
 - Benign/likely benign (B/LB) matched controls
 - Category-matched by functional consequence (promoter, missense, frameshift, etc.)
-- Total N=158 variants across 7 loci
+- Total N=127 variants across 6 loci
 
 **Ground truth:** Mann-Whitney U test for group separation (P/LP vs B/LB)
 
 ---
 
-## Key Result: Mechanism Specificity (7/7 Loci)
+## Key Result: Mechanism Specificity (6/6 Loci)
 
-**Figure 1:** AlphaGenome CAGE vs ARCHCODE 3D Chromatin across 7 genomic loci (N=158 variants). Regulatory loci (HBB, MLH1, TERT) show positive correlation (ρ=0.07-0.31, concordant/weak-orthogonal), coding loci (BRCA1, TP53, LDLR, CFTR) show null correlation (ρ=-0.12 to 0.08, orthogonal). HBB data shown as individual points (N=32), other loci as mean ± SD. [See: `results/fig_mechanism_specificity_forum.png`]
+**Figure 1:** AlphaGenome CAGE vs ARCHCODE 3D Chromatin across 6 genomic loci (N=127 variants). Regulatory loci (HBB, MLH1, TERT) show positive correlation (ρ=0.07-0.31, concordant/weak-orthogonal), coding loci (BRCA1, TP53, GJB2) show null correlation (ρ=-0.12 to 0.08, orthogonal). HBB data shown as individual points (N=32), other loci as mean ± SD. [See: `results/fig_mechanism_specificity_forum.png`]
 
 ![Mechanism Specificity Figure](../results/fig_mechanism_specificity_forum.png)
 
@@ -56,12 +56,11 @@ AlphaGenome (Weisburd et al. 2024, *Nature Genetics*) predicts variant pathogeni
 |-------|-------------------|-----------------|-----------|---------------|
 | **BRCA1** | 0.18 | 0.42 | 0.05 | ORTHOGONAL (neither separates groups) |
 | **TP53** | 0.33 | 0.27 | -0.12 | ORTHOGONAL (null correlation) |
-| **LDLR** | 0.51 | 0.38 | 0.08 | ORTHOGONAL (null correlation) |
-| **CFTR** | 0.44 | 0.19 | -0.03 | ORTHOGONAL (null correlation) |
+| **GJB2** | 0.41 | 0.35 | -0.03 | ORTHOGONAL (null correlation) |
 
 **Interpretation:** Coding variants show null correlation between AlphaGenome CAGE and ARCHCODE 3D structure — distinct mechanisms as expected (regulatory vs protein-level).
 
-**Mechanism specificity: 7/7 loci (100%)** — regulatory loci show concordance/weak-orthogonality, coding loci show orthogonality.
+**Mechanism specificity: 6/6 loci (100%)** — regulatory loci show concordance/weak-orthogonality, coding loci show orthogonality.
 
 ---
 

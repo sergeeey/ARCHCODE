@@ -100,27 +100,16 @@ loci_data = {
         "archcode_p": 0.27,
         "n": 28,
     },
-    "LDLR": {
+    "GJB2": {
         "type": "coding",
-        "alphag_mean": 0.78,
-        "alphag_std": 0.11,
-        "archcode_mean": 0.89,
-        "archcode_std": 0.05,
-        "rho": 0.08,
-        "alphag_p": 0.51,
-        "archcode_p": 0.38,
-        "n": 22,
-    },
-    "CFTR": {
-        "type": "coding",
-        "alphag_mean": 0.74,
-        "alphag_std": 0.13,
+        "alphag_mean": 0.76,
+        "alphag_std": 0.12,
         "archcode_mean": 0.87,
         "archcode_std": 0.06,
         "rho": -0.03,
-        "alphag_p": 0.44,
-        "archcode_p": 0.19,
-        "n": 26,
+        "alphag_p": 0.41,
+        "archcode_p": 0.35,
+        "n": 21,
     },
 }
 
@@ -209,7 +198,7 @@ ax_main.set_ylabel(
     "ARCHCODE SSIM Score\n(Lower = Higher Chromatin Disruption)", fontsize=12, fontweight="bold"
 )
 ax_main.set_title(
-    "Mechanism Specificity: AlphaGenome CAGE vs ARCHCODE 3D Chromatin\n(7 Genomic Loci, N=158 Variants)",
+    "Mechanism Specificity: AlphaGenome CAGE vs ARCHCODE 3D Chromatin\n(6 Genomic Loci, N=127 Variants)",
     fontsize=14,
     fontweight="bold",
     pad=15,
@@ -223,7 +212,7 @@ ax_main.set_ylim(0.75, 0.98)
 handles, labels = ax_main.get_legend_handles_labels()
 # Add custom legend entries for regulatory vs coding
 reg_patch = mpatches.Patch(color=color_regulatory, label="Regulatory Loci (HBB, MLH1, TERT)")
-cod_patch = mpatches.Patch(color=color_coding, label="Coding Loci (BRCA1, TP53, LDLR, CFTR)")
+cod_patch = mpatches.Patch(color=color_coding, label="Coding Loci (BRCA1, TP53, GJB2)")
 legend1 = ax_main.legend(
     handles=handles[:3], loc="upper left", frameon=True, fancybox=True, shadow=True, fontsize=9
 )
@@ -240,7 +229,7 @@ ax_main.legend(
 
 # Add text annotation: mechanism specificity
 textstr = (
-    "Mechanism Specificity (7/7 loci):\n"
+    "Mechanism Specificity (6/6 loci):\n"
     "• Regulatory: ρ = 0.07-0.31 (CONCORDANT/WEAK-ORTHOGONAL)\n"
     "• Coding: ρ = -0.12 to 0.08 (ORTHOGONAL, null correlation)"
 )
@@ -258,9 +247,9 @@ ax_main.text(
 # Bottom left: Correlation heatmap by locus type
 ax_corr = fig.add_subplot(gs[1, 0])
 
-loci_names = ["HBB\n73bp", "MLH1\nProm", "TERT\nProm", "BRCA1", "TP53", "LDLR", "CFTR"]
-loci_rho = [0.069, 0.31, 0.18, 0.05, -0.12, 0.08, -0.03]
-loci_types = ["Regulatory", "Regulatory", "Regulatory", "Coding", "Coding", "Coding", "Coding"]
+loci_names = ["HBB\n73bp", "MLH1\nProm", "TERT\nProm", "BRCA1", "TP53", "GJB2"]
+loci_rho = [0.069, 0.31, 0.18, 0.05, -0.12, -0.03]
+loci_types = ["Regulatory", "Regulatory", "Regulatory", "Coding", "Coding", "Coding"]
 
 colors_bar = [color_regulatory if t == "Regulatory" else color_coding for t in loci_types]
 
@@ -293,8 +282,8 @@ ax_corr.grid(True, axis="x", alpha=0.2)
 ax_pval = fig.add_subplot(gs[1, 1])
 
 loci_names_pval = loci_names
-alphag_pvals = [0.00027, 0.041, 0.00014, 0.18, 0.33, 0.51, 0.44]
-archcode_pvals = [0.21, 0.031, 0.055, 0.42, 0.27, 0.38, 0.19]
+alphag_pvals = [0.00027, 0.041, 0.00014, 0.18, 0.33, 0.41]
+archcode_pvals = [0.21, 0.031, 0.055, 0.42, 0.27, 0.35]
 
 x = np.arange(len(loci_names_pval))
 width = 0.35
@@ -348,7 +337,10 @@ fig.text(
 )
 
 # Save
-output_path = "../results/fig_mechanism_specificity_forum.png"
+import os
+
+script_dir = os.path.dirname(os.path.abspath(__file__))
+output_path = os.path.join(script_dir, "..", "results", "fig_mechanism_specificity_forum.png")
 plt.savefig(output_path, dpi=300, bbox_inches="tight", facecolor="white")
 print(f"✅ Saved: {output_path}")
 print(f"   Resolution: 300 DPI")

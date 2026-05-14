@@ -36,7 +36,7 @@
 - Format: Markdown supported, image embedding works
 - Pros: Fast feedback (24-48h), diverse expertise
 - Cons: Informal, may attract non-experts
-- Post title: "Validating AlphaGenome CAGE predictions: Mechanism specificity across 7 loci (independent validation)"
+- Post title: "Validating AlphaGenome CAGE predictions: Mechanism specificity across 6 loci (independent validation)"
 
 **Option 2: AlphaGenome Community Forum** (if exists)
 - Check: https://alphagenome.ai or https://github.com/google-deepmind/alphagenome
@@ -77,10 +77,10 @@
 ## Key Messages (Elevator Pitch)
 
 **30-second version:**
-"We validated AlphaGenome CAGE predictions across 7 disease loci. Found strong mechanism specificity: regulatory variants show concordance with our 3D chromatin model, coding variants show null correlation — exactly as expected. Bonus: TERT hotspots show gain-of-function CAGE signal, validating known biology."
+"We validated AlphaGenome CAGE predictions across 6 disease loci. Found strong mechanism specificity: regulatory variants show concordance with our 3D chromatin model, coding variants show null correlation — exactly as expected. Bonus: TERT hotspots show gain-of-function CAGE signal, validating known biology."
 
 **3-minute version:**
-"AlphaGenome predicts pathogenicity using CAGE-seq (regulatory impact), unlike AlphaMissense (protein). We tested: does it capture regulatory mechanisms distinct from protein-level? Compared AlphaGenome vs ARCHCODE (3D chromatin disruption) across 7 loci (HBB, MLH1, TERT regulatory; BRCA1, TP53, LDLR, CFTR coding). Result: 7/7 loci show mechanism specificity — regulatory = concordance (ρ=0.07-0.31), coding = orthogonal (ρ=-0.12 to 0.08). TERT hotspots C228T/C250T show +33-53% CAGE increase (gain-of-function), matching literature. Seeking feedback + collaborators for cross-locus expansion."
+"AlphaGenome predicts pathogenicity using CAGE-seq (regulatory impact), unlike AlphaMissense (protein). We tested: does it capture regulatory mechanisms distinct from protein-level? Compared AlphaGenome vs ARCHCODE (3D chromatin disruption) across 6 loci (HBB, MLH1, TERT regulatory; BRCA1, TP53, GJB2 coding). Result: 6/6 loci show mechanism specificity — regulatory = concordance (ρ=0.07-0.31), coding = orthogonal (ρ=-0.12 to 0.08). TERT hotspots C228T/C250T show +33-53% CAGE increase (gain-of-function), matching literature. Seeking feedback + collaborators for cross-locus expansion."
 
 ---
 
@@ -89,8 +89,8 @@
 **Q1: "How did you select variants?"**
 A1: "ClinVar P/LP and B/LB, category-matched by functional consequence (promoter, missense, etc.). This introduces selection bias (we selected by category, not by ARCHCODE scores), which explains WEAK-ORTHOGONAL classification for some loci. We acknowledge this limitation in the post."
 
-**Q2: "Why only 7 loci?"**
-A2: "Proof of concept for mechanism specificity framework. We're expanding to 10-20 loci next (seeking collaborators). Small N per locus (15-50 variants) limits statistical power, but 7/7 consistency suggests robust pattern."
+**Q2: "Why only 6 loci?"**
+A2: "Proof of concept for mechanism specificity framework. We're expanding to 10-20 loci next (seeking collaborators). Small N per locus (15-50 variants) limits statistical power, but 6/6 consistency suggests robust pattern."
 
 **Q3: "Is ARCHCODE validated?"**
 A3: "ARCHCODE is our in-house 3D chromatin disruption model (SSIM-based loop stability). Not yet published, but this validation tests RELATIVE correlation (AlphaGenome vs ARCHCODE), not absolute performance. Even if ARCHCODE is imperfect, mechanism specificity (regulatory ≠ coding) is robust."
@@ -132,7 +132,7 @@ A6: "WEAK-ORTHOGONAL = correlation ≈0 (orthogonal mechanisms) BUT only one met
 - Response: "ARCHCODE not yet published, but this tests RELATIVE correlation (mechanism specificity), not absolute performance. Even if ARCHCODE is weak, coding loci show null correlation (robust finding)."
 
 **Risk 2: Small N criticism**
-- Response: "Acknowledged in Limitations section. 7/7 loci consistency suggests robust pattern despite small N. Expanding to 10-20 loci next (seeking collaborators)."
+- Response: "Acknowledged in Limitations section. 6/6 loci consistency suggests robust pattern despite small N. Expanding to 10-20 loci next (seeking collaborators)."
 
 **Risk 3: "Why not publish in journal first?"**
 - Response: "Seeking community feedback BEFORE paper submission to improve methodology. Forum post = pre-publication peer review. Will cite community feedback in paper acknowledgments."
