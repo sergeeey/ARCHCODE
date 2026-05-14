@@ -211,6 +211,12 @@ python orthogonality_detector.py
 
 # Реальные данные (ARCHCODE × AlphaGenome)
 python test_real_archcode_alphag.py
+
+# Визуализация (single plot)
+python plot_classification.py
+
+# Batch examples (2×2 grid)
+python test_batch_examples.py
 ```
 
 **Expected output:**
@@ -218,7 +224,12 @@ python test_real_archcode_alphag.py
 Test 1: WEAK-ORTHOGONAL (real ARCHCODE × AlphaGenome)
 Test 2: CONCORDANT (synthetic high correlation)
 Test 3: CONFLICTING (synthetic negative correlation)
+Batch: 4 examples in 2×2 grid
 ```
+
+**Figures generated:**
+- `results/fig_orthogonality_archcode_alphag.png` — single plot (ARCHCODE × AlphaGenome)
+- `results/fig_orthogonality_batch_examples.png` — batch plot (4 examples)
 
 ---
 
