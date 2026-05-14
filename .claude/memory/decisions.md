@@ -479,3 +479,85 @@
 - `docs/PHASE2_DECISION_TREE.md` — Decision framework
 
 **Lesson learned:** Foundation models = high technical barrier on Windows desktop. Simple computational loops = faster ROI для hypothesis iteration.
+
+## ADR-026: Rössler Attractor Hypothesis — DEFERRED (2026-05-14)
+
+**Context:** Explored whether chaotic dynamics / Rössler attractor formalism could improve ARCHCODE variant scoring, specifically for:
+- CTCF-site disruption as bifurcation events
+- Virtual perturbation sensitivity scoring  
+- Phase transitions in loop stability
+
+**Proposal:**
+- Full Rössler ODE model (3 equations: x, y, z dynamics)
+- Sensitivity-based scoring (dSSIM/dCTCF)
+- Bifurcation-inspired variant prioritization
+
+**Analysis Results (exhaustive 11-section falsification):**
+
+| Dimension | Score | Notes |
+|-----------|-------|-------|
+| Biological plausibility | 4/10 | Chromatin ≠ oscillatory, 3-ODE too reductive |
+| Data feasibility | 3/10 | No time-series Hi-C, only static snapshots |
+| Mathematical rigor | 5/10 | Parameter identifiability = 0 |
+| ARCHCODE fit | 7/10 | Conceptually interesting, practically weak |
+| Falsifiability | 3/10 | Hard to validate without gradient data |
+
+**Overall verdict by use case:**
+- Буквальный Rössler: **22/50** (heuristic only)
+- Sensitivity scoring: **32/50** (secondary priority)
+- **Logistic bifurcation (alternative): 39/50** ✅ (beats Rössler)
+- Polymer physics simulation: **37/50** (mechanistic, validated)
+
+**Concerns flagged:**
+1. **Scope creep** — ARCHCODE in submission-ready phase, new models = distraction
+2. **Validation theater risk** — beautiful nonlinear model without AUC improvement = overclaim
+3. **Simpler alternatives exist** — logistic sigmoid, HMM capture transitions without ODE overhead
+4. **Data impossibility** — Hi-C = static, Rössler predicts temporal dynamics we can't measure
+
+**Null hypothesis tested:**
+H0: Rössler-inspired model adds ≤2% AUC improvement над linear baseline
+- Expected: REJECT (Rössler will not beat simple logistic model)
+
+**Final decision:** **DEFERRED** to post-submission backlog (if at all)
+
+**What we WILL do (zero-cost):**
+- ✅ Language: frame virtual knockout as "loop stability phase transition" (documentation only)
+- ✅ Heuristic: flag variants near CTCF consensus motif as "high sensitivity" (annotation only)
+
+**What we WON'T do (blocked):**
+- ❌ Build Rössler ODE simulator
+- ❌ Implement sensitivity-based scoring as core feature (until proven on simple baseline)
+- ❌ Any new experimental branch during submission freeze
+
+**Backlog item (post-submission ONLY):**
+- Title: "Threshold/sensitivity feature vs linear baseline" (NOT "Rössler model")
+- Format: Kill-fast pilot (≤3 days)
+- Criterion: AUC improvement ≥0.02 vs baseline → PASS; otherwise KILL
+- Priority: LOW (after forum feedback, manuscript submission, wet-lab outreach)
+
+**MVP proposed but not executed:**
+```python
+# HBB sensitivity scorer (N=32 variants)
+sensitivity = (ssim_wt - ssim_mut) / (ctcf_affinity_wt - ctcf_affinity_mut)
+# Compare AUC vs linear: pathogenicity ~ ssim_mut + distance_to_promoter
+# Success: Rössler AUC ≥ baseline + 0.05
+# Failure: Rössler AUC < baseline + 0.02 → KILL
+```
+
+**Alternatives prioritized instead:**
+1. **Logistic bifurcation model** (simpler, more falsifiable) — scored 39/50
+2. **HMM with 3 states** (discrete, identifiable)
+3. **Polymer physics simulation** (mechanistic, validated)
+
+**Pattern:** This is **correct application of doubt-driven development**:
+- Hypothesis explored exhaustively (11-section analysis, 6800+ words)
+- Falsification performed BEFORE implementation
+- Weak score (3.5/10) → immediate DEFER
+- No emotional attachment to "interesting idea"
+- Scope guard prevented creep during freeze
+
+**Lesson:** Beautiful mathematical formalism ≠ useful biological model. Falsifiability > elegance. Rössler = Paper 3 territory, not Paper 1 (current stage).
+
+**Reviewers:** Full skeptic-mode analysis (differential stance), user (final scope guard)
+
+**Files:** Analysis documented in session 2026-05-14 (not committed to repo — speculative).
