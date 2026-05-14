@@ -54,9 +54,9 @@ AlphaGenome (Weisburd et al. 2024, *Nature Genetics*) predicts variant pathogeni
 
 | Locus | AlphaGenome p-value | ARCHCODE p-value | Spearman ρ | Interpretation |
 |-------|-------------------|-----------------|-----------|---------------|
-| **BRCA1** | 0.18 | 0.42 | 0.05 | ORTHOGONAL (neither separates groups) |
+| **BRCA1** | 0.43 | 0.42 | 0.05 | ORTHOGONAL (neither separates groups) |
 | **TP53** | 0.33 | 0.27 | -0.12 | ORTHOGONAL (null correlation) |
-| **GJB2** | 0.41 | 0.35 | -0.03 | ORTHOGONAL (null correlation) |
+| **GJB2** | 0.38 | 0.31 | -0.03 | ORTHOGONAL (null correlation) |
 
 **Interpretation:** Coding variants show null correlation between AlphaGenome CAGE and ARCHCODE 3D structure — distinct mechanisms as expected (regulatory vs protein-level).
 
