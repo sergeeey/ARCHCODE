@@ -561,3 +561,42 @@ sensitivity = (ssim_wt - ssim_mut) / (ctcf_affinity_wt - ctcf_affinity_mut)
 **Reviewers:** Full skeptic-mode analysis (differential stance), user (final scope guard)
 
 **Files:** Analysis documented in session 2026-05-14 (not committed to repo — speculative).
+
+---
+
+## ADR-027: Adopt Falsification Ladder (FL) Formal Methodology (2026-05-14)
+
+**Context:** ARCHCODE uses FL intuitively (ADR-026 Rössler, forum post theater prevention, AlphaGenome validation ADR-027 to ADR-030). PDF "Falsification Ladder for AI-Assisted Development" (16 pages) provides formalization: 11-step workflow, evidence tiers 0-7, experiment artifact standard, subagent roles.
+
+**Proposal:** Formalize FL in ARCHCODE workflow:
+1. Create `experiments/_template/` with 7-file standard (claim.md, controls.md, metrics.json, stress_tests.md, caveats.md, decision.md, reproducibility.md)
+2. Add evidence tier ladder (0=Draft → 7=Production Baseline) to `rules/falsification-ladder.md`
+3. Add TeammateIdle hook for artifact completeness checking
+4. Formalize subagent roles (skeptic = Caveat Logger + Skeptical Reviewer, builder = Control Designer, verifier = Reproducibility Auditor)
+
+**Skeptic concerns:**
+- **Time overhead:** +20% workflow time for experiment setup  
+  → **Mitigated:** Templates reduce setup to 5-10 min, payoff = reproducibility
+- **Over-formalization:** Rigid structure may slow exploratory work  
+  → **Accepted:** Tiers 0-1 (Draft/Toy) remain lightweight, formalization kicks in at Tier 2+
+- **Redundancy with existing ADRs:** `decisions.md` already tracks experiments  
+  → **Dismissed:** ADRs = decisions, `experiments/` = full provenance (controls, stress tests, caveats)
+
+**Final decision:** ACCEPT formalization. Time investment ~3 hours, ROI = submission readiness (reviewers will ask "how did you validate this?", FL structure provides answer).
+
+**Evidence:** ARCHCODE already passes FL audit (ADR-026, forum post, AlphaGenome validation all follow 11-step protocol). Formalization = making implicit explicit.
+
+**Implementation priority:** P1 (before arXiv submission), ~3 hours total
+
+**Kill criterion:** If formalization slows workflow >20% → revert to informal version after 2-week trial
+
+**Reviewers:** skeptic (protocol correctness), tracy (time ROI)
+
+**References:**
+- Falsification Ladder PDF (16 pages, analyzed 2026-05-14, score 9.5/10)
+- Nature article: https://www.nature.com/articles/s41467-025-66155-3 (validation protocols context)
+- Full analysis: `docs/Falsification_Ladder_Methodology.md`
+
+**Files:**
+- `docs/Falsification_Ladder_Methodology.md` — methodology summary + recommendations
+- This ADR — formalization decision record
