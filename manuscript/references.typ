@@ -28,6 +28,8 @@
 
 + Schmitt, A. D., Hu, M., & Ren, B. (2016). Genome-wide mapping and analysis of chromosome architecture. _Nature Reviews Molecular Cell Biology_, 17(12), 743–755. https://doi.org/10.1038/nrm.2016.104
 
++ Temple, S. M., Rohland, N., Mallick, S., Patterson, N., & Browning, B. L. (2026). Multiple-testing corrections in case-control studies using identity-by-descent segments. _American Journal of Human Genetics_ (in press). Cell Press.
+
 + Wang, Z., Bovik, A. C., Sheikh, H. R., & Simoncelli, E. P. (2004). Image quality assessment: From error visibility to structural similarity. _IEEE Transactions on Image Processing_, 13(4), 600–612. https://doi.org/10.1109/TIP.2003.819861
 
 + Zhou, J., Theesfeld, C. L., Yao, K., Chen, K. M., Wong, A. K., & Troyanskaya, O. G. (2022). Deep learning sequence models for assessing regulatory variants and non-coding disease mutations. _bioRxiv_, 2022.11.09.515796. https://doi.org/10.1101/2022.11.09.515796

@@ -2141,6 +2141,20 @@ Pathogenic classifications for Group 1 variants, but does not
 independently justify reclassification of VUS variants without
 experimental confirmation.
 
+== Discussion
+
+=== Cross-Method Validation and Complementary Approaches
+
+The integration of multiple orthogonal methods strengthens rare variant interpretation beyond what any single approach can provide. Identity-by-descent (IBD) mapping demonstrates complementary value to genome-wide association studies for rare variant discovery, particularly when multiple causal haplotypes contribute to disease risk @Temple2026. Like Temple et al.'s validation protocol combining selection scans with phenotype randomization, we employ matched controls and category-aware validation to distinguish true regulatory disruption from annotation artifacts.
+
+Our validation strategy follows established principles for rare variant association: allele-frequency matching prevents population structure confounding, category matching controls for functional consequence biases, and cross-locus replication across nine genomic regions establishes generalizability. The combination of ARCHCODE structural predictions with external benchmarks (Hi-C correlation, AlphaGenome concordance, Akita replication) provides convergent evidence analogous to multi-method triangulation in case-control studies.
+
+=== Limitations and Future Directions
+
+Several limitations temper interpretation. First, within-category discrimination remains weak (ΔAUC < 0.02 on BRCA1/MLH1), suggesting that positional signal alone cannot fully resolve pathogenicity among functionally similar variants. Second, while Hi-C correlation validates aggregate structural patterns (r = 0.29–0.59 across loci), cell-type specificity limits direct comparison to tissue-matched experimental data. Third, parameter calibration (α=0.92, γ=0.80) reflects literature-guided manual tuning rather than locus-specific fitting; Bayesian optimization confirmed near-optimal values (Δr=0.0001) but does not replace experimental FRAP validation.
+
+Future work should prioritize: (1) variant-level perturbation experiments (CRISPR-based reporter assays) to validate SSIM predictions; (2) tissue-matched Hi-C integration beyond immortalized cell lines; (3) dynamic chromatin features (cohesin residence time, TAD boundary strength) to refine structural models; (4) expansion to non-coding disease loci where regulatory mechanisms dominate.
+
 == Data Availability
 #strong[Unified dataset (v2.0):] `HBB_Unified_Atlas.csv` (1,103 rows:
 353 Pathogenic + 750 Benign, single pipeline)
