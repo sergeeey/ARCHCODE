@@ -1,0 +1,152 @@
+# Synthetic Data Markers — Detection Rules
+#
+# Detects code patterns that indicate synthetic/mock data generation.
+# Used by validation_theater_detector.core.TheaterDetector
+#
+# Rule Format:
+#   - id: unique identifier
+#     pattern: regex pattern (Python re syntax)
+#     severity: HIGH | MEDIUM | LOW
+#     weight: confidence contribution (0.0-1.0)
+#     message: human-readable description
+#     suggestion: remediation advice
+#     examples:
+#       positive: [code snippets that should match]
+#       negative: [code snippets that should NOT match]
+#
+# Version: 1.0
+# Last Updated: 2026-05-16
+
+rules:
+  # Random seed patterns
+  - id: numpy_random_seed
+    pattern: 'np\.random\.seed\('
+    severity: MEDIUM
+    weight: 0.3
+    message: "NumPy random seed detected — likely synthetic data generation"
+    suggestion: "If this is validation code, cite external data source or mark as [VERIFIED-SYNTHETIC]"
+    examples:
+      positive:
+        - "np.random.seed(42)"
+        - "import numpy as np\nnp.random.seed(0)"
+      negative:
+        - "# Unit test setup\nnp.random.seed(42)"  # OK in unit tests
+        - "random.seed(42)"  # Different module
+
+  - id: random_seed_stdlib
+    pattern: 'random\.seed\('
+    severity: MEDIUM
+    weight: 0.3
+    message: "Python random seed detected — likely synthetic data generation"
+    suggestion: "If this is validation code, cite external data source or mark as [VERIFIED-SYNTHETIC]"
+    examples:
+      positive:
+        - "random.seed(123)"
+        - "import random\nrandom.seed(0)"
+      negative:
+        - "np.random.seed(42)"  # NumPy, not stdlib
+
+  # Mock/synthetic function prefixes
+  - id: mock_function_prefix
+    pattern: '\b(mock_|MOCK_|Mock[A-Z])\w+'
+    severity: HIGH
+    weight: 0.4
+    message: "Mock function/class detected"
+    suggestion: "Mock data should be marked [VERIFIED-SYNTHETIC], not [VERIFIED]"
+    examples:
+      positive:
+        - "mock_data = generate()"
+        - "MOCK_API_RESPONSE = {...}"
+        - "class MockValidator:"
+      negative:
+        - "# Testing with unittest.mock"  # Framework usage, OK
+
+  - id: synthetic_function_prefix
+    pattern: '\b(create_synthetic_|generate_test_|make_fake_)\w+'
+    severity: HIGH
+    weight: 0.5
+    message: "Synthetic data generation function detected"
+    suggestion: "Mark outputs as [VERIFIED-SYNTHETIC], never [VERIFIED]"
+    examples:
+      positive:
+        - "create_synthetic_dataset(n=100)"
+        - "generate_test_examples()"
+        - "make_fake_abstracts(count=50)"
+      negative:
+        - "create_dataset_from_api()"  # Real data from API
+
+  # Synthetic dataset variable names
+  - id: synthetic_variable_names
+    pattern: '\b(synthetic|mock|fake|dummy)_?(data|dataset|examples?|samples?)\b'
+    severity: MEDIUM
+    weight: 0.35
+    message: "Synthetic data variable name detected"
+    suggestion: "Ensure this is marked [VERIFIED-SYNTHETIC] if used in validation"
+    examples:
+      positive:
+        - "synthetic_data = np.random.randn(100, 10)"
+        - "mock_dataset = load_fake()"
+        - "dummy_examples = [...]"
+      negative:
+        - "real_data = load_from_api()"
+        - "external_dataset = fetch()"
+
+  # Placeholder/demo data markers
+  - id: placeholder_data
+    pattern: '\b(placeholder|demo|example|sample)_data\b'
+    severity: LOW
+    weight: 0.2
+    message: "Placeholder/demo data variable detected"
+    suggestion: "Do not use placeholder data for validation — cite real sources"
+    examples:
+      positive:
+        - "placeholder_data = [1, 2, 3]"
+        - "demo_data = generate()"
+      negative:
+        - "user_data = fetch_real()"
+
+  # Hardcoded test data arrays
+  - id: hardcoded_test_array
+    pattern: '(test_cases|test_data|test_examples)\s*=\s*\['
+    severity: MEDIUM
+    weight: 0.3
+    message: "Hardcoded test data array — may be synthetic"
+    suggestion: "If used for validation, cite external source or mark [VERIFIED-SYNTHETIC]"
+    examples:
+      positive:
+        - "test_cases = [(1, 2), (3, 4)]"
+        - "test_data = [...]"
+      negative:
+        - "test_cases = load_from_file('real_data.json')"
+
+  # Random number generation (validation context)
+  - id: random_generation_validation
+    pattern: '(np\.random\.(randn|rand|randint|choice)|random\.(randint|choice|sample))\('
+    severity: LOW
+    weight: 0.2
+    message: "Random data generation detected"
+    suggestion: "Validation must use real-world data, not random generation"
+    context_required: true  # Only flag if near validation keywords
+    context_keywords:
+      - "validation"
+      - "F1"
+      - "precision"
+      - "recall"
+      - "accuracy"
+      - "AUC"
+    examples:
+      positive:
+        - "# Validation\ndata = np.random.randn(100)"
+        - "accuracy = test(random.choice(...))"
+      negative:
+        - "# Unit test\ndata = np.random.randn(100)"  # OK in unit tests
+
+# Meta-rule: Confidence boost
+# If ≥3 rules match in same file → boost all confidences by +0.15
+# If ≥5 rules match → boost by +0.3
+# Applied in core.py:_adjust_severity_by_confidence()
+
+# Severity thresholds (defined in core.py):
+# confidence ≥ 0.7 → HIGH
+# 0.4 ≤ confidence < 0.7 → MEDIUM
+# confidence < 0.4 → LOW
