@@ -1,8 +1,8 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-05-15  
+**Last Updated:** 2026-05-16  
 **Current Branch:** experiment/spectral-collapse-pilot  
-**Session Focus:** Recovery from system restart → commit rescue → 3000+ lines saved
+**Session Focus:** Ronin/arXiv status check → Max Imakaev hot lead → VT Detector start
 
 ---
 
@@ -47,6 +47,47 @@
 **Lesson:** Commit frequently (every 30-60 min). Tracy System priorities (A1/frog) correctly identified critical path: save work FIRST, analyze later.
 
 **Status:** All work protected. Ready for next phase.
+
+---
+
+## Session 2026-05-16: Inbox Audit → Hot Lead Found ✅
+
+**Situation:** Pending Ronin decision (expected May 10, now May 16) + arXiv endorsement stuck 45+ days
+
+**Actions Taken:**
+1. ✅ Gmail inbox audit — checked Ronin, arXiv endorsers, think tank emails
+2. ✅ Found critical bounces: PIIE `info@piie.com` → 550 (address does not exist)
+3. ✅ Confirmed arXiv status: 3 failed (Fudenberg bounced, Paulsen refused, Polovnikov can't), 3 no response
+4. ✅ **HOT LEAD:** Kirill Polovnikov recommended Max Imakaev (`mimakaev@gmail.com`) — strong endorsement signal
+5. ✅ Created 2 Gmail drafts: (a) Imakaev arXiv request, (b) PIIE retry via `communications@piie.com`
+6. ✅ User sent both emails (confirmed)
+
+**arXiv Endorsement Tracker (updated):**
+
+| Endorser | Status | Date | Details |
+|----------|--------|------|---------|
+| Geoff Fudenberg (USC) | ❌ BOUNCED | Apr 1 | Email `fudenberg@usc.edu` invalid (550) |
+| Jonas Paulsen (Oslo) | ❌ REFUSED | Apr 15 | "No time to endorse" |
+| Kirill Polovnikov (Skoltech) | ❌ CAN'T | Apr 7 | No q-bio track record |
+| → **Max Imakaev recommendation** | 🔥 **HOT LEAD** | May 16 | Email sent today (Polovnikov referral) |
+| Anders Hansen (MIT) | ⏳ PENDING | Apr 1 | 45 days no response |
+| Luca Giorgetti (FMI Basel) | ⏳ PENDING | Apr 1 | 45 days no response |
+| Leonid Mirny (MIT) | ⏳ PENDING | Apr 1-2 | 45 days no response (2 emails) |
+
+**Ronin Institute (RIIS 2.0):**
+- No official decision email yet
+- Discord activity: mentions in #news-forum, #watercooler, #fellowships-funding (May 8-15)
+- RIIS newsletter May 1 (unread) — contains "lightning talks + new calendar"
+- **Action:** Check Discord manually for application status updates
+
+**Think Tank Emails:**
+- PIIE: `info@piie.com` BOUNCED → resent to `communications@piie.com` (May 16)
+- RAND, Brookings, CSIS: sent, no bounce (delivered successfully)
+
+**Next Steps:**
+1. Wait for Max Imakaev response (3-7 days expected)
+2. Check RIIS 2.0 Discord for decision timeline
+3. Start VT Detector (momentum continues)
 
 ---
 
