@@ -32,4 +32,6 @@
 
 + Wang, Z., Bovik, A. C., Sheikh, H. R., & Simoncelli, E. P. (2004). Image quality assessment: From error visibility to structural similarity. _IEEE Transactions on Image Processing_, 13(4), 600–612. https://doi.org/10.1109/TIP.2003.819861
 
++ Wirth, B., Das, J., Kölbel, H., Goh, S., Farrar, M. A., Piano, V., ... & Giacomotto, J. (2026). _SMN1_ variants identified by false-positive SMA newborn screening tests: Therapeutic hurdles and functional and epidemiological solutions. _American Journal of Human Genetics_, 113, 627–635. https://doi.org/10.1016/j.ajhg.2026.01.012
+
 + Zhou, J., Theesfeld, C. L., Yao, K., Chen, K. M., Wong, A. K., & Troyanskaya, O. G. (2022). Deep learning sequence models for assessing regulatory variants and non-coding disease mutations. _bioRxiv_, 2022.11.09.515796. https://doi.org/10.1101/2022.11.09.515796

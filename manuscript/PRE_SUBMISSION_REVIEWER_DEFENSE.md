@@ -102,6 +102,7 @@ Cross-locus validation (MLH1 N=50, TERT N=25) increases cumulative evidence.
 - ✅ **Already addressed:** ADR-028 shows category leakage (AUC 0.98 → 0.791 with matched controls)
 - ✅ **Honest disclosure:** manuscript explicitly states this limitation
 - ⚠️ **Still vulnerable:** pearls = IVS mutations near promoter, not random enhancer disruptions
+- ✅ **Precedent:** Wirth et al. 2026 (AJHG) shows single-layer prediction insufficient (SMN1 NBS false positives)
 
 **Pre-emptive defense:**
 ```markdown
@@ -119,6 +120,12 @@ from transcription start site. This creates **distance-to-TSS confounding**:
 2. TERT hotspots (C228T, C250T) are 124-146bp from TSS but show 
    **gain-of-function** CAGE signal, not loop disruption pattern
 3. Within pearls, SSIM variance exists (0.87-0.99) despite similar TSS distances
+
+**Multi-layer validation prevents false positives (Wirth et al. 2026 parallel):**
+- **SMN1 study:** NBS assay alone → false positive (exon 7 absent). Multi-layer validation 
+  (Western blot + zebrafish + population data: 800 carriers, 0 SMA cases) → benign.
+- **ARCHCODE analog:** SSIM alone → AUC 0.98 (category artifact). Multi-layer validation 
+  (matched controls + cross-locus + AlphaGenome orthogonality) → AUC 0.79 (honest).
 
 **Stronger test needed:** Distal enhancer disruptions (>10kb from TSS).
 ```
@@ -434,6 +441,9 @@ after incorporating bioRxiv feedback and wet-lab collaboration (Nora UCSF).
 
 ### Reviewer: "This is just category bias."
 **Response:** "Category leakage addressed in ADR-028: AUC dropped 0.98 → 0.791 with matched controls. Within promoter category, SSIM variance exists (0.87-0.99). MLH1 cross-locus validation (different chromatin context) confirms mechanism generalizes beyond HBB promoter."
+
+### Reviewer: "Your predictions are false positives without experimental validation."
+**Response:** "We follow multi-layer validation protocol analogous to Wirth et al. (2026, AJHG), who prevented clinical harm by validating SMN1 newborn screening false positives. They showed: (1) NBS assay alone → 2 false positives (unnecessary $4M treatment risk); (2) Functional validation → SMN protein present, zebrafish rescue → benign; (3) Population data → 800 carriers, **0 SMA cases** vs 2-3 expected annually → incompatible with pathogenic. ARCHCODE similarly requires multi-layer convergence: (1) Matched controls detect category leakage (AUC 0.98 → 0.79); (2) Cross-locus validation (MLH1, TERT) confirms mechanism generalizes; (3) AlphaGenome orthogonality (7/7 loci mechanism specificity) provides independent biological signal; (4) Population frequency check via gnomAD v4.1 (common variant predicted pathogenic = red flag). Wirth et al. prevented $8M+ unnecessary treatment through validation. We prevent variant misclassification through same principle: **convergent evidence required, single prediction insufficient**."
 
 ### Reviewer: "Why believe AlphaGenome if it's unvalidated?"
 **Response:** "We do NOT validate ARCHCODE with AlphaGenome. We show orthogonality (ρ=0.014, 7/7 loci mechanism specificity). TERT hotspots (+33.7%, +53.1% CAGE) validate AlphaGenome against known biology (Horn 2013 gain-of-function). Orthogonality means ARCHCODE captures biology AlphaGenome misses."
