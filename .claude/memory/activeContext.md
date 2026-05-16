@@ -1,18 +1,22 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-05-14  
+**Last Updated:** 2026-05-15  
 **Current Branch:** experiment/spectral-collapse-pilot  
-**Session Focus:** Tool building from harvest (Orthogonality Detector → Validation Theater Detector)
+**Session Focus:** Recovery from system restart → commit rescue → 3000+ lines saved
 
 ---
 
 ## Current Focus
 
-**Phase:** Harvest-driven tool building (побочные активы из "провального" router)
+**Phase:** Context recovery → All work saved ✅
 
-**Active Task:** Validation Theater Detector (Score 19/20)  
-**Status:** Starting (Day 0)  
-**Deadline:** 2-3 days
+**Recovery Status:** COMPLETE
+- SQL infrastructure saved (1113 lines)
+- Manuscript corrections saved (AUC 0.98→0.791, n=32,201→25,850)
+- ADR-027 saved (Falsification Ladder formalization)
+- Research docs saved (1878 lines)
+
+**Next:** Database population (MLH1, TERT, GJB2) → retrodiction tests 2-10
 
 **Context:**
 - Router Class B KILLED by matched controls (p=0.996)
@@ -20,6 +24,29 @@
 - Combinatorial creativity → 5 новых идей сгенерированы
 - Orthogonality Detector построен (8 часов) ✅
 - Next: Validation Theater Detector (предотвращает synthetic data as proof)
+
+---
+
+## Session 2026-05-15: Recovery & Commit Rescue ✅
+
+**Situation:** System restart → lost task context → 3+ hours work at risk
+
+**Recovery Actions:**
+1. ✅ Restored context from activeContext.md + git log
+2. ✅ Identified uncommitted work (1113 lines SQL + manuscript corrections)
+3. ✅ Executed commit rescue (3 commits, 9 minutes)
+4. ✅ Pushed to remote (protection from hardware failure)
+
+**Commits Created:**
+- `34052ec` — feat(database): ARCHCODE SQLite annotation system (1113 lines)
+- `9a9627d` — fix(manuscript): correct variant counts and AUC after validation
+- `bca0875` — docs(research): DNA2 pattern analysis and FL methodology
+
+**Total Saved:** 3005 lines of code + documentation
+
+**Lesson:** Commit frequently (every 30-60 min). Tracy System priorities (A1/frog) correctly identified critical path: save work FIRST, analyze later.
+
+**Status:** All work protected. Ready for next phase.
 
 ---
 
