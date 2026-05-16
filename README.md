@@ -396,6 +396,7 @@ Available on **Research Square**: [DOI: 10.21203/rs.3.rs-9090074/v1](https://doi
              Evidence from 30,318 ClinVar Variants across Nine Genomic Loci},
   author  = {Boyko, Sergey V.},
   year    = {2026},
+  institution = {Ronin Institute for Independent Scholarship},
   note    = {Research Square preprint, DOI: 10.21203/rs.3.rs-9090074/v1},
   url     = {https://github.com/sergeeey/ARCHCODE}
 }
@@ -409,6 +410,6 @@ MIT License — See [LICENSE](./LICENSE)
 
 <div align="center">
 
-**ARCHCODE v2.17** &nbsp;&middot;&nbsp; Updated 2026-04-15 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; [sergeikuch80@gmail.com](mailto:sergeikuch80@gmail.com)
+**ARCHCODE v2.17** &nbsp;&middot;&nbsp; Updated 2026-05-16 &nbsp;&middot;&nbsp; Sergey V. Boyko &nbsp;&middot;&nbsp; Ronin Institute for Independent Scholarship &nbsp;&middot;&nbsp; [sergey.boyko@ronininstitute.org](mailto:sergey.boyko@ronininstitute.org)
 
 </div>

@@ -9,8 +9,8 @@
     (
       name: "Sergey V. Boyko",
       superscript: "1",
-      affiliation: "Independent Researcher, Almaty, Kazakhstan",
-      email: "sergeikuch80@gmail.com",
+      affiliation: "Ronin Institute for Independent Scholarship (RIIS 2.0)",
+      email: "sergey.boyko@ronininstitute.org",
     ),
   ),
   abstract: include "abstract_content.typ",
