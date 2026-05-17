@@ -1,0 +1,21 @@
+{
+  "dataset": "HBB_Unified_Atlas",
+  "n_samples": 1103,
+  "n_pathogenic": 353,
+  "n_benign": 750,
+  "pathogenic_rate": 0.3200362647325476,
+  "roc_auc": 0.023359773371104817,
+  "pr_auc": 0.18271570626503048,
+  "brier_score": 0.7658508551495755,
+  "metrics_note": "PR-AUC sensitive to class imbalance (32% pathogenic). Brier score measures calibration quality.",
+  "pr_curve_summary": {
+    "n_points": 204,
+    "baseline_random": 0.3200362647325476,
+    "pr_auc_vs_baseline": -0.13732055846751712
+  },
+  "calibration": {
+    "expected_calibration_error": 0.6348360537620696,
+    "n_bins": 10,
+    "calibration_note": "ECE measures gap between predicted probabilities and actual outcomes. Lower is better."
+  }
+}
