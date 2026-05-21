@@ -1,3 +1,8 @@
+---
+**UPDATED:** 2026-05-18 — Consilience assessment complete, bioRxiv submission ready
+**See:** docs/SUBMISSION_STATUS_2026-05-18.md for current submission details
+---
+
 # ARCHCODE Status Dashboard
 
 **Canon Tier:** Public Canonical — Reframed
@@ -50,14 +55,16 @@
 | Secret scan | Green |
 | Unit tests | `44/44` passing |
 
-## Publication State
+## Publication State (Updated 2026-05-21)
 
-| Surface | Status |
-|---------|--------|
-| Research Square | Live — DOI `10.21203/rs.3.rs-9090074/v1` (v2.17 public release; legacy v1 framing retained in archive) |
-| arXiv | Pending endorsement (B9P837) |
-| bioRxiv | Rejected |
-| **Next** | Keep public surfaces aligned to v2.17 canonical framing; prepare any future update only after version reconciliation |
+| Surface | Status | Details |
+|---------|--------|---------|
+| **Research Square** | ✅ **LIVE** | DOI: 10.21203/rs.3.rs-9090074/v1 (May 18, 2026) — **PRIMARY PREPRINT** |
+| **bioRxiv** | ❌ **REJECTED** | May 21 — Institutional affiliation requirement (Ronin Institute not recognized) — **Appeal pending** |
+| **arXiv** | 🔴 **BLOCKED** | 4/4 endorsers failed (Fudenberg bounced, Paulsen refused, Polovnikov/Imakaev can't), 3/3 MIT ghosted >50 days |
+| **Next** | Appeal bioRxiv (P0) → if rejected, use Research Square primary + prepare journal submission (Bioinformatics Advances) |
+
+**Current strategy:** Research Square DOI active and citable. bioRxiv appeal in progress (3-7 days response). arXiv endorsement paused (low probability).
 
 ## Active Caveats
 
