@@ -1,0 +1,26 @@
+Total unique variants: 33496
+Manuscript claim: 25850
+README claim: 30318
+Manuscript discrepancy: +7646
+README discrepancy: +3178
+
+Per-locus counts:
+  BCL11A: 496
+  BRCA1: 10682
+  CCDC22: 722
+  CFTR: 3349
+  EXOG: 364
+  FOXP3: 236
+  GATA1: 183
+  GJB2: 469
+  GPKOW: 236
+  HBA1: 111
+  HBB: 1103
+  HBG1: 16
+  LDLR: 3284
+  MLH1: 4060
+  NPRL3: 483
+  PTEN: 1496
+  SCN5A: 2488
+  TERT: 2089
+  TP53: 2794
