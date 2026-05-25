@@ -22,7 +22,7 @@
 
 <table>
 <tr>
-<td align="center"><b>30,318</b><br><sub>ClinVar variants, 9 loci</sub></td>
+<td align="center"><b>26,225</b><br><sub>ClinVar variants, 9 loci (verified, dedup)</sub></td>
 <td align="center"><b>30 tests</b><br><sub>6-module validation suite</sub></td>
 <td align="center"><b>9/30 PASS</b><br><sub>9/30 WARNING</sub></td>
 <td align="center"><b>&lt;30s</b><br><sub>full suite runtime</sub></td>
@@ -79,7 +79,7 @@ _Full results: [vus_router_results.json](results/vus_router_results.json). Rules
 |                       ARCHCODE Pipeline v2.17                        |
 +----------------------------------------------------------------------+
 |                                                                      |
-|  ClinVar API --> 30,318 variants across 9 loci                       |
+|  ClinVar API --> 26,225 unique variants across 9 loci (dedup)        |
 |       |         (HBB 1,103 + BRCA1 10,682 + CFTR 3,349 +            |
 |       |          TP53 2,794 + MLH1 4,060 + LDLR 3,284 +             |
 |       |          SCN5A 2,488 + TERT 2,089 + GJB2 469)               |
@@ -136,7 +136,7 @@ See [docker-compose.yml](./docker-compose.yml) for persistent data volume config
 
 ## Key Results
 
-Analysis of **30,318 ClinVar variants across 9 genomic loci** through ARCHCODE + a 6-module falsification validation suite:
+Analysis of **26,225 ClinVar variants across 9 genomic loci** (verified, deduplicated; see [`docs/NUMBER_PROVENANCE.md`](docs/NUMBER_PROVENANCE.md)) through ARCHCODE + a 6-module falsification validation suite:
 
 ### What the model achieves
 - **AUC = 0.977** on HBB (n=1,103) — but ablation shows this is category-driven (position-only AUC = 0.551); the model characterizes the variant catalog, not structural prediction power
@@ -180,7 +180,7 @@ _Sorted by LSSIM ascending (strongest structural disruption first). Full list: [
 
 ## Multi-Locus Validation (9 Loci)
 
-ARCHCODE was applied to **9 clinically significant loci** across 30,318 ClinVar variants to test generalizability beyond HBB:
+ARCHCODE was applied to **9 clinically significant loci** across 26,225 ClinVar variants to test generalizability beyond HBB:
 
 | Locus     | Disease               | Chr | Variants | Pathogenic | Benign | Tissue match | &Delta;LSSIM | Pearls |
 | :-------- | :-------------------- | :-- | :------- | :--------- | :----- | :----------- | :----------- | :----- |
@@ -321,7 +321,7 @@ ARCHCODE/
 |   +-- fig_taxonomy/                  #   Taxonomy-specific figures
 +-- results/
 |   +-- HBB_Unified_Atlas.csv          #   1,103 HBB variants (unified pipeline)
-|   +-- integrative_benchmark.csv      #   30,318 variant CADD concordance
+|   +-- integrative_benchmark.csv      #   26,225 variant CADD concordance
 |   +-- integrative_benchmark_summary.json
 |   +-- per_locus_thresholds_summary.json
 |   +-- spliceai_pearl_variants.csv    #   SpliceAI scores for 20 pearl SNVs
@@ -386,6 +386,8 @@ For Codex-assisted tasks, use:
 Available on **Research Square**: [DOI: 10.21203/rs.3.rs-9090074/v1](https://doi.org/10.21203/rs.3.rs-9090074/v1)
 
 > Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors — Evidence from 30,318 ClinVar Variants across Nine Genomic Loci. Research Square (preprint).
+
+> **Note:** The preprint v1 title references 30,318 raw ClinVar records. After P0 deduplication audit (May 2026), the verified core count is **26,225** unique variants (see [`docs/NUMBER_PROVENANCE.md`](docs/NUMBER_PROVENANCE.md)). The v2 manuscript (in revision) uses the verified count throughout.
 
 ## Citation
 
