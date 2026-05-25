@@ -416,7 +416,10 @@ export class MultiCohesinEngine {
   }
 
   private checkBarriers(cohesin: CohesinComplex): void {
-    // Left leg: ищем R (< ) слева
+    // KNOWN LIMITATION (external audit bug #1, 2026-05-25):
+    // См. LoopExtrusionEngine.ts:checkBarriers() и ADR-035 для деталей.
+    // Документированное "sticky barrier" поведение — приемлемо для loop anchors,
+    // некорректно для loop duration статистики (не используется в active claim).
     const leftBarriers = this.ctcfSites.filter(
       (site) => site.orientation === "R" && site.position <= cohesin.leftLeg,
     );

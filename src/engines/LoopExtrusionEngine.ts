@@ -139,7 +139,17 @@ export class LoopExtrusionEngine {
    * Convergent: R (< ) on left, F (> ) on right = forms loop
    */
   private checkBarriers(cohesin: CohesinComplex): boolean {
-    // Left leg moves leftward (decreasing), blocked by reverse CTCF (R <)
+    // KNOWN LIMITATION (external audit bug #1, 2026-05-25):
+    // Барьеры детектируются по факту "уже прошёл" (sticky), не по столкновению.
+    // Это означает: на шаге N cohesin "знает" о ВСЕХ R-сайтах левее текущей позиции,
+    // даже если он прошёл их без фактической остановки.
+    //
+    // Корректное физическое поведение требует stalled-state логики (отдельный fix).
+    // Текущее поведение приемлемо для контактных матриц (loop anchors корректны),
+    // но статистика времени формирования (loop duration) систематически занижена.
+    //
+    // Документировано в: docs/ADR-035_loop_extrusion_collision_detection.md
+    // Не материально для AlphaGenome 7/7 claim (router-killed code path).
     const leftBarriers = this.ctcfSites.filter(
       (site) => site.orientation === "R" && site.position <= cohesin.leftLeg,
     );
