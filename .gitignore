@@ -136,3 +136,4 @@ Projects/
 # Contact matrices (can be large, regenerable)
 results/contact_matrices/*.npy
 results/contact_matrices/*.pkl
+archive/
