@@ -335,6 +335,7 @@ Sessions:
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-05-25 19:50] `2dde83c`: docs(memory): sync activeContext with Obsidian vault reality (5 days stale)
 - [2026-05-25 19:03] `40aeae5`: docs(trust-repair): number provenance + canonical env + REPRODUCE.md
 - [2026-05-25 18:40] `d81e0cd`: feat(power-analysis): MLH1 post-hoc sample-size calculation (closes ADR-036 OQ#1)
 - [2026-05-25 18:35] `c3f62b3`: docs(manuscript): reframe 7/7 claim to HBB pilot + exploratory (ADR-036)

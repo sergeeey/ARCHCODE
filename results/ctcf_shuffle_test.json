@@ -57,8 +57,8 @@
   ],
   "overall_stats": {
     "shuffled_mean": 0.8474133064988535,
-    "shuffled_std": 0.04571007977974904,
-    "shuffled_min": 0.777635123735783,
+    "shuffled_std": 0.04571007977974902,
+    "shuffled_min": 0.7776351237357829,
     "shuffled_max": 0.9550371298059402,
     "frac_below_095": 0.98,
     "frac_below_092": 0.9275,
@@ -71,7 +71,7 @@
       "position": 5226613,
       "real_lssim": 0.9492,
       "shuffled_mean": 0.8489727803953413,
-      "shuffled_std": 0.04603282547538202,
+      "shuffled_std": 0.046032825475382,
       "frac_below_095": 0.98,
       "frac_below_092": 0.92
     },
@@ -79,7 +79,7 @@
       "position": 5226613,
       "real_lssim": 0.9492,
       "shuffled_mean": 0.8489727803953413,
-      "shuffled_std": 0.04603282547538202,
+      "shuffled_std": 0.046032825475382,
       "frac_below_095": 0.98,
       "frac_below_092": 0.92
     },
@@ -87,15 +87,15 @@
       "position": 5226613,
       "real_lssim": 0.9492,
       "shuffled_mean": 0.8489727803953413,
-      "shuffled_std": 0.04603282547538202,
+      "shuffled_std": 0.046032825475382,
       "frac_below_095": 0.98,
       "frac_below_092": 0.92
     },
     {
       "position": 5226796,
       "real_lssim": 0.9004,
-      "shuffled_mean": 0.8486474783998891,
-      "shuffled_std": 0.04611298401070821,
+      "shuffled_mean": 0.8486474783998892,
+      "shuffled_std": 0.04611298401070818,
       "frac_below_095": 0.98,
       "frac_below_092": 0.92
     },
@@ -103,7 +103,7 @@
       "position": 5226971,
       "real_lssim": 0.8915,
       "shuffled_mean": 0.8477959048268882,
-      "shuffled_std": 0.04594644892908841,
+      "shuffled_std": 0.0459464489290884,
       "frac_below_095": 0.98,
       "frac_below_092": 0.92
     },
@@ -111,7 +111,7 @@
       "position": 5227099,
       "real_lssim": 0.9276,
       "shuffled_mean": 0.84712866773193,
-      "shuffled_std": 0.04561478911094293,
+      "shuffled_std": 0.045614789110942924,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
@@ -119,7 +119,7 @@
       "position": 5227099,
       "real_lssim": 0.9276,
       "shuffled_mean": 0.84712866773193,
-      "shuffled_std": 0.04561478911094293,
+      "shuffled_std": 0.045614789110942924,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
@@ -127,7 +127,7 @@
       "position": 5227100,
       "real_lssim": 0.929,
       "shuffled_mean": 0.84712866773193,
-      "shuffled_std": 0.04561478911094293,
+      "shuffled_std": 0.045614789110942924,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
@@ -135,7 +135,7 @@
       "position": 5227101,
       "real_lssim": 0.9282,
       "shuffled_mean": 0.84712866773193,
-      "shuffled_std": 0.04561478911094293,
+      "shuffled_std": 0.045614789110942924,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
@@ -143,87 +143,87 @@
       "position": 5227102,
       "real_lssim": 0.9287,
       "shuffled_mean": 0.84712866773193,
-      "shuffled_std": 0.04561478911094293,
+      "shuffled_std": 0.045614789110942924,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227142,
       "real_lssim": 0.9279,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227157,
       "real_lssim": 0.9277,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227157,
       "real_lssim": 0.9277,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227158,
       "real_lssim": 0.9289,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227158,
       "real_lssim": 0.9289,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227158,
       "real_lssim": 0.9289,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227159,
       "real_lssim": 0.9297,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227161,
       "real_lssim": 0.9292,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227163,
       "real_lssim": 0.929,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     },
     {
       "position": 5227172,
       "real_lssim": 0.9284,
-      "shuffled_mean": 0.8469261066904621,
-      "shuffled_std": 0.04558332177781781,
+      "shuffled_mean": 0.8469261066904619,
+      "shuffled_std": 0.045583321777817806,
       "frac_below_095": 0.98,
       "frac_below_092": 0.93
     }

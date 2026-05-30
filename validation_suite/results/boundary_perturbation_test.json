@@ -22,17 +22,17 @@
       "config": "hbb_95kb_subTAD.json",
       "n_ctcf": 4,
       "boundary_deltas": {
-        "delete_one": 0.0004992869601211369,
-        "weaken_all": 0.004433545338207279,
-        "shift_all": 0.005468342099949397,
-        "random_reposition": 0.010359077546468698
+        "delete_one": 0.000499286960121248,
+        "weaken_all": 0.004433545338207501,
+        "shift_all": 0.005468342099949175,
+        "random_reposition": 0.01035907754646892
       },
-      "control_mean_delta": 0.0004419857628144808,
-      "control_std_delta": 0.001023026586480644,
+      "control_mean_delta": 0.0004419857628146273,
+      "control_std_delta": 0.0010230265864806251,
       "shuffled_delta": 0.0,
-      "t_stat": 0.5601144492615814,
-      "p_value": 0.2877006876612368,
-      "cohens_d": 0.05601144492615814,
+      "t_stat": 0.5601144492612445,
+      "p_value": 0.2877006876613517,
+      "cohens_d": 0.05601144492612446,
       "specificity": true,
       "verdict": "FAIL"
     }
