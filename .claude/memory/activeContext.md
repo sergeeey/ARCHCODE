@@ -1,14 +1,27 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-05-25 (synced with Obsidian vault — was 5 days stale)
+**Last Updated:** 2026-06-25
 **Current Branch:** experiment/spectral-collapse-pilot
-**Session Focus:** Manuscript reframe COMPLETE → Bioinformatics Advances prep + bioRxiv appeal wait
-**Reality source:** `Projects/ARCHCODE/Publication Status 2026-05-21.md` (Obsidian)
+**Session Focus:** Literature review → Related Work → pre-submission review → manuscript fixed → **READY TO SUBMIT**
+**Reality source:** session 2026-06-25
+
+## 🔧 Session 2026-06-25: Manuscript Fixed for Submission (commit 703e398)
+
+**What was done:**
+- paper-critic + integrity-checker ran pre-submission review → found 2 FATAL, 4 MAJOR issues
+- FATAL 1 resolved: switched body from `body_content.typ` → `taxonomy_paper/body_content.typ`
+- FATAL 2 resolved: fixed headline stats — d=−1.53→−2.1, fold 5.4→5.5, Bonferroni α=0.007/7→α=0.008/6
+- Variant count standardized: 30,318→26,225 (6 occurrences in taxonomy body)
+- Competitor comparison table added to Introduction (svMIL/POSTRE/Daly/AlphaGenome vs ARCHCODE)
+- PDF compiled: manuscript/main.pdf (2.7 MB)
+
+**Current state:** manuscript coherent — abstract (CAGE/Simpson's Paradox) matches body (taxonomy + CAGE validation)
+**Next:** write cover letter → submit to Bioinformatics Advances
 
 ---
 
 ## 🎯 Session 2026-05-25: Code Audit Hardening Complete ✅
-
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] (empty section)
 **Status:** 🟢 **P0 BLOCKERS RESOLVED** — All CRITICAL issues fixed
 
 **Audit Results:**
@@ -31,30 +44,7 @@
 ---
 
 ## 🚪 Publication Gates Status (CORRECTED 2026-05-25 from Obsidian)
-
-**Source of truth:** `Projects/ARCHCODE/Publication Status 2026-05-21.md` (Obsidian)
-
-**Priority:** 🟡 **NOT gate-blocked** — Research Square LIVE, bioRxiv awaits appeal response, arXiv PAUSED
-
-### Research Square ✅ PRIMARY PREPRINT
-- **Status:** ✅ **LIVE** since 2026-05-18
-- **DOI:** [10.21203/rs.3.rs-9090074/v1](https://doi.org/10.21203/rs.3.rs-9090074/v1)
-- **Affiliation:** Ronin Institute for Independent Scholarship (works)
-- **Action:** Already citable. Use as primary in outreach.
-
-### Ronin Institute (RIIS 2.0)
-- **Status:** ✅ Parent Ronin Institute affiliation WORKS (used on Research Square + ORCID)
-- **RIIS 2.0:** New version may NOT be in bioRxiv database — separate issue from approval
-- **Action:** NONE — affiliation is functional. Discord check obsolete.
-
-### bioRxiv 🔴 REJECTED (3rd attempt)
-- **Status:** ❌ REJECTED 2026-05-21 (BIORXIV/2026/726008)
-- **Previous attempts:**
-  - BIORXIV/2026/708672 — rejected ("not complete research")
-  - BIORXIV/2026/710343 — rejected (no affiliation)
-  - BIORXIV/2026/726008 — rejected (RIIS 2.0 not in database)
-- **Appeal:** Draft exists `docs/bioRxiv_appeal_draft.md` — **STATUS UNKNOWN (sent?)**
-- **Expected response:** ~2026-05-28 (if appeal sent May 21)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Source of truth:** `Projects/ARCHCODE/Publication Sta...
 - **Action P0:** Verify appeal sent. If not — send today.
 
 ### arXiv ⏸️ PAUSED (Max REFUSED May 20)
@@ -77,11 +67,7 @@
 ---
 
 ## 📊 Scientific Results Summary (REFRAMED 2026-05-25, ADR-036)
-
-**Main Claim (post-skeptic):** "HBB pilot demonstrates AlphaGenome CAGE detects mechanism-specific regulatory disruption (p=4×10⁻⁶, Bonferroni-robust); 6-locus exploratory extension directionally consistent with regulatory-vs-coding dichotomy"
-
-**Evidence Strength:**
-- ✅ HBB pilot: p=4×10⁻⁶, Cohen's d=−1.53, Bonferroni-robust (α=0.007)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Main Claim (post-skeptic):** "HBB pilot demonstrates ...
 - ⚠️ Exploratory 6-locus extension: directional only (1/4 regulatory significant)
 - ⚠️ MLH1: p=0.022 nominal, fails Bonferroni
 - ⚠️ TERT hotspots (+33-53% CAGE): descriptive, no variant-matched controls
@@ -104,46 +90,7 @@
 ---
 
 ## 🎯 Tracy Strategic Verdict (CORRECTED 2026-05-25)
-
-**Goal:** Move ARCHCODE from preprint (Research Square LIVE) to peer-reviewed publication (Bioinformatics Advances)
-
-**Real Bottleneck:** 🟡 NOT external gates (Research Square works). Real bottleneck:
-1. bioRxiv appeal pending (response ~May 28)
-2. APC funding for Bioinformatics Advances ($1000-1500) — source unclear
-3. Manuscript reframe today (commit c3f62b3) — ready to submit
-
-**ABCDE Analysis (CORRECTED):**
-
-**A-Tier (серьёзные последствия):**
-- A1: Verify bioRxiv appeal sent (5 min) — if not sent, send today
-- A2: Push 7 unpushed commits (5 min) — public state stale
-- A3: APC funding verification (15 min) — blocker for Bioinformatics Advances
-
-**B-Tier (важно но не критично):**
-- B1: Update PRE_SUBMISSION_REVIEWER_DEFENSE.md to match HBB pilot reframe (1h)
-- B2: AlphaGenome training overlap check (2h) — kill #1 reviewer attack
-- B3: Update outreach materials with Research Square DOI (1h)
-
-**C-Tier (defer to journal submission):**
-- C1: Category-matched HBB controls (4-5h) — risky
-- C2: FDR sensitivity table (1h)
-- C3: Move router code to archived/ (2h)
-- C4: Docker (4-6h) — journal-grade only
-
-**E-Tier (исключить):**
-- E1: Max Imakaev follow-up — REFUSED already (May 20)
-- E2: Ronin Discord check — affiliation already works
-- E3: arXiv path — PAUSED (<10% probability)
-- E4: Expand to more loci pending gate — gate concept obsolete
-
-**80/20 Analysis (REVISED):**
-- 80% value = Bioinformatics Advances submission (with HBB pilot framing)
-- 20% effort = (a) verify appeal sent, (b) push commits, (c) check APC funding
-
-**Zero-Based Thinking:** "Начал бы я ARCHCODE снова?" → возможно ДА для methodology paper.
-Research Square LIVE + HBB pilot reframe + 6 ADR-documented kills = real scientific contribution.
-
-**Critical Path (CORRECTED):**
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Goal:** Move ARCHCODE from preprint (Research Square ...
 1. `git push` 7 commits (5 min) — make today's work public
 2. Verify bioRxiv appeal sent (5 min) — check email sent folder
 3. APC funding source check (15 min) — Ronin? Personal? Find out
@@ -166,8 +113,7 @@ Bioinformatics Advances (next 2-4 weeks)
 ---
 
 ## 🔍 External Code Audit (2026-05-25, post-session)
-
-**Source:** User-provided audit report (TypeScript simulation engine)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Source:** User-provided audit report (TypeScript simu...
 
 **Findings:** 3 critical + 3 medium + 2 low bugs in `LoopExtrusionEngine.ts`,
 `MultiCohesinEngine.ts`, `contactMatrix.ts`, `correlate_hic_archcode.py`,
@@ -190,34 +136,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 ---
 
 ## 📋 Next Actions (Priority Order — CORRECTED 2026-05-25)
-
-### P0 — TODAY (25 min total)
-
-**A1:** `git push` 7 unpushed commits (5 min)
-- Today's reframe (c3f62b3), power analysis (d81e0cd), trust repair (40aeae5), ADR-035 (3aef138)
-- Without push: reviewer sees old "7/7" framing on GitHub URL
-
-**A2:** Verify bioRxiv appeal sent (5 min)
-- Check sent emails: was `docs/bioRxiv_appeal_draft.md` actually sent May 21?
-- Subject: "Re: BIORXIV/2026/726008 — Appeal regarding institutional affiliation"
-- If NOT sent: send today (response expected May 28)
-
-**A3:** APC funding for Bioinformatics Advances (15 min)
-- Question: Ronin Institute provides APC funding? Personal? Need verify
-- Budget: $1000-1500 (Bioinformatics Advances OA fee)
-- Alternative venues if no funding: MDPI Biomedicines, PeerJ (fee waivers for independent)
-
-### P1 — THIS WEEK (4-5h, DO if appeal accepted OR rejected)
-
-**B1:** Update PRE_SUBMISSION_REVIEWER_DEFENSE.md (1h)
-- Currently still 7/7 framing — needs HBB pilot update per ADR-036
-- Reviewer-defense addresses Skeptic attack vectors
-
-**B2:** AlphaGenome training overlap check (2h)
-- Verify HBB variants NOT in AlphaGenome training data
-- Kills attack vector #1 ("memorization, not generalization")
-- Critical for Bioinformatics Advances reviewer trust
-
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] ### P0 — TODAY (25 min total)
 **B3:** Outreach update with HBB framing + RS DOI (1h)
 - Nora UCSF follow-up (May 29 deadline)
 - AlphaGenome forum post
@@ -258,6 +177,12 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 ---
 
+
+
+
+
+
+
 ## ⚠️ Critical Constraints (CORRECTED)
 
 **DO NOT:**
@@ -276,6 +201,12 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 - ✅ Disclose limitations honestly (N=1 robust, garden of forking paths, Gelman & Loken)
 
 ---
+
+
+
+
+
+
 
 ## 🧭 Success Criteria (CORRECTED)
 
@@ -297,22 +228,14 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 ---
 
+
+
+
+
+
+
 ## 📖 Context for Next Session
-
-**What happened today (2026-05-25, ~6 hours of work):**
-
-Sessions:
-1. P0 code audit complete (commits a3bbef2, 82cd3e1, 3e0690d — pre-session)
-2. External audit triage → ADR-035 (commit 3aef138)
-3. Skeptic red-team → discovered "7/7" overclaim (70% rejection probability)
-4. Manuscript reframe → HBB pilot + exploratory (commit c3f62b3) — restored internal consistency
-5. MLH1 power analysis → N≥167 required (commit d81e0cd, closes ADR-036 OQ#1)
-6. Trust repair triad → number provenance + canonical env + REPRODUCE.md (commit 40aeae5)
-7. Obsidian reality check → discovered activeContext was 5 days stale
-
-**Key insight:** ActiveContext.md (auto-memory) ≠ Obsidian vault reality. Always cross-check vault for external gate status before action.
-
-**Reality from Obsidian (May 21):**
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **What happened today (2026-05-25, ~6 hours of work):**
 - Research Square LIVE since May 18 ✅
 - bioRxiv rejected May 21 (3rd attempt) → appeal drafted
 - Max Imakaev REFUSED May 20 (arXiv path closed)
@@ -335,6 +258,7 @@ Sessions:
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-06-25 22:26] `703e398`: fix(manuscript): resolve abstract/body mismatch + correct headline statistics
 - [2026-05-30 20:49] `25d1406`: chore: archive May audit docs + update activeContext/results
 - [2026-05-25 19:50] `2dde83c`: docs(memory): sync activeContext with Obsidian vault reality (5 days stale)
 - [2026-05-25 19:03] `40aeae5`: docs(trust-repair): number provenance + canonical env + REPRODUCE.md

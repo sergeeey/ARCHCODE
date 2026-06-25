@@ -35,3 +35,13 @@
 + Wirth, B., Das, J., Kölbel, H., Goh, S., Farrar, M. A., Piano, V., ... & Giacomotto, J. (2026). _SMN1_ variants identified by false-positive SMA newborn screening tests: Therapeutic hurdles and functional and epidemiological solutions. _American Journal of Human Genetics_, 113, 627–635. https://doi.org/10.1016/j.ajhg.2026.01.012
 
 + Zhou, J., Theesfeld, C. L., Yao, K., Chen, K. M., Wong, A. K., & Troyanskaya, O. G. (2022). Deep learning sequence models for assessing regulatory variants and non-coding disease mutations. _bioRxiv_, 2022.11.09.515796. https://doi.org/10.1101/2022.11.09.515796
+
++ Baudic, M., Murata, H., Bosada, F. M., et al. (2024). TAD boundary deletion causes PITX2-related cardiac electrical and structural defects. _Nature Communications_, 15, 3380. https://doi.org/10.1038/s41467-024-47739-x
+
++ Daly, A. F., Dunnington, L. A., Rodriguez-Buritica, D. F., et al. (2024). Chromatin conformation capture in the clinic: 4C-seq/HiC distinguishes pathogenic from neutral duplications at the GPR101 locus. _Genome Medicine_, 16, 112. https://doi.org/10.1186/s13073-024-01378-5
+
++ Nieboer, M. M., & de Ridder, J. (2020). svMIL: predicting the pathogenic effect of TAD boundary-disrupting somatic structural variants through multiple instance learning. _Bioinformatics_, 36(Supplement\_2), i692–i699. https://doi.org/10.1093/bioinformatics/btaa802
+
++ Rajderkar, S., Barozzi, I., Zhu, Y., et al. (2023). Topologically associating domain boundaries are required for normal genome function. _Communications Biology_, 6, 435. https://doi.org/10.1038/s42003-023-04819-w
+
++ Sánchez-Gaya, V., & Rada-Iglesias, A. (2023). POSTRE: a tool to predict the pathological effects of human structural variants. _Nucleic Acids Research_, 51(9), e54. https://doi.org/10.1093/nar/gkad225

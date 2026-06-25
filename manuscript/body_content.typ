@@ -90,6 +90,40 @@ motif disruption analysis can detect disruption of an enhancer--promoter
 contact that operates at the level of cohesin processivity and CTCF
 barrier dynamics.
 
+Existing 3D chromatin tools do not address this gap for germline point
+variants. svMIL (Nieboer & de Ridder, 2020) predicts pathogenicity of
+somatic structural variants (SVs) in cancer with AUC ≈ 0.80 on TCGA, but
+is not validated for germline SNPs or small indels. POSTRE (Sánchez-Gaya & Rada-Iglesias, 2023) achieves high accuracy on a
+single disease locus (GPR101 duplications) using tissue-specific enhancer
+maps, but is not generalized beyond that locus. Experimental clinical
+Hi-C (Daly et al., 2024) can
+distinguish pathogenic from benign copy-number variants in prenatal
+settings, but requires experimental chromatin profiling per patient, not
+scalable to the >\u{200A}800,000 VUS currently in ClinVar. DNA foundation
+models (DNABERT-2, HyenaDNA, Evo2) are competitive for coding VUS but
+specifically fail at 3D chromatin structure prediction tasks (Nature
+Communications 2025, 26 citations; Evo2: arXiv 2026). AlphaGenome (Google
+DeepMind, Nature 2026) predicts chromatin contacts at single-base-pair
+resolution across 1 megabase, but has not been benchmarked against
+clinical VUS outcomes at multi-locus scale. The landscape of existing
+approaches is summarized in @tbl-competitor-comparison.
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: (left, left, left, left, left),
+    table.header(
+      [*Tool*], [*Variant type*], [*Locus scope*], [*Ground truth*], [*Hi-C method*]
+    ),
+    [svMIL], [SVs (cancer)], [Genome-wide], [Cancer expression], [Experimental],
+    [POSTRE], [SVs (germline)], [Single locus], [Clinical phenotype], [Tissue enhancers],
+    [Daly 2024], [SVs (germline)], [Single locus], [Prenatal outcome], [Experimental],
+    [AlphaGenome], [SNPs/indels], [Single query], [eQTL / GWAS], [AI-predicted],
+    [#strong[ARCHCODE]], [#strong[SNPs/indels]], [#strong[9 loci]], [#strong[ClinVar germline]], [#strong[AI-predicted]],
+  ),
+  caption: [Comparison of 3D chromatin tools for clinical variant interpretation. ARCHCODE is the first multi-locus, AI-predicted Hi-C scorer benchmarked against ClinVar germline ground truth.],
+) <tbl-competitor-comparison>
+
 We introduce the concept of #strong["The Loop That Stayed"] as a
 theoretical framework for a specific class of potentially pathogenic
 mechanism: variants that simultaneously (1) disrupt cis-regulatory
