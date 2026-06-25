@@ -16,7 +16,7 @@
   abstract: include "abstract_content.typ",
 )
 
-#include "body_content.typ"
+#include "taxonomy_paper/body_content.typ"
 
 #pagebreak()
 

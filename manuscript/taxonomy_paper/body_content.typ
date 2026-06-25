@@ -25,7 +25,7 @@
   distinct classes that require different tools and different experiments. One class ---
   architecture-driven pathogenicity, where variants disrupt 3D chromatin contacts rather than
   regulatory element activity --- is underdetected by first-pass sequence tools and promoter-scale
-  assays. Across 9 clinically important loci and 30,318 variants, we identify 261 variants in
+  assays. Across 9 clinically important loci and 26,225 variants, we identify 261 variants in
   systematic blind spots, including 25 high-confidence architecture-driven variants at the
   tissue-matched HBB locus and 29 candidates at partially matched loci, prioritized through
   chromatin structure simulation. Adopting mechanism-first classification before pathogenicity
@@ -88,13 +88,31 @@ architecture-driven should not be validated by MPRA (which removes three-dimensi
 design) but by Capture Hi-C in disease-relevant cells. A variant classified as a coverage gap
 should not be reported as "benign" but as "unscored --- awaiting appropriate assay."
 
+Existing 3D chromatin tools do not address the germline point variant gap at scale. svMIL (Nieboer & de Ridder, 2020) predicts pathogenicity of somatic structural variants (SVs) in cancer using multiple instance learning (AUC ≈ 0.80 on TCGA), but is not validated for germline SNPs or small indels. POSTRE (Sánchez-Gaya & Rada-Iglesias, 2023) achieves high accuracy on a single disease locus (GPR101 duplications) using tissue-specific enhancer maps, but is not generalized beyond that locus. Experimental clinical Hi-C (Daly et al., 2024) can distinguish pathogenic from benign copy-number variants in prenatal settings, but requires experimental chromatin profiling per patient, not scalable to the >800,000 VUS currently in ClinVar. AlphaGenome (Google DeepMind, Nature 2026) predicts chromatin contacts at single-base-pair resolution across 1 megabase, but has not been benchmarked against clinical VUS outcomes at multi-locus scale. The landscape of existing approaches is summarized in @tbl-competitor-comparison.
+
+#figure(
+  table(
+    columns: (auto, auto, auto, auto, auto),
+    align: (left, left, left, left, left),
+    table.header(
+      [*Tool*], [*Variant type*], [*Locus scope*], [*Ground truth*], [*Hi-C method*]
+    ),
+    [svMIL], [SVs (cancer)], [Genome-wide], [Cancer expression], [Experimental],
+    [POSTRE], [SVs (germline)], [Single locus], [Clinical phenotype], [Tissue enhancers],
+    [Daly 2024], [SVs (germline)], [Single locus], [Prenatal outcome], [Experimental],
+    [AlphaGenome], [SNPs/indels], [Single query], [eQTL / GWAS], [AI-predicted],
+    [#strong[ARCHCODE]], [#strong[SNPs/indels]], [#strong[9 loci]], [#strong[ClinVar germline]], [#strong[Analytical loop-extrusion]],
+  ),
+  caption: [Comparison of 3D chromatin tools for clinical variant interpretation. ARCHCODE applies analytical loop-extrusion simulation to germline ClinVar SNPs and indels across multiple loci with clinical ground truth.],
+) <tbl-competitor-comparison>
+
 Here we propose a five-class taxonomy of regulatory pathogenicity: (A) activity-driven, where
 variants alter enhancer or promoter function; (B) architecture-driven, where variants disrupt
 three-dimensional chromatin contact topology; (C) mixed, combining both mechanisms; (D)
 coverage gap, where current tools lack scoring capability; and (E) tissue-mismatch artifact,
 where apparent signals reflect incorrect tissue context. We ground this taxonomy in quantitative
 evidence from ARCHCODE, a loop-extrusion-based structural pathogenicity engine, applied to
-30,318 ClinVar variants across nine clinically important genomic loci (Figure 1). We show that
+26,225 ClinVar variants across nine clinically important genomic loci (Figure 1). We show that
 the five classes exhibit distinct signatures across sequence-based tools, structural simulation,
 reporter assays, and endogenous perturbation screens, and that architecture-driven pathogenicity
 --- representing 20.7% of structural blind spots --- is nearly orthogonal to all widely used
@@ -126,7 +144,7 @@ annotated regulatory features (Ensembl Regulatory Build) and predicted splice ef
 Critically, VEP contains no representation of three-dimensional chromatin organization: it
 cannot distinguish a variant that falls within an active enhancer from one that falls at a
 CTCF-bound insulator boundary, because both may overlap the same "regulatory region"
-annotation. In our analysis of 30,318 ClinVar variants across nine loci, VEP returned no
+annotation. In our analysis of 26,225 ClinVar variants across nine loci, VEP returned no
 consequence annotation (score = −1) for 207 variants in structurally informative regions --- a
 coverage gap representing 79.3% of all discordant cases between VEP and structural simulation.
 
@@ -213,7 +231,7 @@ distinct axes that require distinct measurement approaches (Figure 3).
 We propose five mechanistic classes of regulatory pathogenicity, defined by the axis of
 disruption, the tools capable of detecting each class, and the experimental assays required for
 validation (Figure 1). The taxonomy is grounded in quantitative evidence from ARCHCODE analysis
-of 30,318 ClinVar variants across nine loci and validated against eight canonical cases from the
+of 26,225 ClinVar variants across nine loci and validated against eight canonical cases from the
 published literature. We emphasize that the classes describe _mechanisms of disruption_, not
 expression outcomes --- a distinction that separates this framework from prior taxonomies based
 on loss-of-expression versus gain-of-expression (Cheng et al. 2024).
@@ -1120,7 +1138,7 @@ signal, is consistent with a contact-disruption mechanism. Tissue specificity pr
 additional support: architecture-driven signal correlates with tissue match at rho = 0.840
 (p = 0.0046) and collapses 700-fold in mismatched tissue (matched delta = 0.00357 vs. mismatch
 delta = $5.04 times 10^(-6)$). Independent functional evidence from AlphaGenome CAGE predictions supports the structural disruption hypothesis: pearl variants show 5.5$times$ greater CAGE disruption than pathogenic non-pearls ($minus$19.0% vs $minus$0.67%), with the ISM sensitivity peak (chr11:5,227,099--102, $minus$43% CAGE) coinciding with ARCHCODE pearl positions (Section 7, AlphaGenome CAGE validation; statistical caveats regarding pseudoreplication apply). However, we cannot confirm that these variants are pathogenic through architecture without experimental validation. What we can state is that they are structurally disruptive, tissue-specific, and systematically undetected by all widely used
-interpretation tools. We note that the HBB-specific AUC of 0.975 (effect-strength ablation study, EXP-001) is primarily driven by variant category assignment (nonsense, frameshift, synonymous), not by positional 3D biology: an ablation removing category information reduces AUC to 0.551 (near chance). The high AUC therefore characterizes the variant catalog structure rather than ARCHCODE's structural prediction power. The genuine structural contribution is the discovery of Class B variants themselves --- a class where all sequence-based tools achieve AUC = 0.0 --- rather than high-accuracy classification across all variant types. This blindness extends beyond sequence-based scoring to protein-structure prediction: AlphaMissense (Cheng et al. 2023), which classifies missense pathogenicity using AlphaFold-derived structural features, covers only 23.0% of variants in our 9-locus atlas (6,961 of 30,318) and provides scores for only 3 of 41 pearl variants (7.3%). The remaining 75.3% of variants --- non-coding, intronic, and regulatory --- fall entirely outside AlphaMissense's scope, and the correlation between AlphaMissense scores and ARCHCODE LSSIM is near zero at tissue-mismatched loci (median Spearman $rho$ = 0.086, NS). Even at tissue-matched loci where both tools detect signal, the correlation is negative ($rho$ = $minus$0.50 at HBB, $rho$ = $minus$0.52 at TP53), indicating that the two tools measure fundamentally different pathogenic axes: protein structural damage versus chromatin contact disruption.
+interpretation tools. We note that the HBB-specific AUC of 0.975 (effect-strength ablation study, EXP-001) is primarily driven by variant category assignment (nonsense, frameshift, synonymous), not by positional 3D biology: an ablation removing category information reduces AUC to 0.551 (near chance). The high AUC therefore characterizes the variant catalog structure rather than ARCHCODE's structural prediction power. The genuine structural contribution is the discovery of Class B variants themselves --- a class where all sequence-based tools achieve AUC = 0.0 --- rather than high-accuracy classification across all variant types. This blindness extends beyond sequence-based scoring to protein-structure prediction: AlphaMissense (Cheng et al. 2023), which classifies missense pathogenicity using AlphaFold-derived structural features, covers only 26.6% of variants in our 9-locus atlas (6,961 of 26,225) and provides scores for only 3 of 41 pearl variants (7.3%). The remaining 75.3% of variants --- non-coding, intronic, and regulatory --- fall entirely outside AlphaMissense's scope, and the correlation between AlphaMissense scores and ARCHCODE LSSIM is near zero at tissue-mismatched loci (median Spearman $rho$ = 0.086, NS). Even at tissue-matched loci where both tools detect signal, the correlation is negative ($rho$ = $minus$0.50 at HBB, $rho$ = $minus$0.52 at TP53), indicating that the two tools measure fundamentally different pathogenic axes: protein structural damage versus chromatin contact disruption.
 
 *Claim 3 (Moderate): A five-class taxonomy provides actionable organization of blind spots.*
 The taxonomy --- activity-driven, architecture-driven, mixed, coverage gap, tissue-mismatch
@@ -1185,7 +1203,7 @@ To make the evidentiary status of each claim explicit, we classify all major ass
 
     [Regulatory pathogenicity is mechanistically heterogeneous (≥5 classes)],
     [D],
-    [30,318 variants × 9 loci show distinct tool-response profiles per class; 8 canonical literature cases],
+    [26,225 variants × 9 loci show distinct tool-response profiles per class; 8 canonical literature cases],
     [A single-axis model achieves equivalent classification accuracy without class decomposition],
 
     [Sequence-based tools (VEP, CADD) are blind to Class B],
