@@ -18,8 +18,9 @@ Original ARCHCODE = SNV pathogenicity predictor. Проблема: global AUC 0.
 ---
 
 
+
 ## ARCHCODE-SV: что реализовано
-[summarized] **Файл:** `scripts/archcode_sv.py`
+[summarized] [summarized] **Файл:** `scripts/archcode_sv.py`
    - duplication: дублируем CTCF
 4. boundary_delta() — ratio = cross_mut / cross_wt у сайта изменённого CTCF
 5. Verdict: ratio > 1.35 → DISRUPTED (pathogenic), иначе → INTACT (benign)
@@ -42,20 +43,7 @@ N_BINS     = 200    # 1Mb window
 ---
 
 ## Benchmarks: результаты
-[summarized] ### Primary: Lupiáñez 2015 (EPHA4 locus, chr2) — 5/5
-| Pathogenic_inversion | inv chr2:221.3-221.7 Mb | 0 inverted | 1.437 | DISRUPTED | ✅ |
-
-Ключевой CTCF: chr2:221,574,000 (score=88.9) — граница TAD.
-
-### Generalizability: SOX9 locus (chr17) — 4/4
-**Источник:** Benko et al. Nat Genet 2011. Pierre Robin syndrome от делеций границы KCNJ16/SOX9 TAD.
-**K562 CTCF граница:** chr17:70,622,593 (score=53.5) — между KCNJ16 TAD и SOX9 регуляторным доменом.
-**SOX9 gene (hg38):** chr17:72,121,020-72,126,580
-**SOX9 регуляторная пустыня:** chr17:71.0-72.1 Mb (CTCF-sparse, max score=25.7)
-
-| Label | SV | Ratio | Verdict | Correct? |
-|---|---|---|---|---|
-| Path_SOX9_boundary | del chr17:70.3-71.0 Mb | 1.632 | DISRUPTED | ✅ |
+[summarized] [summarized] ### Primary: Lupiáñez 2015 (EPHA4 locus, chr2) — 5/5
 | Path_SOX9_large | del chr17:69.8-71.5 Mb | 1.629 | DISRUPTED | ✅ |
 | Ben_SOX9_desert | del chr17:71.1-71.9 Mb | 1.300 | INTACT | ✅ |
 | Ben_SOX9_inv | inv chr17:71.2-71.8 Mb | 1.300 | INTACT | ✅ |
@@ -94,8 +82,9 @@ N_BINS     = 200    # 1Mb window
 ---
 
 
+
 ## Структура ключевых файлов
-[summarized] (empty section)
+[summarized] [summarized] (empty section)
 ```
 scripts/
   archcode_sv.py              ← ARCHCODE-SV: физический движок для SVs (НОВЫЙ)
@@ -128,6 +117,7 @@ results/p5_instrument/
 ---
 
 
+
 ## История сессий (краткая)
 
 - **2026-03-08:** bioRxiv submission v2.16, Paper 3 skeleton
@@ -138,5 +128,7 @@ results/p5_instrument/
   - Deep research → SV pivot decision
   - ARCHCODE-SV implemented (4h): 9/9 on 2 loci without training
 
+
 ## Auto-commit log
+- [2026-06-26 09:51] `748d72d`: feat: ARCHCODE-SV v1.1 вЂ” FL Standard PROMOTE, 12/12 on chr2+chr17+chr7
 - [2026-06-26 09:38] `7480acc`: feat: ARCHCODE-SV v1.0 вЂ” physics-based structural variant pathogenicity engine
