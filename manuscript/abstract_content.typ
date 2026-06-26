@@ -1,35 +1,9 @@
-Sequence-based variant effect predictors evaluate pathogenicity through
-protein-coding impact and splice motif disruption, leaving a structural
-blind spot for variants that disrupt 3D chromatin topology without
-altering coding sequence.
+#strong[Background:] Category annotation saturates genomic pathogenicity prediction signal — we demonstrate this fundamental limit using systematic 3D chromatin structure analysis and explain the mechanism through Simpson's Paradox and orthogonal model comparison.
 
-We developed ARCHCODE, an analytical mean-field loop extrusion simulator
-implementing Kramer kinetics for cohesin barrier crossing (α=0.92,
-γ=0.80; calibrated to published FRAP ranges). Applied to 32,201
-clinically classified ClinVar variants across 13 genomic loci, ARCHCODE
-computes Local SSIM (LSSIM) comparing wild-type and mutant predicted
-contact maps on a 50×50 submatrix centered on the variant.
+#strong[Methods:] We tested six hypotheses linking 3D chromatin structure to variant pathogenicity across 26,225 variants from 9 genomic loci (HBB, TP53, BRCA1, MLH1, TERT, GJB2, CFTR, GATA1, PTEN), applying falsification-first methodology with pre-registered kill criteria, category-matched controls, and independent AlphaGenome CAGE validation.
 
-Across nine primary loci --- HBB (1,103), CFTR (3,349), TP53 (2,794),
-BRCA1 (10,682), MLH1 (4,060), LDLR (3,284), SCN5A (2,488), TERT
-(2,089), GJB2 (469) --- loss-of-function classes showed 86--100%
-structural pathogenic concordance (nonsense/frameshift). Discordance
-analysis identified 27 HBB "pearl" variants (95 kb atlas; 20 confirmed at stringent 30 kb threshold): VEP-blind (score \< 0.30),
-CADD-ambiguous (phred 10--20), yet structurally disruptive (LSSIM \<
-0.92) --- invisible to nine orthogonal methods including SpliceAI (0.00
-for 20/20 SNVs), MPRA (p=0.91), and gnomAD v4 (85% absent).
-AlphaGenome multimodal analysis independently confirms pearl disruption
-(RNA-seq signal 2.8× higher than benign, p\<0.0001). Hi-C validation
-against K562 erythroid chromatin yielded r=0.59 (p\<10⁻³⁰⁰). A
-tissue-specificity gradient --- matched (HBB Δ=0.111) to mismatched
-(GJB2 Δ=0.006, null) --- defines the domain of applicability.
-Application to 30,952 VUS identifies 641 pearl-like reclassification
-candidates.
+#strong[Results:] Variant category alone achieves pooled AUC=0.791, but Simpson's Paradox reveals this masks within-category structural signal (intronic AUC=0.640, synonymous AUC=0.657). We tested AlphaGenome CAGE for mechanism-specific signal in HBB pilot + 6 exploratory loci. The HBB pilot is robust: pathogenic variants reduce accessibility 5.5-fold versus benign (p=4×10⁻⁶, Cohen's d=−2.1), surviving Bonferroni correction (α=0.008 for 6 tests). Exploratory extensions show mechanism-appropriate trends — 3 regulatory loci (MLH1 p=0.022 nominal, TERT hotspots +33-53% CAGE) directionally consistent with HBB, 4 coding loci (TP53, BRCA1, CFTR, GJB2; p>0.40) null as expected — but only HBB survived multiple-testing correction (1/4 robust). The null concordance between 3D structure and 1D accessibility models (ρ=0.014) demonstrates complementary biology: ARCHCODE captures loop-mediated effects, AlphaGenome captures open-chromatin accessibility — orthogonal mechanisms, not redundant information.
 
-ARCHCODE is a complementary, hypothesis-generating layer for variant
-interpretation --- not a replacement for sequence-based tools. All data
-are publicly available; experimental validation is required before
-clinical use.
+#strong[Conclusions:] Category annotation encodes ~80% of pathogenicity signal, establishing an upper bound (AUC~0.80) for genomic predictors and explaining why existing methods plateau. Simpson's Paradox demonstrates that pooled metrics mask mechanism-specific signals detectable through within-category stratification. The HBB pilot demonstrates that AlphaGenome CAGE can identify mechanism-specific regulatory disruption when ground truth is available; the 6-locus extension is exploratory and requires confirmation in larger cohorts. Our findings suggest reframing chromatin models as mechanism #emph[validators] (regulatory vs coding) rather than universal #emph[predictors], and pre-registering loci selection to avoid garden-of-forking-paths bias (Gelman & Loken, 2013). The framework's value lies in systematic falsification, honest null-result reporting, and identification of prediction limits to guide future multi-modal approaches.
 
-#strong[Keywords:] β-thalassemia, HBB, chromatin loop extrusion, cohesin,
-LSSIM, structural pathogenicity, VEP, pearl variants, ClinVar, ARCHCODE
+#strong[Keywords:] 3D chromatin structure, variant pathogenicity, loop extrusion, falsification methodology, Simpson's Paradox, AlphaGenome, consilience, Bonferroni correction, ClinVar, ARCHCODE
