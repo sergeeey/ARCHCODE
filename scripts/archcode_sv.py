@@ -7,16 +7,30 @@ Input: SV (chrom, start, end, type)
 Output: TAD disruption score (0=disrupted, 1=intact)
 
 Proof-of-concept: Lupiáñez 2015 EPHA4 benchmark (human EPHA4 chr2)
+
+Step +1 (gene constraint filter):
+  DISRUPTED → check genes within ±500kb for pLI≥0.9 or LOEUF≤0.35
+  DISRUPTED_WITH_HI_GENE  → likely pathogenic
+  DISRUPTED_NO_HI_GENE    → likely benign (boundary effect, tolerant genes)
 """
 
+import json
+import os
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, Optional
 
 import numpy as np
 
 CTCF_BED = "data/input/ctcf/K562_CTCF_hg38.bed"
+GNOMAD_JSON = "data/input/gnomad_constraint.json"
+GENCODE_JSON = "data/input/gencode_genes_chr2_7_17.json"
 RESOLUTION = 5000  # 5kb bins (coarser than HBB but covers larger SVs)
 N_BINS = 200  # 1 Mb window
+
+# Step +1 thresholds (gnomAD v2.1.1, established by StrVCTVRE/SVInterpreter consensus)
+PLI_THRESHOLD = 0.9
+LOEUF_THRESHOLD = 0.35
+GENE_WINDOW = 500_000  # ±500kb from SV boundaries
 
 # Kramer kinetics (same as original ARCHCODE)
 K_BASE = 0.05
@@ -63,6 +77,52 @@ def load_ctcf_peaks(bed_path: str, chrom: str, win_start: int, win_end: int) -> 
             sites.append(CtcfSite(c, s, e, score, strand))
     return sites
 
+
+
+def load_gene_constraint(
+    gnomad_path: str = GNOMAD_JSON,
+    gencode_path: str = GENCODE_JSON,
+) -> tuple[dict, list[dict]]:
+    """
+    Load gnomAD v2.1.1 pLI/LOEUF and GENCODE v47 gene positions.
+    Returns (constraint_dict, gene_list).
+    """
+    with open(gnomad_path) as f:
+        constraint = json.load(f)
+    with open(gencode_path) as f:
+        genes = json.load(f)
+    return constraint, genes
+
+
+def find_hi_genes(
+    chrom: str,
+    sv_start: int,
+    sv_end: int,
+    constraint: dict,
+    genes: list[dict],
+    window: int = GENE_WINDOW,
+) -> list[str]:
+    """
+    Return names of haploinsufficient genes within window of the SV.
+    HI defined as pLI >= 0.9 OR LOEUF <= 0.35 (gnomAD v2.1.1 consensus).
+    """
+    search_start = sv_start - window
+    search_end = sv_end + window
+    hi: list[str] = []
+    for g in genes:
+        if g["chrom"] != chrom:
+            continue
+        if g["end"] < search_start or g["start"] > search_end:
+            continue
+        name = g["gene"]
+        c = constraint.get(name, {})
+        pLI = c.get("pLI")
+        loeuf = c.get("LOEUF")
+        if (pLI is not None and pLI >= PLI_THRESHOLD) or (
+            loeuf is not None and loeuf <= LOEUF_THRESHOLD
+        ):
+            hi.append(name)
+    return hi
 
 def simulate_contact_matrix(
     ctcf_sites: list[CtcfSite],
@@ -140,11 +200,17 @@ def boundary_delta(
     return float(cross_mut / cross_wt)
 
 
-def score_sv(sv: StructuralVariant, window_pad: int = 400_000) -> dict:
+def score_sv(
+    sv: StructuralVariant,
+    window_pad: int = 400_000,
+    gene_constraint: Optional[tuple[dict, list[dict]]] = None,
+) -> dict:
     """
     Score a structural variant for TAD disruption.
     Primary metric: cross-boundary contact ratio (mut/wt) at nearest CTCF site.
-    ratio > 1.5 → DISRUPTED (pathogenic), ratio ≤ 1.5 → INTACT (benign).
+    ratio > 1.35 → DISRUPTED; if gene_constraint provided:
+      DISRUPTED + HI gene nearby → DISRUPTED_WITH_HI_GENE (likely pathogenic)
+      DISRUPTED + no HI gene    → DISRUPTED_NO_HI_GENE   (likely benign)
     """
     win_start = max(0, sv.sv_start - window_pad)
     win_end = sv.sv_end + window_pad
@@ -194,6 +260,12 @@ def score_sv(sv: StructuralVariant, window_pad: int = 400_000) -> dict:
     ratio = boundary_delta(mat_wt, mat_mut, boundary_bin)
     global_s = ssim(mat_wt, mat_mut)
     verdict = "DISRUPTED" if ratio > 1.35 else "INTACT"
+    if verdict == "DISRUPTED" and gene_constraint is not None:
+        constraint, gene_list = gene_constraint
+        hi = find_hi_genes(sv.chrom, sv.sv_start, sv.sv_end, constraint, gene_list)
+        verdict = "DISRUPTED_WITH_HI_GENE" if hi else "DISRUPTED_NO_HI_GENE"
+    else:
+        hi = []
 
     return {
         "sv": f"{sv.chrom}:{sv.sv_start}-{sv.sv_end} ({sv.sv_type})",
@@ -203,6 +275,7 @@ def score_sv(sv: StructuralVariant, window_pad: int = 400_000) -> dict:
         "boundary_ratio": round(ratio, 3),
         "global_ssim": round(global_s, 4),
         "verdict": verdict,
+        "hi_genes": hi,
     }
 
 
