@@ -31,7 +31,10 @@
   "orthogonal_methods": 9,
   "data_availability": {
     "github": "https://github.com/sergeeey/ARCHCODE",
-    "zenodo_v2.9": "https://doi.org/10.5281/zenodo.18867448"
+    "zenodo_PARENT_DOI": "https://doi.org/10.5281/zenodo.18867448",
+    "zenodo_v4_CURRENT": "https://doi.org/10.5281/zenodo.20552712",
+    "zenodo_v4_published": "2026-06-05",
+    "zenodo_v4_note": "Falsification-first corrected version. Phantom ref fixed, clinical reclassification removed, AUC overclaim corrected, AlphaGenome excluded."
   },
   "preprint_platforms": {
     "bioRxiv": "REJECTED (2026-02, \"not complete research with new data\")",

@@ -1,0 +1,105 @@
+{
+  "experiment": "A2 \u2014 multi-locus generality of category-lookup property",
+  "evidence": "[VERIFIED-INLINE] real ClinVar atlases, project engine, 5-mode ablation",
+  "loci": {
+    "HBB": {
+      "disease": "\u03b2-thalassemia",
+      "n_path": 353,
+      "n_benign": 750,
+      "categorical_auc": 0.9755,
+      "inverted_auc": 0.0221,
+      "mirror_gap": 0.0024,
+      "position_random_gap": 0.0604
+    },
+    "BCL11A": {
+      "disease": "HbF/intellectual disability",
+      "n_path": 44,
+      "n_benign": 49,
+      "categorical_auc": 0.9014,
+      "inverted_auc": 0.0981,
+      "mirror_gap": 0.0005,
+      "position_random_gap": 0.1851
+    },
+    "GATA1": {
+      "disease": "anemia/leukemia",
+      "n_path": 52,
+      "n_benign": 131,
+      "categorical_auc": 0.8382,
+      "inverted_auc": 0.1378,
+      "mirror_gap": 0.024,
+      "position_random_gap": 0.0708
+    },
+    "GJB2": {
+      "disease": "deafness",
+      "n_path": 314,
+      "n_benign": 155,
+      "categorical_auc": 0.8529,
+      "inverted_auc": 0.0389,
+      "mirror_gap": 0.1082,
+      "position_random_gap": 0.0072
+    },
+    "HBA1": {
+      "disease": "\u03b1-thalassemia",
+      "n_path": 67,
+      "n_benign": 44,
+      "categorical_auc": 0.7698,
+      "inverted_auc": 0.2868,
+      "mirror_gap": 0.0566,
+      "position_random_gap": 0.0085
+    },
+    "LDLR": {
+      "disease": "hypercholesterolemia",
+      "n_path": 2274,
+      "n_benign": 1010,
+      "categorical_auc": 0.5916,
+      "inverted_auc": 0.3306,
+      "mirror_gap": 0.0778,
+      "position_random_gap": 0.0134
+    },
+    "PTEN": {
+      "disease": "cancer/PHTS",
+      "n_path": 703,
+      "n_benign": 793,
+      "categorical_auc": 0.8589,
+      "inverted_auc": 0.1379,
+      "mirror_gap": 0.0032,
+      "position_random_gap": 0.003
+    },
+    "SCN5A": {
+      "disease": "cardiac arrhythmia",
+      "n_path": 928,
+      "n_benign": 1560,
+      "categorical_auc": 0.5892,
+      "inverted_auc": 0.4109,
+      "mirror_gap": 0.0001,
+      "position_random_gap": 0.0008
+    },
+    "TERT": {
+      "disease": "cancer/telomere",
+      "n_path": 431,
+      "n_benign": 1658,
+      "categorical_auc": 0.8405,
+      "inverted_auc": 0.1826,
+      "mirror_gap": 0.0231,
+      "position_random_gap": 0.0188
+    }
+  },
+  "summary": {
+    "n_loci": 9,
+    "loci_list": [
+      "BCL11A",
+      "GATA1",
+      "GJB2",
+      "HBA1",
+      "HBB",
+      "LDLR",
+      "PTEN",
+      "SCN5A",
+      "TERT"
+    ],
+    "mirror_gap_max": 0.1082,
+    "mirror_gap_mean": 0.0329,
+    "all_mirror_below_0.10": false,
+    "verdict": "MIXED \u2014 inspect per-locus"
+  }
+}

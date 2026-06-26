@@ -1,0 +1,95 @@
+{
+  "screen": "second-locus matched-test feasibility",
+  "min_per_class": 3,
+  "loci": [
+    {
+      "locus": "GATA1",
+      "file": "gata1_variants.csv",
+      "n": 183,
+      "n_path": 52,
+      "n_benign": 131,
+      "categories": [
+        {
+          "category": "intronic",
+          "n_path": 3,
+          "n_benign": 19
+        },
+        {
+          "category": "missense",
+          "n_path": 34,
+          "n_benign": 25
+        },
+        {
+          "category": "nonsense",
+          "n_path": 6,
+          "n_benign": 0
+        },
+        {
+          "category": "other",
+          "n_path": 0,
+          "n_benign": 1
+        },
+        {
+          "category": "splice",
+          "n_path": 6,
+          "n_benign": 0
+        },
+        {
+          "category": "synonymous",
+          "n_path": 3,
+          "n_benign": 86
+        }
+      ],
+      "testable_categories": [
+        "intronic",
+        "missense",
+        "synonymous"
+      ],
+      "verdict": "PASS \u2014 matched test feasible"
+    },
+    {
+      "locus": "HBA1",
+      "file": "hba1_variants.csv",
+      "n": 111,
+      "n_path": 67,
+      "n_benign": 44,
+      "categories": [
+        {
+          "category": "intronic",
+          "n_path": 1,
+          "n_benign": 11
+        },
+        {
+          "category": "missense",
+          "n_path": 50,
+          "n_benign": 18
+        },
+        {
+          "category": "nonsense",
+          "n_path": 5,
+          "n_benign": 0
+        },
+        {
+          "category": "other",
+          "n_path": 1,
+          "n_benign": 4
+        },
+        {
+          "category": "splice",
+          "n_path": 7,
+          "n_benign": 2
+        },
+        {
+          "category": "synonymous",
+          "n_path": 3,
+          "n_benign": 9
+        }
+      ],
+      "testable_categories": [
+        "missense",
+        "synonymous"
+      ],
+      "verdict": "PASS \u2014 matched test feasible"
+    }
+  ]
+}

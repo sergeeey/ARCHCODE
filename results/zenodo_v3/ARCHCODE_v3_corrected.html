@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARCHCODE: A Falsification-First Framework for Evaluating 3D Chromatin Structural Scores — v3 Corrected</title>
+  <style>
+    body { font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 1.6;
+           max-width: 7.5in; margin: 0 auto; padding: 40px; background: white; color: #000; }
+    h1 { font-size: 18pt; font-weight: bold; margin-top: 24pt; margin-bottom: 12pt; }
+    h2 { font-size: 15pt; font-weight: bold; margin-top: 20pt; margin-bottom: 10pt; border-bottom: 1px solid #ccc; }
+    h3 { font-size: 13pt; font-weight: bold; margin-top: 14pt; margin-bottom: 7pt; }
+    p  { text-align: justify; margin-bottom: 8pt; }
+    table { border-collapse: collapse; width: 100%; margin: 12pt 0; font-size: 10.5pt; }
+    th, td { border: 1px solid #ddd; padding: 6pt; text-align: left; }
+    th { background: #f0f0f0; font-weight: bold; }
+    .correction-banner {
+      background: #fff3cd; border: 2px solid #e6a817; border-radius: 4px;
+      padding: 14px 18px; margin: 0 0 24pt 0; font-size: 11pt;
+    }
+    .correction-banner h3 { margin-top: 0; color: #7d4a00; font-size: 12pt; }
+    .correction-banner ul { margin: 6pt 0; padding-left: 20pt; }
+    .status-box {
+      background: #f0f8f0; border: 1px solid #5a9a5a; border-radius: 4px;
+      padding: 12px 16px; margin: 12pt 0; font-size: 11pt;
+    }
+    .neg-result { color: #7d0000; font-weight: bold; }
+    .evidence-tag { font-family: monospace; font-size: 10pt; background: #f5f5f5;
+                    padding: 1px 4px; border-radius: 2px; }
+    abbr { border-bottom: 1px dotted #666; cursor: help; }
+  </style>
+</head>
+<body>
+
+<div class="correction-banner">
+  <h3>⚠ CORRECTION NOTICE — Version 3 (2026-06-05)</h3>
+  <p>This version corrects earlier deposits (v1: Feb 2026; v2: Mar 2026) which contained:</p>
+  <ul>
+    <li><strong>Phantom reference:</strong> "Sabaté et al., Nature Genetics 2025" (DOI 404 — paper does not exist). Corrected to Sabaté et al. bioRxiv 2024 (DOI: 10.1101/2024.08.09.605990).</li>
+    <li><strong>Clinical reclassification recommendation:</strong> "we propose reclassifying 3 HBB variants from VUS to Likely Pathogenic." Removed — no ACMG-compliant functional evidence (PS3) exists.</li>
+    <li><strong>AUC overclaim:</strong> AUC 0.977 presented as independent pathogenicity prediction. A June 2026 matched-control audit showed this is a consequence-category distribution artifact (naive Cohen's d −2.67 collapses to −0.34 after stratification; within-category AUC ≈ 0.52, chance level).</li>
+    <li><strong>AlphaGenome inconsistency:</strong> Multiple contradictory claims (excluded/confirms/real). Corrected: AlphaGenome mock data is excluded from all claims.</li>
+  </ul>
+  <p>Full correction details: <a href="https://github.com/sergeeey/ARCHCODE/blob/main/results/zenodo_v3/CORRECTION_NOTE.md">results/zenodo_v3/CORRECTION_NOTE.md</a></p>
+</div>
+
+<h1>ARCHCODE: A Falsification-First Framework for Evaluating 3D Chromatin Structural Scores in Variant Interpretation — A β-Thalassemia Case Study</h1>
+
+<p><strong>Sergey V. Boyko</strong><br>
+Independent Researcher, Almaty, Kazakhstan<br>
+<em>Correspondence:</em> sergeikuch80@gmail.com<br>
+<em>ORCID:</em> [register before resubmission]</p>
+
+<hr>
+
+<h2>Abstract</h2>
+
+<p><strong>Background:</strong> Sequence-based predictors capture coding and canonical splice effects,
+but are not designed to explicitly model 3D chromatin topology. ARCHCODE is a physics-informed
+loop-extrusion simulation framework intended as an orthogonal, hypothesis-generating layer for
+structural variant interpretation. A central methodological question is whether structural scores
+like LSSIM (Local Structural Similarity Index) carry independent information beyond consequence
+category and regulatory-distance baselines.</p>
+
+<p><strong>Methods:</strong> We analyzed ClinVar HBB variants (n = 1,103; 353 pathogenic, 750 benign)
+with ARCHCODE structural metrics under a strict falsification-first validation protocol. Claims were
+constrained by canonical governance artifacts and explicit evidence tiers (SUPPORTED, EXPLORATORY,
+UNVERIFIED). A systematic matched-control audit was applied across five experiments: (1) HBB
+matched-category test, (2) regulatory-confound models (category + CTCF-distance), (3) BCL11A as a
+second locus, (4) GATA1 matched-category test, and (5) HUDEP-2 real Hi-C retest (GSM4873116).</p>
+
+<p><strong>Results:</strong> <span class="neg-result">The residual-signal hypothesis was falsified in
+all five tested configurations.</span> The headline AUC 0.977 is a consequence-category distribution
+artifact: naive Cohen's d (−2.67) collapses to −0.34 after category stratification. The only
+non-circular matched test (within-category, where both pathogenic and benign variants exist) shows
+AUC ≈ 0.52 (intronic, n = 667, Mann–Whitney p = 0.80) — indistinguishable from chance. LSSIM is
+91% explained by consequence category alone (R² = 0.907) and is substantially further explained by
+distance to CTCF sites (within-intronic Spearman ρ = 0.74). Adding LSSIM to category + position
+does not improve label prediction (CV AUC: category 0.980 = category + LSSIM 0.980). BCL11A failed
+as a second positive locus. GATA1 showed wrong-direction LSSIM in the missense category
+(AUC 0.46). HUDEP-2 real Hi-C (5kb resolution) placed all 1,103 HBB variants in a single bin
+(r = 0.16 between analytical and real contact maps, p = 0.30, not significant).</p>
+
+<p><strong>Conclusions:</strong> ARCHCODE does not currently demonstrate independent 3D chromatin
+pathogenicity signal in any tested configuration. The contribution is a systematic falsification
+framework: a method for auditing chromatin-based variant scores under category, positional,
+tissue-match, and resolution controls. The framework identifies exactly what is required for a fair
+test: ≤1 kb Hi-C from the correct erythroid tissue, regulatory non-coding variants, and
+pre-registered matched controls. The engine remains a valid hypothesis-generation tool for
+experimental prioritization under these constraints.</p>
+
+<p><strong>Limitations:</strong></p>
+<ul>
+  <li>LSSIM is a deterministic function of consequence category (CATEGORICAL_EFFECTS lookup in source); the structural signal is not independent of categorical annotation</li>
+  <li>All tested atlases are built on analytical (mean-field) contact maps or K562 CTCF (wrong tissue for erythroid genes)</li>
+  <li>HUDEP-2 Hi-C extracted at 5 kb — too coarse for HBB intra-gene discrimination</li>
+  <li>Kramer kinetics parameters (α, γ) are manually calibrated, not fitted to experimental FRAP data</li>
+  <li>No wet-lab, RNA-seq, or CRISPR perturbation validation</li>
+  <li>Pearl variants are computational hypotheses only; no experimental confirmation</li>
+  <li>Hi-C validation: r = 0.16 (analytical vs real HUDEP-2, p = 0.30, not significant)</li>
+</ul>
+
+<p><strong>Keywords:</strong> β-thalassemia, HBB, chromatin loops, loop extrusion, cohesin, SSIM,
+falsification framework, matched controls, regulatory variants, variant interpretation,
+mean-field simulation, negative result</p>
+
+<hr>
+
+<h2>Data Transparency Declaration</h2>
+
+<table>
+  <tr><th>Data source</th><th>Status</th><th>Notes</th></tr>
+  <tr><td>ClinVar HBB variants (n = 1,103)</td><td>REAL</td><td>NCBI E-utilities API, 2026</td></tr>
+  <tr><td>ARCHCODE LSSIM scores</td><td>COMPUTATIONAL (analytical)</td><td>Deterministic f(category + position); see source</td></tr>
+  <tr><td>HUDEP-2 Hi-C</td><td>REAL (GSM4873116)</td><td>Capture Hi-C, 5 kb extracted; insufficient resolution for per-variant test</td></tr>
+  <tr><td>Ensembl VEP</td><td>REAL</td><td>Standard REST API</td></tr>
+  <tr><td>AlphaGenome</td><td>NOT USED — EXCLUDED</td><td>Earlier versions used mock/synthetic; excluded from all claims in v3</td></tr>
+  <tr><td>Kramer parameters (α, γ)</td><td>MANUALLY CALIBRATED</td><td>Literature ranges; NOT fitted to FRAP data (earlier claim was erroneous)</td></tr>
+  <tr><td>Sabaté et al. reference</td><td>bioRxiv 2024 (DOI: 10.1101/2024.08.09.605990)</td><td>Earlier versions cited a non-existent "Nature Genetics 2025" paper — corrected</td></tr>
+</table>
+
+<hr>
+
+<h2>Falsification Framework — Summary of Gates Applied</h2>
+
+<div class="status-box">
+  <strong>Five-experiment falsification audit (June 2026) — all gates fired:</strong>
+  <table>
+    <tr><th>Experiment</th><th>Gate result</th><th>Key number</th></tr>
+    <tr><td>HBB matched-category test</td><td>FAIL</td><td>d −2.67 → −0.34 stratified; intronic AUC 0.524, p = 0.80</td></tr>
+    <tr><td>Regulatory-confound (K1/K2)</td><td>FAIL</td><td>R²(LSSIM ~ category) = 0.907; LSSIM adds nothing over category (AUC 0.980 = 0.980)</td></tr>
+    <tr><td>BCL11A second locus</td><td>FAIL</td><td>3/3 + 6/6 not_observed in position-matched controls</td></tr>
+    <tr><td>GATA1 matched-category</td><td>FAIL</td><td>Missense AUC 0.464 (wrong direction); K562 tissue mismatch</td></tr>
+    <tr><td>HUDEP-2 real Hi-C (GSM4873116)</td><td>FAILS_SAME_BIN</td><td>All 1,103 variants in 1 bin at 5 kb; r = 0.16 (analytic vs real, p = 0.30)</td></tr>
+  </table>
+  <p><strong>Audit artifacts:</strong> <a href="https://github.com/sergeeey/ARCHCODE">github.com/sergeeey/ARCHCODE</a> — results/p0_governance/ through results/p4_hudep2_hbb/</p>
+</div>
+
+<hr>
+
+<h2>AI Co-authorship Disclosure</h2>
+<p>Substantial portions of the code were generated with AI assistance (Claude Opus 4.5/4.6/4.8,
+Anthropic). All 275 commits contain <code>Co-Authored-By: Claude</code> tags in the Git history.
+The AI assistance is disclosed transparently in the repository.</p>
+
+<hr>
+
+<h2>What This Work Does NOT Claim (Mandatory Anti-Overclaim Section)</h2>
+<ul>
+  <li><strong>Does NOT claim</strong> ARCHCODE predicts pathogenicity independently of consequence category.</li>
+  <li><strong>Does NOT claim</strong> any VUS is reclassified. Pearl variants are computational hypotheses for experimental follow-up only.</li>
+  <li><strong>Does NOT claim</strong> Hi-C correlation validates the model (r = 0.16, p = 0.30).</li>
+  <li><strong>Does NOT claim</strong> AlphaGenome confirms ARCHCODE results (AlphaGenome data was synthetic/mock in all prior versions).</li>
+  <li><strong>Does NOT claim</strong> loop-extrusion parameters were experimentally fitted.</li>
+</ul>
+
+<hr>
+<p><em>ARCHCODE v3 Corrected — 2026-06-05<br>
+Code and data: <a href="https://github.com/sergeeey/ARCHCODE">https://github.com/sergeeey/ARCHCODE</a><br>
+Zenodo: <a href="https://doi.org/10.5281/zenodo.18867448">https://doi.org/10.5281/zenodo.18867448</a></em></p>
+
+</body>
+</html>

@@ -1,0 +1,228 @@
+{
+  "experiment": "Instrument transfer-function characterization (multi-locus ablation)",
+  "method": "Real TS engine (generate-unified-atlas.ts) across 5 effect-modes",
+  "evidence": "[VERIFIED-INLINE] real ClinVar atlases; descriptive; not pathogenicity validation",
+  "loci": {
+    "HBB": {
+      "source": "results/ablation_effectstrength.json (precomputed 2026-03-04)",
+      "global_auc_by_mode": {
+        "categorical": 0.975,
+        "position-only": 0.551,
+        "uniform-medium": 0.551,
+        "inverted": 0.022,
+        "random": 0.49
+      },
+      "within_category_categorical": {
+        "intronic": 0.524,
+        "synonymous": 0.5703,
+        "other": 0.7738
+      }
+    },
+    "GATA1": {
+      "modes": {
+        "categorical": {
+          "n": 183,
+          "n_path": 52,
+          "n_benign": 131,
+          "global_auc": 0.8382266588373458,
+          "path_mean_lssim": 0.995108,
+          "ben_mean_lssim": 0.998679,
+          "lssim_unique_values": 41,
+          "within_category": {
+            "missense": {
+              "n_path": 34,
+              "n_benign": 25,
+              "auc": 0.4641,
+              "uniq_lssim": 23
+            }
+          },
+          "source": "GATA1_Unified_Atlas_300kb.csv (CANONICAL, read-only)"
+        },
+        "position-only": {
+          "n": 183,
+          "n_path": 52,
+          "n_benign": 131,
+          "global_auc": 0.46256605989430416,
+          "path_mean_lssim": 0.993385,
+          "ben_mean_lssim": 0.991708,
+          "lssim_unique_values": 48,
+          "within_category": {
+            "missense": {
+              "n_path": 34,
+              "n_benign": 25,
+              "auc": 0.4676,
+              "uniq_lssim": 28
+            }
+          },
+          "source": "GATA1_Unified_Atlas_300kb_POSITION_ONLY.csv"
+        },
+        "uniform-medium": {
+          "n": 183,
+          "n_path": 52,
+          "n_benign": 131,
+          "global_auc": 0.46161186142102173,
+          "path_mean_lssim": 0.996848,
+          "ben_mean_lssim": 0.996037,
+          "lssim_unique_values": 29,
+          "within_category": {
+            "missense": {
+              "n_path": 34,
+              "n_benign": 25,
+              "auc": 0.4612,
+              "uniq_lssim": 20
+            }
+          },
+          "source": "GATA1_Unified_Atlas_300kb_UNIFORM_MEDIUM.csv"
+        },
+        "inverted": {
+          "n": 183,
+          "n_path": 52,
+          "n_benign": 131,
+          "global_auc": 0.1377715795654727,
+          "path_mean_lssim": 0.997117,
+          "ben_mean_lssim": 0.987664,
+          "lssim_unique_values": 85,
+          "within_category": {
+            "missense": {
+              "n_path": 34,
+              "n_benign": 25,
+              "auc": 0.4818,
+              "uniq_lssim": 16
+            }
+          },
+          "source": "GATA1_Unified_Atlas_300kb_INVERTED.csv"
+        },
+        "random": {
+          "n": 183,
+          "n_path": 52,
+          "n_benign": 131,
+          "global_auc": 0.5333969465648855,
+          "path_mean_lssim": 0.994625,
+          "ben_mean_lssim": 0.994853,
+          "lssim_unique_values": 90,
+          "within_category": {
+            "missense": {
+              "n_path": 34,
+              "n_benign": 25,
+              "auc": 0.5559,
+              "uniq_lssim": 45
+            }
+          },
+          "source": "GATA1_Unified_Atlas_300kb_RANDOM.csv"
+        }
+      },
+      "diagnostics": {
+        "mirror_gap_abs": 0.024,
+        "position_vs_random_gap": 0.0708,
+        "categorical_global_auc": 0.8382,
+        "interpretation": [
+          "MIRROR CONFIRMED: inverted ~= 1-categorical => directional category lookup",
+          "POSITION=NOISE: position-only ~= random => zero positional resolution"
+        ]
+      }
+    },
+    "HBA1": {
+      "modes": {
+        "categorical": {
+          "n": 111,
+          "n_path": 67,
+          "n_benign": 44,
+          "global_auc": 0.7698439620081411,
+          "path_mean_lssim": 0.995258,
+          "ben_mean_lssim": 0.997636,
+          "lssim_unique_values": 34,
+          "within_category": {
+            "missense": {
+              "n_path": 50,
+              "n_benign": 18,
+              "auc": 0.5783,
+              "uniq_lssim": 21
+            }
+          },
+          "source": "HBA1_Unified_Atlas_300kb.csv (CANONICAL, read-only)"
+        },
+        "position-only": {
+          "n": 111,
+          "n_path": 67,
+          "n_benign": 44,
+          "global_auc": 0.60702170963365,
+          "path_mean_lssim": 0.993509,
+          "ben_mean_lssim": 0.993743,
+          "lssim_unique_values": 30,
+          "within_category": {
+            "missense": {
+              "n_path": 50,
+              "n_benign": 18,
+              "auc": 0.5772,
+              "uniq_lssim": 27
+            }
+          },
+          "source": "HBA1_Unified_Atlas_300kb_POSITION_ONLY.csv"
+        },
+        "uniform-medium": {
+          "n": 111,
+          "n_path": 67,
+          "n_benign": 44,
+          "global_auc": 0.6043080054274084,
+          "path_mean_lssim": 0.996884,
+          "ben_mean_lssim": 0.996998,
+          "lssim_unique_values": 17,
+          "within_category": {
+            "missense": {
+              "n_path": 50,
+              "n_benign": 18,
+              "auc": 0.5711,
+              "uniq_lssim": 16
+            }
+          },
+          "source": "HBA1_Unified_Atlas_300kb_UNIFORM_MEDIUM.csv"
+        },
+        "inverted": {
+          "n": 111,
+          "n_path": 67,
+          "n_benign": 44,
+          "global_auc": 0.2868046132971506,
+          "path_mean_lssim": 0.997501,
+          "ben_mean_lssim": 0.994339,
+          "lssim_unique_values": 40,
+          "within_category": {
+            "missense": {
+              "n_path": 50,
+              "n_benign": 18,
+              "auc": 0.5722,
+              "uniq_lssim": 11
+            }
+          },
+          "source": "HBA1_Unified_Atlas_300kb_INVERTED.csv"
+        },
+        "random": {
+          "n": 111,
+          "n_path": 67,
+          "n_benign": 44,
+          "global_auc": 0.6155020352781547,
+          "path_mean_lssim": 0.995369,
+          "ben_mean_lssim": 0.996634,
+          "lssim_unique_values": 66,
+          "within_category": {
+            "missense": {
+              "n_path": 50,
+              "n_benign": 18,
+              "auc": 0.6633,
+              "uniq_lssim": 47
+            }
+          },
+          "source": "HBA1_Unified_Atlas_300kb_RANDOM.csv"
+        }
+      },
+      "diagnostics": {
+        "mirror_gap_abs": 0.0566,
+        "position_vs_random_gap": 0.0085,
+        "categorical_global_auc": 0.7698,
+        "interpretation": [
+          "MIRROR CONFIRMED: inverted ~= 1-categorical => directional category lookup",
+          "POSITION=NOISE: position-only ~= random => zero positional resolution"
+        ]
+      }
+    }
+  }
+}

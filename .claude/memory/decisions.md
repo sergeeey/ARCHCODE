@@ -402,3 +402,44 @@
 - This is the FIRST cross-species test of structural pathogenicity conservation
 
 **Файлы:** `config/locus/mouse_hbb_130kb.json`, `scripts/cross_species_comparison.ts`, `scripts/plot_cross_species.py`, `results/cross_species_hbb_comparison.json`, `figures/fig12_cross_species.pdf`
+
+---
+
+## ADR 2026-06-05: Falsification-First Reboot — retire pathogenicity claim, keep framework
+
+**Context:** Per the 2026-06-05 plan, ARCHCODE pivots from "VUS pathogenicity tool" to
+an honest falsification-first platform. Grounded against the real repo this session.
+
+**Decision:** Adopt the thesis *"ARCHCODE detects tissue-specific 3D chromatin structural
+fragility and uses falsification gates to prioritize regulatory-variant hypotheses."*
+Retire *"ARCHCODE predicts pathogenicity"* as the headline.
+
+**Verified evidence (read-only, this session):**
+- LSSIM is a deterministic function of consequence category (`CATEGORICAL_EFFECTS` lookup,
+  `scripts/generate-unified-atlas.ts:291-352`).
+- HBB: naive Cohen d(path,benign) = **−2.67** collapses to **−0.34** after category
+  stratification; benign group is **87.7% intronic**. (`results/p2_hbb_truth/`)
+- Matched-category test: within-category AUC 0.524 (intronic), 0.570 (synonymous);
+  Mann–Whitney p = 0.80 / 0.67 → **no discrimination**.
+- Confound (`results/p3_confound/`): label~category AUC **0.980** = label~category+LSSIM →
+  **LSSIM adds nothing (K2)**. LSSIM R² from category = **0.907** (K1) → structural-annotation
+  proxy of (category + CTCF distance), not independent 3D signal.
+
+**Skeptic concerns & resolution:**
+- "Is the HBB severity report itself circular?" → YES by construction; therefore framed as
+  DESCRIPTIVE only, and the *matched-category* test (the non-circular one) is the headline. Mitigated.
+- "Residual-signal hypothesis dead?" → Falsified ON ANALYTICAL HBB MAPS only; kept alive as
+  `[NEEDS-REAL-DATA]` pending real Hi-C (Etap 6) + clean locus (Etap 5). Documented limitation.
+
+**Governance:** `results/p0_governance/RULES.md` (frozen rails). BCL11A NOT a positive locus;
+AlphaGenome-synthetic NOT validation; 641 VUS NOT reclassified; canonical files read-only.
+
+**HUDEP-2 retest (2026-06-05):** `FAILS_SAME_BIN` — all 1103 HBB variants in single 5kb bin; analytical model r=0.16 vs real Hi-C (p=0.30, not significant); AUC=0.5000 exact. `results/p4_hudep2_hbb/HUDEP2_HBB_DECISION.md`.
+
+**Final state:** Residual-signal hypothesis falsified in ALL 5 testable configurations (HBB analytical, K1/K2 confound, BCL11A, GATA1 matched-test, HUDEP-2 real Hi-C).
+
+**Paper 3 framing decided: negative falsification framework.** Ready to write skeleton.
+
+**Paper 2 DEFERRED** (user decision 2026-06-05).
+
+**Reviewers:** Claude (Opus 4.8), audit-verification-gate, skeptic-triggers.

@@ -1,8 +1,8 @@
 {
   "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
-  "date": "2026-03-05T08:03:12.227Z",
+  "date": "2026-06-12T12:33:34.129Z",
   "locus_config_id": "pten_300kb",
-  "locus_config_path": "D:\\ДНК\\config\\locus\\pten_300kb.json",
+  "locus_config_path": "C:\\Users\\sboi\\ARCHCODE_review\\config\\locus\\pten_300kb.json",
   "provenance": {
     "ctcf_sources": [
       "ENCODE_K562_CTCF"
@@ -29,14 +29,14 @@
     "total_variants": 1496,
     "pathogenic_variants": 703,
     "benign_variants": 793,
-    "archcode_structural_pathogenic": 9,
+    "archcode_structural_pathogenic": 62,
     "pearls": 0,
-    "mean_ssim_all": 0.9992,
+    "mean_ssim_all": 0.9984,
     "mean_ssim_pathogenic": 0.9987,
-    "mean_ssim_benign": 0.9997,
-    "mean_lssim_all": 0.9937,
-    "mean_lssim_pathogenic": 0.9885,
-    "mean_lssim_benign": 0.9982,
+    "mean_ssim_benign": 0.998,
+    "mean_lssim_all": 0.9877,
+    "mean_lssim_pathogenic": 0.9899,
+    "mean_lssim_benign": 0.9858,
     "local_ssim_window": 50
   },
   "category_breakdown": {
@@ -44,55 +44,55 @@
       "total": 380,
       "pathogenic_count": 370,
       "benign_count": 10,
-      "mean_ssim_all": 0.9986,
-      "mean_ssim_pathogenic": 0.9986,
-      "mean_ssim_benign": 0.9977,
-      "mean_lssim_all": 0.9886,
-      "mean_lssim_pathogenic": 0.9887,
-      "mean_lssim_benign": 0.9851
+      "mean_ssim_all": 0.9989,
+      "mean_ssim_pathogenic": 0.9989,
+      "mean_ssim_benign": 0.999,
+      "mean_lssim_all": 0.9912,
+      "mean_lssim_pathogenic": 0.9911,
+      "mean_lssim_benign": 0.9937
     },
     "intronic": {
       "total": 465,
       "pathogenic_count": 76,
       "benign_count": 389,
-      "mean_ssim_all": 0.9996,
-      "mean_ssim_pathogenic": 0.9995,
-      "mean_ssim_benign": 0.9997,
-      "mean_lssim_all": 0.9978,
-      "mean_lssim_pathogenic": 0.9972,
-      "mean_lssim_benign": 0.9979
+      "mean_ssim_all": 0.997,
+      "mean_ssim_pathogenic": 0.9961,
+      "mean_ssim_benign": 0.9972,
+      "mean_lssim_all": 0.9798,
+      "mean_lssim_pathogenic": 0.9746,
+      "mean_lssim_benign": 0.9808
     },
     "other": {
       "total": 47,
       "pathogenic_count": 15,
       "benign_count": 32,
-      "mean_ssim_all": 0.9988,
-      "mean_ssim_pathogenic": 0.9998,
-      "mean_ssim_benign": 0.9984,
-      "mean_lssim_all": 0.9918,
-      "mean_lssim_pathogenic": 0.9972,
-      "mean_lssim_benign": 0.9892
+      "mean_ssim_all": 0.9985,
+      "mean_ssim_pathogenic": 0.9997,
+      "mean_ssim_benign": 0.9979,
+      "mean_lssim_all": 0.9888,
+      "mean_lssim_pathogenic": 0.9952,
+      "mean_lssim_benign": 0.9858
     },
     "synonymous": {
       "total": 391,
       "pathogenic_count": 29,
       "benign_count": 362,
-      "mean_ssim_all": 1,
-      "mean_ssim_pathogenic": 1,
-      "mean_ssim_benign": 1,
-      "mean_lssim_all": 0.9998,
-      "mean_lssim_pathogenic": 0.9997,
-      "mean_lssim_benign": 0.9998
+      "mean_ssim_all": 0.9989,
+      "mean_ssim_pathogenic": 0.9985,
+      "mean_ssim_benign": 0.9989,
+      "mean_lssim_all": 0.9907,
+      "mean_lssim_pathogenic": 0.9878,
+      "mean_lssim_benign": 0.9909
     },
     "nonsense": {
       "total": 137,
       "pathogenic_count": 137,
       "benign_count": 0,
-      "mean_ssim_all": 0.9975,
-      "mean_ssim_pathogenic": 0.9975,
+      "mean_ssim_all": 0.9992,
+      "mean_ssim_pathogenic": 0.9992,
       "mean_ssim_benign": null,
-      "mean_lssim_all": 0.9761,
-      "mean_lssim_pathogenic": 0.9761,
+      "mean_lssim_all": 0.9923,
+      "mean_lssim_pathogenic": 0.9923,
       "mean_lssim_benign": null
     },
     "splice": {
@@ -102,8 +102,8 @@
       "mean_ssim_all": 0.9996,
       "mean_ssim_pathogenic": 0.9996,
       "mean_ssim_benign": null,
-      "mean_lssim_all": 0.9954,
-      "mean_lssim_pathogenic": 0.9954,
+      "mean_lssim_all": 0.9946,
+      "mean_lssim_pathogenic": 0.9946,
       "mean_lssim_benign": null
     }
   },
@@ -111,6 +111,6 @@
     "single_engine": true,
     "label_blind_simulation": true,
     "effect_strength_source": "CATEGORICAL (category-only, label-blind)",
-    "effect_mode": "categorical"
+    "effect_mode": "random"
   }
 }

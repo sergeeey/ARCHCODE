@@ -1,0 +1,300 @@
+{
+  "source_csv": "HBB_Unified_Atlas_95kb.csv",
+  "n_rows": 1103,
+  "n_pathogenic": 353,
+  "n_benign": 750,
+  "note": "LSSIM is a deterministic function of Category via CATEGORICAL_EFFECTS (verified in scripts/generate-unified-atlas.ts). These statistics are DESCRIPTIVE of the canonical atlas, not independent pathogenicity evidence.",
+  "categories": [
+    {
+      "category": "3_prime_UTR",
+      "n_total": 14,
+      "n_path": 13,
+      "n_benign": 1,
+      "mean_lssim": 0.991743,
+      "median_lssim": 0.99175,
+      "iqr": [
+        0.9916,
+        0.9918
+      ],
+      "boot95_mean": [
+        0.991664,
+        0.991821
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "5_prime_UTR",
+      "n_total": 4,
+      "n_path": 3,
+      "n_benign": 1,
+      "mean_lssim": 0.976,
+      "median_lssim": 0.97585,
+      "iqr": [
+        0.975675,
+        0.976175
+      ],
+      "boot95_mean": [
+        0.97565,
+        0.97645
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "frameshift",
+      "n_total": 99,
+      "n_path": 99,
+      "n_benign": 0,
+      "mean_lssim": 0.817642,
+      "median_lssim": 0.7963,
+      "iqr": [
+        0.7935,
+        0.8
+      ],
+      "boot95_mean": [
+        0.80921,
+        0.826903
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "intronic",
+      "n_total": 667,
+      "n_path": 9,
+      "n_benign": 658,
+      "mean_lssim": 0.992809,
+      "median_lssim": 0.9929,
+      "iqr": [
+        0.9919,
+        0.993
+      ],
+      "boot95_mean": [
+        0.992728,
+        0.992893
+      ],
+      "within_category_testable": true,
+      "mannwhitney_p": 0.8035443317187067,
+      "cliffs_delta": -0.04795677136102668,
+      "within_category_auc": 0.5239783856805134
+    },
+    {
+      "category": "missense",
+      "n_total": 125,
+      "n_path": 125,
+      "n_benign": 0,
+      "mean_lssim": 0.926711,
+      "median_lssim": 0.9119,
+      "iqr": [
+        0.9101,
+        0.9424
+      ],
+      "boot95_mean": [
+        0.922735,
+        0.930789
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "nonsense",
+      "n_total": 40,
+      "n_path": 40,
+      "n_benign": 0,
+      "mean_lssim": 0.798435,
+      "median_lssim": 0.76415,
+      "iqr": [
+        0.759875,
+        0.84565
+      ],
+      "boot95_mean": [
+        0.781445,
+        0.817416
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "other",
+      "n_total": 19,
+      "n_path": 12,
+      "n_benign": 7,
+      "mean_lssim": 0.959463,
+      "median_lssim": 0.961,
+      "iqr": [
+        0.96,
+        0.9614
+      ],
+      "boot95_mean": [
+        0.956047,
+        0.962395
+      ],
+      "within_category_testable": true,
+      "mannwhitney_p": 0.05624298705944943,
+      "cliffs_delta": -0.5476190476190477,
+      "within_category_auc": 0.7738095238095238
+    },
+    {
+      "category": "promoter",
+      "n_total": 15,
+      "n_path": 15,
+      "n_benign": 0,
+      "mean_lssim": 0.91612,
+      "median_lssim": 0.9157,
+      "iqr": [
+        0.9148,
+        0.9175
+      ],
+      "boot95_mean": [
+        0.91538,
+        0.916913
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "splice_acceptor",
+      "n_total": 3,
+      "n_path": 3,
+      "n_benign": 0,
+      "mean_lssim": 0.8212,
+      "median_lssim": 0.8209,
+      "iqr": [
+        0.8209,
+        0.82135
+      ],
+      "boot95_mean": [
+        0.8209,
+        0.8218
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "splice_donor",
+      "n_total": 22,
+      "n_path": 22,
+      "n_benign": 0,
+      "mean_lssim": 0.849368,
+      "median_lssim": 0.82765,
+      "iqr": [
+        0.82505,
+        0.828
+      ],
+      "boot95_mean": [
+        0.831389,
+        0.868227
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "splice_region",
+      "n_total": 9,
+      "n_path": 9,
+      "n_benign": 0,
+      "mean_lssim": 0.952322,
+      "median_lssim": 0.9424,
+      "iqr": [
+        0.9402,
+        0.9744
+      ],
+      "boot95_mean": [
+        0.941688,
+        0.963411
+      ],
+      "within_category_testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_category_auc": null
+    },
+    {
+      "category": "synonymous",
+      "n_total": 86,
+      "n_path": 3,
+      "n_benign": 83,
+      "mean_lssim": 0.998343,
+      "median_lssim": 0.9981,
+      "iqr": [
+        0.998,
+        0.9987
+      ],
+      "boot95_mean": [
+        0.998251,
+        0.99844
+      ],
+      "within_category_testable": true,
+      "mannwhitney_p": 0.6734199540141496,
+      "cliffs_delta": -0.14056224899598393,
+      "within_category_auc": 0.570281124497992
+    }
+  ],
+  "global": {
+    "cohen_d_path_vs_benign": -2.6712,
+    "cliffs_delta_path_vs_benign": -0.9509423984891407,
+    "global_auc": 0.9754711992445704,
+    "path_mean_lssim": 0.882221,
+    "benign_mean_lssim": 0.993121,
+    "n_testable_categories": 3
+  },
+  "confound_decomposition": {
+    "pathogenic_category_mix": {
+      "missense": 0.3541,
+      "frameshift": 0.2805,
+      "nonsense": 0.1133,
+      "splice_donor": 0.0623,
+      "promoter": 0.0425,
+      "3_prime_UTR": 0.0368,
+      "other": 0.034,
+      "splice_region": 0.0255,
+      "intronic": 0.0255,
+      "splice_acceptor": 0.0085,
+      "synonymous": 0.0085,
+      "5_prime_UTR": 0.0085
+    },
+    "benign_category_mix": {
+      "intronic": 0.8773,
+      "synonymous": 0.1107,
+      "other": 0.0093,
+      "3_prime_UTR": 0.0013,
+      "5_prime_UTR": 0.0013
+    },
+    "benign_pct_intronic": 87.7,
+    "stratified_cohen_d_components": [
+      {
+        "category": "intronic",
+        "within_cat_cohen_d": 0.1249,
+        "weight": 9
+      },
+      {
+        "category": "other",
+        "within_cat_cohen_d": -0.8291,
+        "weight": 7
+      },
+      {
+        "category": "synonymous",
+        "within_cat_cohen_d": -0.619,
+        "weight": 3
+      }
+    ],
+    "category_stratified_pooled_cohen_d": -0.344,
+    "interpretation": "If the naive across-group Cohen d collapses toward ~0 after category stratification, the d=2.13-style effect is a category-distribution artifact, not independent structural signal."
+  }
+}

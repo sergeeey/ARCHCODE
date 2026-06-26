@@ -1,8 +1,8 @@
 {
   "title": "ARCHCODE Unified Atlas — v2.0 Pipeline Fix",
-  "date": "2026-03-05T08:02:44.820Z",
+  "date": "2026-06-05T11:26:45.821Z",
   "locus_config_id": "gata1_300kb",
-  "locus_config_path": "D:\\ДНК\\config\\locus\\gata1_300kb.json",
+  "locus_config_path": "C:\\Users\\sboi\\ARCHCODE_review\\config\\locus\\gata1_300kb.json",
   "provenance": {
     "ctcf_sources": [
       "ENCODE_K562_CTCF"
@@ -31,12 +31,12 @@
     "benign_variants": 131,
     "archcode_structural_pathogenic": 0,
     "pearls": 0,
-    "mean_ssim_all": 0.9997,
-    "mean_ssim_pathogenic": 0.9993,
-    "mean_ssim_benign": 0.9998,
-    "mean_lssim_all": 0.9977,
-    "mean_lssim_pathogenic": 0.9951,
-    "mean_lssim_benign": 0.9987,
+    "mean_ssim_all": 0.9992,
+    "mean_ssim_pathogenic": 0.9992,
+    "mean_ssim_benign": 0.9992,
+    "mean_lssim_all": 0.9948,
+    "mean_lssim_pathogenic": 0.9946,
+    "mean_lssim_benign": 0.9949,
     "local_ssim_window": 50
   },
   "category_breakdown": {
@@ -44,73 +44,73 @@
       "total": 22,
       "pathogenic_count": 3,
       "benign_count": 19,
-      "mean_ssim_all": 0.9999,
-      "mean_ssim_pathogenic": 0.9999,
-      "mean_ssim_benign": 0.9999,
-      "mean_lssim_all": 0.9995,
-      "mean_lssim_pathogenic": 0.9993,
-      "mean_lssim_benign": 0.9996
+      "mean_ssim_all": 0.9994,
+      "mean_ssim_pathogenic": 0.9981,
+      "mean_ssim_benign": 0.9996,
+      "mean_lssim_all": 0.9959,
+      "mean_lssim_pathogenic": 0.9877,
+      "mean_lssim_benign": 0.9972
     },
     "splice": {
       "total": 6,
       "pathogenic_count": 6,
       "benign_count": 0,
-      "mean_ssim_all": 0.9996,
-      "mean_ssim_pathogenic": 0.9996,
+      "mean_ssim_all": 0.9995,
+      "mean_ssim_pathogenic": 0.9995,
       "mean_ssim_benign": null,
-      "mean_lssim_all": 0.9976,
-      "mean_lssim_pathogenic": 0.9976,
+      "mean_lssim_all": 0.9964,
+      "mean_lssim_pathogenic": 0.9964,
       "mean_lssim_benign": null
     },
     "missense": {
       "total": 59,
       "pathogenic_count": 34,
       "benign_count": 25,
-      "mean_ssim_all": 0.9992,
-      "mean_ssim_pathogenic": 0.9993,
-      "mean_ssim_benign": 0.9991,
-      "mean_lssim_all": 0.9948,
-      "mean_lssim_pathogenic": 0.9952,
-      "mean_lssim_benign": 0.9943
+      "mean_ssim_all": 0.9993,
+      "mean_ssim_pathogenic": 0.9992,
+      "mean_ssim_benign": 0.9993,
+      "mean_lssim_all": 0.9951,
+      "mean_lssim_pathogenic": 0.9948,
+      "mean_lssim_benign": 0.9954
     },
     "synonymous": {
       "total": 89,
       "pathogenic_count": 3,
       "benign_count": 86,
-      "mean_ssim_all": 1,
-      "mean_ssim_pathogenic": 1,
-      "mean_ssim_benign": 1,
-      "mean_lssim_all": 0.9998,
-      "mean_lssim_pathogenic": 0.9999,
-      "mean_lssim_benign": 0.9998
+      "mean_ssim_all": 0.9991,
+      "mean_ssim_pathogenic": 0.9997,
+      "mean_ssim_benign": 0.9991,
+      "mean_lssim_all": 0.9944,
+      "mean_lssim_pathogenic": 0.9982,
+      "mean_lssim_benign": 0.9943
     },
     "nonsense": {
       "total": 6,
       "pathogenic_count": 6,
       "benign_count": 0,
-      "mean_ssim_all": 0.9981,
-      "mean_ssim_pathogenic": 0.9981,
+      "mean_ssim_all": 0.999,
+      "mean_ssim_pathogenic": 0.999,
       "mean_ssim_benign": null,
-      "mean_lssim_all": 0.9876,
-      "mean_lssim_pathogenic": 0.9876,
+      "mean_lssim_all": 0.9933,
+      "mean_lssim_pathogenic": 0.9933,
       "mean_lssim_benign": null
     },
     "other": {
       "total": 1,
       "pathogenic_count": 0,
       "benign_count": 1,
-      "mean_ssim_all": 0.9989,
+      "mean_ssim_all": 0.9975,
       "mean_ssim_pathogenic": null,
-      "mean_ssim_benign": 0.9989,
-      "mean_lssim_all": 0.993,
+      "mean_ssim_benign": 0.9975,
+      "mean_lssim_all": 0.9838,
       "mean_lssim_pathogenic": null,
-      "mean_lssim_benign": 0.993
+      "mean_lssim_benign": 0.9838
     }
   },
   "pipeline_integrity": {
     "single_engine": true,
     "label_blind_simulation": true,
     "effect_strength_source": "CATEGORICAL (category-only, label-blind)",
-    "effect_mode": "categorical"
+    "effect_mode": "random"
   }
 }

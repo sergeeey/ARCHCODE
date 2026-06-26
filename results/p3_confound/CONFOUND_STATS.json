@@ -1,0 +1,24 @@
+{
+  "n": 1103,
+  "n_path": 353,
+  "seed": 20260605,
+  "ctcf_sites_used": 6,
+  "models": {
+    "A_label~LSSIM": {
+      "cv_auc": 0.9700339943342776
+    },
+    "B_label~category": {
+      "cv_auc": 0.9802417374881963
+    },
+    "C_label~category+LSSIM": {
+      "cv_auc": 0.979926345609065
+    }
+  },
+  "K2_verdict": "LSSIM adds NOTHING over category",
+  "K1_LSSIM_explained": {
+    "r2_category_only": 0.907,
+    "r2_category_plus_ctcf_dist": 0.9325,
+    "verdict": "LSSIM is ~fully determined by category (deterministic proxy)"
+  },
+  "within_intronic_lssim_vs_ctcfdist_spearman": 0.7346
+}

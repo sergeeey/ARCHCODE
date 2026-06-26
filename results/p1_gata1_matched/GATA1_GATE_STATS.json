@@ -1,0 +1,179 @@
+{
+  "locus": "GATA1",
+  "date": "2026-06-05",
+  "source_audit": {
+    "atlas_file": "GATA1_Unified_Atlas_300kb.csv",
+    "rows": 183,
+    "n_pathogenic": 52,
+    "n_benign": 131,
+    "ClinVar_source": "NCBI ClinVar via data/gata1_variants.csv",
+    "atlas_date": "2026-03-05 (UNIFIED_ATLAS_SUMMARY_GATA1_300kb.json)",
+    "effect_sources": [
+      "CATEGORICAL"
+    ],
+    "CTCF_source": "ENCODE_K562 (from UNIFIED_ATLAS_SUMMARY_GATA1_300kb.json)",
+    "tissue_concern": "CRITICAL: K562 is a leukemic myelogenous cell line. GATA1 is primarily an erythroid/megakaryocyte TF. K562 CTCF landscape != HUDEP-2/K562-erythroid. This invalidates CTCF-barrier simulation for tissue-specific claims.",
+    "enhancer_source": "ENCODE_K562_H3K27ac (same tissue mismatch concern)",
+    "thresholds_calibrated": false,
+    "audit_verdict": "TISSUE_MISMATCH \u2014 K562 \u2260 erythroid for GATA1 analysis"
+  },
+  "coordinate_sanity": {
+    "build": "GRCh38",
+    "expected_chrom": "chrX",
+    "expected_region": "chrX:48640425-48940425 (300kb simulation window)",
+    "GATA1_gene_body_GRCh38": "chrX:48786606-48794270",
+    "observed_pos_min": 48791049,
+    "observed_pos_max": 48794166,
+    "observed_range_bp": 3117,
+    "verdict": "WARNING: all 183 variants cluster in 3117bp \u2014 essentially all coding/splice. No spread across regulatory landscape. A structural 3D metric cannot differentiate variants at the same position."
+  },
+  "category_baseline_cv_auc": 0.8584,
+  "position_baseline_cv_auc": 0.591,
+  "within_category_matched": [
+    {
+      "category": "intronic",
+      "n_total": 22,
+      "n_path": 3,
+      "n_benign": 19,
+      "mean_lssim_path": 0.9993,
+      "mean_lssim_benign": 0.999558,
+      "delta_lssim_path_minus_benign": -0.000258,
+      "expected_direction": "negative (path < benign, since severe = low LSSIM)",
+      "boot95_path": [
+        0.9988,
+        0.9997
+      ],
+      "boot95_benign": [
+        0.999432,
+        0.999653
+      ],
+      "testable": true,
+      "mannwhitney_p": 0.22813242544256174,
+      "cliffs_delta": -0.42105263157894735,
+      "within_cat_auc": 0.7105263157894737
+    },
+    {
+      "category": "missense",
+      "n_total": 59,
+      "n_path": 34,
+      "n_benign": 25,
+      "mean_lssim_path": 0.995203,
+      "mean_lssim_benign": 0.994292,
+      "delta_lssim_path_minus_benign": 0.000911,
+      "expected_direction": "negative (path < benign, since severe = low LSSIM)",
+      "boot95_path": [
+        0.994194,
+        0.996103
+      ],
+      "boot95_benign": [
+        0.992816,
+        0.9956
+      ],
+      "testable": true,
+      "mannwhitney_p": 0.644214106504402,
+      "cliffs_delta": 0.07176470588235294,
+      "within_cat_auc": 0.4641176470588235
+    },
+    {
+      "category": "nonsense",
+      "n_total": 6,
+      "n_path": 6,
+      "n_benign": 0,
+      "mean_lssim_path": 0.987583,
+      "mean_lssim_benign": null,
+      "delta_lssim_path_minus_benign": null,
+      "expected_direction": "negative (path < benign, since severe = low LSSIM)",
+      "boot95_path": [
+        0.980483,
+        0.9914
+      ],
+      "boot95_benign": [
+        null,
+        null
+      ],
+      "testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_cat_auc": null
+    },
+    {
+      "category": "other",
+      "n_total": 1,
+      "n_path": 0,
+      "n_benign": 1,
+      "mean_lssim_path": null,
+      "mean_lssim_benign": 0.993,
+      "delta_lssim_path_minus_benign": null,
+      "expected_direction": "negative (path < benign, since severe = low LSSIM)",
+      "boot95_path": [
+        null,
+        null
+      ],
+      "boot95_benign": [
+        null,
+        null
+      ],
+      "testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_cat_auc": null
+    },
+    {
+      "category": "splice",
+      "n_total": 6,
+      "n_path": 6,
+      "n_benign": 0,
+      "mean_lssim_path": 0.9976,
+      "mean_lssim_benign": null,
+      "delta_lssim_path_minus_benign": null,
+      "expected_direction": "negative (path < benign, since severe = low LSSIM)",
+      "boot95_path": [
+        0.997517,
+        0.9977
+      ],
+      "boot95_benign": [
+        null,
+        null
+      ],
+      "testable": false,
+      "mannwhitney_p": null,
+      "cliffs_delta": null,
+      "within_cat_auc": null
+    },
+    {
+      "category": "synonymous",
+      "n_total": 89,
+      "n_path": 3,
+      "n_benign": 86,
+      "mean_lssim_path": 0.9999,
+      "mean_lssim_benign": 0.999826,
+      "delta_lssim_path_minus_benign": 7.4e-05,
+      "expected_direction": "negative (path < benign, since severe = low LSSIM)",
+      "boot95_path": [
+        0.9999,
+        0.9999
+      ],
+      "boot95_benign": [
+        0.999805,
+        0.999844
+      ],
+      "testable": true,
+      "mannwhitney_p": 0.193909522160698,
+      "cliffs_delta": 0.37209302325581395,
+      "within_cat_auc": 0.313953488372093
+    }
+  ],
+  "model_comparison": {
+    "A_label~LSSIM": 0.6062,
+    "B_label~category": 0.8584,
+    "C_label~category+LSSIM": 0.8572,
+    "D_label~category+pos": 0.871,
+    "E_label~category+pos+LSSIM": 0.8708
+  },
+  "K1_LSSIM_r2_from_category": 0.6241,
+  "K1_LSSIM_r2_from_category_plus_pos": 0.7358,
+  "K2_fires": true,
+  "K2b_fires": true,
+  "missense_wrong_direction": true,
+  "gate_verdict": "FAIL_PROXY_ONLY"
+}
