@@ -15,6 +15,7 @@ Results [VERIFIED-REAL] ClinVar n=50: Recall=0.68, Precision=0.895, FPR=0.08
 import json
 import os
 import sys
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
 
@@ -68,8 +69,11 @@ def compute_metrics(svs: list[dict], verdict_key: str = "step2_verdict") -> dict
     }
 
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
 def main() -> None:
-    os.chdir("C:/Users/sboi/ARCHCODE_review")
+    os.chdir(REPO_ROOT)
 
     with open(CLINVAR_IN) as f:
         data = json.load(f)

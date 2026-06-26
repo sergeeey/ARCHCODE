@@ -12,6 +12,7 @@ Step +1 rule:
 import json
 import os
 import sys
+from pathlib import Path
 
 sys.path.insert(0, os.path.dirname(__file__))
 
@@ -67,8 +68,11 @@ def compute_metrics(svs: list[dict]) -> dict:
     }
 
 
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+
 def main() -> None:
-    os.chdir("C:/Users/sboi/ARCHCODE_review")
+    os.chdir(REPO_ROOT)
 
     with open(CLINVAR_IN) as f:
         data = json.load(f)

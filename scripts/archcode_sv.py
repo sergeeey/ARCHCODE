@@ -442,8 +442,9 @@ SHH_BENCHMARK = [
 
 if __name__ == "__main__":
     import os
+    from pathlib import Path
 
-    os.chdir("C:/Users/sboi/ARCHCODE_review")
+    os.chdir(Path(__file__).resolve().parent.parent)
 
     # Primary: Lupiáñez 2015 (EPHA4, chr2)
     s1 = run_benchmark(LUPIANEZ_BENCHMARK, "Lupiáñez 2015 — EPHA4 locus (chr2)")
