@@ -3,7 +3,7 @@
 **Last Updated:** 2026-06-24
 **Branch:** main
 **GitHub:** https://github.com/sergeeey/ARCHCODE
-**Status:** ARCHCODE-SV v1.0 — proof of concept 9/9 ✅
+**Status:** ARCHCODE-SV v1.1 — FL Standard PROMOTE 12/12 ✅ (chr2 + chr17 + chr7)
 
 ---
 
@@ -60,7 +60,20 @@ N_BINS     = 200    # 1Mb window
 | Ben_SOX9_desert | del chr17:71.1-71.9 Mb | 1.300 | INTACT | ✅ |
 | Ben_SOX9_inv | inv chr17:71.2-71.8 Mb | 1.300 | INTACT | ✅ |
 
-### ИТОГ: 9/9 на 2 локусах, 2 хромосомах (chr2 + chr17), 3 типа SVs
+### Generalizability: SHH/LMBR1 locus (chr7) — 3/3 [FL Standard 2026-06-26]
+**Источник:** Lettice 2003 (Nat Rev Genet), Anderson 2014 (Development) — boundary disruption mechanism
+**Ключевой CTCF:** chr7:156,909,000 (score=314.6) — граница между SHH-LMBR1 и KCNJ2 TAD
+**SHH-ZRS CTCF desert:** chr7:156.16-156.47 Mb (317 kb gap, 0 IDR peaks)
+**SHH TAD gap:** chr7:155.46-155.52 Mb (70 kb, 0 IDR peaks)
+
+| Label | SV | Ratio | Verdict | Correct? |
+|---|---|---|---|---|
+| Path_SHH_boundary | del chr7:156.65-157.0 Mb | 3.299 | DISRUPTED | ✅ |
+| Ben_SHH_desert | del chr7:156.2-156.4 Mb | 1.000 | INTACT | ✅ |
+| Ben_SHH_gap | del chr7:155.46-155.52 Mb | 1.000 | INTACT | ✅ |
+
+### ИТОГ: 12/12 на 3 локусах, 3 хромосомах (chr2 + chr17 + chr7), 3 типа SVs
+**FL Standard PROMOTE** — experiments/exp_archcode_sv/decision.md
 
 ---
 
@@ -106,9 +119,9 @@ results/p5_instrument/
 
 ## Следующие шаги (приоритет)
 
-1. **Реальные clinical SVs (DECIPHER)** — тест на пациентских SVs с известным патогенным статусом
-2. **claim.md + FL Standard** — Falsification Ladder для ARCHCODE-SV
-3. **Мотивная ориентация CTCF** — скачать JASPAR/FIMO данные для замены 0.15 heuristic реальной ориентацией
+1. **✅ DONE (2026-06-26):** FL Standard claim.md + controls.md + decision.md → PROMOTE 12/12
+2. **Реальные clinical SVs (DECIPHER)** — тест на пациентских SVs с известным патогенным статусом
+3. **Мотивная ориентация CTCF** — скачать JASPAR/FIMO данные для замены -1.0 heuristic реальной ориентацией
 4. **Paper 3: §3.7** — добавить ARCHCODE-SV как proof-of-concept extension (не основной результат)
 5. **bioRxiv/arXiv** — Paper 3 как negative-results + SV pivot note
 
@@ -124,3 +137,6 @@ results/p5_instrument/
   - Enformer Stage 1 Complete (HBB, 152/152)
   - Deep research → SV pivot decision
   - ARCHCODE-SV implemented (4h): 9/9 on 2 loci without training
+
+## Auto-commit log
+- [2026-06-26 09:38] `7480acc`: feat: ARCHCODE-SV v1.0 вЂ” physics-based structural variant pathogenicity engine
