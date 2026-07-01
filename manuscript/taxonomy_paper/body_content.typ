@@ -1333,7 +1333,7 @@ suspected but unsequenced.
 
 = Code and Data Availability
 
-ARCHCODE source code, locus configuration files, and variant-level results are available at #link("https://github.com/sergeeey/ARCHCODE")[github.com/sergeeey/ARCHCODE] and archived on Zenodo (DOI: 10.5281/zenodo.15072447). The repository includes: (i) the loop-extrusion simulation engine (`src/`), (ii) all 15 locus configuration JSON files with ENCODE accession numbers and source provenance for every feature (`config/locus/`), (iii) per-locus Unified Atlas CSVs containing variant-level LSSIM scores, VEP annotations, and CADD scores where available (`results/`), (iv) analysis scripts for all figures and statistical tests (`scripts/`), and (v) a reproducibility guide (`REPRODUCE.md`) with SHA-256 checksums for all output files.
+ARCHCODE source code, locus configuration files, and variant-level results are available at #link("https://github.com/sergeeey/ARCHCODE")[github.com/sergeeey/ARCHCODE] and archived on Zenodo (DOI: 10.5281/zenodo.18908214). The repository includes: (i) the loop-extrusion simulation engine (`src/`), (ii) all 15 locus configuration JSON files with ENCODE accession numbers and source provenance for every feature (`config/locus/`), (iii) per-locus Unified Atlas CSVs containing variant-level LSSIM scores, VEP annotations, and CADD scores where available (`results/`), (iv) analysis scripts for all figures and statistical tests (`scripts/`), and (v) a reproducibility guide (`REPRODUCE.md`) with SHA-256 checksums for all output files.
 
 // =============================================================================
 // CLINICAL DISCLAIMER

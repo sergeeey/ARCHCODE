@@ -2,9 +2,9 @@
 
 + Avsec, Z., Agarwal, V., Visentin, D., Leite, N. C., Gschwind, A. R., Lupo, A., ... & Zeitlinger, J. (2021). Effective gene expression prediction from sequence by integrating long-range interactions. _Nature Methods_, 18(10), 1196–1203. https://doi.org/10.1038/s41592-021-01252-x
 
-+ Avsec, Z., Chikina, M., Zou, J., & Kelley, D. R. (2024). AlphaGenome: Predicting trans-regulatory effects of sequence variants. _bioRxiv_, 2024.08.10.608006. https://doi.org/10.1101/2024.08.10.608006
++ Avsec, Z., Latysheva, N., Cheng, J., Novati, G., Taylor, K. R., Ward, T., ... & Kohli, P. (2026). Advancing regulatory variant effect prediction with AlphaGenome. _Nature_, 649, 1206–1218. https://doi.org/10.1038/s41586-025-10014-0
 
-+ Baralle, D., & Baralle, M. (2018). Splicing in action: Assessing disease causing sequence changes. _Journal of Medical Genetics_, 55(5), 275–278. https://doi.org/10.1136/jmedgenet-2017-105033
++ Baralle, D., & Baralle, M. (2005). Splicing in action: Assessing disease causing sequence changes. _Journal of Medical Genetics_, 42(10), 737–748. https://doi.org/10.1136/jmg.2004.029538
 
 + Bonev, B., Mendelson Cohen, N., Szabo, Q., Fritsch, L., Papadopoulos, G. L., Lubling, Y., ... & Cavalli, G. (2017). Multiscale 3D genome rewiring during mouse neural development. _Cell_, 171(3), 557–572. https://doi.org/10.1016/j.cell.2017.09.043
 
@@ -12,7 +12,7 @@
 
 + Fudenberg, G., Imakaev, M., Lu, C., Goloborodko, A., Abdennur, N., & Mirny, L. A. (2016). Formation of chromosomal domains by loop extrusion. _Cell Reports_, 15(9), 2038–2049. https://doi.org/10.1016/j.celrep.2016.04.085
 
-+ Fudenberg, G., Kelley, D. R., & Pollard, K. S. (2020). Predicting 3D genome folding from DNA sequence using implicit graph representations. _Nature Methods_, 17(11), 1112–1117. https://doi.org/10.1038/s41592-020-0909-0
++ Fudenberg, G., Kelley, D. R., & Pollard, K. S. (2020). Predicting 3D genome folding from DNA sequence with Akita. _Nature Methods_, 17(11), 1111–1117. https://doi.org/10.1038/s41592-020-0958-x
 
 + Gasperini, M., Hill, A. J., McFaline-Figueroa, J. L., Martin, B., Kim, S., Camps, N. G., ... & Shendure, J. (2019). A genome-wide framework for mapping gene regulation via cellular state. _Cell_, 176(3), 377–390. https://doi.org/10.1016/j.cell.2018.11.029
 
@@ -28,13 +28,13 @@
 
 + Schmitt, A. D., Hu, M., & Ren, B. (2016). Genome-wide mapping and analysis of chromosome architecture. _Nature Reviews Molecular Cell Biology_, 17(12), 743–755. https://doi.org/10.1038/nrm.2016.104
 
-+ Temple, S. M., Rohland, N., Mallick, S., Patterson, N., & Browning, B. L. (2026). Multiple-testing corrections in case-control studies using identity-by-descent segments. _American Journal of Human Genetics_ (in press). Cell Press.
++ Temple, S. D., Chapman, N. H., Choi, S. H., DeStefano, A. L., Thornton, T. A., Wijsman, E. M., & Blue, E. E. (2026). Multiple-testing corrections in case-control studies using identity-by-descent segments. _American Journal of Human Genetics_, 113(3), 453–471. https://doi.org/10.1016/j.ajhg.2026.01.013
 
 + Wang, Z., Bovik, A. C., Sheikh, H. R., & Simoncelli, E. P. (2004). Image quality assessment: From error visibility to structural similarity. _IEEE Transactions on Image Processing_, 13(4), 600–612. https://doi.org/10.1109/TIP.2003.819861
 
 + Wirth, B., Das, J., Kölbel, H., Goh, S., Farrar, M. A., Piano, V., ... & Giacomotto, J. (2026). _SMN1_ variants identified by false-positive SMA newborn screening tests: Therapeutic hurdles and functional and epidemiological solutions. _American Journal of Human Genetics_, 113, 627–635. https://doi.org/10.1016/j.ajhg.2026.01.012
 
-+ Zhou, J., Theesfeld, C. L., Yao, K., Chen, K. M., Wong, A. K., & Troyanskaya, O. G. (2022). Deep learning sequence models for assessing regulatory variants and non-coding disease mutations. _bioRxiv_, 2022.11.09.515796. https://doi.org/10.1101/2022.11.09.515796
++ Zhou, J., Theesfeld, C. L., Yao, K., Chen, K. M., Wong, A. K., & Troyanskaya, O. G. (2018). Deep learning sequence-based ab initio prediction of variant effects on expression and disease risk. _Nature Genetics_, 50(8), 1171–1179. https://doi.org/10.1038/s41588-018-0160-6
 
 + Baudic, M., Murata, H., Bosada, F. M., et al. (2024). TAD boundary deletion causes PITX2-related cardiac electrical and structural defects. _Nature Communications_, 15, 3380. https://doi.org/10.1038/s41467-024-47739-x
 
