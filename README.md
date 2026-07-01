@@ -29,11 +29,23 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 <table>
 <tr>
 <td align="center"><b>63,153</b><br><sub>variants analyzed, 13 loci</sub></td>
-<td align="center"><b>AUC 0.977</b><br><sub>HBB ROC performance</sub></td>
+<td align="center"><b>AUC 0.977</b><br><sub>HBB ROC performance (pooled — see caveat below)</sub></td>
 <td align="center"><b>27 pearls</b><br><sub>VEP-invisible HBB finds</sub></td>
 <td align="center"><b>641 VUS</b><br><sub>pearl-like candidates</sub></td>
 </tr>
 </table>
+
+> **⚠️ Important caveat on the headline AUC (added 2026-07-01):** The pooled AUC of 0.977 is
+> primarily a consequence of variant-category composition, not independent 3D structural
+> prediction. When category information is removed (position-only control, uniform effect
+> strength), AUC drops to 0.551 — near chance. Within-category AUC across 25 category-locus
+> combinations has a **median of 0.52**. A trivial baseline that maps VEP consequence category
+> directly to a score achieves AUC 0.98 without any chromatin simulation. This confound is
+> disclosed in full in the [current manuscript draft](manuscript/taxonomy_paper/body_content.typ)
+> and in [`results/p2_hbb_truth/HBB_TRUTH_AUDIT.md`](results/p2_hbb_truth/HBB_TRUTH_AUDIT.md)
+> (internal falsification audit, verdict: NO-GO for AUC-as-independent-evidence). Only one
+> within-category signal survives correction (TP53 splice_region, AUC=0.69, FDR-corrected).
+> **Read the caveat before citing the 0.977 figure.**
 
 ---
 

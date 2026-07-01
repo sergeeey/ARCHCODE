@@ -36,11 +36,18 @@
   "preprint_platforms": {
     "bioRxiv": "REJECTED (2026-02, \"not complete research with new data\")",
     "arXiv": "PENDING endorsement (q-bio.GN, code B9P837)",
-    "research_square": "READY TO SUBMIT — no endorsement required",
+    "research_square": "Cover letter cites DOI 10.21203/rs.3.rs-9090074/v1 — status [UNVERIFIED as of 2026-07-01], site blocked automated fetch",
     "osf_preprints": "BACKUP — if Research Square delayed"
   },
+  "bioinformatics_advances_submission": {
+    "status": "DRAFT PREPARED, not confirmed submitted — branch manuscript/bioadv-submission has one commit (2026-06-26) preparing cover letter + fixed manuscript, no submission receipt found in repo",
+    "cover_letter": "manuscript/cover_letter_bioinformatics_advances.md",
+    "manuscript_body": "manuscript/taxonomy_paper/body_content.typ",
+    "honest_disclosure": "This manuscript version explicitly discloses the AUC=0.977 category-composition confound (within-category AUC median=0.52) as a stated limitation — see body_content.typ 'Overall AUC is category-driven, not within-category prediction' section."
+  },
+  "known_metadata_staleness_note": "This file (submission_metadata.json) describes an EARLIER version (v2.14, 63,153 variants, 13 loci) than the current Bioinformatics Advances draft (taxonomy_paper, 26,225 variants, 9 loci per cover letter). Reconcile before next submission attempt.",
   "submission_files": {
-    "manuscript_en": "C:/Users/serge/Desktop/ARCHCODE_v2.14_EN.pdf",
-    "manuscript_ru": "C:/Users/serge/Desktop/ARCHCODE_v2.14_RU.pdf"
+    "manuscript_en": "NOT TRACKED — prior path was machine-local (removed 2026-07-01, unreproducible)",
+    "manuscript_ru": "NOT TRACKED — prior path was machine-local (removed 2026-07-01, unreproducible)"
   }
 }
