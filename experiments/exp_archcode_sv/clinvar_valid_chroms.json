@@ -1,0 +1,6098 @@
+{
+  "source": "ClinVar variant_summary.txt.gz (NCBI FTP)",
+  "filter": "['chr1', 'chr10', 'chr11', 'chr12', 'chr13', 'chr14', 'chr15', 'chr16', 'chr18', 'chr19', 'chr20', 'chr21', 'chr22', 'chr3', 'chr4', 'chr5', 'chr6', 'chr8', 'chr9', 'chrX'], 50-400kb, deletion+inversion, strict P/B only",
+  "pathogenic_svs": [
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 64840707,
+      "end": 64997105,
+      "size": 156398,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_001142800.1(EYS):c.2260-51191_2992+45990del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 65057728,
+      "end": 65320715,
+      "size": 262987,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_001142800.1(EYS):c.1767-24596_2023+238135del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112836913,
+      "end": 112908314,
+      "size": 71401,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.9:g.112172610_112244011del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112707504,
+      "end": 112846240,
+      "size": 138736,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "APC deletion"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 333830,
+      "end": 394034,
+      "size": 60204,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_203447.3(DOCK8):c.1126-395_2971-2751del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 311734,
+      "end": 398139,
+      "size": 86405,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.311735_398140del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 27878517,
+      "end": 28001142,
+      "size": 122625,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_009846.1:g.103171_225796del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 50000000,
+      "end": 50247254,
+      "size": 247254,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "L2HGDH, EX1-9DEL"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 138975444,
+      "end": 139033712,
+      "size": 58268,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_022464.5:c.454-6721_768-23561del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 81537095,
+      "end": 81642781,
+      "size": 105686,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_000158.4(GBE1):c.(992+1_993-1)_(1618+1_1619-1)del (p.Ser331Argfs)"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 606181,
+      "end": 831563,
+      "size": 225382,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(606181_654801)_831563del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 51758515,
+      "end": 51894383,
+      "size": 135868,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(51758515_51770114)_(51894383_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 70426035,
+      "end": 70519648,
+      "size": 93613,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(70426035_70473004)_(70512433_70519648)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 74640023,
+      "end": 74713505,
+      "size": 73482,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_74640023)_(74705321_74713505)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 52623768,
+      "end": 52685459,
+      "size": 61691,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.52623770_52685461del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 179158880,
+      "end": 179343766,
+      "size": 184886,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_023212.2:g.(6563_77264)_(169258_191449)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 20223038,
+      "end": 20531806,
+      "size": 308768,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "del(GJB6-D13S1830)"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 20228574,
+      "end": 20460629,
+      "size": 232055,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(20228574_20228587)_(20460616_20460629)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 93741318,
+      "end": 93830948,
+      "size": 89630,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_005708.3(GPC6):c.320_711del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 93603313,
+      "end": 93860330,
+      "size": 257017,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_005708.3(GPC6):c.320_711del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 66508592,
+      "end": 66824473,
+      "size": 315881,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_020806.4(GPHN):c.65-?_201+?del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 90925457,
+      "end": 91061473,
+      "size": 136016,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_007083.1:g.371658_507674del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 118920356,
+      "end": 119017859,
+      "size": 97503,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "nsv513786"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 126507040,
+      "end": 126804072,
+      "size": 297032,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(126507040_126613928)_(126701032_126804072)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr18",
+      "start": 57688508,
+      "end": 57803316,
+      "size": 114808,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000018.10:g.(57688508_57691806)_(57803316_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 44304226,
+      "end": 44357323,
+      "size": 53097,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(44304226_44304232)_(44357318_44357323)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 13359800,
+      "end": 13505931,
+      "size": 146131,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000019.10:g.(13359800_13371688)_(13371779_13505931)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 13214609,
+      "end": 13300549,
+      "size": 85940,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000019.10:g.(13214609_13224667)_(13286966_13300549)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 54842017,
+      "end": 54902826,
+      "size": 60809,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000014.9:g.(?_54842017)_(54902826_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 154863228,
+      "end": 155022724,
+      "size": 159496,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(154863228_154896077)_(155022724_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 154805077,
+      "end": 155030999,
+      "size": 225922,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(154805077_154806947)_(155030999_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 154969553,
+      "end": 155022724,
+      "size": 53171,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(154969553_154984686)_(155022724_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 154931495,
+      "end": 154990580,
+      "size": 59085,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_154931495)_(154989517_154990580)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 123184278,
+      "end": 123490915,
+      "size": 306637,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_123184278)_(123490915_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 40012195,
+      "end": 40063607,
+      "size": 51412,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(40012195_40051245)_(40063072_40063607)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 33020201,
+      "end": 33211556,
+      "size": 191355,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(33020201_33211281)_(33211556_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 74305035,
+      "end": 74520989,
+      "size": 215954,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(74305035_74421492)_(74422068_74520989)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 7112255,
+      "end": 7249328,
+      "size": 137073,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000019.10:g.(?_7112255)_(7249328_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 4480596,
+      "end": 4793915,
+      "size": 313319,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(4480596_4480597)_(4793914_4793915)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48500967,
+      "end": 48803547,
+      "size": 302580,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.9:g.48793164_49095744del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 196743746,
+      "end": 196828416,
+      "size": 84670,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.10:g.(196712876_196712928)_(196797494_196797546)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 41853228,
+      "end": 41923555,
+      "size": 70327,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(41853228_41922929)_(41923555_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 50755991,
+      "end": 50948682,
+      "size": 192691,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.50755991_50948682del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 14790426,
+      "end": 14850652,
+      "size": 60226,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_017005.2:g.64585_124811del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 27874792,
+      "end": 28058639,
+      "size": 183847,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "nsv1197574"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 63558913,
+      "end": 63669201,
+      "size": 110288,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.(?_63558913)_(63669201_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 150971137,
+      "end": 151082250,
+      "size": 111113,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.10:g.152111739_152222852del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 18051554,
+      "end": 18107050,
+      "size": 55496,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_18051554)_(18107050_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 219817461,
+      "end": 219918599,
+      "size": 101138,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "nsv1067840"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 11266933,
+      "end": 11363172,
+      "size": 96239,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.10:g.11285049_11381288del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 151855040,
+      "end": 151924836,
+      "size": 69796,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_000171.3(GLRA1):c.(?_-287)_697+?del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 4406529,
+      "end": 4490826,
+      "size": 84297,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "nsv1067898"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 36993350,
+      "end": 37050846,
+      "size": 57496,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_000249.3(MLH1):c.(?_-198)_(*193_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 36939029,
+      "end": 37044594,
+      "size": 105565,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_000249.3(MLH1):c.-54519_1731+2263del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 36898545,
+      "end": 36951644,
+      "size": 53099,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(36898545_36904156)_(36951644_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 70992485,
+      "end": 71180270,
+      "size": 187785,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.70992485_71180270del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 136545168,
+      "end": 136630028,
+      "size": 84860,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.136545168_136630028del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 100720531,
+      "end": 100829298,
+      "size": 108767,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000014.9:g.100720531_100829298del108768"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 91072432,
+      "end": 91163915,
+      "size": 91483,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_91072432)_(91163915_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112754891,
+      "end": 112844071,
+      "size": 89180,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_000038.4(APC):c.(?_1)_(8477_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 71199264,
+      "end": 71356523,
+      "size": 157259,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_172058.2(EYA1):c.(?_-66)_(*76_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 54317271,
+      "end": 54664277,
+      "size": 347006,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_033056.3(PCDH15):c.(?_-15)_(876_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 76439354,
+      "end": 76500721,
+      "size": 61367,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NM_004452.3(ESRRB):c.(?_1)_(1527_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48411326,
+      "end": 48468521,
+      "size": 57195,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_000138.4(FBN1):c.(?_4473)_(8280_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 21678515,
+      "end": 21760540,
+      "size": 82025,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_144672.3(OTOA):c.(?_1)_(3420_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 93013415,
+      "end": 93157863,
+      "size": 144448,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.93013415_93157863del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 92559959,
+      "end": 92610106,
+      "size": 50147,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.92559959_92610106del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 92491792,
+      "end": 92826931,
+      "size": 335139,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.92491792_92826931del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 117640628,
+      "end": 117958881,
+      "size": 318253,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.11:g.(117961791_117961792)_(118280043_118280044)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 117650386,
+      "end": 117897557,
+      "size": 247171,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.11:g.(117971549_117971550)_(118218719_118218720)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 78099413,
+      "end": 78164289,
+      "size": 64876,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_016373.3(WWOX):c.-366-?_516+?del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 78342602,
+      "end": 78424602,
+      "size": 82000,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_016373.4(WWOX):c.517-44258_606-268del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 78226624,
+      "end": 78383447,
+      "size": 156823,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_016373.4(WWOX):c.516+62335_517-3413del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 44606025,
+      "end": 44663648,
+      "size": 57623,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NM_025137.3(SPG11):c.(?_-1)_3520+?del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18425605,
+      "end": 18507160,
+      "size": 81555,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_18425605)_(18507160_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18425605,
+      "end": 18510854,
+      "size": 85249,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_18425605)_(18510854_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18425605,
+      "end": 18595428,
+      "size": 169823,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_18425605)_(18595428_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18425605,
+      "end": 18598613,
+      "size": 173008,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_18425605)_(18598613_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18425605,
+      "end": 18613275,
+      "size": 187670,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_18425605)_(18613275_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18425605,
+      "end": 18478967,
+      "size": 53362,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_003159.2(CDKL5):c.(?_-253)_-162-27968del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18506935,
+      "end": 18653629,
+      "size": 146694,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_003159.2(CDKL5):c.-162-?_*85del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18575354,
+      "end": 18653629,
+      "size": 78275,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_003159.2(CDKL5):c.146-?_*85del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 49922616,
+      "end": 50099235,
+      "size": 176619,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_49922616)_(50099235_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 6203133,
+      "end": 6459745,
+      "size": 256612,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.10:g.(6060654_6061169)_(6310738_6317266)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 93704377,
+      "end": 93785620,
+      "size": 81243,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(93704377_?)_(?_93785620)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 118690580,
+      "end": 118950848,
+      "size": 260268,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(118690580_118696647)_(118950613_118950848)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 9920573,
+      "end": 9980591,
+      "size": 60018,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_001001290.1(SLC2A9):c.595_727del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 9826223,
+      "end": 9920384,
+      "size": 94161,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_9826223)_(9908346_9920384)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 27926498,
+      "end": 28073963,
+      "size": 147465,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108280995,
+      "end": 108365509,
+      "size": 84514,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108280995)_(108365509_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 23484745,
+      "end": 23564581,
+      "size": 79836,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.23484745_23564581del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 23488792,
+      "end": 23626279,
+      "size": 137487,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.23488792_23626279del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 23771866,
+      "end": 23888764,
+      "size": 116898,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.23771866_23888764del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 23826857,
+      "end": 23880291,
+      "size": 53434,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.11:g.23979791_24033225del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 204193,
+      "end": 343954,
+      "size": 139761,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31663473,
+      "end": 31993012,
+      "size": 329539,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31663473)_(31993012_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112737859,
+      "end": 112846239,
+      "size": 108380,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_000038.5(APC):c.-85_*2113del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 25337249,
+      "end": 25405506,
+      "size": 68257,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_25337249)_(25405506_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 146414070,
+      "end": 146715778,
+      "size": 301708,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.11:g.146735206_147036914del301709"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 20365207,
+      "end": 20496559,
+      "size": 131352,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.20365207_20496559del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 34546661,
+      "end": 34686264,
+      "size": 139603,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.10:g.34835589_34975192del139604"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 31720147,
+      "end": 31816290,
+      "size": 96143,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.8:g.31698271_31794414del96144"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 31400877,
+      "end": 31729876,
+      "size": 328999,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.31400877_31729876del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 32315480,
+      "end": 32398771,
+      "size": 83291,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_012772.3:g.(?_5001)_(88292_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 3725053,
+      "end": 3880121,
+      "size": 155068,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_009873.1:g.(?_5000)_(160068_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112737859,
+      "end": 112815593,
+      "size": 77734,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112737859)_(112815593_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 132556924,
+      "end": 132644621,
+      "size": 87697,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_132556924)_(132644621_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112780790,
+      "end": 112846239,
+      "size": 65449,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112780790)_(112846239_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162201131,
+      "end": 162443473,
+      "size": 242342,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162201131)_(162443473_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 95442982,
+      "end": 95508549,
+      "size": 65567,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_95442982)_(95508549_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 134701171,
+      "end": 134835204,
+      "size": 134033,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_134701171)_(134835204_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 86838865,
+      "end": 86900126,
+      "size": 61261,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_86838865)_(86900126_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108222832,
+      "end": 108369099,
+      "size": 146267,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108222832)_(108369099_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108243953,
+      "end": 108369099,
+      "size": 125146,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108243953)_(108369099_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 89247629,
+      "end": 89317131,
+      "size": 69502,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_89247629)_(89317131_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 38299373,
+      "end": 38357249,
+      "size": 57876,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_38299373)_(38357249_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 68737292,
+      "end": 68835541,
+      "size": 98249,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_68737292)_(68835541_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 10984121,
+      "end": 11062282,
+      "size": 78161,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000019.10:g.(?_10984121)_(11062282_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr21",
+      "start": 34787801,
+      "end": 35048958,
+      "size": 261157,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000021.9:g.(?_34787801)_(35048958_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31323598,
+      "end": 31479103,
+      "size": 155505,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31323598)_(31479103_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31444481,
+      "end": 31496944,
+      "size": 52463,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31444481)_(31496944_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31657990,
+      "end": 31836819,
+      "size": 178829,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31657990)_(31836819_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31496788,
+      "end": 31875373,
+      "size": 378585,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31496788)_(31875373_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31657990,
+      "end": 31820083,
+      "size": 162093,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31657990)_(31820083_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32573530,
+      "end": 32699293,
+      "size": 125763,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32573530)_(32699293_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 28687743,
+      "end": 28741834,
+      "size": 54091,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_28687743)_(28741834_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32644132,
+      "end": 32849820,
+      "size": 205688,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32644132)_(32849820_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31729631,
+      "end": 31820083,
+      "size": 90452,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31729631)_(31820083_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32438241,
+      "end": 32491518,
+      "size": 53277,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32438241)_(32491518_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32545159,
+      "end": 32849820,
+      "size": 304661,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32545159)_(32849820_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32595757,
+      "end": 32849820,
+      "size": 254063,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32595757)_(32849820_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 61277586,
+      "end": 61426464,
+      "size": 148878,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_011787.1:g.(205313_260238)_(334455_354191)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 93937187,
+      "end": 94040126,
+      "size": 102939,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 64892926,
+      "end": 64948294,
+      "size": 55368,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 216086023,
+      "end": 216144867,
+      "size": 58844,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 115418453,
+      "end": 115603872,
+      "size": 185419,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_012383.3:g.(70130_86397)_(87002_255549)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 115414022,
+      "end": 115587000,
+      "size": 172978,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_012383.3:g.(87002_255549)_(259980_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 22168390,
+      "end": 22219035,
+      "size": 50645,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.10:g.(22186507_22196389)_(22231076_22237152)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 22190503,
+      "end": 22247953,
+      "size": 57450,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.10:g.(22208620_22231047)_(22266070_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 22238631,
+      "end": 22352871,
+      "size": 114240,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.10:g.22256748_22370988del114241"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 15788690,
+      "end": 16185034,
+      "size": 396344,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_15788690)_(16185034_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 154118184,
+      "end": 154191311,
+      "size": 73127,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 10064723,
+      "end": 10149971,
+      "size": 85248,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_10064723)_(10149971_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 181712341,
+      "end": 181874887,
+      "size": 162546,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_181712341)_(181874887_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 93874239,
+      "end": 94053268,
+      "size": 179029,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_93874239)_(94053268_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 36993051,
+      "end": 37050659,
+      "size": 57608,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_36993051)_(37050659_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 150588028,
+      "end": 150735386,
+      "size": 147358,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_150588028)_(150735386_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 88007714,
+      "end": 88058123,
+      "size": 50409,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_88007714)_(88058123_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112737024,
+      "end": 112844132,
+      "size": 107108,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112737024)_(112844132_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 87268432,
+      "end": 87353255,
+      "size": 84823,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_87268432)_(87353255_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112775623,
+      "end": 112844132,
+      "size": 68509,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112775623)_(112844132_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112707312,
+      "end": 112780909,
+      "size": 73597,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112707312)_(112780909_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 177135084,
+      "end": 177295479,
+      "size": 160395,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_177135084)_(177295479_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162262505,
+      "end": 162443493,
+      "size": 180988,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162262505)_(162443493_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162201111,
+      "end": 162262785,
+      "size": 61674,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162201111)_(162262785_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99121157,
+      "end": 99193077,
+      "size": 71920,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99121157)_(99193077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 134690892,
+      "end": 134763757,
+      "size": 72865,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_134690892)_(134763757_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 6532997,
+      "end": 6645519,
+      "size": 112522,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_6532997)_(6645519_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 95446906,
+      "end": 95508367,
+      "size": 61461,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_95446906)_(95508367_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 304561,
+      "end": 464239,
+      "size": 159678,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_304561)_(464239_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 100301460,
+      "end": 100425731,
+      "size": 124271,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_100301460)_(100425731_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 42359500,
+      "end": 42412317,
+      "size": 52817,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_42359500)_(42412317_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48410970,
+      "end": 48497411,
+      "size": 86441,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_48410970)_(48497411_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48415161,
+      "end": 48468554,
+      "size": 53393,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_48415161)_(48468554_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 26547773,
+      "end": 26775295,
+      "size": 227522,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_26547773)_(26775295_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48410970,
+      "end": 48537828,
+      "size": 126858,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_48410970)_(48537828_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48410970,
+      "end": 48644789,
+      "size": 233819,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_48410970)_(48644789_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 25339117,
+      "end": 25409127,
+      "size": 70010,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_25339117)_(25409127_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48508562,
+      "end": 48644789,
+      "size": 136227,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_48508562)_(48644789_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 30992801,
+      "end": 31068051,
+      "size": 75250,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_30992801)_(31068051_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 15703971,
+      "end": 15838272,
+      "size": 134301,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_15703971)_(15838272_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31609621,
+      "end": 31836839,
+      "size": 227218,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31609621)_(31836839_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31679355,
+      "end": 31875393,
+      "size": 196038,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31679355)_(31875393_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32342080,
+      "end": 32518151,
+      "size": 176071,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32342080)_(32518151_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32697850,
+      "end": 32823850,
+      "size": 126000,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32697850)_(32823850_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31348536,
+      "end": 31479123,
+      "size": 130587,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31348536)_(31479123_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31773940,
+      "end": 31836839,
+      "size": 62899,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31773940)_(31836839_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31875168,
+      "end": 31932247,
+      "size": 57079,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31875168)_(31932247_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31875168,
+      "end": 31968534,
+      "size": 93366,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31875168)_(31968534_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32216896,
+      "end": 32501862,
+      "size": 284966,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32216896)_(32501862_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31819955,
+      "end": 31932247,
+      "size": 112292,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31819955)_(31932247_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31444461,
+      "end": 31679606,
+      "size": 235145,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31444461)_(31679606_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31627653,
+      "end": 31968534,
+      "size": 340881,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31627653)_(31968534_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32411732,
+      "end": 32614473,
+      "size": 202741,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32411732)_(32614473_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 5609990,
+      "end": 5726136,
+      "size": 116146,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.11:g.5610223_5726369del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 23279750,
+      "end": 23620758,
+      "size": 341008,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 215999483,
+      "end": 216183366,
+      "size": 183883,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_206933.2(USH2A):c.4396+6857_6486-425del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 21678469,
+      "end": 21736448,
+      "size": 57979,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_21678469)_(21736448_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32809493,
+      "end": 33020200,
+      "size": 210707,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_004006.2(DMD):c.(?_32)_(649_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 80278170,
+      "end": 80336529,
+      "size": 58359,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_173591.3(OTOGL):c.(?_2657)_(4690_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 1020153,
+      "end": 1313808,
+      "size": 293655,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_1020153)_(1313808_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 236795684,
+      "end": 236897664,
+      "size": 101980,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_236795684)_(236897664_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 10064723,
+      "end": 10146642,
+      "size": 81919,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_10064723)_(10146642_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 38550301,
+      "end": 38794030,
+      "size": 243729,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_38550301)_(38794030_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 129349278,
+      "end": 129403979,
+      "size": 54701,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_129349278)_(129403979_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 161785752,
+      "end": 161973437,
+      "size": 187685,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_161785752)_(161973437_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 5368551,
+      "end": 5431192,
+      "size": 62641,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_5368551)_(5431192_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 11703278,
+      "end": 11758495,
+      "size": 55217,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_11703278)_(11758495_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 60741413,
+      "end": 60865953,
+      "size": 124540,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_60741413)_(60865953_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99209572,
+      "end": 99391724,
+      "size": 182152,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99209572)_(99391724_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 71244583,
+      "end": 71322288,
+      "size": 77705,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_71244583)_(71322288_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 6550783,
+      "end": 6620339,
+      "size": 69556,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_6550783)_(6620339_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 286441,
+      "end": 464239,
+      "size": 177798,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_286441)_(464239_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 44144227,
+      "end": 44198038,
+      "size": 53811,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_44144227)_(44198038_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 23203675,
+      "end": 23279498,
+      "size": 75823,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_23203675)_(23279498_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 48303907,
+      "end": 48480077,
+      "size": 176170,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_48303907)_(48480077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 102870182,
+      "end": 102930700,
+      "size": 60518,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000014.9:g.(?_102870182)_(102930700_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 26567561,
+      "end": 26629023,
+      "size": 61462,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_26567561)_(26629023_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 17108675,
+      "end": 17470816,
+      "size": 362141,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_17108675)_(17470816_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 30066878,
+      "end": 30188596,
+      "size": 121718,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_30066878)_(30188596_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 89761943,
+      "end": 89920218,
+      "size": 158275,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_89761943)_(89920218_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31679355,
+      "end": 31968534,
+      "size": 289179,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31679355)_(31968534_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31609621,
+      "end": 31932247,
+      "size": 322626,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31609621)_(31932247_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31773940,
+      "end": 31968534,
+      "size": 194594,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31773940)_(31968534_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32411732,
+      "end": 32573866,
+      "size": 162134,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32411732)_(32573866_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31657970,
+      "end": 31932247,
+      "size": 274277,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31657970)_(31932247_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31836698,
+      "end": 31932247,
+      "size": 95549,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31836698)_(31932247_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31929576,
+      "end": 32217083,
+      "size": 287507,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31929576)_(32217083_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32438221,
+      "end": 32614473,
+      "size": 176252,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32438221)_(32614473_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 31754902,
+      "end": 31815232,
+      "size": 60330,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_31754902)_(31815232_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31657970,
+      "end": 31774212,
+      "size": 116242,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31657970)_(31774212_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32614283,
+      "end": 32849840,
+      "size": 235557,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32614283)_(32849840_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 69616289,
+      "end": 69670280,
+      "size": 53991,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_69616289)_(69670280_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 53976705,
+      "end": 54036062,
+      "size": 59357,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_53976705)_(54036062_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 54690788,
+      "end": 54898513,
+      "size": 207725,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_54690788)_(54898513_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 31405793,
+      "end": 31548667,
+      "size": 142874,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_31405793)_(31548667_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 84405313,
+      "end": 84547789,
+      "size": 142476,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_84405313)_(84547789_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 84809995,
+      "end": 84986152,
+      "size": 176157,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_84809995)_(84986152_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 84877230,
+      "end": 84963429,
+      "size": 86199,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_84877230)_(84963429_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 2687956,
+      "end": 2741851,
+      "size": 53895,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.(?_2687956)_(2741851_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 28125337,
+      "end": 28231096,
+      "size": 105759,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.(?_28125337)_(28231096_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 231740970,
+      "end": 231949671,
+      "size": 208701,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_231740970)_(231949671_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 35011654,
+      "end": 35113567,
+      "size": 101913,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_35011654)_(35113567_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 87545067,
+      "end": 87934031,
+      "size": 388964,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_87545067)_(87934031_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 33318664,
+      "end": 33378429,
+      "size": 59765,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000014.9:g.(?_33318664)_(33378429_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 22751662,
+      "end": 23126124,
+      "size": 374462,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_22751662)_(23126124_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 22770232,
+      "end": 23126124,
+      "size": 355892,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_22770232)_(23126124_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 6360351,
+      "end": 6582207,
+      "size": 221856,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_6360351)_(6582207_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 6622570,
+      "end": 6720408,
+      "size": 97838,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_6622570)_(6720408_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 6631947,
+      "end": 7029167,
+      "size": 397220,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_6631947)_(7029167_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 6773909,
+      "end": 6978067,
+      "size": 204158,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_6773909)_(6978067_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 7029167,
+      "end": 7099643,
+      "size": 70476,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_7029167)_(7099643_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 79103200,
+      "end": 79402155,
+      "size": 298955,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_79103200)_(79402155_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 14490624,
+      "end": 14573076,
+      "size": 82452,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_14490624)_(14573076_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 14631584,
+      "end": 14707775,
+      "size": 76191,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_14631584)_(14707775_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 14656734,
+      "end": 14876708,
+      "size": 219974,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_14656734)_(14876708_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 15307783,
+      "end": 15453889,
+      "size": 146106,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_15307783)_(15453889_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 42303583,
+      "end": 42488707,
+      "size": 185124,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_42303583)_(42488707_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 42461895,
+      "end": 42648116,
+      "size": 186221,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_42461895)_(42648116_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 42472130,
+      "end": 42562200,
+      "size": 90070,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_42472130)_(42562200_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 42526267,
+      "end": 42726111,
+      "size": 199844,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_42526267)_(42726111_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 42579501,
+      "end": 42691367,
+      "size": 111866,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_42579501)_(42691367_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 21956007,
+      "end": 22224188,
+      "size": 268181,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_21956007)_(22224188_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 21959229,
+      "end": 22218520,
+      "size": 259291,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_21959229)_(22218520_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 1133359,
+      "end": 1192637,
+      "size": 59278,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_1133359)_(1192637_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 1185337,
+      "end": 1255844,
+      "size": 70507,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_1185337)_(1255844_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 1204527,
+      "end": 1310468,
+      "size": 105941,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_1204527)_(1310468_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 188343948,
+      "end": 188435451,
+      "size": 91503,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_188343948)_(188435451_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 188420063,
+      "end": 188540464,
+      "size": 120401,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_188420063)_(188540464_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 41609544,
+      "end": 41811095,
+      "size": 201551,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_41609544)_(41811095_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 41760954,
+      "end": 41858293,
+      "size": 97339,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_41760954)_(41858293_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 60389119,
+      "end": 60571624,
+      "size": 182505,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_60389119)_(60571624_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 60408194,
+      "end": 60672864,
+      "size": 264670,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_60408194)_(60672864_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 60438915,
+      "end": 60817364,
+      "size": 378449,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_60438915)_(60817364_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 60501297,
+      "end": 60591815,
+      "size": 90518,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_60501297)_(60591815_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 148159332,
+      "end": 148473475,
+      "size": 314143,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_148159332)_(148473475_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 92590068,
+      "end": 92732357,
+      "size": 142289,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_92590068)_(92732357_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 92930845,
+      "end": 93092974,
+      "size": 162129,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_92930845)_(93092974_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 11567352,
+      "end": 11629138,
+      "size": 61786,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_11567352)_(11629138_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 161816395,
+      "end": 162018868,
+      "size": 202473,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_161816395)_(162018868_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 161933685,
+      "end": 162059574,
+      "size": 125889,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_161933685)_(162059574_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 161966350,
+      "end": 162292493,
+      "size": 326143,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_161966350)_(162292493_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 161982200,
+      "end": 162323320,
+      "size": 341120,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_161982200)_(162323320_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162035873,
+      "end": 162195188,
+      "size": 159315,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162035873)_(162195188_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162036131,
+      "end": 162191715,
+      "size": 155584,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162036131)_(162191715_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162144053,
+      "end": 162229459,
+      "size": 85406,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162144053)_(162229459_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162145541,
+      "end": 162226576,
+      "size": 81035,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162145541)_(162226576_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162151583,
+      "end": 162270607,
+      "size": 119024,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162151583)_(162270607_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162162293,
+      "end": 162311859,
+      "size": 149566,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162162293)_(162311859_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162166123,
+      "end": 162288233,
+      "size": 122110,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162166123)_(162288233_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162194743,
+      "end": 162324250,
+      "size": 129507,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162194743)_(162324250_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162200873,
+      "end": 162544554,
+      "size": 343681,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162200873)_(162544554_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162222675,
+      "end": 162297617,
+      "size": 74942,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162222675)_(162297617_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162229459,
+      "end": 162495982,
+      "size": 266523,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162229459)_(162495982_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162265361,
+      "end": 162429333,
+      "size": 163972,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162265361)_(162429333_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162290852,
+      "end": 162564693,
+      "size": 273841,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162290852)_(162564693_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162308970,
+      "end": 162630627,
+      "size": 321657,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162308970)_(162630627_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162332720,
+      "end": 162499424,
+      "size": 166704,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162332720)_(162499424_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162349019,
+      "end": 162495982,
+      "size": 146963,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162349019)_(162495982_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162411708,
+      "end": 162476625,
+      "size": 64917,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162411708)_(162476625_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162440726,
+      "end": 162603304,
+      "size": 162578,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162440726)_(162603304_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162609404,
+      "end": 162813090,
+      "size": 203686,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162609404)_(162813090_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 10252025,
+      "end": 10336231,
+      "size": 84206,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_10252025)_(10336231_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 1050516,
+      "end": 1327901,
+      "size": 277385,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_1050516)_(1327901_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 3873130,
+      "end": 3959547,
+      "size": 86417,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_3873130)_(3959547_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 3876145,
+      "end": 3961401,
+      "size": 85256,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_3876145)_(3961401_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 3876145,
+      "end": 3967152,
+      "size": 91007,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_3876145)_(3967152_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 3877806,
+      "end": 3959547,
+      "size": 81741,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_3877806)_(3959547_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 3914469,
+      "end": 4157437,
+      "size": 242968,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_3914469)_(4157437_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99047163,
+      "end": 99227439,
+      "size": 180276,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99047163)_(99227439_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 9998540,
+      "end": 10117911,
+      "size": 119371,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_9998540)_(10117911_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 10000,
+      "end": 400952,
+      "size": 390952,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_10000)_(400952_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 116611967,
+      "end": 116683530,
+      "size": 71563,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_116611967)_(116683530_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 116634744,
+      "end": 116742416,
+      "size": 107672,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_116634744)_(116742416_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 116683530,
+      "end": 116733612,
+      "size": 50082,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_116683530)_(116733612_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 116683530,
+      "end": 116876208,
+      "size": 192678,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_116683530)_(116876208_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31660226,
+      "end": 31820401,
+      "size": 160175,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31660226)_(31820401_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31774439,
+      "end": 31859356,
+      "size": 84917,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31774439)_(31859356_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32070396,
+      "end": 32212245,
+      "size": 141849,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32070396)_(32212245_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 133438823,
+      "end": 133565257,
+      "size": 126434,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.10:g.135252327_135378761del126435"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 103145752,
+      "end": 103306534,
+      "size": 160782,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 78839427,
+      "end": 78955294,
+      "size": 115867,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(78839427_78885583)_(78885828_78955294)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 78885828,
+      "end": 78964415,
+      "size": 78587,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(78885828_78955294)_(78955503_78964415)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 32830647,
+      "end": 32900052,
+      "size": 69405,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 153887335,
+      "end": 154062496,
+      "size": 175161,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31679364,
+      "end": 31748557,
+      "size": 69193,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 101746347,
+      "end": 101998221,
+      "size": 251874,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162200911,
+      "end": 162520394,
+      "size": 319483,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 15570188,
+      "end": 15674295,
+      "size": 104107,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 65353618,
+      "end": 65494662,
+      "size": 141044,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_001142800.1(EYS):c.(748+1_749-1)_(1299+1_1300-1)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 64066492,
+      "end": 64230591,
+      "size": 164099,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_001142800.1(EYS):c.(6424+1_6425-1)_(6571+1_6572-1)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 43594659,
+      "end": 43700429,
+      "size": 105770,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.9:g.(43886857_43888004)_(43984930_43992627)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 17018881,
+      "end": 17071491,
+      "size": 52610,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_17018881)_(17071491_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 88007714,
+      "end": 88075714,
+      "size": 68000,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_88007714)_(88075714_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 81490387,
+      "end": 81705633,
+      "size": 215246,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_81490387)_(81705633_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 36993051,
+      "end": 37050663,
+      "size": 57612,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_36993051)_(37050663_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 36877164,
+      "end": 37064912,
+      "size": 187748,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_36877164)_(37064912_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 71199320,
+      "end": 71356506,
+      "size": 157186,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_71199320)_(71356506_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 89921080,
+      "end": 89984561,
+      "size": 63481,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_89921080)_(89984561_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 99105186,
+      "end": 99221914,
+      "size": 116728,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_99105186)_(99221914_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 31664397,
+      "end": 31794829,
+      "size": 130432,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_31664397)_(31794829_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 13109123,
+      "end": 13183100,
+      "size": 73977,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_13109123)_(13183100_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99096292,
+      "end": 99193077,
+      "size": 96785,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99096292)_(99193077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99115680,
+      "end": 99193077,
+      "size": 77397,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99115680)_(99193077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99431517,
+      "end": 99721067,
+      "size": 289550,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99431517)_(99721067_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108227615,
+      "end": 108365518,
+      "size": 137903,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108227615)_(108365518_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108267165,
+      "end": 108365514,
+      "size": 98349,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108267165)_(108365514_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 105546358,
+      "end": 105620061,
+      "size": 73703,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_105546358)_(105620061_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 110668885,
+      "end": 110801008,
+      "size": 132123,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_110668885)_(110801008_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 32315480,
+      "end": 32398790,
+      "size": 83310,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_32315480)_(32398790_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 32792404,
+      "end": 32896751,
+      "size": 104347,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.(?_32792404)_(32896751_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 23093196,
+      "end": 23411259,
+      "size": 318063,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_23093196)_(23411259_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99556430,
+      "end": 99642518,
+      "size": 86088,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99556430)_(99642518_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 2048596,
+      "end": 2106697,
+      "size": 58101,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_2048596)_(2106697_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 28824392,
+      "end": 28904205,
+      "size": 79813,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_28824392)_(28904205_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 48303903,
+      "end": 48480081,
+      "size": 176178,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_48303903)_(48480081_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 38253180,
+      "end": 38351670,
+      "size": 98490,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_38253180)_(38351670_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 2055382,
+      "end": 2119398,
+      "size": 64016,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_2055382)_(2119398_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 29813055,
+      "end": 29904965,
+      "size": 91910,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_29813055)_(29904965_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108243943,
+      "end": 108365518,
+      "size": 121575,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108243943)_(108365518_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31496768,
+      "end": 31875393,
+      "size": 378625,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31496768)_(31875393_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32438221,
+      "end": 32699313,
+      "size": 261092,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32438221)_(32699313_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32484899,
+      "end": 32699313,
+      "size": 214414,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32484899)_(32699313_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32595737,
+      "end": 32699313,
+      "size": 103576,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32595737)_(32699313_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32595737,
+      "end": 32823850,
+      "size": 228113,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32595737)_(32823850_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr18",
+      "start": 62088736,
+      "end": 62143366,
+      "size": 54630,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000018.10:g.(?_62088736)_(62143366_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr21",
+      "start": 45981831,
+      "end": 46132572,
+      "size": 150741,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000021.9:g.(?_45981831)_(46132572_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 18906375,
+      "end": 18986158,
+      "size": 79783,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_18906375)_(18986158_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31773960,
+      "end": 31836819,
+      "size": 62859,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31773960)_(31836819_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32216896,
+      "end": 32472329,
+      "size": 255433,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32216896)_(32472329_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32287509,
+      "end": 32362978,
+      "size": 75469,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32287509)_(32362978_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32362768,
+      "end": 32699313,
+      "size": 336545,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32362768)_(32699313_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32809473,
+      "end": 33020220,
+      "size": 210747,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32809473)_(33020220_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 28487456,
+      "end": 28595930,
+      "size": 108474,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_28487456)_(28595930_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 19722428,
+      "end": 19975757,
+      "size": 253329,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_19722428)_(19975757_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31323578,
+      "end": 31508257,
+      "size": 184679,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31323578)_(31508257_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31609584,
+      "end": 31968514,
+      "size": 358930,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31609584)_(31968514_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31609621,
+      "end": 31875393,
+      "size": 265772,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31609621)_(31875393_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31627653,
+      "end": 31679606,
+      "size": 51953,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31627653)_(31679606_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32216896,
+      "end": 32454852,
+      "size": 237956,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32216896)_(32454852_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32697850,
+      "end": 32849840,
+      "size": 151990,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32697850)_(32849840_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31609621,
+      "end": 31774212,
+      "size": 164591,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31609621)_(31774212_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31729611,
+      "end": 31932247,
+      "size": 202636,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31729611)_(31932247_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32216896,
+      "end": 32365219,
+      "size": 148323,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32216896)_(32365219_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32287509,
+      "end": 32390201,
+      "size": 102692,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32287509)_(32390201_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 5262063,
+      "end": 5395616,
+      "size": 133553,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.11:g.5262296_5395849del133554"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 108434924,
+      "end": 108699545,
+      "size": 264621,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NG_011977.1:g.1_264622del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 108141550,
+      "end": 108444474,
+      "size": 302924,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NG_012059.2:g.1_302925del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 11810251,
+      "end": 11930234,
+      "size": 119983,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.10:g.11667760_11787743del119984"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 54079425,
+      "end": 54153099,
+      "size": 73674,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.10:g.(55839185_55849743)_(55892768_55912859)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 90694702,
+      "end": 90840577,
+      "size": 145875,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(90694702_90696936)_(90829187_90840577)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 89178773,
+      "end": 89284772,
+      "size": 105999,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.9:g.(88911941_88911969)_(88961139_89017940)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 89749731,
+      "end": 89808368,
+      "size": 58637,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_011706.1:g.13291_71928del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 89758580,
+      "end": 89811074,
+      "size": 52494,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NG_011706.1:g.10587_63081del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 13467733,
+      "end": 13617136,
+      "size": 149403,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.10:g.13448380_13597783del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 2662082,
+      "end": 2847766,
+      "size": 185684,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(2662082_2768843)_(2778038_2847766)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 155324845,
+      "end": 155482449,
+      "size": 157604,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_155324845)_(155482449_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 156114919,
+      "end": 156243162,
+      "size": 128243,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_156114919)_(156243162_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 193122191,
+      "end": 193250722,
+      "size": 128531,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_193122191)_(193250722_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 10052377,
+      "end": 10149975,
+      "size": 97598,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_10052377)_(10149975_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 36996609,
+      "end": 37050663,
+      "size": 54054,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_36996609)_(37050663_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 81499090,
+      "end": 81761537,
+      "size": 262447,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_81499090)_(81761537_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 81490387,
+      "end": 81761537,
+      "size": 271150,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_81490387)_(81761537_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112737024,
+      "end": 112844136,
+      "size": 107112,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112737024)_(112844136_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112707312,
+      "end": 112780913,
+      "size": 73601,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112707312)_(112780913_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 132557315,
+      "end": 132642374,
+      "size": 85059,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_132557315)_(132642374_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 132575767,
+      "end": 132642374,
+      "size": 66607,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_132575767)_(132642374_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112707312,
+      "end": 112844136,
+      "size": 136824,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112707312)_(112844136_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112766316,
+      "end": 112844136,
+      "size": 77820,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112766316)_(112844136_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 177135094,
+      "end": 177295469,
+      "size": 160375,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_177135094)_(177295469_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 60874605,
+      "end": 61073224,
+      "size": 198619,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_60874605)_(61073224_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112707312,
+      "end": 112844126,
+      "size": 136814,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_112707312)_(112844126_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 87268442,
+      "end": 87353245,
+      "size": 84803,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.(?_87268442)_(87353245_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162201121,
+      "end": 162262775,
+      "size": 61654,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162201121)_(162262775_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 51619071,
+      "end": 51791383,
+      "size": 172312,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_51619071)_(51791383_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 162262515,
+      "end": 162443487,
+      "size": 180972,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_162262515)_(162443487_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 51959860,
+      "end": 52010469,
+      "size": 50609,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_51959860)_(52010469_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 111331676,
+      "end": 111482888,
+      "size": 151212,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_111331676)_(111482888_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 128883236,
+      "end": 129098425,
+      "size": 215189,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_128883236)_(129098425_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 129349288,
+      "end": 129403969,
+      "size": 54681,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.(?_129349288)_(129403969_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99391537,
+      "end": 99521030,
+      "size": 129493,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99391537)_(99521030_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99274178,
+      "end": 99577653,
+      "size": 303475,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99274178)_(99577653_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99384188,
+      "end": 99511532,
+      "size": 127344,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99384188)_(99511532_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 214957,
+      "end": 328191,
+      "size": 113234,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_214957)_(328191_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 134642178,
+      "end": 134768473,
+      "size": 126295,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_134642178)_(134768473_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 214957,
+      "end": 422155,
+      "size": 207198,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_214957)_(422155_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 214957,
+      "end": 464239,
+      "size": 249282,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_214957)_(464239_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 37422741,
+      "end": 37785054,
+      "size": 362313,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_37422741)_(37785054_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 6550793,
+      "end": 6610366,
+      "size": 59573,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_6550793)_(6610366_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 99384188,
+      "end": 99721067,
+      "size": 336879,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_99384188)_(99721067_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 108877985,
+      "end": 108931156,
+      "size": 53171,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_108877985)_(108931156_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 49614170,
+      "end": 49665066,
+      "size": 50896,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_49614170)_(49665066_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108267161,
+      "end": 108365518,
+      "size": 98357,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108267161)_(108365518_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108280985,
+      "end": 108365518,
+      "size": 84533,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108280985)_(108365518_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 3856251,
+      "end": 4091818,
+      "size": 235567,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_3856251)_(4091818_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 49458805,
+      "end": 49665056,
+      "size": 206251,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_49458805)_(49665056_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 9780408,
+      "end": 10042991,
+      "size": 262583,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_9780408)_(10042991_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 103089662,
+      "end": 103174968,
+      "size": 85306,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_103089662)_(103174968_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 86755016,
+      "end": 86923729,
+      "size": 168713,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_86755016)_(86923729_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 23093196,
+      "end": 23411249,
+      "size": 318053,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_23093196)_(23411249_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 32315480,
+      "end": 32371120,
+      "size": 55640,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_32315480)_(32371120_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 87894015,
+      "end": 87965482,
+      "size": 71467,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.(?_87894015)_(87965482_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 23093196,
+      "end": 23203899,
+      "size": 110703,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_23093196)_(23203899_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 108267161,
+      "end": 108354884,
+      "size": 87723,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_108267161)_(108354884_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 30614386,
+      "end": 30952038,
+      "size": 337652,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_30614386)_(30952038_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 72293347,
+      "end": 72434494,
+      "size": 141147,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_72293347)_(72434494_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 68737406,
+      "end": 68833509,
+      "size": 96103,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_68737406)_(68833509_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 42359796,
+      "end": 42411783,
+      "size": 51987,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_42359796)_(42411783_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr14",
+      "start": 96810669,
+      "end": 96860745,
+      "size": 50076,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000014.9:g.(?_96810669)_(96860745_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 89738591,
+      "end": 89816625,
+      "size": 78034,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_89738591)_(89816625_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 89752128,
+      "end": 89816625,
+      "size": 64497,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_89752128)_(89816625_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 23093196,
+      "end": 23368497,
+      "size": 275301,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_23093196)_(23368497_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 32329423,
+      "end": 32398790,
+      "size": 69367,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.(?_32329423)_(32398790_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 2048596,
+      "end": 2119398,
+      "size": 70802,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_2048596)_(2119398_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 30066878,
+      "end": 30188984,
+      "size": 122106,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_30066878)_(30188984_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 15703981,
+      "end": 15838262,
+      "size": 134281,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_15703981)_(15838262_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 63428347,
+      "end": 63497783,
+      "size": 69436,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_63428347)_(63497783_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 8779459,
+      "end": 8847845,
+      "size": 68386,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_8779459)_(8847845_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 31754902,
+      "end": 31906517,
+      "size": 151615,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_31754902)_(31906517_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31627663,
+      "end": 31968524,
+      "size": 340861,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31627663)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31819965,
+      "end": 31932237,
+      "size": 112272,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31819965)_(31932237_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31819965,
+      "end": 31968524,
+      "size": 148559,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31819965)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31879410,
+      "end": 31968524,
+      "size": 89114,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31879410)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32472144,
+      "end": 32651077,
+      "size": 178933,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32472144)_(32651077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32472154,
+      "end": 32651077,
+      "size": 178923,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32472154)_(32651077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32484899,
+      "end": 32849840,
+      "size": 364941,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32484899)_(32849840_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18506933,
+      "end": 18653564,
+      "size": 146631,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_18506933)_(18653564_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31679355,
+      "end": 31774212,
+      "size": 94857,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31679355)_(31774212_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31679365,
+      "end": 31836829,
+      "size": 157464,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31679365)_(31836829_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31729621,
+      "end": 31820093,
+      "size": 90472,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31729621)_(31820093_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31729621,
+      "end": 31968524,
+      "size": 238903,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31729621)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31773950,
+      "end": 31965029,
+      "size": 191079,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31773950)_(31965029_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31819965,
+      "end": 31929755,
+      "size": 109790,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31819965)_(31929755_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31819965,
+      "end": 32217073,
+      "size": 397108,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31819965)_(32217073_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31875178,
+      "end": 31932237,
+      "size": 57059,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31875178)_(31932237_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32438221,
+      "end": 32518151,
+      "size": 79930,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32438221)_(32518151_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32438231,
+      "end": 32651077,
+      "size": 212846,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32438231)_(32651077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 7050296,
+      "end": 7350261,
+      "size": 299965,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_7050296)_(7350261_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 63406624,
+      "end": 63472483,
+      "size": 65859,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_63406624)_(63472483_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 63472148,
+      "end": 63528152,
+      "size": 56004,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.(?_63472148)_(63528152_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 100296257,
+      "end": 100408617,
+      "size": 112360,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_100296257)_(100408617_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31609621,
+      "end": 31774202,
+      "size": 164581,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31609621)_(31774202_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31729621,
+      "end": 31836829,
+      "size": 107208,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31729621)_(31836829_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31875178,
+      "end": 31968524,
+      "size": 93346,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31875178)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32287519,
+      "end": 32365209,
+      "size": 77690,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32287519)_(32365209_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32491267,
+      "end": 32849830,
+      "size": 358563,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32491267)_(32849830_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 29603989,
+      "end": 29681611,
+      "size": 77622,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.(?_29603989)_(29681611_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31323588,
+      "end": 31507463,
+      "size": 183875,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31323588)_(31507463_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31496768,
+      "end": 31679606,
+      "size": 182838,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31496768)_(31679606_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31496778,
+      "end": 31658154,
+      "size": 161376,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31496778)_(31658154_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31595570,
+      "end": 31774202,
+      "size": 178632,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31595570)_(31774202_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31609621,
+      "end": 31968524,
+      "size": 358903,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31609621)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31657970,
+      "end": 31968534,
+      "size": 310564,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31657970)_(31968534_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31773950,
+      "end": 31879410,
+      "size": 105460,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31773950)_(31879410_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31773950,
+      "end": 31968524,
+      "size": 194574,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31773950)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31819965,
+      "end": 31879410,
+      "size": 59445,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31819965)_(31879410_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31836708,
+      "end": 31968524,
+      "size": 131816,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_31836708)_(31968524_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32310062,
+      "end": 32651077,
+      "size": 341015,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32310062)_(32651077_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 32310072,
+      "end": 32454842,
+      "size": 144770,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_32310072)_(32454842_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 19411890,
+      "end": 19467180,
+      "size": 55290,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.19411890_19467180del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 1,
+      "end": 190938,
+      "size": 190937,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.1_190938del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 79919149,
+      "end": 80030035,
+      "size": 110886,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(79919149_80002998)_(80003181_80030035)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 16318654,
+      "end": 16476389,
+      "size": 157735,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.(?_16318654)_(16341011_16476389)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 64951692,
+      "end": 65166933,
+      "size": 215241,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.64951692_65166933del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 1851807,
+      "end": 2093151,
+      "size": 241344,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.1851807_2093151del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr21",
+      "start": 37347863,
+      "end": 37423682,
+      "size": 75819,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000021.9:g.37347863_37423682del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18419574,
+      "end": 18504791,
+      "size": 85217,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.18419574_18504791del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 22213388,
+      "end": 22345581,
+      "size": 132193,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.22213388_22345581del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 88770428,
+      "end": 88832724,
+      "size": 62296,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.88770428_88832724del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 41952441,
+      "end": 42266625,
+      "size": 314184,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000019.10:g.41952441_42266625del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 41983952,
+      "end": 42247520,
+      "size": 263568,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000019.10:g.41983952_42247520del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 42032860,
+      "end": 42297536,
+      "size": 264676,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000019.10:g.42032860_42297536del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 6499632,
+      "end": 6563245,
+      "size": 63613,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.(?_6499632)_(6563245_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 173888461,
+      "end": 173971254,
+      "size": 82793,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.173888461_173971254del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 173859535,
+      "end": 173926473,
+      "size": 66938,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.173859535_173926473del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 173888460,
+      "end": 174138926,
+      "size": 250466,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.173888460_174138926del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 173908511,
+      "end": 174102900,
+      "size": 194389,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.173908511_174102900del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 173912160,
+      "end": 174154195,
+      "size": 242035,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.173912160_174154195del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 173850996,
+      "end": 173950174,
+      "size": 99178,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.173850996_173950174del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 27491184,
+      "end": 27584566,
+      "size": 93382,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.27491184_27584566del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 137661384,
+      "end": 137714409,
+      "size": 53025,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.137661384_137714409del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr20",
+      "start": 63255263,
+      "end": 63498365,
+      "size": 243102,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000020.11:g.63255263_63498365del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 126508361,
+      "end": 126769360,
+      "size": 260999,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.126508361_126769360del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 45690000,
+      "end": 45750000,
+      "size": 60000,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.45690000_45750000del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 128960376,
+      "end": 129175759,
+      "size": 215383,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.128960376_129175759del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 148448719,
+      "end": 148525875,
+      "size": 77156,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 37077545,
+      "end": 37133704,
+      "size": 56159,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 9703465,
+      "end": 9888417,
+      "size": 184952,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 132691768,
+      "end": 133013020,
+      "size": 321252,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.132691768_133013020del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 2047157,
+      "end": 2220112,
+      "size": 172955,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.2047157_2220112del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 2066081,
+      "end": 2241220,
+      "size": 175139,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.2066081_2241220del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 1903155,
+      "end": 2093402,
+      "size": 190247,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.1903155_2093402del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 88928831,
+      "end": 88996847,
+      "size": 68016,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_88928831)_(88996847_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 139481,
+      "end": 407477,
+      "size": 267996,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.139481_407477del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 43890333,
+      "end": 43940887,
+      "size": 50554,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_43890333)_(43940887_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 21624041,
+      "end": 21730798,
+      "size": 106757,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_21624041)_(21730798_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 112837231,
+      "end": 112890913,
+      "size": 53682,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000005.10:g.112837231_112890913del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 114131061,
+      "end": 114364328,
+      "size": 233267,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 78291862,
+      "end": 78511179,
+      "size": 219317,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NM_016373.4:c.517-94998_1056+78427del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 153714363,
+      "end": 153781647,
+      "size": 67284,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.153714363_153781647del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31762447,
+      "end": 31872385,
+      "size": 109938,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.31762447_31872385del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 196706898,
+      "end": 196873196,
+      "size": 166298,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.196706898_196873196del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 20222821,
+      "end": 20531941,
+      "size": 309120,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.20222821_20531941del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 68737292,
+      "end": 68835537,
+      "size": 98245,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_68737292)_(68835537_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 89343221,
+      "end": 89520017,
+      "size": 176796,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 89350375,
+      "end": 89510638,
+      "size": 160263,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 99976222,
+      "end": 100048857,
+      "size": 72635,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(99976222_99993049)_(99997590_100048857)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 48194644,
+      "end": 48318494,
+      "size": 123850,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.48194644_48318494del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 7050240,
+      "end": 7350316,
+      "size": 300076,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 45216094,
+      "end": 45378052,
+      "size": 161958,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.(?_45216094)_(45367794_45378052)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr10",
+      "start": 79055368,
+      "end": 79303220,
+      "size": 247852,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000010.11:g.79055368_79303220del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 75288632,
+      "end": 75374566,
+      "size": 85934,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000006.12:g.75288632_75374566del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 48410990,
+      "end": 48644769,
+      "size": 233779,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000015.10:g.(?_48410990)_(48644769_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 23328830,
+      "end": 23433702,
+      "size": 104872,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 23328830,
+      "end": 23411740,
+      "size": 82910,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 93993236,
+      "end": 94121046,
+      "size": 127810,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(?_93993236)_(94121046_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr16",
+      "start": 16150133,
+      "end": 16223434,
+      "size": 73301,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000016.10:g.(?_16150133)_(16223434_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 85864629,
+      "end": 86047533,
+      "size": 182904,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.(?_85864629)_(86047533_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 193593498,
+      "end": 193694763,
+      "size": 101265,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000003.12:g.(?_193593498)_(193694763_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 13369875,
+      "end": 13460698,
+      "size": 90823,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.(?_13369875)_(13381595_13460698)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 74782030,
+      "end": 75055193,
+      "size": 273163,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.74782030_75055193del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 5223780,
+      "end": 5304186,
+      "size": 80406,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 88749070,
+      "end": 88824273,
+      "size": 75203,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 29603125,
+      "end": 29698181,
+      "size": 95056,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000022.11:g.29603125_29698181del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr19",
+      "start": 54123750,
+      "end": 54183680,
+      "size": 59930,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 140562016,
+      "end": 140730116,
+      "size": 168100,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000009.12:g.(?_140562016)_(140730116_?)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 13369348,
+      "end": 13485964,
+      "size": 116616,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000004.12:g.13369348_13485964del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 18474024,
+      "end": 18540757,
+      "size": 66733,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 155641696,
+      "end": 155777277,
+      "size": 135581,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.(155641696_155642174)_(155747546_155777277)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 5168748,
+      "end": 5240702,
+      "size": 71954,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000011.10:g.5168748_5240702del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 114236634,
+      "end": 114326291,
+      "size": 89657,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.114236634_114326291del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 19676448,
+      "end": 19875998,
+      "size": 199550,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000001.11:g.19676448_19875998del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 132577633,
+      "end": 132633537,
+      "size": 55904,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.132577633_132633537del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 145504790,
+      "end": 145666900,
+      "size": 162110,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 106189203,
+      "end": 106250467,
+      "size": 61264,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 81362735,
+      "end": 81724406,
+      "size": 361671,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 31777438,
+      "end": 31946212,
+      "size": 168774,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr18",
+      "start": 75201406,
+      "end": 75410919,
+      "size": 209513,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000018.10:g.75201406_75410919del"
+    },
+    {
+      "type": "inversion",
+      "chrom": "chr12",
+      "start": 56173943,
+      "end": 56407078,
+      "size": 233135,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.56173943_56407078inv"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 20223040,
+      "end": 20531805,
+      "size": 308765,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.20223040_20531805del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 10540410,
+      "end": 10703730,
+      "size": 163320,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000008.11:g.10540410_10703730del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 41772635,
+      "end": 41895004,
+      "size": 122369,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.41772635_41895004del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 64557570,
+      "end": 64955536,
+      "size": 397966,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 115975074,
+      "end": 116111610,
+      "size": 136536,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 155260234,
+      "end": 155545375,
+      "size": 285141,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr22",
+      "start": 50442990,
+      "end": 50740457,
+      "size": 297467,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 116004776,
+      "end": 116111610,
+      "size": 106834,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 137710870,
+      "end": 137818236,
+      "size": 107366,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 88861373,
+      "end": 88922075,
+      "size": 60702,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 99320672,
+      "end": 99425960,
+      "size": 105288,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000012.12:g.99320672_99425960del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr4",
+      "start": 5697560,
+      "end": 5753933,
+      "size": 56373,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 20229442,
+      "end": 20439754,
+      "size": 210312,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 60436143,
+      "end": 60514757,
+      "size": 78614,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr12",
+      "start": 20857609,
+      "end": 21255911,
+      "size": 398302,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 31704266,
+      "end": 31759269,
+      "size": 55003,
+      "sig": "Likely pathogenic",
+      "pathogenic": true,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 6968336,
+      "end": 7268302,
+      "size": 299966,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000023.11:g.6968336_7268302del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr13",
+      "start": 20796833,
+      "end": 21086689,
+      "size": 289856,
+      "sig": "Pathogenic",
+      "pathogenic": true,
+      "name": "NC_000013.11:g.20796833_21086689del"
+    }
+  ],
+  "benign_svs": [
+    {
+      "type": "deletion",
+      "chrom": "chr1",
+      "start": 25258851,
+      "end": 25338415,
+      "size": 79564,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "NC_000001.11:g.(25258851_25268086)_(25329003_25338415)del"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 151796802,
+      "end": 151856498,
+      "size": 59696,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "GRCh37/hg19 3q25.1(chr3:151514590-151574286)x1"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 97712762,
+      "end": 97763616,
+      "size": 50854,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "GRCh38/hg38 5q15(chr5:97712762-97763616)x1"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr3",
+      "start": 94970758,
+      "end": 95104699,
+      "size": 133941,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000003.11:g.94689602_94823543del133942"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 71012274,
+      "end": 71361920,
+      "size": 349646,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "NC_000005.9:g.70308101_70657747del349647"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 259881,
+      "end": 378956,
+      "size": 119075,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "NC_000006.11:g.259881_378956del119076"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 259881,
+      "end": 389482,
+      "size": 129601,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "NC_000006.11:g.259881_389482del129602"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 279667,
+      "end": 378956,
+      "size": 99289,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "NC_000006.11:g.279667_378956del99290"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr6",
+      "start": 283968,
+      "end": 375949,
+      "size": 91981,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "NC_000006.11:g.283968_375949del91982"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 13177142,
+      "end": 13262817,
+      "size": 85675,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000008.10:g.13034651_13120326del85676"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr8",
+      "start": 8932848,
+      "end": 9034251,
+      "size": 101403,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000008.10:g.8790358_8891761del101404"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 17295646,
+      "end": 17364988,
+      "size": 69342,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000009.11:g.17295644_17364986del69343"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr9",
+      "start": 17298852,
+      "end": 17357756,
+      "size": 58904,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000009.11:g.17298850_17357754del58905"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr11",
+      "start": 105256217,
+      "end": 105477025,
+      "size": 220808,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000011.9:g.105126944_105347752del220809"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr15",
+      "start": 89052093,
+      "end": 89109661,
+      "size": 57568,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000015.9:g.89595324_89652892del57569"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 152469585,
+      "end": 152566018,
+      "size": 96433,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000023.10:g.151638056_151743864del105809"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 23190929,
+      "end": 23445219,
+      "size": 254290,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000023.10:g.23209046_23463336del254291"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chrX",
+      "start": 75552545,
+      "end": 75606484,
+      "size": 53939,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "NC_000023.10:g.74772380_74826319del53940"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 36418744,
+      "end": 36521564,
+      "size": 102820,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 37577602,
+      "end": 37742176,
+      "size": 164574,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr5",
+      "start": 70854176,
+      "end": 70924175,
+      "size": 69999,
+      "sig": "Benign",
+      "pathogenic": false,
+      "name": "Single allele"
+    },
+    {
+      "type": "deletion",
+      "chrom": "chr18",
+      "start": 163327,
+      "end": 376359,
+      "size": 213032,
+      "sig": "Likely benign",
+      "pathogenic": false,
+      "name": "Single allele"
+    }
+  ]
+}
