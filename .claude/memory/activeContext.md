@@ -1,9 +1,29 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-06-25
+**Last Updated:** 2026-06-28
 **Current Branch:** experiment/spectral-collapse-pilot
-**Session Focus:** Literature review → Related Work → pre-submission review → manuscript fixed → **READY TO SUBMIT**
-**Reality source:** session 2026-06-25
+**Session Focus:** Discovery potential audit + conservation test + CTCF motif test → **WET LAB PREP**
+**Reality source:** session 2026-06-28
+
+## 🔬 Session 2026-06-28: Discovery Audit — 4 Converging Lines [VERIFIED]
+
+**What was done:**
+- H_CSI, H_buffer: REJECTED (no signal without HBB at N=14)
+- tissue_match: borderline r=0.53/ρ=0.48 — HBB leverage confirmed
+- Dual-regime paragraph added to Discussion (`taxonomy_paper/body_content.typ:1143`)
+- **NEW: GERP conservation test** — 94.1% pearl positions in evolutionarily constrained elements (OR=40, p≈0) [VERIFIED-REAL]
+- **NEW: CTCF motif test** — NEGATIVE: pearls at 21.6-22.2kb from CTCF peaks → **intra-loop mechanism confirmed**
+- **LATE: gnomAD NULL + phyloP arbiter** — conservation lines (GERP+phyloP) COLLAPSED to category confound (promoter 88% vs intronic 84%). Only CTCF geometry survives clean. See session_results CRITICAL UPDATE.
+- Full session results: `.claude/memory/session_results_20260628.md`
+
+**Discovery status:** ⚠️ DOWNGRADED. «4 independent lines» was optimistic — GERP+phyloP confounded by category. Open question: does ARCHCODE add anything beyond «this is a promoter variant»?
+
+**🔴 NEXT ACTION (TUESDAY, when Claude limits reset):**
+Run **AlphaGenome negative control** = RESCUE-OR-KILL test (NOT outreach yet).
+- ISM on matched non-pearl positions (incl. other conserved/promoter-adjacent) in HBB locus
+- −43% CAGE unique to pearls vs other conserved positions? → discovery lives. Else → ARCHCODE = promoter detector (April redux).
+- ~3-5h, real ISM calls. Do NOT start under 50% budget. Outreach to Nora ONLY after this passes.
+- Parked (do not expand): ATPH (LLPS condensates), QEC-MWPM (epistasis decoder) — both `[CANDIDATE]`, revive after ARCHCODE claim resolves.
 
 ## 🔧 Session 2026-06-25: Manuscript Fixed for Submission (commit 703e398)
 
@@ -20,8 +40,16 @@
 
 ---
 
+
+
+
+
+
+
+
+
 ## 🎯 Session 2026-05-25: Code Audit Hardening Complete ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] (empty section)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 **Status:** 🟢 **P0 BLOCKERS RESOLVED** — All CRITICAL issues fixed
 
 **Audit Results:**
@@ -44,7 +72,7 @@
 ---
 
 ## 🚪 Publication Gates Status (CORRECTED 2026-05-25 from Obsidian)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Source of truth:** `Projects/ARCHCODE/Publication Sta...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - **Action P0:** Verify appeal sent. If not — send today.
 
 ### arXiv ⏸️ PAUSED (Max REFUSED May 20)
@@ -67,7 +95,7 @@
 ---
 
 ## 📊 Scientific Results Summary (REFRAMED 2026-05-25, ADR-036)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Main Claim (post-skeptic):** "HBB pilot demonstrates ...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - ⚠️ Exploratory 6-locus extension: directional only (1/4 regulatory significant)
 - ⚠️ MLH1: p=0.022 nominal, fails Bonferroni
 - ⚠️ TERT hotspots (+33-53% CAGE): descriptive, no variant-matched controls
@@ -90,7 +118,7 @@
 ---
 
 ## 🎯 Tracy Strategic Verdict (CORRECTED 2026-05-25)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Goal:** Move ARCHCODE from preprint (Research Square ...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 1. `git push` 7 commits (5 min) — make today's work public
 2. Verify bioRxiv appeal sent (5 min) — check email sent folder
 3. APC funding source check (15 min) — Ronin? Personal? Find out
@@ -113,7 +141,7 @@ Bioinformatics Advances (next 2-4 weeks)
 ---
 
 ## 🔍 External Code Audit (2026-05-25, post-session)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Source:** User-provided audit report (TypeScript simu...
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 
 **Findings:** 3 critical + 3 medium + 2 low bugs in `LoopExtrusionEngine.ts`,
 `MultiCohesinEngine.ts`, `contactMatrix.ts`, `correlate_hic_archcode.py`,
@@ -136,7 +164,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 ---
 
 ## 📋 Next Actions (Priority Order — CORRECTED 2026-05-25)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] ### P0 — TODAY (25 min total)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 **B3:** Outreach update with HBB framing + RS DOI (1h)
 - Nora UCSF follow-up (May 29 deadline)
 - AlphaGenome forum post
@@ -183,6 +211,14 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 
 
+
+
+
+
+
+
+
+
 ## ⚠️ Critical Constraints (CORRECTED)
 
 **DO NOT:**
@@ -201,6 +237,14 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 - ✅ Disclose limitations honestly (N=1 robust, garden of forking paths, Gelman & Loken)
 
 ---
+
+
+
+
+
+
+
+
 
 
 
@@ -234,8 +278,16 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 
 
+
+
+
+
+
+
+
+
 ## 📖 Context for Next Session
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **What happened today (2026-05-25, ~6 hours of work):**
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - Research Square LIVE since May 18 ✅
 - bioRxiv rejected May 21 (3rd attempt) → appeal drafted
 - Max Imakaev REFUSED May 20 (arXiv path closed)
@@ -258,6 +310,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-06-25 22:39] `c852232`: docs(manuscript): add cover letter + references + competitor table (main body)
 - [2026-06-25 22:26] `703e398`: fix(manuscript): resolve abstract/body mismatch + correct headline statistics
 - [2026-05-30 20:49] `25d1406`: chore: archive May audit docs + update activeContext/results
 - [2026-05-25 19:50] `2dde83c`: docs(memory): sync activeContext with Obsidian vault reality (5 days stale)
