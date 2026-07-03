@@ -1,0 +1,339 @@
+{
+  "evidence": "[VERIFIED-REAL] ClinVar 2026-07-02 + ENCODE K562 H3K27ac (ENCFF252DWA, hg19) + Ensembl VEP GRCh37 REST",
+  "pre_registered_criteria": "PROMOTE: >=2/3 loci meet OR>=3 AND FDR-p<0.05. REPEAT: 1/3. REJECT: 0/3.",
+  "proximity_threshold_bp": 1000,
+  "locus_results": [
+    {
+      "locus": "BCL11A",
+      "n_pathogenic": 91,
+      "n_benign": 48,
+      "median_dist_pathogenic": 293822,
+      "median_dist_benign": 294365,
+      "mann_whitney_u": 1622.5,
+      "mann_whitney_p": 0.012870254521234609,
+      "cmh_odds_ratio": null,
+      "cmh_p": NaN,
+      "consequence_bucket_breakdown": {
+        "missense_variant": {
+          "path_close": 0,
+          "path_far": 13,
+          "benign_close": 0,
+          "benign_far": 12
+        },
+        "inframe_insertion": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "stop_gained": {
+          "path_close": 0,
+          "path_far": 18,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "frameshift_variant": {
+          "path_close": 0,
+          "path_far": 48,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_donor_variant": {
+          "path_close": 0,
+          "path_far": 4,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_acceptor_variant": {
+          "path_close": 0,
+          "path_far": 2,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_donor_5th_base_variant": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "start_lost": {
+          "path_close": 0,
+          "path_far": 3,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_region_variant": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 1
+        },
+        "intron_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 4
+        },
+        "synonymous_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 30
+        },
+        "5_prime_UTR_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 1
+        }
+      },
+      "mann_whitney_fdr_p": 0.019305381781851913
+    },
+    {
+      "locus": "KLF1",
+      "n_pathogenic": 314,
+      "n_benign": 825,
+      "median_dist_pathogenic": 4276,
+      "median_dist_benign": 2327,
+      "mann_whitney_u": 138749.0,
+      "mann_whitney_p": 0.06297478764307117,
+      "cmh_odds_ratio": 0.3378,
+      "cmh_p": 5.0210151091740446e-05,
+      "consequence_bucket_breakdown": {
+        "missense_variant": {
+          "path_close": 25,
+          "path_far": 145,
+          "benign_close": 43,
+          "benign_far": 70
+        },
+        "splice_donor_5th_base_variant": {
+          "path_close": 1,
+          "path_far": 2,
+          "benign_close": 1,
+          "benign_far": 1
+        },
+        "frameshift_variant": {
+          "path_close": 22,
+          "path_far": 33,
+          "benign_close": 1,
+          "benign_far": 2
+        },
+        "stop_gained": {
+          "path_close": 19,
+          "path_far": 27,
+          "benign_close": 1,
+          "benign_far": 1
+        },
+        "splice_acceptor_variant": {
+          "path_close": 3,
+          "path_far": 11,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_donor_variant": {
+          "path_close": 5,
+          "path_far": 6,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "start_lost": {
+          "path_close": 2,
+          "path_far": 0,
+          "benign_close": 1,
+          "benign_far": 0
+        },
+        "stop_lost": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "inframe_deletion": {
+          "path_close": 1,
+          "path_far": 5,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "transcript_ablation": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "protein_altering_variant": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_polypyrimidine_tract_variant": {
+          "path_close": 0,
+          "path_far": 2,
+          "benign_close": 23,
+          "benign_far": 52
+        },
+        "splice_region_variant": {
+          "path_close": 1,
+          "path_far": 0,
+          "benign_close": 28,
+          "benign_far": 48
+        },
+        "inframe_insertion": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "synonymous_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 128,
+          "benign_far": 273
+        },
+        "3_prime_UTR_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 7,
+          "benign_far": 2
+        },
+        "intron_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 37,
+          "benign_far": 57
+        },
+        "non_coding_transcript_exon_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 7,
+          "benign_far": 29
+        },
+        "splice_donor_region_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 3,
+          "benign_far": 3
+        },
+        "5_prime_UTR_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 5,
+          "benign_far": 0
+        },
+        "upstream_gene_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 2,
+          "benign_far": 0
+        }
+      },
+      "mann_whitney_fdr_p": 0.06297478764307117
+    },
+    {
+      "locus": "GATA1",
+      "n_pathogenic": 72,
+      "n_benign": 194,
+      "median_dist_pathogenic": 0,
+      "median_dist_benign": 0,
+      "mann_whitney_u": 4820.5,
+      "mann_whitney_p": 0.00010409997832246463,
+      "cmh_odds_ratio": 10.8333,
+      "cmh_p": 0.020599829726550032,
+      "consequence_bucket_breakdown": {
+        "missense_variant": {
+          "path_close": 13,
+          "path_far": 1,
+          "benign_close": 30,
+          "benign_far": 25
+        },
+        "frameshift_variant": {
+          "path_close": 40,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "3_prime_UTR_variant": {
+          "path_close": 0,
+          "path_far": 1,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "start_lost": {
+          "path_close": 4,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "stop_lost": {
+          "path_close": 1,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "stop_gained": {
+          "path_close": 6,
+          "path_far": 0,
+          "benign_close": 1,
+          "benign_far": 0
+        },
+        "splice_donor_variant": {
+          "path_close": 3,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "inframe_deletion": {
+          "path_close": 1,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_acceptor_variant": {
+          "path_close": 2,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 0
+        },
+        "splice_region_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 2,
+          "benign_far": 3
+        },
+        "synonymous_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 81,
+          "benign_far": 28
+        },
+        "splice_polypyrimidine_tract_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 8,
+          "benign_far": 0
+        },
+        "splice_donor_5th_base_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 1,
+          "benign_far": 0
+        },
+        "intron_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 12,
+          "benign_far": 2
+        },
+        "splice_donor_region_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 1
+        }
+      },
+      "mann_whitney_fdr_p": 0.0003122999349673939
+    }
+  ],
+  "n_loci_meeting_mcid": 1,
+  "verdict": "REPEAT"
+}
