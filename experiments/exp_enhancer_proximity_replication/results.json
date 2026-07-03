@@ -87,137 +87,53 @@
           "benign_far": 1
         }
       },
-      "mann_whitney_fdr_p": 0.019305381781851913
+      "mann_whitney_fdr_p": 0.038610763563703826
     },
     {
       "locus": "KLF1",
-      "n_pathogenic": 314,
-      "n_benign": 825,
-      "median_dist_pathogenic": 4276,
-      "median_dist_benign": 2327,
-      "mann_whitney_u": 138749.0,
-      "mann_whitney_p": 0.06297478764307117,
-      "cmh_odds_ratio": 0.3378,
-      "cmh_p": 5.0210151091740446e-05,
+      "n_pathogenic": 22,
+      "n_benign": 67,
+      "median_dist_pathogenic": 0,
+      "median_dist_benign": 0,
+      "mann_whitney_u": 737.0,
+      "mann_whitney_p": 1.0,
+      "cmh_odds_ratio": null,
+      "cmh_p": NaN,
       "consequence_bucket_breakdown": {
-        "missense_variant": {
-          "path_close": 25,
-          "path_far": 145,
-          "benign_close": 43,
-          "benign_far": 70
-        },
-        "splice_donor_5th_base_variant": {
-          "path_close": 1,
-          "path_far": 2,
-          "benign_close": 1,
-          "benign_far": 1
-        },
         "frameshift_variant": {
-          "path_close": 22,
-          "path_far": 33,
-          "benign_close": 1,
-          "benign_far": 2
+          "path_close": 6,
+          "path_far": 0,
+          "benign_close": 0,
+          "benign_far": 0
         },
         "stop_gained": {
-          "path_close": 19,
-          "path_far": 27,
-          "benign_close": 1,
-          "benign_far": 1
-        },
-        "splice_acceptor_variant": {
-          "path_close": 3,
-          "path_far": 11,
+          "path_close": 7,
+          "path_far": 0,
           "benign_close": 0,
+          "benign_far": 0
+        },
+        "missense_variant": {
+          "path_close": 7,
+          "path_far": 0,
+          "benign_close": 9,
           "benign_far": 0
         },
         "splice_donor_variant": {
-          "path_close": 5,
-          "path_far": 6,
-          "benign_close": 0,
-          "benign_far": 0
-        },
-        "start_lost": {
           "path_close": 2,
           "path_far": 0,
-          "benign_close": 1,
-          "benign_far": 0
-        },
-        "stop_lost": {
-          "path_close": 0,
-          "path_far": 1,
           "benign_close": 0,
           "benign_far": 0
-        },
-        "inframe_deletion": {
-          "path_close": 1,
-          "path_far": 5,
-          "benign_close": 0,
-          "benign_far": 0
-        },
-        "transcript_ablation": {
-          "path_close": 0,
-          "path_far": 1,
-          "benign_close": 0,
-          "benign_far": 0
-        },
-        "protein_altering_variant": {
-          "path_close": 0,
-          "path_far": 1,
-          "benign_close": 0,
-          "benign_far": 0
-        },
-        "splice_polypyrimidine_tract_variant": {
-          "path_close": 0,
-          "path_far": 2,
-          "benign_close": 23,
-          "benign_far": 52
-        },
-        "splice_region_variant": {
-          "path_close": 1,
-          "path_far": 0,
-          "benign_close": 28,
-          "benign_far": 48
-        },
-        "inframe_insertion": {
-          "path_close": 0,
-          "path_far": 1,
-          "benign_close": 0,
-          "benign_far": 0
-        },
-        "synonymous_variant": {
-          "path_close": 0,
-          "path_far": 0,
-          "benign_close": 128,
-          "benign_far": 273
         },
         "3_prime_UTR_variant": {
           "path_close": 0,
           "path_far": 0,
           "benign_close": 7,
-          "benign_far": 2
+          "benign_far": 0
         },
-        "intron_variant": {
+        "synonymous_variant": {
           "path_close": 0,
           "path_far": 0,
-          "benign_close": 37,
-          "benign_far": 57
-        },
-        "non_coding_transcript_exon_variant": {
-          "path_close": 0,
-          "path_far": 0,
-          "benign_close": 7,
-          "benign_far": 29
-        },
-        "splice_donor_region_variant": {
-          "path_close": 0,
-          "path_far": 0,
-          "benign_close": 3,
-          "benign_far": 3
-        },
-        "5_prime_UTR_variant": {
-          "path_close": 0,
-          "path_far": 0,
-          "benign_close": 5,
+          "benign_close": 38,
           "benign_far": 0
         },
         "upstream_gene_variant": {
@@ -225,36 +141,54 @@
           "path_far": 0,
           "benign_close": 2,
           "benign_far": 0
+        },
+        "splice_region_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 5,
+          "benign_far": 0
+        },
+        "splice_polypyrimidine_tract_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 3,
+          "benign_far": 0
+        },
+        "intron_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 2,
+          "benign_far": 0
+        },
+        "5_prime_UTR_variant": {
+          "path_close": 0,
+          "path_far": 0,
+          "benign_close": 1,
+          "benign_far": 0
         }
       },
-      "mann_whitney_fdr_p": 0.06297478764307117
+      "mann_whitney_fdr_p": 1.0
     },
     {
       "locus": "GATA1",
-      "n_pathogenic": 72,
-      "n_benign": 194,
+      "n_pathogenic": 69,
+      "n_benign": 131,
       "median_dist_pathogenic": 0,
       "median_dist_benign": 0,
-      "mann_whitney_u": 4820.5,
-      "mann_whitney_p": 0.00010409997832246463,
-      "cmh_odds_ratio": 10.8333,
-      "cmh_p": 0.020599829726550032,
+      "mann_whitney_u": 4252.5,
+      "mann_whitney_p": 0.492594022393777,
+      "cmh_odds_ratio": null,
+      "cmh_p": NaN,
       "consequence_bucket_breakdown": {
         "missense_variant": {
           "path_close": 13,
-          "path_far": 1,
-          "benign_close": 30,
-          "benign_far": 25
-        },
-        "frameshift_variant": {
-          "path_close": 40,
           "path_far": 0,
-          "benign_close": 0,
+          "benign_close": 28,
           "benign_far": 0
         },
-        "3_prime_UTR_variant": {
-          "path_close": 0,
-          "path_far": 1,
+        "frameshift_variant": {
+          "path_close": 39,
+          "path_far": 0,
           "benign_close": 0,
           "benign_far": 0
         },
@@ -298,18 +232,18 @@
           "path_close": 0,
           "path_far": 0,
           "benign_close": 2,
-          "benign_far": 3
+          "benign_far": 0
         },
         "synonymous_variant": {
           "path_close": 0,
           "path_far": 0,
-          "benign_close": 81,
-          "benign_far": 28
+          "benign_close": 80,
+          "benign_far": 0
         },
         "splice_polypyrimidine_tract_variant": {
           "path_close": 0,
           "path_far": 0,
-          "benign_close": 8,
+          "benign_close": 7,
           "benign_far": 0
         },
         "splice_donor_5th_base_variant": {
@@ -322,18 +256,12 @@
           "path_close": 0,
           "path_far": 0,
           "benign_close": 12,
-          "benign_far": 2
-        },
-        "splice_donor_region_variant": {
-          "path_close": 0,
-          "path_far": 0,
-          "benign_close": 0,
-          "benign_far": 1
+          "benign_far": 0
         }
       },
-      "mann_whitney_fdr_p": 0.0003122999349673939
+      "mann_whitney_fdr_p": 0.7388910335906654
     }
   ],
-  "n_loci_meeting_mcid": 1,
-  "verdict": "REPEAT"
+  "n_loci_meeting_mcid": 0,
+  "verdict": "REJECT"
 }

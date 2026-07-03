@@ -3,7 +3,7 @@ experiment: exp_enhancer_proximity_replication
 date: 2026-07-02
 ladder_tier: Standard
 question_type: Predictive
-status: IN PROGRESS
+status: REJECT (0/3 loci meet MCID; see decision.md for full timeline incl. mid-experiment bug fix)
 ---
 
 # Claim: Enhancer proximity discriminates pathogenic/benign ClinVar variants at erythroid loci beyond HBB

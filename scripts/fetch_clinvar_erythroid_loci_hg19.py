@@ -63,6 +63,10 @@ def main() -> None:
                 if not (lo <= start <= hi):
                     continue
 
+                gene_symbols = {g.strip() for g in row[col.get("GeneSymbol", -1)].split("|")}
+                if name not in gene_symbols:
+                    continue
+
                 sig = row[col.get("ClinicalSignificance", -1)]
                 words = {w.strip() for w in sig.split("/")}
                 is_path = bool(words & PATH_SIGS) and not (words & BENIGN_SIGS)
