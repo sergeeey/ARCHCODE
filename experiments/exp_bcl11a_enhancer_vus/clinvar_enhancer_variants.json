@@ -1,0 +1,34 @@
+{
+  "source": "ClinVar variant_summary.txt.gz (NCBI FTP)",
+  "window": "chr2:60710000-60732000 (hg19, BCL11A DHS+55/+58/+62)",
+  "anchor": "rs1427407 at chr2:60,718,043 (VEP-confirmed, Bauer et al. 2013 Science)",
+  "n_variants": 2,
+  "variants": [
+    {
+      "chrom": "chr2",
+      "start": 60720246,
+      "end": 60720246,
+      "type": "single nucleotide variant",
+      "sig": "Benign",
+      "gene_symbol": "BCL11A",
+      "name": "NM_022893.4(BCL11A):c.386-24278G>A",
+      "position_vcf": "60720246",
+      "ref_vcf": "C",
+      "alt_vcf": "T",
+      "rs_number": "11886868"
+    },
+    {
+      "chrom": "chr2",
+      "start": 60719185,
+      "end": 61268266,
+      "type": "copy number loss",
+      "sig": "Likely pathogenic",
+      "gene_symbol": "BCL11A;PAPOLG;PEX13;PUS10;REL",
+      "name": "GRCh37/hg19 2p16.1(chr2:60719185-61268266)x1",
+      "position_vcf": "-1",
+      "ref_vcf": "na",
+      "alt_vcf": "na",
+      "rs_number": "-1"
+    }
+  ]
+}
