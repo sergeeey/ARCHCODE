@@ -1,10 +1,44 @@
 # Active Context — ARCHCODE
 
 **Last Updated:** 2026-07-02
-**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 exp_orphan_enhancers).
+**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 + 768bf82).
   main updated via integrity/merge-bioadv-readme → pushed 1b14805;
   manuscript reference/abstract fixes on integrity/fix-manuscript-refs → pushed 1137e9c.
 **GitHub:** https://github.com/sergeeey/ARCHCODE — all commits above confirmed on origin.
+
+## DONE (2026-07-02, commit 768bf82) — Independent blind-spot audit + 2 follow-up null_results
+
+Ran 3 parallel Agent(Explore) audits, mutually blind (no shared context, didn't see each
+other or my own summary table), per the falsification-ladder.md "context asymmetry" rule.
+Findings (verified by hand where checkable, not taken on the agents' word alone):
+
+1. **"Loop That Stayed" hypothesis was never formally rejected** — `manuscript/LOOP_THAT_STAYED_HYPOTHESIS.md`
+   predicted 15-30% aberrant HBB splicing in 3'HS1-deletion clones; RNA-seq (GSE160420,
+   WT/B6/A2) showed 0.1% in all three — a real null, but it lived only in a deprecated
+   script comment, never filed to `null_results/`. **Now fixed**: `null_results/20260702-loop-that-stayed-splice-junction.md`.
+   **BUT**: the clone with the actual dramatic phenotype (D3, -36% HBB expression; B6 tested
+   here only shows -4%) was NEVER run through splice analysis — no FASTQ/junction data exists
+   for it anywhere in this repo. Completing it needs a STAR/HISAT2 alignment pipeline, not
+   available in this environment (verified: `which STAR/hisat2/salmon` all empty, no pysam).
+   Marked REPEAT (partial), not full REJECT — this is a genuinely open question, not faked.
+
+2. **All 3 agents independently proposed the same fix for the orphan-enhancer REJECT**:
+   restrict to tissue-matched (erythroid) ABC biosamples, since that's the one condition
+   under which this project's strongest surviving signal (enhancer-proximity OR=34.05 at
+   HBB) was found. Tested it (`scripts/orphan_enhancer_tissue_matched_exploratory.py`,
+   EXPLORATORY/post-hoc, flagged as such): erythroid-only genome-wide OR=1.158 (WEAKER than
+   the pooled OR=1.221, not stronger); HBB-locus-restricted n=36 (uninformative). The
+   convergent 3-agent hypothesis did NOT pan out — filed as
+   `null_results/20260702-orphan-enhancer-tissue-matched-followup.md` specifically so this
+   idea isn't blindly re-tried in a future session.
+
+3. A 4th agent hand-verified both existing REJECT verdicts by recomputing per-stratum odds
+   ratios directly from the results JSON — confirmed both are robust nulls, no hidden signal
+   averaged away by pooling.
+
+**Net effect**: `null_results/` now has 4 entries. No new positive discovery, but two loose
+threads closed (one fully, one partially) and one specific "maybe we missed it" hypothesis
+(tissue-matching) explicitly tested and ruled out rather than left as an assumption.
 
 ## DONE (2026-07-02) — exp_orphan_enhancers: REJECT, filed to null_results/
 
@@ -286,6 +320,8 @@ results/p5_instrument/
 
 
 ## Auto-commit log
+- [2026-07-03 12:49] `768bf82`: feat: independent 3-agent blind-spot audit + follow-up on both open threads
+- [2026-07-03 11:20] `fb6cdb8`: docs: update activeContext with final exp_orphan_enhancers REJECT status
 - [2026-07-03 11:19] `4407081`: fix: has_vus_overlap() false-negative bug (reviewer-caught) + final REJECT result
 - [2026-07-03 11:09] `b463906`: feat: exp_orphan_enhancers вЂ” hypothesis test on ABC orphan enhancers vs ClinVar VUS
 - [2026-07-01 16:55] `59345c8`: fix: honest close-out вЂ” external validation, H3 physics ablation, FL process gaps
