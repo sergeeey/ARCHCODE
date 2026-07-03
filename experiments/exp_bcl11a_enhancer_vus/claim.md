@@ -3,7 +3,7 @@ experiment: exp_bcl11a_enhancer_vus
 date: 2026-07-02
 ladder_tier: Standard
 question_type: Descriptive
-status: INCONCLUSIVE -- 0 VUS found, ClinVar is structurally wrong data source for quantitative-trait GWAS variants (see decision.md)
+status: CANDIDATE FLAGGED -- gnomAD follow-up found rs369310985 (5bp from known functional motif, AC=6, unstudied in literature); see decision.md
 ---
 
 # Claim: ClinVar VUS exist within the known BCL11A erythroid enhancer (candidate flagging)

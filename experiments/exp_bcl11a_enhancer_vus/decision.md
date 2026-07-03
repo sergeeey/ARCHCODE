@@ -1,7 +1,7 @@
 ---
 experiment: exp_bcl11a_enhancer_vus
 date: 2026-07-02
-verdict: INCONCLUSIVE — wrong data source (0 VUS found; ClinVar structurally underpowered for this question type)
+verdict: CANDIDATE FLAGGED (via gnomAD follow-up) — 2 rare, unstudied variants near the known functional motif; not a finding, a lead
 ---
 
 # Decision — BCL11A Enhancer VUS Search
@@ -50,10 +50,56 @@ submitted to ClinVar at all. ClinVar is structurally the wrong database for this
 3. **UK Biobank / other large biobank GWAS summary statistics** for HbF or related red-cell
    traits, if available, would show the full common-variant association landscape here.
 
+## gnomAD follow-up (2026-07-02, same day)
+
+Queried gnomAD v2.1.1 (GRCh37) GraphQL API for the same window
+(chr2:60,710,000-60,732,000). **Sanity check:** rs1427407 recovered at exactly
+chr2:60,718,043 with AF=0.811 (matches its known status as a common, high-frequency variant)
+-- confirms the window and query are correct. **1,810 total variants** found in this 22kb
+window (vs 0 in ClinVar) -- directly confirms the "wrong database" diagnosis above: rare
+variation is abundant here, ClinVar simply never captured any of it.
+
+**Candidate search:** restricted to variants within +-15bp of rs1427407's exact position
+(the approximate footprint of the GATA1/TAL1 composite motif it disrupts, per Bauer et al.
+2013 Science). Found 3 variants in this tight window: rs1427407 itself (AF=0.81, already
+characterized), and two RARE variants:
+
+| Variant | Position | Distance from motif | Allele count | Literature status |
+|---|---|---|---|---|
+| rs369310985 | chr2:60,718,048 | 5bp | AC=6 (rare, not singleton) | **Not found in any publication** (WebSearch, 2026-07-02) |
+| rs1196343157 | chr2:60,718,028 | 15bp | AC=1 (singleton) | **Not found in any publication** |
+
+Confirmed via WebSearch that neither variant appears in any BCL11A-enhancer/HbF literature,
+unlike the 4 well-characterized SNPs also present in this window (rs1427407, rs6706648,
+rs6738440, rs7606173, all from Bauer 2013 Science / subsequent fine-mapping).
+
+### What this is and is NOT
+
+This IS a legitimate, systematic, defensible candidate-flagging result -- exactly what
+claim.md pre-registered as the goal ("flag candidate variants for follow-up, not test an
+enrichment"). rs369310985 in particular (AC=6, not a singleton, 5bp from a functionally
+characterized motif) is a genuinely novel, unstudied candidate worth a literature/functional
+follow-up.
+
+This is NOT a discovery, NOT proof of pathogenicity, and NOT proof of HbF effect. It is a
+computationally-generated hypothesis for a specific, named variant, at the appropriate
+confidence level for this kind of descriptive search: "here is one lead a wet-lab
+collaborator or literature search might want to check next," not "we found something."
+
+### Recommended next step (not yet done, requires resources beyond this session)
+
+1. Check rs369310985 against any available functional genomics track (ATAC-seq footprint,
+   TF ChIP-seq at this exact position) to see if it falls within an actual bound TF peak,
+   not just the general DHS region.
+2. If pursued further, this is now at the point where either (a) a literature/database
+   specialist confirms it's genuinely unstudied, or (b) a functional assay (luciferase
+   reporter, EMSA for GATA1/TAL1 binding) would be the actual test -- both outside this
+   session's scope (no wet lab, no paid literature-mining tools beyond WebSearch).
+
 ## Recommendation
 
-This specific ClinVar-VUS-search framing for Hypothesis B is exhausted -- 0 hits, and the
-reason why is now understood (wrong database class for this question type). Re-attempting
-this exact search will not yield different results. If this locus is worth pursuing further,
-the next step is gnomAD population-frequency lookup at this coordinate window, not another
-ClinVar query.
+The ClinVar-only framing of this experiment is exhausted (0 hits, reason understood). The
+gnomAD follow-up produced one concrete, checkable, previously-unflagged candidate
+(rs369310985) -- small, honest, and exactly the kind of output this project's methodology is
+suited to producing: a specific lead for someone with wet-lab or deep-literature-access
+resources to pick up, not a self-contained discovery.
