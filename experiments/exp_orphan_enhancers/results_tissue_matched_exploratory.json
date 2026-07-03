@@ -1,0 +1,74 @@
+{
+  "status": "EXPLORATORY \u2014 post-hoc subgroup analysis, not pre-registered, not confirmatory",
+  "integrity_note": "Decision to stratify by tissue was made AFTER seeing the pooled null result. A positive finding here requires independent pre-registered confirmation before being treated as PROMOTE-grade evidence.",
+  "original_rejected_result": {
+    "OR": 1.2215,
+    "p": 6.264803166810001e-39,
+    "n": 661294,
+    "scope": "genome-wide, all 131 biosamples, held-out chroms"
+  },
+  "erythroid_genome_wide": {
+    "label": "erythroid-only, genome-wide",
+    "n_orphan": 23935,
+    "n_regular": 34799,
+    "orphan_vus_rate": 0.980531,
+    "regular_vus_rate": 0.978103,
+    "mh_odds_ratio": 1.1575,
+    "mh_p_value": 0.018102354401676384,
+    "bucket_breakdown": {
+      "high": {
+        "orphan_vus": 9859,
+        "orphan_n": 10001,
+        "regular_vus": 16810,
+        "regular_n": 17122
+      },
+      "medium": {
+        "orphan_vus": 11254,
+        "orphan_n": 11523,
+        "regular_vus": 16522,
+        "regular_n": 16961
+      },
+      "low": {
+        "orphan_vus": 876,
+        "orphan_n": 894,
+        "regular_vus": 573,
+        "regular_n": 582
+      },
+      "none": {
+        "orphan_vus": 1480,
+        "orphan_n": 1517,
+        "regular_vus": 132,
+        "regular_n": 134
+      }
+    }
+  },
+  "erythroid_hbb_locus": {
+    "label": "erythroid-only, HBB locus",
+    "n_orphan": 24,
+    "n_regular": 12,
+    "orphan_vus_rate": 1.0,
+    "regular_vus_rate": 1.0,
+    "mh_odds_ratio": null,
+    "mh_p_value": NaN,
+    "bucket_breakdown": {
+      "medium": {
+        "orphan_vus": 15,
+        "orphan_n": 15,
+        "regular_vus": 10,
+        "regular_n": 10
+      },
+      "high": {
+        "orphan_vus": 3,
+        "orphan_n": 3,
+        "regular_vus": 2,
+        "regular_n": 2
+      },
+      "none": {
+        "orphan_vus": 6,
+        "orphan_n": 6,
+        "regular_vus": 0,
+        "regular_n": 0
+      }
+    }
+  }
+}
