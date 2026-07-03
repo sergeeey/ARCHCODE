@@ -1,15 +1,80 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-07-01
-**Branch:** feat/archcode-sv-v1 (main updated separately via integrity/merge-bioadv-readme → pushed)
-**GitHub:** https://github.com/sergeeey/ARCHCODE
+**Last Updated:** 2026-07-02
+**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 exp_orphan_enhancers).
+  main updated via integrity/merge-bioadv-readme → pushed 1b14805;
+  manuscript reference/abstract fixes on integrity/fix-manuscript-refs → pushed 1137e9c.
+**GitHub:** https://github.com/sergeeey/ARCHCODE — all commits above confirmed on origin.
+
+## DONE (2026-07-02) — exp_orphan_enhancers: REJECT, filed to null_results/
+
+Hypothesis: are ClinVar VUS enriched near "orphan" enhancers (ABC-model target gene !=
+nearest gene) vs regular enhancers? Data: ABC model (Nasser 2021, 131 biosamples, 325MB,
+NOT in git — reproducible via `scripts/fetch_gencode_hg19_stranded.py` /
+`fetch_clinvar_vus_hg19.py`) + ClinVar VUS genome-wide (also NOT in git, same reason).
+
+**Three real bugs found and fixed before trusting any result** — a clean demonstration of
+verify-before-claim discipline surviving contact with a brand-new pipeline:
+1. GENCODE gene coords lacked strand → wrong TSS for ~49% of genes (minus-strand).
+2. **Genome build mismatch**: ABC predictions file is hg19/GRCh37, not hg38 — confirmed
+   empirically (NOC2L TSS in ABC file=894679 matches hg19=894689; hg38=959309, ~65kb miss).
+   Caused an implausible 85-91% "orphan" rate (lit. range ~30-40%) in two early runs.
+3. **`has_vus_overlap()` false-negative bug** (caught by `Agent(reviewer)`, not by me): a
+   fixed +-5-record window around a bisect insertion point silently missed wide-spanning
+   VUS (large CNVs/indels) behind dense variant clusters. Fixed with an exact O(log n)
+   running-max-end interval check, verified against the reviewer's exact failing case +
+   4 more unit tests.
+
+**Final result (both bugs fixed, orphan rate now 43% — plausible)**:
+Calibration OR=0.999 (p=0.93), held-out OR=1.221 (n=661,294, p~0 — significant only due to
+enormous n, not practically meaningful). Pre-registered MCID (OR>=2.0) not met.
+**REJECT** → `null_results/20260702-orphan-enhancer-vus-enrichment.md`.
+
+An earlier `results.json` (07:21) was stale (predated the hg19 fix, silently identical to a
+buggy run) — caught via file-timestamp comparison before it could be cited. Do not trust a
+results file without checking it postdates the code/data it claims to summarize.
+
 **Status:** ARCHCODE-SV Step+2 REPEAT (not PROMOTE) — out-of-sample FPR=22.7%/Recall=36.4%, MCID NOT MET.
   Physics layer FALSIFIED (H3 ablation, Youden J≈0). Gene-constraint layer shows real modest signal (J=0.137).
   SNV LSSIM AUC=0.977 finding formally REJECTed → null_results/. README/GitHub main now honest (commit 1b14805).
+  Bioinformatics Advances submission draft (manuscript/main.typ) pre-submission checklist FAILED initial pass:
+  5 broken citations + Abstract/Body mismatch found and fixed locally (commit 1137e9c on
+  integrity/fix-manuscript-refs, not pushed — awaiting user confirmation).
 
 ---
 
-## ЧТО БЫЛО СДЕЛАНО (2026-07-01) — Full audit + honest reconciliation [VERIFIED-REAL]
+## ЧТО БЫЛО СДЕЛАНО (2026-07-01, часть 2) — Manuscript pre-submission checklist audit [VERIFIED-REAL]
+
+**Реальная точка сборки для Bioinformatics Advances submission:** `manuscript/main.typ`
+(верхнеуровневый) — включает `abstract_content.typ` + `taxonomy_paper/body_content.typ` +
+`references.typ` вместе. (НЕ `taxonomy_paper/main.typ` — та версия не используется.)
+
+**Найдено и исправлено (все DOI перепроверены через CrossRef API, не только WebFetch):**
+1. 4 ссылки: реальные авторы/тема, но неверный DOI/год/страницы —
+   Zhou (bioRxiv 2022→Nature Genetics 2018), Baralle (2018→2005), Fudenberg-Akita
+   (неверный DOI+подзаголовок), Avsec-AlphaGenome (404→Nature 2026, реальный DOI)
+2. Temple et al. — **выдуманный список соавторов** (4 из 5 не имеют отношения к статье);
+   также "in press" без DOI — прямое нарушение правила CLAUDE.md
+3. Zenodo DOI в Code/Data Availability указывал на чужой R-пакет → исправлен на
+   верный ARCHCODE DOI (18908214, совпадает с cover letter)
+4. **Abstract и Body — из разных черновиков**: "Simpson's Paradox" (3× в Abstract) —
+   0 раз в Body; числа 0.791/0.640/0.657/MLH1 p=0.022/TERT+33-53%/ρ=0.014 — нигде
+   в Body. Abstract переписан заново на основе реальных чисел из Body (0.977→0.551,
+   within-category median=0.52, TP53 splice_region=0.69, enhancer proximity OR=34.05,
+   AlphaGenome CAGE d=-2.1 с честной pseudoreplication оговоркой)
+
+**Не исправлено (вне скоупа, для сведения):**
+- Старый `manuscript/body_content.typ` (другой документ, не участвует в текущей заявке)
+  имеет СВОЙ отдельный список литературы с ТРЕТЬЕЙ версией цитаты Baralle
+- Affiliation/email автора расходится между `manuscript/main.typ` (ronininstitute.org) и
+  cover letter (gmail.com) — личная информация автора, не мне решать какая верна
+
+**Коммит:** `1137e9c` на ветке `integrity/fix-manuscript-refs`, worktree
+`C:/Users/sboi/ARCHCODE_manuscript_fix` — НЕ запушено, ждёт подтверждения пользователя.
+
+---
+
+## ЧТО БЫЛО СДЕЛАНО (2026-07-01, часть 1) — Full audit + honest reconciliation [VERIFIED-REAL]
 
 **boyko-method полный аудит проекта** нашёл: (1) SNV LSSIM AUC=0.977 давно опровергнут внутри
 репо (2026-06-05), но никогда не долетал до README/GitHub; (2) уже существовала честная версия
@@ -221,6 +286,10 @@ results/p5_instrument/
 
 
 ## Auto-commit log
+- [2026-07-03 11:19] `4407081`: fix: has_vus_overlap() false-negative bug (reviewer-caught) + final REJECT result
+- [2026-07-03 11:09] `b463906`: feat: exp_orphan_enhancers вЂ” hypothesis test on ABC orphan enhancers vs ClinVar VUS
+- [2026-07-01 16:55] `59345c8`: fix: honest close-out вЂ” external validation, H3 physics ablation, FL process gaps
+- [2026-07-01 16:34] `59345c8`: fix: honest close-out вЂ” external validation, H3 physics ablation, FL process gaps
 - [2026-07-01 16:25] `babdf56`: fix: reproducibility вЂ” remove hardcoded paths, add data provenance, add numpy dep
 - [2026-06-26 17:13] `babdf56`: fix: reproducibility вЂ” remove hardcoded paths, add data provenance, add numpy dep
 - [2026-06-26 16:54] `a02eeb5`: feat: ARCHCODE-SV Step +2 вЂ” TAD-aware gene constraint [VERIFIED-REAL]
