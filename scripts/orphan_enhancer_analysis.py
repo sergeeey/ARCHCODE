@@ -72,27 +72,48 @@ def nearest_gene(chrom, pos, gene_index):
 
 
 def load_vus_index(path):
+    """Per-chromosome (starts, ends, running_max_end) sorted by start, for exact
+    O(log n) interval-overlap queries regardless of variant width or cluster density.
+
+    Fixed 2026-07-02 (reviewer-caught bug): a prior version used a fixed +-5-record
+    window around the bisect insertion point, which silently misses overlaps from
+    wide-spanning variants (e.g. large CNVs/indels) sitting behind a dense cluster of
+    narrower variants -- a one-directional false-negative bug in the primary outcome
+    variable. The running-max-end array makes the "does ANY interval starting at or
+    before query_end also end at or after query_start" check exact, not heuristic.
+    """
     with open(path) as f:
         data = json.load(f)
-    by_chrom = defaultdict(list)
+    by_chrom_pairs = defaultdict(list)
     for v in data["variants"]:
-        by_chrom[v["chrom"]].append((v["start"], v["end"]))
-    for chrom in by_chrom:
-        by_chrom[chrom].sort()
-    return by_chrom, data["n"]
+        by_chrom_pairs[v["chrom"]].append((v["start"], v["end"]))
+
+    index = {}
+    for chrom, pairs in by_chrom_pairs.items():
+        pairs.sort()
+        starts = [p[0] for p in pairs]
+        ends = [p[1] for p in pairs]
+        running_max_end = []
+        cur_max = float("-inf")
+        for e in ends:
+            cur_max = max(cur_max, e)
+            running_max_end.append(cur_max)
+        index[chrom] = (starts, running_max_end)
+    return index, data["n"]
 
 
 def has_vus_overlap(chrom, start, end, vus_index):
-    lst = vus_index.get(chrom)
-    if not lst:
+    entry = vus_index.get(chrom)
+    if not entry:
         return False
-    starts = [x[0] for x in lst]
-    i = bisect.bisect_left(starts, start)
-    for j in range(max(0, i - 5), min(len(lst), i + 5)):
-        v_start, v_end = lst[j]
-        if v_start <= end and v_end >= start:
-            return True
-    return False
+    starts, running_max_end = entry
+    hi = bisect.bisect_right(starts, end)
+    if hi == 0:
+        return False
+    # All intervals in [0, hi) have v_start <= end. If the largest v_end among them
+    # is >= start, that interval (by construction) satisfies v_start<=end AND
+    # v_end>=start -- a genuine overlap. Exact, not a fixed-window approximation.
+    return running_max_end[hi - 1] >= start
 
 
 def submission_bucket(gene, gene_counts):
@@ -177,6 +198,9 @@ def build_buckets(enhancers, vus_index):
     n_records = 0
     for (chrom, start, end), rows in by_interval.items():
         orphan_votes = sum(1 for r in rows if r["orphan"])
+        # WHY: exact ties (e.g. 2/4 biosamples call it orphan) resolve to "regular" --
+        # a conservative default that avoids inflating the orphan_n exposure group on
+        # ambiguous per-biosample calls. One-directional; noted per reviewer request.
         is_orphan = orphan_votes > len(rows) / 2
         bucket_key = rows[0]["bucket"]
         vus_hit = has_vus_overlap(chrom, start, end, vus_index)
@@ -299,14 +323,24 @@ def main():
     )
     print()
 
-    ho_or = heldout_result["mh_odds_ratio"] or 0.0
+    # WHY: mh_odds_ratio is None specifically for the degenerate no-data case
+    # (var_stat<=0 in cochran_mantel_haenszel); distinguish that from a real OR=0.0
+    # (genuine strong negative association) so null_results/ archival records *why*
+    # a REJECT happened, not conflate "no signal" with "no data".
+    ho_or_raw = heldout_result["mh_odds_ratio"]
     ho_p = heldout_result["mh_p_value"]
-    if ho_or >= 2.0 and ho_p < 0.01:
-        verdict = "PROMOTE"
-    elif (1.3 <= ho_or < 2.0) or (0.01 <= ho_p < 0.05):
-        verdict = "REPEAT"
-    else:
+    if ho_or_raw is None:
         verdict = "REJECT"
+        verdict_reason = "no_data"
+    else:
+        ho_or = ho_or_raw
+        if ho_or >= 2.0 and ho_p < 0.01:
+            verdict = "PROMOTE"
+        elif (1.3 <= ho_or < 2.0) or (0.01 <= ho_p < 0.05):
+            verdict = "REPEAT"
+        else:
+            verdict = "REJECT"
+        verdict_reason = "criteria_not_met"
     print(f"VERDICT (per pre-registered go/no-go in claim.md): {verdict}")
 
     out = {
@@ -315,6 +349,7 @@ def main():
         "calibration": calib_result,
         "heldout": heldout_result,
         "verdict": verdict,
+        "verdict_reason": verdict_reason,
         "pre_registered_criteria": "PROMOTE: OR>=2.0 AND p<0.01 on held-out. REPEAT: 1.3<=OR<2.0 or 0.01<=p<0.05. REJECT: otherwise.",
     }
     with open(RESULTS_FILE, "w") as f:

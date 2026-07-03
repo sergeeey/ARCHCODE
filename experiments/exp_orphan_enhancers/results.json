@@ -1,0 +1,76 @@
+{
+  "evidence": "[VERIFIED-REAL] ABC model (Nasser et al. 2021, 131 biosamples) + ClinVar VUS genome-wide 2026-07-01",
+  "statistics_method": "Cochran-Mantel-Haenszel, stratified by ClinVar submission-volume bucket (none/low/medium/high)",
+  "calibration": {
+    "label": "calibration (chr1-11)",
+    "n_orphan": 430628,
+    "n_regular": 595439,
+    "orphan_vus_rate": 0.978578,
+    "regular_vus_rate": 0.978807,
+    "mh_odds_ratio": 0.9988,
+    "mh_p_value": 0.9349288325381008,
+    "bucket_breakdown": {
+      "none": {
+        "orphan_vus": 22477,
+        "orphan_n": 22877,
+        "regular_vus": 1859,
+        "regular_n": 1907
+      },
+      "high": {
+        "orphan_vus": 185021,
+        "orphan_n": 187938,
+        "regular_vus": 293013,
+        "regular_n": 297998
+      },
+      "low": {
+        "orphan_vus": 13776,
+        "orphan_n": 14198,
+        "regular_vus": 9018,
+        "regular_n": 9173
+      },
+      "medium": {
+        "orphan_vus": 200129,
+        "orphan_n": 205615,
+        "regular_vus": 278930,
+        "regular_n": 286361
+      }
+    }
+  },
+  "heldout": {
+    "label": "held-out (chr12-22,X)",
+    "n_orphan": 285959,
+    "n_regular": 375335,
+    "orphan_vus_rate": 0.977374,
+    "regular_vus_rate": 0.971783,
+    "mh_odds_ratio": 1.2215,
+    "mh_p_value": 2.816843830651138e-35,
+    "bucket_breakdown": {
+      "none": {
+        "orphan_vus": 19390,
+        "orphan_n": 19608,
+        "regular_vus": 1666,
+        "regular_n": 1701
+      },
+      "high": {
+        "orphan_vus": 123028,
+        "orphan_n": 125247,
+        "regular_vus": 188988,
+        "regular_n": 193518
+      },
+      "medium": {
+        "orphan_vus": 128046,
+        "orphan_n": 131986,
+        "regular_vus": 168055,
+        "regular_n": 174000
+      },
+      "low": {
+        "orphan_vus": 9025,
+        "orphan_n": 9118,
+        "regular_vus": 6035,
+        "regular_n": 6116
+      }
+    }
+  },
+  "verdict": "REJECT",
+  "pre_registered_criteria": "PROMOTE: OR>=2.0 AND p<0.01 on held-out. REPEAT: 1.3<=OR<2.0 or 0.01<=p<0.05. REJECT: otherwise."
+}
