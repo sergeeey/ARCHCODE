@@ -1,10 +1,44 @@
 # Active Context — ARCHCODE
 
 **Last Updated:** 2026-07-02
-**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 + 768bf82).
+**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 + 768bf82 + 5029918).
   main updated via integrity/merge-bioadv-readme → pushed 1b14805;
   manuscript reference/abstract fixes on integrity/fix-manuscript-refs → pushed 1137e9c.
 **GitHub:** https://github.com/sergeeey/ARCHCODE — all commits above confirmed on origin.
+
+## DONE (2026-07-02, commit 5029918) — exp_enhancer_proximity_replication: REPEAT (1/3 loci)
+
+Hypothesis A (from the post-audit hypothesis menu): does the ONE surviving strong signal in
+this project (enhancer proximity, OR=34.05 at HBB) replicate at other well-characterized
+erythroid loci (BCL11A, KLF1, GATA1)? Pre-registered per-locus test (not pooled), real VEP
+category-matched controls, FDR correction across 3 loci -- claim.md written before data.
+
+**Result: REPEAT, not PROMOTE/REJECT (1/3 loci meet MCID OR>=3 & FDR-p<0.05):**
+- **GATA1 (pearl, not yet confirmed):** OR=10.83, FDR-p=0.0003. Traced to source in the
+  category bucket breakdown -- driven ENTIRELY by the missense_variant stratum (13/14
+  pathogenic vs 30/55 benign close to a K562 H3K27ac peak). Two large lopsided categories
+  (frameshift 40/0, synonymous 0/109) mathematically contribute ZERO to the CMH statistic --
+  confirms category-stratification correctly prevented the exact confound that killed the
+  original SNV/LSSIM project, rather than just diluting it. n=14 pathogenic missense is
+  small -- a lead worth an independent replication cohort, not a confirmed finding yet.
+- **KLF1:** null, WRONG direction (benign variants closer to peaks than pathogenic),
+  well-powered (n=1139). Real evidence against generalization at this locus.
+- **BCL11A: data-quality caveat, NOT a fair test.** Nearest H3K27ac peak to the whole gene
+  body in this specific archived ENCODE replicate (ENCFF252DWA) is 1.7Mb away -- vastly
+  exceeds chr2's ~67kb average peak spacing, biologically implausible for a locus with a
+  famous erythroid enhancer (Casgevy/exa-cel therapy target). Flagged as a likely coverage
+  gap in this one dataset, not a real absence of signal -- needs a different H3K27ac
+  replicate before this locus counts as tested.
+
+Full writeup: `experiments/exp_enhancer_proximity_replication/decision.md`. Reusable asset
+committed: `data/encode_cache/ENCFF252DWA_H3K27ac_K562_hg19.bed.gz` (K562 H3K27ac, hg19,
+52,000 peaks, 955KB -- small enough to keep in git unlike the large ABC/ClinVar files).
+
+**Next steps if continuing this thread:** (1) re-fetch H3K27ac/ATAC-seq for BCL11A from a
+non-archived ENCODE experiment to resolve the data gap; (2) find an independent GATA1
+variant set to replicate the missense-proximity signal without reusing the same 14 variants;
+(3) proceed to Hypothesis B (BCL11A erythroid enhancer + HbF GWAS) or C (synonymous variant
+mRNA stability) from the same menu.
 
 ## DONE (2026-07-02, commit 768bf82) — Independent blind-spot audit + 2 follow-up null_results
 
@@ -320,6 +354,8 @@ results/p5_instrument/
 
 
 ## Auto-commit log
+- [2026-07-03 13:40] `5029918`: feat: exp_enhancer_proximity_replication вЂ” test HBB enhancer-proximity signal at 3 new loci
+- [2026-07-03 12:53] `4b156f0`: docs: update activeContext with blind-spot audit + follow-up results
 - [2026-07-03 12:49] `768bf82`: feat: independent 3-agent blind-spot audit + follow-up on both open threads
 - [2026-07-03 11:20] `fb6cdb8`: docs: update activeContext with final exp_orphan_enhancers REJECT status
 - [2026-07-03 11:19] `4407081`: fix: has_vus_overlap() false-negative bug (reviewer-caught) + final REJECT result
