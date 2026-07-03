@@ -1,10 +1,42 @@
 # Active Context — ARCHCODE
 
 **Last Updated:** 2026-07-02
-**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 + 768bf82 + 5029918 + 8120399).
+**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906..3859583, see git log).
   main updated via integrity/merge-bioadv-readme → pushed 1b14805;
   manuscript reference/abstract fixes on integrity/fix-manuscript-refs → pushed 1137e9c.
 **GitHub:** https://github.com/sergeeey/ARCHCODE — all commits above confirmed on origin.
+
+## DONE (2026-07-02, commit 3859583) — Hypothesis B': BCL11A enhancer VUS search, INCONCLUSIVE
+
+Before running Hypothesis B (BCL11A erythroid enhancer + Casgevy connection) as originally
+proposed, ran the mandatory Novelty Check (falsification-ladder.md Step -3) and found it is
+NOT novel -- it's the foundational Bauer 2013 Science / Canver 2015 Nature literature that
+directly motivated the FDA-approved Casgevy therapy. Caught this BEFORE spending compute on
+"discovering" 12-year-old Science-paper-tier findings.
+
+Reformulated honestly to B': GWAS (which found this locus) structurally can't detect rare
+variants, only common ones -- are there rare ClinVar VUS at this exact locus that GWAS
+couldn't see? Anchored search window on rs1427407 (VEP-confirmed chr2:60,718,043, hg19),
+covering all 3 published DHS sites.
+
+**Result: 0 VUS found.** Not a biological null -- ClinVar is structurally the wrong database
+for quantitative-trait GWAS variants (populated by clinical diagnostic labs, not population
+genetics). Filed as INCONCLUSIVE (not REJECT) with a concrete next step: gnomAD population-
+frequency lookup at this locus, not another ClinVar query. Not yet executed.
+
+**Full session arc today (chronological, all in null_results/ or experiments/):**
+1. exp_orphan_enhancers — REJECT (3 real bugs found+fixed: strand, hg19/hg38 mismatch,
+   has_vus_overlap false-negative caught by Agent(reviewer))
+2. 3-agent blind audit — found 2 process gaps (Loop That Stayed never formalized, D3 clone
+   never tested) + tested the agents' convergent tissue-matching hypothesis -> REJECT
+3. exp_enhancer_proximity_replication — GATA1 "pearl" (OR=10.83) found, then RETRACTED after
+   user asked to strengthen it -> traced to a GeneSymbol-filter bug -> REJECT (0/3 loci)
+4. exp_bcl11a_enhancer_vus (Hypothesis B') — 0 VUS, wrong database, INCONCLUSIVE
+
+Net: 5 null_results/ entries, 0 confirmed positive discoveries, but 4 real bugs caught before
+being reported as findings, and every negative result has a clear, specific reason (not just
+"didn't work") — genome build, gene-symbol contamination, wrong database class, underpowered
+subgroup. This is what the falsification-first methodology is supposed to produce.
 
 ## DONE (2026-07-02, commit 8120399) — GATA1 "pearl" from Hypothesis A retracted: REJECT
 
@@ -392,6 +424,8 @@ results/p5_instrument/
 
 
 ## Auto-commit log
+- [2026-07-03 16:30] `3859583`: feat: exp_bcl11a_enhancer_vus вЂ” Hypothesis B' (honest reformulation of BCL11A/Casgevy idea)
+- [2026-07-03 16:08] `ffcdbf5`: docs: document GATA1 pearl retraction and reusable GeneSymbol-filter lesson
 - [2026-07-03 15:29] `8120399`: fix: GATA1 enhancer-proximity pearl was a gene-symbol filtering bug вЂ” REJECT
 - [2026-07-03 14:29] `1324680`: docs: update activeContext with enhancer-proximity replication results
 - [2026-07-03 13:40] `5029918`: feat: exp_enhancer_proximity_replication вЂ” test HBB enhancer-proximity signal at 3 new loci
