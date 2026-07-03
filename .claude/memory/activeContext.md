@@ -424,6 +424,7 @@ results/p5_instrument/
 
 
 ## Auto-commit log
+- [2026-07-03 16:31] `e2c5085`: docs: update activeContext with Hypothesis B' results and full session arc
 - [2026-07-03 16:30] `3859583`: feat: exp_bcl11a_enhancer_vus вЂ” Hypothesis B' (honest reformulation of BCL11A/Casgevy idea)
 - [2026-07-03 16:08] `ffcdbf5`: docs: document GATA1 pearl retraction and reusable GeneSymbol-filter lesson
 - [2026-07-03 15:29] `8120399`: fix: GATA1 enhancer-proximity pearl was a gene-symbol filtering bug вЂ” REJECT

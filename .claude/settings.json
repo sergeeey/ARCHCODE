@@ -43,8 +43,10 @@
       {
         "hooks": [
           {
-            "type": "prompt",
-            "prompt": "Update CLAUDE.md with session summary if significant changes were made"
+            "type": "command",
+            "command": "python -c \"import subprocess,json,sys; r=subprocess.run(['git','diff','--name-only','HEAD'],capture_output=True,text=True,errors='ignore'); u=subprocess.run(['git','ls-files','--others','--exclude-standard'],capture_output=True,text=True,errors='ignore'); files=[f for f in (r.stdout+u.stdout).strip().splitlines() if f and f!='CLAUDE.md']; sys.stdout.write(json.dumps({'systemMessage':'[CLAUDE.md update needed] Changes: '+', '.join(files[:4])+('...' if len(files)>4 else '')})) if files else None\"",
+            "async": true,
+            "timeout": 10
           }
         ]
       }
