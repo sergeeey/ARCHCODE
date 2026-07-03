@@ -1,10 +1,48 @@
 # Active Context — ARCHCODE
 
 **Last Updated:** 2026-07-02
-**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 + 768bf82 + 5029918).
+**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906 + 4407081 + 768bf82 + 5029918 + 8120399).
   main updated via integrity/merge-bioadv-readme → pushed 1b14805;
   manuscript reference/abstract fixes on integrity/fix-manuscript-refs → pushed 1137e9c.
 **GitHub:** https://github.com/sergeeey/ARCHCODE — all commits above confirmed on origin.
+
+## DONE (2026-07-02, commit 8120399) — GATA1 "pearl" from Hypothesis A retracted: REJECT
+
+Follow-up to the entry below (exp_enhancer_proximity_replication, was REPEAT with GATA1
+OR=10.83 flagged as a promising pearl). User asked to strengthen/replicate GATA1 before
+moving to a new hypothesis (B: BCL11A/Casgevy) -- this is exactly what killed it.
+
+**Root cause [VERIFIED-bash]:** `scripts/fetch_clinvar_erythroid_loci_hg19.py` selected
+ClinVar variants by genomic coordinate window (gene body +-50kb) only, never checking
+ClinVar's own `GeneSymbol` field. Inspecting the 14 "GATA1 pathogenic missense" variants
+individually found one VEP correctly attributes to **HDAC6**, not GATA1 -- a neighboring
+gene pulled in by the coordinate window in a gene-dense region of chrX.
+
+**Fix:** added GeneSymbol match filter. Re-ran full pipeline:
+- KLF1: 314/825 -> **22/67** variants (huge drop -- chr19 is the most gene-dense human
+  chromosome; most "KLF1 variants" were actually neighbors' variants)
+- GATA1: 72/194 -> 69/131 variants; **OR=10.83 signal completely disappeared**
+  (CMH-OR degenerate, Mann-Whitney p=0.49) once limited to true GATA1-annotated variants
+- BCL11A: unchanged (large gene, window ~= gene body, minimal contamination)
+
+**Final verdict: REJECT (0/3 loci meet MCID)**, filed to
+`null_results/20260702-enhancer-proximity-replication.md`. Superseded the earlier REPEAT
+verdict in both `decision.md` and `claim.md` frontmatter -- the timeline (both runs) is kept
+visible in decision.md rather than silently overwritten, so the false-positive-then-caught
+pattern is auditable later.
+
+**Reusable lesson (also worth remembering for any future ClinVar-by-locus fetch):** when
+extracting ClinVar variants for a named gene by coordinate window, ALWAYS filter by
+ClinVar's own `GeneSymbol` column too -- coordinate windows alone silently admit neighboring
+genes' variants, especially in gene-dense regions (chr19, chrX gene clusters). This bug was
+specific to this one fetch script; `exp_orphan_enhancers` and `exp_archcode_sv` used
+different, unaffected filtering logic.
+
+**Process note:** this is the second time today a "promising positive result" was killed by
+being asked to survive one more round of scrutiny before being trusted (see also: 3-agent
+tissue-matching hypothesis, also REJECTed on testing). Treat any single-round positive
+result in this project as provisional by default until it survives at least one adversarial
+re-check -- this has now happened 2/2 times this session.
 
 ## DONE (2026-07-02, commit 5029918) — exp_enhancer_proximity_replication: REPEAT (1/3 loci)
 
@@ -354,6 +392,8 @@ results/p5_instrument/
 
 
 ## Auto-commit log
+- [2026-07-03 15:29] `8120399`: fix: GATA1 enhancer-proximity pearl was a gene-symbol filtering bug вЂ” REJECT
+- [2026-07-03 14:29] `1324680`: docs: update activeContext with enhancer-proximity replication results
 - [2026-07-03 13:40] `5029918`: feat: exp_enhancer_proximity_replication вЂ” test HBB enhancer-proximity signal at 3 new loci
 - [2026-07-03 12:53] `4b156f0`: docs: update activeContext with blind-spot audit + follow-up results
 - [2026-07-03 12:49] `768bf82`: feat: independent 3-agent blind-spot audit + follow-up on both open threads
