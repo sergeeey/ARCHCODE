@@ -1,0 +1,14 @@
+{
+  "n": 23038,
+  "phylop_marginal": 0.79,
+  "phylop_within_category": 0.894,
+  "ARCHCODE_LSSIM_marginal": 0.762,
+  "ARCHCODE_LSSIM_within_category": 0.426,
+  "ARCHCODE_LSSIM_n": 23038,
+  "ARCHCODE_SSIM_marginal": 0.794,
+  "ARCHCODE_SSIM_within_category": 0.505,
+  "ARCHCODE_SSIM_n": 23038,
+  "CADD_Phred_marginal": 0.989,
+  "CADD_Phred_within_category": 0.991,
+  "CADD_Phred_n": 14092
+}

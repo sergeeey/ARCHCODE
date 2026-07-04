@@ -41,11 +41,14 @@ sub-0.5 log-SSIM value is not a sign-flipped signal (Simpson's paradox): the wit
 is inconsistent across strata (7 of 10 categories below, 3 above 0.5) and an over-optimistic
 per-stratum-oriented bound reaches only 0.57.
 
-This collapse is not an artifact of an over-strict test. Applied identically, CADD retained essentially
-all of its discrimination under category matching (marginal 0.989 → within-category 0.991; Fig. 1B),
-demonstrating that the stratification preserves genuine per-variant information. A VEP-derived score
-sat at chance in both settings (≈0.51). The contrast is the core result: under one and the same
-procedure, a conventional predictor keeps its signal while the 3D-structural score loses all of it.
+This collapse is not an artifact of an over-strict test. Applied identically, two positive controls of
+opposite provenance retained discrimination: the supervised CADD (0.989 → 0.991) and the unsupervised
+conservation score phyloP (0.790 → 0.894 — in fact stronger within category, as removing the categorical
+confound exposes the true per-variant conservation signal; Fig. 1B). A VEP-derived score sat at chance in
+both settings (≈0.51). The contrast is the core result: under one and the same procedure, two
+independent predictors keep their signal while both ARCHCODE structural metrics lose all of it. That a
+purely unsupervised score (phyloP) survives is decisive — it shows the stratified test does not simply
+penalize scores untrained on the labels.
 
 ## Discussion
 
@@ -82,11 +85,10 @@ routine guard when a variant-effect score is claimed to capture structure.
   not available at nine-locus scale and could behave differently — a scoping caveat, not a tested claim.
 - **TP53 exception.** TP53 retained partial within-category signal (0.664) and is reported as such,
   not averaged away.
-- **Positive-control caveat (important).** CADD is a *supervised* predictor whose training overlaps
-  ClinVar, so its survival shows the test preserves signal in a label-adjacent score; it does not by
-  itself exclude that the stratified test is harsh on all *unsupervised* scores. An independent
-  unsupervised positive control (e.g. base-level conservation) is the key addition needed to fully close
-  this gap. CADD was available for a subset (14,701/24,238).
+- **Positive controls.** Two controls of opposite provenance both survive: supervised CADD (training
+  overlaps ClinVar; subset 14,701/24,238) and unsupervised phyloP conservation (never trained on the
+  labels). Because both survive, the stratified test is not harsh on supervised or unsupervised scores
+  per se, and ARCHCODE's collapse is specific. (phyloP available for 95% of variants, 23,038.)
 - **Sub-0.5 within-category AUC.** SSIM sits at exactly chance (0.507); log-SSIM (0.430) lies slightly
   below, which we interpret as "no signal beyond category," not as an inverse predictor — the Simpson's-
   paradox alternative was tested and rejected (see Results).

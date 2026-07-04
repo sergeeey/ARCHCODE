@@ -21,14 +21,15 @@ predictors (Grimm et al., 2015).
 **Results.** We evaluated a 3D chromatin structural-disruption score (ARCHCODE) on 24,238
 high-confidence ClinVar variants (conflicting and uncertain classifications excluded) across nine
 disease-associated loci, using a category-matched stratified concordance statistic with bootstrap
-confidence intervals and CADD as a positive control. Marginally, the structural score separated
+confidence intervals and two positive controls — CADD (supervised) and phyloP conservation (unsupervised). Marginally, the structural score separated
 pathogenic from benign variants (AUC = 0.754, 95% CI 0.748–0.760); however, variant category alone
 was more predictive (AUC = 0.827), and within-category discrimination collapsed to chance for both
 structural metrics (SSIM 0.507; log-SSIM 0.430, 95% CI 0.419–0.440). The collapse was systematic across
-7 of 8 evaluable loci (only TP53 retained partial signal, 0.794 → 0.664). Under the identical test, the
-supervised control CADD retained essentially all of its signal (marginal 0.989 → within-category 0.991),
-demonstrating that category matching preserves genuine per-variant information and that the structural
-score's collapse reflects absence of signal beyond category rather than an over-conservative test.
+7 of 8 evaluable loci (only TP53 retained partial signal, 0.794 → 0.664). Under the identical test, two
+positive controls of different kinds retained their signal — the supervised predictor CADD
+(0.989 → 0.991) and an unsupervised conservation score, phyloP (0.790 → 0.894) — demonstrating that
+category matching preserves genuine per-variant information for scores of both types, and that the
+structural score's collapse is specific to it rather than an artifact of an over-conservative test.
 
 **Conclusion.** Apparent pathogenicity signal from 3D-structural variant scores at these loci is
 explained by variant category, not by structure. We recommend category-matched evaluation with a
@@ -105,8 +106,11 @@ C_strat = ( Σₖ |Pₖ||Bₖ| cₖ ) / ( Σₖ |Pₖ||Bₖ| ), where cₖ is th
 conditional Harrell's C; it answers whether the score ranks a same-category pathogenic/benign pair
 correctly.
 
-**Positive control.** CADD, a predictor known to carry per-variant signal: if the stratification
-preserves CADD's discrimination, a competing score's collapse cannot be blamed on the test.
+**Positive controls.** Two controls of different kinds, so that survival cannot be attributed to score
+provenance: CADD (supervised; training overlaps ClinVar) and phyloP100way conservation (unsupervised;
+never trained on the labels), fetched from UCSC over each locus (95% variant coverage, 23,038 variants).
+If both retain discrimination under the identical stratification, a competing score's collapse cannot be
+blamed on the test being harsh on supervised or on unsupervised scores.
 
 **Uncertainty.** Nonparametric bootstrap (B=1,000, seed 20260704), 2.5–97.5 percentile CIs. Per-locus
 repeated; HBB per-locus undefined after cleaning (label imbalance), pooled only.
@@ -126,14 +130,19 @@ sign-flipped (Simpson's-paradox) signal: the within-category direction is incons
 stratum, and an over-optimistic per-stratum-oriented bound — choosing each category's sign from its own
 labels — reaches only 0.57. The primary similarity metric (SSIM) sits at exactly chance.
 
-The collapse is not an artifact of an over-strict test. Applied identically, CADD retained essentially
-all discrimination (marginal 0.989 → within-category 0.991; **Fig. 1B**); a VEP-derived score sat at
-chance in both settings (≈0.51). Under one and the same procedure, a conventional predictor keeps its
-signal while the 3D-structural score loses all of it.
+The collapse is not an artifact of an over-strict test. Applied identically, both positive controls
+retained discrimination: the supervised CADD (0.989 → 0.991) and the unsupervised conservation score
+phyloP (0.790 → 0.894 — in fact *stronger* within category, as removing the categorical confound exposes
+the true per-variant conservation signal; **Fig. 1B**). A VEP-derived score sat at chance in both
+settings (≈0.51). Under one and the same procedure, two independent predictors of opposite provenance
+keep their signal while both ARCHCODE structural metrics lose all of it.
 
 **Figure 1.** `results/fig_category_confound.png`. (A) Per-locus marginal vs category-matched AUC
-(dumbbell); all but TP53 collapse to the chance line. (B) Method comparison: CADD survives category
-matching, ARCHCODE collapses below chance, VEP at chance. Bootstrap 95% CI.
+(dumbbell); all but TP53 collapse to the chance line. (B) Method comparison: both positive controls —
+CADD (supervised) and phyloP (unsupervised) — survive category matching, while both ARCHCODE metrics
+(SSIM, log-SSIM) collapse and VEP sits at chance. Bootstrap 95% CI.
+*[Figure PNG pending v2 regen: current file shows log-SSIM/CADD/VEP; add SSIM + phyloP bars — values in
+`results/phylop_control.json` + `fig_category_confound_stats.json`.]*
 
 ## 5. Discussion
 
@@ -156,20 +165,20 @@ evaluation with a positive control as a routine guard.
 Nine loci from one benchmark (not genome-wide). Two ARCHCODE similarity metrics (SSIM, log-SSIM) were
 tested and both collapse; the method's full composite (insulation- and loop-integrity deltas) was not
 available at nine-locus scale and could behave differently — a scoping caveat, not a tested claim.
-**Positive-control caveat (important):** CADD is a supervised predictor whose training overlaps ClinVar,
-so its survival shows the stratified test preserves signal in a *label-adjacent* score; it does not by
-itself exclude that the test is simply harsh on all *unsupervised* scores. An independent unsupervised
-positive control (e.g. base-level conservation) is the key addition needed to fully close this gap and is
-flagged for revision. CADD was available for a subset (14,701/24,238). TP53 retains partial signal
+**Positive controls.** To exclude that survival depends on score provenance we use two controls: the
+supervised CADD (training overlaps ClinVar; available for a subset, 14,701/24,238) and the unsupervised
+phyloP conservation (never trained on the labels); both survive category matching, so the stratified test
+is not harsh on supervised or unsupervised scores per se, and ARCHCODE's collapse is specific. TP53 retains partial signal
 (reported, not averaged away); within-category C = 0.430/0.507 is read as "no signal beyond category,"
 not inverse prediction (Simpson's paradox tested and rejected, see Results). ClinVar ascertainment biases
 correlate with category; HBB per-locus is undefined after cleaning.
 
 ## 7. Data and Code Availability
 
-Benchmark: `results/integrative_benchmark.csv`. Analysis code: `analysis/fig_category_confound.py`.
-All figure statistics: `results/fig_category_confound_stats.json`. ARCHCODE method: Research Square
-rs-9090074 (DOI 10.21203/rs.3.rs-9090074/v1).
+Benchmark: `results/integrative_benchmark.csv`. Analysis code: `analysis/fig_category_confound.py`
+(main analysis + figure), `analysis/phylop_control.py` (unsupervised phyloP control). Statistics:
+`results/fig_category_confound_stats.json`, `results/phylop_control.json`. Conservation source: UCSC
+phyloP100way (hg38). ARCHCODE method: Research Square rs-9090074 (DOI 10.21203/rs.3.rs-9090074/v1).
 
 ## References
 
