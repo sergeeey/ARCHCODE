@@ -137,3 +137,11 @@ Projects/
 results/contact_matrices/*.npy
 results/contact_matrices/*.pkl
 archive/
+
+# Large public re-downloadable datasets — never version (>100MB → GitHub rejects push)
+# GAP: existing data/*.gz only covers top-level; these live in subfolders
+data/**/*.tsv.gz
+data/alphamissense/*
+**/depmap/*.csv
+# Compiled manuscript PDFs are build artifacts (regenerated from .typ via typst)
+*.pdf

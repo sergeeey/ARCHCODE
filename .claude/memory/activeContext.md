@@ -310,6 +310,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-04 00:32] `8a8a603`: chore(memory): sync session state — gnomAD NULL + phyloP confound + AlphaGenome neg-control next-action
 - [2026-07-02 19:31] `c168a4c`: chore(session): commit 2026-06-28 discovery audit results
 - [2026-06-25 22:39] `c852232`: docs(manuscript): add cover letter + references + competitor table (main body)
 - [2026-06-25 22:26] `703e398`: fix(manuscript): resolve abstract/body mismatch + correct headline statistics
