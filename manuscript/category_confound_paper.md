@@ -1,7 +1,9 @@
 # Apparent 3D-structural variant-effect signal is explained by variant category, not structure: a category-matched evaluation across nine disease loci
 
-*Assembled draft v1 — 2026-07-04. Full manuscript stitched from section files. All numbers sourced
-from `results/fig_category_confound_stats.json`; run integrity-checker before submission.*
+*Draft v2 — 2026-07-06. Sole authoritative source (section scaffolding archived to
+`manuscript/_archive_category_confound_sections/`). Skeptic-hardened + reviewer-hardened (8 commits,
+3762f4c..efdad39). All numbers sourced from `results/fig_category_confound_stats.json`; integrity-checker
+CLEAR (recomputed independently from `results/integrative_benchmark.csv`).*
 
 **Author:** Sergey Boyko (RIIS / independent). ORCID 0009-0009-2178-5701.
 **Method under evaluation (ARCHCODE):** cite project preprint Research Square rs-9090074.
@@ -89,8 +91,6 @@ the "garden of forking paths" [Gelman & Loken 2014]. To our knowledge, category-
 an explicit positive control has not been systematically applied to 3D-structural variant-effect scores.
 
 ## 3. Methods
-
-*(Full formulas in `category_confound_methods.md`.)*
 
 **Dataset.** 30,318 ClinVar variants across nine loci (BRCA1, CFTR, GJB2, HBB, LDLR, MLH1, SCN5A,
 TERT, TP53), annotated with functional category, ClinVar significance, and three scores (ARCHCODE
@@ -227,10 +227,22 @@ phyloP100way (hg38). ARCHCODE method: Research Square rs-9090074 (DOI 10.21203/r
 ---
 
 ## Pre-submission checklist
-- [ ] integrity-checker: every number vs fig_category_confound_stats.json + integrative_benchmark.csv
-- [ ] Verify all 10 references resolve (no 404); confirm svMIL2/Benchmark-65 exact author+year
-- [ ] Confirm "Mind the Gap" published version vs preprint
-- [ ] Figure 1 exported at journal DPI; panel labels legible
-- [ ] Venue decision: NAR Genomics & Bioinformatics vs Bioinformatics vs Genome Research
-- [ ] Cover letter framing: methods/cautionary, Grimm-2015 lineage
-- [ ] Cooling-off 24h + skeptic pass before submit
+
+**Done:**
+- [x] integrity-checker: every number recomputed from integrative_benchmark.csv — CLEAR, no drift
+- [x] All 10 authors verified real (Heijl, Radjasandirane, Nieboer et al. — no phantom refs)
+- [x] Figure 1 v2 at 300dpi, 5-method panel, matches text exactly
+- [x] Skeptic pass (3 attacks) — all addressed (Simpson tested+rejected; SSIM also collapses; phyloP closes CADD-circularity gap)
+- [x] External reviewer report (8.4/10, 7 major/minor) — all addressed, code-tested before editing
+- [x] Category-granularity robustness (LOCO + coarse binning) — conclusion invariant
+- [x] Claims scoped to "ARCHCODE at these nine loci" (no broad "3D structure doesn't work")
+- [x] Off-site backup (GitHub branch backup/snapshot-20260706)
+
+**Remaining (production, not science):**
+- [ ] Confirm "Mind the Gap" (Heijl et al. 2020) — bioRxiv preprint only, no published version found; cite as preprint
+- [ ] Venue: **Research Square preprint FIRST** (free, no affiliation gate, DOI same-day) — journal submission optional/later
+- [ ] Format to Research Square template (reuse `manuscript/taxonomy_paper/template.typ`)
+- [ ] Link to rs-9090074: cite it in-text (already done in header) + add editorial note ON rs-9090074 pointing to this
+  new preprint once posted (self-correction framing, not withdrawal — rs-9090074's own Limitations already
+  flagged category-driven AUC; this work formalizes and systematizes that finding across 9 loci)
+- [ ] Cooling-off 24h, then user posts to Research Square (requires user's own login)

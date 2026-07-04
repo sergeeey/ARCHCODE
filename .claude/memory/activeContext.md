@@ -1,9 +1,35 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-06-28
+**Last Updated:** 2026-07-06
 **Current Branch:** experiment/spectral-collapse-pilot
-**Session Focus:** Discovery potential audit + conservation test + CTCF motif test → **WET LAB PREP**
-**Reality source:** session 2026-06-28
+**Session Focus:** Category-confound paper FINALIZED, flattened, backed up → **READY FOR RESEARCH SQUARE POST**
+**Reality source:** session 2026-07-06
+
+## 📄 Session 2026-07-06: Paper flattened + off-site backup — user pausing on ARCHCODE after this
+
+**What was done:**
+- Reviewed old preprint rs-9090074 (`taxonomy_paper/abstract_content.typ`): it was ALREADY honest —
+  its own Limitations said "AUC primarily category-driven, within-category near chance (0.52),
+  matched-control p=0.996". Decision: do NOT withdraw/kill it — new paper is a companion/self-correction,
+  not a refutation of fabricated data. No fabrication ever occurred.
+- `manuscript/category_confound_paper.md` is now the SOLE authoritative source (v2). Section scaffolding
+  moved to `manuscript/_archive_category_confound_sections/` (deprecated, historical only).
+- Off-site backup: `backup/snapshot-20260706` pushed to GitHub (orphan branch, no big-file history issue).
+- Pre-submission checklist updated in paper.md: most items DONE (integrity, refs, skeptic, reviewer,
+  robustness, backup). Remaining: post to Research Square (free, no affiliation gate — user's own login
+  required), link old↔new preprints via editorial note, format to typst template.
+
+**User signal (important, read before next session):** user explicitly said they will submit this preprint,
+then STEP AWAY from ARCHCODE ("на этом успокоюсь... перейду на другой проект... два года мучаюсь, не
+ощутил результата"). Two years on one project, low sense of payoff. Do NOT push new ARCHCODE hypotheses
+or re-open old discovery threads (pearls, ATPH, QEC-MWPM) unprompted next session — respect the wind-down.
+If they return, lead with "post the preprint" as the one remaining action, not new science.
+
+**🔴 NEXT (when user returns):**
+1. User posts to Research Square (their login, ~20 min) — I cannot do this step.
+2. After posted: add editorial note on rs-9090074 linking to new DOI (self-correction, not error).
+3. Optional: journal submission later (Bioinformatics non-OA track is free-to-author; check current fees
+   before committing — do not quote remembered numbers).
 
 ## 🔬 Session 2026-06-28: Discovery Audit — 4 Converging Lines [VERIFIED]
 
@@ -327,6 +353,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-04 23:06] `efdad39`: fix(paper): full reviewer report response (7 major/minor) — data-tested first
 - [2026-07-04 22:18] `8dc9834`: fix(paper): reviewer response — category-granularity robustness + narrowed claims
 - [2026-07-04 22:07] `69fb031`: feat(figure): v2 money figure — 5 methods, two positive controls survive vs both ARCHCODE metrics collapse
 - [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
