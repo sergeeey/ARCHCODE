@@ -31,9 +31,10 @@ positive controls of different kinds retained their signal — the supervised pr
 category matching preserves genuine per-variant information for scores of both types, and that the
 structural score's collapse is specific to it rather than an artifact of an over-conservative test.
 
-**Conclusion.** Apparent pathogenicity signal from 3D-structural variant scores at these loci is
-explained by variant category, not by structure. We recommend category-matched evaluation with a
-positive control as a routine guard against category confounding in variant-effect prediction.
+**Conclusion.** For the ARCHCODE structural-similarity scores at these nine loci, apparent pathogenicity
+signal is explained by variant category rather than by structure beyond category. We recommend
+category-matched evaluation with a positive control as a routine guard whenever a variant-effect score
+is claimed to capture structure.
 
 ---
 
@@ -111,6 +112,16 @@ provenance: CADD (supervised; training overlaps ClinVar) and phyloP100way conser
 never trained on the labels), fetched from UCSC over each locus (95% variant coverage, 23,038 variants).
 If both retain discrimination under the identical stratification, a competing score's collapse cannot be
 blamed on the test being harsh on supervised or on unsupervised scores.
+
+**Robustness to category definition.** The conclusion does not depend on the binning scheme. Removing
+any single category one at a time (leave-one-category-out) left ARCHCODE's within-category concordance
+in the range 0.417–0.478 (all below 0.55), so the collapse is driven by no single stratum, including the
+dominant synonymous class (drop-synonymous = 0.478). Under a coarse three-group scheme (protein-
+truncating / protein-substitution / noncoding-regulatory), ARCHCODE rose modestly to 0.538 (log-SSIM) and
+0.594 (SSIM) — expected, since coarser groups retain more within-group category composition — while both
+positive controls kept near-full discrimination (phyloP 0.869, CADD 0.990). Under every binning the
+controls dominate the structural score by a wide margin; the qualitative conclusion is invariant to
+category granularity.
 
 **Uncertainty.** Nonparametric bootstrap (B=1,000, seed 20260704), 2.5–97.5 percentile CIs. Per-locus
 repeated; HBB per-locus undefined after cleaning (label imbalance), pooled only.

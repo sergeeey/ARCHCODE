@@ -35,9 +35,11 @@ Category-confound methods paper, systematic across 9 loci. Files: `manuscript/ca
 - TWO positive controls SURVIVE: CADD (supervised) 0.989→0.991, phyloP (unsupervised) 0.790→0.894.
 - Verified: integrity-checker CLEAR, 10 refs confirmed, skeptic 3 attacks addressed (Simpson tested+rejected; Attack 2 closed by phyloP).
 
-**🔴 NEXT (before submission):** (1) Figure v2 — add SSIM+phyloP bars (data in phylop_control.json). (2) Decide
-relationship to LIVE preprint rs-9090074 (positive ARCHCODE claim) — erratum/companion. (3) Venue (NAR GAB/Bioinformatics)
-+ cover letter + 24h cooling-off.
+**Science + figure DONE (commit 69fb031):** Fig v2 shows 5 methods — both ARCHCODE metrics collapse,
+CADD+phyloP survive. Paper draft complete, verified, skeptic-hardened, figure matches text.
+**🔴 NEXT (production, not science):** (1) Decide relationship to LIVE preprint rs-9090074 (positive ARCHCODE
+claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to template + cover letter + 24h cooling-off.
+(3) Optional: verify remaining DOIs resolve.
 - Parked: ATPH, QEC-MWPM `[CANDIDATE]`. Old ARCHCODE discovery claim = FALSIFIED (block above).
 
 ## 🔧 Session 2026-06-25: Manuscript Fixed for Submission (commit 703e398)
@@ -325,6 +327,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-04 22:07] `69fb031`: feat(figure): v2 money figure — 5 methods, two positive controls survive vs both ARCHCODE metrics collapse
 - [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
 - [2026-07-04 21:50] `d089b09`: fix(paper): skeptic-pass revisions — add SSIM metric, reject Simpson's paradox, strengthen CADD caveat
 - [2026-07-04 21:33] `3762f4c`: feat(paper): category-confound negative-result paper — figure, abstract, related work, methods
