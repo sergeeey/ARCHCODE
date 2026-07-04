@@ -8,7 +8,7 @@ All citations verified real (WebSearch 2026-07-04). Preprints marked. Pull exact
 scores genetic variants by their predicted disruption of three-dimensional genome or protein
 organization. For structural variants, svMIL and svMIL2 use multiple-instance learning to
 predict pathogenic TAD-boundary–disrupting somatic SVs, reporting an average AUC of 0.86 across
-cancer types [Nieboer & de Ridder 2020; svMIL2 2021], and POSTRE predicts SV pathomechanisms
+cancer types [Nieboer & de Ridder 2020; Nieboer et al. 2021], and POSTRE predicts SV pathomechanisms
 (enhancer adoption, neo-TAD formation) from tissue-specific chromatin data [POSTRE 2025, preprint].
 Sequence-to-function models such as Enformer and AlphaGenome predict chromatin contact maps and
 regulatory tracks from DNA and are increasingly repurposed for variant interpretation
@@ -23,8 +23,8 @@ Grimm et al. showed that evaluation is hindered by two types of circularity — 
 or different variants from the same protein, appearing in both training and test sets — which
 inflates apparent accuracy and can even rank the most circular tool as the most accurate
 [Grimm et al. 2015]. Subsequent work formalized protein-aware splits to prevent this leakage
-[Mind the Gap 2020, preprint], and recent large benchmarks of 65 variant-effect predictors
-explicitly pre-process datasets to reduce biases that inflate performance [Benchmark-65 2025].
+[Heijl et al. 2020, preprint], and recent large benchmarks of 65 variant-effect predictors
+explicitly pre-process datasets to reduce biases that inflate performance [Radjasandirane et al. 2025].
 Our analysis concerns a distinct but related confounder: variant *functional category*
 (e.g., nonsense, promoter, intronic) is simultaneously a strong predictor of pathogenicity and
 strongly correlated with structural-disruption scores, so a pooled AUC can reflect category
@@ -54,9 +54,9 @@ positive control has not been systematically applied to 3D-structural variant-ef
 - Grimm et al. 2015 — "The Evaluation of Tools Used to Predict the Impact of Missense Variants Is
   Hindered by Two Types of Circularity." Human Mutation 36(5):513-523.
   https://pmc.ncbi.nlm.nih.gov/articles/PMC4409520/ (doi:10.1002/humu.22768)
-- Mind the Gap 2020 (preprint) — "Mind the gap: preventing circularity in missense variant prediction."
+- Heijl et al. 2020 (preprint) — "Mind the gap: preventing circularity in missense variant prediction."
   bioRxiv 2020.05.06.080424. https://www.biorxiv.org/content/10.1101/2020.05.06.080424v1.full
-- Benchmark-65 2025 — "Insights for variant clinical interpretation based on a benchmark of 65
+- Radjasandirane et al. 2025 — "Insights for variant clinical interpretation based on a benchmark of 65
   variant effect predictors." Genomics. https://www.sciencedirect.com/science/article/pii/S0888754325000527
 - Sasse et al. 2023 — "Benchmarking of deep neural networks for predicting personal gene expression
   from DNA sequence highlights shortcomings." Nature Genetics 55:2060-2064.
@@ -67,7 +67,7 @@ positive control has not been systematically applied to 3D-structural variant-ef
   somatic structural variants through multiple instance learning." Bioinformatics 36(Suppl_2):i692.
   Authors VERIFIED 2026-07-04: Marleen M. Nieboer, Jeroen de Ridder.
   https://academic.oup.com/bioinformatics/article/36/Supplement_2/i692/6055921
-- svMIL2 2021 — "Predicting pathogenic non-coding SVs disrupting the 3D genome in 1646 whole cancer
+- Nieboer et al. 2021 — "Predicting pathogenic non-coding SVs disrupting the 3D genome in 1646 whole cancer
   genomes using multiple instance learning." Scientific Reports 11.
   https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8277903/
 - POSTRE 2025 (preprint) — POSTRE, distinguishing benign from pathogenic duplications via 3D
