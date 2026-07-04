@@ -58,8 +58,9 @@ predictor benchmarks [Grimm et al. 2015].
 
 Here we ask a deliberately narrow question: does a 3D-structural variant-effect score add pathogenicity
 signal *beyond* variant category? We answer it with a category-matched (stratified) concordance
-statistic across nine disease-associated loci, anchored by a positive control (CADD) known to carry
-per-variant signal. The design turns an ambiguous "does it work?" into a falsifiable one: a real
+statistic across nine disease-associated loci, anchored by two positive controls of opposite provenance
+(supervised CADD and unsupervised phyloP conservation), both known to carry per-variant signal. The
+design turns an ambiguous "does it work?" into a falsifiable one: a real
 per-variant signal must survive category matching, and a valid test must let the positive control survive.
 
 ## 2. Related Work
@@ -103,7 +104,8 @@ C ≥ 0.5, applied identically to the stratified statistic.
 
 **Category-matched concordance.** Stratified c-statistic comparing pathogenic vs benign only within
 the same category, weighted by comparable pairs:
-C_strat = ( Σₖ |Pₖ||Bₖ| cₖ ) / ( Σₖ |Pₖ||Bₖ| ), where cₖ is the within-category concordance. This is a
+C_strat = ( Σₖ |Pₖ||Bₖ| cₖ ) / ( Σₖ |Pₖ||Bₖ| ), where cₖ is the ordinary ROC AUC (concordance) computed
+on the pathogenic set Pₖ and benign set Bₖ of category k alone. This is a
 conditional Harrell's C; it answers whether the score ranks a same-category pathogenic/benign pair
 correctly.
 
@@ -124,7 +126,8 @@ controls dominate the structural score by a wide margin; the qualitative conclus
 category granularity.
 
 **Uncertainty.** Nonparametric bootstrap (B=1,000, seed 20260704), 2.5–97.5 percentile CIs. Per-locus
-repeated; HBB per-locus undefined after cleaning (label imbalance), pooled only.
+repeated; the HBB per-locus statistic is undefined because after cleaning HBB is 100% pathogenic
+(353/353, no benign variants), so HBB contributes only to the pooled estimate.
 
 **Implementation.** Python 3.11 (numpy, pandas, scipy). Code: `analysis/fig_category_confound.py`;
 statistics: `results/fig_category_confound_stats.json`.
@@ -139,13 +142,15 @@ TP53 retained partial signal (0.794 → 0.664). The slightly sub-0.5 value for l
 sign-flipped (Simpson's-paradox) signal: the within-category direction is inconsistent across strata
 (7 of 10 categories below, 3 above 0.5), it is driven by weak miscalibration in the large synonymous
 stratum, and an over-optimistic per-stratum-oriented bound — choosing each category's sign from its own
-labels — reaches only 0.57. The primary similarity metric (SSIM) sits at exactly chance.
+labels — reaches only 0.57, of no clinical utility even in that oracle best case. The primary similarity
+metric (SSIM) sits at exactly chance (0.507); we therefore describe the structural scores as carrying no
+usable signal beyond category, not as inverse predictors.
 
 The collapse is not an artifact of an over-strict test. Applied identically, both positive controls
 retained discrimination: the supervised CADD (0.989 → 0.991) and the unsupervised conservation score
 phyloP (0.790 → 0.894 — in fact *stronger* within category, as removing the categorical confound exposes
-the true per-variant conservation signal; **Fig. 1B**). A VEP-derived score sat at chance in both
-settings (≈0.51). Under one and the same procedure, two independent predictors of opposite provenance
+the true per-variant conservation signal; **Fig. 1B**). A VEP-derived numeric score (a coarse 18-level
+field, range −1 to 0.95, included only as a secondary reference) sat at chance in both settings (≈0.51). Under one and the same procedure, two independent predictors of opposite provenance
 keep their signal while both ARCHCODE structural metrics lose all of it.
 
 **Figure 1.** `results/fig_category_confound.png`. (A) Per-locus marginal vs category-matched AUC
@@ -164,11 +169,26 @@ the finer question [Sasse et al. 2023; Huang et al. 2023; AlphaGenome 2025]. Our
 the stratified evaluation explicit for 3D-structural pathogenicity scores and pair it with a positive
 control, so a null result is interpretable.
 
+*Scale and application regime.* A mechanistic objection is that a chromatin-3D score should not be
+expected to resolve variants that act at the single-nucleotide level: this benchmark is 75% SNVs and
+99.9% ≤50 bp, essentially free of the structural variants (large deletions, CTCF-anchor rearrangements)
+that such tools were built to score. We agree, and this sharpens rather than softens the point. Clinical
+variant-interpretation benchmarks are overwhelmingly composed of SNVs and small indels, and 3D-structural
+scores — including the one evaluated here — are nonetheless applied to them; our result characterizes
+exactly that common application regime, in which the score's apparent performance is category composition.
+We could not test whether the score recovers signal on true structural variants, because the benchmark
+contains too few (31 >50 bp, only 3 benign) — a question for a structural-variant benchmark, not this one.
+Relatedly, our design cannot distinguish "sees the locus but not the variant" from "pure noise": the
+score may correctly flag these loci as structurally notable while failing to resolve within-locus
+benign-vs-pathogenic differences. Either way it adds nothing beyond category for clinical classification;
+separating the two would require scoring category-matched non-clinical (e.g. gnomAD) variants as a
+background, which we leave to future work.
+
 We stress what this does **not** show: not that 3D genome organization is irrelevant to disease; not
 that structural simulation is useless for visualization or mechanism at individual loci; and not
-anything beyond the nine loci and single score examined. What it shows is specific: at per-variant
-pathogenicity ranking, this structural score contributes nothing category does not already provide, and
-a pooled-AUC benchmark would have credited it for absent signal. We recommend category-matched
+anything beyond the nine loci and structural-similarity scores examined. What it shows is specific: at
+per-variant pathogenicity ranking, these structural scores contribute nothing category does not already
+provide, and a pooled-AUC benchmark would have credited them for absent signal. We recommend category-matched
 evaluation with a positive control as a routine guard.
 
 ## 6. Limitations
@@ -182,7 +202,7 @@ phyloP conservation (never trained on the labels); both survive category matchin
 is not harsh on supervised or unsupervised scores per se, and ARCHCODE's collapse is specific. TP53 retains partial signal
 (reported, not averaged away); within-category C = 0.430/0.507 is read as "no signal beyond category,"
 not inverse prediction (Simpson's paradox tested and rejected, see Results). ClinVar ascertainment biases
-correlate with category; HBB per-locus is undefined after cleaning.
+correlate with category; HBB is 100% pathogenic after cleaning (353/353), so it has no per-locus estimate.
 
 ## 7. Data and Code Availability
 

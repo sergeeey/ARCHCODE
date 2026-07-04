@@ -327,6 +327,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-04 22:18] `8dc9834`: fix(paper): reviewer response — category-granularity robustness + narrowed claims
 - [2026-07-04 22:07] `69fb031`: feat(figure): v2 money figure — 5 methods, two positive controls survive vs both ARCHCODE metrics collapse
 - [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
 - [2026-07-04 21:50] `d089b09`: fix(paper): skeptic-pass revisions — add SSIM metric, reject Simpson's paradox, strengthen CADD caveat
