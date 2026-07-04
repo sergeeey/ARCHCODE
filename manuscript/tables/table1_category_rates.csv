@@ -1,0 +1,16 @@
+Category,Pathogenic,Benign,Total,Pathogenic_Rate
+splice donor,26,0,26,100.0%
+nonsense,266,0,266,100.0%
+frameshift,5961,2,5963,100.0%
+splice acceptor,3,0,3,100.0%
+splice,95,2,97,97.9%
+promoter,15,0,15,100.0%
+missense,992,105,1097,90.4%
+inframe deletion,251,5,256,98.0%
+inframe indel,161,12,173,93.1%
+splice region,571,589,1160,49.2%
+5 prime UTR,49,92,141,34.8%
+3 prime UTR,44,153,197,22.3%
+intronic,1461,5042,6503,22.5%
+synonymous,7756,7886,15642,49.6%
+other,403,259,662,60.9%

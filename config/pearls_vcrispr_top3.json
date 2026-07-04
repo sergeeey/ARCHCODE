@@ -1,0 +1,24 @@
+{
+  "description": "Top-3 HBB pearl variants for Virtual CRISPR (V-CRISPR) in silico knockout. Source: results/pearl_validation_shortlist.json priority_positions_for_validation rank 1-3.",
+  "locus": "95kb",
+  "pearls": [
+    {
+      "position": 5227100,
+      "hgvs_c": "c.-79A>C",
+      "clinvar_id": "VCV000869288",
+      "category": "promoter"
+    },
+    {
+      "position": 5227101,
+      "hgvs_c": "c.-80T>C",
+      "clinvar_id": "VCV000869290",
+      "category": "promoter"
+    },
+    {
+      "position": 5227159,
+      "hgvs_c": "c.-138C>A",
+      "clinvar_id": "VCV000393701",
+      "category": "promoter"
+    }
+  ]
+}

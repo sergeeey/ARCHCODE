@@ -1,0 +1,16 @@
+{
+  "total_variants": 50,
+  "by_category": {
+    "splice_donor": 22,
+    "promoter": 15,
+    "splice_region": 9,
+    "splice_acceptor": 3,
+    "5_prime_UTR": 1
+  },
+  "pearl_variants": 16,
+  "mean_lssim": 0.9256700000000001,
+  "conflict_risk": {
+    "LOW": 35,
+    "MEDIUM": 15
+  }
+}

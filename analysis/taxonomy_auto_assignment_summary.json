@@ -1,0 +1,163 @@
+{
+  "pipeline": "taxonomy_assignment_pipeline.py",
+  "version": "1.0",
+  "date": "2026-03-09",
+  "decision_rules_source": "docs/regulatory_pathogenicity_taxonomy.md",
+  "thresholds": {
+    "LSSIM": 0.95,
+    "tissue_match_full": 1.0,
+    "tissue_match_partial": 0.5
+  },
+  "class_counts": {
+    "B": {
+      "n_loci": 4,
+      "n_variant_groups": 4,
+      "n_variants_total": 54,
+      "label": "Architecture-Driven"
+    },
+    "D": {
+      "n_loci": 3,
+      "n_variant_groups": 3,
+      "n_variants_total": 118,
+      "label": "Coverage Gap"
+    },
+    "D+B": {
+      "n_loci": 3,
+      "n_variant_groups": 3,
+      "n_variants_total": 89,
+      "label": "Coverage Gap with Architecture Signal"
+    },
+    "E": {
+      "n_loci": 0,
+      "n_variant_groups": 0,
+      "n_variants_total": 0,
+      "label": "Tissue-Mismatch Artifact"
+    },
+    "NULL": {
+      "n_loci": 2,
+      "n_variant_groups": 2,
+      "n_variants_total": 0,
+      "label": "No ARCHCODE signal (no Q2 variants)"
+    }
+  },
+  "per_locus": {
+    "HBB": [
+      {
+        "variant_group": "Q2b",
+        "class": "B",
+        "confidence": "high",
+        "n_variants": 25
+      },
+      {
+        "variant_group": "tissue_mismatch_control",
+        "class": "E",
+        "confidence": "high",
+        "n_variants": 0
+      }
+    ],
+    "TERT": [
+      {
+        "variant_group": "Q2a",
+        "class": "D+B",
+        "confidence": "high",
+        "n_variants": 34
+      },
+      {
+        "variant_group": "Q2b",
+        "class": "B",
+        "confidence": "medium",
+        "n_variants": 1
+      }
+    ],
+    "BRCA1": [
+      {
+        "variant_group": "Q2a",
+        "class": "D+B",
+        "confidence": "high",
+        "n_variants": 53
+      },
+      {
+        "variant_group": "Q2b",
+        "class": "B",
+        "confidence": "medium",
+        "n_variants": 26
+      }
+    ],
+    "TP53": [
+      {
+        "variant_group": "Q2a",
+        "class": "D+B",
+        "confidence": "high",
+        "n_variants": 2
+      },
+      {
+        "variant_group": "Q2b",
+        "class": "B",
+        "confidence": "medium",
+        "n_variants": 2
+      },
+      {
+        "variant_group": "tissue_mismatch_control",
+        "class": "E",
+        "confidence": "high",
+        "n_variants": 0
+      }
+    ],
+    "MLH1": [
+      {
+        "variant_group": "Q2a",
+        "class": "D",
+        "confidence": "high",
+        "n_variants": 72
+      }
+    ],
+    "CFTR": [
+      {
+        "variant_group": "Q2a",
+        "class": "D",
+        "confidence": "high",
+        "n_variants": 36
+      }
+    ],
+    "LDLR": [
+      {
+        "variant_group": "Q2a",
+        "class": "D",
+        "confidence": "high",
+        "n_variants": 10
+      },
+      {
+        "variant_group": "tissue_mismatch_control",
+        "class": "E",
+        "confidence": "high",
+        "n_variants": 0
+      }
+    ],
+    "SCN5A": [
+      {
+        "variant_group": "all",
+        "class": "NULL",
+        "confidence": "N/A",
+        "n_variants": 0
+      }
+    ],
+    "GJB2": [
+      {
+        "variant_group": "all",
+        "class": "NULL",
+        "confidence": "N/A",
+        "n_variants": 0
+      }
+    ]
+  },
+  "class_labels": {
+    "A": "Activity-Driven",
+    "B": "Architecture-Driven",
+    "C": "Mixed (Activity + Architecture)",
+    "D": "Coverage Gap",
+    "D+B": "Coverage Gap with Architecture Signal",
+    "E": "Tissue-Mismatch Artifact",
+    "Ambiguous": "Cannot distinguish B from E (no matched-tissue data)",
+    "NULL": "No ARCHCODE signal (no Q2 variants)"
+  }
+}

@@ -1,0 +1,17 @@
+Subject: Re: Our structural variant taxonomy cites your cohesin loading work — feedback welcome
+
+Dear Elphège,
+
+I hope the travels have settled down. A quick update since March:
+
+I joined the Ronin Institute for Independent Scholarship as a Research Scholar (RIIS 2.0 Fellow, April 2026), which formalises my independent research position.
+
+More importantly, ARCHCODE now has orthogonal validation from AlphaGenome: promoter-overlapping variants in our taxonomy show −18% CAGE disruption (p = 2.8×10⁻⁴) and ISM hotspot enrichment OR = 6.7 (p = 0.0071), while ARCHCODE and AlphaGenome scores are essentially uncorrelated (ρ = 0.077) — suggesting they capture distinct regulatory layers.
+
+(The Research Square preprint you saw in March is being revised — updated framing focuses on structural interpretation rather than pathogenicity prediction. Happy to share the revised version when ready.)
+
+I would genuinely value 20 minutes to discuss whether an MPRA experiment (~15 variants, ~$5K) would be worth pursuing together. If the timing isn't right, any written reaction to the paper would also be very helpful.
+
+Best regards,
+Sergey Boyko
+RIIS 2.0 Fellow | ORCID: 0009-0009-2178-5701

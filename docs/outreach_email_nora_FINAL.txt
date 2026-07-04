@@ -1,0 +1,33 @@
+To: elphege.nora@ucsf.edu
+Subject: Since March — minor institutional upgrade + AlphaGenome results
+
+Hi Elphège,
+
+Quick follow-up to our March exchange.
+
+Two things happened since then, one funnier than the other:
+
+**1.** I joined the Ronin Institute as a Fellow (RIIS 2.0, April 2026). For context — Ronin is an institute specifically for scholars who don't fit institutions. The irony of "institutionalising the independent researcher" isn't lost on me. But here we are, and now I have official letterhead.
+
+**2.** AlphaGenome validation came back on the HBB cluster we discussed:
+- Promoter pearls: −18% CAGE disruption vs benign (p=2.8×10⁻⁴, real API, not mock)
+- ISM hotspot enrichment: OR=6.7, p=0.0071
+- Mechanism specificity: regulatory loci signal holds, coding loci null (as expected)
+
+One honest null: ARCHCODE structural signal and AlphaGenome CAGE signal are **orthogonal** (ρ=0.077) — which is actually more interesting than if they'd agreed, because it suggests two independent mechanisms flagging the same 73bp zone (chr11:5227099-5227172, GRCh38).
+
+(Category-matched validation showed limitations — 75% pearls lack promoter controls — but ISM hotspot signal independent of this issue.)
+
+The obvious next step is MPRA on this cluster (~$5K, ~15 variants × 3 replicates). Would you be open to 20 minutes to discuss whether that's worth pursuing?
+
+Happy to send the one-page brief if useful.
+
+Best,
+Sergey
+Ronin Institute RIIS 2.0 Fellow | sergeikuch80@gmail.com
+ORCID: 0009-0009-2178-5701
+
+---
+
+Attachment (optional):
+ARCHCODE_AlphaGenome_Brief_2026.pdf

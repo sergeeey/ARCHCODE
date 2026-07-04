@@ -1,0 +1,77 @@
+{
+  "locus": "HBB",
+  "window": "5210000-5305000",
+  "resolution": 600,
+  "n_bins": 159,
+  "fragile_threshold": 0.9,
+  "n_positions_scanned": 159,
+  "effect_levels": {
+    "severe": 0.1,
+    "strong": 0.3,
+    "moderate": 0.5,
+    "weak": 0.8
+  },
+  "zones": [],
+  "top10_fragile": [
+    {
+      "position": 5210000,
+      "ssim": 0.9995,
+      "enhancer_dist": 10000,
+      "ctcf_dist": 2000
+    },
+    {
+      "position": 5210600,
+      "ssim": 0.9991,
+      "enhancer_dist": 9400,
+      "ctcf_dist": 1400
+    },
+    {
+      "position": 5211200,
+      "ssim": 0.999,
+      "enhancer_dist": 8800,
+      "ctcf_dist": 800
+    },
+    {
+      "position": 5211800,
+      "ssim": 0.9989,
+      "enhancer_dist": 8200,
+      "ctcf_dist": 200
+    },
+    {
+      "position": 5212400,
+      "ssim": 0.999,
+      "enhancer_dist": 7600,
+      "ctcf_dist": 400
+    },
+    {
+      "position": 5213000,
+      "ssim": 0.9989,
+      "enhancer_dist": 7000,
+      "ctcf_dist": 1000
+    },
+    {
+      "position": 5213600,
+      "ssim": 0.999,
+      "enhancer_dist": 6400,
+      "ctcf_dist": 1600
+    },
+    {
+      "position": 5214200,
+      "ssim": 0.9989,
+      "enhancer_dist": 5800,
+      "ctcf_dist": 2200
+    },
+    {
+      "position": 5214800,
+      "ssim": 0.9988,
+      "enhancer_dist": 5200,
+      "ctcf_dist": 2800
+    },
+    {
+      "position": 5215400,
+      "ssim": 0.9989,
+      "enhancer_dist": 4600,
+      "ctcf_dist": 2600
+    }
+  ]
+}

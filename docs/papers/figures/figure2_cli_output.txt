@@ -1,0 +1,131 @@
+VT Detector CLI Output Example
+
+$ vt-detector src/tools/validation_theater_detector/tests/test_core.py
+
+======================================================================
+VALIDATION THEATER DETECTOR — 15 findings
+======================================================================
+
+🔴 HIGH:   4
+🟡 MEDIUM: 11
+🔵 LOW:    0
+
+======================================================================
+🔴 HIGH SEVERITY (validation theater detected)
+======================================================================
+
+🔴 HIGH — test_core.py:23:8
+   Pattern: embedded_test_data
+   Message: Embedded test data without external source citation
+   Confidence: 0.85
+   Suggestion: Replace with real-world data API call or cite dataset URL
+   Context:     abstracts = [("example abstract", "LABEL")]
+
+🔴 HIGH — test_core.py:45:15
+   Pattern: f1_perfect + synthetic_marker synergy
+   Message: Perfect F1 score (1.000) detected with synthetic data generation
+   Confidence: 0.80
+   Suggestion: Verify on real-world data, not synthetic. Mark as [VERIFIED-SYNTHETIC]
+   Context:     assert result.confidence > 0.7  # F1 = 1.000
+
+🔴 HIGH — test_core.py:67:8
+   Pattern: hundred_percent_success
+   Message: 100% success rate claim detected
+   Confidence: 0.75
+   Suggestion: Perfect success rates indicate synthetic data or trivial test suite
+   Context:     # 100% success on 10 test cases
+
+🔴 HIGH — test_core.py:89:12
+   Pattern: all_tests_passed + validation_context
+   Message: 'All tests passed' in validation context → likely validation theater
+   Confidence: 0.70
+   Suggestion: Real data ALWAYS has edge cases. If truly 100%, cite dataset size and external source.
+   Context:     """All 10 validation tests passed"""
+
+======================================================================
+🟡 MEDIUM SEVERITY (suspicious patterns)
+======================================================================
+
+🟡 MEDIUM — test_core.py:12:4
+   Pattern: numpy_random_seed
+   Message: np.random.seed() detected — synthetic data generation marker
+   Confidence: 0.55
+   Suggestion: If for validation (not unit test), label as [VERIFIED-SYNTHETIC]
+   Context:     np.random.seed(42)
+
+🟡 MEDIUM — test_core.py:34:8
+   Pattern: mock_function_prefix
+   Message: Function with mock_* prefix detected
+   Confidence: 0.50
+   Suggestion: Ensure mock data is disclosed with [VERIFIED-SYNTHETIC] marker
+   Context:     def mock_validator():
+
+🟡 MEDIUM — test_core.py:56:15
+   Pattern: perfect_score_claim
+   Message: Perfect score claim detected
+   Confidence: 0.45
+   Suggestion: Perfect scores on real data are extremely rare
+   Context:     "Perfect score achieved on validation set"
+
+🟡 MEDIUM — test_core.py:78:20
+   Pattern: zero_failures
+   Message: Zero failures claim detected
+   Confidence: 0.48
+   Suggestion: Zero failures across real data is suspicious — verify dataset source
+   Context:     assert failures == 0  # zero failures
+
+🟡 MEDIUM — test_core.py:91:5
+   Pattern: create_synthetic_prefix
+   Message: Function creates synthetic data
+   Confidence: 0.42
+   Suggestion: Label outputs with [VERIFIED-SYNTHETIC], not [VERIFIED-REAL]
+   Context:     data = create_synthetic_dataset(n=100)
+
+🟡 MEDIUM — test_core.py:103:12
+   Pattern: precision_perfect
+   Message: Perfect precision (1.0) detected
+   Confidence: 0.50
+   Suggestion: FP=0 only with synthetic data or category leakage
+   Context:     precision = 1.0
+
+🟡 MEDIUM — test_core.py:115:8
+   Pattern: accuracy_100_percent
+   Message: 100% accuracy claim detected
+   Confidence: 0.52
+   Suggestion: Perfect accuracy indicates trivial test set or overfitting
+   Context:     accuracy = 100%
+
+🟡 MEDIUM — test_core.py:127:15
+   Pattern: auc_perfect
+   Message: Perfect AUC (1.000) detected
+   Confidence: 0.48
+   Suggestion: AUC=1.000 only with perfectly separable classes (synthetic)
+   Context:     auc = 1.000
+
+🟡 MEDIUM — test_core.py:139:20
+   Pattern: no_errors_found
+   Message: 'No errors found' claim detected
+   Confidence: 0.40
+   Suggestion: If across ≥5 test cases, this is suspicious — real data has edge cases
+   Context:     "No errors found in 50 test runs"
+
+🟡 MEDIUM — test_core.py:151:5
+   Pattern: no_false_predictions
+   Message: Zero false positives/negatives claim
+   Confidence: 0.45
+   Suggestion: FP=0 AND FN=0 only with synthetic data or category leakage
+   Context:     false_positives = 0, false_negatives = 0
+
+🟡 MEDIUM — test_core.py:163:12
+   Pattern: every_test_passed
+   Message: 'Every test passed' claim detected
+   Confidence: 0.43
+   Suggestion: If ≥5 tests, verify on real-world data — perfect pass rates are suspicious
+   Context:     "Every test passed successfully"
+
+
+Summary:
+- 4 HIGH severity findings require immediate review
+- 11 MEDIUM findings suggest potential validation theater patterns
+- Recommend: replace embedded test data with real-world API calls
+- Add [VERIFIED-SYNTHETIC] markers where synthetic data is intentional

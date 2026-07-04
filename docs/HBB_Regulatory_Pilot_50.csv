@@ -1,0 +1,51 @@
+ClinVar_ID,Position_GRCh38,Ref,Alt,HGVS_c,Category,ClinVar_Significance,Label,ARCHCODE_LSSIM,VEP_Score,VEP_Consequence,CADD_Phred,Pearl
+VCV000015471,5227099,T,C,NM_000518.5(HBB):c.-78A>G,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.9276,0.2,5_prime_UTR_variant,15.1,True
+VCV000015470,5227099,T,G,NM_000518.5(HBB):c.-78A>C,promoter,Pathogenic,Pathogenic,0.9276,0.2,5_prime_UTR_variant,15.2,True
+VCV000869288,5227100,T,G,NM_000518.5(HBB):c.-79A>C,promoter,Pathogenic,Pathogenic,0.929,0.2,5_prime_UTR_variant,19.3,True
+VCV000869290,5227101,A,G,NM_000518.5(HBB):c.-80T>C,promoter,Pathogenic,Pathogenic,0.9282,0.2,5_prime_UTR_variant,18.9,True
+VCV000015466,5227102,T,C,NM_000518.5(HBB):c.-81A>G,promoter,Pathogenic,Pathogenic,0.9287,0.2,5_prime_UTR_variant,19.2,True
+VCV000801184,5227142,G,A,NM_000518.5(HBB):c.-121C>T,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.9279,0.2,5_prime_UTR_variant,15.7,True
+VCV002506212,5227157,G,T,NM_000518.4(HBB):c.-136C>A,promoter,Likely pathogenic,Pathogenic,0.9277,0.2,5_prime_UTR_variant,12.1,True
+VCV000036284,5227157,G,A,NM_000518.4(HBB):c.-136C>T,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.9277,0.2,5_prime_UTR_variant,11.7,True
+VCV000036287,5227158,G,A,NM_000518.5(HBB):c.-137C>T,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.9289,0.2,5_prime_UTR_variant,16.1,True
+VCV000036285,5227158,G,T,NM_000518.5(HBB):c.-137C>A,promoter,Pathogenic,Pathogenic,0.9289,0.2,5_prime_UTR_variant,15.6,True
+VCV000015464,5227158,G,C,NM_000518.5(HBB):c.-137C>G,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.9289,0.2,5_prime_UTR_variant,15.6,True
+VCV000393701,5227159,G,T,NM_000518.5(HBB):c.-138C>A,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.9297,0.2,5_prime_UTR_variant,18.3,True
+VCV000015514,5227161,G,A,NM_000518.5(HBB):c.-140C>T,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.9292,0.2,5_prime_UTR_variant,16.9,True
+VCV000015462,5227163,G,A,NM_000518.5(HBB):c.-142C>T,promoter,Pathogenic/Likely pathogenic,Pathogenic,0.929,0.2,5_prime_UTR_variant,15.7,True
+VCV000015586,5227172,G,C,NM_000518.5(HBB):c.-151C>G,promoter,Pathogenic,Pathogenic,0.9284,0.2,5_prime_UTR_variant,13.4,True
+VCV000552712,5225727,C,T,NM_000518.5(HBB):c.316-1G>A,splice_donor,Pathogenic/Likely pathogenic,Pathogenic,0.9207,0.95,splice_acceptor_variant,29.3,False
+VCV000038671,5225727,C,A,NM_000518.5(HBB):c.316-1G>T,splice_donor,Likely pathogenic,Pathogenic,0.9207,0.95,splice_acceptor_variant,29.7,False
+VCV000015512,5225727,C,G,NM_000518.5(HBB):c.316-1G>C,splice_donor,Pathogenic,Pathogenic,0.9207,0.95,splice_acceptor_variant,28.4,False
+VCV000021191,5225728,T,C,NM_000518.5(HBB):c.316-2A>G,splice_donor,Pathogenic,Pathogenic,0.92,0.95,splice_acceptor_variant,27.3,False
+VCV000021190,5225728,T,G,NM_000518.5(HBB):c.316-2A>C,splice_donor,Pathogenic,Pathogenic,0.92,0.95,splice_acceptor_variant,27.4,False
+VCV000869355,5226575,A,G,NM_000518.5(HBB):c.315+2T>C,splice_donor,Pathogenic,Pathogenic,0.9053,0.95,splice_donor_variant,29.3,False
+VCV000439146,5226575,A,C,NM_000518.5(HBB):c.315+2T>G,splice_donor,Likely pathogenic,Pathogenic,0.9053,0.95,splice_donor_variant,33.0,False
+VCV000869353,5226576,CCC,CC,NM_000518.5(HBB):c.315+1del,splice_donor,Pathogenic,Pathogenic,0.9018,0.95,splice_donor_variant,-1.0,False
+VCV000619686,5226576,C,A,NM_000518.5(HBB):c.315+1G>T,splice_donor,Pathogenic,Pathogenic,0.9018,0.95,splice_donor_variant,35.0,False
+VCV000189128,5226576,C,G,NM_000518.5(HBB):c.315+1G>C,splice_donor,Pathogenic,Pathogenic,0.9018,0.95,splice_donor_variant,31.0,False
+VCV000015438,5226576,C,T,NM_000518.5(HBB):c.315+1G>A,splice_donor,Pathogenic,Pathogenic,0.9018,0.95,splice_donor_variant,29.8,False
+VCV000439166,5226800,C,G,NM_000518.5(HBB):c.93-1G>C,splice_donor,Pathogenic,Pathogenic,0.9065,0.95,splice_acceptor_variant,33.0,False
+VCV000015446,5226800,C,T,NM_000518.5(HBB):c.93-1G>A,splice_donor,Pathogenic,Pathogenic,0.9065,0.95,splice_acceptor_variant,35.0,False
+VCV000439167,5226801,T,G,NM_000518.5(HBB):c.93-2A>C,splice_donor,Pathogenic,Pathogenic,0.9045,0.95,splice_acceptor_variant,31.0,False
+VCV000015562,5226801,T,C,NM_000518.5(HBB):c.93-2A>G,splice_donor,Pathogenic,Pathogenic,0.9045,0.95,splice_acceptor_variant,29.6,False
+VCV000015445,5226903,AACCTGTCTTGTAACCTTGATACCAACCTGCCCAGGGCCTCACCA,A,NM_000518.5(HBB):c.76_92+27del,splice_donor,Likely pathogenic,Pathogenic,0.9068,0.95,splice_donor_variant (from_category),-1.0,False
+VCV000619860,5226928,A,C,NM_000518.5(HBB):c.92+2T>G,splice_donor,Pathogenic,Pathogenic,0.9071,0.95,splice_donor_variant,35.0,False
+VCV000038667,5226928,A,T,NM_000518.5(HBB):c.92+2T>A,splice_donor,Pathogenic,Pathogenic,0.9071,0.95,splice_donor_variant,34.0,False
+VCV000036334,5226928,A,G,NM_000518.5(HBB):c.92+2T>C,splice_donor,Pathogenic,Pathogenic,0.9071,0.95,splice_donor_variant,32.0,False
+VCV000869246,5226929,C,G,NM_000518.5(HBB):c.92+1G>C,splice_donor,Pathogenic,Pathogenic,0.9075,0.95,splice_donor_variant,34.0,False
+VCV000015437,5226929,C,A,NM_000518.5(HBB):c.92+1G>T,splice_donor,Pathogenic,Pathogenic,0.9075,0.95,splice_donor_variant,34.0,False
+VCV000015436,5226929,C,T,NM_000518.5(HBB):c.92+1G>A,splice_donor,Pathogenic,Pathogenic,0.9075,0.95,splice_donor_variant,34.0,False
+VCV002024192,5226796,CAGCCTAAGGGTGGGAAAATAGACCAATAGGCAGAGA,TAATCTGAGGGTAGGAAAACAGCCCAAGGGACAGT,NM_000518.5(HBB):c.93-33_96delinsACTGTCCCTTGGGCTGTTTTCCTACCCTCAGATTA,splice_acceptor,Likely pathogenic,Pathogenic,0.9004,0.2,coding_sequence_variant,-1.0,True
+VCV000869322,5226797,GCC,GCCGCC,c.92_94dup,splice_acceptor,Pathogenic,Pathogenic,0.9027,0.95,splice_acceptor_variant (from_category),-1.0,False
+VCV000015442,5226797,AGCCTAAGGGTGGGAAAATAGACCAA,A,NM_000518.5(HBB):c.93-22_95del,splice_acceptor,Pathogenic,Pathogenic,0.9027,0.95,splice_acceptor_variant (from_category),-1.0,False
+VCV000619687,5225729,G,C,NM_000518.5(HBB):c.316-3C>G,splice_region,Likely pathogenic,Pathogenic,0.9715,0.5,splice_donor_variant,26.6,False
+VCV000015451,5225729,G,T,NM_000518.5(HBB):c.316-3C>A,splice_region,Pathogenic/Likely pathogenic,Pathogenic,0.9715,0.5,splice_donor_variant,19.5,False
+VCV000869111,5225733,G,T,NM_000518.5(HBB):c.316-7C>A,splice_region,Pathogenic,Pathogenic,0.9717,0.5,splice_donor_5th_base_variant,8.0,False
+VCV000869356,5226572,C,G,NM_000518.5(HBB):c.315+5G>C,splice_region,Pathogenic,Pathogenic,0.9663,0.81,missense_variant,21.3,False
+VCV000036341,5226802,A,C,NM_000518.5(HBB):c.93-3T>G,splice_region,Pathogenic/Likely pathogenic,Pathogenic,0.9592,0.5,splice_region_variant,11.9,False
+VCV000015450,5226924,A,G,NM_000518.5(HBB):c.92+6T>C,splice_region,Pathogenic/Likely pathogenic,Pathogenic,0.9594,0.35,splice_donor_region_variant,18.3,False
+VCV000015449,5226925,C,T,NM_000518.5(HBB):c.92+5G>A,splice_region,Pathogenic,Pathogenic,0.9592,0.4,splice_donor_5th_base_variant,20.5,False
+VCV000015448,5226925,C,A,NM_000518.5(HBB):c.92+5G>T,splice_region,Pathogenic,Pathogenic,0.9592,0.4,splice_donor_5th_base_variant,20.3,False
+VCV000015447,5226925,C,G,NM_000518.5(HBB):c.92+5G>C,splice_region,Pathogenic,Pathogenic,0.9592,0.4,splice_donor_5th_base_variant,20.3,False
+VCV000393704,5227039,G,C,NM_000518.5(HBB):c.-18C>G,5_prime_UTR,Pathogenic,Pathogenic,0.9806,0.5,splice_region_variant,21.0,False

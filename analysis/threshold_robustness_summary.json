@@ -1,0 +1,92 @@
+{
+  "experiment": "EXP-004",
+  "description": "Threshold Robustness with Bootstrap CI",
+  "rng_seed": 42,
+  "analysis_1_bootstrap": {
+    "observed": 286,
+    "mean": 285.699,
+    "std": 7.125194664007433,
+    "ci_low": 271.0,
+    "ci_high": 300.0,
+    "n_pathogenic": 353,
+    "threshold": 0.95,
+    "n_iterations": 1000
+  },
+  "analysis_2_threshold_sweep": {
+    "thresholds_range": [
+      0.88,
+      0.9900000000000001
+    ],
+    "threshold_step": 0.005,
+    "n_loci": 9,
+    "loci": [
+      "HBB",
+      "BRCA1",
+      "TP53",
+      "TERT",
+      "MLH1",
+      "CFTR",
+      "SCN5A",
+      "GJB2",
+      "LDLR"
+    ],
+    "stability_zones": {
+      "HBB": {
+        "low": 0.93,
+        "high": 0.965,
+        "width": 0.035
+      },
+      "BRCA1": {
+        "low": 0.89,
+        "high": 0.96,
+        "width": 0.07
+      },
+      "TP53": {
+        "low": 0.95,
+        "high": 0.955,
+        "width": 0.005
+      },
+      "TERT": {
+        "low": 0.95,
+        "high": 0.95,
+        "width": 0.0
+      },
+      "MLH1": {
+        "low": 0.88,
+        "high": 0.95,
+        "width": 0.07
+      },
+      "CFTR": {
+        "low": 0.88,
+        "high": 0.955,
+        "width": 0.075
+      },
+      "SCN5A": {
+        "low": 0.95,
+        "high": 0.95,
+        "width": 0.0
+      },
+      "GJB2": {
+        "low": 0.95,
+        "high": 0.95,
+        "width": 0.0
+      },
+      "LDLR": {
+        "low": 0.915,
+        "high": 0.95,
+        "width": 0.035
+      }
+    }
+  },
+  "analysis_3_perturbation": {
+    "observed": 286,
+    "mean": 288.69,
+    "std": 2.5435998112910765,
+    "ci_low": 284.0,
+    "ci_high": 294.0,
+    "n_pathogenic": 353,
+    "threshold": 0.95,
+    "n_iterations": 500,
+    "perturbation_fraction": 0.2
+  }
+}

@@ -1,0 +1,21 @@
+ClinVar_ID,Position,Locus,Category,VEP_Consequence,LSSIM,VEP,CADD_Phred,Enhancer_Dist_bp,ClinVar
+VCV000869358,5226971,HBB,frameshift,synonymous_variant,0.7982,0.15,-1.0,703,Pathogenic
+VCV002024192,5226796,HBB,splice_acceptor,coding_sequence_variant,0.8218,0.2,-1.0,528,Likely pathogenic
+VCV003766487,5226598,HBB,missense,coding_sequence_variant,0.9088,0.2,13.3,330,Pathogenic
+VCV000801186,5226598,HBB,missense,coding_sequence_variant,0.9088,0.2,13.4,330,Pathogenic/Likely pathogenic
+VCV000015259,5226598,HBB,missense,coding_sequence_variant,0.9088,0.2,-1.0,330,Pathogenic; other
+VCV000446737,5226643,HBB,missense,coding_sequence_variant,0.9101,0.2,-1.0,375,Pathogenic
+VCV000015319,5226643,HBB,missense,coding_sequence_variant,0.9101,0.2,-1.0,375,Pathogenic; other
+VCV000015208,5226613,HBB,missense,coding_sequence_variant,0.9104,0.2,-1.0,345,Pathogenic
+VCV000869290,5227101,HBB,promoter,5_prime_UTR_variant,0.9143,0.2,18.9,833,Pathogenic
+VCV000869288,5227100,HBB,promoter,5_prime_UTR_variant,0.9143,0.2,19.3,832,Pathogenic
+VCV000801184,5227142,HBB,promoter,5_prime_UTR_variant,0.9144,0.2,15.7,874,Pathogenic/Likely pathogenic
+VCV000015514,5227161,HBB,promoter,5_prime_UTR_variant,0.9146,0.2,16.9,893,Pathogenic/Likely pathogenic
+VCV000393701,5227159,HBB,promoter,5_prime_UTR_variant,0.915,0.2,18.3,891,Pathogenic/Likely pathogenic
+VCV000015471,5227099,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.1,831,Pathogenic/Likely pathogenic
+VCV000036287,5227158,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,16.1,890,Pathogenic/Likely pathogenic
+VCV000036285,5227158,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.6,890,Pathogenic
+VCV000015464,5227158,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.6,890,Pathogenic/Likely pathogenic
+VCV000015470,5227099,HBB,promoter,5_prime_UTR_variant,0.9157,0.2,15.2,831,Pathogenic
+VCV000015466,5227102,HBB,promoter,5_prime_UTR_variant,0.9173,0.2,19.2,834,Pathogenic
+VCV000015586,5227172,HBB,promoter,5_prime_UTR_variant,0.9177,0.2,13.4,904,Pathogenic

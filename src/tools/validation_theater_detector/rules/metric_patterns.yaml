@@ -1,0 +1,205 @@
+# Perfect Metric Patterns — Detection Rules
+#
+# Detects suspiciously perfect metrics that suggest synthetic validation.
+# Real-world data ALWAYS has noise — perfect scores are red flags.
+#
+# Rule Format: same as synthetic_markers.yaml
+#
+# Version: 1.0
+# Last Updated: 2026-05-16
+
+rules:
+  # F1 score perfect (1.000)
+  - id: f1_perfect
+    pattern: 'F1\s*[=:]\s*1\.0{3,}'
+    severity: HIGH
+    weight: 0.5
+    message: "Perfect F1 score (1.000) detected — suspiciously round"
+    suggestion: "Verify this metric on real-world data. Perfect scores often indicate synthetic validation or overfitting."
+    examples:
+      positive:
+        - "F1 = 1.000"
+        - "F1: 1.0000"
+        - "f1_score = 1.000"
+      negative:
+        - "F1 = 0.987"  # Imperfect, realistic
+        - "F1 = 1.0"    # Only 1 decimal, could be approximation
+
+  # Precision perfect (1.0)
+  - id: precision_perfect
+    pattern: 'precision\s*[=:]\s*1\.0+'
+    severity: HIGH
+    weight: 0.45
+    message: "Perfect precision (1.0) detected"
+    suggestion: "Real data rarely yields perfect precision — verify with external dataset"
+    examples:
+      positive:
+        - "precision = 1.0"
+        - "precision: 1.00"
+      negative:
+        - "precision = 0.95"
+
+  # Recall perfect (1.0)
+  - id: recall_perfect
+    pattern: 'recall\s*[=:]\s*1\.0+'
+    severity: HIGH
+    weight: 0.45
+    message: "Perfect recall (1.0) detected"
+    suggestion: "Perfect recall on real data is extremely rare — check data source"
+    examples:
+      positive:
+        - "recall = 1.0"
+        - "recall: 1.00"
+      negative:
+        - "recall = 0.92"
+
+  # Accuracy 100%
+  - id: accuracy_100_percent
+    pattern: '(accuracy|success)\s*[=:]\s*(100\.0*%?|1\.0{3,})'
+    severity: HIGH
+    weight: 0.5
+    message: "100% accuracy detected — suspiciously perfect"
+    suggestion: "Real-world accuracy is never perfect. Validate on external benchmark."
+    examples:
+      positive:
+        - "accuracy = 100%"
+        - "accuracy: 100.0"
+        - "success = 1.000"
+        - "accuracy = 100.0%"
+      negative:
+        - "accuracy = 98.3%"
+        - "accuracy = 0.987"
+
+  # AUC perfect (1.000)
+  - id: auc_perfect
+    pattern: 'AUC\s*[=:]\s*1\.0{3,}'
+    severity: HIGH
+    weight: 0.5
+    message: "Perfect AUC (1.000) detected"
+    suggestion: "AUC = 1.000 means perfect separation — verify this isn't category leakage or synthetic data"
+    examples:
+      positive:
+        - "AUC = 1.000"
+        - "AUC: 1.0000"
+      negative:
+        - "AUC = 0.987"
+        - "AUC = 0.998"  # Very high but not perfect
+
+  # R-squared perfect (1.0 or 0.99+)
+  - id: r_squared_perfect
+    pattern: 'R[²2]\s*[=:]\s*(1\.0+|0\.99[5-9])'
+    severity: MEDIUM
+    weight: 0.4
+    message: "Near-perfect R² detected (≥0.995)"
+    suggestion: "R² ≥ 0.995 on real data suggests overfitting or synthetic generation"
+    examples:
+      positive:
+        - "R² = 1.0"
+        - "R2 = 0.999"
+        - "R² = 0.995"
+      negative:
+        - "R² = 0.89"
+        - "R² = 0.94"
+
+  # Correlation perfect (1.0 or -1.0)
+  - id: correlation_perfect
+    pattern: '(correlation|corr|ρ|r)\s*[=:]\s*(-?1\.0{2,})'
+    severity: MEDIUM
+    weight: 0.35
+    message: "Perfect correlation (±1.0) detected"
+    suggestion: "Perfect correlation is rare in real data — check for data leakage"
+    examples:
+      positive:
+        - "correlation = 1.000"
+        - "ρ = -1.00"
+        - "r = 1.0"
+      negative:
+        - "correlation = 0.87"
+        - "ρ = -0.65"
+
+  # Loss exactly zero
+  - id: loss_zero
+    pattern: 'loss\s*[=:]\s*0\.0+'
+    severity: MEDIUM
+    weight: 0.3
+    message: "Zero loss detected — unrealistic for real data"
+    suggestion: "Loss = 0.0 only occurs with synthetic data or perfect memorization"
+    examples:
+      positive:
+        - "loss = 0.0"
+        - "loss: 0.00"
+      negative:
+        - "loss = 0.0012"
+        - "loss = 0.087"
+
+  # Error rate zero
+  - id: error_rate_zero
+    pattern: 'error\s*[=:]\s*0\.0+%?'
+    severity: MEDIUM
+    weight: 0.3
+    message: "Zero error rate detected"
+    suggestion: "Error = 0% only with synthetic/toy data — verify on real examples"
+    examples:
+      positive:
+        - "error = 0.0"
+        - "error: 0%"
+      negative:
+        - "error = 0.023"
+        - "error = 1.2%"
+
+  # MSE/RMSE exactly zero
+  - id: mse_zero
+    pattern: '(MSE|RMSE)\s*[=:]\s*0\.0+'
+    severity: MEDIUM
+    weight: 0.3
+    message: "Zero MSE/RMSE detected — perfect fit"
+    suggestion: "MSE = 0 only with synthetic data or exact memorization"
+    examples:
+      positive:
+        - "MSE = 0.0"
+        - "RMSE: 0.00"
+      negative:
+        - "MSE = 0.0012"
+        - "RMSE = 0.15"
+
+  # p-value exactly 0.0 or 1.0
+  - id: p_value_extreme
+    pattern: 'p(-value)?\s*[=:]\s*(0\.0+|1\.0+)'
+    severity: LOW
+    weight: 0.2
+    message: "Extreme p-value (0.0 or 1.0) detected"
+    suggestion: "p = 0.0 or 1.0 often indicates numerical issues — report actual value or use scientific notation"
+    examples:
+      positive:
+        - "p = 0.0"
+        - "p-value: 1.0"
+      negative:
+        - "p = 0.00027"
+        - "p-value: 0.045"
+
+# Context-aware rules (require validation keywords nearby)
+context_rules:
+  - id: round_percentage_in_validation
+    pattern: '(50|75|80|90|95|100)%'
+    severity: LOW
+    weight: 0.15
+    message: "Round percentage in validation context"
+    suggestion: "Real metrics rarely land on exact round numbers — report precise values"
+    context_required: true
+    context_keywords:
+      - "validation"
+      - "test"
+      - "accuracy"
+      - "success rate"
+    examples:
+      positive:
+        - "Validation accuracy: 90%"
+        - "Test success rate: 100%"
+      negative:
+        - "Training: 90%"  # OK for training
+        - "accuracy = 89.7%"  # Not round
+
+# Meta-patterns (combinations)
+# If F1=1.0 AND precision=1.0 AND recall=1.0 → confidence boost +0.2
+# If multiple perfect metrics in same file → likely synthetic validation
+# Applied in core.py

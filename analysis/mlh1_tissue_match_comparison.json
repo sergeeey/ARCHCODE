@@ -1,0 +1,33 @@
+{
+  "analysis": "mlh1_tissue_match_comparison",
+  "description": "MLH1 K562 vs HCT116 tissue-match amplification",
+  "date": "2026-03-10",
+  "k562_config": "mlh1_300kb",
+  "hct116_config": "mlh1_hct116_300kb",
+  "total_variants": 4060,
+  "k562": {
+    "delta_pb": -0.009115,
+    "path_mean_lssim": 0.988998,
+    "ben_mean_lssim": 0.998113,
+    "lssim_lt_095": 72,
+    "lssim_lt_097": 141,
+    "pathogenic_verdicts": 65,
+    "vus_verdicts": 29,
+    "mannwhitney_p": 6.731433808389538e-91
+  },
+  "hct116": {
+    "delta_pb": -0.009765,
+    "path_mean_lssim": 0.988211,
+    "ben_mean_lssim": 0.997975,
+    "lssim_lt_095": 144,
+    "lssim_lt_097": 173,
+    "pathogenic_verdicts": 72,
+    "vus_verdicts": 68,
+    "mannwhitney_p": 9.035594781802405e-88
+  },
+  "amplification": {
+    "delta_ratio": 1.071,
+    "struct_calls_095_ratio": 2.0,
+    "note": "Mean delta amplification modest (1.07x), but LSSIM<0.95 tail count doubles (72->144, 2.0x). Amplification concentrated in distribution tail, not mean shift."
+  }
+}
