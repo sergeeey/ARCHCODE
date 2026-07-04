@@ -27,11 +27,18 @@ survives as descriptive. Consistent with April 2026 falsification (physics adds 
 - New distal test (real ClinVar SNVs): pearl 5226613 CAGE −0.04% vs 10 controls −0.45%, MW p=0.70. No signal.
 - Results: `results/distal_pearl_cage_test.json`, scratchpad `distal_pearl_cage_test.py`
 
-**🔴 NEXT ACTION:** Record REJECT to null_results/ with Kill Analysis. Then strategic pivot:
-the NEGATIVE result IS the contribution → «category-confound audit of 3D variant scoring» (methods/negative paper,
-needs no wet lab, uses the falsification rigor that is the real asset). Do NOT write to Nora with a positive claim.
-- What survives: ARCHCODE=regulatory-variant flagger (=category detection); CTCF intra-loop geometry (descriptive).
-- Parked (do not expand): ATPH, QEC-MWPM — `[CANDIDATE]`.
+**✅ PIVOT EXECUTED (2026-07-04): negative-result paper DRAFTED + verified + skeptic-hardened.**
+Category-confound methods paper, systematic across 9 loci. Files: `manuscript/category_confound_*.md`
+(paper.md = assembled draft) + `results/fig_category_confound.png`/stats + `analysis/fig_category_confound.py`
++ `analysis/phylop_control.py`. Commits 3762f4c → d089b09 → e62af65.
+- Core: ARCHCODE marginal 0.754→within 0.430 (LSSIM), 0.783→0.507 (SSIM); category-only 0.827; 7/8 loci collapse.
+- TWO positive controls SURVIVE: CADD (supervised) 0.989→0.991, phyloP (unsupervised) 0.790→0.894.
+- Verified: integrity-checker CLEAR, 10 refs confirmed, skeptic 3 attacks addressed (Simpson tested+rejected; Attack 2 closed by phyloP).
+
+**🔴 NEXT (before submission):** (1) Figure v2 — add SSIM+phyloP bars (data in phylop_control.json). (2) Decide
+relationship to LIVE preprint rs-9090074 (positive ARCHCODE claim) — erratum/companion. (3) Venue (NAR GAB/Bioinformatics)
++ cover letter + 24h cooling-off.
+- Parked: ATPH, QEC-MWPM `[CANDIDATE]`. Old ARCHCODE discovery claim = FALSIFIED (block above).
 
 ## 🔧 Session 2026-06-25: Manuscript Fixed for Submission (commit 703e398)
 
@@ -318,6 +325,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
 - [2026-07-04 21:50] `d089b09`: fix(paper): skeptic-pass revisions — add SSIM metric, reject Simpson's paradox, strengthen CADD caveat
 - [2026-07-04 21:33] `3762f4c`: feat(paper): category-confound negative-result paper — figure, abstract, related work, methods
 - [2026-07-04 00:32] `8a8a603`: chore(memory): sync session state — gnomAD NULL + phyloP confound + AlphaGenome neg-control next-action

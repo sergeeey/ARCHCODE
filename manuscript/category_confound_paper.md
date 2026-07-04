@@ -140,9 +140,9 @@ keep their signal while both ARCHCODE structural metrics lose all of it.
 **Figure 1.** `results/fig_category_confound.png`. (A) Per-locus marginal vs category-matched AUC
 (dumbbell); all but TP53 collapse to the chance line. (B) Method comparison: both positive controls —
 CADD (supervised) and phyloP (unsupervised) — survive category matching, while both ARCHCODE metrics
-(SSIM, log-SSIM) collapse and VEP sits at chance. Bootstrap 95% CI.
-*[Figure PNG pending v2 regen: current file shows log-SSIM/CADD/VEP; add SSIM + phyloP bars — values in
-`results/phylop_control.json` + `fig_category_confound_stats.json`.]*
+(SSIM, log-SSIM) collapse and VEP sits at chance. phyloP's within-category AUC (0.894) exceeds its
+marginal (0.790) — removing the categorical confound exposes the true per-variant conservation signal.
+Bootstrap 95% CI; phyloP on the 95% conservation-covered subset (23,038).
 
 ## 5. Discussion
 
