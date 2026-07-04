@@ -1,0 +1,316 @@
+{
+  "id": "foxp3_treg_300kb",
+  "name": "FOXP3 300kb (Treg H3K27ac + Tconv CTCF, Marson lab 2026)",
+  "description": "300kb window centered on FOXP3 (chrX:49107618-49407618, GRCh38). CTCF sites from human resting Tconv ChIP-seq (GSM9161596, Donor 1, MACS3 peaks). Enhancers from human resting Treg H3K27ac ChIP-seq (GSM9177365, Donor 1, MACS3 peaks). Data from Umhoefer et al., Immunity 59(1):129-144, 2026. DOI: 10.1016/j.immuni.2025.10.020. GEO SuperSeries: GSE286473.",
+  "genome_assembly": "GRCh38",
+  "organism": "Homo sapiens",
+  "cell_type": "Treg (H3K27ac) + Tconv (CTCF)",
+  "target_gene": "FOXP3",
+  "window": {
+    "chromosome": "chrX",
+    "start": 49107618,
+    "end": 49407618,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 49275985,
+        "occupancy": 0.95,
+        "name": "H3K27ac_Treg_8_peak_33977",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49271456-49280515, signal=2294. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49270063,
+        "occupancy": 0.83,
+        "name": "H3K27ac_Treg_8_peak_33975",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49269288-49270838, signal=1965. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49124137,
+        "occupancy": 0.42,
+        "name": "H3K27ac_Treg_8_peak_33959",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49123898-49124377, signal=862. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49167062,
+        "occupancy": 0.34,
+        "name": "H3K27ac_Treg_8_peak_33962",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49166394-49167731, signal=638. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49117476,
+        "occupancy": 0.27,
+        "name": "H3K27ac_Treg_8_peak_33956",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49117110-49117843, signal=470. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49235633,
+        "occupancy": 0.27,
+        "name": "H3K27ac_Treg_8_peak_33965",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49235416-49235850, signal=469. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49261384,
+        "occupancy": 0.23,
+        "name": "H3K27ac_Treg_8_peak_33972",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49260861-49261907, signal=358. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49264831,
+        "occupancy": 0.23,
+        "name": "H3K27ac_Treg_8_peak_33973",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49262058-49267604, signal=357. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49309445,
+        "occupancy": 0.23,
+        "name": "H3K27ac_Treg_8_peak_33978",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49308911-49309980, signal=347. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49230797,
+        "occupancy": 0.21,
+        "name": "H3K27ac_Treg_8_peak_33964",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49230472-49231122, signal=303. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49259797,
+        "occupancy": 0.2,
+        "name": "H3K27ac_Treg_8_peak_33970",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49259433-49260161, signal=266. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49156118,
+        "occupancy": 0.19,
+        "name": "H3K27ac_Treg_8_peak_33960",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49155958-49156278, signal=238. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49123525,
+        "occupancy": 0.18,
+        "name": "H3K27ac_Treg_8_peak_33958",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49123336-49123715, signal=222. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49164065,
+        "occupancy": 0.18,
+        "name": "H3K27ac_Treg_8_peak_33961",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49163914-49164217, signal=213. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49268897,
+        "occupancy": 0.18,
+        "name": "H3K27ac_Treg_8_peak_33974",
+        "source": "GEO_GSM9177365_Treg_H3K27ac",
+        "note": "H3K27ac peak at 49268681-49269113, signal=212. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 49163848,
+        "orientation": "unknown",
+        "signal": 3153,
+        "name": "CTCF_Tconv_5_e-8_peak_57770",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49163511-49164186, signal=3153. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49156411,
+        "orientation": "unknown",
+        "signal": 2791,
+        "name": "CTCF_Tconv_5_e-8_peak_57769",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49156084-49156738, signal=2791. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49292023,
+        "orientation": "unknown",
+        "signal": 2595,
+        "name": "CTCF_Tconv_5_e-8_peak_57781",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49291670-49292376, signal=2595. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49123855,
+        "orientation": "unknown",
+        "signal": 1946,
+        "name": "CTCF_Tconv_5_e-8_peak_57766",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49123583-49124127, signal=1946. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49192923,
+        "orientation": "unknown",
+        "signal": 1738,
+        "name": "CTCF_Tconv_5_e-8_peak_57776",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49192607-49193239, signal=1738. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49186456,
+        "orientation": "unknown",
+        "signal": 1512,
+        "name": "CTCF_Tconv_5_e-8_peak_57774",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49186160-49186753, signal=1512. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49142467,
+        "orientation": "unknown",
+        "signal": 1099,
+        "name": "CTCF_Tconv_5_e-8_peak_57767",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49142230-49142704, signal=1099. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49273450,
+        "orientation": "unknown",
+        "signal": 972,
+        "name": "CTCF_Tconv_5_e-8_peak_57780",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49273177-49273723, signal=972. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49166712,
+        "orientation": "unknown",
+        "signal": 780,
+        "name": "CTCF_Tconv_5_e-8_peak_57771",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49166170-49167255, signal=780. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      },
+      {
+        "position": 49200219,
+        "orientation": "unknown",
+        "signal": 415,
+        "name": "CTCF_Tconv_5_e-8_peak_57777",
+        "source": "GEO_GSM9161596_Tconv_CTCF",
+        "note": "Peak at 49200027-49200411, signal=415. Umhoefer et al. Immunity 2026, DOI:10.1016/j.immuni.2025.10.020"
+      }
+    ],
+    "genes": [
+      {
+        "name": "GPKOW",
+        "start": 49113396,
+        "end": 49123746,
+        "strand": "-"
+      },
+      {
+        "name": "MAGIX",
+        "start": 49162564,
+        "end": 49168774,
+        "strand": "+"
+      },
+      {
+        "name": "PLP2",
+        "start": 49171787,
+        "end": 49175235,
+        "strand": "+"
+      },
+      {
+        "name": "PRICKLE3",
+        "start": 49174802,
+        "end": 49186528,
+        "strand": "-"
+      },
+      {
+        "name": "SYP",
+        "start": 49187807,
+        "end": 49200218,
+        "strand": "-"
+      },
+      {
+        "name": "CACNA1F",
+        "start": 49205063,
+        "end": 49233371,
+        "strand": "-"
+      },
+      {
+        "name": "CCDC22",
+        "start": 49235444,
+        "end": 49250526,
+        "strand": "+"
+      },
+      {
+        "name": "FOXP3",
+        "start": 49250436,
+        "end": 49264800,
+        "strand": "-"
+      },
+      {
+        "name": "ENSG00000290184",
+        "start": 49258343,
+        "end": 49270477,
+        "strand": "-"
+      },
+      {
+        "name": "PPP1R3F",
+        "start": 49269793,
+        "end": 49301461,
+        "strand": "+"
+      },
+      {
+        "name": "GAGE10",
+        "start": 49303646,
+        "end": 49319841,
+        "strand": "+"
+      },
+      {
+        "name": "GAGE12J",
+        "start": 49322037,
+        "end": 49329384,
+        "strand": "+"
+      },
+      {
+        "name": "GAGE13",
+        "start": 49331582,
+        "end": 49338949,
+        "strand": "+"
+      },
+      {
+        "name": "GAGE2E",
+        "start": 49341192,
+        "end": 49345922,
+        "strand": "+"
+      }
+    ]
+  },
+  "thresholds": null,
+  "_data_sources": {
+    "h3k27ac": {
+      "geo_accession": "GSM9177365",
+      "series": "GSE286472",
+      "cell_type": "Human Treg rest, Donor 1",
+      "peak_caller": "MACS3"
+    },
+    "ctcf": {
+      "geo_accession": "GSM9161596",
+      "series": "GSE305063",
+      "cell_type": "Human Tconv rest, Donor 1",
+      "peak_caller": "MACS3"
+    },
+    "paper": {
+      "authors": "Umhoefer JM et al.",
+      "title": "FOXP3 expression depends on cell-type-specific cis-regulatory elements",
+      "journal": "Immunity",
+      "year": 2026,
+      "doi": "10.1016/j.immuni.2025.10.020",
+      "pmid": "41237776"
+    }
+  }
+}

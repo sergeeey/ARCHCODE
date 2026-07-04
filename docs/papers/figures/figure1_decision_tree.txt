@@ -1,0 +1,80 @@
+VT Detector Decision Tree — 3-Stage Pipeline
+
+┌─────────────────────────────────────────────────────────────────┐
+│                     STAGE 1: Pattern Detection                  │
+│                         (AST + Regex)                           │
+└──────────────────────┬──────────────────────────────────────────┘
+                       │
+          ┌────────────┼────────────┬────────────┐
+          │            │            │            │
+          ▼            ▼            ▼            ▼
+    ┌─────────┐  ┌─────────┐  ┌─────────┐  ┌─────────┐
+    │Synthetic│  │ Perfect │  │  Zero   │  │Embedded │
+    │ Markers │  │ Metrics │  │Failures │  │TestData │
+    └────┬────┘  └────┬────┘  └────┬────┘  └────┬────┘
+         │            │            │            │
+         │ np.random  │ F1=1.000   │ "all tests"│ arrays  │
+         │ mock_*     │ 100%       │ zero fail  │ no URL  │
+         └────────────┴────────────┴────────────┘
+                       │
+                       ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                  STAGE 2: Confidence Scoring                    │
+│                Base weights + Synergies + Modifiers             │
+└──────────────────────┬──────────────────────────────────────────┘
+                       │
+          ┌────────────┼────────────┬─────────────┐
+          │            │            │             │
+          ▼            ▼            ▼             ▼
+    ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
+    │  Base    │ │ Synergy  │ │Evidence  │ │Unit Test │
+    │ Weights  │ │  Boost   │ │Modifier  │ │Suppress  │
+    └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘
+         │            │            │            │
+         │ 0.2–0.5    │ +0.25      │ -0.30      │ -0.25   │
+         │ per pattern│ synthetic+ │ external   │ def test│
+         │            │ perfect    │ source     │         │
+         └────────────┴────────────┴────────────┘
+                       │
+                       ▼ confidence ∈ [0.0, 1.0]
+┌─────────────────────────────────────────────────────────────────┐
+│                  STAGE 3: Severity Mapping                      │
+│              Threshold + Context-Aware Escalation               │
+└──────────────────────┬──────────────────────────────────────────┘
+                       │
+          ┌────────────┼────────────┬─────────────┐
+          │            │            │             │
+          ▼            ▼            ▼             ▼
+    ┌──────────┐ ┌──────────┐ ┌──────────┐ ┌──────────┐
+    │   HIGH   │ │  MEDIUM  │ │   LOW    │ │Validation│
+    │  ≥0.70   │ │0.40-0.70 │ │  <0.40   │ │ Context  │
+    └────┬─────┘ └────┬─────┘ └────┬─────┘ └────┬─────┘
+         │            │            │            │
+         │ theater    │ suspicious │ info       │ escalate│
+         │ detected   │ patterns   │            │ +1 level│
+         └────────────┴────────────┴────────────┘
+                       │
+                       ▼
+              ┌────────────────┐
+              │  TheaterFinding│
+              │  (structured)  │
+              └────────────────┘
+              file:line:column
+              severity + message
+              confidence score
+              suggestion
+
+
+Decision Logic Examples:
+
+1. High-confidence theater detection:
+   synthetic marker (0.3) + F1=1.000 (0.5) + synergy (0.25) = 1.05 → 0.70 HIGH
+
+2. Mitigated by external source:
+   F1=1.000 (0.5) + external_source (-0.30) = 0.20 LOW
+
+3. Unit test suppression:
+   "all tests passed" (0.3) + def test_ context (-0.25) = 0.05 LOW
+
+4. Validation context escalation:
+   F1=1.000 (0.5) + "validation" keyword → MEDIUM escalated to HIGH

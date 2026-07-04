@@ -1,0 +1,374 @@
+{
+  "metadata": {
+    "source": "EBI GWAS Catalog REST API",
+    "api_endpoint": "https://www.ebi.ac.uk/gwas/rest/api/singleNucleotidePolymorphisms/search/findByChromBpLocationRange",
+    "q2_file": "D:\\ДНК\\analysis\\Q2_structural_blindspots.csv",
+    "overlap_window_bp": 1000,
+    "genome_build": "GRCh38",
+    "generated": "2026-03-10T09:25:40"
+  },
+  "totals": {
+    "gwas_snps": 1002,
+    "unique_rsids": 995,
+    "q2_blindspot_overlaps": 29
+  },
+  "loci": {
+    "HBB": {
+      "chrom": "11",
+      "start": 5225000,
+      "end": 5320000,
+      "n_gwas_snps": 40,
+      "n_unique_rsids": 40,
+      "n_q2_overlaps": 11,
+      "traits": [],
+      "blindspot_overlaps": [
+        {
+          "gwas_rsid": "rs77121243",
+          "gwas_pos": 5227002,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 406,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs10768683",
+          "gwas_pos": 5226561,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 35,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs11549407",
+          "gwas_pos": 5226774,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 178,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs33930165",
+          "gwas_pos": 5227003,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 407,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs10742583",
+          "gwas_pos": 5227411,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 815,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs34598529",
+          "gwas_pos": 5227100,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 504,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs334",
+          "gwas_pos": 5227002,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 406,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs1135071",
+          "gwas_pos": 5226799,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 203,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs74234654",
+          "gwas_pos": 5227599,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226613,
+          "distance_bp": 986,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs33946267",
+          "gwas_pos": 5225678,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 918,
+          "locus": "HBB"
+        },
+        {
+          "gwas_rsid": "rs1609812",
+          "gwas_pos": 5225911,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 5226596,
+          "distance_bp": 685,
+          "locus": "HBB"
+        }
+      ]
+    },
+    "BRCA1": {
+      "chrom": "17",
+      "start": 42900000,
+      "end": 43300000,
+      "n_gwas_snps": 62,
+      "n_unique_rsids": 62,
+      "n_q2_overlaps": 1,
+      "traits": [],
+      "blindspot_overlaps": [
+        {
+          "gwas_rsid": "rs8176071",
+          "gwas_pos": 43125989,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 43125086,
+          "distance_bp": 903,
+          "locus": "BRCA1"
+        }
+      ]
+    },
+    "TP53": {
+      "chrom": "17",
+      "start": 7550000,
+      "end": 7750000,
+      "n_gwas_snps": 229,
+      "n_unique_rsids": 229,
+      "n_q2_overlaps": 1,
+      "traits": [],
+      "blindspot_overlaps": [
+        {
+          "gwas_rsid": "rs181067279",
+          "gwas_pos": 7687056,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 7687108,
+          "distance_bp": 52,
+          "locus": "TP53"
+        }
+      ]
+    },
+    "TERT": {
+      "chrom": "5",
+      "start": 1150000,
+      "end": 1450000,
+      "n_gwas_snps": 193,
+      "n_unique_rsids": 193,
+      "n_q2_overlaps": 11,
+      "traits": [],
+      "blindspot_overlaps": [
+        {
+          "gwas_rsid": "rs2853672",
+          "gwas_pos": 1292868,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1293415,
+          "distance_bp": 547,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs570266982",
+          "gwas_pos": 1292518,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1293415,
+          "distance_bp": 897,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs527897586",
+          "gwas_pos": 1295201,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1294272,
+          "distance_bp": 929,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs34685900",
+          "gwas_pos": 1295688,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1294782,
+          "distance_bp": 906,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs114616103",
+          "gwas_pos": 1292843,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1293415,
+          "distance_bp": 572,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs35226131",
+          "gwas_pos": 1295258,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1294272,
+          "distance_bp": 986,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs61748181",
+          "gwas_pos": 1294051,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1293415,
+          "distance_bp": 636,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs2736098",
+          "gwas_pos": 1293971,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1293415,
+          "distance_bp": 556,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs2853669",
+          "gwas_pos": 1295234,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1294272,
+          "distance_bp": 962,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs34094720",
+          "gwas_pos": 1293652,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1293415,
+          "distance_bp": 237,
+          "locus": "TERT"
+        },
+        {
+          "gwas_rsid": "rs7712562",
+          "gwas_pos": 1295957,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 1294962,
+          "distance_bp": 995,
+          "locus": "TERT"
+        }
+      ]
+    },
+    "MLH1": {
+      "chrom": "3",
+      "start": 36900000,
+      "end": 37100000,
+      "n_gwas_snps": 62,
+      "n_unique_rsids": 55,
+      "n_q2_overlaps": 1,
+      "traits": [],
+      "blindspot_overlaps": [
+        {
+          "gwas_rsid": "rs1800734",
+          "gwas_pos": 36993455,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 36993548,
+          "distance_bp": 93,
+          "locus": "MLH1"
+        }
+      ]
+    },
+    "CFTR": {
+      "chrom": "7",
+      "start": 117100000,
+      "end": 117400000,
+      "n_gwas_snps": 40,
+      "n_unique_rsids": 40,
+      "n_q2_overlaps": 0,
+      "traits": [],
+      "blindspot_overlaps": []
+    },
+    "SCN5A": {
+      "chrom": "3",
+      "start": 38500000,
+      "end": 38750000,
+      "n_gwas_snps": 105,
+      "n_unique_rsids": 105,
+      "n_q2_overlaps": 0,
+      "traits": [],
+      "blindspot_overlaps": []
+    },
+    "GJB2": {
+      "chrom": "13",
+      "start": 20150000,
+      "end": 20250000,
+      "n_gwas_snps": 13,
+      "n_unique_rsids": 13,
+      "n_q2_overlaps": 0,
+      "traits": [],
+      "blindspot_overlaps": []
+    },
+    "LDLR": {
+      "chrom": "19",
+      "start": 11050000,
+      "end": 11300000,
+      "n_gwas_snps": 258,
+      "n_unique_rsids": 258,
+      "n_q2_overlaps": 4,
+      "traits": [],
+      "blindspot_overlaps": [
+        {
+          "gwas_rsid": "rs57217136",
+          "gwas_pos": 11090448,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 11089549,
+          "distance_bp": 899,
+          "locus": "LDLR"
+        },
+        {
+          "gwas_rsid": "rs36218923",
+          "gwas_pos": 11088810,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 11089549,
+          "distance_bp": 739,
+          "locus": "LDLR"
+        },
+        {
+          "gwas_rsid": "rs17249141",
+          "gwas_pos": 11089332,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 11089549,
+          "distance_bp": 217,
+          "locus": "LDLR"
+        },
+        {
+          "gwas_rsid": "rs12981050",
+          "gwas_pos": 11089736,
+          "gwas_traits": [],
+          "gwas_p_value": "",
+          "q2_pos": 11089549,
+          "distance_bp": 187,
+          "locus": "LDLR"
+        }
+      ]
+    }
+  }
+}

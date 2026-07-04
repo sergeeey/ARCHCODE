@@ -1,0 +1,155 @@
+# Confidence Scoring Rules — Meta-Configuration
+#
+# Defines how individual pattern matches combine into confidence scores
+# and how severity thresholds are applied.
+#
+# Used by: validation_theater_detector.core._adjust_severity_by_confidence()
+#
+# Version: 1.0
+# Last Updated: 2026-05-16
+
+# Severity thresholds (confidence → severity mapping)
+severity_thresholds:
+  HIGH: 0.70    # confidence ≥ 0.70 → HIGH severity
+  MEDIUM: 0.40  # 0.40 ≤ confidence < 0.70 → MEDIUM
+  LOW: 0.00     # confidence < 0.40 → LOW
+
+# Confidence boost rules (when multiple patterns detected)
+multi_pattern_boost:
+  # Number of patterns → confidence boost
+  3: 0.15   # If ≥3 patterns in same file → +0.15 to all
+  5: 0.30   # If ≥5 patterns → +0.30
+  7: 0.40   # If ≥7 patterns → +0.40 (near certainty)
+
+# Pattern category weights (for meta-scoring)
+category_weights:
+  synthetic_markers: 1.0      # Base weight
+  perfect_metrics: 1.2        # Perfect metrics are stronger signal
+  zero_failures: 0.8          # Zero failures alone is weaker
+  embedded_test_data: 1.5     # Embedded data without source is strongest
+
+# Combination rules (pattern pairs that boost each other)
+# Format: [pattern1, pattern2] → boost_amount
+pattern_synergies:
+  # Synthetic marker + perfect metric = validation theater
+  - patterns: ["synthetic_markers.*", "perfect_metric.*"]
+    boost: 0.25
+    message: "Synthetic data generation + perfect metric → likely validation theater"
+
+  # Embedded test data + perfect F1 = high confidence theater
+  - patterns: ["embedded_test_data", "f1_perfect"]
+    boost: 0.30
+    message: "Embedded test data + perfect F1 → validation on hand-crafted examples"
+
+  # Multiple perfect metrics = overfitting or synthetic
+  - patterns: ["f1_perfect", "precision_perfect", "recall_perfect"]
+    min_matches: 2  # At least 2 of 3
+    boost: 0.20
+    message: "Multiple perfect metrics → likely synthetic validation"
+
+  # Random seed + perfect accuracy = synthetic validation
+  - patterns: [".*random_seed", "accuracy_100_percent"]
+    boost: 0.25
+    message: "Random seed + 100% accuracy → synthetic data validated as perfect"
+
+  # Zero failures + perfect metrics = suspicious
+  - patterns: ["zero_failure.*", "perfect_metric.*"]
+    boost: 0.15
+    message: "Zero failures + perfect metrics → tests too weak or data synthetic"
+
+# Evidence modifiers (reduce confidence if mitigating factors present)
+evidence_modifiers:
+  # External source cited nearby → reduce confidence
+  - name: external_source_cited
+    patterns:
+      - 'requests\.get\('
+      - 'pd\.read_csv\('
+      - 'https?://'
+      - 'api\.'
+    reduction: -0.30
+    message: "External data source cited — less likely to be synthetic"
+
+  # [VERIFIED-SYNTHETIC] marker present → reduce to LOW
+  - name: synthetic_marker_honest
+    patterns:
+      - '\[VERIFIED-SYNTHETIC\]'
+      - '\[SYNTHETIC\]'
+    reduction: -0.60
+    message: "Honest synthetic data disclosure — marked appropriately"
+
+  # Unit test context → reduce confidence
+  - name: unit_test_context
+    patterns:
+      - 'def test_'
+      - '@pytest\.'
+      - 'unittest\.'
+      - 'class.*Test'
+    reduction: -0.25
+    message: "Unit test context — synthetic data is expected"
+
+  # Toy dataset explicitly marked → reduce confidence
+  - name: toy_dataset_marked
+    patterns:
+      - 'toy dataset'
+      - 'demo purpose'
+      - 'proof of concept'
+    reduction: -0.20
+    message: "Toy dataset explicitly marked — not claiming validation"
+
+# Severity override rules (context-based)
+severity_overrides:
+  # If in validation section AND high confidence → force HIGH
+  - condition:
+      context_keywords: ["validation", "results", "performance"]
+      min_confidence: 0.60
+    severity: HIGH
+    message: "Validation context with high confidence → force HIGH severity"
+
+  # If in notebook cell with markdown "Validation" → force HIGH
+  - condition:
+      file_type: "ipynb"
+      cell_type: "markdown"
+      contains: ["Validation", "Results", "Performance"]
+    severity: HIGH
+    message: "Jupyter validation section → force HIGH severity"
+
+  # If README or docs → reduce to LOW (examples expected)
+  - condition:
+      file_patterns: ["README.*", "docs/.*", "examples/.*"]
+    max_severity: LOW
+    message: "Documentation/examples context — synthetic data expected"
+
+# Confidence decay (reduce confidence over distance from validation context)
+context_distance_decay:
+  # Lines away from validation keywords → confidence reduction
+  same_line: 0.0      # No reduction
+  within_5_lines: 0.0
+  within_10_lines: -0.10
+  within_20_lines: -0.20
+  beyond_20_lines: -0.30
+
+# Final confidence clamping
+confidence_bounds:
+  min: 0.0   # Never below 0
+  max: 1.0   # Never above 1
+
+# Reporting thresholds (what to include in output)
+reporting:
+  min_severity_to_report: LOW       # Report all findings ≥ LOW
+  max_findings_per_file: 50         # Cap at 50 findings per file
+  group_by_pattern: true            # Group similar findings
+  include_suggestions: true         # Always include remediation advice
+  include_context: true             # Include code snippet context
+  context_lines_before: 1           # Lines before match
+  context_lines_after: 1            # Lines after match
+
+# Meta-rules application order
+# 1. Calculate base confidence from pattern weight
+# 2. Apply multi-pattern boost
+# 3. Apply pattern synergies
+# 4. Apply evidence modifiers (reductions)
+# 5. Apply context distance decay
+# 6. Clamp to bounds [0.0, 1.0]
+# 7. Map confidence → severity via thresholds
+# 8. Apply severity overrides
+# 9. Filter by reporting thresholds

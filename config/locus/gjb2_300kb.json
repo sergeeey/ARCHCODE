@@ -1,0 +1,173 @@
+{
+  "id": "gjb2_300kb",
+  "name": "GJB2 300kb region (ENCODE K562 CTCF + H3K27ac)",
+  "description": "300kb window spanning the GJB2/GJB6/GJA3 connexin gene cluster on chr13q12.11. GJB2 (Connexin-26) mutations are the most common cause of autosomal recessive non-syndromic hearing loss (DFNB1A). GJB6 (Connexin-30) deletions (del(GJB6-D13S1830), 309kb) remove regulatory elements upstream of GJB2. CTCF sites from ENCODE K562 ChIP-seq (ENCFF736NYC, ENCSR000DWE, IDR narrowPeak, GRCh38). H3K27ac from ENCODE K562 (ENCFF864OSZ, ENCSR000AKP). NOTE: GJB2 is NOT expressed in K562 (cochlear/skin gene in erythroid cell line) — this is an intentional tissue-mismatch benchmark, similar to the SCN5A negative control. Expected: minimal ARCHCODE structural discrimination, confirming tissue-specificity requirement.",
+  "genome_assembly": "GRCh38",
+  "window": {
+    "chromosome": "chr13",
+    "start": 20050000,
+    "end": 20350000,
+    "resolution_bp": 1000,
+    "n_bins": 300
+  },
+  "features": {
+    "enhancers": [
+      {
+        "position": 20192938,
+        "occupancy": 0.3,
+        "name": "GJB2_TSS",
+        "source": "NCBI_RefSeq_TSS",
+        "note": "GJB2 transcription start site (XM_011535049.3, minus strand, TSS at txEnd=20,192,938). NOT expressed in K562 (cochlear/skin specific). MANUALLY CALIBRATED occupancy=0.3 reflecting non-expressing cell type — no H3K27ac at this position"
+      },
+      {
+        "position": 20161052,
+        "occupancy": 0.3,
+        "name": "GJA3_TSS",
+        "source": "NCBI_RefSeq_TSS",
+        "note": "GJA3 (Connexin-46) TSS (NM_021954.4, minus strand). Cataracts gene. Not expressed in K562"
+      },
+      {
+        "position": 20120388,
+        "occupancy": 0.5,
+        "name": "upstream_H3K27ac_1",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak (20,120,130-20,120,646, signal=9.29, -log10q=14.88). Near LOC105370101. Strongest H3K27ac in the window"
+      },
+      {
+        "position": 20119557,
+        "occupancy": 0.3,
+        "name": "upstream_H3K27ac_2",
+        "source": "ENCODE_K562_H3K27ac",
+        "encode_accession": "ENCFF864OSZ",
+        "note": "H3K27ac peak (20,119,040-20,120,074, signal=5.23, -log10q=6.41). Adjacent to upstream_H3K27ac_1"
+      }
+    ],
+    "ctcf_sites": [
+      {
+        "position": 20163575,
+        "orientation": "unknown",
+        "signal": 129.12,
+        "name": "GJA3_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strongest CTCF in window (20,163,504-20,163,646, signal=129.12). In GJA3 gene region"
+      },
+      {
+        "position": 20136940,
+        "orientation": "unknown",
+        "signal": 100.34,
+        "name": "upstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF upstream (20,136,891-20,136,988, signal=100.34). Near LOC124903128"
+      },
+      {
+        "position": 20189318,
+        "orientation": "unknown",
+        "signal": 70.72,
+        "name": "GJB2_promoter_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF near GJB2 (20,189,183-20,189,453, signal=70.72). ~3.5kb upstream of GJB2 TSS. Potential insulator/boundary element"
+      },
+      {
+        "position": 20182443,
+        "orientation": "unknown",
+        "signal": 69.71,
+        "name": "GJA3_GJB2_intergenic_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Strong CTCF between GJA3 and GJB2 (20,182,308-20,182,578, signal=69.71)"
+      },
+      {
+        "position": 20197538,
+        "orientation": "unknown",
+        "signal": 58.63,
+        "name": "GJB2_downstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF downstream of GJB2 (20,197,403-20,197,673, signal=58.63). ~4.5kb from GJB2 3' end"
+      },
+      {
+        "position": 20118336,
+        "orientation": "unknown",
+        "signal": 30.69,
+        "name": "far_upstream_CTCF",
+        "source": "ENCODE_K562_CTCF",
+        "encode_accession": "ENCFF736NYC",
+        "note": "Moderate CTCF far upstream (20,118,201-20,118,471, signal=30.69). Near LOC105370101. Co-localizes with H3K27ac peaks"
+      }
+    ],
+    "genes": [
+      { "name": "ZMYM2", "start": 19863839, "end": 20089115, "strand": "+" },
+      {
+        "name": "LINC01072",
+        "start": 20102700,
+        "end": 20103230,
+        "strand": "+"
+      },
+      {
+        "name": "LOC105370101",
+        "start": 20105327,
+        "end": 20119789,
+        "strand": "-"
+      },
+      {
+        "name": "LOC124903128",
+        "start": 20135583,
+        "end": 20138392,
+        "strand": "+"
+      },
+      { "name": "GJA3", "start": 20138254, "end": 20161052, "strand": "-" },
+      {
+        "name": "LOC107984553",
+        "start": 20178955,
+        "end": 20186191,
+        "strand": "-"
+      },
+      { "name": "GJB2", "start": 20187469, "end": 20192938, "strand": "-" },
+      { "name": "GJB6", "start": 20221961, "end": 20230859, "strand": "-" },
+      {
+        "name": "LOC105370102",
+        "start": 20295687,
+        "end": 20326221,
+        "strand": "+"
+      }
+    ]
+  },
+  "data_sources": {
+    "ctcf_chipseq": {
+      "experiment": "ENCSR000DWE",
+      "file": "ENCFF736NYC",
+      "type": "IDR thresholded narrowPeak",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 6,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000DWE/"
+    },
+    "h3k27ac_chipseq": {
+      "experiment": "ENCSR000AKP",
+      "file": "ENCFF864OSZ",
+      "type": "Pseudoreplicated peaks",
+      "cell_line": "K562",
+      "assembly": "GRCh38",
+      "peaks_in_window": 2,
+      "url": "https://www.encodeproject.org/experiments/ENCSR000AKP/"
+    },
+    "gene_annotations": {
+      "source": "UCSC ncbiRefSeq track via API",
+      "assembly": "GRCh38",
+      "verification": "VERIFIED 2026-03-04 via api.genome.ucsc.edu"
+    }
+  },
+  "clinical_significance": {
+    "_note": "GJB2 mutations cause DFNB1A (autosomal recessive non-syndromic hearing loss). Most common: c.35delG (p.Gly12ValfsTer2), c.167delT (p.Leu56ArgfsTer26), c.235delC (p.Leu79CysfsTer3). GJB6 del(GJB6-D13S1830) is a 309kb deletion removing regulatory elements.",
+    "disease": "DFNB1A (OMIM 220290)",
+    "inheritance": "Autosomal recessive",
+    "gene_function": "Gap junction protein, intercellular communication in cochlear hair cells"
+  },
+  "tissue_mismatch_note": "GJB2 is expressed in cochlear supporting cells, skin, and liver — NOT in K562 (erythroid). This is an INTENTIONAL tissue-mismatch benchmark, designed to test whether ARCHCODE shows reduced discrimination when the cell-type-specific regulatory landscape does not match the gene's expression pattern. Expected result: weak or null structural signal (similar to SCN5A cardiac gene in K562).",
+  "thresholds": null,
+  "_thresholds_note": "Not calibrated for 300x300 matrix. GJB2 is tissue-mismatched (cochlear gene in K562 erythroid) — expect reduced structural discrimination. Requires empirical calibration if sensitivity is sufficient."
+}

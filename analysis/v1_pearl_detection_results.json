@@ -1,0 +1,334 @@
+{
+  "all_features": {
+    "AUROC": 0.9867,
+    "AUPRC": 0.9614,
+    "Recall@top50": 0.96,
+    "Recall@top100": 0.96,
+    "n_features": 29
+  },
+  "structural_only": {
+    "AUROC": 0.9582,
+    "AUPRC": 0.8986,
+    "Recall@top50": 0.8933,
+    "Recall@top100": 0.8933,
+    "n_features": 7
+  },
+  "sequence_only": {
+    "AUROC": 0.9614,
+    "AUPRC": 0.6781,
+    "Recall@top50": 0.8133,
+    "Recall@top100": 0.9667,
+    "n_features": 3
+  },
+  "distance_only": {
+    "AUROC": 0.9532,
+    "AUPRC": 0.5246,
+    "Recall@top50": 0.8533,
+    "Recall@top100": 0.8933,
+    "n_features": 9
+  },
+  "no_structural": {
+    "AUROC": 0.9894,
+    "AUPRC": 0.9585,
+    "Recall@top50": 0.96,
+    "Recall@top100": 0.96,
+    "n_features": 22
+  },
+  "no_sequence": {
+    "AUROC": 0.9487,
+    "AUPRC": 0.9046,
+    "Recall@top50": 0.8933,
+    "Recall@top100": 0.8933,
+    "n_features": 26
+  },
+  "structural_plus_distance": {
+    "AUROC": 0.9346,
+    "AUPRC": 0.9042,
+    "Recall@top50": 0.8933,
+    "Recall@top100": 0.8933,
+    "n_features": 16
+  },
+  "verdict_auroc": "INCONCLUSIVE: neither feature set clearly dominates",
+  "verdict_recall": "COMPARABLE: both feature sets find similar pearl counts",
+  "delta_structural_auroc": -0.0027,
+  "delta_sequence_auroc": 0.038,
+  "feature_importance": [
+    {
+      "feature": "vep_score",
+      "importance": 0.3553,
+      "type": "sequence"
+    },
+    {
+      "feature": "delta_lssim",
+      "importance": 0.2965,
+      "type": "structural"
+    },
+    {
+      "feature": "lssim",
+      "importance": 0.2323,
+      "type": "structural"
+    },
+    {
+      "feature": "delta_insulation",
+      "importance": 0.1124,
+      "type": "structural"
+    },
+    {
+      "feature": "struct_disruption_ratio",
+      "importance": 0.0026,
+      "type": "structural"
+    },
+    {
+      "feature": "dist_to_lcr",
+      "importance": 0.0002,
+      "type": "distance"
+    },
+    {
+      "feature": "ssim",
+      "importance": 0.0002,
+      "type": "structural"
+    },
+    {
+      "feature": "cat_other",
+      "importance": 0.0002,
+      "type": "category"
+    },
+    {
+      "feature": "delta_ssim",
+      "importance": 0.0001,
+      "type": "structural"
+    },
+    {
+      "feature": "log_dist_tss",
+      "importance": 0.0001,
+      "type": "distance"
+    },
+    {
+      "feature": "dist_to_nearest_ctcf",
+      "importance": 0.0001,
+      "type": "distance"
+    },
+    {
+      "feature": "dist_to_tss",
+      "importance": 0.0001,
+      "type": "distance"
+    },
+    {
+      "feature": "log_dist_ctcf",
+      "importance": 0.0,
+      "type": "distance"
+    },
+    {
+      "feature": "cat_synonymous",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "log_dist_enhancer",
+      "importance": 0.0,
+      "type": "distance"
+    },
+    {
+      "feature": "dist_to_nearest_enhancer",
+      "importance": 0.0,
+      "type": "distance"
+    },
+    {
+      "feature": "log_dist_lcr",
+      "importance": 0.0,
+      "type": "distance"
+    },
+    {
+      "feature": "cadd_phred",
+      "importance": 0.0,
+      "type": "sequence"
+    },
+    {
+      "feature": "cat_frameshift",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "cat_missense",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "in_hbb_gene",
+      "importance": 0.0,
+      "type": "distance"
+    },
+    {
+      "feature": "loop_integrity",
+      "importance": 0.0,
+      "type": "structural"
+    },
+    {
+      "feature": "sift_score",
+      "importance": 0.0,
+      "type": "sequence"
+    },
+    {
+      "feature": "cat_nonsense",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "cat_splice",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "cat_3_prime_UTR",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "cat_5_prime_UTR",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "cat_promoter",
+      "importance": 0.0,
+      "type": "category"
+    },
+    {
+      "feature": "cat_non_coding",
+      "importance": 0.0,
+      "type": "category"
+    }
+  ],
+  "pearl_profile": {
+    "ssim": {
+      "pearl_mean": 0.9848,
+      "non_pearl_mean": 0.9934,
+      "ratio": 0.9914
+    },
+    "lssim": {
+      "pearl_mean": 0.907,
+      "non_pearl_mean": 0.9589,
+      "ratio": 0.9459
+    },
+    "delta_ssim": {
+      "pearl_mean": 0.0152,
+      "non_pearl_mean": 0.0066,
+      "ratio": 2.2893
+    },
+    "delta_lssim": {
+      "pearl_mean": 0.093,
+      "non_pearl_mean": 0.0411,
+      "ratio": 2.2625
+    },
+    "delta_insulation": {
+      "pearl_mean": 0.0484,
+      "non_pearl_mean": 0.025,
+      "ratio": 1.9365
+    },
+    "loop_integrity": {
+      "pearl_mean": 0.0,
+      "non_pearl_mean": 0.0,
+      "ratio": Infinity
+    },
+    "struct_disruption_ratio": {
+      "pearl_mean": 6.1006,
+      "non_pearl_mean": 5.6089,
+      "ratio": 1.0877
+    },
+    "vep_score": {
+      "pearl_mean": 0.1981,
+      "non_pearl_mean": 0.3444,
+      "ratio": 0.5754
+    },
+    "sift_score": {
+      "pearl_mean": 0.0,
+      "non_pearl_mean": 0.0068,
+      "ratio": 0.0
+    },
+    "cadd_phred": {
+      "pearl_mean": 12.3148,
+      "non_pearl_mean": 5.9509,
+      "ratio": 2.0694
+    },
+    "dist_to_nearest_enhancer": {
+      "pearl_mean": 658.3333,
+      "non_pearl_mean": 373.5855,
+      "ratio": 1.7622
+    },
+    "dist_to_tss": {
+      "pearl_mean": 658.3333,
+      "non_pearl_mean": 373.5855,
+      "ratio": 1.7622
+    },
+    "in_hbb_gene": {
+      "pearl_mean": 0.4444,
+      "non_pearl_mean": 0.9851,
+      "ratio": 0.4512
+    },
+    "log_dist_enhancer": {
+      "pearl_mean": 2.7813,
+      "non_pearl_mean": 2.4227,
+      "ratio": 1.148
+    },
+    "log_dist_tss": {
+      "pearl_mean": 2.7813,
+      "non_pearl_mean": 2.4227,
+      "ratio": 1.148
+    },
+    "cat_missense": {
+      "pearl_mean": 0.3333,
+      "non_pearl_mean": 0.1078,
+      "ratio": 3.092
+    },
+    "cat_nonsense": {
+      "pearl_mean": 0.0,
+      "non_pearl_mean": 0.0372,
+      "ratio": 0.0
+    },
+    "cat_splice": {
+      "pearl_mean": 0.037,
+      "non_pearl_mean": 0.0307,
+      "ratio": 1.2076
+    },
+    "cat_frameshift": {
+      "pearl_mean": 0.037,
+      "non_pearl_mean": 0.0911,
+      "ratio": 0.4067
+    },
+    "cat_synonymous": {
+      "pearl_mean": 0.0,
+      "non_pearl_mean": 0.0799,
+      "ratio": 0.0
+    },
+    "cat_3_prime_UTR": {
+      "pearl_mean": 0.0,
+      "non_pearl_mean": 0.0,
+      "ratio": Infinity
+    },
+    "cat_5_prime_UTR": {
+      "pearl_mean": 0.0,
+      "non_pearl_mean": 0.0,
+      "ratio": Infinity
+    },
+    "cat_promoter": {
+      "pearl_mean": 0.5556,
+      "non_pearl_mean": 0.0,
+      "ratio": Infinity
+    },
+    "cat_other": {
+      "pearl_mean": 0.037,
+      "non_pearl_mean": 0.6533,
+      "ratio": 0.0567
+    },
+    "cat_non_coding": {
+      "pearl_mean": 0.0,
+      "non_pearl_mean": 0.0,
+      "ratio": Infinity
+    }
+  },
+  "sequence_blind_spot": {
+    "total_pearls": 27,
+    "caught_by_vep_05": 0,
+    "caught_by_cadd_15": 15
+  }
+}

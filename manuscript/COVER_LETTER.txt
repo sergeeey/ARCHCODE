@@ -1,0 +1,41 @@
+COVER LETTER — ARCHCODE Manuscript v2
+
+To the Editors of bioRxiv,
+
+Please find enclosed our manuscript titled "Systematic Falsification of 3D Chromatin-Based Variant Pathogenicity Prediction: Why Category Annotation Saturates the Signal" for consideration as a preprint.
+
+CONTRIBUTION SUMMARY
+This work presents ARCHCODE, a computational framework designed to test six competing hypotheses about whether 3D chromatin structure predicts variant pathogenicity. We developed contact-matrix simulations based on loop-extrusion biophysics, tested them on 25,850 ClinVar variants across nine genomic loci, and systematically killed all chromatin-based hypotheses using pre-registered criteria.
+
+KEY FINDINGS
+1. Variant functional category alone (promoter vs missense vs splice site) predicts pathogenicity with AUC = 0.791
+2. Adding structural features (ARCHCODE LSSIM) yields ΔAUC = 0.001 — no predictive improvement
+3. All six 3D-based hypotheses failed independently; only the "category artifact" hypothesis survived
+4. ARCHCODE simulations correctly identified mechanism-specific patterns, but these are category-dependent, not category-independent
+
+SIGNIFICANCE & NOVELTY
+The null result is methodologically significant. We demonstrate:
+- Category-matched controls to eliminate confounding in genomic studies
+- Pre-registered hypothesis testing with git-timestamped kill criteria
+- Falsification-first research design that prioritizes honest reporting over publication bias
+
+This framework prevents wasted development on approaches already exhausted by prior hidden-fail files. Computational biologists will save months by learning which chromatin-based predictors we tested and why they failed.
+
+AUTHOR DECLARATION
+- Manuscript: completed and consistency-verified (text ↔ figures ↔ tables)
+- Synthetic data disclosure: ARCHCODE LSSIM scores marked [VERIFIED-SYNTHETIC] (seeded=42 for reproducibility)
+- References: 21 key papers (ClinVar, VEP, AlphaFold, TADs, category artifact precedent)
+- Reproducibility: pre-computed matrices archived at Zenodo (DOI: 10.5281/zenodo.18908214)
+- Code: version-controlled on GitHub with commit hashes linked to hypothesis test results
+
+AUTHOR DETAILS
+Sergey Kuchinsky
+Ronin Institute for Independent Scholarship (RIIS 2.0)
+ORCID: 0009-0009-2178-5701
+Email: sergeikuch80@gmail.com
+
+The manuscript is original, has not been previously published, and is not under consideration elsewhere.
+
+Respectfully submitted,
+Sergey Kuchinsky
+May 14, 2026

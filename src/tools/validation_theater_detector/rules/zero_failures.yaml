@@ -1,0 +1,229 @@
+# Zero-Failure Patterns — Detection Rules
+#
+# Detects claims of zero failures, perfect success rates, no edge cases.
+# Real-world data ALWAYS has edge cases — zero failures is a red flag.
+#
+# Based on: Skeptic Engine triggers, ТОП-10 postmortem
+#
+# Rule Format: same as synthetic_markers.yaml
+#
+# Version: 1.0
+# Last Updated: 2026-05-16
+
+rules:
+  # "All tests passed" variants
+  - id: all_tests_passed
+    pattern: 'all.*tests?\s+(passed|succeeded)'
+    severity: MEDIUM
+    weight: 0.30
+    message: "'All tests passed' claim detected"
+    suggestion: "Real data ALWAYS has edge cases. If truly 100%, cite dataset size and external source."
+    examples:
+      positive:
+        - "All tests passed"
+        - "All 10 tests succeeded"
+        - "all validation tests passed"
+      negative:
+        - "9/10 tests passed"  # Not all
+        - "Most tests passed"
+
+  # "Zero failures" variants
+  - id: zero_failures
+    pattern: '(zero|0)\s+failures?'
+    severity: MEDIUM
+    weight: 0.30
+    message: "Zero failures claim detected"
+    suggestion: "Zero failures across real data is suspicious — verify dataset source"
+    examples:
+      positive:
+        - "Zero failures"
+        - "0 failures detected"
+      negative:
+        - "2 failures"
+        - "Low failure rate"
+
+  # "100% success" variants
+  - id: hundred_percent_success
+    pattern: '100%\s+(success|passed|correct|accurate)'
+    severity: HIGH
+    weight: 0.35
+    message: "100% success rate claim detected"
+    suggestion: "Perfect success rates indicate synthetic data or trivial test suite"
+    examples:
+      positive:
+        - "100% success rate"
+        - "100% passed"
+        - "100% correct predictions"
+      negative:
+        - "98% success rate"
+        - "High success rate"
+
+  # "Perfect score" variants
+  - id: perfect_score_claim
+    pattern: 'perfect\s+(score|result|accuracy|performance)'
+    severity: MEDIUM
+    weight: 0.30
+    message: "Perfect score claim detected"
+    suggestion: "Perfect scores on real data are extremely rare"
+    examples:
+      positive:
+        - "Perfect score achieved"
+        - "Perfect accuracy"
+      negative:
+        - "Near-perfect score"
+        - "Almost perfect"
+
+  # "No errors found"
+  - id: no_errors_found
+    pattern: 'no\s+(errors?|mistakes?|issues?)\s+(found|detected)'
+    severity: LOW
+    weight: 0.20
+    message: "'No errors found' claim detected"
+    suggestion: "If across ≥5 test cases, this is suspicious — real data has edge cases"
+    examples:
+      positive:
+        - "No errors found"
+        - "No mistakes detected"
+      negative:
+        - "Few errors found"
+        - "Minimal errors"
+
+  # "No edge cases" claim
+  - id: no_edge_cases
+    pattern: 'no\s+edge\s+cases?'
+    severity: MEDIUM
+    weight: 0.25
+    message: "'No edge cases' claim detected"
+    suggestion: "Real-world data ALWAYS has edge cases — this suggests incomplete testing"
+    examples:
+      positive:
+        - "No edge cases found"
+        - "no edge case failures"
+      negative:
+        - "Few edge cases"
+        - "Edge cases handled"
+
+  # "No failures across N tests" (where N ≥ 5)
+  - id: no_failures_multiple_tests
+    pattern: 'no\s+failures?\s+(across|in|over)\s+\d{1,}\s+tests?'
+    severity: HIGH
+    weight: 0.40
+    message: "No failures across multiple tests claim"
+    suggestion: "Zero failures across ≥5 tests is validation theater unless dataset is trivial"
+    examples:
+      positive:
+        - "No failures across 10 tests"
+        - "no failures in 50 scenarios"
+      negative:
+        - "No failures in 1 test"  # Single test, OK
+        - "2 failures in 10 tests"
+
+  # "Every test passed"
+  - id: every_test_passed
+    pattern: 'every\s+(test|case|scenario|example)\s+passed'
+    severity: MEDIUM
+    weight: 0.30
+    message: "'Every test passed' claim detected"
+    suggestion: "If ≥5 tests, verify on real-world data — perfect pass rates are suspicious"
+    examples:
+      positive:
+        - "Every test passed"
+        - "every scenario passed successfully"
+      negative:
+        - "Almost every test passed"
+        - "Most tests passed"
+
+  # "No false positives/negatives"
+  - id: no_false_predictions
+    pattern: 'no\s+(false\s+(positives?|negatives?)|FP|FN)'
+    severity: MEDIUM
+    weight: 0.35
+    message: "Zero false positives/negatives claim"
+    suggestion: "FP=0 AND FN=0 only with synthetic data or category leakage"
+    examples:
+      positive:
+        - "No false positives"
+        - "No FP or FN"
+        - "zero false negatives"
+      negative:
+        - "Few false positives"
+        - "FP < 5%"
+
+  # "100% coverage" (test coverage OK, data coverage suspicious)
+  - id: hundred_percent_coverage
+    pattern: '100%\s+(data\s+)?coverage'
+    severity: LOW
+    weight: 0.15
+    message: "100% coverage claim detected"
+    suggestion: "If data coverage (not test coverage), verify completeness on real data"
+    context_required: true
+    context_keywords:
+      - "data"
+      - "validation"
+      - "examples"
+    examples:
+      positive:
+        - "100% data coverage"
+        - "100% coverage of validation set"
+      negative:
+        - "100% test coverage"  # Code coverage is OK
+        - "95% data coverage"
+
+# Context-specific rules
+context_rules:
+  # Zero failures claim + validation context → HIGH severity
+  - id: zero_failures_in_validation
+    base_pattern: "(zero|0)\s+failures?"
+    severity: HIGH  # Upgrade from MEDIUM
+    weight: 0.45
+    context_required: true
+    context_keywords:
+      - "validation"
+      - "test results"
+      - "performance"
+    message: "Zero failures in validation context → likely validation theater"
+    suggestion: "Validation on real data ALWAYS finds edge cases — verify data source"
+
+  # "All passed" across ≥5 examples → HIGH
+  - id: all_passed_multiple
+    pattern: 'all\s+\d+\s+(tests?|cases?|examples?)\s+passed'
+    severity: HIGH
+    weight: 0.40
+    message: "All tests passed (≥5 count) detected"
+    suggestion: "Perfect pass rate across multiple tests is validation theater red flag"
+    examples:
+      positive:
+        - "All 10 tests passed"
+        - "all 50 examples passed"
+      negative:
+        - "All 2 tests passed"  # Too few, not suspicious
+
+# Suppression rules (when zero failures is OK)
+suppression:
+  # Unit test context → suppress (zero failures expected in passing tests)
+  - context_patterns:
+      - 'def test_'
+      - '@pytest\.'
+      - 'unittest\.'
+    action: SUPPRESS
+    message: "Unit test context — zero failures expected for passing tests"
+
+  # CI/CD logs → suppress (zero failures means build passed)
+  - file_patterns:
+      - '.github/workflows/*'
+      - 'ci/*'
+      - '*.log'
+    action: SUPPRESS
+    message: "CI/CD context — zero failures means build success"
+
+  # [VERIFIED-SYNTHETIC] marker → reduce to LOW
+  - context_patterns:
+      - '\[VERIFIED-SYNTHETIC\]'
+      - '\[TOY-DATA\]'
+    action: REDUCE_TO_LOW
+    message: "Synthetic data disclosed — zero failures acknowledged as toy example"
+
+# Meta-rule: Count-based severity escalation
+# If claim specifies N tests and N ≥ 5 → escalate severity
+# If claim says "all" but nearby code shows N < 3 → reduce severity
+# Applied in core.py via context analysis

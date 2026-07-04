@@ -1,0 +1,11 @@
+ClinVar_ID,Locus,Position_GRCh38,Category,ARCHCODE_LSSIM,VEP_Score,Dist_Enhancer,ClinVar_Significance,Priority_Score
+VCV002024192,HBB,5226796,splice_acceptor,0.8218,0.2,528,Likely pathogenic,0.526
+VCV000869358,HBB,5226971,frameshift,0.7982,0.15,703,Pathogenic,0.523
+VCV000801186,HBB,5226598,missense,0.9088,0.2,330,Pathogenic/Likely pathogenic,0.517
+VCV000015259,HBB,5226598,missense,0.9088,0.2,330,Pathogenic; other,0.517
+VCV003766487,HBB,5226598,missense,0.9088,0.2,330,Pathogenic,0.517
+VCV000015208,HBB,5226613,missense,0.9104,0.2,345,Pathogenic,0.515
+VCV000446737,HBB,5226643,missense,0.9101,0.2,375,Pathogenic,0.512
+VCV000015319,HBB,5226643,missense,0.9101,0.2,375,Pathogenic; other,0.512
+VCV000869309,HBB,5226596,other,0.9395,0.2,328,Pathogenic,0.508
+VCV000015450,HBB,5226924,splice_region,0.9416,0.35,656,Pathogenic/Likely pathogenic,0.483

@@ -1,0 +1,61 @@
+To: elphege.nora@ucsf.edu
+Subject: ARCHCODE × AlphaGenome: Independent CAGE validation — wet-lab collaboration?
+
+Hi Elphège,
+
+Following up on our March exchange about ARCHCODE. I've completed an independent AlphaGenome CAGE validation on HBB disease variants:
+
+• Promoter pearls: -18% CAGE disruption vs -3.2% benign (p=2.8×10⁻⁴, Mann-Whitney U, N=13 vs N=19)
+• Real AlphaGenome API (predict_variant endpoint, SDK v0.6.0 — not mock)
+• Falsification-first controls: category-matched, permutation (10K), shuffled labels
+• Cross-locus test: MLH1 regulatory works (p=0.022), BRCA1/TP53 coding null (expected)
+
+The 73bp HBB promoter cluster (chr11:5227099-5227172, GRCh38) is a candidate for wet-lab validation. 15/20 structural fragility candidates cluster in this zone.
+
+Honest limitations disclosed upfront:
+- Category-matched validation: WEAK (ADR-027, May 8) — 15/20 pearls untestable (no non-pearl promoter controls exist in ClinVar HBB)
+- ARCHCODE × AlphaGenome concordance: NULL (ρ=0.077, p=0.67) — orthogonal mechanisms (3D structure vs promoter function)
+- Resolution mismatch: AlphaGenome contact maps null on SNVs (2048bp limit)
+- Cell-type mismatch: K562 used, HBB expressed in erythroid
+- No wet-lab validation yet (all computational)
+
+Given category-matched validation WEAK result (ADR-027), I'm pivoting to ISM hotspot discovery (functional validation, not positional enrichment claim). Would you be interested in collaboration on ISM-based variant prioritization?
+
+Potential wet-lab methods:
+- Tier 1 (fast): MPRA on 73bp cluster (15 variants × 3 replicates, ~$5K)
+- Tier 2 (medium): Capture Hi-C on HBB locus (structural validation, ~$10K)
+- Tier 3 (slow): Single-cell CAGE-seq on erythroid differentiation (~$20K)
+
+One-page brief attached (includes ADR log, null results, validation workflow).
+
+Brief highlights:
+- 6 honest null results documented (within-category AUC, Bayesian opt, dual-DL contact, router, 73bp category-matched, concordance)
+- ISM hotspot overlap: pearls enrich in AlphaGenome-sensitive positions (OR=6.7, p=0.0071)
+- ag-falsifier tool (open-source AlphaGenome validation harness, skeleton ready, alpha release May 22)
+- Mechanism specificity confirmed (regulatory loci work, coding loci null)
+
+Happy to discuss:
+- Limitations and controls
+- Experimental design
+- Priority variants for validation
+- Timeline and feasibility
+
+73bp category-matched test completed (WEAK) — pivoting to ISM hotspot validation as planned. Honest null result documented in ADR-027.
+
+Best,
+Sergey Boyko
+
+Independent Computational Researcher
+Ronin Institute RIIS 2.0 Fellow (confirmed April 21, 2026)
+Email: sergeikuch80@gmail.com
+ORCID: https://orcid.org/0009-0009-2178-5701
+GitHub: https://github.com/geoserg/archcode
+Zenodo: https://doi.org/10.5281/zenodo.18908214
+
+---
+
+Attachments:
+1. ARCHCODE_AlphaGenome_Brief_2026.pdf (1 page)
+2. alphagenome_pearl_vs_control.json (validation results)
+
+P.S. If you're too busy or not interested, totally understand — happy to share brief anyway for feedback on methodology.
