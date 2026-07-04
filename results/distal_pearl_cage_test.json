@@ -1,0 +1,128 @@
+{
+  "experiment": "distal pearl CAGE rescue-or-kill",
+  "date": "2026-07-04",
+  "assay": "AlphaGenome predict_variant CAGE K562, real ClinVar SNVs",
+  "pearls": [
+    {
+      "pos": 5226613,
+      "ref": "G",
+      "alt": "C",
+      "cat": "missense",
+      "cage_pct": -0.4228401482105255,
+      "is_pearl": true
+    },
+    {
+      "pos": 5226613,
+      "ref": "G",
+      "alt": "T",
+      "cat": "missense",
+      "cage_pct": 0.3427892327308655,
+      "is_pearl": true
+    }
+  ],
+  "controls": [
+    {
+      "pos": 5226580,
+      "ref": "G",
+      "alt": "C",
+      "cat": "missense",
+      "cage_pct": -0.07182177156209946,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226586,
+      "ref": "C",
+      "alt": "G",
+      "cat": "missense",
+      "cage_pct": 0.3097034990787506,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226587,
+      "ref": "T",
+      "alt": "C",
+      "cat": "missense",
+      "cage_pct": -0.16920840740203857,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226588,
+      "ref": "C",
+      "alt": "T",
+      "cat": "missense",
+      "cage_pct": -0.22235499322414398,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226590,
+      "ref": "G",
+      "alt": "A",
+      "cat": "missense",
+      "cage_pct": -0.3402797281742096,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226593,
+      "ref": "T",
+      "alt": "G",
+      "cat": "missense",
+      "cage_pct": -1.4793977737426758,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226594,
+      "ref": "C",
+      "alt": "A",
+      "cat": "missense",
+      "cage_pct": -2.2615160942077637,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226597,
+      "ref": "C",
+      "alt": "T",
+      "cat": "missense",
+      "cage_pct": -0.7107122540473938,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226598,
+      "ref": "G",
+      "alt": "T",
+      "cat": "missense",
+      "cage_pct": -0.0044955965131521225,
+      "is_pearl": false
+    },
+    {
+      "pos": 5226599,
+      "ref": "T",
+      "alt": "A",
+      "cat": "missense",
+      "cage_pct": 0.4221858084201813,
+      "is_pearl": false
+    }
+  ],
+  "summary": {
+    "pearl_n": 2,
+    "ctrl_n": 10,
+    "pearl_cage_pct": [
+      -0.4228401482105255,
+      0.3427892327308655
+    ],
+    "ctrl_cage_pct": [
+      -0.07182177156209946,
+      0.3097034990787506,
+      -0.16920840740203857,
+      -0.22235499322414398,
+      -0.3402797281742096,
+      -1.4793977737426758,
+      -2.2615160942077637,
+      -0.7107122540473938,
+      -0.0044955965131521225,
+      0.4221858084201813
+    ],
+    "pearl_mean": -0.04002545773983002,
+    "ctrl_mean": -0.4527897311374545,
+    "mannwhitney_p_pearl_more_disrupted": 0.696969696969697
+  }
+}

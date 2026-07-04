@@ -166,6 +166,71 @@ HBB Δ_pb = 0.111 vs все остальные 13 локусов: 0.000–0.019 
 
 ---
 
+## 🔴 RESCUE-OR-KILL RESOLVED (2026-07-04) → KILL
+
+**AlphaGenome CAGE negative control — the decisive test — resolved to KILL.**
+
+### Part 1: existing promoter scan re-analyzed as neg control [VERIFIED-REAL]
+- `results/alphagenome_ism_promoter.json` had 79 non-pearl positions with CAGE — neg control was already in the file
+- The −43% "headline" (pos 5227099) is the PEAK of a contiguous 6bp element 5227097-5227102
+- Non-pearls IN that element: 5227097 (−24.5%), 5227098 (−28.3%), 5227107 (−25.2%) — equally disruptive
+- Fisher rate<−20%: OR=14.5 p=0.004 (pearls enriched) BUT Mann-Whitney p=0.31 (pearls bimodal, class not different)
+- Spatial contiguity = core promoter element, pearl/non-pearl boundary cuts through it → NOT pearl-specific
+
+### Part 2: distal (non-promoter) pearls — new real-variant test [VERIFIED-REAL]
+- Only clean SNV distal pearl: 5226613 (G>C −0.42%, G>T +0.34%, mean −0.04%)
+- 10 matched non-pearl missense controls in zone: mean −0.45%, range −2.26% to +0.42%
+- Mann-Whitney p=0.70 — pearl NOT more disrupted (actually LESS than mean control)
+- splice/frameshift distal pearls (5226796, 5226971) untestable via CAGE (wrong assay)
+- Results: `results/distal_pearl_cage_test.json`
+
+### VERDICT: claim «pearls = 3D-structural class validated by 4 independent lines» FALSIFIED
+Every line collapses: GERP+phyloP=category confound; CAGE promoter=shared core element; CAGE distal=no signal.
+Consistent with April 2026 falsification (physics adds ~0 beyond category). Confirmed from 5 new angles this session.
+
+### Kill Analysis
+- **KILLED:** 4-line convergence; AlphaGenome independent validation; "novel structural class beyond category"
+- **NOT killed:** ARCHCODE=regulatory/promoter-variant flagger (100% promoter penetrance, but = category detection);
+  CTCF intra-loop geometry (descriptive fact); the falsification methodology itself (the real asset)
+- **Relaxation Map:** splice/frameshift distal pearls could be tested with SPLICING assay (not CAGE), but low prior —
+  splice pathogenicity already well-predicted by standard tools, not novel. Do not pursue without new rationale.
+- **Route:** REJECT → null_results/. Strategic pivot: negative result IS the contribution →
+  "category-confound audit of 3D-genomics variant scoring" (needs no wet lab, uses the rigor that is the real edge).
+
+## 🟢 SYSTEMATIC CATEGORY-CONFOUND RESULT (2026-07-04) — publishable negative result
+
+> ⚠️ NUMBERS BELOW ARE ON CONTAMINATED LABELS — SUPERSEDED. During Methods verification a label bug was found:
+> benchmark's Label mislabels 5,330 "Conflicting" as Pathogenic + 750 no-sig as Benign. CLEAN numbers
+> (exclude conflicting/uncertain → N=24,238): ARCHCODE marginal **0.754**→within **0.430** [0.419-0.440];
+> CADD **0.989**→**0.991**; category-only **0.827**; **7/8** loci collapse (HBB per-locus uncomputable after cleaning).
+> Result is STRONGER on clean labels. Abstract + figure regenerated on clean set. Use these, not the block below.
+
+
+**Scope test resolved: SYSTEMATIC across 9 loci, not HBB-only. Paper scope = systematic.**
+Data: `results/integrative_benchmark.csv` (30,318 variants, 9 loci, Category+Label+ARCHCODE_LSSIM+CADD+VEP).
+
+### Core result [VERIFIED-REAL]
+- ARCHCODE_LSSIM: marginal AUC=0.629 → **within-category (category-matched) AUC=0.442** (below chance)
+- Category ALONE baseline AUC=0.774 (beats ARCHCODE structural score)
+- Per-locus: 8/9 loci collapse to ~chance within category (BRCA1 .625→.510, CFTR .641→.528,
+  GJB2 .853→.400, HBB .975→.529, LDLR .592→.377, MLH1 .685→.505, SCN5A .589→.504, TERT .840→.446).
+  Only TP53 retains partial signal (.668→.620) — report honestly.
+
+### KILLER positive control [VERIFIED-REAL]
+- CADD: marginal 0.884 → within-category 0.881 (drop −0.002) — SURVIVES category matching
+- ARCHCODE: marginal 0.629 → within-category 0.442 (drop −0.187) — does NOT
+- → the category-matching test is VALID (CADD proves it preserves real signal); ARCHCODE's signal was category.
+- VEP_Score odd (0.482 both) — encoding footnote, CADD is the clean positive control.
+
+### Paper (upgraded scope)
+- Title dir: "3D-structural variant-effect scores carry no pathogenicity signal beyond variant category:
+  a systematic category-matched analysis across 9 disease loci"
+- Template: Grimm 2015 (Human Mutation, two types of circularity) — reframe "my method failed" → "field-wide trap"
+- Cite: Grimm 2015, Mind the Gap 2020, AlphaGenome limitations 2025 (PMC12440111), VEP benchmark 2025
+- Venue: NAR Genomics & Bioinformatics / Genome Research / Bioinformatics (up from F1000, now that it's systematic)
+- Honest caveats: TP53 partial signal; VEP encoding; ARCHCODE_LSSIM specifically (structural metric)
+- Next: related-work-writing → figure-generation (per-locus + CADD-control multi-panel) → paper-assembly
+
 ## Файлы
 
 - `taxonomy_paper/body_content.typ:1143` — dual-regime параграф добавлен

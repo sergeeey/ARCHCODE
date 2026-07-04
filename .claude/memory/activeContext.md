@@ -16,14 +16,22 @@
 - **LATE: gnomAD NULL + phyloP arbiter** — conservation lines (GERP+phyloP) COLLAPSED to category confound (promoter 88% vs intronic 84%). Only CTCF geometry survives clean. See session_results CRITICAL UPDATE.
 - Full session results: `.claude/memory/session_results_20260628.md`
 
-**Discovery status:** ⚠️ DOWNGRADED. «4 independent lines» was optimistic — GERP+phyloP confounded by category. Open question: does ARCHCODE add anything beyond «this is a promoter variant»?
+**Discovery status:** ❌ FALSIFIED (2026-07-04). Rescue-or-kill test = KILL. «4 independent lines» does not survive:
+GERP+phyloP = category confound; AlphaGenome CAGE promoter = shared 6bp core element (non-pearls equally hit);
+AlphaGenome CAGE distal = pearl≈controls (p=0.70, pearl LESS disruptive than mean control). Only CTCF geometry
+survives as descriptive. Consistent with April 2026 falsification (physics adds ~0 beyond category).
 
-**🔴 NEXT ACTION (TUESDAY, when Claude limits reset):**
-Run **AlphaGenome negative control** = RESCUE-OR-KILL test (NOT outreach yet).
-- ISM on matched non-pearl positions (incl. other conserved/promoter-adjacent) in HBB locus
-- −43% CAGE unique to pearls vs other conserved positions? → discovery lives. Else → ARCHCODE = promoter detector (April redux).
-- ~3-5h, real ISM calls. Do NOT start under 50% budget. Outreach to Nora ONLY after this passes.
-- Parked (do not expand): ATPH (LLPS condensates), QEC-MWPM (epistasis decoder) — both `[CANDIDATE]`, revive after ARCHCODE claim resolves.
+**✅ RESOLVED (2026-07-04): AlphaGenome rescue-or-kill test → KILL**
+- Existing promoter ISM scan re-analyzed as neg control: −43% was peak of contiguous 6bp element (5227097-5227102),
+  2 non-pearls in it equally disruptive (−24 to −28%). Fisher OR=14.5 but MW p=0.31 (pearls bimodal).
+- New distal test (real ClinVar SNVs): pearl 5226613 CAGE −0.04% vs 10 controls −0.45%, MW p=0.70. No signal.
+- Results: `results/distal_pearl_cage_test.json`, scratchpad `distal_pearl_cage_test.py`
+
+**🔴 NEXT ACTION:** Record REJECT to null_results/ with Kill Analysis. Then strategic pivot:
+the NEGATIVE result IS the contribution → «category-confound audit of 3D variant scoring» (methods/negative paper,
+needs no wet lab, uses the falsification rigor that is the real asset). Do NOT write to Nora with a positive claim.
+- What survives: ARCHCODE=regulatory-variant flagger (=category detection); CTCF intra-loop geometry (descriptive).
+- Parked (do not expand): ATPH, QEC-MWPM — `[CANDIDATE]`.
 
 ## 🔧 Session 2026-06-25: Manuscript Fixed for Submission (commit 703e398)
 
