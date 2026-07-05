@@ -1,11 +1,54 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-07-06
+**Last Updated:** 2026-07-05
 **Current Branch:** experiment/spectral-collapse-pilot
-**Session Focus:** Category-confound paper FINALIZED, flattened, backed up → **READY FOR RESEARCH SQUARE POST**
-**Reality source:** session 2026-07-06
+**Session Focus:** Category-confound preprint SUBMITTED to Research Square (rs-10254695) → PRESCREENING
+**Reality source:** session 2026-07-05
 
-## 📄 Session 2026-07-06: Paper flattened + off-site backup — user pausing on ARCHCODE after this
+## ✅ Session 2026-07-05: Preprint SUBMITTED — Research Square rs-10254695, status Prescreening
+
+**What happened:** User submitted the category-confound paper as a new, separate Research Square preprint.
+- Article ID: **rs-10254695** (URL: researchsquare.com/article/rs-10254695/private/draft)
+- Status as of submission: **Prescreening** (Research Square editorial suitability check, ~1-2 business days)
+- DOI: not yet assigned — will be issued once prescreen passes
+- Manuscript file uploaded: `manuscript/category_confound_paper_v2.docx` (built via docx-js, validated,
+  includes embedded Figure 1 with full caption)
+- Form choices made: Article type = Research Article; Area of study = Bioinformatics + Medical Genetics;
+  Sponsor/organizing institution (step 10) = SKIPPED (Ronin is affiliation, not a project sponsor — honest
+  call, field was optional); Funding = SKIPPED (no external funding); Ethics = both boxes unchecked (no
+  human subjects, no vertebrate animals — pure computational reanalysis of public ClinVar data); Competing
+  interests = "No, authors have no competing interests" (true — paper critiques author's OWN method,
+  proof against bias, not evidence of one).
+- Platform auto-flagged: Language Quality 8/10 "Above Average"; algorithmic journal recommendations shown
+  (Genome Biology, Nature Genetics) — these are NOT actionable now, purely suggestive, Nature Genetics is
+  unrealistic for this paper type, ignore until an actual post-preprint journal decision is made.
+- IMPORTANT CATCH mid-session: original off-site backup (`backup/snapshot-20260706`) was missing the
+  `results/` folder (figure PNG, stats JSON, benchmark CSVs) — code was there but not runnable without
+  data. Fixed: added 6 files via commit 7e83ed1, re-pushed. Paper's Data Availability section in
+  `category_confound_paper.md` now points to the exact branch:
+  https://github.com/sergeeey/ARCHCODE/tree/backup/snapshot-20260706 (not bare repo root, which shows
+  stale `main`). Re-verify this link before citing it anywhere else (e.g. cover letters, correspondence).
+- Also caught and declined: a marketing-email link to **SCIRP (Scientific Research Publishing)** —
+  confirmed via search this is a well-known predatory publisher (Cabells 2021, Norwegian Index rating 0).
+  Do not let user submit there under any circumstance if this resurfaces.
+
+**User signal (still valid — user is stepping away from ARCHCODE after this):** two years on one project,
+low sense of payoff, moving attention to other projects (GeoScan mentioned once, then reverted back to
+ARCHCODE same session — mild confusion/fatigue, resolved by asking directly). Do NOT push new ARCHCODE
+hypotheses or re-open old discovery threads (pearls, ATPH, QEC-MWPM) unprompted in future sessions.
+
+**🔴 NEXT (when user returns, in priority order):**
+1. Check Research Square dashboard for rs-10254695 — did it pass Prescreening? Is DOI assigned?
+2. Once DOI live: add an editorial note/comment on the OLD preprint rs-9090074 linking to the new DOI,
+   framed as self-correction/companion (rs-9090074's own Limitations already flagged category-driven AUC —
+   this is not a retraction, just don't skip this step or the two preprints look contradictory in isolation).
+3. Optional, not urgent: journal submission (check current APC/fee before committing to any venue — do not
+   quote remembered numbers, they drift).
+4. If the user does NOT bring up ARCHCODE next session, do not raise it either — respect the wind-down.
+
+---
+
+## 📄 Session 2026-07-06 (historical — superseded by submission above): Paper flattened + off-site backup
 
 **What was done:**
 - Reviewed old preprint rs-9090074 (`taxonomy_paper/abstract_content.typ`): it was ALREADY honest —
@@ -353,6 +396,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-04 23:08] `6726953`: docs(paper): flatten to single authoritative source + archive scaffolding
 - [2026-07-04 23:06] `efdad39`: fix(paper): full reviewer report response (7 major/minor) — data-tested first
 - [2026-07-04 22:18] `8dc9834`: fix(paper): reviewer response — category-granularity robustness + narrowed claims
 - [2026-07-04 22:07] `69fb031`: feat(figure): v2 money figure — 5 methods, two positive controls survive vs both ARCHCODE metrics collapse
