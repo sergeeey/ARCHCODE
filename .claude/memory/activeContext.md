@@ -2,10 +2,37 @@
 
 **Last Updated:** 2026-07-05
 **Current Branch:** experiment/spectral-collapse-pilot
-**Session Focus:** Category-confound preprint SUBMITTED to Research Square (rs-10254695) → PRESCREENING
+**Session Focus:** Preprint SUBMITTED (rs-10254695) + GitHub repo showcase audit done → **AWAITING PR MERGE**
 **Reality source:** session 2026-07-05
 
-## ✅ Session 2026-07-05: Preprint SUBMITTED — Research Square rs-10254695, status Prescreening
+## 📦 Session 2026-07-05 (part 2): GitHub showcase audit — repo README/description/topics
+
+**What was done (after preprint submission, same session):**
+- User asked to clean up the GitHub repo (description, topics/hashtags). Ran github-showcase-architect
+  skill (10-stage audit). Full report: `docs/GITHUB_SHOWCASE_AUDIT.md` (committed, on this branch).
+- **Key finding:** `main` branch's README/description/topics are stale — different variant counts than
+  the working branch (63,153/13 loci on main vs 26,225/9 loci locally), no mention of rs-10254695, topics
+  field is completely empty (`[]`).
+- **Executed (approved, "option A" only):** added a one-line pointer in `main`'s README (right after the
+  existing AUC-caveat callout) linking to rs-10254695 (status Prescreening) and to the
+  `backup/snapshot-20260706` branch with the reproducible code. Done via proper workflow — repo has a
+  branch-protection hook blocking direct commits to `main` (requires `feature/` prefix branch + PR).
+  Commit `19aeb56` on branch `feature/readme-link-new-preprint`, pushed to origin.
+- **🔴 PR NOT YET MERGED — user needs to do this manually:**
+  https://github.com/sergeeey/ARCHCODE/pull/new/feature/readme-link-new-preprint
+  (gh CLI auth is broken in this environment — 401 Bad credentials — cannot merge via API)
+- **NOT done (parked, user only approved option A):** repo description update, 12 topics, and the fuller
+  README merge (options B/C in the audit). Exact recommended description text + topics list are in
+  `docs/GITHUB_SHOWCASE_AUDIT.md` sections 5-6 — ready to paste via GitHub web UI "About" gear icon
+  whenever user wants, no session needed for that (2-minute manual task).
+- Minor hygiene note: during branch-switching this session, ~49 unrelated tracked files showed as
+  "modified" on `main` (residue from earlier orphan-branch operations) — did NOT touch/commit any of
+  them, only ever staged README.md explicitly. Harmless but worth a `git checkout main -- .` cleanup
+  in a future session if it recurs.
+
+---
+
+## ✅ Session 2026-07-05 (part 1): Preprint SUBMITTED — Research Square rs-10254695, status Prescreening
 
 **What happened:** User submitted the category-confound paper as a new, separate Research Square preprint.
 - Article ID: **rs-10254695** (URL: researchsquare.com/article/rs-10254695/private/draft)
@@ -396,6 +423,8 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-05 13:40] `87b7807`: docs(github): add showcase audit — description/topics recommendations + branch drift finding
+- [2026-07-05 13:00] `905c93b`: docs(memory): record Research Square submission — rs-10254695, Prescreening
 - [2026-07-04 23:08] `6726953`: docs(paper): flatten to single authoritative source + archive scaffolding
 - [2026-07-04 23:06] `efdad39`: fix(paper): full reviewer report response (7 major/minor) — data-tested first
 - [2026-07-04 22:18] `8dc9834`: fix(paper): reviewer response — category-granularity robustness + narrowed claims
