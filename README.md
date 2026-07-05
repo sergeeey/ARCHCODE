@@ -46,6 +46,13 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 > (internal falsification audit, verdict: NO-GO for AUC-as-independent-evidence). Only one
 > within-category signal survives correction (TP53 splice_region, AUC=0.69, FDR-corrected).
 > **Read the caveat before citing the 0.977 figure.**
+>
+> **Update (2026-07-05):** A systematic category-matched follow-up across all 9 loci — with two
+> positive controls (CADD, phyloP) confirming the test's validity — further confirms this confound
+> and has been submitted as a companion preprint on Research Square (ID: rs-10254695, status:
+> Prescreening; DOI pending). Reproducible code and data for that analysis are available now on the
+> [`backup/snapshot-20260706`](https://github.com/sergeeey/ARCHCODE/tree/backup/snapshot-20260706)
+> branch (not yet merged to `main`).
 
 ---
 
