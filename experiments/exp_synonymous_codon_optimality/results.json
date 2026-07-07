@@ -1,0 +1,25 @@
+{
+  "n_pathogenic_total": 829,
+  "n_benign_total": 5000,
+  "primary": {
+    "n_pathogenic": 825,
+    "n_benign": 4988,
+    "median_delta_usage_pathogenic": -7.5,
+    "median_delta_usage_benign": -3.1000000000000014,
+    "mann_whitney_U": 1747704.5,
+    "p_value": 3.943844831825355e-12,
+    "cliffs_delta": -0.15058953609875825,
+    "p_value_bh": 7.88768966365071e-12
+  },
+  "sensitivity_splice_distance_ge_10bp": {
+    "n_pathogenic": 288,
+    "n_benign": 4513,
+    "median_delta_usage_pathogenic": -5.699999999999999,
+    "median_delta_usage_benign": -3.1000000000000014,
+    "mann_whitney_U": 542009.5,
+    "p_value": 2.2500240005133895e-06,
+    "cliffs_delta": -0.16597499199842436,
+    "p_value_bh": 2.2500240005133895e-06
+  },
+  "mcid": "abs(cliffs_delta) >= 0.2 AND p_value_bh < 0.05"
+}

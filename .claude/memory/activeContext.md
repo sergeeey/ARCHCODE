@@ -1,22 +1,49 @@
 # Active Context — ARCHCODE
 
-**Last Updated:** 2026-07-02
-**Branch:** feat/archcode-sv-v1 (pushed to origin, incl. b463906..3859583, see git log).
+**Last Updated:** 2026-07-07
+**Branch:** feat/archcode-sv-v1 (pushed to origin through 8075c15, see git log / Auto-commit log below).
   main updated via integrity/merge-bioadv-readme → pushed 1b14805;
   manuscript reference/abstract fixes on integrity/fix-manuscript-refs → pushed 1137e9c.
 **GitHub:** https://github.com/sergeeey/ARCHCODE — all commits above confirmed on origin.
 
+## DONE (2026-07-07) — Hypothesis C: synonymous-variant codon-usage optimality, REJECT
+
+Ran the full pipeline for Hypothesis C (mRNA-stability/codon-optimality of ClinVar synonymous
+variants), the "1" from the user's "1 и 2 го" instruction (2 = gnomAD follow-up, done earlier,
+commit 8075c15). L0 gate (Predictive) + mandatory Novelty Check run first: broad mechanism
+(codon optimality -> mRNA decay -> disease) is NOT novel (Nature Rev Mol Cell Biol 2017;
+published multi-feature ensemble ClinVar predictors already exist, e.g. PMC7565489,
+PMC8682775) -- honestly reformulated to test the SINGLE simplest proxy (Delta codon-usage
+frequency alone, no other features) in isolation, matching this project's "test simple
+features before trusting complex ones" discipline.
+
+Real public data throughout: Kazusa human codon usage table, ClinVar genome-wide (829
+pathogenic / 685,044 benign synonymous SNVs -- benign subsampled to 5,000, seed=42,
+pre-registered before any VEP call), Ensembl VEP GRCh37 `codons` field, GENCODE v47lift37
+exon boundaries (splice-proximity sensitivity check).
+
+**Result: REJECT.** Primary Mann-Whitney/Cliff's delta = -0.151 (p_bh=7.9e-12), sensitivity
+(>=10bp from splice boundary) = -0.166 (p_bh=2.3e-6). Direction correct in both, highly
+"significant" by p-value, but BOTH below the pre-registered MCID (|delta|>=0.2) -- same
+"significant only due to large n, not practically meaningful" pattern as the orphan-enhancer
+null result. Notably the sensitivity check (splice-junction confound control) did NOT weaken
+the effect, arguing the small signal is real and not purely a splicing-proxy artifact -- just
+too small on its own to be useful, consistent with why published tools use it as one of many
+ensemble features rather than standalone. Filed to
+`null_results/20260707-synonymous-codon-optimality.md`. Engineering note: first VEP-annotation
+run died at 2850/5829 batches (my own error: combined an explicit Bash `timeout` with
+`run_in_background`, which still hard-kills at the timeout) with the cache only written at
+loop end -- lost all progress. Fixed `scripts/synonymous_codon_optimality_analysis.py` to
+save the VEP cache incrementally every batch and resume from partial cache; reran cleanly.
+
+Both items of "1 и 2 го" are now complete. Six `null_results/` entries total, 1
+CANDIDATE FLAGGED (BCL11A gnomAD lead, not yet functionally followed up), 0 confirmed
+positive discoveries -- but every negative result this session has a specific, mechanistic
+reason (genome build, gene-symbol contamination, wrong database class, underpowered
+subgroup, effect-size-below-practical-threshold), not just "didn't work."
+
 ## DONE (2026-07-02, commit 3859583) — Hypothesis B': BCL11A enhancer VUS search, INCONCLUSIVE
-
-Before running Hypothesis B (BCL11A erythroid enhancer + Casgevy connection) as originally
-proposed, ran the mandatory Novelty Check (falsification-ladder.md Step -3) and found it is
-NOT novel -- it's the foundational Bauer 2013 Science / Canver 2015 Nature literature that
-directly motivated the FDA-approved Casgevy therapy. Caught this BEFORE spending compute on
-"discovering" 12-year-old Science-paper-tier findings.
-
-Reformulated honestly to B': GWAS (which found this locus) structurally can't detect rare
-variants, only common ones -- are there rare ClinVar VUS at this exact locus that GWAS
-couldn't see? Anchored search window on rs1427407 (VEP-confirmed chr2:60,718,043, hg19),
+[summarized] Before running Hypothesis B (BCL11A erythroid enhancer + Casgevy connection) as originally
 covering all 3 published DHS sites.
 
 **Result: 0 VUS found.** Not a biological null -- ClinVar is structurally the wrong database
@@ -39,22 +66,7 @@ being reported as findings, and every negative result has a clear, specific reas
 subgroup. This is what the falsification-first methodology is supposed to produce.
 
 ## DONE (2026-07-02, commit 8120399) — GATA1 "pearl" from Hypothesis A retracted: REJECT
-
-Follow-up to the entry below (exp_enhancer_proximity_replication, was REPEAT with GATA1
-OR=10.83 flagged as a promising pearl). User asked to strengthen/replicate GATA1 before
-moving to a new hypothesis (B: BCL11A/Casgevy) -- this is exactly what killed it.
-
-**Root cause [VERIFIED-bash]:** `scripts/fetch_clinvar_erythroid_loci_hg19.py` selected
-ClinVar variants by genomic coordinate window (gene body +-50kb) only, never checking
-ClinVar's own `GeneSymbol` field. Inspecting the 14 "GATA1 pathogenic missense" variants
-individually found one VEP correctly attributes to **HDAC6**, not GATA1 -- a neighboring
-gene pulled in by the coordinate window in a gene-dense region of chrX.
-
-**Fix:** added GeneSymbol match filter. Re-ran full pipeline:
-- KLF1: 314/825 -> **22/67** variants (huge drop -- chr19 is the most gene-dense human
-  chromosome; most "KLF1 variants" were actually neighbors' variants)
-- GATA1: 72/194 -> 69/131 variants; **OR=10.83 signal completely disappeared**
-  (CMH-OR degenerate, Mann-Whitney p=0.49) once limited to true GATA1-annotated variants
+[summarized] Follow-up to the entry below (exp_enhancer_proximity_replication, was REPEAT with GATA1
 - BCL11A: unchanged (large gene, window ~= gene body, minimal contamination)
 
 **Final verdict: REJECT (0/3 loci meet MCID)**, filed to
@@ -77,18 +89,7 @@ result in this project as provisional by default until it survives at least one 
 re-check -- this has now happened 2/2 times this session.
 
 ## DONE (2026-07-02, commit 5029918) — exp_enhancer_proximity_replication: REPEAT (1/3 loci)
-
-Hypothesis A (from the post-audit hypothesis menu): does the ONE surviving strong signal in
-this project (enhancer proximity, OR=34.05 at HBB) replicate at other well-characterized
-erythroid loci (BCL11A, KLF1, GATA1)? Pre-registered per-locus test (not pooled), real VEP
-category-matched controls, FDR correction across 3 loci -- claim.md written before data.
-
-**Result: REPEAT, not PROMOTE/REJECT (1/3 loci meet MCID OR>=3 & FDR-p<0.05):**
-- **GATA1 (pearl, not yet confirmed):** OR=10.83, FDR-p=0.0003. Traced to source in the
-  category bucket breakdown -- driven ENTIRELY by the missense_variant stratum (13/14
-  pathogenic vs 30/55 benign close to a K562 H3K27ac peak). Two large lopsided categories
-  (frameshift 40/0, synonymous 0/109) mathematically contribute ZERO to the CMH statistic --
-  confirms category-stratification correctly prevented the exact confound that killed the
+[summarized] Hypothesis A (from the post-audit hypothesis menu): does the ONE surviving strong signal in
   original SNV/LSSIM project, rather than just diluting it. n=14 pathogenic missense is
   small -- a lead worth an independent replication cohort, not a confirmed finding yet.
 - **KLF1:** null, WRONG direction (benign variants closer to peaks than pathogenic),
@@ -111,18 +112,7 @@ variant set to replicate the missense-proximity signal without reusing the same 
 mRNA stability) from the same menu.
 
 ## DONE (2026-07-02, commit 768bf82) — Independent blind-spot audit + 2 follow-up null_results
-
-Ran 3 parallel Agent(Explore) audits, mutually blind (no shared context, didn't see each
-other or my own summary table), per the falsification-ladder.md "context asymmetry" rule.
-Findings (verified by hand where checkable, not taken on the agents' word alone):
-
-1. **"Loop That Stayed" hypothesis was never formally rejected** — `manuscript/LOOP_THAT_STAYED_HYPOTHESIS.md`
-   predicted 15-30% aberrant HBB splicing in 3'HS1-deletion clones; RNA-seq (GSE160420,
-   WT/B6/A2) showed 0.1% in all three — a real null, but it lived only in a deprecated
-   script comment, never filed to `null_results/`. **Now fixed**: `null_results/20260702-loop-that-stayed-splice-junction.md`.
-   **BUT**: the clone with the actual dramatic phenotype (D3, -36% HBB expression; B6 tested
-   here only shows -4%) was NEVER run through splice analysis — no FASTQ/junction data exists
-   for it anywhere in this repo. Completing it needs a STAR/HISAT2 alignment pipeline, not
+[summarized] Ran 3 parallel Agent(Explore) audits, mutually blind (no shared context, didn't see each
    available in this environment (verified: `which STAR/hisat2/salmon` all empty, no pysam).
    Marked REPEAT (partial), not full REJECT — this is a genuinely open question, not faked.
 
@@ -145,21 +135,7 @@ threads closed (one fully, one partially) and one specific "maybe we missed it" 
 (tissue-matching) explicitly tested and ruled out rather than left as an assumption.
 
 ## DONE (2026-07-02) — exp_orphan_enhancers: REJECT, filed to null_results/
-
-Hypothesis: are ClinVar VUS enriched near "orphan" enhancers (ABC-model target gene !=
-nearest gene) vs regular enhancers? Data: ABC model (Nasser 2021, 131 biosamples, 325MB,
-NOT in git — reproducible via `scripts/fetch_gencode_hg19_stranded.py` /
-`fetch_clinvar_vus_hg19.py`) + ClinVar VUS genome-wide (also NOT in git, same reason).
-
-**Three real bugs found and fixed before trusting any result** — a clean demonstration of
-verify-before-claim discipline surviving contact with a brand-new pipeline:
-1. GENCODE gene coords lacked strand → wrong TSS for ~49% of genes (minus-strand).
-2. **Genome build mismatch**: ABC predictions file is hg19/GRCh37, not hg38 — confirmed
-   empirically (NOC2L TSS in ABC file=894679 matches hg19=894689; hg38=959309, ~65kb miss).
-   Caused an implausible 85-91% "orphan" rate (lit. range ~30-40%) in two early runs.
-3. **`has_vus_overlap()` false-negative bug** (caught by `Agent(reviewer)`, not by me): a
-   fixed +-5-record window around a bisect insertion point silently missed wide-spanning
-   VUS (large CNVs/indels) behind dense variant clusters. Fixed with an exact O(log n)
+[summarized] Hypothesis: are ClinVar VUS enriched near "orphan" enhancers (ABC-model target gene !=
    running-max-end interval check, verified against the reviewer's exact failing case +
    4 more unit tests.
 
@@ -182,15 +158,7 @@ results file without checking it postdates the code/data it claims to summarize.
 ---
 
 ## ЧТО БЫЛО СДЕЛАНО (2026-07-01, часть 2) — Manuscript pre-submission checklist audit [VERIFIED-REAL]
-
-**Реальная точка сборки для Bioinformatics Advances submission:** `manuscript/main.typ`
-(верхнеуровневый) — включает `abstract_content.typ` + `taxonomy_paper/body_content.typ` +
-`references.typ` вместе. (НЕ `taxonomy_paper/main.typ` — та версия не используется.)
-
-**Найдено и исправлено (все DOI перепроверены через CrossRef API, не только WebFetch):**
-1. 4 ссылки: реальные авторы/тема, но неверный DOI/год/страницы —
-   Zhou (bioRxiv 2022→Nature Genetics 2018), Baralle (2018→2005), Fudenberg-Akita
-   (неверный DOI+подзаголовок), Avsec-AlphaGenome (404→Nature 2026, реальный DOI)
+[summarized] **Реальная точка сборки для Bioinformatics Advances submission:** `manuscript/main.typ`
 2. Temple et al. — **выдуманный список соавторов** (4 из 5 не имеют отношения к статье);
    также "in press" без DOI — прямое нарушение правила CLAUDE.md
 3. Zenodo DOI в Code/Data Availability указывал на чужой R-пакет → исправлен на
@@ -213,13 +181,7 @@ results file without checking it postdates the code/data it claims to summarize.
 ---
 
 ## ЧТО БЫЛО СДЕЛАНО (2026-07-01, часть 1) — Full audit + honest reconciliation [VERIFIED-REAL]
-
-**boyko-method полный аудит проекта** нашёл: (1) SNV LSSIM AUC=0.977 давно опровергнут внутри
-репо (2026-06-05), но никогда не долетал до README/GitHub; (2) уже существовала честная версия
-манускрипта на неслитой ветке `manuscript/bioadv-submission` (26.06); (3) пороги Step+2 подобраны
-глядя на ошибки на том же n=50 (fit-to-test-set); (4) `null_results/`/`parked/` никогда не
-использовались, хотя правила проекта их требуют.
-
+[summarized] **boyko-method полный аудит проекта** нашёл: (1) SNV LSSIM AUC=0.977 давно опровергнут внутри
 **Независимая валидация ARCHCODE-SV Step+2** (20 хромосом вне калибровки, n=44):
 FPR=22.7%, Recall=36.4% — HE соответствует MCID (FPR≤15% AND Recall≥65%), заявленному 2026-06-26.
 
@@ -242,7 +204,7 @@ classifier with CTCF-adjacency filter; physics computed but shown non-discrimina
 ---
 
 ## ЧТО БЫЛО СДЕЛАНО (2026-06-26) — Step +2 TAD-aware Gene Constraint [VERIFIED-REAL] `a02eeb5`
-[summarized] **ЦЕЛЬ ДОСТИГНУТА: FPR=8% (≤15%) AND Recall=68% (≥65%) на ClinVar n=50**
+[summarized] [summarized] **ЦЕЛЬ ДОСТИГНУТА: FPR=8% (≤15%) AND Recall=68% (≥65%) на ClinVar n=50**
 | FPR | 0.800 | 0.480 | **0.080** |
 | Recall | 0.760 | 0.680 | **0.680** |
 | Precision | 0.487 | 0.586 | **0.895** |
@@ -265,7 +227,7 @@ classifier with CTCF-adjacency filter; physics computed but shown non-discrimina
 ---
 
 ## ЧТО БЫЛО СДЕЛАНО (2026-06-26) — Step +1 gnomAD Gene Constraint [VERIFIED-REAL]
-[summarized] [summarized] ### Коммит: `6609526`
+[summarized] [summarized] [summarized] ### Коммит: `6609526`
 - `data/input/gencode_genes_chr2_7_17.json` — GENCODE v47, 3,368 protein-coding генов на chr2/7/17
 - `scripts/archcode_sv.py` — добавлены `load_gene_constraint()` + `find_hi_genes()` + параметр `gene_constraint` в `score_sv()`
 - `scripts/clinvar_step1_analysis.py` — применяет Step +1 к clinvar_results.json
@@ -302,8 +264,9 @@ Original ARCHCODE = SNV pathogenicity predictor. Проблема: global AUC 0.
 
 
 
+
 ## ARCHCODE-SV: что реализовано
-[summarized] [summarized] [summarized] [summarized] [summarized] **Файл:** `scripts/archcode_sv.py`
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] **Файл:** `scripts/archcode_sv.py`
    - duplication: дублируем CTCF
 4. boundary_delta() — ratio = cross_mut / cross_wt у сайта изменённого CTCF
 5. Verdict: ratio > 1.35 → DISRUPTED (pathogenic), иначе → INTACT (benign)
@@ -326,7 +289,7 @@ N_BINS     = 200    # 1Mb window
 ---
 
 ## Benchmarks: результаты
-[summarized] [summarized] [summarized] [summarized] [summarized] ### Primary: Lupiáñez 2015 (EPHA4 locus, chr2) — 5/5
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] ### Primary: Lupiáñez 2015 (EPHA4 locus, chr2) — 5/5
 | Path_SOX9_large | del chr17:69.8-71.5 Mb | 1.629 | DISRUPTED | ✅ |
 | Ben_SOX9_desert | del chr17:71.1-71.9 Mb | 1.300 | INTACT | ✅ |
 | Ben_SOX9_inv | inv chr17:71.2-71.8 Mb | 1.300 | INTACT | ✅ |
@@ -369,8 +332,9 @@ N_BINS     = 200    # 1Mb window
 
 
 
+
 ## Структура ключевых файлов
-[summarized] [summarized] [summarized] [summarized] [summarized] (empty section)
+[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] (empty section)
 ```
 scripts/
   archcode_sv.py              ← ARCHCODE-SV: физический движок для SVs (НОВЫЙ)
@@ -409,6 +373,7 @@ results/p5_instrument/
 
 
 
+
 ## История сессий (краткая)
 
 - **2026-03-08:** bioRxiv submission v2.16, Paper 3 skeleton
@@ -423,7 +388,9 @@ results/p5_instrument/
 
 
 
+
 ## Auto-commit log
+[summarized] - [2026-07-03 16:49] `8075c15`: feat: gnomAD follow-up on exp_bcl11a_enhancer_vus вЂ” 1 concrete candidate flagged
 - [2026-07-03 16:31] `e2c5085`: docs: update activeContext with Hypothesis B' results and full session arc
 - [2026-07-03 16:30] `3859583`: feat: exp_bcl11a_enhancer_vus вЂ” Hypothesis B' (honest reformulation of BCL11A/Casgevy idea)
 - [2026-07-03 16:08] `ffcdbf5`: docs: document GATA1 pearl retraction and reusable GeneSymbol-filter lesson
