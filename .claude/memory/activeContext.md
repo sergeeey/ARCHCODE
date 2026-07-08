@@ -1,16 +1,34 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-07-05
+**Last Updated:** 2026-07-08
 **Current Branch:** experiment/spectral-collapse-pilot
-**Session Focus:** Preprint SUBMITTED (rs-10254695) + GitHub repo showcase audit done → **AWAITING PR MERGE**
-**Reality source:** session 2026-07-05
+**Session Focus:** ⏸️ **PROJECT PAUSED (2026-07-08).** Preprint LIVE — DOI 10.21203/rs.3.rs-10254695/v1. User's explicit final decision: NO v2, NO editorial note, nothing further on ARCHCODE. AI-disclosure rule is saved for the NEXT paper (patterns.md [REPEAT] + Obsidian knowledge/research/AI-disclosure-in-submissions.md) — apply it THEN, not retroactively here. Declarations text is already staged in the manuscript source if ever needed. Do NOT raise new ARCHCODE work unprompted.
+**Reality source:** session 2026-07-08 (Research Square DOI email + user pause decision)
+
+## 🔍 Session 2026-07-05 (part 3): Harvest/Capture sweep
+
+- 2026-07-05: harvest scan (7 questions) + capture routing done. 2 reusable patterns captured →
+  `~/.claude/memory/_auto/patterns.md` (stratified-eval-with-positive-control; docx-not-PDF for
+  Research Square). 1 open research question → `~/.claude/memory/knowledge/projects/ARCHCODE/pearl_registry/INDEX.md`
+  (TP53 sole surviving within-category signal, next_check 2026-08-01). AlphaGenome wrapper + GitHub
+  showcase methodology assessed but did NOT pass Zero-Signal Gate (code reuse / successful tool use,
+  not new falsifiable claims) — intentionally not captured, not an oversight.
+- 2026-07-06: harvest-capture re-run (user asked "may we find something else"). 2 NEW process assets
+  captured → `~/.claude/memory/_auto/patterns.md`: [REPEAT][HIGH] portable integrity-protocol
+  (CLAUDE.md + integrity-checker, "вынести во все research-репо"); [REPEAT] self-correcting companion
+  preprint (rs-9090074 → rs-10254695, honest: reputational payoff not yet measured). ALSO: the
+  "skill run without checking its assumption" [AVOID] pattern RECURRED (harvest asked 7 Qs on a project
+  Claude ran all session) → incremented to [×2] in patterns.md; at [×3] → fix the harvest skill itself.
+- 2026-07-08: rs-10254695 LIVE (DOI 10.21203/rs.3.rs-10254695/v1). **Compliance flag:** manuscript was
+  submitted WITHOUT AI/LLM disclosure (required by RS Editorial Policy §1.3 + ICMJE + own CLAUDE.md) —
+  grep of category_confound_paper.md found no AI/Claude mention. Fix in **revision v2** (Methods line +
+  Competing Interests + Data Availability). General reusable rule captured → patterns.md [REPEAT]
+  "disclose AI in every submission" + Obsidian knowledge/research/AI-disclosure-in-submissions.md.
+  Editorial note on rs-9090074 (Comment, not new version) still pending manual paste.
+
 
 ## 📦 Session 2026-07-05 (part 2): GitHub showcase audit — repo README/description/topics
-
-**What was done (after preprint submission, same session):**
-- User asked to clean up the GitHub repo (description, topics/hashtags). Ran github-showcase-architect
-  skill (10-stage audit). Full report: `docs/GITHUB_SHOWCASE_AUDIT.md` (committed, on this branch).
-- **Key finding:** `main` branch's README/description/topics are stale — different variant counts than
+[summarized] **What was done (after preprint submission, same session):**
   the working branch (63,153/13 loci on main vs 26,225/9 loci locally), no mention of rs-10254695, topics
   field is completely empty (`[]`).
 - **Executed (approved, "option A" only):** added a one-line pointer in `main`'s README (right after the
@@ -33,27 +51,7 @@
 ---
 
 ## ✅ Session 2026-07-05 (part 1): Preprint SUBMITTED — Research Square rs-10254695, status Prescreening
-
-**What happened:** User submitted the category-confound paper as a new, separate Research Square preprint.
-- Article ID: **rs-10254695** (URL: researchsquare.com/article/rs-10254695/private/draft)
-- Status as of submission: **Prescreening** (Research Square editorial suitability check, ~1-2 business days)
-- DOI: not yet assigned — will be issued once prescreen passes
-- Manuscript file uploaded: `manuscript/category_confound_paper_v2.docx` (built via docx-js, validated,
-  includes embedded Figure 1 with full caption)
-- Form choices made: Article type = Research Article; Area of study = Bioinformatics + Medical Genetics;
-  Sponsor/organizing institution (step 10) = SKIPPED (Ronin is affiliation, not a project sponsor — honest
-  call, field was optional); Funding = SKIPPED (no external funding); Ethics = both boxes unchecked (no
-  human subjects, no vertebrate animals — pure computational reanalysis of public ClinVar data); Competing
-  interests = "No, authors have no competing interests" (true — paper critiques author's OWN method,
-  proof against bias, not evidence of one).
-- Platform auto-flagged: Language Quality 8/10 "Above Average"; algorithmic journal recommendations shown
-  (Genome Biology, Nature Genetics) — these are NOT actionable now, purely suggestive, Nature Genetics is
-  unrealistic for this paper type, ignore until an actual post-preprint journal decision is made.
-- IMPORTANT CATCH mid-session: original off-site backup (`backup/snapshot-20260706`) was missing the
-  `results/` folder (figure PNG, stats JSON, benchmark CSVs) — code was there but not runnable without
-  data. Fixed: added 6 files via commit 7e83ed1, re-pushed. Paper's Data Availability section in
-  `category_confound_paper.md` now points to the exact branch:
-  https://github.com/sergeeey/ARCHCODE/tree/backup/snapshot-20260706 (not bare repo root, which shows
+[summarized] **What happened:** User submitted the category-confound paper as a new, separate Research Square preprint.
   stale `main`). Re-verify this link before citing it anywhere else (e.g. cover letters, correspondence).
 - Also caught and declined: a marketing-email link to **SCIRP (Scientific Research Publishing)** —
   confirmed via search this is a well-known predatory publisher (Cabells 2021, Norwegian Index rating 0).
@@ -76,10 +74,7 @@ hypotheses or re-open old discovery threads (pearls, ATPH, QEC-MWPM) unprompted 
 ---
 
 ## 📄 Session 2026-07-06 (historical — superseded by submission above): Paper flattened + off-site backup
-
-**What was done:**
-- Reviewed old preprint rs-9090074 (`taxonomy_paper/abstract_content.typ`): it was ALREADY honest —
-  its own Limitations said "AUC primarily category-driven, within-category near chance (0.52),
+[summarized] **What was done:**
   matched-control p=0.996". Decision: do NOT withdraw/kill it — new paper is a companion/self-correction,
   not a refutation of fabricated data. No fabrication ever occurred.
 - `manuscript/category_confound_paper.md` is now the SOLE authoritative source (v2). Section scaffolding
@@ -102,21 +97,7 @@ If they return, lead with "post the preprint" as the one remaining action, not n
    before committing — do not quote remembered numbers).
 
 ## 🔬 Session 2026-06-28: Discovery Audit — 4 Converging Lines [VERIFIED]
-
-**What was done:**
-- H_CSI, H_buffer: REJECTED (no signal without HBB at N=14)
-- tissue_match: borderline r=0.53/ρ=0.48 — HBB leverage confirmed
-- Dual-regime paragraph added to Discussion (`taxonomy_paper/body_content.typ:1143`)
-- **NEW: GERP conservation test** — 94.1% pearl positions in evolutionarily constrained elements (OR=40, p≈0) [VERIFIED-REAL]
-- **NEW: CTCF motif test** — NEGATIVE: pearls at 21.6-22.2kb from CTCF peaks → **intra-loop mechanism confirmed**
-- **LATE: gnomAD NULL + phyloP arbiter** — conservation lines (GERP+phyloP) COLLAPSED to category confound (promoter 88% vs intronic 84%). Only CTCF geometry survives clean. See session_results CRITICAL UPDATE.
-- Full session results: `.claude/memory/session_results_20260628.md`
-
-**Discovery status:** ❌ FALSIFIED (2026-07-04). Rescue-or-kill test = KILL. «4 independent lines» does not survive:
-GERP+phyloP = category confound; AlphaGenome CAGE promoter = shared 6bp core element (non-pearls equally hit);
-AlphaGenome CAGE distal = pearl≈controls (p=0.70, pearl LESS disruptive than mean control). Only CTCF geometry
-survives as descriptive. Consistent with April 2026 falsification (physics adds ~0 beyond category).
-
+[summarized] **What was done:**
 **✅ RESOLVED (2026-07-04): AlphaGenome rescue-or-kill test → KILL**
 - Existing promoter ISM scan re-analyzed as neg control: −43% was peak of contiguous 6bp element (5227097-5227102),
   2 non-pearls in it equally disruptive (−24 to −28%). Fisher OR=14.5 but MW p=0.31 (pearls bimodal).
@@ -152,6 +133,7 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 **Next:** write cover letter → submit to Bioinformatics Advances
 
 ---
+
 
 
 
@@ -332,6 +314,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 
 
+
 ## ⚠️ Critical Constraints (CORRECTED)
 
 **DO NOT:**
@@ -350,6 +333,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 - ✅ Disclose limitations honestly (N=1 robust, garden of forking paths, Gelman & Loken)
 
 ---
+
 
 
 
@@ -399,6 +383,7 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 
 
+
 ## 📖 Context for Next Session
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 - Research Square LIVE since May 18 ✅
@@ -423,6 +408,9 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-08 14:53] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
+- [2026-07-08 14:39] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
+- [2026-07-05 13:40] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
 - [2026-07-05 13:40] `87b7807`: docs(github): add showcase audit — description/topics recommendations + branch drift finding
 - [2026-07-05 13:00] `905c93b`: docs(memory): record Research Square submission — rs-10254695, Prescreening
 - [2026-07-04 23:08] `6726953`: docs(paper): flatten to single authoritative source + archive scaffolding
