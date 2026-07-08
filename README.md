@@ -380,21 +380,25 @@ For Codex-assisted tasks, use:
 
 ## Preprint
 
-Manuscript prepared for submission to **arXiv** (q-bio.GN). Preprint pending — citation will be updated upon assignment.
+The evaluation of ARCHCODE reported here is available as a preprint (not peer-reviewed) on Research Square:
 
-> Boyko, S.V. (2026). ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural Pathogenicity Invisible to Sequence-Based Predictors — Evidence from 30,318 ClinVar Variants across Nine Genomic Loci. _arXiv_ q-bio.GN (preprint pending).
+> Boyko, S.V. (2026). Apparent 3D-structural variant-effect signal is explained by variant category, not structure: a category-matched evaluation across nine disease loci. _Research Square_, preprint. DOI: [10.21203/rs.3.rs-10254695/v1](https://doi.org/10.21203/rs.3.rs-10254695/v1)
+
+Companion (earlier ARCHCODE taxonomy preprint): DOI [10.21203/rs.3.rs-9090074/v1](https://doi.org/10.21203/rs.3.rs-9090074/v1).
 
 ## Citation
 
 ```bibtex
-@article{boyko2026archcode,
-  title   = {ARCHCODE: 3D Chromatin Loop Extrusion Simulation Reveals Structural
-             Pathogenicity Invisible to Sequence-Based Predictors ---
-             Evidence from 30,318 ClinVar Variants across Nine Genomic Loci},
+@article{boyko2026category,
   author  = {Boyko, Sergey V.},
+  title   = {Apparent 3D-structural variant-effect signal is explained by variant
+             category, not structure: a category-matched evaluation across nine
+             disease loci},
   year    = {2026},
-  note    = {arXiv preprint q-bio.GN (pending)},
-  url     = {https://github.com/sergeeey/ARCHCODE}
+  journal = {Research Square},
+  note    = {Preprint},
+  doi     = {10.21203/rs.3.rs-10254695/v1},
+  url     = {https://doi.org/10.21203/rs.3.rs-10254695/v1}
 }
 ```
 

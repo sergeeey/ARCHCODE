@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use ARCHCODE or its findings, please cite the preprint below."
+title: ARCHCODE
+abstract: "Analytical 3D chromatin structural-perturbation framework and falsification-first validation suite for honest evaluation of 3D-genome variant-effect models."
+authors:
+  - family-names: Boyko
+    given-names: Sergey V.
+    orcid: "https://orcid.org/0009-0009-2178-5701"
+repository-code: "https://github.com/sergeeey/ARCHCODE"
+license: MIT
+preferred-citation:
+  type: article
+  title: "Apparent 3D-structural variant-effect signal is explained by variant category, not structure: a category-matched evaluation across nine disease loci"
+  authors:
+    - family-names: Boyko
+      given-names: Sergey V.
+      orcid: "https://orcid.org/0009-0009-2178-5701"
+  year: 2026
+  journal: "Research Square"
+  notes: "Preprint"
+  doi: "10.21203/rs.3.rs-10254695/v1"
+  url: "https://doi.org/10.21203/rs.3.rs-10254695/v1"
