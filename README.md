@@ -49,8 +49,8 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 >
 > **Update (2026-07-05):** A systematic category-matched follow-up across all 9 loci — with two
 > positive controls (CADD, phyloP) confirming the test's validity — further confirms this confound
-> and has been submitted as a companion preprint on Research Square (ID: rs-10254695, status:
-> Prescreening; DOI pending). Reproducible code and data for that analysis are available now on the
+> and has been posted as a companion preprint on Research Square (ID: rs-10254695,
+> DOI: [10.21203/rs.3.rs-10254695/v1](https://doi.org/10.21203/rs.3.rs-10254695/v1)). Reproducible code and data for that analysis are available now on the
 > [`backup/snapshot-20260706`](https://github.com/sergeeey/ARCHCODE/tree/backup/snapshot-20260706)
 > branch (not yet merged to `main`).
 
