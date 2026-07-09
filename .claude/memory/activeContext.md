@@ -19,12 +19,21 @@
   preprint (rs-9090074 → rs-10254695, honest: reputational payoff not yet measured). ALSO: the
   "skill run without checking its assumption" [AVOID] pattern RECURRED (harvest asked 7 Qs on a project
   Claude ran all session) → incremented to [×2] in patterns.md; at [×3] → fix the harvest skill itself.
-- 2026-07-08: rs-10254695 LIVE (DOI 10.21203/rs.3.rs-10254695/v1). **Compliance flag:** manuscript was
-  submitted WITHOUT AI/LLM disclosure (required by RS Editorial Policy §1.3 + ICMJE + own CLAUDE.md) —
-  grep of category_confound_paper.md found no AI/Claude mention. Fix in **revision v2** (Methods line +
-  Competing Interests + Data Availability). General reusable rule captured → patterns.md [REPEAT]
-  "disclose AI in every submission" + Obsidian knowledge/research/AI-disclosure-in-submissions.md.
-  Editorial note on rs-9090074 (Comment, not new version) still pending manual paste.
+- 2026-07-08 (DOI-live wrap-up + PAUSE): rs-10254695 LIVE (DOI 10.21203/rs.3.rs-10254695/v1, Prescreening
+  passed ~2 days). Commits this session:
+  · `f4c8ca6` (D:/ДНК `feature/readme-link-new-preprint`, pushed) — README callout DOI fix
+  · `da9e072` (same branch, pushed) — CITATION.cff + README Preprint/Citation now cite rs-10254695
+    (were citing a NEVER-published arXiv paper — stale). Done via `git worktree` (hook kept re-dirtying
+    activeContext, blocking checkout).
+  · `ac96ad2`, `635f51c` (~/.claude `fix/quality-v13`, LOCAL only — that repo has NO git remote) —
+    harvest-capture `--auto` fix; [REPEAT] "disclose AI in every submission"; integrity/self-correction patterns
+  · `705fb59` (D:/ДНК) — PAUSE record
+  DECISIONS (final): NO v2, NO editorial note now — AI-disclosure DEFERRED to the NEXT paper (rule saved in
+  patterns.md + Obsidian). Declarations text (Competing Interests + Funding + Use of AI) staged in manuscript
+  source `category_confound_paper.md` §8, UNCOMMITTED. dotfiles `~/.claude` has NO remote → memory commits
+  stay local (safe, by design — user confirmed).
+  OPEN (user-side, optional, non-blocking): merge PR `feature/readme-link-new-preprint` → main (gh auth broken
+  here) to make DOI callout + "Cite this repository" button live on the public repo. **PROJECT PAUSED.**
 
 
 ## 📦 Session 2026-07-05 (part 2): GitHub showcase audit — repo README/description/topics
@@ -408,6 +417,8 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-07-08 15:15] `705fb59`: docs(memory): ARCHCODE paused — preprint live (DOI rs-10254695/v1), no further action
+- [2026-07-08 15:10] `705fb59`: docs(memory): ARCHCODE paused — preprint live (DOI rs-10254695/v1), no further action
 - [2026-07-08 14:53] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
 - [2026-07-08 14:39] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
 - [2026-07-05 13:40] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
