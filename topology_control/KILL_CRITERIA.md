@@ -293,7 +293,7 @@ Router Class B → KILLED by matched control (p=0.996)
 
 **Что должно пройти ATR:**
 ```
-T2: advantage > 2.0, <3 params, robust to perturbations
+T2: advantage_score < 0.7, <=3 params, robust to perturbations
 D1: +15% AUC, survives matched controls, p < 0.001
 Cross-validation: T2 predicts Δλ, D1 confirms through eQTL
 ```

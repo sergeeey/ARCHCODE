@@ -351,23 +351,54 @@ def create_simple_ring(radius: float = 1.0, num_points: int = 100) -> np.ndarray
 
 
 def create_linked_rings(
-    radius: float = 1.0, separation: float = 0.5, num_points: int = 100
+    radius: float = 1.0, separation: float = 1.0, num_points: int = 100
 ) -> Tuple[np.ndarray, np.ndarray]:
     """
     Создать два сцепленных кольца (Hopf link)
 
+    Parameters
+    ----------
+    radius : float
+        Радиус обоих колец.
+    separation : float
+        Смещение центра второго кольца вдоль x. Зацепление возникает при
+        ``0 < separation < 2 * radius``; на границе ``2 * radius`` кольца касаются
+        (вырожденный случай, Lk ≈ -0.5), дальше расцеплены.
+
+    Returns
+    -------
+    (ring1, ring2)
+        ring1 в плоскости xy, ring2 в плоскости xz со смещённым центром.
+
     Notes
     -----
-    [VERIFIED-CODE] Hopf link: Lk = 1, классический пример катенана.
+    [VERIFIED 2026-08-29, замер] Lk = -1.00 (−0.9987 при num_points=100) на всём
+    диапазоне separation ∈ (0, 2·radius). Проверяется
+    ``test_passage_ops.py::test_hopf_link_has_linking_number_one``.
+
+    ИСПРАВЛЕНО 2026-08-29 (см. ``AMENDMENTS.md`` A-002).
+    Прежняя версия поворачивала ring2 в плоскость **yz** (перпендикулярно радиальному
+    направлению) и смещала на ``separation`` по x. Тогда ring2 пересекал плоскость
+    ring1 в точках ``(s, ±1, 0)``, где ``x² + y² = s² + 1 > 1`` — оба пересечения
+    ВСЕГДА снаружи диска ring1. Кольца не были зацеплены **ни при каком** значении
+    separation: замер давал Lk ≈ −0.01 для s = 0.3 … 1.3, тогда как докстринг
+    утверждал ``[VERIFIED-CODE] Lk = 1``.
+
+    Последствие: ``RingSystem.initialize_rings(mode="entangled")`` строил «частично
+    сцепленные» пары через эту функцию — то есть эксперимент T2 стартовал с нулевой
+    топологией, и упрощать было нечего.
+
+    WHY плоскость xz: чтобы кольца зацепились, ring2 обязано лежать в плоскости,
+    содержащей радиальное направление ring1, и пересекать его диск — одно пересечение
+    внутри, одно снаружи.
     """
     ring1 = create_simple_ring(radius, num_points)
 
-    # Второе кольцо: повёрнуто на 90° и сдвинуто
     ring2 = create_simple_ring(radius, num_points)
-    # Поворот вокруг y
-    rotation = np.array([[0, 0, 1], [0, 1, 0], [-1, 0, 0]])
+    # Поворот вокруг оси x: плоскость xy -> xz
+    rotation = np.array([[1, 0, 0], [0, 0, -1], [0, 1, 0]])
     ring2 = ring2 @ rotation.T
-    ring2[:, 0] += separation  # сдвиг
+    ring2[:, 0] += separation
 
     return ring1, ring2
 

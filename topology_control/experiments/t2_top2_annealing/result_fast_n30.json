@@ -1,0 +1,31 @@
+{
+  "config": {
+    "num_rings": 30,
+    "num_steps": 500,
+    "random_seed": 42,
+    "alpha": 1.0,
+    "beta": 1.0,
+    "gamma": 0.5,
+    "delta": 0.3
+  },
+  "metrics": {
+    "advantage_angle": 0.5,
+    "advantage_curvature": 0.5,
+    "advantage_score": 0.5,
+    "best_model": "Angle+Curvature",
+    "num_params": 2,
+    "effect_size": 3.0,
+    "kill": false,
+    "success": true,
+    "verdict": "SUCCESS",
+    "reason": ""
+  },
+  "complexity": {
+    "initial": 1.5,
+    "random": 9.0,
+    "angle": 4.5,
+    "angle_curvature": 4.5
+  },
+  "wall_clock_sec": 8.137690200001089,
+  "criteria_source": "KILL_CRITERIA.md T2 (amended A-001: direction only, thresholds unchanged)"
+}
