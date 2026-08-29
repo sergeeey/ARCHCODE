@@ -155,6 +155,56 @@ def apply_passage(
     return new_ring2, delta_lk
 
 
+# WHY: при почти (анти)параллельных касательных t1 x t2 -> 0, перекрёсток вырожден и
+# strand passage геометрически не определён. Замер 2026-08-30 (n=286): ВСЕ случаи
+# dLk = 0 имели медианный угол 176.9 град (sin ~= 0.05), тогда как успешные ±1 --
+# 54.9 и 89.8 град. Порог 0.2 по |sin| отсекает конус ~11.5 град у обоих концов.
+MIN_TRANSVERSALITY = 0.2
+
+# Лестница ширин дуги: если passage не дал чистого ±1, пробуем другую ширину, прежде
+# чем отказаться. Это поднимает долю применённых passage, не ослабляя требование |dLk|=1.
+_ARC_WIDTH_LADDER = (4, 6, 8, 3, 10)
+
+
+def is_degenerate_crossing(crossing: Crossing) -> bool:
+    """Перекрёсток непригоден для passage: касательные почти (анти)параллельны."""
+    return abs(np.sin(crossing.angle)) < MIN_TRANSVERSALITY
+
+
+def attempt_passage(
+    ring1: np.ndarray,
+    ring2: np.ndarray,
+    crossing: Crossing,
+) -> tuple[np.ndarray, int, str]:
+    """
+    Passage с гарантией |dLk| = 1 — «проверь или откати».
+
+    Инвариант: если статус ``applied``, то ``abs(delta_lk) == 1``. Всегда, без оговорок.
+    При любом другом исходе возвращается ИСХОДНОЕ кольцо — система никогда не попадает
+    в состояние, произведённое сбойной операцией.
+
+    WHY это важнее, чем кажется: в прогоне T2 v2 доля сбоев различалась между армами
+    втрое (random 8.00 против angle 2.90 на арм), и именно она, а не выбор правила,
+    двигала метрику ``advantage_score``. Пока сбои возможны, сравнение армов измеряет
+    частоту поломок, а не топологию (см. ``decision_v2.md``).
+
+    Returns
+    -------
+    (ring2_out, delta_lk, status)
+        status: ``applied`` | ``rejected_degenerate`` | ``rejected_no_clean_passage``
+    """
+    if is_degenerate_crossing(crossing):
+        return ring2, 0, "rejected_degenerate"
+
+    for width in _ARC_WIDTH_LADDER:
+        candidate, delta_lk = apply_passage(ring1, ring2, crossing, arc_half_width=width)
+        if abs(delta_lk) == 1:
+            return candidate, delta_lk, "applied"
+
+    # Ни одна ширина не дала чистого passage -- откат, состояние не меняется.
+    return ring2, 0, "rejected_no_clean_passage"
+
+
 def passage_reduces_linking(crossing: Crossing, current_lk: float) -> bool:
     """
     ЛОКАЛЬНОЕ правило: стоит ли выполнять этот passage.

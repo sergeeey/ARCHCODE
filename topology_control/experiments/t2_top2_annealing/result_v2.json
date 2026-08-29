@@ -15,11 +15,15 @@
       "c_initial": 10.5,
       "c_final": 13.5,
       "attempted": 382,
-      "no_crossing": 329,
-      "accepted": 18,
-      "dlk_ok": 12,
-      "dlk_bad": 6,
-      "agreed_with_oracle": 4
+      "no_crossing": 332,
+      "accepted": 11,
+      "dlk_ok": 11,
+      "dlk_bad": 0,
+      "agreed_with_oracle": 4,
+      "rejected": {
+        "rejected_degenerate": 5,
+        "rejected_no_clean_passage": 1
+      }
     },
     "angle": {
       "name": "angle",
@@ -30,7 +34,11 @@
       "accepted": 14,
       "dlk_ok": 14,
       "dlk_bad": 0,
-      "agreed_with_oracle": 7
+      "agreed_with_oracle": 7,
+      "rejected": {
+        "rejected_degenerate": 0,
+        "rejected_no_clean_passage": 0
+      }
     },
     "oracle": {
       "name": "oracle",
@@ -41,7 +49,11 @@
       "accepted": 5,
       "dlk_ok": 5,
       "dlk_bad": 0,
-      "agreed_with_oracle": 5
+      "agreed_with_oracle": 5,
+      "rejected": {
+        "rejected_degenerate": 0,
+        "rejected_no_clean_passage": 0
+      }
     }
   },
   "evaluation": {
@@ -55,7 +67,7 @@
       {
         "gate": "G2 \u043e\u043f\u0435\u0440\u0430\u0446\u0438\u044f \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442",
         "passed": true,
-        "detail": "|dLk|=1 \u0434\u043e\u043b\u044f 0.84"
+        "detail": "|dLk|=1 \u0434\u043e\u043b\u044f 1.00"
       },
       {
         "gate": "G3 \u0443\u043f\u0440\u043e\u0449\u0435\u043d\u0438\u0435 \u0434\u043e\u0441\u0442\u0438\u0436\u0438\u043c\u043e",
@@ -65,7 +77,7 @@
       {
         "gate": "G4 \u0430\u0440\u043c \u043d\u0435 \u0431\u0435\u0437\u0434\u0435\u0439\u0441\u0442\u0432\u0443\u0435\u0442",
         "passed": true,
-        "detail": "angle/random accepted = 14/18 = 0.78"
+        "detail": "angle/random accepted = 14/11 = 1.27"
       }
     ],
     "failed_gates": [],

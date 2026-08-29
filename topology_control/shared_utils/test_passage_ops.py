@@ -183,3 +183,78 @@ def test_local_rule_fires_on_linked_pair():
     assert passage_reduces_linking(crossing, lk) is True, (
         "правило не сработало на зацепленной паре -- локальное правило мертво"
     )
+
+
+# ---------------------------------------------------------------------------
+# Гарантия |dLk| = 1 (attempt_passage, 2026-08-30)
+# ---------------------------------------------------------------------------
+
+
+def test_applied_passage_always_changes_lk_by_exactly_one():
+    """
+    ИНВАРИАНТ. Если статус `applied`, то |dLk| = 1. Без исключений.
+
+    Пока сбойные passage возможны, сравнение армов измеряет частоту поломок, а не
+    топологию: в T2 v2 доля сбоев различалась между армами втрое и именно она двигала
+    advantage_score (decision_v2.md).
+    """
+    from passage_ops import attempt_passage
+
+    rng = np.random.default_rng(1)
+    applied = 0
+    for t in range(120):
+        if t % 2 == 0:
+            r1, r2 = create_linked_rings(1.0, float(rng.uniform(0.4, 1.6)), 60)
+        else:
+            r1 = create_simple_ring(1.0, 60) + rng.standard_normal(3) * 0.6
+            r2 = create_simple_ring(1.0, 60) + rng.standard_normal(3) * 0.6
+
+        crossing = find_closest_crossing(r1, r2)
+        if crossing.distance > 1.5:
+            continue
+
+        out, delta, status = attempt_passage(r1, r2, crossing)
+        if status == "applied":
+            applied += 1
+            assert abs(delta) == 1, f"applied, но dLk = {delta} -- инвариант нарушен"
+        else:
+            assert delta == 0
+            assert out is r2, "отказ обязан вернуть ИСХОДНОЕ кольцо (откат)"
+
+    assert applied > 0, "ни один passage не применился -- тест ничего не проверил"
+
+
+def test_degenerate_crossing_is_rejected():
+    """Почти антипараллельные касательные -- перекрёсток не определён."""
+    from passage_ops import MIN_TRANSVERSALITY, attempt_passage, is_degenerate_crossing
+
+    rng = np.random.default_rng(2)
+    seen_degenerate = False
+    for _ in range(200):
+        r1 = create_simple_ring(1.0, 60) + rng.standard_normal(3) * 0.6
+        r2 = create_simple_ring(1.0, 60) + rng.standard_normal(3) * 0.6
+        crossing = find_closest_crossing(r1, r2)
+        if abs(np.sin(crossing.angle)) < MIN_TRANSVERSALITY:
+            seen_degenerate = True
+            assert is_degenerate_crossing(crossing)
+            _, delta, status = attempt_passage(r1, r2, crossing)
+            assert status == "rejected_degenerate"
+            assert delta == 0
+
+    if not seen_degenerate:
+        pytest.skip("в выборке не встретилось вырожденных перекрёстков")
+
+
+def test_rejection_leaves_system_untouched():
+    """Откат обязан быть побитовым: сбой не должен менять геометрию вообще."""
+    from passage_ops import attempt_passage
+
+    r1 = create_simple_ring(1.0, 60)
+    r2 = create_simple_ring(1.0, 60) + np.array([0.0, 0.0, 5.0])  # далеко, перекрёстка нет
+    crossing = find_closest_crossing(r1, r2)
+    before = r2.copy()
+
+    out, delta, status = attempt_passage(r1, r2, crossing)
+    if status != "applied":
+        assert np.array_equal(out, before), "откат изменил геометрию"
+        assert delta == 0

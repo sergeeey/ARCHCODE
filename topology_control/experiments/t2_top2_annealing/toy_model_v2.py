@@ -33,7 +33,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "shared_utils"))
 
 from passage_ops import (  # noqa: E402
     angle_gate,
-    apply_passage,
+    attempt_passage,
     find_closest_crossing,
     passage_reduces_linking,
 )
@@ -70,6 +70,7 @@ class ArmResult:
     dlk_ok: int  # |dLk| == 1
     dlk_bad: int  # |dLk| != 1 среди применённых
     agreed_with_oracle: int  # правило приняло passage, который снижал |Lk|
+    rejected: dict[str, int]  # отказы attempt_passage по причинам
     history: list[float]
 
 
@@ -105,6 +106,7 @@ def run_arm(cfg: Config, rule: str) -> ArmResult:
     c_initial = matrix.complexity(beta=cfg.beta, gamma=cfg.gamma)
     history = [c_initial]
     attempted = no_crossing = accepted = dlk_ok = dlk_bad = agreed = 0
+    rejected: dict[str, int] = {"rejected_degenerate": 0, "rejected_no_clean_passage": 0}
 
     for _ in range(cfg.num_steps):
         i = np.random.randint(0, len(rings))
@@ -135,15 +137,20 @@ def run_arm(cfg: Config, rule: str) -> ArmResult:
             history.append(history[-1])
             continue
 
+        # WHY: attempt_passage либо даёт чистое |dLk| = 1, либо откатывает. Пока сбои
+        # были возможны, их частота различалась между армами втрое (random 8.00 против
+        # angle 2.90) и двигала advantage_score сильнее, чем само правило -- то есть
+        # сравнение измеряло надёжность операции, а не топологию (decision_v2.md).
+        new_ring_j, delta_lk, status = attempt_passage(rings[i], rings[j], crossing)
+        if status != "applied":
+            rejected[status] += 1
+            history.append(history[-1])
+            continue
+
         accepted += 1
         if oracle_would_accept:
             agreed += 1
-
-        new_ring_j, delta_lk = apply_passage(rings[i], rings[j], crossing)
-        if abs(delta_lk) == 1:
-            dlk_ok += 1
-        else:
-            dlk_bad += 1
+        dlk_ok += 1  # инвариант attempt_passage: applied => |dLk| == 1
 
         rings[j] = new_ring_j
         matrix.update_ring(rings, j)
@@ -159,6 +166,7 @@ def run_arm(cfg: Config, rule: str) -> ArmResult:
         dlk_ok=dlk_ok,
         dlk_bad=dlk_bad,
         agreed_with_oracle=agreed,
+        rejected=dict(rejected),
         history=history,
     )
 
