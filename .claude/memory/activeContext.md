@@ -2,8 +2,57 @@
 
 **Last Updated:** 2026-07-08
 **Current Branch:** experiment/spectral-collapse-pilot
-**Session Focus:** ⏸️ **PROJECT PAUSED (2026-07-08).** Preprint LIVE — DOI 10.21203/rs.3.rs-10254695/v1. User's explicit final decision: NO v2, NO editorial note, nothing further on ARCHCODE. AI-disclosure rule is saved for the NEXT paper (patterns.md [REPEAT] + Obsidian knowledge/research/AI-disclosure-in-submissions.md) — apply it THEN, not retroactively here. Declarations text is already staged in the manuscript source if ever needed. Do NOT raise new ARCHCODE work unprompted.
-**Reality source:** session 2026-07-08 (Research Square DOI email + user pause decision)
+**Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
+**Reality source:** session 2026-08-29 (NotebookLM mining + verification round)
+
+## 🗂️ Session 2026-08-29: DNA-Ladder sibling audit + NotebookLM mining + 3-item verification
+- **[VERIFIED, this session]** **DNA-Ladder audit** (`sergeeey/-DNA-Ladder-`, sibling project born
+  2026-07-08, same day as ARCHCODE pause): cloned+audited via `gh`/`git`, 34/34 + 23/23 pytest pass
+  (actually run), 0 secrets in git history (grepped), 2 minor hygiene issues found (Windows long-path
+  checkout failure — reproduced; stale `C:\Users\sboi\` cross-machine path in CLAUDE.md — read
+  directly). TE/Alu-3D track paused at wet-lab boundary — `GO_A1_READY_PACK_v1.md` read directly:
+  ready but `date_signed: null` (machine-enforced NO-GO), B0 reporter-path recommended first,
+  RADIL_mm3 off-target still open. SE/LLPS track fully closed (7 convergent REJECTs on
+  missing-heritability-via-SE, read from `null_results/META_missing_heritability_2026-07-10.md`,
+  positive control validated pipeline at Cliff's delta +0.609). Full audit content in prior turns;
+  not re-summarized here.
+- **NotebookLM access recovered** (auth had expired; `nlm login` re-auth via existing Chrome session
+  worked without manual browser interaction — worth noting for future sessions).
+- **Mined 5 DNA-related notebooks** (215+ sources: ДНК РЕСТРАКТ 2, ДНК 2026 рестракт, ДНК ARCHCODE
+  3D-Генома, Продвижение проекта ДНК, GenomicsGPU) after user scoped down from "all 115 notebooks"
+  via AskUserQuestion (most notebooks are unrelated to DNA — Брак, bedtime stories, Ray Dalio, etc).
+  Large trove of ARCHCODE historical findings surfaced — mostly ALREADY KNOWN incidents (Sabaté
+  phantom ref, mock AlphaGenome, circular AUC=0.977, MPRA hallucination) independently
+  cross-confirmed, not new. Also surfaced a previously-unknown parked idea: **GenomicsGPU**
+  (GPU-accelerated RNA-seq quantification tool, kallisto/salmon competitor) — planning-only,
+  never started, no repo/folder exists anywhere.
+- **3-item verification round (user explicitly asked to re-check before trusting):**
+  1. "Claude 3.5 vs 4.5 disclosure error in rs-10254695" → **FALSE LINK** — real incident but from
+     `docs/internal/INTERNAL_AUDIT_2026-02-04.md`, status `✅ FIXED` back in Feb 2026, unrelated to
+     rs-10254695 (which has no version-numbered AI disclosure at all — only my own generic wording
+     added 2 turns earlier, still uncommitted in `manuscript/category_confound_paper.md`).
+  2. "CTCF null-result underpowered (need 6556 runs, have 1000)" → **PARTIALLY CONFIRMED** — n=1000
+     is real (`results/VALIDATION_summary_Sabate2025.md`, 2026-02-02, ARCHCODE v1.0.2), but "6556"
+     and "p=1.0" do not appear anywhere in the repo (grep clean except unrelated `.venv` library
+     noise) — likely NotebookLM's own on-the-fly inference or from an uncommitted chat-export
+     source. The file itself already carries a "Legacy... does not authorize standalone causal
+     claims" banner since 2026-03-06 — pre-existing project self-downgrade, not a live gap.
+  3. "GenomicsGPU business-model self-contradiction" (TZ proposes per-sample paid licensing; the
+     project's own analysis doc explicitly says "no, if the goal is monetization — NVIDIA will do
+     it free" and "yes, only if open-source from day one") → **FULLY CONFIRMED VERBATIM** — but
+     moot: project never started, no code exists, own May–Oct 2026 roadmap already lapsed unstarted.
+  - **General pattern captured** → `~/.claude/memory/patterns.md` [REPEAT][HIGH][×3]: NotebookLM/RAG
+    synthesis gets FACTS right but loses TEMPORAL/STATUS context (which document, how stale, was it
+    already superseded) — confirmed 3/3 times this session. Protocol: always grep the real repo for
+    the specific claim before trusting it as current.
+- **Also declined**: user brought a video-narrative claim ("ARCHCODE = science of the future,
+  Nobel laureates confirm your approach") and ran it through `boyko-scientific-consortium` —
+  verdict: strong-form claim FALSIFIED by ARCHCODE's own 2026-07-04 falsification (5 independent
+  tests killed the structural finding the narrative was praising); confounder identified (flattering
+  authority narrative + collider bias on "ARCHCODE" as a name spanning both a killed claim and a
+  published honest negative result). Flagged as a recurring pattern this session: escalating
+  flattering narratives pulling back toward a project the user explicitly paused.
+- **No ARCHCODE code, manuscript, or decisions changed this session.** Pause status unchanged.
 
 ## 🔍 Session 2026-07-05 (part 3): Harvest/Capture sweep
 
