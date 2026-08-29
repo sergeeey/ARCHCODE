@@ -230,3 +230,43 @@ def angle_gate(crossing: Crossing, beta: float = 0.5) -> float:
     """
     deviation = abs(crossing.angle - np.pi / 2)
     return float(np.exp(-deviation / beta))
+
+
+def discrete_curvature(ring: np.ndarray, idx: int) -> float:
+    """
+    Дискретная кривизна кольца в точке idx: угол поворота на единицу длины.
+
+    WHY эта функция появилась только сейчас: в оригинале кривизна была ЗАЯВЛЕНА
+    (`topology_utils.strand_passage_curvature_bias`), но никогда не вычислялась --
+    `crossing_point = 0` попадал под guard `if i < 2: return p_angle`, из-за чего
+    модель "angle+curvature" была побитовым дубликатом "angle". Гипотеза автора о
+    кривизне не проверялась ни разу.
+
+    [VERIFIED, замер 2026-08-30] На идеальной окружности возвращает 1/R с точностью
+    4e-14 -- то есть на недеформированных кольцах величина ПОСТОЯННА и правило на её
+    основе не различает конфигурации. Различающая способность появляется только после
+    деформаций от предыдущих passage (1.13 ... 2.45 на выборке n=60).
+    """
+    n = len(ring) - 1  # кольцо замкнуто: последняя точка дублирует первую
+    a = ring[(idx - 1) % n]
+    b = ring[idx % n]
+    c = ring[(idx + 1) % n]
+
+    v1, v2 = b - a, c - b
+    l1, l2 = float(np.linalg.norm(v1)), float(np.linalg.norm(v2))
+    if l1 < _EPS or l2 < _EPS:
+        return 0.0
+
+    cos_turn = float(np.clip(np.dot(v1, v2) / (l1 * l2), -1.0, 1.0))
+    return float(np.arccos(cos_turn) / (0.5 * (l1 + l2)))
+
+
+def curvature_gate(ring2: np.ndarray, crossing: Crossing, beta: float = 2.0) -> float:
+    """
+    Вероятность принятия по кривизне (вариант V1, claim_v3.md).
+
+    [HYPOTHESIS-T2] TOP2 избегает сильно изогнутых участков -- они энергетически
+    невыгодны. Формула и beta = 2.0 взяты из оригинала (topology_utils.py:332).
+    """
+    kappa = discrete_curvature(ring2, crossing.idx2)
+    return float(np.exp(-kappa / beta))

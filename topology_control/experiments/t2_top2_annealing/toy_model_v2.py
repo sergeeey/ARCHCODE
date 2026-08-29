@@ -34,6 +34,7 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent / "shared_utils"))
 from passage_ops import (  # noqa: E402
     angle_gate,
     attempt_passage,
+    curvature_gate,
     find_closest_crossing,
     passage_reduces_linking,
 )
@@ -128,6 +129,8 @@ def run_arm(cfg: Config, rule: str) -> ArmResult:
             accept = np.random.rand() < 0.5
         elif rule == "angle":
             accept = np.random.rand() < angle_gate(crossing)
+        elif rule == "curvature":
+            accept = np.random.rand() < curvature_gate(rings[j], crossing)
         elif rule == "oracle":
             accept = oracle_would_accept
         else:
