@@ -37,7 +37,6 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 import numpy as np
-
 from topology_utils_fast import gauss_linking_integral_vec
 
 _EPS = 1e-12
@@ -270,3 +269,64 @@ def curvature_gate(ring2: np.ndarray, crossing: Crossing, beta: float = 2.0) -> 
     """
     kappa = discrete_curvature(ring2, crossing.idx2)
     return float(np.exp(-kappa / beta))
+
+
+# WHY: R = 1.2 чуть больше радиуса кольца (1.0) -- окрестность, которую "видит"
+# фермент в точке перекрёстка. beta = 10 подобрана так, чтобы p(медианной плотности
+# 9.5) ~ 0.61, то есть частота принятия сопоставима с random. Оба значения
+# зафиксированы в claim_v4.md ДО прогона.
+DENSITY_RADIUS = 1.2
+DENSITY_BETA = 10.0
+
+
+def local_entanglement_density(
+    rings: list[np.ndarray],
+    i: int,
+    j: int,
+    crossing: Crossing,
+    radius: float = DENSITY_RADIUS,
+) -> int:
+    """
+    Число сегментов ЧУЖИХ колец в шаре радиуса `radius` вокруг точки перекрёстка.
+
+    Вариант V2 из Relaxation Map (`decision_v3.md`), пре-регистрация `claim_v4.md`.
+
+    WHY это НЕ замаскированный оракул: величина не обращается к матрице зацеплений
+    вообще. Считаются только геометрические расстояния до третьих колец -- то, что
+    доступно "ферменту", сидящему в точке перекрёстка. Оракул же читает Lk[i, j],
+    топологический инвариант пары.
+
+    [VERIFIED, замер 2026-08-30, свежая система 24 колец] 0 ... 44, медиана 9.5,
+    9 различных значений; у 36% перекрёстков окружение пустое (p = 0 -- правило их
+    не трогает никогда). В отличие от кривизны, различает конфигурации уже на шаге 0.
+    """
+    point = 0.5 * (rings[i][crossing.idx1] + rings[j][crossing.idx2])
+    count = 0
+    for k, ring in enumerate(rings):
+        if k == i or k == j:
+            continue
+        # последняя точка дублирует первую -- исключаем, чтобы не считать дважды
+        dist = np.linalg.norm(ring[:-1] - point, axis=1)
+        count += int((dist < radius).sum())
+    return count
+
+
+def density_gate(
+    rings: list[np.ndarray],
+    i: int,
+    j: int,
+    crossing: Crossing,
+    beta: float = DENSITY_BETA,
+) -> float:
+    """
+    Вероятность принятия по локальной плотности (вариант V2, claim_v4.md).
+
+    [HYPOTHESIS-T2] TOP2 действует преимущественно в тесноте -- там, где сегменты
+    сгущаются, разрешение перекрёстка даёт наибольший выигрыш.
+
+    Направление (растёт с плотностью) зафиксировано до прогона: обратное правило
+    было бы стерической гипотезой, а не топологической -- оно предсказывало бы
+    работу фермента там, где упрощать нечего.
+    """
+    rho = local_entanglement_density(rings, i, j, crossing)
+    return float(1.0 - np.exp(-rho / beta))

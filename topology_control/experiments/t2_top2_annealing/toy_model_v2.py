@@ -31,15 +31,16 @@ import numpy as np
 
 sys.path.insert(0, str(Path(__file__).parent.parent.parent / "shared_utils"))
 
-from passage_ops import (  # noqa: E402
+from passage_ops import (
     angle_gate,
     attempt_passage,
     curvature_gate,
+    density_gate,
     find_closest_crossing,
     passage_reduces_linking,
 )
-from topology_utils import create_linked_rings, create_simple_ring  # noqa: E402
-from topology_utils_fast import LinkingMatrix  # noqa: E402
+from topology_utils import create_linked_rings, create_simple_ring
+from topology_utils_fast import LinkingMatrix
 
 SUCCESS_ADVANTAGE = 0.7
 KILL_ADVANTAGE = 0.8
@@ -131,6 +132,12 @@ def run_arm(cfg: Config, rule: str) -> ArmResult:
             accept = np.random.rand() < angle_gate(crossing)
         elif rule == "curvature":
             accept = np.random.rand() < curvature_gate(rings[j], crossing)
+        elif rule == "density":
+            # WHY: density_gate -- единственный гейт, которому нужны ВСЕ кольца, а не
+            # только пара (i, j): он считает третьи кольца в окрестности перекрёстка.
+            # Матрицу зацеплений при этом не читает -- см. claim_v4.md о том, почему
+            # это не замаскированный оракул.
+            accept = np.random.rand() < density_gate(rings, i, j, crossing)
         elif rule == "oracle":
             accept = oracle_would_accept
         else:
@@ -144,7 +151,7 @@ def run_arm(cfg: Config, rule: str) -> ArmResult:
         # были возможны, их частота различалась между армами втрое (random 8.00 против
         # angle 2.90) и двигала advantage_score сильнее, чем само правило -- то есть
         # сравнение измеряло надёжность операции, а не топологию (decision_v2.md).
-        new_ring_j, delta_lk, status = attempt_passage(rings[i], rings[j], crossing)
+        new_ring_j, _delta_lk, status = attempt_passage(rings[i], rings[j], crossing)
         if status != "applied":
             rejected[status] += 1
             history.append(history[-1])
@@ -174,9 +181,16 @@ def run_arm(cfg: Config, rule: str) -> ArmResult:
     )
 
 
-def evaluate(arms: dict[str, ArmResult]) -> dict:
-    """Гейты G1-G4 проверяются ДО advantage_score (claim_v2.md)."""
-    rnd, ang, orc = arms["random"], arms["angle"], arms["oracle"]
+def evaluate(arms: dict[str, ArmResult], test_arm: str = "angle") -> dict:
+    """
+    Гейты G1-G4 проверяются ДО advantage_score (claim_v2.md).
+
+    WHY параметр `test_arm`: раньше имя тест-арма было зашито как "angle". При
+    добавлении density это молча считало бы G4 и advantage_score по УГЛУ, выдавая
+    вердикт про v2 под видом вердикта про v4. Ровно этот класс ошибки (арм не тот,
+    что заявлен) уже стоил здесь одного ложного SUCCESS -- см. ORACLE_INADEQUACY.md.
+    """
+    rnd, ang, orc = arms["random"], arms[test_arm], arms["oracle"]
     gates: list[tuple[str, bool, str]] = []
 
     gates.append(("G1 есть что упрощать", rnd.c_initial > 0, f"C_initial = {rnd.c_initial:.2f}"))
@@ -201,7 +215,7 @@ def evaluate(arms: dict[str, ArmResult]) -> dict:
         (
             "G4 арм не бездействует",
             ratio >= GATE_MIN_ACCEPT_RATIO,
-            f"angle/random accepted = {ang.accepted}/{rnd.accepted} = {ratio:.2f}",
+            f"{test_arm}/random accepted = {ang.accepted}/{rnd.accepted} = {ratio:.2f}",
         )
     )
 
@@ -227,11 +241,12 @@ def evaluate(arms: dict[str, ArmResult]) -> dict:
 
     return {
         "verdict": verdict,
+        "test_arm": test_arm,
         "gates": [{"gate": n, "passed": p, "detail": d} for n, p, d in gates],
         "failed_gates": [],
         "advantage_score": advantage,
         "oracle_advantage": orc.c_final / rnd.c_final if rnd.c_final else None,
-        "angle_oracle_agreement": (ang.agreed_with_oracle / ang.accepted if ang.accepted else None),
+        "oracle_agreement": (ang.agreed_with_oracle / ang.accepted if ang.accepted else None),
     }
 
 
@@ -240,6 +255,7 @@ def main() -> None:
     ap.add_argument("--rings", type=int, default=24)
     ap.add_argument("--steps", type=int, default=400)
     ap.add_argument("--seed", type=int, default=42)
+    ap.add_argument("--arm", type=str, default="angle", choices=["angle", "curvature", "density"])
     ap.add_argument("--out", type=str, default="result_v2.json")
     args = ap.parse_args()
 
@@ -251,7 +267,7 @@ def main() -> None:
 
     t0 = time.perf_counter()
     arms = {}
-    for rule in ("random", "angle", "oracle"):
+    for rule in ("random", args.arm, "oracle"):
         t = time.perf_counter()
         arms[rule] = run_arm(cfg, rule)
         a = arms[rule]
@@ -263,15 +279,15 @@ def main() -> None:
             f"{time.perf_counter() - t:5.1f}s{tag}"
         )
 
-    ev = evaluate(arms)
+    ev = evaluate(arms, test_arm=args.arm)
     print("-" * 68)
     for g in ev["gates"]:
         print(f"  [{'PASS' if g['passed'] else 'FAIL'}] {g['gate']:24s} {g['detail']}")
     print("-" * 68)
     if ev["advantage_score"] is not None:
-        print(f"advantage_score (angle/random) : {ev['advantage_score']:.4f}")
+        print(f"advantage_score ({args.arm}/random) : {ev['advantage_score']:.4f}")
         print(f"oracle_advantage  (потолок)     : {ev['oracle_advantage']:.4f}")
-        print(f"angle согласен с оракулом       : {ev['angle_oracle_agreement']}")
+        print(f"{args.arm} согласен с оракулом   : {ev['oracle_agreement']}")
     print(f"VERDICT: {ev['verdict']}")
     if ev["failed_gates"]:
         print(f"  провалены гейты: {', '.join(ev['failed_gates'])}")
