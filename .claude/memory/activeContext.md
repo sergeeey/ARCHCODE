@@ -44,7 +44,7 @@ v2 сменился INCONCLUSIVE → KILL) · A-001 метрика инверт�
 2026-07-20 (holdout ΔAUC = −0.007). Без scope-теста D1 будет третьей проверкой того же.
 
 **Kill switch НЕ сработал:** требует `T2 KILL AND D1 KILL`, а D1 никогда не запускался
-(папки `d1_spectral_3d/` не существует). ATR-фреймворк не опровергнут.
+(`experiments/d1_spectral_3d/` существует, но ПУСТА — 0 файлов, вне git; проверено 2026-08-30). ATR-фреймворк не опровергнут.
 
 ## 🗂️ Session 2026-08-29: DNA-Ladder sibling audit + NotebookLM mining + 3-item verification
 - **[VERIFIED, this session]** **DNA-Ladder audit** (`sergeeey/-DNA-Ladder-`, sibling project born
@@ -357,6 +357,7 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 ## Auto-commit log
+- [2026-08-30 19:08] `ebf1969`: memory: T2 closed across all three cheap variants; D1 pivot gated on scope test
 - [2026-08-30 19:06] `62b3251`: T2 v4/V2: KILL — local entanglement density carries no directional information
 - [2026-08-30 01:22] `4be9e55`: prereg(T2 v4/V2): local entanglement density as local rule — frozen before implementation
 - [2026-08-30 00:19] `7fa2393`: T2 v3/V1: KILL — curvature carries no directional information either
