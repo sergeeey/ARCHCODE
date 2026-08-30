@@ -5,6 +5,39 @@
 **Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
 **Reality source:** session 2026-08-30 (ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал, фреймворк WEAK)
 
+## ❌ Session 2026-08-30 (часть 8): R2 — H_A убита, и допуск решил исход
+
+Пре-регистрация `3374774`. Объясняли остаток из R1: почему `noise_breakeven / CV_pop`
+систематически < 1 и падает с CV (27% при CV=2), тогда как структура даёт 1.0 везде.
+
+**H_A:** ошибка локального арма мультипликативна, то есть сцеплена с нагрузкой органеллы,
+а ошибка ядерного — нет. Тест: аддитивный шум расцепляет и обязан убрать эффект.
+
+| CV | мультипликативный | аддитивный |
+|---|---|---|
+| 0.25 | 1.003 | 0.986 |
+| 2.0 | **0.732** | **0.846** |
+| **разброс** | **27.0%** | **14.2%** |
+
+**KILL: 14.2% против допуска 10%.** Расцепление уменьшило эффект почти вдвое
+(сцепление отвечает за ≈47%), но не убрало. Механизм назван верно, но он не единственный.
+
+⚠️ **ДОПУСК РЕШИЛ ИСХОД — прямое следствие урока R1.** При «факторе 2» из `claim_r1.md`
+оба варианта прошли бы (27% и 14.2% укладываются в двукратный запас), вердикт был бы
+SUCCESS, а объяснение — ложным. Порог 10% поставлен УЖЕ объясняемого эффекта (27%)
+именно по итогам `decision_r1.md`. **Первый случай за сессию, когда исправленная
+методика изменила ВЕРДИКТ, а не добавила оговорку.**
+
+Вторичное предсказание: мультипликативный монотонен (1.003→0.980→0.884→0.732), аддитивный
+НЕТ (0.986→0.950→0.972→0.846) — независимое указание, что остаток порождается другим
+механизмом, а не ослабленной версией того же.
+
+**→ R3 (открыт, высокий приоритет):** тяжесть хвоста логнормали как таковая — конечное N,
+несколько органелл доминируют в Σ max(0, λ−mean). Единственный кандидат, объясняющий
+немонотонность.
+
+Артефакты: `{claim_r2,decision_r2}.md`, `run_r2.py`, `result_r2.json`. `[VERIFIED-SYNTHETIC]`.
+
 ## ✅ Session 2026-08-30 (часть 7): R1 выполнен — вторичный защищаем, первичный был слабым тестом
 
 Пре-регистрация `98b95cc` заморожена до `run_r1.py`.
@@ -581,6 +614,8 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 ## Auto-commit log
+- [2026-08-30 21:07] `3374774`: prereg(H1 R2): tolerance set NARROWER than the effect being explained
+- [2026-08-30 21:04] `5add1c7`: memory: R1 done -- secondary defensible, primary was a weak test (3rd such criterion this session)
 - [2026-08-30 21:04] `bba0b9f`: H1 R1: secondary PROMOTE-worthy, primary was a weak test -- and I say so
 - [2026-08-30 20:57] `98b95cc`: prereg(H1 R1): parameters pinned, and the primary question is one I cannot predict
 - [2026-08-30 20:49] `13cf549`: memory: H1 run INCONCLUSIVE -- threshold met but magnitude is parameter-driven

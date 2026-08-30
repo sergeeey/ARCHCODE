@@ -1,0 +1,9 @@
+{
+  "prereg_commit": "3374774",
+  "calibration": 1.0,
+  "spread": {
+    "mult": 0.26997493586913945,
+    "add": 0.14169328102343215
+  },
+  "verdict": "KILL"
+}
