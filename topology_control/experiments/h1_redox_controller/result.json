@@ -1,0 +1,26 @@
+{
+  "prereg_commit": "274bbb8",
+  "config": {
+    "n": 200,
+    "seeds": 30,
+    "cv": 0.5,
+    "capacity_ratio": 1.0,
+    "out": "result.json"
+  },
+  "null_median": 1.0,
+  "hetero_median": 4.516767225690847,
+  "advantage_excess": 4.516767225690847,
+  "iqr": [
+    4.367654362823023,
+    4.721248349442283
+  ],
+  "verdict": "SUCCESS",
+  "negative_control_excess": 0.7355185434150646,
+  "by_cv": {
+    "0.25": 2.6470406045776937,
+    "0.5": 4.516767225690847,
+    "1.0": 7.276062051097313,
+    "2.0": 9.233122000616387
+  },
+  "cost_breakeven": 3.516767225690847
+}
