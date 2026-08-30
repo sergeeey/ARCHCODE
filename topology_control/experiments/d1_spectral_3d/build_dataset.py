@@ -162,7 +162,9 @@ def main() -> None:
                 continue
             try:
                 mat = clr.matrix(balance=True).fetch(f"{chrom}:{lo}-{hi}")
-            except Exception:
+            except (ValueError, KeyError):
+                # WHY узкие типы: cooler бросает их на регионах вне хромосомы. Голый
+                # except прятал бы и настоящие сбои чтения по сети.
                 continue
             vbin = (r.pos - lo) // RESOLUTION
             if vbin >= mat.shape[0]:

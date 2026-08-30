@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
@@ -137,12 +138,12 @@ def main() -> None:
         out["verdict"] = "BLOCKED-INFRASTRUCTURE"
         out["note"] = "позитивный контроль провален -- НЕ свидетельство против гипотезы"
         print(f"\nVERDICT: {out['verdict']}")
-        json.dump(out, open(args.out, "w"), indent=2)
+        Path(args.out).write_text(json.dumps(out, indent=2), encoding="utf-8")
         return
     if not nc_ok:
         out["verdict"] = "STOP-FALSE-POSITIVE-PIPELINE"
         print(f"\nVERDICT: {out['verdict']} -- пайплайн даёт сигнал на шуме")
-        json.dump(out, open(args.out, "w"), indent=2)
+        Path(args.out).write_text(json.dumps(out, indent=2), encoding="utf-8")
         return
 
     # ---- первичный результат ----
@@ -187,7 +188,7 @@ def main() -> None:
     out["by_distance_tercile"] = by_t
 
     print(f"\nVERDICT: {verdict}")
-    json.dump(out, open(args.out, "w"), indent=2)
+    Path(args.out).write_text(json.dumps(out, indent=2), encoding="utf-8")
     print(f"saved: {args.out}")
 
 

@@ -5,6 +5,38 @@
 **Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
 **Reality source:** session 2026-08-30 (T2 topology_control — три KILL, гипотеза исчерпана)
 
+## 🧬 Session 2026-08-30 (часть 2): D1 spectral — данные скачаны, прогон выполнен, KILL
+
+**Scope-тест (`d1_spectral_3d/scope_test.md`) → REDIRECT**, затем D1 запущен в
+переформулированном виде. Пре-регистрация заморожена `0f8cbb4` ДО первого AUC.
+
+**Данные (публичные, без ключей, без оплаты):** Hi-C GM12878 4DN `4DNFINPH7UOD` — НЕ
+скачан, читается по HTTP range (`shared_utils/remote_hdf5.py`, своя реализация:
+`hic-straw` не собирается на Windows, `fsspec` даёт 404 там, где прямой range даёт 206).
+eQTL — GTEx v8 `Cells_EBV-transformed_lymphocytes` = LCL = **тот же тип клеток, что
+GM12878** (cell-type matching по построению). Итого 249 МБ трафика вместо 78-235 ГБ.
+
+**Результат: KILL.** ΔAUC +0.0004, CI [−0.0006, +0.0013], 0/1000 бутстрапов выше порога
+0.02. Δprecision@1 внутри варианта = ровно 0. Оба контроля пройдены (позитивный:
+расстояние одно AUC 0.8725; негативный: перемешанные метки ΔAUC +0.0006).
+
+**Главное — причина, а не сам ноль:** расстояние 0.8725 → +cCRE 0.8738 → **+контакт
+0.8738 (−0.0000)** → +спектр 0.8742. **Сырой контакт Hi-C не добавляет над расстоянием
+ничего.** Значит «усиленный baseline» оказался тем же самым, что закрыт дважды, и это по
+факту третье подтверждение — но впервые с измеренной причиной: канал контакта пуст.
+
+**[VERIFIED] Поправка к собственной пре-регистрации:** заявленные 37.2% пар на пустом
+бине Hi-C — артефакт смещённой выборки (первые 40 вариантов chr1 = плохо покрытое начало
+хромосомы). По геному 6.6%. На вердикт не влияет, запись исправлена явно.
+
+**Вторичное предсказание опровергнуто со сменой знака:** +0.0007 (нижний терциль) против
+−0.0148 (верхний), ожидался рост.
+
+⚠️ **Открытый вопрос к человеку:** `KILL_CRITERIA.md:126` требует `T2 KILL AND D1 KILL` →
+остановить все топологические гипотезы. T2 убита трижды, эта D1 убита — но она
+ПЕРЕФОРМУЛИРОВАННАЯ, а записанная в файле версия не запускалась (и по scope-тесту не
+должна). Засчитывать ли более сильную версию — решение автора фреймворка.
+
 ## 🧪 Session 2026-08-30: T2 (topology_control) — три локальных правила убиты, гипотеза исчерпана
 
 ⚠️ **Это НЕ возобновление ARCHCODE.** Работа шла в `topology_control/` (ATR Framework) —
@@ -357,6 +389,9 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 ## Auto-commit log
+- [2026-08-30 19:50] `be22d59`: D1 (redirected): KILL — spectral adds nothing, and contact adds nothing either
+- [2026-08-30 19:36] `0f8cbb4`: prereg(D1 redirect): frozen before any AUC is computed
+- [2026-08-30 19:14] `086c0d3`: scope-test(D1): REDIRECT — comparator must change before D1 may run
 - [2026-08-30 19:08] `ebf1969`: memory: T2 closed across all three cheap variants; D1 pivot gated on scope test
 - [2026-08-30 19:06] `62b3251`: T2 v4/V2: KILL — local entanglement density carries no directional information
 - [2026-08-30 01:22] `4be9e55`: prereg(T2 v4/V2): local entanglement density as local rule — frozen before implementation
