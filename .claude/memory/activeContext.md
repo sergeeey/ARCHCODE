@@ -3,7 +3,48 @@
 **Last Updated:** 2026-08-30
 **Current Branch:** experiment/spectral-collapse-pilot
 **Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
-**Reality source:** session 2026-08-30 (T2 topology_control — три KILL, гипотеза исчерпана)
+**Reality source:** session 2026-08-30 (ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал, фреймворк WEAK)
+
+## 🛑 Session 2026-08-30 (часть 3): ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал
+
+Решение пользователя: **засчитать переформулированную D1**. Зафиксировано как
+`AMENDMENTS.md` **A-004** — по собственному Amendment Protocol файла, потому что
+засчитывание другого теста против записанного критерия есть интерпретация.
+
+**Ни один критерий, порог или формула не изменены.** `KILL_CRITERIA.md` остался LOCKED,
+дописаны три блока «ИСХОД», и это сказано в шапке.
+
+**Сработала ветка `T2 KILL AND D1 KILL` → ATR framework WEAK.**
+
+| Гипотеза | Статус | Причина |
+|---|---|---|
+| T2 | 🔴 FALSIFIED | 0.919 / 1.000 / 1.111 при пороге > 0.8; потолок оракула 0.106 |
+| D1 | 🔴 FALSIFIED | ΔAUC +0.0004; Meta-Level Kill Switch 3 |
+| **T1** | ⛔ заблокирована | `Depends on T2 SUCCESS` |
+| **D2, D3, вся Phase 3** | ⛔ заблокированы | `Depends on D1 SUCCESS` / `≥1 SUCCESS в Phase 1` |
+| **H1** (митохондрии) | ✅ **единственное живое** | объявлена независимой от T2/D1 |
+
+**⚠️ Две честные проблемы, записанные, а не сглаженные:**
+1. **Буквальный критерий KILL для D1 НЕ срабатывает** — требует `AUC(spectral) <=
+   AUC(baseline)`, факт 0.8742 > 0.8738. У исходных критериев **нет серой зоны**,
+   промежуток `0 < ΔAUC < 0.10` не определён, результат попал ровно в эту дыру. Это
+   дефект пре-регистрации 2026-04-25. То же в `UNIFIED_FRAMEWORK.md` (там формулировка
+   «не лучше nearest-gene» тоже не срабатывает на +0.0017).
+2. **Записанная D1 не запускалась** намеренно — её эстиманд закрыт дважды.
+
+KILL стоит на **Meta-Level Kill Switch 3 «Baseline Dominance»** (собственное правило
+фреймворка, срабатывает буквально), пороге переформулированной пре-регистрации
+(`ΔAUC < 0.02`, взят у DNA-Ladder) и нулевом Δprecision@1. Планка **поднята, не опущена**.
+
+**Создано:** `NEGATIVE_RESULT.md` для T2 и D1 — протокол их требует, я успел поставить
+галочку «записано» до того, как они существовали, проверил и написал.
+
+**НЕ покрыто вердиктом:** каузальная цепочка `ΔG → ΔL → Δλ → Δ(экспрессия)` не
+проверялась — вопрос D1 был предиктивным по построению. Единственное направление внутри
+ATR, не являющееся повтором; требует данных о возмущениях (CRISPRi), а не нового признака.
+
+**Осталось человеку:** решение о публикации negative result (ветка предписывает
+«Publish negative result»; методология сильная, результат отрицательный).
 
 ## 🧬 Session 2026-08-30 (часть 2): D1 spectral — данные скачаны, прогон выполнен, KILL
 
@@ -389,6 +430,8 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 ## Auto-commit log
+- [2026-08-30 19:58] `5db11f6`: Phase 1 CONCLUDED: kill switch fired, ATR framework marked WEAK
+- [2026-08-30 19:51] `3de8d6f`: D1: lint cleanup, memory + cross-repo register updated (retroscan)
 - [2026-08-30 19:50] `be22d59`: D1 (redirected): KILL — spectral adds nothing, and contact adds nothing either
 - [2026-08-30 19:36] `0f8cbb4`: prereg(D1 redirect): frozen before any AUC is computed
 - [2026-08-30 19:14] `086c0d3`: scope-test(D1): REDIRECT — comparator must change before D1 may run
