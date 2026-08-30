@@ -1,0 +1,45 @@
+{
+  "prereg_commit": "0f8cbb4",
+  "n_all": 87198,
+  "n_primary": 81472,
+  "positive_control_auc": 0.8724557599496399,
+  "negative_control": {
+    "n_test": 5713,
+    "n_pos": 290,
+    "n_variants": 291,
+    "auc_baseline": 0.5171676193988567,
+    "auc_full": 0.5177468890485608,
+    "delta_auc": 0.0005792696497041172,
+    "prec1_baseline": 0.07903780068728522,
+    "prec1_full": 0.08247422680412371,
+    "delta_prec1": 0.0034364261168384896
+  },
+  "primary": {
+    "n_test": 5713,
+    "n_pos": 290,
+    "n_variants": 291,
+    "auc_baseline": 0.8738145955604164,
+    "auc_full": 0.8742183674896831,
+    "delta_auc": 0.00040377192926666083,
+    "prec1_baseline": 0.38831615120274915,
+    "prec1_full": 0.38831615120274915,
+    "delta_prec1": 0.0
+  },
+  "verdict": "KILL",
+  "locv_mean_delta_auc": 0.0006977158988999522,
+  "all_pairs": {
+    "n_test": 6206,
+    "n_pos": 333,
+    "n_variants": 304,
+    "auc_baseline": 0.8780979174304562,
+    "auc_full": 0.8781863763985338,
+    "delta_auc": 8.845896807763154e-05,
+    "prec1_baseline": 0.39473684210526316,
+    "prec1_full": 0.39473684210526316,
+    "delta_prec1": 0.0
+  },
+  "by_distance_tercile": {
+    "\u043d\u0438\u0436\u043d\u0438\u0439 \u0442\u0435\u0440\u0446\u0438\u043b\u044c": 0.0006599960496587176,
+    "\u0432\u0435\u0440\u0445\u043d\u0438\u0439 \u0442\u0435\u0440\u0446\u0438\u043b\u044c": -0.014767932489451463
+  }
+}
