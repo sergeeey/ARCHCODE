@@ -1,9 +1,50 @@
 # Active Context — ARCHCODE Project
 
-**Last Updated:** 2026-07-08
+**Last Updated:** 2026-08-30
 **Current Branch:** experiment/spectral-collapse-pilot
 **Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
-**Reality source:** session 2026-08-29 (NotebookLM mining + verification round)
+**Reality source:** session 2026-08-30 (T2 topology_control — три KILL, гипотеза исчерпана)
+
+## 🧪 Session 2026-08-30: T2 (topology_control) — три локальных правила убиты, гипотеза исчерпана
+
+⚠️ **Это НЕ возобновление ARCHCODE.** Работа шла в `topology_control/` (ATR Framework) —
+соседний трек, не рукопись и не код ARCHCODE. Проект ARCHCODE остаётся на паузе.
+
+**Вердикт T2:** гипотеза «TOP2 распутывает ДНК по локальному геометрическому правилу»
+закрыта по всем дешёвым вариантам Relaxation Map.
+
+| Вариант | Правило | Медиана `advantage_score` (30 seed) | Коммит |
+|---|---|---|---|
+| v2 | угол перекрёстка | 0.919 | `6d683f1` |
+| v3 / V1 | кривизна | 1.000 | `7fa2393` |
+| v4 / V2 | плотность зацеплений | 1.111 | `62b3251` |
+| — | **оракул** (знает `Lk`, не локальное правило) | **0.106 / 0.106 / 0.111** | потолок |
+
+**Почему это информативный NULL, а не пустой:** потолок оракула устойчив в трёх
+независимых прогонах — упрощение достижимо примерно в 9 раз. Значит провал специфичен
+для правил, а не для механики или задачи.
+
+**Три технических дефекта, из-за которых эксперимент физически не мог проверить свою
+гипотезу** (`AMENDMENTS.md`): A-002 `create_linked_rings` никогда не создавала
+зацеплений (все прогоны v1 от апреля 2026 информационно пусты) · A-003 срывы passage
+различались между армами втрое и двигали метрику сильнее правила (после починки вердикт
+v2 сменился INCONCLUSIVE → KILL) · A-001 метрика инвертирована в трёх местах.
+Плюс ускорение >90 мин → 8.1 с, эквивалентность доказана 16 тестами.
+
+**[VERIFIED] Ретроактивная поправка, применена к `decision_v3.md`:** базовая линия
+согласия с оракулом — **0.368** (замерено на арме `random`), а не 0.5. v3 сообщал
+«0.400 (0.5 = случайно)», из чего читалось «хуже случайного»; на деле слегка лучше.
+Вердикты не меняются, но строка была бы унаследована третьим отчётом. Ошибка типа 3 по
+`research-methodology.md` — результат верен при неозвученном условии, само условие не
+проверялось.
+
+**Следующий шаг и его блокировка:** по `KILL_CRITERIA.md` при T2 KILL → pivot на **D1
+(spectral 3D)**. ⚠️ **Перед D1 обязателен scope-тест.** Близкий эстиманд закрыт дважды
+независимо: ARCHCODE 2026-04-15 (RF на distance+category = 0.9921) и DNA-Ladder
+2026-07-20 (holdout ΔAUC = −0.007). Без scope-теста D1 будет третьей проверкой того же.
+
+**Kill switch НЕ сработал:** требует `T2 KILL AND D1 KILL`, а D1 никогда не запускался
+(папки `d1_spectral_3d/` не существует). ATR-фреймворк не опровергнут.
 
 ## 🗂️ Session 2026-08-29: DNA-Ladder sibling audit + NotebookLM mining + 3-item verification
 - **[VERIFIED, this session]** **DNA-Ladder audit** (`sergeeey/-DNA-Ladder-`, sibling project born
@@ -26,43 +67,13 @@
   cross-confirmed, not new. Also surfaced a previously-unknown parked idea: **GenomicsGPU**
   (GPU-accelerated RNA-seq quantification tool, kallisto/salmon competitor) — planning-only,
   never started, no repo/folder exists anywhere.
-- **3-item verification round (user explicitly asked to re-check before trusting):**
-  1. "Claude 3.5 vs 4.5 disclosure error in rs-10254695" → **FALSE LINK** — real incident but from
-     `docs/internal/INTERNAL_AUDIT_2026-02-04.md`, status `✅ FIXED` back in Feb 2026, unrelated to
-     rs-10254695 (which has no version-numbered AI disclosure at all — only my own generic wording
-     added 2 turns earlier, still uncommitted in `manuscript/category_confound_paper.md`).
-  2. "CTCF null-result underpowered (need 6556 runs, have 1000)" → **PARTIALLY CONFIRMED** — n=1000
-     is real (`results/VALIDATION_summary_Sabate2025.md`, 2026-02-02, ARCHCODE v1.0.2), but "6556"
-     and "p=1.0" do not appear anywhere in the repo (grep clean except unrelated `.venv` library
-     noise) — likely NotebookLM's own on-the-fly inference or from an uncommitted chat-export
-     source. The file itself already carries a "Legacy... does not authorize standalone causal
-     claims" banner since 2026-03-06 — pre-existing project self-downgrade, not a live gap.
-  3. "GenomicsGPU business-model self-contradiction" (TZ proposes per-sample paid licensing; the
-     project's own analysis doc explicitly says "no, if the goal is monetization — NVIDIA will do
-     it free" and "yes, only if open-source from day one") → **FULLY CONFIRMED VERBATIM** — but
-     moot: project never started, no code exists, own May–Oct 2026 roadmap already lapsed unstarted.
-  - **General pattern captured** → `~/.claude/memory/patterns.md` [REPEAT][HIGH][×3]: NotebookLM/RAG
-    synthesis gets FACTS right but loses TEMPORAL/STATUS context (which document, how stale, was it
-    already superseded) — confirmed 3/3 times this session. Protocol: always grep the real repo for
-    the specific claim before trusting it as current.
-- **Also declined**: user brought a video-narrative claim ("ARCHCODE = science of the future,
-  Nobel laureates confirm your approach") and ran it through `boyko-scientific-consortium` —
-  verdict: strong-form claim FALSIFIED by ARCHCODE's own 2026-07-04 falsification (5 independent
-  tests killed the structural finding the narrative was praising); confounder identified (flattering
-  authority narrative + collider bias on "ARCHCODE" as a name spanning both a killed claim and a
-  published honest negative result). Flagged as a recurring pattern this session: escalating
-  flattering narratives pulling back toward a project the user explicitly paused.
-- **No ARCHCODE code, manuscript, or decisions changed this session.** Pause status unchanged.
+
+[summarized] - **3-item verification round (user explicitly asked to re-check before trusting):**
+
 
 ## 🔍 Session 2026-07-05 (part 3): Harvest/Capture sweep
+[summarized] - 2026-07-05: harvest scan (7 questions) + capture routing done. 2 reusable patterns captured →
 
-- 2026-07-05: harvest scan (7 questions) + capture routing done. 2 reusable patterns captured →
-  `~/.claude/memory/_auto/patterns.md` (stratified-eval-with-positive-control; docx-not-PDF for
-  Research Square). 1 open research question → `~/.claude/memory/knowledge/projects/ARCHCODE/pearl_registry/INDEX.md`
-  (TP53 sole surviving within-category signal, next_check 2026-08-01). AlphaGenome wrapper + GitHub
-  showcase methodology assessed but did NOT pass Zero-Signal Gate (code reuse / successful tool use,
-  not new falsifiable claims) — intentionally not captured, not an oversight.
-- 2026-07-06: harvest-capture re-run (user asked "may we find something else"). 2 NEW process assets
   captured → `~/.claude/memory/_auto/patterns.md`: [REPEAT][HIGH] portable integrity-protocol
   (CLAUDE.md + integrity-checker, "вынести во все research-репо"); [REPEAT] self-correcting companion
   preprint (rs-9090074 → rs-10254695, honest: reputational payoff not yet measured). ALSO: the
@@ -87,6 +98,7 @@
 
 ## 📦 Session 2026-07-05 (part 2): GitHub showcase audit — repo README/description/topics
 [summarized] **What was done (after preprint submission, same session):**
+
   the working branch (63,153/13 loci on main vs 26,225/9 loci locally), no mention of rs-10254695, topics
   field is completely empty (`[]`).
 - **Executed (approved, "option A" only):** added a one-line pointer in `main`'s README (right after the
@@ -108,8 +120,10 @@
 
 ---
 
+
 ## ✅ Session 2026-07-05 (part 1): Preprint SUBMITTED — Research Square rs-10254695, status Prescreening
 [summarized] **What happened:** User submitted the category-confound paper as a new, separate Research Square preprint.
+
   stale `main`). Re-verify this link before citing it anywhere else (e.g. cover letters, correspondence).
 - Also caught and declined: a marketing-email link to **SCIRP (Scientific Research Publishing)** —
   confirmed via search this is a well-known predatory publisher (Cabells 2021, Norwegian Index rating 0).
@@ -131,8 +145,10 @@ hypotheses or re-open old discovery threads (pearls, ATPH, QEC-MWPM) unprompted 
 
 ---
 
+
 ## 📄 Session 2026-07-06 (historical — superseded by submission above): Paper flattened + off-site backup
 [summarized] **What was done:**
+
   matched-control p=0.996". Decision: do NOT withdraw/kill it — new paper is a companion/self-correction,
   not a refutation of fabricated data. No fabrication ever occurred.
 - `manuscript/category_confound_paper.md` is now the SOLE authoritative source (v2). Section scaffolding
@@ -154,8 +170,10 @@ If they return, lead with "post the preprint" as the one remaining action, not n
 3. Optional: journal submission later (Bioinformatics non-OA track is free-to-author; check current fees
    before committing — do not quote remembered numbers).
 
+
 ## 🔬 Session 2026-06-28: Discovery Audit — 4 Converging Lines [VERIFIED]
 [summarized] **What was done:**
+
 **✅ RESOLVED (2026-07-04): AlphaGenome rescue-or-kill test → KILL**
 - Existing promoter ISM scan re-analyzed as neg control: −43% was peak of contiguous 6bp element (5227097-5227102),
   2 non-pearls in it equally disruptive (−24 to −28%). Fisher OR=14.5 but MW p=0.31 (pearls bimodal).
@@ -176,6 +194,7 @@ CADD+phyloP survive. Paper draft complete, verified, skeptic-hardened, figure ma
 claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to template + cover letter + 24h cooling-off.
 (3) Optional: verify remaining DOIs resolve.
 - Parked: ATPH, QEC-MWPM `[CANDIDATE]`. Old ARCHCODE discovery claim = FALSIFIED (block above).
+
 
 ## 🔧 Session 2026-06-25: Manuscript Fixed for Submission (commit 703e398)
 
@@ -201,143 +220,7 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 
-## 🎯 Session 2026-05-25: Code Audit Hardening Complete ✅
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-**Status:** 🟢 **P0 BLOCKERS RESOLVED** — All CRITICAL issues fixed
 
-**Audit Results:**
-- Layer 5 (Invariants): ✅ COMPLETE — 13/13 tests PASS (commit 82cd3e1)
-- Layer 7 (Provenance): ✅ RESOLVED — 26,225 variants verified (commit a3bbef2)
-- Overall verdict: 🟢 HARDENED (P0 complete, P1 optional)
-
-**Commits (May 25):**
-1. `a3bbef2` — fix(data): dataset count verification — 26,225 variants (manuscript updated)
-2. `82cd3e1` — test(alphagenome): add Layer 5 invariant auto-tests (13/13 PASS)
-3. `3e0690d` — docs(audit): Layer 5 complete, P0 blockers resolved
-
-**Key Findings:**
-- CFTR: NaN values correctly handled as documented interval mismatch (not silent corruption)
-- HBB stored as "HBB_reference" in AlphaGenome results
-- Dataset count: 26,225 core 9 loci (manuscript corrected from 25,850)
-
-**Audit Document:** `docs/CODE_AUDIT_HARDENING_2026-05-25.md` (666 lines)
-
----
-
-## 🚪 Publication Gates Status (CORRECTED 2026-05-25 from Obsidian)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-- **Action P0:** Verify appeal sent. If not — send today.
-
-### arXiv ⏸️ PAUSED (Max REFUSED May 20)
-- **Status:** ⏸️ **PAUSED** — 4/4 direct attempts failed
-- **Endorser timeline:**
-  - Fudenberg (USC): bounced Apr 1
-  - Paulsen (Oslo): refused Apr 15
-  - Polovnikov (Skoltech): no q-bio track record
-  - **Max Imakaev (MIT):** Willing May 17 → **REFUSED May 20** ("insufficient arxiv submissions")
-  - Hansen, Giorgetti, Mirny (MIT): ghosted 50+ days
-- **Probability of success:** <10% per Obsidian assessment
-- **Action:** NO follow-up. Path effectively closed for now.
-
-### Bioinformatics Advances 📋 NEXT TARGET
-- **Status:** Planned, 2-4 weeks
-- **Type:** Methods note (H1 negative result + validation suite)
-- **APC:** ~$1000-1500 — **funding source UNKNOWN** (Ronin? Personal? Need verify)
-- **Acceptance probability:** 40-50% with HBB pilot reframe (skeptic estimate)
-
----
-
-## 📊 Scientific Results Summary (REFRAMED 2026-05-25, ADR-036)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-- ⚠️ Exploratory 6-locus extension: directional only (1/4 regulatory significant)
-- ⚠️ MLH1: p=0.022 nominal, fails Bonferroni
-- ⚠️ TERT hotspots (+33-53% CAGE): descriptive, no variant-matched controls
-- ✅ Coding null (TP53, BRCA1, CFTR, GJB2; p>0.40): consistent with prediction
-- ✅ Data integrity: 5/5 layers forensic audit PASS (May 9)
-- ✅ Code trust: HARDENED after P0 audit (May 25)
-
-**Honest Limitations (now in abstract):**
-- N=1 locus statistically robust (HBB pilot only)
-- Loci selection POST pilot → garden of forking paths concern (Gelman & Loken, 2013)
-- No wet-lab validation (ATAC-seq, Hi-C)
-- Category classification hardcoded
-
-**Publication Readiness (REVISED after reframe):**
-- Research Square: ✅ LIVE (DOI: 10.21203/rs.3.rs-9090074/v1)
-- Bioinformatics Advances target: 40-50% acceptance (was 25% with 7/7 framing)
-- Nature Genetics / AJHG: <5% (don't target — under-powered)
-- Skeptic verdict: reframe addresses 70% rejection risk → 40-50% acceptance probability
-
----
-
-## 🎯 Tracy Strategic Verdict (CORRECTED 2026-05-25)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-1. `git push` 7 commits (5 min) — make today's work public
-2. Verify bioRxiv appeal sent (5 min) — check email sent folder
-3. APC funding source check (15 min) — Ronin? Personal? Find out
-4. [IF appeal accepted by May 28] Submit to bioRxiv with HBB framing
-5. [PARALLEL] Plan Bioinformatics Advances submission (2-4 weeks)
-
-**Decision Tree (CORRECTED):**
-```
-bioRxiv appeal (response by ~May 28)
-├─ ACCEPTED → submit BIORXIV/2026/726008 v2 with HBB framing (1-2 days)
-├─ REJECTED → Research Square stays primary, focus journal submission
-└─ NO RESPONSE by Jun 5 → follow-up appeal email
-
-Bioinformatics Advances (next 2-4 weeks)
-├─ IF APC funded → submit methods note with HBB pilot + validation suite
-├─ IF NOT funded → look at MDPI / PeerJ / PLOS ONE (lower APC or fee waivers)
-└─ ELSE → Research Square stays as final venue
-```
-
----
-
-## 🔍 External Code Audit (2026-05-25, post-session)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-
-**Findings:** 3 critical + 3 medium + 2 low bugs in `LoopExtrusionEngine.ts`,
-`MultiCohesinEngine.ts`, `contactMatrix.ts`, `correlate_hic_archcode.py`,
-`generate-unified-atlas.ts`, `random.ts`, `biophysics.ts`.
-
-**Materiality verdict:** ❌ NOT material for active AlphaGenome 7/7 claim.
-All bugs in router code path (killed April 2026, commit f6016ed).
-
-**Bug #1 (CTCF retroactive detection):** Minimal fix broke 4 regression tests.
-Proper fix requires state-based stalled semantics (4-6h invasive in dead code).
-DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
-
-**Bugs #2-8:** Same materiality verdict. Documented but not fixed.
-
-**Tracy verdict:** abandon audit fixes → focus on publication gates
-(Ronin Discord check + Max Imakaev follow-up = 8 min).
-
-**Commit:** 3aef138 — docs(audit): document external audit bug #1 (ADR-035)
-
----
-
-## 📋 Next Actions (Priority Order — CORRECTED 2026-05-25)
-[summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
-**B3:** Outreach update with HBB framing + RS DOI (1h)
-- Nora UCSF follow-up (May 29 deadline)
-- AlphaGenome forum post
-- LinkedIn announcement
-
-**B4:** Bioinformatics Advances submission prep (2-3h)
-- Match Author Guidelines
-- Cover letter (HBB pilot framing)
-- Supplement: ADR-035 (CTCF bug), ADR-036 (reframe), power analysis
-
-### P2 — POST-PREPRINT (deferred until submitted)
-
-- Category-matched HBB controls (4-5h) — strengthen for journal
-- FDR sensitivity table (1h)
-- Move router code to `archived/` (2h)
-- Docker for journal submission (4-6h)
-- Reproducibility smoke test on clean machine
-- ChernoffPy paper (#2 in pipeline)
-
----
 
 ## 🗂️ Key Documents
 
@@ -373,6 +256,8 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 
 
+
+
 ## ⚠️ Critical Constraints (CORRECTED)
 
 **DO NOT:**
@@ -391,6 +276,8 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 - ✅ Disclose limitations honestly (N=1 robust, garden of forking paths, Gelman & Loken)
 
 ---
+
+
 
 
 
@@ -442,8 +329,11 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 
 
 
+
+
 ## 📖 Context for Next Session
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
+
 - Research Square LIVE since May 18 ✅
 - bioRxiv rejected May 21 (3rd attempt) → appeal drafted
 - Max Imakaev REFUSED May 20 (arXiv path closed)
@@ -465,7 +355,19 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 **Last Session Duration:** ~6 hours (P0 audit cleanup + skeptic + reframe + power + trust repair + reality sync)  
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
+
 ## Auto-commit log
+- [2026-08-30 19:06] `62b3251`: T2 v4/V2: KILL — local entanglement density carries no directional information
+- [2026-08-30 01:22] `4be9e55`: prereg(T2 v4/V2): local entanglement density as local rule — frozen before implementation
+- [2026-08-30 00:19] `7fa2393`: T2 v3/V1: KILL — curvature carries no directional information either
+- [2026-08-30 00:16] `c168adf`: prereg(T2 v3/V1): curvature as local rule — frozen before implementation
+- [2026-08-30 00:11] `6d683f1`: T2 v2: KILL after removing the failure-rate confound (A-003)
+- [2026-08-29 23:49] `5630608`: T2 v2: INCONCLUSIVE — local angle rule carries no directional information
+- [2026-08-29 23:44] `adbc66f`: prereg(T2 v2): freeze claim before any run
+- [2026-08-29 21:30] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
+- [2026-08-29 21:26] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
+- [2026-08-29 21:25] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
+- [2026-08-29 20:51] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
 - [2026-07-08 15:15] `705fb59`: docs(memory): ARCHCODE paused — preprint live (DOI rs-10254695/v1), no further action
 - [2026-07-08 15:10] `705fb59`: docs(memory): ARCHCODE paused — preprint live (DOI rs-10254695/v1), no further action
 - [2026-07-08 14:53] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
@@ -477,16 +379,5 @@ DECISION: DEFER. Documented as known limitation in code comments + ADR-035.
 - [2026-07-04 23:06] `efdad39`: fix(paper): full reviewer report response (7 major/minor) — data-tested first
 - [2026-07-04 22:18] `8dc9834`: fix(paper): reviewer response — category-granularity robustness + narrowed claims
 - [2026-07-04 22:07] `69fb031`: feat(figure): v2 money figure — 5 methods, two positive controls survive vs both ARCHCODE metrics collapse
-- [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
-- [2026-07-04 21:50] `d089b09`: fix(paper): skeptic-pass revisions — add SSIM metric, reject Simpson's paradox, strengthen CADD caveat
-- [2026-07-04 21:33] `3762f4c`: feat(paper): category-confound negative-result paper — figure, abstract, related work, methods
-- [2026-07-04 00:32] `8a8a603`: chore(memory): sync session state — gnomAD NULL + phyloP confound + AlphaGenome neg-control next-action
-- [2026-07-02 19:31] `c168a4c`: chore(session): commit 2026-06-28 discovery audit results
-- [2026-06-25 22:39] `c852232`: docs(manuscript): add cover letter + references + competitor table (main body)
-- [2026-06-25 22:26] `703e398`: fix(manuscript): resolve abstract/body mismatch + correct headline statistics
-- [2026-05-30 20:49] `25d1406`: chore: archive May audit docs + update activeContext/results
-- [2026-05-25 19:50] `2dde83c`: docs(memory): sync activeContext with Obsidian vault reality (5 days stale)
-- [2026-05-25 19:03] `40aeae5`: docs(trust-repair): number provenance + canonical env + REPRODUCE.md
-- [2026-05-25 18:40] `d81e0cd`: feat(power-analysis): MLH1 post-hoc sample-size calculation (closes ADR-036 OQ#1)
-- [2026-05-25 18:35] `c3f62b3`: docs(manuscript): reframe 7/7 claim to HBB pilot + exploratory (ADR-036)
-- [2026-05-25 16:42] `3aef138`: docs(audit): document external audit bug #1 as known limitation (ADR-035)
+
+[summarized] - [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
