@@ -145,3 +145,6 @@ data/alphamissense/*
 **/depmap/*.csv
 # Compiled manuscript PDFs are build artifacts (regenerated from .typ via typst)
 *.pdf
+
+# D1 raw data — большие публичные файлы, восстанавливаются download_data.py
+topology_control/experiments/d1_spectral_3d/data/
