@@ -5,6 +5,37 @@
 **Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
 **Reality source:** session 2026-08-30 (ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал, фреймворк WEAK)
 
+## 🔧 Session 2026-08-30 (часть 4): H1 починен — критерий не мог быть провален
+
+Три скилла (`/macro-locality` → `/gate-check` → `/harvest`) независимо сошлись на одном:
+**comparator ни разу не разбирался на составляющие** — ни в T2 (не было потолка), ни в
+трёх итерациях D1 (baseline не раскладывали), ни в H1 (нулевой модели не строили).
+
+**Дефект H1 замерен** (`experiments/h1_redox_controller/null_model.py`, симуляция БЕЗ
+биологии): порог SUCCESS (>1.5) перекрывается уже при τ_ratio = 1.5, при τ_ratio = 100
+нулевая модель даёт **11.01** — в 7 раз выше порога. Условие KILL требует τ_ratio < 1.5,
+но гипотеза существует только при τ_ratio ≫ 1. **Посылка гипотезы делала её опровержение
+недостижимым.** Плюс кривая насыщается при колене τ_ratio ≈ 8 — число 100 неинформативно.
+
+**Критерий заменён — `AMENDMENTS.md` A-005** (основание: Amendment Protocol, «техническая
+ошибка»). Новый стоит на `advantage_excess = advantage_model / advantage_null` при одних
+и тех же параметрах. [VERIFIED] подстановка самой нулевой модели даёт excess = **1.0000**
+при τ_ratio 2/8/100 — то есть **KILL-зона достижима**, чего старый критерий не позволял.
+
+**Два блокирующих предусловия, H1 в состоянии `BLOCKED_DATA`:**
+- **П1:** `τ_real` — цитируемое значение, а не назначенное. Сейчас **[UNKNOWN]**, ни одной
+  ссылки в репозитории. «4 дня до результата» недействительны.
+- **П2:** механизм, **отличимый от арифметики задержки**. Сейчас в спецификации нет
+  ничего, кроме «локальное быстрее». Если П2 выполнить не удаётся — **H1 не гипотеза,
+  а определение**, и это самостоятельный публикуемый вывод.
+
+Также: `cost_ratio` (стоимость содержания отдельного генома) в метрике отсутствовала
+как понятие — без неё «локальное лучше» бесплатный обед. Добавлена в новый критерий.
+
+**Топ-актив харвеста (18/20) — приём «арм-потолок»**, и это дыра в самом стеке: в
+`falsification-ladder.md` есть позитивный и негативный контроли, но **потолка нет**.
+Записано в pearl-реестр, impact 9, next_check 2026-10-15.
+
 ## 🛑 Session 2026-08-30 (часть 3): ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал
 
 Решение пользователя: **засчитать переформулированную D1**. Зафиксировано как
@@ -430,6 +461,8 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 ## Auto-commit log
+- [2026-08-30 20:09] `4de00f0`: memory: ATR Phase 1 concluded, framework WEAK, H1 is the only live direction
+- [2026-08-30 19:58] `4de00f0`: memory: ATR Phase 1 concluded, framework WEAK, H1 is the only live direction
 - [2026-08-30 19:58] `5db11f6`: Phase 1 CONCLUDED: kill switch fired, ATR framework marked WEAK
 - [2026-08-30 19:51] `3de8d6f`: D1: lint cleanup, memory + cross-repo register updated (retroscan)
 - [2026-08-30 19:50] `be22d59`: D1 (redirected): KILL — spectral adds nothing, and contact adds nothing either
