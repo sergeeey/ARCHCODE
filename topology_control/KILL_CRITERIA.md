@@ -1,7 +1,7 @@
 # Kill Criteria — Pre-Registration
 
 **Created:** 2026-04-25  
-**Status:** LOCKED — критерии НЕ изменялись. Ниже дописаны только **исходы**.  
+**Status:** LOCKED. T2/D1 — не менялись, дописаны исходы. **H1 — критерий заменён (A-005)**, см. блок ниже.  
 **Phase 1: ЗАВЕРШЕНА 2026-08-30 — оба ядра убиты, kill switch сработал (см. § Phase 1 Global Checkpoint — ИСХОД)**  
 **Purpose:** Предотвратить p-hacking и рационализацию
 
