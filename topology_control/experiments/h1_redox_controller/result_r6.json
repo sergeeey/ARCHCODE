@@ -1,0 +1,167 @@
+{
+  "denominator": "sqrt(2*pi) * H(s)",
+  "source": "result_r3.json curves",
+  "rows": {
+    "events|clip|lognormal|A": {
+      "old_spread": 0.14169328102343215,
+      "new_spread": 0.4189813286482325,
+      "new_ratios": [
+        1.0032380744785652,
+        1.015059025952742,
+        1.2017585645613704,
+        1.4235760958740888
+      ]
+    },
+    "events|clip|lognormal|B": {
+      "old_spread": 0.13818222411015343,
+      "new_spread": 0.4247859251795337,
+      "new_ratios": [
+        1.0155332086759503,
+        1.0588531500460578,
+        1.2848978333519518,
+        1.4469174222739043
+      ]
+    },
+    "events|clip|gamma|A": {
+      "old_spread": 0.8282703436584697,
+      "new_spread": 2.0225575822895094,
+      "new_ratios": [
+        1.0431988086206896,
+        1.1090708712158497,
+        1.8338907947125138,
+        3.153128468831848
+      ]
+    },
+    "events|clip|gamma|B": {
+      "old_spread": NaN,
+      "new_spread": NaN,
+      "new_ratios": [
+        1.0291280983360784,
+        1.112757197907539,
+        1.7609493904798414,
+        null
+      ]
+    },
+    "events|resample|lognormal|A": {
+      "old_spread": 0.344688530671318,
+      "new_spread": 0.8981340662334348,
+      "new_ratios": [
+        1.0043332032859473,
+        1.1165744575561756,
+        1.6397369798332497,
+        1.9063590670064061
+      ]
+    },
+    "events|resample|lognormal|B": {
+      "old_spread": 0.3406829498925245,
+      "new_spread": 1.06648919097917,
+      "new_ratios": [
+        1.0161296676306737,
+        1.1816299488923527,
+        1.6540547757007689,
+        2.0998209747920438
+      ]
+    },
+    "events|resample|gamma|A": {
+      "old_spread": NaN,
+      "new_spread": NaN,
+      "new_ratios": [
+        1.0439340037312015,
+        1.2546711436461215,
+        2.263592145560173,
+        null
+      ]
+    },
+    "events|resample|gamma|B": {
+      "old_spread": NaN,
+      "new_spread": NaN,
+      "new_ratios": [
+        1.0302554956896286,
+        1.240287425978447,
+        2.4502421700003287,
+        null
+      ]
+    },
+    "deficit|clip|lognormal|A": {
+      "old_spread": 0.36718365006337833,
+      "new_spread": 1.2602736636925198,
+      "new_ratios": [
+        0.9968689230600529,
+        1.0360198616161456,
+        1.4150331882054408,
+        2.2531965729461625
+      ]
+    },
+    "deficit|clip|lognormal|B": {
+      "old_spread": 0.45925886964335816,
+      "new_spread": 1.412495491305574,
+      "new_ratios": [
+        1.015931432969535,
+        1.096033495375206,
+        1.522984373731269,
+        2.4509300015146143
+      ]
+    },
+    "deficit|clip|gamma|A": {
+      "old_spread": NaN,
+      "new_spread": NaN,
+      "new_ratios": [
+        1.0418792293927603,
+        1.1390710325560298,
+        1.994598707446772,
+        null
+      ]
+    },
+    "deficit|clip|gamma|B": {
+      "old_spread": NaN,
+      "new_spread": NaN,
+      "new_ratios": [
+        1.013122366781473,
+        1.1151786179042167,
+        1.9826769256801133,
+        null
+      ]
+    },
+    "deficit|resample|lognormal|A": {
+      "old_spread": 0.8640218523791171,
+      "new_spread": 2.0816631703316175,
+      "new_ratios": [
+        0.9998031968297199,
+        1.1563755459376794,
+        1.9198366273114447,
+        3.081056689249961
+      ]
+    },
+    "deficit|resample|lognormal|B": {
+      "old_spread": 0.9649696455164243,
+      "new_spread": 2.2485534328252914,
+      "new_ratios": [
+        1.020570461784344,
+        1.2202746809899552,
+        2.0048213592763973,
+        3.3153776770696237
+      ]
+    },
+    "deficit|resample|gamma|A": {
+      "old_spread": NaN,
+      "new_spread": NaN,
+      "new_ratios": [
+        1.0437861318378068,
+        1.294692991271877,
+        2.464640317095203,
+        null
+      ]
+    },
+    "deficit|resample|gamma|B": {
+      "old_spread": NaN,
+      "new_spread": NaN,
+      "new_ratios": [
+        1.0133877728989034,
+        1.2709120878172224,
+        2.7187469483754,
+        null
+      ]
+    }
+  },
+  "baseline_improvement": -0.27728804762480036
+}
