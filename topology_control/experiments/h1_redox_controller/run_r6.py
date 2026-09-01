@@ -24,7 +24,6 @@ import json
 from pathlib import Path
 
 import numpy as np
-
 from analytic_r7 import SQRT_2PI, hoover_lognormal
 
 CV_GRID = (0.25, 0.5, 1.0, 2.0)
