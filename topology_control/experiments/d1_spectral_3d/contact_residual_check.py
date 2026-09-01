@@ -12,11 +12,17 @@ pearl-реестр с impact 8. Закоммиченного скрипта за
 Этот файл воспроизводит исходное вычисление ДОСЛОВНО и фиксирует результат в git,
 чтобы спор закрылся артефактом, а не памятью.
 
-Запуск: python contact_residual_check.py
+Запуск: python contact_residual_check.py                    # исходный набор (GTEx v8)
+        python contact_residual_check.py --features X.parquet --out Y.json
+
+WHY параметризация добавлена 2026-09-01, а дефолты НЕ тронуты: репликация на GTEx v10
+должна пройти тем же кодом, но команда из строки выше обязана воспроизводить исходные
+числа дословно — иначе артефакт перестаёт закрывать спор, ради которого написан.
 """
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
 
@@ -26,12 +32,17 @@ import statsmodels.api as sm
 from scipy.stats import spearmanr
 from sklearn.metrics import roc_auc_score
 
-df = pd.read_parquet(Path(__file__).parent / "features_all.parquet")
+_ap = argparse.ArgumentParser()
+_ap.add_argument("--features", default="features_all.parquet")
+_ap.add_argument("--out", default="contact_residual_check.json")
+_args = _ap.parse_args()
+
+df = pd.read_parquet(Path(__file__).parent / _args.features)
 out: dict = {}
 
 # Популяция ровно та, что была в исходном инлайн-вычислении 2026-08-30
 d = df[(df.bin_ok == 1) & (df.contact > 0)].copy()
-out["n_pairs"] = int(len(d))
+out["n_pairs"] = len(d)
 
 rho, _ = spearmanr(d.contact, d.log10_dist)
 fit = sm.OLS(np.log10(d.contact.to_numpy()), sm.add_constant(d.log10_dist.to_numpy())).fit()
@@ -58,10 +69,8 @@ print("=" * 62)
 for k, v in out.items():
     print(f"  {k:32s} {v}")
 print()
-print(f"  исходно записано в реестр: AUC остатка = 0.5063")
+print("  исходно записано в реестр: AUC остатка = 0.5063")
 print(f"  получено сейчас          : AUC остатка = {auc:.4f}")
 print(f"  {'ВОСПРОИЗВЕЛОСЬ' if abs(auc - 0.5063) < 0.002 else 'НЕ ВОСПРОИЗВЕЛОСЬ'}")
 
-Path(__file__).with_name("contact_residual_check.json").write_text(
-    json.dumps(out, indent=2), encoding="utf-8"
-)
+Path(__file__).with_name(_args.out).write_text(json.dumps(out, indent=2), encoding="utf-8")

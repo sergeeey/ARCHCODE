@@ -1,0 +1,45 @@
+{
+  "prereg_commit": "0f8cbb4",
+  "n_all": 218495,
+  "n_primary": 207432,
+  "positive_control_auc": 0.8704435768429434,
+  "negative_control": {
+    "n_test": 13877,
+    "n_pos": 967,
+    "n_variants": 708,
+    "auc_baseline": 0.5179937952430196,
+    "auc_full": 0.5182004602702506,
+    "delta_auc": 0.00020666502723099,
+    "prec1_baseline": 0.07909604519774012,
+    "prec1_full": 0.07909604519774012,
+    "delta_prec1": 0.0
+  },
+  "primary": {
+    "n_test": 13877,
+    "n_pos": 967,
+    "n_variants": 708,
+    "auc_baseline": 0.873157016558034,
+    "auc_full": 0.8724803087479384,
+    "delta_auc": -0.0006767078100956558,
+    "prec1_baseline": 0.5070621468926554,
+    "prec1_full": 0.4943502824858757,
+    "delta_prec1": -0.012711864406779683
+  },
+  "verdict": "KILL",
+  "locv_mean_delta_auc": 0.00024007048876711396,
+  "all_pairs": {
+    "n_test": 14772,
+    "n_pos": 1044,
+    "n_variants": 733,
+    "auc_baseline": 0.8762165755700239,
+    "auc_full": 0.8755543526556457,
+    "delta_auc": -0.0006622229143781189,
+    "prec1_baseline": 0.5184174624829468,
+    "prec1_full": 0.5102319236016372,
+    "delta_prec1": -0.008185538881309684
+  },
+  "by_distance_tercile": {
+    "\u043d\u0438\u0436\u043d\u0438\u0439 \u0442\u0435\u0440\u0446\u0438\u043b\u044c": -0.0010418624634140894,
+    "\u0432\u0435\u0440\u0445\u043d\u0438\u0439 \u0442\u0435\u0440\u0446\u0438\u043b\u044c": -0.012337677235809585
+  }
+}

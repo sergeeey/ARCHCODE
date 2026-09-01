@@ -1,0 +1,9 @@
+{
+  "n_pairs": 198643,
+  "spearman_contact_vs_dist": -0.7916169090259625,
+  "r2_log_contact_on_log_dist": 0.6734419268277283,
+  "slope": -0.8175352275361581,
+  "auc_of_residual": 0.5383267156618097,
+  "auc_symmetric": 0.5383267156618097,
+  "distance_from_chance": 0.038326715661809674
+}

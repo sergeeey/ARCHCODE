@@ -14,8 +14,14 @@ WHY он вообще существует: канонический инстр�
 from __future__ import annotations
 
 import io
+import time
 
 import requests
+
+
+class ShortRangeResponse(Exception):
+    """Сервер вернул меньше байт, чем запрошено, но без HTTP-ошибки."""
+
 
 DEFAULT_BLOCK = 2**22  # 4 МБ -- компромисс между числом запросов и лишним трафиком
 
@@ -35,14 +41,53 @@ class HTTPRangeFile(io.RawIOBase):
         self.size = int(head.headers["Content-Length"])
         self.bytes_fetched = 0  # для честного отчёта, сколько реально скачано
 
-    def _block(self, idx: int) -> bytes:
+    def _block(self, idx: int, retries: int = 5) -> bytes:
+        """
+        WHY ретраи добавлены 2026-09-01: длинная сборка (GTEx v10, ~12 тыс. вариантов,
+        десятки тысяч range-запросов) упала на `RemoteDisconnected` после ~5 минут —
+        сервер 4DN закрывает keep-alive-соединение. Это отказ ТРАНСПОРТА, а не результат:
+        по FL Substrate Gate такой обрыв не является свидетельством против гипотезы,
+        поэтому его чинят, а не записывают. Пересоздаём сессию — переиспользование
+        мёртвого пула соединений даёт ту же ошибку немедленно.
+
+        WHY ChunkedEncodingError отдельно: это НЕ подкласс ConnectionError. requests
+        поднимает его, когда тело обрывается на середине, тогда как ConnectionError —
+        когда соединение умирает до/на заголовках. Обрыв keep-alive даёт то или другое
+        в зависимости от момента, поэтому ловить надо оба, иначе ретрай покрывает
+        половину случаев.
+
+        WHY проверка длины: сервер (или прокси) может вернуть КОРОТКИЙ, но
+        самосогласованный ответ — со своим Content-Length под усечённый диапазон.
+        Тогда raise_for_status() молчит, и в кэш HDF5-потока лягут неверные байты.
+        Это единственный путь в этом классе, дающий тихо НЕПРАВИЛЬНЫЕ данные,
+        а не отсутствующие, поэтому проверяется явно.
+        """
         if idx not in self._cache:
             start = idx * self.block_size
             end = min(start + self.block_size, self.size) - 1
-            r = self.session.get(
-                self.url, headers={"Range": f"bytes={start}-{end}"}, timeout=self.timeout
-            )
-            r.raise_for_status()
+            want = end - start + 1
+            for attempt in range(retries):
+                try:
+                    r = self.session.get(
+                        self.url, headers={"Range": f"bytes={start}-{end}"}, timeout=self.timeout
+                    )
+                    r.raise_for_status()
+                    if len(r.content) != want:
+                        raise ShortRangeResponse(
+                            f"короткий range-ответ: запрошено {want} байт "
+                            f"({start}-{end}), получено {len(r.content)}"
+                        )
+                    break
+                except (
+                    requests.ConnectionError,
+                    requests.Timeout,
+                    requests.exceptions.ChunkedEncodingError,
+                    ShortRangeResponse,
+                ):
+                    if attempt == retries - 1:
+                        raise
+                    time.sleep(2**attempt)
+                    self.session = requests.Session()
             self._cache[idx] = r.content
             self.bytes_fetched += len(r.content)
         return self._cache[idx]
