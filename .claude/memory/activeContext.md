@@ -5,6 +5,31 @@
 **Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
 **Reality source:** session 2026-08-30 (ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал, фреймворк WEAK)
 
+## 🛡️ Session 2026-09-01 (часть 5): CLAUDE.md v1.1 — протокол целостности сам протух
+
+**Коммит `ff88bea`.** Аудит собственных записей `CLAUDE.md`. **Обе** отрицательные записи
+файла оказались неверны на сегодня, и **обе были верны при внесении** (2026-02-04):
+
+| запись v1.0 | статус на 2026-09-01 |
+|---|---|
+| «Sabaté, Nature Genetics 2025 — DOES NOT EXIST (404)» | ❌ вышла: **Nat Genet 57:3152–3164**, `10.1038/s41588-025-02406-9`, PMID 41238959. И это **тот же объект**, что препринт `10.1101/2024.08.09.605990`, который та же запись помечала как безопасный |
+| «AlphaGenome — SYNTHETIC, not real tool» | ❌ реален: *Nature* 649:1206–1218 (2026), `10.1038/s41586-025-10014-0`; интегрирован с `859b1e2` (2026-03-30). Претензия 2026-02 была к **нашему моку** |
+
+**Структурная причина, а не две случайные ошибки.** Файл ловит ложные ПОЛОЖИТЕЛЬНЫЕ
+(выдуманная ссылка), но не имел механизма против ложных ОТРИЦАТЕЛЬНЫХ. Асимметрия
+встроена: положительная запись подтверждается при каждом использовании, отрицательная
+**не перепроверяется никогда** — она выглядит как закрытый вопрос.
+
+**Добавлено в v1.1:** Правило 5 «NO EXPIRED NEGATIVES» (срок годности **6 месяцев** у
+вердикта «не существует»; дата проверки обязательна; вердикт по препринту не переносится
+на опубликованную версию — это один объект) · искажение «Temporal Drift» · ловушка
+`inspect_paper` без префикса `doi:`/`pmid:` возвращает 404 на существующий DOI ·
+whitelist пополнен проверенными числами по когезину и предостережением по
+предвычисленным скорам SpliceAI (ошибки аннотации в 35.4% генов MANE v1.0).
+
+**Счёт паттерна за сессию: 6 случаев** «факт был верен, но больше не актуален», два из
+них — внутри правила, которое как раз и защищает от неверных фактов.
+
 ## 🎯 Session 2026-09-01 (часть 3): D1 переспрошен на GTEx v10 — вердикт устоял, pearl нет
 
 **Коммит `5374e63`.** Проверялось ОДНО возражение: не держался ли KILL для D1 на объёме
@@ -623,6 +648,9 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
 ## Auto-commit log
+- [2026-09-01 22:29] `ff88bea`: CLAUDE.md v1.1: обе отрицательные записи протоколa устарели -- добавлено правило NO EXPIRED NEGATIVES
+- [2026-09-01 18:33] `2fd44c5`: memory: D1 переспрошен на v10 -- вердикт устоял, pearl ослаблен третьим числом за двое суток
+- [2026-09-01 17:38] `2fd44c5`: memory: D1 переспрошен на v10 -- вердикт устоял, pearl ослаблен третьим числом за двое суток
 - [2026-09-01 17:37] `5374e63`: D1 v10: KILL воспроизведён на 2.5x данных, pearl-число — нет
 - [2026-09-01 15:11] `7b26ec8`: memory: R7+R6 -- 14.2% closes as product of a -39.5% analytic artifact and a +41.9% simulation term
 - [2026-09-01 15:10] `b4829ca`: H1 R7+R6: the 14.2% puzzle closes as a product of two opposing effects
@@ -635,15 +663,6 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 - [2026-08-30 21:07] `3374774`: prereg(H1 R2): tolerance set NARROWER than the effect being explained
 - [2026-08-30 21:04] `5add1c7`: memory: R1 done -- secondary defensible, primary was a weak test (3rd such criterion this session)
 - [2026-08-30 21:04] `bba0b9f`: H1 R1: secondary PROMOTE-worthy, primary was a weak test -- and I say so
-- [2026-08-30 20:57] `98b95cc`: prereg(H1 R1): parameters pinned, and the primary question is one I cannot predict
-- [2026-08-30 20:49] `13cf549`: memory: H1 run INCONCLUSIVE -- threshold met but magnitude is parameter-driven
-- [2026-08-30 20:49] `07da1f3`: H1: INCONCLUSIVE -- threshold passed at 4.52, but the magnitude is parameter-driven
-- [2026-08-30 20:43] `274bbb8`: prereg(H1): frozen before the model is written
-- [2026-08-30 20:34] `a8a98fe`: memory: tau_real found (2-5, not 100); H1 unblocked, both preconditions met
-- [2026-08-30 20:33] `3cbb5bc`: H1 P1 CLOSED: tau_real is 2-5, not 100 -- mitochondrial translation is 10-16x SLOWER
-- [2026-08-30 20:26] `05c2c06`: H1: fix header self-contradiction (it still claimed no criterion changed), memory updated
-- [2026-08-30 20:25] `f528111`: H1 literature search: P2 closed, P1 blocked on one unmeasured number
-- [2026-08-30 20:18] `93b2e44`: A-005: H1 criterion replaced -- the old one could not be failed
 
 [summarized] - [2026-08-30 20:09] `4de00f0`: memory: ATR Phase 1 concluded, framework WEAK, H1 is the only live direction
 [summarized] - [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
