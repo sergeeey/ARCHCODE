@@ -25,7 +25,6 @@ import json
 from pathlib import Path
 
 import numpy as np
-
 from run_r1 import CV_GRID, MEAN_LOAD, NOISE_GRID, STEPS, THRESHOLD, N
 from specificity_model import count_events
 
