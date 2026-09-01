@@ -5,24 +5,51 @@
 **Session Focus:** ⏸️ **PROJECT STILL PAUSED.** No ARCHCODE code/manuscript work resumed. 2026-08-29 session was exploratory/archival (see below), not a resumption. Do NOT raise new ARCHCODE work unprompted.
 **Reality source:** session 2026-08-30 (ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал, фреймворк WEAK)
 
+## 🎯 Session 2026-09-01 (часть 3): D1 переспрошен на GTEx v10 — вердикт устоял, pearl нет
+
+**Коммит `5374e63`.** Проверялось ОДНО возражение: не держался ли KILL для D1 на объёме
+данных. GTEx v10 даёт 1 841 906 значимых пар против 458 161 в v8 (в 4.02 раза); после
+отбора — 218 495 пар и 11 359 вариантов против 87 198 и 4 934.
+
+`run_analysis.py` прогнан **без единой правки**, только другой `--features`. Предсказание
+(«вердикт не изменится, ΔAUC < 0.02») записано ДО прогона и устояло:
+
+| | v8 (заморожено `0f8cbb4`) | v10 |
+|---|---|---|
+| позитивный / негативный контроль | 0.8725 / +0.0006 PASS | 0.8704 / +0.0002 PASS |
+| **ΔAUC первичный** | **+0.0004** | **−0.0007** |
+| вердикт | KILL | **KILL** |
+
+Знак ΔAUC перевернулся вокруг нуля — величина колеблется около него, а не лежит чуть выше.
+
+**Что НЕ воспроизвелось — pearl-число 0.5063** (`~/.claude/rules/pearl_registry/INDEX.md`,
+статус переписан на `weakened`):
+- устояло: R² 0.6727→**0.6734**, наклон −0.8212→**−0.8175**, Spearman −0.790→**−0.792**
+- НЕ устояло: **AUC остатка контакта 0.5063 → 0.5383** (расстояние от случайности ×6)
+
+Детерминированная половина («контакт на 67% есть функция расстояния») — свойство Hi-C,
+подтверждено. Формулировка «канал ПУСТ» была свойством **пары** (Hi-C × разреженный набор
+меток v8). Канал не пуст, он слабый. Дешёвая проверка «AUC остатка ≈ 0.5» перестала быть
+валидным прокси — она зависит от плотности меток; проверять надо сам ΔAUC.
+
+Это **третий раз за двое суток**, когда число из этого проекта меняет статус: сперва 0.88
+(фальсифицировано свипом окна), затем 0.5063 (подтверждено артефактом против двух
+оспариваний), теперь 0.5063 же — ослаблено бо́льшим набором данных, а не оспариванием.
+
+**Явная оговорка, записанная в `decision_v10_replication.md`:** TSS из GENCODE v26
+(аннотация под v8), eGenes из v10; пересечение 11 897/12 428 (**95.7%**), теряется 531 ген.
+Это не чистая репликация. Открыто: V10-A (согласованный GENCODE), V10-B (чем отличаются
+потерянные 531).
+
+**D1 остаётся ЗАКРЫТЫМ.** Прогон проверял прежний вердикт, а не переоткрывал гипотезу.
+
 ## 🎯 Session 2026-09-01 (часть 2): R7+R6 — загадка 14.2% ЗАКРЫТА разложением
+[summarized] **R7 SUCCESS — замкнутая форма выведена и проверена.** При аддитивном шуме, N→∞:
+[summarized] **Отклонение существует УЖЕ при N=∞ и БОЛЬШЕ наблюдаемого: 39.5% против 14.2%.**
+[summarized] **R6 REJECT — единицы Гувера метрику НЕ чинят.** Разброс растёт ВЕЗДЕ: базовая
+[summarized] **НО побочный продукт R6 закрывает исходный вопрос — разложение ТОЧНОЕ (ошибка 0.0007):**
+[summarized] ```
 
-**R7 SUCCESS — замкнутая форма выведена и проверена.** При аддитивном шуме, N→∞:
-дефицит ядерного арма `E[max(0,λ−μ)] = μ·H`, где H — **индекс Гувера**, для логнормали
-`H(s) = 2Φ(s/2) − 1`. Дефицит локального `E[max(0,−δ)] = σ/√(2π)`. Отсюда
-**`noise_be = √(2π)·H(s)`**, отношение `= √(2π)·H(s)/CV`. Сверка с МК (4·10⁶): **2.29·10⁻⁴**.
-
-**Отклонение существует УЖЕ при N=∞ и БОЛЬШЕ наблюдаемого: 39.5% против 14.2%.**
-Причина: делим величину типа **L1** (индекс Гувера, MAD) на меру типа **L2** (CV).
-Для нормального/равномерного/Пуассона MAD/σ — константа √(2/π)≈0.798, оттого «единица»
-и казалась теоретическим ожиданием. Закрывает заодно R5.
-
-**R6 REJECT — единицы Гувера метрику НЕ чинят.** Разброс растёт ВЕЗДЕ: базовая
-14.2% → 41.9%, прочие до 208%. Считано на 64 персистированных кривых R3, новых прогонов ноль.
-
-**НО побочный продукт R6 закрывает исходный вопрос — разложение ТОЧНОЕ (ошибка 0.0007):**
-
-```
 наблюдаемое = аналитика (−39.5%, N=∞) × остаток симуляции (+41.9%)
 0.986/0.950/0.972/0.846 = 0.9824/0.9361/0.8091/0.5942 × 1.003/1.015/1.202/1.424
 ```
@@ -45,31 +72,14 @@
 Артефакты: `analytic_r7.{py,json}`, `run_r6.py`, `result_r6.json`, `decision_r6_r7.md`.
 
 ## 🔬 Session 2026-09-01: R3 — все три кандидата убиты, вопрос оказался некорректным
+[summarized] Пре-регистрация `5a9e6e6`. **Исходный R3 (тяжесть хвоста при конечном N) опровергнут ДО
+[summarized] **Позитивный контроль прошёл первым:** базовая конфигурация дала ровно **14.2%** при
+[summarized] **Снятие КАЖДОГО фактора делает разброс БОЛЬШЕ:**
+[summarized] | Сняли | Разброс | Было |
+[summarized] Ни один не роняет ниже порога 5% → **сработал заранее записанный KILL всей тройки**.
+[summarized] **Структура важнее вердикта:** базовая конфигурация — САМАЯ устойчивая из восьми, любое
+[summarized] **Вывод сильнее ожидаемого: вопрос «почему отношение ≠ 1» ПОСТАВЛЕН НЕКОРРЕКТНО.**
 
-Пре-регистрация `5a9e6e6`. **Исходный R3 (тяжесть хвоста при конечном N) опровергнут ДО
-запуска** роем проб `wvm32g576`: двумя независимыми методами конечное N даёт 0.25–0.53%
-при нужных 14.2% (потребовалось бы N≈10, в модели 200). Файл переопределил R3 как
-факториальную абляцию трёх других кандидатов.
-
-**Позитивный контроль прошёл первым:** базовая конфигурация дала ровно **14.2%** при
-14.2% в R2, половины seed согласны (14.2% / 13.8%). Остаток реален и воспроизводим.
-
-**Снятие КАЖДОГО фактора делает разброс БОЛЬШЕ:**
-
-| Сняли | Разброс | Было |
-|---|---|---|
-| M — счётчик событий | **36.7%** | 14.2% |
-| C — обрезка 1e-6 | **34.5%** | 14.2% |
-| F — логнормаль → гамма | **82.8%** | 14.2% |
-
-Ни один не роняет ниже порога 5% → **сработал заранее записанный KILL всей тройки**.
-
-**Структура важнее вердикта:** базовая конфигурация — САМАЯ устойчивая из восьми, любое
-изменение переворачивает знак тренда (базовая падает 0.986→0.846, все семь остальных
-растут до 1.874/1.994). При CV=0.25 все восемь согласны (0.979–1.026), расхождение
-появляется только с ростом CV.
-
-**Вывод сильнее ожидаемого: вопрос «почему отношение ≠ 1» ПОСТАВЛЕН НЕКОРРЕКТНО.**
 При CV ≥ 1 величина не инвариантна ни к одному из трёх произвольных допущений, ни одно
 из которых не правильнее других. Отклонение существует, но его знак и величина задаются
 выбором допущений, а не механизмом. Тот же класс, что D1 («контакт = функция расстояния»)
@@ -92,17 +102,10 @@
 Артефакты: `{claim_r3,decision_r3}.md`, `run_r3.py`, `result_r3.json`, `r3_log.txt`.
 
 ## ❌ Session 2026-08-30 (часть 8): R2 — H_A убита, и допуск решил исход
+[summarized] Пре-регистрация `3374774`. Объясняли остаток из R1: почему `noise_breakeven / CV_pop`
+[summarized] **H_A:** ошибка локального арма мультипликативна, то есть сцеплена с нагрузкой органеллы,
+[summarized] | CV | мультипликативный | аддитивный |
 
-Пре-регистрация `3374774`. Объясняли остаток из R1: почему `noise_breakeven / CV_pop`
-систематически < 1 и падает с CV (27% при CV=2), тогда как структура даёт 1.0 везде.
-
-**H_A:** ошибка локального арма мультипликативна, то есть сцеплена с нагрузкой органеллы,
-а ошибка ядерного — нет. Тест: аддитивный шум расцепляет и обязан убрать эффект.
-
-| CV | мультипликативный | аддитивный |
-|---|---|---|
-| 0.25 | 1.003 | 0.986 |
-| 2.0 | **0.732** | **0.846** |
 | **разброс** | **27.0%** | **14.2%** |
 
 **KILL: 14.2% против допуска 10%.** Расцепление уменьшило эффект почти вдвое
@@ -125,22 +128,11 @@ SUCCESS, а объяснение — ложным. Порог 10% поставл
 Артефакты: `{claim_r2,decision_r2}.md`, `run_r2.py`, `result_r2.json`. `[VERIFIED-SYNTHETIC]`.
 
 ## ✅ Session 2026-08-30 (часть 7): R1 выполнен — вторичный защищаем, первичный был слабым тестом
+[summarized] Пре-регистрация `98b95cc` заморожена до `run_r1.py`.
+[summarized] **ЗАКАЗАННАЯ ЧАСТЬ ВЫПОЛНЕНА — SUCCESS и он защищаем.** Параметры зафиксированы до
+[summarized] | Величина | Значение |
+[summarized] Обе причины, по которым первый прогон был понижен до INCONCLUSIVE, сняты.
 
-Пре-регистрация `98b95cc` заморожена до `run_r1.py`.
-
-**ЗАКАЗАННАЯ ЧАСТЬ ВЫПОЛНЕНА — SUCCESS и он защищаем.** Параметры зафиксированы до
-прогона и выбраны НЕ в свою пользу: ρ = 0.80 (нижний край области, а не 1.0, давшая
-лучшее число) и шум сенсора 0.10. При нулевом шуме запас над порогом был 11%, шум мог
-его съесть — не съел.
-
-| Величина | Значение |
-|---|---|
-| `advantage` абсолютный | **1.3232** |
-| нулевая модель | **1.0170** — НЕ просела, excess не раздут |
-| `advantage_excess` | **1.3010** при пороге 1.20 → SUCCESS |
-| негативный контроль | 0.8398 ✅ · калибровка 1.0000 ✅ |
-
-Обе причины, по которым первый прогон был понижен до INCONCLUSIVE, сняты.
 
 ⚠️ **Довесок, который я добавил сверх заказа, оказался слабым тестом.** Первичный вопрос
 («шум безубыточности = CV популяции») прошёл 4 из 4 — отношения 1.003 / 0.980 / 0.884 /
@@ -163,21 +155,11 @@ CV (1.003 → 0.732), тогда как чистая структура дала
 `[VERIFIED-SYNTHETIC]`, ни один параметр не из биологии, приоритет CoRR Аллена.
 
 ## 🧪 Session 2026-08-30 (часть 6): H1 прогнан по новому критерию — INCONCLUSIVE
+[summarized] Пре-регистрация `274bbb8` заморожена ДО написания модели. Решающий тест при **τ_ratio = 1**
+[summarized] **Результат: `advantage_excess = 4.52` при пороге SUCCESS ≥ 1.20.** Все три контроля
+[summarized] **Но вердикт понижен до INCONCLUSIVE** — сработали три триггера скептика (первый
+[summarized] 1. **Величина целиком задана `capacity_ratio`**, который claim.md не зафиксировал:
 
-Пре-регистрация `274bbb8` заморожена ДО написания модели. Решающий тест при **τ_ratio = 1**
-(задержек нет вообще), армы отличаются только распределением ОДИНАКОВОГО бюджета:
-local — пропорционально своей нагрузке, nuclear — равномерно, null — то же при CV = 0.
-
-**Результат: `advantage_excess = 4.52` при пороге SUCCESS ≥ 1.20.** Все три контроля
-пройдены: калибровка при CV=0 даёт ровно 1.0000, бюджеты равны, негативный контроль
-(перемешать нагрузки после распределения) обрушает эффект до 0.7355. Вторичное
-предсказание подтверждено: excess растёт с гетерогенностью 2.65 → 4.52 → 7.28 → 9.23.
-
-**Но вердикт понижен до INCONCLUSIVE** — сработали три триггера скептика (первый
-ненулевой результат за сессию, превышение порога в 3.8 раза, чисто синтетика), и
-проверка нашла две области применимости, которых НЕ было в пре-регистрации:
-
-1. **Величина целиком задана `capacity_ratio`**, который claim.md не зафиксировал:
    excess идёт от 1.008 (ρ=0.5, KILL — мощности не хватает всем) до 313 (ρ=1.2).
    Порог держится на ρ ∈ [0.8, 1.2], но 4.52 — следствие выбора ρ = 1.0.
 2. **Нужен сенсор точнее, чем разброс популяции.** Точка безразличия — шум CV ≈ 0.5,
@@ -200,28 +182,11 @@ local — пропорционально своей нагрузке, nuclear �
 защищаемый вердикт.
 
 ## 📚 Session 2026-08-30 (часть 5): H1 — это CoRR-гипотеза Аллена, механизм не тот
-
-Поиск литературы по предусловиям A-005. **Оба предусловия отработаны, результат меняет H1.**
-
-**П2 ЗАКРЫТО — но не так, как ожидалось. H1 оказалась переоткрытием CoRR-гипотезы**
-(Co-location for Redox Regulation, John F. Allen, 1993). Источники проверены HTTP:
-Allen 2015 PNAS `10.1073/pnas.1500012112` (277 цит.), Allen 2003 Phil Trans R Soc B
-`10.1098/rstb.2002.1191` (265), Allen 2017 J Theor Biol PMID `28408315`. Найдены
-поиском по формулировке самой H1, БЕЗ имени Аллена — совпадение не подгонялось.
-
-⚠️ **У Аллена механизм — НЕ задержка.** Это со-локация сенсора и гена: отклик на
-редокс-состояние КОНКРЕТНОЙ органеллы. В клетке сотни митохондрий с разными
-состояниями, ядерный контроллер действует по среднему **даже при нулевой задержке**.
-Специфичность на органеллу не сводится к арифметике задержки — это и есть механизм,
-которого требовало П2. Но значит **исходная формулировка H1 через задержку описывала
-не тот механизм.** Решающий тест ставится при τ_ratio = 1, где преимущества по скорости
-нет вообще; KILL, если преимущество исчезает при устранении гетерогенности.
-
-**П1 ЗАКРЫТО. τ_real ≈ 2–5, а НЕ 100 — ошибка в 20–50 раз.**
-
-Ключевая величина найдена со ВТОРОЙ попытки: **0.422 кодон/с**, Wakigawa et al. 2023,
-DOI `10.1101/2023.07.19.549812` (Molecular Cell 2025), ретапамулиновый run-off,
-in organello. Прямая цитата подписи к рис. 2C.
+[summarized] Поиск литературы по предусловиям A-005. **Оба предусловия отработаны, результат меняет H1.**
+[summarized] **П2 ЗАКРЫТО — но не так, как ожидалось. H1 оказалась переоткрытием CoRR-гипотезы**
+[summarized] ⚠️ **У Аллена механизм — НЕ задержка.** Это со-локация сенсора и гена: отклик на
+[summarized] **П1 ЗАКРЫТО. τ_real ≈ 2–5, а НЕ 100 — ошибка в 20–50 раз.**
+[summarized] Ключевая величина найдена со ВТОРОЙ попытки: **0.422 кодон/с**, Wakigawa et al. 2023,
 
 ⚠️ **Урок поиска:** первая итерация (обзорные запросы «mitoribosome elongation rate»)
 дала «признанный пробел в знаниях» — это было верно **про обзоры**, но не про
@@ -245,15 +210,9 @@ MT-CO1 (513 аа) 20 мин → τ_real 1.5–3.0.
 ⚠️ **Приоритет обязателен:** любой документ по H1 обязан ссылаться на CoRR Аллена.
 
 ## 🔧 Session 2026-08-30 (часть 4): H1 починен — критерий не мог быть провален
+[summarized] Три скилла (`/macro-locality` → `/gate-check` → `/harvest`) независимо сошлись на одном:
+[summarized] **Дефект H1 замерен** (`experiments/h1_redox_controller/null_model.py`, симуляция БЕЗ
 
-Три скилла (`/macro-locality` → `/gate-check` → `/harvest`) независимо сошлись на одном:
-**comparator ни разу не разбирался на составляющие** — ни в T2 (не было потолка), ни в
-трёх итерациях D1 (baseline не раскладывали), ни в H1 (нулевой модели не строили).
-
-**Дефект H1 замерен** (`experiments/h1_redox_controller/null_model.py`, симуляция БЕЗ
-биологии): порог SUCCESS (>1.5) перекрывается уже при τ_ratio = 1.5, при τ_ratio = 100
-нулевая модель даёт **11.01** — в 7 раз выше порога. Условие KILL требует τ_ratio < 1.5,
-но гипотеза существует только при τ_ratio ≫ 1. **Посылка гипотезы делала её опровержение
 недостижимым.** Плюс кривая насыщается при колене τ_ratio ≈ 8 — число 100 неинформативно.
 
 **Критерий заменён — `AMENDMENTS.md` A-005** (основание: Amendment Protocol, «техническая
@@ -276,25 +235,12 @@ MT-CO1 (513 аа) 20 мин → τ_real 1.5–3.0.
 Записано в pearl-реестр, impact 9, next_check 2026-10-15.
 
 ## 🛑 Session 2026-08-30 (часть 3): ATR Phase 1 ЗАВЕРШЕНА — kill switch сработал
+[summarized] Решение пользователя: **засчитать переформулированную D1**. Зафиксировано как
+[summarized] **Ни один критерий, порог или формула не изменены.** `KILL_CRITERIA.md` остался LOCKED,
+[summarized] **Сработала ветка `T2 KILL AND D1 KILL` → ATR framework WEAK.**
+[summarized] | Гипотеза | Статус | Причина |
+[summarized] **⚠️ Две честные проблемы, записанные, а не сглаженные:**
 
-Решение пользователя: **засчитать переформулированную D1**. Зафиксировано как
-`AMENDMENTS.md` **A-004** — по собственному Amendment Protocol файла, потому что
-засчитывание другого теста против записанного критерия есть интерпретация.
-
-**Ни один критерий, порог или формула не изменены.** `KILL_CRITERIA.md` остался LOCKED,
-дописаны три блока «ИСХОД», и это сказано в шапке.
-
-**Сработала ветка `T2 KILL AND D1 KILL` → ATR framework WEAK.**
-
-| Гипотеза | Статус | Причина |
-|---|---|---|
-| T2 | 🔴 FALSIFIED | 0.919 / 1.000 / 1.111 при пороге > 0.8; потолок оракула 0.106 |
-| D1 | 🔴 FALSIFIED | ΔAUC +0.0004; Meta-Level Kill Switch 3 |
-| **T1** | ⛔ заблокирована | `Depends on T2 SUCCESS` |
-| **D2, D3, вся Phase 3** | ⛔ заблокированы | `Depends on D1 SUCCESS` / `≥1 SUCCESS в Phase 1` |
-| **H1** (митохондрии) | ✅ **единственное живое** | объявлена независимой от T2/D1 |
-
-**⚠️ Две честные проблемы, записанные, а не сглаженные:**
 1. **Буквальный критерий KILL для D1 НЕ срабатывает** — требует `AUC(spectral) <=
    AUC(baseline)`, факт 0.8742 > 0.8738. У исходных критериев **нет серой зоны**,
    промежуток `0 < ΔAUC < 0.10` не определён, результат попал ровно в эту дыру. Это
@@ -317,15 +263,8 @@ ATR, не являющееся повтором; требует данных о 
 «Publish negative result»; методология сильная, результат отрицательный).
 
 ## 🧬 Session 2026-08-30 (часть 2): D1 spectral — данные скачаны, прогон выполнен, KILL
-
-**Scope-тест (`d1_spectral_3d/scope_test.md`) → REDIRECT**, затем D1 запущен в
-переформулированном виде. Пре-регистрация заморожена `0f8cbb4` ДО первого AUC.
-
-**Данные (публичные, без ключей, без оплаты):** Hi-C GM12878 4DN `4DNFINPH7UOD` — НЕ
-скачан, читается по HTTP range (`shared_utils/remote_hdf5.py`, своя реализация:
-`hic-straw` не собирается на Windows, `fsspec` даёт 404 там, где прямой range даёт 206).
-eQTL — GTEx v8 `Cells_EBV-transformed_lymphocytes` = LCL = **тот же тип клеток, что
-GM12878** (cell-type matching по построению). Итого 249 МБ трафика вместо 78-235 ГБ.
+[summarized] **Scope-тест (`d1_spectral_3d/scope_test.md`) → REDIRECT**, затем D1 запущен в
+[summarized] **Данные (публичные, без ключей, без оплаты):** Hi-C GM12878 4DN `4DNFINPH7UOD` — НЕ
 
 **Результат: KILL.** ΔAUC +0.0004, CI [−0.0006, +0.0013], 0/1000 бутстрапов выше порога
 0.02. Δprecision@1 внутри варианта = ровно 0. Оба контроля пройдены (позитивный:
@@ -349,25 +288,12 @@ GM12878** (cell-type matching по построению). Итого 249 МБ т
 должна). Засчитывать ли более сильную версию — решение автора фреймворка.
 
 ## 🧪 Session 2026-08-30: T2 (topology_control) — три локальных правила убиты, гипотеза исчерпана
+[summarized] ⚠️ **Это НЕ возобновление ARCHCODE.** Работа шла в `topology_control/` (ATR Framework) —
+[summarized] **Вердикт T2:** гипотеза «TOP2 распутывает ДНК по локальному геометрическому правилу»
+[summarized] | Вариант | Правило | Медиана `advantage_score` (30 seed) | Коммит |
+[summarized] **Почему это информативный NULL, а не пустой:** потолок оракула устойчив в трёх
+[summarized] **Три технических дефекта, из-за которых эксперимент физически не мог проверить свою
 
-⚠️ **Это НЕ возобновление ARCHCODE.** Работа шла в `topology_control/` (ATR Framework) —
-соседний трек, не рукопись и не код ARCHCODE. Проект ARCHCODE остаётся на паузе.
-
-**Вердикт T2:** гипотеза «TOP2 распутывает ДНК по локальному геометрическому правилу»
-закрыта по всем дешёвым вариантам Relaxation Map.
-
-| Вариант | Правило | Медиана `advantage_score` (30 seed) | Коммит |
-|---|---|---|---|
-| v2 | угол перекрёстка | 0.919 | `6d683f1` |
-| v3 / V1 | кривизна | 1.000 | `7fa2393` |
-| v4 / V2 | плотность зацеплений | 1.111 | `62b3251` |
-| — | **оракул** (знает `Lk`, не локальное правило) | **0.106 / 0.106 / 0.111** | потолок |
-
-**Почему это информативный NULL, а не пустой:** потолок оракула устойчив в трёх
-независимых прогонах — упрощение достижимо примерно в 9 раз. Значит провал специфичен
-для правил, а не для механики или задачи.
-
-**Три технических дефекта, из-за которых эксперимент физически не мог проверить свою
 гипотезу** (`AMENDMENTS.md`): A-002 `create_linked_rings` никогда не создавала
 зацеплений (все прогоны v1 от апреля 2026 информационно пусты) · A-003 срывы passage
 различались между армами втрое и двигали метрику сильнее правила (после починки вердикт
@@ -390,8 +316,8 @@ v2 сменился INCONCLUSIVE → KILL) · A-001 метрика инверт�
 (`experiments/d1_spectral_3d/` существует, но ПУСТА — 0 файлов, вне git; проверено 2026-08-30). ATR-фреймворк не опровергнут.
 
 ## 🗂️ Session 2026-08-29: DNA-Ladder sibling audit + NotebookLM mining + 3-item verification
-- **[VERIFIED, this session]** **DNA-Ladder audit** (`sergeeey/-DNA-Ladder-`, sibling project born
-  2026-07-08, same day as ARCHCODE pause): cloned+audited via `gh`/`git`, 34/34 + 23/23 pytest pass
+[summarized] - **[VERIFIED, this session]** **DNA-Ladder audit** (`sergeeey/-DNA-Ladder-`, sibling project born
+
   (actually run), 0 secrets in git history (grepped), 2 minor hygiene issues found (Windows long-path
   checkout failure — reproduced; stale `C:\Users\sboi\` cross-machine path in CLAUDE.md — read
   directly). TE/Alu-3D track paused at wet-lab boundary — `GO_A1_READY_PACK_v1.md` read directly:
@@ -412,7 +338,6 @@ v2 сменился INCONCLUSIVE → KILL) · A-001 метрика инверт�
   never started, no repo/folder exists anywhere.
 
 [summarized] - **3-item verification round (user explicitly asked to re-check before trusting):**
-
 
 ## 🔍 Session 2026-07-05 (part 3): Harvest/Capture sweep
 [summarized] - 2026-07-05: harvest scan (7 questions) + capture routing done. 2 reusable patterns captured →
@@ -438,7 +363,6 @@ v2 сменился INCONCLUSIVE → KILL) · A-001 метрика инверт�
   OPEN (user-side, optional, non-blocking): merge PR `feature/readme-link-new-preprint` → main (gh auth broken
   here) to make DOI callout + "Cite this repository" button live on the public repo. **PROJECT PAUSED.**
 
-
 ## 📦 Session 2026-07-05 (part 2): GitHub showcase audit — repo README/description/topics
 [summarized] **What was done (after preprint submission, same session):**
 
@@ -462,7 +386,6 @@ v2 сменился INCONCLUSIVE → KILL) · A-001 метрика инверт�
   in a future session if it recurs.
 
 ---
-
 
 ## ✅ Session 2026-07-05 (part 1): Preprint SUBMITTED — Research Square rs-10254695, status Prescreening
 [summarized] **What happened:** User submitted the category-confound paper as a new, separate Research Square preprint.
@@ -488,7 +411,6 @@ hypotheses or re-open old discovery threads (pearls, ATPH, QEC-MWPM) unprompted 
 
 ---
 
-
 ## 📄 Session 2026-07-06 (historical — superseded by submission above): Paper flattened + off-site backup
 [summarized] **What was done:**
 
@@ -512,7 +434,6 @@ If they return, lead with "post the preprint" as the one remaining action, not n
 2. After posted: add editorial note on rs-9090074 linking to new DOI (self-correction, not error).
 3. Optional: journal submission later (Bioinformatics non-OA track is free-to-author; check current fees
    before committing — do not quote remembered numbers).
-
 
 ## 🔬 Session 2026-06-28: Discovery Audit — 4 Converging Lines [VERIFIED]
 [summarized] **What was done:**
@@ -538,7 +459,6 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 (3) Optional: verify remaining DOIs resolve.
 - Parked: ATPH, QEC-MWPM `[CANDIDATE]`. Old ARCHCODE discovery claim = FALSIFIED (block above).
 
-
 ## 🔧 Session 2026-06-25: Manuscript Fixed for Submission (commit 703e398)
 
 **What was done:**
@@ -553,6 +473,7 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 **Next:** write cover letter → submit to Bioinformatics Advances
 
 ---
+
 
 
 
@@ -601,6 +522,7 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 
+
 ## ⚠️ Critical Constraints (CORRECTED)
 
 **DO NOT:**
@@ -619,6 +541,7 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 - ✅ Disclose limitations honestly (N=1 robust, garden of forking paths, Gelman & Loken)
 
 ---
+
 
 
 
@@ -674,6 +597,7 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 
 
 
+
 ## 📖 Context for Next Session
 [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [summarized] [su...
 
@@ -698,8 +622,9 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 **Last Session Duration:** ~6 hours (P0 audit cleanup + skeptic + reframe + power + trust repair + reality sync)  
 **Next Session Goal:** Push + bioRxiv appeal verification + Bioinformatics Advances prep
 
-
 ## Auto-commit log
+- [2026-09-01 17:37] `5374e63`: D1 v10: KILL воспроизведён на 2.5x данных, pearl-число — нет
+- [2026-09-01 15:11] `7b26ec8`: memory: R7+R6 -- 14.2% closes as product of a -39.5% analytic artifact and a +41.9% simulation term
 - [2026-09-01 15:10] `b4829ca`: H1 R7+R6: the 14.2% puzzle closes as a product of two opposing effects
 - [2026-09-01 15:04] `f9ede03`: memory: R3 done -- all three candidates killed, the question itself was ill-posed
 - [2026-09-01 15:04] `0650d6c`: H1 R3: all three candidates KILLED -- and the question turns out to be ill-posed
@@ -719,35 +644,6 @@ claim) — erratum/companion. (2) Venue (NAR GAB / Bioinformatics) + format to t
 - [2026-08-30 20:26] `05c2c06`: H1: fix header self-contradiction (it still claimed no criterion changed), memory updated
 - [2026-08-30 20:25] `f528111`: H1 literature search: P2 closed, P1 blocked on one unmeasured number
 - [2026-08-30 20:18] `93b2e44`: A-005: H1 criterion replaced -- the old one could not be failed
-- [2026-08-30 20:09] `4de00f0`: memory: ATR Phase 1 concluded, framework WEAK, H1 is the only live direction
-- [2026-08-30 19:58] `4de00f0`: memory: ATR Phase 1 concluded, framework WEAK, H1 is the only live direction
-- [2026-08-30 19:58] `5db11f6`: Phase 1 CONCLUDED: kill switch fired, ATR framework marked WEAK
-- [2026-08-30 19:51] `3de8d6f`: D1: lint cleanup, memory + cross-repo register updated (retroscan)
-- [2026-08-30 19:50] `be22d59`: D1 (redirected): KILL — spectral adds nothing, and contact adds nothing either
-- [2026-08-30 19:36] `0f8cbb4`: prereg(D1 redirect): frozen before any AUC is computed
-- [2026-08-30 19:14] `086c0d3`: scope-test(D1): REDIRECT — comparator must change before D1 may run
-- [2026-08-30 19:08] `ebf1969`: memory: T2 closed across all three cheap variants; D1 pivot gated on scope test
-- [2026-08-30 19:06] `62b3251`: T2 v4/V2: KILL — local entanglement density carries no directional information
-- [2026-08-30 01:22] `4be9e55`: prereg(T2 v4/V2): local entanglement density as local rule — frozen before implementation
-- [2026-08-30 00:19] `7fa2393`: T2 v3/V1: KILL — curvature carries no directional information either
-- [2026-08-30 00:16] `c168adf`: prereg(T2 v3/V1): curvature as local rule — frozen before implementation
-- [2026-08-30 00:11] `6d683f1`: T2 v2: KILL after removing the failure-rate confound (A-003)
-- [2026-08-29 23:49] `5630608`: T2 v2: INCONCLUSIVE — local angle rule carries no directional information
-- [2026-08-29 23:44] `adbc66f`: prereg(T2 v2): freeze claim before any run
-- [2026-08-29 21:30] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
-- [2026-08-29 21:26] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
-- [2026-08-29 21:25] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
-- [2026-08-29 20:51] `a5f8821`: docs(memory): session wrap — DNA-Ladder audit + NotebookLM mining + verification round
-- [2026-07-08 15:15] `705fb59`: docs(memory): ARCHCODE paused — preprint live (DOI rs-10254695/v1), no further action
-- [2026-07-08 15:10] `705fb59`: docs(memory): ARCHCODE paused — preprint live (DOI rs-10254695/v1), no further action
-- [2026-07-08 14:53] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
-- [2026-07-08 14:39] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
-- [2026-07-05 13:40] `e934b0e`: docs(memory): record GitHub showcase audit + README PR pending merge
-- [2026-07-05 13:40] `87b7807`: docs(github): add showcase audit — description/topics recommendations + branch drift finding
-- [2026-07-05 13:00] `905c93b`: docs(memory): record Research Square submission — rs-10254695, Prescreening
-- [2026-07-04 23:08] `6726953`: docs(paper): flatten to single authoritative source + archive scaffolding
-- [2026-07-04 23:06] `efdad39`: fix(paper): full reviewer report response (7 major/minor) — data-tested first
-- [2026-07-04 22:18] `8dc9834`: fix(paper): reviewer response — category-granularity robustness + narrowed claims
-- [2026-07-04 22:07] `69fb031`: feat(figure): v2 money figure — 5 methods, two positive controls survive vs both ARCHCODE metrics collapse
 
+[summarized] - [2026-08-30 20:09] `4de00f0`: memory: ATR Phase 1 concluded, framework WEAK, H1 is the only live direction
 [summarized] - [2026-07-04 21:59] `e62af65`: feat(paper): add unsupervised phyloP positive control — closes skeptic Attack 2
