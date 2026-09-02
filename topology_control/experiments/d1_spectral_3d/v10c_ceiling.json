@@ -1,0 +1,17 @@
+{
+  "n_train": 221559,
+  "n_test": 15994,
+  "n_pos_test": 1298,
+  "floor_delta_auc": 0.0017949812659314723,
+  "observed_delta_auc": -0.00035616538319915847,
+  "ceiling_delta_auc_lr": -8.209522962743243e-05,
+  "ceiling_delta_auc_gb": 0.007115155806890261,
+  "ceiling_gb_auc_baseline": 0.9226126906433666,
+  "ceiling_gb_auc_full": 0.9297278464502569,
+  "insample_auc_hic_only": 0.9113740581590707,
+  "insample_auc_dist_only": 0.886094441597265,
+  "efficiency_логистическая": 1.1460090487628853,
+  "efficiency_бустинг": -0.4043376082061692,
+  "headroom": 0.005320174540958789,
+  "step4a_verdict": "интервал здоров — потолок выше пола, результат интерпретируем"
+}
