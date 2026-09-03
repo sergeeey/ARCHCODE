@@ -133,16 +133,27 @@ data/gnomad*.vcf*
 Lessons/
 Projects/
 
-# Contact matrices (can be large, regenerable)
+# Contact matrices — purged from history 2026-09-03 (80.8GB, no generator found
+# in 445 commits of local history; archived externally as contact_matrices_v1.tar.zst,
+# see D:\ДНК-archives\contact_matrices_v1.manifest.yaml). .json was the actual bulk
+# of the problem and was never covered here before — only .npy/.pkl were.
+results/contact_matrices/*.json
 results/contact_matrices/*.npy
 results/contact_matrices/*.pkl
 archive/
 
 # Large public re-downloadable datasets — never version (>100MB → GitHub rejects push)
 # GAP: existing data/*.gz only covers top-level; these live in subfolders
+# 2026-09-03: extended after a 613MB AlphaMissense + 420MB/291MB DepMap blob set
+# was found still reachable in git history despite these patterns existing —
+# they stop FUTURE re-adds, they don't retroactively clean history (filter-repo did).
 data/**/*.tsv.gz
 data/alphamissense/*
 **/depmap/*.csv
+analysis/gasperini2019/*.gz
+data/imr90/*.bed
+data/cardiac/*.bed
+data/reference/*.npy
 # Compiled manuscript PDFs are build artifacts (regenerated from .typ via typst)
 *.pdf
 
