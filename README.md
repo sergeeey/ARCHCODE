@@ -28,7 +28,7 @@ _LSSIM distribution across 12 variant categories (n = 1,103 HBB). LoF classes (n
 
 <table>
 <tr>
-<td align="center"><b>63,153</b><br><sub>variants analyzed, 13 loci</sub></td>
+<td align="center"><b>26,225</b><br><sub>variants analyzed, 9 loci (verified, dedup)</sub></td>
 <td align="center"><b>AUC 0.977</b><br><sub>HBB ROC performance (pooled — see caveat below)</sub></td>
 <td align="center"><b>27 pearls</b><br><sub>VEP-invisible HBB finds</sub></td>
 <td align="center"><b>641 VUS</b><br><sub>pearl-like candidates</sub></td>
@@ -67,7 +67,7 @@ Unlike sequence-based predictors (VEP, SpliceAI, CADD) that **classify** variant
 - **CTCF boundary erosion**
 - **Cohesin loading site alteration**
 
-**Key discoveries** from applying ARCHCODE to **63,153 variants across 13 loci**:
+**Key discoveries** from applying ARCHCODE to **26,225 variants across 9 loci** (verified core count after deduplication; 63,153/13-loci is a technical full-scope superset — see [docs/NUMBER_PROVENANCE.md](docs/NUMBER_PROVENANCE.md) — not used here to stay consistent with the rest of this document):
 - **27 "pearl" variants** on HBB — VEP-blind, SpliceAI-blind, CADD-ambiguous, but ARCHCODE-detected
 - **641 pearl-like VUS candidates** for reclassification across 8 tissue-matched loci
 - **Structural blind spot** validated by 9 orthogonal methods (VEP, SpliceAI, CADD, MPRA, gnomAD, conservation, AlphaGenome RNA/ATAC, Hi-C, cross-species)
