@@ -1,3 +1,10 @@
+// ARCHIVED 2026-09-29: superseded, not compiled by any live pipeline (main.typ
+// switched to taxonomy_paper/body_content.typ in commit 351863c, 2026-06-25, to
+// fix a FATAL abstract/body mismatch). Known unfixed issues in this file: Hi-C r
+// values disagree between body text (0.530/0.588) and Figure 7's own caption
+// (0.66/0.49); AUC is reported as 0.977/0.975/0.976 in different sections.
+// Neither matters for the live manuscript. Kept for history, not for editing.
+
 == Significance Statement
 Sequence-based predictors cannot detect variants that disrupt 3D chromatin topology without altering protein sequence. ARCHCODE applies analytical loop extrusion simulation to 32,201 ClinVar variants across 13 loci, identifying 20 high-confidence "pearl" candidates on HBB --- structurally disruptive yet invisible to nine orthogonal methods. However, cross-locus pooled AUC (0.779) is category-driven (within-locus category-only achieves 0.977 on HBB), and Class B VUS do not survive matched-control testing (p=0.996). ARCHCODE is a hypothesis-generating taxonomy framework, not a pathogenicity predictor; experimental validation is required before clinical use.
 
